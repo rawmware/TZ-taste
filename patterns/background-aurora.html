@@ -1,0 +1,29 @@
+<div class="tz-aurora" aria-hidden="true"><canvas id="tz-aurora-canvas"></canvas></div>
+<script>
+(function(){
+  var c=document.getElementById('tz-aurora-canvas');if(!c)return;
+  var x=c.getContext('2d'),W,H,t=0;
+  var reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function size(){W=c.width=c.offsetWidth;H=c.height=c.offsetHeight}
+  size();addEventListener('resize',size);
+  // Tunables: edit the blob colors to match your DNA accent palette.
+  var blobs=[{c:'124,140,248',s:.55,x:.25,y:.35},{c:'255,184,230',s:.5,x:.7,y:.3},{c:'140,230,200',s:.45,x:.5,y:.7}];
+  function frame(){
+    x.clearRect(0,0,W,H);x.globalCompositeOperation='lighter';
+    blobs.forEach(function(b,i){
+      var px=(b.x+Math.sin(t*.00022+i*2.1)*.12)*W, py=(b.y+Math.cos(t*.00019+i*1.7)*.12)*H, r=Math.min(W,H)*b.s;
+      var g=x.createRadialGradient(px,py,0,px,py,r);
+      g.addColorStop(0,'rgba('+b.c+',.5)');g.addColorStop(1,'rgba('+b.c+',0)');
+      x.fillStyle=g;x.beginPath();x.arc(px,py,r,0,7);x.fill();
+    });
+    t+=16;if(!reduced)requestAnimationFrame(frame);
+  }
+  frame();
+})();
+</script>
+<style>
+.tz-aurora{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.tz-aurora canvas{width:100%;height:100%;display:block;filter:blur(60px) saturate(1.3);opacity:.8}
+/* Usage: place .tz-aurora as the first child of a position:relative hero.
+   Put content in a position:relative wrapper above it. Works on light or dark. */
+</style>
