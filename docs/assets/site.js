@@ -28,6 +28,17 @@
 
   var AGENT_BRIEF = "Use https://github.com/rawmware/TZ-taste as a reference to build: [your brief]. Follow its AGENT.md protocol and pick one style DNA before writing any code.";
 
+  // Data lives at the repo root, but Pages only publishes /docs — so on
+  // github.io we read the JSON straight from the repo via raw.githubusercontent
+  // (fork-friendly: owner/repo are derived from the URL). Locally, use ../.
+  var DATA_BASE = (function () {
+    var h = location.hostname, p = location.pathname.split("/").filter(Boolean);
+    if (/\.github\.io$/.test(h) && p.length) {
+      return "https://raw.githubusercontent.com/" + h.replace(/\.github\.io$/, "") + "/" + p[0] + "/main/";
+    }
+    return "../";
+  })();
+
   document.querySelectorAll('[data-copy="agent-brief"]').forEach(function (btn) {
     btn.addEventListener("click", function () { copyText(AGENT_BRIEF, "Agent brief copied — paste it into any AI"); });
   });
@@ -91,7 +102,7 @@
       "/* Type: " + d.fonts.display + " / " + d.fonts.body + " / " + d.fonts.mono + " */";
   }
 
-  fetch("../styles/index.json")
+  fetch(DATA_BASE + "styles/index.json")
     .then(function (r) { if (!r.ok) throw 0; return r.json(); })
     .then(function (idx) {
       var grid = document.getElementById("dna-grid");
@@ -128,7 +139,7 @@
   var patternCache = {};
   function getPattern(file) {
     if (!patternCache[file]) {
-      patternCache[file] = fetch("../" + file).then(function (r) {
+      patternCache[file] = fetch(DATA_BASE + file).then(function (r) {
         if (!r.ok) throw 0; return r.text();
       });
     }
@@ -160,7 +171,7 @@
     });
   });
 
-  fetch("../patterns/index.json")
+  fetch(DATA_BASE + "patterns/index.json")
     .then(function (r) { if (!r.ok) throw 0; return r.json(); })
     .then(function (idx) {
       var grid = document.getElementById("pattern-grid");
@@ -230,7 +241,7 @@
     btn.className = "btn-line";
     btn.textContent = "Copy prompt";
     btn.addEventListener("click", function () {
-      fetch("../" + pr.file)
+      fetch(DATA_BASE + pr.file)
         .then(function (r) { if (!r.ok) throw 0; return r.text(); })
         .then(function (md) { copyText(md, pr.title + " prompt copied"); })
         .catch(function () { toast("Couldn’t load the prompt file"); });
@@ -241,8 +252,8 @@
 
   /* ---------- sources ---------- */
   Promise.all([
-    fetch("../sources/sources.json").then(function (r) { if (!r.ok) throw 0; return r.json(); }),
-    fetch("../sources/FRESHNESS.json").then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
+    fetch(DATA_BASE + "sources/sources.json").then(function (r) { if (!r.ok) throw 0; return r.json(); }),
+    fetch(DATA_BASE + "sources/FRESHNESS.json").then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
   ]).then(function (res) {
     var data = res[0], fresh = res[1];
     var table = document.getElementById("source-table");
