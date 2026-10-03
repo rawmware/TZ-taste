@@ -1,0 +1,27 @@
+<nav class="tz-navpill" aria-label="Primary">
+  <a class="tz-brand" href="#">Studio<span>®</span></a>
+  <div class="tz-links">
+    <a href="#work">Work</a><a href="#about">About</a><a href="#journal">Journal</a>
+  </div>
+  <a class="tz-cta" href="#contact">Start a project</a>
+  <button class="tz-menu" aria-label="Open menu" aria-expanded="false">☰</button>
+</nav>
+<style>
+.tz-navpill{--ink:#1a1a1a;--bg:#fffffff2;--accent:#5b5bd6;
+  position:sticky;top:16px;z-index:50;display:flex;align-items:center;gap:28px;
+  max-width:860px;margin:16px auto;padding:10px 10px 10px 22px;border-radius:999px;
+  background:var(--bg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid #1a1a1414;box-shadow:0 8px 28px #1a1a1a12;
+  font-family:-apple-system,'Segoe UI',sans-serif}
+.tz-brand{font-weight:700;color:var(--ink);text-decoration:none;font-size:17px;letter-spacing:-.02em}
+.tz-brand span{font-size:10px;vertical-align:super;opacity:.5}
+.tz-links{display:flex;gap:4px;margin-left:auto}
+.tz-links a{color:var(--ink);text-decoration:none;font-size:14px;font-weight:500;
+  padding:9px 16px;border-radius:999px;transition:background .2s}
+.tz-links a:hover{background:#1a1a140d}
+.tz-cta{background:var(--ink);color:#fff;text-decoration:none;font-size:14px;font-weight:600;
+  padding:11px 22px;border-radius:999px;transition:transform .2s,background .2s;white-space:nowrap}
+.tz-cta:hover{background:var(--accent);transform:translateY(-1px)}
+.tz-menu{display:none;background:none;border:none;font-size:20px;cursor:pointer;color:var(--ink)}
+@media(max-width:640px){.tz-links,.tz-navpill .tz-cta{display:none}.tz-menu{display:block;margin-left:auto}}
+</style>
