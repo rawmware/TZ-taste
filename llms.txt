@@ -1,0 +1,12 @@
+# TZ Taste
+
+Free browser design reference studio by RawmWare. No AI runtime, credentials, or external service required.
+
+Catalog: ./catalog.json
+Source: https://github.com/rawmware/TZ-taste
+License: MIT (see LICENSE).
+
+Each catalog record contains id, title, category, tags, notes, license, and a complete standalone HTML example in html.
+Use notes to understand design intent; adapt the HTML to the user's project.
+Users can export a Markdown brief and JSON backup. Personal references and preferences are local to their browser and are not publicly available to crawlers.
+External reference links are inspiration, not permission to copy third-party assets.

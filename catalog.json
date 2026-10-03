@@ -1,0 +1,119 @@
+[
+  {
+    "id": "quiet-studio",
+    "title": "Quiet studio",
+    "category": "Landing",
+    "tags": [
+      "Editorial",
+      "warm",
+      "serif"
+    ],
+    "notes": "Quiet studio: editorial / warm / serif. Use a strong typographic hierarchy, generous spacing and one focal graphic. Preserve readable contrast, keyboard access and reduced motion.",
+    "license": "MIT",
+    "html": "<!doctype html><html lang=\"en\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Quiet studio</title><style>*{box-sizing:border-box}body{margin:0;background:#eee9dc;color:#283126;font:14px/1.5 system-ui;padding:7%}header{display:flex;justify-content:space-between;font-size:10px;letter-spacing:2px}main{display:grid;grid-template-columns:1.2fr 1fr;align-items:center;gap:25px;min-height:330px}h1{font:clamp(35px,6vw,65px)/1 Georgia,serif;letter-spacing:-2px}p{opacity:.8}a{display:inline-block;color:inherit;border:1px solid;padding:10px 20px;border-radius:30px;text-decoration:none}.shape{width:100%;aspect-ratio:1;border-radius:50% 50% 0 0;background:linear-gradient(135deg,#a6ad85,#36442a);}@media(max-width:420px){main{grid-template-columns:1fr}.shape{max-width:150px}}a:focus-visible{outline:3px solid;outline-offset:4px}</style><header><span>QUIET STUDIO</span><span>DESIGN STUDY / TZ</span></header><main><section><h1>Independent by nature.</h1><p>A small studio for considered ideas.</p><a href=\"#about\">Explore the idea ↗</a></section><div class='shape'></div></main><section id=\"about\"><p>An original, editable HTML/CSS study by RawmWare. MIT licensed.</p></section></html>"
+  },
+  {
+    "id": "electric-index",
+    "title": "Electric index",
+    "category": "Landing",
+    "tags": [
+      "Bold",
+      "acid",
+      "typography"
+    ],
+    "notes": "Electric index: bold / acid / typography. Use a strong typographic hierarchy, generous spacing and one focal graphic. Preserve readable contrast, keyboard access and reduced motion.",
+    "license": "MIT",
+    "html": "<!doctype html><html lang=\"en\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Electric index</title><style>*{box-sizing:border-box}body{margin:0;background:#171b18;color:#d7ff73;font:14px/1.5 system-ui;padding:7%}header{display:flex;justify-content:space-between;font-size:10px;letter-spacing:2px}main{display:grid;grid-template-columns:1.2fr 1fr;align-items:center;gap:25px;min-height:330px}h1{font:clamp(35px,6vw,65px)/1 Georgia,serif;letter-spacing:-2px}p{opacity:.8}a{display:inline-block;color:inherit;border:1px solid;padding:10px 20px;border-radius:30px;text-decoration:none}.shape{width:100%;aspect-ratio:1;background:repeating-linear-gradient(45deg,#d7ff73 0 2px,transparent 2px 18px);transform:rotate(10deg);}@media(max-width:420px){main{grid-template-columns:1fr}.shape{max-width:150px}}a:focus-visible{outline:3px solid;outline-offset:4px}</style><header><span>ELECTRIC INDEX</span><span>DESIGN STUDY / TZ</span></header><main><section><h1>Make something<br>worth opening.</h1><p>A home for your next experiment.</p><a href=\"#about\">Explore the idea ↗</a></section><div class='shape'></div></main><section id=\"about\"><p>An original, editable HTML/CSS study by RawmWare. MIT licensed.</p></section></html>"
+  },
+  {
+    "id": "rose-glass",
+    "title": "Rose glass",
+    "category": "Components",
+    "tags": [
+      "Glass",
+      "soft",
+      "dashboard"
+    ],
+    "notes": "Rose glass: glass / soft / dashboard. Use a strong typographic hierarchy, generous spacing and one focal graphic. Preserve readable contrast, keyboard access and reduced motion.",
+    "license": "MIT",
+    "html": "<!doctype html><html lang=\"en\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Rose glass</title><style>*{box-sizing:border-box}body{margin:0;background:#decbd4;color:#493849;font:14px/1.5 system-ui;padding:7%}header{display:flex;justify-content:space-between;font-size:10px;letter-spacing:2px}main{display:grid;grid-template-columns:1.2fr 1fr;align-items:center;gap:25px;min-height:330px}h1{font:clamp(35px,6vw,65px)/1 Georgia,serif;letter-spacing:-2px}p{opacity:.8}a{display:inline-block;color:inherit;border:1px solid;padding:10px 20px;border-radius:30px;text-decoration:none}.shape{width:100%;aspect-ratio:1;border-radius:30px;background:#ffffff55;backdrop-filter:blur(10px);box-shadow:0 20px 60px #68435b33;display:grid;place-content:center;text-align:center;}@media(max-width:420px){main{grid-template-columns:1fr}.shape{max-width:150px}}a:focus-visible{outline:3px solid;outline-offset:4px}</style><header><span>ROSE GLASS</span><span>DESIGN STUDY / TZ</span></header><main><section><h1>Your space,<br>in focus.</h1><p>One thoughtful place for everything.</p><a href=\"#about\">Explore the idea ↗</a></section><div class='shape'>Today<br><strong>24°</strong><br>Room to breathe</div></main><section id=\"about\"><p>An original, editable HTML/CSS study by RawmWare. MIT licensed.</p></section></html>"
+  },
+  {
+    "id": "blue-hour",
+    "title": "Blue hour",
+    "category": "Backgrounds",
+    "tags": [
+      "Atmosphere",
+      "blue",
+      "gradient"
+    ],
+    "notes": "Blue hour: atmosphere / blue / gradient. Use a strong typographic hierarchy, generous spacing and one focal graphic. Preserve readable contrast, keyboard access and reduced motion.",
+    "license": "MIT",
+    "html": "<!doctype html><html lang=\"en\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Blue hour</title><style>*{box-sizing:border-box}body{margin:0;background:#101f42;color:#e4eafb;font:14px/1.5 system-ui;padding:7%}header{display:flex;justify-content:space-between;font-size:10px;letter-spacing:2px}main{display:grid;grid-template-columns:1.2fr 1fr;align-items:center;gap:25px;min-height:330px}h1{font:clamp(35px,6vw,65px)/1 Georgia,serif;letter-spacing:-2px}p{opacity:.8}a{display:inline-block;color:inherit;border:1px solid;padding:10px 20px;border-radius:30px;text-decoration:none}.shape{width:100%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f0d5ef,#758bec 40%,#29304e 75%);box-shadow:0 0 80px #748bdf;}@media(max-width:420px){main{grid-template-columns:1fr}.shape{max-width:150px}}a:focus-visible{outline:3px solid;outline-offset:4px}</style><header><span>BLUE HOUR</span><span>DESIGN STUDY / TZ</span></header><main><section><h1>Stay a little<br>longer.</h1><p>A quiet corner of the internet.</p><a href=\"#about\">Explore the idea ↗</a></section><div class='shape'></div></main><section id=\"about\"><p>An original, editable HTML/CSS study by RawmWare. MIT licensed.</p></section></html>"
+  },
+  {
+    "id": "field-notes",
+    "title": "Field notes",
+    "category": "Landing",
+    "tags": [
+      "Journal",
+      "green",
+      "grid"
+    ],
+    "notes": "Field notes: journal / green / grid. Use a strong typographic hierarchy, generous spacing and one focal graphic. Preserve readable contrast, keyboard access and reduced motion.",
+    "license": "MIT",
+    "html": "<!doctype html><html lang=\"en\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Field notes</title><style>*{box-sizing:border-box}body{margin:0;background:#dfe5d1;color:#2b402b;font:14px/1.5 system-ui;padding:7%}header{display:flex;justify-content:space-between;font-size:10px;letter-spacing:2px}main{display:grid;grid-template-columns:1.2fr 1fr;align-items:center;gap:25px;min-height:330px}h1{font:clamp(35px,6vw,65px)/1 Georgia,serif;letter-spacing:-2px}p{opacity:.8}a{display:inline-block;color:inherit;border:1px solid;padding:10px 20px;border-radius:30px;text-decoration:none}.shape{width:100%;aspect-ratio:1;background:#536947;color:#e5e9d9;padding:30px;font:40px Georgia;transform:rotate(-7deg);box-shadow:10px 15px 0 #a9b798;}@media(max-width:420px){main{grid-template-columns:1fr}.shape{max-width:150px}}a:focus-visible{outline:3px solid;outline-offset:4px}</style><header><span>FIELD NOTES</span><span>DESIGN STUDY / TZ</span></header><main><section><h1>Notes from<br>the outside.</h1><p>A journal of everyday discoveries.</p><a href=\"#about\">Explore the idea ↗</a></section><div class='shape'>01<br>FIELD<br>NOTES</div></main><section id=\"about\"><p>An original, editable HTML/CSS study by RawmWare. MIT licensed.</p></section></html>"
+  },
+  {
+    "id": "signal-player",
+    "title": "Signal player",
+    "category": "Components",
+    "tags": [
+      "Music",
+      "orange",
+      "dark"
+    ],
+    "notes": "Signal player: music / orange / dark. Use a strong typographic hierarchy, generous spacing and one focal graphic. Preserve readable contrast, keyboard access and reduced motion.",
+    "license": "MIT",
+    "html": "<!doctype html><html lang=\"en\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Signal player</title><style>*{box-sizing:border-box}body{margin:0;background:#211c19;color:#ff9c57;font:14px/1.5 system-ui;padding:7%}header{display:flex;justify-content:space-between;font-size:10px;letter-spacing:2px}main{display:grid;grid-template-columns:1.2fr 1fr;align-items:center;gap:25px;min-height:330px}h1{font:clamp(35px,6vw,65px)/1 Georgia,serif;letter-spacing:-2px}p{opacity:.8}a{display:inline-block;color:inherit;border:1px solid;padding:10px 20px;border-radius:30px;text-decoration:none}.shape{width:100%;aspect-ratio:1;border:1px solid #9b5d37;border-radius:20px;background:#34271e;display:grid;place-content:center;text-align:center;}@media(max-width:420px){main{grid-template-columns:1fr}.shape{max-width:150px}}a:focus-visible{outline:3px solid;outline-offset:4px}</style><header><span>SIGNAL PLAYER</span><span>DESIGN STUDY / TZ</span></header><main><section><h1>A sound<br>of your own.</h1><p>An interface for uninterrupted listening.</p><a href=\"#about\">Explore the idea ↗</a></section><div class='shape'>◉<br>AFTER HOURS<br>━━━━━━ ● ━━</div></main><section id=\"about\"><p>An original, editable HTML/CSS study by RawmWare. MIT licensed.</p></section></html>"
+  },
+  {
+    "id": "paper-grid",
+    "title": "Paper grid",
+    "category": "Backgrounds",
+    "tags": [
+      "Minimal",
+      "grid",
+      "cream"
+    ],
+    "notes": "Paper grid: minimal / grid / cream. Use a strong typographic hierarchy, generous spacing and one focal graphic. Preserve readable contrast, keyboard access and reduced motion.",
+    "license": "MIT",
+    "html": "<!doctype html><html lang=\"en\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Paper grid</title><style>*{box-sizing:border-box}body{margin:0;background:#f3f0e7;color:#292f3d;font:14px/1.5 system-ui;padding:7%}header{display:flex;justify-content:space-between;font-size:10px;letter-spacing:2px}main{display:grid;grid-template-columns:1.2fr 1fr;align-items:center;gap:25px;min-height:330px}h1{font:clamp(35px,6vw,65px)/1 Georgia,serif;letter-spacing:-2px}p{opacity:.8}a{display:inline-block;color:inherit;border:1px solid;padding:10px 20px;border-radius:30px;text-decoration:none}.shape{width:100%;aspect-ratio:1;background:linear-gradient(90deg,#b7b9b7 1px,transparent 1px),linear-gradient(#b7b9b7 1px,transparent 1px);background-size:24px 24px;}@media(max-width:420px){main{grid-template-columns:1fr}.shape{max-width:150px}}a:focus-visible{outline:3px solid;outline-offset:4px}</style><header><span>PAPER GRID</span><span>DESIGN STUDY / TZ</span></header><main><section><h1>Space to<br>think clearly.</h1><p>A simple foundation for complex ideas.</p><a href=\"#about\">Explore the idea ↗</a></section><div class='shape'></div></main><section id=\"about\"><p>An original, editable HTML/CSS study by RawmWare. MIT licensed.</p></section></html>"
+  },
+  {
+    "id": "orbit-club",
+    "title": "Orbit club",
+    "category": "Landing",
+    "tags": [
+      "Space",
+      "violet",
+      "geometry"
+    ],
+    "notes": "Orbit club: space / violet / geometry. Use a strong typographic hierarchy, generous spacing and one focal graphic. Preserve readable contrast, keyboard access and reduced motion.",
+    "license": "MIT",
+    "html": "<!doctype html><html lang=\"en\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Orbit club</title><style>*{box-sizing:border-box}body{margin:0;background:#201a36;color:#d8cafa;font:14px/1.5 system-ui;padding:7%}header{display:flex;justify-content:space-between;font-size:10px;letter-spacing:2px}main{display:grid;grid-template-columns:1.2fr 1fr;align-items:center;gap:25px;min-height:330px}h1{font:clamp(35px,6vw,65px)/1 Georgia,serif;letter-spacing:-2px}p{opacity:.8}a{display:inline-block;color:inherit;border:1px solid;padding:10px 20px;border-radius:30px;text-decoration:none}.shape{width:100%;aspect-ratio:1;border:2px solid #c4a4fc;border-radius:50%;box-shadow:inset 0 0 40px #8a59ca,0 0 40px #8a59ca;transform:rotate(-25deg) scaleY(.55);}@media(max-width:420px){main{grid-template-columns:1fr}.shape{max-width:150px}}a:focus-visible{outline:3px solid;outline-offset:4px}</style><header><span>ORBIT CLUB</span><span>DESIGN STUDY / TZ</span></header><main><section><h1>A different<br>point of view.</h1><p>Ideas travel further together.</p><a href=\"#about\">Explore the idea ↗</a></section><div class='shape'></div></main><section id=\"about\"><p>An original, editable HTML/CSS study by RawmWare. MIT licensed.</p></section></html>"
+  },
+  {
+    "id": "folio-cards",
+    "title": "Folio cards",
+    "category": "Components",
+    "tags": [
+      "Portfolio",
+      "cards",
+      "pink"
+    ],
+    "notes": "Folio cards: portfolio / cards / pink. Use a strong typographic hierarchy, generous spacing and one focal graphic. Preserve readable contrast, keyboard access and reduced motion.",
+    "license": "MIT",
+    "html": "<!doctype html><html lang=\"en\"><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Folio cards</title><style>*{box-sizing:border-box}body{margin:0;background:#eedee1;color:#582c3e;font:14px/1.5 system-ui;padding:7%}header{display:flex;justify-content:space-between;font-size:10px;letter-spacing:2px}main{display:grid;grid-template-columns:1.2fr 1fr;align-items:center;gap:25px;min-height:330px}h1{font:clamp(35px,6vw,65px)/1 Georgia,serif;letter-spacing:-2px}p{opacity:.8}a{display:inline-block;color:inherit;border:1px solid;padding:10px 20px;border-radius:30px;text-decoration:none}.shape{width:100%;aspect-ratio:1;background:#a95876;color:#fff0ee;border-radius:12px;padding:25px;box-shadow:12px 12px 0 #d2a1b2;}@media(max-width:420px){main{grid-template-columns:1fr}.shape{max-width:150px}}a:focus-visible{outline:3px solid;outline-offset:4px}</style><header><span>FOLIO CARDS</span><span>DESIGN STUDY / TZ</span></header><main><section><h1>Selected<br>possibilities.</h1><p>A collection of work, always evolving.</p><a href=\"#about\">Explore the idea ↗</a></section><div class='shape'>PROJECT 01<br><br>Good things<br>take shape.</div></main><section id=\"about\"><p>An original, editable HTML/CSS study by RawmWare. MIT licensed.</p></section></html>"
+  }
+]
