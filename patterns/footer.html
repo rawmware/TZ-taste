@@ -1,0 +1,33 @@
+<footer class="tz-footer">
+  <a class="tz-word" href="#">TASTE<span>®</span></a>
+  <div class="tz-cols">
+    <div><p class="tz-h">Library</p><a href="#styles">Style DNAs</a><a href="#patterns">Patterns</a><a href="#prompts">Prompts</a></div>
+    <div><p class="tz-h">Agents</p><a href="#agent-kit">Agent kit</a><a href="#skill">The skill</a><a href="#anti-slop">Anti-slop list</a></div>
+    <div><p class="tz-h">Project</p><a href="#sources">Sources</a><a href="#contribute">Contribute</a><a href="#license">MIT License</a></div>
+  </div>
+  <div class="tz-base">
+    <span>© 2026 — Free forever.</span>
+    <span>Made with taste, not templates.</span>
+  </div>
+</footer>
+<style>
+.tz-footer{--bg:#0a0a0a;--ink:#f2f2f2;--muted:#7a7a7a;--accent:#c6ff00;
+  background:var(--bg);color:var(--ink);padding:clamp(48px,7vw,96px) clamp(24px,6vw,96px) 32px;
+  font-family:Verdana,sans-serif}
+.tz-word{font-family:'Arial Black',Arial,sans-serif;font-size:clamp(64px,12vw,180px);
+  color:var(--ink);text-decoration:none;letter-spacing:-.02em;line-height:1;display:block;
+  margin-bottom:56px;transition:color .3s}
+.tz-word:hover{color:var(--accent)}
+.tz-word span{font-size:.25em;vertical-align:super;color:var(--muted)}
+.tz-cols{display:grid;grid-template-columns:repeat(3,max-content);gap:clamp(40px,8vw,140px);
+  margin-bottom:64px}
+.tz-h{font-family:ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 16px}
+.tz-cols a{display:block;color:var(--ink);text-decoration:none;font-size:15px;
+  padding:6px 0;opacity:.85}
+.tz-cols a:hover{color:var(--accent);opacity:1}
+.tz-base{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  border-top:1px solid #f2f2f21f;padding-top:24px;
+  font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted)}
+</style>
