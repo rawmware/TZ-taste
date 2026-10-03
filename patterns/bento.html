@@ -1,0 +1,30 @@
+<section class="tz-bento" aria-label="Features">
+  <div class="tz-cell tz-big">
+    <p class="tz-k">SHIP FASTER</p>
+    <h3>One canvas,<br>every asset.</h3>
+    <p>Design, motion, and code converge in a single surface. No handoffs, no drift.</p>
+    <div class="tz-mock" aria-hidden="true"><i></i><i></i><i></i></div>
+  </div>
+  <div class="tz-cell"><p class="tz-k">MOTION</p><h3>Spring physics</h3><p>Interfaces that feel alive under your cursor.</p></div>
+  <div class="tz-cell"><p class="tz-k">TYPE</p><h3>Real pairings</h3><p>Editorial typography, not default sans.</p></div>
+  <div class="tz-cell tz-wide"><p class="tz-k">PROOF</p><h3>Loved by 40,000 builders</h3><p>“The first tool that made our marketing site feel designed.” — Mara J., founder</p></div>
+</section>
+<style>
+.tz-bento{--bg:#f7f7f5;--card:#fff;--ink:#1a1a1a;--muted:#8a8a93;--accent:#5b5bd6;--line:#1a1a1414;
+  display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(180px,auto);
+  gap:16px;background:var(--bg);padding:clamp(32px,6vw,96px);
+  font-family:-apple-system,'Segoe UI',sans-serif}
+.tz-cell{background:var(--card);border:1px solid var(--line);border-radius:16px;
+  padding:28px;box-shadow:0 1px 2px #1a1a1a08}
+.tz-big{grid-column:span 2;grid-row:span 2;background:linear-gradient(140deg,#fff,#eceafe)}
+.tz-wide{grid-column:span 2}
+.tz-k{font-family:ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:.16em;
+  color:var(--accent);margin:0 0 12px;font-weight:700}
+.tz-cell h3{font-size:clamp(20px,2.4vw,30px);letter-spacing:-.02em;margin:0 0 10px;line-height:1.15}
+.tz-cell p{color:var(--muted);font-size:14.5px;line-height:1.6;margin:0}
+.tz-mock{display:flex;gap:8px;margin-top:26px}
+.tz-mock i{height:56px;border-radius:10px;background:linear-gradient(120deg,#5b5bd6,#9a9af0);flex:1}
+.tz-mock i:nth-child(2){background:linear-gradient(120deg,#1a1a1a,#4a4a55)}
+.tz-mock i:nth-child(3){background:linear-gradient(120deg,#c9c9f5,#eceafe)}
+@media(max-width:760px){.tz-bento{grid-template-columns:1fr 1fr}.tz-big,.tz-wide{grid-column:span 2}}
+</style>
