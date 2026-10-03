@@ -1,0 +1,29 @@
+<section class="tz-quotes" aria-label="Testimonials">
+  <p class="tz-eyebrow">Field notes — N°04</p>
+  <h2>What builders<br><em>actually</em> say.</h2>
+  <div class="tz-wall">
+    <figure><blockquote>“It killed our template look in an afternoon. Investors asked who our designer was. It's an AI with better instructions.”</blockquote><figcaption><b>Dana K.</b> — Founder, Northloop</figcaption></figure>
+    <figure><blockquote>“The style DNAs are the cheat code. Pick one, commit, and every page finally agrees with itself.”</blockquote><figcaption><b>Marcus T.</b> — Indie hacker</figcaption></figure>
+    <figure><blockquote>“I pasted the agent brief into Cursor and my landing page stopped embarrassing me.”</blockquote><figcaption><b>Priya S.</b> — Engineer, solo founder</figcaption></figure>
+  </div>
+</section>
+<style>
+.tz-quotes{--bg:#f5f1e8;--ink:#1c1a15;--accent:#b5461f;--line:#1c1a1526;
+  background:var(--bg);color:var(--ink);padding:clamp(64px,9vw,130px) clamp(24px,6vw,96px);
+  font-family:Georgia,serif}
+.tz-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;opacity:.6;margin:0 0 18px}
+.tz-quotes h2{font-size:clamp(36px,5.6vw,72px);font-weight:400;letter-spacing:-.02em;
+  margin:0 0 54px;line-height:1.05}
+.tz-quotes h2 em{color:var(--accent)}
+.tz-wall{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+.tz-wall figure{margin:0;padding:36px 32px 32px;border-bottom:1px solid var(--line)}
+.tz-wall figure+figure{border-left:1px solid var(--line)}
+.tz-wall blockquote{margin:0 0 24px;font-size:clamp(19px,2vw,24px);font-style:italic;
+  line-height:1.45;letter-spacing:-.01em}
+.tz-wall blockquote::before{content:"“";color:var(--accent);font-size:1.4em;line-height:0}
+.tz-wall figcaption{font-family:ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.12em;text-transform:uppercase;opacity:.7}
+.tz-wall figcaption b{color:var(--ink)}
+@media(max-width:820px){.tz-wall{grid-template-columns:1fr}.tz-wall figure+figure{border-left:none}}
+</style>
