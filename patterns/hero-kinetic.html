@@ -1,0 +1,35 @@
+<section class="tz-hero-kin">
+  <div class="tz-kicker">VOL. 02 — MAXIMUM VOLUME</div>
+  <h1>MAKE<br>NOISE<span>.</span></h1>
+  <p class="tz-sub">A hero for brands that refuse to whisper. Type does all the talking.</p>
+  <div class="tz-actions"><a class="tz-btn" href="#tickets">Get tickets</a><a class="tz-ghost" href="#lineup">Lineup ↓</a></div>
+  <div class="tz-strip" aria-hidden="true"><div class="tz-track">
+    <span>LIVE / LOUD / LIVE / LOUD / LIVE / LOUD / LIVE / LOUD /&nbsp;</span>
+    <span>LIVE / LOUD / LIVE / LOUD / LIVE / LOUD / LIVE / LOUD /&nbsp;</span>
+  </div></div>
+</section>
+<style>
+.tz-hero-kin{--bg:#0a0a0a;--ink:#f2f2f2;--accent:#c6ff00;
+  background:var(--bg);color:var(--ink);padding:clamp(64px,9vw,120px) 0 0;
+  font-family:'Arial Black',Arial,sans-serif;overflow:hidden}
+.tz-kicker{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.2em;
+  color:var(--accent);padding:0 clamp(24px,6vw,96px);margin:0 0 16px}
+.tz-hero-kin h1{font-size:clamp(72px,17vw,240px);line-height:.88;letter-spacing:-.01em;
+  margin:0;padding:0 clamp(24px,6vw,96px);font-weight:900}
+.tz-hero-kin h1 span{color:var(--accent)}
+.tz-sub{font-family:Verdana,sans-serif;font-size:16px;max-width:44ch;opacity:.75;
+  padding:0 clamp(24px,6vw,96px);margin:28px 0}
+.tz-actions{display:flex;gap:16px;flex-wrap:wrap;padding:0 clamp(24px,6vw,96px);margin:0 0 64px}
+.tz-btn{background:var(--accent);color:#0a0a0a;text-decoration:none;font-weight:900;
+  padding:16px 34px;font-size:15px;letter-spacing:.04em;transition:transform .2s}
+.tz-btn:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 #f2f2f2}
+.tz-ghost{color:var(--ink);text-decoration:none;align-self:center;font-size:15px;
+  border-bottom:1px solid var(--accent);padding-bottom:2px}
+.tz-strip{border-top:2px solid var(--accent);border-bottom:2px solid var(--accent);
+  overflow:hidden;white-space:nowrap;padding:14px 0}
+.tz-track{display:inline-block;animation:tzslide 14s linear infinite;color:var(--accent);
+  font-weight:900;font-size:22px;letter-spacing:.06em}
+.tz-track span{display:inline-block}
+@keyframes tzslide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.tz-track{animation:none}}
+</style>
