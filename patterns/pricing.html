@@ -1,0 +1,53 @@
+<section class="tz-pricing" aria-label="Pricing">
+  <p class="tz-eyebrow">Pricing — pay for value, not seats</p>
+  <h2>Simple enough<br>to decide <em>today.</em></h2>
+  <div class="tz-tiers">
+    <article class="tz-tier">
+      <h3>Starter</h3><p class="tz-price">$0</p><p class="tz-per">free forever</p>
+      <ul><li>3 projects</li><li>Community patterns</li><li>MIT licensed</li></ul>
+      <a href="#start">Start free</a>
+    </article>
+    <article class="tz-tier tz-hot">
+      <p class="tz-flag">MOST POPULAR</p>
+      <h3>Studio</h3><p class="tz-price">$24</p><p class="tz-per">per month</p>
+      <ul><li>Unlimited projects</li><li>All 12 style DNAs</li><li>Priority support</li><li>Team workspaces</li></ul>
+      <a href="#studio">Start 14-day trial</a>
+    </article>
+    <article class="tz-tier">
+      <h3>Scale</h3><p class="tz-price">Custom</p><p class="tz-per">annual billing</p>
+      <ul><li>SSO & audit logs</li><li>Dedicated success</li><li>SLA 99.99%</li></ul>
+      <a href="#scale">Talk to us</a>
+    </article>
+  </div>
+  <p class="tz-fine">Prices in USD. Cancel anytime — keep everything you made.</p>
+</section>
+<style>
+.tz-pricing{--bg:#fff6e9;--ink:#1a1a1a;--accent:#ff5da2;--line:#1a1a1a;
+  background:var(--bg);color:var(--ink);padding:clamp(64px,9vw,130px) clamp(24px,6vw,96px);
+  font-family:Verdana,Geneva,sans-serif;text-align:center}
+.tz-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;opacity:.6;margin:0 0 18px}
+.tz-pricing h2{font-family:'Arial Black',Arial,sans-serif;font-size:clamp(34px,5.4vw,64px);
+  letter-spacing:-.01em;margin:0 0 56px;line-height:1.05}
+.tz-pricing h2 em{font-style:normal;background:linear-gradient(transparent 62%,#ffc93c 62%)}
+.tz-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1020px;
+  margin:0 auto;text-align:left}
+.tz-tier{background:#fff;border:3px solid var(--line);border-radius:18px;padding:34px 30px;
+  box-shadow:5px 5px 0 var(--line);position:relative;transition:transform .2s}
+.tz-tier:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--line)}
+.tz-hot{background:var(--accent);color:#fff;transform:rotate(-1deg)}
+.tz-hot:hover{transform:rotate(-1deg) translate(-2px,-2px)}
+.tz-flag{position:absolute;top:-16px;left:50%;transform:translateX(-50%) rotate(2deg);
+  background:var(--line);color:#ffc93c;font-family:ui-monospace,Menlo,monospace;
+  font-size:10px;letter-spacing:.14em;padding:6px 14px;border-radius:999px;margin:0;white-space:nowrap}
+.tz-tier h3{font-family:'Arial Black',Arial,sans-serif;font-size:20px;margin:0 0 8px}
+.tz-price{font-family:'Arial Black',Arial,sans-serif;font-size:44px;margin:0}
+.tz-per{font-size:13px;opacity:.7;margin:4px 0 20px}
+.tz-tier ul{list-style:none;padding:0;margin:0 0 28px;display:grid;gap:10px;font-size:14.5px}
+.tz-tier ul li::before{content:"✓ ";font-weight:900}
+.tz-tier a{display:block;text-align:center;background:var(--line);color:#fff;text-decoration:none;
+  font-weight:700;padding:14px;border-radius:12px}
+.tz-hot a{background:#fff;color:var(--line)}
+.tz-fine{margin:36px 0 0;font-size:13px;opacity:.6}
+@media(max-width:820px){.tz-tiers{grid-template-columns:1fr;max-width:420px}}
+</style>
