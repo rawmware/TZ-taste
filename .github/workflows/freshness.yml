@@ -1,0 +1,31 @@
+name: freshness
+
+on:
+  schedule:
+    - cron: "0 9 * * 1" # Mondays 09:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Check source freshness
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/freshness.mjs
+      - name: Validate indexes
+        run: node scripts/validate.mjs
+      - name: Commit updates
+        run: |
+          git config user.name "tz-taste freshness bot"
+          git config user.email "freshness@tz-taste.local"
+          git add sources/FRESHNESS.json sources/FRESHNESS.md
+          git diff --cached --quiet || git commit -m "chore: weekly source freshness check"
+          git push
