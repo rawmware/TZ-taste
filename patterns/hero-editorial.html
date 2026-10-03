@@ -1,0 +1,29 @@
+<section class="tz-hero-ed">
+  <p class="tz-eyebrow">A design study · N°01</p>
+  <h1>Considered work,<br><em>delivered</em> quietly.</h1>
+  <div class="tz-meta">
+    <span>Est. 2026</span><span>Portsmouth, NH</span><span>Available worldwide</span>
+  </div>
+  <div class="tz-arch" aria-hidden="true"></div>
+  <a class="tz-link" href="#work">See the work <span>→</span></a>
+</section>
+<style>
+.tz-hero-ed{--bg:#f5f1e8;--ink:#1c1a15;--accent:#b5461f;--line:#1c1a1526;
+  background:var(--bg);color:var(--ink);padding:clamp(64px,10vw,140px) clamp(24px,6vw,96px);
+  font-family:Georgia,'Times New Roman',serif;position:relative;overflow:hidden}
+.tz-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;opacity:.65;margin:0 0 28px}
+.tz-hero-ed h1{font-size:clamp(44px,8vw,110px);line-height:1.02;letter-spacing:-.03em;
+  font-weight:400;margin:0 0 36px;max-width:12ch}
+.tz-hero-ed h1 em{font-style:italic;color:var(--accent)}
+.tz-meta{display:flex;gap:28px;flex-wrap:wrap;border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);padding:14px 0;margin:0 0 40px;
+  font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;opacity:.75}
+.tz-arch{width:min(320px,60vw);aspect-ratio:3/4;border-radius:999px 999px 0 0;
+  background:linear-gradient(160deg,#c96f3f,#7a2f14);margin:0 0 40px}
+.tz-link{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--accent);
+  padding-bottom:4px;font-size:20px}
+.tz-link span{display:inline-block;transition:transform .3s cubic-bezier(.22,1,.36,1)}
+.tz-link:hover span{transform:translateX(6px)}
+</style>
