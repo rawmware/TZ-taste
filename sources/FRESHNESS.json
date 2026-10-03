@@ -1,0 +1,134 @@
+{
+  "checked_at": "2026-10-03",
+  "sources": [
+    {
+      "id": "taste-skill",
+      "name": "taste-skill",
+      "url": "https://github.com/Leonxlnx/taste-skill",
+      "license": "MIT",
+      "last_commit": "2026-09-26",
+      "stars": 92323,
+      "status": "ok"
+    },
+    {
+      "id": "threeui",
+      "name": "ThreeUI Community",
+      "url": "https://github.com/MengTo/threeui",
+      "license": "MIT",
+      "last_commit": "2026-09-01",
+      "stars": 6410,
+      "status": "ok"
+    },
+    {
+      "id": "react-bits",
+      "name": "React Bits",
+      "url": "https://reactbits.dev",
+      "license": "MIT + Commons Clause",
+      "last_commit": "2026-10-03",
+      "stars": 48458,
+      "status": "ok"
+    },
+    {
+      "id": "shadcn-ui",
+      "name": "shadcn/ui",
+      "url": "https://ui.shadcn.com",
+      "license": "MIT",
+      "last_commit": "2026-10-02",
+      "stars": 125058,
+      "status": "ok"
+    },
+    {
+      "id": "tailwind",
+      "name": "Tailwind CSS",
+      "url": "https://tailwindcss.com",
+      "license": "MIT",
+      "last_commit": "2026-09-25",
+      "stars": 97757,
+      "status": "ok"
+    },
+    {
+      "id": "gsap",
+      "name": "GSAP",
+      "url": "https://gsap.com",
+      "license": "Free (proprietary)",
+      "last_commit": "2026-04-13",
+      "stars": 28779,
+      "status": "ok"
+    },
+    {
+      "id": "lenis",
+      "name": "Lenis",
+      "url": "https://lenis.darkroom.engineering",
+      "license": "MIT",
+      "last_commit": "2026-10-01",
+      "stars": 16141,
+      "status": "ok"
+    },
+    {
+      "id": "lucide",
+      "name": "Lucide",
+      "url": "https://lucide.dev",
+      "license": "ISC",
+      "last_commit": "2026-10-03",
+      "stars": 24836,
+      "status": "ok"
+    },
+    {
+      "id": "phosphor",
+      "name": "Phosphor Icons",
+      "url": "https://phosphoricons.com",
+      "license": "MIT",
+      "last_commit": "2026-01-06",
+      "stars": 384,
+      "status": "ok"
+    },
+    {
+      "id": "fontshare",
+      "name": "Fontshare",
+      "url": "https://fontshare.com",
+      "license": "Free (ITF FFL / OFL)",
+      "status": "manual — no repo to poll"
+    },
+    {
+      "id": "google-fonts",
+      "name": "Google Fonts",
+      "url": "https://fonts.google.com",
+      "license": "OFL / Apache",
+      "status": "manual — no repo to poll"
+    },
+    {
+      "id": "ui-ux-pro-max",
+      "name": "UI/UX Pro Max skill",
+      "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
+      "license": "MIT",
+      "last_commit": "2026-10-03",
+      "stars": 132807,
+      "status": "ok"
+    },
+    {
+      "id": "agent-design-taste",
+      "name": "agent-design-taste",
+      "url": "https://github.com/aievolutionpl/agent-design-taste",
+      "license": "MIT",
+      "last_commit": "2026-10-01",
+      "stars": 14,
+      "status": "ok"
+    },
+    {
+      "id": "sceneai",
+      "name": "SceneAI",
+      "url": "https://sceneai.art",
+      "license": "Proprietary (paid)",
+      "status": "manual — no repo to poll"
+    },
+    {
+      "id": "picsum",
+      "name": "Lorem Picsum",
+      "url": "https://picsum.photos",
+      "license": "MIT",
+      "last_commit": "2026-01-30",
+      "stars": 2490,
+      "status": "ok"
+    }
+  ]
+}
