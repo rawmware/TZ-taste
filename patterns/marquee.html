@@ -1,0 +1,18 @@
+<div class="tz-marquee" role="presentation" aria-hidden="true">
+  <div class="tz-track">
+    <span>Free forever <i>✦</i> MIT licensed <i>✦</i> No signup <i>✦</i> No API key <i>✦</i> Agent-ready <i>✦</i>&nbsp;</span>
+    <span>Free forever <i>✦</i> MIT licensed <i>✦</i> No signup <i>✦</i> No API key <i>✦</i> Agent-ready <i>✦</i>&nbsp;</span>
+  </div>
+</div>
+<style>
+.tz-marquee{--bg:#141412;--ink:#d8d8d4;--accent:#ff4d00;
+  background:var(--bg);color:var(--ink);overflow:hidden;white-space:nowrap;
+  padding:18px 0;border-top:2px solid var(--bg);border-bottom:2px solid var(--bg)}
+.tz-track{display:inline-block;animation:tzslide 22s linear infinite;
+  font-family:'Arial Black',Arial,sans-serif;font-size:20px;letter-spacing:.08em;
+  text-transform:uppercase}
+.tz-track span{display:inline-block}
+.tz-track i{font-style:normal;color:var(--accent);margin:0 18px}
+@keyframes tzslide{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.tz-track{animation:none}}
+</style>
