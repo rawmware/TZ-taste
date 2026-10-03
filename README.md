@@ -1,2 +1,0 @@
-# TZ-taste
-FREE
