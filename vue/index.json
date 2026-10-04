@@ -1,0 +1,119 @@
+{
+ "count": 8,
+ "updated": "2026-10-04",
+ "usage": "Vue SFC ports of the best patterns. Scoped styles, zero extra deps.",
+ "vue_components": [
+  {
+   "id": "vue-cta-champagne",
+   "title": "Champagne CTA (Vue)",
+   "category": "Vue",
+   "file": "vue/CtaChampagne.vue",
+   "tags": [
+    "vue",
+    "cta"
+   ],
+   "description": "Art-deco champagne CTA: gold sunburst fan, offset copy, perforated admit-two ticket stub.",
+   "dnas": [
+    "art-deco-luxe"
+   ]
+  },
+  {
+   "id": "vue-faq-terminal",
+   "title": "Terminal FAQ (Vue)",
+   "category": "Vue",
+   "file": "vue/FaqTerminal.vue",
+   "tags": [
+    "vue",
+    "faq"
+   ],
+   "description": "Retro-terminal FAQ: run faq --topic commands, click to expand logged answers with OK/WARN tags.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "vue-features-blueprint",
+   "title": "Blueprint callouts (Vue)",
+   "category": "Vue",
+   "file": "vue/FeaturesBlueprint.vue",
+   "tags": [
+    "vue",
+    "features"
+   ],
+   "description": "Blueprint-tech feature plate: annotated MK-2 board with leader-line callouts and spec labels.",
+   "dnas": [
+    "blueprint-tech"
+   ]
+  },
+  {
+   "id": "vue-footer-marquee",
+   "title": "Marquee footer (Vue)",
+   "category": "Vue",
+   "file": "vue/FooterMarquee.vue",
+   "tags": [
+    "vue",
+    "footer"
+   ],
+   "description": "Acid-rave footer: giant alternating-fill marquee, cramped mono link columns, lime signal CTA.",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "vue-hero-kinetic",
+   "title": "Kinetic hero (Vue)",
+   "category": "Vue",
+   "file": "vue/HeroKinetic.vue",
+   "tags": [
+    "vue",
+    "hero"
+   ],
+   "description": "Swiss-poster kinetic hero: staggered colossal type, vermilion block, marquee strip.",
+   "dnas": [
+    "swiss-poster"
+   ]
+  },
+  {
+   "id": "vue-nav-dock",
+   "title": "Dock nav (Vue)",
+   "category": "Vue",
+   "file": "vue/NavDock.vue",
+   "tags": [
+    "vue",
+    "nav"
+   ],
+   "description": "Glass-calm dock nav: frosted magnification dock, sliding active indicator, mono status chip.",
+   "dnas": [
+    "glass-calm"
+   ]
+  },
+  {
+   "id": "vue-pricing-toggle",
+   "title": "Billing toggle (Vue)",
+   "category": "Vue",
+   "file": "vue/PricingToggle.vue",
+   "tags": [
+    "vue",
+    "pricing"
+   ],
+   "description": "Nordic-noir case-file pricing: hard billing switch, stamped file-folder plan cards.",
+   "dnas": [
+    "nordic-noir"
+   ]
+  },
+  {
+   "id": "vue-stats-bars",
+   "title": "Bar-chart stats (Vue)",
+   "category": "Vue",
+   "file": "vue/StatsBars.vue",
+   "tags": [
+    "vue",
+    "stats"
+   ],
+   "description": "Laboratory-clean stats: specimen rows with scaleX-animated CSS bars, one featured sample, no chart lib.",
+   "dnas": [
+    "laboratory-clean"
+   ]
+  }
+ ]
+}
