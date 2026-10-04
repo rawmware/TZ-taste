@@ -1,0 +1,167 @@
+<!--tz-meta {"id":"activity-feed","title":"Lab-ledger activity feed","category":"App UI","file":"app-ui/activity-feed.html","tags":["activity-feed","timeline","filters","avatars"],"description":"Chronological crew activity feed for Fieldlog with day-grouped entries, filter chips, and initials avatars on a lab-notebook timestamp rail.","dnas":["laboratory-clean"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Activity — Fieldlog</title>
+<style>
+.tz-feed{--bg:#f6f8f8;--card:#ffffff;--ink:#15211f;--muted:#5f6f6c;--teal:#0a7d8c;--line:#15211f22;
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"IBM Plex Sans","Avenir Next","Segoe UI",Verdana,sans-serif;-webkit-font-smoothing:antialiased}
+.tz-head{max-width:760px;margin:0 auto;padding:clamp(36px,6vw,60px) clamp(20px,5vw,40px) 8px}
+.tz-title{font-size:clamp(28px,4vw,40px);letter-spacing:-.02em;margin:0 0 8px;font-weight:650}
+.tz-sub{color:var(--muted);font-size:15px;margin:0 0 26px;line-height:1.6}
+.tz-filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
+.tz-chip{border:1px solid var(--line);background:var(--card);color:var(--muted);font:inherit;
+  font-size:13px;font-weight:600;padding:9px 16px;cursor:pointer;border-radius:4px;
+  transition:background .15s ease,color .15s ease,border-color .15s ease}
+.tz-chip:hover{border-color:var(--teal);color:var(--teal)}
+.tz-chip.tz-on{background:var(--teal);border-color:var(--teal);color:#fff}
+.tz-chip .tz-n{font-family:ui-monospace,Menlo,monospace;font-size:11px;opacity:.75;margin-left:6px}
+.tz-body{max-width:760px;margin:0 auto;padding:0 clamp(20px,5vw,40px) 90px}
+.tz-day{margin-bottom:36px}
+.tz-dayhead{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--ink);
+  padding-bottom:8px;margin-bottom:4px}
+.tz-dayhead h2{font-size:15px;letter-spacing:.14em;text-transform:uppercase;margin:0}
+.tz-dayhead time{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--muted)}
+.tz-item{display:grid;grid-template-columns:64px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+.tz-time{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--muted);text-align:right;
+  padding-top:4px;position:relative}
+.tz-time::after{content:"";position:absolute;right:-13px;top:10px;width:7px;height:7px;
+  background:var(--bg);border:2px solid var(--teal);border-radius:50%}
+.tz-row{border-left:1px solid var(--line);padding-left:18px;display:flex;gap:14px;align-items:flex-start}
+.tz-ava{flex:none;width:40px;height:40px;border-radius:50%;background:var(--ink);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;letter-spacing:.04em}
+.tz-ava.tz-a2{background:var(--teal)}
+.tz-ava.tz-a3{background:#3d4f4d}
+.tz-text{font-size:14.5px;line-height:1.6;margin:0}
+.tz-text b{font-weight:650}
+.tz-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;align-items:center}
+.tz-tag{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  border:1px solid var(--line);color:var(--muted);padding:3px 9px;border-radius:3px}
+.tz-tag.tz-hot{border-color:var(--teal);color:var(--teal)}
+.tz-item.tz-hide{display:none}
+.tz-empty{display:none;border:1px dashed var(--line);padding:44px 24px;text-align:center;color:var(--muted);font-size:14px}
+.tz-empty.tz-show{display:block}
+@media (max-width:520px){
+  .tz-item{grid-template-columns:1fr;gap:6px}
+  .tz-time{text-align:left;padding-top:0}
+  .tz-time::after{display:none}
+  .tz-row{border-left:none;padding-left:0}}
+@media (prefers-reduced-motion:reduce){.tz-chip{transition:none}}
+</style>
+</head>
+<body class="tz-feed">
+<header class="tz-head">
+  <h1 class="tz-title">Crew activity</h1>
+  <p class="tz-sub">Everything your field teams did, in the order they did it. Logged by Fieldlog at the job site &mdash; no office transcription required.</p>
+  <div class="tz-filters" role="group" aria-label="Filter activity">
+    <button class="tz-chip tz-on" data-f="all">All<span class="tz-n">8</span></button>
+    <button class="tz-chip" data-f="job">Jobs<span class="tz-n">3</span></button>
+    <button class="tz-chip" data-f="msg">Messages<span class="tz-n">3</span></button>
+    <button class="tz-chip" data-f="equip">Equipment<span class="tz-n">2</span></button>
+  </div>
+</header>
+<main class="tz-body" id="tzFeed">
+
+  <section class="tz-day" aria-label="Today">
+    <div class="tz-dayhead"><h2>Today</h2><time>Sat Oct 3, 2026</time></div>
+
+    <article class="tz-item" data-t="job">
+      <div class="tz-time">08:12</div>
+      <div class="tz-row">
+        <span class="tz-ava" aria-hidden="true">DK</span>
+        <div><p class="tz-text"><b>Dana K.</b> closed work order <b>#4821</b> at Harborview Condos &mdash; panel upgrade, signed off by the super.</p>
+        <div class="tz-meta"><span class="tz-tag tz-hot">Job</span><span class="tz-tag">#4821</span></div></div>
+      </div>
+    </article>
+
+    <article class="tz-item" data-t="msg">
+      <div class="tz-time">07:48</div>
+      <div class="tz-row">
+        <span class="tz-ava tz-a2" aria-hidden="true">RM</span>
+        <div><p class="tz-text"><b>Rae M.</b> flagged a gate code change at the Riverside site: "New code is 4419. Update the crew sheet before Monday."</p>
+        <div class="tz-meta"><span class="tz-tag">Message</span><span class="tz-tag">Riverside</span></div></div>
+      </div>
+    </article>
+
+    <article class="tz-item" data-t="equip">
+      <div class="tz-time">07:05</div>
+      <div class="tz-row">
+        <span class="tz-ava tz-a3" aria-hidden="true">TJ</span>
+        <div><p class="tz-text"><b>Theo J.</b> checked out the thermal camera (FLIR-02) from the depot for the morning audit.</p>
+        <div class="tz-meta"><span class="tz-tag">Equipment</span><span class="tz-tag">FLIR-02</span></div></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="tz-day" aria-label="Yesterday">
+    <div class="tz-dayhead"><h2>Yesterday</h2><time>Fri Oct 2, 2026</time></div>
+
+    <article class="tz-item" data-t="job">
+      <div class="tz-time">16:40</div>
+      <div class="tz-row">
+        <span class="tz-ava tz-a2" aria-hidden="true">RM</span>
+        <div><p class="tz-text"><b>Rae M.</b> reopened work order <b>#4809</b> &mdash; the replaced breaker tripped again. Priority raised to urgent.</p>
+        <div class="tz-meta"><span class="tz-tag tz-hot">Job</span><span class="tz-tag">Urgent</span></div></div>
+      </div>
+    </article>
+
+    <article class="tz-item" data-t="msg">
+      <div class="tz-time">13:22</div>
+      <div class="tz-row">
+        <span class="tz-ava" aria-hidden="true">DK</span>
+        <div><p class="tz-text"><b>Dana K.</b> asked dispatch to push the Elm Street start to 10:00 &mdash; the homeowner works nights.</p>
+        <div class="tz-meta"><span class="tz-tag">Message</span><span class="tz-tag">Scheduling</span></div></div>
+      </div>
+    </article>
+
+    <article class="tz-item" data-t="equip">
+      <div class="tz-time">09:15</div>
+      <div class="tz-row">
+        <span class="tz-ava tz-a3" aria-hidden="true">AS</span>
+        <div><p class="tz-text"><b>Amara S.</b> reported the van's ladder rack loose (Van 3). Tagged out of service until the shop looks at it.</p>
+        <div class="tz-meta"><span class="tz-tag">Equipment</span><span class="tz-tag">Van 3</span></div></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="tz-day" aria-label="Thursday">
+    <div class="tz-dayhead"><h2>Thursday</h2><time>Thu Oct 1, 2026</time></div>
+
+    <article class="tz-item" data-t="job">
+      <div class="tz-time">15:58</div>
+      <div class="tz-row">
+        <span class="tz-ava tz-a2" aria-hidden="true">AS</span>
+        <div><p class="tz-text"><b>Amara S.</b> completed the quarterly inspection at Dockside Market &mdash; 14 of 14 panels passed, report attached.</p>
+        <div class="tz-meta"><span class="tz-tag tz-hot">Job</span><span class="tz-tag">#4790</span></div></div>
+      </div>
+    </article>
+
+    <article class="tz-item" data-t="msg">
+      <div class="tz-time">11:03</div>
+      <div class="tz-row">
+        <span class="tz-ava tz-a3" aria-hidden="true">TJ</span>
+        <div><p class="tz-text"><b>Theo J.</b> welcomed two new apprentices to the North crew and shared the safety checklist.</p>
+        <div class="tz-meta"><span class="tz-tag">Message</span><span class="tz-tag">Crew</span></div></div>
+      </div>
+    </article>
+  </section>
+
+  <p class="tz-empty" id="tzEmpty">No entries match this filter. The log itself is fine &mdash; widen the net.</p>
+</main>
+<script>
+var chips=document.querySelectorAll('.tz-chip'),items=document.querySelectorAll('.tz-item'),
+    empty=document.getElementById('tzEmpty'),days=document.querySelectorAll('.tz-day');
+chips.forEach(function(c){c.addEventListener('click',function(){
+  chips.forEach(function(x){x.classList.remove('tz-on')});c.classList.add('tz-on');
+  var f=c.getAttribute('data-f'),shown=0;
+  items.forEach(function(i){var ok=f==='all'||i.getAttribute('data-t')===f;
+    i.classList.toggle('tz-hide',!ok);if(ok)shown++;});
+  days.forEach(function(d){var vis=d.querySelectorAll('.tz-item:not(.tz-hide)').length;
+    d.style.display=vis?'':'none';});
+  empty.classList.toggle('tz-show',shown===0);});});
+</script>
+</body>
+</html>
