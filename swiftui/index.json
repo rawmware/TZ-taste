@@ -1,0 +1,203 @@
+{
+ "count": 14,
+ "updated": "2026-10-04",
+ "usage": "SwiftUI view ports of the best patterns. Self-contained files with #Preview.",
+ "swiftui_views": [
+  {
+   "id": "swiftui-calendar-month",
+   "title": "Gig Calendar",
+   "category": "SwiftUI",
+   "file": "swiftui/CalendarMonthView.swift",
+   "tags": [
+    "swiftui",
+    "calendar"
+   ],
+   "description": "Gig-poster month grid with orange stamps marking show dates and venues.",
+   "dnas": [
+    "jazz-blue-note"
+   ]
+  },
+  {
+   "id": "swiftui-chat-row",
+   "title": "Chat Thread",
+   "category": "SwiftUI",
+   "file": "swiftui/ChatRowView.swift",
+   "tags": [
+    "swiftui",
+    "chat"
+   ],
+   "description": "Surf-shop chat thread with ticket-stripe message bubbles, reply row, and input bar.",
+   "dnas": [
+    "surf-shack"
+   ]
+  },
+  {
+   "id": "swiftui-cta-deploy",
+   "title": "CtaDeploy",
+   "category": "SwiftUI",
+   "file": "swiftui/CtaDeployView.swift",
+   "tags": [
+    "swiftui",
+    "cta"
+   ],
+   "description": "Industrial deploy CTA: typed command line, big condensed headline, and rotated rubber-stamp button.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "swiftui-empty-state",
+   "title": "Quiet Empty State",
+   "category": "SwiftUI",
+   "file": "swiftui/EmptyStateView.swift",
+   "tags": [
+    "swiftui",
+    "empty-state"
+   ],
+   "description": "Restrained scandi empty state: one muted symbol, calm serif, honest copy, single text button.",
+   "dnas": [
+    "scandi-calm"
+   ]
+  },
+  {
+   "id": "swiftui-features-bento",
+   "title": "FeaturesBento",
+   "category": "SwiftUI",
+   "file": "swiftui/FeaturesBentoView.swift",
+   "tags": [
+    "swiftui",
+    "features"
+   ],
+   "description": "Asymmetric Memphis bento: large tile, wide tile, rotated sticker card, and squiggle divider.",
+   "dnas": [
+    "memphis-milano"
+   ]
+  },
+  {
+   "id": "swiftui-hero-editorial",
+   "title": "HeroEditorial",
+   "category": "SwiftUI",
+   "file": "swiftui/HeroEditorialView.swift",
+   "tags": [
+    "swiftui",
+    "hero"
+   ],
+   "description": "Broadsheet editorial hero with oversized drop-cap lede, hairline rules, and small-caps kicker.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "swiftui-hero-vaporwave",
+   "title": "HeroVaporwave",
+   "category": "SwiftUI",
+   "file": "swiftui/HeroVaporwaveView.swift",
+   "tags": [
+    "swiftui",
+    "hero"
+   ],
+   "description": "Synthwave station hero with slitted sun disc, perspective grid floor, and chrome headline.",
+   "dnas": [
+    "vaporwave-sunset"
+   ]
+  },
+  {
+   "id": "swiftui-kanban-card",
+   "title": "Blueprint Kanban",
+   "category": "SwiftUI",
+   "file": "swiftui/KanbanCardView.swift",
+   "tags": [
+    "swiftui",
+    "kanban"
+   ],
+   "description": "Blueprint kanban column with annotated spec-sheet cards, dimension lines, and amber flags.",
+   "dnas": [
+    "blueprint-tech"
+   ]
+  },
+  {
+   "id": "swiftui-login-split",
+   "title": "Deco Login",
+   "category": "SwiftUI",
+   "file": "swiftui/LoginSplitView.swift",
+   "tags": [
+    "swiftui",
+    "login"
+   ],
+   "description": "Art-deco split login with a gold fan divider, hairline fields, and a monogram mark.",
+   "dnas": [
+    "art-deco-luxe"
+   ]
+  },
+  {
+   "id": "swiftui-onboarding-wizard",
+   "title": "Onboarding Wizard",
+   "category": "SwiftUI",
+   "file": "swiftui/OnboardingWizardView.swift",
+   "tags": [
+    "swiftui",
+    "onboarding"
+   ],
+   "description": "Warm 3-step cottage onboarding with a stitched dashed progress path and numbered knots.",
+   "dnas": [
+    "cottage-warm"
+   ]
+  },
+  {
+   "id": "swiftui-pricing-honest",
+   "title": "PricingHonest",
+   "category": "SwiftUI",
+   "file": "swiftui/PricingHonestView.swift",
+   "tags": [
+    "swiftui",
+    "pricing"
+   ],
+   "description": "Brutal hairline-grid pricing table with an exclusion matrix row and fine-print strip.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "swiftui-settings-page",
+   "title": "Settings Page",
+   "category": "SwiftUI",
+   "file": "swiftui/SettingsPageView.swift",
+   "tags": [
+    "swiftui",
+    "settings"
+   ],
+   "description": "Spec-sheet settings with hairline rows, working controls, and mono microcaps section labels.",
+   "dnas": [
+    "laboratory-clean"
+   ]
+  },
+  {
+   "id": "swiftui-stats-terminal",
+   "title": "StatsTerminal",
+   "category": "SwiftUI",
+   "file": "swiftui/StatsTerminalView.swift",
+   "tags": [
+    "swiftui",
+    "stats"
+   ],
+   "description": "Terminal readout of stats: mono rows, amber highlights, and a blinking cursor block.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "swiftui-testimonial-wall",
+   "title": "TestimonialWall",
+   "category": "SwiftUI",
+   "file": "swiftui/TestimonialWallView.swift",
+   "tags": [
+    "swiftui",
+    "testimonials"
+   ],
+   "description": "Offset masonry of record-sleeve quote cards with varying heights, sleeve rotation, and Side A/B toggle.",
+   "dnas": [
+    "vinyl-crate"
+   ]
+  }
+ ]
+}
