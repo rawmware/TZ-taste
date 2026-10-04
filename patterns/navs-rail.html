@@ -1,0 +1,52 @@
+<!--tz-meta {"id":"navs-rail","title":"Side rail nav","category":"Nav","file":"patterns/navs-rail.html","tags":["vertical","sidebar","icons"],"description":"Industrial vertical rail with a chunky active block and labels that slide out on hover.","dnas":["industrial-brutalist"]} -->
+<nav class="tz-rail" aria-label="Workspace">
+  <a class="tz-rail-item tz-rail-logo" href="#" aria-label="Home">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18"/><path d="M3 9h18M9 21V9"/></svg>
+    <span class="tz-rail-tip">Crane — dashboard</span>
+  </a>
+  <a class="tz-rail-item" href="#" aria-current="page">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>
+    <span class="tz-rail-tip">Overview</span>
+  </a>
+  <a class="tz-rail-item" href="#">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8 12 3 3 8v8l9 5 9-5zM3 8l9 5 9-5M12 13v8"/></svg>
+    <span class="tz-rail-tip">Inventory</span>
+  </a>
+  <a class="tz-rail-item" href="#">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.4 3.4-5 6.5-5s5.7 1.6 6.5 5M16 3.5a3.5 3.5 0 0 1 0 9M21.5 20c-.5-2.6-2-4.2-4-4.8"/></svg>
+    <span class="tz-rail-tip">Crew</span>
+  </a>
+  <a class="tz-rail-item" href="#">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg>
+    <span class="tz-rail-tip">Reports</span>
+  </a>
+  <a class="tz-rail-item tz-rail-foot" href="#">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.9 2.9l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.9-2.9l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.9-2.9l.1.1a1.7 1.7 0 0 0 1.9.3h0a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5h0a1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.9 2.9l-.1.1a1.7 1.7 0 0 0-.3 1.9v0a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+    <span class="tz-rail-tip">Settings</span>
+  </a>
+</nav>
+<style>
+.tz-rail{--bg:#e7e4dc;--ink:#161513;--accent:#e0531f;--line:#161513;
+  background:var(--bg);border-right:3px solid var(--line);width:76px;
+  display:flex;flex-direction:column;align-items:stretch;padding:12px 0;
+  font-family:Arial,Helvetica,sans-serif;min-height:420px}
+.tz-rail-item{position:relative;display:flex;align-items:center;justify-content:center;
+  height:64px;color:var(--ink);text-decoration:none}
+.tz-rail-item::before{content:"";position:absolute;inset:6px 8px;background:var(--accent);
+  transform:scaleX(0);transform-origin:left;transition:transform .28s cubic-bezier(.22,1,.36,1)}
+.tz-rail-item:hover::before{transform:scaleX(1)}
+.tz-rail-item[aria-current="page"]::before{transform:scaleX(1)}
+.tz-rail-item[aria-current="page"]{color:#fff}
+.tz-rail-item svg{position:relative;z-index:1}
+.tz-rail-logo{margin-bottom:16px;border-bottom:3px solid var(--line);padding-bottom:12px;height:76px}
+.tz-rail-logo::before{background:var(--ink)}
+.tz-rail-foot{margin-top:auto}
+.tz-rail-tip{position:absolute;left:calc(100% + 10px);top:50%;transform:translateY(-50%) translateX(-8px);
+  background:var(--ink);color:#fff;font-family:ui-monospace,Menlo,monospace;font-size:12px;
+  padding:7px 12px;white-space:nowrap;opacity:0;pointer-events:none;
+  transition:opacity .2s ease,transform .2s cubic-bezier(.22,1,.36,1);z-index:5}
+.tz-rail-item:hover .tz-rail-tip,.tz-rail-item:focus-visible .tz-rail-tip{opacity:1;transform:translateY(-50%) translateX(0)}
+@media (prefers-reduced-motion:reduce){
+  .tz-rail-item::before,.tz-rail-tip{transition:none}
+}
+</style>
