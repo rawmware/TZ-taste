@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-constructivist-red",
+  "title": "Constructivist Red design tokens",
+  "category": "Tokens",
+  "file": "tokens/constructivist-red.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "constructivist-red"
+  ],
+  "description": "W3C-format design tokens for the Constructivist Red style DNA.",
+  "dnas": [
+   "constructivist-red"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#f2ede4",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#141414",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#d4201e",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#6e675c",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#141414",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Russo One",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Oswald",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "constructivist-red",
+  "name": "Constructivist Red",
+  "vibe": "Propaganda poster as interface: red and black diagonals, type that shouts from a wall."
+ }
+}
