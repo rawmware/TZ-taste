@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-barbershop-pole",
+  "title": "Barbershop Pole design tokens",
+  "category": "Tokens",
+  "file": "tokens/barbershop-pole.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "barbershop-pole"
+  ],
+  "description": "W3C-format design tokens for the Barbershop Pole DNA.",
+  "dnas": [
+   "barbershop-pole"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#f6f3ea",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#232323",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#b3312a",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#8a857a",
+   "type": "color"
+  },
+  "line": {
+   "value": "#23232326",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#eae4d3",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Alfa Slab One",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Source Sans 3",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Space Mono",
+   "type": "fontFamily"
+  }
+ }
+}
