@@ -1,0 +1,56 @@
+<!--tz-meta {"id":"pricing-luxe","title":"Dark luxe pricing","category":"Pricing","file":"patterns/pricing-luxe.html","tags":["premium","dark"],"description":"Near-black tiers split by a hairline gold divider with wide small caps.","dnas":["dark-luxe"]} -->
+<section class="tz-pl">
+  <p class="tz-pl-eyebrow">Membership</p>
+  <h2 class="tz-pl-title">Priced like it matters.</h2>
+  <div class="tz-pl-duo">
+    <article class="tz-pl-tier">
+      <p class="tz-pl-k">Essential</p>
+      <p class="tz-pl-price">$190<span>/mo</span></p>
+      <p class="tz-pl-d">For focused teams that want the full system without the ceremony.</p>
+      <ul><li>Everything in the platform</li><li>White-glove onboarding</li><li>Quarterly tuning reviews</li></ul>
+      <a href="#join">Begin</a>
+    </article>
+    <article class="tz-pl-tier">
+      <p class="tz-pl-k">Private</p>
+      <p class="tz-pl-price">$480<span>/mo</span></p>
+      <p class="tz-pl-d">For firms with compliance needs and zero tolerance for downtime.</p>
+      <ul><li>Everything in Essential</li><li>Single-tenant infrastructure</li><li>Dedicated specialist, on call</li><li>Annual security audit included</li></ul>
+      <a href="#join">Begin</a>
+    </article>
+  </div>
+  <p class="tz-pl-foot">Both include unlimited seats · Both cancel with a single email</p>
+</section>
+<style>
+.tz-pl{--bg:#0d0d0d;--ink:#ece7db;--gold:#d4af6e;--line:rgba(212,175,110,.32);
+  background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;
+  padding:clamp(80px,11vw,150px) clamp(24px,7vw,100px)}
+.tz-pl-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.4em;
+  text-transform:uppercase;color:var(--gold);margin:0 0 28px;text-align:center}
+.tz-pl-title{font-size:clamp(40px,5.8vw,76px);font-weight:400;letter-spacing:-.02em;
+  margin:0 auto clamp(56px,8vw,100px);text-align:center}
+.tz-pl-duo{display:grid;grid-template-columns:1fr 1px 1fr;gap:clamp(32px,5vw,72px);
+  max-width:980px;margin:0 auto;align-items:start}
+.tz-pl-duo::before{content:"";grid-column:2;grid-row:1;background:linear-gradient(var(--line),transparent);
+  min-height:100%}
+.tz-pl-tier:first-child{text-align:right}
+.tz-pl-k{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.34em;
+  text-transform:uppercase;color:var(--gold);margin:0 0 24px}
+.tz-pl-price{font-size:clamp(64px,7vw,104px);letter-spacing:-.03em;line-height:1;margin:0 0 20px}
+.tz-pl-price span{font-size:18px;font-style:italic;color:rgba(236,231,219,.55);letter-spacing:0}
+.tz-pl-d{font-size:16px;font-style:italic;color:rgba(236,231,219,.68);line-height:1.7;margin:0 0 32px}
+.tz-pl-tier ul{list-style:none;margin:0 0 40px;padding:0;display:flex;flex-direction:column;gap:14px}
+.tz-pl-tier li{font-size:15.5px;color:rgba(236,231,219,.85)}
+.tz-pl-tier li::before{content:"· ";color:var(--gold)}
+.tz-pl-tier a{display:inline-block;color:var(--gold);text-decoration:none;font-family:Arial,Helvetica,sans-serif;
+  font-size:13px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+  border:1px solid var(--line);padding:16px 40px}
+.tz-pl-foot{text-align:center;font-family:ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.18em;text-transform:uppercase;color:rgba(236,231,219,.45);
+  margin:clamp(48px,6vw,72px) 0 0}
+@media (max-width:720px){
+  .tz-pl-duo{grid-template-columns:1fr}
+  .tz-pl-duo::before{display:none}
+  .tz-pl-tier:first-child{text-align:left}
+  .tz-pl-tier:last-child{border-top:1px solid var(--line);padding-top:48px}
+}
+</style>
