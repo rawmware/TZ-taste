@@ -1,0 +1,163 @@
+<!--tz-meta {"id":"gen-org-tree-rings","title":"Tree Rings","category":"Generative","file":"generative/org-tree-rings.html","tags":["tree-rings","dendrochronology","climate"],"description":"Concentric rings with climate-noise width variation and fire scars — scrub the years.","dnas":["alpine-ledger"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tree Rings · TZ-taste</title>
+<style>
+  .tz-page{background:#F0E6D2;color:#2B2118;min-height:100vh;font-family:Georgia,'Times New Roman',serif;margin:0}
+  .tz-wrap{max-width:1080px;margin:0 auto;padding:32px 20px 48px}
+  .tz-kicker{font-family:'Courier New',Courier,monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#B33A2B;margin:0 0 12px}
+  .tz-title{font-size:clamp(32px,6vw,52px);font-weight:700;margin:0 0 10px;line-height:1.05}
+  .tz-caption{font-size:16px;line-height:1.6;max-width:62ch;margin:0 0 4px;color:#6b5c48}
+  .tz-controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:20px 0}
+  .tz-btn{font-family:'Courier New',Courier,monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;background:transparent;color:#2B2118;border:2px solid #2B2118;padding:10px 18px;cursor:pointer}
+  .tz-btn:hover{background:#2B2118;color:#F0E6D2}
+  .tz-btn:active{transform:translateY(1px)}
+  .tz-slider{display:flex;align-items:center;gap:10px;font-family:'Courier New',Courier,monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;border:2px solid #2B2118;padding:8px 14px}
+  .tz-slider input{accent-color:#B33A2B;cursor:pointer;min-width:180px}
+  .tz-slider b{font-weight:normal;color:#B33A2B;min-width:3.2em;text-align:center}
+  .tz-canvas{display:block;width:100%;height:70vh;background:#F0E6D2;border:2px solid #2B2118;cursor:pointer}
+  .tz-foot{font-family:'Courier New',Courier,monospace;font-size:12px;color:#9a8a70;margin:14px 0 0;line-height:1.6}
+</style>
+</head>
+<body class="tz-page">
+<div class="tz-wrap">
+  <p class="tz-kicker">TZ-taste · Generative</p>
+  <h1 class="tz-title">Tree Rings</h1>
+  <p class="tz-caption">Dendrochronology as generative art: each year's ring width is filtered climate noise — wet years grow wide, droughts grow thin — with occasional fire scars charred into the wood. Scrub the slider to walk two centuries of weather.</p>
+  <div class="tz-controls">
+    <button class="tz-btn" id="tz-seed" type="button">New seed</button>
+    <button class="tz-btn" id="tz-pause" type="button">Pause</button>
+    <button class="tz-btn" id="tz-clear" type="button">Clear</button>
+    <label class="tz-slider">Year <input type="range" id="tz-year" min="1820" max="2026" value="2026" step="1"> <b id="tz-yearv">2026</b></label>
+  </div>
+  <canvas class="tz-canvas" id="tz-canvas"></canvas>
+  <p class="tz-foot">One distinctive choice: click any ring to jump the scrubber to its year. <span id="tz-ringinfo">Ring 2026.</span> Seed <span id="tz-seednum"></span>.</p>
+</div>
+<script>
+(function(){
+  var BG='#F0E6D2', INK='#2B2118', RED='#B33A2B', LINE='#8A7A5E',
+      BARK='#4A3B2A', CHAR='#241D14';
+  var BANDS=['#EADFC6','#DFCFAF'];
+  var START=1820, END=2026, NY=END-START+1, K=72;
+  var canvas=document.getElementById('tz-canvas'), ctx=canvas.getContext('2d');
+  var seedBtn=document.getElementById('tz-seed'), pauseBtn=document.getElementById('tz-pause'),
+      clearBtn=document.getElementById('tz-clear'), seedNum=document.getElementById('tz-seednum'),
+      yearIn=document.getElementById('tz-year'), yearVal=document.getElementById('tz-yearv'),
+      ringInfo=document.getElementById('tz-ringinfo');
+  var seed=188899, rng=mulberry32(seed);
+  var W=0, H=0, cx=0, cy=0, R=0;
+  var b=null, climate=null, scars=[];
+  var running=true;
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced){/* static piece: already a single frame, nothing to animate */}
+
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+
+  function gen(){
+    rng=mulberry32(seed);
+    climate=new Float32Array(NY);
+    climate[0]=(rng()*2-1)*0.3;
+    for(var i=1;i<NY;i++){
+      climate[i]=climate[i-1]*0.92+(rng()*2-1)*0.28;
+      if(climate[i]>1)climate[i]=1; if(climate[i]<-1)climate[i]=-1;
+    }
+    var base=R/NY, raw=new Float32Array(NY), sum=0;
+    for(var j=0;j<NY;j++){raw[j]=base*(1+climate[j]*0.75);sum+=raw[j];}
+    var scale=R/sum;
+    b=new Float32Array(NY+1);
+    b[0]=R;
+    for(var k=0;k<NY;k++)b[k+1]=b[k]-raw[k]*scale;
+    scars=[];
+    for(var s=0;s<6;s++){
+      var idx=5+((rng()*(NY-10))|0);
+      scars.push({i:idx, a0:rng()*Math.PI*2, span:0.4+rng()*0.9});
+    }
+  }
+
+  function wob(i,k){
+    return (Math.sin(i*1.7+k*0.9)*0.7+Math.sin(i*0.63-k*2.17)*0.5)*1.8;
+  }
+
+  function ringPath(i){
+    ctx.beginPath();
+    for(var k=0;k<=K;k++){
+      var a=k/K*Math.PI*2, r=b[i]+wob(i,k);
+      var x=cx+Math.cos(a)*r, y=cy+Math.sin(a)*r;
+      if(k===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+    }
+    ctx.closePath();
+  }
+
+  function desc(i){
+    if(climate[i]>0.3)return 'wide — a wet year';
+    if(climate[i]<-0.3)return 'narrow — a drought year';
+    return 'an average season';
+  }
+
+  function draw(){
+    var sel=+yearIn.value-START;
+    ctx.fillStyle=BG; ctx.fillRect(0,0,W,H);
+    ctx.fillStyle=BARK;
+    ctx.beginPath(); ctx.arc(cx,cy,R+12,0,Math.PI*2); ctx.fill();
+    var i,k;
+    for(i=0;i<NY;i++){
+      ringPath(i);
+      ctx.fillStyle=BANDS[i%2]; ctx.fill();
+    }
+    ctx.strokeStyle=LINE; ctx.lineWidth=1;
+    for(i=0;i<=NY;i++){ringPath(i);ctx.stroke();}
+    for(i=0;i<scars.length;i++){
+      var sc=scars[i], rm=(b[sc.i]+b[sc.i+1])/2, bw=b[sc.i]-b[sc.i+1];
+      ctx.strokeStyle=CHAR; ctx.lineWidth=Math.max(2,bw*1.5);
+      ctx.beginPath(); ctx.arc(cx,cy,rm,sc.a0,sc.a0+sc.span); ctx.stroke();
+      ctx.strokeStyle=RED; ctx.lineWidth=1.5;
+      ctx.beginPath(); ctx.arc(cx,cy,rm-bw*0.4,sc.a0,sc.a0+sc.span); ctx.stroke();
+    }
+    ctx.fillStyle=INK;
+    ctx.beginPath(); ctx.arc(cx,cy,4,0,Math.PI*2); ctx.fill();
+    ringPath(sel);
+    ctx.strokeStyle=RED; ctx.lineWidth=4; ctx.stroke();
+    var rmid=(b[sel]+b[sel+1])/2, la=-0.6;
+    ctx.fillStyle=RED; ctx.font='13px "Courier New",monospace';
+    ctx.fillText(''+(START+sel), cx+Math.cos(la)*rmid+8, cy+Math.sin(la)*rmid);
+    yearVal.textContent=START+sel;
+    ringInfo.textContent='Ring '+(START+sel)+' — '+desc(sel)+'.';
+    seedNum.textContent=seed;
+  }
+
+  function reseed(){seed=(seed*9301+49297)%233280; gen(); draw();}
+
+  function resize(){
+    var dpr=Math.min(window.devicePixelRatio||1,2);
+    var r=canvas.getBoundingClientRect();
+    W=r.width; H=r.height;
+    canvas.width=Math.round(W*dpr); canvas.height=Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    cx=W/2; cy=H/2; R=Math.min(W,H)/2-44;
+    gen(); draw();
+  }
+
+  canvas.addEventListener('click',function(e){
+    var r=canvas.getBoundingClientRect();
+    var d=Math.hypot(e.clientX-r.left-cx, e.clientY-r.top-cy);
+    var best=0, bd=Infinity;
+    for(var i=0;i<=NY;i++){var dd=Math.abs(d-b[i]);if(dd<bd){bd=dd;best=i;}}
+    if(best>NY-1)best=NY-1;
+    yearIn.value=START+best;
+    draw();
+  });
+  yearIn.addEventListener('input',draw);
+  seedBtn.addEventListener('click',reseed);
+  clearBtn.addEventListener('click',draw);
+  pauseBtn.addEventListener('click',function(){
+    running=!running; pauseBtn.textContent=running?'Pause':'Resume';
+  });
+  window.addEventListener('resize',resize);
+  resize();
+})();
+</script>
+</body>
+</html>
