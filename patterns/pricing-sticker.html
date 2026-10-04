@@ -1,0 +1,56 @@
+<!--tz-meta {"id":"pricing-sticker","title":"Playful pricing","category":"Pricing","file":"patterns/pricing-sticker.html","tags":["fun","gen-z"],"description":"Neon tier cards with a rotated starburst POPULAR badge and arcade pricing copy.","dnas":["acid-rave"]} -->
+<section class="tz-pk">
+  <p class="tz-pk-eyebrow">◤ pricing.exe ◢</p>
+  <h2 class="tz-pk-title">Cheap enough<br>to not think about.</h2>
+  <div class="tz-pk-row">
+    <article class="tz-pk-card tz-pk-c1">
+      <p class="tz-pk-plan">freebie</p>
+      <p class="tz-pk-price">$0</p>
+      <ul><li>1 project</li><li>100 replies/mo</li><li>Zero card required</li></ul>
+      <a href="#go">grab it</a>
+    </article>
+    <article class="tz-pk-card tz-pk-c2">
+      <span class="tz-pk-burst" aria-hidden="true">popular</span>
+      <p class="tz-pk-plan">main character</p>
+      <p class="tz-pk-price">$12<span>/mo</span></p>
+      <ul><li>5 projects</li><li>2,000 replies/mo</li><li>All the automations</li><li>Cancel in 2 taps</li></ul>
+      <a href="#go">grab it</a>
+    </article>
+    <article class="tz-pk-card tz-pk-c3">
+      <p class="tz-pk-plan">whole crew</p>
+      <p class="tz-pk-price">$39<span>/mo</span></p>
+      <ul><li>Unlimited everything</li><li>Priority support</li><li>Your logo here (jk)</li></ul>
+      <a href="#go">grab it</a>
+    </article>
+  </div>
+  <p class="tz-pk-foot">student discount: 50% off with a .edu email · no questions asked</p>
+</section>
+<style>
+.tz-pk{--bg:#0a0a0c;--pink:#ff2fb3;--lime:#b6ff2e;--cyan:#2ee6ff;--ink:#f4f4f4;
+  background:var(--bg);color:var(--ink);font-family:ui-monospace,Menlo,monospace;
+  padding:clamp(72px,10vw,130px) clamp(24px,5vw,72px)}
+.tz-pk-eyebrow{text-align:center;font-size:12px;letter-spacing:.3em;color:var(--cyan);margin:0 0 20px;text-transform:uppercase}
+.tz-pk-title{font-size:clamp(38px,6.4vw,80px);font-weight:700;letter-spacing:-.02em;line-height:1.02;
+  text-align:center;margin:0 0 clamp(44px,6vw,72px);color:var(--lime);
+  text-shadow:0 0 28px rgba(182,255,46,.4)}
+.tz-pk-row{display:flex;flex-wrap:wrap;gap:26px;justify-content:center;max-width:1050px;margin:0 auto}
+.tz-pk-card{position:relative;flex:1 1 240px;max-width:300px;border:2px solid;padding:30px 26px;background:#111114}
+.tz-pk-c1{border-color:var(--cyan);box-shadow:0 0 20px rgba(46,230,255,.28)}
+.tz-pk-c2{border-color:var(--pink);box-shadow:0 0 24px rgba(255,47,179,.4);transform:rotate(-1.5deg)}
+.tz-pk-c3{border-color:var(--lime);box-shadow:0 0 20px rgba(182,255,46,.28);transform:rotate(1.5deg)}
+.tz-pk-burst{position:absolute;top:-24px;right:-18px;width:92px;height:92px;background:var(--pink);color:#0a0a0c;
+  display:flex;align-items:center;justify-content:center;text-align:center;font-weight:700;font-size:12px;
+  letter-spacing:.08em;text-transform:uppercase;transform:rotate(14deg);
+  clip-path:polygon(50% 0%,61% 12%,76% 6%,80% 21%,95% 24%,90% 39%,100% 50%,90% 61%,95% 76%,80% 79%,76% 94%,61% 88%,50% 100%,39% 88%,24% 94%,20% 79%,5% 76%,10% 61%,0% 50%,10% 39%,5% 24%,20% 21%,24% 6%,39% 12%)}
+.tz-pk-plan{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:rgba(244,244,244,.6);margin:0 0 16px}
+.tz-pk-price{font-size:56px;font-weight:700;letter-spacing:-.03em;margin:0 0 24px;line-height:1}
+.tz-pk-price span{font-size:16px;color:rgba(244,244,244,.55)}
+.tz-pk-c1 .tz-pk-price{color:var(--cyan)}.tz-pk-c2 .tz-pk-price{color:var(--pink)}.tz-pk-c3 .tz-pk-price{color:var(--lime)}
+.tz-pk-card ul{list-style:none;margin:0 0 28px;padding:0;display:flex;flex-direction:column;gap:11px}
+.tz-pk-card li{font-size:13.5px;color:rgba(244,244,244,.8);padding-left:22px;position:relative}
+.tz-pk-card li::before{content:"▸";position:absolute;left:0;color:var(--lime)}
+.tz-pk-card a{display:block;text-align:center;text-decoration:none;font-weight:700;font-size:14px;
+  letter-spacing:.14em;text-transform:uppercase;padding:14px;border:2px solid currentColor}
+.tz-pk-c1 a{color:var(--cyan)}.tz-pk-c2 a{color:var(--pink)}.tz-pk-c3 a{color:var(--lime)}
+.tz-pk-foot{text-align:center;font-size:12px;letter-spacing:.1em;color:rgba(244,244,244,.5);margin:44px 0 0}
+</style>
