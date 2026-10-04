@@ -1,0 +1,95 @@
+{
+ "_tzmeta": {
+  "id": "vscode-constructivist-red",
+  "title": "Constructivist Red VS Code theme",
+  "category": "VS Code",
+  "file": "vscode/constructivist-red.json",
+  "tags": [
+   "vscode",
+   "theme",
+   "constructivist-red"
+  ],
+  "description": "VS Code color theme from the Constructivist Red DNA tokens.",
+  "dnas": [
+   "constructivist-red"
+  ]
+ },
+ "name": "TZ Constructivist Red",
+ "type": "light",
+ "colors": {
+  "editor.background": "#f2ede4",
+  "editor.foreground": "#141414",
+  "editorLineNumber.foreground": "#6e675c",
+  "editorCursor.foreground": "#d4201e",
+  "activityBar.background": "#f2ede4",
+  "activityBar.foreground": "#141414",
+  "sideBar.background": "#f2ede4",
+  "statusBar.background": "#d4201e",
+  "statusBar.foreground": "#f2ede4",
+  "tab.activeBackground": "#f2ede4",
+  "tab.inactiveBackground": "#f2ede4",
+  "editorGroupHeader.tabsBackground": "#f2ede4",
+  "terminal.background": "#f2ede4",
+  "terminal.foreground": "#141414",
+  "panel.background": "#f2ede4",
+  "editorWidget.background": "#f2ede4",
+  "pickerGroup.foreground": "#d4201e",
+  "progressBar.background": "#d4201e",
+  "focusBorder": "#141414"
+ },
+ "tokenColors": [
+  {
+   "scope": [
+    "comment"
+   ],
+   "settings": {
+    "foreground": "#6e675c",
+    "fontStyle": "italic"
+   }
+  },
+  {
+   "scope": [
+    "keyword",
+    "storage"
+   ],
+   "settings": {
+    "foreground": "#d4201e"
+   }
+  },
+  {
+   "scope": [
+    "string"
+   ],
+   "settings": {
+    "foreground": "#141414"
+   }
+  },
+  {
+   "scope": [
+    "variable",
+    "identifier"
+   ],
+   "settings": {
+    "foreground": "#141414"
+   }
+  },
+  {
+   "scope": [
+    "entity.name.function"
+   ],
+   "settings": {
+    "foreground": "#d4201e",
+    "fontStyle": "bold"
+   }
+  },
+  {
+   "scope": [
+    "entity.name.type",
+    "support.type"
+   ],
+   "settings": {
+    "foreground": "#6e675c"
+   }
+  }
+ ]
+}
