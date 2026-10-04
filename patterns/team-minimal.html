@@ -1,0 +1,79 @@
+<!--tz-meta {"id":"team-minimal","title":"Name list","category":"Team","file":"patterns/team-minimal.html","tags":["minimal","names"],"description":"Whisper-quiet name list with muted roles and generous air.","dnas":["ma-japanese"]} -->
+<section class="tz-names" aria-label="Team">
+  <p class="tz-eyebrow">People</p>
+  <ul class="tz-list">
+    <li><span class="tz-n">Roman Cottonham</span><span class="tz-r">founder, builder</span></li>
+    <li><span class="tz-n">Mara Jensen</span><span class="tz-r">design, typography</span></li>
+    <li><span class="tz-n">Theo Okafor</span><span class="tz-r">backend, data</span></li>
+    <li><span class="tz-n">Ana Lindqvist</span><span class="tz-r">content, words</span></li>
+    <li><span class="tz-n">Devon Park</span><span class="tz-r">frontend, motion</span></li>
+    <li><span class="tz-n">Sana Kapoor</span><span class="tz-r">support, humans</span></li>
+    <li><span class="tz-n">Nia Washington</span><span class="tz-r">ops, schedule</span></li>
+  </ul>
+  <p class="tz-foot">Seven people. Every email answered by one of us.<br>No tickets, no queues, no “escalation team.”</p>
+  <p class="tz-hiring">Not hiring. When we are, you'll hear it here first.</p>
+</section>
+<style>
+.tz-names{
+  --bg:#f7f5f0;--ink:#22211e;--soft:#6e6a60;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:Georgia,'Times New Roman',serif;
+  padding:clamp(100px,16vw,200px) clamp(24px,8vw,120px);
+}
+.tz-eyebrow{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:11px;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--soft);
+  margin:0 0 72px;
+}
+.tz-list{
+  list-style:none;
+  margin:0 0 80px;
+  padding:0;
+}
+.tz-list li{
+  display:flex;
+  align-items:baseline;
+  gap:24px;
+  flex-wrap:wrap;
+  padding:34px 0;
+  border-bottom:1px solid #22211e1f;
+  transition:padding-left .4s cubic-bezier(.22,1,.36,1);
+}
+.tz-list li:first-child{border-top:1px solid #22211e1f}
+.tz-list li:hover{padding-left:16px}
+.tz-n{
+  font-size:clamp(30px,5vw,56px);
+  letter-spacing:-.025em;
+  font-weight:400;
+}
+.tz-r{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:12px;
+  letter-spacing:.1em;
+  color:var(--soft);
+  text-transform:lowercase;
+}
+.tz-foot{
+  margin:0 0 28px;
+  font-size:15px;
+  color:var(--soft);
+  font-style:italic;
+  line-height:1.9;
+}
+.tz-hiring{
+  margin:0;
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--soft);
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-list li{transition:none}
+  .tz-list li:hover{padding-left:0}
+}
+</style>
