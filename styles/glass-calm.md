@@ -1,3 +1,4 @@
+<!--tz-meta {"id":"glass-calm","name":"Glass Calm","vibe":"Frosted surfaces over pastel light. Weather-app serenity as a design language.","file":"styles/glass-calm.md","tags":["glass","soft","pastel","calm"],"best_for":["wellness","weather","fintech","consumer apps"],"fonts":{"body":"Outfit","display":"Outfit","mono":"JetBrains Mono"},"tokens":{"accent":"#7c8cf8","bg":"#e8ecf5","ink":"#2b3245","line":"#ffffff88","muted":"#8b93a8","surface":"#ffffff8c"},"dials":{"density":3,"motion":6,"variance":4}} -->
 # Glass Calm
 
 > Frosted surfaces over pastel light. Weather-app serenity as a design language.
