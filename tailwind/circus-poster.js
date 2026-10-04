@@ -1,0 +1,3 @@
+//tz-meta {"id":"tailwind-circus-poster","title":"Circus Poster Tailwind preset","category":"Tailwind","file":"tailwind/circus-poster.js","tags":["tailwind","preset","circus-poster"],"description":"Tailwind theme preset for the Circus Poster DNA.","dnas":["circus-poster"]}
+// Tailwind preset for the Circus Poster DNA. Extend tailwind.config with this.
+module.exports={theme:{extend:{colors:{tzbg:"#f5e8c8",tzink:"#2b1408",tzaccent:"#b3202c",tzmuted:"#8a6b45",tzline:"#2b140829",tzsurface:"#f5e8c8"},fontFamily:{display:["Rye","serif"],body:["Bitter","sans-serif"],mono:["Space Mono","monospace"]}}}};
