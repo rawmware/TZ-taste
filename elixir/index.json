@@ -1,0 +1,143 @@
+{
+ "count": 8,
+ "updated": "2026-10-04",
+ "usage": "Phoenix HEEx function components, one DNA each.",
+ "elixir_components": [
+  {
+   "id": "ex-cta",
+   "title": "CTA — Big Top Bill",
+   "category": "Elixir",
+   "file": "elixir/cta.heex",
+   "tags": [
+    "heex",
+    "phoenix",
+    "cta",
+    "poster",
+    "vintage"
+   ],
+   "description": "A 1910 big-top bill for Latch: one-week-only starburst seal, wood-type Rye headline, a single red ticket-button.",
+   "dnas": [
+    "circus-poster"
+   ]
+  },
+  {
+   "id": "ex-features-bento",
+   "title": "Features Bento — Zine Spread",
+   "category": "Elixir",
+   "file": "elixir/features_bento.heex",
+   "tags": [
+    "heex",
+    "phoenix",
+    "features",
+    "bento",
+    "zine"
+   ],
+   "description": "Photocopied zine spread: features as cut-and-paste cells pinned at odd angles with tape strips and marker underlines.",
+   "dnas": [
+    "diary-zine"
+   ]
+  },
+  {
+   "id": "ex-footer",
+   "title": "Footer — Lighthouse",
+   "category": "Elixir",
+   "file": "elixir/footer.heex",
+   "tags": [
+    "heex",
+    "phoenix",
+    "footer",
+    "editorial",
+    "typographic"
+   ],
+   "description": "The lighthouse footer: a foghorn-sized Anton wordmark under signal-red rules, columns set like tide charts, honest small print.",
+   "dnas": [
+    "harbor-fog"
+   ]
+  },
+  {
+   "id": "ex-hero",
+   "title": "Hero — Factory Floor",
+   "category": "Elixir",
+   "file": "elixir/hero.heex",
+   "tags": [
+    "heex",
+    "phoenix",
+    "hero",
+    "brutalist",
+    "editorial"
+   ],
+   "description": "Offset industrial hero: giant Anton headline slammed against a rotated safety-orange serial plate, spec manifest down the side.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "ex-navbar",
+   "title": "Navbar — Strict Grid",
+   "category": "Elixir",
+   "file": "elixir/navbar.heex",
+   "tags": [
+    "heex",
+    "phoenix",
+    "navbar",
+    "swiss",
+    "navigation"
+   ],
+   "description": "Information architecture as navigation: numbered links on a strict hairline grid, a mono clock, one red action — nothing decorative.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "ex-pricing",
+   "title": "Pricing — Lab Ledger",
+   "category": "Elixir",
+   "file": "elixir/pricing.heex",
+   "tags": [
+    "heex",
+    "phoenix",
+    "pricing",
+    "notebook",
+    "editorial"
+   ],
+   "description": "A scientist's ledger page: three plans ruled on graph paper, the recommended one circled in red pen with handwritten marginalia.",
+   "dnas": [
+    "lab-notebook"
+   ]
+  },
+  {
+   "id": "ex-stats",
+   "title": "Stats — Terminal Readout",
+   "category": "Elixir",
+   "file": "elixir/stats.heex",
+   "tags": [
+    "heex",
+    "phoenix",
+    "stats",
+    "terminal",
+    "dark"
+   ],
+   "description": "A machine reporting on itself: Latch's numbers as phosphor-green terminal readouts after a typed command, amber warnings included.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "ex-testimonial-wall",
+   "title": "Testimonial Wall — Guest Book",
+   "category": "Elixir",
+   "file": "elixir/testimonial_wall.heex",
+   "tags": [
+    "heex",
+    "phoenix",
+    "testimonials",
+    "editorial",
+    "dark"
+   ],
+   "description": "A Showa coffee-house guest-book wall: testimonial notes clipped along a brass rail at varying heights, lamplight typography.",
+   "dnas": [
+    "tokyo-kissaten"
+   ]
+  }
+ ]
+}
