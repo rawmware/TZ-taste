@@ -1,0 +1,123 @@
+<!--tz-meta {"id":"java-docs","title":"Solar Docs with Margin Notes (Java/Thymeleaf)","category":"Java","file":"java/docs.html","tags":["java","thymeleaf","docs"],"description":"Warm solarized documentation page: sticky section sidebar, Source Serif prose, and a margin-notes column for asides on wide screens.","dnas":["docs-solar"]} -->
+<!--
+  Design read: API docs that read like a well-annotated textbook — calm paper, notes in the margin.
+  Distinctive choice: sidenotes live in a dedicated margin column instead of inline callouts.
+  Dials: VARIANCE 3 / MOTION 1 / DENSITY 8.
+  Route: GET /docs/{page} -> DocsController#page (model: doc, sections)
+-->
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title th:text="${doc.title}">Quickstart — Meridian Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --tz-bg: #fdf6e3;
+      --tz-ink: #3d3a2e;
+      --tz-accent: #cb4b16;
+      --tz-surface: #f7eeda;
+      --tz-line: #3d3a2e1f;
+      --tz-muted: #8a8672;
+      --tz-font-display: "Source Serif 4", serif;
+      --tz-font-body: "Source Serif 4", serif;
+      --tz-font-mono: "IBM Plex Mono", monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { background: var(--tz-bg); color: var(--tz-ink); font-family: var(--tz-font-body); }
+    .tz-layout { display: grid; grid-template-columns: 260px minmax(0, 1fr); max-width: 1240px; margin: 0 auto; min-height: 100dvh; }
+    .tz-side { border-right: 1px solid var(--tz-line); padding: 40px 28px; position: sticky; top: 0; height: 100dvh; overflow: auto; background: var(--tz-surface); }
+    .tz-side h2 { font-family: var(--tz-font-mono); font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--tz-accent); margin: 0 0 18px; }
+    .tz-side ul { list-style: none; margin: 0 0 32px; padding: 0; }
+    .tz-side li { margin: 0; }
+    .tz-side a { display: block; padding: 8px 10px; color: var(--tz-ink); text-decoration: none; font-size: 16px; border-left: 2px solid transparent; }
+    .tz-side a:hover { border-left-color: var(--tz-accent); background: var(--tz-bg); }
+    .tz-side a.tz-active { border-left-color: var(--tz-accent); font-weight: 600; background: var(--tz-bg); }
+    .tz-main { padding: clamp(40px, 6vw, 88px) clamp(24px, 5vw, 72px); }
+    .tz-crumb { font-family: var(--tz-font-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--tz-muted); margin: 0 0 20px; }
+    .tz-crumb a { color: var(--tz-accent); text-decoration: none; }
+    .tz-main h1 { font-size: clamp(36px, 4.6vw, 60px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.05; margin: 0 0 16px; max-width: 22ch; }
+    .tz-dek { font-size: 20px; line-height: 1.6; font-style: italic; color: var(--tz-muted); max-width: 60ch; margin: 0 0 48px; }
+    .tz-prose { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 24px 48px; max-width: 1020px; }
+    .tz-prose > div { min-width: 0; }
+    .tz-prose h2 { font-size: 28px; font-weight: 600; letter-spacing: -0.01em; margin: 56px 0 16px; padding-top: 24px; border-top: 1px solid var(--tz-line); }
+    .tz-prose h2:first-child { margin-top: 0; border-top: none; padding-top: 0; }
+    .tz-prose p { font-size: 18px; line-height: 1.75; margin: 0 0 20px; max-width: 68ch; }
+    .tz-prose code { font-family: var(--tz-font-mono); font-size: 0.88em; background: var(--tz-surface); border: 1px solid var(--tz-line); padding: 2px 7px; border-radius: 4px; }
+    .tz-code { background: var(--tz-ink); color: var(--tz-bg); border-radius: 8px; padding: 22px 24px; overflow-x: auto; margin: 24px 0 28px; }
+    .tz-code pre { margin: 0; font-family: var(--tz-font-mono); font-size: 14px; line-height: 1.7; }
+    .tz-code .tz-c { color: var(--tz-muted); }
+    .tz-code .tz-k { color: var(--tz-accent); }
+    .tz-note { border-left: 3px solid var(--tz-accent); background: var(--tz-surface); padding: 18px 22px; margin: 28px 0; font-size: 16px; line-height: 1.65; }
+    .tz-note strong { font-family: var(--tz-font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tz-accent); display: block; margin-bottom: 8px; }
+    .tz-margin { font-family: var(--tz-font-mono); font-size: 12.5px; line-height: 1.7; color: var(--tz-muted); border-top: 1px solid var(--tz-line); padding-top: 12px; margin-bottom: 28px; }
+    .tz-margin strong { color: var(--tz-accent); font-weight: 500; }
+    .tz-pager { display: flex; justify-content: space-between; gap: 16px; margin-top: 72px; padding-top: 28px; border-top: 1px solid var(--tz-line); }
+    .tz-pager a { text-decoration: none; color: var(--tz-ink); font-size: 17px; }
+    .tz-pager a span { display: block; font-family: var(--tz-font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tz-muted); margin-bottom: 6px; }
+    .tz-pager a:hover { color: var(--tz-accent); }
+    @media (max-width: 1080px) {
+      .tz-prose { grid-template-columns: 1fr; }
+      .tz-margin { border-top: none; border-left: 3px solid var(--tz-line); padding: 4px 0 4px 16px; }
+    }
+    @media (max-width: 760px) {
+      .tz-layout { grid-template-columns: 1fr; }
+      .tz-side { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--tz-line); }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <div class="tz-layout">
+    <aside class="tz-side" aria-label="Documentation sections">
+      <h2>Meridian</h2>
+      <ul>
+        <li th:each="s : ${sections}"><a th:href="@{/docs/{p}(p=${s.slug})}" th:text="${s.name}" th:classappend="${s.active} ? 'tz-active'" href="#">Quickstart</a></li>
+        <li th:if="${#lists.isEmpty(sections)}"><a href="/docs/auth">Authentication</a></li>
+        <li th:if="${#lists.isEmpty(sections)}"><a href="/docs/routes">Routes</a></li>
+        <li th:if="${#lists.isEmpty(sections)}"><a href="/docs/webhooks">Webhooks</a></li>
+        <li th:if="${#lists.isEmpty(sections)}"><a href="/docs/limits">Limits &amp; errors</a></li>
+      </ul>
+      <h2>Reference</h2>
+      <ul>
+        <li th:if="${#lists.isEmpty(sections)}"><a href="/docs/api">REST API</a></li>
+        <li th:if="${#lists.isEmpty(sections)}"><a href="/docs/cli">CLI</a></li>
+      </ul>
+    </aside>
+    <main class="tz-main">
+      <p class="tz-crumb"><a th:href="@{/docs}" href="/docs">Docs</a> / <span th:text="${doc.section}">Quickstart</span></p>
+      <h1 th:text="${doc.heading}">Send your first route in five minutes.</h1>
+      <p class="tz-dek" th:text="${doc.dek}">Meridian is a routing API for delivery fleets. This page takes you from an empty project to a live optimized route — no sales call required.</p>
+      <div class="tz-prose">
+        <div>
+          <h2>1. Get a key</h2>
+          <p>Sign up and copy the test key from your dashboard. Test keys start with <code>mk_test_</code> and can route up to 1,000 stops a day — plenty for development.</p>
+          <div class="tz-code"><pre><span class="tz-c"># .env — never commit this file</span>
+MERIDIAN_KEY=<span class="tz-k">mk_test_4f8a2c1d9e</span></pre></div>
+          <h2>2. Create a route</h2>
+          <p>Post your stops. Meridian returns the stops in visit order with drive times attached. The whole round trip here takes under a second.</p>
+          <div class="tz-code"><pre>curl -X POST https://api.meridian.example/v1/routes \
+  -H <span class="tz-k">"Authorization: Bearer $MERIDIAN_KEY"</span> \
+  -d <span class="tz-k">'{"stops":[{"lat":43.66,"lng":-70.25},{"lat":43.70,"lng":-70.30}]}'</span></pre></div>
+          <div class="tz-note"><strong>Heads up</strong>Coordinates are latitude first. We know — half the industry does it the other way. The API rejects anything that looks like a swapped pair and tells you.</div>
+          <h2>3. Go live</h2>
+          <p>Swap the test key for a live one when you're ready. Nothing else changes — same endpoints, same shapes, real billing per routed stop.</p>
+        </div>
+        <div aria-label="Margin notes">
+          <p class="tz-margin"><strong>Why five minutes?</strong> Because we timed twelve new users. The slowest took 6:40; they were making coffee.</p>
+          <p class="tz-margin"><strong>On test data:</strong> use your real addresses in test mode. Test routes are deleted nightly and never billed.</p>
+          <p class="tz-margin"><strong>Stuck?</strong> The <a href="/docs/limits" style="color:var(--tz-accent)">limits page</a> lists every error code with the exact fix.</p>
+        </div>
+      </div>
+      <nav class="tz-pager" aria-label="Page navigation">
+        <a th:href="@{/docs/install}" href="/docs/install"><span>Previous</span>Installation</a>
+        <a th:href="@{/docs/auth}" href="/docs/auth" style="text-align:right"><span>Next</span>Authentication</a>
+      </nav>
+    </main>
+  </div>
+</body>
+</html>
