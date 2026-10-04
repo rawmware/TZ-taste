@@ -1,0 +1,41 @@
+<!--tz-meta {"id":"faq-terminal","title":"Terminal FAQ","category":"FAQ","file":"patterns/faq-terminal.html","tags":["mono","cli"],"description":"Q&A rendered as $ faq --topic commands with echoed queries and green answers.","dnas":["retro-terminal"]} -->
+<section class="tz-fqt">
+  <p class="tz-fqt-eyebrow">faq(1) · user manual</p>
+  <div class="tz-fqt-term">
+    <p class="tz-fqt-bar"><span aria-hidden="true">$</span> helpdesk — bash</p>
+    <div class="tz-fqt-body">
+      <p><span class="tz-fqt-p">$</span> faq --topic billing</p>
+      <div class="tz-fqt-a"><p><b>Q: Can I switch plans mid-month?</b></p><p>A: Yes. Upgrades apply instantly; downgrades land on the next cycle. Everything is pro-rated to the day — no rounding in our favor.</p></div>
+      <p><span class="tz-fqt-p">$</span> faq --topic setup</p>
+      <div class="tz-fqt-a"><p><b>Q: How long does setup take?</b></p><p>A: Under 30 minutes for most teams. Connect over OAuth, approve twelve drafts, then run one supervised week before anything auto-sends.</p></div>
+      <p><span class="tz-fqt-p">$</span> faq --topic privacy</p>
+      <div class="tz-fqt-a"><p><b>Q: Do you train models on my messages?</b></p><p>A: No. Your messages train your voice profile only. No selling, no sharing, SOC 2 audited — the audit specifically checks this.</p></div>
+      <p><span class="tz-fqt-p">$</span> faq --topic cancel</p>
+      <div class="tz-fqt-a"><p><b>Q: What happens when I cancel?</b></p><p>A: Exports stay free for 30 days, then we purge everything and email you proof. Two clicks, no retention call, no guilt trip.</p></div>
+      <p><span class="tz-fqt-p">$</span> <span class="tz-fqt-cursor" aria-hidden="true">▊</span></p>
+    </div>
+  </div>
+</section>
+<style>
+.tz-fqt{--bg:#0b0e0a;--green:#3dff7c;--dim:#8fa895;--line:rgba(61,255,124,.18);
+  background:var(--bg);color:var(--green);font-family:ui-monospace,Menlo,monospace;
+  padding:clamp(64px,9vw,120px) clamp(20px,6vw,88px)}
+.tz-fqt-eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);
+  margin:0 auto clamp(28px,4vw,44px);max-width:820px}
+.tz-fqt-term{max-width:820px;margin:0 auto;border:1px solid var(--line);position:relative;overflow:hidden}
+.tz-fqt-term::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(0,0,0,.2) 0 1px,transparent 1px 3px)}
+.tz-fqt-bar{margin:0;padding:12px 18px;border-bottom:1px solid var(--line);font-size:12px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.tz-fqt-bar span{color:var(--green);margin-right:12px}
+.tz-fqt-body{padding:clamp(24px,4vw,44px);font-size:clamp(12.5px,1.8vw,14.5px);line-height:1.6}
+.tz-fqt-body > p{margin:0 0 4px}
+.tz-fqt-p{color:var(--green);margin-right:10px;font-weight:700}
+.tz-fqt-a{border-left:2px solid var(--green);padding:12px 0 12px 20px;margin:0 0 26px 8px}
+.tz-fqt-a p{margin:0 0 8px;color:var(--dim)}
+.tz-fqt-a p:last-child{margin-bottom:0}
+.tz-fqt-a b{color:var(--green);font-weight:700}
+.tz-fqt-cursor{display:inline-block;animation:tzfqt-blink 1.1s steps(1) infinite}
+@keyframes tzfqt-blink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.tz-fqt-cursor{animation:none}}
+</style>
