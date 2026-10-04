@@ -1,0 +1,410 @@
+<!--tz-meta {"id":"docs","title":"Lattice — Open-Source Library Docs","category":"Template","file":"templates/docs.html","tags":["docs"],"description":"Warm documentation homepage for an OSS validation library: install one-liner, topic index, readable code.","dnas":["docs-solar"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lattice — data validation you can read · Docs</title>
+<meta name="description" content="Lattice is a small, dependency-free data validation library. Install in seconds, read the docs in an afternoon.">
+<!-- DNA: docs-solar (styles/docs-solar.md). Design read: documentation people actually enjoy reading — warm paper, amber accents, serif readability — for developers evaluating a validation library. One distinctive choice: the hero leads with a single install command and a 6-line code sample that teaches the whole library. Dials V3/M2/D6. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#fdf6e3;
+  --tz-surface:#f7eeda;
+  --tz-ink:#3d3a2e;
+  --tz-ink-soft:color-mix(in srgb, var(--tz-ink) 74%, var(--tz-bg));
+  --tz-accent:#cb4b16;
+  --tz-accent-deep:#a53c10;
+  --tz-amber:#b58900;
+  --tz-line:#3d3a2e1f;
+  --tz-line-strong:#3d3a2e40;
+  --tz-muted:#8a8672;
+  --tz-code-bg:#2e2b22;
+  --tz-code-ink:#f5ead0;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Source Serif 4",Georgia,serif;background:var(--tz-bg);color:var(--tz-ink);
+  font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--tz-accent);color:#fff}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+.tz-mono{font-family:"IBM Plex Mono",monospace}
+.skip{position:absolute;left:-999px;top:0;background:var(--tz-ink);color:#fff;padding:8px 16px;z-index:99}
+.skip:focus{left:8px;top:8px}
+code{font-family:"IBM Plex Mono",monospace;font-size:.88em}
+
+/* ---------- header ---------- */
+.tz-header{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--tz-bg) 90%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--tz-line)}
+.tz-header .tz-wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.tz-logo{font-weight:700;font-size:20px;display:flex;align-items:center;gap:10px;letter-spacing:-0.01em}
+.tz-logo svg{width:24px;height:24px}
+.tz-logo .tz-ver{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:500;background:var(--tz-surface);border:1px solid var(--tz-line-strong);padding:2px 8px;border-radius:99px;color:var(--tz-accent-deep)}
+.tz-nav{display:flex;gap:26px;font-size:16px}
+.tz-nav a{color:var(--tz-ink-soft);transition:color .2s}
+.tz-nav a:hover{color:var(--tz-accent-deep)}
+.tz-github{
+  font-family:"IBM Plex Mono",monospace;font-size:13px;border:1px solid var(--tz-line-strong);
+  padding:8px 16px;border-radius:99px;display:inline-flex;gap:8px;align-items:center;
+  transition:background .2s,border-color .2s;
+}
+.tz-github:hover{background:var(--tz-surface);border-color:var(--tz-ink)}
+.tz-github svg{width:15px;height:15px}
+
+/* ---------- hero ---------- */
+.tz-hero{padding:96px 0 80px}
+.tz-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.tz-crumb{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--tz-accent-deep);margin-bottom:20px}
+.tz-hero h1{font-size:clamp(42px,5vw,68px);line-height:1.05;letter-spacing:-0.025em;font-weight:600;text-wrap:balance}
+.tz-hero h1 em{color:var(--tz-accent-deep);font-style:italic}
+.tz-hero p.tz-lede{margin-top:20px;font-size:19px;color:var(--tz-ink-soft);max-width:46ch}
+.tz-hero p.tz-lede strong{color:var(--tz-ink);font-weight:600}
+.tz-stats{display:flex;gap:36px;margin-top:32px}
+.tz-stat .tz-n{font-family:"IBM Plex Mono",monospace;font-size:26px;font-weight:600;color:var(--tz-ink)}
+.tz-stat .tz-l{font-size:14px;color:var(--tz-ink-soft)}
+/* code panel */
+.tz-code{
+  background:var(--tz-code-bg);color:var(--tz-code-ink);border-radius:10px;
+  box-shadow:0 20px 50px #3d3a2e26;overflow:hidden;font-size:14.5px;
+}
+.tz-code-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid #ffffff14}
+.tz-code-bar .tz-dot{width:10px;height:10px;border-radius:50%;background:#ffffff22}
+.tz-code-bar span:last-child{font-family:"IBM Plex Mono",monospace;font-size:12px;color:#c9bfa4;margin-left:6px}
+.tz-code pre{padding:20px 22px;overflow-x:auto;line-height:1.75}
+.tz-c-k{color:#e8a13c}.tz-c-s{color:#9ecb6e}.tz-c-f{color:#e07a5f}.tz-c-c{color:#8a8570;font-style:italic}.tz-c-n{color:#7fb6d9}
+.tz-install{
+  margin-top:16px;display:flex;align-items:center;gap:12px;background:var(--tz-surface);
+  border:1px solid var(--tz-line-strong);border-radius:8px;padding:14px 18px;
+}
+.tz-install code{flex:1;color:var(--tz-ink)}
+.tz-install .tz-dollar{color:var(--tz-accent-deep);font-weight:600}
+.tz-copy{font-family:"IBM Plex Mono",monospace;font-size:12px;border:1px solid var(--tz-line-strong);background:var(--tz-bg);border-radius:6px;padding:8px 14px;cursor:pointer;transition:background .2s}
+.tz-copy:hover{background:var(--tz-accent);color:#fff;border-color:var(--tz-accent)}
+
+/* ---------- topic index ---------- */
+.tz-section{padding:88px 0}
+.tz-section-head{max-width:640px;margin-bottom:48px}
+.tz-section-head h2{font-size:clamp(32px,4vw,48px);letter-spacing:-0.025em;font-weight:600;margin-bottom:12px}
+.tz-section-head p{color:var(--tz-ink-soft);font-size:18px}
+.tz-topics{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.tz-topic{
+  background:var(--tz-surface);border:1px solid var(--tz-line-strong);border-radius:8px;
+  padding:28px;display:grid;grid-template-columns:44px 1fr;gap:18px;
+  transition:transform .25s var(--tz-ease),box-shadow .25s,border-color .2s;
+}
+.tz-topic:hover{transform:translateY(-3px);box-shadow:0 12px 28px #3d3a2e1f;border-color:var(--tz-accent)}
+.tz-topic .tz-ico{width:44px;height:44px;border-radius:8px;background:var(--tz-bg);border:1px solid var(--tz-line-strong);display:grid;place-items:center;color:var(--tz-accent-deep)}
+.tz-topic .tz-ico svg{width:22px;height:22px}
+.tz-topic h3{font-size:20px;font-weight:600;margin-bottom:6px}
+.tz-topic h3 a:hover{color:var(--tz-accent-deep)}
+.tz-topic p{font-size:15.5px;color:var(--tz-ink-soft)}
+.tz-topic .tz-mono{font-size:12px;color:var(--tz-accent-deep);display:block;margin-top:10px}
+
+/* ---------- comparison table ---------- */
+.tz-table-wrap{overflow-x:auto;border:1px solid var(--tz-line-strong);border-radius:10px;background:var(--tz-surface)}
+table{width:100%;border-collapse:collapse;font-size:16px;min-width:640px}
+th,td{text-align:left;padding:16px 22px;border-bottom:1px solid var(--tz-line)}
+tr:last-child th,tr:last-child td{border-bottom:0}
+th{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--tz-ink-soft);font-weight:500}
+td.tz-yes{color:var(--tz-accent-deep);font-weight:600}
+td.tz-no{color:var(--tz-muted)}
+tbody tr{transition:background .2s}
+tbody tr:hover{background:#cb4b160d}
+
+/* ---------- guides list ---------- */
+.tz-guides{list-style:none;border-top:2px solid var(--tz-ink)}
+.tz-guides li{border-bottom:1px solid var(--tz-line-strong)}
+.tz-guides a{display:grid;grid-template-columns:64px 1fr auto;gap:20px;align-items:center;padding:24px 8px;transition:padding .25s var(--tz-ease),background .2s}
+.tz-guides a:hover{background:var(--tz-surface);padding-left:20px}
+.tz-guides .tz-num{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--tz-accent-deep)}
+.tz-guides h3{font-size:21px;font-weight:600}
+.tz-guides p{font-size:15px;color:var(--tz-ink-soft)}
+.tz-guides .tz-time{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--tz-ink-soft);white-space:nowrap}
+
+/* ---------- callout ---------- */
+.tz-callout{
+  background:var(--tz-surface);border:1px solid var(--tz-line-strong);border-left:4px solid var(--tz-accent);
+  border-radius:0 10px 10px 0;padding:28px 32px;margin-top:48px;
+}
+.tz-callout h3{font-size:20px;margin-bottom:8px}
+.tz-callout p{color:var(--tz-ink-soft);font-size:16px}
+.tz-callout a{color:var(--tz-accent-deep);font-weight:600;border-bottom:1px solid}
+
+/* ---------- community ---------- */
+.tz-comm{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tz-comm-card{border:1px solid var(--tz-line-strong);border-radius:8px;padding:28px;background:var(--tz-bg);transition:transform .25s var(--tz-ease)}
+.tz-comm-card:hover{transform:translateY(-3px)}
+.tz-comm-card .tz-big{font-family:"IBM Plex Mono",monospace;font-size:34px;font-weight:600;color:var(--tz-accent-deep)}
+.tz-comm-card h3{font-size:18px;margin:10px 0 6px}
+.tz-comm-card p{font-size:15px;color:var(--tz-ink-soft)}
+.tz-comm-card a{color:var(--tz-accent-deep);font-weight:600}
+
+/* ---------- footer ---------- */
+.tz-footer{border-top:1px solid var(--tz-line-strong);padding:56px 0 40px;font-size:15px}
+.tz-foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.tz-footer h4{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--tz-ink-soft);margin-bottom:14px;font-weight:500}
+.tz-footer ul{list-style:none;display:grid;gap:10px}
+.tz-footer a{color:var(--tz-ink-soft)}
+.tz-footer a:hover{color:var(--tz-accent-deep)}
+.tz-footer-bottom{border-top:1px solid var(--tz-line);padding-top:24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--tz-ink-soft)}
+
+/* ---------- faq ---------- */
+.tz-faq{max-width:800px;margin:0 auto}
+.tz-faq details{background:var(--tz-surface);border:1px solid var(--tz-line-strong);border-radius:8px;margin-bottom:12px;padding:0 24px}
+.tz-faq details[open]{padding-bottom:6px}
+.tz-faq summary{list-style:none;cursor:pointer;font-weight:600;font-size:17px;padding:20px 0;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.tz-faq summary::-webkit-details-marker{display:none}
+.tz-faq summary .tz-pm{font-family:"IBM Plex Mono",monospace;color:var(--tz-accent-deep);font-size:20px;flex:none}
+.tz-faq details p{color:var(--tz-ink-soft);font-size:15.5px;padding-bottom:20px;max-width:62ch}
+
+/* ---------- reveal ---------- */
+.tz-reveal{opacity:0;transform:translateY(14px);transition:opacity .6s var(--tz-ease),transform .6s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .tz-hero-grid{grid-template-columns:1fr}
+  .tz-topics{grid-template-columns:1fr}
+  .tz-comm{grid-template-columns:1fr}
+  .tz-nav{display:none}
+  .tz-foot-grid{grid-template-columns:1fr 1fr}
+  .tz-section{padding:64px 0}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .tz-stats{gap:20px;flex-wrap:wrap}
+  .tz-guides a{grid-template-columns:1fr auto}
+  .tz-guides .tz-num{display:none}
+  .tz-foot-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#topics">Skip to documentation topics</a>
+
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-logo" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#cb4b16" stroke-width="2" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg>
+      Lattice <span class="tz-ver">v2.4</span>
+    </a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#topics">Docs</a><a href="#compare">Why Lattice</a><a href="#guides">Guides</a><a href="#community">Community</a>
+    </nav>
+    <a class="tz-github" href="#">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-2.15c-3.2.7-3.87-1.36-3.87-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.77 1.05.77 2.12v3.15c0 .3.2.67.8.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+      8.2k stars
+    </a>
+  </div>
+</header>
+
+<main>
+  <!-- ============ hero ============ -->
+  <section class="tz-hero">
+    <div class="tz-wrap tz-hero-grid">
+      <div class="tz-reveal tz-in">
+        <p class="tz-crumb">Documentation · Getting started</p>
+        <h1>Data validation <em>you can actually read.</em></h1>
+        <p class="tz-lede">Lattice is a <strong>dependency-free</strong> validation library for Python and TypeScript. Schemas are plain objects, errors are plain sentences, and the whole thing fits in your head by lunch.</p>
+        <div class="tz-stats">
+          <div class="tz-stat"><div class="tz-n">4.1 KB</div><div class="tz-l">gzipped, zero deps</div></div>
+          <div class="tz-stat"><div class="tz-n">38 ms</div><div class="tz-l">median parse, 10k rows</div></div>
+          <div class="tz-stat"><div class="tz-n">MIT</div><div class="tz-l">free forever</div></div>
+        </div>
+      </div>
+      <div class="tz-reveal tz-in">
+        <div class="tz-code" role="img" aria-label="Lattice code sample">
+          <div class="tz-code-bar"><span class="tz-dot"></span><span class="tz-dot"></span><span class="tz-dot"></span><span>signup.py</span></div>
+<pre><code><span class="tz-c-k">from</span> lattice <span class="tz-c-k">import</span> schema
+
+user = schema({
+    <span class="tz-c-s">"name"</span>: <span class="tz-c-f">str</span>.min(<span class="tz-c-n">2</span>),
+    <span class="tz-c-s">"email"</span>: <span class="tz-c-f">email</span>(),
+    <span class="tz-c-s">"age"</span>: <span class="tz-c-f">int</span>.between(<span class="tz-c-n">13</span>, <span class="tz-c-n">120</span>),
+})
+
+result = user.validate(form_data)
+<span class="tz-c-c"># result.ok → True / False</span>
+<span class="tz-c-c"># result.errors → ["age must be between 13 and 120"]</span></code></pre>
+        </div>
+        <div class="tz-install">
+          <span class="tz-dollar">$</span><code>pip install lattice</code>
+          <button class="tz-copy" type="button" onclick="navigator.clipboard&&navigator.clipboard.writeText('pip install lattice');this.textContent='Copied'">Copy</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ topics ============ -->
+  <section class="tz-section" id="topics" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-section-head tz-reveal">
+        <h2>Start wherever you are</h2>
+        <p>Six short chapters. Most people read the first two and wing the rest — that's the point.</p>
+      </div>
+      <div class="tz-topics">
+        <article class="tz-topic tz-reveal">
+          <span class="tz-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg></span>
+          <div><h3><a href="#">Quickstart</a></h3><p>Install, validate your first object, and handle errors — in under ten minutes.</p><span class="tz-mono">10 min read</span></div>
+        </article>
+        <article class="tz-topic tz-reveal">
+          <span class="tz-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></span>
+          <div><h3><a href="#">Schemas &amp; types</a></h3><p>Every built-in type, how composition works, and when to write a custom check.</p><span class="tz-mono">25 min read</span></div>
+        </article>
+        <article class="tz-topic tz-reveal">
+          <span class="tz-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span>
+          <div><h3><a href="#">Error messages</a></h3><p>How Lattice phrases failures, and how to rewrite messages for your users.</p><span class="tz-mono">15 min read</span></div>
+        </article>
+        <article class="tz-topic tz-reveal">
+          <span class="tz-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+          <div><h3><a href="#">Async &amp; performance</a></h3><p>Validating streams, batching 10k rows, and where the 38 ms goes.</p><span class="tz-mono">20 min read</span></div>
+        </article>
+        <article class="tz-topic tz-reveal">
+          <span class="tz-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <div><h3><a href="#">Migrating from Zod / Pydantic</a></h3><p>Side-by-side translations of the patterns you already know.</p><span class="tz-mono">30 min read</span></div>
+        </article>
+        <article class="tz-topic tz-reveal">
+          <span class="tz-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span>
+          <div><h3><a href="#">API reference</a></h3><p>Every function, every option, with a runnable example attached.</p><span class="tz-mono">Reference</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ comparison ============ -->
+  <section class="tz-section" id="compare" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-section-head tz-reveal">
+        <h2>Why not just use…</h2>
+        <p>Honest answers, maintained by people who've used all of these.</p>
+      </div>
+      <div class="tz-table-wrap tz-reveal">
+        <table>
+          <thead><tr><th></th><th>Lattice</th><th>Hand-rolled checks</th><th>Heavy validators</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Dependencies</strong></td><td class="tz-yes">Zero</td><td class="tz-yes">Zero</td><td class="tz-no">12 – 40</td></tr>
+            <tr><td><strong>Bundle size</strong></td><td class="tz-yes">4.1 KB</td><td class="tz-yes">~1 KB</td><td class="tz-no">45 – 120 KB</td></tr>
+            <tr><td><strong>Readable errors</strong></td><td class="tz-yes">Yes, plain sentences</td><td class="tz-no">If you write them</td><td class="tz-yes">Yes</td></tr>
+            <tr><td><strong>Type inference</strong></td><td class="tz-yes">Full (TS) / typed (Py)</td><td class="tz-no">Manual</td><td class="tz-yes">Full</td></tr>
+            <tr><td><strong>Learning curve</strong></td><td class="tz-yes">One afternoon</td><td class="tz-yes">None</td><td class="tz-no">A week of docs</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="tz-callout tz-reveal">
+        <h3>A note on scope</h3>
+        <p>Lattice validates data. It does not serialize it, migrate it, or build your forms. If you need a validation <em>framework</em>, the heavy validators are excellent — <a href="#">here's our migration guide</a> for when you outgrow us.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ guides ============ -->
+  <section class="tz-section" id="guides" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-section-head tz-reveal">
+        <h2>Cookbook</h2>
+        <p>Real recipes from real codebases. Copy, adapt, ship.</p>
+      </div>
+      <ol class="tz-guides tz-reveal">
+        <li><a href="#"><span class="tz-num">01</span><span><h3>Validating a signup form end-to-end</h3><p>Frontend checks that match the backend, with shared schemas.</p></span><span class="tz-time">12 min</span></a></li>
+        <li><a href="#"><span class="tz-num">02</span><span><h3>Parsing webhook payloads safely</h3><p>Stripe-style events, unknown fields, graceful degradation.</p></span><span class="tz-time">9 min</span></a></li>
+        <li><a href="#"><span class="tz-num">03</span><span><h3>CSV imports without the tears</h3><p>Row-level errors your users can actually fix.</p></span><span class="tz-time">14 min</span></a></li>
+        <li><a href="#"><span class="tz-num">04</span><span><h3>Config files that fail loudly</h3><p>Catch bad deploys before they happen, with line numbers.</p></span><span class="tz-time">8 min</span></a></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ community ============ -->
+  <section class="tz-section" id="community" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-section-head tz-reveal">
+        <h2>Maintained in the open</h2>
+        <p>Every decision happens in public. Come watch — or help.</p>
+      </div>
+      <div class="tz-comm">
+        <div class="tz-comm-card tz-reveal">
+          <div class="tz-big">214</div><h3>Contributors</h3><p>From first-time PRs to core maintainers. <a href="#">Good first issues →</a></p>
+        </div>
+        <div class="tz-comm-card tz-reveal">
+          <div class="tz-big">48 h</div><h3>Median review time</h3><p>PRs don't rot here. If yours waits longer, ping us — that's a bug in us.</p>
+        </div>
+        <div class="tz-comm-card tz-reveal">
+          <div class="tz-big">RFCs</div><h3>Design in public</h3><p>Every breaking change starts as a written proposal. <a href="#">Read the RFCs →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ============ faq ============ -->
+  <section class="tz-section" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-section-head tz-reveal" style="text-align:center;margin-left:auto;margin-right:auto">
+        <h2>Questions we hear weekly</h2>
+        <p>Short answers. Longer ones live in the guides above.</p>
+      </div>
+      <div class="tz-faq tz-reveal">
+        <details open>
+          <summary>Is Lattice really dependency-free?<span class="tz-pm">−</span></summary>
+          <p>Yes. The install is one package with zero transitive dependencies — we vendor nothing and require nothing. That's a design constraint we test in CI, not a marketing claim.</p>
+        </details>
+        <details>
+          <summary>Does it work with my framework?<span class="tz-pm">+</span></summary>
+          <p>Lattice validates plain data, so it works anywhere: Express, FastAPI, Django, Next.js, or a script. There are thin adapters for React Hook Form and Pydantic-style decorators, maintained in the contrib repo.</p>
+        </details>
+        <details>
+          <summary>How do I report a security issue?<span class="tz-pm">+</span></summary>
+          <p>Email security@lattice.dev — please don't open a public issue. We acknowledge within 48 hours and publish a fix timeline, not just a patch.</p>
+        </details>
+        <details>
+          <summary>Can I use it commercially?<span class="tz-pm">+</span></summary>
+          <p>Yes. MIT license, no contributor license agreement, no dual-license trap. Companies from two-person startups to public utilities run it in production.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-foot-grid">
+      <div>
+        <a class="tz-logo" href="#">Lattice</a>
+        <p style="margin-top:12px;color:var(--tz-ink-soft);max-width:32ch">Small validation library, big documentation energy. MIT licensed.</p>
+      </div>
+      <div><h4>Docs</h4><ul><li><a href="#">Quickstart</a></li><li><a href="#">API reference</a></li><li><a href="#">Cookbook</a></li><li><a href="#">Changelog</a></li></ul></div>
+      <div><h4>Project</h4><ul><li><a href="#">GitHub</a></li><li><a href="#">RFCs</a></li><li><a href="#">Roadmap</a></li><li><a href="#">Security</a></li></ul></div>
+      <div><h4>Community</h4><ul><li><a href="#">Discord</a></li><li><a href="#">Discussions</a></li><li><a href="#">Code of conduct</a></li></ul></div>
+    </div>
+    <div class="tz-footer-bottom">
+      <span>© 2026 The Lattice maintainers · Docs under CC BY 4.0</span>
+      <span>v2.4.1 · built with the library it documents</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){e.classList.add('tz-in')}); return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en,i){
+      if(en.isIntersecting){ setTimeout(function(){en.target.classList.add('tz-in')}, i*70); io.unobserve(en.target); }
+    });
+  },{threshold:.1});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
