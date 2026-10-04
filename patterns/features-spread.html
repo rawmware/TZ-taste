@@ -1,0 +1,56 @@
+<!--tz-meta {"id":"features-spread","title":"Magazine spread","category":"Features","file":"patterns/features-spread.html","tags":["magazine","serif"],"description":"Offset overlapping panels with a rotated pull quote spanning the seam.","dnas":["editorial-serif"]} -->
+<section class="tz-fms">
+  <p class="tz-fms-eyebrow">The feature story</p>
+  <div class="tz-fms-grid">
+    <div class="tz-fms-panel tz-fms-a">
+      <p class="tz-fms-kicker">Chapter one</p>
+      <h3>It starts with<br>the inbox</h3>
+      <p>Every customer message arrives in one place — email, chat, the form you forgot you had. Your team triages together instead of forwarding threads into the void.</p>
+      <p class="tz-fms-num" aria-hidden="true">01</p>
+    </div>
+    <blockquote class="tz-fms-quote">
+      “We stopped losing messages the week we switched. Our reply time went from a day to eleven minutes.”
+      <cite>— Mara Ellison, runs a 12-person bike shop</cite>
+    </blockquote>
+    <div class="tz-fms-panel tz-fms-b">
+      <p class="tz-fms-kicker">Chapter two</p>
+      <h3>Then it learns<br>your rhythm</h3>
+      <p>Rules route each thread where it belongs. Templates send follow-ups in your voice. Reports write themselves on Friday. The busywork quietly disappears.</p>
+      <p class="tz-fms-num" aria-hidden="true">02</p>
+    </div>
+  </div>
+</section>
+<style>
+.tz-fms{--paper:#f3eee2;--ink:#1c1a15;--accent:#b5461f;--card:#faf7ef;
+  background:var(--paper);color:var(--ink);font-family:Georgia,'Times New Roman',serif;
+  padding:clamp(72px,10vw,140px) clamp(24px,6vw,88px);overflow:hidden}
+.tz-fms-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;opacity:.6;margin:0 0 clamp(32px,5vw,64px);text-align:center}
+.tz-fms-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;
+  gap:0;max-width:1080px;margin:0 auto}
+.tz-fms-panel{background:var(--card);border:1px solid rgba(28,26,21,.2);
+  padding:clamp(32px,5vw,64px);position:relative}
+.tz-fms-a{transform:translateY(28px)}
+.tz-fms-b{transform:translate(-24px,-28px)}
+.tz-fms-kicker{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 18px}
+.tz-fms-panel h3{font-size:clamp(28px,3.6vw,46px);font-weight:400;letter-spacing:-.02em;
+  line-height:1.08;margin:0 0 18px}
+.tz-fms-panel p:not(.tz-fms-kicker):not(.tz-fms-num){font-size:16px;line-height:1.7;opacity:.85;
+  margin:0;max-width:38ch}
+.tz-fms-num{position:absolute;bottom:8px;right:20px;font-size:96px;line-height:1;
+  color:transparent;-webkit-text-stroke:1.5px rgba(28,26,21,.25);margin:0;user-select:none}
+.tz-fms-quote{position:relative;z-index:2;grid-column:1/-1;justify-self:center;
+  max-width:640px;margin:-10px 24px 0;background:var(--ink);color:var(--paper);
+  padding:clamp(28px,4vw,48px);transform:rotate(-1.6deg);
+  box-shadow:10px 10px 0 rgba(181,70,31,.9);font-size:clamp(19px,2.4vw,27px);
+  line-height:1.45;font-style:italic}
+.tz-fms-quote cite{display:block;font-style:normal;font-family:ui-monospace,Menlo,monospace;
+  font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-top:18px;opacity:.7}
+@media (max-width:760px){
+  .tz-fms-grid{grid-template-columns:1fr}
+  .tz-fms-a{transform:none}
+  .tz-fms-b{transform:none;margin-top:-1px}
+  .tz-fms-quote{margin:24px 0 0;transform:rotate(-1deg)}
+}
+</style>
