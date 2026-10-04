@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-risograph-grain",
+  "title": "Risograph Grain design tokens",
+  "category": "Tokens",
+  "file": "tokens/risograph-grain.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "risograph-grain"
+  ],
+  "description": "W3C-format design tokens for the Risograph Grain style DNA.",
+  "dnas": [
+   "risograph-grain"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#f5eedd",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#26413c",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#117d78",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#8d8a76",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#d8cfae",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Archivo Black",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Space Grotesk",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "risograph-grain",
+  "name": "Risograph Grain",
+  "vibe": "Misregistered zine ink on cream: teal over pink, grain you can feel, handmade edges."
+ }
+}
