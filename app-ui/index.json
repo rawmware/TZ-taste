@@ -1,0 +1,327 @@
+{
+ "count": 20,
+ "updated": "2026-10-04",
+ "usage": "App-interface patterns (dashboards, kanban, tables). Same conventions as patterns/.",
+ "app_ui": [
+  {
+   "id": "activity-feed",
+   "title": "Lab-ledger activity feed",
+   "category": "App UI",
+   "file": "app-ui/activity-feed.html",
+   "tags": [
+    "activity-feed",
+    "timeline",
+    "filters",
+    "avatars"
+   ],
+   "description": "Chronological crew activity feed for Fieldlog with day-grouped entries, filter chips, and initials avatars on a lab-notebook timestamp rail.",
+   "dnas": [
+    "laboratory-clean"
+   ]
+  },
+  {
+   "id": "analytics-dashboard",
+   "title": "Analytics Dashboard",
+   "category": "App UI",
+   "file": "app-ui/analytics-dashboard.html",
+   "tags": [
+    "analytics",
+    "dashboard",
+    "kpi",
+    "metrics"
+   ],
+   "description": "Dense bakery analytics with one oversized KPI, pure-CSS bar chart, and ranked page list.",
+   "dnas": [
+    "laboratory-clean"
+   ]
+  },
+  {
+   "id": "billing-page",
+   "title": "Billing Page",
+   "category": "App UI",
+   "file": "app-ui/billing-page.html",
+   "tags": [
+    "billing",
+    "pricing",
+    "invoices",
+    "usage"
+   ],
+   "description": "Warm documentation-style billing: plan card, usage meters, invoice table, quiet cancel note.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "breadcrumbs-tabs",
+   "title": "Transit-line breadcrumbs and tabs",
+   "category": "App UI",
+   "file": "app-ui/breadcrumbs-tabs.html",
+   "tags": [
+    "breadcrumbs",
+    "tabs",
+    "navigation",
+    "overflow"
+   ],
+   "description": "Breadcrumb trail drawn as a transit route map and a scrollable tab bar with switching panels for Meridian Transit crew scheduling.",
+   "dnas": [
+    "transit-swiss"
+   ]
+  },
+  {
+   "id": "calendar-view",
+   "title": "Calendar View",
+   "category": "App UI",
+   "file": "app-ui/calendar-view.html",
+   "tags": [
+    "calendar",
+    "scheduling",
+    "agenda",
+    "events"
+   ],
+   "description": "Month grid with event chips and a liner-note agenda rail for a jazz club residency.",
+   "dnas": [
+    "jazz-blue-note"
+   ]
+  },
+  {
+   "id": "chat-interface",
+   "title": "Chat Interface",
+   "category": "App UI",
+   "file": "app-ui/chat-interface.html",
+   "tags": [
+    "chat",
+    "messaging",
+    "conversations",
+    "composer"
+   ],
+   "description": "Two-pane crew messaging for a kayak outfitter: list, thread, bubbles, read receipts.",
+   "dnas": [
+    "surf-shack"
+   ]
+  },
+  {
+   "id": "command-palette",
+   "title": "Command palette",
+   "category": "App UI",
+   "file": "app-ui/command-palette.html",
+   "tags": [
+    "command-palette",
+    "cmdk",
+    "search",
+    "keyboard"
+   ],
+   "description": "Phosphor-terminal command palette: grouped results, amber selection, blinking block caret, honest kbd hints.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "data-table",
+   "title": "Dense data table",
+   "category": "App UI",
+   "file": "app-ui/data-table.html",
+   "tags": [
+    "table",
+    "data",
+    "invoices",
+    "pagination"
+   ],
+   "description": "Auditable invoice ledger: mono audit numbers, hairline spec grid, one teal accent, spec-plate header.",
+   "dnas": [
+    "laboratory-clean"
+   ]
+  },
+  {
+   "id": "empty-states",
+   "title": "Terminal empty states",
+   "category": "App UI",
+   "file": "app-ui/empty-states.html",
+   "tags": [
+    "empty-state",
+    "terminal",
+    "svg-illustration"
+   ],
+   "description": "Three terminal-styled empty states (no results, no notifications, first run) with pure SVG line illustrations and one action each.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "file-manager",
+   "title": "File Manager",
+   "category": "App UI",
+   "file": "app-ui/file-manager.html",
+   "tags": [
+    "files",
+    "browser",
+    "storage",
+    "documents"
+   ],
+   "description": "Blueprint-labeled engineering document manager with rows, storage meter, and a schematic preview.",
+   "dnas": [
+    "blueprint-tech"
+   ]
+  },
+  {
+   "id": "kanban-board",
+   "title": "Kanban board",
+   "category": "App UI",
+   "file": "app-ui/kanban-board.html",
+   "tags": [
+    "kanban",
+    "board",
+    "workflow",
+    "cards"
+   ],
+   "description": "Factory-stencil kanban: giant column numerals, stamped WIP limits, hard hairline cards with grip handles.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "login-split",
+   "title": "Deco split-screen login",
+   "category": "App UI",
+   "file": "app-ui/login-split.html",
+   "tags": [
+    "login",
+    "auth",
+    "split-screen",
+    "error-state"
+   ],
+   "description": "Split-screen sign-in for Harbor Ledger: gold deco brand panel beside a framed form with social buttons and a live wrong-password error state.",
+   "dnas": [
+    "art-deco-luxe"
+   ]
+  },
+  {
+   "id": "modal-system",
+   "title": "Scandi modal system",
+   "category": "App UI",
+   "file": "app-ui/modal-system.html",
+   "tags": [
+    "modal",
+    "dialog",
+    "drawer",
+    "confirm",
+    "form"
+   ],
+   "description": "Four working modal variants (confirm, form, drawer, alert) for the Seedling plant-care app with overlay, focus states, and an Esc hint.",
+   "dnas": [
+    "scandi-calm"
+   ]
+  },
+  {
+   "id": "notification-center",
+   "title": "Notification center",
+   "category": "App UI",
+   "file": "app-ui/notification-center.html",
+   "tags": [
+    "notifications",
+    "inbox",
+    "alerts",
+    "timeline"
+   ],
+   "description": "Transit-map notification rail: time-grouped alerts on a station-dot timeline with red unread marks.",
+   "dnas": [
+    "transit-swiss"
+   ]
+  },
+  {
+   "id": "onboarding-wizard",
+   "title": "Onboarding wizard",
+   "category": "App UI",
+   "file": "app-ui/onboarding-wizard.html",
+   "tags": [
+    "onboarding",
+    "wizard",
+    "steps",
+    "forms"
+   ],
+   "description": "Garden-stake step indicator and one honest question per screen for the Plot garden planner.",
+   "dnas": [
+    "cottage-warm"
+   ]
+  },
+  {
+   "id": "search-results",
+   "title": "Search Results",
+   "category": "App UI",
+   "file": "app-ui/search-results.html",
+   "tags": [
+    "search",
+    "results",
+    "filters",
+    "pagination"
+   ],
+   "description": "Help-center search with transit-line filters, station-dot result rows, and pagination.",
+   "dnas": [
+    "transit-swiss"
+   ]
+  },
+  {
+   "id": "settings-page",
+   "title": "Settings page",
+   "category": "App UI",
+   "file": "app-ui/settings-page.html",
+   "tags": [
+    "settings",
+    "toggles",
+    "segmented",
+    "danger-zone"
+   ],
+   "description": "Warm manual-style settings: chapter-numbered sections, tactile toggles, segmented home mode, boxed danger zone.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "shortcuts-cheatsheet",
+   "title": "Blueprint shortcuts cheatsheet",
+   "category": "App UI",
+   "file": "app-ui/shortcuts-cheatsheet.html",
+   "tags": [
+    "keyboard-shortcuts",
+    "cheatsheet",
+    "kbd",
+    "search-filter"
+   ],
+   "description": "Searchable keyboard shortcut reference for Draftline, drawn as a blueprint sheet with keycap kbd chips and dimension-line group headers.",
+   "dnas": [
+    "blueprint-tech"
+   ]
+  },
+  {
+   "id": "sidebar-nav",
+   "title": "App shell with sidebar",
+   "category": "App UI",
+   "file": "app-ui/sidebar-nav.html",
+   "tags": [
+    "sidebar",
+    "navigation",
+    "app-shell",
+    "dashboard"
+   ],
+   "description": "Blueprint-styled app shell: mono rail labels, one amber active mark, instrument-dense readouts.",
+   "dnas": [
+    "blueprint-tech"
+   ]
+  },
+  {
+   "id": "user-profile",
+   "title": "User Profile",
+   "category": "App UI",
+   "file": "app-ui/user-profile.html",
+   "tags": [
+    "profile",
+    "user",
+    "activity",
+    "social"
+   ],
+   "description": "Crate-digger profile on a record-sharing app: header, sticker stats, activity spine.",
+   "dnas": [
+    "vinyl-crate"
+   ]
+  }
+ ]
+}
