@@ -1,0 +1,251 @@
+<!--tz-meta {"id":"observatory-public","title":"Meridian Hill Observatory — Public Nights","category":"Template","file":"templates/observatory-public.html","tags":["science","observatory","tickets"],"description":"Observatory-star public observatory: deep-space navy, brass instrument dials, tonight's-sky ledger, telescope booking.","dnas":["observatory-star"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meridian Hill Observatory — public nights under dark skies</title>
+<meta name="description" content="Meridian Hill Observatory: public stargazing nights, telescope viewings, and astronomy courses. Fridays and Saturdays, tickets $18.">
+<!-- Design read: a working observatory after hours — deep-space navy, brass dials, Marcellus headlines with the patience of starlight — for people who've never seen the Milky Way with their own eyes. DNA: observatory-star (Marcellus + Spectral + Spline Sans Mono; bg #060a18, ink #dfe6f5, brass #c9a24b — purpose-built for this brief). One distinctive choice: TONIGHT'S SKY is an instrument ledger — what's visible, when, through which telescope — like a ship's log. Dials V6/M5/D5. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Spectral:ital,wght@0,300;0,400;1,400&family=Spline+Sans+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#060a18; --tz-ink:#dfe6f5; --tz-accent:#c9a24b; --tz-muted:#5f6b8a;
+  --tz-line:#c9a24b44; --tz-panel:#0b1128;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Spectral",serif;background:var(--tz-bg);color:var(--tz-ink);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;font-weight:300}
+::selection{background:var(--tz-accent);color:#060a18}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.tz-mono{font-family:"Spline Sans Mono",monospace}
+
+/* header */
+.tz-header{border-bottom:1px solid var(--tz-line);position:sticky;top:0;z-index:50;background:#060a18f0;backdrop-filter:blur(10px)}
+.tz-header .tz-wrap{display:flex;justify-content:space-between;align-items:center;height:68px}
+.tz-brand{font-family:"Marcellus",serif;font-size:21px}
+.tz-brand em{color:var(--tz-accent);font-style:normal}
+.tz-nav{display:flex;gap:26px;font-family:"Spline Sans Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.tz-nav a{color:var(--tz-muted)}
+.tz-nav a:hover{color:var(--tz-accent)}
+.tz-tix{font-family:"Spline Sans Mono",monospace;font-weight:700;font-size:13px;background:var(--tz-accent);color:#060a18;padding:11px 24px;border:0;cursor:pointer}
+.tz-tix:hover{background:#dfe6f5}
+
+/* hero */
+.tz-hero{padding:110px 0 96px;position:relative;overflow:hidden;text-align:center}
+.tz-sky{position:absolute;inset:0;pointer-events:none}
+.tz-sky i{position:absolute;background:#dfe6f5;border-radius:50%;animation:tz-twinkle 4s ease-in-out infinite}
+@keyframes tz-twinkle{0%,100%{opacity:.25}50%{opacity:.9}}
+.tz-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 40% at 50% 100%,#c9a24b14,transparent 70%)}
+.tz-hero .tz-wrap{position:relative}
+.tz-kicker{font-family:"Spline Sans Mono",monospace;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--tz-accent)}
+.tz-hero h1{font-family:"Marcellus",serif;font-weight:400;font-size:clamp(48px,7.6vw,102px);line-height:1.04;margin:26px auto;max-width:16ch}
+.tz-hero h1 em{font-style:normal;color:var(--tz-accent)}
+.tz-lede{font-size:18.5px;color:var(--tz-muted);max-width:56ch;margin:0 auto}
+.tz-hero-cta{margin-top:38px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.tz-btn{font-family:"Spline Sans Mono",monospace;font-weight:700;font-size:14px;padding:16px 34px;border:1px solid var(--tz-accent);cursor:pointer;transition:all .25s var(--tz-ease);display:inline-block}
+.tz-btn--brass{background:var(--tz-accent);color:#060a18}
+.tz-btn--brass:hover{background:#dfe6f5;transform:translateY(-2px)}
+.tz-btn--ghost{color:var(--tz-accent);background:transparent}
+.tz-btn--ghost:hover{background:#c9a24b14}
+.tz-seeing{margin-top:52px;display:inline-flex;gap:0;border:1px solid var(--tz-line);background:#060a1899;font-family:"Spline Sans Mono",monospace;font-size:12px}
+.tz-seeing div{padding:16px 28px;border-right:1px solid var(--tz-line)}
+.tz-seeing div:last-child{border-right:0}
+.tz-seeing .tz-k{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--tz-muted);display:block;margin-bottom:6px}
+.tz-seeing b{color:var(--tz-accent)}
+
+/* tonight's sky ledger */
+.tz-section{padding:88px 0}
+.tz-sec-head{max-width:640px;margin-bottom:40px}
+.tz-sec-head h2{font-family:"Marcellus",serif;font-weight:400;font-size:clamp(36px,5vw,60px);line-height:1.08;margin:16px 0 12px}
+.tz-sec-head p{color:var(--tz-muted);font-size:17px}
+.tz-ledger{border:1px solid var(--tz-line);background:var(--tz-panel)}
+.tz-obj{display:grid;grid-template-columns:90px 1fr 150px 130px;gap:24px;padding:28px 32px;border-bottom:1px solid var(--tz-line);align-items:center;transition:background .2s}
+.tz-obj:last-child{border-bottom:0}
+.tz-obj:hover{background:#0e1533}
+.tz-obj .tz-const{font-family:"Spline Sans Mono",monospace;font-size:11px;letter-spacing:.14em;color:var(--tz-muted);text-transform:uppercase}
+.tz-obj .tz-const b{display:block;color:var(--tz-accent);font-size:15px;margin-bottom:6px;letter-spacing:.02em}
+.tz-obj h3{font-family:"Marcellus",serif;font-weight:400;font-size:26px;margin-bottom:6px}
+.tz-obj p{font-size:14.5px;color:var(--tz-muted)}
+.tz-obj .tz-when{font-family:"Spline Sans Mono",monospace;font-size:12.5px;text-align:right}
+.tz-obj .tz-when b{color:var(--tz-accent);display:block;font-size:14px}
+.tz-obj .tz-scope{font-family:"Spline Sans Mono",monospace;font-size:11px;letter-spacing:.1em;color:var(--tz-muted);text-transform:uppercase;text-align:right;line-height:1.9}
+.tz-ledger-note{margin-top:16px;font-family:"Spline Sans Mono",monospace;font-size:12px;color:var(--tz-muted)}
+
+/* telescopes */
+.tz-scopes{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:2px;background:var(--tz-line);border:1px solid var(--tz-line)}
+.tz-scope{background:var(--tz-panel);padding:40px 34px;transition:background .25s;position:relative}
+.tz-scope:hover{background:#0e1533}
+.tz-scope.tz-flagship{background:#101a3a;box-shadow:inset 0 3px 0 var(--tz-accent)}
+.tz-scope .tz-flag{position:absolute;top:18px;right:22px;font-family:"Spline Sans Mono",monospace;font-size:10px;font-weight:700;letter-spacing:.2em;color:var(--tz-accent);border:1px solid var(--tz-accent);padding:5px 12px}
+.tz-scope .tz-k{font-family:"Spline Sans Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--tz-accent);display:block;margin-bottom:14px}
+.tz-scope h3{font-family:"Marcellus",serif;font-weight:400;font-size:28px;margin-bottom:10px}
+.tz-scope p{font-size:14.5px;color:var(--tz-muted);margin-bottom:18px}
+.tz-scope dl{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;font-family:"Spline Sans Mono",monospace;font-size:12px}
+.tz-scope dt{color:var(--tz-muted)}
+.tz-scope dd{font-weight:700;text-align:right}
+
+/* plan your visit: asymmetric */
+.tz-visit{display:grid;grid-template-columns:1.2fr .8fr;gap:20px}
+.tz-visit-main{border:1px solid var(--tz-line);background:var(--tz-panel);padding:52px 48px}
+.tz-visit-main h2{font-family:"Marcellus",serif;font-weight:400;font-size:38px;line-height:1.12;margin-bottom:18px}
+.tz-visit-main h2 em{font-style:normal;color:var(--tz-accent)}
+.tz-visit-main p{color:var(--tz-muted);margin-bottom:14px}
+.tz-visit-side{display:grid;gap:20px}
+.tz-tip{border:1px solid var(--tz-line);padding:32px 30px;background:#060a1866}
+.tz-tip .tz-k{font-family:"Spline Sans Mono",monospace;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--tz-accent);display:block;margin-bottom:10px}
+.tz-tip p{font-size:14.5px;color:var(--tz-muted)}
+.tz-tip p b{color:var(--tz-ink);font-weight:400}
+
+.tz-footer{padding:40px 0;margin-top:88px;border-top:1px solid var(--tz-line)}
+.tz-footer .tz-wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:"Spline Sans Mono",monospace;font-size:11.5px;color:var(--tz-muted)}
+
+@media (max-width:900px){
+  .tz-nav{display:none}
+  .tz-obj{grid-template-columns:1fr;gap:10px}
+  .tz-obj .tz-when,.tz-obj .tz-scope{text-align:left}
+  .tz-scopes{grid-template-columns:1fr}
+  .tz-visit{grid-template-columns:1fr}
+  .tz-seeing{flex-direction:column;text-align:center}
+  .tz-seeing div{border-right:0;border-bottom:1px solid var(--tz-line)}
+  .tz-section{padding:60px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-brand" href="#">Meridian Hill <em>Observatory</em></a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#tonight">Tonight's sky</a><a href="#telescopes">Telescopes</a><a href="#visit">Visit</a>
+    </nav>
+    <a class="tz-tix" href="#visit">Tickets $18</a>
+  </div>
+</header>
+
+<main>
+  <section class="tz-hero">
+    <div class="tz-sky" aria-hidden="true">
+      <i style="left:8%;top:20%;width:2px;height:2px"></i><i style="left:15%;top:64%;width:3px;height:3px;animation-delay:1s"></i><i style="left:26%;top:32%;width:2px;height:2px;animation-delay:2s"></i><i style="left:38%;top:74%;width:2px;height:2px;animation-delay:.5s"></i><i style="left:52%;top:16%;width:3px;height:3px;animation-delay:1.6s"></i><i style="left:63%;top:52%;width:2px;height:2px;animation-delay:2.8s"></i><i style="left:74%;top:26%;width:2px;height:2px;animation-delay:.9s"></i><i style="left:85%;top:66%;width:3px;height:3px;animation-delay:2.2s"></i><i style="left:92%;top:38%;width:2px;height:2px;animation-delay:1.3s"></i><i style="left:45%;top:44%;width:2px;height:2px;animation-delay:3.1s"></i>
+    </div>
+    <div class="tz-wrap">
+      <span class="tz-kicker">Public nights · Fridays &amp; Saturdays</span>
+      <h1>Come see what's <em>actually</em> up there.</h1>
+      <p class="tz-lede">A working research observatory that opens its domes to the public twice a week. Real telescopes, real astronomers, and the darkest sky within an hour of the city.</p>
+      <div class="tz-hero-cta">
+        <a class="tz-btn tz-btn--brass" href="#tonight">Tonight's sky</a>
+        <a class="tz-btn tz-btn--ghost" href="#visit">Plan your visit</a>
+      </div>
+      <div class="tz-seeing">
+        <div><span class="tz-k">Seeing tonight</span><b>Excellent</b> · 8/10</div>
+        <div><span class="tz-k">Sunset</span>6:42pm · <b>dark by 8:10</b></div>
+        <div><span class="tz-k">Moon</span><b>Waxing crescent</b> · sets 10:20pm</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="tonight" style="padding-top:24px">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">The observer's log · updated daily at noon</span>
+        <h2>Tonight's sky</h2>
+        <p>What our astronomers have scheduled on each telescope tonight — and the one object nobody should miss.</p>
+      </div>
+      <div class="tz-ledger">
+        <div class="tz-obj">
+          <div class="tz-const"><b>Don't miss</b>21:40</div>
+          <div><h3>Saturn's rings, edge-on</h3><p>The rings are nearly edge-on this season — a line of light across the planet. Best view in three years.</p></div>
+          <div class="tz-when"><b>9:40 – 11:00pm</b>prime viewing</div>
+          <div class="tz-scope">24-inch<br>reflector</div>
+        </div>
+        <div class="tz-obj">
+          <div class="tz-const"><b>M13</b>Hercules</div>
+          <div><h3>The Great Globular Cluster</h3><p>300,000 stars in a ball of light. Through the big scope it resolves into individual suns.</p></div>
+          <div class="tz-when"><b>8:30pm +</b>all evening</div>
+          <div class="tz-scope">16-inch<br>dobsonian</div>
+        </div>
+        <div class="tz-obj">
+          <div class="tz-const"><b>Moon</b>—</div>
+          <div><h3>Craters along the terminator</h3><p>The line between lunar day and night, where shadows are longest. Bring your phone — it photographs beautifully.</p></div>
+          <div class="tz-when"><b>8:10 – 10:20pm</b>before moonset</div>
+          <div class="tz-scope">8-inch<br>refractor</div>
+        </div>
+        <div class="tz-obj">
+          <div class="tz-const"><b>Albireo</b>Cygnus</div>
+          <div><h3>The gold-and-blue double star</h3><p>Two stars, one gold and one sapphire, orbiting each other. The prettiest thing in the autumn sky.</p></div>
+          <div class="tz-when"><b>9:00pm +</b>all evening</div>
+          <div class="tz-scope">lawn<br>telescopes</div>
+        </div>
+      </div>
+      <p class="tz-ledger-note">Clouded out? Tickets move to the next clear night automatically — no forms, no phone calls.</p>
+    </div>
+  </section>
+
+  <section class="tz-section" id="telescopes" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">The instruments</span>
+        <h2>Three domes, one lawn</h2>
+        <p>Every public night rotates through all three domes, plus a row of smaller scopes on the lawn for walk-up views.</p>
+      </div>
+      <div class="tz-scopes">
+        <div class="tz-scope tz-flagship">
+          <span class="tz-flag">FLAGSHIP</span>
+          <span class="tz-k">Dome A · 1928</span>
+          <h3>The Great Refractor</h3>
+          <p>24 inches of 1928 brass and glass, still the sharpest planetary views on the hill.</p>
+          <dl><dt>Aperture</dt><dd>24"</dd><dt>Best for</dt><dd>planets · moon</dd><dt>Queue</dt><dd>~15 min</dd></dl>
+        </div>
+        <div class="tz-scope">
+          <span class="tz-k">Dome B · 1974</span>
+          <h3>The Light Bucket</h3>
+          <p>A 32-inch reflector built for deep sky — galaxies and nebulae that barely register to the eye.</p>
+          <dl><dt>Aperture</dt><dd>32"</dd><dt>Best for</dt><dd>galaxies · nebulae</dd><dt>Queue</dt><dd>~20 min</dd></dl>
+        </div>
+        <div class="tz-scope">
+          <span class="tz-k">The lawn</span>
+          <h3>Eight Dobsonians</h3>
+          <p>Volunteer-run 8-inch scopes on the lawn. No queue, no schedule — just walk up and look.</p>
+          <dl><dt>Aperture</dt><dd>8" × 8</dd><dt>Best for</dt><dd>everything bright</dd><dt>Queue</dt><dd>none</dd></dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="visit" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-visit">
+        <div class="tz-visit-main">
+          <h2>Dress for <em>20 degrees colder</em> than town.</h2>
+          <p>The hill is always colder than you think, and you'll be standing still looking up. Blankets are provided; dignity is your own.</p>
+          <p>Tickets $18 · under 12s $9 · members free. Gates open at 7:30pm, first views at dark. Red flashlights only — white light ruins everyone's night vision, and we'll lend you a red one.</p>
+          <div style="margin-top:28px;display:flex;gap:14px;flex-wrap:wrap">
+            <a class="tz-btn tz-btn--brass" href="#tonight">Book Friday</a>
+            <a class="tz-btn tz-btn--ghost" href="#tonight">Book Saturday</a>
+          </div>
+        </div>
+        <div class="tz-visit-side">
+          <div class="tz-tip"><span class="tz-k">Getting here</span><p><b>Meridian Hill Road</b>, 40 minutes from downtown. Free parking in the lower lot; the walk up is part of it.</p></div>
+          <div class="tz-tip"><span class="tz-k">Good to know</span><p><b>No white flashlights.</b> Red ones lent free at the gate. Warm drinks in the visitor center all night.</p></div>
+          <div class="tz-tip"><span class="tz-k">Courses</span><p><b>Telescope Basics</b>, first Tuesdays monthly, $40. Leave able to find Saturn alone.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <span>© 2026 Meridian Hill Observatory</span>
+    <span>clear skies · dark by 8:10</span>
+  </div>
+</footer>
+</body>
+</html>
