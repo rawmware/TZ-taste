@@ -1,0 +1,156 @@
+{
+ "count": 10,
+ "updated": "2026-10-04",
+ "usage": "Go page programs (stdlib only). Run: go run go/<page>.go > out.html; tzserve.go serves any DNA.",
+ "go_pages": [
+  {
+   "id": "go-changelog",
+   "title": "Northlight firmware changelog (retro-terminal)",
+   "category": "Go",
+   "file": "go/changelog.go",
+   "tags": [
+    "go",
+    "changelog",
+    "firmware"
+   ],
+   "description": "Changelog for Northlight, a fictional mesh-network weather station, rendered as one terminal session in the retro-terminal DNA. go run go/changelog.go > out.html",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "go-docs",
+   "title": "Letterbox API docs (docs-solar)",
+   "category": "Go",
+   "file": "go/docs.go",
+   "tags": [
+    "go",
+    "docs",
+    "api"
+   ],
+   "description": "Documentation page for Letterbox, a fictional transactional-email API, in the docs-solar DNA. go run go/docs.go > out.html",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "go-event",
+   "title": "Static Bloom — warehouse techno night (acid-rave)",
+   "category": "Go",
+   "file": "go/event.go",
+   "tags": [
+    "go",
+    "event",
+    "music"
+   ],
+   "description": "Event page for Static Bloom, a fictional warehouse techno night, in the acid-rave DNA. go run go/event.go > out.html",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "go-hero",
+   "title": "Granite & Grit — guided hikes hero (alpine-ledger)",
+   "category": "Go",
+   "file": "go/hero.go",
+   "tags": [
+    "go",
+    "hero",
+    "outdoors"
+   ],
+   "description": "Hero page for Granite & Grit, a fictional White Mountain guiding outfit, as a stamped logbook entry in the alpine-ledger DNA. go run go/hero.go > out.html",
+   "dnas": [
+    "alpine-ledger"
+   ]
+  },
+  {
+   "id": "go-nonprofit",
+   "title": "Salt Meadow Conservancy (botanical-lab)",
+   "category": "Go",
+   "file": "go/nonprofit.go",
+   "tags": [
+    "go",
+    "nonprofit",
+    "environment"
+   ],
+   "description": "Site for Salt Meadow Conservancy, a fictional coastal-habitat nonprofit, in the botanical-lab DNA. go run go/nonprofit.go > out.html",
+   "dnas": [
+    "botanical-lab"
+   ]
+  },
+  {
+   "id": "go-portfolio",
+   "title": "Mara Ellison — letterpress portfolio (risograph-grain)",
+   "category": "Go",
+   "file": "go/portfolio.go",
+   "tags": [
+    "go",
+    "portfolio"
+   ],
+   "description": "Portfolio page for Mara Ellison, a fictional letterpress printer and illustrator, in the risograph-grain DNA. go run go/portfolio.go > out.html",
+   "dnas": [
+    "risograph-grain"
+   ]
+  },
+  {
+   "id": "go-pricing",
+   "title": "Ferry — invoicing pricing (swiss-rational)",
+   "category": "Go",
+   "file": "go/pricing.go",
+   "tags": [
+    "go",
+    "pricing",
+    "saas"
+   ],
+   "description": "Pricing page for Ferry, a fictional invoicing tool for freelancers, in the swiss-rational DNA. go run go/pricing.go > out.html",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "go-restaurant",
+   "title": "Bar Amaro — natural wine bar (aperitivo-italian)",
+   "category": "Go",
+   "file": "go/restaurant.go",
+   "tags": [
+    "go",
+    "restaurant",
+    "menu"
+   ],
+   "description": "One-page site for Bar Amaro, a fictional natural wine bar in Providence, in the aperitivo-italian DNA. go run go/restaurant.go > out.html",
+   "dnas": [
+    "aperitivo-italian"
+   ]
+  },
+  {
+   "id": "go-saas",
+   "title": "Scaffold — daily site logs (blueprint-tech)",
+   "category": "Go",
+   "file": "go/saas.go",
+   "tags": [
+    "go",
+    "saas",
+    "landing-page"
+   ],
+   "description": "Landing page for Scaffold, a fictional daily-log app for construction superintendents, in the blueprint-tech DNA. go run go/saas.go > out.html",
+   "dnas": [
+    "blueprint-tech"
+   ]
+  },
+  {
+   "id": "go-tzserve",
+   "title": "tzserve — DNA-driven Go server",
+   "category": "Go",
+   "file": "go/tzserve.go",
+   "tags": [
+    "go",
+    "server",
+    "html/template"
+   ],
+   "description": "Tiny stdlib-only Go server that renders the TZ-taste landing page in any of the 48 style DNAs via ?dna=<slug> (default soft-minimal). Run from repo root: go run go/tzserve.go",
+   "dnas": [
+    "soft-minimal"
+   ]
+  }
+ ]
+}
