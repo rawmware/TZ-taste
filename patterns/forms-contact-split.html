@@ -1,0 +1,59 @@
+<!--tz-meta {"id":"forms-contact-split","title":"Split contact","category":"Forms","file":"patterns/forms-contact-split.html","tags":["split","agency"],"description":"Oversized serif Say hello headline on the left, hairline-ruled form on the right.","dnas":["editorial-serif"]} -->
+<section class="tz-contact" aria-labelledby="tz-contact-h">
+  <div class="tz-contact-left">
+    <p class="tz-contact-eyebrow">Commissions · Winter 2026</p>
+    <h2 id="tz-contact-h">Say hello.<br><em>We reply</em> within<br>a day.</h2>
+    <p class="tz-contact-alt">Prefer email? <a href="#">hello@atelier-noir.co</a></p>
+  </div>
+  <form class="tz-contact-form" action="#" method="post">
+    <div class="tz-contact-field">
+      <label for="tz-cf-name">Your name</label>
+      <input id="tz-cf-name" type="text" name="name" autocomplete="name" required>
+    </div>
+    <div class="tz-contact-field">
+      <label for="tz-cf-email">Email</label>
+      <input id="tz-cf-email" type="email" name="email" autocomplete="email" required>
+    </div>
+    <div class="tz-contact-field">
+      <label for="tz-cf-budget">Budget range</label>
+      <select id="tz-cf-budget" name="budget">
+        <option>Under $5k</option><option>$5k – $15k</option><option>$15k – $40k</option><option>$40k+</option>
+      </select>
+    </div>
+    <div class="tz-contact-field">
+      <label for="tz-cf-msg">What are you making?</label>
+      <textarea id="tz-cf-msg" name="message" rows="4" required></textarea>
+    </div>
+    <button type="submit">Send it over <span>→</span></button>
+  </form>
+</section>
+<style>
+.tz-contact{--bg:#f7f3ea;--ink:#1d1a14;--line:#1d1a1426;--accent:#8c3b1c;
+  background:var(--bg);color:var(--ink);display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(40px,7vw,110px);padding:clamp(56px,8vw,120px) clamp(24px,6vw,96px);
+  font-family:Georgia,'Times New Roman',serif}
+.tz-contact-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 24px}
+.tz-contact-left h2{font-size:clamp(44px,6vw,84px);letter-spacing:-.03em;line-height:1.04;
+  font-weight:400;margin:0 0 32px}
+.tz-contact-left h2 em{color:var(--accent)}
+.tz-contact-alt{font-size:16px;font-style:italic;opacity:.75;margin:0}
+.tz-contact-alt a{color:var(--accent)}
+.tz-contact-form{font-family:Arial,Helvetica,sans-serif;align-self:start}
+.tz-contact-field{margin-bottom:26px}
+.tz-contact-field label{display:block;font-family:ui-monospace,Menlo,monospace;font-size:12px;
+  letter-spacing:.14em;text-transform:uppercase;opacity:.65;margin-bottom:8px}
+.tz-contact-field input,.tz-contact-field select,.tz-contact-field textarea{
+  width:100%;border:0;border-bottom:1px solid var(--line);background:transparent;
+  font-size:17px;font-family:inherit;color:var(--ink);padding:10px 2px;border-radius:0}
+.tz-contact-field input:focus,.tz-contact-field select:focus,.tz-contact-field textarea:focus{
+  outline:none;border-bottom:2px solid var(--accent);margin-bottom:-1px}
+.tz-contact-field textarea{resize:vertical}
+.tz-contact-form button{background:var(--ink);color:var(--bg);border:0;font-size:16px;font-weight:bold;
+  padding:16px 34px;cursor:pointer;font-family:inherit;margin-top:8px}
+.tz-contact-form button:hover{background:var(--accent)}
+.tz-contact-form button span{display:inline-block;transition:transform .3s cubic-bezier(.22,1,.36,1)}
+.tz-contact-form button:hover span{transform:translateX(5px)}
+@media (max-width:760px){.tz-contact{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.tz-contact-form button span{transition:none}}
+</style>
