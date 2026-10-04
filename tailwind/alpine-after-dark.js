@@ -1,0 +1,3 @@
+//tz-meta {"id":"tailwind-alpine-after-dark","title":"Alpine After Dark Tailwind preset","category":"Tailwind","file":"tailwind/alpine-after-dark.js","tags":["tailwind","preset","alpine-after-dark"],"description":"Tailwind theme preset for the Alpine After Dark DNA.","dnas":["alpine-after-dark"]}
+// Tailwind preset for the Alpine After Dark DNA. Extend tailwind.config with this.
+module.exports={theme:{extend:{colors:{tzbg:"#0b1026",tzink:"#e8e4d8",tzaccent:"#f5a623",tzmuted:"#6b7394",tzline:"#f5a62333",tzsurface:"#0b1026"},fontFamily:{display:["Fraunces","serif"],body:["Mulish","sans-serif"],mono:["Spline Sans Mono","monospace"]}}}};
