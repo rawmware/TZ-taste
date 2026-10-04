@@ -1,0 +1,3 @@
+//tz-meta {"id":"tailwind-library-oak","title":"Library Oak Tailwind preset","category":"Tailwind","file":"tailwind/library-oak.js","tags":["tailwind","preset","library-oak"],"description":"Tailwind theme preset for the Library Oak DNA.","dnas":["library-oak"]}
+// Tailwind preset for the Library Oak DNA. Extend tailwind.config with this.
+module.exports={theme:{extend:{colors:{tzbg:"#211810",tzink:"#ece0c8",tzaccent:"#c9973f",tzmuted:"#93805f",tzline:"#c9973f40",tzsurface:"#211810"},fontFamily:{display:["Cormorant Garamond","serif"],body:["EB Garamond","sans-serif"],mono:["Roboto Mono","monospace"]}}}};
