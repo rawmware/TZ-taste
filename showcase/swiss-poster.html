@@ -1,0 +1,121 @@
+<!--tz-meta {"id":"showcase-swiss-poster","title":"Swiss Poster showcase","category":"Showcase","file":"showcase/swiss-poster.html","tags":["swiss-poster"],"description":"Live demo page for the Swiss Poster style DNA.","dnas":["swiss-poster"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Swiss Poster — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f2ede3; --tz-surface:#e7e0d0; --tz-ink:#141414; --tz-muted:#7a766c;
+  --tz-accent:#e8401f; --tz-line:#141414;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Archivo",Helvetica,sans-serif;font-size:1rem;line-height:1.5;-webkit-font-smoothing:antialiased}
+.tz-top{display:flex;justify-content:space-between;align-items:baseline;padding:1.1rem 4vw;border-bottom:3px solid var(--tz-line)}
+.tz-wordmark{font-family:"Archivo Black",sans-serif;font-size:1.05rem;letter-spacing:0.02em}
+.tz-label{font-family:"Space Mono",monospace;font-size:0.66rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-poster{position:relative;border-bottom:3px solid var(--tz-line);padding:5rem 4vw 4rem;overflow:hidden}
+.tz-crop{position:absolute;width:22px;height:22px;border:0 solid var(--tz-muted)}
+.tz-crop.tz-tl{top:12px;left:12px;border-top-width:2px;border-left-width:2px}
+.tz-crop.tz-tr{top:12px;right:12px;border-top-width:2px;border-right-width:2px}
+.tz-crop.tz-bl{bottom:12px;left:12px;border-bottom-width:2px;border-left-width:2px}
+.tz-crop.tz-br{bottom:12px;right:12px;border-bottom-width:2px;border-right-width:2px}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:1.5rem}
+.tz-poster h1{font-family:"Archivo Black",sans-serif;font-size:clamp(4rem,15vw,12rem);line-height:0.88;letter-spacing:-0.015em;text-transform:uppercase}
+.tz-poster h1 .tz-red{color:var(--tz-accent)}
+.tz-misreg{position:relative;display:inline-block}
+.tz-misreg::after{content:attr(data-w);position:absolute;left:3px;top:0;color:var(--tz-accent);opacity:0.85;pointer-events:none}
+.tz-poster-foot{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:space-between;align-items:flex-end;margin-top:2.5rem}
+.tz-meta{font-family:"Space Mono",monospace;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;line-height:2}
+.tz-meta .tz-red{color:var(--tz-accent)}
+.tz-cta{display:inline-block;font-family:"Archivo Black",sans-serif;font-size:1rem;color:var(--tz-bg);background:var(--tz-ink);text-decoration:none;padding:1.1rem 2.6rem}
+.tz-cta:hover{background:var(--tz-accent);color:var(--tz-bg)}
+.tz-content{border-bottom:3px solid var(--tz-line)}
+.tz-sheet{border-bottom:3px solid var(--tz-line);padding:4.5rem 4vw;position:relative;overflow:hidden}
+.tz-sheet:last-child{border-bottom:0}
+.tz-sheet.tz-black{background:var(--tz-ink);color:var(--tz-bg)}
+.tz-sheet.tz-red{background:var(--tz-accent);color:var(--tz-bg)}
+.tz-sheet .tz-day{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:1.2rem;opacity:0.75}
+.tz-sheet h2{font-family:"Archivo Black",sans-serif;font-size:clamp(2.8rem,9vw,7rem);line-height:0.9;text-transform:uppercase;letter-spacing:-0.01em}
+.tz-sheet.tz-black h2 .tz-red{color:var(--tz-accent)}
+.tz-sheet .tz-detail{margin-top:1.8rem;font-weight:500;max-width:52ch}
+.tz-sheet .tz-detail .tz-mono{font-family:"Space Mono",monospace;font-size:0.78rem;letter-spacing:0.08em;display:block;margin-top:0.8rem;opacity:0.75}
+.tz-sheet:hover{filter:invert(1)}
+.tz-tokens{padding:4rem 4vw;border-top:3px solid var(--tz-line)}
+.tz-tokens h2{font-family:"Archivo Black",sans-serif;font-size:1.5rem;margin-bottom:1.5rem;text-transform:uppercase}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.9rem;list-style:none}
+.tz-swatches li{border:3px solid var(--tz-line);background:var(--tz-bg);min-width:9.5rem}
+.tz-chip{display:block;height:3.2rem}
+.tz-swatches .tz-name{display:block;font-family:"Space Mono",monospace;font-size:0.66rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.6rem 0.8rem 0.1rem;color:var(--tz-muted)}
+.tz-swatches .tz-hex{display:block;font-family:"Space Mono",monospace;font-size:0.76rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:3px solid var(--tz-line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.tz-foot,.tz-foot span{font-family:"Space Mono",monospace;font-size:0.68rem;letter-spacing:0.1em;color:var(--tz-muted);text-transform:uppercase}
+.tz-slam{animation:tz-slam 0.45s cubic-bezier(0.2,1.4,0.4,1) both}
+.tz-slam.tz-d1{animation-delay:0.1s}.tz-slam.tz-d2{animation-delay:0.25s}
+@keyframes tz-slam{from{opacity:0;transform:scale(1.12)}to{opacity:1;transform:scale(1)}}
+@media(max-width:700px){
+  .tz-poster h1{font-size:clamp(3.4rem,20vw,5rem)}
+  .tz-sheet h2{font-size:clamp(2.4rem,13vw,3.6rem)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-slam{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">PLAKAT&sup2;6</span>
+  <span class="tz-label">TZ-taste style DNA</span>
+</header>
+
+<section class="tz-poster">
+  <span class="tz-crop tz-tl" aria-hidden="true"></span><span class="tz-crop tz-tr" aria-hidden="true"></span>
+  <span class="tz-crop tz-bl" aria-hidden="true"></span><span class="tz-crop tz-br" aria-hidden="true"></span>
+  <p class="tz-eyebrow">International poster festival &middot; Z&uuml;rich</p>
+  <h1 class="tz-slam">PLAKAT<br><span class="tz-red">26</span></h1>
+  <div class="tz-poster-foot tz-slam tz-d1">
+    <p class="tz-meta">16&ndash;18 October 2026 &middot; Toni-Areal<br><span class="tz-red">Edition 300</span> &middot; wheat-pasted citywide</p>
+    <a class="tz-cta" href="#">Get the pass</a>
+  </div>
+</section>
+
+<section class="tz-content">
+  <div class="tz-sheet tz-slam tz-d2">
+    <p class="tz-day">Day one &mdash; Friday</p>
+    <h2><span class="tz-misreg" data-w="TYPE">TYPE</span><br>AS IMAGE</h2>
+    <p class="tz-detail">Twelve studios set one word each, ten meters tall. Judged by the street.<span class="tz-mono">18:00 &middot; Halle 1 &middot; free with pass</span></p>
+  </div>
+  <div class="tz-sheet tz-black">
+    <p class="tz-day">Day two &mdash; Saturday</p>
+    <h2>INK<br><span class="tz-red">/ SWEAT</span></h2>
+    <p class="tz-detail">Live screen-printing marathon. Bring a shirt, leave with a poster.<span class="tz-mono">10:00&ndash;22:00 &middot; courtyard &middot; inks provided</span></p>
+  </div>
+  <div class="tz-sheet tz-red">
+    <p class="tz-day">Day three &mdash; Sunday</p>
+    <h2>PASTE<br>THE CITY</h2>
+    <p class="tz-detail">Two hundred posters, one night, every legal wall in District 5.<span class="tz-mono">21:00 &middot; meet at the depot &middot; gloves on</span></p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#f2ede3"></span><span class="tz-name">bg</span><span class="tz-hex">#f2ede3</span></li>
+    <li><span class="tz-chip" style="background:#141414"></span><span class="tz-name">ink</span><span class="tz-hex">#141414</span></li>
+    <li><span class="tz-chip" style="background:#e8401f"></span><span class="tz-name">accent</span><span class="tz-hex">#e8401f</span></li>
+    <li><span class="tz-chip" style="background:#7a766c"></span><span class="tz-name">muted</span><span class="tz-hex">#7a766c</span></li>
+    <li><span class="tz-chip" style="background:#141414"></span><span class="tz-name">line</span><span class="tz-hex">#141414</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">
+  <span>A TZ-taste style DNA showcase &mdash; MIT, free forever.</span>
+  <span>Edition 300 &middot; misregistration kept on purpose</span>
+</footer>
+</body>
+</html>
