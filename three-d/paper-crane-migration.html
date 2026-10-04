@@ -1,0 +1,158 @@
+<!--tz-meta {"id":"paper-crane-migration","title":"Paper Crane Migration","category":"3D","file":"three-d/paper-crane-migration.html","tags":["threejs","cranes","night"],"description":"A flock of paper cranes crosses a starry night sky in V formation, wings beating, moon watching.","dnas":["observatory-star"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Paper Crane Migration — TZ-taste</title>
+<style>
+  html, body { margin:0; height:100%; overflow:hidden; background:#060a18; }
+  #app { position:fixed; inset:0; }
+  #app canvas { display:block; }
+  .caption { position:fixed; left:18px; bottom:16px; z-index:5; color:#aab4d0;
+    font:12px/1.6 system-ui, -apple-system, sans-serif; letter-spacing:.05em;
+    opacity:.9; pointer-events:none; }
+  .caption b { display:block; font-size:13px; letter-spacing:.22em; text-transform:uppercase; }
+  #fallback { display:none; position:fixed; inset:0; z-index:10; place-items:center;
+    color:#aab4d0; font:14px/1.6 system-ui, sans-serif; text-align:center;
+    padding:32px; background:#060a18; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="caption"><b>Paper Crane Migration</b>thirteen cranes, one moon, no hurry<br/>drag to orbit &middot; scroll to zoom</div>
+<div id="fallback"><p>This scene needs WebGL, which your browser could not provide.<br/>Try a recent version of Chrome, Safari, Firefox or Edge.</p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (e) {
+  document.getElementById('fallback').style.display = 'grid';
+  throw e;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('app').appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x060a18);
+scene.fog = new THREE.Fog(0x060a18, 60, 220);
+
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 600);
+camera.position.set(0, 14, 46);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.target.set(0, 16, 0);
+controls.maxPolarAngle = 1.6;
+controls.minDistance = 10;
+controls.maxDistance = 140;
+
+scene.add(new THREE.HemisphereLight(0x3a4670, 0x05070f, 0.8));
+const moonLight = new THREE.DirectionalLight(0xcdd8f0, 0.7);
+moonLight.position.set(-40, 50, -30);
+scene.add(moonLight);
+
+/* ---------- stars ---------- */
+const starGeo = new THREE.BufferGeometry();
+const starPos = new Float32Array(900 * 3);
+for (let i = 0; i < 900; i++) {
+  const a = Math.random() * Math.PI * 2, e = Math.random() * 0.9 + 0.08, r = 240;
+  starPos[i * 3] = Math.cos(a) * Math.cos(e) * r;
+  starPos[i * 3 + 1] = Math.sin(e) * r;
+  starPos[i * 3 + 2] = Math.sin(a) * Math.cos(e) * r;
+}
+starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+scene.add(new THREE.Points(starGeo, new THREE.PointsMaterial({
+  color: 0xdfe6f5, size: 0.9, sizeAttenuation: false, fog: false })));
+
+/* ---------- moon ---------- */
+const moon = new THREE.Mesh(new THREE.SphereGeometry(7, 32, 24),
+  new THREE.MeshBasicMaterial({ color: 0xf3ecd8, fog: false }));
+moon.position.set(-60, 62, -120);
+scene.add(moon);
+const halo = new THREE.Mesh(new THREE.SphereGeometry(9.5, 32, 24),
+  new THREE.MeshBasicMaterial({ color: 0xc9a24b, transparent: true, opacity: 0.16, fog: false }));
+halo.position.copy(moon.position);
+scene.add(halo);
+
+/* ---------- mountains ---------- */
+const mMat = new THREE.MeshStandardMaterial({ color: 0x0a0f1e, roughness: 1 });
+for (let i = 0; i < 7; i++) {
+  const m = new THREE.Mesh(new THREE.ConeGeometry(22 + (i * 13 % 14), 16 + (i * 7 % 12), 5), mMat);
+  m.position.set(-90 + i * 30, 4, -110 - (i % 3) * 12);
+  scene.add(m);
+}
+
+/* ---------- cranes ---------- */
+const paperMat = new THREE.MeshStandardMaterial({ color: 0xf4f4f0, roughness: 0.85, side: THREE.DoubleSide });
+function makeCrane() {
+  const g = new THREE.Group();
+  const body = new THREE.Mesh(new THREE.ConeGeometry(0.16, 1.5, 6), paperMat);
+  body.rotation.x = Math.PI / 2;
+  g.add(body);
+  const wingGeo = new THREE.PlaneGeometry(1.9, 0.85);
+  const wl = new THREE.Mesh(wingGeo, paperMat);
+  wl.position.x = -0.95;
+  const wr = new THREE.Mesh(wingGeo, paperMat);
+  wr.position.x = 0.95;
+  const pl = new THREE.Group(), pr = new THREE.Group();
+  pl.add(wl); pr.add(wr);
+  g.add(pl); g.add(pr);
+  const tail = new THREE.Mesh(new THREE.ConeGeometry(0.1, 0.7, 4), paperMat);
+  tail.rotation.x = -Math.PI / 2;
+  tail.position.z = 0.95;
+  g.add(tail);
+  return { g: g, pl: pl, pr: pr, ph: Math.random() * 6.28, fq: 4.5 + Math.random() * 2.5 };
+}
+const flock = new THREE.Group();
+scene.add(flock);
+const cranes = [];
+for (let i = 0; i < 13; i++) {
+  const c = makeCrane();
+  const rank = Math.ceil(i / 2), side = i === 0 ? 0 : (i % 2 === 0 ? 1 : -1);
+  c.g.position.set(side * rank * 4.2, 16 + rank * 0.7 + Math.random(), -rank * 4.6);
+  c.g.rotation.y = Math.PI / 2;
+  flock.add(c.g);
+  cranes.push(c);
+}
+
+/* ---------- frame loop ---------- */
+const clock = new THREE.Clock();
+function renderFrame(t, dt) {
+  const fx = -70 + ((t * 4.5) % 150);
+  flock.position.x = fx;
+  flock.position.y = Math.sin(t * 0.4) * 1.6;
+  for (const c of cranes) {
+    const flap = Math.sin(t * c.fq + c.ph) * 0.65;
+    c.pl.rotation.z = flap;
+    c.pr.rotation.z = -flap;
+    c.g.position.y += Math.sin(t * 1.8 + c.ph) * dt * 0.35;
+  }
+  controls.update();
+  renderer.render(scene, camera);
+}
+if (REDUCED) {
+  renderFrame(8.0, 0);
+} else {
+  renderer.setAnimationLoop(() => {
+    const dt = Math.min(clock.getDelta(), 0.05);
+    renderFrame(clock.elapsedTime, dt);
+  });
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
