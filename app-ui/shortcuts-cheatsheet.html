@@ -1,0 +1,127 @@
+<!--tz-meta {"id":"shortcuts-cheatsheet","title":"Blueprint shortcuts cheatsheet","category":"App UI","file":"app-ui/shortcuts-cheatsheet.html","tags":["keyboard-shortcuts","cheatsheet","kbd","search-filter"],"description":"Searchable keyboard shortcut reference for Draftline, drawn as a blueprint sheet with keycap kbd chips and dimension-line group headers.","dnas":["blueprint-tech"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keyboard shortcuts — Draftline</title>
+<style>
+.tz-sheet{--bg:#17407f;--surface:#0f2f66;--ink:#f2f6fc;--muted:#8fb3e8;--yel:#ffcf3f;--line:#ffffff40;
+  margin:0;min-height:100dvh;color:var(--ink);
+  font-family:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  background-color:var(--bg);
+  background-image:linear-gradient(#ffffff0d 1px,transparent 1px),linear-gradient(90deg,#ffffff0d 1px,transparent 1px);
+  background-size:28px 28px;-webkit-font-smoothing:antialiased}
+.tz-head{max-width:860px;margin:0 auto;padding:clamp(40px,7vw,72px) clamp(20px,5vw,44px) 10px}
+.tz-figline{font-size:12px;letter-spacing:.24em;color:var(--muted);margin:0 0 16px}
+.tz-title{font-family:"Space Grotesk","Avenir Next","Segoe UI",sans-serif;font-weight:700;
+  font-size:clamp(32px,5.4vw,56px);letter-spacing:-.02em;text-transform:uppercase;line-height:1.02;margin:0 0 12px}
+.tz-sub{font-size:14px;line-height:1.7;color:var(--muted);max-width:60ch;margin:0 0 28px}
+.tz-searchrow{display:flex;gap:12px;align-items:stretch;max-width:520px;margin-bottom:44px}
+.tz-search{flex:1;background:var(--surface);border:1px solid var(--line);color:var(--ink);
+  font:inherit;font-size:15px;padding:14px 16px;min-width:0}
+.tz-search::placeholder{color:var(--muted)}
+.tz-search:focus{outline:2px solid var(--yel);outline-offset:2px;border-color:var(--yel)}
+.tz-body{max-width:860px;margin:0 auto;padding:0 clamp(20px,5vw,44px) 90px}
+.tz-group{margin-bottom:44px}
+.tz-ghead{display:flex;align-items:center;gap:16px;margin-bottom:6px}
+.tz-ghead h2{font-family:"Space Grotesk","Avenir Next",sans-serif;font-size:15px;letter-spacing:.2em;
+  text-transform:uppercase;margin:0;color:var(--yel);white-space:nowrap}
+.tz-dim{flex:1;height:1px;background:var(--line);position:relative}
+.tz-dim::before,.tz-dim::after{content:"";position:absolute;top:-4px;width:9px;height:9px;
+  border:1px solid var(--muted);transform:rotate(45deg)}
+.tz-dim::before{left:0}.tz-dim::after{right:0}
+.tz-rows{list-style:none;margin:0;padding:0}
+.tz-row{display:flex;justify-content:space-between;align-items:center;gap:18px;
+  padding:14px 4px;border-bottom:1px solid var(--line)}
+.tz-row:hover{background:#ffffff08}
+.tz-action{font-size:14px}
+.tz-action small{display:block;color:var(--muted);font-size:12px;margin-top:4px;line-height:1.5}
+.tz-keys{flex:none;display:flex;gap:6px;align-items:center}
+.tz-kbd{border:1px solid var(--ink);border-bottom-width:3px;border-radius:5px;background:var(--surface);
+  color:var(--ink);font:inherit;font-size:12.5px;font-weight:600;padding:6px 11px;white-space:nowrap}
+.tz-kbd.tz-star{border-color:var(--yel);color:var(--yel)}
+.tz-plus{color:var(--muted);font-size:12px}
+.tz-row.tz-hide{display:none}
+.tz-empty{display:none;border:1px dashed var(--line);padding:40px 24px;text-align:center;
+  color:var(--muted);font-size:14px;margin-bottom:44px}
+.tz-empty.tz-show{display:block}
+.tz-foot{max-width:860px;margin:0 auto;padding:0 clamp(20px,5vw,44px) 60px;color:var(--muted);font-size:12.5px;line-height:1.7}
+.tz-foot .tz-kbd{font-size:11px;padding:3px 8px}
+@media (max-width:520px){
+  .tz-row{flex-direction:column;align-items:flex-start;gap:10px}
+  .tz-searchrow{flex-direction:column}}
+@media (prefers-reduced-motion:reduce){.tz-row{transition:none}}
+</style>
+</head>
+<body class="tz-sheet">
+<header class="tz-head">
+  <p class="tz-figline">FIG. 9 &mdash; OPERATOR REFERENCE &mdash; REV C</p>
+  <h1 class="tz-title">Every shortcut,<br>one sheet</h1>
+  <p class="tz-sub">Draftline is a keyboard-first schematic editor. Learn the thirty below and the mouse becomes a paperweight. Type to filter &mdash; matches actions and key names.</p>
+  <div class="tz-searchrow">
+    <input class="tz-search" id="tzQ" type="search" placeholder="Filter shortcuts&hellip;  ( try &quot;zoom&quot; )" aria-label="Filter shortcuts">
+  </div>
+</header>
+<main class="tz-body" id="tzGroups">
+
+  <section class="tz-group" aria-label="Canvas">
+    <div class="tz-ghead"><h2>Canvas</h2><span class="tz-dim"></span></div>
+    <ul class="tz-rows">
+      <li class="tz-row"><span class="tz-action">Pan the sheet<small>Hold and drag, or use the arrow keys in 8px steps</small></span><span class="tz-keys"><span class="tz-kbd tz-star">Space</span><span class="tz-plus">+</span><span class="tz-kbd">drag</span></span></li>
+      <li class="tz-row"><span class="tz-action">Zoom to fit<small>Frames the whole schematic in the viewport</small></span><span class="tz-keys"><span class="tz-kbd">0</span></span></li>
+      <li class="tz-row"><span class="tz-action">Zoom in / out<small>Centered on the cursor, 25% steps</small></span><span class="tz-keys"><span class="tz-kbd">+</span><span class="tz-plus">/</span><span class="tz-kbd">&minus;</span></span></li>
+      <li class="tz-row"><span class="tz-action">Toggle the drafting grid<small>Snap stays on; only the visible grid hides</small></span><span class="tz-keys"><span class="tz-kbd">G</span></span></li>
+    </ul>
+  </section>
+
+  <section class="tz-group" aria-label="Drawing">
+    <div class="tz-ghead"><h2>Drawing</h2><span class="tz-dim"></span></div>
+    <ul class="tz-rows">
+      <li class="tz-row"><span class="tz-action">Place a component<small>Opens the parts bin at the cursor position</small></span><span class="tz-keys"><span class="tz-kbd tz-star">C</span></span></li>
+      <li class="tz-row"><span class="tz-action">Draw a wire<small>Click to set corners, double-click to finish</small></span><span class="tz-keys"><span class="tz-kbd tz-star">W</span></span></li>
+      <li class="tz-row"><span class="tz-action">Draw a net label<small>Names the wire under the cursor</small></span><span class="tz-keys"><span class="tz-kbd">N</span></span></li>
+      <li class="tz-row"><span class="tz-action">Rotate selection 90&deg;<small>Hold to rotate in 15&deg; increments</small></span><span class="tz-keys"><span class="tz-kbd">R</span></span></li>
+      <li class="tz-row"><span class="tz-action">Delete selection<small>Components keep their reference numbers in the bin</small></span><span class="tz-keys"><span class="tz-kbd">Del</span></span></li>
+    </ul>
+  </section>
+
+  <section class="tz-group" aria-label="Edit">
+    <div class="tz-ghead"><h2>Edit</h2><span class="tz-dim"></span></div>
+    <ul class="tz-rows">
+      <li class="tz-row"><span class="tz-action">Undo / redo<small>Unlimited history per sheet, saved with the file</small></span><span class="tz-keys"><span class="tz-kbd">Ctrl</span><span class="tz-plus">+</span><span class="tz-kbd">Z</span><span class="tz-plus">/</span><span class="tz-kbd">Shift</span><span class="tz-plus">+</span><span class="tz-kbd">Z</span></span></li>
+      <li class="tz-row"><span class="tz-action">Duplicate selection<small>Offset by one grid step, ready to place</small></span><span class="tz-keys"><span class="tz-kbd">Ctrl</span><span class="tz-plus">+</span><span class="tz-kbd">D</span></span></li>
+      <li class="tz-row"><span class="tz-action">Select all on sheet<small>Excludes locked title-block layers</small></span><span class="tz-keys"><span class="tz-kbd">Ctrl</span><span class="tz-plus">+</span><span class="tz-kbd">A</span></span></li>
+      <li class="tz-row"><span class="tz-action">Align left edges<small>Works on any multi-selection</small></span><span class="tz-keys"><span class="tz-kbd">Ctrl</span><span class="tz-plus">+</span><span class="tz-kbd">Shift</span><span class="tz-plus">+</span><span class="tz-kbd">L</span></span></li>
+    </ul>
+  </section>
+
+  <section class="tz-group" aria-label="Review">
+    <div class="tz-ghead"><h2>Review</h2><span class="tz-dim"></span></div>
+    <ul class="tz-rows">
+      <li class="tz-row"><span class="tz-action">Run design-rule check<small>Flags unconnected pins and overlapping refs</small></span><span class="tz-keys"><span class="tz-kbd tz-star">F5</span></span></li>
+      <li class="tz-row"><span class="tz-action">Toggle annotation layer<small>Reviewer notes, hidden on export</small></span><span class="tz-keys"><span class="tz-kbd">A</span></span></li>
+      <li class="tz-row"><span class="tz-action">Export PDF<small>Prints the current sheet at 1:1 scale</small></span><span class="tz-keys"><span class="tz-kbd">Ctrl</span><span class="tz-plus">+</span><span class="tz-kbd">P</span></span></li>
+      <li class="tz-row"><span class="tz-action">Open this cheatsheet<small>Works from anywhere in Draftline</small></span><span class="tz-keys"><span class="tz-kbd">?</span></span></li>
+    </ul>
+  </section>
+
+  <p class="tz-empty" id="tzEmpty">No shortcuts match. The sheet is complete &mdash; try a shorter term.</p>
+</main>
+<footer class="tz-foot">
+  Press <span class="tz-kbd">/</span> anywhere in Draftline to jump to the filter box. Yellow keycaps are the five to learn first.
+</footer>
+<script>
+var q=document.getElementById('tzQ'),rows=document.querySelectorAll('.tz-row'),
+    groups=document.querySelectorAll('.tz-group'),empty=document.getElementById('tzEmpty');
+q.addEventListener('input',function(){
+  var s=q.value.trim().toLowerCase(),shown=0;
+  rows.forEach(function(r){var ok=!s||r.textContent.toLowerCase().indexOf(s)>-1;
+    r.classList.toggle('tz-hide',!ok);if(ok)shown++;});
+  groups.forEach(function(g){g.style.display=g.querySelectorAll('.tz-row:not(.tz-hide)').length?'':'none';});
+  empty.classList.toggle('tz-show',shown===0);});
+document.addEventListener('keydown',function(e){
+  if(e.key==='/'&&document.activeElement!==q){e.preventDefault();q.focus();}});
+</script>
+</body>
+</html>
