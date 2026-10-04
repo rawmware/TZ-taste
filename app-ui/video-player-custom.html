@@ -1,0 +1,323 @@
+<!--tz-meta {"id":"video-player-custom","title":"Custom video player","category":"App UI","file":"app-ui/video-player-custom.html","tags":["video-player","media","controls","canvas"],"description":"Drive-in theater custom player: canvas feature film, seek with chapters, speed, synthesized projector audio, captions, fullscreen, keyboard shortcuts.","dnas":["drive-in-theater"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Starlight Drive-In — Custom player</title>
+<style>
+:root{--bg:#151423;--surface:#211f33;--ink:#f4efe4;--accent:#f2a93b;--muted:#8f8ba0;--line:#f4efe41f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Figtree,-apple-system,"Segoe UI",sans-serif;
+  min-height:100dvh;display:flex;flex-direction:column;align-items:center;padding:40px 16px}
+.tz-kicker{font-size:11px;letter-spacing:.32em;color:var(--muted);margin:0 0 10px}
+.tz-title{font-family:Limelight,Georgia,serif;font-size:clamp(26px,4vw,40px);margin:0 0 6px;color:var(--accent);letter-spacing:.04em}
+.tz-sub{font-size:14px;color:var(--muted);margin:0 0 28px}
+.tz-vp{width:100%;max-width:960px;background:#000;border:1px solid var(--line);position:relative;
+  box-shadow:0 30px 90px #000c}
+.tz-screen{position:relative;aspect-ratio:16/9;background:#0b0a12;cursor:pointer}
+.tz-screen canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.tz-caption{position:absolute;left:50%;bottom:86px;transform:translateX(-50%);max-width:80%;
+  background:#000000b3;color:var(--ink);font-size:15px;line-height:1.45;padding:8px 18px;text-align:center;
+  border-left:3px solid var(--accent)}
+.tz-caption[hidden]{display:none}
+.tz-bigplay{position:absolute;inset:0;margin:auto;width:84px;height:84px;border-radius:50%;
+  background:#000000a6;border:2px solid var(--accent);color:var(--accent);cursor:pointer;
+  display:flex;align-items:center;justify-content:center}
+.tz-bigplay[hidden]{display:none}
+.tz-bigplay svg{width:30px;height:30px;fill:currentColor;margin-left:4px}
+.tz-controls{background:var(--surface);border-top:1px solid var(--line);padding:10px 14px 12px}
+.tz-seekwrap{position:relative;padding:6px 0 10px}
+.tz-seek{width:100%;appearance:none;-webkit-appearance:none;height:4px;background:#f4efe426;outline:none;cursor:pointer;margin:0}
+.tz-seek::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--accent);cursor:pointer}
+.tz-seek::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:var(--accent);border:none;cursor:pointer}
+.tz-chapters{position:absolute;left:0;right:0;top:6px;height:4px;pointer-events:none}
+.tz-chapters i{position:absolute;top:-3px;width:2px;height:10px;background:var(--muted)}
+.tz-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tz-cbtn{background:transparent;border:1px solid transparent;color:var(--ink);cursor:pointer;
+  font:inherit;font-size:13px;padding:7px 10px;border-radius:3px;display:flex;align-items:center;gap:6px}
+.tz-cbtn:hover{border-color:var(--line);background:#ffffff10}
+.tz-cbtn svg{width:17px;height:17px;fill:currentColor}
+.tz-cbtn[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+.tz-time{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;letter-spacing:.04em;margin-left:2px}
+.tz-vol{display:flex;align-items:center;gap:6px;margin-left:auto}
+.tz-vol input{width:90px;appearance:none;-webkit-appearance:none;height:3px;background:#f4efe426;cursor:pointer}
+.tz-vol input::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:var(--ink)}
+.tz-vol input::-moz-range-thumb{width:12px;height:12px;border-radius:50%;background:var(--ink);border:none}
+.tz-speed{position:relative}
+.tz-speedmenu{position:absolute;bottom:calc(100% + 8px);right:0;background:var(--surface);border:1px solid var(--line);
+  min-width:120px;z-index:5}
+.tz-speedmenu[hidden]{display:none}
+.tz-speedmenu button{display:block;width:100%;text-align:left;background:none;border:0;color:var(--ink);
+  font:inherit;font-size:13px;padding:9px 14px;cursor:pointer}
+.tz-speedmenu button:hover{background:#ffffff10}
+.tz-speedmenu button[aria-checked="true"]{color:var(--accent)}
+.tz-chapbar{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.tz-chap{background:transparent;border:1px solid var(--line);color:var(--muted);font:inherit;font-size:12px;
+  padding:6px 12px;border-radius:20px;cursor:pointer;letter-spacing:.04em}
+.tz-chap:hover{color:var(--ink);border-color:var(--muted)}
+.tz-chap[aria-current="true"]{color:var(--accent);border-color:var(--accent)}
+.tz-help{max-width:960px;width:100%;margin-top:22px;font-size:13px;color:var(--muted);line-height:1.7}
+.tz-help kbd{border:1px solid var(--line);border-radius:3px;padding:1px 7px;font-size:11px;color:var(--ink);
+  font-family:inherit;background:var(--surface)}
+@media (max-width:640px){
+  .tz-vol input{width:60px}
+  .tz-caption{bottom:96px;font-size:13px}
+  body{padding:24px 10px}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-vp *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<p class="tz-kicker">STARLIGHT DRIVE-IN · LOT 7</p>
+<h1 class="tz-title">Neon Harvest <span style="font-size:.5em;vertical-align:middle;color:var(--muted)">(1958)</span></h1>
+<p class="tz-sub">A 60-second feature, projected nightly. Custom player — every control below works.</p>
+
+<div class="tz-vp" id="vp">
+  <div class="tz-screen" id="screen" role="button" tabindex="0" aria-label="Play or pause the feature">
+    <canvas id="film" width="960" height="540"></canvas>
+    <div class="tz-caption" id="caption"></div>
+    <button class="tz-bigplay" id="bigPlay" type="button" aria-label="Play">
+      <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    </button>
+  </div>
+  <div class="tz-controls">
+    <div class="tz-seekwrap">
+      <div class="tz-chapters" id="chapTicks" aria-hidden="true"></div>
+      <input class="tz-seek" id="seek" type="range" min="0" max="60" step="0.1" value="0" aria-label="Seek">
+    </div>
+    <div class="tz-row">
+      <button class="tz-cbtn" id="playBtn" type="button" aria-label="Play">
+        <svg viewBox="0 0 24 24" id="playIcon"><path d="M8 5v14l11-7z"/></svg></button>
+      <span class="tz-time"><span id="tCur">0:00</span> / <span id="tDur">1:00</span></span>
+      <button class="tz-cbtn" id="backBtn" type="button" aria-label="Back 10 seconds">
+        <svg viewBox="0 0 24 24"><path d="M12 5V1L6 7l6 6V9a6 6 0 1 1-6 6H4a8 8 0 1 0 8-8z"/></svg></button>
+      <button class="tz-cbtn" id="fwdBtn" type="button" aria-label="Forward 10 seconds">
+        <svg viewBox="0 0 24 24"><path d="M12 5V1l6 6-6 6V9a6 6 0 1 0 6 6h2a8 8 0 1 1-8-8z"/></svg></button>
+      <div class="tz-speed">
+        <button class="tz-cbtn" id="speedBtn" type="button" aria-haspopup="true" aria-expanded="false">1×</button>
+        <div class="tz-speedmenu" id="speedMenu" role="menu" hidden>
+          <button type="button" data-s="0.5" role="menuitemradio" aria-checked="false">0.5×</button>
+          <button type="button" data-s="1" role="menuitemradio" aria-checked="true">1× — normal</button>
+          <button type="button" data-s="1.5" role="menuitemradio" aria-checked="false">1.5×</button>
+          <button type="button" data-s="2" role="menuitemradio" aria-checked="false">2×</button>
+        </div>
+      </div>
+      <button class="tz-cbtn" id="capBtn" type="button" aria-pressed="true">CC</button>
+      <div class="tz-vol">
+        <button class="tz-cbtn" id="muteBtn" type="button" aria-label="Mute projector audio" aria-pressed="false">
+          <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3 2.5-2.5-1.4-1.4-2.5 2.5-2.5-2.5-1.4 1.4L13.7 12l-2.5 2.5 1.4 1.4 2.5-2.5 2.5 2.5 1.4-1.4-2.5-2.5z"/></svg></button>
+        <input id="vol" type="range" min="0" max="100" value="70" aria-label="Projector volume">
+      </div>
+      <button class="tz-cbtn" id="fsBtn" type="button" aria-label="Fullscreen">
+        <svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" stroke="currentColor" stroke-width="2" fill="none"/></svg></button>
+    </div>
+    <div class="tz-chapbar" id="chapBar" aria-label="Chapters"></div>
+  </div>
+</div>
+
+<p class="tz-help">Shortcuts: <kbd>space</kbd> play/pause · <kbd>←</kbd><kbd>→</kbd> 5 seconds ·
+<kbd>↑</kbd><kbd>↓</kbd> volume · <kbd>m</kbd> mute · <kbd>f</kbd> fullscreen. The projector hum is
+synthesized live with WebAudio — no audio file.</p>
+
+<script>
+(function(){
+  var DUR=60,
+      chapters=[
+        {t:0,  name:'Arrival',        cap:'The lot fills as the sun goes down.'},
+        {t:15, name:'Marquee lights', cap:'Two thousand bulbs, one careful electrician.'},
+        {t:30, name:'Intermission',   cap:'The concession stand does its best business in ten minutes.'},
+        {t:45, name:'The feature',    cap:'Neon Harvest — a story about a town that glows.'}
+      ],
+      st={playing:false,t:0,speed:1,vol:.7,muted:false,captions:true},
+      canvas=document.getElementById('film'),ctx=canvas.getContext('2d'),
+      W=960,H=540,
+      reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+      stars=[],i;
+  for(i=0;i<90;i++)stars.push({x:Math.random()*W,y:Math.random()*300,r:Math.random()*1.4+.4,p:Math.random()*6.28});
+
+  function fmt(s){s=Math.max(0,Math.floor(s));return Math.floor(s/60)+':'+('0'+(s%60)).slice(-2);}
+
+  function draw(t){
+    ctx.fillStyle='#0b0a12';ctx.fillRect(0,0,W,H);
+    var k;
+    for(k=0;k<stars.length;k++){var s=stars[k];
+      var tw=reduced?0.7:(0.45+0.35*Math.sin(t*2+s.p));
+      ctx.globalAlpha=tw;ctx.fillStyle='#f4efe4';
+      ctx.fillRect(s.x,s.y,s.r,s.r);}
+    ctx.globalAlpha=1;
+    ctx.fillStyle='#e8e2cf';ctx.beginPath();ctx.arc(810,90,34,0,6.29);ctx.fill();
+    ctx.fillStyle='#0b0a12';ctx.beginPath();ctx.arc(798,80,30,0,6.29);ctx.fill();
+    // shooting star
+    var cyc=t%14;
+    if(cyc<1.1&&!reduced){
+      var sx=200+cyc*420,sy=60+cyc*150;
+      ctx.strokeStyle='#f2a93b';ctx.lineWidth=2;ctx.beginPath();
+      ctx.moveTo(sx,sy);ctx.lineTo(sx-70,sy-26);ctx.stroke();
+      ctx.fillStyle='#f2a93b';ctx.beginPath();ctx.arc(sx,sy,3,0,6.29);ctx.fill();
+    }
+    // movie screen
+    ctx.fillStyle='#211f33';ctx.fillRect(300,120,360,220);
+    ctx.fillStyle='#f4efe4';ctx.fillRect(312,132,336,196);
+    // the "feature": bouncing shapes
+    var bx=480+150*Math.sin(t*1.3),by=230+60*Math.sin(t*2.1);
+    ctx.fillStyle='#f2a93b';ctx.beginPath();ctx.arc(bx,by,26,0,6.29);ctx.fill();
+    ctx.fillStyle='#151423';
+    ctx.fillRect(340+((t*40)%560),150,60,30);
+    ctx.fillRect(340+((t*40+300)%560),260,90,22);
+    ctx.strokeStyle='#151423';ctx.lineWidth=6;ctx.strokeRect(312,132,336,196);
+    // marquee
+    ctx.fillStyle='#151423';ctx.fillRect(60,180,180,150);
+    ctx.strokeStyle='#f2a93b';ctx.lineWidth=3;ctx.strokeRect(60,180,180,150);
+    var b;
+    for(b=0;b<14;b++){
+      var on=reduced?true:((Math.floor(t*6)+b)%2===0);
+      ctx.fillStyle=on?'#f2a93b':'#5c4a26';
+      var px=60+((b%7)+0.5)*(180/7),py=b<7?180:330;
+      ctx.beginPath();ctx.arc(px,py,5,0,6.29);ctx.fill();
+    }
+    ctx.fillStyle='#f2a93b';ctx.font='bold 21px Georgia';ctx.textAlign='center';
+    ctx.fillText('NEON',150,245);ctx.fillText('HARVEST',150,272);
+    ctx.fillStyle='#8f8ba0';ctx.font='12px Georgia';ctx.fillText('TONITE 8:30',150,300);
+    // ground + cars
+    ctx.fillStyle='#100e18';ctx.fillRect(0,400,W,140);
+    var cars=[[140,452,'#2b2838'],[560,460,'#33272b'],[800,452,'#28303a']];
+    for(k=0;k<cars.length;k++){var c=cars[k];
+      ctx.fillStyle=c[2];
+      ctx.fillRect(c[0],c[1],150,44);
+      ctx.fillRect(c[0]+24,c[1]-26,100,30);
+      ctx.fillStyle='#0b0a12';
+      ctx.beginPath();ctx.arc(c[0]+34,c[1]+46,14,0,6.29);ctx.arc(c[0]+116,c[1]+46,14,0,6.29);ctx.fill();
+      ctx.fillStyle='#f2a93b';ctx.fillRect(c[0]+2,c[1]+30,8,8);
+    }
+    // speaker poles
+    ctx.fillStyle='#3a3747';
+    for(k=0;k<5;k++){ctx.fillRect(60+k*210,430,6,60);}
+  }
+
+  var seek=document.getElementById('seek'),tCur=document.getElementById('tCur'),
+      caption=document.getElementById('caption'),
+      playIcon=document.getElementById('playIcon'),
+      bigPlay=document.getElementById('bigPlay'),
+      PATH_D='M8 5v14l11-7z',PATH_P='M7 5h4v14H7zM13 5h4v14h-4z';
+
+  function curChapter(){
+    var c=chapters[0],k;
+    for(k=0;k<chapters.length;k++)if(st.t>=chapters[k].t)c=chapters[k];
+    return c;
+  }
+  function sync(){
+    seek.value=st.t;tCur.textContent=fmt(st.t);
+    var c=curChapter();
+    caption.textContent=c.cap;caption.hidden=!st.captions;
+    var bars=document.getElementById('chapBar').children,k;
+    for(k=0;k<bars.length;k++)bars[k].setAttribute('aria-current',String(bars[k].dataset.t==c.t));
+    playIcon.innerHTML='<path d="'+(st.playing?PATH_P:PATH_D)+'"/>';
+    bigPlay.hidden=st.playing;
+    document.getElementById('playBtn').setAttribute('aria-label',st.playing?'Pause':'Play');
+  }
+
+  // --- synthesized projector audio (WebAudio, no files) ---
+  var actx=null,humGain=null;
+  function ensureAudio(){
+    if(actx)return;
+    var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;
+    actx=new AC();
+    var len=actx.sampleRate*2,buf=actx.createBuffer(1,len,actx.sampleRate),d=buf.getChannelData(0),last=0;
+    for(var n=0;n<len;n++){var w=Math.random()*2-1;last=(last+0.02*w)/1.02;d[n]=last*3.2;}
+    var src=actx.createBufferSource();src.buffer=buf;src.loop=true;
+    var lp=actx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=320;
+    var osc=actx.createOscillator();osc.type='sawtooth';osc.frequency.value=55;
+    var og=actx.createGain();og.gain.value=0.12;
+    humGain=actx.createGain();humGain.gain.value=0;
+    src.connect(lp);lp.connect(humGain);osc.connect(og);og.connect(humGain);humGain.connect(actx.destination);
+    src.start();osc.start();
+  }
+  function audioLevel(){
+    if(!humGain)return;
+    humGain.gain.setTargetAtTime(st.playing&&!st.muted?st.vol*0.16:0,actx.currentTime,0.1);
+  }
+
+  function play(){ensureAudio();if(actx&&actx.state==='suspended')actx.resume();st.playing=true;audioLevel();sync();}
+  function pause(){st.playing=false;audioLevel();sync();}
+  function toggle(){st.playing?pause():play();}
+
+  document.getElementById('playBtn').addEventListener('click',toggle);
+  bigPlay.addEventListener('click',function(e){e.stopPropagation();play();});
+  document.getElementById('screen').addEventListener('click',function(e){
+    if(e.target.closest('.tz-bigplay'))return;toggle();
+  });
+  document.getElementById('screen').addEventListener('keydown',function(e){
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle();}
+  });
+  document.getElementById('backBtn').addEventListener('click',function(){st.t=Math.max(0,st.t-10);sync();});
+  document.getElementById('fwdBtn').addEventListener('click',function(){st.t=Math.min(DUR,st.t+10);sync();});
+  seek.addEventListener('input',function(){st.t=+seek.value;sync();});
+
+  var speedBtn=document.getElementById('speedBtn'),speedMenu=document.getElementById('speedMenu');
+  speedBtn.addEventListener('click',function(e){e.stopPropagation();
+    var open=speedMenu.hidden;speedMenu.hidden=!open;
+    speedBtn.setAttribute('aria-expanded',String(open));});
+  document.addEventListener('click',function(){speedMenu.hidden=true;speedBtn.setAttribute('aria-expanded','false');});
+  speedMenu.addEventListener('click',function(e){
+    var b=e.target.closest('button');if(!b)return;
+    st.speed=+b.dataset.s;speedBtn.textContent=(st.speed+'').replace('.0','')+'×';
+    var bs=speedMenu.querySelectorAll('button'),k;
+    for(k=0;k<bs.length;k++)bs[k].setAttribute('aria-checked',String(bs[k]===b));
+  });
+
+  var capBtn=document.getElementById('capBtn');
+  capBtn.addEventListener('click',function(){
+    st.captions=!st.captions;capBtn.setAttribute('aria-pressed',String(st.captions));sync();
+  });
+
+  var vol=document.getElementById('vol'),muteBtn=document.getElementById('muteBtn');
+  vol.addEventListener('input',function(){st.vol=+vol.value/100;st.muted=st.vol===0;syncMute();audioLevel();});
+  function syncMute(){
+    muteBtn.setAttribute('aria-pressed',String(st.muted));
+    muteBtn.style.color=st.muted?'#f2a93b':'';
+  }
+  muteBtn.addEventListener('click',function(){st.muted=!st.muted;syncMute();audioLevel();});
+
+  document.getElementById('fsBtn').addEventListener('click',function(){
+    var vp=document.getElementById('vp');
+    if(document.fullscreenElement)document.exitFullscreen();
+    else if(vp.requestFullscreen)vp.requestFullscreen();
+  });
+
+  var chapBar=document.getElementById('chapBar'),chapTicks=document.getElementById('chapTicks');
+  chapters.forEach(function(c){
+    var b=document.createElement('button');b.type='button';b.className='tz-chap';
+    b.textContent=c.name;b.dataset.t=c.t;b.setAttribute('aria-current','false');
+    b.addEventListener('click',function(){st.t=c.t;sync();});
+    chapBar.appendChild(b);
+    var tick=document.createElement('i');tick.style.left=(c.t/DUR*100)+'%';
+    chapTicks.appendChild(tick);
+  });
+
+  document.addEventListener('keydown',function(e){
+    if(/INPUT|TEXTAREA/.test(document.activeElement.tagName))return;
+    if(e.key===' '){e.preventDefault();toggle();}
+    else if(e.key==='ArrowRight'){st.t=Math.min(DUR,st.t+5);sync();}
+    else if(e.key==='ArrowLeft'){st.t=Math.max(0,st.t-5);sync();}
+    else if(e.key==='ArrowUp'){e.preventDefault();st.vol=Math.min(1,st.vol+0.1);vol.value=st.vol*100;st.muted=false;syncMute();audioLevel();}
+    else if(e.key==='ArrowDown'){e.preventDefault();st.vol=Math.max(0,st.vol-0.1);vol.value=st.vol*100;st.muted=st.vol===0;syncMute();audioLevel();}
+    else if(e.key==='m'){st.muted=!st.muted;syncMute();audioLevel();}
+    else if(e.key==='f'){document.getElementById('fsBtn').click();}
+  });
+
+  var last=performance.now();
+  function loop(now){
+    var dt=(now-last)/1000;last=now;
+    if(st.playing){st.t+=dt*st.speed;if(st.t>=DUR){st.t=DUR;pause();}}
+    draw(st.t);sync();
+    requestAnimationFrame(loop);
+  }
+  document.getElementById('tDur').textContent=fmt(DUR);
+  sync();requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
