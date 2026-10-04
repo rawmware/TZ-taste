@@ -1,0 +1,50 @@
+<!--tz-meta {"id":"how-it-works-steps","title":"Three steps","category":"How it works","file":"patterns/how-it-works-steps.html","tags":["timeline","simple"],"description":"Three connected steps on a progress line with generous whitespace.","dnas":["soft-minimal"]} -->
+<section class="tz-hs">
+  <p class="tz-hs-eyebrow">How it works</p>
+  <h2 class="tz-hs-title">Live by Friday.<br>Really.</h2>
+  <ol class="tz-hs-list">
+    <li>
+      <span class="tz-hs-dot" aria-hidden="true">1</span>
+      <h3>Connect</h3>
+      <p>Plug in your inbox and calendar. OAuth takes four minutes; we have timed it.</p>
+      <p class="tz-hs-time">Day one · 4 minutes</p>
+    </li>
+    <li>
+      <span class="tz-hs-dot" aria-hidden="true">2</span>
+      <h3>Teach</h3>
+      <p>Approve a dozen drafted replies. The system learns your voice from your corrections.</p>
+      <p class="tz-hs-time">Day two · 20 minutes</p>
+    </li>
+    <li>
+      <span class="tz-hs-dot" aria-hidden="true">3</span>
+      <h3>Release</h3>
+      <p>Flip the switch. Drafts keep coming for approval until you trust it to send.</p>
+      <p class="tz-hs-time">Day three · one click</p>
+    </li>
+  </ol>
+</section>
+<style>
+.tz-hs{--bg:#f7f5f1;--ink:#1d1c19;--accent:#4f6b4a;--line:rgba(29,28,25,.2);
+  background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(72px,10vw,140px) clamp(24px,6vw,88px)}
+.tz-hs-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 18px}
+.tz-hs-title{font-size:clamp(38px,5.6vw,72px);letter-spacing:-.025em;font-weight:700;
+  line-height:1.02;margin:0 0 clamp(56px,8vw,104px)}
+.tz-hs-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);
+  gap:clamp(32px,4vw,56px);position:relative;max-width:1150px}
+.tz-hs-list::before{content:"";position:absolute;top:27px;left:4%;right:4%;height:2px;background:var(--line)}
+.tz-hs-list li{position:relative;padding-top:0}
+.tz-hs-dot{position:relative;z-index:1;width:56px;height:56px;border-radius:50%;background:var(--bg);
+  border:2px solid var(--ink);display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:19px;margin-bottom:28px}
+.tz-hs-list li:nth-child(2) .tz-hs-dot{background:var(--accent);border-color:var(--accent);color:#fff}
+.tz-hs-list h3{font-size:24px;letter-spacing:-.01em;margin:0 0 12px}
+.tz-hs-list p{font-size:15.5px;line-height:1.65;color:rgba(29,28,25,.75);margin:0 0 16px;max-width:32ch}
+.tz-hs-time{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent);margin:0 !important}
+@media (max-width:760px){
+  .tz-hs-list{grid-template-columns:1fr;gap:48px}
+  .tz-hs-list::before{top:4%;bottom:4%;left:27px;right:auto;width:2px;height:auto}
+}
+</style>
