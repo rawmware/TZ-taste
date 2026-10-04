@@ -1,0 +1,105 @@
+<!--tz-meta {"id":"gen-flow-confetti-physics","title":"Confetti Physics","category":"Generative","file":"generative/flow-confetti-physics.html","tags":["confetti","physics","celebration"],"description":"Paper confetti flutters, gusts, and piles up with real gravity, drag, and floor bounces.","dnas":["memphis-milano"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Confetti Physics — TZ-taste Generative</title>
+<style>
+*{box-sizing:border-box}
+.tz-gen-body{margin:0;background:#f7efe3;color:#1c1a22;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;min-height:100vh}
+.tz-gen-wrap{max-width:1120px;margin:0 auto;padding:48px 24px 64px}
+.tz-gen-head{margin:0 0 28px}
+.tz-gen-kicker{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#ff4d8d;margin:0 0 14px}
+.tz-gen-head h1{font-size:clamp(30px,5vw,52px);line-height:1.05;margin:0 0 12px;font-weight:800;letter-spacing:-0.02em}
+.tz-gen-caption{font-size:16px;line-height:1.6;color:#7a7488;margin:0;max-width:62ch}
+.tz-gen-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:26px 0 14px}
+.tz-gen-btn{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;background:transparent;color:#1c1a22;border:2px solid #1c1a22;padding:9px 18px;border-radius:6px;cursor:pointer}
+.tz-gen-btn:hover{border-color:#ff4d8d;color:#ff4d8d}
+.tz-gen-seed{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:12px;color:#7a7488;margin-left:auto}
+.tz-gen-canvas{display:block;width:100%;height:70vh;border:2px solid #1c1a22;border-radius:6px;background:#f7efe3}
+.tz-gen-note{font-size:14px;line-height:1.65;color:#7a7488;margin:18px 0 0;max-width:70ch}
+@media(max-width:520px){.tz-gen-wrap{padding:32px 16px 48px}.tz-gen-seed{margin-left:0;width:100%}}
+</style>
+</head>
+<body class="tz-gen-body">
+<div class="tz-gen-wrap">
+  <header class="tz-gen-head">
+    <p class="tz-gen-kicker">TZ-taste · Generative</p>
+    <h1>Confetti Physics</h1>
+    <p class="tz-gen-caption">Two hundred pieces of paper, each with its own gravity, flutter phase, and bounce. Wind gusts roll through every few seconds.</p>
+  </header>
+  <div class="tz-gen-bar">
+    <button class="tz-gen-btn" id="tzSeed">New seed</button>
+    <button class="tz-gen-btn" id="tzPause">Pause</button>
+    <button class="tz-gen-btn" id="tzClear">Clear</button>
+    <span class="tz-gen-seed" id="tzSeedLabel">Seed 0</span>
+  </div>
+  <canvas class="tz-gen-canvas" id="tzCv" aria-label="Confetti falling and bouncing with physics"></canvas>
+  <p class="tz-gen-note">Watch the floor: pieces land, skid, and settle. Clear throws the whole handful back up again.</p>
+</div>
+<script>
+'use strict';
+const cv=document.getElementById('tzCv'),ctx=cv.getContext('2d');
+const seedLabel=document.getElementById('tzSeedLabel');
+let W=0,H=0,seed=(Math.random()*1e9)|0,rand=null,parts=[],t=0,gust=0,running=true;
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const BG='#f7efe3';
+const PAL=['#ff4d8d','#ffd23f','#2ec4b6','#ff6b35','#1c1a22'];
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function spawn(anyY){
+  return {x:rand()*W,y:anyY?rand()*H:-20-rand()*80,
+    vx:(rand()-0.5)*1.2,vy:0.5+rand()*1.5,
+    rot:rand()*Math.PI*2,vr:(rand()-0.5)*0.25,
+    w:5+rand()*7,h:3+rand()*5,
+    c:PAL[Math.floor(rand()*PAL.length)],
+    ph:rand()*6.28,rest:0};
+}
+function init(){
+  rand=mulberry32(seed);parts=[];t=0;gust=0;
+  const n=180;
+  for(let i=0;i<n;i++)parts.push(spawn(true));
+  seedLabel.textContent='Seed '+seed;
+}
+function step(){
+  t+=0.016;
+  gust=Math.max(0,gust-0.008);
+  if(rand()<0.004)gust=0.6+rand()*0.8;
+  ctx.fillStyle=BG;ctx.fillRect(0,0,W,H);
+  for(const p of parts){
+    if(p.rest>0){p.rest-=0.016;if(p.rest<=0){Object.assign(p,spawn(false));} }
+    else{
+      p.vy+=0.09;p.vy=Math.min(p.vy,4.2);
+      p.vx+=Math.sin(t*3+p.ph)*0.05+gust*0.25;
+      p.vx*=0.995;p.vy*=0.998;
+      p.x+=p.vx;p.y+=p.vy;
+      p.rot+=p.vr+p.vx*0.05;
+      if(p.x<-20)p.x=W+20;if(p.x>W+20)p.x=-20;
+      if(p.y>H-6){
+        p.y=H-6;
+        if(Math.abs(p.vy)>0.8){p.vy*=-0.32;p.vx*=0.7;}
+        else{p.rest=2+rand()*6;p.vy=0;}
+      }
+    }
+    ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.rot);
+    ctx.fillStyle=p.c;ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
+    ctx.restore();
+  }
+}
+function resize(){
+  const d=Math.min(window.devicePixelRatio||1,2),r=cv.getBoundingClientRect();
+  W=Math.max(2,Math.round(r.width));H=Math.max(2,Math.round(r.height));
+  cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);init();
+}
+window.addEventListener('resize',resize);
+document.getElementById('tzSeed').addEventListener('click',()=>{seed=(Math.random()*1e9)|0;init();if(!running)toggle();});
+document.getElementById('tzClear').addEventListener('click',init);
+function toggle(){running=!running;document.getElementById('tzPause').textContent=running?'Pause':'Resume';if(running&&!reduced)tick();}
+document.getElementById('tzPause').addEventListener('click',toggle);
+function tick(){if(!running)return;step();requestAnimationFrame(tick);}
+resize();
+if(reduced){for(let i=0;i<500;i++)step();}
+else tick();
+</script>
+</body>
+</html>
