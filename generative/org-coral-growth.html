@@ -1,0 +1,112 @@
+<!--tz-meta {"id":"gen-org-coral-growth","title":"Coral Growth","category":"Generative","file":"generative/org-coral-growth.html","tags":["coral","growth","simulation"],"description":"Diffusion-limited aggregation: walkers stick on contact, growing branching coral.","dnas":["botanical-lab"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coral Growth — TZ-taste</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f4f1e6;color:#3c4a3c;font-family:"Avenir Next","Segoe UI",Verdana,sans-serif;-webkit-font-smoothing:antialiased}
+.tz-wrap{max-width:760px;margin:0 auto;padding:20px 16px 32px}
+.tz-kicker{font-size:11px;letter-spacing:.22em;text-transform:uppercase;opacity:.6;margin:0 0 8px}
+.tz-title{font-family:Georgia,"Iowan Old Style",serif;font-weight:600;font-size:30px;margin:0 0 8px;letter-spacing:.01em}
+.tz-caption{font-size:14px;line-height:1.55;opacity:.78;margin:0 0 16px;max-width:58ch}
+.tz-controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px}
+.tz-btn{appearance:none;border:1px solid currentColor;background:transparent;color:inherit;font:inherit;font-size:13px;padding:8px 14px;border-radius:999px;cursor:pointer;opacity:.9}
+.tz-btn:hover{opacity:1;background:rgba(60,74,60,.08)}
+.tz-btn:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.tz-readout{font-size:13px;opacity:.7;margin-left:4px;font-variant-numeric:tabular-nums}
+.tz-canvas{display:block;width:100%;height:70vh;min-height:340px;border-radius:14px;border:1px solid rgba(60,74,60,.25);background:#f4f1e6}
+.tz-foot{font-size:12px;opacity:.55;margin:12px 0 0;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="tz-wrap">
+<header>
+<p class="tz-kicker">TZ-taste &middot; Generative</p>
+<h1 class="tz-title">Coral Growth</h1>
+<p class="tz-caption">Random walkers drift down through the water and stick on first contact, growing a branching coral by diffusion-limited aggregation.</p>
+</header>
+<div class="tz-controls">
+<button class="tz-btn" type="button" id="tz-seed">New seed</button>
+<button class="tz-btn" type="button" id="tz-pause">Pause</button>
+<button class="tz-btn" type="button" id="tz-clear">Clear</button>
+<span class="tz-readout" id="tz-count">0 polyps</span>
+</div>
+<canvas class="tz-canvas" id="tz-cv"></canvas>
+<p class="tz-foot">True DLA: each particle walks until it touches the aggregate, then freezes into it. Seeded with mulberry32.</p>
+</div>
+<script>
+(function(){
+"use strict";
+var cv=document.getElementById('tz-cv'),ctx=cv.getContext('2d');
+var seedB=document.getElementById('tz-seed'),pauseB=document.getElementById('tz-pause'),clearB=document.getElementById('tz-clear');
+var countEl=document.getElementById('tz-count');
+var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var DPR=Math.min(window.devicePixelRatio||1,2),W=0,H=0;
+var CELL=2,cols=0,rows=0,occ=null,pts=[],MAX=5200,growing=true;
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+var rng=mulberry32((Math.random()*4294967296)|0);
+function key(x,y){return y*cols+x;}
+function addPt(x,y){occ[key(x,y)]=1;pts.push([x,y]);}
+function init(){
+  cols=Math.max(40,Math.floor(W/CELL));rows=Math.max(40,Math.floor(H/CELL));
+  occ=new Uint8Array(cols*rows);pts=[];growing=true;
+  addPt(cols>>1,rows-3);addPt((cols>>1)-1,rows-3);addPt((cols>>1)+1,rows-3);
+  countEl.textContent='0 polyps';
+  draw();
+}
+function touches(x,y){
+  for(var dy=-1;dy<=1;dy++)for(var dx=-1;dx<=1;dx++){
+    var nx=x+dx,ny=y+dy;
+    if(nx<0||ny<0||nx>=cols||ny>=rows)continue;
+    if(occ[key(nx,ny)])return true;
+  }
+  return false;
+}
+function step(){
+  var sticks=0,guard=0;
+  while(sticks<70&&guard<4000&&growing){
+    guard++;
+    var x=(rng()*cols)|0,y=2;
+    for(var s=0;s<500;s++){
+      var d=rng();
+      if(d<0.42)y++;else if(d<0.62)y--;else if(d<0.81)x--;else x++;
+      if(x<0)x=0;if(x>=cols)x=cols-1;if(y<1)y=1;if(y>=rows-1)y=rows-2;
+      if(touches(x,y)){addPt(x,y);sticks++;break;}
+    }
+  }
+  if(pts.length>=MAX)growing=false;
+  countEl.textContent=pts.length.toLocaleString()+' polyps';
+}
+function draw(){
+  ctx.fillStyle='#f4f1e6';ctx.fillRect(0,0,W,H);
+  ctx.strokeStyle='rgba(92,112,80,.5)';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(0,H-4);ctx.lineTo(W,H-4);ctx.stroke();
+  var n=pts.length,split=Math.max(0,n-320);
+  ctx.fillStyle='#5c7050';
+  for(var i=0;i<split;i++){var p=pts[i];ctx.fillRect(p[0]*CELL,p[1]*CELL,CELL,CELL);}
+  ctx.fillStyle='#7d9268';
+  for(var j=split;j<n;j++){var q=pts[j];ctx.fillRect(q[0]*CELL,q[1]*CELL,CELL,CELL);}
+}
+var raf=0,paused=false;
+function loop(){if(paused||!growing)return;step();draw();raf=requestAnimationFrame(loop);}
+function settle(){var g=0;while(growing&&g<400){step();g++;}draw();}
+function resize(){
+  var r=cv.getBoundingClientRect();
+  W=Math.max(1,Math.round(r.width));H=Math.max(1,Math.round(r.height));
+  cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR);
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  init();
+  if(reduced)settle();else if(!paused){cancelAnimationFrame(raf);loop();}
+}
+seedB.addEventListener('click',function(){rng=mulberry32((Math.random()*4294967296)|0);paused=false;pauseB.textContent='Pause';cancelAnimationFrame(raf);init();if(reduced)settle();else loop();});
+pauseB.addEventListener('click',function(){if(reduced)return;paused=!paused;pauseB.textContent=paused?'Resume':'Pause';if(!paused)loop();});
+clearB.addEventListener('click',function(){cancelAnimationFrame(raf);paused=true;pauseB.textContent='Resume';init();pts=[];occ=new Uint8Array(cols*rows);growing=false;countEl.textContent='0 polyps';draw();});
+window.addEventListener('resize',function(){cancelAnimationFrame(raf);resize();});
+resize();if(!reduced)loop();
+})();
+</script>
+</body>
+</html>
