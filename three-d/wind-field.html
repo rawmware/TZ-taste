@@ -1,0 +1,169 @@
+<!--tz-meta {"id":"wind-field","title":"Wind Vectors","category":"3D","file":"three-d/wind-field.html","tags":["threejs","airy"],"description":"Hundreds of particles ride a living pseudo-noise wind field on a pale sky.","dnas":["soft-minimal"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Wind Vectors — TZ-taste</title>
+<style>
+  html, body { margin:0; height:100%; overflow:hidden; background:#eef3f6; }
+  #app { position:fixed; inset:0; }
+  #app canvas { display:block; }
+  .caption { position:fixed; left:18px; bottom:16px; z-index:5; color:#3d5a76;
+    font:12px/1.6 system-ui, -apple-system, sans-serif; letter-spacing:.05em;
+    opacity:.85; pointer-events:none; }
+  .caption b { display:block; font-size:13px; letter-spacing:.22em; text-transform:uppercase; }
+  #fallback { display:none; position:fixed; inset:0; z-index:10; place-items:center;
+    color:#5a7186; font:14px/1.6 system-ui, sans-serif; text-align:center;
+    padding:32px; background:#eef3f6; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="caption"><b>Wind Vectors</b>drag to orbit &middot; scroll to zoom</div>
+<div id="fallback"><p>This scene needs WebGL, which your browser could not provide.<br/>Try a recent version of Chrome, Safari, Firefox or Edge.</p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (e) {
+  document.getElementById('fallback').style.display = 'grid';
+  throw e;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('app').appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xeef3f6);
+scene.fog = new THREE.Fog(0xeef3f6, 34, 78);
+
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 200);
+camera.position.set(0, 17, 16);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.maxPolarAngle = 1.42;
+controls.minDistance = 8;
+controls.maxDistance = 60;
+
+scene.add(new THREE.HemisphereLight(0xffffff, 0xd8e4ec, 1.1));
+const key = new THREE.DirectionalLight(0xffffff, 1.4);
+key.position.set(8, 14, 6);
+scene.add(key);
+
+/* ---------- the wind: layered sine pseudo-noise ---------- */
+const N = 420, BX = 15, BZ = 11;
+const _v = { x: 0, z: 0 };
+function field(x, z, t) {
+  const s = Math.sin, c = Math.cos;
+  const a = s(x * 0.32 + t * 0.55) + s(z * 0.47 - t * 0.38);
+  const b = c(x * 0.41 - t * 0.46) + c(z * 0.29 + t * 0.62);
+  _v.x = c(a) * 1.35 + 0.55 * s(t * 0.2 + z * 0.1);
+  _v.z = s(b) * 1.35 - 0.35 * c(t * 0.23 + x * 0.1);
+  return _v;
+}
+
+/* ---------- particle state ---------- */
+const pos = new Float32Array(N * 3);   // head
+const prev = new Float32Array(N * 3);  // trail tail
+function respawn(i) {
+  pos[i * 3] = (Math.random() * 2 - 1) * BX;
+  pos[i * 3 + 1] = 0;
+  pos[i * 3 + 2] = (Math.random() * 2 - 1) * BZ;
+  prev[i * 3] = pos[i * 3]; prev[i * 3 + 1] = 0; prev[i * 3 + 2] = pos[i * 3 + 2];
+}
+for (let i = 0; i < N; i++) respawn(i);
+
+/* ---------- trail ribbons: one LineSegments, 2 verts per particle ---------- */
+const segPos = new Float32Array(N * 2 * 3);
+const segCol = new Float32Array(N * 2 * 3);
+const headC = new THREE.Color(0x38618c), tailC = new THREE.Color(0xc3d8ea);
+for (let i = 0; i < N; i++) {
+  tailC.toArray(segCol, i * 6);
+  headC.toArray(segCol, i * 6 + 3);
+}
+const segGeo = new THREE.BufferGeometry();
+segGeo.setAttribute('position', new THREE.BufferAttribute(segPos, 3));
+segGeo.setAttribute('color', new THREE.BufferAttribute(segCol, 3));
+scene.add(new THREE.LineSegments(segGeo, new THREE.LineBasicMaterial({
+  vertexColors: true, transparent: true, opacity: 0.65 })));
+
+/* ---------- arrowheads: instanced cones riding the flow ---------- */
+const heads = new THREE.InstancedMesh(
+  new THREE.ConeGeometry(0.10, 0.34, 6),
+  new THREE.MeshBasicMaterial({ color: 0x38618c }),
+  N
+);
+heads.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+scene.add(heads);
+const _m = new THREE.Matrix4(), _p = new THREE.Vector3(),
+      _q = new THREE.Quaternion(), _s = new THREE.Vector3(1, 1, 1),
+      _up = new THREE.Vector3(0, 1, 0), _d = new THREE.Vector3();
+
+/* ---------- faint reference dot grid ---------- */
+{
+  const pts = [];
+  for (let x = -BX; x <= BX; x += 2)
+    for (let z = -BZ; z <= BZ; z += 2) pts.push(x, -0.02, z);
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(new Float32Array(pts), 3));
+  scene.add(new THREE.Points(g, new THREE.PointsMaterial({
+    color: 0xc9d8e3, size: 0.09, transparent: true, opacity: 0.8 })));
+}
+
+/* ---------- advect ---------- */
+let t = 0;
+function step(dt) {
+  t += dt;
+  for (let i = 0; i < N; i++) {
+    const ix = i * 3;
+    prev[ix] = pos[ix]; prev[ix + 1] = 0; prev[ix + 2] = pos[ix + 2];
+    const v = field(pos[ix], pos[ix + 2], t);
+    pos[ix] += v.x * dt * 2.4;
+    pos[ix + 2] += v.z * dt * 2.4;
+    if (Math.abs(pos[ix]) > BX || Math.abs(pos[ix + 2]) > BZ) { respawn(i); continue; }
+    // write trail segment: tail = prev, head = pos
+    segPos[i * 6] = prev[ix]; segPos[i * 6 + 1] = 0.02; segPos[i * 6 + 2] = prev[ix + 2];
+    segPos[i * 6 + 3] = pos[ix]; segPos[i * 6 + 4] = 0.02; segPos[i * 6 + 5] = pos[ix + 2];
+    // orient arrowhead along velocity
+    _d.set(v.x, 0, v.z);
+    if (_d.lengthSq() > 1e-6) {
+      _d.normalize();
+      _q.setFromUnitVectors(_up, _d);
+      _p.set(pos[ix], 0.06, pos[ix + 2]);
+      _m.compose(_p, _q, _s);
+      heads.setMatrixAt(i, _m);
+    }
+  }
+  segGeo.attributes.position.needsUpdate = true;
+  heads.instanceMatrix.needsUpdate = true;
+}
+
+const clock = new THREE.Clock();
+if (REDUCED) {
+  step(0.9); // one settled static frame
+  renderer.render(scene, camera);
+} else {
+  renderer.setAnimationLoop(() => {
+    step(Math.min(clock.getDelta(), 0.05));
+    controls.update();
+    renderer.render(scene, camera);
+  });
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
