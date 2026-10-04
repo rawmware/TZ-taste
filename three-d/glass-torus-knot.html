@@ -1,0 +1,129 @@
+<!--tz-meta {"id":"glass-torus-knot","title":"Glass Knot Studio","category":"3D","file":"three-d/glass-torus-knot.html","tags":["threejs","refined"],"description":"A transmissive glass torus knot turning slowly under studio three-point lighting on a soft gradient.","dnas":["glass-calm"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glass Knot Studio — TZ-taste</title>
+<style>
+  html, body {
+    margin: 0; height: 100%; overflow: hidden;
+    background: radial-gradient(120% 90% at 50% 30%, #f8fafc 0%, #e2e8f0 55%, #cbd5e1 100%);
+  }
+  canvas { display: block; }
+  .caption {
+    position: fixed; left: 18px; bottom: 16px; color: #475569; pointer-events: none;
+    font: 12px/1.6 system-ui, -apple-system, sans-serif; letter-spacing: .14em;
+    text-transform: uppercase; opacity: .9;
+  }
+  .caption small { display: block; letter-spacing: .05em; text-transform: none; opacity: .6; }
+  .fallback {
+    position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+    color: #475569; font: 14px system-ui, sans-serif; padding: 2rem; text-align: center;
+  }
+</style>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+</head>
+<body>
+<div class="caption">Glass Knot Studio<small>drag to orbit &middot; physical transmission material</small></div>
+<div class="fallback" id="fallback" hidden>WebGL is unavailable in this browser, so this scene cannot render.</div>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+const fallback = document.getElementById('fallback');
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+} catch (err) {
+  fallback.hidden = false;
+  throw err;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.1;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.fog = new THREE.Fog(0xdde5ee, 18, 42);
+
+const camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.1, 100);
+camera.position.set(4.5, 2.2, 8);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.minDistance = 4;
+controls.maxDistance = 18;
+
+// Environment reflections for the glass (procedural room, no assets)
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+
+// Studio three-point lighting
+const key = new THREE.DirectionalLight(0xffffff, 2.2);
+key.position.set(6, 8, 5);
+scene.add(key);
+const fill = new THREE.PointLight(0xdbeafe, 30, 40);
+fill.position.set(-7, 2, 6);
+scene.add(fill);
+const rim = new THREE.SpotLight(0xc4b5fd, 120, 40, Math.PI / 5, 0.4);
+rim.position.set(-4, 6, -8);
+scene.add(rim);
+scene.add(new THREE.AmbientLight(0xf1f5f9, 0.5));
+
+// Glass torus knot
+const knot = new THREE.Mesh(
+  new THREE.TorusKnotGeometry(1.6, 0.48, 240, 40),
+  new THREE.MeshPhysicalMaterial({
+    color: 0xffffff,
+    transmission: 1.0,
+    thickness: 1.6,
+    roughness: 0.08,
+    ior: 1.5,
+    clearcoat: 1.0,
+    clearcoatRoughness: 0.12,
+    attenuationColor: new THREE.Color(0xbfe9ff),
+    attenuationDistance: 3.5,
+    envMapIntensity: 1.4
+  })
+);
+scene.add(knot);
+
+// Soft pedestal disc for grounding
+const disc = new THREE.Mesh(
+  new THREE.CylinderGeometry(3.4, 3.6, 0.18, 64),
+  new THREE.MeshStandardMaterial({ color: 0xe8eef5, roughness: 0.6, metalness: 0.05 })
+);
+disc.position.y = -2.7;
+scene.add(disc);
+
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const clock = new THREE.Clock();
+
+function tick() {
+  const t = clock.getElapsedTime();
+  if (!reduced) {
+    knot.rotation.y = t * 0.25;
+    knot.rotation.x = Math.sin(t * 0.2) * 0.15;
+    controls.update();
+  }
+  renderer.render(scene, camera);
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+if (reduced) {
+  knot.rotation.y = 0.5;
+  renderer.render(scene, camera);
+} else {
+  renderer.setAnimationLoop(tick);
+}
+</script>
+</body>
+</html>
