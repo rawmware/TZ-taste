@@ -222,33 +222,116 @@
         '<p class="loading">Couldn’t load the live index — <a href="https://github.com/rawmware/TZ-taste/tree/main/patterns">browse patterns on GitHub →</a></p>';
     });
 
-  /* ---------- prompts ---------- */
-  var PROMPTS = [
-    { file: "prompts/landing-page.md", title: "Landing page", desc: "Full marketing page: hero → proof → pricing → FAQ. The flagship prompt." },
-    { file: "prompts/hero-section.md", title: "Hero section", desc: "One viewport, one focal point. No template hero compositions." },
-    { file: "prompts/dashboard.md", title: "Dashboard", desc: "Dense, keyboard-friendly product UI with real interactive workflows." },
-    { file: "prompts/portfolio.md", title: "Portfolio", desc: "Work-first portfolio with actual voice. A taste demonstration in itself." },
-    { file: "prompts/mobile-screens.md", title: "Mobile screens", desc: "A framed 3–5 screen flow with platform conventions respected." },
-    { file: "prompts/redesign-audit.md", title: "Redesign audit", desc: "Audit existing UI against the anti-slop checklist before rebuilding." }
-  ];
-  var plist = document.getElementById("prompt-list");
-  plist.innerHTML = "";
-  PROMPTS.forEach(function (pr) {
-    var el = document.createElement("div");
-    el.className = "prompt-card";
-    el.innerHTML = "<div><h3>" + pr.title + "</h3><p>" + pr.desc + "</p></div>";
-    var btn = document.createElement("button");
-    btn.className = "btn-line";
-    btn.textContent = "Copy prompt";
-    btn.addEventListener("click", function () {
-      fetch(DATA_BASE + pr.file)
-        .then(function (r) { if (!r.ok) throw 0; return r.text(); })
-        .then(function (md) { copyText(md, pr.title + " prompt copied"); })
-        .catch(function () { toast("Couldn’t load the prompt file"); });
+  /* ---------- prompts (driven by prompts/index.json) ---------- */
+  fetch(DATA_BASE + "prompts/index.json")
+    .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+    .then(function (idx) {
+      var plist = document.getElementById("prompt-list");
+      plist.innerHTML = "";
+      idx.prompts.forEach(function (pr) {
+        var el = document.createElement("div");
+        el.className = "prompt-card";
+        el.innerHTML = "<div><h3>" + pr.title + "</h3><p>" + (pr.description || "") + "</p></div>";
+        var btn = document.createElement("button");
+        btn.className = "btn-line";
+        btn.textContent = "Copy prompt";
+        btn.addEventListener("click", function () {
+          fetch(DATA_BASE + pr.file)
+            .then(function (r) { if (!r.ok) throw 0; return r.text(); })
+            .then(function (md) { copyText(md, pr.title + " prompt copied"); })
+            .catch(function () { toast("Couldn’t load the prompt file"); });
+        });
+        el.appendChild(btn);
+        plist.appendChild(el);
+      });
+    })
+    .catch(function () {
+      document.getElementById("prompt-list").innerHTML =
+        '<p class="loading">Couldn’t load the live index — <a href="https://github.com/rawmware/TZ-taste/tree/main/prompts">browse prompts on GitHub →</a></p>';
     });
-    el.appendChild(btn);
-    plist.appendChild(el);
-  });
+
+  /* ---------- generic gallery: 3D scenes, templates, DNA showcases ----------
+     Cards carry a styled tile (no live iframes — too heavy at this scale);
+     clicking opens the shared preview modal with the full file as srcdoc. */
+  function makeGallery(opts) {
+    var cache = {};
+    function get(file) {
+      if (!cache[file]) {
+        cache[file] = fetch(DATA_BASE + file).then(function (r) {
+          if (!r.ok) throw 0; return r.text();
+        });
+      }
+      return cache[file];
+    }
+    function openItem(item) {
+      currentPatternFile = item.file;
+      pmTitle.textContent = item.title;
+      pmSource.href = "https://github.com/rawmware/TZ-taste/blob/main/" + item.file;
+      get(item.file).then(function (html) {
+        pmFrame.srcdoc = html; /* full standalone pages — no wrapper */
+        if (typeof modal.showModal === "function") modal.showModal();
+        else { toast("Preview needs a modern browser — use View source"); }
+      }).catch(function () { toast("Couldn’t load the preview"); });
+    }
+    fetch(DATA_BASE + opts.index)
+      .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+      .then(function (idx) {
+        var items = idx[opts.key] || [];
+        var grid = document.getElementById(opts.grid);
+        var filters = opts.filters ? document.getElementById(opts.filters) : null;
+        grid.innerHTML = "";
+        function card(item) {
+          var el = document.createElement("article");
+          el.className = "pattern-card";
+          var glyph = (item.title || "?").trim().charAt(0);
+          el.innerHTML =
+            '<div class="g-tile" aria-hidden="true"><span>' + glyph + "</span></div>" +
+            '<div class="pattern-body"><p class="pattern-cat">' + opts.label + "</p><h3>" + item.title + "</h3>" +
+            '<p class="pattern-desc">' + (item.description || "") + "</p>" +
+            '<div class="pattern-actions"><button class="btn-line" data-open>' + opts.cta + "</button></div></div>";
+          el.querySelector("[data-open]").addEventListener("click", function () { openItem(item); });
+          return el;
+        }
+        function render(cat) {
+          grid.innerHTML = "";
+          items
+            .filter(function (p) { return !opts.categoryKey || cat === "All" || p[opts.categoryKey] === cat; })
+            .forEach(function (p) { grid.appendChild(card(p)); });
+        }
+        if (filters && opts.categoryKey) {
+          var cats = ["All"];
+          items.forEach(function (p) {
+            var c = p[opts.categoryKey];
+            if (c && cats.indexOf(c) < 0) cats.push(c);
+          });
+          cats.forEach(function (c, i) {
+            var b = document.createElement("button");
+            b.className = "fchip" + (i === 0 ? " active" : "");
+            b.textContent = c;
+            b.addEventListener("click", function () {
+              filters.querySelectorAll(".fchip").forEach(function (x) { x.classList.remove("active"); });
+              b.classList.add("active");
+              render(c);
+            });
+            filters.appendChild(b);
+          });
+        }
+        render("All");
+      })
+      .catch(function () {
+        document.getElementById(opts.grid).innerHTML =
+          '<p class="loading">Couldn’t load the live index — <a href="https://github.com/rawmware/TZ-taste/tree/main/' +
+          opts.dir + '">browse on GitHub →</a></p>';
+      });
+  }
+
+  makeGallery({ index: "three-d/index.json", key: "scenes", grid: "scenes-grid",
+    label: "3D scene", cta: "Launch scene", dir: "three-d" });
+  makeGallery({ index: "templates/index.json", key: "templates", grid: "templates-grid",
+    filters: "template-filters", categoryKey: "category",
+    label: "Template", cta: "Live preview", dir: "templates" });
+  makeGallery({ index: "showcase/index.json", key: "showcases", grid: "showcase-grid",
+    label: "DNA showcase", cta: "View demo", dir: "showcase" });
 
   /* ---------- sources ---------- */
   Promise.all([
