@@ -1,0 +1,159 @@
+<!--tz-meta {"id":"gen-org-perlin-marble","title":"Perlin Marble","category":"Generative","file":"generative/org-perlin-marble.html","tags":["marble","noise","domain-warp","fbm"],"description":"Value noise warped by itself, then banded into marble veins — click to re-cut the slab.","dnas":["laboratory-clean"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perlin Marble · TZ-taste</title>
+<style>
+  .tz-page{background:#FAFAF7;color:#1A1A1A;min-height:100vh;font-family:Georgia,'Times New Roman',serif;margin:0}
+  .tz-wrap{max-width:1080px;margin:0 auto;padding:32px 20px 48px}
+  .tz-kicker{font-family:'Courier New',Courier,monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#0F766E;margin:0 0 12px}
+  .tz-title{font-size:clamp(32px,6vw,52px);font-weight:700;margin:0 0 10px;line-height:1.05}
+  .tz-caption{font-size:16px;line-height:1.6;max-width:62ch;margin:0 0 4px;color:#5c5c5c}
+  .tz-controls{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+  .tz-btn{font-family:'Courier New',Courier,monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;background:transparent;color:#1A1A1A;border:2px solid #1A1A1A;padding:10px 18px;cursor:pointer}
+  .tz-btn:hover{background:#1A1A1A;color:#FAFAF7}
+  .tz-btn:active{transform:translateY(1px)}
+  .tz-canvas{display:block;width:100%;height:70vh;background:#FAFAF7;border:2px solid #1A1A1A;cursor:pointer}
+  .tz-foot{font-family:'Courier New',Courier,monospace;font-size:12px;color:#9a9a9a;margin:14px 0 0;line-height:1.6}
+</style>
+</head>
+<body class="tz-page">
+<div class="tz-wrap">
+  <p class="tz-kicker">TZ-taste · Generative</p>
+  <h1 class="tz-title">Perlin Marble</h1>
+  <p class="tz-caption">Domain-warped value noise: fractal noise warps the sample coordinates of a second noise field, and the result is banded through a sine into veins. Watch the slab develop row by row — the whole technique is one pixel shader you can lift.</p>
+  <div class="tz-controls">
+    <button class="tz-btn" id="tz-seed" type="button">New seed</button>
+    <button class="tz-btn" id="tz-pause" type="button">Pause</button>
+    <button class="tz-btn" id="tz-clear" type="button">Clear</button>
+  </div>
+  <canvas class="tz-canvas" id="tz-canvas"></canvas>
+  <p class="tz-foot">One distinctive choice: each cut picks a new quarry — calcite, verde, ochre, or graphite. Click the slab to re-cut. Seed <span id="tz-seednum"></span> · <span id="tz-quarry"></span>.</p>
+</div>
+<script>
+(function(){
+  var BG='#FAFAF7';
+  var QUARRIES=[
+    {name:'calcite',  base:'#EFE9DB', mid:'#C6BAA0', vein:'#3E3A33'},
+    {name:'verde',    base:'#E2E8E1', mid:'#9DB0A2', vein:'#26402F'},
+    {name:'ochre',    base:'#F0E6D2', mid:'#D3A75E', vein:'#4A2C17'},
+    {name:'graphite', base:'#EDEDED', mid:'#A3A3A3', vein:'#232323'}
+  ];
+  var canvas=document.getElementById('tz-canvas'), ctx=canvas.getContext('2d');
+  var seedBtn=document.getElementById('tz-seed'), pauseBtn=document.getElementById('tz-pause'),
+      clearBtn=document.getElementById('tz-clear'), seedNum=document.getElementById('tz-seednum'),
+      quarryEl=document.getElementById('tz-quarry');
+  var seed=909090, rng=mulberry32(seed);
+  var perm=new Uint8Array(512);
+  var quarry=QUARRIES[0], cb=[0,0,0], cm=[0,0,0], cv=[0,0,0];
+  var W=0, H=0, W2=0, H2=0, img=null, off=null, offCtx=null;
+  var row=0, running=true, raf=null, done=false;
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+
+  function hex(h){return [parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)];}
+  function mix(a,b,t){return [a[0]+(b[0]-a[0])*t, a[1]+(b[1]-a[1])*t, a[2]+(b[2]-a[2])*t];}
+  function sstep(e0,e1,x){var t=Math.min(1,Math.max(0,(x-e0)/(e1-e0)));return t*t*(3-2*t);}
+
+  function buildPerm(){
+    var p=[]; for(var i=0;i<256;i++)p[i]=i;
+    for(var j=255;j>0;j--){var k=(rng()*(j+1))|0;var t=p[j];p[j]=p[k];p[k]=t;}
+    for(var i2=0;i2<512;i2++)perm[i2]=p[i2&255];
+  }
+
+  function vnoise(x,y){
+    var xi=Math.floor(x), yi=Math.floor(y);
+    var xf=x-xi, yf=y-yi;
+    xi&=255; yi&=255;
+    var u=xf*xf*(3-2*xf), v=yf*yf*(3-2*yf);
+    var a=perm[perm[xi]+yi], b=perm[perm[xi+1]+yi],
+        c=perm[perm[xi]+yi+1], d=perm[perm[xi+1]+yi+1];
+    return (a+(b-a)*u+(c-a)*v+(a-b-c+d)*u*v)/255;
+  }
+
+  function fbm(x,y,oct){
+    var s=0,amp=0.5,f=1,norm=0;
+    for(var i=0;i<oct;i++){s+=amp*vnoise(x*f,y*f);norm+=amp;amp*=0.5;f*=2.03;}
+    return s/norm;
+  }
+
+  function renderRow(y){
+    var d=img.data, sc=3.1;
+    for(var x=0;x<W2;x++){
+      var nx=x/W2*sc, ny=y/H2*sc;
+      var qx=fbm(nx+0.3,ny+0.8,5), qy=fbm(nx+5.2,ny+1.3,5);
+      var v=fbm(nx+3.1*qx, ny+3.1*qy, 5);
+      var m=Math.abs(Math.sin((nx*2.0+v*7.0)*Math.PI));
+      var vein=Math.pow(1-m,10);
+      var tint=Math.pow(1-m,2)*0.28;
+      var band=sstep(0.25,0.92,m);
+      var col=mix(cb,cm,band);
+      col=mix(col,cv,Math.min(1,vein+tint));
+      var o=(y*W2+x)*4;
+      d[o]=col[0]; d[o+1]=col[1]; d[o+2]=col[2]; d[o+3]=255;
+    }
+  }
+
+  function blit(){
+    offCtx.putImageData(img,0,0);
+    ctx.imageSmoothingEnabled=true;
+    ctx.drawImage(off,0,0,W2,H2,0,0,W,H);
+  }
+
+  function frame(){
+    if(!running){raf=null;return;}
+    var chunk=Math.max(4,Math.ceil(H2/50));
+    for(var i=0;i<chunk&&row<H2;i++,row++)renderRow(row);
+    blit();
+    if(row>=H2){done=true;raf=null;return;}
+    raf=requestAnimationFrame(frame);
+  }
+
+  function renderAll(){
+    for(var y=0;y<H2;y++)renderRow(y);
+    row=H2; done=true; blit();
+  }
+
+  function reset(){
+    rng=mulberry32(seed); buildPerm();
+    quarry=QUARRIES[(rng()*QUARRIES.length)|0];
+    cb=hex(quarry.base); cm=hex(quarry.mid); cv=hex(quarry.vein);
+    ctx.fillStyle=BG; ctx.fillRect(0,0,W,H);
+    row=0; done=false;
+    seedNum.textContent=seed; quarryEl.textContent=quarry.name;
+    if(raf)cancelAnimationFrame(raf);
+    if(reduced){renderAll();}
+    else if(running){raf=requestAnimationFrame(frame);}
+  }
+
+  function reseed(){seed=(seed*9301+49297)%233280; reset();}
+
+  function resize(){
+    var dpr=Math.min(window.devicePixelRatio||1,2);
+    var r=canvas.getBoundingClientRect();
+    W=r.width; H=r.height;
+    canvas.width=Math.round(W*dpr); canvas.height=Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    W2=Math.max(2,Math.floor(W/2)); H2=Math.max(2,Math.floor(H/2));
+    off=document.createElement('canvas'); off.width=W2; off.height=H2;
+    offCtx=off.getContext('2d');
+    img=offCtx.createImageData(W2,H2);
+    reset();
+  }
+
+  seedBtn.addEventListener('click',reseed);
+  canvas.addEventListener('click',reseed);
+  clearBtn.addEventListener('click',function(){reset();});
+  pauseBtn.addEventListener('click',function(){
+    running=!running; pauseBtn.textContent=running?'Pause':'Resume';
+    if(running&&!reduced&&!done)raf=requestAnimationFrame(frame);
+  });
+  window.addEventListener('resize',resize);
+  resize();
+})();
+</script>
+</body>
+</html>
