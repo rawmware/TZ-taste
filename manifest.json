@@ -11,7 +11,9 @@
   "tokens": 48,
   "tailwind_presets": 48,
   "emails": 12,
-  "app_ui": 20
+  "app_ui": 20,
+  "swiftui_views": 14,
+  "starters": 23
  },
  "demo": "https://rawmware.github.io/TZ-taste/",
  "files": {
