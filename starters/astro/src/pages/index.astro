@@ -1,0 +1,517 @@
+<!--tz-meta {"id":"astro-page","title":"Nightline — sleeper-train booking page","category":"Starter","file":"starters/astro/src/pages/index.astro","tags":["astro","landing"],"description":"Departure-board hero with timetable rows, brass rules, and one highlighted departure.","dnas":["midnight-railway"]} -->
+---
+import '../styles/global.css';
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nightline — Overnight sleeper-train journeys</title>
+  <meta name="description" content="Board after dark. Wake up somewhere else. Nightline runs overnight sleeper trains across Europe — real berths, real timetables, brass on deep navy." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="masthead">
+    <p class="masthead-brand">Nightline <span class="masthead-sep">/</span> <span class="masthead-sub">Overnight rail</span></p>
+    <p class="masthead-clock"><span class="dot"></span> 20:41 · Boarding now</p>
+  </header>
+
+  <main>
+    <!-- HERO: the departure board IS the page -->
+    <section class="board-wrap" aria-label="Tonight's departures">
+      <div class="board-head">
+        <h1>Fall asleep in one country.<br />Wake up in another.</h1>
+        <p class="board-lede">Nightline runs sleeper trains through the night, not the sky. Berth, breakfast, and a window full of Europe.</p>
+      </div>
+
+      <div class="board" role="table" aria-label="Departure board">
+        <div class="board-row board-colhead" role="row">
+          <span role="columnheader">Dep</span>
+          <span role="columnheader">Destination</span>
+          <span role="columnheader">Plat</span>
+          <span role="columnheader" class="status-cell">Status</span>
+        </div>
+
+        <a class="board-row board-row--featured" role="row" href="#book">
+          <span class="time">21:15</span>
+          <span class="dest">London Euston <em>&rarr; Fort William</em></span>
+          <span class="plat">1</span>
+          <span class="status status--boarding">Boarding</span>
+          <span class="cta-hint">Book a berth &rarr;</span>
+        </a>
+
+        <div class="board-row" role="row">
+          <span class="time">20:47</span>
+          <span class="dest">Paris Est <em>&rarr; Venezia S. Lucia</em></span>
+          <span class="plat">3</span>
+          <span class="status">On time</span>
+        </div>
+
+        <div class="board-row" role="row">
+          <span class="time">20:38</span>
+          <span class="dest">Wien Hbf <em>&rarr; Amsterdam Centraal</em></span>
+          <span class="plat">2</span>
+          <span class="status">On time</span>
+        </div>
+
+        <div class="board-row" role="row">
+          <span class="time">21:40</span>
+          <span class="dest">London Euston <em>&rarr; Edinburgh Waverley</em></span>
+          <span class="plat">7</span>
+          <span class="status">On time</span>
+        </div>
+
+        <div class="board-row" role="row">
+          <span class="time">22:05</span>
+          <span class="dest">Paris Austerlitz <em>&rarr; Toulouse Matabiau</em></span>
+          <span class="plat">4</span>
+          <span class="status status--late">Delayed 12 min</span>
+        </div>
+
+        <div class="board-row" role="row">
+          <span class="time">23:10</span>
+          <span class="dest">M&uuml;nchen Hbf <em>&rarr; Roma Termini</em></span>
+          <span class="plat">11</span>
+          <span class="status">On time</span>
+        </div>
+      </div>
+
+      <div class="board-cta">
+        <a class="btn" href="#book">Book a berth</a>
+        <p class="board-note">Tonight's berths release at noon. No account, no queue.</p>
+      </div>
+    </section>
+
+    <!-- ROUTES -->
+    <section class="routes" aria-label="Featured routes">
+      <h2>Three trains worth the night</h2>
+
+      <article class="route">
+        <p class="route-tag">The Highland Line</p>
+        <h3>London Euston <span class="arrow">&rarr;</span> Fort William</h3>
+        <p class="route-meta">21:15 &rarr; 09:57 <span class="plus">+1</span> · 12h 42m · crosses Rannoch Moor at dawn</p>
+        <p>Scotland's west coast the slow way. Dinner in the club car, then the moor slides past your window in the blue hour. Breakfast is served as you come down Loch Linnhe.</p>
+        <p class="route-price">Berths from <strong>&pound;185</strong> · Seated from <strong>&pound;69</strong></p>
+      </article>
+
+      <article class="route route--indented">
+        <p class="route-tag">The Venetian</p>
+        <h3>Paris Est <span class="arrow">&rarr;</span> Venezia S. Lucia</h3>
+        <p class="route-meta">20:47 &rarr; 09:20 <span class="plus">+1</span> · 12h 33m · arrives over the causeway</p>
+        <p>Board after dinner in the 10th arrondissement. You wake up to the lagoon, step off the train, and the Grand Canal is twenty metres from the platform. It never gets old.</p>
+        <p class="route-price">Berths from <strong>&euro;249</strong> · Seated from <strong>&euro;89</strong></p>
+      </article>
+
+      <article class="route">
+        <p class="route-tag">The Lowland Corridor</p>
+        <h3>Wien Hbf <span class="arrow">&rarr;</span> Amsterdam Centraal</h3>
+        <p class="route-meta">20:38 &rarr; 09:16 <span class="plus">+1</span> · 12h 38m · through the night across Germany</p>
+        <p>Sacher torte before the border, stroopwafels with your coffee. The workhorse of the network — fast bookings, quiet cars, and bikes carried free in the luggage van.</p>
+        <p class="route-price">Berths from <strong>&euro;139</strong> · Seated from <strong>&euro;49</strong></p>
+      </article>
+    </section>
+
+    <!-- CABINS: asymmetric rows, not cards -->
+    <section class="cabins" aria-label="Cabin classes">
+      <h2>Your berth, your call</h2>
+
+      <article class="cabin">
+        <p class="cabin-index">01</p>
+        <div class="cabin-body">
+          <h3>The Classic Double</h3>
+          <p>A private cabin for two, brass fittings, washbasin, real linen. The train does the travelling; you do the sleeping.</p>
+          <ul>
+            <li>Private lockable cabin</li>
+            <li>Breakfast brought to your berth</li>
+            <li>Club car access until midnight</li>
+          </ul>
+          <p class="cabin-price">from <strong>&pound;185</strong> per berth</p>
+        </div>
+      </article>
+
+      <article class="cabin cabin--right">
+        <p class="cabin-index">02</p>
+        <div class="cabin-body">
+          <h3>The Club Single</h3>
+          <p>Solo travellers get their own door, not a curtain. Same cabin as the double, booked singly, priced honestly.</p>
+          <ul>
+            <li>Private single cabin</li>
+            <li>Evening turndown with hot chocolate</li>
+            <li>Reading lamp and two outlets</li>
+          </ul>
+          <p class="cabin-price">from <strong>&pound;149</strong> per berth</p>
+        </div>
+      </article>
+
+      <article class="cabin cabin--wide">
+        <p class="cabin-index">03</p>
+        <div class="cabin-body">
+          <h3>The Seated Coach</h3>
+          <p>Forty-five degrees of recline, a blanket, and the price of a tank of petrol. For students, insomniacs, and romantics.</p>
+          <ul>
+            <li>Reclining seat with leg rest</li>
+            <li>Blanket and pillow included</li>
+            <li>Quiet car, phones on silent</li>
+          </ul>
+          <p class="cabin-price">from <strong>&pound;69</strong> per seat</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- BOOKING CTA -->
+    <section class="book" id="book" aria-label="Book">
+      <p class="book-tag">Tonight's departures</p>
+      <h2>The 21:15 to Fort William<br />is boarding at platform 1.</h2>
+      <p class="book-lede">Pick a berth, pay once, get a QR code. Refunds are free until noon on the day of travel — trains are forgiving like that.</p>
+      <a class="btn btn--large" href="mailto:bookings@nightlinerail.co?subject=Berth%20booking">Book a berth</a>
+      <p class="book-fine">Or call <a href="tel:+442079460010">+44 20 7946 0010</a> — a human answers between 08:00 and 23:00.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-brand">Nightline</p>
+        <p class="footer-line">Overnight sleeper trains across Europe.<br />Operated by Nightline Rail Co. Ltd.</p>
+      </div>
+      <nav aria-label="Footer">
+        <p class="footer-heading">Plan</p>
+        <ul>
+          <li><a href="#book">Timetables</a></li>
+          <li><a href="#book">Berths &amp; fares</a></li>
+          <li><a href="#book">Group bookings</a></li>
+          <li><a href="#book">Lost property</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="About">
+        <p class="footer-heading">Company</p>
+        <ul>
+          <li><a href="#book">About us</a></li>
+          <li><a href="#book">Accessibility</a></li>
+          <li><a href="#book">Sustainability</a></li>
+          <li><a href="#book">Careers</a></li>
+        </ul>
+      </nav>
+      <div>
+        <p class="footer-heading">Contact</p>
+        <ul class="footer-contact">
+          <li><a href="mailto:bookings@nightlinerail.co">bookings@nightlinerail.co</a></li>
+          <li><a href="tel:+442079460010">+44 20 7946 0010</a></li>
+          <li>Unit 7, Pancras Yard,<br />London N1C 4AB</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <p>&copy; 2026 Nightline Rail Co. Ltd. Registered in England No. 09182746. VAT GB 842 1190 33.</p>
+      <p><a href="#book">Terms of carriage</a> · <a href="#book">Privacy</a> · <a href="#book">Delay repay</a></p>
+    </div>
+  </footer>
+
+<style>
+  :root {
+    --measure: 68ch;
+  }
+
+  .masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 24px clamp(20px, 5vw, 64px);
+    border-bottom: 1px solid var(--line);
+    font-family: "Space Mono", monospace;
+    font-size: 0.85rem;
+  }
+  .masthead-brand { font-weight: 700; letter-spacing: 0.02em; }
+  .masthead-sep { color: var(--accent); }
+  .masthead-sub { color: var(--muted); font-weight: 400; }
+  .masthead-clock { color: var(--muted); }
+  .masthead-clock .dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+
+  /* ---------- departure board ---------- */
+  .board-wrap {
+    padding: 64px clamp(20px, 5vw, 64px) 96px;
+  }
+  .board-head {
+    max-width: var(--measure);
+    margin-bottom: 40px;
+  }
+  .board-head h1 {
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .board-lede {
+    color: var(--muted);
+    font-size: 1.1rem;
+    max-width: 52ch;
+  }
+
+  .board {
+    border-top: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
+  }
+  .board-row {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr 4rem 10rem;
+    gap: 16px;
+    align-items: baseline;
+    padding: 18px 16px;
+    border-bottom: 1px solid var(--line);
+    font-family: "Space Mono", monospace;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .board-row:last-child { border-bottom: none; }
+  .board-colhead {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    padding: 12px 16px;
+  }
+  .board-colhead .status-cell { text-align: left; }
+  .board-row .time { font-weight: 700; font-size: 1.25rem; }
+  .board-row .dest { font-family: "DM Sans", sans-serif; font-weight: 500; font-size: 1.05rem; }
+  .board-row .dest em { font-style: normal; color: var(--muted); font-weight: 400; }
+  .board-row .plat { text-align: center; }
+  .board-row .status {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+  }
+  .board-row .status--boarding { color: var(--bg); background: var(--accent); padding: 4px 10px; justify-self: start; }
+  .board-row .status--late { color: #d97b6c; }
+
+  .board-row--featured {
+    background: #18243c;
+    border-left: 4px solid var(--accent);
+    grid-template-columns: 5.5rem 1fr 4rem 10rem auto;
+    transition: background 240ms var(--ease);
+  }
+  .board-row--featured:hover { background: #1d2a44; }
+  .board-row--featured .cta-hint {
+    font-family: "DM Sans", sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  .board-cta { margin-top: 40px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .board-note { color: var(--muted); font-size: 0.95rem; max-width: 40ch; }
+
+  .btn {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--bg);
+    font-weight: 700;
+    text-decoration: none;
+    padding: 14px 32px;
+    border-radius: 3px;
+    transition: transform 240ms var(--ease), background 240ms var(--ease);
+  }
+  .btn:hover { transform: translateY(-2px); background: var(--ink); color: var(--bg); }
+  .btn--large { font-size: 1.1rem; padding: 18px 44px; }
+
+  /* ---------- routes ---------- */
+  .routes {
+    padding: 96px clamp(20px, 5vw, 64px);
+    border-top: 1px solid var(--line);
+  }
+  .routes h2, .cabins h2 {
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 56px;
+  }
+  .route { max-width: var(--measure); margin-bottom: 72px; }
+  .route:last-child { margin-bottom: 0; }
+  .route--indented { margin-left: clamp(0px, 12vw, 220px); }
+  .route-tag {
+    font-family: "Space Mono", monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .route h3 {
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  .route h3 .arrow { color: var(--accent); }
+  .route-meta {
+    font-family: "Space Mono", monospace;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .route-meta .plus { color: var(--accent); }
+  .route p { max-width: 60ch; }
+  .route-price { margin-top: 16px; font-size: 1.05rem; }
+  .route-price strong { color: var(--accent); }
+
+  /* ---------- cabins: asymmetric rows ---------- */
+  .cabins {
+    padding: 96px clamp(20px, 5vw, 64px) 128px;
+    border-top: 1px solid var(--line);
+  }
+  .cabin {
+    display: grid;
+    grid-template-columns: 6rem 1fr;
+    gap: 24px;
+    padding: 48px 0;
+    border-top: 1px solid var(--line);
+    max-width: 60rem;
+  }
+  .cabin:last-child { border-bottom: 1px solid var(--line); }
+  .cabin-index {
+    font-family: "Space Mono", monospace;
+    font-size: 2.4rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .cabin--right { margin-left: auto; max-width: 48rem; grid-template-columns: 1fr 6rem; }
+  .cabin--right .cabin-body { order: -1; }
+  .cabin--wide { max-width: 68rem; }
+  .cabin h3 {
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(1.4rem, 2.6vw, 2rem);
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+  .cabin-body p { max-width: 58ch; color: var(--ink); opacity: 0.92; }
+  .cabin ul {
+    list-style: none;
+    margin: 20px 0;
+    font-family: "Space Mono", monospace;
+    font-size: 0.88rem;
+    color: var(--muted);
+  }
+  .cabin li { padding: 6px 0 6px 24px; position: relative; }
+  .cabin li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 14px;
+    width: 12px; height: 2px;
+    background: var(--accent);
+  }
+  .cabin-price { font-size: 1.05rem; }
+  .cabin-price strong { color: var(--accent); font-size: 1.3rem; }
+
+  /* ---------- booking ---------- */
+  .book {
+    padding: 128px clamp(20px, 5vw, 64px);
+    border-top: 2px solid var(--accent);
+    max-width: 72rem;
+  }
+  .book-tag {
+    font-family: "Space Mono", monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .book h2 {
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(2rem, 4.5vw, 3.4rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  .book-lede { max-width: 56ch; color: var(--muted); font-size: 1.1rem; margin-bottom: 36px; }
+  .book-fine { margin-top: 24px; color: var(--muted); font-size: 0.95rem; }
+
+  /* ---------- footer ---------- */
+  .footer {
+    border-top: 1px solid var(--line);
+    padding: 72px clamp(20px, 5vw, 64px) 40px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 56px;
+  }
+  .footer-brand { font-family: "DM Serif Display", serif; font-size: 1.6rem; margin-bottom: 12px; }
+  .footer-line { color: var(--muted); font-size: 0.95rem; }
+  .footer-heading {
+    font-family: "Space Mono", monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .footer ul { list-style: none; }
+  .footer li { margin-bottom: 10px; font-size: 0.95rem; }
+  .footer a { color: var(--ink); text-decoration: none; }
+  .footer a:hover { color: var(--accent); }
+  .footer-contact li { color: var(--muted); }
+  .footer-legal {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .footer-legal a { color: var(--muted); }
+
+  /* ---------- entrance motion (transform + opacity only) ---------- */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .board-row:not(.board-colhead) { animation: rise 560ms var(--ease) both; }
+  .board-row:nth-of-type(2) { animation-delay: 60ms; }
+  .board-row:nth-of-type(3) { animation-delay: 120ms; }
+  .board-row:nth-of-type(4) { animation-delay: 180ms; }
+  .board-row:nth-of-type(5) { animation-delay: 240ms; }
+  .board-row:nth-of-type(6) { animation-delay: 300ms; }
+  .board-row:nth-of-type(7) { animation-delay: 360ms; }
+  .board-row:nth-of-type(8) { animation-delay: 420ms; }
+  @media (prefers-reduced-motion: reduce) {
+    .board-row:not(.board-colhead) { animation: none; }
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 760px) {
+    .board-row { grid-template-columns: 4.5rem 1fr 5.5rem; }
+    .board-row .plat { display: none; }
+    .board-row--featured { grid-template-columns: 4.5rem 1fr auto; }
+    .board-row--featured .status { display: none; }
+    .board-row--featured .cta-hint { grid-column: 2 / -1; }
+    .board-colhead .plat { display: none; }
+    .board-colhead { grid-template-columns: 4.5rem 1fr 5.5rem; }
+    .route--indented { margin-left: 0; }
+    .cabin { grid-template-columns: 1fr; gap: 8px; }
+    .cabin--right { grid-template-columns: 1fr; }
+    .cabin--right .cabin-body { order: 0; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 460px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .masthead-clock { display: none; }
+  }
+</style>
+</body>
+</html>
