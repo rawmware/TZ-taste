@@ -1,0 +1,59 @@
+<!--tz-meta {"id":"hackathon-schedule","title":"Hackathon schedule grid","category":"Sections","file":"patterns/hackathon-schedule.html","tags":["hackathon","schedule","event","agenda"],"description":"Blueprint-dark two-day schedule with track dots and a highlighted judging block.","dnas":["blueprint-tech"]} -->
+<section class="tz-hackathon-schedule" aria-label="Hackathon schedule">
+  <div class="tz-head">
+    <p class="tz-k">Port Hack 2026 · Oct 10–11</p>
+    <h2>48 hours, on the grid</h2>
+    <p class="tz-legend"><span><i class="tz-d1"></i>Main stage</span><span><i class="tz-d2"></i>Workshop</span><span><i class="tz-d3"></i>Fuel</span></p>
+  </div>
+  <div class="tz-days">
+    <div class="tz-day">
+      <h3>Sat · Oct 10</h3>
+      <ol>
+        <li><time>9:00</time><i class="tz-d1"></i><div><strong>Check-in &amp; coffee</strong><span>Badges, team matchmaking, strong opinions about tabs</span></div></li>
+        <li><time>10:00</time><i class="tz-d1"></i><div><strong>Kickoff &amp; prompt drop</strong><span>Themes announced. No building before the airhorn.</span></div></li>
+        <li><time>12:30</time><i class="tz-d3"></i><div><strong>Lunch — flatbread &amp; salad</strong><span>Veg, vegan, and gluten-free covered</span></div></li>
+        <li><time>2:00</time><i class="tz-d2"></i><div><strong>Workshop: Ship an API in 40 min</strong><span>Bring a laptop, leave with a live endpoint</span></div></li>
+        <li><time>6:30</time><i class="tz-d3"></i><div><strong>Dinner &amp; mentor hours</strong><span>12 mentors roaming, grab one by the lanyard</span></div></li>
+        <li><time>11:59</time><i class="tz-d1"></i><div><strong>Midnight checkpoint</strong><span>Show something that moves. Anything.</span></div></li>
+      </ol>
+    </div>
+    <div class="tz-day">
+      <h3>Sun · Oct 11</h3>
+      <ol>
+        <li><time>8:00</time><i class="tz-d3"></i><div><strong>Breakfast burritos</strong><span>For the brave who slept under desks</span></div></li>
+        <li><time>10:00</time><i class="tz-d2"></i><div><strong>Workshop: Demo or die</strong><span>Three minutes, one story, zero live-coding</span></div></li>
+        <li><time>12:00</time><i class="tz-d1"></i><div><strong>Code freeze</strong><span>Repos locked. Breathe.</span></div></li>
+        <li class="tz-judge"><time>1:00</time><i class="tz-d1"></i><div><strong>Judging &amp; finals</strong><span>Top 8 on stage · $10k in prizes · crowd favorite vote</span></div></li>
+        <li><time>4:30</time><i class="tz-d1"></i><div><strong>Awards &amp; sendoff</strong><span>Winners, photos, leftover burritos</span></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+<style>
+.tz-hackathon-schedule{--bg:#17407f;--ink:#f2f6fc;--accent:#ffcf3f;--muted:#8fb3e8;--line:#ffffff40;
+  background:var(--bg);color:var(--ink);padding:clamp(36px,5vw,80px);
+  font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+  background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);
+  background-size:40px 40px}
+.tz-hackathon-schedule .tz-k{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+.tz-hackathon-schedule h2{font-family:'Space Grotesk',-apple-system,'Segoe UI',sans-serif;font-size:clamp(28px,3.6vw,46px);
+  letter-spacing:-.02em;margin:0 0 16px;color:var(--ink)}
+.tz-legend{display:flex;gap:20px;font-size:12px;color:var(--muted);margin:0 0 36px;flex-wrap:wrap}
+.tz-legend span{display:flex;align-items:center;gap:8px}
+.tz-d1,.tz-d2,.tz-d3{width:10px;height:10px;border-radius:50%;flex:none}
+.tz-d1{background:var(--accent)}.tz-d2{background:#7fd4ff}.tz-d3{background:#8fe388}
+.tz-days{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px)}
+.tz-day h3{font-family:'Space Grotesk',-apple-system,'Segoe UI',sans-serif;font-size:19px;margin:0 0 4px;
+  padding-bottom:14px;border-bottom:2px solid var(--line);color:var(--ink)}
+.tz-day ol{list-style:none;margin:0;padding:0}
+.tz-day li{display:grid;grid-template-columns:52px auto 1fr;gap:14px;align-items:start;
+  padding:16px 4px;border-bottom:1px dashed var(--line)}
+.tz-day time{font-size:13px;color:var(--muted)}
+.tz-day li i{margin-top:5px}
+.tz-day strong{display:block;font-family:'Space Grotesk',-apple-system,'Segoe UI',sans-serif;
+  font-size:15.5px;margin-bottom:3px;color:var(--ink)}
+.tz-day li div span{font-size:12.5px;color:var(--muted);line-height:1.55}
+.tz-judge{background:#ffcf3f14;border:1px solid var(--accent);border-radius:10px;padding:16px 12px}
+.tz-judge strong{color:var(--accent)}
+@media(max-width:760px){.tz-days{grid-template-columns:1fr}}
+</style>
