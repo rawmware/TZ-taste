@@ -1,0 +1,158 @@
+{
+ "count": 10,
+ "updated": "2026-10-04",
+ "usage": "Java Thymeleaf/Spring page templates, one DNA each.",
+ "java_pages": [
+  {
+   "id": "java-blog",
+   "title": "Newsroom Blog Index (Java/Thymeleaf)",
+   "category": "Java",
+   "file": "java/blog.html",
+   "tags": [
+    "java",
+    "thymeleaf",
+    "blog"
+   ],
+   "description": "Newsroom-wire blog index: datelined masthead, edition bar, article rows with kickers and bylines — a front page, not a card grid.",
+   "dnas": [
+    "newsroom-wire"
+   ]
+  },
+  {
+   "id": "java-changelog",
+   "title": "Lab Changelog (Java/Thymeleaf)",
+   "category": "Java",
+   "file": "java/changelog.html",
+   "tags": [
+    "java",
+    "thymeleaf",
+    "changelog"
+   ],
+   "description": "Laboratory-clean release log: version rows with oversized ghost numerals, mono type badges, dated entries with honest notes.",
+   "dnas": [
+    "laboratory-clean"
+   ]
+  },
+  {
+   "id": "java-docs",
+   "title": "Solar Docs with Margin Notes (Java/Thymeleaf)",
+   "category": "Java",
+   "file": "java/docs.html",
+   "tags": [
+    "java",
+    "thymeleaf",
+    "docs"
+   ],
+   "description": "Warm solarized documentation page: sticky section sidebar, Source Serif prose, and a margin-notes column for asides on wide screens.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "java-features",
+   "title": "Brutalist Bento Features (Java/Thymeleaf)",
+   "category": "Java",
+   "file": "java/features.html",
+   "tags": [
+    "java",
+    "thymeleaf",
+    "features",
+    "bento"
+   ],
+   "description": "Asymmetric industrial bento for a site builder: one huge type tile, staggered feature tiles with hard offset shadows and mono spec labels.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "java-footer",
+   "title": "Swiss Airline Footer (Java/Thymeleaf)",
+   "category": "Java",
+   "file": "java/footer.html",
+   "tags": [
+    "java",
+    "thymeleaf",
+    "footer"
+   ],
+   "description": "Swiss-airline footer as a full page: red-rule sitemap columns, departure-board mono clock, and an oversized outlined wordmark.",
+   "dnas": [
+    "swiss-airline"
+   ]
+  },
+  {
+   "id": "java-hero",
+   "title": "Constructivist Hero (Java/Thymeleaf)",
+   "category": "Java",
+   "file": "java/hero.html",
+   "tags": [
+    "java",
+    "thymeleaf",
+    "hero"
+   ],
+   "description": "Offset split hero for a freight brokerage: giant Russo One headline over a diagonal red beam, vertical mono waybill label, single primary action.",
+   "dnas": [
+    "constructivist-red"
+   ]
+  },
+  {
+   "id": "java-login",
+   "title": "Midnight Railway Login (Java/Thymeleaf)",
+   "category": "Java",
+   "file": "java/login.html",
+   "tags": [
+    "java",
+    "thymeleaf",
+    "login"
+   ],
+   "description": "Dark midnight-railway sign-in: offset ticket-stub card with perforated edge, brass accents, platform-board mono labels.",
+   "dnas": [
+    "midnight-railway"
+   ]
+  },
+  {
+   "id": "java-pricing",
+   "title": "Reading-Room Pricing Ledger (Java/Thymeleaf)",
+   "category": "Java",
+   "file": "java/pricing.html",
+   "tags": [
+    "java",
+    "thymeleaf",
+    "pricing"
+   ],
+   "description": "Dark library-oak pricing as a ruled ledger table: three plans as rows with brass rules, stamped recommendation, honest footnotes.",
+   "dnas": [
+    "library-oak"
+   ]
+  },
+  {
+   "id": "java-stats",
+   "title": "Terminal Stats Readout (Java/Thymeleaf)",
+   "category": "Java",
+   "file": "java/stats.html",
+   "tags": [
+    "java",
+    "thymeleaf",
+    "stats"
+   ],
+   "description": "Retro-terminal company stats: a typed ./report command, amber values on phosphor green, blinking block cursor, scanline texture.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "java-testimonial",
+   "title": "Reader-Letter Testimonial (Java/Thymeleaf)",
+   "category": "Java",
+   "file": "java/testimonial.html",
+   "tags": [
+    "java",
+    "thymeleaf",
+    "testimonial"
+   ],
+   "description": "Single-statement zine testimonial: giant Anton pull-quote on pasted paper, rotated red rubber-stamp mark, typewriter caption.",
+   "dnas": [
+    "diary-zine"
+   ]
+  }
+ ]
+}
