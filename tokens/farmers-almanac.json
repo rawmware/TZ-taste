@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-farmers-almanac",
+  "title": "Farmers Almanac design tokens",
+  "category": "Tokens",
+  "file": "tokens/farmers-almanac.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "farmers-almanac"
+  ],
+  "description": "W3C-format design tokens for the Farmers Almanac DNA.",
+  "dnas": [
+   "farmers-almanac"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#f1e8d2",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#2a2118",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#a3331f",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#7a6a52",
+   "type": "color"
+  },
+  "line": {
+   "value": "#2a21181f",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#e7dab8",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Pirata One",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Spectral",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Courier Prime",
+   "type": "fontFamily"
+  }
+ }
+}
