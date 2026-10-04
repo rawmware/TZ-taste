@@ -1,0 +1,48 @@
+<!--tz-meta {"id":"footers-cta-first","title":"CTA-first footer","category":"Footer","file":"patterns/footers-cta-first.html","tags":["conversion","big-type"],"description":"A giant champagne Let's talk CTA floating above hairline link rows on near-black.","dnas":["dark-luxe"]} -->
+<footer class="tz-ctafoot">
+  <a class="tz-ctafoot-cta" href="#">
+    <span class="tz-ctafoot-kicker">New projects for winter 2026</span>
+    <span class="tz-ctafoot-big">Let&rsquo;s talk <i>→</i></span>
+  </a>
+  <div class="tz-ctafoot-rows">
+    <div class="tz-ctafoot-row">
+      <span class="tz-ctafoot-h">Studio</span>
+      <span class="tz-ctafoot-links"><a href="#">Work</a><a href="#">Process</a><a href="#">Team</a></span>
+    </div>
+    <div class="tz-ctafoot-row">
+      <span class="tz-ctafoot-h">Elsewhere</span>
+      <span class="tz-ctafoot-links"><a href="#">Instagram</a><a href="#">Are.na</a><a href="#">LinkedIn</a></span>
+    </div>
+    <div class="tz-ctafoot-row">
+      <span class="tz-ctafoot-h">Fine print</span>
+      <span class="tz-ctafoot-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">hello@atelier-noir.co</a></span>
+    </div>
+  </div>
+  <p class="tz-ctafoot-base">© 2026 Atelier Noir · Set in Georgia, after midnight</p>
+</footer>
+<style>
+.tz-ctafoot{--bg:#121013;--ink:#f3ede2;--champ:#d9c39a;--line:#d9c39a33;
+  background:var(--bg);color:var(--ink);padding:clamp(64px,9vw,128px) clamp(24px,6vw,96px) 32px;
+  font-family:Georgia,'Times New Roman',serif}
+.tz-ctafoot-cta{display:block;text-decoration:none;color:var(--ink);margin-bottom:clamp(48px,7vw,96px)}
+.tz-ctafoot-kicker{display:block;font-family:ui-monospace,Menlo,monospace;font-size:12px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--champ);margin-bottom:20px}
+.tz-ctafoot-big{display:block;font-size:clamp(56px,11vw,150px);letter-spacing:-.03em;line-height:1;
+  transition:color .3s ease}
+.tz-ctafoot-big i{font-style:normal;color:var(--champ);display:inline-block;
+  transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.tz-ctafoot-cta:hover .tz-ctafoot-big{color:var(--champ)}
+.tz-ctafoot-cta:hover .tz-ctafoot-big i{transform:translateX(14px)}
+.tz-ctafoot-rows{border-top:1px solid var(--line);margin-bottom:40px}
+.tz-ctafoot-row{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;
+  padding:18px 0;border-bottom:1px solid var(--line)}
+.tz-ctafoot-h{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--champ)}
+.tz-ctafoot-links{display:flex;gap:28px;flex-wrap:wrap}
+.tz-ctafoot-links a{color:var(--ink);text-decoration:none;font-size:16px;opacity:.85}
+.tz-ctafoot-links a:hover{opacity:1;color:var(--champ)}
+.tz-ctafoot-base{font-size:13px;opacity:.5;margin:0;font-family:Arial,Helvetica,sans-serif}
+@media (prefers-reduced-motion:reduce){
+  .tz-ctafoot-big,.tz-ctafoot-big i{transition:none}
+}
+</style>
