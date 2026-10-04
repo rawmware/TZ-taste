@@ -1,0 +1,313 @@
+<!--tz-meta {"id":"pottery-studio","title":"Second Fire — Community Pottery Studio","category":"Template","file":"templates/pottery-studio.html","tags":["pottery-studio","classes","community","local"],"description":"Warm community pottery studio: class schedule as kiln firing-log entries, shelf-and-cone details.","dnas":["cottage-warm"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Second Fire — community pottery studio, kilns running weekly</title>
+<meta name="description" content="Second Fire is a community pottery studio: beginner wheel classes, open studio hours, and a kiln log you can read before you fire.">
+<!-- DNA: cottage-warm. Design read: the website equivalent of someone offering you tea — cream, clay red, unhurried serif — for neighbors who want to get their hands muddy without joining a guild. One distinctive choice: the class schedule is written as kiln firing-log entries — shelf numbers, cone temps, and dates, like the notebook chained to the kiln. Dials V4/M3/D3. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Karla:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#fbf5ea;
+  --tz-ink:#3d3229;
+  --tz-accent:#b5533c;
+  --tz-accent-deep:color-mix(in srgb, var(--tz-accent) 72%, var(--tz-ink));
+  --tz-muted:#8d7f6e;
+  --tz-fog:color-mix(in srgb, var(--tz-fog) 55%, var(--tz-ink) 45%);
+  --tz-line:#e7dcc6;
+  --tz-line-strong:color-mix(in srgb, var(--tz-line) 55%, var(--tz-ink));
+  --tz-card:color-mix(in srgb, var(--tz-bg) 55%, white);
+  --tz-ink-soft:color-mix(in srgb, var(--tz-ink) 80%, var(--tz-bg));
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Karla",system-ui,sans-serif;background:var(--tz-bg);color:var(--tz-ink);font-weight:400;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--tz-accent);color:var(--tz-bg)}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+.tz-display{font-family:"DM Serif Display",serif}
+.tz-mono{font-family:"Space Mono",monospace}
+.skip{position:absolute;left:-999px;top:0;background:var(--tz-accent);color:var(--tz-bg);padding:8px 16px;z-index:99}
+.skip:focus{left:8px;top:8px}
+
+/* ---------- header ---------- */
+.tz-header{border-bottom:1px solid var(--tz-line);background:color-mix(in srgb, var(--tz-bg) 90%, transparent);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
+.tz-header .tz-wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
+.tz-logo{font-family:"DM Serif Display",serif;font-size:24px;display:flex;align-items:center;gap:10px}
+.tz-logo svg{width:26px;height:26px;flex:none}
+.tz-nav{display:flex;gap:28px;font-size:15px;font-weight:500}
+.tz-nav a{color:var(--tz-ink-soft)}
+.tz-nav a:hover{color:var(--tz-accent)}
+.tz-join{font-weight:700;font-size:14.5px;background:var(--tz-accent);color:var(--tz-bg);border:0;padding:11px 22px;cursor:pointer;border-radius:6px;transition:background .2s,transform .25s var(--tz-ease)}
+.tz-join:hover{background:var(--tz-accent-deep);transform:translateY(-2px)}
+
+/* ---------- hero ---------- */
+.tz-hero{padding:88px 0 72px}
+.tz-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+.tz-kicker{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.26em;color:var(--tz-accent-deep);font-weight:700;margin-bottom:20px}
+.tz-hero h1{font-family:"DM Serif Display",serif;font-weight:400;font-size:clamp(48px,6.6vw,92px);line-height:1.04}
+.tz-hero h1 em{font-style:italic;color:var(--tz-accent-deep)}
+.tz-hero .tz-lede{margin-top:22px;font-size:18px;color:var(--tz-ink-soft);max-width:44ch;font-weight:300}
+.tz-hero-cta{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap}
+.tz-btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:15.5px;padding:14px 28px;border-radius:6px;cursor:pointer;transition:transform .25s var(--tz-ease),background .2s}
+.tz-btn--clay{background:var(--tz-accent);color:var(--tz-bg);border:1px solid var(--tz-accent)}
+.tz-btn--clay:hover{background:var(--tz-accent-deep);transform:translateY(-2px)}
+.tz-btn--line{border:1px solid var(--tz-line-strong);color:var(--tz-ink);background:transparent}
+.tz-btn--line:hover{border-color:var(--tz-accent);transform:translateY(-2px)}
+.tz-tea{margin-top:28px;font-family:"Space Mono",monospace;font-size:12.5px;color:var(--tz-fog);display:flex;gap:10px;align-items:center}
+.tz-tea svg{width:18px;height:18px;flex:none}
+
+/* clay illustration */
+.tz-clayfig{background:var(--tz-card);border:1px solid var(--tz-line);border-radius:12px;padding:44px;position:relative;overflow:hidden}
+.tz-pot{width:200px;height:230px;margin:0 auto;position:relative}
+.tz-pot .tz-body{position:absolute;left:50%;top:22%;transform:translateX(-50%);width:150px;height:170px;background:var(--tz-accent);border-radius:46% 46% 42% 42% / 30% 30% 60% 60%;opacity:.88}
+.tz-pot .tz-rim{position:absolute;left:50%;top:20%;transform:translateX(-50%);width:110px;height:30px;background:var(--tz-accent-deep);border-radius:50%}
+.tz-pot .tz-rim::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:80px;height:18px;background:var(--tz-bg);border-radius:50%}
+.tz-pot .tz-band{position:absolute;left:50%;top:58%;transform:translateX(-50%);width:118px;height:10px;background:var(--tz-card);border-radius:5px;opacity:.7}
+.tz-clayfig figcaption{margin-top:26px;text-align:center;font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.1em;color:var(--tz-fog)}
+.tz-wheel{position:absolute;bottom:-40px;left:50%;transform:translateX(-50%);width:260px;height:80px;border:2px solid var(--tz-line-strong);border-radius:50%;opacity:.5}
+
+/* ---------- sections ---------- */
+.tz-section{padding:96px 0}
+.tz-sechead{margin-bottom:48px;max-width:640px}
+.tz-sechead .tz-mono{font-size:12px;letter-spacing:.26em;color:var(--tz-accent-deep);font-weight:700;display:block;margin-bottom:14px}
+.tz-sechead h2{font-family:"DM Serif Display",serif;font-weight:400;font-size:clamp(36px,4.8vw,58px);line-height:1.08}
+.tz-sechead p{margin-top:14px;font-size:17.5px;color:var(--tz-ink-soft);font-weight:300}
+
+/* kiln log: the one weird thing */
+.tz-log{border:1px solid var(--tz-line-strong);border-radius:10px;background:var(--tz-card);overflow:hidden}
+.tz-log-head{padding:20px 32px;border-bottom:1px solid var(--tz-line);display:flex;justify-content:space-between;align-items:center;background:var(--tz-bg)}
+.tz-log-head .tz-mono{font-size:12px;letter-spacing:.2em;font-weight:700}
+.tz-log-head .tz-mono:last-child{color:var(--tz-accent-deep)}
+.tz-entry{display:grid;grid-template-columns:110px 1fr auto;gap:24px;padding:26px 32px;border-bottom:1px dashed var(--tz-line-strong);align-items:start;transition:background .2s}
+.tz-entry:last-child{border-bottom:0}
+.tz-entry:hover{background:color-mix(in srgb, var(--tz-accent) 5%, var(--tz-card))}
+.tz-entry .tz-when{font-family:"Space Mono",monospace;font-size:13px;font-weight:700;color:var(--tz-accent-deep);line-height:1.6}
+.tz-entry .tz-when small{display:block;font-weight:400;color:var(--tz-fog);font-size:11.5px}
+.tz-entry h3{font-family:"DM Serif Display",serif;font-size:23px;font-weight:400}
+.tz-entry p{font-size:15px;color:var(--tz-ink-soft);margin-top:6px;max-width:56ch}
+.tz-entry .tz-kiln{font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-fog);text-align:right;line-height:1.9;white-space:nowrap}
+.tz-entry .tz-kiln strong{color:var(--tz-accent-deep);font-size:15px}
+.tz-entry .tz-seats{display:inline-block;margin-top:8px;font-family:"Space Mono",monospace;font-size:11.5px;background:var(--tz-bg);border:1px solid var(--tz-line-strong);padding:4px 10px;border-radius:20px;color:var(--tz-accent-deep);font-weight:700}
+
+/* membership rows */
+.tz-plans{border-top:2px solid var(--tz-ink)}
+.tz-plan{display:grid;grid-template-columns:1fr auto;gap:24px;padding:30px 4px;border-bottom:1px solid var(--tz-line);align-items:center}
+.tz-plan h3{font-family:"DM Serif Display",serif;font-size:27px;font-weight:400}
+.tz-plan h3 .tz-mono{font-size:12px;letter-spacing:.18em;color:var(--tz-accent-deep);display:block;margin-bottom:8px;font-weight:700}
+.tz-plan p{font-size:15.5px;color:var(--tz-ink-soft);margin-top:8px;max-width:60ch}
+.tz-plan .tz-price{font-family:"DM Serif Display",serif;font-size:34px;color:var(--tz-accent-deep);white-space:nowrap}
+.tz-plan .tz-price small{font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-fog)}
+
+/* etiquette */
+.tz-notes{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--tz-line);border:1px solid var(--tz-line);border-radius:10px;overflow:hidden}
+.tz-note-card{background:var(--tz-card);padding:36px 34px}
+.tz-note-card .tz-mono{font-size:11.5px;letter-spacing:.2em;color:var(--tz-accent-deep);font-weight:700;display:block;margin-bottom:12px}
+.tz-note-card h3{font-family:"DM Serif Display",serif;font-size:24px;font-weight:400;margin-bottom:10px}
+.tz-note-card p{font-size:15.5px;color:var(--tz-ink-soft)}
+
+/* ---------- footer ---------- */
+.tz-footer{border-top:1px solid var(--tz-line);padding:64px 0 36px;background:var(--tz-card)}
+.tz-foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:44px;margin-bottom:44px}
+.tz-foot-brand{font-family:"DM Serif Display",serif;font-size:28px;margin-bottom:10px}
+.tz-foot-grid p,.tz-foot-grid li{font-size:15px;color:var(--tz-fog);list-style:none;margin-bottom:10px}
+.tz-foot-grid h4{font-family:"Space Mono",monospace;font-size:11.5px;letter-spacing:.22em;color:var(--tz-accent-deep);margin-bottom:16px;font-weight:700}
+.tz-foot-grid a:hover{color:var(--tz-accent-deep)}
+.tz-base{border-top:1px solid var(--tz-line);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-fog)}
+
+@media (max-width:900px){
+  .tz-hero-grid{grid-template-columns:1fr}
+  .tz-notes{grid-template-columns:1fr}
+  .tz-foot-grid{grid-template-columns:1fr}
+  .tz-nav{display:none}
+  .tz-entry{grid-template-columns:1fr}
+  .tz-entry .tz-kiln{text-align:left}
+  .tz-plan{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#kiln">Skip to kiln log</a>
+
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-logo" href="#" aria-label="Second Fire home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#b5533c" stroke-width="1.8" aria-hidden="true"><path d="M12 3c2 3 5 5 5 9a5 5 0 01-10 0c0-4 3-6 5-9z"/><path d="M9 21h6"/></svg>
+      Second Fire
+    </a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#kiln">Kiln Log</a><a href="#membership">Membership</a><a href="#notes">Studio Notes</a><a href="#visit">Visit</a>
+    </nav>
+    <a class="tz-join" href="#membership">Join the studio</a>
+  </div>
+</header>
+
+<main>
+<section class="tz-hero">
+  <div class="tz-wrap tz-hero-grid">
+    <div>
+      <p class="tz-kicker">COMMUNITY POTTERY STUDIO · KILNS FIRING SINCE 2011</p>
+      <h1>Get your hands <em>muddy.</em> We'll fire the rest.</h1>
+      <p class="tz-lede">Twenty wheels, two kilns, and one very patient pug named Biscuit. Beginner classes every week, open studio for members, and shelves that are always — always — a little dusty.</p>
+      <div class="tz-hero-cta">
+        <a class="tz-btn tz-btn--clay" href="#kiln">See what's firing</a>
+        <a class="tz-btn tz-btn--line" href="#visit">Plan a visit</a>
+      </div>
+      <p class="tz-tea">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#b5533c" stroke-width="1.8" aria-hidden="true"><path d="M4 10h12v6a5 5 0 01-5 5H9a5 5 0 01-5-5v-6z"/><path d="M16 11h2a3 3 0 010 6h-2M7 6c0-2 2-2 2-4"/></svg>
+        Free tea in the glaze room. Every day. No exceptions.
+      </p>
+    </div>
+    <figure class="tz-clayfig" aria-label="Illustration of a thrown clay pot on a wheel">
+      <div class="tz-wheel" aria-hidden="true"></div>
+      <div class="tz-pot" aria-hidden="true"><div class="tz-body"></div><div class="tz-rim"></div><div class="tz-band"></div></div>
+      <figcaption>THROWN THIS MORNING · SHELF 4B · BISCUIT-APPROVED</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="tz-section" id="kiln" style="padding-top:64px">
+  <div class="tz-wrap">
+    <div class="tz-sechead">
+      <span class="tz-mono">THE KILN LOG — CHAINED TO THE KILN, COPIED HERE</span>
+      <h2>What's on the shelves, and when it fires.</h2>
+      <p>The notebook by the kiln, minus the clay fingerprints. Find your class, note your shelf, and don't move anyone else's pots. Ever.</p>
+    </div>
+    <div class="tz-log">
+      <div class="tz-log-head"><span class="tz-mono">FIRING LOG · OCTOBER</span><span class="tz-mono">KILN A · ELECTRIC · CONE 6</span></div>
+      <div class="tz-entry">
+        <div class="tz-when">OCT 7<small>WED · 6:30 PM</small></div>
+        <div><h3>First Throw: Wheel Basics</h3><p>Four weeks, one wobbly bowl at a time. Centering, pulling, trimming — and glazing your keepers in week four.</p><span class="tz-seats">3 SPOTS LEFT</span></div>
+        <div class="tz-kiln"><strong>$140</strong><br>4 sessions<br>shelf 2A–2D</div>
+      </div>
+      <div class="tz-entry">
+        <div class="tz-when">OCT 10<small>SAT · 10 AM</small></div>
+        <div><h3>Muddy Buddies: Kids &amp; Clay</h3><p>Ages 6–10 with a grown-up. Pinch pots, coil snakes, and one glazed masterpiece to take home.</p><span class="tz-seats">5 SPOTS LEFT</span></div>
+        <div class="tz-kiln"><strong>$38</strong><br>2 hours<br>shelf 5A</div>
+      </div>
+      <div class="tz-entry">
+        <div class="tz-when">OCT 14<small>WED · 7 PM</small></div>
+        <div><h3>Glaze Lab: Ash &amp; Iron</h3><p>Mix, test, and fire your own glaze tiles. For members who've finished a beginner course.</p><span class="tz-seats">FULL — WAITLIST</span></div>
+        <div class="tz-kiln"><strong>$65</strong><br>3 hours<br>test tiles only</div>
+      </div>
+      <div class="tz-entry">
+        <div class="tz-when">OCT 17<small>SAT · 2 PM</small></div>
+        <div><h3>Raku Saturday</h3><p>Outdoor firing, open flames, and pots pulled glowing from the kiln. Loud, thrilling, slightly smoky.</p><span class="tz-seats">8 SPOTS LEFT</span></div>
+        <div class="tz-kiln"><strong>$85</strong><br>half day<br>bring 3 bisque pots</div>
+      </div>
+      <div class="tz-entry">
+        <div class="tz-when">OCT 21<small>WED · 6:30 PM</small></div>
+        <div><h3>Handbuilding: Mugs &amp; Planters</h3><p>No wheel required. Slab mugs with pulled handles and planters with real drainage holes.</p><span class="tz-seats">6 SPOTS LEFT</span></div>
+        <div class="tz-kiln"><strong>$120</strong><br>4 sessions<br>shelf 3B</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tz-section" id="membership" style="padding-top:0">
+  <div class="tz-wrap">
+    <div class="tz-sechead">
+      <span class="tz-mono">MEMBERSHIP</span>
+      <h2>Stay awhile.</h2>
+      <p>Members get a shelf, a wheel that isn't booked, and firing fees by the cubic inch — the honest way.</p>
+    </div>
+    <div class="tz-plans">
+      <div class="tz-plan">
+        <div><h3><span class="tz-mono">THE DABBLER</span>Open studio, ten hours a month</h3><p>Book wheels online, fire up to 12 pieces a month, and join every studio social. Perfect for keeping a hobby alive.</p></div>
+        <span class="tz-price">$75<small>/mo</small></span>
+      </div>
+      <div class="tz-plan">
+        <div><h3><span class="tz-mono">THE REGULAR</span>Unlimited open studio</h3><p>Your own shelf, priority wheel booking, 24 pieces fired monthly, and first dibs on Raku Saturdays.</p></div>
+        <span class="tz-price">$120<small>/mo</small></span>
+      </div>
+      <div class="tz-plan">
+        <div><h3><span class="tz-mono">THE PRODUCTION POTTER</span>For sellers &amp; the obsessed</h3><p>Two shelves, kiln shelf rental by the load, 60 pieces monthly, and a key to the 6 AM quiet hours.</p></div>
+        <span class="tz-price">$195<small>/mo</small></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tz-section" id="notes" style="padding-top:0">
+  <div class="tz-wrap">
+    <div class="tz-sechead">
+      <span class="tz-mono">STUDIO NOTES</span>
+      <h2>Four things regulars know.</h2>
+    </div>
+    <div class="tz-notes">
+      <div class="tz-note-card">
+        <span class="tz-mono">NOTE 01</span>
+        <h3>Your first bowl will be ugly</h3>
+        <p>Everyone's is. Keep it anyway — in six months you'll love it precisely because it's lopsided.</p>
+      </div>
+      <div class="tz-note-card">
+        <span class="tz-mono">NOTE 02</span>
+        <h3>Wipe the wheel. Every time.</h3>
+        <p>Clay dries into concrete. The next person's masterpiece starts with your sponge work. Thank you.</p>
+      </div>
+      <div class="tz-note-card">
+        <span class="tz-mono">NOTE 03</span>
+        <h3>Glazing has office hours</h3>
+        <p>The glaze room closes at 8 PM sharp so the glazes can rest. They're temperamental. So are we, after 8.</p>
+      </div>
+      <div class="tz-note-card">
+        <span class="tz-mono">NOTE 04</span>
+        <h3>Biscuit is not for sale</h3>
+        <p>The studio pug has been offered treats, belly rubs, and one serious adoption bid. He stays. So will you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tz-section" id="visit" style="padding-top:0">
+  <div class="tz-wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start">
+    <div>
+      <div class="tz-sechead" style="margin-bottom:24px">
+        <span class="tz-mono">VISIT</span>
+        <h2>Come smell the clay.</h2>
+      </div>
+      <p style="font-size:17px"><strong>14 Potter's Lane<br>Maple Grove</strong></p>
+      <p class="tz-mono" style="font-size:13px;color:var(--tz-fog);margin-top:12px;line-height:2">TUE–FRI · 10 AM–9 PM<br>SAT–SUN · 9 AM–6 PM<br>MON · CLOSED (KILN DAY)<br><br>(555) 214-7780<br>HELLO@SECONDFIRE.STUDIO</p>
+    </div>
+    <div class="tz-note-card" style="border:1px solid var(--tz-line);border-radius:10px">
+      <span class="tz-mono">FIRST VISIT?</span>
+      <h3>Try a wheel for $25</h3>
+      <p>Thirty minutes, one instructor, all the clay you can center. If you join within a week, the $25 comes off your membership. Bring clothes that can get gloriously dirty.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-foot-grid">
+      <div>
+        <p class="tz-foot-brand">Second Fire</p>
+        <p>A community pottery studio in Maple Grove. Wheels, kilns, glaze, tea, and Biscuit the pug.</p>
+      </div>
+      <div>
+        <h4>STUDIO</h4>
+        <ul><li><a href="#kiln">Kiln log</a></li><li><a href="#membership">Membership</a></li><li><a href="#notes">Studio notes</a></li></ul>
+      </div>
+      <div>
+        <h4>VISIT</h4>
+        <ul><li>14 Potter's Lane, Maple Grove</li><li>(555) 214-7780</li><li>hello@secondfire.studio</li></ul>
+      </div>
+    </div>
+    <div class="tz-base">
+      <span>© 2026 Second Fire Studio — wipe the wheel, every time</span>
+      <span class="tz-mono">KILN A · CONE 6 · BISCUIT-APPROVED</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
