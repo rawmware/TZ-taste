@@ -1,0 +1,105 @@
+<!--tz-meta {"id":"java-changelog","title":"Lab Changelog (Java/Thymeleaf)","category":"Java","file":"java/changelog.html","tags":["java","thymeleaf","changelog"],"description":"Laboratory-clean release log: version rows with oversized ghost numerals, mono type badges, dated entries with honest notes.","dnas":["laboratory-clean"]} -->
+<!--
+  Design read: release notes written like lab results — measured, dated, no hype.
+  Distinctive choice: each version section carries an oversized ghost numeral watermark behind the entries.
+  Dials: VARIANCE 4 / MOTION 1 / DENSITY 7.
+  Route: GET /changelog -> ChangelogController#index (model: releases)
+-->
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title th:text="${changelog.title}">Caliber — Changelog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --tz-bg: #fbfcfd;
+      --tz-ink: #0f1720;
+      --tz-accent: #0a7d8c;
+      --tz-line: #dfe4ea;
+      --tz-muted: #6b7684;
+      --tz-font-display: "IBM Plex Sans", sans-serif;
+      --tz-font-body: "IBM Plex Sans", sans-serif;
+      --tz-font-mono: "IBM Plex Mono", monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { background: var(--tz-bg); color: var(--tz-ink); font-family: var(--tz-font-body); }
+    .tz-wrap { max-width: 860px; margin: 0 auto; padding: clamp(56px, 8vw, 110px) clamp(20px, 5vw, 40px) clamp(80px, 10vw, 140px); }
+    .tz-eyebrow { font-family: var(--tz-font-mono); font-size: 12px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--tz-accent); margin: 0 0 18px; }
+    .tz-title { font-size: clamp(38px, 5.4vw, 64px); font-weight: 700; letter-spacing: -0.03em; margin: 0 0 14px; }
+    .tz-lede { font-size: 18px; line-height: 1.65; color: var(--tz-muted); max-width: 60ch; margin: 0 0 20px; }
+    .tz-rss { font-family: var(--tz-font-mono); font-size: 13px; color: var(--tz-accent); text-decoration: none; border-bottom: 1px solid var(--tz-accent); }
+    .tz-release { position: relative; margin-top: clamp(48px, 7vw, 88px); padding-top: 8px; overflow: hidden; }
+    .tz-ghost {
+      position: absolute; top: -30px; right: -10px;
+      font-family: var(--tz-font-mono); font-weight: 700;
+      font-size: clamp(120px, 22vw, 220px); line-height: 1;
+      color: var(--tz-ink); opacity: 0.045;
+      pointer-events: none; user-select: none;
+    }
+    .tz-ver { display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; border-top: 2px solid var(--tz-ink); padding-top: 22px; position: relative; }
+    .tz-ver code { font-family: var(--tz-font-mono); font-size: 22px; font-weight: 700; color: var(--tz-ink); }
+    .tz-ver time { font-family: var(--tz-font-mono); font-size: 13px; color: var(--tz-muted); letter-spacing: 0.08em; }
+    .tz-ver .tz-latest { font-family: var(--tz-font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tz-bg); background: var(--tz-accent); padding: 5px 12px; }
+    .tz-entries { list-style: none; margin: 26px 0 0; padding: 0; position: relative; }
+    .tz-entries li { display: grid; grid-template-columns: 92px 1fr; gap: 8px 20px; padding: 14px 0; border-bottom: 1px solid var(--tz-line); font-size: 16px; line-height: 1.6; }
+    .tz-badge { font-family: var(--tz-font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; justify-self: start; padding: 4px 10px; border: 1px solid var(--tz-ink); margin-top: 3px; }
+    .tz-badge--added { background: var(--tz-ink); color: var(--tz-bg); }
+    .tz-badge--fixed { background: transparent; color: var(--tz-accent); border-color: var(--tz-accent); }
+    .tz-badge--changed { background: transparent; color: var(--tz-ink); }
+    .tz-entries code { font-family: var(--tz-font-mono); font-size: 0.88em; background: var(--tz-line); padding: 1px 6px; }
+    @media (max-width: 560px) { .tz-entries li { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <div class="tz-wrap">
+    <p class="tz-eyebrow" th:text="${changelog.eyebrow}">Caliber · Release log</p>
+    <h1 class="tz-title" th:text="${changelog.title}">What changed, and when.</h1>
+    <p class="tz-lede" th:text="${changelog.lede}">Every release, in plain language. We write these for the customer who has to explain the update to their boss on Monday morning.</p>
+    <p><a class="tz-rss" th:href="@{/changelog/feed}" href="/changelog/feed">Subscribe via RSS</a></p>
+    <section class="tz-release" th:each="r : ${releases}">
+      <span class="tz-ghost" aria-hidden="true" th:text="${r.ghost}">2.4</span>
+      <div class="tz-ver">
+        <code th:text="${r.version}">v2.4.0</code>
+        <time th:text="${r.date}">October 1, 2026</time>
+        <span class="tz-latest" th:if="${r.latest}">Latest</span>
+      </div>
+      <ul class="tz-entries">
+        <li th:each="e : ${r.entries}">
+          <span class="tz-badge" th:classappend="'tz-badge--' + ${e.kind}" th:text="${e.kind}">Added</span>
+          <span th:utext="${e.text}">Bulk export to CSV, up to 50,000 rows per file.</span>
+        </li>
+      </ul>
+    </section>
+    <section class="tz-release" th:if="${#lists.isEmpty(releases)}">
+      <span class="tz-ghost" aria-hidden="true">2.4</span>
+      <div class="tz-ver">
+        <code>v2.4.0</code>
+        <time>October 1, 2026</time>
+        <span class="tz-latest">Latest</span>
+      </div>
+      <ul class="tz-entries">
+        <li><span class="tz-badge tz-badge--added">Added</span><span>Bulk export to CSV — up to 50,000 rows per file, with the same filters you see on screen.</span></li>
+        <li><span class="tz-badge tz-badge--fixed">Fixed</span><span>Dashboard totals no longer double-count refunded orders. If your September numbers looked generous, this was why — sorry.</span></li>
+        <li><span class="tz-badge tz-badge--changed">Changed</span><span>API rate limit headers now use <code>X-RateLimit-Remaining</code> to match the docs.</span></li>
+      </ul>
+    </section>
+    <section class="tz-release" th:if="${#lists.isEmpty(releases)}">
+      <span class="tz-ghost" aria-hidden="true">2.3</span>
+      <div class="tz-ver">
+        <code>v2.3.2</code>
+        <time>September 12, 2026</time>
+      </div>
+      <ul class="tz-entries">
+        <li><span class="tz-badge tz-badge--fixed">Fixed</span><span>Time zones on scheduled reports: "9am" now means 9am where you are, not where our servers are.</span></li>
+        <li><span class="tz-badge tz-badge--added">Added</span><span>Two-factor authentication via authenticator apps. SMS codes are gone for good.</span></li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>
