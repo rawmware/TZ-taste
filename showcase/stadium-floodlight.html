@@ -1,0 +1,129 @@
+<!--tz-meta {"id":"showcase-stadium-floodlight","title":"Stadium Floodlight showcase","category":"Showcase","file":"showcase/stadium-floodlight.html","tags":["stadium-floodlight"],"description":"Live demo page for the Stadium Floodlight style DNA.","dnas":["stadium-floodlight"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Stadium Floodlight — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#141719; --tz-surface:#1e2325; --tz-ink:#f4f7f5; --tz-muted:#8b9490;
+  --tz-accent:#3fae5a; --tz-line:#3fae5a3d;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Archivo",sans-serif;font-size:1rem;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 4vw;font-family:"JetBrains Mono",monospace;font-size:0.72rem;letter-spacing:0.1em}
+.tz-wordmark{font-family:"Archivo Black",sans-serif;font-size:1.2rem;letter-spacing:0.02em}
+.tz-label{color:var(--tz-muted)}
+.tz-score{border-top:1px solid var(--tz-line);border-bottom:3px solid var(--tz-accent);padding:0.7rem 4vw;font-family:"JetBrains Mono",monospace;font-size:0.8rem;letter-spacing:0.08em;display:flex;gap:2rem;flex-wrap:wrap;background:var(--tz-surface)}
+.tz-score .tz-live{color:var(--tz-accent);font-weight:700}
+.tz-score .tz-dim{color:var(--tz-muted)}
+.tz-hero{padding:4rem 0 3.5rem;position:relative}
+.tz-hero h1{font-family:"Archivo Black",sans-serif;font-size:clamp(4.5rem,13vw,13rem);line-height:0.9;letter-spacing:-0.02em;text-transform:uppercase;white-space:nowrap;overflow:hidden;animation:tz-lamps 0.9s steps(3) 1}
+@keyframes tz-lamps{0%{opacity:0}33%{opacity:0.4}66%{opacity:0.75}100%{opacity:1}}
+.tz-hero .tz-kicker{padding:0 4vw;font-family:"JetBrains Mono",monospace;font-size:0.8rem;letter-spacing:0.2em;color:var(--tz-accent);margin-bottom:1rem;display:block}
+.tz-sub{padding:1.6rem 4vw 0;font-size:1.05rem;color:var(--tz-muted);max-width:56ch}
+.tz-cta{display:inline-block;margin:2.2rem 4vw 0;background:var(--tz-accent);color:var(--tz-bg);font-family:"Archivo Black",sans-serif;font-size:1.1rem;letter-spacing:0.03em;text-decoration:none;padding:1.1rem 2.6rem;transition:transform .12s ease}
+.tz-cta:hover{transform:scale(1.04)}
+.tz-content{padding:3rem 4vw 0;max-width:1100px;margin:0 auto}
+.tz-content h2{font-family:"Archivo Black",sans-serif;font-size:clamp(1.8rem,4.5vw,3rem);text-transform:uppercase;margin-bottom:0.4rem}
+.tz-content .tz-note{color:var(--tz-muted);margin-bottom:2rem}
+.tz-fixtures{list-style:none;border-top:3px solid var(--tz-accent)}
+.tz-fixtures li{display:grid;grid-template-columns:9rem 1fr auto;gap:1.5rem;align-items:center;padding:1.5rem 0;border-bottom:1px solid var(--tz-line);background:var(--tz-surface);padding-left:1.5rem;padding-right:1.5rem;margin-bottom:2px}
+.tz-when{font-family:"JetBrains Mono",monospace;font-size:0.85rem;color:var(--tz-muted)}
+.tz-match{font-weight:800;font-size:1.25rem;letter-spacing:0.01em}
+.tz-match .tz-vs{color:var(--tz-muted);font-weight:400;font-size:0.9rem}
+.tz-note2{font-family:"JetBrains Mono",monospace;font-size:0.78rem;color:var(--tz-accent);white-space:nowrap}
+.tz-report{margin-top:4rem;max-width:680px}
+.tz-report h2{font-family:"Archivo Black",sans-serif;font-size:1.6rem;text-transform:uppercase;margin-bottom:1.5rem}
+.tz-report p{position:relative;padding-left:4.2rem;margin-bottom:1.6rem;color:var(--tz-muted)}
+.tz-report p strong{color:var(--tz-ink);font-weight:600}
+.tz-report .tz-min{position:absolute;left:0;top:0.15rem;font-family:"JetBrains Mono",monospace;font-size:0.75rem;color:var(--tz-accent);font-weight:700}
+.tz-tokens{padding:3.5rem 4vw;border-top:3px solid var(--tz-accent);margin-top:4rem}
+.tz-tokens h2{font-family:"Archivo Black",sans-serif;font-size:1.6rem;text-transform:uppercase;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"JetBrains Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"JetBrains Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"JetBrains Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-fixtures li{grid-template-columns:1fr;gap:0.4rem}
+  .tz-hero h1{white-space:normal}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">NORTH END FC</span>
+  <span class="tz-label">EST. 1904 · THE CONCRETE BOWL</span>
+</header>
+
+<div class="tz-score">
+  <span class="tz-live">● LIVE 67'</span>
+  <span>NORTH END <strong>2 — 1</strong> HARBOR UTD</span>
+  <span class="tz-dim">GATES 18:00 · KICKOFF 20:00</span>
+</div>
+
+<section class="tz-hero">
+  <span class="tz-kicker">SATURDAY · UNDER THE LIGHTS</span>
+  <h1>DERBY NIGHT</h1>
+  <p class="tz-sub">Sixty thousand seats. One floodlit pitch. Everything outside the light doesn't exist.</p>
+  <a class="tz-cta" href="#">GET MATCH TICKETS</a>
+</section>
+
+<section class="tz-content">
+  <h2>Upcoming fixtures</h2>
+  <p class="tz-note">Ranked by date. Section numbers are real — pick yours before they're gone.</p>
+  <ul class="tz-fixtures">
+    <li>
+      <span class="tz-when">SAT OCT 10 · 20:00</span>
+      <span class="tz-match">NORTH END <span class="tz-vs">vs</span> ROVERS <span class="tz-vs">(H)</span></span>
+      <span class="tz-note2">SECTION 112 STILL OPEN</span>
+    </li>
+    <li>
+      <span class="tz-when">SAT OCT 17 · 17:30</span>
+      <span class="tz-match">NORTH END <span class="tz-vs">vs</span> EASTVALE <span class="tz-vs">(H)</span></span>
+      <span class="tz-note2">DERBY · SOLD OUT</span>
+    </li>
+    <li>
+      <span class="tz-when">SAT OCT 24 · 20:00</span>
+      <span class="tz-match">NORTH END <span class="tz-vs">at</span> IRONWORKS <span class="tz-vs">(A)</span></span>
+      <span class="tz-note2">AWAY END · COACH LEAVES 16:00</span>
+    </li>
+    <li>
+      <span class="tz-when">SAT OCT 31 · 19:45</span>
+      <span class="tz-match">NORTH END <span class="tz-vs">vs</span> HARBOR UTD <span class="tz-vs">(H)</span></span>
+      <span class="tz-note2">CUP · EXTRA TIME IF LEVEL</span>
+    </li>
+  </ul>
+
+  <div class="tz-report">
+    <h2>Last match, minute by minute</h2>
+    <p><span class="tz-min">12'</span><strong>Okafor opens the scoring.</strong> Low drive from the edge of the box. The North End goes quiet for exactly one second, then doesn't.</p>
+    <p><span class="tz-min">45+1'</span><strong>Harbor equalize against the run of play.</strong> A header nobody tracked. Half-time arrives like bad news.</p>
+    <p><span class="tz-min">90+2'</span><strong>Vance wins it at the death.</strong> Ninety minutes of noise for two seconds of silence, then the whole bowl erupts.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#141719"></span><span class="tz-name">bg</span><span class="tz-hex">#141719</span></li>
+    <li><span class="tz-chip" style="background:#1e2325"></span><span class="tz-name">surface</span><span class="tz-hex">#1e2325</span></li>
+    <li><span class="tz-chip" style="background:#f4f7f5"></span><span class="tz-name">ink</span><span class="tz-hex">#f4f7f5</span></li>
+    <li><span class="tz-chip" style="background:#8b9490"></span><span class="tz-name">muted</span><span class="tz-hex">#8b9490</span></li>
+    <li><span class="tz-chip" style="background:#3fae5a"></span><span class="tz-name">accent</span><span class="tz-hex">#3fae5a</span></li>
+    <li><span class="tz-chip" style="background:#3fae5a3d"></span><span class="tz-name">line</span><span class="tz-hex">#3fae5a3d</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
