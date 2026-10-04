@@ -35,6 +35,23 @@
   footer { border-top: 1px solid #e5e5e5; margin-top: 24px; }
   footer div { max-width: 1400px; margin: 0 auto; padding: 14px 16px; font-size: 12px; color: #9ca3af; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
   footer a { color: #6b7280; text-decoration: none; }
+
+  .sec { margin-bottom: 30px; }
+  .sec-h { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: #6b7280; margin-bottom: 12px; }
+  .sec-h .n { color: #9ca3af; font-weight: 400; }
+  .newgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .newcard { display: block; border: 2px solid #111; border-radius: 12px; padding: 22px; text-decoration: none; color: #111; background: #fff; }
+  .newcard:hover { background: #111; color: #fff; }
+  .newcard:hover .tag { color: #9ca3af; }
+  .nm-big { font-size: 19px; font-weight: 800; display: block; letter-spacing: -0.01em; }
+  .tag { font-size: 12px; color: #6b7280; }
+  .origrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; }
+  .orilink { display: block; border: 1px solid #e5e5e5; border-radius: 8px; padding: 10px 12px; font-size: 13px; color: #111; text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .orilink:hover { border-color: #111; }
+  .pills { display: flex; gap: 8px; flex-wrap: wrap; }
+  .pills a { font-size: 13px; color: #111; border: 1px solid #e5e5e5; border-radius: 999px; padding: 7px 14px; text-decoration: none; }
+  .pills a:hover { border-color: #111; }
+  @media (max-width: 640px) { .newgrid { grid-template-columns: 1fr; } }
   @media (max-width: 640px) { input[type="search"] { width: 140px; } #grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); } }
 </style>
 </head>
@@ -50,9 +67,128 @@
   </div>
 </header>
 <main>
+<section class="sec">
+  <h2 class="sec-h">New</h2>
+  <div class="newgrid">
+    <a class="newcard" href="showcase/pixel-retro-game.html"><span class="nm-big">Starlight Drifter</span><span class="tag">pixel platformer · new</span></a>
+    <a class="newcard" href="showcase/tamagotchi.html"><span class="nm-big">Pocket Pal</span><span class="tag">virtual pet · new</span></a>
+  </div>
+</section>
+<section class="sec">
+  <h2 class="sec-h">Originals <span class="n">92</span></h2>
+  <div class="origrid">
+    <a class="orilink" href="showcase/acid-rave.html">Acid Rave</a>
+    <a class="orilink" href="showcase/alpine-after-dark.html">Alpine After Dark</a>
+    <a class="orilink" href="showcase/alpine-ledger.html">Alpine Ledger</a>
+    <a class="orilink" href="showcase/aperitivo-italian.html">Aperitivo Italian</a>
+    <a class="orilink" href="showcase/apotheke.html">Apotheke</a>
+    <a class="orilink" href="showcase/arctic-field.html">Arctic Field</a>
+    <a class="orilink" href="showcase/art-deco-luxe.html">Art Deco Luxe</a>
+    <a class="orilink" href="showcase/art-nouveau-whiplash.html">Art Nouveau Whiplash</a>
+    <a class="orilink" href="showcase/barbershop-pole.html">Barbershop Pole</a>
+    <a class="orilink" href="showcase/bauhaus-primary.html">Bauhaus Primary</a>
+    <a class="orilink" href="showcase/bazaar-spice.html">Bazaar Spice</a>
+    <a class="orilink" href="showcase/bike-repair.html">Bike Repair</a>
+    <a class="orilink" href="showcase/blueprint-tech.html">Blueprint Tech</a>
+    <a class="orilink" href="showcase/botanical-lab.html">Botanical Lab</a>
+    <a class="orilink" href="showcase/cassette-jcard.html">Cassette Jcard</a>
+    <a class="orilink" href="showcase/chalkboard-cafe.html">Chalkboard Cafe</a>
+    <a class="orilink" href="showcase/circus-poster.html">Circus Poster</a>
+    <a class="orilink" href="showcase/concrete-poem.html">Concrete Poem</a>
+    <a class="orilink" href="showcase/constructivist-red.html">Constructivist Red</a>
+    <a class="orilink" href="showcase/corner-deli.html">Corner Deli</a>
+    <a class="orilink" href="showcase/cottage-warm.html">Cottage Warm</a>
+    <a class="orilink" href="showcase/cyberpunk-noir.html">Cyberpunk Noir</a>
+    <a class="orilink" href="showcase/dark-luxe.html">Dark Luxe</a>
+    <a class="orilink" href="showcase/de-stijl-grid.html">De Stijl Grid</a>
+    <a class="orilink" href="showcase/desert-modern.html">Desert Modern</a>
+    <a class="orilink" href="showcase/diary-zine.html">Diary Zine</a>
+    <a class="orilink" href="showcase/docs-solar.html">Docs Solar</a>
+    <a class="orilink" href="showcase/drive-in-theater.html">Drive In Theater</a>
+    <a class="orilink" href="showcase/editorial-serif.html">Editorial Serif</a>
+    <a class="orilink" href="showcase/farmers-almanac.html">Farmers Almanac</a>
+    <a class="orilink" href="showcase/fishing-tackle.html">Fishing Tackle</a>
+    <a class="orilink" href="showcase/glass-calm.html">Glass Calm</a>
+    <a class="orilink" href="showcase/gothic-editorial.html">Gothic Editorial</a>
+    <a class="orilink" href="showcase/greenhouse-glass.html">Greenhouse Glass</a>
+    <a class="orilink" href="showcase/greenmarket-dawn.html">Greenmarket Dawn</a>
+    <a class="orilink" href="showcase/harbor-fog.html">Harbor Fog</a>
+    <a class="orilink" href="showcase/industrial-brutalist.html">Industrial Brutalist</a>
+    <a class="orilink" href="showcase/ink-wash-sumi.html">Ink Wash Sumi</a>
+    <a class="orilink" href="showcase/italian-futurist.html">Italian Futurist</a>
+    <a class="orilink" href="showcase/jazz-blue-note.html">Jazz Blue Note</a>
+    <a class="orilink" href="showcase/kawaii-pixel.html">Kawaii Pixel</a>
+    <a class="orilink" href="showcase/lab-notebook.html">Lab Notebook</a>
+    <a class="orilink" href="showcase/laboratory-clean.html">Laboratory Clean</a>
+    <a class="orilink" href="showcase/laundromat-neon.html">Laundromat Neon</a>
+    <a class="orilink" href="showcase/library-oak.html">Library Oak</a>
+    <a class="orilink" href="showcase/locksmith-shop.html">Locksmith Shop</a>
+    <a class="orilink" href="showcase/ma-japanese.html">Ma Japanese</a>
+    <a class="orilink" href="showcase/matchbook-cover.html">Matchbook Cover</a>
+    <a class="orilink" href="showcase/memphis-milano.html">Memphis Milano</a>
+    <a class="orilink" href="showcase/midnight-railway.html">Midnight Railway</a>
+    <a class="orilink" href="showcase/museum-placard.html">Museum Placard</a>
+    <a class="orilink" href="showcase/neo-brutalist-pop.html">Neo Brutalist Pop</a>
+    <a class="orilink" href="showcase/neon-diner.html">Neon Diner</a>
+    <a class="orilink" href="showcase/newsroom-wire.html">Newsroom Wire</a>
+    <a class="orilink" href="showcase/night-market.html">Night Market</a>
+    <a class="orilink" href="showcase/nordic-noir.html">Nordic Noir</a>
+    <a class="orilink" href="showcase/observatory-star.html">Observatory Star</a>
+    <a class="orilink" href="showcase/origami-fold.html">Origami Fold</a>
+    <a class="orilink" href="showcase/paris-metro.html">Paris Metro</a>
+    <a class="orilink" href="showcase/parisian-chic.html">Parisian Chic</a>
+    <a class="orilink" href="showcase/pixel-arcade.html">Pixel Arcade</a>
+    <a class="orilink" href="showcase/pixel-garden.html">Pixel Garden</a>
+    <a class="orilink" href="showcase/pop-art-halftone.html">Pop Art Halftone</a>
+    <a class="orilink" href="showcase/postage-stamp.html">Postage Stamp</a>
+    <a class="orilink" href="showcase/postcard-rack.html">Postcard Rack</a>
+    <a class="orilink" href="showcase/retro-terminal.html">Retro Terminal</a>
+    <a class="orilink" href="showcase/risograph-grain.html">Risograph Grain</a>
+    <a class="orilink" href="showcase/roadside-motel.html">Roadside Motel</a>
+    <a class="orilink" href="showcase/sahara-ochre.html">Sahara Ochre</a>
+    <a class="orilink" href="showcase/sauna-cedar.html">Sauna Cedar</a>
+    <a class="orilink" href="showcase/scandi-calm.html">Scandi Calm</a>
+    <a class="orilink" href="showcase/seed-packet.html">Seed Packet</a>
+    <a class="orilink" href="showcase/sewing-pattern.html">Sewing Pattern</a>
+    <a class="orilink" href="showcase/soft-minimal.html">Soft Minimal</a>
+    <a class="orilink" href="showcase/stadium-floodlight.html">Stadium Floodlight</a>
+    <a class="orilink" href="showcase/storybook-watercolor.html">Storybook Watercolor</a>
+    <a class="orilink" href="showcase/surf-shack.html">Surf Shack</a>
+    <a class="orilink" href="showcase/swimming-pool.html">Swimming Pool</a>
+    <a class="orilink" href="showcase/swiss-airline.html">Swiss Airline</a>
+    <a class="orilink" href="showcase/swiss-poster.html">Swiss Poster</a>
+    <a class="orilink" href="showcase/swiss-rational.html">Swiss Rational</a>
+    <a class="orilink" href="showcase/ticket-stub.html">Ticket Stub</a>
+    <a class="orilink" href="showcase/tokyo-kissaten.html">Tokyo Kissaten</a>
+    <a class="orilink" href="showcase/tokyo-neon.html">Tokyo Neon</a>
+    <a class="orilink" href="showcase/transit-swiss.html">Transit Swiss</a>
+    <a class="orilink" href="showcase/tropical-brutalism.html">Tropical Brutalism</a>
+    <a class="orilink" href="showcase/typewriter-repair.html">Typewriter Repair</a>
+    <a class="orilink" href="showcase/ukiyo-e-print.html">Ukiyo E Print</a>
+    <a class="orilink" href="showcase/vaporwave-sunset.html">Vaporwave Sunset</a>
+    <a class="orilink" href="showcase/vinyl-crate.html">Vinyl Crate</a>
+    <a class="orilink" href="showcase/weather-station.html">Weather Station</a>
+    <a class="orilink" href="showcase/y2k-chrome.html">Y2K Chrome</a>
+  </div>
+</section>
+<nav class="sec" aria-label="Collections">
+  <h2 class="sec-h">Collections</h2>
+  <div class="pills">
+    <a href="https://github.com/rawmware/TZ-taste/tree/main/patterns">patterns</a>
+    <a href="https://github.com/rawmware/TZ-taste/tree/main/templates">templates</a>
+    <a href="https://github.com/rawmware/TZ-taste/tree/main/generative">generative</a>
+    <a href="https://github.com/rawmware/TZ-taste/tree/main/three-d">three-d</a>
+    <a href="https://github.com/rawmware/TZ-taste/tree/main/app-ui">app-ui</a>
+    <a href="https://github.com/rawmware/TZ-taste/tree/main/emails">emails</a>
+    <a href="https://github.com/rawmware/TZ-taste/tree/main/styles">styles</a>
+  </div>
+</nav>
+<section class="sec">
+  <h2 class="sec-h">Style DNAs</h2>
   <div id="grid"></div>
   <div id="empty">No styles match.</div>
   <div id="sentinel"></div>
+</section>
 </main>
 <footer><div><span>MIT · free forever</span><a href="https://github.com/rawmware/TZ-taste">rawmware/TZ-taste</a></div></footer>
 <script>

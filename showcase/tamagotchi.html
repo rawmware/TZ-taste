@@ -1,0 +1,309 @@
+<!--tz-meta {"id":"showcase-tamagotchi","title":"Pocket Pal — virtual pet","category":"Showcase","file":"showcase/tamagotchi.html","tags":["kawaii","toy"],"description":"Interactive POCKET PAL virtual pet — feed it, play with it, keep it alive.","dnas":["kawaii"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pocket Pal — a virtual pet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#fdf3f8; --tz-panel:#ffffff; --tz-ink:#4a2545; --tz-muted:#a08aa0;
+  --tz-accent:#ff5fa2; --tz-lav:#7c6ff0; --tz-mint:#5fd6b5; --tz-sun:#ffd94a;
+  --tz-shell:#ff9ecf; --tz-shell-d:#e87fb4; --tz-lcd:#d9ecc0; --tz-line:#4a2545;
+}
+.px-pet-neutral{width:10px;height:10px;box-shadow:40px 0px #14141c,50px 0px #14141c,60px 0px #14141c,70px 0px #14141c,20px 10px #14141c,30px 10px #14141c,40px 10px #ffb3d9,50px 10px #ffb3d9,60px 10px #ffb3d9,70px 10px #ffb3d9,80px 10px #14141c,90px 10px #14141c,10px 20px #14141c,20px 20px #ffb3d9,30px 20px #ffb3d9,40px 20px #ffb3d9,50px 20px #ffb3d9,60px 20px #ffb3d9,70px 20px #ffb3d9,80px 20px #ffb3d9,90px 20px #ffb3d9,100px 20px #14141c,10px 30px #14141c,20px 30px #ffb3d9,30px 30px #14141c,40px 30px #ffb3d9,50px 30px #ffb3d9,60px 30px #ffb3d9,70px 30px #ffb3d9,80px 30px #14141c,90px 30px #ffb3d9,100px 30px #14141c,10px 40px #14141c,20px 40px #ffb3d9,30px 40px #ffb3d9,40px 40px #ffb3d9,50px 40px #ffb3d9,60px 40px #ffb3d9,70px 40px #ffb3d9,80px 40px #ffb3d9,90px 40px #ffb3d9,100px 40px #14141c,10px 50px #14141c,20px 50px #e78fb8,30px 50px #ffb3d9,40px 50px #ffb3d9,50px 50px #ffb3d9,60px 50px #ffb3d9,70px 50px #ffb3d9,80px 50px #ffb3d9,90px 50px #e78fb8,100px 50px #14141c,20px 60px #14141c,30px 60px #e78fb8,40px 60px #fff3f8,50px 60px #fff3f8,60px 60px #fff3f8,70px 60px #fff3f8,80px 60px #e78fb8,90px 60px #14141c,20px 70px #14141c,30px 70px #e78fb8,40px 70px #fff3f8,50px 70px #fff3f8,60px 70px #fff3f8,70px 70px #fff3f8,80px 70px #e78fb8,90px 70px #14141c,30px 80px #14141c,40px 80px #14141c,50px 80px #14141c,60px 80px #14141c,70px 80px #14141c,80px 80px #14141c;}
+.px-pet-happy{width:10px;height:10px;box-shadow:40px 0px #14141c,50px 0px #14141c,60px 0px #14141c,70px 0px #14141c,20px 10px #14141c,30px 10px #14141c,40px 10px #ffb3d9,50px 10px #ffb3d9,60px 10px #ffb3d9,70px 10px #ffb3d9,80px 10px #14141c,90px 10px #14141c,10px 20px #14141c,20px 20px #ffb3d9,30px 20px #ffb3d9,40px 20px #ffb3d9,50px 20px #ffb3d9,60px 20px #ffb3d9,70px 20px #ffb3d9,80px 20px #ffb3d9,90px 20px #ffb3d9,100px 20px #14141c,10px 30px #14141c,20px 30px #ffb3d9,30px 30px #14141c,40px 30px #ffb3d9,50px 30px #ffb3d9,60px 30px #ffb3d9,70px 30px #ffb3d9,80px 30px #14141c,90px 30px #ffb3d9,100px 30px #14141c,10px 40px #14141c,20px 40px #ffb3d9,30px 40px #ffb3d9,40px 40px #ffb3d9,50px 40px #ffb3d9,60px 40px #ffb3d9,70px 40px #ffb3d9,80px 40px #ffb3d9,90px 40px #ffb3d9,100px 40px #14141c,10px 50px #14141c,20px 50px #e78fb8,30px 50px #ffb3d9,40px 50px #ffb3d9,50px 50px #14141c,60px 50px #14141c,70px 50px #ffb3d9,80px 50px #ffb3d9,90px 50px #e78fb8,100px 50px #14141c,20px 60px #14141c,30px 60px #e78fb8,40px 60px #fff3f8,50px 60px #fff3f8,60px 60px #fff3f8,70px 60px #fff3f8,80px 60px #e78fb8,90px 60px #14141c,20px 70px #14141c,30px 70px #e78fb8,40px 70px #fff3f8,50px 70px #fff3f8,60px 70px #fff3f8,70px 70px #fff3f8,80px 70px #e78fb8,90px 70px #14141c,30px 80px #14141c,40px 80px #14141c,50px 80px #14141c,60px 80px #14141c,70px 80px #14141c,80px 80px #14141c;}
+.px-pet-sad{width:10px;height:10px;box-shadow:40px 0px #14141c,50px 0px #14141c,60px 0px #14141c,70px 0px #14141c,20px 10px #14141c,30px 10px #14141c,40px 10px #ffb3d9,50px 10px #ffb3d9,60px 10px #ffb3d9,70px 10px #ffb3d9,80px 10px #14141c,90px 10px #14141c,10px 20px #14141c,20px 20px #ffb3d9,30px 20px #ffb3d9,40px 20px #ffb3d9,50px 20px #ffb3d9,60px 20px #ffb3d9,70px 20px #ffb3d9,80px 20px #ffb3d9,90px 20px #ffb3d9,100px 20px #14141c,10px 30px #14141c,20px 30px #ffb3d9,30px 30px #14141c,40px 30px #ffb3d9,50px 30px #ffb3d9,60px 30px #ffb3d9,70px 30px #ffb3d9,80px 30px #14141c,90px 30px #ffb3d9,100px 30px #14141c,10px 40px #14141c,20px 40px #ffb3d9,30px 40px #ffb3d9,40px 40px #ffb3d9,50px 40px #ffb3d9,60px 40px #ffb3d9,70px 40px #ffb3d9,80px 40px #ffb3d9,90px 40px #ffb3d9,100px 40px #14141c,10px 50px #14141c,20px 50px #e78fb8,30px 50px #ffb3d9,40px 50px #14141c,50px 50px #14141c,60px 50px #14141c,70px 50px #14141c,80px 50px #ffb3d9,90px 50px #e78fb8,100px 50px #14141c,20px 60px #14141c,30px 60px #e78fb8,40px 60px #fff3f8,50px 60px #fff3f8,60px 60px #fff3f8,70px 60px #fff3f8,80px 60px #e78fb8,90px 60px #14141c,20px 70px #14141c,30px 70px #e78fb8,40px 70px #fff3f8,50px 70px #fff3f8,60px 70px #fff3f8,70px 70px #fff3f8,80px 70px #e78fb8,90px 70px #14141c,30px 80px #14141c,40px 80px #14141c,50px 80px #14141c,60px 80px #14141c,70px 80px #14141c,80px 80px #14141c;}
+.px-egg{width:10px;height:10px;box-shadow:20px 0px #14141c,30px 0px #14141c,40px 0px #14141c,50px 0px #14141c,10px 10px #14141c,20px 10px #ffffff,30px 10px #ffffff,40px 10px #ffffff,50px 10px #ffffff,60px 10px #14141c,0px 20px #14141c,10px 20px #ffffff,20px 20px #ffffff,30px 20px #fff3f8,40px 20px #fff3f8,50px 20px #fff3f8,60px 20px #14141c,70px 20px #14141c,0px 30px #14141c,10px 30px #ffffff,20px 30px #fff3f8,30px 30px #fff3f8,40px 30px #fff3f8,50px 30px #fff3f8,60px 30px #fff3f8,70px 30px #14141c,0px 40px #14141c,10px 40px #ffffff,20px 40px #fff3f8,30px 40px #fff3f8,40px 40px #fff3f8,50px 40px #fff3f8,60px 40px #fff3f8,70px 40px #14141c,0px 50px #14141c,10px 50px #ffffff,20px 50px #fff3f8,30px 50px #fff3f8,40px 50px #fff3f8,50px 50px #fff3f8,60px 50px #fff3f8,70px 50px #14141c,0px 60px #14141c,10px 60px #fff3f8,20px 60px #fff3f8,30px 60px #fff3f8,40px 60px #fff3f8,50px 60px #fff3f8,60px 60px #fff3f8,70px 60px #14141c,10px 70px #14141c,20px 70px #fff3f8,30px 70px #fff3f8,40px 70px #fff3f8,50px 70px #fff3f8,60px 70px #14141c,10px 80px #14141c,20px 80px #fff3f8,30px 80px #fff3f8,40px 80px #fff3f8,50px 80px #fff3f8,60px 80px #14141c,20px 90px #14141c,30px 90px #14141c,40px 90px #14141c,50px 90px #14141c;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Nunito",sans-serif;
+  font-size:1.02rem;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;
+  border-bottom:3px solid var(--tz-line);font-size:.72rem;letter-spacing:.12em;font-weight:800}
+.tz-top .tz-wordmark{font-family:"Press Start 2P",monospace;font-size:.8rem;color:var(--tz-accent)}
+.tz-hero{max-width:1100px;margin:0 auto;padding:3.5rem 1.5rem;text-align:center}
+.tz-eyebrow{font-size:.72rem;letter-spacing:.22em;color:var(--tz-lav);font-weight:800;margin-bottom:1.4rem}
+.tz-hero h1{font-family:"Press Start 2P",monospace;font-size:clamp(1.6rem,5vw,3.4rem);
+  line-height:1.35;margin-bottom:1.4rem}
+.tz-hero h1 .pk{color:var(--tz-accent)}
+.tz-hero>p{color:var(--tz-muted);max-width:54ch;margin:0 auto 2.6rem;font-size:1rem}
+/* ---- the device ---- */
+.tz-device{width:340px;max-width:92vw;margin:0 auto;background:var(--tz-shell);
+  border:4px solid var(--tz-line);border-radius:50% 50% 50% 50% / 58% 58% 42% 42%;
+  padding:56px 34px 44px;box-shadow:10px 10px 0 rgba(74,37,69,.14);position:relative}
+.tz-device::before{content:"";position:absolute;top:22px;left:50%;transform:translateX(-50%);
+  width:52px;height:10px;border-radius:99px;background:var(--tz-shell-d);border:3px solid var(--tz-line)}
+.tz-screen{background:var(--tz-lcd);border:4px solid var(--tz-line);border-radius:18px;
+  height:250px;position:relative;overflow:hidden;
+  background-image:linear-gradient(rgba(74,37,69,.06) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(74,37,69,.06) 1px,transparent 1px);background-size:12px 12px}
+.tz-screen.sleeping{filter:brightness(.55)}
+.tz-petstage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.tz-petstage .px{position:relative}
+.tz-eggstage{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:14px}
+.tz-eggstage .px{position:relative}
+.tz-hatch{font-family:"Press Start 2P",monospace;font-size:.6rem;background:var(--tz-ink);
+  color:#fff;border:0;border-radius:99px;padding:.8rem 1.3rem;cursor:pointer}
+.tz-statline{position:absolute;left:12px;right:12px;bottom:10px}
+.tz-stat{display:flex;align-items:center;gap:8px;margin-top:5px;
+  font-family:"Press Start 2P",monospace;font-size:.52rem;color:#3d5a34}
+.tz-bar{flex:1;height:10px;border:2px solid #3d5a34;border-radius:99px;overflow:hidden;background:rgba(255,255,255,.5)}
+.tz-bar i{display:block;height:100%;background:#3d5a34;border-radius:99px;transition:width .4s}
+.tz-log{min-height:2.2em;text-align:center;font-family:"Press Start 2P",monospace;
+  font-size:.6rem;line-height:1.7;color:var(--tz-ink);margin:18px 4px 0;min-height:44px}
+.tz-btns{display:flex;justify-content:center;gap:14px;margin-top:14px;flex-wrap:wrap}
+.tz-btn{font-family:"Press Start 2P",monospace;font-size:.58rem;color:var(--tz-ink);
+  background:#fff;border:3px solid var(--tz-line);border-radius:50%;width:74px;height:74px;
+  cursor:pointer;box-shadow:0 4px 0 var(--tz-line);line-height:1.5}
+.tz-btn:active{transform:translateY(4px);box-shadow:none}
+.tz-btn small{display:block;font-size:.42rem;color:var(--tz-muted);margin-top:2px}
+.tz-shells{display:flex;justify-content:center;gap:10px;margin-top:22px}
+.tz-shells span{width:26px;height:26px;border-radius:50%;border:3px solid var(--tz-line);cursor:default}
+.tz-content{max-width:1100px;margin:0 auto;padding:3rem 1.5rem}
+.tz-panel{background:var(--tz-panel);border:3px solid var(--tz-line);border-radius:26px;
+  padding:2.4rem;margin-bottom:2.6rem;box-shadow:8px 8px 0 rgba(74,37,69,.1)}
+.tz-panel h2{font-family:"Press Start 2P",monospace;font-size:1rem;line-height:1.5;
+  margin-bottom:1.8rem;color:var(--tz-ink)}
+.tz-panel h2 .pk{color:var(--tz-accent)}
+.tz-grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+.tz-card{border:3px solid var(--tz-line);border-radius:20px;padding:1.6rem;background:var(--tz-bg)}
+.tz-card .tz-ico{font-family:"Press Start 2P",monospace;font-size:1.3rem;display:block;margin-bottom:1rem}
+.tz-card h3{font-family:"Press Start 2P",monospace;font-size:.68rem;margin-bottom:.8rem;line-height:1.6}
+.tz-card p{font-size:.9rem;color:var(--tz-muted)}
+.tz-evo{display:flex;align-items:center;justify-content:center;gap:1.4rem;flex-wrap:wrap;padding:1rem 0}
+.tz-stagebox{background:var(--tz-bg);border:3px dashed var(--tz-line);border-radius:20px;
+  width:190px;height:190px;display:flex;align-items:center;justify-content:center;position:relative}
+.tz-stagebox .px{position:relative}
+.tz-stagebox p{position:absolute;bottom:10px;font-family:"Press Start 2P",monospace;
+  font-size:.55rem;color:var(--tz-muted)}
+.tz-arrow{font-family:"Press Start 2P",monospace;color:var(--tz-accent);font-size:1.1rem}
+.tz-specs{width:100%;border-collapse:collapse;font-size:.92rem}
+.tz-specs td{padding:.8rem .4rem;border-bottom:2px dashed #ecd9e8}
+.tz-specs td:first-child{font-weight:800;width:42%}
+.tz-specs td:last-child{color:var(--tz-muted)}
+.tz-quotes{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.2rem}
+.tz-quote{background:var(--tz-bg);border:3px solid var(--tz-line);border-radius:20px;padding:1.6rem}
+.tz-quote p{font-size:.94rem;margin-bottom:1rem}
+.tz-quote cite{font-style:normal;font-size:.78rem;font-weight:800;color:var(--tz-lav)}
+.tz-band{background:var(--tz-ink);color:#fff;border-radius:26px;text-align:center;
+  padding:3.2rem 1.5rem;margin-bottom:2.6rem}
+.tz-band h2{font-family:"Press Start 2P",monospace;font-size:clamp(1rem,3.4vw,1.6rem);
+  line-height:1.6;margin-bottom:1rem}
+.tz-band h2 .pk{color:var(--tz-accent)}
+.tz-band p{color:#cdb4cc;margin-bottom:2rem}
+.tz-cta{display:inline-block;font-family:"Press Start 2P",monospace;font-size:.78rem;
+  background:var(--tz-accent);color:#fff;text-decoration:none;padding:1.1rem 2rem;
+  border-radius:99px;border:3px solid #fff;box-shadow:0 6px 0 rgba(0,0,0,.25)}
+.tz-cta:active{transform:translateY(4px);box-shadow:none}
+.tz-tokens{max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem;border-top:3px solid var(--tz-line)}
+.tz-tokens h2{font-family:"Press Start 2P",monospace;font-size:1rem;margin-bottom:1.5rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:1rem;list-style:none}
+.tz-swatches li{border:3px solid var(--tz-line);background:#fff;min-width:9rem;flex:1;border-radius:16px;overflow:hidden}
+.tz-chip{display:block;height:2.6rem}
+.tz-swatches .tz-name{display:block;font-size:.62rem;letter-spacing:.12em;color:var(--tz-muted);
+  padding:.55rem .75rem .1rem;text-transform:uppercase;font-weight:800}
+.tz-swatches .tz-hex{display:block;font-size:.74rem;padding:0 .75rem .65rem;font-weight:800}
+.tz-foot{border-top:3px solid var(--tz-line);padding:1.75rem;font-size:.72rem;color:var(--tz-muted);
+  text-align:center;letter-spacing:.06em;font-weight:700}
+@media(max-width:760px){
+  .tz-grid4,.tz-quotes{grid-template-columns:1fr}
+  .tz-device{padding:48px 26px 36px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">POCKET PAL</span>
+  <span>VIRTUAL PET · EST. 1997</span>
+</header>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow">THE 90s, IN YOUR POCKET</p>
+  <h1>A friend in<br>your <span class="pk">pocket.</span></h1>
+  <p>Meet Mochi — a digital creature the size of a keychain with the emotional needs of a toddler. Feed it, play with it, clean up after it. The one below is live: go on, press the buttons.</p>
+
+  <div class="tz-device" id="device">
+    <div class="tz-screen" id="screen">
+      <div class="tz-eggstage" id="eggstage">
+        <div class="px px-egg"></div>
+        <button class="tz-hatch" id="hatch" type="button">TAP TO HATCH</button>
+      </div>
+      <div class="tz-petstage" id="petstage" hidden>
+        <div class="px px-pet-happy" id="pet"></div>
+      </div>
+      <div class="tz-statline" id="statline" hidden>
+        <div class="tz-stat"><span>FOOD</span><div class="tz-bar"><i id="b-food" style="width:80%"></i></div></div>
+        <div class="tz-stat"><span>FUN</span><div class="tz-bar"><i id="b-fun" style="width:80%"></i></div></div>
+        <div class="tz-stat"><span>CLEAN</span><div class="tz-bar"><i id="b-clean" style="width:80%"></i></div></div>
+        <div class="tz-stat"><span>REST</span><div class="tz-bar"><i id="b-rest" style="width:80%"></i></div></div>
+      </div>
+    </div>
+    <p class="tz-log" id="log">Mochi is still an egg. Tap to hatch.</p>
+    <div class="tz-btns">
+      <button class="tz-btn" type="button" data-act="feed">FEED<small>cookie</small></button>
+      <button class="tz-btn" type="button" data-act="play">PLAY<small>ball</small></button>
+      <button class="tz-btn" type="button" data-act="clean">CLEAN<small>bath</small></button>
+      <button class="tz-btn" type="button" data-act="sleep">SLEEP<small>nap</small></button>
+    </div>
+    <div class="tz-shells" aria-label="Shell colors">
+      <span style="background:#ff9ecf" title="Bubblegum"></span>
+      <span style="background:#a89bff" title="Lavender"></span>
+      <span style="background:#7fe3c3" title="Mint"></span>
+      <span style="background:#ffd94a" title="Lemon"></span>
+    </div>
+  </div>
+</section>
+
+<section class="tz-content">
+  <div class="tz-panel">
+    <h2><span class="pk">■</span> THE CARE GUIDE</h2>
+    <div class="tz-grid4">
+      <div class="tz-card"><span class="tz-ico">🍪</span><h3>FEED IT</h3>
+        <p>Cookies raise food fast but lower health if you overdo it. The rice ball is the responsible choice. Mochi disagrees.</p></div>
+      <div class="tz-card"><span class="tz-ico">⚽</span><h3>PLAY WITH IT</h3>
+        <p>Ball games boost fun and burn energy. A tired Mochi is a happy Mochi — until it's a cranky Mochi.</p></div>
+      <div class="tz-card"><span class="tz-ico">🛁</span><h3>KEEP IT CLEAN</h3>
+        <p>Baths after meals. Mochi will complain the entire time and then fall asleep mid-splash.</p></div>
+      <div class="tz-card"><span class="tz-ico">💤</span><h3>LET IT SLEEP</h3>
+        <p>Lights out restores energy. Wake it early and it will remember. It always remembers.</p></div>
+    </div>
+  </div>
+
+  <div class="tz-panel">
+    <h2><span class="pk">■</span> EVOLUTION</h2>
+    <div class="tz-evo">
+      <div class="tz-stagebox"><div class="px px-egg"></div><p>EGG · DAY 0</p></div>
+      <span class="tz-arrow">→</span>
+      <div class="tz-stagebox"><div class="px px-pet-neutral" style="transform:scale(.8)"></div><p>BABY · DAY 2</p></div>
+      <span class="tz-arrow">→</span>
+      <div class="tz-stagebox"><div class="px px-pet-happy" style="transform:scale(1.15)"></div><p>GROWN · DAY 7</p></div>
+    </div>
+    <p style="color:var(--tz-muted);text-align:center;margin-top:1.4rem;font-size:.92rem">
+      Care quality decides the outcome: a loved Mochi grows round and cheerful. A neglected one grows… also round, but judgmental.</p>
+  </div>
+
+  <div class="tz-panel">
+    <h2><span class="pk">■</span> SPECS</h2>
+    <table class="tz-specs">
+      <tr><td>Size</td><td>Fits in a jacket pocket. Barely fits in a jeans pocket.</td></tr>
+      <tr><td>Battery</td><td>2 × CR2032. Lasts months, because Mochi sips power.</td></tr>
+      <tr><td>Sound</td><td>Three beeps: happy, hungry, and the 3 AM one.</td></tr>
+      <tr><td>Pause</td><td>There is no pause. There is only responsibility.</td></tr>
+      <tr><td>Lifespan</td><td>As long as you remember to feed it. No pressure.</td></tr>
+    </table>
+  </div>
+
+  <div class="tz-panel">
+    <h2><span class="pk">■</span> OWNER NOTES</h2>
+    <div class="tz-quotes">
+      <div class="tz-quote"><p>"I bought it for my kid. The kid lost interest in a week. I have now raised four generations of Mochi."</p><cite>— DANA, 34</cite></div>
+      <div class="tz-quote"><p>"It beeped during my wedding vows. We named our firstborn after it. Worth it."</p><cite>— MARCUS, 29</cite></div>
+      <div class="tz-quote"><p>"My Mochi is 11 years old in pet years and has never forgiven me for 2019."</p><cite>— PRIYA, 41</cite></div>
+    </div>
+  </div>
+
+  <div class="tz-band">
+    <h2>ADOPT YOURS.<br><span class="pk">$19.99</span></h2>
+    <p>Four shell colors. One egg. Zero refunds on emotional attachment.</p>
+    <a class="tz-cta" href="#">ADD TO BASKET</a>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>TOKENS</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#fdf3f8"></span><span class="tz-name">bg</span><span class="tz-hex">#fdf3f8</span></li>
+    <li><span class="tz-chip" style="background:#4a2545"></span><span class="tz-name">ink</span><span class="tz-hex">#4a2545</span></li>
+    <li><span class="tz-chip" style="background:#ff5fa2"></span><span class="tz-name">accent</span><span class="tz-hex">#ff5fa2</span></li>
+    <li><span class="tz-chip" style="background:#7c6ff0"></span><span class="tz-name">accent-2</span><span class="tz-hex">#7c6ff0</span></li>
+    <li><span class="tz-chip" style="background:#5fd6b5"></span><span class="tz-name">accent-3</span><span class="tz-hex">#5fd6b5</span></li>
+    <li><span class="tz-chip" style="background:#d9ecc0"></span><span class="tz-name">lcd</span><span class="tz-hex">#d9ecc0</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+
+<script>
+(function () {
+  "use strict";
+  var hatched = false;
+  var pet = { food: 80, fun: 80, clean: 80, rest: 80 };
+  var screen = document.getElementById("screen");
+  var log = document.getElementById("log");
+  var petEl = document.getElementById("pet");
+  var bars = {
+    food: document.getElementById("b-food"),
+    fun: document.getElementById("b-fun"),
+    clean: document.getElementById("b-clean"),
+    rest: document.getElementById("b-rest")
+  };
+  var MSGS = {
+    feed: ["Mochi ate the cookie. +food, -dignity.", "Rice ball accepted. Mochi wanted the cookie.",
+           "Mochi is chewing very loudly. It means happy."],
+    play: ["Ball thrown. Ball returned. Ball thrown again.", "Mochi did a flip! Landed it. Mostly.",
+           "Playtime over. Mochi demands one more round."],
+    clean: ["Bath complete. Mochi is damp and furious.", "All clean! The complaining has stopped. For now.",
+            "Mochi shook water everywhere. Worth it."],
+    sleep: ["Lights out. Do not wake the Mochi.", "Mochi is dreaming. Probably of cookies.",
+            "Nap time. The screen dims. Shhh."]
+  };
+  var IDLE = ["Mochi is vibing.", "Mochi blinks at you.", "Mochi did a small hop for no reason.",
+              "Mochi is thinking about snacks.", "All systems nominal. Pet levels stable."];
+
+  function say(t) { log.textContent = t; }
+  function clamp(v) { return Math.max(0, Math.min(100, v)); }
+
+  function mood() {
+    var avg = (pet.food + pet.fun + pet.clean + pet.rest) / 4;
+    return avg >= 65 ? "happy" : (avg >= 35 ? "neutral" : "sad");
+  }
+  function render() {
+    for (var k in bars) bars[k].style.width = clamp(pet[k]) + "%";
+    petEl.className = "px px-pet-" + mood();
+  }
+  function act(kind) {
+    if (!hatched) { say("Hatch Mochi first!"); return; }
+    if (kind === "feed") { pet.food = clamp(pet.food + 22); pet.clean = clamp(pet.clean - 6); }
+    if (kind === "play") { pet.fun = clamp(pet.fun + 22); pet.rest = clamp(pet.rest - 10); pet.clean = clamp(pet.clean - 5); }
+    if (kind === "clean") { pet.clean = 100; pet.fun = clamp(pet.fun - 4); }
+    if (kind === "sleep") {
+      pet.rest = 100; pet.food = clamp(pet.food - 8);
+      screen.classList.add("sleeping"); say("Mochi is napping…");
+      setTimeout(function () { screen.classList.remove("sleeping"); render(); }, 2500);
+    }
+    var m = MSGS[kind];
+    say(m[Math.floor(Math.random() * m.length)]);
+    render();
+  }
+  document.getElementById("hatch").addEventListener("click", function () {
+    hatched = true;
+    document.getElementById("eggstage").hidden = true;
+    document.getElementById("petstage").hidden = false;
+    document.getElementById("statline").hidden = false;
+    say("Mochi hatched! It is hungry. It is always hungry.");
+    render();
+  });
+  var btns = document.querySelectorAll(".tz-btn");
+  for (var i = 0; i < btns.length; i++) {
+    (function (b) {
+      b.addEventListener("click", function () { act(b.getAttribute("data-act")); });
+    })(btns[i]);
+  }
+  setInterval(function () {
+    if (!hatched) return;
+    pet.food = clamp(pet.food - 3); pet.fun = clamp(pet.fun - 3);
+    pet.clean = clamp(pet.clean - 2); pet.rest = clamp(pet.rest - 2);
+    render();
+    if (Math.random() < 0.25) say(IDLE[Math.floor(Math.random() * IDLE.length)]);
+  }, 7000);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!--tz-meta {"id":"showcase-pixel-retro-game","title":"Starlight Drifter — pixel platformer","category":"Showcase","file":"showcase/pixel-retro-game.html","tags":["pixel-arcade","retro-game"],"description":"Landing page for STARLIGHT DRIFTER, a pixel-art platformer.","dnas":["pixel-arcade"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Starlight Drifter — a pixel platformer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#0d0b1e; --tz-panel:#171233; --tz-ink:#f4f1ff; --tz-muted:#8b84b8;
+  --tz-accent:#ffd94a; --tz-pink:#ff5fa2; --tz-blue:#3fa7ff; --tz-line:#2c2560;
+}
+.px-hero{width:8px;height:8px;box-shadow:32px 0px #14141c,40px 0px #14141c,48px 0px #14141c,56px 0px #14141c,24px 8px #14141c,32px 8px #6b4423,40px 8px #6b4423,48px 8px #6b4423,56px 8px #6b4423,64px 8px #14141c,24px 16px #14141c,32px 16px #6b4423,40px 16px #6b4423,48px 16px #6b4423,56px 16px #6b4423,64px 16px #14141c,24px 24px #14141c,32px 24px #6b4423,40px 24px #6b4423,48px 24px #6b4423,56px 24px #6b4423,64px 24px #14141c,16px 32px #14141c,24px 32px #14141c,32px 32px #ffd9a0,40px 32px #ffd9a0,48px 32px #ffd9a0,56px 32px #ffd9a0,64px 32px #14141c,72px 32px #14141c,16px 40px #14141c,24px 40px #14141c,32px 40px #ffd9a0,40px 40px #14141c,48px 40px #ffd9a0,56px 40px #14141c,64px 40px #ffd9a0,72px 40px #14141c,16px 48px #14141c,24px 48px #14141c,32px 48px #ffd9a0,40px 48px #ffd9a0,48px 48px #ffd9a0,56px 48px #ffd9a0,64px 48px #14141c,72px 48px #14141c,24px 56px #14141c,32px 56px #ffd9a0,40px 56px #ffd9a0,48px 56px #ffd9a0,56px 56px #ffd9a0,64px 56px #14141c,16px 64px #14141c,24px 64px #14141c,32px 64px #ff3b5c,40px 64px #ff3b5c,48px 64px #ff3b5c,56px 64px #ff3b5c,64px 64px #14141c,72px 64px #14141c,8px 72px #14141c,16px 72px #14141c,24px 72px #ff3b5c,32px 72px #ff3b5c,40px 72px #ff3b5c,48px 72px #ff3b5c,56px 72px #ff3b5c,64px 72px #ff3b5c,72px 72px #14141c,80px 72px #14141c,8px 80px #14141c,16px 80px #3fa7ff,24px 80px #3fa7ff,32px 80px #3fa7ff,40px 80px #3fa7ff,48px 80px #3fa7ff,56px 80px #3fa7ff,64px 80px #3fa7ff,72px 80px #3fa7ff,80px 80px #14141c,8px 88px #14141c,16px 88px #3fa7ff,24px 88px #3fa7ff,32px 88px #3fa7ff,40px 88px #3fa7ff,48px 88px #3fa7ff,56px 88px #3fa7ff,64px 88px #3fa7ff,72px 88px #3fa7ff,80px 88px #14141c,16px 96px #14141c,24px 96px #2b2b3a,32px 96px #2b2b3a,40px 96px #2b2b3a,48px 96px #2b2b3a,56px 96px #2b2b3a,64px 96px #2b2b3a,72px 96px #14141c,16px 104px #14141c,24px 104px #14141c,32px 104px #14141c,40px 104px #14141c,48px 104px #14141c,56px 104px #14141c,64px 104px #14141c,72px 104px #14141c;}
+.px-slime{width:8px;height:8px;box-shadow:24px 0px #14141c,32px 0px #14141c,40px 0px #14141c,48px 0px #14141c,16px 8px #14141c,24px 8px #39ff6a,32px 8px #39ff6a,40px 8px #39ff6a,48px 8px #39ff6a,56px 8px #14141c,8px 16px #14141c,16px 16px #39ff6a,24px 16px #39ff6a,32px 16px #39ff6a,40px 16px #39ff6a,48px 16px #39ff6a,56px 16px #39ff6a,64px 16px #14141c,8px 24px #14141c,16px 24px #39ff6a,24px 24px #ffffff,32px 24px #14141c,40px 24px #39ff6a,48px 24px #ffffff,56px 24px #14141c,0px 32px #14141c,8px 32px #39ff6a,16px 32px #39ff6a,24px 32px #39ff6a,32px 32px #39ff6a,40px 32px #39ff6a,48px 32px #39ff6a,56px 32px #39ff6a,64px 32px #39ff6a,72px 32px #14141c,0px 40px #14141c,8px 40px #39ff6a,16px 40px #39ff6a,24px 40px #39ff6a,32px 40px #39ff6a,40px 40px #39ff6a,48px 40px #39ff6a,56px 40px #39ff6a,64px 40px #39ff6a,72px 40px #14141c,0px 48px #14141c,8px 48px #1fae4e,16px 48px #39ff6a,24px 48px #39ff6a,32px 48px #39ff6a,40px 48px #39ff6a,48px 48px #39ff6a,56px 48px #39ff6a,64px 48px #1fae4e,72px 48px #14141c,8px 56px #14141c,16px 56px #14141c,24px 56px #14141c,32px 56px #14141c,40px 56px #14141c,48px 56px #14141c,56px 56px #14141c,64px 56px #14141c;}
+.px-coin{width:6px;height:6px;box-shadow:12px 0px #14141c,18px 0px #14141c,24px 0px #14141c,30px 0px #14141c,6px 6px #14141c,12px 6px #ffd94a,18px 6px #ffd94a,24px 6px #ffd94a,30px 6px #ffd94a,36px 6px #14141c,0px 12px #14141c,6px 12px #ffd94a,12px 12px #c9962e,18px 12px #ffd94a,24px 12px #ffd94a,30px 12px #ffd94a,36px 12px #ffd94a,42px 12px #14141c,0px 18px #14141c,6px 18px #ffd94a,12px 18px #c9962e,18px 18px #ffffff,24px 18px #ffffff,30px 18px #ffd94a,36px 18px #ffd94a,42px 18px #14141c,0px 24px #14141c,6px 24px #ffd94a,12px 24px #c9962e,18px 24px #ffffff,24px 24px #ffffff,30px 24px #ffd94a,36px 24px #ffd94a,42px 24px #14141c,0px 30px #14141c,6px 30px #ffd94a,12px 30px #c9962e,18px 30px #ffd94a,24px 30px #ffd94a,30px 30px #ffd94a,36px 30px #ffd94a,42px 30px #14141c,6px 36px #14141c,12px 36px #ffd94a,18px 36px #ffd94a,24px 36px #ffd94a,30px 36px #ffd94a,36px 36px #14141c,12px 42px #14141c,18px 42px #14141c,24px 42px #14141c,30px 42px #14141c;}
+.px-bat{width:8px;height:8px;box-shadow:0px 0px #9b5cff,8px 0px #9b5cff,16px 0px #9b5cff,72px 0px #9b5cff,80px 0px #9b5cff,88px 0px #9b5cff,0px 8px #14141c,8px 8px #9b5cff,16px 8px #9b5cff,24px 8px #9b5cff,64px 8px #9b5cff,72px 8px #9b5cff,80px 8px #9b5cff,88px 8px #14141c,8px 16px #14141c,16px 16px #9b5cff,24px 16px #9b5cff,32px 16px #9b5cff,40px 16px #14141c,48px 16px #14141c,56px 16px #9b5cff,64px 16px #9b5cff,72px 16px #9b5cff,80px 16px #14141c,16px 24px #14141c,24px 24px #9b5cff,32px 24px #9b5cff,40px 24px #14141c,48px 24px #14141c,56px 24px #9b5cff,64px 24px #9b5cff,72px 24px #14141c,16px 32px #14141c,24px 32px #9b5cff,32px 32px #ffffff,40px 32px #14141c,48px 32px #14141c,56px 32px #ffffff,64px 32px #9b5cff,72px 32px #14141c,16px 40px #14141c,24px 40px #9b5cff,32px 40px #9b5cff,40px 40px #9b5cff,48px 40px #9b5cff,56px 40px #9b5cff,64px 40px #9b5cff,72px 40px #14141c,32px 48px #14141c,40px 48px #9b5cff,48px 48px #9b5cff,56px 48px #14141c,32px 56px #14141c,40px 56px #14141c,48px 56px #14141c,56px 56px #14141c;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Space Mono",monospace;line-height:1.6;
+  -webkit-font-smoothing:none;overflow-x:hidden}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;
+  background:repeating-linear-gradient(0deg, rgba(13,11,30,.25) 0 2px, transparent 2px 4px)}
+.px{position:absolute;flex:none}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;
+  border-bottom:4px solid var(--tz-line);font-size:.68rem;letter-spacing:.12em}
+.tz-top .tz-wordmark{font-family:"Press Start 2P",monospace;font-size:.8rem;color:var(--tz-accent)}
+.tz-top .tz-dna-label{color:var(--tz-muted)}
+.tz-hero{max-width:1100px;margin:0 auto;padding:4.5rem 1.5rem 3rem;text-align:center}
+.tz-eyebrow{font-size:.7rem;letter-spacing:.22em;color:var(--tz-pink);margin-bottom:1.6rem}
+.tz-hero h1{font-family:"Press Start 2P",monospace;font-size:clamp(1.9rem,6vw,4.6rem);line-height:1.25;
+  color:var(--tz-ink);text-shadow:4px 4px 0 var(--tz-pink), 8px 8px 0 var(--tz-line);margin-bottom:1.6rem}
+.tz-hero p{color:var(--tz-muted);max-width:56ch;margin:0 auto 2.2rem;font-size:.95rem}
+.tz-start{font-family:"Press Start 2P",monospace;font-size:.85rem;color:var(--tz-accent);
+  animation:tz-blink 1.2s steps(2,jump-none) infinite;margin-bottom:2.4rem}
+@keyframes tz-blink{50%{opacity:0}}
+.tz-cta-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.tz-cta{display:inline-block;font-family:"Press Start 2P",monospace;font-size:.8rem;color:var(--tz-bg);
+  background:var(--tz-accent);padding:1.1rem 1.8rem;text-decoration:none;border:4px solid var(--tz-accent);
+  box-shadow:6px 6px 0 var(--tz-line)}
+.tz-cta:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 var(--tz-line)}
+.tz-cta.alt{background:transparent;color:var(--tz-accent);box-shadow:none}
+.tz-shot{position:relative;max-width:1100px;margin:3rem auto 0;border:4px solid var(--tz-line);
+  height:340px;overflow:hidden;background:linear-gradient(#1b1445 0%, #2c1a5e 55%, #0d0b1e 55%, #0d0b1e 100%)}
+.tz-shot .tz-ground{position:absolute;left:0;right:0;bottom:0;height:44%;background:
+  repeating-linear-gradient(90deg,#241d55 0 32px,#2c2560 32px 64px);border-top:4px solid var(--tz-accent)}
+.tz-shot .tz-moon{position:absolute;top:36px;right:8%;width:72px;height:72px;background:var(--tz-accent);
+  box-shadow:0 0 0 12px rgba(255,217,74,.15)}
+.tz-shot .tz-cap{position:absolute;left:1rem;bottom:.8rem;font-family:"Press Start 2P",monospace;
+  font-size:.62rem;color:var(--tz-ink);background:rgba(13,11,30,.8);padding:.5rem .8rem;z-index:5}
+.tz-shot.shot2{background:linear-gradient(#3a1c4f 0%, #7a2d5a 55%, #0d0b1e 55%, #0d0b1e 100%)}
+.tz-content{max-width:1100px;margin:0 auto;padding:4rem 1.5rem}
+.tz-panel{border:4px solid var(--tz-line);background:var(--tz-panel);padding:2.2rem;margin-bottom:3rem;
+  box-shadow:8px 8px 0 rgba(0,0,0,.35)}
+.tz-panel h2{font-family:"Press Start 2P",monospace;font-size:1.05rem;line-height:1.5;margin-bottom:1.8rem;
+  color:var(--tz-accent)}
+.tz-feats{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.tz-feat{border:2px dashed var(--tz-line);padding:1.5rem}
+.tz-feat h3{font-family:"Press Start 2P",monospace;font-size:.72rem;color:var(--tz-pink);
+  margin-bottom:.9rem;line-height:1.6}
+.tz-feat p{font-size:.88rem;color:var(--tz-muted)}
+.tz-cast{display:flex;flex-direction:column;gap:1.2rem}
+.tz-actor{display:grid;grid-template-columns:120px 1fr;gap:1.5rem;align-items:center;
+  border:4px solid var(--tz-line);background:var(--tz-bg);padding:1.4rem;position:relative;min-height:150px}
+.tz-actor .tz-stage{position:relative;height:130px}
+.tz-actor h3{font-family:"Press Start 2P",monospace;font-size:.78rem;margin-bottom:.6rem;line-height:1.5}
+.tz-actor p{font-size:.86rem;color:var(--tz-muted)}
+.tz-actor .tz-role{display:inline-block;font-size:.62rem;letter-spacing:.14em;color:var(--tz-bg);
+  background:var(--tz-blue);padding:.3rem .7rem;margin-bottom:.8rem}
+.tz-board{width:100%;border-collapse:collapse;font-size:.88rem}
+.tz-board th{font-family:"Press Start 2P",monospace;font-size:.6rem;text-align:left;color:var(--tz-muted);
+  padding:.7rem .5rem;border-bottom:4px solid var(--tz-line)}
+.tz-board td{padding:.8rem .5rem;border-bottom:2px solid var(--tz-line)}
+.tz-board .tz-rank{color:var(--tz-accent);font-weight:700}
+.tz-board .tz-time{text-align:right;font-weight:700;color:var(--tz-ink)}
+.tz-board tr:first-child .tz-time{color:var(--tz-accent)}
+.tz-manual{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.tz-manual h3{font-family:"Press Start 2P",monospace;font-size:.7rem;color:var(--tz-blue);
+  margin-bottom:1rem;line-height:1.6}
+.tz-keys{display:grid;gap:.6rem;font-size:.85rem}
+.tz-keys div{display:flex;justify-content:space-between;border-bottom:1px dashed var(--tz-line);padding:.4rem 0}
+.tz-keys b{font-family:"Press Start 2P",monospace;font-size:.62rem;color:var(--tz-accent)}
+.tz-tips{list-style:none;font-size:.88rem;color:var(--tz-muted)}
+.tz-tips li{padding:.55rem 0;border-bottom:1px dashed var(--tz-line)}
+.tz-tips li::before{content:"▸ ";color:var(--tz-pink)}
+.tz-band{border:4px solid var(--tz-accent);background:var(--tz-panel);text-align:center;
+  padding:3.5rem 1.5rem;margin-bottom:3rem}
+.tz-band h2{font-family:"Press Start 2P",monospace;font-size:clamp(1rem,3.4vw,1.7rem);
+  line-height:1.6;margin-bottom:1.2rem;color:var(--tz-ink)}
+.tz-band p{color:var(--tz-muted);margin-bottom:2rem;font-size:.9rem}
+.tz-tokens{max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem;border-top:4px solid var(--tz-line)}
+.tz-tokens h2{font-family:"Press Start 2P",monospace;font-size:1rem;margin-bottom:1.5rem;color:var(--tz-ink)}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:1rem;list-style:none}
+.tz-swatches li{border:2px solid var(--tz-line);background:var(--tz-panel);min-width:9rem;flex:1}
+.tz-chip{display:block;height:2.6rem}
+.tz-swatches .tz-name{display:block;font-size:.62rem;letter-spacing:.12em;color:var(--tz-muted);
+  padding:.55rem .75rem .1rem;text-transform:uppercase}
+.tz-swatches .tz-hex{display:block;font-size:.74rem;padding:0 .75rem .65rem;font-weight:700}
+.tz-foot{border-top:4px solid var(--tz-line);padding:1.75rem;font-size:.68rem;color:var(--tz-muted);
+  text-align:center;letter-spacing:.08em}
+@media(max-width:700px){
+  .tz-feats,.tz-manual{grid-template-columns:1fr}
+  .tz-actor{grid-template-columns:1fr}
+  .tz-actor .tz-stage{height:150px}
+  .tz-shot{height:260px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  body::after{display:none}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">STARLIGHT DRIFTER</span>
+  <span class="tz-dna-label">PIXEL PLATFORMER · 2026</span>
+</header>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow">NOW ON ITCH.IO · FREE DEMO · FULL GAME $14.99</p>
+  <h1>STARLIGHT<br>DRIFTER</h1>
+  <p>Five worlds. One drifter. 120 star shards, a map that lies to you (affectionately), and a slime problem nobody warned you about. A love letter to the 16-bit era, built by two people in a basement.</p>
+  <p class="tz-start">▼ PRESS START ▼</p>
+  <div class="tz-cta-row">
+    <a class="tz-cta" href="#">PLAY THE DEMO</a>
+    <a class="tz-cta alt" href="#">WISHLIST</a>
+  </div>
+</section>
+
+<div class="tz-shot" role="img" aria-label="Pixel art screenshot: the drifter, a slime and coins under a big moon">
+  <div class="tz-moon"></div>
+  <div class="tz-ground"></div>
+  <div class="px px-hero" style="left:14%;bottom:26%"></div>
+  <div class="px px-slime" style="left:52%;bottom:24%"></div>
+  <div class="px px-coin" style="left:38%;bottom:34%"></div>
+  <div class="px px-coin" style="left:44%;bottom:44%"></div>
+  <div class="px px-bat" style="left:74%;bottom:58%"></div>
+  <p class="tz-cap">WORLD 1 — NEON DOCKS</p>
+</div>
+
+<section class="tz-content">
+  <div class="tz-panel">
+    <h2>■ WHAT'S IN THE CART</h2>
+    <div class="tz-feats">
+      <div class="tz-feat">
+        <h3>5 HAND-BUILT WORLDS</h3>
+        <p>Neon Docks, Cactus Hollow, the Sunken Arcade, Frostbyte Peaks, and the Starlight itself. No procedural filler — every screen placed by a human.</p>
+      </div>
+      <div class="tz-feat">
+        <h3>120 STAR SHARDS</h3>
+        <p>Collect them all to unlock the true ending. Half are hidden behind walls that look solid. They aren't.</p>
+      </div>
+      <div class="tz-feat">
+        <h3>CHIPTUNE OST</h3>
+        <p>14 tracks on real hardware. The boss theme has no business going that hard.</p>
+      </div>
+      <div class="tz-feat">
+        <h3>COUCH CO-OP</h3>
+        <p>Player 2 is a bat. Nobody knows why. Everybody loves it.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tz-panel">
+    <h2>■ MEET THE CAST</h2>
+    <div class="tz-cast">
+      <div class="tz-actor">
+        <div class="tz-stage"><div class="px px-hero" style="left:24px;top:8px"></div></div>
+        <div><span class="tz-role">PLAYABLE</span><h3>PIP, THE DRIFTER</h3>
+        <p>Arrived by falling star. Stays for the snacks. Jumps higher than seems reasonable and lands it every time.</p></div>
+      </div>
+      <div class="tz-actor">
+        <div class="tz-stage"><div class="px px-slime" style="left:30px;top:30px"></div></div>
+        <div><span class="tz-role">ENEMY</span><h3>GLOOPER</h3>
+        <p>Not evil, just bouncy and in the way. Stomping one feels worse than you'd expect. They respawn. They forgive.</p></div>
+      </div>
+      <div class="tz-actor">
+        <div class="tz-stage"><div class="px px-bat" style="left:16px;top:24px"></div></div>
+        <div><span class="tz-role">PLAYER 2</span><h3>NIGHTWING</h3>
+        <p>A bat with a grappling hook and no backstory. The co-op partner everyone fights over.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tz-shot shot2" role="img" aria-label="Pixel art screenshot: night desert with bat and coins">
+    <div class="tz-moon" style="background:var(--tz-pink);box-shadow:0 0 0 12px rgba(255,95,162,.15)"></div>
+    <div class="tz-ground"></div>
+    <div class="px px-bat" style="left:20%;bottom:52%"></div>
+    <div class="px px-hero" style="left:58%;bottom:26%"></div>
+    <div class="px px-coin" style="left:48%;bottom:40%"></div>
+    <div class="px px-slime" style="left:80%;bottom:24%"></div>
+    <p class="tz-cap">WORLD 2 — CACTUS HOLLOW</p>
+  </div>
+
+  <div class="tz-panel" style="margin-top:3rem">
+    <h2>■ SPEEDRUN BOARD</h2>
+    <table class="tz-board">
+      <thead><tr><th>RANK</th><th>RUNNER</th><th>CATEGORY</th><th style="text-align:right">TIME</th></tr></thead>
+      <tbody>
+        <tr><td class="tz-rank">1ST</td><td>PIXELPA</td><td>ANY%</td><td class="tz-time">41:07</td></tr>
+        <tr><td class="tz-rank">2ND</td><td>GLITCHWITCH</td><td>ANY%</td><td class="tz-time">42:55</td></tr>
+        <tr><td class="tz-rank">3RD</td><td>FRAMEPERFECT</td><td>100%</td><td class="tz-time">2:18:33</td></tr>
+        <tr><td class="tz-rank">4TH</td><td>COZYBOI</td><td>ANY%</td><td class="tz-time">47:21</td></tr>
+        <tr><td class="tz-rank">5TH</td><td>RETROREN</td><td>100%</td><td class="tz-time">2:31:09</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tz-panel">
+    <h2>■ FIELD MANUAL</h2>
+    <div class="tz-manual">
+      <div>
+        <h3>CONTROLS</h3>
+        <div class="tz-keys">
+          <div><span>Move</span><b>← →</b></div>
+          <div><span>Jump</span><b>Z</b></div>
+          <div><span>Dash</span><b>X</b></div>
+          <div><span>Pause</span><b>ENTER</b></div>
+        </div>
+      </div>
+      <div>
+        <h3>DRIFTER'S NOTES</h3>
+        <ul class="tz-tips">
+          <li>Dash through the pink barriers. Walk into the blue ones.</li>
+          <li>The shopkeeper gives a discount if you jump three times first.</li>
+          <li>Gloopers can't hurt you mid-dash. Use this knowledge.</li>
+          <li>There is a shard behind the waterfall. There is always a shard behind the waterfall.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="tz-band">
+    <h2>THE DEMO IS FREE.<br>THE NOSTALGIA IS FREEER.</h2>
+    <p>Two worlds, zero dollars, about forty minutes. Your childhood called — it wants its Saturday back.</p>
+    <a class="tz-cta" href="#">DOWNLOAD THE DEMO</a>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>TOKENS</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#0d0b1e"></span><span class="tz-name">bg</span><span class="tz-hex">#0d0b1e</span></li>
+    <li><span class="tz-chip" style="background:#171233"></span><span class="tz-name">surface</span><span class="tz-hex">#171233</span></li>
+    <li><span class="tz-chip" style="background:#f4f1ff"></span><span class="tz-name">ink</span><span class="tz-hex">#f4f1ff</span></li>
+    <li><span class="tz-chip" style="background:#8b84b8"></span><span class="tz-name">muted</span><span class="tz-hex">#8b84b8</span></li>
+    <li><span class="tz-chip" style="background:#ffd94a"></span><span class="tz-name">accent</span><span class="tz-hex">#ffd94a</span></li>
+    <li><span class="tz-chip" style="background:#ff5fa2"></span><span class="tz-name">accent-2</span><span class="tz-hex">#ff5fa2</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
