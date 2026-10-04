@@ -103,409 +103,276 @@
     }).join("") + "</div>";
   }
 
-  /* ---------- hero: ambient light canvas (blueprint grid + drifting light) ---------- */
-  (function heroAmbient() {
-    var cv = $("hero-bg");
+  /* ---------- hero: silk flow-field ---------- */
+  (function silk() {
+    var cv = $("silk");
     if (!cv) return;
     var ctx = cv.getContext("2d");
     if (!ctx) return;
-    var W = 0, H = 0, raf = 0, running = false;
-    var blobs = [
-      { x: .16, y: .30, r: .30, c: "0,144,193",  a: .10, ph: 0.0, sp: .00021 },
-      { x: .86, y: .16, r: .26, c: "70,225,255", a: .13, ph: 2.1, sp: .00017 },
-      { x: .74, y: .84, r: .32, c: "182,240,0",  a: .06, ph: 4.2, sp: .00014 },
-      { x: .10, y: .86, r: .24, c: "0,144,193",  a: .08, ph: 1.3, sp: .00019 }
-    ];
-    var plus = [];
-    for (var i = 0; i < 26; i++) {
-      plus.push({ x: Math.random(), y: Math.random(), s: 5 + Math.random() * 8,
-        ph: Math.random() * 6.283, sp: .00005 + Math.random() * .00008 });
+    var W = 0, H = 0, parts = [], raf = 0, running = false;
+    var COLORS = ["#0ea5e9", "#2563eb", "#06b6d4", "#14b8a6", "#a3e635"];
+    var mouse = { x: -99999, y: -99999 };
+    function dpr() { return Math.min(window.devicePixelRatio || 1, 2); }
+    function spawn(anywhere) {
+      return {
+        x: Math.random() * W,
+        y: anywhere ? Math.random() * H : (Math.random() < .5 ? -12 : H + 12),
+        s: .7 + Math.random() * 1.7,
+        c: COLORS[(Math.random() * COLORS.length) | 0],
+        l: 90 + Math.random() * 160
+      };
     }
     function resize() {
-      var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-      var r = cv.getBoundingClientRect();
-      W = Math.max(1, Math.round(r.width * dpr));
-      H = Math.max(1, Math.round(r.height * dpr));
-      cv.width = W; cv.height = H;
-    }
-    function frame(t) {
-      ctx.clearRect(0, 0, W, H);
-      var gs = Math.max(30, W / 36);
-      ctx.lineWidth = 1;
-      ctx.strokeStyle = "rgba(11,14,19,.055)";
-      ctx.beginPath();
-      var off = (t * .012) % gs;
-      var x, y;
-      for (x = -gs + off; x < W + gs; x += gs) { ctx.moveTo(x, 0); ctx.lineTo(x, H); }
-      for (y = -gs + off; y < H + gs; y += gs) { ctx.moveTo(0, y); ctx.lineTo(W, y); }
-      ctx.stroke();
-      var j, b, bx, by, g;
-      for (j = 0; j < blobs.length; j++) {
-        b = blobs[j];
-        bx = (b.x + Math.cos(t * b.sp + b.ph) * .035) * W;
-        by = (b.y + Math.sin(t * b.sp * 1.3 + b.ph) * .035) * H;
-        g = ctx.createRadialGradient(bx, by, 0, bx, by, b.r * Math.max(W, H));
-        g.addColorStop(0, "rgba(" + b.c + "," + b.a + ")");
-        g.addColorStop(1, "rgba(" + b.c + ",0)");
-        ctx.fillStyle = g;
-        ctx.fillRect(0, 0, W, H);
-      }
-      ctx.strokeStyle = "rgba(0,119,163,.30)";
-      ctx.lineWidth = 1;
-      for (j = 0; j < plus.length; j++) {
-        var p = plus[j];
-        var py = ((p.y + t * p.sp) % 1) * H;
-        var px = p.x * W + Math.sin(t * .001 + p.ph) * 9;
-        var s = p.s * (.65 + .35 * Math.sin(t * .002 + p.ph));
-        ctx.beginPath();
-        ctx.moveTo(px - s / 2, py); ctx.lineTo(px + s / 2, py);
-        ctx.moveTo(px, py - s / 2); ctx.lineTo(px, py + s / 2);
-        ctx.stroke();
-      }
-      if (!reduceMotion) raf = requestAnimationFrame(frame);
-    }
-    function start() { if (!running) { running = true; raf = requestAnimationFrame(frame); } }
-    function stop() { running = false; cancelAnimationFrame(raf); }
-    resize();
-    if (reduceMotion) { frame(4000); } else { start(); }
-    window.addEventListener("resize", function () { resize(); if (reduceMotion) frame(4000); });
-    document.addEventListener("visibilitychange", function () {
-      if (reduceMotion) return;
-      if (document.hidden) stop(); else start();
-    });
-  })();
-
-  /* ---------- hero: tactical 3D viewport (hand-rolled wireframe) ---------- */
-  (function tacViewport() {
-    var cv = $("tac-canvas");
-    if (!cv) return;
-    var ctx = cv.getContext("2d");
-    if (!ctx) return;
-    var W = 0, H = 0, raf = 0, running = false, inView = true;
-    var NEON = "70,225,255", LIME = "182,240,0", WHITE = "235,242,250";
-    var D2R = Math.PI / 180;
-    var lats = [], lons = [], a, k;
-    for (var la = -60; la <= 60; la += 30) {
-      var lp = [];
-      for (a = 0; a <= 72; a++) {
-        var th = a / 72 * Math.PI * 2, cl = Math.cos(la * D2R);
-        lp.push([cl * Math.cos(th), Math.sin(la * D2R), cl * Math.sin(th)]);
-      }
-      lats.push(lp);
-    }
-    for (var lo = 0; lo < 12; lo++) {
-      var np = [], off2 = lo * 15 * D2R;
-      for (a = 0; a <= 72; a++) {
-        var ph = a / 72 * Math.PI * 2;
-        np.push([Math.cos(ph) * Math.cos(off2), Math.sin(ph), Math.cos(ph) * Math.sin(off2)]);
-      }
-      lons.push(np);
-    }
-    var rings = [
-      { r: 1.5,  tilt: 28 * D2R,  sp: .00042,  sats: [{ a: 0,   c: LIME,  tr: [] }, { a: 2.5, c: NEON, tr: [] }] },
-      { r: 1.82, tilt: -22 * D2R, sp: -.00030, sats: [{ a: 1.2, c: WHITE, tr: [] }] }
-    ];
-    var stars = [];
-    for (var s = 0; s < 170; s++) {
-      var t1 = Math.random() * Math.PI * 2, t2 = Math.acos(2 * Math.random() - 1), rr = 2.6 + Math.random() * 1.6;
-      stars.push([rr * Math.sin(t2) * Math.cos(t1), rr * Math.cos(t2), rr * Math.sin(t2) * Math.sin(t1), Math.random()]);
-    }
-    var pings = [], lastPing = 0;
-    var cam = { rx: .46, ry: 0 }, want = { rx: .46, ry: 0 };
-
-    function tiltPt(p, tilt) {
-      var c = Math.cos(tilt), s2 = Math.sin(tilt);
-      return [p[0], p[1] * c - p[2] * s2, p[1] * s2 + p[2] * c];
-    }
-    function rotY(p, ry) {
-      var c = Math.cos(ry), s2 = Math.sin(ry);
-      return [p[0] * c + p[2] * s2, p[1], -p[0] * s2 + p[2] * c];
-    }
-    function rotX(p, rx) {
-      var c = Math.cos(rx), s2 = Math.sin(rx);
-      return [p[0], p[1] * c - p[2] * s2, p[1] * s2 + p[2] * c];
-    }
-    function xform(p, rx, ry) { return rotX(rotY(p, ry), rx); }
-    function proj(p, cx, cy, sc) {
-      var fl = 3.6, s = fl / (fl - p[2]);
-      return [cx + p[0] * s * sc, cy + p[1] * s * sc];
-    }
-    function strokeGlobe(pts, rx, ry, cx, cy, sc, col, baseA) {
-      ctx.strokeStyle = "rgba(" + col + "," + baseA + ")";
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      var pen = false;
-      for (var i = 0; i < pts.length; i++) {
-        var q = xform(pts[i], rx, ry);
-        if (q[2] < -0.12) { pen = false; continue; }
-        var pr = proj(q, cx, cy, sc);
-        if (!pen) { ctx.moveTo(pr[0], pr[1]); pen = true; }
-        else ctx.lineTo(pr[0], pr[1]);
-      }
-      ctx.stroke();
-    }
-
-    function frame(t) {
-      var cx = W / 2, cy = H / 2;
-      var sc = Math.min(W, H) * 0.30;
-      cam.rx += (want.rx - cam.rx) * .045;
-      cam.ry += (want.ry - cam.ry) * .045;
-      var ry = t * .00011 + cam.ry;
-      var rx = cam.rx + Math.sin(t * .00023) * .035;
-
-      ctx.fillStyle = "#05070c";
+      var r = cv.getBoundingClientRect(), d = dpr();
+      W = Math.max(1, Math.round(r.width * d));
+      H = Math.max(1, Math.round(r.height * d));
+      if (cv.width !== W || cv.height !== H) { cv.width = W; cv.height = H; }
+      var n = Math.max(120, Math.min(430, Math.round(W * H / 9000)));
+      parts = [];
+      for (var i = 0; i < n; i++) parts.push(spawn(true));
+      ctx.fillStyle = "#ffffff";
       ctx.fillRect(0, 0, W, H);
-
-      var i, pr;
-      for (i = 0; i < stars.length; i++) {
-        var st = stars[i];
-        var q = xform([st[0], st[1], st[2]], rx * .3, t * .00002);
-        pr = proj(q, cx, cy, sc);
-        var tw = .25 + .55 * Math.abs(Math.sin(t * .001 + st[3] * 9));
-        ctx.fillStyle = "rgba(" + WHITE + "," + (tw * .5).toFixed(3) + ")";
-        ctx.fillRect(pr[0], pr[1], 1.6, 1.6);
-      }
-
-      var gy = -1.62;
-      ctx.lineWidth = 1;
-      for (k = 1; k <= 4; k++) {
-        ctx.strokeStyle = "rgba(" + NEON + "," + (0.20 - k * 0.035).toFixed(3) + ")";
-        ctx.beginPath();
-        for (a = 0; a <= 60; a++) {
-          var ra = a / 60 * Math.PI * 2, rr2 = k * .42;
-          pr = proj(xform([rr2 * Math.cos(ra), gy, rr2 * Math.sin(ra)], rx, ry), cx, cy, sc);
-          if (a === 0) ctx.moveTo(pr[0], pr[1]); else ctx.lineTo(pr[0], pr[1]);
+    }
+    function ang(x, y, t) {
+      return (Math.sin(x * .0016 + t * .00035) +
+              Math.cos(y * .0019 - t * .00028) +
+              .6 * Math.sin((x + y) * .0009 + t * .00021)) * Math.PI;
+    }
+    function step(t) {
+      var d = dpr(), R = 140 * d, i, p, a, dx, dy, d2, dd;
+      ctx.fillStyle = "rgba(255,255,255,.06)";
+      ctx.fillRect(0, 0, W, H);
+      for (i = 0; i < parts.length; i++) {
+        p = parts[i];
+        a = ang(p.x, p.y, t);
+        dx = p.x - mouse.x; dy = p.y - mouse.y; d2 = dx * dx + dy * dy;
+        if (d2 < R * R && d2 > 4) {
+          dd = Math.sqrt(d2);
+          p.x += dx / dd * 2.6 * d; p.y += dy / dd * 2.6 * d;
         }
-        ctx.stroke();
-      }
-      var sweep = (t * .0011) % (Math.PI * 2);
-      for (k = 0; k < 26; k++) {
-        var sa = sweep - k * .028;
-        ctx.strokeStyle = "rgba(" + LIME + "," + (.55 * (1 - k / 26)).toFixed(3) + ")";
-        ctx.lineWidth = k === 0 ? 2 : 1;
-        ctx.beginPath();
-        var c0 = proj(xform([0, gy, 0], rx, ry), cx, cy, sc);
-        var c1 = proj(xform([1.68 * Math.cos(sa), gy, 1.68 * Math.sin(sa)], rx, ry), cx, cy, sc);
-        ctx.moveTo(c0[0], c0[1]); ctx.lineTo(c1[0], c1[1]);
-        ctx.stroke();
-      }
-
-      for (i = 0; i < lats.length; i++) strokeGlobe(lats[i], rx, ry, cx, cy, sc, NEON, .5);
-      for (i = 0; i < lons.length; i++) strokeGlobe(lons[i], rx, ry, cx, cy, sc, NEON, .32);
-
-      var dialR = Math.min(W, H) * .44;
-      ctx.strokeStyle = "rgba(" + NEON + ",.28)";
-      ctx.lineWidth = 1;
-      for (a = 0; a < 60; a++) {
-        var da = a / 60 * Math.PI * 2 + t * .00006;
-        var isLong = a % 5 === 0;
-        var r1 = dialR - (isLong ? 10 : 5), r2 = dialR;
-        ctx.globalAlpha = isLong ? .8 : .35;
-        ctx.beginPath();
-        ctx.moveTo(cx + Math.cos(da) * r1, cy + Math.sin(da) * r1);
-        ctx.lineTo(cx + Math.cos(da) * r2, cy + Math.sin(da) * r2);
-        ctx.stroke();
+        p.x += Math.cos(a) * p.s * d;
+        p.y += Math.sin(a) * p.s * d;
+        if (--p.l <= 0 || p.x < -24 || p.x > W + 24 || p.y < -24 || p.y > H + 24) {
+          parts[i] = spawn(false);
+        } else {
+          ctx.globalAlpha = .8;
+          ctx.fillStyle = p.c;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.s * d * .85, 0, 6.2832);
+          ctx.fill();
+        }
       }
       ctx.globalAlpha = 1;
-
-      for (var ri = 0; ri < rings.length; ri++) {
-        var ring = rings[ri];
-        ctx.strokeStyle = "rgba(" + NEON + ",.22)";
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        for (a = 0; a <= 90; a++) {
-          var aa = a / 90 * Math.PI * 2;
-          var rp = tiltPt([ring.r * Math.cos(aa), 0, ring.r * Math.sin(aa)], ring.tilt);
-          pr = proj(xform(rp, rx, ry), cx, cy, sc);
-          if (a === 0) ctx.moveTo(pr[0], pr[1]); else ctx.lineTo(pr[0], pr[1]);
-        }
-        ctx.stroke();
-        for (var si = 0; si < ring.sats.length; si++) {
-          var sat = ring.sats[si];
-          sat.a += ring.sp * 16;
-          var sp = tiltPt([ring.r * Math.cos(sat.a), 0, ring.r * Math.sin(sat.a)], ring.tilt);
-          pr = proj(xform(sp, rx, ry), cx, cy, sc);
-          sat.tr.push([pr[0], pr[1]]);
-          if (sat.tr.length > 16) sat.tr.shift();
-          for (var ti = 0; ti < sat.tr.length; ti++) {
-            var tal = ti / sat.tr.length;
-            ctx.fillStyle = "rgba(" + sat.c + "," + (tal * tal * .6).toFixed(3) + ")";
-            var ts = 1 + tal * 2.2;
-            ctx.fillRect(sat.tr[ti][0] - ts / 2, sat.tr[ti][1] - ts / 2, ts, ts);
-          }
-          ctx.save();
-          ctx.shadowColor = "rgba(" + sat.c + ",.9)";
-          ctx.shadowBlur = 12;
-          ctx.fillStyle = "rgba(" + sat.c + ",1)";
-          ctx.fillRect(pr[0] - 2.5, pr[1] - 2.5, 5, 5);
-          ctx.restore();
-        }
-      }
-
-      if (t - lastPing > 2300) {
-        lastPing = t;
-        var pt1 = Math.random() * Math.PI * 2, pt2 = Math.acos(2 * Math.random() - 1);
-        pings.push({ p: [Math.sin(pt2) * Math.cos(pt1), Math.cos(pt2), Math.sin(pt2) * Math.sin(pt1)], age: 0 });
-        if (pings.length > 4) pings.shift();
-      }
-      for (i = pings.length - 1; i >= 0; i--) {
-        var pg = pings[i];
-        pg.age += 16;
-        var pk = pg.age / 1200;
-        if (pk >= 1) { pings.splice(i, 1); continue; }
-        var pq = xform(pg.p, rx, ry);
-        if (pq[2] < -0.05) continue;
-        pr = proj(pq, cx, cy, sc);
-        ctx.strokeStyle = "rgba(" + LIME + "," + ((1 - pk) * .8).toFixed(3) + ")";
-        ctx.lineWidth = 1.5;
-        ctx.beginPath();
-        ctx.arc(pr[0], pr[1], 4 + pk * sc * .5, 0, Math.PI * 2);
-        ctx.stroke();
-      }
-
-      if (!reduceMotion) raf = requestAnimationFrame(frame);
     }
-
-    function resize() {
-      var dpr = Math.min(window.devicePixelRatio || 1, 1.75);
-      var r = cv.getBoundingClientRect();
-      W = Math.max(1, Math.round(r.width * dpr));
-      H = Math.max(1, Math.round(r.height * dpr));
-      cv.width = W; cv.height = H;
+    function frame(t) { step(t); if (!reduceMotion) raf = requestAnimationFrame(frame); }
+    function start() {
+      if (running || reduceMotion) return;
+      running = true;
+      raf = requestAnimationFrame(frame);
     }
-    function start() { if (!running && inView && !reduceMotion) { running = true; raf = requestAnimationFrame(frame); } }
-    function stop() { running = false; cancelAnimationFrame(raf); }
-
-    var mod = cv.closest ? cv.closest(".module") : null;
-    if (mod) {
-      mod.addEventListener("mousemove", function (e) {
-        var r = mod.getBoundingClientRect();
-        var mx = (e.clientX - r.left) / r.width, my = (e.clientY - r.top) / r.height;
-        want.ry = (mx - .5) * .7;
-        want.rx = .46 + (my - .5) * .4;
-      });
-      mod.addEventListener("mouseleave", function () { want.rx = .46; want.ry = 0; });
-    }
-    if ("IntersectionObserver" in window) {
-      new IntersectionObserver(function (es) {
-        inView = es[0].isIntersecting;
-        if (inView) start(); else stop();
-      }, { threshold: .05 }).observe(cv);
-    }
-
-    var clockEl = $("hud-clock"), coordEl = $("hud-coords"), logEl = $("hud-log");
-    var logs = ["▲ dna.sync :: 92 loaded", "▲ render.queue :: idle", "▲ uplink :: 12ms",
-      "▲ patterns.index :: 219 entries", "▲ ci.watch :: passing", "▲ scenes.cache :: 50 warm"];
-    var li = 0;
-    function hudTick() {
-      var d = new Date();
-      var p2 = function (n) { return (n < 10 ? "0" : "") + n; };
-      if (clockEl) clockEl.textContent = p2(d.getHours()) + ":" + p2(d.getMinutes()) + ":" + p2(d.getSeconds()) + " LOCAL";
-      if (coordEl) {
-        var lt = 35.6762 + Math.sin(Date.now() * .0001) * .004;
-        var ln = 139.6503 + Math.cos(Date.now() * .00013) * .004;
-        coordEl.innerHTML = lt.toFixed(4) + "°N&nbsp;&nbsp;" + ln.toFixed(4) + "°E";
-      }
-      if (logEl) { li = (li + 1) % logs.length; logEl.textContent = logs[li]; }
-    }
-    hudTick();
-    setInterval(hudTick, 2600);
-
+    function stop() { running = false; if (raf) cancelAnimationFrame(raf); raf = 0; }
     resize();
-    if (reduceMotion) { frame(4000); } else { start(); }
-    window.addEventListener("resize", function () { resize(); if (reduceMotion) frame(4000); });
-    document.addEventListener("visibilitychange", function () {
-      if (reduceMotion) return;
-      if (document.hidden) stop(); else start();
-    });
-  })();
-
-  /* ---------- hero: terminal loop ---------- */
-  (function terminal() {
-    var el = $("term-screen");
-    if (!el || !TZ) return;
-    function sample(n) {
-      var pool = TZ.dnas.slice(), o = [];
-      while (o.length < n && pool.length) o.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
-      return o;
-    }
-    var d = sample(6);
-    var script = [
-      { k: "cmd", s: "tz dna list --vibe cyberpunk" },
-      { k: "out", s: "→ " + d.slice(0, 5).map(function (x) { return x.id; }).join(" · ") },
-      { k: "cmd", s: "tz preview " + d[0].id + " --live" },
-      { k: "ok",  s: "✓ showcase rendered · 0.42s" },
-      { k: "cmd", s: "tz brief --dna " + d[1].id },
-      { k: "out", s: "\"Use github.com/rawmware/TZ-taste as reference.\"" },
-      { k: "dim", s: "── 92 DNAs · 219 patterns · 50 scenes indexed ──" }
-    ];
-    var timers = [];
-    function later(fn, ms) { timers.push(setTimeout(fn, ms)); }
-    function line(cls, html) {
-      var div = document.createElement("div");
-      div.className = ("t-line " + cls).replace(/\s+$/, "");
-      div.innerHTML = html;
-      el.appendChild(div);
-      return div;
-    }
-    function run() {
-      timers = [];
-      el.innerHTML = "";
-      var t = 600;
-      script.forEach(function (st) {
-        if (st.k === "cmd") {
-          later(function () {
-            var div = line("", '<span class="t-prompt">$ </span><span class="t-cmd"></span><span class="t-cursor"></span>');
-            var cmdEl = div.querySelector(".t-cmd");
-            var cur = div.querySelector(".t-cursor");
-            var ci = 0;
-            var iv = setInterval(function () {
-              ci++;
-              cmdEl.textContent = st.s.slice(0, ci);
-              if (ci >= st.s.length) { clearInterval(iv); if (cur) cur.remove(); }
-            }, 26);
-            timers.push(iv);
-          }, t);
-          t += st.s.length * 26 + 460;
-        } else {
-          later(function () {
-            line("t-" + st.k, esc(st.s));
-          }, t);
-          t += 560;
+    if (reduceMotion) { for (var k = 0; k < 160; k++) step(k * 16); }
+    else if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (es) {
+        for (var i = 0; i < es.length; i++) {
+          if (es[i].isIntersecting) start(); else stop();
         }
+      }).observe(cv);
+    } else { start(); }
+    window.addEventListener("resize", function () {
+      resize();
+      if (reduceMotion) { for (var k = 0; k < 160; k++) step(k * 16); }
+    });
+    var hero = cv.parentNode;
+    if (hero) {
+      hero.addEventListener("mousemove", function (e) {
+        var r = cv.getBoundingClientRect(), d = dpr();
+        mouse.x = (e.clientX - r.left) * d;
+        mouse.y = (e.clientY - r.top) * d;
       });
-      later(function () { line("", '<span class="t-prompt">$ </span><span class="t-cursor"></span>'); }, t);
-      later(run, t + 5200);
+      hero.addEventListener("mouseleave", function () { mouse.x = -99999; mouse.y = -99999; });
     }
-    if (reduceMotion) {
-      script.forEach(function (st) {
-        if (st.k === "cmd") line("", '<span class="t-prompt">$ </span><span class="t-cmd">' + esc(st.s) + "</span>");
-        else line("t-" + st.k, esc(st.s));
-      });
-    } else { run(); }
   })();
 
-  /* ---------- hero: DNA signal cycler ---------- */
-  (function signal() {
-    var el = $("signal-body");
-    if (!el || !TZ) return;
-    function show() {
-      var d = TZ.dnas[Math.floor(Math.random() * TZ.dnas.length)];
-      var tags = d.tags.slice(0, 3).map(function (tg) {
-        return "<span>" + esc(tg) + "</span>";
-      }).join("");
-      el.innerHTML =
-        '<div class="sig-name">' + esc(d.name) + "</div>" +
-        '<p class="sig-vibe">' + esc(d.vibe) + "</p>" +
-        '<div class="sig-meta">' + tokenDots(d.tokens) +
-        '<div class="dna-tags">' + tags + "</div></div>";
+  /* ---------- hero: filmstrip studies ---------- */
+  (function film() {
+    var nodes = document.querySelectorAll(".cell canvas");
+    if (!nodes.length) return;
+    var INK = "#0f172a";
+    var FX = {
+      flow: {
+        init: function (w, h) {
+          var ps = [], cols = ["#0ea5e9", "#2563eb", "#06b6d4"], i;
+          for (i = 0; i < 46; i++) ps.push({
+            x: Math.random() * w, y: Math.random() * h,
+            s: .6 + Math.random() * 1.2, c: cols[(Math.random() * 3) | 0]
+          });
+          return { ps: ps };
+        },
+        draw: function (c, w, h, t, st) {
+          var i, p, a;
+          c.fillStyle = "rgba(255,255,255,.09)";
+          c.fillRect(0, 0, w, h);
+          for (i = 0; i < st.ps.length; i++) {
+            p = st.ps[i];
+            a = (Math.sin(p.x * .02 + t * .0011) + Math.cos(p.y * .024 - t * .0009)) * Math.PI;
+            p.x += Math.cos(a) * p.s; p.y += Math.sin(a) * p.s;
+            if (p.x < 0) p.x = w; if (p.x > w) p.x = 0;
+            if (p.y < 0) p.y = h; if (p.y > h) p.y = 0;
+            c.fillStyle = p.c; c.globalAlpha = .85;
+            c.beginPath(); c.arc(p.x, p.y, p.s, 0, 6.2832); c.fill();
+          }
+          c.globalAlpha = 1;
+        }
+      },
+      waves: {
+        init: function () { return {}; },
+        draw: function (c, w, h, t) {
+          var cols = ["#bae6fd", "#7dd3fc", "#38bdf8", "#0ea5e9", "#0284c7", "#0369a1"];
+          var r, x, y;
+          c.fillStyle = "#fff"; c.fillRect(0, 0, w, h);
+          for (r = 0; r < 6; r++) {
+            c.strokeStyle = cols[r]; c.lineWidth = 1.6; c.beginPath();
+            for (x = 0; x <= w; x += 4) {
+              y = h * (.2 + r * .12) + Math.sin(x * .045 + t * .0022 + r * 1.1) * 9;
+              if (x === 0) c.moveTo(x, y); else c.lineTo(x, y);
+            }
+            c.stroke();
+          }
+        }
+      },
+      orbit: {
+        init: function () { return {}; },
+        draw: function (c, w, h, t) {
+          var cx = w / 2, cy = h / 2, rot = -.4;
+          var cols = ["#0ea5e9", "#a3e635", "#2563eb"];
+          var o, rx, ry, a, px, py;
+          c.fillStyle = "#fff"; c.fillRect(0, 0, w, h);
+          c.fillStyle = INK;
+          c.beginPath(); c.arc(cx, cy, 4, 0, 6.2832); c.fill();
+          for (o = 0; o < 3; o++) {
+            rx = 20 + o * 17; ry = 11 + o * 9;
+            c.strokeStyle = "rgba(15,23,42,.14)"; c.lineWidth = 1;
+            c.beginPath(); c.ellipse(cx, cy, rx, ry, rot, 0, 6.2832); c.stroke();
+            a = t * (.0016 - o * .0003) + o * 2.1;
+            px = cx + rx * Math.cos(a) * Math.cos(rot) - ry * Math.sin(a) * Math.sin(rot);
+            py = cy + rx * Math.cos(a) * Math.sin(rot) + ry * Math.sin(a) * Math.cos(rot);
+            c.fillStyle = cols[o];
+            c.beginPath(); c.arc(px, py, 3.4, 0, 6.2832); c.fill();
+          }
+        }
+      },
+      grid: {
+        init: function () { return {}; },
+        draw: function (c, w, h, t) {
+          var nx = 10, ny = 7, ix, iy, x, y, d, r;
+          c.fillStyle = "#fff"; c.fillRect(0, 0, w, h);
+          for (ix = 0; ix < nx; ix++) for (iy = 0; iy < ny; iy++) {
+            x = (ix + .5) / nx * w; y = (iy + .5) / ny * h;
+            d = Math.sqrt((x - w / 2) * (x - w / 2) + (y - h / 2) * (y - h / 2));
+            r = 1.6 + 2.6 * Math.abs(Math.sin(d * .05 - t * .003));
+            c.fillStyle = r > 3 ? "#0ea5e9" : "rgba(15,23,42,.28)";
+            c.beginPath(); c.arc(x, y, r, 0, 6.2832); c.fill();
+          }
+        }
+      },
+      rain: {
+        init: function (w, h) {
+          var ds = [], i;
+          for (i = 0; i < 30; i++) ds.push({
+            x: Math.random() * w, y: Math.random() * h,
+            l: 8 + Math.random() * 18, v: 1 + Math.random() * 2.4,
+            a: .15 + Math.random() * .5
+          });
+          return { ds: ds };
+        },
+        draw: function (c, w, h, t, st) {
+          var i, d;
+          c.fillStyle = "#fff"; c.fillRect(0, 0, w, h);
+          c.lineWidth = 1.4; c.lineCap = "round";
+          for (i = 0; i < st.ds.length; i++) {
+            d = st.ds[i];
+            d.y += d.v;
+            if (d.y - d.l > h) { d.y = -d.l; d.x = Math.random() * w; }
+            c.strokeStyle = "rgba(14,165,233," + d.a.toFixed(2) + ")";
+            c.beginPath(); c.moveTo(d.x, d.y); c.lineTo(d.x - 3, d.y - d.l); c.stroke();
+          }
+        }
+      },
+      bloom: {
+        init: function () { return {}; },
+        draw: function (c, w, h, t) {
+          var cx = w / 2, cy = h / 2;
+          var max = Math.sqrt(cx * cx + cy * cy), i, p, r;
+          c.fillStyle = "#fff"; c.fillRect(0, 0, w, h);
+          for (i = 0; i < 4; i++) {
+            p = ((t * .00012) + i / 4) % 1; r = p * max;
+            c.strokeStyle = i % 2
+              ? "rgba(163,230,53," + (.7 * (1 - p)).toFixed(2) + ")"
+              : "rgba(14,165,233," + (.7 * (1 - p)).toFixed(2) + ")";
+            c.lineWidth = 2;
+            c.beginPath(); c.arc(cx, cy, r, 0, 6.2832); c.stroke();
+          }
+          c.strokeStyle = "#0f172a"; c.lineWidth = 1.4;
+          c.setLineDash([6, 8]); c.lineDashOffset = -t * .02;
+          c.beginPath(); c.arc(cx, cy, max * .42, 0, 6.2832); c.stroke();
+          c.setLineDash([]);
+        }
+      }
+    };
+    function dpr() { return Math.min(window.devicePixelRatio || 1, 2); }
+    var items = [], i;
+    for (i = 0; i < nodes.length; i++) {
+      var cv = nodes[i], kind = cv.getAttribute("data-fx");
+      if (!FX[kind]) continue;
+      var cx2 = cv.getContext("2d");
+      if (!cx2) continue;
+      items.push({ cv: cv, ctx: cx2, fx: FX[kind], st: null, w: 0, h: 0 });
     }
-    show();
-    if (reduceMotion) return;
-    setInterval(function () {
-      el.classList.add("swap");
-      setTimeout(function () { show(); el.classList.remove("swap"); }, 360);
-    }, 3400);
+    if (!items.length) return;
+    function size() {
+      var d = dpr(), j, it, r;
+      for (j = 0; j < items.length; j++) {
+        it = items[j];
+        r = it.cv.getBoundingClientRect();
+        it.w = Math.max(1, Math.round(r.width * d));
+        it.h = Math.max(1, Math.round(r.height * d));
+        if (it.cv.width !== it.w || it.cv.height !== it.h) { it.cv.width = it.w; it.cv.height = it.h; }
+        it.st = it.fx.init(it.w, it.h);
+        it.ctx.fillStyle = "#fff";
+        it.ctx.fillRect(0, 0, it.w, it.h);
+      }
+    }
+    function drawAll(t) {
+      for (var j = 0; j < items.length; j++) {
+        var it = items[j];
+        it.ctx.save();
+        it.fx.draw(it.ctx, it.w, it.h, t, it.st);
+        it.ctx.restore();
+      }
+    }
+    var raf = 0, running = false, strip = document.querySelector(".filmstrip");
+    function frame(t) { drawAll(t); if (!reduceMotion) raf = requestAnimationFrame(frame); }
+    function start() {
+      if (running || reduceMotion) return;
+      running = true;
+      raf = requestAnimationFrame(frame);
+    }
+    function stop() { running = false; if (raf) cancelAnimationFrame(raf); raf = 0; }
+    size();
+    if (reduceMotion) { drawAll(1500); }
+    else if (strip && "IntersectionObserver" in window) {
+      new IntersectionObserver(function (es) {
+        for (var k = 0; k < es.length; k++) {
+          if (es[k].isIntersecting) start(); else stop();
+        }
+      }).observe(strip);
+    } else { start(); }
+    window.addEventListener("resize", function () {
+      size();
+      if (reduceMotion) drawAll(1500);
+    });
   })();
 
   /* ---------- hero: DNA ticker ---------- */
@@ -516,89 +383,6 @@
       return "<span><b>///</b>&nbsp;" + esc(d.name) + ' <i>' + esc(d.tokens.accent) + "</i></span>";
     }).join("");
     el.innerHTML = half + half;
-  })();
-
-  /* ---------- hero: telemetry counters + sparkline ---------- */
-  (function telemetry() {
-    var el = $("hero-stats");
-    if (!el || !TZ) return;
-    var c = TZ.counts;
-    var items = [
-      ["dnas", "style DNAs"], ["patterns", "patterns"], ["generative", "generative"],
-      ["scenes", "3D scenes"], ["templates", "templates"], ["prompts", "prompts"],
-      ["languages", "languages"]
-    ];
-    el.innerHTML = items.map(function (p) {
-      return '<div class="tele"><b data-n="' + c[p[0]] + '">0</b><span>' + p[1] + "</span></div>";
-    }).join("");
-    var bs = el.querySelectorAll("b");
-    if (reduceMotion) {
-      for (var i = 0; i < bs.length; i++) bs[i].textContent = bs[i].getAttribute("data-n");
-    } else {
-      var t0 = null;
-      (function tick(t) {
-        if (!t0) t0 = t;
-        var k = Math.min(1, (t - t0) / 1500), e = 1 - Math.pow(1 - k, 3);
-        for (var j = 0; j < bs.length; j++) {
-          bs[j].textContent = Math.round(+bs[j].getAttribute("data-n") * e);
-        }
-        if (k < 1) requestAnimationFrame(tick);
-      })(performance.now());
-    }
-    var cv = $("spark");
-    if (cv) {
-      var ctx = cv.getContext("2d");
-      if (ctx) {
-        var data = [8, 14, 12, 22, 31, 28, 44, 52, 49, 66, 78, 92];
-        function draw(prog) {
-          var r = cv.getBoundingClientRect();
-          var dpr = Math.min(window.devicePixelRatio || 1, 2);
-          var W = Math.max(1, Math.round(r.width * dpr)), H = Math.max(1, Math.round(r.height * dpr));
-          if (cv.width !== W || cv.height !== H) { cv.width = W; cv.height = H; }
-          ctx.clearRect(0, 0, W, H);
-          var max = 100, pad = 6 * dpr;
-          function px(i) { return pad + i / (data.length - 1) * (W - pad * 2); }
-          function py(v) { return H - pad - v / max * (H - pad * 2); }
-          var n = Math.max(2, Math.floor(data.length * prog));
-          var m;
-          ctx.beginPath();
-          ctx.moveTo(px(0), py(0));
-          for (m = 0; m < n; m++) ctx.lineTo(px(m), py(data[m]));
-          ctx.lineTo(px(n - 1), py(0));
-          ctx.closePath();
-          var g = ctx.createLinearGradient(0, 0, 0, H);
-          g.addColorStop(0, "rgba(0,144,193,.22)");
-          g.addColorStop(1, "rgba(0,144,193,0)");
-          ctx.fillStyle = g;
-          ctx.fill();
-          ctx.beginPath();
-          for (m = 0; m < n; m++) { if (m === 0) ctx.moveTo(px(m), py(data[m])); else ctx.lineTo(px(m), py(data[m])); }
-          ctx.strokeStyle = "#0090c1";
-          ctx.lineWidth = 2 * dpr;
-          ctx.lineJoin = "round";
-          ctx.shadowColor = "rgba(0,144,193,.45)";
-          ctx.shadowBlur = 8 * dpr;
-          ctx.stroke();
-          ctx.shadowBlur = 0;
-          var lx = px(n - 1), ly = py(data[n - 1]);
-          ctx.fillStyle = "rgba(182,240,0,.25)";
-          ctx.beginPath(); ctx.arc(lx, ly, 8 * dpr, 0, Math.PI * 2); ctx.fill();
-          ctx.fillStyle = "#9fd400";
-          ctx.beginPath(); ctx.arc(lx, ly, 3.5 * dpr, 0, Math.PI * 2); ctx.fill();
-        }
-        if (reduceMotion) { draw(1); }
-        else {
-          var s0 = null;
-          (function anim(t) {
-            if (!s0) s0 = t;
-            var k = Math.min(1, (t - s0) / 1600);
-            draw(k);
-            if (k < 1) requestAnimationFrame(anim);
-          })(performance.now());
-        }
-        window.addEventListener("resize", function () { draw(1); });
-      }
-    }
   })();
 
   /* ---------- modal (shared) ---------- */
