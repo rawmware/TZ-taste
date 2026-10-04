@@ -1,0 +1,190 @@
+{
+ "count": 12,
+ "updated": "2026-10-04",
+ "usage": "PHP page scripts (zero deps). Run: php php/<page>.php > out.html; TzBuild.php is the CLI builder.",
+ "php_pages": [
+  {
+   "id": "php-blog",
+   "title": "The Slow Inbox — weekly essays on lasting work",
+   "category": "PHP",
+   "file": "php/blog.php",
+   "tags": [
+    "php",
+    "blog",
+    "essays"
+   ],
+   "description": "Essay blog in the editorial-serif DNA: marginalia side notes as the distinctive choice, drop caps, an honest weekly cadence and one subscribe CTA.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "php-changelog",
+   "title": "Meridian API — changelog",
+   "category": "PHP",
+   "file": "php/changelog.php",
+   "tags": [
+    "php",
+    "changelog",
+    "api",
+    "docs"
+   ],
+   "description": "API changelog page in the blueprint-tech DNA: a brutal revision table with mono hashes and change-type chips as the distinctive choice.",
+   "dnas": [
+    "blueprint-tech"
+   ]
+  },
+  {
+   "id": "php-contact",
+   "title": "Toge Tea Rooms — contact page",
+   "category": "PHP",
+   "file": "php/contact.php",
+   "tags": [
+    "php",
+    "contact",
+    "tea-house"
+   ],
+   "description": "Tea-house contact page in the ma-japanese DNA: the address set as a vertical poem as the distinctive choice, quiet-hours table, one honest reply promise.",
+   "dnas": [
+    "ma-japanese"
+   ]
+  },
+  {
+   "id": "php-docs",
+   "title": "Ferrite — documentation for a fictional CLI",
+   "category": "PHP",
+   "file": "php/docs.php",
+   "tags": [
+    "php",
+    "docs",
+    "documentation",
+    "cli"
+   ],
+   "description": "Documentation page for a fictional static-site CLI in the docs-solar DNA: sticky section index, mono install block, numbered recipes instead of feature cards.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "php-event",
+   "title": "Static Bloom — warehouse night event page",
+   "category": "PHP",
+   "file": "php/event.php",
+   "tags": [
+    "php",
+    "event",
+    "music"
+   ],
+   "description": "Warehouse rave night in the acid-rave DNA: black room, acid-lime type at maximum volume, a scrolling marquee as the distinctive choice, strict no-phones policy.",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "php-hero",
+   "title": "Blackletter & Bell — letterpress hero page",
+   "category": "PHP",
+   "file": "php/hero.php",
+   "tags": [
+    "php",
+    "hero",
+    "letterpress"
+   ],
+   "description": "Single-hero page in the gothic-editorial DNA: blackletter at full volume, one giant drop cap as the distinctive choice, a single folio CTA.",
+   "dnas": [
+    "gothic-editorial"
+   ]
+  },
+  {
+   "id": "php-nonprofit",
+   "title": "Granite Path Alliance — trail stewardship nonprofit",
+   "category": "PHP",
+   "file": "php/nonprofit.php",
+   "tags": [
+    "php",
+    "nonprofit",
+    "outdoors"
+   ],
+   "description": "Trail nonprofit page in the alpine-ledger DNA: stamped logbook entries as the distinctive choice, kraft-paper warmth, one trail-day signup CTA.",
+   "dnas": [
+    "alpine-ledger"
+   ]
+  },
+  {
+   "id": "php-portfolio",
+   "title": "June Kurosawa — landscape photographer",
+   "category": "PHP",
+   "file": "php/portfolio.php",
+   "tags": [
+    "php",
+    "portfolio",
+    "photography"
+   ],
+   "description": "Photographer portfolio in the ink-wash-sumi DNA: vertical Japanese captions, a red hanko seal as the distinctive mark, one commission CTA, quiet rows instead of galleries.",
+   "dnas": [
+    "ink-wash-sumi"
+   ]
+  },
+  {
+   "id": "php-pricing",
+   "title": "Karst Type — font license pricing",
+   "category": "PHP",
+   "file": "php/pricing.php",
+   "tags": [
+    "php",
+    "pricing",
+    "type-foundry"
+   ],
+   "description": "Type-foundry pricing in the swiss-poster DNA: oversized poster numerals for each tier, hairline rules, no cards — pricing as a specimen sheet.",
+   "dnas": [
+    "swiss-poster"
+   ]
+  },
+  {
+   "id": "php-restaurant",
+   "title": "Bar Camillo — aperitivo bar menu page",
+   "category": "PHP",
+   "file": "php/restaurant.php",
+   "tags": [
+    "php",
+    "restaurant",
+    "menu"
+   ],
+   "description": "Aperitivo bar page in the aperitivo-italian DNA: a price-list poster menu with oversized numerals as the distinctive choice, Campari-red accents on cream.",
+   "dnas": [
+    "aperitivo-italian"
+   ]
+  },
+  {
+   "id": "php-saas",
+   "title": "Benchly — calibration scheduling for small labs",
+   "category": "PHP",
+   "file": "php/saas.php",
+   "tags": [
+    "php",
+    "saas",
+    "landing-page"
+   ],
+   "description": "Landing page for a fictional lab-calibration SaaS in the laboratory-clean DNA: hero is a mono calibration certificate strip, hairline numbered rows, one honest price.",
+   "dnas": [
+    "laboratory-clean"
+   ]
+  },
+  {
+   "id": "php-tzbuild",
+   "title": "TzBuild — zero-dependency PHP landing page builder",
+   "category": "PHP",
+   "file": "php/TzBuild.php",
+   "tags": [
+    "php",
+    "builder",
+    "cli",
+    "landing-page"
+   ],
+   "description": "CLI builder that emits a complete styled landing page for any TZ-taste DNA slug. Validates the slug, resolves styles/index.json relative to the script, and prints the finished HTML to stdout.",
+   "dnas": [
+    "art-deco-luxe"
+   ]
+  }
+ ]
+}
