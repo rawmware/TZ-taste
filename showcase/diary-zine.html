@@ -1,0 +1,124 @@
+<!--tz-meta {"id":"showcase-diary-zine","title":"Diary Zine showcase","category":"Showcase","file":"showcase/diary-zine.html","tags":["diary-zine"],"description":"Live demo page for the Diary Zine style DNA.","dnas":["diary-zine"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Diary Zine — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Special+Elite&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#e8e4d8; --tz-surface:#dcd6c4; --tz-ink:#111111; --tz-muted:#55524a;
+  --tz-accent:#d81b36; --tz-line:#11111133;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Special Elite",serif;font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding:1rem 4vw;border-bottom:2px solid var(--tz-ink);font-family:"Space Mono",monospace;font-size:0.7rem;letter-spacing:0.12em}
+.tz-wordmark{font-family:"Anton",sans-serif;font-size:1.3rem;letter-spacing:0.04em}
+.tz-label{color:var(--tz-muted)}
+.tz-hero{padding:4rem 4vw 3rem;position:relative}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:0.75rem;letter-spacing:0.14em;margin-bottom:1.4rem}
+.tz-hero h1{font-family:"Anton",sans-serif;text-transform:uppercase;line-height:0.92;letter-spacing:0.01em}
+.tz-hero h1 .tz-w1{display:block;font-size:clamp(2.6rem,8vw,5.5rem);transform:rotate(-2deg)}
+.tz-hero h1 .tz-w2{display:block;font-size:clamp(3.4rem,11vw,7.5rem);transform:rotate(1.5deg);margin-left:8%}
+.tz-hero h1 .tz-w3{display:block;font-size:clamp(2.6rem,8vw,5.5rem);transform:rotate(-1deg);margin-left:3%}
+.tz-hero h1 .tz-red{background:var(--tz-accent);color:var(--tz-bg);padding:0 0.15em;display:inline-block;transform:rotate(2deg)}
+.tz-sub{margin-top:1.8rem;font-size:1.05rem;max-width:46ch;transform:rotate(-0.5deg)}
+.tz-sub em{font-style:normal;background:linear-gradient(transparent 60%,var(--tz-accent) 60%);color:inherit}
+.tz-cta{display:inline-block;margin-top:2rem;background:var(--tz-ink);color:var(--tz-bg);font-family:"Anton",sans-serif;font-size:1.25rem;letter-spacing:0.05em;text-decoration:none;padding:0.9rem 2.2rem;transform:rotate(1.5deg);box-shadow:4px 4px 0 var(--tz-accent);transition:transform .12s ease}
+.tz-cta:hover{transform:rotate(-1deg) scale(1.03)}
+.tz-cut{margin:3rem 4vw 0;border-top:3px dashed var(--tz-ink);position:relative;padding-top:1.6rem;transform:rotate(-1deg)}
+.tz-cut::before{content:"✂ CUT HERE";font-family:"Space Mono",monospace;font-size:0.68rem;letter-spacing:0.14em;background:var(--tz-bg);padding:0 0.8rem;position:absolute;top:-0.7rem;left:40%}
+.tz-coupon{background:var(--tz-surface);border:2px solid var(--tz-ink);padding:1.4rem;max-width:480px;box-shadow:4px 4px 0 var(--tz-ink);position:relative}
+.tz-coupon .tz-tape{position:absolute;top:-14px;left:50%;transform:translateX(-50%) rotate(-3deg);width:120px;height:26px;background:rgba(216,214,196,0.85);border-left:1px dashed var(--tz-muted);border-right:1px dashed var(--tz-muted)}
+.tz-coupon h3{font-family:"Anton",sans-serif;font-size:1.5rem;letter-spacing:0.03em;text-transform:uppercase;margin-bottom:0.5rem}
+.tz-coupon p{font-size:0.92rem;color:var(--tz-muted)}
+.tz-coupon strong{color:var(--tz-accent)}
+.tz-content{padding:3.5rem 4vw 0}
+.tz-content h2{font-family:"Anton",sans-serif;font-size:clamp(2.2rem,7vw,4.5rem);text-transform:uppercase;transform:rotate(-1.5deg);margin-bottom:0.4rem;display:inline-block}
+.tz-content .tz-note{color:var(--tz-muted);margin-bottom:2.2rem;max-width:52ch;transform:rotate(0.5deg)}
+.tz-setlist{list-style:none;position:relative}
+.tz-setlist li{display:grid;grid-template-columns:4rem 1fr auto;gap:1rem;align-items:baseline;padding:1.3rem 1.2rem;background:var(--tz-surface);border:1px solid var(--tz-line);margin-bottom:1rem;box-shadow:4px 4px 0 #11111122;position:relative}
+.tz-setlist li:nth-child(odd){transform:rotate(-1deg)}
+.tz-setlist li:nth-child(even){transform:rotate(0.8deg);margin-left:5%}
+.tz-num{font-family:"Space Mono",monospace;font-weight:700;color:var(--tz-accent)}
+.tz-song{font-size:1.1rem}
+.tz-song .tz-arrow{color:var(--tz-accent);font-weight:700}
+.tz-len{font-family:"Space Mono",monospace;font-size:0.8rem;color:var(--tz-muted)}
+.tz-rant{margin:3rem 4vw 0;padding:1.6rem;background:var(--tz-surface);border-left:6px solid var(--tz-accent);transform:rotate(1deg);max-width:600px}
+.tz-rant p{font-size:0.95rem}
+.tz-rant .tz-sig{display:block;margin-top:0.8rem;font-family:"Space Mono",monospace;font-size:0.7rem;letter-spacing:0.12em;color:var(--tz-muted)}
+.tz-tokens{padding:3.5rem 4vw;border-top:2px solid var(--tz-ink);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Anton",sans-serif;font-size:1.8rem;letter-spacing:0.03em;margin-bottom:1.4rem;text-transform:uppercase}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"Space Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Space Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:2px solid var(--tz-ink);font-family:"Space Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-setlist li{grid-template-columns:3rem 1fr;grid-template-rows:auto auto}
+  .tz-len{grid-column:2}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">STATIC BLOOM</span>
+  <span class="tz-label">ISSUE #7 · XEROXED 500 COPIES · 2AM</span>
+</header>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow">PRINTED AT KINKO'S · STAPLED BY HAND</p>
+  <h1>
+    <span class="tz-w1">We recorded this</span>
+    <span class="tz-w2">in a <span class="tz-red">basement.</span></span>
+    <span class="tz-w3">It sounds like it.</span>
+  </h1>
+  <p class="tz-sub">Static Bloom's first tape. Four tracks, one microphone, <em>no apologies.</em> If you want polish, buy a magazine.</p>
+  <a class="tz-cta" href="#">READ THE MANIFESTO</a>
+</section>
+
+<div class="tz-cut">
+  <div class="tz-coupon">
+    <span class="tz-tape" aria-hidden="true"></span>
+    <h3>Free tape coupon</h3>
+    <p>Bring this page to the merch table and get the demo for <strong>NOTHING</strong>. Photocopies accepted. Photocopies of photocopies encouraged.</p>
+  </div>
+</div>
+
+<section class="tz-content">
+  <h2>The setlist</h2>
+  <p class="tz-note">Played live, start to finish, no breaks. The bassist didn't know half these songs. You'll never notice.</p>
+  <ul class="tz-setlist">
+    <li><span class="tz-num">A1</span><span class="tz-song">Copier Jam <span class="tz-arrow">→</span> the loud one</span><span class="tz-len">2:41</span></li>
+    <li><span class="tz-num">A2</span><span class="tz-song">Landlord's Coming <span class="tz-arrow">→</span> faster, then</span><span class="tz-len">1:58</span></li>
+    <li><span class="tz-num">B1</span><span class="tz-song">Staple Gun Serenade</span><span class="tz-len">3:12</span></li>
+    <li><span class="tz-num">B2</span><span class="tz-song">We Ate The Rider (encore, allegedly)</span><span class="tz-len">4:05</span></li>
+  </ul>
+  <div class="tz-rant">
+    <p>MARGIN RANT — the last three "promoters" wanted a cut of the door AND the tape sales. We play basements now. The sound is better and nobody takes a percentage.</p>
+    <span class="tz-sig">— R., DRUMS, 3:12AM</span>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#e8e4d8"></span><span class="tz-name">bg</span><span class="tz-hex">#e8e4d8</span></li>
+    <li><span class="tz-chip" style="background:#dcd6c4"></span><span class="tz-name">surface</span><span class="tz-hex">#dcd6c4</span></li>
+    <li><span class="tz-chip" style="background:#111111"></span><span class="tz-name">ink</span><span class="tz-hex">#111111</span></li>
+    <li><span class="tz-chip" style="background:#55524a"></span><span class="tz-name">muted</span><span class="tz-hex">#55524a</span></li>
+    <li><span class="tz-chip" style="background:#d81b36"></span><span class="tz-name">accent</span><span class="tz-hex">#d81b36</span></li>
+    <li><span class="tz-chip" style="background:#11111133"></span><span class="tz-name">line</span><span class="tz-hex">#11111133</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
