@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-storybook-watercolor",
+  "title": "Storybook Watercolor design tokens",
+  "category": "Tokens",
+  "file": "tokens/storybook-watercolor.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "storybook-watercolor"
+  ],
+  "description": "W3C-format design tokens for the Storybook Watercolor DNA.",
+  "dnas": [
+   "storybook-watercolor"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#f7f0dc",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#2e2a23",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#d95f43",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#8a7f6c",
+   "type": "color"
+  },
+  "line": {
+   "value": "#2e2a2326",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#f7f0dc",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Caveat",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Karla",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Space Mono",
+   "type": "fontFamily"
+  }
+ }
+}
