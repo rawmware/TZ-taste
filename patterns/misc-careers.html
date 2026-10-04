@@ -1,0 +1,106 @@
+<!--tz-meta {"id":"misc-careers","title":"Job board","category":"Misc","file":"patterns/misc-careers.html","tags":["hiring","roles"],"description":"Luxe role listings grouped by department with hairline rules.","dnas":["dark-luxe"]} -->
+<section class="tz-jobs">
+  <p class="tz-jobs-kicker">Open roles</p>
+  <h2 class="tz-jobs-dept">Workshop <span>· 2</span></h2>
+  <ul>
+    <li><div><h3>Senior print technician</h3><p>Portsmouth, NH · Full-time</p></div><a href="#apply">Apply <span>→</span></a></li>
+    <li><div><h3>Apprentice binder <em class="tz-jobs-new">New</em></h3><p>Portsmouth, NH · Full-time</p></div><a href="#apply">Apply <span>→</span></a></li>
+  </ul>
+  <h2 class="tz-jobs-dept">Studio <span>· 1</span></h2>
+  <ul>
+    <li><div><h3>Type designer</h3><p>Remote · Contract</p></div><a href="#apply">Apply <span>→</span></a></li>
+  </ul>
+  <p class="tz-jobs-foot">No cover letter. Send three pieces of work you are proud of.</p>
+</section>
+<style>
+.tz-jobs{
+  background:#0d0c0a;
+  color:#efe9dc;
+  font-family:Georgia,'Times New Roman',serif;
+  padding:clamp(40px,6vw,88px) clamp(24px,6vw,96px);
+  max-width:860px;
+}
+.tz-jobs-kicker{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:11px;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:#c9a24b;
+  margin:0 0 32px;
+}
+.tz-jobs-dept{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:12px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#c9a24b;
+  font-weight:400;
+  margin:36px 0 0;
+}
+.tz-jobs-dept span{
+  opacity:.6;
+}
+.tz-jobs ul{
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+.tz-jobs li{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+  padding:20px 0;
+  border-bottom:1px solid #2e2a21;
+}
+.tz-jobs h3{
+  font-size:22px;
+  font-weight:400;
+  margin:0 0 6px;
+}
+.tz-jobs li p{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:11px;
+  letter-spacing:.1em;
+  color:#efe9dc;
+  opacity:.6;
+  margin:0;
+  text-transform:uppercase;
+}
+.tz-jobs-new{
+  font-style:normal;
+  font-size:10px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  background:#c9a24b;
+  color:#0d0c0a;
+  padding:3px 8px;
+  margin-left:10px;
+  vertical-align:3px;
+  font-family:ui-monospace,Menlo,monospace;
+}
+.tz-jobs a{
+  color:#c9a24b;
+  text-decoration:none;
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.tz-jobs a span{
+  display:inline-block;
+  transition:transform .3s cubic-bezier(.22,1,.36,1);
+}
+.tz-jobs a:hover span{
+  transform:translateX(5px);
+}
+.tz-jobs-foot{
+  font-style:italic;
+  font-size:15px;
+  color:#efe9dc;
+  opacity:.7;
+  margin:32px 0 0;
+}
+</style>
