@@ -1,0 +1,95 @@
+{
+ "_tzmeta": {
+  "id": "vscode-aperitivo-italian",
+  "title": "Aperitivo Italian VS Code theme",
+  "category": "VS Code",
+  "file": "vscode/aperitivo-italian.json",
+  "tags": [
+   "vscode",
+   "theme",
+   "aperitivo-italian"
+  ],
+  "description": "VS Code color theme from the Aperitivo Italian DNA tokens.",
+  "dnas": [
+   "aperitivo-italian"
+  ]
+ },
+ "name": "TZ Aperitivo Italian",
+ "type": "light",
+ "colors": {
+  "editor.background": "#f7efdc",
+  "editor.foreground": "#2b1f14",
+  "editorLineNumber.foreground": "#a08872",
+  "editorCursor.foreground": "#c93a2e",
+  "activityBar.background": "#f7efdc",
+  "activityBar.foreground": "#2b1f14",
+  "sideBar.background": "#f7efdc",
+  "statusBar.background": "#c93a2e",
+  "statusBar.foreground": "#f7efdc",
+  "tab.activeBackground": "#f7efdc",
+  "tab.inactiveBackground": "#f7efdc",
+  "editorGroupHeader.tabsBackground": "#f7efdc",
+  "terminal.background": "#f7efdc",
+  "terminal.foreground": "#2b1f14",
+  "panel.background": "#f7efdc",
+  "editorWidget.background": "#f7efdc",
+  "pickerGroup.foreground": "#c93a2e",
+  "progressBar.background": "#c93a2e",
+  "focusBorder": "#e3d3b8"
+ },
+ "tokenColors": [
+  {
+   "scope": [
+    "comment"
+   ],
+   "settings": {
+    "foreground": "#a08872",
+    "fontStyle": "italic"
+   }
+  },
+  {
+   "scope": [
+    "keyword",
+    "storage"
+   ],
+   "settings": {
+    "foreground": "#c93a2e"
+   }
+  },
+  {
+   "scope": [
+    "string"
+   ],
+   "settings": {
+    "foreground": "#2b1f14"
+   }
+  },
+  {
+   "scope": [
+    "variable",
+    "identifier"
+   ],
+   "settings": {
+    "foreground": "#2b1f14"
+   }
+  },
+  {
+   "scope": [
+    "entity.name.function"
+   ],
+   "settings": {
+    "foreground": "#c93a2e",
+    "fontStyle": "bold"
+   }
+  },
+  {
+   "scope": [
+    "entity.name.type",
+    "support.type"
+   ],
+   "settings": {
+    "foreground": "#a08872"
+   }
+  }
+ ]
+}
