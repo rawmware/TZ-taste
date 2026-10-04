@@ -1,0 +1,170 @@
+<!--tz-meta {"id":"gen-org-lightning-strike","title":"Lightning Strike","category":"Generative","file":"generative/org-lightning-strike.html","tags":["lightning","midpoint-displacement","bolt"],"description":"Midpoint-displacement bolts with recursive branches and phosphor glow — click the sky to call a strike.","dnas":["retro-terminal"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lightning Strike · TZ-taste</title>
+<style>
+  .tz-page{background:#0C0E0B;color:#D8E8D0;min-height:100vh;font-family:Georgia,'Times New Roman',serif;margin:0}
+  .tz-wrap{max-width:1080px;margin:0 auto;padding:32px 20px 48px}
+  .tz-kicker{font-family:'Courier New',Courier,monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#E8A93C;margin:0 0 12px}
+  .tz-title{font-size:clamp(32px,6vw,52px);font-weight:700;margin:0 0 10px;line-height:1.05}
+  .tz-caption{font-size:16px;line-height:1.6;max-width:62ch;margin:0 0 4px;color:#8fa08a}
+  .tz-controls{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+  .tz-btn{font-family:'Courier New',Courier,monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;background:transparent;color:#D8E8D0;border:2px solid #D8E8D0;padding:10px 18px;cursor:pointer}
+  .tz-btn:hover{background:#D8E8D0;color:#0C0E0B}
+  .tz-btn:active{transform:translateY(1px)}
+  .tz-canvas{display:block;width:100%;height:70vh;background:#0C0E0B;border:2px solid #3a4436;cursor:crosshair}
+  .tz-foot{font-family:'Courier New',Courier,monospace;font-size:12px;color:#5c6a58;margin:14px 0 0;line-height:1.6}
+</style>
+</head>
+<body class="tz-page">
+<div class="tz-wrap">
+  <p class="tz-kicker">TZ-taste · Generative</p>
+  <h1 class="tz-title">Lightning Strike</h1>
+  <p class="tz-caption">A bolt is a line subdivided again and again, each midpoint shoved sideways by a shrinking random offset — the classic midpoint-displacement fractal. Branches spawn recursively from random midpoints, and the whole thing is drawn in three passes: amber wash, bright core, white-hot spine.</p>
+  <div class="tz-controls">
+    <button class="tz-btn" id="tz-seed" type="button">New seed</button>
+    <button class="tz-btn" id="tz-pause" type="button">Pause</button>
+    <button class="tz-btn" id="tz-clear" type="button">Clear</button>
+  </div>
+  <canvas class="tz-canvas" id="tz-canvas"></canvas>
+  <p class="tz-foot">One distinctive choice: click anywhere and the bolt drops from the sky to exactly that point. The storm also strikes on its own every few seconds. Seed <span id="tz-seednum"></span>.</p>
+</div>
+<script>
+(function(){
+  var BG='#0C0E0B', CORE='#FFFDF4', MID='#FFE9B0', WASH='#E8A93C';
+  var LIFE=1100;
+  var canvas=document.getElementById('tz-canvas'), ctx=canvas.getContext('2d');
+  var seedBtn=document.getElementById('tz-seed'), pauseBtn=document.getElementById('tz-pause'),
+      clearBtn=document.getElementById('tz-clear'), seedNum=document.getElementById('tz-seednum');
+  var seed=31337, rng=mulberry32(seed);
+  var W=0, H=0;
+  var strikes=[], flash=0, nextAuto=0;
+  var running=true, raf=null;
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+
+  function makeBolt(x1,y1,x2,y2,disp,depth){
+    var pts=[[x1,y1],[x2,y2]], d=disp;
+    for(var l=0;l<7;l++){
+      var np=[pts[0]];
+      for(var i=1;i<pts.length;i++){
+        var ax=pts[i-1][0], ay=pts[i-1][1], bx=pts[i][0], by=pts[i][1];
+        var dx=bx-ax, dy=by-ay, len=Math.sqrt(dx*dx+dy*dy)||1;
+        var off=(rng()*2-1)*d;
+        np.push([ (ax+bx)/2 - dy/len*off, (ay+by)/2 + dx/len*off ], [bx,by]);
+      }
+      pts=np; d*=0.52;
+    }
+    var branches=[];
+    if(depth<3){
+      for(var j=2;j<pts.length-1;j++){
+        if(rng()<0.045){
+          var ang=Math.PI/2+(rng()*2-1)*1.15;
+          var bl=(70+90*rng())/(depth+1);
+          branches.push(makeBolt(pts[j][0],pts[j][1],
+            pts[j][0]+Math.cos(ang)*bl, pts[j][1]+Math.abs(Math.sin(ang))*bl,
+            disp*0.5, depth+1));
+        }
+      }
+    }
+    return {pts:pts, branches:branches};
+  }
+
+  function strokeBolt(b,alpha){
+    ctx.globalAlpha=alpha*0.28; ctx.strokeStyle=WASH; ctx.lineWidth=7;
+    ctx.shadowColor=WASH; ctx.shadowBlur=18;
+    pathBolt(b); ctx.stroke();
+    ctx.globalAlpha=alpha*0.8; ctx.strokeStyle=MID; ctx.lineWidth=2.8;
+    ctx.shadowBlur=10;
+    pathBolt(b); ctx.stroke();
+    ctx.globalAlpha=alpha; ctx.strokeStyle=CORE; ctx.lineWidth=1.2;
+    ctx.shadowBlur=6;
+    pathBolt(b); ctx.stroke();
+    ctx.shadowBlur=0; ctx.globalAlpha=1;
+    for(var i=0;i<b.branches.length;i++)strokeBolt(b.branches[i],alpha);
+  }
+
+  function pathBolt(b){
+    ctx.beginPath();
+    ctx.moveTo(b.pts[0][0],b.pts[0][1]);
+    for(var i=1;i<b.pts.length;i++)ctx.lineTo(b.pts[i][0],b.pts[i][1]);
+  }
+
+  function strike(x,y,when){
+    strikes.push({bolt:makeBolt(x,-20,x,y,Math.hypot(W,H)*0.05,0), born:when});
+    flash=1;
+  }
+
+  function drawSky(){
+    ctx.fillStyle=BG; ctx.fillRect(0,0,W,H);
+  }
+
+  function draw(){
+    drawSky();
+    if(flash>0.01){
+      ctx.fillStyle='rgba(255,253,244,'+(flash*0.16).toFixed(3)+')';
+      ctx.fillRect(0,0,W,H);
+    }
+    var now=performance.now();
+    for(var i=0;i<strikes.length;i++){
+      var age=now-strikes[i].born;
+      if(age<0)continue;
+      var a=Math.max(0,1-age/LIFE);
+      strokeBolt(strikes[i].bolt,a);
+    }
+    seedNum.textContent=seed;
+  }
+
+  function frame(now){
+    if(!running){raf=null;return;}
+    strikes=strikes.filter(function(s){return now-s.born<LIFE;});
+    if(now>=nextAuto){
+      strike(rng()*W, H*0.25+rng()*H*0.7, now);
+      nextAuto=now+1800+rng()*2600;
+    }
+    flash*=0.88;
+    draw();
+    raf=requestAnimationFrame(frame);
+  }
+
+  function reseed(){
+    seed=(seed*9301+49297)%233280; rng=mulberry32(seed);
+    strikes=[]; flash=0; draw();
+  }
+
+  function resize(){
+    var dpr=Math.min(window.devicePixelRatio||1,2);
+    var r=canvas.getBoundingClientRect();
+    W=r.width; H=r.height;
+    canvas.width=Math.round(W*dpr); canvas.height=Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    strikes=[]; flash=0; draw();
+  }
+
+  function clickPos(e){
+    var r=canvas.getBoundingClientRect();
+    return [e.clientX-r.left, e.clientY-r.top];
+  }
+
+  canvas.addEventListener('click',function(e){
+    var p=clickPos(e), now=performance.now();
+    strike(p[0],p[1],now);
+    if(reduced)draw();
+  });
+  seedBtn.addEventListener('click',reseed);
+  clearBtn.addEventListener('click',function(){strikes=[];flash=0;draw();});
+  pauseBtn.addEventListener('click',function(){
+    running=!running; pauseBtn.textContent=running?'Pause':'Resume';
+    if(running&&!reduced){nextAuto=performance.now()+1500;raf=requestAnimationFrame(frame);}
+  });
+  window.addEventListener('resize',resize);
+  resize();
+  if(!reduced){nextAuto=performance.now()+600;raf=requestAnimationFrame(frame);}
+})();
+</script>
+</body>
+</html>
