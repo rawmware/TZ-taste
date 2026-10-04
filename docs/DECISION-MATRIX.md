@@ -1,3 +1,4 @@
+<!--tz-meta {"id":"decision-matrix","title":"Brief → DNA Decision Matrix","file":"docs/DECISION-MATRIX.md","description":"Routing table: brief signals to style DNA, with runner-up reasoning."} -->
 # DECISION-MATRIX.md — brief → style DNA routing
 
 Read the brief. Find the row that matches. Pick that DNA first; the runner-up
