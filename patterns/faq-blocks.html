@@ -1,0 +1,45 @@
+<!--tz-meta {"id":"faq-blocks","title":"Bordered blocks","category":"FAQ","file":"patterns/faq-blocks.html","tags":["brutal","blocks"],"description":"Chunky 3px-bordered question blocks with offset shadows and stamped answers.","dnas":["industrial-brutalist"]} -->
+<section class="tz-fqb">
+  <p class="tz-fqb-eyebrow">FAQ · read the manual</p>
+  <h2 class="tz-fqb-title">Straight answers.<br>No hedging.</h2>
+  <div class="tz-fqb-grid">
+    <article>
+      <h3>Do you sell my data?</h3>
+      <p><b>NO.</b> We make money from subscriptions. Selling data would be a different business, and a worse one.</p>
+    </article>
+    <article>
+      <h3>Is there a free tier?</h3>
+      <p><b>YES.</b> One inbox, 100 replies a month, free forever. No card, no trial countdown.</p>
+    </article>
+    <article>
+      <h3>Can I self-host?</h3>
+      <p><b>YES.</b> The core is MIT licensed. Run it on your own box; we'll still answer your questions.</p>
+    </article>
+    <article>
+      <h3>What if it breaks?</h3>
+      <p><b>99.99% uptime SLA,</b> status page with real incident history, and humans on call — not a chatbot apologizing.</p>
+    </article>
+    <article class="tz-fqb-wide">
+      <h3>Why should I believe any of this?</h3>
+      <p><b>Don't take our word for it.</b> Read the SOC 2 report, try the free tier for a month, export your data on day 29 and watch the purge confirmation arrive. Trust is a demo, not a claim.</p>
+    </article>
+  </div>
+</section>
+<style>
+.tz-fqb{--bg:#e9e6df;--ink:#161513;--accent:#ff4d00;--card:#f5f3ed;
+  background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(64px,9vw,120px) clamp(24px,6vw,80px)}
+.tz-fqb-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;margin:0 0 16px}
+.tz-fqb-title{font-size:clamp(36px,5.6vw,72px);font-weight:900;letter-spacing:-.03em;line-height:.98;
+  margin:0 0 clamp(40px,6vw,68px);text-transform:uppercase}
+.tz-fqb-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,32px);max-width:1050px}
+.tz-fqb-grid article{background:var(--card);border:3px solid var(--ink);box-shadow:7px 7px 0 var(--ink);
+  padding:clamp(26px,3.5vw,40px)}
+.tz-fqb-wide{grid-column:1/-1;background:var(--ink) !important;color:var(--card);box-shadow:7px 7px 0 var(--accent)}
+.tz-fqb-grid h3{font-size:20px;font-weight:900;letter-spacing:-.01em;margin:0 0 14px;text-transform:uppercase}
+.tz-fqb-grid p{font-size:15px;line-height:1.65;margin:0;color:rgba(22,21,19,.78)}
+.tz-fqb-wide p{color:rgba(245,243,237,.82)}
+.tz-fqb-grid p b{color:var(--accent)}
+@media (max-width:700px){.tz-fqb-grid{grid-template-columns:1fr}}
+</style>
