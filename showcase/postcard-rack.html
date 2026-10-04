@@ -1,0 +1,110 @@
+<!--tz-meta {"id":"showcase-postcard-rack","title":"Postcard Rack showcase","category":"Showcase","file":"showcase/postcard-rack.html","tags":["postcard-rack"],"description":"Live demo page for the Postcard Rack style DNA.","dnas":["postcard-rack"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Postcard Rack — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Karla:wght@400;500;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f6efdd; --tz-surface:#efe3c8; --tz-ink:#3d2f22; --tz-muted:#8a755a;
+  --tz-accent:#c9402e; --tz-line:#3d2f221f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Karla",sans-serif;font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 4vw;border-bottom:1px solid var(--tz-line)}
+.tz-wordmark{font-family:"Bungee",sans-serif;font-size:1.05rem}
+.tz-racktag{font-family:"Courier Prime",monospace;font-size:0.7rem;letter-spacing:0.14em;color:var(--tz-muted)}
+.tz-hero{padding:5.5rem 4vw 3rem;position:relative;overflow:hidden}
+.tz-postmark{position:absolute;top:4.5rem;right:6vw;width:11rem;height:11rem;border:4px double var(--tz-accent);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.2rem;transform:rotate(11deg);opacity:0.85;font-family:"Courier Prime",monospace;color:var(--tz-accent);text-align:center;pointer-events:none}
+.tz-postmark b{font-size:0.78rem;letter-spacing:0.1em;line-height:1.4}
+.tz-postmark span{font-size:0.64rem;letter-spacing:0.08em}
+.tz-eyebrow{font-family:"Courier Prime",monospace;font-size:0.72rem;letter-spacing:0.16em;color:var(--tz-muted);margin-bottom:1.4rem}
+.tz-hero h1{font-family:"Bungee",sans-serif;font-size:clamp(2.6rem,9vw,5.8rem);line-height:1.02;max-width:12ch}
+.tz-sub{margin-top:1.6rem;font-size:1.05rem;color:var(--tz-muted);max-width:44ch}
+.tz-cta{display:inline-block;margin-top:2.2rem;background:var(--tz-accent);color:var(--tz-bg);font-family:"Bungee",sans-serif;font-size:1rem;text-decoration:none;padding:1rem 2.2rem;border-radius:4px;transition:opacity .15s ease}
+.tz-cta:hover{opacity:0.88}
+.tz-divider{display:flex;align-items:center;gap:1rem;margin:3.5rem 4vw 0}
+.tz-divider::before,.tz-divider::after{content:"";flex:1;border-top:1px solid var(--tz-line)}
+.tz-divider span{font-family:"Courier Prime",monospace;font-size:0.68rem;letter-spacing:0.2em;color:var(--tz-muted)}
+.tz-content{padding:2.5rem 4vw 1rem}
+.tz-back{display:flex;gap:2.5rem;flex-wrap:wrap;max-width:900px}
+.tz-message{flex:1 1 20rem;background:var(--tz-surface);border:1px solid var(--tz-line);border-radius:4px;padding:2rem;transform:rotate(-1deg);transition:transform .25s ease}
+.tz-message:hover{transform:rotate(0deg)}
+.tz-message p{font-size:1.05rem;line-height:1.9;color:var(--tz-ink)}
+.tz-message .tz-sig{margin-top:1rem;font-family:"Courier Prime",monospace;font-size:0.78rem;color:var(--tz-muted)}
+.tz-address{flex:1 1 16rem;border-left:1px solid var(--tz-line);padding-left:2.5rem;font-family:"Courier Prime",monospace;font-size:0.82rem;line-height:2.2;color:var(--tz-muted)}
+.tz-address strong{color:var(--tz-ink);display:block;font-size:0.72rem;letter-spacing:0.18em;margin-bottom:0.6rem}
+.tz-caption{margin-top:1.4rem;font-size:0.78rem;color:var(--tz-muted);max-width:60ch}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Bungee",sans-serif;font-size:1.5rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1;border-radius:4px;overflow:hidden}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"Courier Prime",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Courier Prime",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"Courier Prime",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-hero{padding-top:4rem}
+  .tz-postmark{width:7.5rem;height:7.5rem;top:3.2rem;right:4vw}
+  .tz-postmark b{font-size:0.58rem}
+  .tz-postmark span{font-size:0.5rem}
+  .tz-racktag{display:none}
+  .tz-address{border-left:none;padding-left:0;border-top:1px solid var(--tz-line);padding-top:1.5rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">The Rack &mdash; Dover, NH</span>
+  <span class="tz-racktag">MAILED FROM DOVER &middot; ROW 3</span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-postmark" aria-hidden="true"><b>SENT<br>WITH LOVE</b><span>JUL 14 &middot; 9:04 AM</span></div>
+  <p class="tz-eyebrow">LINEN FINISH &middot; SIX FOR FIVE DOLLARS</p>
+  <h1>Send one. People keep them.</h1>
+  <p class="tz-sub">The lighthouse ones go first. The diner one goes to your uncle. The back of the card is the whole point &mdash; weather is perfect, wish you were here.</p>
+  <a class="tz-cta" href="#">Pick a card</a>
+</section>
+
+<div class="tz-divider" aria-hidden="true"><span>ROW 3 &middot; BESTSELLERS</span></div>
+
+<section class="tz-content">
+  <div class="tz-back">
+    <div class="tz-message">
+      <p>Dear June &mdash;<br><br>Weather is perfect. The water was flat this morning and the gulls were arguing about it. Ate pie at the diner. Thought of you at the lighthouse.<br><br>Wish you were here,<br>&mdash; M.</p>
+      <p class="tz-sig">WRITTEN ON THE BACK &middot; CARD NO. 214 &middot; &ldquo;LIGHTHOUSE AT DUSK&rdquo;</p>
+    </div>
+    <div class="tz-address">
+      <strong>FRONT OF CARD</strong>
+      No. 214 &mdash; LIGHTHOUSE AT DUSK<br>
+      Linen finish, 3:2<br>
+      Caption: &ldquo;Guiding sailors home since 1871.&rdquo;<br>
+      Sells out by August.
+    </div>
+  </div>
+  <p class="tz-caption">Every card on the rack explains itself in small faded type, like postcards have done since forever. No card leaves without a caption.</p>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#f6efdd"></span><span class="tz-name">bg</span><span class="tz-hex">#f6efdd</span></li>
+    <li><span class="tz-chip" style="background:#efe3c8"></span><span class="tz-name">surface</span><span class="tz-hex">#efe3c8</span></li>
+    <li><span class="tz-chip" style="background:#3d2f22"></span><span class="tz-name">ink</span><span class="tz-hex">#3d2f22</span></li>
+    <li><span class="tz-chip" style="background:#8a755a"></span><span class="tz-name">muted</span><span class="tz-hex">#8a755a</span></li>
+    <li><span class="tz-chip" style="background:#c9402e"></span><span class="tz-name">accent</span><span class="tz-hex">#c9402e</span></li>
+    <li><span class="tz-chip" style="background:#3d2f221f"></span><span class="tz-name">line</span><span class="tz-hex">#3d2f221f</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
