@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-typewriter-repair",
+  "title": "Typewriter Repair design tokens",
+  "category": "Tokens",
+  "file": "tokens/typewriter-repair.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "typewriter-repair"
+  ],
+  "description": "W3C-format design tokens for the Typewriter Repair DNA.",
+  "dnas": [
+   "typewriter-repair"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#ece7d8",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#26221c",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#8f3b2a",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#857a64",
+   "type": "color"
+  },
+  "line": {
+   "value": "#26221c2b",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#dbd0b4",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Special Elite",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Courier Prime",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "IBM Plex Mono",
+   "type": "fontFamily"
+  }
+ }
+}
