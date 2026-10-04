@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-concrete-poem",
+  "title": "Concrete Poem design tokens",
+  "category": "Tokens",
+  "file": "tokens/concrete-poem.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "concrete-poem"
+  ],
+  "description": "W3C-format design tokens for the Concrete Poem style DNA.",
+  "dnas": [
+   "concrete-poem"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#f7f3ea",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#1c1a16",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#8c1f28",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#8a8072",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#ddd4c2",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Major Mono Display",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "concrete-poem",
+  "name": "Concrete Poem",
+  "vibe": "Typographic art: words arranged as shapes on the page — ink, paper, and the architecture of language."
+ }
+}
