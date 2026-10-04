@@ -350,14 +350,6 @@ input[type="search"]:focus,select:focus{border-color:var(--accent-deep);outline:
 .field label{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .field label output{color:var(--accent-deep);font-weight:700}
 input[type="range"]{width:100%;accent-color:var(--accent-deep);height:32px;background:transparent;cursor:pointer}
-#quiz-form .btn-solid{border:none}
-#quiz-result{margin-top:28px;display:grid;gap:14px}
-.quiz-hit{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;
-  border:1px solid var(--line);border-radius:14px;padding:18px 22px;background:#fff}
-.quiz-hit .rank{font-family:var(--mono);font-size:12px;color:var(--accent-deep);letter-spacing:.14em}
-.quiz-hit h4{font-family:var(--display);font-weight:700;font-size:21px}
-.quiz-hit p{font-size:13.5px;color:var(--muted);font-style:italic}
-.quiz-hit .btn-mini{justify-self:end}
 
 .export-panels{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .export-panel{border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden;
@@ -551,12 +543,6 @@ input[type="range"]{width:100%;accent-color:var(--accent-deep);height:32px;backg
 .repo-path code{font-family:var(--mono);font-size:13px;color:var(--accent-deep);background:var(--surface-2);
   padding:8px 14px;border-radius:8px;display:inline-block}
 
-/* ---------- JS-rendered: quiz results ---------- */
-.quiz-pick{display:grid;grid-template-columns:44px 1fr auto;gap:18px;align-items:center;
-  border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin-top:14px;background:#fff}
-.quiz-rank{font-family:var(--display);font-size:30px;color:var(--accent-deep);font-style:italic;font-weight:700}
-.quiz-pick h4{font-family:var(--display);font-weight:700;font-size:22px;margin-bottom:4px}
-.quiz-why{font-size:13.5px;color:var(--muted);line-height:1.55}
 
 /* ---------- JS-rendered: states ---------- */
 .loading.error{color:#c0392b}
