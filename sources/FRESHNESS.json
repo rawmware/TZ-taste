@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-03",
+  "checked_at": "2026-10-04",
   "sources": [
     {
       "id": "taste-skill",
@@ -34,7 +34,7 @@
       "url": "https://ui.shadcn.com",
       "license": "MIT",
       "last_commit": "2026-10-02",
-      "stars": 125058,
+      "stars": 125059,
       "status": "ok"
     },
     {
@@ -52,7 +52,7 @@
       "url": "https://gsap.com",
       "license": "Free (proprietary)",
       "last_commit": "2026-04-13",
-      "stars": 28779,
+      "stars": 28780,
       "status": "ok"
     },
     {
@@ -102,7 +102,7 @@
       "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
       "license": "MIT",
       "last_commit": "2026-10-03",
-      "stars": 132807,
+      "stars": 132809,
       "status": "ok"
     },
     {
@@ -128,6 +128,121 @@
       "license": "MIT",
       "last_commit": "2026-01-30",
       "stars": 2490,
+      "status": "ok"
+    },
+    {
+      "id": "tabler-icons",
+      "name": "Tabler Icons",
+      "url": "https://tabler.io",
+      "license": "MIT",
+      "last_commit": "2026-09-28",
+      "stars": 21890,
+      "status": "ok"
+    },
+    {
+      "id": "heroicons",
+      "name": "Heroicons",
+      "url": "https://heroicons.com",
+      "license": "MIT",
+      "last_commit": "2026-05-12",
+      "stars": 23847,
+      "status": "ok"
+    },
+    {
+      "id": "simple-icons",
+      "name": "Simple Icons",
+      "url": "https://simpleicons.org",
+      "license": "CC0",
+      "last_commit": "2026-09-30",
+      "stars": 25958,
+      "status": "ok"
+    },
+    {
+      "id": "eva-icons",
+      "name": "Eva Icons",
+      "url": "https://akveo.github.io/eva-icons/",
+      "license": "MIT",
+      "last_commit": "2020-09-08",
+      "stars": 8809,
+      "status": "ok"
+    },
+    {
+      "id": "hero-patterns",
+      "name": "Hero Patterns",
+      "url": "https://heropatterns.com",
+      "license": "Free",
+      "status": "manual — no repo to poll"
+    },
+    {
+      "id": "haikei",
+      "name": "Haikei",
+      "url": "https://haikei.app",
+      "license": "Free (freemium)",
+      "status": "manual — no repo to poll"
+    },
+    {
+      "id": "get-waves",
+      "name": "Get Waves",
+      "url": "https://getwaves.io",
+      "license": "Free",
+      "status": "manual — no repo to poll"
+    },
+    {
+      "id": "shape-divider",
+      "name": "Shape Divider",
+      "url": "https://shapedivider.app",
+      "license": "Free",
+      "status": "manual — no repo to poll"
+    },
+    {
+      "id": "uigradients",
+      "name": "uiGradients",
+      "url": "https://uigradients.com",
+      "license": "Free",
+      "status": "manual — no repo to poll"
+    },
+    {
+      "id": "coolors",
+      "name": "Coolors",
+      "url": "https://coolors.co",
+      "license": "Freemium",
+      "status": "manual — no repo to poll"
+    },
+    {
+      "id": "realtime-colors",
+      "name": "Realtime Colors",
+      "url": "https://realtimecolors.com",
+      "license": "Free",
+      "status": "manual — no repo to poll"
+    },
+    {
+      "id": "fontjoy",
+      "name": "Fontjoy",
+      "url": "https://fontjoy.com",
+      "license": "Free",
+      "status": "manual — no repo to poll"
+    },
+    {
+      "id": "type-scale",
+      "name": "Type Scale",
+      "url": "https://type-scale.com",
+      "license": "Free",
+      "status": "manual — no repo to poll"
+    },
+    {
+      "id": "animista",
+      "name": "Animista",
+      "url": "https://animista.net",
+      "license": "Free",
+      "status": "manual — no repo to poll"
+    },
+    {
+      "id": "squoosh",
+      "name": "Squoosh",
+      "url": "https://squoosh.app",
+      "license": "Apache-2.0",
+      "last_commit": "2024-08-19",
+      "stars": 25984,
       "status": "ok"
     }
   ]
