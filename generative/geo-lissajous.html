@@ -1,0 +1,114 @@
+<!--tz-meta {"id":"gen-geo-lissajous","title":"Lissajous Weaves","category":"Generative","file":"generative/geo-lissajous.html","tags":["lissajous","parametric","weave"],"description":"Layered Lissajous curves in Bauhaus primaries, weaving trails across off-white.","dnas":["bauhaus-primary"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lissajous Weaves · TZ-taste</title>
+<style>
+  .tz-page{background:#F4F1E8;color:#141414;min-height:100vh;font-family:Georgia,'Times New Roman',serif;margin:0}
+  .tz-wrap{max-width:1080px;margin:0 auto;padding:32px 20px 48px}
+  .tz-kicker{font-family:'Courier New',Courier,monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#1E50A2;margin:0 0 12px}
+  .tz-title{font-size:clamp(32px,6vw,52px);font-weight:700;margin:0 0 10px;line-height:1.05}
+  .tz-caption{font-size:16px;line-height:1.6;max-width:62ch;margin:0 0 4px;color:#3a3a3a}
+  .tz-controls{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+  .tz-btn{font-family:'Courier New',Courier,monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;background:transparent;color:#141414;border:2px solid #141414;padding:10px 18px;cursor:pointer}
+  .tz-btn:hover{background:#141414;color:#F4F1E8}
+  .tz-btn:active{transform:translateY(1px)}
+  .tz-canvas{display:block;width:100%;height:70vh;background:#F4F1E8;border:2px solid #141414}
+  .tz-foot{font-family:'Courier New',Courier,monospace;font-size:12px;color:#6b6b6b;margin:14px 0 0;line-height:1.6}
+</style>
+</head>
+<body class="tz-page">
+<div class="tz-wrap">
+  <p class="tz-kicker">TZ-taste · Generative</p>
+  <h1 class="tz-title">Lissajous Weaves</h1>
+  <p class="tz-caption">Five parametric curves — x = A·sin(a·t + δ), y = B·sin(b·t) — drift out of phase against each other, leaving fading trails as they weave.</p>
+  <div class="tz-controls">
+    <button class="tz-btn" id="tz-seed" type="button">New seed</button>
+    <button class="tz-btn" id="tz-pause" type="button">Pause</button>
+    <button class="tz-btn" id="tz-clear" type="button">Clear</button>
+  </div>
+  <canvas class="tz-canvas" id="tz-canvas"></canvas>
+  <p class="tz-foot">One distinctive choice: the trail is the drawing — the page never fully clears while running, so the weave accumulates. Seed <span id="tz-seednum"></span>.</p>
+</div>
+<script>
+(function(){
+  var BG='#F4F1E8', COLORS=['#E30613','#1E50A2','#F2B705','#141414'];
+  var canvas=document.getElementById('tz-canvas'), ctx=canvas.getContext('2d');
+  var seedBtn=document.getElementById('tz-seed'), pauseBtn=document.getElementById('tz-pause'),
+      clearBtn=document.getElementById('tz-clear'), seedNum=document.getElementById('tz-seednum');
+  var seed=20261003, rng=mulberry32(seed), curves=[], W=0, H=0;
+  var running=true, raf=null, last=0;
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+
+  function init(){
+    rng=mulberry32(seed); curves=[];
+    var m=Math.min(W,H)/2;
+    for(var i=0;i<5;i++){
+      var a=1+Math.floor(rng()*4), b=1+Math.floor(rng()*4);
+      if(b===a) b=(a%4)+1;
+      curves.push({
+        a:a, b:b,
+        A:m*(0.78+rng()*0.18), B:m*(0.78+rng()*0.18),
+        delta:rng()*Math.PI*2, speed:(0.15+rng()*0.45)*(rng()<0.5?-1:1),
+        color:COLORS[i%COLORS.length], lw:i===0?3:1.3
+      });
+    }
+    seedNum.textContent=seed;
+  }
+
+  function drawCurve(c){
+    var cx=W/2, cy=H/2, step=Math.PI*2/360;
+    ctx.beginPath();
+    for(var s=0;s<=Math.PI*2+step;s+=step){
+      var x=cx+c.A*Math.sin(c.a*s+c.delta), y=cy+c.B*Math.sin(c.b*s);
+      if(s===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.strokeStyle=c.color; ctx.lineWidth=c.lw; ctx.stroke();
+  }
+
+  function frame(ts){
+    if(!running){raf=null;return;}
+    var dt=Math.min((ts-last)/1000,0.05); last=ts;
+    ctx.fillStyle='rgba(244,241,232,0.09)'; ctx.fillRect(0,0,W,H);
+    for(var i=0;i<curves.length;i++){curves[i].delta+=curves[i].speed*dt;drawCurve(curves[i]);}
+    raf=requestAnimationFrame(frame);
+  }
+
+  function renderStatic(){
+    ctx.fillStyle=BG; ctx.fillRect(0,0,W,H);
+    for(var i=0;i<curves.length;i++) drawCurve(curves[i]);
+  }
+
+  function resize(){
+    var dpr=Math.min(window.devicePixelRatio||1,2);
+    var r=canvas.getBoundingClientRect();
+    W=r.width; H=r.height;
+    canvas.width=Math.round(W*dpr); canvas.height=Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    init();
+    if(reduced) renderStatic();
+  }
+
+  seedBtn.addEventListener('click',function(){
+    seed=(seed*9301+49297)%233280; init();
+    ctx.fillStyle=BG; ctx.fillRect(0,0,W,H);
+    if(reduced) renderStatic();
+  });
+  pauseBtn.addEventListener('click',function(){
+    running=!running;
+    pauseBtn.textContent=running?'Pause':'Resume';
+    if(running&&!reduced){last=performance.now();raf=requestAnimationFrame(frame);}
+  });
+  clearBtn.addEventListener('click',function(){ctx.fillStyle=BG;ctx.fillRect(0,0,W,H);});
+
+  window.addEventListener('resize',resize);
+  resize();
+  if(!reduced){last=performance.now();raf=requestAnimationFrame(frame);}
+})();
+</script>
+</body>
+</html>
