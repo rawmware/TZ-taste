@@ -1,0 +1,63 @@
+<!--tz-meta {"id":"cta-referral","title":"Referral CTA","category":"Sections","file":"patterns/cta-referral.html","tags":["cta","referral"],"description":"Kawaii-pixel referral card: sticker-sheet framing, give-$20-get-$20 math shown plainly, copy-link button.","dnas":["kawaii-pixel"]} -->
+<section class="tz-cta-referral">
+  <div class="tz-card">
+    <p class="tz-sticker">♥ give $20, get $20 ♥</p>
+    <h2>Your friends get <em>$20 off.</em><br>You get $20 too.</h2>
+    <p class="tz-lede">No points, no tiers, no fine print. Share your link — every friend who joins gets $20 off their first box, and $20 lands in your account.</p>
+    <div class="tz-linkrow">
+      <code class="tz-link" id="tz-ref-link">snackclub.example/r/MEI8K2</code>
+      <button class="tz-copy" type="button">Copy link</button>
+    </div>
+    <div class="tz-math">
+      <div><b>3</b><span>friends = a free month</span></div>
+      <div><b>12</b><span>friends = a free year</span></div>
+      <div><b>∞</b><span>cap? there isn't one</span></div>
+    </div>
+    <p class="tz-fine">$20 credit per referred friend who stays 30 days · credits never expire</p>
+  </div>
+</section>
+<style>
+.tz-cta-referral{--bg:#ffeef4;--ink:#33222c;--muted:#9a7f8c;--accent:#ff4d8d;--yellow:#ffd93f;
+  background:var(--bg);color:var(--ink);padding:clamp(72px,10vw,130px) clamp(20px,5vw,64px);
+  font-family:-apple-system,'Segoe UI',sans-serif;
+  background-image:radial-gradient(#ff4d8d22 2px,transparent 2px);background-size:28px 28px}
+.tz-cta-referral .tz-card{max-width:640px;margin:0 auto;background:#fff;border:3px solid var(--ink);
+  border-radius:24px;padding:clamp(36px,6vw,64px);text-align:center;box-shadow:8px 8px 0 var(--ink);
+  transform:rotate(-.8deg)}
+.tz-cta-referral .tz-sticker{display:inline-block;background:var(--yellow);border:2px solid var(--ink);
+  border-radius:999px;padding:8px 22px;font-weight:800;font-size:13px;letter-spacing:.04em;
+  transform:rotate(2deg);margin:0 0 26px;box-shadow:3px 3px 0 var(--ink)}
+.tz-cta-referral h2{font-size:clamp(30px,4.8vw,46px);font-weight:800;letter-spacing:-.02em;line-height:1.12;margin:0 0 16px}
+.tz-cta-referral h2 em{font-style:normal;color:var(--accent)}
+.tz-cta-referral .tz-lede{color:var(--muted);font-size:16px;max-width:46ch;margin:0 auto 30px;line-height:1.65}
+.tz-cta-referral .tz-linkrow{display:flex;gap:10px;max-width:460px;margin:0 auto 32px}
+.tz-cta-referral .tz-link{flex:1;background:var(--bg);border:2px dashed var(--ink);border-radius:12px;
+  padding:14px 18px;font-family:ui-monospace,Menlo,monospace;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tz-cta-referral .tz-copy{background:var(--accent);color:#fff;border:2px solid var(--ink);border-radius:12px;
+  padding:14px 22px;font-weight:800;font-size:14px;cursor:pointer;box-shadow:3px 3px 0 var(--ink);
+  transition:transform .2s cubic-bezier(.22,1,.36,1)}
+.tz-cta-referral .tz-copy:hover{transform:translateY(-2px)}
+.tz-cta-referral .tz-math{display:flex;justify-content:center;gap:0;border-top:2px dashed #33222c22;
+  border-bottom:2px dashed #33222c22;margin-bottom:24px}
+.tz-cta-referral .tz-math div{flex:1;padding:20px 8px}
+.tz-cta-referral .tz-math div+div{border-left:2px dashed #33222c22}
+.tz-cta-referral .tz-math b{display:block;font-size:34px;font-weight:800;color:var(--accent)}
+.tz-cta-referral .tz-math span{font-size:12.5px;color:var(--muted)}
+.tz-cta-referral .tz-fine{font-size:12px;color:var(--muted);margin:0}
+@media (max-width:520px){
+  .tz-cta-referral .tz-linkrow{flex-direction:column}
+  .tz-cta-referral .tz-card{transform:none}
+}
+</style>
+<script>
+(function(){
+  var btn=document.querySelector('.tz-cta-referral .tz-copy');
+  btn.addEventListener('click',function(){
+    var link=document.getElementById('tz-ref-link').textContent;
+    function done(){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy link'},1800);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText('https://'+link).then(done).catch(done);
+    }else{done();}
+  });
+})();
+</script>
