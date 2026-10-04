@@ -1,3 +1,4 @@
+<!--tz-meta {"id":"anti-slop","title":"The Anti-Slop Checklist","file":"docs/ANTI-SLOP.md","description":"Concrete, checkable tells of AI-generated UI. Zero blockers to ship."} -->
 # ANTI-SLOP.md — the concrete checklist
 
 "AI slop" isn't a vibe. It's a set of specific, repeatable defaults. If your UI
