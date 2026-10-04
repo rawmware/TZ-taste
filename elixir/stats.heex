@@ -1,0 +1,147 @@
+<!--tz-meta {"id":"ex-stats","title":"Stats — Terminal Readout","category":"Elixir","file":"elixir/stats.heex","tags":["heex","phoenix","stats","terminal","dark"],"description":"A machine reporting on itself: Latch's numbers as phosphor-green terminal readouts after a typed command, amber warnings included.","dnas":["retro-terminal"]} -->
+<%!-- def stats(assigns) — attr :command, :string, default: "latch --report --all" · attr :stats, :list — each: %{label: string, value: string, note: string, warn: boolean} --%>
+<%!--
+Design read: A machine reporting on itself — Latch's numbers as phosphor-green terminal readouts after a typed command, with amber warnings on the figures that deserve a second look.
+Distinctive choice: the blinking block cursor and amber "WARN" flags, plus scanlines baked into the panel like a real CRT.
+Dials: VARIANCE 4 / MOTION 6 / DENSITY 7. DNA: retro-terminal (IBM Plex Mono / IBM Plex Mono / IBM Plex Mono).
+--%>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+.tz-term {
+  --tz-bg: #0b0f0a;
+  --tz-surface: #0e140d;
+  --tz-ink: #33ff66;
+  --tz-muted: #1f6b3a;
+  --tz-accent: #ffb000;
+  --tz-line: #33ff6633;
+  --tz-font-mono: "IBM Plex Mono", "SFMono-Regular", monospace;
+  background: var(--tz-bg);
+  color: var(--tz-ink);
+  font-family: var(--tz-font-mono);
+  padding: clamp(4rem, 9vw, 7rem) clamp(1.25rem, 4vw, 4rem);
+  border-top: 1px solid var(--tz-line);
+  border-bottom: 1px solid var(--tz-line);
+}
+.tz-term__inner { max-width: 1080px; margin: 0 auto; }
+.tz-term__panel {
+  background: var(--tz-surface);
+  border: 1px solid var(--tz-line);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(51, 255, 102, 0.07);
+}
+.tz-term__panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(51, 255, 102, 0.045) 0px,
+    rgba(51, 255, 102, 0.045) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+}
+.tz-term__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid var(--tz-line);
+  font-size: 0.78rem;
+  color: var(--tz-muted);
+  letter-spacing: 0.08em;
+}
+.tz-term__dot { width: 11px; height: 11px; border-radius: 50%; border: 1px solid var(--tz-muted); }
+.tz-term__dot--on { background: var(--tz-ink); border-color: var(--tz-ink); }
+.tz-term__body { padding: 1.75rem 1.5rem 2rem; }
+.tz-term__cmd { font-size: 1rem; margin: 0 0 0.4rem; }
+.tz-term__cmd .tz-term__prompt { color: var(--tz-accent); font-weight: 600; }
+.tz-term__cursor {
+  display: inline-block;
+  width: 0.62em;
+  height: 1.15em;
+  background: var(--tz-ink);
+  vertical-align: text-bottom;
+  margin-left: 2px;
+  animation: tz-term-blink 1.1s steps(1) infinite;
+}
+@keyframes tz-term-blink { 50% { opacity: 0; } }
+.tz-term__ok { color: var(--tz-muted); font-size: 0.88rem; margin: 0 0 1.75rem; }
+.tz-term__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--tz-line);
+  border: 1px solid var(--tz-line);
+}
+.tz-term__stat { background: var(--tz-surface); padding: 1.6rem 1.5rem; }
+.tz-term__label {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tz-muted);
+  margin: 0 0 0.7rem;
+}
+.tz-term__value {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 600;
+  margin: 0 0 0.6rem;
+  text-shadow: 0 0 18px rgba(51, 255, 102, 0.35);
+  animation: tz-term-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.tz-term__note { font-size: 0.85rem; color: var(--tz-muted); margin: 0; line-height: 1.55; }
+.tz-term__warn {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--tz-bg);
+  background: var(--tz-accent);
+  padding: 0.2rem 0.55rem;
+  margin-left: 0.6rem;
+  vertical-align: middle;
+  text-shadow: none;
+}
+@keyframes tz-term-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.tz-term__foot { margin-top: 1.75rem; font-size: 0.8rem; color: var(--tz-muted); }
+@media (max-width: 640px) {
+  .tz-term__grid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tz-term__cursor { animation: none; opacity: 1; }
+  .tz-term__value { animation: none; }
+}
+</style>
+<section class="tz-term" aria-label="Latch by the numbers">
+  <div class="tz-term__inner">
+    <div class="tz-term__panel">
+      <div class="tz-term__bar" aria-hidden="true">
+        <span class="tz-term__dot tz-term__dot--on"></span>
+        <span class="tz-term__dot"></span>
+        <span class="tz-term__dot"></span>
+        <span style="margin-left: auto">latch — zsh — 80×24</span>
+      </div>
+      <div class="tz-term__body">
+        <p class="tz-term__cmd"><span class="tz-term__prompt">latch@hq:~$</span> {@command}<span class="tz-term__cursor" aria-hidden="true"></span></p>
+        <p class="tz-term__ok">OK — report compiled in 0.04s, no invoices were harmed</p>
+        <dl class="tz-term__grid">
+          {for {s, i} <- Enum.with_index(@stats) do}
+            <div class="tz-term__stat">
+              <dt class="tz-term__label">{s.label}</dt>
+              <dd class="tz-term__value" style={"animation-delay: " <> to_string(i * 0.12) <> "s"}>
+                {s.value}{if s.warn do}<span class="tz-term__warn">WARN</span>{/if}
+              </dd>
+              <dd class="tz-term__note">{s.note}</dd>
+            </div>
+          {/for}
+        </dl>
+        <p class="tz-term__foot">tip: run <span style="color: var(--tz-ink)">latch --nudge --polite</span> before your morning coffee</p>
+      </div>
+    </div>
+  </div>
+</section>
