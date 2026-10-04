@@ -1,0 +1,65 @@
+<!--tz-meta {"id":"testimonials-snap","title":"Snap carousel","category":"Testimonials","file":"patterns/testimonials-snap.html","tags":["carousel","scroll"],"description":"Scroll-snap quote carousel on warm paper with dot indicators.","dnas":["soft-minimal"]} -->
+<section class="tz-snap" aria-label="Client testimonials">
+  <p class="tz-eyebrow">What clients say — scroll</p>
+  <div class="tz-track">
+    <figure class="tz-slide">
+      <blockquote>He rebuilt our booking page in a weekend. Calls doubled before the month was out.</blockquote>
+      <figcaption>
+        <span class="tz-ava tz-a1" aria-hidden="true">SP</span>
+        <span class="tz-who"><strong>Sylvie Pierre</strong><em>Owner, Salon St. Pierre</em></span>
+      </figcaption>
+    </figure>
+    <figure class="tz-slide">
+      <blockquote>Our old site took eleven seconds to load. His loads in one. Customers noticed before we did.</blockquote>
+      <figcaption>
+        <span class="tz-ava tz-a2" aria-hidden="true">DC</span>
+        <span class="tz-who"><strong>Dana Cole</strong><em>Founder, Sakura Clientele</em></span>
+      </figcaption>
+    </figure>
+    <figure class="tz-slide">
+      <blockquote>Explained everything in plain words, then did exactly what he said he would. Rare.</blockquote>
+      <figcaption>
+        <span class="tz-ava tz-a3" aria-hidden="true">MW</span>
+        <span class="tz-who"><strong>Marcus Webb</strong><em>Webb Plumbing &amp; Heat</em></span>
+      </figcaption>
+    </figure>
+    <figure class="tz-slide">
+      <blockquote>I asked for a simple site. He asked what my clients actually do. That question changed everything.</blockquote>
+      <figcaption>
+        <span class="tz-ava tz-a4" aria-hidden="true">PN</span>
+        <span class="tz-who"><strong>Priya Nair</strong><em>Nair Accounting</em></span>
+      </figcaption>
+    </figure>
+  </div>
+  <div class="tz-dots" aria-hidden="true">
+    <span class="tz-dot tz-on"></span><span class="tz-dot"></span><span class="tz-dot"></span><span class="tz-dot"></span>
+  </div>
+</section>
+<style>
+.tz-snap{--bg:#faf8f4;--ink:#2b2a26;--soft:#5f5b53;--rust:#a34a24;--line:#2b2a2622;
+  background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;
+  padding:clamp(56px,9vw,120px) clamp(20px,6vw,80px)}
+.tz-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--soft);margin:0 0 36px}
+.tz-track{display:flex;gap:clamp(20px,4vw,56px);overflow-x:auto;scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;scrollbar-width:none;margin:0;padding:0 0 12px}
+.tz-track::-webkit-scrollbar{display:none}
+.tz-slide{flex:0 0 min(100%,620px);scroll-snap-align:start;margin:0}
+.tz-slide blockquote{font-size:clamp(24px,4vw,42px);line-height:1.28;letter-spacing:-.015em;
+  margin:0 0 30px;max-width:22ch}
+.tz-slide figcaption{display:flex;align-items:center;gap:14px}
+.tz-ava{width:46px;height:46px;border-radius:50%;display:inline-flex;align-items:center;
+  justify-content:center;font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:700;
+  color:#fff;flex:none}
+.tz-a1{background:linear-gradient(140deg,#c96f3f,#8a3c18)}
+.tz-a2{background:linear-gradient(140deg,#8a9a5b,#4d5c2a)}
+.tz-a3{background:linear-gradient(140deg,#d9a441,#9a6b14)}
+.tz-a4{background:linear-gradient(140deg,#6b7f8a,#33424b)}
+.tz-who{display:flex;flex-direction:column;gap:2px}
+.tz-who strong{font-family:Arial,Helvetica,sans-serif;font-size:15px;font-weight:700}
+.tz-who em{font-style:normal;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--soft)}
+.tz-dots{display:flex;gap:8px;margin-top:34px}
+.tz-dot{width:30px;height:4px;border-radius:2px;background:var(--line)}
+.tz-dot.tz-on{background:var(--rust)}
+@media (prefers-reduced-motion:reduce){.tz-track{scroll-behavior:auto}}
+</style>
