@@ -1,0 +1,73 @@
+<!--tz-meta {"id":"pricing-toggle","title":"Billing toggle","category":"Pricing","file":"patterns/pricing-toggle.html","tags":["monthly","annual"],"description":"Chunky CSS-only monthly/annual price toggle over two pop-art plan cards.","dnas":["neo-brutalist-pop"]} -->
+<section class="tz-pt">
+  <p class="tz-pt-eyebrow">Pricing</p>
+  <h2 class="tz-pt-title">Pay monthly.<br>Or pay less.</h2>
+
+  <input class="tz-pt-r" type="radio" name="tzpt" id="tzpt-m" checked>
+  <input class="tz-pt-r" type="radio" name="tzpt" id="tzpt-a">
+  <div class="tz-pt-switch" role="group" aria-label="Billing period">
+    <label for="tzpt-m">Monthly</label>
+    <label for="tzpt-a">Annual <b>−20%</b></label>
+    <span class="tz-pt-knob" aria-hidden="true"></span>
+  </div>
+
+  <div class="tz-pt-grid">
+    <article class="tz-pt-card tz-pt-solo">
+      <p class="tz-pt-plan">Solo</p>
+      <p class="tz-pt-price"><span class="tz-pt-m">$19</span><span class="tz-pt-a">$15</span><span class="tz-pt-per">/mo</span></p>
+      <p class="tz-pt-note tz-pt-m">billed monthly · cancel anytime</p>
+      <p class="tz-pt-note tz-pt-a">billed annually · $180/yr</p>
+      <ul><li>1 inbox, 3 channels</li><li>500 drafted replies/mo</li><li>Friday reports</li></ul>
+      <a href="#start">Start free trial</a>
+    </article>
+    <article class="tz-pt-card tz-pt-team">
+      <p class="tz-pt-plan">Team <span class="tz-pt-flag">popular</span></p>
+      <p class="tz-pt-price"><span class="tz-pt-m">$49</span><span class="tz-pt-a">$39</span><span class="tz-pt-per">/mo</span></p>
+      <p class="tz-pt-note tz-pt-m">billed monthly · cancel anytime</p>
+      <p class="tz-pt-note tz-pt-a">billed annually · $468/yr</p>
+      <ul><li>Unlimited inboxes</li><li>5,000 drafted replies/mo</li><li>Routing rules + voice profiles</li><li>Priority human support</li></ul>
+      <a href="#start">Start free trial</a>
+    </article>
+  </div>
+</section>
+<style>
+.tz-pt{--bg:#fff6e8;--ink:#141414;--y:#ffd23f;--p:#ff8fc7;
+  background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(64px,9vw,120px) clamp(24px,6vw,80px)}
+.tz-pt-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.24em;
+  text-transform:uppercase;margin:0 0 18px;text-align:center}
+.tz-pt-title{font-size:clamp(38px,6vw,74px);font-weight:900;letter-spacing:-.03em;line-height:.98;
+  margin:0 0 40px;text-align:center;text-transform:uppercase}
+.tz-pt-r{position:absolute;opacity:0;pointer-events:none}
+.tz-pt-switch{position:relative;display:grid;grid-template-columns:1fr 1fr;width:min(360px,100%);
+  margin:0 auto 56px;border:3px solid var(--ink);background:#fff}
+.tz-pt-switch label{position:relative;z-index:1;text-align:center;padding:16px 8px;cursor:pointer;
+  font-weight:900;font-size:14px;letter-spacing:.08em;text-transform:uppercase}
+.tz-pt-switch label b{background:var(--ink);color:#fff;font-size:10px;padding:3px 8px;margin-left:6px}
+.tz-pt-knob{position:absolute;top:0;bottom:0;left:0;width:50%;background:var(--y);
+  border-right:3px solid var(--ink);transition:transform .28s cubic-bezier(.22,1,.36,1)}
+#tzpt-a:checked ~ .tz-pt-switch .tz-pt-knob{transform:translateX(100%);border-right:none;border-left:3px solid var(--ink)}
+.tz-pt-grid{display:grid;grid-template-columns:repeat(2,minmax(min(100%,300px),380px));
+  gap:clamp(24px,4vw,44px);justify-content:center;align-items:start}
+.tz-pt-card{border:3px solid var(--ink);padding:36px 32px;box-shadow:8px 8px 0 var(--ink);background:#fff}
+.tz-pt-team{background:var(--p)}
+.tz-pt-plan{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.2em;
+  text-transform:uppercase;margin:0 0 18px;display:flex;justify-content:space-between;align-items:center}
+.tz-pt-flag{background:var(--ink);color:#fff;padding:4px 10px;font-size:10px;transform:rotate(3deg)}
+.tz-pt-price{font-size:64px;font-weight:900;letter-spacing:-.04em;margin:0 0 8px;line-height:1}
+.tz-pt-per{font-size:18px;font-weight:700;letter-spacing:0}
+.tz-pt-a,.tz-pt-note{display:none}
+#tzpt-m:checked ~ .tz-pt-grid p.tz-pt-m{display:block}
+#tzpt-a:checked ~ .tz-pt-grid .tz-pt-a{display:inline}
+#tzpt-a:checked ~ .tz-pt-grid .tz-pt-m{display:none}
+#tzpt-a:checked ~ .tz-pt-grid p.tz-pt-a{display:block}
+#tzpt-a:checked ~ .tz-pt-grid p.tz-pt-m{display:none}
+.tz-pt-note{font-size:13px;opacity:.65;margin:0 0 24px}
+.tz-pt-card ul{list-style:none;margin:0 0 30px;padding:0;display:flex;flex-direction:column;gap:12px}
+.tz-pt-card li{font-size:15px;padding-left:26px;position:relative}
+.tz-pt-card li::before{content:"✓";position:absolute;left:0;font-weight:900}
+.tz-pt-card a{display:block;text-align:center;background:var(--ink);color:#fff;text-decoration:none;
+  font-weight:900;letter-spacing:.06em;text-transform:uppercase;font-size:14px;padding:16px}
+@media (max-width:700px){.tz-pt-grid{grid-template-columns:minmax(min(100%,300px),380px)}}
+@media (prefers-reduced-motion:reduce){.tz-pt-knob{transition:none}}
+</style>
