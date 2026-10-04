@@ -1,0 +1,91 @@
+{
+ "count": 6,
+ "updated": "2026-10-04",
+ "usage": "Svelte component ports of the best patterns. Scoped styles, zero extra deps.",
+ "svelte_components": [
+  {
+   "id": "svelte-cta-stamp",
+   "title": "Rubber-stamp CTA (Svelte)",
+   "category": "Svelte",
+   "file": "svelte/CtaStamp.svelte",
+   "tags": [
+    "svelte",
+    "cta"
+   ],
+   "description": "Constructivist call to action: type that shouts from a wall beside a rotated double-ring rubber-stamp button that slams straight on hover.",
+   "dnas": [
+    "constructivist-red"
+   ]
+  },
+  {
+   "id": "svelte-features-arcade",
+   "title": "Arcade features (Svelte)",
+   "category": "Svelte",
+   "file": "svelte/FeaturesArcade.svelte",
+   "tags": [
+    "svelte",
+    "features"
+   ],
+   "description": "Neon arcade cabinet in disciplined tokens: a blinking INSERT COIN strip, a double-wide boss card beside three disciplined power-up cards.",
+   "dnas": [
+    "pixel-arcade"
+   ]
+  },
+  {
+   "id": "svelte-footer-hairline",
+   "title": "Hairline footer (Svelte)",
+   "category": "Svelte",
+   "file": "svelte/FooterHairline.svelte",
+   "tags": [
+    "svelte",
+    "footer"
+   ],
+   "description": "Swiss-rational grid footer: numbered columns, a single red hairline, and an honest colophon — information architecture as aesthetic.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "svelte-hero-scandi",
+   "title": "Scandi hero (Svelte)",
+   "category": "Svelte",
+   "file": "svelte/HeroScandi.svelte",
+   "tags": [
+    "svelte",
+    "hero"
+   ],
+   "description": "Radical restraint: a full-height vertical hairline with the brand hung like a gallery label, one quiet sentence, vast breathing whitespace.",
+   "dnas": [
+    "scandi-calm"
+   ]
+  },
+  {
+   "id": "svelte-pricing-docs",
+   "title": "Docs-style pricing (Svelte)",
+   "category": "Svelte",
+   "file": "svelte/PricingDocs.svelte",
+   "tags": [
+    "svelte",
+    "pricing"
+   ],
+   "description": "Pricing written as documentation: a revision header, an 'on this page' index, numbered plan rows with a marginal chosen-plan note, and honest footnotes.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "svelte-testimonial-solo",
+   "title": "Solo testimonial (Svelte)",
+   "category": "Svelte",
+   "file": "svelte/TestimonialSolo.svelte",
+   "tags": [
+    "svelte",
+    "testimonial"
+   ],
+   "description": "One huge candlelit quote with a blackletter drop cap and margin attribution — a library after hours, not a card wall.",
+   "dnas": [
+    "gothic-editorial"
+   ]
+  }
+ ]
+}
