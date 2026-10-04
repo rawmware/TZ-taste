@@ -1,0 +1,260 @@
+<!--tz-meta {"id":"laundromat-deluxe","title":"Spin Cycle Deluxe — Premium Laundromat","category":"Template","file":"templates/laundromat-deluxe.html","tags":["local","service","laundromat"],"description":"Laundromat-neon deluxe wash: humming-fluorescent tile aesthetic, machine availability board, wash-and-fold pricing, loyalty spin.","dnas":["laundromat-neon"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spin Cycle Deluxe — the laundromat that doesn't feel like one</title>
+<meta name="description" content="Spin Cycle Deluxe: premium laundromat with live machine availability, wash-and-fold service, free wifi, and coffee while you wait.">
+<!-- Design read: 24-hour fluorescent optimism — white tile, mint neon, Bungee headlines — for people who want laundry day to feel like an errand that respects them. DNA: laundromat-neon (Bungee + DM Sans + Fira Code; bg #f3f7f5, ink #14201c, mint #2fd08a — purpose-built for this brief). One distinctive choice: the LIVE MACHINE BOARD shows washer/dryer availability like a departure board, the trust centerpiece. Dials V4/M4/D7. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=DM+Sans:wght@400;500;700&family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f3f7f5; --tz-ink:#14201c; --tz-accent:#2fd08a; --tz-muted:#6b7f76;
+  --tz-line:#14201c21; --tz-line-strong:#14201c45; --tz-panel:#ffffff; --tz-night:#14201c;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"DM Sans",sans-serif;background:var(--tz-bg);color:var(--tz-ink);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--tz-accent);color:#14201c}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1120px;margin:0 auto;padding:0 26px}
+.tz-mono{font-family:"Fira Code",monospace}
+
+/* header */
+.tz-header{background:var(--tz-night);color:#f3f7f5;position:sticky;top:0;z-index:50}
+.tz-header .tz-wrap{display:flex;justify-content:space-between;align-items:center;height:68px}
+.tz-brand{font-family:"Bungee",sans-serif;font-size:20px}
+.tz-brand b{color:var(--tz-accent);font-weight:400}
+.tz-nav{display:flex;gap:24px;font-family:"Fira Code",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.tz-nav a{color:#9db3a9}
+.tz-nav a:hover{color:var(--tz-accent)}
+.tz-open{display:flex;align-items:center;gap:10px;font-family:"Fira Code",monospace;font-size:12px;color:var(--tz-accent)}
+.tz-open i{width:9px;height:9px;border-radius:50%;background:var(--tz-accent);box-shadow:0 0 10px 2px #2fd08a88;animation:tz-blink 2s ease-in-out infinite}
+@keyframes tz-blink{50%{opacity:.4}}
+
+/* hero */
+.tz-hero{padding:80px 0 64px;position:relative;overflow:hidden}
+.tz-hero::before{content:"";position:absolute;inset:0;background:
+  repeating-linear-gradient(0deg,transparent 0 46px,#14201c08 46px 47px),
+  repeating-linear-gradient(90deg,transparent 0 46px,#14201c08 46px 47px)}
+.tz-hero .tz-wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.tz-kicker{font-family:"Fira Code",monospace;font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:#0d8a58;background:#2fd08a33;display:inline-block;padding:8px 16px;border:1px solid #2fd08a66;margin-bottom:24px}
+.tz-hero h1{font-family:"Bungee",sans-serif;font-weight:400;font-size:clamp(42px,6vw,76px);line-height:1.06}
+.tz-hero h1 .tz-mint{color:#0d8a58}
+.tz-lede{margin-top:20px;font-size:18px;color:var(--tz-muted);max-width:48ch}
+.tz-hero-cta{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap}
+.tz-btn{font-weight:700;font-size:15px;padding:15px 30px;border:2px solid var(--tz-ink);cursor:pointer;transition:transform .25s var(--tz-ease),box-shadow .25s;display:inline-block;background:#fff}
+.tz-btn--mint{background:var(--tz-accent);box-shadow:5px 5px 0 var(--tz-ink)}
+.tz-btn--mint:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--tz-ink)}
+.tz-btn--ghost{box-shadow:5px 5px 0 var(--tz-ink)}
+.tz-btn--ghost:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--tz-ink)}
+/* washer illustration */
+.tz-washers{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:400px;margin:0 auto}
+.tz-washer{background:#fff;border:3px solid var(--tz-ink);padding:18px;box-shadow:6px 6px 0 var(--tz-line-strong)}
+.tz-drum{aspect-ratio:1;border:3px solid var(--tz-ink);border-radius:50%;position:relative;overflow:hidden;background:#dfe9e4}
+.tz-drum::before{content:"";position:absolute;inset:22%;border-radius:50%;border:3px dashed #14201c44;animation:tz-spin 9s linear infinite}
+@keyframes tz-spin{to{transform:rotate(360deg)}}
+.tz-drum .tz-suds{position:absolute;bottom:18%;left:20%;right:20%;height:26%;background:#ffffffcc;border-radius:50% 50% 40% 40%}
+.tz-washer .tz-panelrow{display:flex;justify-content:space-between;align-items:center;margin-top:14px;font-family:"Fira Code",monospace;font-size:11px}
+.tz-washer .tz-timer{font-weight:700;color:#0d8a58}
+.tz-washer figcaption{text-align:center;margin-top:10px;font-family:"Fira Code",monospace;font-size:11px;color:var(--tz-muted)}
+
+/* machine board: the one weird thing */
+.tz-section{padding:80px 0}
+.tz-sec-head{max-width:640px;margin-bottom:40px}
+.tz-sec-head .tz-k{font-family:"Fira Code",monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#0d8a58}
+.tz-sec-head h2{font-family:"Bungee",sans-serif;font-weight:400;font-size:clamp(32px,4.6vw,54px);line-height:1.1;margin:14px 0 12px}
+.tz-sec-head p{color:var(--tz-muted);font-size:16.5px}
+.tz-board{background:var(--tz-night);color:#f3f7f5;border:3px solid var(--tz-ink);box-shadow:8px 8px 0 var(--tz-line-strong)}
+.tz-board-head{display:flex;justify-content:space-between;align-items:center;padding:22px 30px;border-bottom:2px solid #2fd08a33}
+.tz-board-head h3{font-family:"Bungee",sans-serif;font-weight:400;font-size:20px}
+.tz-board-head .tz-live{font-family:"Fira Code",monospace;font-size:11px;letter-spacing:.2em;color:var(--tz-accent);display:flex;gap:8px;align-items:center}
+.tz-board-head .tz-live i{width:8px;height:8px;border-radius:50%;background:var(--tz-accent);animation:tz-blink 1.6s infinite}
+.tz-machine-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;padding:30px}
+.tz-machine{aspect-ratio:.86;border:2px solid #2fd08a33;padding:10px;display:flex;flex-direction:column;justify-content:space-between;font-family:"Fira Code",monospace;font-size:11px;transition:border-color .2s}
+.tz-machine .tz-mid{width:70%;aspect-ratio:1;border:2px solid currentColor;border-radius:50%;margin:0 auto;opacity:.7}
+.tz-machine.tz-free{color:var(--tz-accent);border-color:#2fd08a88}
+.tz-machine.tz-free .tz-status{color:var(--tz-accent);font-weight:700}
+.tz-machine.tz-busy{color:#5f7a6e}
+.tz-machine.tz-busy .tz-status{color:#e8b93f}
+.tz-machine.tz-busy .tz-mid{animation:tz-spin 5s linear infinite;border-style:dashed}
+.tz-board-foot{padding:18px 30px;border-top:2px solid #2fd08a33;font-family:"Fira Code",monospace;font-size:12px;color:#9db3a9;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.tz-board-foot b{color:var(--tz-accent)}
+
+/* services: wash & fold ledger */
+.tz-services{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.tz-service{background:#fff;border:3px solid var(--tz-ink);padding:44px 40px;box-shadow:6px 6px 0 var(--tz-line-strong)}
+.tz-service.tz-fold{background:var(--tz-night);color:#f3f7f5}
+.tz-service .tz-k{font-family:"Fira Code",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#0d8a58;display:block;margin-bottom:14px}
+.tz-service.tz-fold .tz-k{color:var(--tz-accent)}
+.tz-service h3{font-family:"Bungee",sans-serif;font-weight:400;font-size:30px;margin-bottom:12px;line-height:1.15}
+.tz-service p{color:var(--tz-muted);font-size:15.5px;margin-bottom:20px}
+.tz-service.tz-fold p{color:#9db3a9}
+.tz-service ul{list-style:none;display:grid;gap:10px;font-family:"Fira Code",monospace;font-size:13.5px}
+.tz-service li{display:flex;justify-content:space-between;border-bottom:1px dashed var(--tz-line-strong);padding-bottom:10px}
+.tz-service.tz-fold li{border-color:#2fd08a33}
+.tz-service li b{color:#0d8a58}
+.tz-service.tz-fold li b{color:var(--tz-accent)}
+
+/* loyalty strip */
+.tz-loyalty{margin-top:18px;background:var(--tz-accent);border:3px solid var(--tz-ink);padding:40px 44px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;box-shadow:6px 6px 0 var(--tz-ink)}
+.tz-loyalty h3{font-family:"Bungee",sans-serif;font-weight:400;font-size:28px;margin-bottom:8px}
+.tz-loyalty p{font-weight:500}
+.tz-loyalty .tz-btn{background:#fff}
+
+/* visit */
+.tz-visit{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:18px}
+.tz-visit>div{background:#fff;border:3px solid var(--tz-ink);padding:34px 30px;box-shadow:6px 6px 0 var(--tz-line-strong)}
+.tz-visit>div:first-child{background:var(--tz-accent)}
+.tz-visit>div:first-child .tz-k{color:#14201c}
+.tz-visit>div:first-child p{color:#14201c}
+.tz-visit .tz-k{font-family:"Fira Code",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#0d8a58;display:block;margin-bottom:12px}
+.tz-visit p{font-size:15px;line-height:2}
+.tz-visit p b{font-weight:700}
+
+.tz-footer{background:var(--tz-night);color:#9db3a9;padding:40px 0;margin-top:80px}
+.tz-footer .tz-wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:"Fira Code",monospace;font-size:11.5px}
+
+@media (max-width:900px){
+  .tz-nav{display:none}
+  .tz-hero .tz-wrap{grid-template-columns:1fr}
+  .tz-machine-grid{grid-template-columns:repeat(4,1fr)}
+  .tz-services{grid-template-columns:1fr}
+  .tz-loyalty{grid-template-columns:1fr}
+  .tz-visit{grid-template-columns:1fr}
+  .tz-section{padding:56px 0}
+}
+@media (max-width:560px){.tz-machine-grid{grid-template-columns:repeat(3,1fr)}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-brand" href="#">SPIN CYCLE <b>DELUXE</b></a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#machines">Machines</a><a href="#services">Services</a><a href="#visit">Visit</a>
+    </nav>
+    <span class="tz-open"><i></i>OPEN NOW · 24 HRS</span>
+  </div>
+</header>
+
+<main>
+  <section class="tz-hero">
+    <div class="tz-wrap">
+      <div>
+        <span class="tz-kicker">Premium laundromat · est. 2019</span>
+        <h1>LAUNDRY DAY, <span class="tz-mint">UPGRADED.</span></h1>
+        <p class="tz-lede">Oversized machines, actual hot water, free wifi and decent coffee while you wait. Or drop it off — wash-and-fold back tomorrow, folded like it matters.</p>
+        <div class="tz-hero-cta">
+          <a class="tz-btn tz-btn--mint" href="#machines">Check machine availability</a>
+          <a class="tz-btn tz-btn--ghost" href="#services">Wash-and-fold</a>
+        </div>
+      </div>
+      <div class="tz-washers" aria-hidden="true">
+        <figure class="tz-washer"><div class="tz-drum"><div class="tz-suds"></div></div><div class="tz-panelrow"><span>W-04 · 60lb</span><span class="tz-timer">12:40 left</span></div></figure>
+        <figure class="tz-washer"><div class="tz-drum"><div class="tz-suds"></div></div><div class="tz-panelrow"><span>D-11 · high heat</span><span class="tz-timer">FREE</span></div></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="machines" style="padding-top:16px">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-k">Live machine board</span>
+        <h2>See what's free before you load the car</h2>
+        <p>The board updates every 30 seconds. Green ring means grab it — they go fast on Sunday mornings.</p>
+      </div>
+      <div class="tz-board">
+        <div class="tz-board-head">
+          <h3>WASHERS · ROW A–B</h3>
+          <span class="tz-live"><i></i>LIVE · UPDATED 0:42 AGO</span>
+        </div>
+        <div class="tz-machine-grid" aria-label="Washer availability">
+          <div class="tz-machine tz-free"><span>A-01</span><span class="tz-mid"></span><span class="tz-status">FREE</span></div>
+          <div class="tz-machine tz-busy"><span>A-02</span><span class="tz-mid"></span><span class="tz-status">18 MIN</span></div>
+          <div class="tz-machine tz-free"><span>A-03</span><span class="tz-mid"></span><span class="tz-status">FREE</span></div>
+          <div class="tz-machine tz-busy"><span>A-04</span><span class="tz-mid"></span><span class="tz-status">32 MIN</span></div>
+          <div class="tz-machine tz-free"><span>A-05</span><span class="tz-mid"></span><span class="tz-status">FREE</span></div>
+          <div class="tz-machine tz-busy"><span>A-06</span><span class="tz-mid"></span><span class="tz-status">9 MIN</span></div>
+          <div class="tz-machine tz-busy"><span>B-01</span><span class="tz-mid"></span><span class="tz-status">41 MIN</span></div>
+          <div class="tz-machine tz-free"><span>B-02</span><span class="tz-mid"></span><span class="tz-status">FREE · 80LB</span></div>
+          <div class="tz-machine tz-free"><span>B-03</span><span class="tz-mid"></span><span class="tz-status">FREE · 80LB</span></div>
+          <div class="tz-machine tz-busy"><span>B-04</span><span class="tz-mid"></span><span class="tz-status">22 MIN</span></div>
+          <div class="tz-machine tz-free"><span>B-05</span><span class="tz-mid"></span><span class="tz-status">FREE</span></div>
+          <div class="tz-machine tz-busy"><span>B-06</span><span class="tz-mid"></span><span class="tz-status">14 MIN</span></div>
+        </div>
+        <div class="tz-board-foot"><span><b>6 washers free</b> · 14 dryers free · updated moments ago</span><span>App alerts when your cycle ends — free</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="services" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-k">Services</span>
+        <h2>DIY or drop it off</h2>
+      </div>
+      <div class="tz-services">
+        <div class="tz-service">
+          <span class="tz-k">Self-serve</span>
+          <h3>Do it yourself, but nicer</h3>
+          <p>Card and coin. Free detergent upgrade on Tuesdays. Attendant on-site 8am–8pm daily.</p>
+          <ul>
+            <li><span>Top-load washers (20lb)</span><b>$3.50</b></li>
+            <li><span>Front-load (40lb)</span><b>$5.75</b></li>
+            <li><span>Jumbo (80lb — comforters)</span><b>$9.00</b></li>
+            <li><span>Dryers</span><b>$0.25 / 6 min</b></li>
+          </ul>
+        </div>
+        <div class="tz-service tz-fold">
+          <span class="tz-k">Wash &amp; fold</span>
+          <h3>Drop off. Pick up perfect.</h3>
+          <p>Weighed at drop-off, washed to your instructions, folded like a department store. Back next day.</p>
+          <ul>
+            <li><span>Wash &amp; fold</span><b>$1.75 / lb</b></li>
+            <li><span>Hang-dry delicates</span><b>$2.50 / lb</b></li>
+            <li><span>Comforter service</span><b>$25 flat</b></li>
+            <li><span>Same-day rush</span><b>+50%</b></li>
+          </ul>
+        </div>
+      </div>
+      <div class="tz-loyalty">
+        <div>
+          <h3>The Spin Club</h3>
+          <p>Every 10th wash free. No card to lose — it's your phone number. Sign up at the counter in 30 seconds.</p>
+        </div>
+        <a class="tz-btn" href="#visit">Join free</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="visit" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-k">Visit</span>
+        <h2>While you wait</h2>
+      </div>
+      <div class="tz-visit">
+        <div><span class="tz-k">Find us</span><p><b>330 Freshwater Ave</b><br>next to the bakery<br>(smell will guide you)</p></div>
+        <div><span class="tz-k">Hours</span><p><b>Open 24 hours</b>, every day<br>Attendant 8am–8pm<br>Wash-and-fold drop-off till 7pm</p></div>
+        <div><span class="tz-k">Amenities</span><p><b>Free wifi</b> + work counter<br><b>Free coffee</b> 6–10am<br>Kids' corner, big windows</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <span>© 2026 Spin Cycle Deluxe Laundromat</span>
+    <span>open 24 hours · machines cleaned nightly</span>
+  </div>
+</footer>
+</body>
+</html>
