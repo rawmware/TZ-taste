@@ -1,0 +1,50 @@
+<!--tz-meta {"id":"team-bios","title":"Editorial bios","category":"Team","file":"patterns/team-bios.html","tags":["bios","magazine"],"description":"Magazine-style team bios with drop caps and hairline rules.","dnas":["editorial-serif"]} -->
+<section class="tz-bios" aria-label="Team biographies">
+  <p class="tz-eyebrow">The masthead</p>
+  <article class="tz-bio">
+    <span class="tz-portrait tz-b1" aria-hidden="true">RC</span>
+    <div class="tz-text">
+      <h3>Roman Cottonham</h3>
+      <p class="tz-role">Founder &amp; builder</p>
+      <p class="tz-copy">Started fixing neighbors' printers at fourteen and never really stopped fixing things. Roman builds the sites, the apps, and the automations — and answers the phone when something breaks. Believes a small business deserves the same care as a big account.</p>
+    </div>
+  </article>
+  <article class="tz-bio">
+    <span class="tz-portrait tz-b2" aria-hidden="true">MJ</span>
+    <div class="tz-text">
+      <h3>Mara Jensen</h3>
+      <p class="tz-role">Design &amp; typography</p>
+      <p class="tz-copy">Trained as a print designer, defected to the web when she realized nobody reads the manual but everybody judges the homepage. Mara sets the type, picks the palette, and kills every gradient that doesn't earn its place.</p>
+    </div>
+  </article>
+  <article class="tz-bio">
+    <span class="tz-portrait tz-b3" aria-hidden="true">TO</span>
+    <div class="tz-text">
+      <h3>Theo Okafor</h3>
+      <p class="tz-role">Backend &amp; data</p>
+      <p class="tz-copy">Keeps the servers upright and the databases honest. Theo writes the unglamorous code that makes the glamorous parts possible, and he documents it, which around here counts as a personality trait.</p>
+    </div>
+  </article>
+</section>
+<style>
+.tz-bios{--bg:#f5f1e8;--ink:#1c1a15;--soft:#5c584c;--accent:#b5461f;
+  background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;
+  padding:clamp(56px,9vw,120px) clamp(20px,6vw,80px);max-width:900px}
+.tz-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--soft);margin:0 0 8px}
+.tz-bio{display:grid;grid-template-columns:120px 1fr;gap:28px;padding:44px 0;
+  border-bottom:1px solid #1c1a1526}
+.tz-bio:last-child{border-bottom:none}
+.tz-portrait{width:120px;height:150px;display:inline-flex;align-items:center;justify-content:center;
+  font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:28px;color:#f5f1e8}
+.tz-b1{background:linear-gradient(165deg,#c96f3f,#5f2410)}
+.tz-b2{background:linear-gradient(165deg,#7a8455,#39411f)}
+.tz-b3{background:linear-gradient(165deg,#5f7a84,#26383f)}
+.tz-text h3{margin:0 0 4px;font-size:30px;letter-spacing:-.02em;font-weight:400}
+.tz-role{margin:0 0 16px;font-family:ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.tz-copy{margin:0;font-size:18px;line-height:1.65;max-width:60ch}
+.tz-copy::first-letter{font-size:3.4em;float:left;line-height:.82;padding:4px 10px 0 0;
+  color:var(--accent);font-weight:400}
+@media (max-width:560px){.tz-bio{grid-template-columns:1fr;gap:18px}.tz-portrait{width:96px;height:120px}}
+</style>
