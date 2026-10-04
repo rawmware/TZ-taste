@@ -22,6 +22,8 @@ const INDEXES = [
     usage: "Complete standalone landing pages. Open in a browser, view source, adapt. All original, MIT." },
   { dir: "prompts", key: "prompts", index: "prompts/index.json",
     usage: "Copy-paste build prompts. Fill the [BRACKETS], paste into any AI builder." },
+  { dir: "showcase", key: "showcases", index: "showcase/index.json",
+    usage: "One live demo page per style DNA. Open in a browser to see the DNA working. Classes are tz- prefixed." },
   { dir: "docs", key: "docs", index: "docs/index.json",
     usage: "Prose guides for humans and agents. Not code." },
 ];
@@ -65,6 +67,7 @@ if (existsSync(mPath)) {
     scenes_3d: counts.scenes ?? 0,
     templates: counts.templates ?? 0,
     prompts: counts.prompts ?? 0,
+    showcases: counts.showcases ?? 0,
   };
   m.updated = today;
   writeFileSync(mPath, JSON.stringify(m, null, 1) + "\n");
