@@ -1,0 +1,48 @@
+<!--tz-meta {"id":"stats-ticker","title":"Live ticker","category":"Stats","file":"patterns/stats-ticker.html","tags":["live","mono"],"description":"Scrolling mono stat ticker with one blinking LIVE marker.","dnas":["retro-terminal"]} -->
+<div class="tz-ticker">
+  <div class="tz-ticker-run">
+    <span><i class="tz-live"></i>LIVE · 1,204 visitors now</span><span>orders today: 86</span><span>uptime: 99.98%</span><span>avg response: 41ms</span><span>deploys this week: 12</span><span>queue depth: 3</span>
+    <span aria-hidden="true"><i class="tz-live"></i>LIVE · 1,204 visitors now</span><span aria-hidden="true">orders today: 86</span><span aria-hidden="true">uptime: 99.98%</span><span aria-hidden="true">avg response: 41ms</span><span aria-hidden="true">deploys this week: 12</span><span aria-hidden="true">queue depth: 3</span>
+  </div>
+</div>
+<style>
+.tz-ticker{
+  background:#0a0f0a;
+  color:#9dffb9;
+  overflow:hidden;
+  border-top:1px solid #1d2b1d;
+  border-bottom:1px solid #1d2b1d;
+  font:13px/1 ui-monospace,Menlo,monospace;
+  padding:12px 0;
+}
+.tz-ticker-run{
+  display:flex;
+  gap:56px;
+  width:max-content;
+  padding-right:56px;
+  animation:tz-tick 20s linear infinite;
+}
+.tz-ticker-run span{
+  white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+.tz-live{
+  display:inline-block;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#33ff66;
+  margin-right:8px;
+  animation:tz-blink 1.2s steps(2) infinite;
+}
+@keyframes tz-tick{
+  to{transform:translateX(-50%)}
+}
+@keyframes tz-blink{
+  50%{opacity:.15}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-ticker-run{animation:none;flex-wrap:wrap;width:auto}
+  .tz-live{animation:none}
+}
+</style>
