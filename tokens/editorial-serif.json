@@ -1,0 +1,62 @@
+{
+ "_tzmeta": {
+  "id": "tokens-editorial-serif",
+  "title": "Editorial Serif design tokens",
+  "category": "Tokens",
+  "file": "tokens/editorial-serif.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "editorial-serif"
+  ],
+  "description": "W3C-format design tokens for the Editorial Serif style DNA.",
+  "dnas": [
+   "editorial-serif"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#f5f1e8",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#1c1a15",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#b5461f",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#6f6a5e",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#1c1a1526",
+   "$type": "color"
+  },
+  "surface": {
+   "$value": "#efe9da",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Fraunces",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Newsreader",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "editorial-serif",
+  "name": "Editorial Serif",
+  "vibe": "Warm paper, oversized serif, hairline rules. A literary magazine that happens to be a website."
+ }
+}
