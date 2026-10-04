@@ -1,5 +1,5 @@
 {
- "count": 48,
+ "count": 72,
  "updated": "2026-10-04",
  "usage": "One live demo page per style DNA. Open in a browser to see the DNA working. Classes are tz- prefixed.",
  "showcases": [
@@ -14,6 +14,19 @@
    "description": "Live demo page for the Acid Rave style DNA.",
    "dnas": [
     "acid-rave"
+   ]
+  },
+  {
+   "id": "showcase-alpine-after-dark",
+   "title": "Alpine After Dark showcase",
+   "category": "Showcase",
+   "file": "showcase/alpine-after-dark.html",
+   "tags": [
+    "alpine-after-dark"
+   ],
+   "description": "Live demo page for the Alpine After Dark style DNA.",
+   "dnas": [
+    "alpine-after-dark"
    ]
   },
   {
@@ -95,6 +108,19 @@
    ]
   },
   {
+   "id": "showcase-bazaar-spice",
+   "title": "Bazaar Spice showcase",
+   "category": "Showcase",
+   "file": "showcase/bazaar-spice.html",
+   "tags": [
+    "bazaar-spice"
+   ],
+   "description": "Live demo page for the Bazaar Spice style DNA.",
+   "dnas": [
+    "bazaar-spice"
+   ]
+  },
+  {
    "id": "showcase-blueprint-tech",
    "title": "Blueprint Tech showcase",
    "category": "Showcase",
@@ -118,6 +144,32 @@
    "description": "Live demo page for the Botanical Lab style DNA.",
    "dnas": [
     "botanical-lab"
+   ]
+  },
+  {
+   "id": "showcase-chalkboard-cafe",
+   "title": "Chalkboard Cafe showcase",
+   "category": "Showcase",
+   "file": "showcase/chalkboard-cafe.html",
+   "tags": [
+    "chalkboard-cafe"
+   ],
+   "description": "Live demo page for the Chalkboard Cafe style DNA.",
+   "dnas": [
+    "chalkboard-cafe"
+   ]
+  },
+  {
+   "id": "showcase-circus-poster",
+   "title": "Circus Poster showcase",
+   "category": "Showcase",
+   "file": "showcase/circus-poster.html",
+   "tags": [
+    "circus-poster"
+   ],
+   "description": "Live demo page for the Circus Poster style DNA.",
+   "dnas": [
+    "circus-poster"
    ]
   },
   {
@@ -212,6 +264,19 @@
    ]
   },
   {
+   "id": "showcase-diary-zine",
+   "title": "Diary Zine showcase",
+   "category": "Showcase",
+   "file": "showcase/diary-zine.html",
+   "tags": [
+    "diary-zine"
+   ],
+   "description": "Live demo page for the Diary Zine style DNA.",
+   "dnas": [
+    "diary-zine"
+   ]
+  },
+  {
    "id": "showcase-docs-solar",
    "title": "Docs Solar showcase",
    "category": "Showcase",
@@ -264,6 +329,45 @@
    ]
   },
   {
+   "id": "showcase-greenhouse-glass",
+   "title": "Greenhouse Glass showcase",
+   "category": "Showcase",
+   "file": "showcase/greenhouse-glass.html",
+   "tags": [
+    "greenhouse-glass"
+   ],
+   "description": "Live demo page for the Greenhouse Glass style DNA.",
+   "dnas": [
+    "greenhouse-glass"
+   ]
+  },
+  {
+   "id": "showcase-greenmarket-dawn",
+   "title": "Greenmarket Dawn showcase",
+   "category": "Showcase",
+   "file": "showcase/greenmarket-dawn.html",
+   "tags": [
+    "greenmarket-dawn"
+   ],
+   "description": "Live demo page for the Greenmarket Dawn style DNA.",
+   "dnas": [
+    "greenmarket-dawn"
+   ]
+  },
+  {
+   "id": "showcase-harbor-fog",
+   "title": "Harbor Fog showcase",
+   "category": "Showcase",
+   "file": "showcase/harbor-fog.html",
+   "tags": [
+    "harbor-fog"
+   ],
+   "description": "Live demo page for the Harbor Fog style DNA.",
+   "dnas": [
+    "harbor-fog"
+   ]
+  },
+  {
    "id": "showcase-industrial-brutalist",
    "title": "Industrial Brutalist showcase",
    "category": "Showcase",
@@ -287,6 +391,19 @@
    "description": "Live demo page for the Ink-Wash Sumi style DNA.",
    "dnas": [
     "ink-wash-sumi"
+   ]
+  },
+  {
+   "id": "showcase-italian-futurist",
+   "title": "Italian Futurist showcase",
+   "category": "Showcase",
+   "file": "showcase/italian-futurist.html",
+   "tags": [
+    "italian-futurist"
+   ],
+   "description": "Live demo page for the Italian Futurist style DNA.",
+   "dnas": [
+    "italian-futurist"
    ]
   },
   {
@@ -316,6 +433,19 @@
    ]
   },
   {
+   "id": "showcase-lab-notebook",
+   "title": "Lab Notebook showcase",
+   "category": "Showcase",
+   "file": "showcase/lab-notebook.html",
+   "tags": [
+    "lab-notebook"
+   ],
+   "description": "Live demo page for the Lab Notebook style DNA.",
+   "dnas": [
+    "lab-notebook"
+   ]
+  },
+  {
    "id": "showcase-laboratory-clean",
    "title": "Laboratory Clean showcase",
    "category": "Showcase",
@@ -326,6 +456,32 @@
    "description": "Live demo page for the Laboratory Clean style DNA.",
    "dnas": [
     "laboratory-clean"
+   ]
+  },
+  {
+   "id": "showcase-laundromat-neon",
+   "title": "Laundromat Neon showcase",
+   "category": "Showcase",
+   "file": "showcase/laundromat-neon.html",
+   "tags": [
+    "laundromat-neon"
+   ],
+   "description": "Live demo page for the Laundromat Neon style DNA.",
+   "dnas": [
+    "laundromat-neon"
+   ]
+  },
+  {
+   "id": "showcase-library-oak",
+   "title": "Library Oak showcase",
+   "category": "Showcase",
+   "file": "showcase/library-oak.html",
+   "tags": [
+    "library-oak"
+   ],
+   "description": "Live demo page for the Library Oak style DNA.",
+   "dnas": [
+    "library-oak"
    ]
   },
   {
@@ -394,6 +550,32 @@
    ]
   },
   {
+   "id": "showcase-neon-diner",
+   "title": "Neon Diner showcase",
+   "category": "Showcase",
+   "file": "showcase/neon-diner.html",
+   "tags": [
+    "neon-diner"
+   ],
+   "description": "Live demo page for the Neon Diner style DNA.",
+   "dnas": [
+    "neon-diner"
+   ]
+  },
+  {
+   "id": "showcase-newsroom-wire",
+   "title": "Newsroom Wire showcase",
+   "category": "Showcase",
+   "file": "showcase/newsroom-wire.html",
+   "tags": [
+    "newsroom-wire"
+   ],
+   "description": "Live demo page for the Newsroom Wire style DNA.",
+   "dnas": [
+    "newsroom-wire"
+   ]
+  },
+  {
    "id": "showcase-nordic-noir",
    "title": "Nordic Noir showcase",
    "category": "Showcase",
@@ -404,6 +586,45 @@
    "description": "Live demo page for the Nordic Noir style DNA.",
    "dnas": [
     "nordic-noir"
+   ]
+  },
+  {
+   "id": "showcase-observatory-star",
+   "title": "Observatory Star showcase",
+   "category": "Showcase",
+   "file": "showcase/observatory-star.html",
+   "tags": [
+    "observatory-star"
+   ],
+   "description": "Live demo page for the Observatory Star style DNA.",
+   "dnas": [
+    "observatory-star"
+   ]
+  },
+  {
+   "id": "showcase-origami-fold",
+   "title": "Origami Fold showcase",
+   "category": "Showcase",
+   "file": "showcase/origami-fold.html",
+   "tags": [
+    "origami-fold"
+   ],
+   "description": "Live demo page for the Origami Fold style DNA.",
+   "dnas": [
+    "origami-fold"
+   ]
+  },
+  {
+   "id": "showcase-paris-metro",
+   "title": "Paris Metro showcase",
+   "category": "Showcase",
+   "file": "showcase/paris-metro.html",
+   "tags": [
+    "paris-metro"
+   ],
+   "description": "Live demo page for the Paris Metro style DNA.",
+   "dnas": [
+    "paris-metro"
    ]
   },
   {
@@ -430,6 +651,19 @@
    "description": "Live demo page for the Pixel Arcade style DNA.",
    "dnas": [
     "pixel-arcade"
+   ]
+  },
+  {
+   "id": "showcase-pixel-garden",
+   "title": "Pixel Garden showcase",
+   "category": "Showcase",
+   "file": "showcase/pixel-garden.html",
+   "tags": [
+    "pixel-garden"
+   ],
+   "description": "Live demo page for the Pixel Garden style DNA.",
+   "dnas": [
+    "pixel-garden"
    ]
   },
   {
@@ -485,6 +719,19 @@
    ]
   },
   {
+   "id": "showcase-sauna-cedar",
+   "title": "Sauna Cedar showcase",
+   "category": "Showcase",
+   "file": "showcase/sauna-cedar.html",
+   "tags": [
+    "sauna-cedar"
+   ],
+   "description": "Live demo page for the Sauna Cedar style DNA.",
+   "dnas": [
+    "sauna-cedar"
+   ]
+  },
+  {
    "id": "showcase-scandi-calm",
    "title": "Scandi Calm showcase",
    "category": "Showcase",
@@ -511,6 +758,32 @@
    ]
   },
   {
+   "id": "showcase-stadium-floodlight",
+   "title": "Stadium Floodlight showcase",
+   "category": "Showcase",
+   "file": "showcase/stadium-floodlight.html",
+   "tags": [
+    "stadium-floodlight"
+   ],
+   "description": "Live demo page for the Stadium Floodlight style DNA.",
+   "dnas": [
+    "stadium-floodlight"
+   ]
+  },
+  {
+   "id": "showcase-storybook-watercolor",
+   "title": "Storybook Watercolor showcase",
+   "category": "Showcase",
+   "file": "showcase/storybook-watercolor.html",
+   "tags": [
+    "storybook-watercolor"
+   ],
+   "description": "Live demo page for the Storybook Watercolor style DNA.",
+   "dnas": [
+    "storybook-watercolor"
+   ]
+  },
+  {
    "id": "showcase-surf-shack",
    "title": "Surf Shack showcase",
    "category": "Showcase",
@@ -521,6 +794,19 @@
    "description": "Live demo page for the Surf Shack style DNA.",
    "dnas": [
     "surf-shack"
+   ]
+  },
+  {
+   "id": "showcase-swiss-airline",
+   "title": "Swiss Airline showcase",
+   "category": "Showcase",
+   "file": "showcase/swiss-airline.html",
+   "tags": [
+    "swiss-airline"
+   ],
+   "description": "Live demo page for the Swiss Airline style DNA.",
+   "dnas": [
+    "swiss-airline"
    ]
   },
   {
@@ -547,6 +833,19 @@
    "description": "Live demo page for the Swiss Rational style DNA.",
    "dnas": [
     "swiss-rational"
+   ]
+  },
+  {
+   "id": "showcase-tokyo-kissaten",
+   "title": "Tokyo Kissaten showcase",
+   "category": "Showcase",
+   "file": "showcase/tokyo-kissaten.html",
+   "tags": [
+    "tokyo-kissaten"
+   ],
+   "description": "Live demo page for the Tokyo Kissaten style DNA.",
+   "dnas": [
+    "tokyo-kissaten"
    ]
   },
   {
@@ -586,6 +885,19 @@
    "description": "Live demo page for the Tropical Brutalism style DNA.",
    "dnas": [
     "tropical-brutalism"
+   ]
+  },
+  {
+   "id": "showcase-ukiyo-e-print",
+   "title": "Ukiyo-e Print showcase",
+   "category": "Showcase",
+   "file": "showcase/ukiyo-e-print.html",
+   "tags": [
+    "ukiyo-e-print"
+   ],
+   "description": "Live demo page for the Ukiyo-e Print style DNA.",
+   "dnas": [
+    "ukiyo-e-print"
    ]
   },
   {
