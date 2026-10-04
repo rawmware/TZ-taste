@@ -1,0 +1,220 @@
+<!--tz-meta {"id":"showcase-northbeam-docs","title":"Northbeam — docs","category":"Showcase","file":"showcase/northbeam-docs.html","tags":["app-ui","docs","shadcn"],"description":"Northbeam docs site: sidebar nav, real guides, right-side TOC, Ctrl+K command palette, copyable code blocks, dark mode.","dnas":[]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Northbeam — Docs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --fg:#09090b; --muted:#f4f4f5; --muted-fg:#71717a;
+  --border:#e4e4e7; --card:#ffffff; --primary:#18181b; --primary-fg:#fafafa;
+  --ring:#18181b; --blue:#2563eb; --code:#f4f4f5;
+}
+html.dark{
+  --bg:#09090b; --fg:#fafafa; --muted:#18181b; --muted-fg:#a1a1aa;
+  --border:#27272a; --card:#101013; --primary:#fafafa; --primary-fg:#09090b;
+  --ring:#fafafa; --blue:#60a5fa; --code:#18181b;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:Inter,-apple-system,"Segoe UI",sans-serif;font-size:14px;line-height:1.65;-webkit-font-smoothing:antialiased}
+button{font:inherit;cursor:pointer}
+.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px;padding:11px 20px;border-bottom:1px solid var(--border);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px)}
+.brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:14.5px;letter-spacing:-.01em}
+.mark{width:24px;height:24px;border-radius:6px;background:var(--primary);color:var(--primary-fg);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.ver{font-size:11px;color:var(--muted-fg);border:1px solid var(--border);border-radius:99px;padding:2px 9px;font-variant-numeric:tabular-nums}
+.kbtn{display:flex;align-items:center;gap:8px;border:1px solid var(--border);border-radius:8px;background:var(--muted);color:var(--muted-fg);padding:6px 10px;font-size:12.5px;margin-left:auto;min-width:230px}
+.kbtn:hover{color:var(--fg)}
+kbd{font-family:inherit;font-size:11px;border:1px solid var(--border);border-bottom-width:2px;border-radius:5px;padding:1px 6px;background:var(--card);color:var(--muted-fg)}
+.iconbtn{width:32px;height:32px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--muted-fg);display:flex;align-items:center;justify-content:center;font-size:14px}
+.iconbtn:hover{color:var(--fg)}
+.wrap{display:flex;max-width:1280px;margin:0 auto;align-items:flex-start}
+/* sidebar */
+.side{width:250px;flex-shrink:0;position:sticky;top:57px;height:calc(100vh - 57px);overflow:auto;padding:20px 12px 40px;border-right:1px solid var(--border)}
+.side .grp{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--muted-fg);padding:12px 12px 5px}
+.nlink{display:flex;width:100%;border:0;background:transparent;color:var(--muted-fg);text-align:left;font-size:13.5px;padding:7px 12px;border-radius:7px;font-family:inherit}
+.nlink:hover{color:var(--fg);background:var(--muted)}
+.nlink.on{color:var(--fg);background:var(--muted);font-weight:600}
+/* article */
+.doc{flex:1;min-width:0;padding:36px 44px 80px;max-width:760px}
+.doc h1{font-size:30px;font-weight:700;letter-spacing:-.02em;margin-bottom:8px}
+.lede{font-size:15.5px;color:var(--muted-fg);margin-bottom:28px}
+.doc h2{font-size:20px;font-weight:650;letter-spacing:-.01em;margin:34px 0 10px;padding-top:6px}
+.doc h3{font-size:15.5px;font-weight:600;margin:22px 0 8px}
+.doc p{margin-bottom:14px;color:var(--fg)}
+.doc p code,.doc li code{font-family:"JetBrains Mono",monospace;font-size:12.5px;background:var(--code);border:1px solid var(--border);border-radius:5px;padding:1px 6px}
+.doc ul{margin:0 0 14px 20px}
+.doc li{margin-bottom:6px}
+.doc a{color:var(--blue)}
+.callout{border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:8px;padding:12px 16px;margin:18px 0;font-size:13.5px;background:color-mix(in srgb,var(--blue) 5%,transparent)}
+.pre{position:relative;background:#0c0c0e;border:1px solid var(--border);border-radius:10px;margin:16px 0;overflow:hidden}
+.pre pre{padding:16px 18px;overflow-x:auto;font-family:"JetBrains Mono",monospace;font-size:12.5px;line-height:1.7;color:#e4e4e7}
+.pre .tok-k{color:#a78bfa}.pre .tok-s{color:#86efac}.pre .tok-c{color:#71717a}.pre .tok-f{color:#93c5fd}
+.copy{position:absolute;top:8px;right:8px;border:1px solid #3f3f46;background:#18181b;color:#d4d4d8;border-radius:7px;font-size:11.5px;padding:5px 10px}
+.copy:hover{background:#27272a}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--border)}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted-fg);font-weight:600}
+td code{font-family:"JetBrains Mono",monospace;font-size:12px;background:var(--code);padding:1px 6px;border-radius:5px}
+/* toc */
+.toc{width:220px;flex-shrink:0;position:sticky;top:57px;height:calc(100vh - 57px);overflow:auto;padding:36px 20px}
+.toc h4{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--muted-fg);margin-bottom:10px}
+.toc a{display:block;font-size:13px;color:var(--muted-fg);text-decoration:none;padding:4px 0 4px 12px;border-left:2px solid var(--border)}
+.toc a:hover{color:var(--fg)}
+.toc a.on{color:var(--fg);border-color:var(--blue);font-weight:500}
+/* palette */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;display:none;justify-content:center;align-items:flex-start;padding-top:14vh;padding-left:16px;padding-right:16px}
+.overlay.open{display:flex}
+.pal{width:560px;max-width:100%;background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.3)}
+.palhead{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--border)}
+.palhead input{flex:1;border:0;outline:0;background:transparent;color:var(--fg);font:inherit;font-size:14.5px}
+.plist{max-height:320px;overflow:auto;padding:8px}
+.pitem{display:flex;align-items:center;gap:10px;width:100%;border:0;background:transparent;text-align:left;padding:9px 12px;border-radius:8px;font-family:inherit;color:var(--fg)}
+.pitem .ic{width:26px;height:26px;border-radius:7px;background:var(--muted);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0}
+.pitem b{font-size:13.5px;font-weight:500;display:block}
+.pitem span{font-size:12px;color:var(--muted-fg)}
+.pitem.sel{background:var(--muted)}
+.pfoot{display:flex;gap:14px;padding:10px 16px;border-top:1px solid var(--border);font-size:11.5px;color:var(--muted-fg)}
+.pempty{padding:28px;text-align:center;color:var(--muted-fg);font-size:13.5px}
+@media(max-width:1000px){.toc{display:none}}
+@media(max-width:760px){.side{display:none}.doc{padding:28px 20px 60px}.kbtn{min-width:0}.kbtn .ph{display:none}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="mark">N</span>Northbeam <span class="ver">v3.2</span></div>
+  <button class="kbtn" id="kbtn"><span class="ph">Search docs…</span><span style="margin-left:auto;display:flex;gap:3px"><kbd>Ctrl</kbd><kbd>K</kbd></span></button>
+  <button class="iconbtn" id="themeBtn" title="Toggle dark mode">◐</button>
+</header>
+<div class="wrap">
+  <nav class="side" id="sideNav"></nav>
+  <article class="doc" id="doc"></article>
+  <aside class="toc" id="toc"><h4>On this page</h4><div id="tocLinks"></div></aside>
+</div>
+<div class="overlay" id="overlay">
+  <div class="pal" role="dialog" aria-modal="true" aria-label="Search">
+    <div class="palhead">⌕ <input id="palInput" placeholder="Search documentation…" autocomplete="off"></div>
+    <div class="plist" id="palList"></div>
+    <div class="pfoot"><span><kbd>↑↓</kbd> navigate</span><span><kbd>↵</kbd> open</span><span><kbd>esc</kbd> close</span></div>
+  </div>
+</div>
+<script>
+(function(){
+  "use strict";
+  var $=function(id){return document.getElementById(id)};
+  var PAGES=[
+    {id:"intro",grp:"Getting started",title:"Introduction",lede:"Northbeam is the analytics API for product teams. One endpoint in, clean events out — warehouse-ready in minutes.",
+     toc:["What Northbeam does","Core concepts"],
+     body:'<h2 id="what">What Northbeam does</h2><p>Northbeam captures product events from your app, enriches them, and routes them to your warehouse, email tool, or ad platforms. No SDK bloat, no schema drift.</p><ul><li><b>Capture</b> — a single <code>POST /v1/track</code> call per event</li><li><b>Enrich</b> — geo, device, and UTM data attached automatically</li><li><b>Route</b> — fan out to BigQuery, Snowflake, or 40+ destinations</li></ul><h2 id="concepts">Core concepts</h2><h3>Events</h3><p>An event is anything a user does: <code>signed_up</code>, <code>checkout_started</code>, <code>report_exported</code>. Keep names in <code>snake_case</code> and past tense.</p><h3>Identities</h3><p>Every event carries an <code>anonymous_id</code> or <code>user_id</code>. Northbeam stitches sessions into profiles automatically.</p><div class="callout"><b>Note:</b> event volume on the free tier is capped at 1M events/month. Overage is billed at $0.40 per 1k events.</div>'},
+    {id:"install",grp:"Getting started",title:"Installation",lede:"Get your first event flowing in under five minutes.",
+     toc:["Install the SDK","Send a test event"],
+     body:'<h2 id="sdk">Install the SDK</h2><div class="pre"><button class="copy">Copy</button><pre><span class="tok-c"># npm</span>\nnpm install @northbeam/node\n\n<span class="tok-c"># python</span>\npip install northbeam</pre></div><h2 id="test">Send a test event</h2><div class="pre"><button class="copy">Copy</button><pre><span class="tok-k">const</span> { Northbeam } = <span class="tok-f">require</span>(<span class="tok-s">"@northbeam/node"</span>);\n<span class="tok-k">const</span> nb = <span class="tok-k">new</span> <span class="tok-f">Northbeam</span>(process.env.NB_KEY);\n\n<span class="tok-k">await</span> nb.<span class="tok-f">track</span>({\n  user_id: <span class="tok-s">"user_123"</span>,\n  event: <span class="tok-s">"signed_up"</span>,\n  properties: { plan: <span class="tok-s">"team"</span> }\n});</pre></div><p>Check the <b>Live events</b> tab in your dashboard — the event should appear within seconds.</p>'},
+    {id:"quickstart",grp:"Getting started",title:"Quickstart",lede:"From zero to a working funnel report in ten minutes.",
+     toc:["Define your events","Build a funnel"],
+     body:'<h2 id="define">Define your events</h2><p>Pick the three events that describe your core loop. For a SaaS product that is usually <code>signed_up</code>, <code>project_created</code>, and <code>invited_teammate</code>.</p><h2 id="funnel">Build a funnel</h2><p>In the dashboard, go to <b>Reports → New funnel</b>, add your events in order, and set the conversion window (7 days is a good default). Northbeam backfills from your existing event history automatically.</p><div class="callout"><b>Tip:</b> name funnels after the decision they inform — “Trial → paid” beats “Funnel 3”.</div>'},
+    {id:"config",grp:"Guides",title:"Configuration",lede:"Environment variables, regions, and data retention.",
+     toc:["Environment variables","Regions","Retention"],
+     body:'<h2 id="env">Environment variables</h2><table><tr><th>Variable</th><th>Required</th><th>Description</th></tr><tr><td><code>NB_KEY</code></td><td>Yes</td><td>Secret API key (starts with <code>nb_live_</code>)</td></tr><tr><td><code>NB_REGION</code></td><td>No</td><td><code>us</code> or <code>eu</code> — defaults to <code>us</code></td></tr><tr><td><code>NB_DEBUG</code></td><td>No</td><td>Log every request payload to stdout</td></tr></table><h2 id="regions">Regions</h2><p>EU customers should set <code>NB_REGION=eu</code> so raw events never leave the EU. Switching regions later requires a support ticket.</p><h2 id="retention">Retention</h2><p>Raw events are kept for 13 months on paid plans and 3 months on free. Aggregates are kept indefinitely.</p>'},
+    {id:"api",grp:"Reference",title:"API reference",lede:"The full HTTP surface: track, identify, and batch.",
+     toc:["POST /v1/track","POST /v1/identify","Errors"],
+     body:'<h2 id="track">POST /v1/track</h2><p>Records a single event. Idempotent on <code>message_id</code> — retries are safe.</p><div class="pre"><button class="copy">Copy</button><pre>curl -X POST https://api.northbeam.io/v1/track \\\n  -H <span class="tok-s">"Authorization: Bearer nb_live_..."</span> \\\n  -d <span class="tok-s">\'{"user_id":"user_123","event":"signed_up"}\'</span></pre></div><h2 id="identify">POST /v1/identify</h2><p>Merges an anonymous profile into a known user. Call it right after signup or login.</p><h2 id="errors">Errors</h2><table><tr><th>Code</th><th>Meaning</th></tr><tr><td><code>400</code></td><td>Malformed payload — check the <code>details</code> field</td></tr><tr><td><code>401</code></td><td>Missing or invalid API key</td></tr><tr><td><code>429</code></td><td>Rate limited — back off and retry with jitter</td></tr></table>'},
+    {id:"auth",grp:"Reference",title:"Authentication",lede:"API keys, scopes, and rotation.",
+     toc:["API keys","Scopes","Rotation"],
+     body:'<h2 id="keys">API keys</h2><p>Create keys in <b>Settings → API</b>. Live keys start with <code>nb_live_</code>, test keys with <code>nb_test_</code>. Test keys never touch production data.</p><h2 id="scopes">Scopes</h2><p>Keys are scoped to the minimum they need: <code>track:write</code>, <code>read:events</code>, <code>admin</code>. The default SDK key gets <code>track:write</code> only.</p><h2 id="rotation">Rotation</h2><p>Rotate a key without downtime: create the replacement, deploy it, then revoke the old one. Revoked keys return <code>401</code> immediately.</p>'},
+    {id:"webhooks",grp:"Guides",title:"Webhooks",lede:"Get notified when things happen in your Northbeam project.",
+     toc:["Creating a webhook","Verifying signatures"],
+     body:'<h2 id="create">Creating a webhook</h2><p>Go to <b>Settings → Webhooks → New</b>, pick events (<code>funnel.alert</code>, <code>export.finished</code>), and set the target URL. We retry failed deliveries with exponential backoff for 24 hours.</p><h2 id="verify">Verifying signatures</h2><div class="pre"><button class="copy">Copy</button><pre><span class="tok-k">const</span> sig = req.headers[<span class="tok-s">"x-nb-signature"</span>];\n<span class="tok-k">const</span> ok = nb.webhooks.<span class="tok-f">verify</span>(rawBody, sig, secret);\n<span class="tok-k">if</span> (!ok) <span class="tok-k">return</span> res.<span class="tok-f">status</span>(<span class="tok-s">400</span>).<span class="tok-f">end</span>();</pre></div>'},
+    {id:"changelog",grp:"Reference",title:"Changelog",lede:"What shipped, week by week.",
+     toc:["v3.2","v3.1"],
+     body:'<h2 id="v32">v3.2 — September 2026</h2><ul><li>New <code>funnel.alert</code> webhook event</li><li>EU region GA — raw events stay in-region</li><li>Dashboard funnels now support 8 steps (was 5)</li></ul><h2 id="v31">v3.1 — August 2026</h2><ul><li>Python SDK 2.0 with async support</li><li>Fixed: identify calls racing track on slow networks</li></ul>'}
+  ];
+  var current="intro", selIdx=0, results=[];
+
+  /* ---- nav ---- */
+  function renderNav(){
+    var h="",lastGrp="";
+    PAGES.forEach(function(p){
+      if(p.grp!==lastGrp){h+='<div class="grp">'+p.grp+'</div>';lastGrp=p.grp}
+      h+='<button class="nlink'+(p.id===current?" on":"")+'" data-p="'+p.id+'">'+p.title+'</button>';
+    });
+    $("sideNav").innerHTML=h;
+    Array.prototype.forEach.call($("sideNav").querySelectorAll("[data-p]"),function(b){b.onclick=function(){go(b.dataset.p)}});
+  }
+  function go(id){
+    current=id;var p=PAGES.filter(function(x){return x.id===id})[0];
+    $("doc").innerHTML='<h1>'+p.title+'</h1><p class="lede">'+p.lede+'</p>'+p.body;
+    $("tocLinks").innerHTML=p.toc.map(function(t){return '<a href="#'+slug(t)+'">'+t+'</a>'}).join("");
+    Array.prototype.forEach.call($("doc").querySelectorAll("h2[id]"),function(h){h.id=slug(h.textContent)});
+    renderNav();bindCopy();bindToc();
+    document.title="Northbeam — "+p.title;
+    window.scrollTo(0,0);
+  }
+  function slug(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")}
+  function bindToc(){
+    var links=$("tocLinks").querySelectorAll("a");
+    function onScroll(){
+      var best=null;
+      Array.prototype.forEach.call($("doc").querySelectorAll("h2[id]"),function(h){
+        if(h.getBoundingClientRect().top<120)best=h.id;
+      });
+      Array.prototype.forEach.call(links,function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+best)});
+    }
+    window.onscroll=onScroll;onScroll();
+  }
+  function bindCopy(){
+    Array.prototype.forEach.call($("doc").querySelectorAll(".copy"),function(b){
+      b.onclick=function(){var t=b.parentElement.querySelector("pre").innerText;
+        function done(){b.textContent="Copied";setTimeout(function(){b.textContent="Copy"},1400)}
+        if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(done).catch(done)}else{done()}
+      };
+    });
+  }
+
+  /* ---- palette ---- */
+  function openPal(){$("overlay").classList.add("open");$("palInput").value="";search("");setTimeout(function(){$("palInput").focus()},40)}
+  function closePal(){$("overlay").classList.remove("open")}
+  function search(q){
+    q=q.trim().toLowerCase();
+    results=PAGES.map(function(p){
+      var s=(p.title+" "+p.grp+" "+p.lede).toLowerCase(),score=-1;
+      if(!q)score=0;else{var i=s.indexOf(q);if(i>-1)score=i+(p.title.toLowerCase().indexOf(q)>-1?-1000:0)}
+      return {p:p,score:score};
+    }).filter(function(r){return r.score>-1}).sort(function(a,b){return a.score-b.score});
+    selIdx=0;renderPal();
+  }
+  function renderPal(){
+    $("palList").innerHTML=results.length?results.map(function(r,i){
+      return '<button class="pitem'+(i===selIdx?" sel":"")+'" data-i="'+i+'"><span class="ic">▤</span><span><b>'+r.p.title+'</b><span>'+r.p.grp+'</span></span></button>';
+    }).join(""):'<div class="pempty">No results for “'+esc($("palInput").value)+'”</div>';
+    Array.prototype.forEach.call($("palList").querySelectorAll("[data-i]"),function(b){
+      b.onclick=function(){pick(+b.dataset.i)};b.onmousemove=function(){selIdx=+b.dataset.i;renderPal()};
+    });
+  }
+  function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+  function pick(i){if(!results[i])return;closePal();go(results[i].p.id)}
+  $("kbtn").onclick=openPal;
+  $("palInput").addEventListener("input",function(){search($("palInput").value)});
+  $("palInput").addEventListener("keydown",function(e){
+    if(e.key==="ArrowDown"){e.preventDefault();selIdx=Math.min(selIdx+1,results.length-1);renderPal()}
+    else if(e.key==="ArrowUp"){e.preventDefault();selIdx=Math.max(selIdx-1,0);renderPal()}
+    else if(e.key==="Enter"){pick(selIdx)}
+  });
+  $("overlay").onclick=function(e){if(e.target===$("overlay"))closePal()};
+  document.addEventListener("keydown",function(e){
+    if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="k"){e.preventDefault();$("overlay").classList.contains("open")?closePal():openPal()}
+    else if(e.key==="Escape")closePal();
+  });
+
+  /* ---- theme ---- */
+  function setDark(d){document.documentElement.classList.toggle("dark",d);try{localStorage.setItem("nbdocs-dark",d?"1":"0")}catch(e){}}
+  $("themeBtn").onclick=function(){setDark(!document.documentElement.classList.contains("dark"))};
+  try{if(localStorage.getItem("nbdocs-dark")==="1")setDark(true)}catch(e){}
+
+  go("intro");
+})();
+</script>
+</body>
+</html>
