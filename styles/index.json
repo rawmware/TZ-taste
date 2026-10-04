@@ -1,5 +1,5 @@
 {
- "count": 48,
+ "count": 72,
  "updated": "2026-10-04",
  "usage": "Agents: pick exactly ONE dna. Load only that file. Never load all.",
  "dnas": [
@@ -37,6 +37,41 @@
     "density": 4,
     "motion": 7,
     "variance": 9
+   }
+  },
+  {
+   "id": "alpine-after-dark",
+   "name": "Alpine After Dark",
+   "vibe": "Night at altitude: deep indigo snowfields, a single headlamp amber, constellations plotted over ridgelines.",
+   "file": "styles/alpine-after-dark.md",
+   "tags": [
+    "night",
+    "mountain",
+    "stars",
+    "dark"
+   ],
+   "best_for": [
+    "observatories",
+    "mountain-resorts",
+    "night-tours",
+    "science-centers"
+   ],
+   "fonts": {
+    "display": "Fraunces",
+    "body": "Mulish",
+    "mono": "Spline Sans Mono"
+   },
+   "tokens": {
+    "bg": "#0b1026",
+    "ink": "#e8e4d8",
+    "accent": "#f5a623",
+    "muted": "#6b7394",
+    "line": "#f5a62333"
+   },
+   "dials": {
+    "variance": 7,
+    "motion": 4,
+    "density": 3
    }
   },
   {
@@ -239,6 +274,41 @@
    }
   },
   {
+   "id": "bazaar-spice",
+   "name": "Bazaar Spice",
+   "vibe": "Spice-market maximalism: turmeric dust in the air, paprika-red textiles, patterned awnings, and stalls stacked to the sky.",
+   "file": "styles/bazaar-spice.md",
+   "tags": [
+    "maximalist",
+    "spice",
+    "market",
+    "colorful"
+   ],
+   "best_for": [
+    "food-brands",
+    "restaurants",
+    "markets",
+    "travel"
+   ],
+   "fonts": {
+    "display": "Yeseva One",
+    "body": "Work Sans",
+    "mono": "IBM Plex Mono"
+   },
+   "tokens": {
+    "bg": "#241109",
+    "ink": "#f7e8cf",
+    "accent": "#e9a820",
+    "muted": "#b0854f",
+    "line": "#e9a82066"
+   },
+   "dials": {
+    "variance": 9,
+    "motion": 5,
+    "density": 9
+   }
+  },
+  {
    "id": "blueprint-tech",
    "name": "Blueprint Tech",
    "vibe": "Cyanotype schematics: deep blueprint blue, white line work, everything labeled.",
@@ -302,6 +372,74 @@
     "variance": 4,
     "motion": 3,
     "density": 4
+   }
+  },
+  {
+   "id": "chalkboard-cafe",
+   "name": "Chalkboard Cafe",
+   "vibe": "A cafe menu board in chalk: slate black, hand-lettered specials, doodled borders.",
+   "file": "styles/chalkboard-cafe.md",
+   "tags": [
+    "chalk",
+    "cafe",
+    "handwritten"
+   ],
+   "best_for": [
+    "cafes",
+    "bakeries",
+    "menus",
+    "small-shops"
+   ],
+   "fonts": {
+    "display": "Caveat",
+    "body": "Patrick Hand",
+    "mono": "DM Mono"
+   },
+   "tokens": {
+    "bg": "#1d1f1e",
+    "ink": "#f2efe6",
+    "accent": "#e8c15a",
+    "muted": "#9aa0a0",
+    "line": "#f2efe633"
+   },
+   "dials": {
+    "variance": 5,
+    "motion": 2,
+    "density": 6
+   }
+  },
+  {
+   "id": "circus-poster",
+   "name": "Circus Poster",
+   "vibe": "Wood type and starbursts: a 1910 big-top bill shouted in deep red and gold.",
+   "file": "styles/circus-poster.md",
+   "tags": [
+    "circus",
+    "letterpress",
+    "vintage"
+   ],
+   "best_for": [
+    "events",
+    "festivals",
+    "theaters",
+    "live-music"
+   ],
+   "fonts": {
+    "display": "Rye",
+    "body": "Bitter",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#f5e8c8",
+    "ink": "#2b1408",
+    "accent": "#b3202c",
+    "muted": "#8a6b45",
+    "line": "#2b140829"
+   },
+   "dials": {
+    "variance": 8,
+    "motion": 5,
+    "density": 7
    }
   },
   {
@@ -539,6 +677,41 @@
    }
   },
   {
+   "id": "diary-zine",
+   "name": "Diary Zine",
+   "vibe": "Photocopied punk zine: cut-and-paste ransom type, staples through the gutter, marker underlines, and ink that ran in the rain.",
+   "file": "styles/diary-zine.md",
+   "tags": [
+    "punk",
+    "zine",
+    "collage",
+    "diy"
+   ],
+   "best_for": [
+    "bands",
+    "diy-brands",
+    "activists",
+    "indie-publishers"
+   ],
+   "fonts": {
+    "display": "Anton",
+    "body": "Special Elite",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#e8e4d8",
+    "ink": "#111111",
+    "accent": "#d81b36",
+    "muted": "#55524a",
+    "line": "#11111133"
+   },
+   "dials": {
+    "variance": 10,
+    "motion": 4,
+    "density": 8
+   }
+  },
+  {
    "id": "docs-solar",
    "name": "Docs Solar",
    "vibe": "Warm documentation, amber accents, serif readability. Docs people actually enjoy reading.",
@@ -680,6 +853,109 @@
    }
   },
   {
+   "id": "greenhouse-glass",
+   "name": "Greenhouse Glass",
+   "vibe": "A Victorian glasshouse: black iron ribs arcing overhead, condensation beading on the panes, fern greens breathing in the humidity.",
+   "file": "styles/greenhouse-glass.md",
+   "tags": [
+    "victorian",
+    "greenhouse",
+    "botanical",
+    "light"
+   ],
+   "best_for": [
+    "botanical-gardens",
+    "florists",
+    "garden-centers",
+    "wellness-brands"
+   ],
+   "fonts": {
+    "display": "Cormorant Garamond",
+    "body": "Source Sans 3",
+    "mono": "Courier Prime"
+   },
+   "tokens": {
+    "bg": "#eef2ea",
+    "ink": "#1e2b1f",
+    "accent": "#2f7a4d",
+    "muted": "#7d8a7a",
+    "line": "#2f7a4d4d"
+   },
+   "dials": {
+    "variance": 5,
+    "motion": 3,
+    "density": 4
+   }
+  },
+  {
+   "id": "greenmarket-dawn",
+   "name": "Greenmarket Dawn",
+   "vibe": "6am at the farmers market: dew on greens, kraft paper, chalked price tags.",
+   "file": "styles/greenmarket-dawn.md",
+   "tags": [
+    "market",
+    "produce",
+    "morning"
+   ],
+   "best_for": [
+    "farmers-markets",
+    "groceries",
+    "csa",
+    "cafes"
+   ],
+   "fonts": {
+    "display": "DM Serif Display",
+    "body": "Work Sans",
+    "mono": "Courier Prime"
+   },
+   "tokens": {
+    "bg": "#faf6ec",
+    "ink": "#243015",
+    "accent": "#4a7c2f",
+    "muted": "#8a8468",
+    "line": "#24301529"
+   },
+   "dials": {
+    "variance": 5,
+    "motion": 3,
+    "density": 6
+   }
+  },
+  {
+   "id": "harbor-fog",
+   "name": "Harbor Fog",
+   "vibe": "Maritime fog: muted grays, signal red, foghorn typography. The lighthouse keeps its own hours.",
+   "file": "styles/harbor-fog.md",
+   "tags": [
+    "maritime",
+    "fog",
+    "lighthouse"
+   ],
+   "best_for": [
+    "ferries",
+    "seafood",
+    "coastal-inns",
+    "weather-apps"
+   ],
+   "fonts": {
+    "display": "Anton",
+    "body": "Karla",
+    "mono": "IBM Plex Mono"
+   },
+   "tokens": {
+    "bg": "#e8e6df",
+    "ink": "#2b3138",
+    "accent": "#c33a2c",
+    "muted": "#7d838a",
+    "line": "#2b31381f"
+   },
+   "dials": {
+    "variance": 5,
+    "motion": 4,
+    "density": 3
+   }
+  },
+  {
    "id": "industrial-brutalist",
    "name": "Industrial Brutalist",
    "vibe": "Exposed structure, safety orange, condensed type. A factory that ships software.",
@@ -749,6 +1025,40 @@
    }
   },
   {
+   "id": "italian-futurist",
+   "name": "Italian Futurist",
+   "vibe": "Italian futurism: speed lines, dynamism, chrome and red. A racing poster that refuses to sit still.",
+   "file": "styles/italian-futurist.md",
+   "tags": [
+    "futurist",
+    "speed",
+    "racing"
+   ],
+   "best_for": [
+    "motorsport",
+    "espresso-brands",
+    "sneakers",
+    "exhibitions"
+   ],
+   "fonts": {
+    "display": "Archivo Black",
+    "body": "Archivo",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#f5f1e4",
+    "ink": "#16130e",
+    "accent": "#d62b1f",
+    "muted": "#7c7568",
+    "line": "#16130e26"
+   },
+   "dials": {
+    "variance": 9,
+    "motion": 8,
+    "density": 5
+   }
+  },
+  {
    "id": "jazz-blue-note",
    "name": "Jazz Blue Note",
    "vibe": "Mid-century jazz sleeve art: duotone photography, smoky blue, bold condensed sans, liner-note typography.",
@@ -815,6 +1125,41 @@
    }
   },
   {
+   "id": "lab-notebook",
+   "name": "Lab Notebook",
+   "vibe": "A scientist's field notebook: graph-paper grids, photos held down with masking tape, red-pen marginalia, and a coffee ring on page 47.",
+   "file": "styles/lab-notebook.md",
+   "tags": [
+    "notebook",
+    "science",
+    "handwritten",
+    "paper"
+   ],
+   "best_for": [
+    "research-labs",
+    "field-guides",
+    "science-blogs",
+    "citizen-science"
+   ],
+   "fonts": {
+    "display": "Caveat",
+    "body": "Karla",
+    "mono": "Courier Prime"
+   },
+   "tokens": {
+    "bg": "#f4f1e6",
+    "ink": "#2b2a26",
+    "accent": "#b3402e",
+    "muted": "#7a756a",
+    "line": "#2b2a2633"
+   },
+   "dials": {
+    "variance": 8,
+    "motion": 3,
+    "density": 7
+   }
+  },
+  {
    "id": "laboratory-clean",
    "name": "Laboratory Clean",
    "vibe": "A calibrated instrument, not a landing page: sterile white, spec tables, every label measured.",
@@ -845,6 +1190,74 @@
     "variance": 3,
     "motion": 2,
     "density": 8
+   }
+  },
+  {
+   "id": "laundromat-neon",
+   "name": "Laundromat Neon",
+   "vibe": "Open 24 hours: humming fluorescents over white tile, mint and chrome at 3am.",
+   "file": "styles/laundromat-neon.md",
+   "tags": [
+    "laundromat",
+    "fluorescent",
+    "retro"
+   ],
+   "best_for": [
+    "laundromats",
+    "coin-ops",
+    "late-night",
+    "local-services"
+   ],
+   "fonts": {
+    "display": "Bungee",
+    "body": "DM Sans",
+    "mono": "Fira Code"
+   },
+   "tokens": {
+    "bg": "#f3f7f5",
+    "ink": "#14201c",
+    "accent": "#2fd08a",
+    "muted": "#6b7f76",
+    "line": "#14201c21"
+   },
+   "dials": {
+    "variance": 4,
+    "motion": 4,
+    "density": 7
+   }
+  },
+  {
+   "id": "library-oak",
+   "name": "Library Oak",
+   "vibe": "Leather and brass: card catalogs, reading lamps, the hush of old oak stacks.",
+   "file": "styles/library-oak.md",
+   "tags": [
+    "library",
+    "oak",
+    "classic"
+   ],
+   "best_for": [
+    "bookstores",
+    "publishers",
+    "archives",
+    "universities"
+   ],
+   "fonts": {
+    "display": "Cormorant Garamond",
+    "body": "EB Garamond",
+    "mono": "Roboto Mono"
+   },
+   "tokens": {
+    "bg": "#211810",
+    "ink": "#ece0c8",
+    "accent": "#c9973f",
+    "muted": "#93805f",
+    "line": "#c9973f40"
+   },
+   "dials": {
+    "variance": 2,
+    "motion": 2,
+    "density": 5
    }
   },
   {
@@ -1019,6 +1432,74 @@
    }
   },
   {
+   "id": "neon-diner",
+   "name": "Neon Diner",
+   "vibe": "1950s American diner: chrome, cherry red, teal vinyl. The OPEN sign is always on.",
+   "file": "styles/neon-diner.md",
+   "tags": [
+    "diner",
+    "retro",
+    "neon"
+   ],
+   "best_for": [
+    "diners",
+    "barbershops",
+    "milkshake-brands",
+    "drive-ins"
+   ],
+   "fonts": {
+    "display": "Pacifico",
+    "body": "Oswald",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#101b17",
+    "ink": "#fdf6ea",
+    "accent": "#e23b3b",
+    "muted": "#93a89b",
+    "line": "#e23b3b59"
+   },
+   "dials": {
+    "variance": 5,
+    "motion": 6,
+    "density": 4
+   }
+  },
+  {
+   "id": "newsroom-wire",
+   "name": "Newsroom Wire",
+   "vibe": "The copy desk at 2am: teletype clatter, urgent red wire alerts, ink on newsprint.",
+   "file": "styles/newsroom-wire.md",
+   "tags": [
+    "news",
+    "teletype",
+    "urgent"
+   ],
+   "best_for": [
+    "news-sites",
+    "media-kits",
+    "crisis-comms",
+    "sports-scores"
+   ],
+   "fonts": {
+    "display": "Special Elite",
+    "body": "PT Serif",
+    "mono": "Courier Prime"
+   },
+   "tokens": {
+    "bg": "#f7f4ec",
+    "ink": "#16130e",
+    "accent": "#c8102e",
+    "muted": "#6f6a5e",
+    "line": "#16130e29"
+   },
+   "dials": {
+    "variance": 4,
+    "motion": 3,
+    "density": 8
+   }
+  },
+  {
    "id": "nordic-noir",
    "name": "Nordic Noir",
    "vibe": "Overcast crime scene at noon. Desaturated slate, hard facts, no comfort.",
@@ -1049,6 +1530,109 @@
     "variance": 5,
     "motion": 3,
     "density": 6
+   }
+  },
+  {
+   "id": "observatory-star",
+   "name": "Observatory Star",
+   "vibe": "A working astronomical observatory as a website: deep-space navy, brass instrument dials, hand-plotted star charts, and the hush of the dome at 2am.",
+   "file": "styles/observatory-star.md",
+   "tags": [
+    "space",
+    "science",
+    "brass",
+    "dark"
+   ],
+   "best_for": [
+    "observatories",
+    "space-startups",
+    "planetariums",
+    "research-institutes"
+   ],
+   "fonts": {
+    "display": "Marcellus",
+    "body": "Spectral",
+    "mono": "Spline Sans Mono"
+   },
+   "tokens": {
+    "bg": "#060a18",
+    "ink": "#dfe6f5",
+    "accent": "#c9a24b",
+    "muted": "#5f6b8a",
+    "line": "#c9a24b44"
+   },
+   "dials": {
+    "variance": 6,
+    "motion": 5,
+    "density": 5
+   }
+  },
+  {
+   "id": "origami-fold",
+   "name": "Origami Fold",
+   "vibe": "Paper-fold geometry: crisp creases, washi texture, single-sheet discipline. Nothing is added; everything is folded.",
+   "file": "styles/origami-fold.md",
+   "tags": [
+    "origami",
+    "paper",
+    "fold"
+   ],
+   "best_for": [
+    "stationery",
+    "tea-brands",
+    "architecture-studios",
+    "gift-shops"
+   ],
+   "fonts": {
+    "display": "Space Grotesk",
+    "body": "Outfit",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#f6f2e8",
+    "ink": "#23272e",
+    "accent": "#b3402e",
+    "muted": "#8b8579",
+    "line": "#23272e1f"
+   },
+   "dials": {
+    "variance": 6,
+    "motion": 4,
+    "density": 3
+   }
+  },
+  {
+   "id": "paris-metro",
+   "name": "Paris Metro",
+   "vibe": "Art Nouveau metro wayfinding: Guimard curves, navy enamel, gold lettering. Mind the gap, in style.",
+   "file": "styles/paris-metro.md",
+   "tags": [
+    "metro",
+    "art-nouveau",
+    "wayfinding"
+   ],
+   "best_for": [
+    "transit",
+    "museums",
+    "cafes",
+    "city-guides"
+   ],
+   "fonts": {
+    "display": "Marcellus",
+    "body": "Cormorant Garamond",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#f4efe3",
+    "ink": "#14243d",
+    "accent": "#b98a2f",
+    "muted": "#7d7a6e",
+    "line": "#14243d33"
+   },
+   "dials": {
+    "variance": 4,
+    "motion": 3,
+    "density": 4
    }
   },
   {
@@ -1113,6 +1697,41 @@
    },
    "dials": {
     "variance": 7,
+    "motion": 7,
+    "density": 6
+   }
+  },
+  {
+   "id": "pixel-garden",
+   "name": "Pixel Garden",
+   "vibe": "A cozy 8-bit gardening sim as a website: tilled soil rows, sprout-green pixels, and a blocky sun that rises on scroll.",
+   "file": "styles/pixel-garden.md",
+   "tags": [
+    "pixel",
+    "garden",
+    "cozy",
+    "retro"
+   ],
+   "best_for": [
+    "indie-games",
+    "garden-shops",
+    "kids-education",
+    "farm-csas"
+   ],
+   "fonts": {
+    "display": "Press Start 2P",
+    "body": "DotGothic16",
+    "mono": "VT323"
+   },
+   "tokens": {
+    "bg": "#20291d",
+    "ink": "#f5efdc",
+    "accent": "#ffc93c",
+    "muted": "#8a9a7b",
+    "line": "#7fc24d55"
+   },
+   "dials": {
+    "variance": 6,
     "motion": 7,
     "density": 6
    }
@@ -1253,6 +1872,40 @@
    }
   },
   {
+   "id": "sauna-cedar",
+   "name": "Sauna Cedar",
+   "vibe": "Cedar heat and steam: a Finnish loyly rendered in dark wood and glowing ember.",
+   "file": "styles/sauna-cedar.md",
+   "tags": [
+    "sauna",
+    "warm",
+    "wellness"
+   ],
+   "best_for": [
+    "spas",
+    "wellness",
+    "retreats",
+    "bathhouses"
+   ],
+   "fonts": {
+    "display": "Fraunces",
+    "body": "Karla",
+    "mono": "IBM Plex Mono"
+   },
+   "tokens": {
+    "bg": "#2b1a0e",
+    "ink": "#f3e6d0",
+    "accent": "#e07b39",
+    "muted": "#a98d68",
+    "line": "#e07b3933"
+   },
+   "dials": {
+    "variance": 3,
+    "motion": 3,
+    "density": 3
+   }
+  },
+  {
    "id": "scandi-calm",
    "name": "Scandi Calm",
    "vibe": "Hygge minimalism: warm whites, pale wood tones, quiet functionality. Nothing shouts; everything breathes.",
@@ -1322,6 +1975,73 @@
    }
   },
   {
+   "id": "stadium-floodlight",
+   "name": "Stadium Floodlight",
+   "vibe": "Concrete bowl at 9pm: floodlights on, turf glowing, everything else shadow.",
+   "file": "styles/stadium-floodlight.md",
+   "tags": [
+    "stadium",
+    "sports",
+    "brutalist"
+   ],
+   "best_for": [
+    "sports-clubs",
+    "esports",
+    "live-events",
+    "fitness"
+   ],
+   "fonts": {
+    "display": "Archivo Black",
+    "body": "Archivo",
+    "mono": "JetBrains Mono"
+   },
+   "tokens": {
+    "bg": "#141719",
+    "ink": "#f4f7f5",
+    "accent": "#3fae5a",
+    "muted": "#8b9490",
+    "line": "#3fae5a3d"
+   },
+   "dials": {
+    "variance": 6,
+    "motion": 6,
+    "density": 7
+   }
+  },
+  {
+   "id": "storybook-watercolor",
+   "name": "Storybook Watercolor",
+   "vibe": "A children's picture book: washed paper, ink outlines, hand-lettered display. Read me like it's bedtime.",
+   "file": "styles/storybook-watercolor.md",
+   "tags": [
+    "watercolor",
+    "storybook",
+    "handmade"
+   ],
+   "best_for": [
+    "childrens-books",
+    "schools",
+    "family-events"
+   ],
+   "fonts": {
+    "display": "Caveat",
+    "body": "Karla",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#f7f0dc",
+    "ink": "#2e2a23",
+    "accent": "#d95f43",
+    "muted": "#8a7f6c",
+    "line": "#2e2a2326"
+   },
+   "dials": {
+    "variance": 7,
+    "motion": 5,
+    "density": 2
+   }
+  },
+  {
    "id": "surf-shack",
    "name": "Surf Shack",
    "vibe": "Sun-bleached and hand-painted: faded teal, warm sand, and signage you can tell a person made.",
@@ -1352,6 +2072,40 @@
     "variance": 6,
     "motion": 5,
     "density": 3
+   }
+  },
+  {
+   "id": "swiss-airline",
+   "name": "Swiss Airline",
+   "vibe": "Mid-century airline identity: timetable grids, the red arrow, Helvetica-like order. Departures on time, forever.",
+   "file": "styles/swiss-airline.md",
+   "tags": [
+    "airline",
+    "swiss",
+    "timetable"
+   ],
+   "best_for": [
+    "airlines",
+    "travel-agencies",
+    "rail-operators",
+    "logistics"
+   ],
+   "fonts": {
+    "display": "Archivo",
+    "body": "Libre Franklin",
+    "mono": "IBM Plex Mono"
+   },
+   "tokens": {
+    "bg": "#f7f5ef",
+    "ink": "#1a1a1a",
+    "accent": "#d52b1e",
+    "muted": "#6e6e6e",
+    "line": "#1a1a1a1f"
+   },
+   "dials": {
+    "variance": 2,
+    "motion": 2,
+    "density": 8
    }
   },
   {
@@ -1421,6 +2175,41 @@
     "density": 6,
     "motion": 2,
     "variance": 4
+   }
+  },
+  {
+   "id": "tokyo-kissaten",
+   "name": "Tokyo Kissaten",
+   "vibe": "Showa-era Japanese coffee house: dark walnut, worn velvet booths, low brass lamps, and the slow pour of a siphon brewer.",
+   "file": "styles/tokyo-kissaten.md",
+   "tags": [
+    "japanese",
+    "retro",
+    "cafe",
+    "warm"
+   ],
+   "best_for": [
+    "cafes",
+    "restaurants",
+    "jazz-bars",
+    "bookshops"
+   ],
+   "fonts": {
+    "display": "Shippori Mincho",
+    "body": "Zen Kaku Gothic New",
+    "mono": "IBM Plex Mono"
+   },
+   "tokens": {
+    "bg": "#171009",
+    "ink": "#f3e4c8",
+    "accent": "#d9a441",
+    "muted": "#9a7c5e",
+    "line": "#d9a44155"
+   },
+   "dials": {
+    "variance": 4,
+    "motion": 2,
+    "density": 3
    }
   },
   {
@@ -1519,6 +2308,40 @@
    "dials": {
     "variance": 6,
     "motion": 4,
+    "density": 4
+   }
+  },
+  {
+   "id": "ukiyo-e-print",
+   "name": "Ukiyo-e Print",
+   "vibe": "Japanese woodblock print: Prussian blue, vermillion, wave compositions. The floating world, keyed and registered.",
+   "file": "styles/ukiyo-e-print.md",
+   "tags": [
+    "ukiyoe",
+    "woodblock",
+    "print"
+   ],
+   "best_for": [
+    "tea-houses",
+    "onsen",
+    "museums",
+    "ramen-shops"
+   ],
+   "fonts": {
+    "display": "Shippori Mincho B1",
+    "body": "Zen Kaku Gothic New",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#f2ead8",
+    "ink": "#1a2332",
+    "accent": "#c73e2e",
+    "muted": "#6f6a5c",
+    "line": "#1a233233"
+   },
+   "dials": {
+    "variance": 6,
+    "motion": 3,
     "density": 4
    }
   },
