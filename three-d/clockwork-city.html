@@ -1,0 +1,162 @@
+<!--tz-meta {"id":"clockwork-city","title":"Clockwork City","category":"3D","file":"three-d/clockwork-city.html","tags":["threejs","gears","city"],"description":"A night city where brass gears turn on every rooftop, lit windows flickering against the dark.","dnas":["midnight-railway"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Clockwork City — TZ-taste</title>
+<style>
+  html, body { margin:0; height:100%; overflow:hidden; background:#101a2e; }
+  #app { position:fixed; inset:0; }
+  #app canvas { display:block; }
+  .caption { position:fixed; left:18px; bottom:16px; z-index:5; color:#b9a86f;
+    font:12px/1.6 system-ui, -apple-system, sans-serif; letter-spacing:.05em;
+    opacity:.9; pointer-events:none; }
+  .caption b { display:block; font-size:13px; letter-spacing:.22em; text-transform:uppercase; }
+  #fallback { display:none; position:fixed; inset:0; z-index:10; place-items:center;
+    color:#b9a86f; font:14px/1.6 system-ui, sans-serif; text-align:center;
+    padding:32px; background:#101a2e; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="caption"><b>Clockwork City</b>every rooftop keeps its own time<br/>drag to orbit &middot; scroll to zoom</div>
+<div id="fallback"><p>This scene needs WebGL, which your browser could not provide.<br/>Try a recent version of Chrome, Safari, Firefox or Edge.</p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (e) {
+  document.getElementById('fallback').style.display = 'grid';
+  throw e;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('app').appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x101a2e);
+scene.fog = new THREE.Fog(0x101a2e, 35, 110);
+
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 400);
+camera.position.set(24, 16, 30);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.target.set(0, 5, 0);
+controls.maxPolarAngle = 1.52;
+controls.minDistance = 10;
+controls.maxDistance = 90;
+
+scene.add(new THREE.HemisphereLight(0x2a3a5c, 0x0a0d18, 0.7));
+const moon = new THREE.DirectionalLight(0x9db4dd, 0.5);
+moon.position.set(-25, 35, -15);
+scene.add(moon);
+
+/* ---------- window texture, generated ---------- */
+function windowTexture() {
+  const c = document.createElement('canvas');
+  c.width = 64; c.height = 128;
+  const g = c.getContext('2d');
+  g.fillStyle = '#141c30'; g.fillRect(0, 0, 64, 128);
+  for (let y = 6; y < 120; y += 12) for (let x = 6; x < 56; x += 10) {
+    g.fillStyle = Math.random() < 0.42 ? '#f2c063' : '#1e2740';
+    g.fillRect(x, y, 6, 8);
+  }
+  const tex = new THREE.CanvasTexture(c);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  return tex;
+}
+const winTex = windowTexture();
+
+/* ---------- buildings ---------- */
+const brassMat = new THREE.MeshStandardMaterial({ color: 0xc9a227, roughness: 0.35, metalness: 0.8 });
+const gears = [];
+function makeGear(r, teeth) {
+  const g = new THREE.Group();
+  const disc = new THREE.Mesh(new THREE.CylinderGeometry(r, r, 0.5, 24), brassMat);
+  g.add(disc);
+  for (let i = 0; i < teeth; i++) {
+    const a = (i / teeth) * Math.PI * 2;
+    const tooth = new THREE.Mesh(new THREE.BoxGeometry(r * 0.28, 0.5, r * 0.34), brassMat);
+    tooth.position.set(Math.cos(a) * (r + r * 0.12), 0, Math.sin(a) * (r + r * 0.12));
+    tooth.rotation.y = -a;
+    g.add(tooth);
+  }
+  const hub = new THREE.Mesh(new THREE.CylinderGeometry(r * 0.22, r * 0.22, 0.7, 12),
+    new THREE.MeshStandardMaterial({ color: 0x2a3a5c, roughness: 0.5, metalness: 0.6 }));
+  g.add(hub);
+  return g;
+}
+const spots = [[-12, -8], [-4, -12], [6, -9], [14, -4], [-14, 2], [-6, 4], [4, 8], [12, 10], [-10, 12], [0, -2], [18, 2], [-18, -12]];
+for (let i = 0; i < spots.length; i++) {
+  const w = 4 + (i * 37 % 4), dpt = 4 + (i * 53 % 4), h = 6 + (i * 29 % 12);
+  const mat = new THREE.MeshStandardMaterial({ map: winTex, roughness: 0.9 });
+  const b = new THREE.Mesh(new THREE.BoxGeometry(w, h, dpt), mat);
+  b.position.set(spots[i][0], h / 2, spots[i][1]);
+  scene.add(b);
+  const gear = makeGear(1.1 + (i % 3) * 0.45, 10 + (i % 3) * 2);
+  gear.position.set(spots[i][0], h + 0.4, spots[i][1]);
+  scene.add(gear);
+  gears.push({ g: gear, spd: (0.25 + (i % 4) * 0.14) * (i % 2 === 0 ? 1 : -1) });
+}
+/* giant street gear */
+const big = makeGear(4.2, 16);
+big.position.set(-22, 1.2, 14);
+big.rotation.x = Math.PI / 2;
+scene.add(big);
+gears.push({ g: big, spd: 0.12 });
+
+/* ---------- street lamps ---------- */
+const lampMat = new THREE.MeshStandardMaterial({ color: 0x1d2536, roughness: 0.6 });
+const glowMat = new THREE.MeshBasicMaterial({ color: 0xffd98a });
+for (const s of [[-16, 8], [8, -14], [16, 14], [-2, 16]]) {
+  const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.16, 6, 8), lampMat);
+  pole.position.set(s[0], 3, s[1]);
+  scene.add(pole);
+  const bulb = new THREE.Mesh(new THREE.SphereGeometry(0.42, 12, 10), glowMat);
+  bulb.position.set(s[0], 6.2, s[1]);
+  scene.add(bulb);
+  const pl = new THREE.PointLight(0xffd98a, 24, 18, 1.8);
+  pl.position.set(s[0], 6.2, s[1]);
+  scene.add(pl);
+}
+
+/* ground */
+const ground = new THREE.Mesh(
+  new THREE.PlaneGeometry(160, 160),
+  new THREE.MeshStandardMaterial({ color: 0x0c1424, roughness: 1 }));
+ground.rotation.x = -Math.PI / 2;
+scene.add(ground);
+
+/* ---------- frame loop ---------- */
+const clock = new THREE.Clock();
+function renderFrame(t, dt) {
+  for (const gr of gears) gr.g.rotation.y += dt * gr.spd;
+  controls.update();
+  renderer.render(scene, camera);
+}
+if (REDUCED) {
+  renderFrame(0, 0);
+} else {
+  renderer.setAnimationLoop(() => {
+    const dt = Math.min(clock.getDelta(), 0.05);
+    renderFrame(clock.elapsedTime, dt);
+  });
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
