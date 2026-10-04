@@ -26,11 +26,15 @@ That is the whole product. Everything in this repo exists to make that sentence 
 |---|---|
 | `AGENT.md` | Machine-first bootstrap. The file your agent reads first. |
 | `skill/SKILL.md` | Portable anti-slop skill: dials, pre-flight checks, the slop blocklist. Drop it into any agent or conversation. |
-| `styles/` | 12 style DNAs — complete visual languages with tokens, type pairings, and rules. Machine-readable via `styles/index.json`. |
-| `patterns/` | Copy-paste HTML/CSS section patterns (heroes, navs, bento grids, pricing, backgrounds…). Each with a live preview on the demo site. `patterns/index.json` for machines. |
-| `prompts/` | Ready-made build prompts for landing pages, dashboards, portfolios, mobile screens, and redesign audits. Free alternative to paid prompt libraries. |
-| `sources/` | Curated index of the best free design resources on the internet — skills, component libraries, motion tools, type foundries — with licenses verified. |
-| `docs/` | The taste doctrine: the anti-slop checklist, the brief-to-style decision matrix, and the freshness report. |
+| `styles/` | 48 style DNAs — complete visual languages with tokens, type pairings, and rules. Machine-readable via `styles/index.json`. |
+| `patterns/` | 164 copy-paste HTML/CSS section patterns (heroes, navs, bento grids, pricing, backgrounds…). Each with a live preview on the demo site. `patterns/index.json` for machines. |
+| `three-d/` | 30 original Three.js ambient 3D environments — aurora domes, voxel cities, coral reefs. Standalone files, zero external assets. `three-d/index.json` for machines. |
+| `templates/` | 25 complete landing pages, each committed to one style DNA. `templates/index.json` for machines. |
+| `showcase/` | 48 live demo pages — one per style DNA. `showcase/index.json` for machines. |
+| `prompts/` | 36 ready-made build prompts for landing pages, dashboards, portfolios, mobile screens, 3D scenes, and redesign audits. Free alternative to paid prompt libraries. |
+| `scripts/` | 15 zero-dependency CLI tools: slop-auditor, DNA picker, token exporter, contrast checker, page composer, scaffolders, and more. |
+| `sources/` | Curated index of the best free design resources on the internet — skills, component libraries, motion tools, type foundries, 3D playgrounds — with licenses verified. |
+| `docs/` | The taste doctrine: the anti-slop checklist, the brief-to-style decision matrix, 20 practical guides, and the freshness report. |
 | `scripts/` + `.github/workflows/` | The freshness engine. Weekly checks keep every source link, release, and style current. This repo updates itself. |
 
 ## Why this exists
