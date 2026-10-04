@@ -1,0 +1,115 @@
+<!--tz-meta {"id":"showcase-neo-brutalist-pop","title":"Neo-Brutalist Pop showcase","category":"Showcase","file":"showcase/neo-brutalist-pop.html","tags":["neo-brutalist-pop"],"description":"Live demo page for the Neo-Brutalist Pop style DNA.","dnas":["neo-brutalist-pop"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Neo-Brutalist Pop — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#fff6e9; --tz-surface:#ffffff; --tz-ink:#1a1a1a; --tz-muted:#6b6259;
+  --tz-accent:#ff5da2; --tz-line:#1a1a1a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Space Grotesk",sans-serif;font-size:1rem;line-height:1.5;-webkit-font-smoothing:antialiased}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 5vw;border-bottom:3px solid var(--tz-line);background:var(--tz-surface)}
+.tz-wordmark{font-family:"Archivo Black",sans-serif;font-size:1.15rem;letter-spacing:0.01em}
+.tz-wordmark .tz-p{color:var(--tz-accent)}
+.tz-label{font-family:"Space Mono",monospace;font-size:0.68rem;color:var(--tz-muted)}
+.tz-hero{padding:4.5rem 5vw;position:relative;border-bottom:3px solid var(--tz-line);overflow:hidden}
+.tz-eyebrow{display:inline-block;font-family:"Space Mono",monospace;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;background:var(--tz-ink);color:var(--tz-bg);padding:0.4rem 0.9rem;border-radius:999px;margin-bottom:1.6rem;transform:rotate(-2deg)}
+.tz-hero h1{font-family:"Archivo Black",sans-serif;font-size:clamp(2.6rem,7.5vw,5.5rem);line-height:1.02;letter-spacing:-0.01em;max-width:14ch}
+.tz-hero h1 .tz-mark{background:var(--tz-accent);color:var(--tz-surface);padding:0 0.15em;border:3px solid var(--tz-line);box-shadow:4px 4px 0 var(--tz-line);display:inline-block;transform:rotate(-1deg)}
+.tz-sub{margin-top:1.6rem;max-width:46ch;font-size:1.05rem;font-weight:500}
+.tz-cta{display:inline-block;margin-top:2.2rem;background:var(--tz-accent);color:var(--tz-surface);font-family:"Archivo Black",sans-serif;font-size:1.05rem;letter-spacing:0.02em;text-decoration:none;padding:1rem 2.4rem;border:3px solid var(--tz-line);border-radius:999px;box-shadow:5px 5px 0 var(--tz-line);transition:transform .18s cubic-bezier(0.34,1.56,0.64,1),box-shadow .18s cubic-bezier(0.34,1.56,0.64,1)}
+.tz-cta:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--tz-line)}
+.tz-mascot{position:absolute;right:6vw;top:4rem;width:7.5rem;transform:rotate(6deg);transition:transform .3s cubic-bezier(0.34,1.56,0.64,1)}
+.tz-mascot:hover{transform:rotate(-6deg) scale(1.1)}
+.tz-content{padding:4rem 5vw;max-width:1000px;margin:0 auto}
+.tz-sect{font-family:"Archivo Black",sans-serif;font-size:1.5rem;margin-bottom:1.8rem}
+.tz-sect .tz-u{text-decoration:underline;text-decoration-color:var(--tz-accent);text-decoration-thickness:5px;text-underline-offset:6px}
+.tz-packs{list-style:none}
+.tz-pack{position:relative;display:flex;justify-content:space-between;align-items:center;gap:1.5rem;background:var(--tz-surface);border:3px solid var(--tz-line);border-radius:16px;box-shadow:4px 4px 0 var(--tz-line);padding:1.4rem 1.6rem;margin-bottom:1.4rem;transition:transform .18s cubic-bezier(0.34,1.56,0.64,1),box-shadow .18s cubic-bezier(0.34,1.56,0.64,1)}
+.tz-pack:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--tz-line)}
+.tz-pack .tz-pname{font-family:"Archivo Black",sans-serif;font-size:1.25rem}
+.tz-pack .tz-pdesc{color:var(--tz-muted);font-size:0.92rem;margin-top:0.25rem}
+.tz-pack .tz-price{font-family:"Space Mono",monospace;font-weight:700;font-size:1.3rem;white-space:nowrap}
+.tz-badge{position:absolute;top:-1rem;right:1.4rem;transform:rotate(-6deg);background:var(--tz-accent);color:var(--tz-surface);font-family:"Space Mono",monospace;font-weight:700;font-size:0.7rem;letter-spacing:0.1em;padding:0.35rem 0.8rem;border:2px solid var(--tz-line);border-radius:999px;box-shadow:3px 3px 0 var(--tz-line)}
+.tz-badge.tz-b2{background:var(--tz-ink);color:var(--tz-bg);transform:rotate(5deg)}
+.tz-tokens{padding:3.5rem 5vw;border-top:3px solid var(--tz-line)}
+.tz-tokens h2{font-family:"Archivo Black",sans-serif;font-size:1.5rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.9rem;list-style:none}
+.tz-swatches li{background:var(--tz-surface);border:3px solid var(--tz-line);border-radius:14px;box-shadow:4px 4px 0 var(--tz-line);overflow:hidden;min-width:9rem}
+.tz-chip{display:block;height:2.8rem;border-bottom:3px solid var(--tz-line)}
+.tz-swatches .tz-name{display:block;font-family:"Space Mono",monospace;font-size:0.64rem;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Space Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 5vw;border-top:3px solid var(--tz-line);font-family:"Space Mono",monospace;font-size:0.72rem;color:var(--tz-muted);text-align:center}
+@media(max-width:700px){
+  .tz-mascot{display:none}
+  .tz-pack{flex-direction:column;align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">sticky<span class="tz-p">club</span></span>
+  <span class="tz-label">TZ-taste style DNA</span>
+</header>
+
+<section class="tz-hero">
+  <span class="tz-eyebrow">VINYL DECALS · SHIPS WORLDWIDE</span>
+  <h1>Laptops are just <span class="tz-mark">sticker</span> canvases.</h1>
+  <p class="tz-sub">Weatherproof vinyl, designed by working illustrators, priced like candy. Every pack ships with one mystery sticker. No mystery is ever disappointing.</p>
+  <a class="tz-cta" href="#">Shop the drop</a>
+  <svg class="tz-mascot" viewBox="0 0 120 130" role="img" aria-label="Peely, the Sticky Club mascot">
+    <path d="M60 8 C95 8 112 40 108 72 C105 100 84 122 60 122 C36 122 15 100 12 72 C8 40 25 8 60 8 Z" fill="#ff5da2" stroke="#1a1a1a" stroke-width="5"/>
+    <circle cx="44" cy="58" r="9" fill="#fff6e9" stroke="#1a1a1a" stroke-width="4"/>
+    <circle cx="76" cy="58" r="9" fill="#fff6e9" stroke="#1a1a1a" stroke-width="4"/>
+    <circle cx="46" cy="60" r="3.5" fill="#1a1a1a"/>
+    <circle cx="74" cy="60" r="3.5" fill="#1a1a1a"/>
+    <path d="M44 88 Q60 100 76 88" fill="none" stroke="#1a1a1a" stroke-width="5" stroke-linecap="round"/>
+    <text x="60" y="118" text-anchor="middle" font-family="Space Mono, monospace" font-size="11" font-weight="700" fill="#1a1a1a">PEELY</text>
+  </svg>
+</section>
+
+<section class="tz-content">
+  <h2 class="tz-sect">This week's <span class="tz-u">packs</span></h2>
+  <ul class="tz-packs">
+    <li class="tz-pack">
+      <span class="tz-badge">NEW</span>
+      <div><div class="tz-pname">First Drop</div><div class="tz-pdesc">12 stickers · matte finish · the classics</div></div>
+      <span class="tz-price">$9</span>
+    </li>
+    <li class="tz-pack">
+      <span class="tz-badge tz-b2">HOT</span>
+      <div><div class="tz-pname">Gloss Bomb</div><div class="tz-pdesc">24 stickers · high gloss · maximum shine</div></div>
+      <span class="tz-price">$14</span>
+    </li>
+    <li class="tz-pack">
+      <div><div class="tz-pname">Holo Set</div><div class="tz-pdesc">8 stickers · holographic · catches every light</div></div>
+      <span class="tz-price">$12</span>
+    </li>
+  </ul>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#fff6e9"></span><span class="tz-name">bg</span><span class="tz-hex">#fff6e9</span></li>
+    <li><span class="tz-chip" style="background:#ffffff"></span><span class="tz-name">surface</span><span class="tz-hex">#ffffff</span></li>
+    <li><span class="tz-chip" style="background:#1a1a1a"></span><span class="tz-name">ink</span><span class="tz-hex">#1a1a1a</span></li>
+    <li><span class="tz-chip" style="background:#6b6259"></span><span class="tz-name">muted</span><span class="tz-hex">#6b6259</span></li>
+    <li><span class="tz-chip" style="background:#ff5da2"></span><span class="tz-name">accent</span><span class="tz-hex">#ff5da2</span></li>
+    <li><span class="tz-chip" style="background:#1a1a1a"></span><span class="tz-name">line</span><span class="tz-hex">#1a1a1a</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
