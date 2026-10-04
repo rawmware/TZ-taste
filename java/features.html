@@ -1,0 +1,156 @@
+<!--tz-meta {"id":"java-features","title":"Brutalist Bento Features (Java/Thymeleaf)","category":"Java","file":"java/features.html","tags":["java","thymeleaf","features","bento"],"description":"Asymmetric industrial bento for a site builder: one huge type tile, staggered feature tiles with hard offset shadows and mono spec labels.","dnas":["industrial-brutalist"]} -->
+<!--
+  Design read: a site builder for people who build with their hands — a parts yard, not a showroom.
+  Distinctive choice: one oversized type-only tile dominates the bento; everything else is spare parts.
+  Dials: VARIANCE 8 / MOTION 2 / DENSITY 7.
+  Route: GET /features -> FeaturesController#index (model: features)
+-->
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title th:text="${features.title}">Slab — What it does</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --tz-bg: #d8d8d4;
+      --tz-ink: #141412;
+      --tz-accent: #ff4d00;
+      --tz-surface: #c9c9c4;
+      --tz-muted: #5c5c58;
+      --tz-line: #141412;
+      --tz-font-display: "Anton", sans-serif;
+      --tz-font-body: "Space Grotesk", sans-serif;
+      --tz-font-mono: "JetBrains Mono", monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { background: var(--tz-bg); color: var(--tz-ink); font-family: var(--tz-font-body); }
+    .tz-wrap { max-width: 1280px; margin: 0 auto; padding: clamp(56px, 8vw, 110px) clamp(20px, 4vw, 48px); }
+    .tz-head { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; flex-wrap: wrap; margin-bottom: clamp(32px, 5vw, 64px); }
+    .tz-title {
+      font-family: var(--tz-font-display);
+      font-size: clamp(44px, 6.5vw, 104px);
+      line-height: 0.95;
+      text-transform: uppercase;
+      margin: 0;
+      letter-spacing: 0.01em;
+    }
+    .tz-title em { font-style: normal; color: var(--tz-accent); }
+    .tz-index { font-family: var(--tz-font-mono); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tz-muted); margin: 0; }
+    .tz-bento {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-auto-rows: minmax(150px, auto);
+      gap: 16px;
+    }
+    .tz-tile {
+      border: 3px solid var(--tz-line);
+      background: var(--tz-bg);
+      padding: 24px;
+      box-shadow: 7px 7px 0 var(--tz-line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 200px;
+    }
+    .tz-tile--hero {
+      grid-column: span 4;
+      grid-row: span 2;
+      background: var(--tz-ink);
+      color: var(--tz-bg);
+      box-shadow: 10px 10px 0 var(--tz-accent);
+      justify-content: center;
+    }
+    .tz-tile--hero .tz-big {
+      font-family: var(--tz-font-display);
+      font-size: clamp(40px, 5vw, 76px);
+      line-height: 1;
+      text-transform: uppercase;
+      margin: 0;
+    }
+    .tz-tile--hero .tz-big .tz-accent-word { color: var(--tz-accent); }
+    .tz-tile--hero p { font-family: var(--tz-font-mono); font-size: 14px; line-height: 1.7; color: var(--tz-bg); opacity: 0.85; margin: 24px 0 0; max-width: 40ch; }
+    .tz-tile--tall { grid-row: span 2; }
+    .tz-tile--wide { grid-column: span 2; }
+    .tz-tile--accent { background: var(--tz-accent); color: var(--tz-ink); }
+    .tz-tile--surface { background: var(--tz-surface); }
+    .tz-spec { font-family: var(--tz-font-mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--tz-muted); margin: 0; }
+    .tz-tile--hero .tz-spec { color: var(--tz-accent); }
+    .tz-tile--accent .tz-spec { color: var(--tz-ink); }
+    .tz-tile h3 { font-family: var(--tz-font-display); font-size: clamp(22px, 2.2vw, 32px); text-transform: uppercase; line-height: 1; margin: 0; letter-spacing: 0.01em; }
+    .tz-tile p { font-size: 15px; line-height: 1.6; margin: 0; max-width: 44ch; }
+    .tz-tile svg { width: 30px; height: 30px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: square; }
+    .tz-tile--accent svg { stroke: var(--tz-ink); }
+    @media (max-width: 960px) {
+      .tz-bento { grid-template-columns: repeat(2, 1fr); }
+      .tz-tile--hero { grid-column: span 2; }
+      .tz-tile--wide, .tz-tile--tall { grid-column: span 1; grid-row: auto; }
+    }
+    @media (max-width: 560px) {
+      .tz-bento { grid-template-columns: 1fr; }
+      .tz-tile--hero { grid-column: span 1; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <div class="tz-wrap">
+    <header class="tz-head">
+      <h1 class="tz-title" th:text="${features.title}">What Slab <em>does</em></h1>
+      <p class="tz-index" th:text="${features.index}">Field manual · 06 units</p>
+    </header>
+    <section class="tz-bento" aria-label="Features">
+      <article class="tz-tile tz-tile--hero">
+        <p class="tz-spec" th:text="${features.heroSpec}">Unit 01 · The whole point</p>
+        <h2 class="tz-big"><span th:text="${features.heroClaimA}">Publish from</span> <span class="tz-accent-word" th:text="${features.heroClaimB}">a text file.</span></h2>
+        <p th:text="${features.heroNote}">One folder, one command, one URL. Slab turns a directory of Markdown into a fast static site — no dashboard to learn, nothing to babysit when it breaks at 2am.</p>
+      </article>
+      <article class="tz-tile tz-tile--tall" th:each="f : ${features.items}">
+        <p class="tz-spec" th:text="${f.spec}">Unit 02</p>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg>
+        <div>
+          <h3 th:text="${f.name}">Instant preview</h3>
+          <p th:text="${f.body}">Save a file and the browser refreshes before your finger leaves the key.</p>
+        </div>
+      </article>
+      <article class="tz-tile" th:if="${#lists.isEmpty(features.items)}">
+        <p class="tz-spec">Unit 03</p>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 9v11"/></svg>
+        <div>
+          <h3>Plain folders</h3>
+          <p>No database, no lock-in. Your site is files you can read.</p>
+        </div>
+      </article>
+      <article class="tz-tile tz-tile--accent tz-tile--wide" th:if="${#lists.isEmpty(features.items)}">
+        <p class="tz-spec">Unit 04</p>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M3 12h18"/></svg>
+        <div>
+          <h3>Free until it pays</h3>
+          <p>Unlimited sites on your machine. Pay only when you publish to our edge — $6 a month, flat.</p>
+        </div>
+      </article>
+      <article class="tz-tile tz-tile--surface" th:if="${#lists.isEmpty(features.items)}">
+        <p class="tz-spec">Unit 05</p>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8v5l3 3"/><circle cx="12" cy="12" r="9"/></svg>
+        <div>
+          <h3>90-second deploys</h3>
+          <p>From commit to live URL faster than your coffee order.</p>
+        </div>
+      </article>
+      <article class="tz-tile" th:if="${#lists.isEmpty(features.items)}">
+        <p class="tz-spec">Unit 06</p>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        <div>
+          <h3>Own the output</h3>
+          <p>Cancel anytime; the HTML stays yours. Export is one command.</p>
+        </div>
+      </article>
+    </section>
+  </div>
+</body>
+</html>
