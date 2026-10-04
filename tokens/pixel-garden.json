@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-pixel-garden",
+  "title": "Pixel Garden design tokens",
+  "category": "Tokens",
+  "file": "tokens/pixel-garden.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "pixel-garden"
+  ],
+  "description": "W3C-format design tokens for the Pixel Garden DNA.",
+  "dnas": [
+   "pixel-garden"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#20291d",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#f5efdc",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#ffc93c",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#8a9a7b",
+   "type": "color"
+  },
+  "line": {
+   "value": "#7fc24d55",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#20291d",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Press Start 2P",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "DotGothic16",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "VT323",
+   "type": "fontFamily"
+  }
+ }
+}
