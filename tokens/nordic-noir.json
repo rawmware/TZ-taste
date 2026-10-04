@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-nordic-noir",
+  "title": "Nordic Noir design tokens",
+  "category": "Tokens",
+  "file": "tokens/nordic-noir.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "nordic-noir"
+  ],
+  "description": "W3C-format design tokens for the Nordic Noir style DNA.",
+  "dnas": [
+   "nordic-noir"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#dfe3e6",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#131a24",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#3f647f",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#7d8994",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#b9c1c9",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Bebas Neue",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "DM Sans",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "IBM Plex Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "nordic-noir",
+  "name": "Nordic Noir",
+  "vibe": "Overcast crime scene at noon. Desaturated slate, hard facts, no comfort."
+ }
+}
