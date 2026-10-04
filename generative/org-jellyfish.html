@@ -1,0 +1,138 @@
+<!--tz-meta {"id":"gen-org-jellyfish","title":"Jellyfish Drift","category":"Generative","file":"generative/org-jellyfish.html","tags":["jellyfish","drift","generative"],"description":"Pulsing bells with phase-lagged tentacles drifting on slow currents.","dnas":["arctic-field"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jellyfish Drift — TZ-taste</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#07100e;color:#dfeee7;font-family:"Avenir Next","Segoe UI",Verdana,sans-serif;-webkit-font-smoothing:antialiased}
+.tz-wrap{max-width:760px;margin:0 auto;padding:20px 16px 32px}
+.tz-kicker{font-size:11px;letter-spacing:.22em;text-transform:uppercase;opacity:.65;margin:0 0 8px}
+.tz-title{font-family:Georgia,"Iowan Old Style",serif;font-weight:600;font-size:30px;margin:0 0 8px;letter-spacing:.01em}
+.tz-caption{font-size:14px;line-height:1.55;opacity:.78;margin:0 0 16px;max-width:58ch}
+.tz-controls{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+.tz-btn{appearance:none;border:1px solid currentColor;background:transparent;color:inherit;font:inherit;font-size:13px;padding:8px 14px;border-radius:999px;cursor:pointer;opacity:.9}
+.tz-btn:hover{opacity:1;background:rgba(223,238,231,.08)}
+.tz-btn:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.tz-canvas{display:block;width:100%;height:70vh;min-height:340px;border-radius:14px;border:1px solid rgba(223,238,231,.18);background:#07100e}
+.tz-foot{font-size:12px;opacity:.55;margin:12px 0 0;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="tz-wrap">
+<header>
+<p class="tz-kicker">TZ-taste &middot; Generative</p>
+<h1 class="tz-title">Jellyfish Drift</h1>
+<p class="tz-caption">Pulsing bells with phase-lagged tentacles drift on slow currents &mdash; each contraction pushes the bell upward, just like the real thing.</p>
+</header>
+<div class="tz-controls">
+<button class="tz-btn" type="button" id="tz-seed">New seed</button>
+<button class="tz-btn" type="button" id="tz-pause">Pause</button>
+<button class="tz-btn" type="button" id="tz-clear">Clear</button>
+</div>
+<canvas class="tz-canvas" id="tz-cv"></canvas>
+<p class="tz-foot">Parametric jellies: sine pulse drives bell squash, thrust, and tentacle phase lag. Seeded with mulberry32.</p>
+</div>
+<script>
+(function(){
+"use strict";
+var cv=document.getElementById('tz-cv'),ctx=cv.getContext('2d');
+var seedB=document.getElementById('tz-seed'),pauseB=document.getElementById('tz-pause'),clearB=document.getElementById('tz-clear');
+var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var DPR=Math.min(window.devicePixelRatio||1,2),W=0,H=0;
+var jellies=[],t=0;
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+var rng=mulberry32((Math.random()*4294967296)|0);
+function init(){
+  jellies=[];t=0;
+  for(var i=0;i<5;i++){
+    jellies.push({
+      x:rng()*W,y:rng()*H,
+      size:26+rng()*30,
+      phase:rng()*6.283,speed:1.4+rng()*1.2,
+      drift:(rng()-0.5)*14,
+      tent:6+((rng()*4)|0),
+      glow:rng()<0.5
+    });
+  }
+}
+function drawJelly(j){
+  var pulse=Math.sin(t*j.speed+j.phase);
+  var sq=1+0.28*pulse;
+  var s=j.size;
+  ctx.save();
+  ctx.translate(j.x,j.y);
+  ctx.shadowBlur=j.glow?22:0;
+  ctx.shadowColor='rgba(126,240,201,.8)';
+  ctx.beginPath();
+  ctx.moveTo(-s/sq,0);
+  ctx.quadraticCurveTo(-s/sq,-s*1.15/sq,0,-s*1.2/sq);
+  ctx.quadraticCurveTo(s/sq,-s*1.15/sq,s/sq,0);
+  ctx.quadraticCurveTo(s*0.5/sq,-s*0.12,sq*0,-s*0.06/sq);
+  ctx.quadraticCurveTo(-s*0.5/sq,-s*0.12,-s/sq,0);
+  ctx.closePath();
+  ctx.fillStyle='rgba(126,240,201,.22)';ctx.fill();
+  ctx.shadowBlur=0;
+  ctx.strokeStyle='rgba(126,240,201,.85)';ctx.lineWidth=1.6;ctx.stroke();
+  ctx.strokeStyle='rgba(159,240,208,.5)';ctx.lineWidth=1.1;
+  for(var i=0;i<j.tent;i++){
+    var fx=-s/sq+(2*s/sq)*(i/(j.tent-1));
+    ctx.beginPath();ctx.moveTo(fx,0);
+    var px=fx,py=0;
+    for(var seg=1;seg<=8;seg++){
+      py+=s*0.28;
+      px=fx+Math.sin(t*j.speed*0.9+j.phase-seg*0.55+i)*s*0.12*seg/4;
+      ctx.lineTo(px,py);
+    }
+    ctx.stroke();
+  }
+  ctx.strokeStyle='rgba(255,209,102,.55)';ctx.lineWidth=2;
+  for(var k2=0;k2<3;k2++){
+    var ox=(k2-1)*s*0.22/sq;
+    ctx.beginPath();ctx.moveTo(ox,0);
+    ctx.quadraticCurveTo(ox+Math.sin(t*2+j.phase+k2)*8,s*0.5,ox*1.4,s*0.75);
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+function draw(){
+  ctx.fillStyle='#07100e';ctx.fillRect(0,0,W,H);
+  ctx.fillStyle='rgba(223,238,231,.35)';
+  for(var m=0;m<40;m++){
+    var sx=(m*97.3)%W,sy=(m*57.7)%H;
+    ctx.fillRect(sx,sy,1,1);
+  }
+  for(var i=0;i<jellies.length;i++)drawJelly(jellies[i]);
+}
+function step(dt){
+  t+=dt;
+  for(var i=0;i<jellies.length;i++){
+    var j=jellies[i];
+    var pulse=Math.sin(t*j.speed+j.phase);
+    j.y-=dt*(10+18*Math.max(0,pulse));
+    j.x+=Math.sin(t*0.5+j.phase)*j.drift*dt;
+    if(j.y<-j.size*2){j.y=H+j.size;j.x=rng()*W;}
+    if(j.x<-60)j.x=W+40;if(j.x>W+60)j.x=-40;
+  }
+}
+var raf=0,paused=false,last=0;
+function loop(ts){if(paused)return;var dt=Math.min(0.05,(ts-last)/1000||0.016);last=ts;step(dt);draw();raf=requestAnimationFrame(loop);}
+function resize(){
+  var r=cv.getBoundingClientRect();
+  W=Math.max(1,Math.round(r.width));H=Math.max(1,Math.round(r.height));
+  cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR);
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  init();
+  if(reduced){t=2.2;draw();}else{cancelAnimationFrame(raf);paused=false;pauseB.textContent='Pause';last=performance.now();loop(last);}
+}
+seedB.addEventListener('click',function(){rng=mulberry32((Math.random()*4294967296)|0);cancelAnimationFrame(raf);paused=false;pauseB.textContent='Pause';init();if(reduced){t=2.2;draw();}else{last=performance.now();loop(last);}});
+pauseB.addEventListener('click',function(){if(reduced)return;paused=!paused;pauseB.textContent=paused?'Resume':'Pause';if(!paused){last=performance.now();loop(last);}});
+clearB.addEventListener('click',function(){cancelAnimationFrame(raf);paused=true;pauseB.textContent='Resume';ctx.fillStyle='#07100e';ctx.fillRect(0,0,W,H);});
+window.addEventListener('resize',function(){cancelAnimationFrame(raf);resize();});
+resize();
+})();
+</script>
+</body>
+</html>
