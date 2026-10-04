@@ -1,0 +1,402 @@
+<!--tz-meta {"id":"architecture","title":"Studio Prisma — Architecture Studio","category":"Template","file":"templates/architecture.html","tags":["architecture","studio","portfolio"],"description":"Bauhaus-primary architecture studio with strict grid and geometric ornament.","dnas":["bauhaus-primary"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Prisma — architecture, reduced to essentials</title>
+<meta name="description" content="Studio Prisma is a 24-person architecture studio in Rotterdam. Cultural buildings, housing, and workplaces — form follows function, then function gets out of the way.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* DNA: bauhaus-primary — paper white, ink black, red primary; blue/yellow as geometric ornament only */
+:root{
+  --tz-bg:#f7f5f0; --tz-surface:#efebe1; --tz-ink:#141414; --tz-muted:#5f5b54;
+  --tz-accent:#d9261c; --tz-blue:#1e4fd8; --tz-yellow:#f2b705; --tz-line:#141414;
+  --tz-display:'Archivo Black',sans-serif; --tz-body:'Archivo',sans-serif; --tz-mono:'Space Mono',monospace;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:var(--tz-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+::selection{background:var(--tz-accent);color:#fff}
+a{color:inherit}
+.tz-wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+.tz-mono{font-family:var(--tz-mono)}
+/* nav: strict */
+.tz-nav{display:grid;grid-template-columns:auto 1fr auto;gap:32px;align-items:center;padding:20px 0;border-bottom:3px solid var(--tz-line)}
+.tz-brand{font-family:var(--tz-display);font-size:20px;text-decoration:none;letter-spacing:.02em}
+.tz-brand i{font-style:normal;color:var(--tz-accent)}
+.tz-navlinks{display:flex;gap:28px;justify-content:center;font-family:var(--tz-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.tz-navlinks a{text-decoration:none}
+.tz-navlinks a:hover{color:var(--tz-accent)}
+.tz-nav .tz-sq{width:18px;height:18px;background:var(--tz-accent)}
+/* hero: geometric composition + grid type */
+.tz-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:0;border-bottom:3px solid var(--tz-line);min-height:78vh}
+.tz-hero-left{padding:88px 64px 88px 0;display:flex;flex-direction:column;justify-content:center;border-right:3px solid var(--tz-line)}
+.tz-hero-left .tz-tag{font-family:var(--tz-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:28px;display:flex;align-items:center;gap:12px}
+.tz-hero-left .tz-tag::before{content:"";width:34px;height:10px;background:var(--tz-accent)}
+.tz-hero h1{font-family:var(--tz-display);font-size:clamp(52px,6.4vw,100px);line-height:.96;letter-spacing:-.01em;text-transform:uppercase}
+.tz-hero h1 .tz-red{color:var(--tz-accent)}
+.tz-hero-left p{font-size:19px;color:var(--tz-muted);max-width:44ch;margin:28px 0 36px}
+.tz-btn{display:inline-block;font-family:var(--tz-mono);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;background:var(--tz-ink);color:var(--tz-bg);padding:17px 34px;transition:background .25s,transform .25s var(--tz-ease)}
+.tz-btn:hover{background:var(--tz-accent);transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--tz-ink)}
+/* geometric stage */
+.tz-stage{position:relative;overflow:hidden;background:var(--tz-surface);display:flex;align-items:center;justify-content:center;min-height:420px}
+.tz-shape{position:absolute;transition:transform 1.2s var(--tz-ease)}
+.tz-circle{width:280px;height:280px;border-radius:50%;background:var(--tz-accent);left:12%;top:14%}
+.tz-square{width:200px;height:200px;background:var(--tz-blue);right:16%;top:44%}
+.tz-tri{width:0;height:0;border-left:110px solid transparent;border-right:110px solid transparent;border-bottom:190px solid var(--tz-yellow);left:34%;bottom:6%}
+.tz-stage-cap{position:absolute;bottom:24px;left:32px;font-family:var(--tz-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.tz-stage:hover .tz-circle{transform:translate(30px,20px)}
+.tz-stage:hover .tz-square{transform:rotate(18deg) translate(-20px,-10px)}
+.tz-stage:hover .tz-tri{transform:translateY(-24px)}
+/* marquee divider */
+.tz-rule{background:var(--tz-ink);color:var(--tz-bg);overflow:hidden;white-space:nowrap;padding:14px 0;border-bottom:3px solid var(--tz-line)}
+.tz-rule-inner{display:inline-block;animation:tz-slide 22s linear infinite;font-family:var(--tz-display);font-size:20px;letter-spacing:.06em;text-transform:uppercase}
+.tz-rule-inner span{margin:0 26px}
+.tz-rule-inner i{font-style:normal;color:var(--tz-yellow)}
+@keyframes tz-slide{to{transform:translateX(-50%)}}
+/* sections */
+.tz-section{padding:104px 0}
+.tz-sec-head{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:end;margin-bottom:60px}
+.tz-sec-num{font-family:var(--tz-display);font-size:88px;line-height:.8;color:var(--tz-accent)}
+.tz-sec-head h2{font-family:var(--tz-display);font-size:clamp(36px,4.4vw,62px);text-transform:uppercase;line-height:1;letter-spacing:-.01em}
+/* manifesto: big statement + 2-col */
+.tz-mani{font-family:var(--tz-display);font-size:clamp(28px,3.4vw,48px);line-height:1.2;text-transform:uppercase;max-width:20ch;margin-bottom:48px}
+.tz-mani .tz-hl{background:var(--tz-yellow);padding:0 8px}
+.tz-cols{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.tz-cols p{color:var(--tz-muted);font-size:18px;margin-bottom:18px}
+.tz-cols p strong{color:var(--tz-ink)}
+/* projects: numbered index rows */
+.tz-proj{display:grid;grid-template-columns:80px 1fr auto auto;gap:32px;align-items:center;padding:28px 0;border-top:2px solid var(--tz-line);text-decoration:none;transition:background .25s}
+.tz-proj:last-child{border-bottom:2px solid var(--tz-line)}
+.tz-proj:hover{background:var(--tz-surface)}
+.tz-proj .tz-n{font-family:var(--tz-mono);font-size:13px;color:var(--tz-accent)}
+.tz-proj h3{font-family:var(--tz-display);font-size:clamp(24px,2.6vw,38px);text-transform:uppercase;line-height:1}
+.tz-proj .tz-meta{font-family:var(--tz-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--tz-muted);text-align:right}
+.tz-proj .tz-year{font-family:var(--tz-display);font-size:30px;color:var(--tz-ink)}
+.tz-proj .tz-bar{height:8px;background:var(--tz-line);margin-top:14px;transform-origin:left;transform:scaleX(0);transition:transform .4s var(--tz-ease)}
+.tz-proj:hover .tz-bar{transform:scaleX(1);background:var(--tz-accent)}
+.tz-proj>div:nth-child(2){min-width:0}
+/* stats band */
+.tz-stats{background:var(--tz-ink);color:var(--tz-bg);display:grid;grid-template-columns:repeat(4,1fr);border-top:3px solid var(--tz-line);border-bottom:3px solid var(--tz-line)}
+.tz-stat{padding:56px 40px;border-right:1px solid rgba(247,245,240,.2)}
+.tz-stat:last-child{border-right:none}
+.tz-stat b{display:block;font-family:var(--tz-display);font-size:56px;line-height:1;margin-bottom:10px}
+.tz-stat:nth-child(1) b{color:var(--tz-accent)}
+.tz-stat:nth-child(2) b{color:var(--tz-yellow)}
+.tz-stat:nth-child(3) b{color:var(--tz-blue)}
+.tz-stat span{font-family:var(--tz-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#b9b4a8}
+/* studio */
+.tz-studio{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.tz-studio p{color:var(--tz-muted);font-size:18px;margin-bottom:18px}
+.tz-team{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--tz-line);border:2px solid var(--tz-line)}
+.tz-member{background:var(--tz-bg);aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;transition:background .25s}
+.tz-member:hover{background:var(--tz-yellow)}
+.tz-member b{font-family:var(--tz-display);font-size:30px}
+.tz-member span{font-family:var(--tz-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--tz-muted)}
+/* contact */
+.tz-contact{border-top:3px solid var(--tz-line);padding:104px 0;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center}
+.tz-contact h2{font-family:var(--tz-display);font-size:clamp(40px,5vw,76px);text-transform:uppercase;line-height:.98}
+.tz-contact h2 .tz-red{color:var(--tz-accent)}
+.tz-contact p{color:var(--tz-muted);font-size:19px;margin-top:20px;max-width:46ch}
+/* footer */
+.tz-footer{border-top:3px solid var(--tz-line);padding:48px 0 32px}
+.tz-footer-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;font-family:var(--tz-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-footer-row a{text-decoration:none;margin-left:22px}
+.tz-footer-row a:hover{color:var(--tz-accent)}
+.tz-reveal{opacity:0;transform:translateY(22px);transition:opacity .6s var(--tz-ease),transform .6s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}.tz-rule-inner{animation:none}.tz-reveal{opacity:1;transform:none;transition:none}*{transition:none !important}
+}
+@media(max-width:960px){
+  .tz-hero{grid-template-columns:1fr;min-height:0}
+  .tz-hero-left{border-right:none;border-bottom:3px solid var(--tz-line);padding:64px 0}
+  .tz-stage{min-height:340px}
+  .tz-cols{grid-template-columns:1fr}
+  .tz-stats{grid-template-columns:1fr 1fr}
+  .tz-stat:nth-child(2){border-right:none}
+  .tz-stat{border-bottom:1px solid rgba(247,245,240,.2)}
+  .tz-studio{grid-template-columns:1fr}
+  .tz-contact{grid-template-columns:1fr}
+  .tz-navlinks{display:none}
+  .tz-proj{grid-template-columns:52px 1fr auto}
+  .tz-proj .tz-year{display:none}
+}
+@media(max-width:600px){
+  .tz-section{padding:72px 0}
+  .tz-team{grid-template-columns:repeat(2,1fr)}
+  .tz-stats{grid-template-columns:1fr}
+  .tz-stat{border-right:none}
+  .tz-sec-num{font-size:60px}
+}
+</style>
+</head>
+<body>
+<!-- DNA: bauhaus-primary · design read: a Rotterdam studio page built like a Bauhaus poster — strict grid, one red, geometry as ornament · dials V6/M4/D5 · one weird thing: a hover-reactive geometric stage (circle/square/triangle) and projects filed as a numbered index -->
+<header class="tz-wrap">
+  <nav class="tz-nav" aria-label="Main">
+    <a class="tz-brand" href="#">STUDIO<i>PRISMA</i></a>
+    <div class="tz-navlinks">
+      <a href="#manifesto">Manifesto</a><a href="#work">Work</a><a href="#studio">Studio</a><a href="#contact">Contact</a>
+    </div>
+    <div class="tz-sq" aria-hidden="true"></div>
+  </nav>
+</header>
+
+<main>
+  <section class="tz-hero">
+    <div class="tz-wrap" style="display:contents">
+      <div class="tz-hero-left" style="padding-left:32px;max-width:700px">
+        <span class="tz-tag">Rotterdam · Est. 2009 · 24 architects</span>
+        <h1>Form follows function. Then <span class="tz-red">function gets out of the way.</span></h1>
+        <p>Studio Prisma designs cultural buildings, housing, and workplaces across the Netherlands and Belgium. We believe a building should be readable at a glance and rewarding for fifty years.</p>
+        <div><a class="tz-btn" href="#work">See the work</a></div>
+      </div>
+      <div class="tz-stage" aria-hidden="true">
+        <div class="tz-shape tz-circle"></div>
+        <div class="tz-shape tz-square"></div>
+        <div class="tz-shape tz-tri"></div>
+        <span class="tz-stage-cap">Composition nº 7 — hover to rearrange</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="tz-rule" aria-hidden="true">
+    <div class="tz-rule-inner">
+      <span>Culture</span><i>●</i><span>Housing</span><i>●</i><span>Workplace</span><i>●</i><span>Urban</span><i>●</i><span>Culture</span><i>●</i><span>Housing</span><i>●</i><span>Workplace</span><i>●</i><span>Urban</span><i>●</i>
+    </div>
+  </div>
+
+  <section class="tz-section" id="manifesto">
+    <div class="tz-wrap">
+      <div class="tz-sec-head"><span class="tz-sec-num">01</span><h2>Manifesto</h2></div>
+      <p class="tz-mani tz-reveal">We design buildings that <span class="tz-hl">explain themselves</span> — no decoration, no apology.</p>
+      <div class="tz-cols">
+        <p class="tz-reveal"><strong>Every line must earn its place.</strong> If a detail doesn't serve structure, light, or the people inside, it doesn't survive the review. Our drawings are famous for what isn't in them.</p>
+        <p class="tz-reveal"><strong>Buildings are slow media.</strong> A poster lasts a season; a housing block lasts generations. We design for the tenth year, not the opening photo — materials that age honestly, plans that adapt.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="work" style="background:var(--tz-surface);border-top:3px solid var(--tz-line);border-bottom:3px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-sec-head"><span class="tz-sec-num">02</span><h2>Selected work</h2></div>
+      <a class="tz-proj tz-reveal" href="#contact">
+        <span class="tz-n">P—01</span>
+        <div><h3>Meridiaan Library</h3><div class="tz-bar"></div></div>
+        <div class="tz-meta">Cultural · Utrecht<br>14,200 m²</div>
+        <span class="tz-year">2025</span>
+      </a>
+      <a class="tz-proj tz-reveal" href="#contact">
+        <span class="tz-n">P—02</span>
+        <div><h3>Blok 7 Housing</h3><div class="tz-bar"></div></div>
+        <div class="tz-meta">Housing · 96 units · Amsterdam</div>
+        <span class="tz-year">2024</span>
+      </a>
+      <a class="tz-proj tz-reveal" href="#contact">
+        <span class="tz-n">P—03</span>
+        <div><h3>Kantoor Noord</h3><div class="tz-bar"></div></div>
+        <div class="tz-meta">Workplace · Rotterdam<br>Timber hybrid</div>
+        <span class="tz-year">2023</span>
+      </a>
+      <a class="tz-proj tz-reveal" href="#contact">
+        <span class="tz-n">P—04</span>
+        <div><h3>Halteplein Market Hall</h3><div class="tz-bar"></div></div>
+        <div class="tz-meta">Urban · Ghent<br>Public commission</div>
+        <span class="tz-year">2022</span>
+      </a>
+      <a class="tz-proj tz-reveal" href="#contact">
+        <span class="tz-n">P—05</span>
+        <div><h3>School aan het Water</h3><div class="tz-bar"></div></div>
+        <div class="tz-meta">Education · Dordrecht<br>BREEAM Outstanding</div>
+        <span class="tz-year">2021</span>
+      </a>
+    </div>
+  </section>
+
+  <div class="tz-stats">
+    <div class="tz-stat"><b>38</b><span>Built projects</span></div>
+    <div class="tz-stat"><b>11</b><span>International awards</span></div>
+    <div class="tz-stat"><b>24</b><span>Architects, 9 nationalities</span></div>
+    <div class="tz-stat"><b>0</b><span>Decorative cornices, ever</span></div>
+  </div>
+
+<style>
+.tz-sectors{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--tz-line);border:2px solid var(--tz-line)}
+.tz-sector{background:var(--tz-bg);padding:44px 36px;text-decoration:none;display:block;transition:background .25s}
+.tz-sector:hover{background:var(--tz-yellow)}
+.tz-sector .tz-n{font-family:var(--tz-mono);font-size:12px;color:var(--tz-accent);display:block;margin-bottom:16px}
+.tz-sector h3{font-family:var(--tz-display);font-size:26px;text-transform:uppercase;margin-bottom:12px;line-height:1.1}
+.tz-sector p{color:var(--tz-muted);font-size:15px}
+.tz-awards{width:100%;border-collapse:collapse}
+.tz-awards td{padding:20px 12px;border-bottom:2px solid var(--tz-line);font-size:16px}
+.tz-awards td:first-child{font-family:var(--tz-mono);font-size:13px;color:var(--tz-accent);white-space:nowrap}
+.tz-awards td:last-child{text-align:right;font-family:var(--tz-mono);font-size:13px;color:var(--tz-muted)}
+.tz-awards tr:hover td{background:var(--tz-surface)}
+.tz-press-row{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:0}
+.tz-press-row blockquote{border-top:4px solid var(--tz-ink);padding-top:24px}
+.tz-press-row blockquote p{font-family:var(--tz-display);font-size:24px;line-height:1.35;margin-bottom:16px}
+.tz-press-row blockquote footer{font-family:var(--tz-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tz-muted)}
+@media(max-width:900px){.tz-sectors{grid-template-columns:1fr}.tz-press-row{grid-template-columns:1fr}}
+</style>
+  <section class="tz-section" id="sectors" style="background:var(--tz-surface);border-top:3px solid var(--tz-line);border-bottom:3px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-sec-head"><span class="tz-sec-num">02½</span><h2>What we build</h2></div>
+      <div class="tz-sectors tz-reveal">
+        <a class="tz-sector" href="#contact"><span class="tz-n">S—01</span><h3>Culture</h3><p>Libraries, museums, theaters — buildings the public owns emotionally. Designed for the school trip and the quiet Tuesday alike.</p></a>
+        <a class="tz-sector" href="#contact"><span class="tz-n">S—02</span><h3>Housing</h3><p>From 96-unit blocks to infill courtyards. Light in every room, storage where it matters, no "luxury" that isn't.</p></a>
+        <a class="tz-sector" href="#contact"><span class="tz-n">S—03</span><h3>Workplace</h3><p>Offices people choose to come to: daylight, timber, and plans that survive reorganizations.</p></a>
+        <a class="tz-sector" href="#contact"><span class="tz-n">S—04</span><h3>Education</h3><p>Schools as civic anchors — robust, joyful, and cheap to run for fifty years.</p></a>
+        <a class="tz-sector" href="#contact"><span class="tz-n">S—05</span><h3>Urban</h3><p>Market halls, stations, public realm. The city between the buildings is also architecture.</p></a>
+        <a class="tz-sector" href="#contact"><span class="tz-n">S—06</span><h3>Research</h3><p>Our open detail library and material studies — free, because the industry is better when details are shared.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="awards">
+    <div class="tz-wrap">
+      <div class="tz-sec-head"><span class="tz-sec-num">04</span><h2>Recognition</h2></div>
+      <table class="tz-awards tz-reveal">
+        <tr><td>2026</td><td>EU Mies Award — Finalist, Meridiaan Library</td><td>Barcelona</td></tr>
+        <tr><td>2025</td><td>Dutch Design Award — Best Public Building</td><td>Eindhoven</td></tr>
+        <tr><td>2024</td><td>WAN Residential Award — Gold, Blok 7</td><td>London</td></tr>
+        <tr><td>2023</td><td>BNA Building of the Year — Kantoor Noord</td><td>Amsterdam</td></tr>
+        <tr><td>2022</td><td>Timber Construction Prize — School aan het Water</td><td>Rotterdam</td></tr>
+      </table>
+      <div class="tz-press-row" style="margin-top:64px">
+        <blockquote class="tz-reveal"><p>"Prisma's library doesn't photograph well — it photographs inevitably. The building was already famous before it opened."</p><footer>De Architect, 2025</footer></blockquote>
+        <blockquote class="tz-reveal"><p>"A studio that treats restraint as a material. The most disciplined practice in the Netherlands."</p><footer>El Croquis Nº 212</footer></blockquote>
+      </div>
+    </div>
+  </section>
+
+<style>
+.tz-journal{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.tz-post{border-top:4px solid var(--tz-ink);padding-top:28px;text-decoration:none;display:block}
+.tz-post:hover h3{color:var(--tz-accent)}
+.tz-post .tz-date{font-family:var(--tz-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tz-muted);display:block;margin-bottom:14px}
+.tz-post h3{font-family:var(--tz-display);font-size:30px;text-transform:uppercase;line-height:1.1;margin-bottom:12px;transition:color .25s}
+.tz-post p{color:var(--tz-muted);font-size:16px}
+.tz-jobs{border:3px solid var(--tz-line);padding:64px 56px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;margin-top:64px;background:var(--tz-surface)}
+.tz-jobs h3{font-family:var(--tz-display);font-size:34px;text-transform:uppercase;margin-bottom:14px}
+.tz-jobs p{color:var(--tz-muted);font-size:17px;max-width:52ch;margin-bottom:8px}
+.tz-jobs ul{list-style:none;margin-top:20px}
+.tz-jobs li{font-family:var(--tz-mono);font-size:13px;padding:10px 0;border-bottom:1px solid var(--tz-line)}
+.tz-jobs li b{color:var(--tz-accent)}
+@media(max-width:900px){.tz-journal{grid-template-columns:1fr}.tz-jobs{grid-template-columns:1fr;padding:48px 32px}}
+</style>
+  <section class="tz-section" id="journal" style="background:var(--tz-surface);border-top:3px solid var(--tz-line);border-bottom:3px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-sec-head"><span class="tz-sec-num">05</span><h2>Journal</h2></div>
+      <div class="tz-journal">
+        <a class="tz-post tz-reveal" href="#contact"><span class="tz-date">Sept 2026 · Essay</span><h3>Against the feature wall</h3><p>Why we stopped designing "Instagram moments" into buildings — and what clients actually photograph instead.</p></a>
+        <a class="tz-post tz-reveal" href="#contact"><span class="tz-date">Aug 2026 · Process</span><h3>The long table review</h3><p>How 24 architects argue about geometry every Thursday — and why interns get the same vote as partners.</p></a>
+      </div>
+      <div class="tz-jobs tz-reveal">
+        <div>
+          <h3>Draw with us</h3>
+          <p>We hire slowly and keep people long. Current openings:</p>
+          <ul><li><b>→</b> Project architect, housing — 5+ years, Dutch speaker</li><li><b>→</b> Model maker — full-time, our workshop, your hands</li><li><b>→</b> Internship, spring studio — paid, always paid</li></ul>
+          <p class="tz-mono" style="font-size:12px;color:var(--tz-muted);margin-top:20px;letter-spacing:.06em">NO RECRUITERS · PORTFOLIO PDF, MAX 10 MB · WE REPLY TO EVERY APPLICATION</p>
+          <p class="tz-mono" style="font-size:12px;color:var(--tz-muted);margin-top:10px;letter-spacing:.06em">CURRENT STUDIO: 24 ARCHITECTS · 9 NATIONALITIES · 1 OFFICE DOG (HARVEY, OPINIONATED)</p>
+          <div style="margin-top:28px"><a class="tz-btn" href="mailto:jobs@studioprisma.nl">Send portfolio</a></div>
+          <p class="tz-mono" style="font-size:12px;color:var(--tz-muted);margin-top:20px;letter-spacing:.06em">OPEN STUDIO DAY: FIRST FRIDAY OF EACH MONTH · 4PM · KEILEWEG 14 · ALL WELCOME</p>
+          <p class="tz-mono" style="font-size:12px;color:var(--tz-muted);margin-top:10px;letter-spacing:.06em">DETAIL LIBRARY: 1,200 DETAILS · CC-BY · DOWNLOADED 40,000 TIMES LAST YEAR</p>
+          <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
+            <span class="tz-mono" style="font-size:11px;border:1px solid var(--tz-line);padding:8px 14px;letter-spacing:.08em">TIMBER FIRST</span>
+            <span class="tz-mono" style="font-size:11px;border:1px solid var(--tz-line);padding:8px 14px;letter-spacing:.08em">DAYLIGHT ALWAYS</span>
+            <span class="tz-mono" style="font-size:11px;border:1px solid var(--tz-line);padding:8px 14px;letter-spacing:.08em">NO CORNICES</span>
+          </div>
+        </div>
+        <div><a class="tz-btn" href="mailto:jobs@studioprisma.nl">Apply</a></div>
+      </div>
+    </div>
+  </section>
+
+<style>
+.tz-pubs{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--tz-line)}
+.tz-pub{padding:44px 40px;border-right:1px solid var(--tz-line);text-decoration:none;display:block;transition:background .25s}
+.tz-pub:nth-child(even){border-right:none}
+.tz-pub:nth-child(-n+2){border-bottom:1px solid var(--tz-line)}
+.tz-pub:hover{background:var(--tz-yellow)}
+.tz-pub .tz-where{font-family:var(--tz-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tz-accent);display:block;margin-bottom:14px}
+.tz-pub h3{font-family:var(--tz-display);font-size:26px;text-transform:uppercase;line-height:1.1;margin-bottom:10px}
+.tz-pub p{color:var(--tz-muted);font-size:15px}
+.tz-lecture{margin-top:64px;background:var(--tz-ink);color:var(--tz-bg);padding:64px 56px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center}
+.tz-lecture h3{font-family:var(--tz-display);font-size:clamp(28px,3.4vw,44px);text-transform:uppercase;line-height:1.05;margin-bottom:16px}
+.tz-lecture h3 .tz-red{color:var(--tz-accent)}
+.tz-lecture p{color:#b9b4a8;font-size:17px;max-width:52ch}
+.tz-lecture .tz-btn{background:var(--tz-accent);color:#fff}
+@media(max-width:900px){.tz-pubs{grid-template-columns:1fr}.tz-pub{border-right:none !important;border-bottom:1px solid var(--tz-line)}.tz-pub:last-child{border-bottom:none}.tz-lecture{grid-template-columns:1fr;padding:48px 32px}}
+</style>
+  <section class="tz-section" id="published" style="background:var(--tz-surface);border-top:3px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-sec-head"><span class="tz-sec-num">06</span><h2>Published</h2></div>
+      <div class="tz-pubs tz-reveal">
+        <a class="tz-pub" href="#contact"><span class="tz-where">El Croquis · Nº 212</span><h3>Studio Prisma 2009–2025</h3><p>A 240-page monograph: eleven buildings, forty details, one long argument for restraint.</p></a>
+        <a class="tz-pub" href="#contact"><span class="tz-where">Detail Library · Open</span><h3>1,200 details, free</h3><p>Our construction details, published under CC-BY. Downloaded 40,000 times last year.</p></a>
+        <a class="tz-pub" href="#contact"><span class="tz-where">TU Delft · Spring studio</span><h3>Teaching</h3><p>We run a design studio every spring. The brief is always a real site; the reviews are always honest.</p></a>
+        <a class="tz-pub" href="#contact"><span class="tz-where">Lecture series</span><h3>The Long Table talks</h3><p>Monthly public lectures in our Rotterdam workshop. Free, standing room, good arguments.</p></a>
+      </div>
+      <div class="tz-lecture tz-reveal">
+        <div>
+          <h3>Buildings are <span class="tz-red">slow media.</span> Lectures are fast.</h3>
+          <p>Mara Voss speaks on restraint, housing, and why your office doesn't need a slide. Book her for your conference — she'll bring the models.</p>
+        </div>
+        <div><a class="tz-btn" href="mailto:studio@studioprisma.nl">Book a lecture</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="studio">
+    <div class="tz-wrap">
+      <div class="tz-sec-head"><span class="tz-sec-num">03</span><h2>The studio</h2></div>
+      <div class="tz-studio">
+        <div class="tz-reveal">
+          <p><strong style="color:var(--tz-ink)">Founded 2009</strong> by Mara Voss and Daan Verhoeven in a former print works in Rotterdam-Noord. We are now 24 architects, 3 model-makers, and 1 very opinionated office dog.</p>
+          <p>We publish our detail library open-source, teach a studio at TU Delft every spring, and review every project at the same long table — partners and interns, one vote each on the geometry.</p>
+          <p style="margin-top:28px"><a class="tz-btn" href="#contact">Work with us</a></p>
+        </div>
+        <div class="tz-team tz-reveal" aria-label="Partners">
+          <div class="tz-member"><b>MV</b><span>Mara Voss · Partner</span></div>
+          <div class="tz-member"><b>DV</b><span>Daan Verhoeven · Partner</span></div>
+          <div class="tz-member"><b>SK</b><span>Sanne Kuiper · Partner</span></div>
+          <div class="tz-member"><b>+21</b><span>Architects &amp; makers</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-contact" id="contact">
+    <div class="tz-wrap" style="display:contents">
+      <div style="padding-left:32px;max-width:760px">
+        <h2>Have a site.<br><span class="tz-red">Need a building.</span></h2>
+        <p>New commissions: <a href="mailto:studio@studioprisma.nl" style="color:var(--tz-accent)">studio@studioprisma.nl</a> · Careers: portfolio PDF, max 10 MB, no cover letters longer than the building. Keileweg 14, Rotterdam.</p>
+      </div>
+      <div style="padding-right:32px"><a class="tz-btn" href="mailto:studio@studioprisma.nl">Start a project</a></div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap tz-footer-row">
+    <span>© 2026 Studio Prisma · KvK 58392014</span>
+    <span><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">Detail library</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els=document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('tz-in')});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(en,i){if(en.isIntersecting){setTimeout(function(){en.target.classList.add('tz-in')},(i%3)*70);io.unobserve(en.target);}})},{threshold:.1});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
