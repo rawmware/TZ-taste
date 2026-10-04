@@ -1,0 +1,40 @@
+<!--tz-meta {"id":"heroes-typed-letter","title":"Typed letter hero","category":"Hero","file":"patterns/heroes-typed-letter.html","tags":["typewriter","letter","serif"],"description":"A typewritten letter on paper — red margin line, struck words, and red-ink corrections.","dnas":["editorial-serif"]} -->
+<section class="tz-letter">
+  <div class="tz-letter-paper">
+    <p class="tz-letter-date">October 3, 2026</p>
+    <p>Dear reader,</p>
+    <p>We started this <del>newsletter</del> <span class="tz-fix">letter</span> because group chats are where good writing goes to die. Once a week, one essay, <span class="tz-fix">no links roundup,</span> no growth hacks.</p>
+    <p>Last Sunday we wrote about the <del>dying</del> <span class="tz-fix">stubborn</span> art of the thank-you note. Four hundred of you wrote back. We read every reply <span class="tz-fix">twice.</span></p>
+    <p>This week: why your bookshelf is a better algorithm than any feed. Sunday, 7 AM, your inbox.</p>
+    <p class="tz-letter-sign">— June</p>
+    <p class="tz-letter-ps">P.S. — Replies go to June, not a team. There is no team.</p>
+    <p class="tz-letter-ps2">Typed on a 1962 Olympia SM7. Mistakes kept in.</p>
+    <p class="tz-letter-ps3">No tracking pixels were harmed.</p>
+    <div class="tz-letter-stamp" aria-hidden="true">First<br>class</div>
+    <a class="tz-letter-cta" href="#subscribe">Get the Sunday letter</a>
+  </div>
+</section>
+<style>
+.tz-letter{--desk:#3d3830;--paper:#f7f2e7;--ink:#2a2620;--red:#c22f1e;
+  background:var(--desk);display:flex;justify-content:center;
+  padding:clamp(56px,8vw,110px) clamp(20px,5vw,60px);
+  font-family:ui-monospace,Menlo,monospace}
+.tz-letter-paper{background:var(--paper);color:var(--ink);max-width:620px;width:100%;
+  padding:clamp(44px,6vw,80px) clamp(32px,6vw,72px) clamp(44px,6vw,80px) clamp(64px,9vw,104px);
+  position:relative;transform:rotate(-.6deg);box-shadow:0 30px 70px #00000066;
+  background-image:linear-gradient(90deg,transparent 44px,#c22f1e55 44px,#c22f1e55 46px,transparent 46px)}
+.tz-letter-paper p{font-size:clamp(14px,2.4vw,16.5px);line-height:2;margin:0 0 1.6em}
+.tz-letter-date{text-align:right;opacity:.65;margin-bottom:2.4em}
+.tz-letter-paper del{color:var(--red);text-decoration-thickness:2px;opacity:.85}
+.tz-fix{color:var(--red);font-weight:700;text-decoration:underline wavy;text-underline-offset:4px}
+.tz-letter-sign{margin-top:2.6em;font-size:1.15em}
+.tz-letter-ps{font-style:italic;opacity:.8}
+.tz-letter-ps2{font-style:italic;opacity:.6}
+.tz-letter-ps3{font-style:italic;opacity:.6;margin-top:-1em}
+.tz-letter-stamp{position:absolute;top:34px;right:36px;transform:rotate(12deg);
+  border:3px double var(--red);color:var(--red);font-weight:700;font-size:13px;
+  text-transform:uppercase;letter-spacing:.1em;text-align:center;padding:10px 14px;line-height:1.4}
+.tz-letter-cta{display:inline-block;margin-top:.6em;color:var(--paper);background:var(--ink);
+  text-decoration:none;font-size:14px;letter-spacing:.1em;text-transform:uppercase;padding:16px 32px}
+.tz-letter-cta:hover{background:var(--red)}
+</style>
