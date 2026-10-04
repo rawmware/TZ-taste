@@ -1,3 +1,4 @@
+<!--tz-meta {"id":"y2k-chrome","name":"Y2K Chrome","vibe":"Liquid metal, iridescent gradients, bubbly type. The future as imagined in 1999.","file":"styles/y2k-chrome.md","tags":["y2k","chrome","iridescent","pop"],"best_for":["beauty","pop culture","music","fashion"],"fonts":{"body":"Space Grotesk","display":"Unbounded","mono":"Space Mono"},"tokens":{"accent":"#b8c5ff","bg":"#0d0d12","ink":"#f4f4f8","line":"#ffffff26","muted":"#6e6e80","surface":"#15151d"},"dials":{"density":4,"motion":8,"variance":8}} -->
 # Y2K Chrome
 
 > Liquid metal, iridescent gradients, bubbly type. The future as imagined in 1999.
