@@ -1,0 +1,40 @@
+<!--tz-meta {"id":"cta-luxe","title":"Champagne CTA","category":"CTA","file":"patterns/cta-luxe.html","tags":["dark","gold"],"description":"Dark champagne CTA with a gold hairline frame and a slow breathing glow.","dnas":["dark-luxe"]} -->
+<section class="tz-cluxe" aria-label="Begin a commission">
+  <div class="tz-frame">
+    <p class="tz-eyebrow">Private commissions</p>
+    <h2>One project at a time,<br>done <em>properly</em>.</h2>
+    <p class="tz-sub">We take on a small number of builds each season so every one gets our full attention. The next opening is this spring.</p>
+    <a class="tz-btn" href="#reserve">Reserve your season</a>
+    <div class="tz-details">
+      <span>Spring season · 3 slots</span><span>Reply within a day</span><span>Fixed quote, in writing</span>
+    </div>
+  </div>
+</section>
+<style>
+.tz-cluxe{--bg:#0e0d0b;--ink:#f2e9d8;--gold:#c9a24a;--soft:#b9ac93;--line:#f2e9d81f;
+  background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;
+  padding:clamp(72px,11vw,150px) clamp(20px,6vw,80px);display:flex;justify-content:center}
+.tz-frame{max-width:720px;text-align:center;border:1px solid var(--gold);
+  padding:clamp(48px,7vw,84px) clamp(28px,6vw,72px);position:relative;
+  animation:tz-glow 5s ease-in-out infinite}
+@keyframes tz-glow{
+  0%,100%{box-shadow:0 0 0 1px #c9a24333,0 0 42px #c9a24222}
+  50%{box-shadow:0 0 0 1px #c9a2455,0 0 78px #c9a2444}}
+.tz-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--gold);margin:0 0 26px}
+.tz-frame h2{margin:0 0 20px;font-size:clamp(34px,5.5vw,64px);line-height:1.1;
+  letter-spacing:-.03em;font-weight:400}
+.tz-frame h2 em{font-style:italic;color:var(--gold)}
+.tz-sub{margin:0 auto 36px;max-width:44ch;font-size:17px;line-height:1.65;color:var(--soft)}
+.tz-btn{display:inline-block;border:1px solid var(--gold);color:var(--gold);
+  text-decoration:none;font-family:Arial,Helvetica,sans-serif;font-size:15px;
+  letter-spacing:.1em;text-transform:uppercase;padding:16px 44px;margin-bottom:40px;
+  transition:background .35s cubic-bezier(.22,1,.36,1),color .35s}
+.tz-btn:hover{background:var(--gold);color:var(--bg)}
+.tz-details{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;
+  border-top:1px solid var(--line);padding-top:22px;
+  font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--soft)}
+@media (prefers-reduced-motion:reduce){
+  .tz-frame{animation:none;box-shadow:0 0 0 1px #c9a2444}.tz-btn{transition:none}}
+</style>
