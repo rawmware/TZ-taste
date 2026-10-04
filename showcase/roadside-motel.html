@@ -1,0 +1,128 @@
+<!--tz-meta {"id":"showcase-roadside-motel","title":"Roadside Motel showcase","category":"Showcase","file":"showcase/roadside-motel.html","tags":["roadside-motel"],"description":"Live demo page for the Roadside Motel style DNA.","dnas":["roadside-motel"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Roadside Motel — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#101c2c; --tz-surface:#1a2a40; --tz-ink:#f3ead8; --tz-muted:#8d99a8;
+  --tz-accent:#e8b53a; --tz-line:#f3ead81f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Karla",sans-serif;font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:filter .4s ease}
+body.tz-full{background:#0a1220}
+body.tz-full .tz-sub,body.tz-full .tz-rail,body.tz-full .tz-desk{opacity:0.55}
+.tz-top{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 4vw;border-bottom:1px solid var(--tz-line)}
+.tz-wordmark{font-family:"Yellowtail",sans-serif;font-size:1.6rem;color:var(--tz-ink)}
+.tz-vacancy{display:flex;align-items:center;gap:0.7rem;font-family:"IBM Plex Mono",monospace;font-size:0.7rem;letter-spacing:0.16em;color:var(--tz-muted);cursor:pointer;background:none;border:none}
+.tz-switch{width:3.2rem;height:1.7rem;border:1px solid var(--tz-line);border-radius:6px;position:relative;background:var(--tz-surface);transition:background .2s ease}
+.tz-switch::after{content:"";position:absolute;top:0.2rem;left:0.25rem;width:1.1rem;height:1.1rem;border-radius:6px;background:var(--tz-accent);transition:left .2s ease}
+.tz-vacancy[aria-pressed="true"] .tz-switch::after{left:1.75rem}
+.tz-hero{padding:6rem 4vw 3.5rem;text-align:center}
+.tz-sign{font-family:"Yellowtail",sans-serif;font-size:clamp(3.4rem,12vw,8rem);line-height:1;color:var(--tz-ink);text-shadow:0 0 22px #e8b53a55;animation:tz-warmup 1s ease-out both}
+@keyframes tz-warmup{0%{opacity:0}30%{opacity:0.4}55%{opacity:0.1}100%{opacity:1}}
+.tz-badge{display:inline-block;margin-top:1.6rem;border:2px solid var(--tz-accent);border-radius:6px;padding:0.55rem 1.6rem;font-family:"IBM Plex Mono",monospace;font-size:0.85rem;font-weight:500;letter-spacing:0.3em;color:var(--tz-accent)}
+.tz-hero h1{font-family:"Karla",sans-serif;font-weight:700;font-size:clamp(1.4rem,3.5vw,2.1rem);margin-top:2.2rem;max-width:30ch;margin-left:auto;margin-right:auto}
+.tz-sub{margin:1.2rem auto 0;font-size:1.02rem;color:var(--tz-muted);max-width:46ch}
+.tz-cta{display:inline-block;margin-top:2.2rem;background:var(--tz-accent);color:#101c2c;font-family:"IBM Plex Mono",monospace;font-size:0.95rem;font-weight:500;letter-spacing:0.08em;text-decoration:none;text-transform:uppercase;padding:1rem 2.2rem;border-radius:6px;transition:opacity .15s ease}
+.tz-cta:hover{opacity:0.88}
+.tz-rail{margin:3.5rem auto 0;max-width:56rem;border-top:1px solid var(--tz-line);border-bottom:1px solid var(--tz-line);padding:1rem 0;font-family:"IBM Plex Mono",monospace;font-size:0.78rem;letter-spacing:0.24em;color:var(--tz-muted)}
+.tz-content{padding:2.5rem 4vw 1rem;max-width:64rem;margin:0 auto}
+.tz-content h2{font-family:"Yellowtail",sans-serif;font-size:clamp(2rem,5vw,3rem);margin-bottom:0.3rem}
+.tz-subhead{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.16em;color:var(--tz-muted);margin-bottom:1.6rem}
+.tz-rooms{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--tz-surface);border:1px solid var(--tz-line);border-radius:6px;overflow:hidden}
+.tz-room{padding:1.8rem;border-bottom:1px solid var(--tz-line)}
+.tz-room:nth-child(odd){border-right:1px solid var(--tz-line)}
+.tz-room:nth-last-child(-n+2){border-bottom:none}
+.tz-room h3{font-family:"IBM Plex Mono",monospace;font-size:0.8rem;font-weight:500;letter-spacing:0.2em;color:var(--tz-ink);margin-bottom:0.6rem}
+.tz-room p{font-family:"IBM Plex Mono",monospace;font-size:0.8rem;color:var(--tz-muted);line-height:1.9}
+.tz-room .tz-rate{color:var(--tz-accent);font-size:1.05rem}
+.tz-desk{margin:2.6rem 0 0;max-width:560px;color:var(--tz-muted)}
+.tz-desk strong{color:var(--tz-ink);font-weight:700}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem;max-width:64rem;margin-left:auto;margin-right:auto}
+.tz-tokens h2{font-family:"Yellowtail",sans-serif;font-size:2.2rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1;border-radius:6px;overflow:hidden}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"IBM Plex Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"IBM Plex Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"IBM Plex Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em;max-width:64rem;margin:0 auto}
+@media(max-width:700px){
+  .tz-hero{padding-top:4rem}
+  .tz-rooms{grid-template-columns:1fr}
+  .tz-room:nth-child(odd){border-right:none}
+  .tz-room:nth-last-child(-n+2){border-bottom:1px solid var(--tz-line)}
+  .tz-room:last-child{border-bottom:none}
+  .tz-vacancy .tz-label{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Starlight</span>
+  <button class="tz-vacancy" id="tz-toggle" aria-pressed="false" aria-label="Toggle vacancy">
+    <span class="tz-label" id="tz-toggle-label">VACANCY</span>
+    <span class="tz-switch" aria-hidden="true"></span>
+  </button>
+</header>
+
+<section class="tz-hero">
+  <p class="tz-sign">Starlight</p>
+  <span class="tz-badge" id="tz-badge">VACANCY</span>
+  <h1>The vacancy light has been on since 1962. It's still on.</h1>
+  <p class="tz-sub">Clean rooms. Honest rates. The ice machine works. The pool is closed &mdash; it has been closed since before you were born, and the sign says so plainly.</p>
+  <a class="tz-cta" id="tz-cta" href="#">See room rates</a>
+  <div class="tz-rail">ICE &middot; COLOR TV &middot; COFFEE 6 AM &middot; CHECKOUT 11 &middot; PETS $10</div>
+</section>
+
+<section class="tz-content">
+  <h2>Room rates</h2>
+  <p class="tz-subhead">CHANGEABLE LETTERS &middot; RATES HONEST SINCE 1962</p>
+  <div class="tz-rooms">
+    <div class="tz-room"><h3>SINGLE &middot; 1 BED</h3><p><span class="tz-rate">$69</span> / NIGHT<br>QUEEN BED &middot; TV &middot; COFFEE</p></div>
+    <div class="tz-room"><h3>DOUBLE &middot; 2 BEDS</h3><p><span class="tz-rate">$89</span> / NIGHT<br>TWO DOUBLES &middot; TV &middot; COFFEE</p></div>
+    <div class="tz-room"><h3>KITCHENETTE</h3><p><span class="tz-rate">$109</span> / NIGHT<br>STOVE &middot; FRIDGE &middot; WEEKLY RATE ASK</p></div>
+    <div class="tz-room"><h3>WEEKLY</h3><p><span class="tz-rate">$399</span> / WEEK<br>ANY ROOM &middot; SAME COFFEE</p></div>
+  </div>
+  <p class="tz-desk"><strong>From the front desk:</strong> checkout is eleven, the coffee is free, and the room by the office has the good shower pressure. Ask for it by name &mdash; it's called Room 6.</p>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#101c2c"></span><span class="tz-name">bg</span><span class="tz-hex">#101c2c</span></li>
+    <li><span class="tz-chip" style="background:#1a2a40"></span><span class="tz-name">surface</span><span class="tz-hex">#1a2a40</span></li>
+    <li><span class="tz-chip" style="background:#f3ead8"></span><span class="tz-name">ink</span><span class="tz-hex">#f3ead8</span></li>
+    <li><span class="tz-chip" style="background:#8d99a8"></span><span class="tz-name">muted</span><span class="tz-hex">#8d99a8</span></li>
+    <li><span class="tz-chip" style="background:#e8b53a"></span><span class="tz-name">accent</span><span class="tz-hex">#e8b53a</span></li>
+    <li><span class="tz-chip" style="background:#f3ead81f"></span><span class="tz-name">line</span><span class="tz-hex">#f3ead81f</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+<script>
+(function(){
+  var btn = document.getElementById('tz-toggle'),
+      label = document.getElementById('tz-toggle-label'),
+      badge = document.getElementById('tz-badge'),
+      cta = document.getElementById('tz-cta');
+  btn.addEventListener('click', function(){
+    var full = btn.getAttribute('aria-pressed') !== 'true';
+    btn.setAttribute('aria-pressed', String(full));
+    document.body.classList.toggle('tz-full', full);
+    label.textContent = full ? 'NO VACANCY' : 'VACANCY';
+    badge.textContent = full ? 'NO VACANCY' : 'VACANCY';
+    cta.textContent = full ? 'Call ahead next time' : 'See room rates';
+  });
+})();
+</script>
+</body>
+</html>
