@@ -1,0 +1,111 @@
+@*tz-meta {"id":"cs-cta","title":"Concrete-poem CTA (Razor)","category":"C#","file":"csharp/Cta.cshtml","tags":["csharp","razor","cta"],"description":"CTA for Inkwell Press, a shared letterpress studio — the headline set as a stepped concrete poem in Major Mono, with a rotated rubber-stamp badge counting the 40 remaining drawers.","dnas":["concrete-poem"]} *@
+@page
+@{
+    ViewData["Title"] = "Inkwell Press — claim a drawer";
+    var bg = "#f7f3ea";
+    var ink = "#1c1a16";
+    var accent = "#8c1f28";
+    var muted = "#8a8072";
+    var line = "#ddd4c2";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>@ViewData["Title"]</title>
+<style>
+  :root{
+    --bg:@bg; --ink:@ink; --accent:@accent; --muted:@muted; --line:@line;
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);
+    font-family:'Space Mono',ui-monospace,Menlo,monospace;line-height:1.6}
+  .tz-wrap{max-width:1200px;margin:0 auto;position:relative;
+    padding:clamp(72px,10vw,160px) clamp(24px,6vw,88px) clamp(72px,9vw,140px)}
+  /* The distinctive choice: the headline is a stepped concrete poem, not a block */
+  .tz-poem{font-family:'Major Mono Display','Space Mono',monospace;
+    font-size:clamp(34px,6.2vw,88px);line-height:1.12;letter-spacing:.01em;
+    margin-bottom:clamp(40px,5vw,72px)}
+  .tz-poem span{display:block}
+  .tz-poem .l2{padding-left:clamp(32px,8vw,140px)}
+  .tz-poem .l3{padding-left:clamp(8px,3vw,48px)}
+  .tz-poem .l3 i{font-style:normal;color:var(--accent)}
+  /* The rubber stamp: rotated, double-bordered, counting down */
+  .tz-stamp{position:absolute;top:clamp(56px,8vw,120px);right:clamp(24px,6vw,88px);
+    width:clamp(120px,15vw,170px);height:clamp(120px,15vw,170px);
+    border:3px double var(--accent);border-radius:50%;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    color:var(--accent);transform:rotate(11deg);text-align:center;
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;line-height:1.7;
+    padding:14px;user-select:none}
+  .tz-stamp b{font-size:30px;letter-spacing:0;display:block}
+  .tz-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);
+    gap:clamp(32px,6vw,100px);align-items:end}
+  .tz-copy p{font-size:clamp(15px,1.7vw,18px);max-width:46ch;margin-bottom:22px}
+  .tz-copy p strong{color:var(--accent);font-weight:700}
+  .tz-facts{border-top:1px solid var(--line);margin-top:34px;padding-top:20px;
+    display:flex;gap:32px;flex-wrap:wrap}
+  .tz-facts div{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .tz-facts div b{display:block;font-size:19px;color:var(--ink);letter-spacing:0;
+    margin-bottom:4px}
+  .tz-join{border:1px solid var(--ink);padding:clamp(28px,4vw,44px)}
+  .tz-join h2{font-family:'Major Mono Display',monospace;font-size:22px;
+    margin-bottom:14px;font-weight:400}
+  .tz-join p{font-size:14.5px;color:var(--muted);margin-bottom:26px;max-width:34ch}
+  .tz-btn{display:block;text-align:center;background:var(--accent);color:var(--bg);
+    text-decoration:none;font-size:14px;letter-spacing:.1em;text-transform:uppercase;
+    padding:19px 20px;transition:transform .3s var(--ease),background .3s var(--ease)}
+  .tz-btn:hover{transform:translateY(-3px);background:var(--ink)}
+  .tz-alt{display:block;text-align:center;margin-top:16px;font-size:14px;
+    color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent);
+    padding-bottom:2px;width:max-content;margin-left:auto;margin-right:auto}
+  .tz-rise{opacity:0;transform:translateY(24px);animation:tz-rise .9s var(--ease) forwards}
+  .tz-rise.d1{animation-delay:.12s}.tz-rise.d2{animation-delay:.26s}
+  @@keyframes tz-rise{to{opacity:1;transform:none}}
+  @@media (max-width:760px){
+    .tz-grid{grid-template-columns:1fr}
+    .tz-stamp{position:static;transform:rotate(11deg);margin-bottom:36px}
+    .tz-poem .l2{padding-left:24px}
+  }
+  @@media (prefers-reduced-motion:reduce){
+    .tz-rise{opacity:1;transform:none;animation:none}
+    *{transition:none !important}
+  }
+</style>
+</head>
+<body>
+  <div class="tz-wrap">
+    <div class="tz-stamp tz-rise" aria-hidden="true">
+      <span>autumn<br/>run</span><b>40</b><span>drawers<br/>left</span>
+    </div>
+
+    <h1 class="tz-poem tz-rise d1" aria-label="Stop designing alone.">
+      <span class="l1">stop</span>
+      <span class="l2">designing</span>
+      <span class="l3">alone<i>.</i></span>
+    </h1>
+
+    <div class="tz-grid tz-rise d2">
+      <div class="tz-copy">
+        <p>Inkwell Press is a shared letterpress studio in an old bindery downtown.
+        Members get <strong>a type drawer, a key, and a shelf in the drying rack</strong> —
+        plus the company of eleven other people who also talk to paper.</p>
+        <p>No classes required, no portfolio review. If you can lift a chase, you belong here.</p>
+        <div class="tz-facts">
+          <div><b>11</b>presses, 1890–1962</div>
+          <div><b>24/7</b>keyholder access</div>
+          <div><b>$90</b>per month</div>
+        </div>
+      </div>
+      <div class="tz-join">
+        <h2>join the press</h2>
+        <p>Forty drawers for the autumn run. When they're gone, the waitlist opens.</p>
+        <a class="tz-btn" href="#claim">Claim a drawer — $90/mo</a>
+        <a class="tz-alt" href="#tour">Tour the studio first</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
