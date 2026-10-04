@@ -1,3 +1,4 @@
+<!--tz-meta {"id":"landing-page","title":"Landing page","file":"prompts/landing-page.md","description":"Full marketing page: hero → proof → pricing → FAQ. The flagship prompt."} -->
 # Prompt: Landing page
 
 Copy everything below the line into your AI builder (v0, Lovable, Replit,
