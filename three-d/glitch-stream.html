@@ -1,0 +1,184 @@
+<!--tz-meta {"id":"glitch-stream","title":"Glitch Stream","category":"3D","file":"three-d/glitch-stream.html","tags":["threejs","glitch"],"description":"Abstract phosphor glyphs rain down through scanlines and RGB-split ghosts.","dnas":["retro-terminal"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Glitch Stream — TZ-taste</title>
+<style>
+  html, body { margin:0; height:100%; overflow:hidden; background:#020604; }
+  #app { position:fixed; inset:0; }
+  #app canvas { display:block; }
+  .scan { position:fixed; inset:0; z-index:4; pointer-events:none;
+    background:repeating-linear-gradient(0deg, rgba(0,0,0,.38) 0 1px, transparent 1px 3px); }
+  .vignette { position:fixed; inset:0; z-index:4; pointer-events:none;
+    background:radial-gradient(ellipse at center, transparent 55%, rgba(0,8,4,.75) 100%); }
+  .scanbar { position:fixed; left:0; right:0; height:90px; z-index:4; pointer-events:none;
+    background:linear-gradient(180deg, transparent, rgba(80,255,140,.10), transparent);
+    animation:sweep 7s linear infinite; }
+  @keyframes sweep { from { top:-90px; } to { top:100%; } }
+  @media (prefers-reduced-motion: reduce) { .scanbar { animation:none; display:none; } }
+  .caption { position:fixed; left:18px; bottom:16px; z-index:5; color:#7dffa8;
+    font:12px/1.6 ui-monospace, Menlo, monospace; letter-spacing:.05em;
+    opacity:.85; pointer-events:none; text-shadow:0 0 8px rgba(60,255,120,.5); }
+  .caption b { display:block; font-size:13px; letter-spacing:.22em; text-transform:uppercase; }
+  #fallback { display:none; position:fixed; inset:0; z-index:10; place-items:center;
+    color:#7dffa8; font:14px/1.6 ui-monospace, monospace; text-align:center;
+    padding:32px; background:#020604; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="scan"></div>
+<div class="vignette"></div>
+<div class="scanbar"></div>
+<div class="caption"><b>Glitch Stream</b>drag to orbit &middot; scroll to zoom</div>
+<div id="fallback"><p>WEBGL CONTEXT FAILED — stream unavailable.<br/>Try a recent browser with hardware acceleration enabled.</p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (e) {
+  document.getElementById('fallback').style.display = 'grid';
+  throw e;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('app').appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x020604);
+scene.fog = new THREE.FogExp2(0x020604, 0.03);
+
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 120);
+camera.position.set(0, 1.5, 17);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.enablePan = false;
+controls.minDistance = 8;
+controls.maxDistance = 40;
+
+/* ---------- abstract glyph atlas (procedural, no real text) ---------- */
+const CELL = 128, GRID = 8;
+const atlas = document.createElement('canvas');
+atlas.width = atlas.height = CELL * GRID;
+{
+  const g = atlas.getContext('2d');
+  g.fillStyle = '#000'; g.fillRect(0, 0, atlas.width, atlas.height);
+  const greens = ['#39ff6a', '#7dff9e', '#1fd455', '#b6ffc9'];
+  for (let cy = 0; cy < GRID; cy++) for (let cx = 0; cx < GRID; cx++) {
+    const x0 = cx * CELL, y0 = cy * CELL;
+    g.strokeStyle = greens[(cx * 7 + cy * 3) % greens.length];
+    g.fillStyle = g.strokeStyle;
+    g.lineWidth = 3 + Math.random() * 4;
+    const kind = (cx * 13 + cy * 5) % 6;
+    const m = 22, w = CELL - m * 2;
+    if (kind === 0) { // vertical bars
+      const n = 2 + Math.floor(Math.random() * 3);
+      for (let i = 0; i < n; i++) g.fillRect(x0 + m + (w / n) * i + 4, y0 + m, 7, w);
+    } else if (kind === 1) { // horizontal bars
+      const n = 2 + Math.floor(Math.random() * 3);
+      for (let i = 0; i < n; i++) g.fillRect(x0 + m, y0 + m + (w / n) * i + 4, w, 7);
+    } else if (kind === 2) { // broken frame
+      g.strokeRect(x0 + m, y0 + m, w, w);
+      g.fillRect(x0 + m + w * 0.3, y0 + m + w * 0.3, w * 0.4, w * 0.4);
+    } else if (kind === 3) { // diagonals
+      g.beginPath();
+      g.moveTo(x0 + m, y0 + m + w); g.lineTo(x0 + m + w, y0 + m);
+      g.moveTo(x0 + m, y0 + m); g.lineTo(x0 + m + w, y0 + m + w);
+      g.stroke();
+    } else if (kind === 4) { // dot lattice
+      for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++)
+        if (Math.random() > 0.35) g.fillRect(x0 + m + 12 + i * 26, y0 + m + 12 + j * 26, 9, 9);
+    } else { // arc + tick
+      g.beginPath(); g.arc(x0 + CELL / 2, y0 + CELL / 2, w * 0.38, Math.random() * 3, Math.random() * 3 + 3.4); g.stroke();
+      g.fillRect(x0 + CELL / 2 - 4, y0 + m, 8, w * 0.3);
+    }
+  }
+}
+const baseTex = new THREE.CanvasTexture(atlas);
+baseTex.colorSpace = THREE.SRGBColorSpace;
+baseTex.wrapS = baseTex.wrapT = THREE.RepeatWrapping;
+
+/* ---------- falling glyph columns ---------- */
+const COLS = 24;
+const columns = [];
+const colGeo = new THREE.PlaneGeometry(1.15, 15);
+for (let i = 0; i < COLS; i++) {
+  const tex = baseTex.clone();
+  tex.needsUpdate = true;
+  tex.repeat.set(1 / GRID, 1 / GRID);
+  tex.offset.set(Math.floor(Math.random() * GRID) / GRID, Math.random());
+  const mat = new THREE.MeshBasicMaterial({
+    map: tex, transparent: true, opacity: 0.88, depthWrite: false });
+  const mesh = new THREE.Mesh(colGeo, mat);
+  mesh.position.set(-13 + (26 / (COLS - 1)) * i + (Math.random() - 0.5) * 0.7,
+    (Math.random() - 0.5) * 4, -1.5 - Math.random() * 7);
+  scene.add(mesh);
+  const col = { tex, mesh, speed: 0.45 + Math.random() * 0.95, ghosts: [] };
+  // RGB-split ghosts on every 5th column
+  if (i % 5 === 1) {
+    [[0xff2a4d, 0.09], [0x2a7bff, -0.09]].forEach(([tint, dx]) => {
+      const gm = new THREE.Mesh(colGeo, new THREE.MeshBasicMaterial({
+        map: tex, color: tint, transparent: true, opacity: 0.14,
+        blending: THREE.AdditiveBlending, depthWrite: false }));
+      gm.position.copy(mesh.position); gm.position.x += dx;
+      scene.add(gm);
+      col.ghosts.push(gm);
+    });
+  }
+  columns.push(col);
+}
+
+/* ---------- glitch bursts ---------- */
+let burstT = 0, burstCol = null, burstDX = 0, burstUntil = 0;
+function updateBursts(t, dt) {
+  if (t > burstT) {
+    burstCol = columns[Math.floor(Math.random() * COLS)];
+    burstDX = (Math.random() - 0.5) * 0.09;
+    burstUntil = t + 0.09;
+    burstT = t + 1.6 + Math.random() * 2.2;
+    burstCol.tex.offset.x += burstDX;
+  }
+  if (burstCol && t > burstUntil) { burstCol.tex.offset.x -= burstDX; burstCol = null; }
+  for (const c of columns)
+    for (const gh of c.ghosts)
+      gh.material.opacity = 0.08 + Math.random() * 0.14;
+}
+
+/* ---------- frame loop ---------- */
+const clock = new THREE.Clock();
+function renderFrame(dt, t) {
+  updateBursts(t, dt);
+  for (const c of columns) {
+    c.tex.offset.y -= dt * c.speed * 0.9;
+    if (c.tex.offset.y < 0) c.tex.offset.y += 1;
+  }
+  controls.update();
+  renderer.render(scene, camera);
+}
+if (REDUCED) {
+  renderFrame(0, 0);
+} else {
+  renderer.setAnimationLoop(() => {
+    const dt = Math.min(clock.getDelta(), 0.05);
+    renderFrame(dt, clock.elapsedTime);
+  });
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
