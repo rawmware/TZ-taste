@@ -1,0 +1,33 @@
+<!--tz-meta {"id":"announcement-bar","title":"Announcement bar","category":"Nav","file":"patterns/announcement-bar.html","tags":["announcement","banner","dismiss","css-only"],"description":"Dismissible top bar for one urgent message; checkbox hack, no JavaScript.","dnas":["swiss-rational"]} -->
+<div class="tz-announcement">
+  <input type="checkbox" id="tz-ann-dismiss" class="tz-dismiss-check">
+  <div class="tz-bar" role="status">
+    <span class="tz-flag">Restock</span>
+    <p>The Field Journal print run is back &mdash; 500 copies, ships Thursday.</p>
+    <a href="#" class="tz-cta">Reserve one</a>
+    <label for="tz-ann-dismiss" class="tz-close" aria-label="Dismiss announcement">&times;</label>
+  </div>
+</div>
+<style>
+.tz-announcement{--bg:#111111;--ink:#fafafa;--accent:#e30613;--muted:#a8a8a8;
+  font-family:-apple-system,'Helvetica Neue',Arial,sans-serif}
+.tz-dismiss-check{position:absolute;opacity:0;pointer-events:none}
+.tz-bar{display:flex;align-items:center;justify-content:center;gap:16px;
+  background:var(--bg);color:var(--ink);padding:10px 48px 10px 20px;
+  font-size:13.5px;line-height:1.5;position:relative;
+  border-bottom:3px solid var(--accent)}
+.tz-flag{background:var(--accent);color:#fff;font-size:10.5px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:3px;
+  white-space:nowrap}
+.tz-bar p{margin:0;color:var(--ink)}
+.tz-cta{color:var(--ink);font-weight:600;text-decoration:underline;
+  text-underline-offset:3px;text-decoration-color:var(--accent);
+  text-decoration-thickness:2px;white-space:nowrap}
+.tz-cta:hover{color:#fff}
+.tz-close{position:absolute;right:14px;top:50%;transform:translateY(-50%);
+  cursor:pointer;font-size:22px;line-height:1;color:var(--muted);padding:4px 8px}
+.tz-close:hover{color:var(--ink)}
+.tz-dismiss-check:checked + .tz-bar{display:none}
+@media(max-width:640px){.tz-bar{flex-wrap:wrap;gap:8px;text-align:center;padding:10px 40px}
+  .tz-flag{order:-1}}
+</style>
