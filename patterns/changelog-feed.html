@@ -1,0 +1,56 @@
+<!--tz-meta {"id":"changelog-feed","title":"Changelog feed","category":"Sections","file":"patterns/changelog-feed.html","tags":["changelog","versions","release-notes"],"description":"Dated release entries with version chips and labeled change rows — a logbook, not a blog.","dnas":["ink-wash-sumi"]} -->
+<section class="tz-changelog-feed" aria-label="Changelog">
+  <h2 class="tz-head">Changelog</h2>
+  <article class="tz-release">
+    <div class="tz-version"><span class="tz-chip">v2.4.0</span><time datetime="2026-09-30">Sep 30, 2026</time></div>
+    <h3>Fifteen new section patterns</h3>
+    <ul>
+      <li><span class="tz-tag tz-added">Added</span> Logo marquee, sticky subnav, comparison table, and 12 more patterns.</li>
+      <li><span class="tz-tag tz-fixed">Fixed</span> Marquee stutter on iOS Safari when the tab regains focus.</li>
+      <li><span class="tz-tag tz-changed">Changed</span> Pattern CSS now uses scoped <code>tz-</code> classes only.</li>
+    </ul>
+  </article>
+  <article class="tz-release">
+    <div class="tz-version"><span class="tz-chip">v2.3.1</span><time datetime="2026-09-12">Sep 12, 2026</time></div>
+    <h3>Small fixes, honest release</h3>
+    <ul>
+      <li><span class="tz-tag tz-fixed">Fixed</span> Reduced-motion users were still getting the toast slide-in.</li>
+      <li><span class="tz-tag tz-changed">Changed</span> Search result dates now read &ldquo;Sep 12&rdquo; instead of &ldquo;2 weeks ago&rdquo;.</li>
+    </ul>
+  </article>
+  <article class="tz-release">
+    <div class="tz-version"><span class="tz-chip">v2.3.0</span><time datetime="2026-08-29">Aug 29, 2026</time></div>
+    <h3>The taste skill ships</h3>
+    <ul>
+      <li><span class="tz-tag tz-added">Added</span> <code>skill/SKILL.md</code> &mdash; the full anti-slop protocol for agents.</li>
+      <li><span class="tz-tag tz-added">Added</span> <code>llms.txt</code> so crawlers index the pattern library properly.</li>
+    </ul>
+  </article>
+</section>
+<style>
+.tz-changelog-feed{--bg:#f5f1e8;--ink:#1a1a1a;--accent:#a33b32;--muted:#8a8478;
+  --line:#1a1a1a1f;--chip:#1a1a1a;
+  background:var(--bg);color:var(--ink);padding:clamp(56px,9vw,128px) clamp(20px,6vw,80px);
+  font-family:Georgia,'Times New Roman',serif}
+.tz-head{font-size:clamp(30px,4.5vw,48px);letter-spacing:-.02em;margin:0 0 48px;
+  max-width:720px;margin-left:auto;margin-right:auto}
+.tz-release{max-width:720px;margin:0 auto 44px;padding-bottom:44px;
+  border-bottom:1px solid var(--line)}
+.tz-release:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.tz-version{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.tz-chip{background:var(--chip);color:var(--bg);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:12.5px;font-weight:700;padding:5px 12px;border-radius:5px}
+.tz-version time{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;color:var(--muted)}
+.tz-release h3{font-size:22px;letter-spacing:-.01em;margin:0 0 16px}
+.tz-release ul{list-style:none;margin:0;padding:0}
+.tz-release li{font-size:15.5px;line-height:1.65;margin-bottom:10px;padding-left:0}
+.tz-release li code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;
+  background:#1a1a1a0d;padding:1px 6px;border-radius:3px}
+.tz-tag{display:inline-block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:3px 9px;border-radius:4px;margin-right:10px}
+.tz-added{background:#2e6b4618;color:#2e6b46}
+.tz-fixed{background:#a33b3216;color:var(--accent)}
+.tz-changed{background:#8a6d2f1a;color:#8a6d2f}
+@media(max-width:560px){.tz-release h3{font-size:19px}.tz-release li{font-size:14.5px}}
+</style>
