@@ -1,0 +1,401 @@
+<!--tz-meta {"id":"fashion","title":"Maison Vesper — Fashion Label","category":"Template","file":"templates/fashion.html","tags":["fashion"],"description":"Restrained dark-luxe label page: whisper-thin serif, champagne hairlines, vast whitespace.","dnas":["dark-luxe"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maison Vesper — Autumn / Winter 2026</title>
+<meta name="description" content="Maison Vesper: considered clothing in small runs. Autumn/Winter 2026 — twelve pieces, made to be kept.">
+<!-- DNA: dark-luxe (styles/dark-luxe.md). Design read: expensive by restraint — a near-black page with whisper-thin serif for people who buy twelve pieces a year, not twelve a month. One distinctive choice: the collection is presented as a numbered list with prices revealed on hover, like a private viewing. Dials V4/M4/D2. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#0e0d0b;
+  --tz-surface:#161411;
+  --tz-ink:#ece5d8;
+  --tz-ink-soft:#b8ae9c;
+  --tz-accent:#c9a96a;
+  --tz-accent-dim:#8f7a52;
+  --tz-line:#ece5d822;
+  --tz-line-strong:#ece5d84d;
+  --tz-muted:#8a8177;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Outfit",sans-serif;background:var(--tz-bg);color:var(--tz-ink);
+  font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+::selection{background:var(--tz-accent);color:#000}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+.tz-mono{font-family:"Space Mono",monospace}
+.tz-serif{font-family:"Cormorant Garamond",serif}
+.skip{position:absolute;left:-999px;top:0;background:var(--tz-accent);color:#000;padding:8px 16px;z-index:99}
+.skip:focus{left:8px;top:8px}
+
+/* ---------- header ---------- */
+.tz-header{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+.tz-header.tz-solid{background:#0e0d0bf2;backdrop-filter:blur(10px);border-bottom-color:var(--tz-line)}
+.tz-header .tz-wrap{display:flex;justify-content:space-between;align-items:center;height:76px}
+.tz-logo{font-family:"Cormorant Garamond",serif;font-size:26px;letter-spacing:.28em;font-weight:400;text-transform:uppercase}
+.tz-nav{display:flex;gap:36px;font-size:13px;letter-spacing:.2em;text-transform:uppercase}
+.tz-nav a{color:var(--tz-ink-soft);transition:color .3s}
+.tz-nav a:hover{color:var(--tz-accent)}
+.tz-bag{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.14em;color:var(--tz-ink-soft);border:1px solid var(--tz-line-strong);padding:10px 18px;transition:border-color .3s,color .3s;cursor:pointer;background:transparent}
+.tz-bag:hover{border-color:var(--tz-accent);color:var(--tz-accent)}
+
+/* ---------- hero ---------- */
+.tz-hero{min-height:100dvh;display:flex;flex-direction:column;justify-content:flex-end;padding:120px 0 72px;position:relative;overflow:hidden}
+.tz-hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(900px 480px at 70% 110%, #c9a96a14, transparent 65%),
+    radial-gradient(700px 420px at 15% -10%, #c9a96a0d, transparent 60%);
+}
+.tz-hero .tz-season{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.4em;text-transform:uppercase;color:var(--tz-accent);margin-bottom:32px;display:flex;align-items:center;gap:18px}
+.tz-hero .tz-season::after{content:"";width:120px;height:1px;background:var(--tz-accent-dim)}
+.tz-hero h1{
+  font-family:"Cormorant Garamond",serif;font-weight:300;
+  font-size:clamp(64px,11vw,168px);line-height:.95;letter-spacing:-0.01em;
+}
+.tz-hero h1 em{font-style:italic;color:var(--tz-accent)}
+.tz-hero-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-top:56px;flex-wrap:wrap}
+.tz-hero-foot p{max-width:40ch;color:var(--tz-ink-soft);font-size:17px}
+.tz-scroll-hint{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--tz-muted);display:flex;align-items:center;gap:12px}
+.tz-scroll-hint::after{content:"";width:1px;height:56px;background:var(--tz-accent-dim);animation:tz-drop 2.2s var(--tz-ease) infinite}
+@keyframes tz-drop{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- philosophy ---------- */
+.tz-section{padding:144px 0}
+.tz-phil{max-width:760px;margin:0 auto;text-align:center}
+.tz-phil .tz-mono{font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--tz-accent);display:block;margin-bottom:40px}
+.tz-phil p{font-family:"Cormorant Garamond",serif;font-size:clamp(28px,3.6vw,44px);font-weight:300;line-height:1.4}
+.tz-phil p em{font-style:italic;color:var(--tz-accent)}
+
+/* ---------- collection: the one weird thing ---------- */
+.tz-coll-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px;flex-wrap:wrap;gap:12px}
+.tz-coll-head h2{font-family:"Cormorant Garamond",serif;font-weight:300;font-size:clamp(44px,6vw,84px);letter-spacing:-0.01em}
+.tz-coll-head .tz-mono{font-size:12px;letter-spacing:.2em;color:var(--tz-muted)}
+.tz-coll{list-style:none;border-top:1px solid var(--tz-line-strong)}
+.tz-piece{
+  display:grid;grid-template-columns:72px 1fr auto auto;gap:32px;align-items:center;
+  padding:34px 0;border-bottom:1px solid var(--tz-line-strong);
+  transition:padding .35s var(--tz-ease),background .3s;position:relative;
+}
+.tz-piece:hover{background:var(--tz-surface);padding-left:28px;padding-right:28px}
+.tz-piece .tz-no{font-family:"Space Mono",monospace;font-size:13px;color:var(--tz-accent)}
+.tz-piece h3{font-family:"Cormorant Garamond",serif;font-size:clamp(26px,3.4vw,44px);font-weight:400;letter-spacing:-0.01em;line-height:1.05}
+.tz-piece h3 small{display:block;font-family:"Outfit",sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--tz-muted);margin-top:10px;font-weight:300}
+.tz-piece .tz-fabric{font-size:14px;color:var(--tz-ink-soft);max-width:24ch;text-align:right}
+.tz-piece .tz-price{
+  font-family:"Cormorant Garamond",serif;font-size:26px;font-style:italic;color:var(--tz-accent);
+  opacity:0;transform:translateX(12px);transition:opacity .35s var(--tz-ease),transform .35s var(--tz-ease);white-space:nowrap;
+}
+.tz-piece:hover .tz-price,.tz-piece:focus-within .tz-price{opacity:1;transform:none}
+.tz-piece .tz-swatch{width:44px;height:64px;border:1px solid var(--tz-line-strong);flex:none}
+.tz-coll-note{margin-top:32px;font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.1em;color:var(--tz-muted);text-align:center}
+
+/* ---------- craft ---------- */
+.tz-craft{display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:center}
+.tz-craft h2{font-family:"Cormorant Garamond",serif;font-weight:300;font-size:clamp(40px,5vw,68px);line-height:1.05;margin-bottom:28px}
+.tz-craft h2 em{font-style:italic;color:var(--tz-accent)}
+.tz-craft p{color:var(--tz-ink-soft);font-size:17px;margin-bottom:1.3em;max-width:46ch}
+.tz-craft-facts{border-top:1px solid var(--tz-line-strong)}
+.tz-craft-facts div{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:22px 0;border-bottom:1px solid var(--tz-line-strong)}
+.tz-craft-facts .tz-mono{font-size:12px;letter-spacing:.2em;color:var(--tz-accent);padding-top:4px}
+.tz-craft-facts p{margin:0;font-size:15.5px}
+
+/* ---------- atelier card ---------- */
+.tz-atelier{
+  border:1px solid var(--tz-line-strong);padding:72px 64px;text-align:center;position:relative;overflow:hidden;
+}
+.tz-atelier::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 50% 0%, #c9a96a12, transparent 70%);pointer-events:none}
+.tz-atelier h2{font-family:"Cormorant Garamond",serif;font-weight:300;font-size:clamp(36px,4.6vw,60px);margin-bottom:20px;position:relative}
+.tz-atelier h2 em{font-style:italic;color:var(--tz-accent)}
+.tz-atelier>p{color:var(--tz-ink-soft);max-width:52ch;margin:0 auto 36px;position:relative}
+.tz-atelier .tz-slots{display:flex;justify-content:center;gap:40px;margin-bottom:40px;flex-wrap:wrap;position:relative}
+.tz-atelier .tz-slots div{text-align:center}
+.tz-atelier .tz-slots .tz-n{font-family:"Cormorant Garamond",serif;font-size:44px;color:var(--tz-accent)}
+.tz-atelier .tz-slots .tz-mono{font-size:11px;letter-spacing:.2em;color:var(--tz-muted);display:block;margin-top:6px}
+.tz-btn-line{
+  display:inline-block;font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;
+  border:1px solid var(--tz-accent);color:var(--tz-accent);padding:18px 48px;position:relative;
+  transition:background .3s,color .3s;
+}
+.tz-btn-line:hover{background:var(--tz-accent);color:#000}
+
+/* ---------- journal ---------- */
+.tz-journal{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--tz-line);border:1px solid var(--tz-line)}
+.tz-journal article{background:var(--tz-bg);padding:40px 36px;transition:background .3s}
+.tz-journal article:hover{background:var(--tz-surface)}
+.tz-journal .tz-mono{font-size:11px;letter-spacing:.24em;color:var(--tz-accent)}
+.tz-journal h3{font-family:"Cormorant Garamond",serif;font-size:27px;font-weight:400;margin:16px 0 10px;line-height:1.2}
+.tz-journal p{font-size:15px;color:var(--tz-ink-soft)}
+
+/* ---------- footer ---------- */
+.tz-footer{border-top:1px solid var(--tz-line);padding:80px 0 40px}
+.tz-foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;margin-bottom:64px;flex-wrap:wrap}
+.tz-news p{font-family:"Cormorant Garamond",serif;font-size:30px;font-weight:300;margin-bottom:20px}
+.tz-news p em{font-style:italic;color:var(--tz-accent)}
+.tz-news form{display:flex;border-bottom:1px solid var(--tz-line-strong);max-width:380px}
+.tz-news input{flex:1;background:transparent;border:0;color:var(--tz-ink);font-family:inherit;font-size:16px;padding:12px 0}
+.tz-news input:focus{outline:none}
+.tz-news input::placeholder{color:var(--tz-muted)}
+.tz-news button{background:transparent;border:0;color:var(--tz-accent);font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.2em;cursor:pointer;padding:0 0 0 16px}
+.tz-foot-cols{display:flex;gap:72px;flex-wrap:wrap}
+.tz-footer h4{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.24em;color:var(--tz-muted);margin-bottom:16px}
+.tz-footer ul{list-style:none;display:grid;gap:10px;font-size:14.5px}
+.tz-footer a{color:var(--tz-ink-soft)}
+.tz-footer a:hover{color:var(--tz-accent)}
+.tz-foot-bottom{border-top:1px solid var(--tz-line);padding-top:28px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.14em;color:var(--tz-muted)}
+
+/* ---------- stockists ---------- */
+.tz-stock{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--tz-line);border:1px solid var(--tz-line)}
+.tz-stock div{background:var(--tz-bg);padding:36px 30px;transition:background .3s}
+.tz-stock div:hover{background:var(--tz-surface)}
+.tz-stock .tz-mono{font-size:11px;letter-spacing:.24em;color:var(--tz-accent);display:block;margin-bottom:14px}
+.tz-stock h3{font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:400;margin-bottom:6px}
+.tz-stock p{font-size:14px;color:var(--tz-ink-soft)}
+/* ---------- press ---------- */
+.tz-press{border-top:1px solid var(--tz-line);border-bottom:1px solid var(--tz-line);padding:56px 0;text-align:center}
+.tz-press blockquote{font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:300;font-size:clamp(24px,3vw,36px);max-width:28ch;margin:0 auto;line-height:1.4}
+.tz-press blockquote em{color:var(--tz-accent);font-style:italic}
+.tz-press figcaption{margin-top:20px;font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.24em;color:var(--tz-muted)}
+@media (max-width:960px){.tz-stock{grid-template-columns:1fr 1fr}}
+
+/* ---------- care ---------- */
+.tz-care{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--tz-line);border:1px solid var(--tz-line);margin-bottom:0}
+.tz-care div{background:var(--tz-bg);padding:40px 36px}
+.tz-care .tz-mono{font-size:11px;letter-spacing:.24em;color:var(--tz-accent);display:block;margin-bottom:14px}
+.tz-care h3{font-family:"Cormorant Garamond",serif;font-size:25px;font-weight:400;margin-bottom:10px}
+.tz-care p{font-size:14.5px;color:var(--tz-ink-soft)}
+@media (max-width:960px){.tz-care{grid-template-columns:1fr}}
+
+/* ---------- reveal ---------- */
+.tz-reveal{opacity:0;transform:translateY(24px);transition:opacity .9s var(--tz-ease),transform .9s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:960px){
+  .tz-nav{display:none}
+  .tz-craft{grid-template-columns:1fr;gap:48px}
+  .tz-journal{grid-template-columns:1fr}
+  .tz-section{padding:96px 0}
+  .tz-piece{grid-template-columns:48px 1fr auto;gap:20px}
+  .tz-piece .tz-fabric{display:none}
+  .tz-piece .tz-price{opacity:1;transform:none}
+  .tz-atelier{padding:48px 28px}
+}
+@media (max-width:560px){
+  .tz-hero-foot{flex-direction:column;align-items:flex-start}
+  .tz-piece{grid-template-columns:1fr auto;padding:24px 0}
+  .tz-piece .tz-no,.tz-piece .tz-swatch{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#collection">Skip to the collection</a>
+
+<header class="tz-header" id="siteHeader">
+  <div class="tz-wrap">
+    <span class="tz-logo">Vesper</span>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#collection">Collection</a><a href="#craft">Craft</a><a href="#atelier">Atelier</a><a href="#journal">Journal</a>
+    </nav>
+    <button class="tz-bag" type="button">Bag (0)</button>
+  </div>
+</header>
+
+<main>
+  <!-- ============ hero ============ -->
+  <section class="tz-hero">
+    <div class="tz-wrap">
+      <p class="tz-season">Autumn — Winter 2026</p>
+      <h1>Twelve pieces.<br><em>Kept for decades.</em></h1>
+      <div class="tz-hero-foot">
+        <p>Maison Vesper makes considered clothing in small runs — no seasons chasing seasons, no logos shouting. Twelve pieces, cut in Porto, made to be repaired, not replaced.</p>
+        <span class="tz-scroll-hint">Scroll</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ philosophy ============ -->
+  <section class="tz-section">
+    <div class="tz-wrap">
+      <div class="tz-phil tz-reveal">
+        <span class="tz-mono">The house philosophy</span>
+        <p>We believe a wardrobe should be <em>small and certain.</em> Every Vesper piece is designed to be worn a hundred times — and to look better on the hundredth.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ collection ============ -->
+  <section class="tz-section" id="collection" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-coll-head tz-reveal">
+        <h2>The collection</h2>
+        <span class="tz-mono">AW26 · 12 pieces · hover for price</span>
+      </div>
+      <ol class="tz-coll">
+        <li class="tz-piece tz-reveal"><span class="tz-no">N°1</span><h3>The Long Coat<small>Double-faced wool · handmade buttonholes</small></h3><span class="tz-fabric">100% lambswool, woven in Biella</span><span class="tz-swatch" style="background:#2b2620"></span><span class="tz-price">€1,480</span></li>
+        <li class="tz-piece tz-reveal"><span class="tz-no">N°2</span><h3>Evening Blazer<small>Unstructured shoulder · half-canvas</small></h3><span class="tz-fabric">Wool-mohair barathea</span><span class="tz-swatch" style="background:#1a1a1c"></span><span class="tz-price">€890</span></li>
+        <li class="tz-piece tz-reveal"><span class="tz-no">N°3</span><h3>Silk Shirt<small>Mother-of-pearl buttons · single needle</small></h3><span class="tz-fabric">22-momme mulberry silk</span><span class="tz-swatch" style="background:#e8e2d4"></span><span class="tz-price">€340</span></li>
+        <li class="tz-piece tz-reveal"><span class="tz-no">N°4</span><h3>Wide Trouser<small>High rise · unfinished hem</small></h3><span class="tz-fabric">Wool twill, milled in Huddersfield</span><span class="tz-swatch" style="background:#3a3f45"></span><span class="tz-price">€420</span></li>
+        <li class="tz-piece tz-reveal"><span class="tz-no">N°5</span><h3>Cashmere Rollneck<small>Wholegarment knit · no seams</small></h3><span class="tz-fabric">Grade-A Mongolian cashmere</span><span class="tz-swatch" style="background:#8a8177"></span><span class="tz-price">€520</span></li>
+        <li class="tz-piece tz-reveal"><span class="tz-no">N°6</span><h3>The Slip Dress<small>Bias cut · adjustable straps</small></h3><span class="tz-fabric">Sandwashed silk charmeuse</span><span class="tz-swatch" style="background:#c9a96a"></span><span class="tz-price">€610</span></li>
+        <li class="tz-piece tz-reveal"><span class="tz-no">N°7</span><h3>Field Jacket<small>Corduroy collar · bellow pockets</small></h3><span class="tz-fabric">Bonded cotton canvas</span><span class="tz-swatch" style="background:#4a4438"></span><span class="tz-price">€780</span></li>
+        <li class="tz-piece tz-reveal"><span class="tz-no">N°8</span><h3>Pleated Skirt<small>Knife pleats · lined</small></h3><span class="tz-fabric">Wool crepe</span><span class="tz-swatch" style="background:#141414"></span><span class="tz-price">€460</span></li>
+        <li class="tz-piece tz-reveal"><span class="tz-no">N°9</span><h3>Leather Tote<small>Single hide · saddle stitched</small></h3><span class="tz-fabric">Vegetable-tanned Tuscan leather</span><span class="tz-swatch" style="background:#6b4a2f"></span><span class="tz-price">€950</span></li>
+        <li class="tz-piece tz-reveal"><span class="tz-no">N°10</span><h3>Evening Gown<small>Hand-rolled hems · open back</small></h3><span class="tz-fabric">Silk crêpe de chine</span><span class="tz-swatch" style="background:#0e0d0b"></span><span class="tz-price">€1,900</span></li>
+        <li class="tz-piece tz-reveal"><span class="tz-no">N°11</span><h3>Merino Cardigan<small>Hand-linked · horn buttons</small></h3><span class="tz-fabric">Extra-fine merino, spun in Italy</span><span class="tz-swatch" style="background:#d8cfbc"></span><span class="tz-price">€380</span></li>
+        <li class="tz-piece tz-reveal"><span class="tz-no">N°12</span><h3>The Wrap Coat<small>Reversible · no visible seams</small></h3><span class="tz-fabric">Double-faced cashmere blend</span><span class="tz-swatch" style="background:#5c5648"></span><span class="tz-price">€1,650</span></li>
+      </ol>
+      <p class="tz-coll-note tz-reveal" style="margin-top:32px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.1em;color:var(--tz-muted);text-align:center">
+        Can't visit a stockist? Private video appointments, worldwide —
+        <a href="#" style="color:var(--tz-accent);border-bottom:1px solid">book a viewing</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ craft ============ -->
+  <section class="tz-section" id="craft" style="padding-top:0">
+    <div class="tz-wrap tz-craft">
+      <div class="tz-reveal">
+        <h2>Made slowly,<br><em>on purpose.</em></h2>
+        <p>Every Vesper piece passes through eleven hands in our Porto atelier before it earns the label. We cut in small runs — never more than three hundred of anything — and we keep every pattern, so your coat can be repaired in ten years, not replaced.</p>
+        <p>Our fabrics come from five mills we have worked with since the house was founded. We know the weavers by name. That is not marketing; it is simply how cloth this good gets made.</p>
+      </div>
+      <div class="tz-craft-facts tz-reveal">
+        <div><span class="tz-mono">11</span><p>Hands touch every piece before it leaves the atelier.</p></div>
+        <div><span class="tz-mono">300</span><p>Maximum run per piece. When it's gone, the pattern rests.</p></div>
+        <div><span class="tz-mono">5</span><p>Mills, all in Europe, all known to us for over a decade.</p></div>
+        <div><span class="tz-mono">∞</span><p>Repairs, free, for the life of the garment. Send it home.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ atelier ============ -->
+  <section class="tz-section" id="atelier" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-atelier tz-reveal">
+        <h2>The atelier <em>listens.</em></h2>
+        <p>Twice a year we open the books for made-to-measure. One fitting, one garment, cut for exactly one body — yours.</p>
+        <div class="tz-slots">
+          <div><span class="tz-n">24</span><span class="tz-mono">Slots · Paris</span></div>
+          <div><span class="tz-n">18</span><span class="tz-mono">Slots · Milan</span></div>
+          <div><span class="tz-n">18</span><span class="tz-mono">Slots · New York</span></div>
+        </div>
+        <a class="tz-btn-line" href="#">Request an appointment</a>
+        <p class="tz-mono" style="margin-top:28px;font-size:11px;letter-spacing:.2em;color:var(--tz-muted);position:relative">Fittings take one hour · garments ready in eight weeks</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ stockists ============ -->
+  <section class="tz-section" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-coll-head tz-reveal" style="margin-bottom:40px">
+        <h2>Stockists</h2>
+        <span class="tz-mono">Nine doors worldwide</span>
+      </div>
+      <div class="tz-stock tz-reveal">
+        <div><span class="tz-mono">Paris</span><h3>Le Vestiaire</h3><p>8 Rue de Sévigné · by appointment</p></div>
+        <div><span class="tz-mono">Milan</span><h3>Sartoria Brera</h3><p>Via Solferino 12 · walk-ins welcome</p></div>
+        <div><span class="tz-mono">New York</span><h3>Atelier Greene</h3><p>Grand St, SoHo · trunk shows monthly</p></div>
+        <div><span class="tz-mono">Tokyo</span><h3>Vesper Aoyama</h3><p>Our own door · opened 2024</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ press ============ -->
+  <section class="tz-press">
+    <div class="tz-wrap tz-reveal">
+      <blockquote>"The rare label that understands <em>restraint is the ultimate luxury.</em>"</blockquote>
+      <figcaption>— VESTIAIRE REVIEW, AW25 ROUNDUP</figcaption>
+    </div>
+  </section>
+
+  <!-- ============ care ============ -->
+  <section class="tz-section" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-coll-head tz-reveal" style="margin-bottom:40px">
+        <h2>Kept, not replaced</h2>
+        <span class="tz-mono">The Vesper promise</span>
+      </div>
+      <div class="tz-care tz-reveal">
+        <div><span class="tz-mono">Repairs</span><h3>Free, forever</h3><p>Send any Vesper piece home to Porto. We repair seams, replace buttons, and reline coats — for the life of the garment.</p></div>
+        <div><span class="tz-mono">Alterations</span><h3>Cut for one body</h3><p>Bodies change. Complimentary alterations for two years, then at cost — because a good coat should outlast a waistline.</p></div>
+        <div><span class="tz-mono">Resale</span><h3>Re-worn Vesper</h3><p>Our certified pre-owned rail in Paris. Inspected, repaired, and rehomed — with the story of its first owner attached.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ journal ============ -->
+  <section class="tz-section" id="journal" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-coll-head tz-reveal" style="margin-bottom:40px">
+        <h2>Journal</h2>
+        <span class="tz-mono">Notes from the house</span>
+      </div>
+      <div class="tz-journal tz-reveal">
+        <article><span class="tz-mono">Sep 2026</span><h3>Why we only make twelve pieces</h3><p>On restraint as a design material — and what we stopped making to get here.</p></article>
+        <article><span class="tz-mono">Aug 2026</span><h3>The Biella mill, in photographs</h3><p>Where our lambswool begins: water, patience, and one very old loom.</p></article>
+        <article><span class="tz-mono">Jul 2026</span><h3>How to care for cashmere</h3><p>Our atelier's actual instructions, the ones we give with every rollneck.</p></article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-foot-top">
+      <div class="tz-news">
+        <p>Letters from the house, <em>four times a year.</em></p>
+        <form action="#" method="get" onsubmit="return false">
+          <input type="email" placeholder="Your email address" aria-label="Email address" required>
+          <button type="submit">Join</button>
+        </form>
+      </div>
+      <div class="tz-foot-cols">
+        <div><h4>Maison</h4><ul><li><a href="#craft">Craft</a></li><li><a href="#atelier">Atelier</a></li><li><a href="#journal">Journal</a></li></ul></div>
+        <div><h4>Care</h4><ul><li><a href="#">Repairs</a></li><li><a href="#">Garment guide</a></li><li><a href="#">Contact</a></li></ul></div>
+        <div><h4>Follow</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">Pinterest</a></li></ul></div>
+      </div>
+    </div>
+    <div class="tz-foot-bottom">
+      <span>© 2026 Maison Vesper · Paris — Porto</span>
+      <span>Twelve pieces. Kept for decades.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){e.classList.add('tz-in')});
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en,i){
+        if(en.isIntersecting){ setTimeout(function(){en.target.classList.add('tz-in')}, i*80); io.unobserve(en.target); }
+      });
+    },{threshold:.1});
+    els.forEach(function(e){io.observe(e)});
+  }
+  var header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', function(){
+    header.classList.toggle('tz-solid', window.scrollY > 40);
+  }, {passive:true});
+})();
+</script>
+</body>
+</html>
