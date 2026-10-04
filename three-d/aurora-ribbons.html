@@ -1,0 +1,172 @@
+<!--tz-meta {"id":"aurora-ribbons","title":"Borealis Ribbons","category":"3D","file":"three-d/aurora-ribbons.html","tags":["threejs","nocturne"],"description":"Five shader-driven aurora ribbons ripple across a starry night sky.","dnas":["dark-luxe"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Borealis Ribbons — TZ-taste</title>
+<style>
+  html, body { margin:0; height:100%; overflow:hidden; background:#040812; }
+  #app { position:fixed; inset:0; }
+  #app canvas { display:block; }
+  .caption { position:fixed; left:18px; bottom:16px; z-index:5; color:#bfe8d8;
+    font:12px/1.6 system-ui, -apple-system, sans-serif; letter-spacing:.05em;
+    opacity:.85; pointer-events:none; text-shadow:0 1px 8px rgba(0,0,0,.7); }
+  .caption b { display:block; font-size:13px; letter-spacing:.22em; text-transform:uppercase; }
+  #fallback { display:none; position:fixed; inset:0; z-index:10; place-items:center;
+    color:#9fc4b8; font:14px/1.6 system-ui, sans-serif; text-align:center;
+    padding:32px; background:#040812; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="caption"><b>Borealis Ribbons</b>drag to orbit &middot; scroll to zoom</div>
+<div id="fallback"><p>This scene needs WebGL, which your browser could not provide.<br/>Try a recent version of Chrome, Safari, Firefox or Edge.</p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (e) {
+  document.getElementById('fallback').style.display = 'grid';
+  throw e;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('app').appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x040812);
+scene.fog = new THREE.FogExp2(0x040812, 0.012);
+
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 400);
+camera.position.set(0, 4, 19);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.target.set(0, 7, -4);
+controls.minDistance = 8;
+controls.maxDistance = 60;
+
+/* ---------- starfield ---------- */
+{
+  const n = 1000, p = new Float32Array(n * 3);
+  for (let i = 0; i < n; i++) {
+    const r = 70 + Math.random() * 90;
+    const th = Math.random() * Math.PI * 2;
+    const ph = Math.random() * Math.PI * 0.52;
+    p[i * 3] = r * Math.sin(ph) * Math.cos(th);
+    p[i * 3 + 1] = r * Math.cos(ph) * 0.8 - 4;
+    p[i * 3 + 2] = r * Math.sin(ph) * Math.sin(th) - 20;
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(p, 3));
+  scene.add(new THREE.Points(g, new THREE.PointsMaterial({
+    color: 0xcfe0ff, size: 0.9, transparent: true, opacity: 0.9, fog: false })));
+}
+
+/* ---------- moon glow ---------- */
+{
+  const c = document.createElement('canvas');
+  c.width = c.height = 128;
+  const g = c.getContext('2d');
+  const r = g.createRadialGradient(64, 64, 0, 64, 64, 64);
+  r.addColorStop(0, 'rgba(220,235,255,0.95)');
+  r.addColorStop(0.25, 'rgba(190,215,250,0.35)');
+  r.addColorStop(1, 'rgba(170,200,245,0)');
+  g.fillStyle = r; g.fillRect(0, 0, 128, 128);
+  const t = new THREE.CanvasTexture(c);
+  t.colorSpace = THREE.SRGBColorSpace;
+  const moon = new THREE.Sprite(new THREE.SpriteMaterial({
+    map: t, transparent: true, depthWrite: false,
+    blending: THREE.AdditiveBlending, fog: false }));
+  moon.position.set(22, 24, -45);
+  moon.scale.set(14, 14, 1);
+  scene.add(moon);
+}
+
+/* ---------- aurora ribbons: custom vertex-wave + gradient shader ---------- */
+const ribbons = [];
+function makeRibbon(seed, x, z, rotY, width) {
+  const uniforms = {
+    uTime: { value: 0 },
+    uSeed: { value: seed },
+  };
+  const mat = new THREE.ShaderMaterial({
+    uniforms,
+    transparent: true,
+    depthWrite: false,
+    side: THREE.DoubleSide,
+    blending: THREE.AdditiveBlending,
+    vertexShader: `
+      uniform float uTime;
+      uniform float uSeed;
+      varying vec2 vUv;
+      varying float vW;
+      void main() {
+        vUv = uv;
+        vec3 p = position;
+        float along = uv.y; // 0 at horizon, 1 at zenith
+        float w = sin(along * 7.0 + uTime * 0.9 + uSeed) * 0.6
+                + sin(along * 15.0 - uTime * 0.55 + uSeed * 2.0) * 0.3;
+        p.x += w * along * 2.6;
+        p.z += cos(along * 5.0 + uTime * 0.7 + uSeed) * along * 1.8;
+        vW = w;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
+      }`,
+    fragmentShader: `
+      varying vec2 vUv;
+      varying float vW;
+      void main() {
+        float edge = smoothstep(0.0, 0.20, vUv.x) * smoothstep(1.0, 0.80, vUv.x);
+        float base = smoothstep(0.0, 0.28, vUv.y);
+        float tip  = smoothstep(1.0, 0.55, vUv.y);
+        float a = edge * base * tip;
+        vec3 deep  = vec3(0.04, 0.45, 0.38);
+        vec3 green = vec3(0.14, 0.95, 0.45);
+        vec3 violet= vec3(0.45, 0.30, 0.75);
+        vec3 col = mix(deep, green, smoothstep(0.08, 0.55, vUv.y));
+        col = mix(col, violet, smoothstep(0.60, 1.0, vUv.y) * 0.7);
+        col += vec3(0.10, 0.28, 0.16) * (0.5 + 0.5 * vW) * 0.45;
+        gl_FragColor = vec4(col, a * 0.72);
+      }`,
+  });
+  const mesh = new THREE.Mesh(new THREE.PlaneGeometry(width, 27, 6, 220), mat);
+  mesh.position.set(x, 8.5, z);
+  mesh.rotation.y = rotY;
+  scene.add(mesh);
+  ribbons.push({ uniforms, mesh });
+}
+makeRibbon(0.0, -12, -10.0, -0.18, 4.6);
+makeRibbon(1.7,  -6, -11.5, -0.06, 3.6);
+makeRibbon(3.4,   0, -13.0,  0.05, 5.2);
+makeRibbon(5.1,   6, -11.5,  0.14, 3.4);
+makeRibbon(6.8,  12, -10.0,  0.24, 4.2);
+
+/* ---------- frame loop ---------- */
+const clock = new THREE.Clock();
+function renderFrame(t) {
+  for (const r of ribbons) r.uniforms.uTime.value = t;
+  controls.update();
+  renderer.render(scene, camera);
+}
+if (REDUCED) {
+  renderFrame(2.5); // one composed static frame
+} else {
+  renderer.setAnimationLoop(() => renderFrame(clock.elapsedTime));
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
