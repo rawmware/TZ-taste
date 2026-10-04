@@ -1,0 +1,3 @@
+//tz-meta {"id":"tailwind-origami-fold","title":"Origami Fold Tailwind preset","category":"Tailwind","file":"tailwind/origami-fold.js","tags":["tailwind","preset","origami-fold"],"description":"Tailwind theme preset for the Origami Fold DNA.","dnas":["origami-fold"]}
+// Tailwind preset for the Origami Fold DNA. Extend tailwind.config with this.
+module.exports={theme:{extend:{colors:{tzbg:"#f6f2e8",tzink:"#23272e",tzaccent:"#b3402e",tzmuted:"#8b8579",tzline:"#23272e1f",tzsurface:"#f6f2e8"},fontFamily:{display:["Space Grotesk","serif"],body:["Outfit","sans-serif"],mono:["Space Mono","monospace"]}}}};
