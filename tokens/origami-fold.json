@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-origami-fold",
+  "title": "Origami Fold design tokens",
+  "category": "Tokens",
+  "file": "tokens/origami-fold.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "origami-fold"
+  ],
+  "description": "W3C-format design tokens for the Origami Fold DNA.",
+  "dnas": [
+   "origami-fold"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#f6f2e8",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#23272e",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#b3402e",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#8b8579",
+   "type": "color"
+  },
+  "line": {
+   "value": "#23272e1f",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#f6f2e8",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Space Grotesk",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Outfit",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Space Mono",
+   "type": "fontFamily"
+  }
+ }
+}
