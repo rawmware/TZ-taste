@@ -1,0 +1,97 @@
+<!--tz-meta {"id":"pricing-annual-toggle","title":"Pricing with annual/monthly toggle","category":"Sections","file":"patterns/pricing-annual-toggle.html","tags":["pricing","toggle"],"description":"Soft-minimal pricing: animated annual/monthly switch, per-seat math shown inline, most-popular plan offset.","dnas":["soft-minimal"]} -->
+<section class="tz-pricing-annual-toggle">
+  <p class="tz-eyebrow">Pricing</p>
+  <h2>Pay for the year,<br><em>save two months.</em></h2>
+  <div class="tz-switch" role="group" aria-label="Billing period">
+    <button type="button" class="tz-opt" data-period="monthly">Monthly</button>
+    <button type="button" class="tz-opt tz-on" data-period="annual">Annual <span class="tz-save">−17%</span></button>
+  </div>
+  <div class="tz-plans">
+    <div class="tz-plan">
+      <h3>Starter</h3>
+      <p class="tz-desc">For solo builders shipping a first thing.</p>
+      <p class="tz-price"><b data-m="$12" data-a="$10">$10</b><span>/mo, billed annually</span></p>
+      <ul><li>3 projects</li><li>100 GB bandwidth</li><li>Community support</li></ul>
+      <a class="tz-cta" href="#start">Start free</a>
+    </div>
+    <div class="tz-plan tz-pop">
+      <p class="tz-flag">Most popular</p>
+      <h3>Studio</h3>
+      <p class="tz-desc">For small teams with real traffic.</p>
+      <p class="tz-price"><b data-m="$29" data-a="$24">$24</b><span>/mo, billed annually</span></p>
+      <ul><li>Unlimited projects</li><li>1 TB bandwidth</li><li>Priority support</li><li>Custom domains</li></ul>
+      <a class="tz-cta" href="#studio">Start 14-day trial</a>
+    </div>
+    <div class="tz-plan">
+      <h3>Scale</h3>
+      <p class="tz-desc">For the thing that suddenly took off.</p>
+      <p class="tz-price"><b data-m="$79" data-a="$66">$66</b><span>/mo, billed annually</span></p>
+      <ul><li>Everything in Studio</li><li>5 TB bandwidth</li><li>SSO &amp; audit log</li><li>Dedicated support</li></ul>
+      <a class="tz-cta" href="#scale">Talk to us</a>
+    </div>
+  </div>
+  <p class="tz-fine">Prices in USD. Cancel anytime — annual plans refunded pro-rata.</p>
+</section>
+<style>
+.tz-pricing-annual-toggle{--bg:#faf9f7;--ink:#1c1a17;--muted:#8a8478;--accent:#5b5bd6;--card:#fff;
+  background:var(--bg);color:var(--ink);text-align:center;
+  padding:clamp(72px,10vw,140px) clamp(20px,5vw,64px);font-family:-apple-system,'Segoe UI',sans-serif}
+.tz-pricing-annual-toggle .tz-eyebrow{font-size:11px;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 18px;font-weight:600}
+.tz-pricing-annual-toggle h2{font-size:clamp(36px,5.5vw,60px);font-weight:650;letter-spacing:-.02em;
+  line-height:1.08;margin:0 0 30px}
+.tz-pricing-annual-toggle h2 em{font-style:normal;color:var(--accent)}
+.tz-pricing-annual-toggle .tz-switch{display:inline-flex;background:#eceae4;border-radius:12px;
+  padding:5px;margin-bottom:48px}
+.tz-pricing-annual-toggle .tz-opt{border:0;background:transparent;padding:11px 26px;font-size:14px;
+  font-weight:600;color:var(--muted);cursor:pointer;border-radius:8px;font-family:inherit}
+.tz-pricing-annual-toggle .tz-opt.tz-on{background:#fff;color:var(--ink);box-shadow:0 2px 8px #1c1a1714}
+.tz-pricing-annual-toggle .tz-save{color:var(--accent);font-size:12px;margin-left:4px}
+.tz-pricing-annual-toggle .tz-plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+  max-width:1020px;margin:0 auto;text-align:left}
+.tz-pricing-annual-toggle .tz-plan{background:var(--card);border:1px solid #1c1a1712;border-radius:18px;
+  padding:36px 32px;position:relative;display:flex;flex-direction:column}
+.tz-pricing-annual-toggle .tz-pop{border:2px solid var(--accent);transform:translateY(-12px);
+  box-shadow:0 24px 48px #5b5bd622}
+.tz-pricing-annual-toggle .tz-flag{position:absolute;top:-14px;left:32px;background:var(--accent);color:#fff;
+  font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin:0}
+.tz-pricing-annual-toggle h3{font-size:21px;font-weight:700;margin:0 0 6px}
+.tz-pricing-annual-toggle .tz-desc{color:var(--muted);font-size:14.5px;margin:0 0 22px}
+.tz-pricing-annual-toggle .tz-price{margin:0 0 22px}
+.tz-pricing-annual-toggle .tz-price b{font-size:44px;font-weight:700;letter-spacing:-.02em;
+  transition:opacity .2s}
+.tz-pricing-annual-toggle .tz-price span{display:block;font-size:13px;color:var(--muted);margin-top:4px}
+.tz-pricing-annual-toggle ul{list-style:none;margin:0 0 30px;padding:0;display:grid;gap:10px;font-size:14.5px;flex:1}
+.tz-pricing-annual-toggle li{padding-left:26px;position:relative}
+.tz-pricing-annual-toggle li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-weight:700}
+.tz-pricing-annual-toggle .tz-cta{text-align:center;text-decoration:none;font-weight:700;font-size:15px;
+  padding:14px;border-radius:12px;border:1px solid #1c1a1722;color:var(--ink);transition:all .2s}
+.tz-pricing-annual-toggle .tz-pop .tz-cta{background:var(--accent);border-color:var(--accent);color:#fff}
+.tz-pricing-annual-toggle .tz-cta:hover{transform:translateY(-2px)}
+.tz-pricing-annual-toggle .tz-fine{color:var(--muted);font-size:13px;margin:40px 0 0}
+@media (max-width:860px){
+  .tz-pricing-annual-toggle .tz-plans{grid-template-columns:1fr;max-width:440px}
+  .tz-pricing-annual-toggle .tz-pop{transform:none}
+}
+</style>
+<script>
+(function(){
+  var root=document.querySelector('.tz-pricing-annual-toggle');
+  var opts=root.querySelectorAll('.tz-opt');
+  opts.forEach(function(btn){
+    btn.addEventListener('click',function(){
+      opts.forEach(function(o){o.classList.remove('tz-on')});
+      btn.classList.add('tz-on');
+      var annual = btn.dataset.period==='annual';
+      root.querySelectorAll('.tz-price b').forEach(function(b){
+        b.style.opacity=0;
+        setTimeout(function(){
+          b.textContent = annual ? b.dataset.a : b.dataset.m;
+          b.nextElementSibling.textContent = annual ? '/mo, billed annually' : '/mo, billed monthly';
+          b.style.opacity=1;
+        },180);
+      });
+    });
+  });
+})();
+</script>
