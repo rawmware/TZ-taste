@@ -1,0 +1,40 @@
+<!--tz-meta {"id":"sticky-subnav","title":"Sticky docs sub-navigation","category":"Nav","file":"patterns/sticky-subnav.html","tags":["nav","docs","sticky","active-state","css-only"],"description":"Sticky docs nav whose active link follows the section via :target — no JavaScript.","dnas":["docs-solar"]} -->
+<section class="tz-sticky-subnav" aria-label="Documentation">
+  <nav class="tz-nav" aria-label="On this page">
+    <a href="#tz-setup" class="tz-link tz-l-setup">Setup</a>
+    <a href="#tz-quickstart" class="tz-link tz-l-quickstart">Quickstart</a>
+    <a href="#tz-api" class="tz-link tz-l-api">API reference</a>
+    <a href="#tz-changelog" class="tz-link tz-l-changelog">Changelog</a>
+  </nav>
+  <div class="tz-panels">
+    <article id="tz-setup" class="tz-panel"><h3>Setup</h3><p>Install the CLI, drop in your key, run <code>tz init</code>. Done in about four minutes.</p></article>
+    <article id="tz-quickstart" class="tz-panel"><h3>Quickstart</h3><p>Ship your first page: pick a DNA, paste one pattern, adjust two tokens.</p></article>
+    <article id="tz-api" class="tz-panel"><h3>API reference</h3><p>Every pattern is a standalone file. Fetch by slug, get HTML and CSS back.</p></article>
+    <article id="tz-changelog" class="tz-panel"><h3>Changelog</h3><p>v2.4.0 adds 15 section patterns and fixes the marquee stutter on iOS.</p></article>
+  </div>
+</section>
+<style>
+.tz-sticky-subnav{--bg:#fdf6e3;--ink:#3d3a2e;--accent:#cb4b16;--muted:#8a8672;
+  --surface:#f7eeda;--line:#3d3a2e22;
+  background:var(--bg);color:var(--ink);
+  font-family:Georgia,'Times New Roman',serif;padding:0 0 clamp(32px,5vw,64px)}
+.tz-nav{position:sticky;top:0;z-index:5;display:flex;gap:4px;overflow-x:auto;
+  background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:0 clamp(16px,4vw,48px)}
+.tz-link{color:var(--muted);text-decoration:none;font-size:14.5px;padding:16px 14px;
+  border-bottom:3px solid transparent;white-space:nowrap}
+.tz-link:hover{color:var(--ink)}
+.tz-panels{max-width:720px;margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+.tz-panel{padding:56px 0;border-bottom:1px solid var(--line);scroll-margin-top:90px}
+.tz-panel h3{font-size:26px;letter-spacing:-.01em;margin:0 0 10px}
+.tz-panel p{line-height:1.65;margin:0;color:var(--ink)}
+.tz-panel code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  background:var(--surface);padding:2px 7px;border-radius:4px;font-size:.9em}
+.tz-sticky-subnav:has(#tz-setup:target) .tz-l-setup,
+.tz-sticky-subnav:has(#tz-quickstart:target) .tz-l-quickstart,
+.tz-sticky-subnav:has(#tz-api:target) .tz-l-api,
+.tz-sticky-subnav:has(#tz-changelog:target) .tz-l-changelog{
+  color:var(--accent);border-bottom-color:var(--accent);font-weight:700}
+@media(max-width:640px){.tz-link{font-size:13.5px;padding:14px 10px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
