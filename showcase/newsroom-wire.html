@@ -1,0 +1,134 @@
+<!--tz-meta {"id":"showcase-newsroom-wire","title":"Newsroom Wire showcase","category":"Showcase","file":"showcase/newsroom-wire.html","tags":["newsroom-wire"],"description":"Live demo page for the Newsroom Wire style DNA.","dnas":["newsroom-wire"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Newsroom Wire — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=PT+Serif:wght@400;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f7f4ec; --tz-surface:#efe9da; --tz-ink:#16130e; --tz-muted:#6f6a5e;
+  --tz-accent:#c8102e; --tz-line:#16130e29;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"PT Serif",serif;font-size:1.05rem;line-height:1.55;-webkit-font-smoothing:antialiased}
+.tz-top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;padding:1.1rem 4vw}
+.tz-wordmark{font-family:"Special Elite",serif;font-size:2rem;letter-spacing:0.02em}
+.tz-dateline{font-family:"Courier Prime",monospace;font-size:0.72rem;letter-spacing:0.08em;color:var(--tz-muted)}
+.tz-rule{height:4px;background:var(--tz-ink);margin:0 4vw}
+.tz-ticker{overflow:hidden;white-space:nowrap;border-bottom:1px solid var(--tz-line);padding:0.6rem 0;margin:0 4vw}
+.tz-ticker .tz-items{display:inline-block;animation:tz-crawl 30s linear infinite}
+.tz-ticker:hover .tz-items{animation-play-state:paused}
+.tz-ticker span{font-family:"Courier Prime",monospace;font-size:0.78rem;letter-spacing:0.04em;color:var(--tz-ink)}
+.tz-ticker .tz-dot{color:var(--tz-accent);padding:0 1.2rem}
+@keyframes tz-crawl{to{transform:translateX(-50%)}}
+.tz-hero{padding:2.6rem 4vw;max-width:900px}
+.tz-kicker{display:inline-block;font-family:"Courier Prime",monospace;font-weight:700;font-size:0.78rem;letter-spacing:0.16em;color:#fff;background:var(--tz-accent);padding:0.35rem 0.8rem;margin-bottom:1.2rem;animation:tz-flash 0.6s steps(2) 2}
+@keyframes tz-flash{50%{opacity:0.35}}
+.tz-hero h1{font-family:"Special Elite",serif;font-size:clamp(2rem,5.5vw,3.8rem);line-height:1.1;font-weight:400;max-width:22ch}
+.tz-dek{margin-top:1.1rem;font-size:1.1rem;color:var(--tz-muted);max-width:58ch}
+.tz-byline{margin-top:1rem;font-family:"Courier Prime",monospace;font-size:0.75rem;letter-spacing:0.1em;color:var(--tz-muted)}
+.tz-cta{display:inline-block;margin-top:1.8rem;font-family:"Courier Prime",monospace;font-weight:700;font-size:0.85rem;letter-spacing:0.14em;color:var(--tz-ink);text-decoration:none;border:2px solid var(--tz-ink);padding:0.9rem 2rem;transition:opacity .15s ease}
+.tz-cta:hover{opacity:0.7}
+.tz-developing{margin:2.5rem 4vw;padding:1.6rem 2rem;background:var(--tz-surface);border-top:1px solid var(--tz-line);border-bottom:1px solid var(--tz-line)}
+.tz-developing .tz-flag{font-family:"Courier Prime",monospace;font-weight:700;font-size:0.75rem;letter-spacing:0.18em;color:var(--tz-accent);margin-bottom:0.5rem}
+.tz-developing p{font-size:1rem;max-width:70ch}
+.tz-developing .tz-stamp{font-family:"Courier Prime",monospace;font-size:0.72rem;color:var(--tz-muted);letter-spacing:0.08em}
+.tz-content{padding:2.5rem 4vw 0;max-width:900px}
+.tz-content h2{font-family:"Courier Prime",monospace;font-weight:700;font-size:0.78rem;letter-spacing:0.2em;color:var(--tz-muted);margin-bottom:1rem}
+.tz-stack{list-style:none;border-top:1px solid var(--tz-line)}
+.tz-stack li{padding:1.4rem 0;border-bottom:1px solid var(--tz-line);animation:tz-in 0.2s ease both}
+.tz-stack li:nth-child(2){animation-delay:0.06s}
+.tz-stack li:nth-child(3){animation-delay:0.12s}
+.tz-stack li:nth-child(4){animation-delay:0.18s}
+@keyframes tz-in{from{opacity:0}to{opacity:1}}
+.tz-stack .tz-dl{font-family:"Courier Prime",monospace;font-size:0.72rem;letter-spacing:0.08em;color:var(--tz-muted);display:block;margin-bottom:0.35rem}
+.tz-stack h3{font-family:"Special Elite",serif;font-size:1.6rem;font-weight:400;line-height:1.2}
+.tz-stack p{color:var(--tz-muted);font-size:0.98rem;margin-top:0.4rem;max-width:62ch}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Special Elite",serif;font-size:1.8rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"Courier Prime",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Courier Prime",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"Courier Prime",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-wordmark{font-size:1.5rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">The Night Wire</span>
+  <span class="tz-dateline">FILED OCT 3, 2026 — 02:14 ET</span>
+</header>
+<div class="tz-rule" aria-hidden="true"></div>
+
+<div class="tz-ticker" aria-label="Latest wire items">
+  <div class="tz-items">
+    <span>02:14 — Rain moves the final to Sunday</span><span class="tz-dot">•</span><span>01:58 — Mayor's office confirms the interview</span><span class="tz-dot">•</span><span>01:41 — Transit bond passes committee 4–1</span><span class="tz-dot">•</span><span>01:22 — Ward 3 recount begins at dawn</span><span class="tz-dot">•</span><span>00:57 — Harbor bridge reopens to two lanes</span><span class="tz-dot">•</span>
+    <span>02:14 — Rain moves the final to Sunday</span><span class="tz-dot">•</span><span>01:58 — Mayor's office confirms the interview</span><span class="tz-dot">•</span><span>01:41 — Transit bond passes committee 4–1</span><span class="tz-dot">•</span><span>01:22 — Ward 3 recount begins at dawn</span><span class="tz-dot">•</span><span>00:57 — Harbor bridge reopens to two lanes</span><span class="tz-dot">•</span>
+  </div>
+</div>
+
+<section class="tz-hero">
+  <span class="tz-kicker">BREAKING</span>
+  <h1>Council votes 5–2 on transit bond; ward 3 recount begins at dawn.</h1>
+  <p class="tz-dek">The $140 million measure clears its last hurdle after a four-hour session. Opponents filed the recount petition before midnight; the clerk's office opens at 6am.</p>
+  <p class="tz-byline">BY M. OKAFOR · UPDATED 2:10AM</p>
+  <a class="tz-cta" href="#">READ THE FULL WIRE</a>
+</section>
+
+<div class="tz-developing">
+  <p class="tz-flag">§ DEVELOPING</p>
+  <p>Harbor bridge reopens to two lanes after overnight inspection. Crews expect full capacity by the morning commute. <span class="tz-stamp">UPDATED 12:57AM</span></p>
+</div>
+
+<section class="tz-content">
+  <h2>THE WIRE — RANKED</h2>
+  <ul class="tz-stack">
+    <li>
+      <span class="tz-dl">CITY HALL · 1:58AM</span>
+      <h3>Mayor's office confirms the interview</h3>
+      <p>The mayor will sit down with the desk at noon. Transit, the recount, and the bridge are all on the list. <span class="tz-dl">CORRECTED 10:15PM — AN EARLIER VERSION MISSTATED THE TIME.</span></p>
+    </li>
+    <li>
+      <span class="tz-dl">SPORTS DESK · 2:14AM</span>
+      <h3>Rain moves the final to Sunday</h3>
+      <p>League officials called it at halftime of the delay. Tickets for tonight are honored Sunday; refunds at the gate.</p>
+    </li>
+    <li>
+      <span class="tz-dl">COUNTY · 11:42PM</span>
+      <h3>Shelter beds hit capacity; overflow opens at the armory</h3>
+      <p>The county opened 200 cots at 10pm. Volunteers are asked to bring blankets, not food — the kitchen is covered.</p>
+    </li>
+    <li>
+      <span class="tz-dl">WEATHER DESK · 9:40PM</span>
+      <h3>Coastal flood watch extends through Monday</h3>
+      <p>The watch now runs to Monday morning. High tide at 11:18am; low-lying streets should plan around it.</p>
+    </li>
+  </ul>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#f7f4ec"></span><span class="tz-name">bg</span><span class="tz-hex">#f7f4ec</span></li>
+    <li><span class="tz-chip" style="background:#efe9da"></span><span class="tz-name">surface</span><span class="tz-hex">#efe9da</span></li>
+    <li><span class="tz-chip" style="background:#16130e"></span><span class="tz-name">ink</span><span class="tz-hex">#16130e</span></li>
+    <li><span class="tz-chip" style="background:#6f6a5e"></span><span class="tz-name">muted</span><span class="tz-hex">#6f6a5e</span></li>
+    <li><span class="tz-chip" style="background:#c8102e"></span><span class="tz-name">accent</span><span class="tz-hex">#c8102e</span></li>
+    <li><span class="tz-chip" style="background:#16130e29"></span><span class="tz-name">line</span><span class="tz-hex">#16130e29</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
