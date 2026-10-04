@@ -1,0 +1,208 @@
+<!--tz-meta {"id":"showcase-northwind-mail","title":"Northwind — mail client","category":"Showcase","file":"showcase/northwind-mail.html","tags":["app-ui","mail","shadcn"],"description":"Northwind three-pane mail client: folders, searchable message list, reading pane, compose, dark mode.","dnas":[]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Northwind — Mail</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --fg:#09090b; --muted:#f4f4f5; --muted-fg:#71717a;
+  --border:#e4e4e7; --card:#ffffff; --primary:#18181b; --primary-fg:#fafafa;
+  --ring:#18181b; --accent:#2563eb; --accent-bg:#eff6ff;
+}
+html.dark{
+  --bg:#09090b; --fg:#fafafa; --muted:#27272a; --muted-fg:#a1a1aa;
+  --border:#27272a; --card:#101013; --primary:#fafafa; --primary-fg:#09090b;
+  --ring:#fafafa; --accent:#60a5fa; --accent-bg:#172554;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:Inter,-apple-system,"Segoe UI",sans-serif;
+  font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.num{font-variant-numeric:tabular-nums}
+.app{display:flex;height:100vh;overflow:hidden}
+/* folders */
+.folders{width:220px;flex-shrink:0;border-right:1px solid var(--border);display:flex;flex-direction:column}
+.fhead{padding:16px}
+.btn{width:100%;background:var(--primary);color:var(--primary-fg);border:1px solid var(--primary);
+  border-radius:8px;padding:9px 14px;font:inherit;font-size:13px;font-weight:500;cursor:pointer}
+.btn:hover{opacity:.92}
+.flist{padding:0 8px;flex:1;overflow:auto}
+.flist .lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted-fg);padding:10px 12px 4px}
+.fitem{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;color:var(--muted-fg);
+  font-size:13.5px;font-weight:500;cursor:pointer;border:0;background:transparent;width:100%;text-align:left;font-family:inherit}
+.fitem:hover{background:var(--muted);color:var(--fg)}
+.fitem.on{background:var(--muted);color:var(--fg);font-weight:600}
+.fitem .ct{margin-left:auto;font-size:12px;background:var(--muted);border-radius:99px;padding:1px 8px;font-variant-numeric:tabular-nums}
+.fitem.on .ct{background:var(--border)}
+/* list */
+.listpane{width:340px;flex-shrink:0;border-right:1px solid var(--border);display:flex;flex-direction:column;min-width:0}
+.lhead{padding:16px 16px 10px;border-bottom:1px solid var(--border)}
+.lhead h1{font-size:16px;font-weight:600;letter-spacing:-.01em;margin-bottom:10px}
+.search{display:flex;align-items:center;gap:8px;border:1px solid var(--border);border-radius:8px;padding:7px 10px;color:var(--muted-fg)}
+.search input{border:0;outline:0;background:transparent;color:var(--fg);font:inherit;width:100%;font-size:13px}
+.msgs{flex:1;overflow:auto}
+.mrow{display:flex;gap:10px;padding:12px 16px;border-bottom:1px solid var(--border);cursor:pointer;align-items:flex-start}
+.mrow:hover{background:var(--muted)}
+.mrow.on{background:var(--muted)}
+.mrow.unread .subj{font-weight:600}
+.mrow.unread .from{font-weight:600}
+.mdot{width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:6px;flex-shrink:0;visibility:hidden}
+.mrow.unread .mdot{visibility:visible}
+.mbody{min-width:0;flex:1}
+.mtop{display:flex;justify-content:space-between;gap:8px}
+.from{font-size:13px}
+.time{font-size:12px;color:var(--muted-fg);white-space:nowrap;font-variant-numeric:tabular-nums}
+.subj{font-size:13px;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.snip{font-size:12.5px;color:var(--muted-fg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.empty{padding:40px 20px;text-align:center;color:var(--muted-fg);font-size:13px}
+/* reading */
+.read{flex:1;min-width:0;display:flex;flex-direction:column;background:var(--bg)}
+.rhead{padding:18px 24px;border-bottom:1px solid var(--border)}
+.rhead .subj2{font-size:17px;font-weight:600;letter-spacing:-.01em;margin-bottom:10px}
+.rmeta{display:flex;align-items:center;gap:12px}
+.avatar{width:36px;height:36px;border-radius:50%;background:var(--muted);color:var(--muted-fg);
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0}
+.rmeta .nm{font-size:13px;font-weight:600}
+.rmeta .em{font-size:12.5px;color:var(--muted-fg)}
+.rmeta time{margin-left:auto;font-size:12.5px;color:var(--muted-fg)}
+.ractions{margin-left:8px;display:flex;gap:6px}
+.iconbtn{width:32px;height:32px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--muted-fg);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px}
+.iconbtn:hover{color:var(--fg);background:var(--muted)}
+.rbody{padding:24px;overflow:auto;flex:1;max-width:760px}
+.rbody p{margin-bottom:14px;font-size:14px;line-height:1.7}
+.rbody .sig{color:var(--muted-fg);font-size:13px}
+.attach{display:flex;align-items:center;gap:10px;border:1px solid var(--border);border-radius:10px;padding:10px 14px;
+  margin:6px 0 16px;font-size:13px;max-width:340px;cursor:pointer}
+.attach:hover{background:var(--muted)}
+.attach .fi{font-size:18px}
+/* compose */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);display:none;align-items:center;justify-content:center;z-index:50}
+.overlay.open{display:flex}
+.compose{background:var(--card);border:1px solid var(--border);border-radius:12px;width:520px;max-width:92vw;box-shadow:0 20px 50px rgba(0,0,0,.2)}
+.compose .ch{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--border);font-weight:600;font-size:14px}
+.compose input,.compose textarea{display:block;width:100%;border:0;border-bottom:1px solid var(--border);
+  padding:10px 18px;font:inherit;font-size:13.5px;background:transparent;color:var(--fg);outline:none}
+.compose textarea{height:160px;resize:vertical;border-bottom:0}
+.compose .cf{display:flex;justify-content:flex-end;gap:8px;padding:12px 18px}
+.btn2{background:transparent;color:var(--fg);border:1px solid var(--border);border-radius:8px;padding:8px 16px;font:inherit;font-size:13px;font-weight:500;cursor:pointer}
+.btn2:hover{background:var(--muted)}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--primary);
+  color:var(--primary-fg);font-size:13px;font-weight:500;padding:10px 18px;border-radius:8px;opacity:0;transition:.25s;z-index:60}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.topbar{position:absolute;top:12px;right:16px}
+@media(max-width:900px){.folders{display:none}.listpane{width:280px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="folders">
+    <div class="fhead"><button class="btn" id="composeBtn">Compose</button></div>
+    <div class="flist" id="folders">
+      <div class="lbl">Mail</div>
+    </div>
+  </aside>
+  <section class="listpane">
+    <div class="lhead"><h1 id="ftitle">Inbox</h1>
+      <label class="search">⌕<input id="q" placeholder="Search mail…" aria-label="Search mail"></label>
+    </div>
+    <div class="msgs" id="msgs"></div>
+  </section>
+  <section class="read" id="read"></section>
+</div>
+<div class="topbar"><button class="iconbtn" id="theme" aria-label="Toggle dark mode">◐</button></div>
+<div class="overlay" id="overlay">
+  <div class="compose" role="dialog" aria-label="Compose message">
+    <div class="ch"><span>New message</span><button class="iconbtn" id="closeCompose" aria-label="Close">✕</button></div>
+    <input id="cTo" placeholder="To">
+    <input id="cSub" placeholder="Subject">
+    <textarea id="cBody" placeholder="Write your message…"></textarea>
+    <div class="cf"><button class="btn2" id="discard">Discard</button><button class="btn" style="width:auto" id="send">Send</button></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+var M=[
+ {f:"inbox",from:"Priya Lal",em:"priya@fieldnotes.io",sub:"Q3 board deck — final review",snip:"Attached the final deck for Thursday. The retention slide…",time:"9:41 AM",unread:1,
+  body:["Hi Amara,","Attached the final deck for Thursday's board review. The retention slide now uses the cohort view you asked for — net revenue retention landed at 118%, up from 112% last quarter.","Could you sanity-check the pricing experiment appendix before EOD? I want to make sure the sample sizes are defensible.","Thanks,","Priya"],att:[["Q3-board-deck.pdf","4.2 MB"]]},
+ {f:"inbox",from:"Stripe",em:"receipts@stripe.com",sub:"Your receipt from Pulse (#INV-2041)",snip:"Amount paid: $49.00 on Oct 1, 2026…",time:"8:15 AM",unread:1,
+  body:["Hi there,","Your subscription payment of $49.00 for the Pulse Scale plan was successful.","Invoice #INV-2041 · Paid Oct 1, 2026 · Visa ending 4242","A PDF copy is attached for your records.","— The Pulse billing team"],att:[["INV-2041.pdf","88 KB"]]},
+ {f:"inbox",from:"Jonas Thal",em:"jonas@harborline.com",sub:"Re: API rate limits",snip:"We're hitting 429s at ~800 rps. Can we…",time:"Yesterday",unread:1,
+  body:["Hey — we're hitting 429s at around 800 rps on the events endpoint since this morning's deploy.","Nothing changed on our side. Did the burst allowance change with the new plan? Happy to jump on a call if it's easier to debug live.","Jonas"],att:[]},
+ {f:"inbox",from:"Marta Kessler",em:"marta@northwind.dev",sub:"Design system v2 tokens are live",snip:"Zinc palette + Inter everywhere. Migration guide…",time:"Yesterday",unread:0,
+  body:["The v2 token set is live in Figma: zinc palette, Inter everywhere, 8px grid, radius 8/12.","Migration guide is in Notion — most components are drop-in. The button and input primitives changed props, so grep for `variant=\"ghost\"` before you cut the release.","— Marta"],att:[]},
+ {f:"inbox",from:"Dev Osei",em:"dev@lumenlabs.co",sub:"Seats: we're at 24 of 25",snip:"Heads up — one seat left on Growth. Should I…",time:"Monday",unread:0,
+  body:["Heads up — we're at 24 of 25 seats on Growth. Two contractors start next week, so we'll tip over.","Should I just upgrade us to Scale now, or do you want to true-up at renewal?","Dev"],att:[]},
+ {f:"drafts",from:"Amara Reyes",em:"amara@pulse.io",sub:"(no subject)",snip:"Draft — pricing page feedback…",time:"Monday",unread:0,
+  body:["Draft in progress…"],att:[]},
+ {f:"sent",from:"Amara Reyes",em:"amara@pulse.io",sub:"Changelog: September",snip:"Shipped: cohort retention, CSV exports…",time:"Sep 30",unread:0,
+  body:["September changelog is out: cohort retention views, CSV exports for every report, and SSO for Scale plans.","Full notes on the blog. — Amara"],att:[]},
+ {f:"starred",from:"Sofia Almeida",em:"sofia@brightpath.co",sub:"★ Partnership intro: Brightpath × Pulse",snip:"Loved your metrics talk at SaaS Summit…",time:"Sep 28",unread:0,
+  body:["Loved your metrics talk at SaaS Summit. We're rebuilding our analytics stack in Q1 and Pulse is top of the shortlist.","Open to a 30-min intro next week?","Sofia"],att:[]},
+ {f:"archive",from:"GitHub",em:"noreply@github.com",sub:"[pulse/web] PR #482 merged",snip:"fix(chart): clamp tooltip to viewport…",time:"Sep 26",unread:0,
+  body:["PR #482 'fix(chart): clamp tooltip to viewport' was merged into main by martak.","2 files changed, +41 −18."],att:[]}
+];
+var F=[["inbox","Inbox","✉"],["starred","Starred","★"],["sent","Sent","➤"],["drafts","Drafts","✎"],["archive","Archive","▤"],["trash","Trash","🗑"]];
+var cur="inbox", sel=null;
+function ini(n){return n.split(" ").map(function(w){return w[0]}).slice(0,2).join("").toUpperCase()}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function toast(m){var t=document.getElementById("toast");t.textContent=m;t.classList.add("show");setTimeout(function(){t.classList.remove("show")},2200)}
+function renderFolders(){
+  var el=document.getElementById("folders");
+  el.querySelectorAll(".fitem").forEach(function(n){n.remove()});
+  var host=document.createElement("div");
+  F.forEach(function(f){
+    var c=f[0]==="trash"?0:M.filter(function(m){return m.f===f[0]&&(f[0]!=="inbox"||m.unread)}).length;
+    if(f[0]==="inbox")c=M.filter(function(m){return m.f==="inbox"&&m.unread}).length;
+    var b=document.createElement("button");
+    b.className="fitem"+(cur===f[0]?" on":"");
+    b.innerHTML="<span>"+f[2]+"</span><span>"+f[1]+"</span>"+(c?'<span class="ct num">'+c+"</span>":"");
+    b.onclick=function(){cur=f[0];sel=null;renderFolders();renderList();};
+    host.appendChild(b);
+  });
+  el.appendChild(host);
+}
+function renderList(){
+  document.getElementById("ftitle").textContent=F.filter(function(f){return f[0]===cur})[0][1];
+  var q=document.getElementById("q").value.toLowerCase();
+  var list=M.filter(function(m){return m.f===cur&&(!q||(m.from+m.sub+m.snip).toLowerCase().indexOf(q)>=0)});
+  var el=document.getElementById("msgs");
+  if(!list.length){el.innerHTML='<div class="empty">No messages.</div>';document.getElementById("read").innerHTML="";return}
+  el.innerHTML="";
+  list.forEach(function(m){
+    var r=document.createElement("div");
+    r.className="mrow"+(m.unread?" unread":"")+(sel===m?" on":"");
+    r.innerHTML='<span class="mdot"></span><div class="mbody"><div class="mtop"><span class="from">'+esc(m.from)+'</span><span class="time">'+esc(m.time)+'</span></div><div class="subj">'+esc(m.sub)+'</div><div class="snip">'+esc(m.snip)+"</div></div>";
+    r.onclick=function(){sel=m;m.unread=0;renderFolders();renderList();renderRead();};
+    el.appendChild(r);
+  });
+  if(!sel&&list.length){sel=list[0];renderRead();}
+  else if(sel&&sel.f!==cur){sel=list[0];renderRead();}
+}
+function renderRead(){
+  var el=document.getElementById("read");
+  if(!sel){el.innerHTML="";return}
+  var m=sel, at=m.att.map(function(a){
+    return '<div class="attach"><span class="fi">📎</span><span><b>'+esc(a[0])+"</b><br><span style='color:var(--muted-fg)'>"+esc(a[1])+"</span></span></div>"}).join("");
+  el.innerHTML='<div class="rhead"><div class="subj2">'+esc(m.sub)+'</div><div class="rmeta"><span class="avatar">'+ini(m.from)+'</span><span><span class="nm">'+esc(m.from)+'</span><br><span class="em">'+esc(m.em)+'</span></span><time>'+esc(m.time)+'</time><span class="ractions"><button class="iconbtn" title="Reply">↩</button><button class="iconbtn" title="Star">☆</button><button class="iconbtn" title="Delete">🗑</button></span></div></div><div class="rbody">'+at+m.body.map(function(p){return "<p>"+esc(p)+"</p>"}).join("")+'<p class="sig">—<br>Amara Reyes · Head of Product, Pulse</p></div>';
+}
+document.getElementById("q").addEventListener("input",renderList);
+document.getElementById("theme").onclick=function(){document.documentElement.classList.toggle("dark")};
+var ov=document.getElementById("overlay");
+document.getElementById("composeBtn").onclick=function(){ov.classList.add("open")};
+document.getElementById("closeCompose").onclick=function(){ov.classList.remove("open")};
+document.getElementById("discard").onclick=function(){ov.classList.remove("open")};
+document.getElementById("send").onclick=function(){
+  var to=document.getElementById("cTo").value.trim();
+  if(!to){toast("Add a recipient first");return}
+  ov.classList.remove("open");toast("Message sent to "+to);
+  document.getElementById("cTo").value="";document.getElementById("cSub").value="";document.getElementById("cBody").value="";
+};
+renderFolders();renderList();
+</script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!--tz-meta {"id":"showcase-taskline","title":"Taskline — tasks table","category":"Showcase","file":"showcase/taskline.html","tags":["app-ui","table","shadcn"],"description":"Taskline filterable/sortable tasks data table: status and priority pills, assignees, due dates, selection, dark mode.","dnas":[]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Taskline — Tasks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --fg:#09090b; --muted:#f4f4f5; --muted-fg:#71717a;
+  --border:#e4e4e7; --card:#ffffff; --primary:#18181b; --primary-fg:#fafafa; --ring:#18181b;
+  --b-bg:#eff6ff; --b-fg:#1d4ed8; --g-bg:#f0fdf4; --g-fg:#15803d; --a-bg:#fffbeb; --a-fg:#b45309;
+  --r-bg:#fef2f2; --r-fg:#b91c1c; --z-bg:#f4f4f5; --z-fg:#52525b;
+}
+html.dark{
+  --bg:#09090b; --fg:#fafafa; --muted:#27272a; --muted-fg:#a1a1aa;
+  --border:#27272a; --card:#101013; --primary:#fafafa; --primary-fg:#09090b; --ring:#fafafa;
+  --b-bg:#172554; --b-fg:#93c5fd; --g-bg:#14532d; --g-fg:#86efac; --a-bg:#78350f; --a-fg:#fcd34d;
+  --r-bg:#7f1d1d; --r-fg:#fca5a5; --z-bg:#27272a; --z-fg:#d4d4d8;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:Inter,-apple-system,"Segoe UI",sans-serif;
+  font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.num{font-variant-numeric:tabular-nums}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 24px 60px}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{width:30px;height:30px;border-radius:8px;background:var(--primary);color:var(--primary-fg);
+  display:flex;align-items:center;justify-content:center;font-weight:700}
+.brand b{font-size:16px;font-weight:600;letter-spacing:-.01em}
+.iconbtn{width:34px;height:34px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--fg);
+  cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:15px}
+.iconbtn:hover{background:var(--muted)}
+h1{font-size:20px;font-weight:600;letter-spacing:-.02em;margin:22px 0 2px}
+.sub{font-size:13px;color:var(--muted-fg);margin-bottom:18px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;align-items:center}
+.search{display:flex;align-items:center;gap:8px;border:1px solid var(--border);border-radius:8px;padding:7px 12px;
+  color:var(--muted-fg);background:var(--bg);flex:1;min-width:200px;max-width:340px}
+.search input{border:0;outline:0;background:transparent;color:var(--fg);font:inherit;width:100%;font-size:13px}
+.pills{display:flex;gap:6px}
+.pill{border:1px solid var(--border);background:var(--bg);color:var(--muted-fg);border-radius:999px;
+  padding:6px 13px;font:inherit;font-size:12.5px;font-weight:500;cursor:pointer}
+.pill:hover{color:var(--fg)}
+.pill.on{background:var(--primary);border-color:var(--primary);color:var(--primary-fg)}
+.selbar{display:none;align-items:center;gap:10px;background:var(--muted);border:1px solid var(--border);
+  border-radius:8px;padding:8px 14px;font-size:13px;margin-bottom:14px}
+.selbar.show{display:flex}
+.selbar button{border:1px solid var(--border);background:var(--bg);color:var(--fg);border-radius:6px;
+  padding:5px 12px;font:inherit;font-size:12.5px;font-weight:500;cursor:pointer}
+table{width:100%;border:1px solid var(--border);border-radius:12px;border-collapse:separate;border-spacing:0;
+  overflow:hidden;background:var(--card);font-size:13.5px}
+thead th{text-align:left;font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;
+  color:var(--muted-fg);padding:10px 14px;border-bottom:1px solid var(--border);background:var(--muted);white-space:nowrap}
+thead th.sortable{cursor:pointer;user-select:none}
+thead th.sortable:hover{color:var(--fg)}
+tbody td{padding:11px 14px;border-bottom:1px solid var(--border);vertical-align:middle}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:var(--muted)}
+tbody tr.sel{background:var(--muted)}
+.tname{font-weight:500}
+.tid{color:var(--muted-fg);font-size:12px;font-variant-numeric:tabular-nums}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;border-radius:999px;padding:3px 10px;white-space:nowrap}
+.badge::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.st-open{background:var(--b-bg);color:var(--b-fg)}
+.st-prog{background:var(--a-bg);color:var(--a-fg)}
+.st-done{background:var(--g-bg);color:var(--g-fg)}
+.pr{font-size:12px;font-weight:600;border-radius:6px;padding:3px 9px;white-space:nowrap}
+.pr-hi{background:var(--r-bg);color:var(--r-fg)}
+.pr-md{background:var(--a-bg);color:var(--a-fg)}
+.pr-lo{background:var(--z-bg);color:var(--z-fg)}
+.who{display:flex;align-items:center;gap:8px}
+.avatar{width:26px;height:26px;border-radius:50%;background:var(--muted);border:1px solid var(--border);color:var(--muted-fg);
+  display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:600;flex-shrink:0}
+.due{color:var(--muted-fg);font-variant-numeric:tabular-nums;white-space:nowrap}
+.due.late{color:var(--r-fg);font-weight:600}
+input[type=checkbox]{width:16px;height:16px;accent-color:var(--primary);cursor:pointer}
+.foot{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-size:12.5px;color:var(--muted-fg)}
+@media(max-width:760px){.hide-m{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="brand"><span class="logo">T</span><b>Taskline</b></div>
+    <button class="iconbtn" id="theme" aria-label="Toggle dark mode">◐</button>
+  </div>
+  <h1>Tasks</h1>
+  <p class="sub num" id="count"></p>
+  <div class="toolbar">
+    <label class="search">⌕<input id="q" placeholder="Search tasks…" aria-label="Search tasks"></label>
+    <div class="pills" id="statusPills">
+      <button class="pill on" data-s="">All</button>
+      <button class="pill" data-s="Open">Open</button>
+      <button class="pill" data-s="In progress">In progress</button>
+      <button class="pill" data-s="Done">Done</button>
+    </div>
+  </div>
+  <div class="selbar" id="selbar"><b id="selcount" class="num">0 selected</b>
+    <button id="markDone">Mark done</button><button id="clearSel">Clear</button>
+  </div>
+  <table>
+    <thead><tr>
+      <th style="width:36px"><input type="checkbox" id="checkAll" aria-label="Select all"></th>
+      <th>Task</th><th>Status</th><th class="hide-m">Priority</th><th>Assignee</th>
+      <th class="sortable" data-k="due">Due ▾</th>
+    </tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <div class="foot"><span id="showing"></span><span>Updated just now</span></div>
+</div>
+<script>
+var T=[
+ {id:"TL-1042",n:"Redesign onboarding checklist",s:"In progress",p:"High",w:"Amara Reyes",due:"2026-10-09"},
+ {id:"TL-1041",n:"Fix chart tooltip overflow on mobile",s:"Open",p:"High",w:"Marta Kessler",due:"2026-10-06"},
+ {id:"TL-1040",n:"Write API rate-limit docs",s:"Open",p:"Medium",w:"Dev Osei",due:"2026-10-12"},
+ {id:"TL-1039",n:"Q3 revenue report export",s:"Done",p:"Medium",w:"Priya Lal",due:"2026-10-01"},
+ {id:"TL-1038",n:"SSO provisioning for Scale plans",s:"In progress",p:"High",w:"Jonas Thal",due:"2026-10-15"},
+ {id:"TL-1037",n:"Empty states for billing page",s:"Open",p:"Low",w:"Marta Kessler",due:"2026-10-20"},
+ {id:"TL-1036",n:"Migrate button primitives to v2 tokens",s:"Done",p:"Medium",w:"Sofia Almeida",due:"2026-09-28"},
+ {id:"TL-1035",n:"Customer health score backfill",s:"Open",p:"Medium",w:"Priya Lal",due:"2026-10-18"},
+ {id:"TL-1034",n:"Dark mode QA pass — settings",s:"In progress",p:"Low",w:"Amara Reyes",due:"2026-10-08"},
+ {id:"TL-1033",n:"Invoice PDF line-item alignment",s:"Done",p:"Low",w:"Dev Osei",due:"2026-09-25"},
+ {id:"TL-1032",n:"Slack alerts for failed payments",s:"Open",p:"High",w:"Jonas Thal",due:"2026-10-05"},
+ {id:"TL-1031",n:"Annual plan proration math",s:"Open",p:"Medium",w:"Sofia Almeida",due:"2026-10-22"}
+];
+var f={q:"",s:"",k:"due",dir:1}, sel=new Set();
+function ini(n){return n.split(" ").map(function(w){return w[0]}).slice(0,2).join("")}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function stCls(s){return s==="Open"?"st-open":s==="In progress"?"st-prog":"st-done"}
+function prCls(p){return p==="High"?"pr-hi":p==="Medium"?"pr-md":"pr-lo"}
+function fmtDue(d){var t=new Date(d+"T12:00:00"),now=new Date();now.setHours(0,0,0,0);
+  var diff=Math.round((t-now)/864e5);
+  var s=t.toLocaleDateString("en-US",{month:"short",day:"numeric"});
+  return {s:s,late:diff<0&&false,diff:diff}}
+function rows(){
+  var q=f.q.toLowerCase();
+  var r=T.filter(function(t){
+    return (!f.s||t.s===f.s)&&(!q||(t.n+t.id+t.w).toLowerCase().indexOf(q)>=0);
+  });
+  var pw={High:0,Medium:1,Low:2};
+  r.sort(function(a,b){
+    if(f.k==="due")return (a.due<b.due?-1:1)*f.dir;
+    return (pw[a.p]-pw[b.p])*f.dir;
+  });
+  var tb=document.getElementById("rows");tb.innerHTML="";
+  var today=new Date();today.setHours(0,0,0,0);
+  r.forEach(function(t){
+    var d=new Date(t.due+"T12:00:00"),late=d<today&&t.s!=="Done";
+    var tr=document.createElement("tr");
+    if(sel.has(t.id))tr.classList.add("sel");
+    tr.innerHTML='<td><input type="checkbox" '+(sel.has(t.id)?"checked":"")+' aria-label="Select '+esc(t.id)+'"></td>'+
+      '<td><span class="tname">'+esc(t.n)+'</span><br><span class="tid num">'+t.id+"</span></td>"+
+      '<td><span class="badge '+stCls(t.s)+'">'+t.s+"</span></td>"+
+      '<td class="hide-m"><span class="pr '+prCls(t.p)+'">'+t.p+"</span></td>"+
+      '<td><span class="who"><span class="avatar">'+ini(t.w)+"</span>"+esc(t.w)+"</span></td>"+
+      '<td class="due num'+(late?" late":"")+'">'+d.toLocaleDateString("en-US",{month:"short",day:"numeric"})+(late?" · overdue":"")+"</td>";
+    tr.querySelector("input").addEventListener("change",function(e){
+      e.target.checked?sel.add(t.id):sel.delete(t.id);rows();
+    });
+    tb.appendChild(tr);
+  });
+  document.getElementById("count").textContent=r.length+" of "+T.length+" tasks";
+  document.getElementById("showing").textContent="Showing "+r.length+" tasks";
+  var sb=document.getElementById("selbar");
+  sb.classList.toggle("show",sel.size>0);
+  document.getElementById("selcount").textContent=sel.size+" selected";
+  document.getElementById("checkAll").checked=r.length>0&&r.every(function(t){return sel.has(t.id)});
+}
+document.getElementById("q").addEventListener("input",function(e){f.q=e.target.value;rows()});
+document.querySelectorAll("#statusPills .pill").forEach(function(p){
+  p.addEventListener("click",function(){
+    document.querySelectorAll("#statusPills .pill").forEach(function(x){x.classList.remove("on")});
+    p.classList.add("on");f.s=p.dataset.s;rows();
+  });
+});
+document.querySelector("th.sortable").addEventListener("click",function(){
+  f.dir*=-1;this.innerHTML="Due "+(f.dir===1?"▾":"▴");rows();
+});
+document.getElementById("checkAll").addEventListener("change",function(e){
+  var q=f.q.toLowerCase();
+  T.filter(function(t){return (!f.s||t.s===f.s)&&(!q||(t.n+t.id+t.w).toLowerCase().indexOf(q)>=0)})
+   .forEach(function(t){e.target.checked?sel.add(t.id):sel.delete(t.id)});
+  rows();
+});
+document.getElementById("clearSel").addEventListener("click",function(){sel.clear();rows()});
+document.getElementById("markDone").addEventListener("click",function(){
+  T.forEach(function(t){if(sel.has(t.id))t.s="Done"});sel.clear();rows();
+});
+document.getElementById("theme").addEventListener("click",function(){document.documentElement.classList.toggle("dark")});
+rows();
+</script>
+</body>
+</html>

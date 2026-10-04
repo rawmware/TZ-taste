@@ -1,0 +1,155 @@
+<!--tz-meta {"id":"showcase-gatekeeper-auth","title":"Gatekeeper — sign in","category":"Showcase","file":"showcase/gatekeeper-auth.html","tags":["app-ui","auth","shadcn"],"description":"Gatekeeper split-screen auth: brand panel, email/password with show-hide, SSO buttons, validation states, dark mode.","dnas":[]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gatekeeper — Sign in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --fg:#09090b; --muted:#f4f4f5; --muted-fg:#71717a;
+  --border:#e4e4e7; --card:#ffffff; --primary:#18181b; --primary-fg:#fafafa; --ring:#18181b;
+  --err:#dc2626; --err-bg:#fef2f2; --ok:#15803d; --ok-bg:#f0fdf4;
+}
+html.dark{
+  --bg:#09090b; --fg:#fafafa; --muted:#27272a; --muted-fg:#a1a1aa;
+  --border:#27272a; --card:#101013; --primary:#fafafa; --primary-fg:#09090b; --ring:#fafafa;
+  --err:#f87171; --err-bg:#7f1d1d; --ok:#4ade80; --ok-bg:#14532d;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:Inter,-apple-system,"Segoe UI",sans-serif;
+  font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.split{display:flex;min-height:100vh}
+/* brand panel */
+.brand{flex:1;background:#09090b;color:#fafafa;padding:48px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.brand::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(600px 400px at 80% 10%,rgba(255,255,255,.06),transparent),
+             radial-gradient(500px 500px at 10% 90%,rgba(255,255,255,.04),transparent)}
+.bmark{display:flex;align-items:center;gap:10px;position:relative;z-index:1}
+.bmark .logo{width:32px;height:32px;border-radius:8px;background:#fafafa;color:#09090b;
+  display:flex;align-items:center;justify-content:center;font-weight:700}
+.bmark b{font-size:16px;font-weight:600;letter-spacing:-.01em}
+.bquote{position:relative;z-index:1;max-width:440px}
+.bquote p{font-size:22px;line-height:1.5;font-weight:500;letter-spacing:-.01em;margin-bottom:18px}
+.bquote .who{display:flex;align-items:center;gap:12px}
+.avatar{width:40px;height:40px;border-radius:50%;background:#27272a;color:#a1a1aa;
+  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600}
+.bquote .nm{font-size:13.5px;font-weight:600}
+.bquote .rl{font-size:12.5px;color:#a1a1aa}
+.bdots{display:flex;gap:8px;position:relative;z-index:1}
+.bdots span{width:36px;height:4px;border-radius:99px;background:#27272a}
+.bdots span.on{background:#fafafa}
+/* form side */
+.side{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 24px;position:relative}
+.toggletop{position:absolute;top:16px;right:16px}
+.iconbtn{width:34px;height:34px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--fg);
+  cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:15px}
+.card{width:380px;max-width:100%}
+.card h1{font-size:22px;font-weight:600;letter-spacing:-.02em;margin-bottom:6px}
+.card .sub{font-size:13.5px;color:var(--muted-fg);margin-bottom:24px}
+.sso{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.sso button{display:flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--border);
+  background:var(--bg);color:var(--fg);border-radius:8px;padding:9px;font:inherit;font-size:13px;font-weight:500;cursor:pointer}
+.sso button:hover{background:var(--muted)}
+.or{display:flex;align-items:center;gap:12px;color:var(--muted-fg);font-size:12px;margin-bottom:20px}
+.or::before,.or::after{content:"";flex:1;border-top:1px solid var(--border)}
+.field{margin-bottom:14px}
+.field label{display:flex;justify-content:space-between;font-size:13px;font-weight:500;margin-bottom:6px}
+.field label a{font-weight:400;color:var(--muted-fg);text-decoration:none;font-size:12.5px}
+.field label a:hover{color:var(--fg)}
+.inwrap{position:relative}
+.inwrap input{width:100%;border:1px solid var(--border);border-radius:8px;padding:10px 40px 10px 12px;
+  font:inherit;font-size:13.5px;background:var(--bg);color:var(--fg);outline:none}
+.field>input{width:100%;border:1px solid var(--border);border-radius:8px;padding:10px 12px;
+  font:inherit;font-size:13.5px;background:var(--bg);color:var(--fg);outline:none}
+.inwrap input:focus,.field>input:focus{border-color:var(--ring);box-shadow:0 0 0 3px color-mix(in srgb,var(--ring) 12%,transparent)}
+.inwrap input.bad,.field>input.bad{border-color:var(--err)}
+.show{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:transparent;
+  color:var(--muted-fg);font:inherit;font-size:12.5px;font-weight:500;cursor:pointer;padding:6px 8px;border-radius:6px}
+.show:hover{color:var(--fg)}
+.err{display:none;align-items:flex-start;gap:8px;background:var(--err-bg);color:var(--err);border:1px solid var(--err);
+  border-radius:8px;padding:10px 12px;font-size:13px;margin-bottom:16px}
+.err.show{display:flex}
+.ok{display:none;align-items:flex-start;gap:8px;background:var(--ok-bg);color:var(--ok);border:1px solid var(--ok);
+  border-radius:8px;padding:10px 12px;font-size:13px;margin-bottom:16px}
+.ok.show{display:flex}
+.remember{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted-fg);margin:4px 0 18px}
+.remember input{width:15px;height:15px;accent-color:var(--primary)}
+.submit{width:100%;background:var(--primary);color:var(--primary-fg);border:1px solid var(--primary);
+  border-radius:8px;padding:11px;font:inherit;font-size:13.5px;font-weight:600;cursor:pointer}
+.submit:hover{opacity:.92}
+.submit:disabled{opacity:.6;cursor:wait}
+.signup{text-align:center;font-size:13px;color:var(--muted-fg);margin-top:20px}
+.signup a{color:var(--fg);font-weight:500;text-decoration:none}
+.foot{margin-top:28px;text-align:center;font-size:12px;color:var(--muted-fg)}
+@media(max-width:860px){.brand{display:none}}
+</style>
+</head>
+<body>
+<div class="split">
+  <aside class="brand">
+    <div class="bmark"><span class="logo">G</span><b>Gatekeeper</b></div>
+    <div class="bquote">
+      <p>“We moved 4,000 engineers onto SSO in a week. Gatekeeper's session handling is the first auth product our security team didn't argue with.”</p>
+      <div class="who"><span class="avatar">DK</span><span><span class="nm">Dana Kim</span><br><span class="rl">CISO, Harborline</span></span></div>
+    </div>
+    <div class="bdots"><span class="on"></span><span></span><span></span></div>
+  </aside>
+  <main class="side">
+    <div class="toggletop"><button class="iconbtn" id="theme" aria-label="Toggle dark mode">◐</button></div>
+    <div class="card">
+      <h1>Welcome back</h1>
+      <p class="sub">Sign in to your Gatekeeper workspace.</p>
+      <div class="sso">
+        <button id="ssoG"><b>G</b> Google</button>
+        <button id="ssoH">⌥ GitHub</button>
+      </div>
+      <div class="or">or continue with email</div>
+      <div class="err" id="errBox">⚠ <span id="errMsg"></span></div>
+      <div class="ok" id="okBox">✓ <span>Signed in — redirecting to your dashboard…</span></div>
+      <form id="form" novalidate>
+        <div class="field"><label for="em">Email</label><input id="em" type="email" placeholder="you@company.com" autocomplete="email"></div>
+        <div class="field"><label for="pw">Password <a href="#" id="forgot">Forgot password?</a></label>
+          <div class="inwrap"><input id="pw" type="password" placeholder="••••••••" autocomplete="current-password"><button type="button" class="show" id="showPw">Show</button></div>
+        </div>
+        <label class="remember"><input type="checkbox" checked> Remember me on this device</label>
+        <button class="submit" id="submit" type="submit">Sign in</button>
+      </form>
+      <p class="signup">New to Gatekeeper? <a href="#">Create an account</a></p>
+      <p class="foot">Protected by rate limiting, device checks &amp; breach monitoring.</p>
+    </div>
+  </main>
+</div>
+<script>
+var em=document.getElementById("em"),pw=document.getElementById("pw"),
+    errBox=document.getElementById("errBox"),errMsg=document.getElementById("errMsg"),
+    okBox=document.getElementById("okBox"),btn=document.getElementById("submit");
+function fail(m,bad){errMsg.textContent=m;errBox.classList.add("show");okBox.classList.remove("show");
+  if(bad)bad.classList.add("bad")}
+function clear(){errBox.classList.remove("show");em.classList.remove("bad");pw.classList.remove("bad")}
+document.getElementById("showPw").addEventListener("click",function(){
+  var t=pw.type==="password"?"text":"password";pw.type=t;this.textContent=t==="password"?"Show":"Hide";
+});
+document.getElementById("forgot").addEventListener("click",function(e){e.preventDefault();
+  clear();errMsg.textContent="Reset link sent — check your inbox.";errBox.classList.add("show");});
+document.getElementById("form").addEventListener("submit",function(e){
+  e.preventDefault();clear();
+  var v=em.value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){fail("Enter a valid email address.",em);return}
+  if(pw.value.length<8){fail("Password must be at least 8 characters.",pw);return}
+  btn.disabled=true;btn.textContent="Signing in…";
+  setTimeout(function(){
+    btn.disabled=false;btn.textContent="Sign in";
+    if(v==="locked@example.com"){fail("This account is locked after too many attempts. Reset your password.",em);return}
+    okBox.classList.add("show");
+  },900);
+});
+document.getElementById("ssoG").addEventListener("click",function(){clear();okBox.classList.add("show")});
+document.getElementById("ssoH").addEventListener("click",function(){clear();okBox.classList.add("show")});
+document.getElementById("theme").addEventListener("click",function(){document.documentElement.classList.toggle("dark")});
+</script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!--tz-meta {"id":"showcase-pulse-dashboard","title":"Pulse — analytics dashboard","category":"Showcase","file":"showcase/pulse-dashboard.html","tags":["app-ui","dashboard","shadcn"],"description":"Pulse analytics dashboard: sidebar, KPI cards, hand-plotted SVG revenue chart, traffic sources, events feed, dark mode.","dnas":[]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pulse — Analytics Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --fg:#09090b; --muted:#f4f4f5; --muted-fg:#71717a;
+  --border:#e4e4e7; --card:#ffffff; --primary:#18181b; --primary-fg:#fafafa;
+  --ring:#18181b; --pos:#16a34a; --pos-bg:#dcfce7; --neg:#dc2626; --neg-bg:#fee2e2;
+  --shadow:0 1px 2px rgba(0,0,0,.04);
+}
+html.dark{
+  --bg:#09090b; --fg:#fafafa; --muted:#27272a; --muted-fg:#a1a1aa;
+  --border:#27272a; --card:#101013; --primary:#fafafa; --primary-fg:#09090b;
+  --ring:#fafafa; --pos:#4ade80; --pos-bg:#14532d; --neg:#f87171; --neg-bg:#7f1d1d;
+  --shadow:0 1px 2px rgba(0,0,0,.3);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:Inter,-apple-system,"Segoe UI",sans-serif;
+  font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;transition:background .2s,color .2s}
+.num{font-variant-numeric:tabular-nums}
+.app{display:flex;min-height:100vh}
+/* sidebar */
+.side{width:240px;flex-shrink:0;border-right:1px solid var(--border);display:flex;flex-direction:column;background:var(--bg)}
+.brand{display:flex;align-items:center;gap:10px;padding:18px 16px;border-bottom:1px solid var(--border)}
+.logo{width:28px;height:28px;border-radius:8px;background:var(--primary);color:var(--primary-fg);
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.brand b{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.nav{padding:12px 8px;flex:1}
+.nav .lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted-fg);padding:8px 12px 4px}
+.nav a{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;color:var(--muted-fg);
+  text-decoration:none;font-weight:500;font-size:13.5px}
+.nav a:hover{background:var(--muted);color:var(--fg)}
+.nav a.on{background:var(--muted);color:var(--fg);font-weight:600}
+.nav a .ic{width:18px;text-align:center;opacity:.8}
+.usercard{margin:12px;border:1px solid var(--border);border-radius:10px;padding:10px 12px;display:flex;gap:10px;align-items:center}
+.avatar{width:32px;height:32px;border-radius:50%;background:var(--muted);color:var(--muted-fg);
+  display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0}
+.usercard .nm{font-size:13px;font-weight:600}
+.usercard .em{font-size:12px;color:var(--muted-fg)}
+/* main */
+.main{flex:1;min-width:0;display:flex;flex-direction:column}
+.topbar{display:flex;align-items:center;gap:12px;padding:14px 24px;border-bottom:1px solid var(--border)}
+.search{flex:1;max-width:420px;display:flex;align-items:center;gap:8px;border:1px solid var(--border);
+  border-radius:8px;padding:7px 12px;color:var(--muted-fg);background:var(--bg)}
+.search input{border:0;outline:0;background:transparent;color:var(--fg);font:inherit;width:100%}
+.search kbd{font-size:11px;border:1px solid var(--border);border-radius:4px;padding:1px 6px;background:var(--muted)}
+.iconbtn{width:34px;height:34px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--fg);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px}
+.iconbtn:hover{background:var(--muted)}
+.iconbtn:focus-visible{outline:2px solid var(--ring);outline-offset:2px}
+.content{padding:24px;max-width:1200px;width:100%;margin:0 auto}
+.pagehead{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px}
+.pagehead h1{font-size:20px;font-weight:600;letter-spacing:-.02em}
+.pagehead p{font-size:13px;color:var(--muted-fg)}
+.btn{background:var(--primary);color:var(--primary-fg);border:1px solid var(--primary);border-radius:8px;
+  padding:8px 16px;font:inherit;font-size:13px;font-weight:500;cursor:pointer}
+.btn:hover{opacity:.92}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}
+.kpi{border:1px solid var(--border);border-radius:12px;background:var(--card);padding:16px;box-shadow:var(--shadow)}
+.kpi .t{font-size:12.5px;font-weight:500;color:var(--muted-fg);margin-bottom:6px}
+.kpi .v{font-size:24px;font-weight:600;letter-spacing:-.02em}
+.delta{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:600;border-radius:999px;padding:2px 8px;margin-top:8px}
+.delta.up{color:var(--pos);background:var(--pos-bg)}
+.delta.dn{color:var(--neg);background:var(--neg-bg)}
+.kpi .sub{font-size:12px;color:var(--muted-fg);margin-left:6px;font-weight:400}
+.grid2{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:16px}
+.card{border:1px solid var(--border);border-radius:12px;background:var(--card);box-shadow:var(--shadow)}
+.card-h{display:flex;align-items:center;justify-content:space-between;padding:16px 18px 0}
+.card-h h3{font-size:14px;font-weight:600}
+.card-h .tag{font-size:12px;color:var(--muted-fg)}
+.chart{padding:8px 10px 4px}
+.chart svg{width:100%;height:auto;display:block}
+.legend{display:flex;gap:16px;padding:0 18px 14px;font-size:12px;color:var(--muted-fg)}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.src{padding:6px 18px 18px}
+.srcrow{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px}
+.srcrow:last-child{border-bottom:0}
+.srcrow .n{width:110px;font-weight:500}
+.bar{flex:1;height:8px;border-radius:99px;background:var(--muted);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:99px;background:var(--fg)}
+.srcrow .p{width:44px;text-align:right;color:var(--muted-fg);font-variant-numeric:tabular-nums}
+.feed{padding:6px 18px 18px}
+.ev{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px;align-items:flex-start}
+.ev:last-child{border-bottom:0}
+.ev .avatar{width:30px;height:30px;font-size:11px}
+.ev .tx b{font-weight:600}
+.ev .tx .m{color:var(--muted-fg);font-size:12px}
+.ev time{margin-left:auto;color:var(--muted-fg);font-size:12px;white-space:nowrap}
+@media(max-width:980px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.side{display:none}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand"><span class="logo">P</span><b>Pulse</b></div>
+    <nav class="nav">
+      <div class="lbl">Workspace</div>
+      <a href="#" class="on"><span class="ic">◧</span>Overview</a>
+      <a href="#"><span class="ic">◫</span>Analytics</a>
+      <a href="#"><span class="ic">◍</span>Customers</a>
+      <a href="#"><span class="ic">◎</span>Revenue</a>
+      <div class="lbl">General</div>
+      <a href="#"><span class="ic">▤</span>Reports</a>
+      <a href="#"><span class="ic">⚙</span>Settings</a>
+    </nav>
+    <div class="usercard">
+      <span class="avatar">AR</span>
+      <span><span class="nm">Amara Reyes</span><br><span class="em">amara@pulse.io</span></span>
+    </div>
+  </aside>
+  <div class="main">
+    <div class="topbar">
+      <label class="search">⌕<input id="q" placeholder="Search metrics, reports, customers…" aria-label="Search"><kbd>⌘K</kbd></label>
+      <button class="iconbtn" id="theme" aria-label="Toggle dark mode">◐</button>
+      <span class="avatar">AR</span>
+    </div>
+    <div class="content">
+      <div class="pagehead">
+        <div><h1>Overview</h1><p>Last 30 days · updated 4 minutes ago</p></div>
+        <button class="btn">Download report</button>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><div class="t">Total revenue</div><div class="v num">$128,430</div><span class="delta up">▲ 12.4%</span><span class="sub">vs prev. period</span></div>
+        <div class="kpi"><div class="t">Active users</div><div class="v num">24,813</div><span class="delta up">▲ 8.1%</span><span class="sub">vs prev. period</span></div>
+        <div class="kpi"><div class="t">Conversion rate</div><div class="v num">3.24%</div><span class="delta dn">▼ 0.4%</span><span class="sub">vs prev. period</span></div>
+        <div class="kpi"><div class="t">Avg. order value</div><div class="v num">$84.20</div><span class="delta up">▲ 2.2%</span><span class="sub">vs prev. period</span></div>
+      </div>
+      <div class="grid2">
+        <div class="card">
+          <div class="card-h"><h3>Revenue</h3><span class="tag num">Sep 4 – Oct 4</span></div>
+          <div class="chart">
+            <svg viewBox="0 0 640 220" role="img" aria-label="Revenue area chart, last 30 days">
+              <defs>
+                <linearGradient id="ag" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#18181b" stop-opacity=".18"/><stop offset="1" stop-color="#18181b" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <g stroke="currentColor" opacity=".12">
+                <line x1="40" y1="20" x2="40" y2="190"/><line x1="40" y1="60" x2="620" y2="60"/>
+                <line x1="40" y1="100" x2="620" y2="100"/><line x1="40" y1="140" x2="620" y2="140"/>
+                <line x1="40" y1="190" x2="620" y2="190"/>
+              </g>
+              <g font-size="10" fill="currentColor" opacity=".45">
+                <text x="44" y="56">$8k</text><text x="44" y="96">$6k</text><text x="44" y="136">$4k</text><text x="44" y="176">$2k</text>
+                <text x="40" y="206">Sep 4</text><text x="300" y="206">Sep 19</text><text x="580" y="206">Oct 4</text>
+              </g>
+              <path d="M40,150 C70,146 85,120 110,118 C135,116 150,138 175,132 C200,126 210,96 240,92
+                       C270,88 285,110 310,104 C335,98 345,70 375,66 C405,62 415,90 445,84
+                       C475,78 490,52 520,48 C550,44 575,58 620,50
+                       L620,190 L40,190 Z" fill="url(#ag)"/>
+              <path d="M40,150 C70,146 85,120 110,118 C135,116 150,138 175,132 C200,126 210,96 240,92
+                       C270,88 285,110 310,104 C335,98 345,70 375,66 C405,62 415,90 445,84
+                       C475,78 490,52 520,48 C550,44 575,58 620,50"
+                    fill="none" stroke="#18181b" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="520" cy="48" r="4.5" fill="#18181b"/>
+              <g font-size="11" font-weight="600"><text x="534" y="52" fill="currentColor">$7,912</text></g>
+            </svg>
+          </div>
+          <div class="legend"><span><span class="dot" style="background:#18181b"></span>Revenue</span><span><span class="dot" style="background:#a1a1aa"></span>Previous period</span></div>
+        </div>
+        <div class="card">
+          <div class="card-h"><h3>Traffic sources</h3></div>
+          <div class="src">
+            <div class="srcrow"><span class="n">Direct</span><span class="bar"><i style="width:42%"></i></span><span class="p num">42%</span></div>
+            <div class="srcrow"><span class="n">Organic search</span><span class="bar"><i style="width:28%"></i></span><span class="p num">28%</span></div>
+            <div class="srcrow"><span class="n">Referral</span><span class="bar"><i style="width:18%"></i></span><span class="p num">18%</span></div>
+            <div class="srcrow"><span class="n">Social</span><span class="bar"><i style="width:12%"></i></span><span class="p num">12%</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-h"><h3>Recent events</h3><span class="tag">Live</span></div>
+        <div class="feed">
+          <div class="ev"><span class="avatar">MK</span><span class="tx"><b>Marta Kessler</b> upgraded to Scale plan<br><span class="m">marta@northwind.dev · $49/mo</span></span><time>2m ago</time></div>
+          <div class="ev"><span class="avatar">DO</span><span class="tx"><b>Dev Osei</b> completed onboarding<br><span class="m">dev@lumenlabs.co · 14 seats</span></span><time>18m ago</time></div>
+          <div class="ev"><span class="avatar">PL</span><span class="tx"><b>Priya Lal</b> exported Q3 revenue report<br><span class="m">priya@fieldnotes.io · CSV</span></span><time>41m ago</time></div>
+          <div class="ev"><span class="avatar">JT</span><span class="tx"><b>Jonas Thal</b> invited 3 teammates<br><span class="m">jonas@harborline.com · Growth plan</span></span><time>1h ago</time></div>
+          <div class="ev"><span class="avatar">SA</span><span class="tx"><b>Sofia Almeida</b> payment failed — card expired<br><span class="m">sofia@brightpath.co · $29/mo</span></span><time>2h ago</time></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+document.getElementById('theme').addEventListener('click',function(){
+  document.documentElement.classList.toggle('dark');
+});
+document.querySelectorAll('.nav a').forEach(function(a){
+  a.addEventListener('click',function(e){e.preventDefault();
+    document.querySelectorAll('.nav a').forEach(function(x){x.classList.remove('on')});
+    a.classList.add('on');});
+});
+</script>
+</body>
+</html>

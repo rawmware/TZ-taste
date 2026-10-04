@@ -1,0 +1,195 @@
+<!--tz-meta {"id":"showcase-settings-desk","title":"Settings — app settings","category":"Showcase","file":"showcase/settings-desk.html","tags":["app-ui","settings","shadcn"],"description":"Settings app page: sidebar tabs, profile form, appearance picker that restyles the page, notification toggles, billing.","dnas":[]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Settings — Pulse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --fg:#09090b; --muted:#f4f4f5; --muted-fg:#71717a;
+  --border:#e4e4e7; --card:#ffffff; --primary:#18181b; --primary-fg:#fafafa; --ring:#18181b;
+  --g-bg:#f0fdf4; --g-fg:#15803d;
+}
+html.dark{
+  --bg:#09090b; --fg:#fafafa; --muted:#27272a; --muted-fg:#a1a1aa;
+  --border:#27272a; --card:#101013; --primary:#fafafa; --primary-fg:#09090b; --ring:#fafafa;
+  --g-bg:#14532d; --g-fg:#86efac;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:Inter,-apple-system,"Segoe UI",sans-serif;
+  font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1020px;margin:0 auto;padding:28px 24px 70px}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{width:30px;height:30px;border-radius:8px;background:var(--primary);color:var(--primary-fg);
+  display:flex;align-items:center;justify-content:center;font-weight:700}
+.brand b{font-size:16px;font-weight:600}
+.iconbtn{width:34px;height:34px;border:1px solid var(--border);border-radius:8px;background:var(--bg);color:var(--fg);
+  cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:15px}
+h1{font-size:20px;font-weight:600;letter-spacing:-.02em}
+.sub{font-size:13px;color:var(--muted-fg);margin:2px 0 20px}
+.layout{display:flex;gap:28px;align-items:flex-start}
+.snav{width:210px;flex-shrink:0;display:flex;flex-direction:column;gap:2px}
+.snav button{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;border:0;background:transparent;
+  color:var(--muted-fg);font:inherit;font-size:13.5px;font-weight:500;cursor:pointer;text-align:left}
+.snav button:hover{background:var(--muted);color:var(--fg)}
+.snav button.on{background:var(--muted);color:var(--fg);font-weight:600}
+.panel{flex:1;min-width:0;border:1px solid var(--border);border-radius:12px;background:var(--card);padding:24px}
+.panel h2{font-size:15px;font-weight:600;margin-bottom:2px}
+.panel .d{font-size:13px;color:var(--muted-fg);margin-bottom:20px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:13px;font-weight:500;margin-bottom:6px}
+.field input,.field textarea{width:100%;border:1px solid var(--border);border-radius:8px;padding:9px 12px;
+  font:inherit;font-size:13.5px;background:var(--bg);color:var(--fg);outline:none}
+.field input:focus,.field textarea:focus{border-color:var(--ring);box-shadow:0 0 0 3px color-mix(in srgb,var(--ring) 15%,transparent)}
+.field .hint{font-size:12px;color:var(--muted-fg);margin-top:5px}
+.prow{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.avatar{width:56px;height:56px;border-radius:50%;background:var(--muted);border:1px solid var(--border);
+  color:var(--muted-fg);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600}
+.btn{background:var(--primary);color:var(--primary-fg);border:1px solid var(--primary);border-radius:8px;
+  padding:9px 18px;font:inherit;font-size:13px;font-weight:500;cursor:pointer}
+.btn:hover{opacity:.92}
+.btn2{background:transparent;color:var(--fg);border:1px solid var(--border);border-radius:8px;padding:8px 16px;
+  font:inherit;font-size:13px;font-weight:500;cursor:pointer}
+.btn2:hover{background:var(--muted)}
+.btn-danger{background:#dc2626;border-color:#dc2626;color:#fff;border-radius:8px;padding:9px 18px;
+  font:inherit;font-size:13px;font-weight:500;cursor:pointer}
+.divider{border:0;border-top:1px solid var(--border);margin:22px 0}
+.rowline{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid var(--border)}
+.rowline:last-child{border-bottom:0}
+.rowline .t{font-size:13.5px;font-weight:500}
+.rowline .d2{font-size:12.5px;color:var(--muted-fg);margin-top:2px}
+/* switch */
+.sw{position:relative;width:40px;height:22px;flex-shrink:0;cursor:pointer}
+.sw input{opacity:0;width:0;height:0}
+.sw .tr{position:absolute;inset:0;border-radius:999px;background:var(--border);transition:.2s}
+.sw .tr::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.sw input:checked+.tr{background:var(--primary)}
+.sw input:checked+.tr::after{transform:translateX(18px)}
+.sw input:focus-visible+.tr{outline:2px solid var(--ring);outline-offset:2px}
+/* theme picker */
+.themes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.theme{border:1px solid var(--border);border-radius:10px;padding:12px;cursor:pointer;background:var(--bg);text-align:left;font:inherit;color:var(--fg)}
+.theme:hover{border-color:var(--muted-fg)}
+.theme.on{border-color:var(--ring);box-shadow:0 0 0 3px color-mix(in srgb,var(--ring) 15%,transparent)}
+.theme .pv{height:64px;border-radius:6px;margin-bottom:10px;border:1px solid var(--border)}
+.theme .nm{font-size:13px;font-weight:600}
+.theme .ds{font-size:12px;color:var(--muted-fg)}
+.planrow{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:12px}
+.planrow b{font-size:14px}
+.planrow .p{font-size:12.5px;color:var(--muted-fg)}
+.badge{font-size:11.5px;font-weight:600;background:var(--g-bg);color:var(--g-fg);border-radius:999px;padding:3px 10px}
+.inv{display:flex;justify-content:space-between;font-size:13px;padding:9px 0;border-bottom:1px solid var(--border)}
+.inv:last-child{border:0}
+.inv .m{color:var(--muted-fg);font-variant-numeric:tabular-nums}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--primary);
+  color:var(--primary-fg);font-size:13px;font-weight:500;padding:10px 18px;border-radius:8px;opacity:0;transition:.25s;z-index:60}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.hidden{display:none}
+@media(max-width:760px){.layout{flex-direction:column}.snav{width:100%;flex-direction:row;overflow:auto}.themes{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="brand"><span class="logo">P</span><b>Pulse</b></div>
+    <button class="iconbtn" id="themeTop" aria-label="Toggle dark mode">◐</button>
+  </div>
+  <h1>Settings</h1>
+  <p class="sub">Manage your account settings and preferences.</p>
+  <div class="layout">
+    <nav class="snav" id="snav">
+      <button data-t="profile" class="on">◍ Profile</button>
+      <button data-t="account">◈ Account</button>
+      <button data-t="appearance">◐ Appearance</button>
+      <button data-t="notifications">🔔 Notifications</button>
+      <button data-t="billing">▤ Billing</button>
+    </nav>
+    <div style="flex:1;min-width:0">
+      <section class="panel" id="p-profile">
+        <h2>Profile</h2><p class="d">How you'll appear across Pulse.</p>
+        <div class="prow"><span class="avatar">AR</span><button class="btn2" id="avBtn">Change avatar</button></div>
+        <div class="field"><label for="nm">Display name</label><input id="nm" value="Amara Reyes"></div>
+        <div class="field"><label for="em">Email</label><input id="em" value="amara@pulse.io"></div>
+        <div class="field"><label for="bio">Bio</label><textarea id="bio" rows="3">Head of Product at Pulse. I turn event streams into decisions.</textarea><div class="hint">Brief description for your profile. URLs are hyperlinked.</div></div>
+        <button class="btn" id="saveProfile">Save changes</button>
+      </section>
+      <section class="panel hidden" id="p-account">
+        <h2>Account</h2><p class="d">Security settings for your account.</p>
+        <div class="field"><label for="pw1">New password</label><input id="pw1" type="password" placeholder="••••••••"></div>
+        <div class="field"><label for="pw2">Confirm password</label><input id="pw2" type="password" placeholder="••••••••"></div>
+        <button class="btn" id="savePw">Update password</button>
+        <hr class="divider">
+        <h2 style="margin-bottom:8px">Danger zone</h2>
+        <div class="rowline"><span><span class="t">Delete account</span><div class="d2">Permanently remove your account and all data.</div></span><button class="btn-danger" id="delBtn">Delete</button></div>
+      </section>
+      <section class="panel hidden" id="p-appearance">
+        <h2>Appearance</h2><p class="d">Customize how Pulse looks on this device.</p>
+        <div class="themes" id="themes">
+          <button class="theme on" data-m="light"><span class="pv" style="background:linear-gradient(135deg,#fff 60%,#f4f4f5 60%)"></span><span class="nm">Light</span><br><span class="ds">Bright zinc surfaces</span></button>
+          <button class="theme" data-m="dark"><span class="pv" style="background:linear-gradient(135deg,#09090b 60%,#27272a 60%)"></span><span class="nm">Dark</span><br><span class="ds">Low-light zinc</span></button>
+          <button class="theme" data-m="system"><span class="pv" style="background:linear-gradient(135deg,#fff 50%,#09090b 50%)"></span><span class="nm">System</span><br><span class="ds">Follow OS setting</span></button>
+        </div>
+        <p class="hint" id="themeNote" style="margin-top:14px;font-size:12.5px;color:var(--muted-fg)">Currently: Light</p>
+      </section>
+      <section class="panel hidden" id="p-notifications">
+        <h2>Notifications</h2><p class="d">Choose what you want to hear about.</p>
+        <div class="rowline"><span><span class="t">Weekly digest</span><div class="d2">A summary of your workspace activity every Monday.</div></span><label class="sw"><input type="checkbox" checked><span class="tr"></span></label></div>
+        <div class="rowline"><span><span class="t">Payment alerts</span><div class="d2">Notify me when a payment succeeds or fails.</div></span><label class="sw"><input type="checkbox" checked><span class="tr"></span></label></div>
+        <div class="rowline"><span><span class="t">New signups</span><div class="d2">Ping me when someone joins the workspace.</div></span><label class="sw"><input type="checkbox"><span class="tr"></span></label></div>
+        <div class="rowline"><span><span class="t">Product updates</span><div class="d2">Occasional emails about new features.</div></span><label class="sw"><input type="checkbox" checked><span class="tr"></span></label></div>
+      </section>
+      <section class="panel hidden" id="p-billing">
+        <h2>Billing</h2><p class="d">Your plan and payment details.</p>
+        <div class="planrow"><span><b>Scale plan</b><div class="p">$49/mo · renews Nov 1</div></span><span class="badge">Active</span></div>
+        <div class="inv"><span>Oct 1, 2026 — Scale monthly</span><span class="m num">$49.00 · Paid</span></div>
+        <div class="inv"><span>Sep 1, 2026 — Scale monthly</span><span class="m num">$49.00 · Paid</span></div>
+        <div class="inv"><span>Aug 1, 2026 — Growth monthly</span><span class="m num">$29.00 · Paid</span></div>
+        <div style="margin-top:16px"><button class="btn2">Manage subscription</button></div>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+function toast(m){var t=document.getElementById("toast");t.textContent=m;t.classList.add("show");clearTimeout(t._x);t._x=setTimeout(function(){t.classList.remove("show")},2200)}
+document.querySelectorAll("#snav button").forEach(function(b){
+  b.addEventListener("click",function(){
+    document.querySelectorAll("#snav button").forEach(function(x){x.classList.remove("on")});
+    b.classList.add("on");
+    ["profile","account","appearance","notifications","billing"].forEach(function(t){
+      document.getElementById("p-"+t).classList.toggle("hidden",t!==b.dataset.t);
+    });
+  });
+});
+function setDark(d){document.documentElement.classList.toggle("dark",d)}
+document.getElementById("themeTop").addEventListener("click",function(){setDark(!document.documentElement.classList.contains("dark"))});
+document.querySelectorAll("#themes .theme").forEach(function(t){
+  t.addEventListener("click",function(){
+    document.querySelectorAll("#themes .theme").forEach(function(x){x.classList.remove("on")});
+    t.classList.add("on");
+    var m=t.dataset.m, note=document.getElementById("themeNote");
+    if(m==="light"){setDark(false);note.textContent="Currently: Light"}
+    else if(m==="dark"){setDark(true);note.textContent="Currently: Dark"}
+    else{var d=window.matchMedia("(prefers-color-scheme: dark)").matches;setDark(d);note.textContent="Currently: System ("+(d?"Dark":"Light")+")"}
+    toast("Appearance updated");
+  });
+});
+document.getElementById("saveProfile").addEventListener("click",function(){toast("Profile saved")});
+document.getElementById("avBtn").addEventListener("click",function(){toast("Avatar upload coming right up")});
+document.getElementById("savePw").addEventListener("click",function(){
+  var a=document.getElementById("pw1").value,b=document.getElementById("pw2").value;
+  if(a.length<8){toast("Password must be at least 8 characters");return}
+  if(a!==b){toast("Passwords do not match");return}
+  toast("Password updated");document.getElementById("pw1").value="";document.getElementById("pw2").value="";
+});
+document.getElementById("delBtn").addEventListener("click",function(){
+  if(confirm("Delete your Pulse account? This cannot be undone."))toast("Account deletion requested — check your email");
+});
+</script>
+</body>
+</html>
