@@ -1,0 +1,54 @@
+<!--tz-meta {"id":"cards-event","title":"Event cards","category":"Cards","file":"patterns/cards-event.html","tags":["date","poster"],"description":"Industrial date-block event cards with 2px borders and stamp details.","dnas":["industrial-brutalist"]} -->
+<section class="tz-events" aria-label="Upcoming events">
+  <p class="tz-eyebrow">Upcoming // 03</p>
+  <div class="tz-list">
+    <article class="tz-ev">
+      <div class="tz-date"><span class="tz-m">OCT</span><span class="tz-d">11</span></div>
+      <div class="tz-detail">
+        <h3>Intro to AI: ask better questions</h3>
+        <p class="tz-where">Dover Public Library · 6:00 PM · Free</p>
+        <p class="tz-desc">A hands-on hour for total beginners. Bring a phone, leave with an AI assistant you actually understand.</p>
+      </div>
+      <span class="tz-seats">14 seats left</span>
+    </article>
+    <article class="tz-ev">
+      <div class="tz-date"><span class="tz-m">OCT</span><span class="tz-d">18</span></div>
+      <div class="tz-detail">
+        <h3>Website teardown night</h3>
+        <p class="tz-where">Portsmouth Community Room · 6:30 PM · Free</p>
+        <p class="tz-desc">We pull up real local business sites and fix them live. Volunteers get their homepage rebuilt on the spot.</p>
+      </div>
+      <span class="tz-seats">Full — waitlist</span>
+    </article>
+    <article class="tz-ev">
+      <div class="tz-date"><span class="tz-m">NOV</span><span class="tz-d">02</span></div>
+      <div class="tz-detail">
+        <h3>Youth build day: first app</h3>
+        <p class="tz-where">Dover Teen Center · 10:00 AM · Free</p>
+        <p class="tz-desc">Ages 12–17 ship a working app in one Saturday. Laptops provided, lunch included, parents welcome.</p>
+      </div>
+      <span class="tz-seats">22 seats left</span>
+    </article>
+  </div>
+</section>
+<style>
+.tz-events{--bg:#e8e6e1;--ink:#161616;--org:#c23c00;--paper:#f4f2ec;
+  background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(56px,9vw,110px) clamp(20px,6vw,80px)}
+.tz-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:700;
+  letter-spacing:.16em;margin:0 0 32px}
+.tz-list{display:flex;flex-direction:column}
+.tz-ev{display:grid;grid-template-columns:96px 1fr auto;gap:22px;align-items:start;
+  border:2px solid var(--ink);background:var(--paper);padding:22px;margin-bottom:-2px}
+.tz-date{background:var(--ink);color:var(--paper);text-align:center;padding:12px 6px;
+  font-family:ui-monospace,Menlo,monospace;display:flex;flex-direction:column;gap:2px}
+.tz-m{font-size:11px;letter-spacing:.2em}
+.tz-d{font-size:34px;font-weight:700;line-height:1}
+.tz-detail h3{margin:0 0 6px;font-size:22px;letter-spacing:-.015em}
+.tz-where{margin:0 0 10px;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#4c4a44}
+.tz-desc{margin:0;font-size:15px;line-height:1.6;color:#33322d;max-width:56ch}
+.tz-seats{flex:none;border:2px solid var(--org);color:var(--org);font-family:ui-monospace,Menlo,monospace;
+  font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:8px 12px;transform:rotate(-3deg);white-space:nowrap;align-self:center}
+@media (max-width:640px){.tz-ev{grid-template-columns:76px 1fr}.tz-seats{display:none}}
+</style>
