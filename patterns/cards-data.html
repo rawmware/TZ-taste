@@ -1,0 +1,54 @@
+<!--tz-meta {"id":"cards-data","title":"Data cards","category":"Cards","file":"patterns/cards-data.html","tags":["dashboard","metrics"],"description":"Terminal-style metric cards with inline SVG sparklines and deltas.","dnas":["retro-terminal"]} -->
+<section class="tz-data" aria-label="Metrics dashboard">
+  <p class="tz-head"><span class="tz-p">$</span> metrics --live <span class="tz-dim"># last 90 days</span></p>
+  <div class="tz-grid">
+    <article class="tz-metric tz-wide">
+      <p class="tz-label">bookings / week</p>
+      <p class="tz-value">47 <span class="tz-up">▲ 12%</span></p>
+      <svg class="tz-spark" viewBox="0 0 200 48" aria-hidden="true"><polyline points="0,40 25,36 50,38 75,28 100,30 125,20 150,22 175,10 200,12" fill="none" stroke="#33dd66" stroke-width="2"/></svg>
+      <p class="tz-src">src: booking.log</p>
+    </article>
+    <article class="tz-metric">
+      <p class="tz-label">avg load time</p>
+      <p class="tz-value">0.9s <span class="tz-up">▲ faster</span></p>
+      <svg class="tz-spark" viewBox="0 0 200 48" aria-hidden="true"><polyline points="0,10 25,14 50,18 75,24 100,28 125,32 150,36 175,40 200,42" fill="none" stroke="#ffb000" stroke-width="2"/></svg>
+      <p class="tz-src">src: lighthouse</p>
+    </article>
+    <article class="tz-metric">
+      <p class="tz-label">uptime 90d</p>
+      <p class="tz-value">99.98% <span class="tz-dim2">stable</span></p>
+      <svg class="tz-spark" viewBox="0 0 200 48" aria-hidden="true"><polyline points="0,24 25,23 50,25 75,24 100,22 125,24 150,23 175,25 200,24" fill="none" stroke="#33dd66" stroke-width="2"/></svg>
+      <p class="tz-src">src: uptime.db</p>
+    </article>
+    <article class="tz-metric">
+      <p class="tz-label">repeat clients</p>
+      <p class="tz-value">63% <span class="tz-up">▲ 8%</span></p>
+      <svg class="tz-spark" viewBox="0 0 200 48" aria-hidden="true"><polyline points="0,38 25,34 50,30 75,32 100,26 125,24 150,18 175,16 200,10" fill="none" stroke="#33dd66" stroke-width="2"/></svg>
+      <p class="tz-src">src: invoices.csv</p>
+    </article>
+  </div>
+  <p class="tz-foot"><span class="tz-p">$</span> refresh --every 60s <span class="tz-blink" aria-hidden="true">▊</span></p>
+</section>
+<style>
+.tz-data{--bg:#0c0c0c;--green:#33dd66;--amber:#ffb000;--dim:#7c8a7c;--line:#33dd6633;
+  background:var(--bg);color:var(--green);font-family:ui-monospace,Menlo,monospace;
+  padding:clamp(48px,8vw,100px) clamp(20px,5vw,64px)}
+.tz-head{margin:0 0 32px;font-size:15px}
+.tz-p{color:var(--amber)}
+.tz-dim{color:var(--dim)}
+.tz-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:18px}
+.tz-metric{border:1px solid var(--line);padding:22px 20px 16px;margin:0;background:#0c0c0c}
+.tz-wide{grid-row:span 1}
+.tz-label{margin:0 0 10px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.tz-value{margin:0 0 14px;font-size:clamp(28px,3.5vw,40px);font-weight:700;letter-spacing:-.02em}
+.tz-up{font-size:12px;color:var(--bg);background:var(--green);padding:2px 8px;vertical-align:middle}
+.tz-dim2{font-size:12px;color:var(--dim);vertical-align:middle}
+.tz-spark{width:100%;height:48px;display:block;margin-bottom:10px}
+.tz-src{margin:0;font-size:11px;color:var(--dim)}
+.tz-foot{margin:28px 0 0;font-size:14px}
+.tz-blink{display:inline-block;animation:tz-blink 1.1s steps(1) infinite}
+@keyframes tz-blink{50%{opacity:0}}
+@media (max-width:760px){.tz-grid{grid-template-columns:1fr 1fr}.tz-wide{grid-column:span 2}}
+@media (max-width:480px){.tz-grid{grid-template-columns:1fr}.tz-wide{grid-column:auto}}
+@media (prefers-reduced-motion:reduce){.tz-blink{animation:none}}
+</style>
