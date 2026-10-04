@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-pixel-arcade",
+  "title": "Pixel Arcade design tokens",
+  "category": "Tokens",
+  "file": "tokens/pixel-arcade.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "pixel-arcade"
+  ],
+  "description": "W3C-format design tokens for the Pixel Arcade style DNA.",
+  "dnas": [
+   "pixel-arcade"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#0b0b14",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#e8f0e8",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#ff2fb3",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#5c6b8c",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#1f2a44",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Press Start 2P",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "pixel-arcade",
+  "name": "Pixel Arcade",
+  "vibe": "Insert coin. Dark cabinet, neon scoreboards, chunky pixels you can almost bite."
+ }
+}
