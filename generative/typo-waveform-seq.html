@@ -1,0 +1,120 @@
+<!--tz-meta {"id":"gen-typo-waveform-seq","title":"Waveform Sequencer","category":"Generative","file":"generative/typo-waveform-seq.html","tags":["sequencer","waveform","rhythm"],"description":"A 16-step sequencer drawn as waveforms. Click a column to toggle its step; the playhead sweeps visually.","dnas":["pixel-arcade"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Waveform Sequencer — TZ-taste Generative</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#05070f;color:#c8d2e0;font-family:Georgia,'Times New Roman',serif;min-height:100vh;display:flex;flex-direction:column;align-items:center}
+.tz-head{text-align:center;padding:1.6rem 1.2rem .8rem;max-width:680px}
+.tz-kicker{font-family:'Courier New',monospace;font-size:11px;letter-spacing:.3em;text-transform:uppercase;opacity:.6;margin-bottom:.6rem}
+.tz-title{font-size:clamp(1.9rem,6vw,2.9rem);font-weight:700;margin-bottom:.5rem}
+.tz-caption{font-style:italic;font-size:.98rem;line-height:1.5;opacity:.72}
+.tz-controls{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;padding:.6rem 1rem 1rem}
+.tz-btn{font-family:'Courier New',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:.7rem 1.2rem;border-radius:999px;border:1px solid #c8d2e0;background:transparent;color:#c8d2e0;cursor:pointer}
+.tz-btn:hover{background:#c8d2e0;color:#05070f}
+.tz-wrap{width:100%;max-width:980px;padding:0 1rem 2.5rem}
+.tz-canvas{display:block;width:100%;height:70vh;min-height:340px;border:1px solid rgba(200,210,224,.25);border-radius:14px;touch-action:none;background:#05070f;cursor:pointer}
+</style>
+</head>
+<body>
+<header class="tz-head">
+<p class="tz-kicker">TZ-taste · Generative</p>
+<h1 class="tz-title">Waveform Sequencer</h1>
+<p class="tz-caption">Sixteen steps, each drawn as its own waveform shape. Click a column to toggle its step and watch the playhead sweep through the pattern.</p>
+</header>
+<div class="tz-controls">
+<button class="tz-btn" id="tz-b-seed" type="button">New seed</button>
+<button class="tz-btn" id="tz-b-pause" type="button">Pause</button>
+<button class="tz-btn" id="tz-b-clear" type="button">Clear</button>
+</div>
+<div class="tz-wrap"><canvas class="tz-canvas" id="tz-cv"></canvas></div>
+<script>
+(function(){
+"use strict";
+var cv=document.getElementById('tz-cv'),ctx=cv.getContext('2d');
+var REDUCED=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var W=0,H=0,seed=1616,steps=[],cur=0,running=true,raf=0,last=0;
+var NAMES=['SINE','SQUARE','SAW','TRI'];
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function init(s){
+  seed=s;var rnd=mulberry32(s),i;
+  steps=[];for(i=0;i<16;i++)steps.push(rnd()<0.42);
+  cur=0;last=0;
+}
+function waveVal(kind,ph){
+  switch(kind){
+    case 0:return Math.sin(ph);
+    case 1:return Math.sign(Math.sin(ph))||1;
+    case 2:return (ph/Math.PI)-1;
+    default:return Math.abs(((ph/Math.PI)%2)-1)*2-1;
+  }
+}
+function draw(){
+  ctx.fillStyle='#05070f';ctx.fillRect(0,0,W,H);
+  var cw=W/16,i,px,x0,y0,baseY=H*0.6,amp=H*0.17;
+  ctx.strokeStyle='rgba(200,210,224,.2)';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(0,baseY);ctx.lineTo(W,baseY);ctx.stroke();
+  for(i=0;i<16;i++){
+    x0=i*cw;var active=steps[i],playing=(i===cur&&running&&!REDUCED);
+    ctx.strokeStyle=active?'#f2f6fd':'#3d4a63';
+    ctx.lineWidth=active?2:1;
+    ctx.beginPath();
+    for(px=4;px<=cw-4;px+=3){
+      var ph=(px/(cw-8))*Math.PI*2;
+      var yy=baseY-waveVal(i%4,ph)*amp;
+      if(px===4)ctx.moveTo(x0+px,yy);else ctx.lineTo(x0+px,yy);
+    }
+    ctx.stroke();
+    if(active){
+      ctx.fillStyle='rgba(200,210,224,.12)';
+      ctx.fillRect(x0+4,baseY-amp,cw-8,amp*2);
+      ctx.fillStyle='#f2f6fd';
+      ctx.beginPath();ctx.arc(x0+cw/2,baseY-amp-12,4,0,6.283);ctx.fill();
+    }
+    if(playing){
+      ctx.fillStyle='rgba(242,246,253,.14)';ctx.fillRect(x0,0,cw,H);
+      ctx.fillStyle='#f2f6fd';ctx.fillRect(x0+cw/2-1,10,2,baseY-amp-26);
+    }
+    ctx.font='10px "Courier New",monospace';ctx.textAlign='center';
+    ctx.fillStyle=active?'rgba(242,246,253,.85)':'rgba(61,74,99,.9)';
+    ctx.fillText((i+1<10?'0':'')+(i+1),x0+cw/2,H-16);
+    if(i%4===0){ctx.fillStyle='rgba(61,74,99,.9)';ctx.fillText(NAMES[(i/4)|0],x0+cw*2,H-32);}
+  }
+  var n=steps.filter(Boolean).length;
+  ctx.font='12px "Courier New",monospace';ctx.textAlign='left';ctx.fillStyle='rgba(200,210,224,.7)';
+  ctx.fillText('STEP '+(cur+1)+' / 16 · '+n+' ACTIVE · seed '+seed,14,22);
+}
+function loop(ts){
+  if(last===0)last=ts;
+  if(ts-last>160){last=ts;cur=(cur+1)%16;}
+  draw();
+  if(running&&!REDUCED)raf=requestAnimationFrame(loop);
+}
+function resize(){
+  var DPR=Math.min(window.devicePixelRatio||1,2),r=cv.getBoundingClientRect();
+  W=r.width;H=r.height;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);
+  init(seed);
+  if(REDUCED){draw();}else{cancelAnimationFrame(raf);if(running)loop();}
+}
+cv.addEventListener('pointerdown',function(e){
+  var r=cv.getBoundingClientRect(),i=Math.floor((e.clientX-r.left)/(W/16));
+  if(i>=0&&i<16){steps[i]=!steps[i];draw();}
+});
+document.getElementById('tz-b-seed').addEventListener('click',function(){init((Math.random()*0x7fffffff)|0);draw();});
+document.getElementById('tz-b-pause').addEventListener('click',function(){
+  running=!running;this.textContent=running?'Pause':'Resume';
+  cancelAnimationFrame(raf);last=0;
+  if(running&&!REDUCED)loop();else draw();
+});
+document.getElementById('tz-b-clear').addEventListener('click',function(){
+  steps=steps.map(function(){return false;});draw();
+});
+window.addEventListener('resize',resize);
+resize();
+})();
+</script>
+</body>
+</html>
