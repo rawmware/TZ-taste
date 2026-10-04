@@ -1,0 +1,222 @@
+<!--tz-meta {"id":"gearworks","title":"The Gearworks","category":"3D","file":"three-d/gearworks.html","tags":["threejs","machine"],"description":"Brass gears turn at meshed ratios while steam rises through warm lamplight.","dnas":["industrial-brutalist"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The Gearworks — TZ-taste</title>
+<style>
+  html, body { margin:0; height:100%; overflow:hidden; background:#100e0c; }
+  #app { position:fixed; inset:0; }
+  #app canvas { display:block; }
+  .caption { position:fixed; left:18px; bottom:16px; z-index:5; color:#c9b391;
+    font:12px/1.6 system-ui, -apple-system, sans-serif; letter-spacing:.05em;
+    opacity:.9; pointer-events:none; }
+  .caption b { display:block; font-size:13px; letter-spacing:.22em; text-transform:uppercase; }
+  #fallback { display:none; position:fixed; inset:0; z-index:10; place-items:center;
+    color:#c9b391; font:14px/1.6 system-ui, sans-serif; text-align:center;
+    padding:32px; background:#100e0c; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="caption"><b>The Gearworks</b>twelve teeth turn twenty; nobody hurries<br/>drag to orbit &middot; scroll to zoom</div>
+<div id="fallback"><p>This scene needs WebGL, which your browser could not provide.<br/>Try a recent version of Chrome, Safari, Firefox or Edge.</p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (e) {
+  document.getElementById('fallback').style.display = 'grid';
+  throw e;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('app').appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x100e0c);
+scene.fog = new THREE.Fog(0x100e0c, 30, 95);
+
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 300);
+camera.position.set(2, 3.5, 19);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.target.set(1, 0.2, 0);
+controls.maxPolarAngle = 1.55;
+controls.minDistance = 6;
+controls.maxDistance = 50;
+
+const key = new THREE.DirectionalLight(0xffd9a8, 1.7);
+key.position.set(9, 12, 11);
+scene.add(key);
+const rim = new THREE.DirectionalLight(0x6a86ff, 0.55);
+rim.position.set(-11, 5, -7);
+scene.add(rim);
+scene.add(new THREE.HemisphereLight(0x4a4238, 0x141210, 0.55));
+
+/* ---------- backplate ---------- */
+const plate = new THREE.Mesh(new THREE.BoxGeometry(22, 15, 0.9),
+  new THREE.MeshStandardMaterial({ color: 0x1d1a16, roughness: 0.9 }));
+plate.position.set(1, 0, -1.4);
+scene.add(plate);
+/* rivets */
+const rivetGeo = new THREE.SphereGeometry(0.16, 8, 8);
+const rivetMat = new THREE.MeshStandardMaterial({ color: 0x3a332c, roughness: 0.5, metalness: 0.7 });
+for (let ix = -2; ix <= 2; ix++) for (let iy = -1; iy <= 1; iy++) {
+  const r = new THREE.Mesh(rivetGeo, rivetMat);
+  r.position.set(1 + ix * 4.6, iy * 5.6, -0.9);
+  scene.add(r);
+}
+
+/* ---------- gears: trapezoid teeth via Shape ---------- */
+const brass = new THREE.MeshStandardMaterial({ color: 0xc9973f, roughness: 0.32, metalness: 0.95 });
+const steel = new THREE.MeshStandardMaterial({ color: 0x3a3a3e, roughness: 0.45, metalness: 0.85 });
+function gearGeometry(teeth, rTip, rRoot, depth) {
+  const s = new THREE.Shape();
+  const N = teeth * 4;
+  for (let i = 0; i <= N; i++) {
+    const a = (i / N) * Math.PI * 2;
+    const seg = i % 4;
+    const r = (seg === 1 || seg === 2) ? rTip : rRoot;
+    const x = Math.cos(a) * r, y = Math.sin(a) * r;
+    if (i === 0) s.moveTo(x, y); else s.lineTo(x, y);
+  }
+  s.closePath();
+  const hub = new THREE.Path();
+  hub.absarc(0, 0, rRoot * 0.22, 0, Math.PI * 2, true);
+  s.holes.push(hub);
+  const g = new THREE.ExtrudeGeometry(s, { depth, bevelEnabled: true,
+    bevelThickness: 0.06, bevelSize: 0.06, bevelSegments: 1, curveSegments: 6 });
+  g.translate(0, 0, -depth / 2);
+  return g;
+}
+const gears = [];
+function addGear(teeth, rTip, rRoot, x, y, rate, phase) {
+  const mesh = new THREE.Mesh(gearGeometry(teeth, rTip, rRoot, 0.7), brass);
+  mesh.position.set(x, y, 0);
+  scene.add(mesh);
+  const axle = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.2, 2.6, 12), steel);
+  axle.rotation.x = Math.PI / 2;
+  axle.position.set(x, y, -0.4);
+  scene.add(axle);
+  const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.34, 0.34, 0.22, 6), steel);
+  cap.rotation.x = Math.PI / 2;
+  cap.position.set(x, y, 0.48);
+  scene.add(cap);
+  gears.push({ mesh, rate, phase });
+  return { pitch: (rTip + rRoot) / 2, teeth };
+}
+const pitch = (rt, rr) => (rt + rr) / 2;
+// G1 drives; others mesh at ratio of teeth, alternating direction
+const g1 = addGear(12, 2.2, 1.88, -3.4, 1.4, 0.55, 0);
+const g2 = addGear(20, 3.42, 3.02, -3.4 + pitch(2.2, 1.88) + pitch(3.42, 3.02), 1.4,
+  -0.55 * 12 / 20, Math.PI / 20);
+const g3 = addGear(10, 1.82, 1.56,
+  -3.4 + pitch(2.2, 1.88) + pitch(3.42, 3.02) + (pitch(3.42, 3.02) + pitch(1.82, 1.56)) * Math.cos(-0.9),
+  1.4 + (pitch(3.42, 3.02) + pitch(1.82, 1.56)) * Math.sin(-0.9),
+  0.55 * 12 / 10, Math.PI / 10);
+addGear(8, 1.32, 1.12,
+  -3.4 + pitch(2.2, 1.88) + pitch(3.42, 3.02) + (pitch(3.42, 3.02) + pitch(1.82, 1.56)) * Math.cos(-0.9)
+    + (pitch(1.82, 1.56) + pitch(1.32, 1.12)) * Math.cos(0.75),
+  1.4 + (pitch(3.42, 3.02) + pitch(1.82, 1.56)) * Math.sin(-0.9)
+    + (pitch(1.82, 1.56) + pitch(1.32, 1.12)) * Math.sin(0.75),
+  -0.55 * 12 / 8, Math.PI / 8);
+
+/* ---------- steam vents ---------- */
+function addVent(x, y) {
+  const pipe = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.62, 1.6, 14), steel);
+  pipe.position.set(x, y, 1.2);
+  scene.add(pipe);
+  const lip = new THREE.Mesh(new THREE.TorusGeometry(0.5, 0.1, 8, 18), brass);
+  lip.rotation.x = Math.PI / 2;
+  lip.position.set(x, y + 0.8, 1.2);
+  scene.add(lip);
+}
+addVent(-7.2, -5.2); addVent(8.6, -5.6);
+
+const STEAM_N = 150;
+const sPos = new Float32Array(STEAM_N * 3);
+const sLife = new Float32Array(STEAM_N);
+const sSeed = new Float32Array(STEAM_N * 2);
+const vents = [[-7.2, -4.3, 1.2], [8.6, -4.7, 1.2]];
+for (let i = 0; i < STEAM_N; i++) {
+  const v = vents[i % 2];
+  sPos[i*3] = v[0] + (Math.random() - 0.5) * 0.5;
+  sPos[i*3+1] = v[1];
+  sPos[i*3+2] = v[2] + (Math.random() - 0.5) * 0.5;
+  sLife[i] = Math.random();
+  sSeed[i*2] = Math.random() * 6.28; sSeed[i*2+1] = 0.5 + Math.random();
+}
+const steamGeo = new THREE.BufferGeometry();
+steamGeo.setAttribute('position', new THREE.BufferAttribute(sPos, 3));
+steamGeo.setAttribute('aLife', new THREE.BufferAttribute(sLife, 1));
+const steamMat = new THREE.ShaderMaterial({
+  transparent: true, depthWrite: false,
+  uniforms: {},
+  vertexShader: `
+    attribute float aLife;
+    varying float vLife;
+    void main() {
+      vLife = aLife;
+      vec4 mv = modelViewMatrix * vec4(position, 1.0);
+      gl_PointSize = (2.0 + aLife * 5.0) * (140.0 / -mv.z);
+      gl_Position = projectionMatrix * mv;
+    }`,
+  fragmentShader: `
+    varying float vLife;
+    void main() {
+      float d = length(gl_PointCoord - 0.5);
+      float a = smoothstep(0.5, 0.08, d) * (1.0 - vLife) * 0.32;
+      gl_FragColor = vec4(0.82, 0.78, 0.72, a);
+    }`,
+});
+scene.add(new THREE.Points(steamGeo, steamMat));
+
+/* ---------- frame loop ---------- */
+const clock = new THREE.Clock();
+function renderFrame(t, dt) {
+  for (const g of gears) g.mesh.rotation.z = g.rate * t + g.phase;
+
+  const p = steamGeo.attributes.position, l = steamGeo.attributes.aLife;
+  for (let i = 0; i < STEAM_N; i++) {
+    let life = l.getX(i) + dt * 0.28 * sSeed[i*2+1];
+    if (life > 1) {
+      life = 0;
+      const v = vents[i % 2];
+      p.setXYZ(i, v[0] + (Math.random() - 0.5) * 0.5, v[1], v[2] + (Math.random() - 0.5) * 0.5);
+    }
+    l.setX(i, life);
+    p.setY(i, p.getY(i) + dt * (1.6 + life * 1.4));
+    p.setX(i, p.getX(i) + Math.sin(t * 2.1 + sSeed[i*2] + life * 5.0) * dt * 0.7);
+  }
+  p.needsUpdate = true; l.needsUpdate = true;
+
+  controls.update();
+  renderer.render(scene, camera);
+}
+if (REDUCED) {
+  renderFrame(0, 0);
+} else {
+  renderer.setAnimationLoop(() => {
+  const dt = Math.min(clock.getDelta(), 0.05);
+  renderFrame(clock.elapsedTime, dt);
+});
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
