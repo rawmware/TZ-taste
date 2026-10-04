@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-tokyo-neon",
+  "title": "Tokyo Neon design tokens",
+  "category": "Tokens",
+  "file": "tokens/tokyo-neon.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "tokyo-neon"
+  ],
+  "description": "W3C-format design tokens for the Tokyo Neon style DNA.",
+  "dnas": [
+   "tokyo-neon"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#0a0a10",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#f4f4f0",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#ff2e88",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#6b6b78",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#232330",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Zen Dots",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Space Grotesk",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "tokyo-neon",
+  "name": "Tokyo Neon",
+  "vibe": "Electric signage culture: hot pink and cyan on black, vertical accents, the glow of a Shinjuku side street."
+ }
+}
