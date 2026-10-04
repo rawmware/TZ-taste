@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-observatory-star",
+  "title": "Observatory Star design tokens",
+  "category": "Tokens",
+  "file": "tokens/observatory-star.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "observatory-star"
+  ],
+  "description": "W3C-format design tokens for the Observatory Star DNA.",
+  "dnas": [
+   "observatory-star"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#060a18",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#dfe6f5",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#c9a24b",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#5f6b8a",
+   "type": "color"
+  },
+  "line": {
+   "value": "#c9a24b44",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#060a18",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Marcellus",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Spectral",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Spline Sans Mono",
+   "type": "fontFamily"
+  }
+ }
+}
