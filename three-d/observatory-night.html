@@ -1,0 +1,185 @@
+<!--tz-meta {"id":"observatory-night","title":"Counting Stars","category":"3D","file":"three-d/observatory-night.html","tags":["threejs","night"],"description":"An open dome slit tracks the sky while the stars wheel slowly overhead.","dnas":["observatory-star"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Counting Stars — TZ-taste</title>
+<style>
+  html, body { margin:0; height:100%; overflow:hidden; background:#05070f; }
+  #app { position:fixed; inset:0; }
+  #app canvas { display:block; }
+  .caption { position:fixed; left:18px; bottom:16px; z-index:5; color:#a9b8d8;
+    font:12px/1.6 system-ui, -apple-system, sans-serif; letter-spacing:.05em;
+    opacity:.9; pointer-events:none; }
+  .caption b { display:block; font-size:13px; letter-spacing:.22em; text-transform:uppercase; }
+  #fallback { display:none; position:fixed; inset:0; z-index:10; place-items:center;
+    color:#a9b8d8; font:14px/1.6 system-ui, sans-serif; text-align:center;
+    padding:32px; background:#05070f; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="caption"><b>Counting Stars</b>the slit is open; somewhere a telescope is keeping count<br/>drag to orbit &middot; scroll to zoom</div>
+<div id="fallback"><p>This scene needs WebGL, which your browser could not provide.<br/>Try a recent version of Chrome, Safari, Firefox or Edge.</p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (e) {
+  document.getElementById('fallback').style.display = 'grid';
+  throw e;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('app').appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x05070f);
+scene.fog = new THREE.Fog(0x05070f, 35, 140);
+
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 500);
+camera.position.set(13, 7, 17);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.target.set(0, 3.4, 0);
+controls.maxPolarAngle = 1.52;
+controls.minDistance = 7;
+controls.maxDistance = 70;
+
+scene.add(new THREE.HemisphereLight(0x24304d, 0x05070a, 0.5));
+const moonlight = new THREE.DirectionalLight(0xafc4ff, 0.55);
+moonlight.position.set(-40, 45, -25);
+scene.add(moonlight);
+
+/* ---------- star field (slow sidereal drift) ---------- */
+const STAR_N = 1500;
+const starPos = new Float32Array(STAR_N * 3);
+for (let i = 0; i < STAR_N; i++) {
+  const r = 110 + Math.random() * 60;
+  const th = Math.random() * Math.PI * 2;
+  const ph = Math.acos(Math.random() * 1.85 - 0.85); // bias above horizon
+  starPos[i*3]   = r * Math.sin(ph) * Math.cos(th);
+  starPos[i*3+1] = Math.abs(r * Math.cos(ph)) * 0.9 + 2;
+  starPos[i*3+2] = r * Math.sin(ph) * Math.sin(th);
+}
+const starGeo = new THREE.BufferGeometry();
+starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+const stars = new THREE.Points(starGeo, new THREE.PointsMaterial({
+  color: 0xcfd8ff, size: 1.7, sizeAttenuation: false, transparent: true,
+  opacity: 0.9, depthWrite: false, fog: false }));
+scene.add(stars);
+
+/* moon disc */
+const moonDisc = new THREE.Mesh(new THREE.CircleGeometry(5, 40),
+  new THREE.MeshBasicMaterial({ color: 0xe8efff, fog: false }));
+moonDisc.position.set(-70, 62, -95);
+moonDisc.lookAt(camera.position);
+scene.add(moonDisc);
+
+/* ---------- ground ---------- */
+const ground = new THREE.Mesh(new THREE.CircleGeometry(60, 48),
+  new THREE.MeshStandardMaterial({ color: 0x0b0e14, roughness: 1 }));
+ground.rotation.x = -Math.PI / 2;
+scene.add(ground);
+
+/* ---------- observatory ---------- */
+const base = new THREE.Mesh(new THREE.CylinderGeometry(3.4, 3.65, 2.3, 28),
+  new THREE.MeshStandardMaterial({ color: 0x2b2f38, roughness: 0.85 }));
+base.position.y = 1.15;
+scene.add(base);
+/* door glow */
+const door = new THREE.Mesh(new THREE.PlaneGeometry(1.1, 1.9),
+  new THREE.MeshStandardMaterial({ color: 0x111111, emissive: 0xffb45e, emissiveIntensity: 0.9 }));
+door.position.set(0, 0.95, 3.62);
+scene.add(door);
+
+const domeGroup = new THREE.Group();
+domeGroup.position.y = 2.3;
+scene.add(domeGroup);
+const SLIT = 0.55; // radians of open sky
+const dome = new THREE.Mesh(
+  new THREE.SphereGeometry(3.1, 44, 22, SLIT / 2, Math.PI * 2 - SLIT, 0, Math.PI / 2),
+  new THREE.MeshStandardMaterial({ color: 0xb9bfc9, roughness: 0.5, metalness: 0.35,
+    side: THREE.DoubleSide }));
+domeGroup.add(dome);
+/* slit edge trim */
+const trimMat = new THREE.MeshStandardMaterial({ color: 0x3a3f47, roughness: 0.6, metalness: 0.5 });
+for (const s of [-1, 1]) {
+  const trim = new THREE.Mesh(new THREE.BoxGeometry(0.14, 2.9, 0.14), trimMat);
+  const a = s * SLIT / 2;
+  trim.position.set(-3.02 * Math.cos(a), 1.45, 3.02 * Math.sin(a));
+  domeGroup.add(trim);
+}
+const domeBase = new THREE.Mesh(new THREE.CylinderGeometry(3.2, 3.2, 0.3, 28), trimMat);
+domeBase.position.y = 0.05;
+domeGroup.add(domeBase);
+
+/* telescope: pier + tube aimed out the slit (slit faces local -x) */
+const scopeMat = new THREE.MeshStandardMaterial({ color: 0x1c1f26, roughness: 0.45, metalness: 0.6 });
+const pier = new THREE.Mesh(new THREE.CylinderGeometry(0.34, 0.46, 1.7, 14), scopeMat);
+pier.position.y = 0.85;
+domeGroup.add(pier);
+const tubePivot = new THREE.Group();
+tubePivot.position.set(0, 1.75, 0);
+domeGroup.add(tubePivot);
+const TILT = 0.92;
+const tube = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.5, 3.5, 20), scopeMat);
+tube.rotation.z = TILT;
+tube.position.set(-Math.sin(TILT) * 0.35, Math.cos(TILT) * 0.35, 0);
+tubePivot.add(tube);
+const dew = new THREE.Mesh(new THREE.CylinderGeometry(0.55, 0.55, 0.5, 20, 1, true), scopeMat);
+dew.rotation.z = TILT;
+dew.position.set(-Math.sin(TILT) * 1.85, Math.cos(TILT) * 1.85, 0);
+tubePivot.add(dew);
+const eyepiece = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 0.5, 10), trimMat);
+eyepiece.rotation.z = TILT;
+eyepiece.position.set(Math.sin(TILT) * 1.7, -Math.cos(TILT) * 1.7, 0);
+tubePivot.add(eyepiece);
+/* red night-vision glow inside the dome */
+const redGlow = new THREE.PointLight(0xff5a4a, 14, 9, 1.8);
+redGlow.position.set(0, 1.6, 0);
+domeGroup.add(redGlow);
+
+/* aviation beacon, slow blink */
+const beacon = new THREE.Mesh(new THREE.SphereGeometry(0.12, 10, 8),
+  new THREE.MeshStandardMaterial({ color: 0x220000, emissive: 0xff3020, emissiveIntensity: 3 }));
+beacon.position.y = 3.25;
+domeGroup.add(beacon);
+
+/* ---------- frame loop ---------- */
+const clock = new THREE.Clock();
+function renderFrame(t, dt) {
+  stars.rotation.y = t * 0.0045;                       // sidereal drift
+  domeGroup.rotation.y = Math.PI / 2 + Math.sin(t * 0.06) * 0.3; // slow tracking
+  tubePivot.rotation.y = Math.sin(t * 0.06 + 0.4) * 0.12;
+  beacon.material.emissiveIntensity = (Math.sin(t * 2.2) > 0.55) ? 4.0 : 0.25;
+  redGlow.intensity = 12 + Math.sin(t * 1.7) * 3;
+  controls.update();
+  renderer.render(scene, camera);
+}
+if (REDUCED) {
+  renderFrame(0, 0);
+} else {
+  renderer.setAnimationLoop(() => {
+  const dt = Math.min(clock.getDelta(), 0.05);
+  renderFrame(clock.elapsedTime, dt);
+});
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
