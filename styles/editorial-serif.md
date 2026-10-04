@@ -1,3 +1,4 @@
+<!--tz-meta {"id":"editorial-serif","name":"Editorial Serif","vibe":"Warm paper, oversized serif, hairline rules. A literary magazine that happens to be a website.","file":"styles/editorial-serif.md","tags":["warm","serif","literary","calm"],"best_for":["studios","blogs","portfolios","publishers"],"fonts":{"body":"Newsreader","display":"Fraunces","mono":"Space Mono"},"tokens":{"accent":"#b5461f","bg":"#f5f1e8","ink":"#1c1a15","line":"#1c1a1526","muted":"#6f6a5e","surface":"#efe9da"},"dials":{"density":2,"motion":3,"variance":6}} -->
 # Editorial Serif
 
 > Warm paper, oversized serif, hairline rules. A literary magazine that happens
