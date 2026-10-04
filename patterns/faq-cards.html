@@ -1,0 +1,53 @@
+<!--tz-meta {"id":"faq-cards","title":"FAQ cards","category":"FAQ","file":"patterns/faq-cards.html","tags":["grid","cards"],"description":"Frosted Q&A cards drifting over a warm pastel aurora, one card offset for rhythm.","dnas":["glass-calm"]} -->
+<section class="tz-fqg">
+  <div class="tz-fqg-aurora" aria-hidden="true"><i class="tz-fqg-b1"></i><i class="tz-fqg-b2"></i></div>
+  <div class="tz-fqg-inner">
+    <p class="tz-fqg-eyebrow">Questions</p>
+    <h2 class="tz-fqg-title">Everything you're<br>wondering.</h2>
+    <div class="tz-fqg-grid">
+      <article class="tz-fqg-card">
+        <h3>Is the free plan really free?</h3>
+        <p>Yes — no card, no trial clock, no feature hostage-taking. It's the real product with sane limits.</p>
+      </article>
+      <article class="tz-fqg-card tz-fqg-low">
+        <h3>Will it work with my weird setup?</h3>
+        <p>Gmail, Outlook, any IMAP inbox, plus a REST API for everything else. If it sends email, we can probably read it.</p>
+      </article>
+      <article class="tz-fqg-card">
+        <h3>Who sees my messages?</h3>
+        <p>Your team, and nobody else. Support can only view threads you explicitly share with a support link.</p>
+      </article>
+      <article class="tz-fqg-card tz-fqg-low">
+        <h3>Can I talk to a human?</h3>
+        <p>Seven days a week, median reply eleven minutes. The humans are engineers, not a script.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<style>
+.tz-fqg{--ink:#23211d;--card:rgba(255,255,255,.55);
+  background:#fdf6ec;color:var(--ink);font-family:Georgia,'Times New Roman',serif;
+  position:relative;overflow:hidden;padding:clamp(72px,10vw,136px) clamp(24px,6vw,88px)}
+.tz-fqg-aurora{position:absolute;inset:0;pointer-events:none}
+.tz-fqg-aurora i{position:absolute;border-radius:50%;filter:blur(80px);opacity:.7}
+.tz-fqg-b1{width:46vw;height:46vw;left:-12vw;top:-10vw;background:#ffe3c4;animation:tzfqg-drift 15s ease-in-out infinite alternate}
+.tz-fqg-b2{width:42vw;height:42vw;right:-10vw;bottom:-12vw;background:#d5efdf;animation:tzfqg-drift 19s ease-in-out infinite alternate-reverse}
+@keyframes tzfqg-drift{from{transform:translate(0,0)}to{transform:translate(3vw,4vw)}}
+.tz-fqg-inner{position:relative;max-width:1050px;margin:0 auto}
+.tz-fqg-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;opacity:.6;margin:0 0 18px;text-align:center}
+.tz-fqg-title{font-size:clamp(36px,5.4vw,68px);font-weight:400;letter-spacing:-.02em;line-height:1.05;
+  margin:0 0 clamp(44px,6vw,72px);text-align:center}
+.tz-fqg-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,2.5vw,28px);align-items:start}
+.tz-fqg-card{background:var(--card);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.85);border-radius:20px;padding:32px 30px;
+  box-shadow:0 16px 40px rgba(120,90,60,.13)}
+.tz-fqg-low{margin-top:40px}
+.tz-fqg-card h3{font-size:22px;font-weight:400;letter-spacing:-.01em;margin:0 0 12px;line-height:1.25}
+.tz-fqg-card p{font-size:15px;line-height:1.65;opacity:.8;margin:0}
+@media (max-width:700px){
+  .tz-fqg-grid{grid-template-columns:1fr}
+  .tz-fqg-low{margin-top:0}
+}
+@media (prefers-reduced-motion:reduce){.tz-fqg-aurora i{animation:none}}
+</style>
