@@ -1,0 +1,95 @@
+<!--tz-meta {"id":"gen-flow-orbit-petals","title":"Orbit Petals","category":"Generative","file":"generative/flow-orbit-petals.html","tags":["harmonics","spirograph","arms"],"description":"Nested orbital arms at seeded harmonic ratios trace blooming ember petals.","dnas":["vaporwave-sunset"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orbit Petals — TZ-taste Generative</title>
+<style>
+*{box-sizing:border-box}
+.tz-gen-body{margin:0;background:#0c0908;color:#f2e9dc;font-family:Georgia,'Times New Roman',serif;min-height:100vh}
+.tz-gen-wrap{max-width:1120px;margin:0 auto;padding:48px 24px 64px}
+.tz-gen-head{margin:0 0 28px}
+.tz-gen-kicker{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#ef7d3c;margin:0 0 14px}
+.tz-gen-head h1{font-size:clamp(30px,5vw,52px);line-height:1.05;margin:0 0 12px;font-weight:600}
+.tz-gen-caption{font-size:16px;line-height:1.6;color:#a89a86;margin:0;max-width:62ch}
+.tz-gen-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:26px 0 14px}
+.tz-gen-btn{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;background:transparent;color:#f2e9dc;border:1px solid #3a2d22;padding:10px 18px;border-radius:3px;cursor:pointer}
+.tz-gen-btn:hover{border-color:#ef7d3c;color:#ef7d3c}
+.tz-gen-seed{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:12px;color:#6e5f4e;margin-left:auto}
+.tz-gen-canvas{display:block;width:100%;height:70vh;border:1px solid #251d15;border-radius:3px;background:#0c0908}
+.tz-gen-note{font-size:14px;line-height:1.65;color:#8a7a64;margin:18px 0 0;max-width:70ch}
+@media(max-width:520px){.tz-gen-wrap{padding:32px 16px 48px}.tz-gen-seed{margin-left:0;width:100%}}
+</style>
+</head>
+<body class="tz-gen-body">
+<div class="tz-gen-wrap">
+  <header class="tz-gen-head">
+    <p class="tz-gen-kicker">TZ-taste · Generative</p>
+    <h1>Orbit Petals</h1>
+    <p class="tz-gen-caption">Three arms orbit the center at seeded whole-number frequency ratios. Where their motions agree, petals open; where they fight, the bloom tangles.</p>
+  </header>
+  <div class="tz-gen-bar">
+    <button class="tz-gen-btn" id="tzSeed">New seed</button>
+    <button class="tz-gen-btn" id="tzPause">Pause</button>
+    <button class="tz-gen-btn" id="tzClear">Clear</button>
+    <span class="tz-gen-seed" id="tzSeedLabel">Seed 0</span>
+  </div>
+  <canvas class="tz-gen-canvas" id="tzCv" aria-label="Harmonic orbital arms drawing petals"></canvas>
+  <p class="tz-gen-note">Each seed picks its own chord — 3:4:5 blooms differently than 2:5:7. The pattern always closes back on itself.</p>
+</div>
+<script>
+'use strict';
+const cv=document.getElementById('tzCv'),ctx=cv.getContext('2d');
+const seedLabel=document.getElementById('tzSeedLabel');
+let W=0,H=0,seed=(Math.random()*1e9)|0,rand=null,arms=[],t=0,px=0,py=0,running=true;
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const BG='#0c0908';
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function tip(){
+  const cx=W/2,cy=H/2;let x=cx,y=cy;
+  for(const a of arms){x+=a.r*Math.cos(t*a.w+a.p);y+=a.r*Math.sin(t*a.w+a.p);}
+  return[x,y];
+}
+function init(){
+  rand=mulberry32(seed);t=0;arms=[];
+  const base=Math.min(W,H);
+  const ratios=[[2,3,5],[3,4,5],[2,5,7],[3,5,8],[4,5,7]][(rand()*5)|0];
+  const rs=[0.30,0.20,0.13];
+  for(let k=0;k<3;k++)arms.push({w:ratios[k]*0.5,r:base*rs[k]*(0.8+rand()*0.4),p:rand()*Math.PI*2});
+  const q=tip();px=q[0];py=q[1];
+  ctx.fillStyle=BG;ctx.fillRect(0,0,W,H);
+  seedLabel.textContent='Seed '+seed;
+}
+function step(){
+  t+=0.012;
+  ctx.fillStyle='rgba(12,9,8,0.045)';ctx.fillRect(0,0,W,H);
+  const q=tip();
+  ctx.strokeStyle='rgba(239,125,60,0.55)';ctx.lineWidth=1.1;
+  ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(q[0],q[1]);ctx.stroke();
+  if((t*80|0)%240===0){
+    ctx.strokeStyle='rgba(242,233,220,0.10)';
+    ctx.lineWidth=1;ctx.beginPath();
+    let x=W/2,y=H/2;ctx.moveTo(x,y);
+    for(const a of arms){x+=a.r*Math.cos(t*a.w+a.p);y+=a.r*Math.sin(t*a.w+a.p);ctx.lineTo(x,y);}
+    ctx.stroke();
+  }
+  px=q[0];py=q[1];
+}
+function resize(){
+  const d=Math.min(window.devicePixelRatio||1,2),r=cv.getBoundingClientRect();
+  W=Math.max(2,Math.round(r.width));H=Math.max(2,Math.round(r.height));
+  cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);init();
+}
+window.addEventListener('resize',resize);
+document.getElementById('tzSeed').addEventListener('click',()=>{seed=(Math.random()*1e9)|0;init();if(!running)toggle();});
+document.getElementById('tzClear').addEventListener('click',init);
+function toggle(){running=!running;document.getElementById('tzPause').textContent=running?'Pause':'Resume';if(running&&!reduced)tick();}
+document.getElementById('tzPause').addEventListener('click',toggle);
+function tick(){if(!running)return;step();requestAnimationFrame(tick);}
+resize();
+if(reduced){for(let i=0;i<1400;i++)step();}
+else tick();
+</script>
+</body>
+</html>
