@@ -1,0 +1,126 @@
+<!--tz-meta {"id":"showcase-aperitivo-italian","title":"Aperitivo Italian showcase","category":"Showcase","file":"showcase/aperitivo-italian.html","tags":["aperitivo-italian"],"description":"Live demo page for the Aperitivo Italian style DNA.","dnas":["aperitivo-italian"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aperitivo Italian — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f7efdc; --tz-surface:#fdf7ea; --tz-ink:#2b1f14; --tz-muted:#a08872;
+  --tz-accent:#c93a2e; --tz-accent-2:#e8822a; --tz-line:#e3d3b8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"DM Sans",Helvetica,sans-serif;font-size:1.05rem;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:baseline;padding:1.2rem 5vw;background:var(--tz-bg)}
+.tz-wordmark{font-family:"Alfa Slab One",serif;font-size:1.15rem}
+.tz-label{font-family:"Space Mono",monospace;font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-hero{position:relative;background:var(--tz-accent);color:var(--tz-bg);padding:5rem 5vw 6rem;overflow:hidden}
+.tz-sun-arc{position:absolute;right:-140px;top:-140px;width:380px;height:380px;border-radius:50%;background:var(--tz-accent-2);opacity:0.9}
+.tz-sun-arc::after{content:"";position:absolute;inset:34px;border-radius:50%;border:3px solid var(--tz-accent)}
+.tz-sun-arc i{position:absolute;left:50%;top:50%;width:3px;height:150px;background:var(--tz-accent);transform-origin:50% 0}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:1.4rem;position:relative}
+.tz-hero h1{font-family:"Alfa Slab One",serif;font-size:clamp(2.8rem,8vw,6rem);line-height:1.02;position:relative;max-width:14ch}
+.tz-hero h1 .tz-cream{color:var(--tz-bg)}
+.tz-hero h1 .tz-dark{color:var(--tz-ink)}
+.tz-sub{margin-top:1.6rem;max-width:46ch;font-weight:500;position:relative}
+.tz-badges{position:relative;margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap}
+.tz-badge{display:inline-block;border:2px solid var(--tz-bg);border-radius:999px;padding:0.55rem 1.3rem;font-family:"Space Mono",monospace;font-weight:700;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;transform:rotate(-4deg);animation:tz-wobble 0.6s ease 0.5s 1 both}
+.tz-badge.tz-b2{transform:rotate(3deg);animation-delay:0.65s}
+@keyframes tz-wobble{from{opacity:0;transform:rotate(-14deg) scale(0.7)}to{opacity:1;transform:rotate(-4deg) scale(1)}}
+.tz-badge.tz-b2{animation-name:tz-wobble-b}
+@keyframes tz-wobble-b{from{opacity:0;transform:rotate(12deg) scale(0.7)}to{opacity:1;transform:rotate(3deg) scale(1)}}
+.tz-cta{display:inline-block;position:relative;margin-top:2.4rem;background:var(--tz-ink);color:var(--tz-bg);font-family:"Alfa Slab One",serif;font-size:1rem;text-decoration:none;padding:1.1rem 2.6rem;border-radius:2px}
+.tz-cta:hover{background:var(--tz-bg);color:var(--tz-accent)}
+.tz-content{padding:4.5rem 5vw;max-width:860px;margin:0 auto}
+.tz-menu-card{background:var(--tz-surface);border:1px solid var(--tz-line);outline:3px solid var(--tz-line);outline-offset:5px;border-radius:2px;padding:3rem 2.6rem}
+.tz-menu-card .tz-cardhead{text-align:center;margin-bottom:0.6rem}
+.tz-menu-card h2{font-family:"Alfa Slab One",serif;font-size:clamp(2rem,5vw,3.2rem);line-height:1.05}
+.tz-menu-card h2 .tz-red{color:var(--tz-accent)}
+.tz-menu-card .tz-cardsub{text-align:center;font-family:"Space Mono",monospace;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:2.2rem}
+.tz-items{list-style:none}
+.tz-items li{display:flex;align-items:baseline;gap:0.8rem;padding:1.1rem 0}
+.tz-items .tz-item{font-weight:700;font-size:1.05rem;white-space:nowrap}
+.tz-items .tz-leader{flex:1;border-bottom:2px dotted var(--tz-line);transform:translateY(-4px)}
+.tz-items .tz-price{font-family:"Space Mono",monospace;font-weight:700;font-size:0.95rem;color:var(--tz-ink);transition:color 0.15s ease}
+.tz-items li:hover .tz-price{color:var(--tz-accent)}
+.tz-items .tz-note{width:100%;font-size:0.9rem;color:var(--tz-muted);font-weight:400;margin-top:0.2rem}
+.tz-items .tz-happy{font-family:"Space Mono",monospace;font-size:0.68rem;color:var(--tz-accent-2);letter-spacing:0.06em;margin-left:0.6rem}
+.tz-cardfoot{margin-top:2.4rem;text-align:center;font-family:"Space Mono",monospace;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--tz-muted);line-height:2.1}
+.tz-tokens{padding:4rem 5vw;border-top:1px solid var(--tz-line)}
+.tz-tokens-inner{max-width:860px;margin:0 auto}
+.tz-tokens h2{font-family:"Alfa Slab One",serif;font-size:1.4rem;margin-bottom:1.5rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.9rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);border-radius:2px;overflow:hidden;background:var(--tz-surface);min-width:9.5rem}
+.tz-chip{display:block;height:3.2rem}
+.tz-swatches .tz-name{display:block;font-family:"Space Mono",monospace;font-size:0.66rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.6rem 0.8rem 0.1rem;color:var(--tz-muted)}
+.tz-swatches .tz-hex{display:block;font-family:"Space Mono",monospace;font-size:0.76rem;padding:0 0.8rem 0.7rem}
+.tz-foot{background:var(--tz-accent);color:var(--tz-bg);padding:2.2rem 5vw;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.tz-foot,.tz-foot span{font-family:"Space Mono",monospace;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase}
+@media(max-width:700px){
+  .tz-sun-arc{width:240px;height:240px;right:-90px;top:-90px}
+  .tz-menu-card{padding:2.2rem 1.4rem}
+  .tz-items .tz-item{white-space:normal}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-badge{opacity:1}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Bar Camillo</span>
+  <span class="tz-label">TZ-taste style DNA</span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-sun-arc" aria-hidden="true"><i style="transform:rotate(20deg)"></i><i style="transform:rotate(65deg)"></i><i style="transform:rotate(110deg)"></i><i style="transform:rotate(155deg)"></i></div>
+  <p class="tz-eyebrow">Milano &middot; dal 1958</p>
+  <h1><span class="tz-cream">L'ora</span><br><span class="tz-dark">dell'aperitivo</span></h1>
+  <p class="tz-sub">Every evening, six to half past seven, the bar fills and the spritzes line up. Golden hour, every night.</p>
+  <div class="tz-badges">
+    <span class="tz-badge">Dalle 18:00</span>
+    <span class="tz-badge tz-b2">Senza glutine</span>
+  </div>
+  <br>
+  <a class="tz-cta" href="#">Reserve a table</a>
+</section>
+
+<section class="tz-content">
+  <div class="tz-menu-card">
+    <div class="tz-cardhead"><h2>La <span class="tz-red">carta</span></h2></div>
+    <p class="tz-cardsub">Aperitivi &middot; stuzzichini always included</p>
+    <ul class="tz-items">
+      <li><span class="tz-item">Spritz Camillo</span><span class="tz-leader"></span><span class="tz-price">&euro;8</span><span class="tz-happy">17:45 &mdash; happy</span><span class="tz-note">Our own bitter, prosecco, blood-orange. The one the regulars order.</span></li>
+      <li><span class="tz-item">Negroni</span><span class="tz-leader"></span><span class="tz-price">&euro;10</span><span class="tz-note">Equal parts, stirred cold, orange coin. No shortcuts taken.</span></li>
+      <li><span class="tz-item">Aperol Spritz</span><span class="tz-leader"></span><span class="tz-price">&euro;9</span><span class="tz-happy">17:45 &mdash; happy</span><span class="tz-note">The classic, done properly. Three-two-one and plenty of ice.</span></li>
+      <li><span class="tz-item">Crodino</span><span class="tz-leader"></span><span class="tz-price">&euro;5</span><span class="tz-note">Zero proof, full ceremony. For the designated driver and the wise.</span></li>
+      <li><span class="tz-item">Tagliere Camillo</span><span class="tz-leader"></span><span class="tz-price">&euro;14</span><span class="tz-note">Cured meats, pecorino, grissini. Built for the table, not one person.</span></li>
+    </ul>
+    <p class="tz-cardfoot">Luned&igrave; &mdash; Domenica &middot; 18:00 &mdash; 19:30<br>Via dei Giardini 12, Milano</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <div class="tz-tokens-inner">
+    <h2>Tokens</h2>
+    <ul class="tz-swatches">
+      <li><span class="tz-chip" style="background:#f7efdc"></span><span class="tz-name">bg</span><span class="tz-hex">#f7efdc</span></li>
+      <li><span class="tz-chip" style="background:#2b1f14"></span><span class="tz-name">ink</span><span class="tz-hex">#2b1f14</span></li>
+      <li><span class="tz-chip" style="background:#c93a2e"></span><span class="tz-name">accent</span><span class="tz-hex">#c93a2e</span></li>
+      <li><span class="tz-chip" style="background:#a08872"></span><span class="tz-name">muted</span><span class="tz-hex">#a08872</span></li>
+      <li><span class="tz-chip" style="background:#e3d3b8"></span><span class="tz-name">line</span><span class="tz-hex">#e3d3b8</span></li>
+    </ul>
+  </div>
+</section>
+
+<footer class="tz-foot">
+  <span>A TZ-taste style DNA showcase &mdash; MIT, free forever.</span>
+  <span>Dal 1958 &middot; salute</span>
+</footer>
+</body>
+</html>
