@@ -1,0 +1,181 @@
+<!--tz-meta {"id":"coral-reef","title":"Coral Glow","category":"3D","file":"three-d/coral-reef.html","tags":["threejs","bioluminescent"],"description":"Recursive branching corals glow in a deep teal abyss with drifting plankton.","dnas":["dark-luxe"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Coral Glow — TZ-taste</title>
+<style>
+  html, body { margin:0; height:100%; overflow:hidden; background:#03141d; }
+  #app { position:fixed; inset:0; }
+  #app canvas { display:block; }
+  .caption { position:fixed; left:18px; bottom:16px; z-index:5; color:#bfe9e2;
+    font:12px/1.6 system-ui, -apple-system, sans-serif; letter-spacing:.05em;
+    opacity:.85; pointer-events:none; text-shadow:0 1px 8px rgba(0,0,0,.7); }
+  .caption b { display:block; font-size:13px; letter-spacing:.22em; text-transform:uppercase; }
+  #fallback { display:none; position:fixed; inset:0; z-index:10; place-items:center;
+    color:#8fb8b2; font:14px/1.6 system-ui, sans-serif; text-align:center;
+    padding:32px; background:#03141d; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="caption"><b>Coral Glow</b>drag to orbit &middot; scroll to zoom</div>
+<div id="fallback"><p>This scene needs WebGL, which your browser could not provide.<br/>Try a recent version of Chrome, Safari, Firefox or Edge.</p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (e) {
+  document.getElementById('fallback').style.display = 'grid';
+  throw e;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('app').appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x03141d);
+scene.fog = new THREE.FogExp2(0x03141d, 0.045);
+
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 200);
+camera.position.set(0, 6.5, 18);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.target.set(0, 2.5, 0);
+controls.maxPolarAngle = 1.5;
+controls.minDistance = 6;
+controls.maxDistance = 45;
+
+/* ---------- abyss lighting ---------- */
+scene.add(new THREE.HemisphereLight(0x7fd8e8, 0x04141c, 0.55));
+const teal = new THREE.PointLight(0x2fe8c8, 90, 50, 2);
+teal.position.set(7, 7, 5);
+scene.add(teal);
+const magenta = new THREE.PointLight(0xff5d8f, 70, 50, 2);
+magenta.position.set(-8, 5, -6);
+scene.add(magenta);
+const deep = new THREE.PointLight(0x2b6cff, 45, 60, 2);
+deep.position.set(0, 3, 12);
+scene.add(deep);
+
+/* ---------- seabed ---------- */
+const ground = new THREE.Mesh(
+  new THREE.CircleGeometry(38, 48),
+  new THREE.MeshStandardMaterial({ color: 0x052028, roughness: 1 })
+);
+ground.rotation.x = -Math.PI / 2;
+ground.position.y = -0.05;
+scene.add(ground);
+
+/* ---------- recursive branching coral ---------- */
+const reef = new THREE.Group();
+scene.add(reef);
+const UP = new THREE.Vector3(0, 1, 0);
+const tipGeo = new THREE.IcosahedronGeometry(0.17, 1);
+const tips = [];
+
+function grow(origin, dir, len, rad, depth, mat, tipMat) {
+  const geo = new THREE.CylinderGeometry(rad * 0.6, rad, len, 7, 1);
+  geo.translate(0, len / 2, 0);
+  const m = new THREE.Mesh(geo, mat);
+  m.position.copy(origin);
+  m.quaternion.setFromUnitVectors(UP, dir.clone().normalize());
+  reef.add(m);
+  const tip = origin.clone().addScaledVector(dir, len);
+  if (depth === 0) {
+    const bud = new THREE.Mesh(tipGeo, tipMat);
+    bud.position.copy(tip);
+    bud.userData.phase = Math.random() * Math.PI * 2;
+    tips.push(bud);
+    reef.add(bud);
+    return;
+  }
+  const kids = depth > 1 ? 3 : 2;
+  for (let i = 0; i < kids; i++) {
+    const nd = dir.clone();
+    nd.x += (Math.random() - 0.5) * 1.15;
+    nd.z += (Math.random() - 0.5) * 1.15;
+    nd.y += Math.random() * 0.5;
+    grow(tip, nd.normalize(), len * (0.60 + Math.random() * 0.20), rad * 0.60, depth - 1, mat, tipMat);
+  }
+}
+
+const CORALS = [
+  { p: [-7.5, -2.0], c: 0xff6f91, tip: 0xffc2d4 },
+  { p: [ 6.5, -4.0], c: 0x37d5c8, tip: 0xb8fff1 },
+  { p: [ 0.0, -7.5], c: 0x9d7bff, tip: 0xdccbff },
+  { p: [-1.5,  4.5], c: 0xffb35c, tip: 0xffe3b3 },
+  { p: [ 8.0,  5.0], c: 0x5cc8ff, tip: 0xcdeeff },
+];
+CORALS.forEach(cfg => {
+  const mat = new THREE.MeshStandardMaterial({
+    color: cfg.c, roughness: 0.55, emissive: cfg.c, emissiveIntensity: 0.18 });
+  const tipMat = new THREE.MeshBasicMaterial({ color: cfg.tip });
+  for (let s = 0; s < 2; s++) {
+    const dir = new THREE.Vector3((Math.random() - 0.5) * 0.9, 1, (Math.random() - 0.5) * 0.9).normalize();
+    grow(new THREE.Vector3(cfg.p[0] + (Math.random() - 0.5) * 1.6, 0, cfg.p[1] + (Math.random() - 0.5) * 1.6),
+      dir, 1.7 + Math.random() * 0.9, 0.36, 3, mat, tipMat);
+  }
+});
+
+/* ---------- drifting plankton ---------- */
+const PN = 450;
+const pGeo = new THREE.BufferGeometry();
+const pPos = new Float32Array(PN * 3);
+const pSpd = new Float32Array(PN);
+for (let i = 0; i < PN; i++) {
+  pPos[i * 3] = (Math.random() * 2 - 1) * 20;
+  pPos[i * 3 + 1] = Math.random() * 14;
+  pPos[i * 3 + 2] = (Math.random() * 2 - 1) * 20;
+  pSpd[i] = 0.15 + Math.random() * 0.5;
+}
+pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+const plankton = new THREE.Points(pGeo, new THREE.PointsMaterial({
+  color: 0xa8f0dd, size: 0.09, transparent: true, opacity: 0.8 }));
+scene.add(plankton);
+
+/* ---------- frame loop ---------- */
+const clock = new THREE.Clock();
+function renderFrame(dt, t) {
+  reef.rotation.y += dt * 0.03;
+  teal.intensity = 90 + Math.sin(t * 0.7) * 12;
+  magenta.intensity = 70 + Math.sin(t * 0.9 + 2.1) * 10;
+  for (let i = 0; i < PN; i++) {
+    pPos[i * 3 + 1] += pSpd[i] * dt;
+    pPos[i * 3] += Math.sin(t * 0.6 + i) * dt * 0.25;
+    if (pPos[i * 3 + 1] > 14) pPos[i * 3 + 1] = 0;
+  }
+  pGeo.attributes.position.needsUpdate = true;
+  for (const b of tips) {
+    const s = 1 + Math.sin(t * 2.2 + b.userData.phase) * 0.18;
+    b.scale.set(s, s, s);
+  }
+  controls.update();
+  renderer.render(scene, camera);
+}
+if (REDUCED) {
+  renderFrame(0, 1.2);
+} else {
+  renderer.setAnimationLoop(() => {
+    const dt = Math.min(clock.getDelta(), 0.05);
+    renderFrame(dt, clock.elapsedTime);
+  });
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
