@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-arctic-field",
+  "title": "Arctic Field design tokens",
+  "category": "Tokens",
+  "file": "tokens/arctic-field.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "arctic-field"
+  ],
+  "description": "W3C-format design tokens for the Arctic Field style DNA.",
+  "dnas": [
+   "arctic-field"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#f5f8fa",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#14202b",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#1f6fa3",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#5d7484",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#d3e0e8",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Archivo",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "DM Sans",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "IBM Plex Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "arctic-field",
+  "name": "Arctic Field",
+  "vibe": "Expedition research: ice white, glacier blue, instrument precision — data you can trust at −30°."
+ }
+}
