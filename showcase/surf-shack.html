@@ -1,0 +1,146 @@
+<!--tz-meta {"id":"showcase-surf-shack","title":"Surf Shack showcase","category":"Showcase","file":"showcase/surf-shack.html","tags":["surf-shack"],"description":"Live demo page for the Surf Shack style DNA.","dnas":["surf-shack"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Surf Shack — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f9ecd8; --tz-surface:#fff8ea; --tz-ink:#40342a; --tz-muted:#a08d70;
+  --tz-accent:#2e8f8a; --tz-accent2:#e0704a; --tz-line:#e0d0ae;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"DM Sans",Verdana,sans-serif;font-size:1rem;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-conditions{background:var(--tz-accent);color:var(--tz-surface);font-family:"Space Mono",monospace;font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:0.65rem 5vw;white-space:nowrap;overflow-x:auto}
+.tz-conditions .tz-sep{color:var(--tz-accent2);margin:0 0.9rem}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 5vw}
+.tz-wordmark{font-family:"Shrikhand",cursive;font-size:1.35rem;color:var(--tz-ink)}
+.tz-wordmark .tz-teal{color:var(--tz-accent)}
+.tz-label{font-family:"Space Mono",monospace;font-size:0.66rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-hero{position:relative;padding:3.5rem 5vw 2rem}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:1.2rem}
+.tz-hero h1{font-family:"Shrikhand",cursive;font-weight:400;font-size:clamp(2.8rem,9vw,6.4rem);line-height:1.02;transform:rotate(-1.5deg);transform-origin:left center;margin-bottom:1.4rem;max-width:10ch}
+.tz-hero h1 .tz-coral{color:var(--tz-accent2)}
+.tz-hero h1 .tz-teal{color:var(--tz-accent)}
+.tz-sub{max-width:44ch;font-size:1.05rem;font-weight:500}
+.tz-cta-wrap{margin-top:2.4rem}
+.tz-cta{display:inline-flex;align-items:center;gap:0.8rem;font-family:"Shrikhand",cursive;font-size:1.25rem;text-decoration:none;color:var(--tz-ink);transform:rotate(-1deg);transition:transform 0.25s ease}
+.tz-cta:hover{transform:rotate(1.5deg) translateX(6px)}
+.tz-cta .tz-arrow{transition:transform 0.25s ease}
+.tz-cta:hover .tz-arrow{transform:translateX(8px)}
+.tz-cta u{text-decoration-thickness:3px;text-underline-offset:6px;text-decoration-color:var(--tz-accent2)}
+.tz-board{margin-top:2.5rem;max-width:420px;transform:rotate(2deg);transform-origin:top center;animation:tz-sway 7s ease-in-out infinite}
+@keyframes tz-sway{0%,100%{transform:rotate(1deg)}50%{transform:rotate(3deg)}}
+.tz-board svg{display:block;width:100%;height:auto}
+.tz-stamp{display:inline-block;margin-top:1.6rem;font-family:"Space Mono",monospace;font-weight:700;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--tz-accent2);border:3px solid var(--tz-accent2);border-radius:12px;padding:0.45rem 1rem;transform:rotate(-6deg)}
+.tz-wave{display:block;width:100%;height:44px;margin-top:2.5rem}
+.tz-content{padding:0 5vw 4.5rem}
+.tz-menu{position:relative;background:var(--tz-surface);border:3px solid var(--tz-ink);border-radius:255px 18px 225px 18px/18px 225px 18px 255px;padding:2.2rem clamp(1.2rem,4vw,3rem);max-width:760px;transform:rotate(0.5deg)}
+.tz-menu h2{font-family:"Shrikhand",cursive;font-weight:400;font-size:clamp(1.6rem,4.5vw,2.4rem);margin-bottom:0.4rem}
+.tz-menu .tz-hours{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:1.6rem}
+.tz-mrow{display:grid;grid-template-columns:1fr auto;gap:0.2rem 1.5rem;padding:1rem 0;border-top:2px dashed var(--tz-line);align-items:baseline}
+.tz-mrow:last-child{border-bottom:2px dashed var(--tz-line)}
+.tz-mname{font-weight:700;font-size:1.05rem}
+.tz-mname .tz-teal{color:var(--tz-accent)}
+.tz-mdesc{grid-column:1;font-size:0.88rem;color:var(--tz-muted)}
+.tz-mprice{font-family:"Shrikhand",cursive;font-size:1.3rem;color:var(--tz-accent2);white-space:nowrap}
+.tz-mprice small{font-family:"Space Mono",monospace;font-size:0.66rem;color:var(--tz-muted);display:block;text-align:right;letter-spacing:0.1em}
+.tz-fine{margin-top:1.4rem;font-family:"Space Mono",monospace;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-tokens{padding:3.5rem 5vw;border-top:3px solid var(--tz-ink)}
+.tz-tokens h2{font-family:"Shrikhand",cursive;font-weight:400;font-size:1.6rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;list-style:none;border:3px solid var(--tz-ink);border-radius:18px 6px 20px 8px;overflow:hidden}
+.tz-swatches li{flex:1 1 140px;border-right:3px solid var(--tz-ink);min-width:130px;background:var(--tz-surface)}
+.tz-swatches li:last-child{border-right:none}
+.tz-chip{display:block;height:3.2rem;border-bottom:3px solid var(--tz-ink)}
+.tz-swatches .tz-name{display:block;font-family:"Space Mono",monospace;font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--tz-muted);padding:0.7rem 0.9rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Space Mono",monospace;font-size:0.76rem;padding:0 0.9rem 0.8rem}
+.tz-foot{border-top:3px solid var(--tz-ink);padding:1.6rem 5vw;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:"Space Mono",monospace;font-size:0.66rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--tz-muted)}
+@media(max-width:700px){
+  .tz-hero h1{font-size:clamp(2.4rem,13vw,3.6rem)}
+  .tz-board{max-width:300px}
+  .tz-content{padding-left:6vw;padding-right:6vw}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="tz-conditions" aria-label="Today's conditions">Swell 3 ft<span class="tz-sep">·</span>Wind offshore<span class="tz-sep">·</span>Water 64°F<span class="tz-sep">·</span>High tide 11:42<span class="tz-sep">·</span>Air 71°F</div>
+<header class="tz-top">
+  <span class="tz-wordmark">The <span class="tz-teal">Salty</span> Palm</span>
+  <span class="tz-label">TZ-taste style DNA</span>
+</header>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow">Board rentals · Lessons · Since '94</p>
+  <h1>WAX UP.<br><span class="tz-teal">PADDLE</span> <span class="tz-coral">OUT.</span></h1>
+  <p class="tz-sub">Boards by the hour, lessons by the tide. First-timers are standing in the whitewater by 9 — the coffee's on us after.</p>
+  <div class="tz-cta-wrap">
+    <a class="tz-cta" href="#"><u>Rent a board</u><svg class="tz-arrow" width="72" height="26" viewBox="0 0 72 26" aria-hidden="true"><path d="M2 14 C 20 12, 40 10, 58 12 M52 5 L62 12 L52 20" fill="none" stroke="#e0704a" stroke-width="4" stroke-linecap="round"/></svg></a>
+  </div>
+  <div class="tz-board" aria-hidden="true">
+    <svg viewBox="0 0 160 420">
+      <path d="M80 8 C 118 40, 132 120, 128 220 C 124 320, 104 380, 80 412 C 56 380, 36 320, 32 220 C 28 120, 42 40, 80 8 Z" fill="#2e8f8a" stroke="#40342a" stroke-width="5"/>
+      <path d="M80 60 C 96 90, 100 160, 98 240 C 96 320, 88 370, 80 396 C 72 370, 64 320, 62 240 C 60 160, 64 90, 80 60 Z" fill="#f9ecd8" opacity="0.85"/>
+      <path d="M52 150 C 70 170, 90 170, 108 150" fill="none" stroke="#e0704a" stroke-width="7" stroke-linecap="round"/>
+      <path d="M54 210 C 72 230, 88 230, 106 210" fill="none" stroke="#e0704a" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="80" cy="330" r="10" fill="none" stroke="#40342a" stroke-width="4"/>
+    </svg>
+  </div>
+  <span class="tz-stamp">Local · Since '94</span>
+</section>
+
+<svg class="tz-wave" viewBox="0 0 1200 44" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 22 C 100 6, 200 38, 300 22 S 500 6, 600 22 S 800 38, 900 22 S 1100 6, 1200 22" fill="none" stroke="#2e8f8a" stroke-width="5" stroke-linecap="round"/>
+  <path d="M0 34 C 120 20, 240 44, 360 34 S 600 20, 720 34 S 960 44, 1080 34 S 1180 24, 1200 32" fill="none" stroke="#e0d0ae" stroke-width="3" stroke-linecap="round"/>
+</svg>
+
+<section class="tz-content">
+  <div class="tz-menu">
+    <h2>The Rental Board</h2>
+    <p class="tz-hours">Open 8–6 daily · High tide 11:42</p>
+    <div class="tz-mrow">
+      <span class="tz-mname">Soft-top 8' <span class="tz-teal">— best first board</span></span>
+      <span class="tz-mprice">$25<small>/ hour</small></span>
+      <span class="tz-mdesc">Foam deck, forgiving rails. Leash and wax included.</span>
+    </div>
+    <div class="tz-mrow">
+      <span class="tz-mname">Longboard 9'1"</span>
+      <span class="tz-mprice">$30<small>/ hour</small></span>
+      <span class="tz-mdesc">Single fin, noserider shape. For small clean days.</span>
+    </div>
+    <div class="tz-mrow">
+      <span class="tz-mname">Wetsuit, full 3/2</span>
+      <span class="tz-mprice">$12<small>/ day</small></span>
+      <span class="tz-mdesc">Rinsed and hung dry after every use. Smells like nothing.</span>
+    </div>
+    <div class="tz-mrow">
+      <span class="tz-mname">Group lesson <span class="tz-teal">— 90 min</span></span>
+      <span class="tz-mprice">$65<small>/ person</small></span>
+      <span class="tz-mdesc">Max 4 per instructor. Board, suit, and whitewater included.</span>
+    </div>
+    <p class="tz-fine">Cash and cards · Locals get 10% off Tuesdays</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#f9ecd8"></span><span class="tz-name">bg</span><span class="tz-hex">#f9ecd8</span></li>
+    <li><span class="tz-chip" style="background:#fff8ea"></span><span class="tz-name">surface</span><span class="tz-hex">#fff8ea</span></li>
+    <li><span class="tz-chip" style="background:#40342a"></span><span class="tz-name">ink</span><span class="tz-hex">#40342a</span></li>
+    <li><span class="tz-chip" style="background:#a08d70"></span><span class="tz-name">muted</span><span class="tz-hex">#a08d70</span></li>
+    <li><span class="tz-chip" style="background:#2e8f8a"></span><span class="tz-name">accent</span><span class="tz-hex">#2e8f8a</span></li>
+    <li><span class="tz-chip" style="background:#e0704a"></span><span class="tz-name">accent-2</span><span class="tz-hex">#e0704a</span></li>
+    <li><span class="tz-chip" style="background:#e0d0ae"></span><span class="tz-name">line</span><span class="tz-hex">#e0d0ae</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot"><span>A TZ-taste style DNA showcase — MIT, free forever.</span><span>Closed when it's flat</span></footer>
+</body>
+</html>
