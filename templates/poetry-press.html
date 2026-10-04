@@ -1,0 +1,263 @@
+<!--tz-meta {"id":"poetry-press","title":"Hinge & Quill — Independent Poetry Press","category":"Template","file":"templates/poetry-press.html","tags":["publishing","poetry","books"],"description":"Concrete-poem poetry press: typographic art as layout, the catalog as verse blocks, submissions window, readings calendar.","dnas":["concrete-poem"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hinge &amp; Quill — an independent poetry press</title>
+<meta name="description" content="Hinge & Quill: an independent poetry press publishing 8 chapbooks a year. Submissions open each October. Readings monthly.">
+<!-- Design read: typographic art you can order from — words arranged as shapes on paper, Major Mono Display shouting quietly — for readers who buy books for the sentences inside them. DNA: concrete-poem (Major Mono Display + Space Mono; paper #f7f3ea, ink #1c1a16, red #8c1f28 — runner-up editorial-serif was too conventional; this press needs the type to BE the image). One distinctive choice: the hero headline is set as a CONCRETE POEM — the words form a staircase the eye climbs. Dials V9/M4/D3. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f7f3ea; --tz-ink:#1c1a16; --tz-accent:#8c1f28; --tz-muted:#8a8072;
+  --tz-line:#ddd4c2; --tz-line-strong:#1c1a1633;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Space Mono",monospace;background:var(--tz-bg);color:var(--tz-ink);line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--tz-accent);color:#fff}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1060px;margin:0 auto;padding:0 28px}
+
+/* header */
+.tz-header{border-bottom:1px solid var(--tz-line-strong)}
+.tz-header .tz-wrap{display:flex;justify-content:space-between;align-items:center;height:64px}
+.tz-brand{font-family:"Major Mono Display",monospace;font-size:18px}
+.tz-brand b{color:var(--tz-accent);font-weight:400}
+.tz-nav{display:flex;gap:26px;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.tz-nav a{color:var(--tz-muted)}
+.tz-nav a:hover{color:var(--tz-accent)}
+.tz-sub{font-size:12px;font-weight:700;letter-spacing:.1em;border:1px solid var(--tz-ink);padding:10px 20px;background:transparent;cursor:pointer}
+.tz-sub:hover{background:var(--tz-ink);color:#fff}
+
+/* hero: concrete poem */
+.tz-hero{padding:88px 0 72px;border-bottom:1px solid var(--tz-line-strong)}
+.tz-poem{font-family:"Major Mono Display",monospace;font-size:clamp(30px,5.6vw,64px);line-height:1.28;text-align:left}
+.tz-poem span{display:block}
+.tz-poem .tz-s1{margin-left:0}
+.tz-poem .tz-s2{margin-left:12%}
+.tz-poem .tz-s3{margin-left:24%}
+.tz-poem .tz-s4{margin-left:36%}
+.tz-poem .tz-s5{margin-left:48%;color:var(--tz-accent)}
+.tz-poem .tz-s6{margin-left:60%}
+.tz-hero-foot{margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end}
+.tz-hero-foot p{font-size:14.5px;color:var(--tz-muted);max-width:52ch}
+.tz-hero-foot p b{color:var(--tz-ink)}
+.tz-hero-cta{display:flex;gap:14px;justify-content:flex-end;flex-wrap:wrap}
+.tz-btn{font-size:13px;font-weight:700;letter-spacing:.06em;padding:15px 30px;border:1px solid var(--tz-ink);cursor:pointer;background:transparent;transition:all .25s var(--tz-ease);display:inline-block}
+.tz-btn--red{background:var(--tz-accent);border-color:var(--tz-accent);color:#fff}
+.tz-btn--red:hover{background:var(--tz-ink);border-color:var(--tz-ink);transform:translateY(-2px)}
+.tz-btn--ghost:hover{border-color:var(--tz-accent);color:var(--tz-accent)}
+
+/* catalog: verse blocks */
+.tz-section{padding:84px 0}
+.tz-sec-head{max-width:620px;margin-bottom:44px}
+.tz-sec-head .tz-k{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--tz-accent)}
+.tz-sec-head h2{font-family:"Major Mono Display",monospace;font-size:clamp(28px,4.4vw,48px);line-height:1.15;margin:16px 0 12px;font-weight:400}
+.tz-sec-head p{color:var(--tz-muted);font-size:14.5px}
+.tz-shelf{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--tz-line-strong);border:1px solid var(--tz-line-strong)}
+.tz-book{background:var(--tz-bg);padding:44px 40px;transition:background .25s}
+.tz-book:hover{background:#fffdf6}
+.tz-book .tz-season{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--tz-accent)}
+.tz-book h3{font-family:"Major Mono Display",monospace;font-weight:400;font-size:30px;margin:14px 0 6px;line-height:1.25}
+.tz-book .tz-author{font-size:13px;color:var(--tz-muted);font-style:italic}
+.tz-book .tz-verse{margin:22px 0;font-size:14px;line-height:2;border-left:2px solid var(--tz-accent);padding-left:20px}
+.tz-book .tz-buyrow{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.tz-book .tz-price{font-weight:700;font-size:15px}
+.tz-book .tz-price small{font-weight:400;color:var(--tz-muted);font-size:11.5px}
+.tz-order{font-size:12px;font-weight:700;letter-spacing:.08em;border-bottom:2px solid var(--tz-accent);padding-bottom:2px;cursor:pointer}
+.tz-order:hover{color:var(--tz-accent)}
+.tz-book.tz-wide{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.tz-book.tz-wide .tz-verse{font-size:16px}
+
+/* submissions */
+.tz-submissions{border-top:1px solid var(--tz-line-strong);border-bottom:1px solid var(--tz-line-strong);background:#fffdf6}
+.tz-submissions .tz-wrap{padding-top:72px;padding-bottom:72px;display:grid;grid-template-columns:1fr 1fr;gap:64px}
+.tz-submissions h2{font-family:"Major Mono Display",monospace;font-weight:400;font-size:clamp(28px,4vw,44px);line-height:1.2;margin:14px 0}
+.tz-submissions .tz-k{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--tz-accent)}
+.tz-submissions p{font-size:14.5px;color:var(--tz-muted);margin-bottom:14px}
+.tz-submissions p b{color:var(--tz-ink)}
+.tz-window{border:1px solid var(--tz-line-strong);padding:36px 32px;background:var(--tz-bg)}
+.tz-window h3{font-family:"Major Mono Display",monospace;font-weight:400;font-size:22px;margin-bottom:16px}
+.tz-window dl{display:grid;grid-template-columns:auto 1fr;gap:10px 20px;font-size:13px}
+.tz-window dt{color:var(--tz-muted);text-transform:uppercase;letter-spacing:.1em;font-size:10.5px;padding-top:3px}
+.tz-window dd{font-weight:700}
+.tz-window .tz-count{margin-top:20px;padding-top:18px;border-top:1px dashed var(--tz-line-strong);font-size:12.5px;color:var(--tz-muted)}
+.tz-window .tz-count b{color:var(--tz-accent);font-size:16px}
+
+/* readings */
+.tz-readings{list-style:none;border-top:1px solid var(--tz-line-strong)}
+.tz-readings li{display:grid;grid-template-columns:130px 1fr auto;gap:28px;padding:28px 0;border-bottom:1px solid var(--tz-line-strong);align-items:baseline}
+.tz-readings .tz-date{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--tz-accent);font-weight:700}
+.tz-readings h3{font-family:"Major Mono Display",monospace;font-weight:400;font-size:22px;margin-bottom:6px}
+.tz-readings p{font-size:13.5px;color:var(--tz-muted)}
+.tz-readings .tz-rsvp{font-size:12px;font-weight:700;letter-spacing:.08em;border:1px solid var(--tz-ink);padding:12px 22px;white-space:nowrap;cursor:pointer;background:transparent;transition:all .2s}
+.tz-readings .tz-rsvp:hover{background:var(--tz-ink);color:#fff}
+
+/* colophon footer */
+.tz-footer{border-top:1px solid var(--tz-line-strong);padding:48px 0;margin-top:0}
+.tz-footer .tz-wrap{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.tz-footer h4{font-family:"Major Mono Display",monospace;font-weight:400;font-size:16px;margin-bottom:12px}
+.tz-footer p,.tz-footer address{font-style:normal;font-size:12.5px;color:var(--tz-muted);line-height:2}
+.tz-colophon{margin-top:32px;padding-top:24px;border-top:1px solid var(--tz-line);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:11px;color:var(--tz-muted);letter-spacing:.06em}
+
+@media (max-width:860px){
+  .tz-nav{display:none}
+  .tz-hero-foot{grid-template-columns:1fr}
+  .tz-hero-cta{justify-content:flex-start}
+  .tz-shelf{grid-template-columns:1fr}
+  .tz-book.tz-wide{grid-column:span 1;grid-template-columns:1fr}
+  .tz-submissions .tz-wrap{grid-template-columns:1fr}
+  .tz-readings li{grid-template-columns:1fr;gap:10px}
+  .tz-footer .tz-wrap{grid-template-columns:1fr}
+  .tz-section{padding:60px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-brand" href="#">hinge <b>&amp;</b> quill</a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#catalog">Catalog</a><a href="#submissions">Submissions</a><a href="#readings">Readings</a>
+    </nav>
+    <a class="tz-sub" href="#catalog">Order books</a>
+  </div>
+</header>
+
+<main>
+  <section class="tz-hero">
+    <div class="tz-wrap">
+      <div class="tz-poem" aria-label="We publish poems the way they were written: slowly, and on paper.">
+        <span class="tz-s1">we publish</span>
+        <span class="tz-s2">poems the way</span>
+        <span class="tz-s3">they were written:</span>
+        <span class="tz-s4">slowly,</span>
+        <span class="tz-s5">and on paper.</span>
+      </div>
+      <div class="tz-hero-foot">
+        <p>Hinge &amp; Quill is an independent poetry press. <b>Eight chapbooks a year</b>, printed letterpress in runs of 300, sold mostly at readings and by mail. No algorithms — just paper, ink, and readers.</p>
+        <div class="tz-hero-cta">
+          <a class="tz-btn tz-btn--red" href="#catalog">Browse the catalog</a>
+          <a class="tz-btn tz-btn--ghost" href="#submissions">Submit your manuscript</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="catalog">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-k">The catalog · 2026 season</span>
+        <h2>eight books, one year</h2>
+        <p>Each chapbook is 32–48 pages, letterpress cover, sewn binding. $14 each, or the full season for $88.</p>
+      </div>
+      <div class="tz-shelf">
+        <div class="tz-book tz-wide">
+          <div>
+            <span class="tz-season">Spring · featured</span>
+            <h3>field notes for a disappearing marsh</h3>
+            <p class="tz-author">by june okonkwo</p>
+            <div class="tz-buyrow"><span class="tz-price">$14 <small>· 44 pages</small></span><a class="tz-order" href="#catalog">Order →</a></div>
+          </div>
+          <p class="tz-verse">the heron does not hurry.<br>neither should you, says the mud<br>to the boot. i am learning<br>to arrive like weather —<br>unannounced, and then<br>everywhere.</p>
+        </div>
+        <div class="tz-book">
+          <span class="tz-season">Spring</span>
+          <h3>instructions for assembly</h3>
+          <p class="tz-author">by marcus webb</p>
+          <p class="tz-verse">step one: admit<br>the table wobbles.<br>step two: love it<br>anyway.</p>
+          <div class="tz-buyrow"><span class="tz-price">$14 <small>· 36 pages</small></span><a class="tz-order" href="#catalog">Order →</a></div>
+        </div>
+        <div class="tz-book">
+          <span class="tz-season">Summer</span>
+          <h3>night shift psalms</h3>
+          <p class="tz-author">by ana reyes</p>
+          <p class="tz-verse">3am, the hospital hums<br>in b-flat. i chart<br>another small mercy:<br>breathing, unassisted.</p>
+          <div class="tz-buyrow"><span class="tz-price">$14 <small>· 40 pages</small></span><a class="tz-order" href="#catalog">Order →</a></div>
+        </div>
+        <div class="tz-book">
+          <span class="tz-season">Summer</span>
+          <h3>atlas of small fires</h3>
+          <p class="tz-author">by theo lindqvist</p>
+          <p class="tz-verse">we kept the pilot light<br>like a promise. some winters<br>that is the whole<br>theology.</p>
+          <div class="tz-buyrow"><span class="tz-price">$14 <small>· 32 pages</small></span><a class="tz-order" href="#catalog">Order →</a></div>
+        </div>
+        <div class="tz-book">
+          <span class="tz-season">Fall · forthcoming</span>
+          <h3>the long division</h3>
+          <p class="tz-author">by priya nair</p>
+          <p class="tz-verse">my grandmother divided<br>everything by hunger.<br>i divide by distance.<br>we are both<br>remaindered.</p>
+          <div class="tz-buyrow"><span class="tz-price">$14 <small>· ships oct 20</small></span><a class="tz-order" href="#catalog">Pre-order →</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-submissions" id="submissions">
+    <div class="tz-wrap">
+      <div>
+        <span class="tz-k">Submissions</span>
+        <h2>the window opens in october.</h2>
+        <p>We read <b>chapbook manuscripts</b> (24–48 pages) each October. No reading fee, ever. Response by February — a real letter, not a form.</p>
+        <p>What we're hungry for: <b>work with a pulse</b>. Formal or free, quiet or loud — surprise us, but mean it.</p>
+        <p>What we're full on: pandemic diaries, AI-generated anything, and poems about writing poems (we've published our lifetime quota).</p>
+      </div>
+      <div class="tz-window">
+        <h3>2026 window</h3>
+        <dl>
+          <dt>Opens</dt><dd>October 1</dd>
+          <dt>Closes</dt><dd>October 31 · midnight</dd>
+          <dt>Length</dt><dd>24–48 pages</dd>
+          <dt>Fee</dt><dd>$0 · always</dd>
+          <dt>Reply by</dt><dd>February 2027</dd>
+        </dl>
+        <p class="tz-count"><b>312</b> manuscripts read last year · <b>8</b> published</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="readings" style="padding-top:72px">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-k">Readings · free, always</span>
+        <h2>hear it out loud</h2>
+        <p>Monthly at the bookshop on Lantern Row. Poets read, the press sells books at the back table, nobody claps between poems (snaps are fine).</p>
+      </div>
+      <ul class="tz-readings">
+        <li><span class="tz-date">Oct 17 · 7pm</span><div><h3>june okonkwo + open mic</h3><p>Launch reading for <i>field notes for a disappearing marsh</i>. Open mic signup at the door, 12 slots.</p></div><button class="tz-rsvp" type="button">RSVP free</button></li>
+        <li><span class="tz-date">Nov 21 · 7pm</span><div><h3>ana reyes + marcus webb</h3><p>Double bill: night shifts and assembly instructions. Book signing after.</p></div><button class="tz-rsvp" type="button">RSVP free</button></li>
+        <li><span class="tz-date">Dec 12 · 6pm</span><div><h3>winter broadside night</h3><p>Letterpress a broadside of your poem on our press. Take it home wet. Wear black.</p></div><button class="tz-rsvp" type="button">RSVP free</button></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div>
+      <h4>hinge &amp; quill</h4>
+      <p>An independent poetry press.<br>Printed letterpress · runs of 300 · sewn bindings.</p>
+    </div>
+    <address>
+      9 Bindery Lane, Studio 4<br>
+      hello@hingeandquill.press<br>
+      readings: third fridays · bookshop on lantern row
+    </address>
+  </div>
+  <div class="tz-wrap">
+    <div class="tz-colophon" style="width:100%">
+      <span>© 2026 hinge &amp; quill press</span>
+      <span>set in major mono &amp; space mono · printed on 100% recycled</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
