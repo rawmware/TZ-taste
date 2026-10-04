@@ -1003,6 +1003,13 @@
     var out = $("quiz-result");
     if (!form || !out) return;
 
+    var boldRange = $("quiz-q3"), boldVal = $("quiz-q3-val");
+    if (boldRange && boldVal) {
+      var syncBold = function () { boldVal.textContent = boldRange.value; };
+      boldRange.addEventListener("input", syncBold);
+      boldRange.addEventListener("change", syncBold);
+    }
+
     var buildingMap = {
       landing: ["saas", "startup", "agency"],
       portfolio: ["portfolio", "photography", "design"],
