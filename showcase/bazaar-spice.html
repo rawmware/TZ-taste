@@ -1,0 +1,157 @@
+<!--tz-meta {"id":"showcase-bazaar-spice","title":"Bazaar Spice showcase","category":"Showcase","file":"showcase/bazaar-spice.html","tags":["bazaar-spice"],"description":"Live demo page for the Bazaar Spice style DNA.","dnas":["bazaar-spice"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bazaar Spice — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Work+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#241109; --tz-surface:#3a1d0e; --tz-ink:#f7e8cf; --tz-muted:#b0854f;
+  --tz-accent:#e9a820; --tz-line:#e9a82066;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Work Sans",sans-serif;font-size:1rem;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 4vw;font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.12em}
+.tz-wordmark{font-family:"Yeseva One",serif;font-size:1.4rem;color:var(--tz-accent);letter-spacing:0.02em}
+.tz-label{color:var(--tz-muted)}
+.tz-awning{height:10px;background:repeating-linear-gradient(90deg,var(--tz-accent) 0 18px,#c1442e 18px 36px,#6f7d3a 36px 54px,#2e3a68 54px 72px)}
+.tz-marquee{overflow:hidden;white-space:nowrap;border-top:1px solid var(--tz-line);border-bottom:1px solid var(--tz-line);padding:0.7rem 0;background:var(--tz-surface)}
+.tz-marquee span{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:0.8rem;letter-spacing:0.14em;color:var(--tz-accent);padding-right:2rem;animation:tz-drift 26s linear infinite}
+@keyframes tz-drift{to{transform:translateX(-50%)}}
+.tz-hero{padding:4.5rem 4vw 3.5rem;position:relative}
+.tz-eyebrow{font-family:"IBM Plex Mono",monospace;font-size:0.75rem;letter-spacing:0.16em;color:var(--tz-muted);margin-bottom:1.2rem}
+.tz-hero h1{font-family:"Yeseva One",serif;font-size:clamp(3.2rem,10vw,8rem);line-height:1.02;max-width:14ch}
+.tz-hero h1 .tz-gold{color:var(--tz-accent)}
+.tz-sub{margin-top:1.4rem;font-size:1.05rem;color:var(--tz-muted);max-width:46ch}
+.tz-cta{display:inline-block;margin-top:2.2rem;background:var(--tz-accent);color:var(--tz-bg);font-family:"Work Sans",sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:0.03em;text-decoration:none;padding:1rem 2.4rem;border-radius:4px;transition:transform .15s ease}
+.tz-cta:hover{transform:translateY(-2px)}
+.tz-pyramid{margin-top:3.5rem;display:flex;align-items:flex-end;gap:0;max-width:640px}
+.tz-pyramid span{display:block;flex:1}
+.tz-pyramid .tz-tier{height:3.4rem}
+.tz-tier.tz-t1{background:#c1442e}.tz-tier.tz-t2{background:#e9a820}.tz-tier.tz-t3{background:#6f7d3a}.tz-tier.tz-t4{background:#2e3a68}
+.tz-cap{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.1em;color:var(--tz-muted);margin-top:0.8rem}
+.tz-band{height:10px;margin-top:3.5rem;background:repeating-linear-gradient(-45deg,var(--tz-accent) 0 10px,transparent 10px 20px);opacity:0.7}
+.tz-content{padding:3rem 4vw 0}
+.tz-content h2{font-family:"Yeseva One",serif;font-size:clamp(2rem,5vw,3.4rem);margin-bottom:0.4rem}
+.tz-content .tz-note{color:var(--tz-muted);font-size:0.95rem;margin-bottom:2rem;max-width:56ch}
+.tz-list{list-style:none;border-top:1px solid var(--tz-line)}
+.tz-list li{display:grid;grid-template-columns:1fr auto;gap:0.4rem 1.5rem;align-items:center;padding:1.4rem 0;border-bottom:1px solid var(--tz-line);position:relative}
+.tz-item h3{font-family:"Yeseva One",serif;font-size:1.5rem;font-weight:400}
+.tz-item p{color:var(--tz-muted);font-size:0.92rem;margin-top:0.25rem}
+.tz-smell{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;color:var(--tz-accent);letter-spacing:0.06em;margin-top:0.4rem;display:block}
+.tz-tag{justify-self:end;transform:rotate(-4deg);background:var(--tz-accent);color:var(--tz-bg);font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:0.8rem;padding:0.5rem 0.9rem;border-radius:4px;white-space:nowrap;box-shadow:3px 3px 0 #00000055}
+.tz-heat{display:block;margin-top:0.35rem;font-family:"IBM Plex Mono",monospace;font-size:0.72rem;color:var(--tz-muted)}
+.tz-heat b{color:#c1442e;font-weight:600}
+.tz-band2{height:10px;margin:3rem -4vw 0;background:repeating-linear-gradient(90deg,#6f7d3a 0 14px,#c1442e 14px 28px,var(--tz-accent) 28px 42px)}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:0}
+.tz-tokens h2{font-family:"Yeseva One",serif;font-size:1.8rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"IBM Plex Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"IBM Plex Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"IBM Plex Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-list li{grid-template-columns:1fr}
+  .tz-tag{justify-self:start}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Spice &amp; Sons</span>
+  <span class="tz-label">STALL 12 · GROUND THIS WEEK</span>
+</header>
+<div class="tz-awning" aria-hidden="true"></div>
+
+<div class="tz-marquee" aria-hidden="true">
+  <span>TURMERIC — GROUND TUESDAY · SMOKED PAPRIKA — LA VERA · CARDAMOM — GREEN, WHOLE · TURMERIC — GROUND TUESDAY · SMOKED PAPRIKA — LA VERA · CARDAMOM — GREEN, WHOLE ·&nbsp;</span><span>TURMERIC — GROUND TUESDAY · SMOKED PAPRIKA — LA VERA · CARDAMOM — GREEN, WHOLE · TURMERIC — GROUND TUESDAY · SMOKED PAPRIKA — LA VERA · CARDAMOM — GREEN, WHOLE ·&nbsp;</span>
+</div>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow">THE MARKET STALL · OPEN 8AM — DUSK</p>
+  <h1>Smell this one <span class="tz-gold">first.</span></h1>
+  <p class="tz-sub">Forty-two sacks, one awning, zero shortcuts. The red one's hotter. You've been warned.</p>
+  <a class="tz-cta" href="#">Taste the stall</a>
+  <div class="tz-pyramid" aria-hidden="true">
+    <span><span class="tz-tier tz-t1"></span></span>
+    <span><span class="tz-tier tz-t2"></span></span>
+    <span><span class="tz-tier tz-t3"></span></span>
+    <span><span class="tz-tier tz-t4"></span></span>
+    <span><span class="tz-tier tz-t1"></span></span>
+    <span><span class="tz-tier tz-t2"></span></span>
+    <span><span class="tz-tier tz-t3"></span></span>
+  </div>
+  <p class="tz-cap">THE PYRAMID — PAPRIKA · TURMERIC · CARDAMOM · INDIGO DYE, RESTOCKED DAILY</p>
+  <div class="tz-band" aria-hidden="true"></div>
+</section>
+
+<section class="tz-content">
+  <h2>The grind list</h2>
+  <p class="tz-note">Everything below was ground this week. Ask for the scratch panel if you want the full aroma notes before you commit.</p>
+  <ul class="tz-list">
+    <li>
+      <div class="tz-item">
+        <h3>Smoked paprika, La Vera</h3>
+        <p>Oak-smoked, brick red, the one your grandmother asks about.</p>
+        <span class="tz-smell">SMELL THIS: campfire, sweet pepper, a long warm finish</span>
+        <span class="tz-heat">HEAT <b>●●○○○</b> 2/5</span>
+      </div>
+      <span class="tz-tag">₹120 / 500g</span>
+    </li>
+    <li>
+      <div class="tz-item">
+        <h3>Turmeric, ground Tuesday</h3>
+        <p>Fresh-milled, stains everything it touches. Worth it.</p>
+        <span class="tz-smell">SMELL THIS: warm, peppery, faintly sweet</span>
+        <span class="tz-heat">HEAT <b>●○○○○</b> 1/5</span>
+      </div>
+      <span class="tz-tag">₹85 / 500g</span>
+    </li>
+    <li>
+      <div class="tz-item">
+        <h3>Kashmiri chili, whole dried</h3>
+        <p>Color like a sunset, heat like a firm handshake.</p>
+        <span class="tz-smell">SMELL THIS: dried fruit, leather, a slow-building glow</span>
+        <span class="tz-heat">HEAT <b>●●●●○</b> 4/5</span>
+      </div>
+      <span class="tz-tag">₹140 / 250g</span>
+    </li>
+    <li>
+      <div class="tz-item">
+        <h3>Green cardamom, whole pods</h3>
+        <p>Crack one between your teeth before you buy. We insist.</p>
+        <span class="tz-smell">SMELL THIS: eucalyptus, lemon peel, cold mountain air</span>
+        <span class="tz-heat">HEAT <b>●○○○○</b> 1/5</span>
+      </div>
+      <span class="tz-tag">₹310 / 250g</span>
+    </li>
+  </ul>
+  <div class="tz-band2" aria-hidden="true"></div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#241109"></span><span class="tz-name">bg</span><span class="tz-hex">#241109</span></li>
+    <li><span class="tz-chip" style="background:#3a1d0e"></span><span class="tz-name">surface</span><span class="tz-hex">#3a1d0e</span></li>
+    <li><span class="tz-chip" style="background:#f7e8cf"></span><span class="tz-name">ink</span><span class="tz-hex">#f7e8cf</span></li>
+    <li><span class="tz-chip" style="background:#b0854f"></span><span class="tz-name">muted</span><span class="tz-hex">#b0854f</span></li>
+    <li><span class="tz-chip" style="background:#e9a820"></span><span class="tz-name">accent</span><span class="tz-hex">#e9a820</span></li>
+    <li><span class="tz-chip" style="background:#e9a82066"></span><span class="tz-name">line</span><span class="tz-hex">#e9a82066</span></li>
+    <li><span class="tz-chip" style="background:#c1442e"></span><span class="tz-name">paprika</span><span class="tz-hex">#c1442e</span></li>
+    <li><span class="tz-chip" style="background:#6f7d3a"></span><span class="tz-name">cardamom</span><span class="tz-hex">#6f7d3a</span></li>
+    <li><span class="tz-chip" style="background:#2e3a68"></span><span class="tz-name">indigo</span><span class="tz-hex">#2e3a68</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
