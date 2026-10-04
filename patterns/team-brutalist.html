@@ -1,0 +1,46 @@
+<!--tz-meta {"id":"team-brutalist","title":"Bordered roster","category":"Team","file":"patterns/team-brutalist.html","tags":["raw","borders"],"description":"Raw 2px-bordered roster rows with rotated stamp titles.","dnas":["industrial-brutalist"]} -->
+<section class="tz-bteam" aria-label="Team roster">
+  <p class="tz-eyebrow">Crew // 06</p>
+  <div class="tz-rows">
+    <div class="tz-row">
+      <span class="tz-ini tz-i1" aria-hidden="true">RC</span>
+      <span class="tz-id"><strong>Roman Cottonham</strong><em>founder — ships the work, answers the phone</em></span>
+      <span class="tz-stamp">Boss</span>
+    </div>
+    <div class="tz-row">
+      <span class="tz-ini tz-i2" aria-hidden="true">MJ</span>
+      <span class="tz-id"><strong>Mara Jensen</strong><em>design — type, color, no mercy</em></span>
+      <span class="tz-stamp">Type cop</span>
+    </div>
+    <div class="tz-row">
+      <span class="tz-ini tz-i3" aria-hidden="true">TO</span>
+      <span class="tz-id"><strong>Theo Okafor</strong><em>backend — servers stay up</em></span>
+      <span class="tz-stamp">Uptime</span>
+    </div>
+    <div class="tz-row">
+      <span class="tz-ini tz-i4" aria-hidden="true">DP</span>
+      <span class="tz-id"><strong>Devon Park</strong><em>frontend — makes it move right</em></span>
+      <span class="tz-stamp">Motion</span>
+    </div>
+  </div>
+</section>
+<style>
+.tz-bteam{--bg:#e8e6e1;--ink:#161616;--org:#c23c00;--paper:#f4f2ec;
+  background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(56px,9vw,110px) clamp(20px,6vw,80px)}
+.tz-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:700;
+  letter-spacing:.16em;margin:0 0 32px}
+.tz-rows{display:flex;flex-direction:column}
+.tz-row{display:flex;align-items:center;gap:20px;border:2px solid var(--ink);
+  background:var(--paper);padding:18px 20px;margin-bottom:-2px;position:relative}
+.tz-ini{width:52px;height:52px;flex:none;display:inline-flex;align-items:center;justify-content:center;
+  background:var(--ink);color:var(--paper);font-weight:800;font-size:17px}
+.tz-i2{background:var(--org)}
+.tz-id{display:flex;flex-direction:column;gap:4px;min-width:0}
+.tz-id strong{font-size:18px;letter-spacing:-.01em}
+.tz-id em{font-style:normal;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#4c4a44}
+.tz-stamp{margin-left:auto;flex:none;border:2px solid var(--org);color:var(--org);
+  font-family:ui-monospace,Menlo,monospace;font-size:11px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;padding:6px 12px;transform:rotate(-4deg);background:var(--paper)}
+@media (max-width:560px){.tz-stamp{display:none}}
+</style>
