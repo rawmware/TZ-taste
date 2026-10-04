@@ -1,0 +1,130 @@
+<!--tz-meta {"id":"gen-geo-harmonograph","title":"Harmonograph","category":"Generative","file":"generative/geo-harmonograph.html","tags":["pendulum","damped","drawing"],"description":"Damped double-pendulum equations trace fading rosettes in risograph blue and red.","dnas":["risograph-grain"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harmonograph · TZ-taste</title>
+<style>
+  .tz-page{background:#F5F0E6;color:#1c1c1c;min-height:100vh;font-family:Georgia,'Times New Roman',serif;margin:0}
+  .tz-wrap{max-width:1080px;margin:0 auto;padding:32px 20px 48px}
+  .tz-kicker{font-family:'Courier New',Courier,monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#2B50AA;margin:0 0 12px}
+  .tz-title{font-size:clamp(32px,6vw,52px);font-weight:700;margin:0 0 10px;line-height:1.05}
+  .tz-caption{font-size:16px;line-height:1.6;max-width:62ch;margin:0 0 4px;color:#4a4a4a}
+  .tz-controls{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+  .tz-btn{font-family:'Courier New',Courier,monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;background:transparent;color:#1c1c1c;border:2px solid #1c1c1c;padding:10px 18px;cursor:pointer}
+  .tz-btn:hover{background:#E23B2E;border-color:#E23B2E;color:#F5F0E6}
+  .tz-btn:active{transform:translateY(1px)}
+  .tz-canvas{display:block;width:100%;height:70vh;background:#F5F0E6;border:2px solid #1c1c1c}
+  .tz-foot{font-family:'Courier New',Courier,monospace;font-size:12px;color:#8a8a8a;margin:14px 0 0;line-height:1.6}
+</style>
+</head>
+<body class="tz-page">
+<div class="tz-wrap">
+  <p class="tz-kicker">TZ-taste · Generative</p>
+  <h1 class="tz-title">Harmonograph</h1>
+  <p class="tz-caption">Two damped pendulums per axis — x = Σ A·sin(f·t + p)·e^(−d·t) — spiral inward as friction steals their energy, overprinted in two inks.</p>
+  <div class="tz-controls">
+    <button class="tz-btn" id="tz-seed" type="button">New seed</button>
+    <button class="tz-btn" id="tz-pause" type="button">Pause</button>
+    <button class="tz-btn" id="tz-clear" type="button">Clear</button>
+  </div>
+  <canvas class="tz-canvas" id="tz-canvas"></canvas>
+  <p class="tz-foot">One distinctive choice: three pendulum pairs, one per ink pass — blue, red, then a misregistered third pass for print wobble. Seed <span id="tz-seednum"></span>.</p>
+</div>
+<script>
+(function(){
+  var BG='#F5F0E6', BLUE='#2B50AA', RED='#E23B2E';
+  var canvas=document.getElementById('tz-canvas'), ctx=canvas.getContext('2d');
+  var seedBtn=document.getElementById('tz-seed'), pauseBtn=document.getElementById('tz-pause'),
+      clearBtn=document.getElementById('tz-clear'), seedNum=document.getElementById('tz-seednum');
+  var seed=808080, rng=mulberry32(seed), pend=[], W=0, H=0;
+  var running=true, raf=null, last=0, prog=0, grain=null;
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var TMAX=14;
+
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+
+  function makeGrain(){
+    grain=document.createElement('canvas');
+    grain.width=Math.max(1,Math.floor(W)); grain.height=Math.max(1,Math.floor(H));
+    var g=grain.getContext('2d'), grng=mulberry32(seed*13+7);
+    var id=g.createImageData(grain.width,grain.height), d=id.data;
+    for(var i=0;i<d.length;i+=4){
+      if(grng()<0.05){var v=grng()<0.5?25:240;d[i]=v;d[i+1]=v;d[i+2]=v;d[i+3]=44;}
+      else{d[i+3]=0;}
+    }
+    g.putImageData(id,0,0);
+  }
+
+  function init(){
+    rng=mulberry32(seed); pend=[];
+    var m=Math.min(W,H)/2*0.92;
+    var inks=[BLUE,RED,BLUE];
+    for(var i=0;i<3;i++){
+      var base=2+Math.floor(rng()*3);
+      pend.push({
+        f1:base, f2:base+(rng()<0.5?1:-1)*(0.5+rng()),
+        p1:rng()*Math.PI*2, p2:rng()*Math.PI*2,
+        d1:0.06+rng()*0.10, d2:0.06+rng()*0.10,
+        amp:m*(0.55+rng()*0.2),
+        color:inks[i], ox:(i===2?(rng()-0.5)*10:0), oy:(i===2?(rng()-0.5)*10:0)
+      });
+    }
+    prog=0; makeGrain();
+    seedNum.textContent=seed;
+  }
+
+  function pt(p,t){
+    var x=p.amp*(Math.sin(p.f1*t+p.p1)*Math.exp(-p.d1*t)+0.6*Math.sin(p.f2*t+p.p2)*Math.exp(-p.d2*t))/1.6;
+    var y=p.amp*(Math.sin((p.f1+1)*t+p.p2)*Math.exp(-p.d1*t)+0.6*Math.sin((p.f2+1)*t+p.p1)*Math.exp(-p.d2*t))/1.6;
+    return [W/2+x+p.ox, H/2+y+p.oy];
+  }
+
+  function paint(){
+    ctx.fillStyle=BG; ctx.fillRect(0,0,W,H);
+    for(var i=0;i<pend.length;i++){
+      ctx.beginPath();
+      var steps=Math.floor(prog*240);
+      for(var s=0;s<=steps;s++){
+        var p=pt(pend[i],s/240*TMAX);
+        if(s===0)ctx.moveTo(p[0],p[1]);else ctx.lineTo(p[0],p[1]);
+      }
+      ctx.strokeStyle=pend[i].color; ctx.lineWidth=1.6; ctx.globalAlpha=0.85; ctx.stroke(); ctx.globalAlpha=1;
+    }
+    ctx.drawImage(grain,0,0,W,H);
+  }
+
+  function frame(ts){
+    if(!running){raf=null;return;}
+    var dt=Math.min((ts-last)/1000,0.05); last=ts;
+    if(prog<1){prog=Math.min(1,prog+dt/9);paint();}
+    else{ctx.drawImage(grain,0,0,W,H);}
+    raf=requestAnimationFrame(frame);
+  }
+
+  function resize(){
+    var dpr=Math.min(window.devicePixelRatio||1,2);
+    var r=canvas.getBoundingClientRect();
+    W=r.width; H=r.height;
+    canvas.width=Math.round(W*dpr); canvas.height=Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    init();
+    if(reduced){prog=1;paint();}
+    else paint();
+  }
+
+  seedBtn.addEventListener('click',function(){seed=(seed*9301+49297)%233280;init();paint();});
+  pauseBtn.addEventListener('click',function(){
+    running=!running; pauseBtn.textContent=running?'Pause':'Resume';
+    if(running&&!reduced){last=performance.now();raf=requestAnimationFrame(frame);}
+  });
+  clearBtn.addEventListener('click',function(){prog=0;paint();});
+
+  window.addEventListener('resize',resize);
+  resize();
+  if(!reduced){last=performance.now();raf=requestAnimationFrame(frame);}
+})();
+</script>
+</body>
+</html>
