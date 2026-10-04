@@ -1,0 +1,272 @@
+<!--tz-meta {"id":"seed-library","title":"The Seed Library — Borrow Seeds, Grow Food","category":"Template","file":"templates/seed-library.html","tags":["library","seeds","community"],"description":"Library-oak seed library: card-catalog seed index, how borrowing works, grow-out reports, volunteer nights.","dnas":["library-oak"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Seed Library — borrow seeds, grow food, return seeds</title>
+<meta name="description" content="The Seed Library: borrow vegetable and flower seeds free with a library card. Grow them out, save seeds, bring some back.">
+<!-- Design read: a card catalog that grows things — leather-and-brass hush, Cormorant headlines, Roboto Mono catalog numbers — for gardeners who treat seeds like the library treats books. DNA: library-oak (Cormorant Garamond + EB Garamond + Roboto Mono; bg #211810 dark oak, ink #ece0c8, brass #c9973f — runner-up seed-packet was kraft-daylight; this is the hushed reading-room version). One distinctive choice: the seed index is browsed as PULLED CATALOG DRAWER cards with Dewey-style numbers. Dials V2/M2/D5. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#211810; --tz-ink:#ece0c8; --tz-accent:#c9973f; --tz-muted:#93805f;
+  --tz-line:#c9973f40; --tz-panel:#2a2016; --tz-card:#ece0c8; --tz-card-ink:#2b2114;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"EB Garamond",serif;background:var(--tz-bg);color:var(--tz-ink);line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased;font-size:17px}
+::selection{background:var(--tz-accent);color:#211810}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1100px;margin:0 auto;padding:0 28px}
+.tz-mono{font-family:"Roboto Mono",monospace}
+
+/* header */
+.tz-header{border-bottom:1px solid var(--tz-line);position:sticky;top:0;z-index:50;background:#211810f0;backdrop-filter:blur(10px)}
+.tz-header .tz-wrap{display:flex;justify-content:space-between;align-items:center;height:68px}
+.tz-brand{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:23px}
+.tz-brand em{color:var(--tz-accent);font-style:normal}
+.tz-nav{display:flex;gap:26px;font-family:"Roboto Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.tz-nav a{color:var(--tz-muted)}
+.tz-nav a:hover{color:var(--tz-accent)}
+.tz-join{font-family:"Roboto Mono",monospace;font-size:12.5px;font-weight:700;border:1px solid var(--tz-accent);color:var(--tz-accent);padding:10px 22px;background:transparent;cursor:pointer;letter-spacing:.06em}
+.tz-join:hover{background:var(--tz-accent);color:#211810}
+
+/* hero */
+.tz-hero{padding:100px 0 84px;position:relative;overflow:hidden}
+.tz-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(55% 60% at 50% 0%,#c9973f14,transparent 70%)}
+.tz-hero .tz-wrap{position:relative;text-align:center}
+.tz-kicker{font-family:"Roboto Mono",monospace;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--tz-accent)}
+.tz-hero h1{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(50px,7.6vw,100px);line-height:1.04;margin:26px auto;max-width:15ch}
+.tz-hero h1 em{font-style:italic;color:var(--tz-accent)}
+.tz-lede{font-size:19px;color:var(--tz-muted);max-width:58ch;margin:0 auto;font-style:italic}
+.tz-hero-cta{margin-top:36px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.tz-btn{font-family:"Roboto Mono",monospace;font-size:13px;font-weight:700;letter-spacing:.06em;padding:16px 32px;border:1px solid var(--tz-accent);cursor:pointer;transition:all .25s var(--tz-ease);display:inline-block}
+.tz-btn--brass{background:var(--tz-accent);color:#211810}
+.tz-btn--brass:hover{background:#ece0c8;transform:translateY(-2px)}
+.tz-btn--ghost{color:var(--tz-accent);background:transparent}
+.tz-btn--ghost:hover{background:#c9973f14}
+.tz-stats{margin:56px auto 0;display:flex;justify-content:center;gap:0;max-width:760px;border:1px solid var(--tz-line)}
+.tz-stats div{flex:1;padding:24px 16px;border-right:1px solid var(--tz-line)}
+.tz-stats div:last-child{border-right:0}
+.tz-stats b{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:38px;color:var(--tz-accent);display:block;line-height:1}
+.tz-stats span{font-family:"Roboto Mono",monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--tz-muted)}
+
+/* catalog drawers: the one weird thing */
+.tz-section{padding:88px 0}
+.tz-sec-head{max-width:640px;margin-bottom:40px}
+.tz-sec-head h2{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(38px,5.2vw,62px);line-height:1.06;margin:16px 0 12px}
+.tz-sec-head p{color:var(--tz-muted);font-size:17.5px;font-style:italic}
+.tz-drawers{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--tz-line);border:1px solid var(--tz-line)}
+.tz-drawer{background:var(--tz-panel);padding:0;transition:background .25s}
+.tz-drawer:hover{background:#32271570}
+.tz-drawer-tab{background:#171008;border-bottom:1px solid var(--tz-line);padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
+.tz-drawer-tab .tz-range{font-family:"Roboto Mono",monospace;font-weight:700;font-size:13px;letter-spacing:.14em;color:var(--tz-accent)}
+.tz-drawer-tab .tz-count{font-family:"Roboto Mono",monospace;font-size:11px;color:var(--tz-muted)}
+.tz-seedcard{background:var(--tz-card);color:var(--tz-card-ink);margin:18px;padding:24px 22px;position:relative;box-shadow:0 4px 14px #00000055}
+.tz-seedcard::before{content:"";position:absolute;top:10px;left:10px;right:10px;bottom:10px;border:1px solid #2b211422;pointer-events:none}
+.tz-seedcard .tz-catno{font-family:"Roboto Mono",monospace;font-size:10.5px;letter-spacing:.18em;color:#8a6f3f;text-transform:uppercase}
+.tz-seedcard h3{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:26px;margin:10px 0 4px;line-height:1.15}
+.tz-seedcard .tz-latin{font-style:italic;font-size:14.5px;color:#6b5a3e}
+.tz-seedcard dl{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin-top:16px;font-family:"Roboto Mono",monospace;font-size:11.5px}
+.tz-seedcard dt{color:#8a6f3f;text-transform:uppercase;letter-spacing:.08em;font-size:10px;padding-top:2px}
+.tz-seedcard dd{font-weight:700}
+.tz-seedcard .tz-note{margin-top:14px;padding-top:12px;border-top:1px dashed #2b211433;font-size:13.5px;font-style:italic;color:#5a4c33}
+.tz-seedcard .tz-stock{position:absolute;top:18px;right:20px;font-family:"Roboto Mono",monospace;font-size:10px;font-weight:700;letter-spacing:.1em;color:#fff;background:#3f7043;padding:5px 10px}
+.tz-seedcard .tz-stock.tz-low{background:#b3541e}
+.tz-drawer-foot{padding:0 18px 22px;font-family:"Roboto Mono",monospace;font-size:11.5px;color:var(--tz-muted);text-align:center}
+
+/* how borrowing works */
+.tz-how{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start}
+.tz-how-intro h2{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(34px,4.4vw,52px);line-height:1.08;margin:16px 0 14px}
+.tz-how-intro p{color:var(--tz-muted);font-style:italic;font-size:17px}
+.tz-how-intro .tz-kicker{color:var(--tz-accent)}
+.tz-steps{list-style:none;counter-reset:tzseed;border-top:1px solid var(--tz-line)}
+.tz-steps li{counter-increment:tzseed;display:grid;grid-template-columns:64px 1fr;gap:20px;padding:26px 0;border-bottom:1px solid var(--tz-line)}
+.tz-steps li::before{content:counter(tzseed,decimal-leading-zero);font-family:"Cormorant Garamond",serif;font-weight:600;font-size:36px;color:var(--tz-accent);line-height:1}
+.tz-steps h3{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:24px;margin-bottom:6px}
+.tz-steps p{color:var(--tz-muted);font-size:16px}
+.tz-steps p b{color:var(--tz-ink);font-weight:500}
+
+/* grow-out reports */
+.tz-reports{border:1px solid var(--tz-line);background:var(--tz-panel)}
+.tz-report{display:grid;grid-template-columns:180px 1fr;gap:28px;padding:32px 36px;border-bottom:1px solid var(--tz-line)}
+.tz-report:last-child{border-bottom:0}
+.tz-report .tz-who{font-family:"Roboto Mono",monospace;font-size:11px;letter-spacing:.1em;color:var(--tz-muted);line-height:2}
+.tz-report .tz-who b{color:var(--tz-accent);display:block;font-size:13px}
+.tz-report blockquote{font-family:"Cormorant Garamond",serif;font-size:21px;font-style:italic;line-height:1.5}
+.tz-report blockquote footer{font-family:"Roboto Mono",monospace;font-size:11px;color:var(--tz-muted);font-style:normal;margin-top:10px;letter-spacing:.06em}
+.tz-report .tz-yield{display:inline-block;margin-top:12px;font-family:"Roboto Mono",monospace;font-size:11px;color:#3f7043;border:1px solid #3f704366;padding:6px 12px;letter-spacing:.06em}
+
+/* visit */
+.tz-visit{border:1px solid var(--tz-line);background:var(--tz-panel);padding:56px;display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.tz-visit h2{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:40px;line-height:1.1}
+.tz-visit h2 em{font-style:italic;color:var(--tz-accent)}
+.tz-visit address{font-style:normal;font-family:"Roboto Mono",monospace;font-size:12.5px;line-height:2.2;color:var(--tz-muted)}
+.tz-visit address b{color:var(--tz-accent)}
+
+.tz-footer{padding:40px 0;margin-top:88px;border-top:1px solid var(--tz-line)}
+.tz-footer .tz-wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:"Roboto Mono",monospace;font-size:11px;color:var(--tz-muted)}
+
+@media (max-width:900px){
+  .tz-nav{display:none}
+  .tz-drawers{grid-template-columns:1fr}
+  .tz-how{grid-template-columns:1fr}
+  .tz-report{grid-template-columns:1fr;gap:12px}
+  .tz-visit{grid-template-columns:1fr;padding:36px 28px}
+  .tz-stats{flex-direction:column}
+  .tz-stats div{border-right:0;border-bottom:1px solid var(--tz-line)}
+  .tz-section{padding:60px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-brand" href="#">The <em>Seed</em> Library</a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#catalog">Catalog</a><a href="#how">Borrowing</a><a href="#reports">Grow-outs</a><a href="#visit">Visit</a>
+    </nav>
+    <a class="tz-join" href="#how">Get a card</a>
+  </div>
+</header>
+
+<main>
+  <section class="tz-hero">
+    <div class="tz-wrap">
+      <span class="tz-kicker">Free with a library card · est. 2019</span>
+      <h1>Borrow seeds. <em>Grow dinner.</em></h1>
+      <p class="tz-lede">"A library of things that grow. Check out seeds like books — plant them, save a few, and bring some back for the next gardener."</p>
+      <div class="tz-hero-cta">
+        <a class="tz-btn tz-btn--brass" href="#catalog">Browse the catalog</a>
+        <a class="tz-btn tz-btn--ghost" href="#how">How borrowing works</a>
+      </div>
+      <div class="tz-stats">
+        <div><b>1,240</b><span>varieties cataloged</span></div>
+        <div><b>8,400</b><span>packets borrowed / yr</span></div>
+        <div><b>62%</b><span>returned as saved seed</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="catalog" style="padding-top:24px">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">The card catalog</span>
+        <h2>Pull a drawer</h2>
+        <p>Every variety has a catalog card: days to maturity, difficulty, and notes from gardeners who grew it last year.</p>
+      </div>
+      <div class="tz-drawers">
+        <div class="tz-drawer">
+          <div class="tz-drawer-tab"><span class="tz-range">TOM – TOM</span><span class="tz-count">214 varieties</span></div>
+          <div class="tz-seedcard">
+            <span class="tz-stock">IN STOCK</span>
+            <span class="tz-catno">SB-0142 · tomato</span>
+            <h3>Cherokee Purple</h3>
+            <p class="tz-latin">Solanum lycopersicum</p>
+            <dl><dt>Sow</dt><dd>indoors · 6 wks before frost</dd><dt>Harvest</dt><dd>80 days</dd><dt>Level</dt><dd>beginner-friendly</dd></dl>
+            <p class="tz-note">"Ugly, delicious, unstoppable. Grew 7ft in a community plot." — M. Osei, 2025</p>
+          </div>
+          <p class="tz-drawer-foot">+ 213 more tomato varieties in this drawer</p>
+        </div>
+        <div class="tz-drawer">
+          <div class="tz-drawer-tab"><span class="tz-range">BEA – BEA</span><span class="tz-count">96 varieties</span></div>
+          <div class="tz-seedcard">
+            <span class="tz-stock tz-low">LOW</span>
+            <span class="tz-catno">SB-0087 · bean</span>
+            <h3>Scarlet Runner</h3>
+            <p class="tz-latin">Phaseolus coccineus</p>
+            <dl><dt>Sow</dt><dd>direct · after frost</dd><dt>Harvest</dt><dd>70 days</dd><dt>Level</dt><dd>easy · climbs 10ft</dd></dl>
+            <p class="tz-note">"Hummingbirds fought over the flowers. Beans were a bonus." — R. Alvarez, 2025</p>
+          </div>
+          <p class="tz-drawer-foot">+ 95 more bean varieties in this drawer</p>
+        </div>
+        <div class="tz-drawer">
+          <div class="tz-drawer-tab"><span class="tz-range">HER – HER</span><span class="tz-count">158 varieties</span></div>
+          <div class="tz-seedcard">
+            <span class="tz-stock">IN STOCK</span>
+            <span class="tz-catno">SB-0311 · herb</span>
+            <h3>Genovese Basil</h3>
+            <p class="tz-latin">Ocimum basilicum</p>
+            <dl><dt>Sow</dt><dd>indoors or direct</dd><dt>Harvest</dt><dd>68 days · cut often</dd><dt>Level</dt><dd>foolproof</dd></dl>
+            <p class="tz-note">"Pinch the flowers or it goes bitter. Learned the hard way, twice." — J. Park, 2024</p>
+          </div>
+          <p class="tz-drawer-foot">+ 157 more herb varieties in this drawer</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="how" style="padding-top:0">
+    <div class="tz-wrap tz-how">
+      <div class="tz-how-intro">
+        <span class="tz-kicker">Borrowing</span>
+        <h2>Like books, but you plant them.</h2>
+        <p>Free with any library card. No fines, no due dates — just one gentle expectation.</p>
+      </div>
+      <ol class="tz-steps">
+        <li><div><h3>Check out seeds</h3><p>Take up to <b>8 packets per visit</b> from the catalog drawers. Staff will help you pick varieties for your soil and sunlight.</p></div></li>
+        <li><div><h3>Grow them out</h3><p>Plant, water, weed, harvest. Growing guides are tucked in every packet — written by local gardeners, not seed companies.</p></div></li>
+        <li><div><h3>Save some seed</h3><p>Let your best plant go to seed at season's end. The packet explains how — most varieties take ten minutes.</p></div></li>
+        <li><div><h3>Bring seeds back</h3><p>Return a labeled envelope of saved seed. It goes back in the drawer for next year's gardeners. <b>The collection grows because you do.</b></p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="tz-section" id="reports" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">Grow-out reports</span>
+        <h2>What the neighborhood grew</h2>
+        <p>Borrowers report back each fall. These are real results from real backyards within five miles.</p>
+      </div>
+      <div class="tz-reports">
+        <div class="tz-report">
+          <div class="tz-who"><b>M. OSEI</b>community plot<br>2025 season</div>
+          <div><blockquote>"Cherokee Purple out-yielded everything else 3 to 1. Saved seed from the two ugliest, tastiest fruits."<footer>— returned 4 envelopes · SB-0142</footer></blockquote><span class="tz-yield">YIELD: 38 LB FROM 4 PLANTS</span></div>
+        </div>
+        <div class="tz-report">
+          <div class="tz-who"><b>J. PARK</b>balcony, 4th floor<br>2025 season</div>
+          <div><blockquote>"Genovese basil in a 5-gallon bucket made pesto through October. Pinching flowers is now muscle memory."<footer>— returned 2 envelopes · SB-0311</footer></blockquote><span class="tz-yield">YIELD: PESTO FOR 4 MONTHS</span></div>
+        </div>
+        <div class="tz-report">
+          <div class="tz-who"><b>R. ALVAREZ</b>backyard, shade<br>2024 season</div>
+          <div><blockquote>"Scarlet runners climbed the fence and fed the hummingbirds all summer. Partial shade, still produced."<footer>— returned 3 envelopes · SB-0087</footer></blockquote><span class="tz-yield">YIELD: 12 LB DRIED BEANS</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="visit" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-visit">
+        <div>
+          <h2>The drawers are <em>open.</em></h2>
+          <p style="color:var(--tz-muted);font-style:italic;margin-top:14px">Inside the main library, past the holds shelf — follow the smell of paper and possibility. Volunteer seed-packing nights, first Thursdays.</p>
+        </div>
+        <address>
+          <b>MAIN LIBRARY · GROUND FLOOR</b><br>
+          12 Athenaeum Sq<br>
+          Mon–Sat 9am–8pm · Sun 1–5pm<br><br>
+          <b>SEED-PACKING NIGHTS</b><br>
+          First Thursdays · 6pm · all welcome
+        </address>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <span>© 2026 The Seed Library · a program of the public library</span>
+    <span>borrow · grow · return</span>
+  </div>
+</footer>
+</body>
+</html>
