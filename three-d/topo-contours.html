@@ -1,0 +1,125 @@
+<!--tz-meta {"id":"topo-contours","title":"Topographic Map","category":"3D","file":"three-d/topo-contours.html","tags":["threejs","calm"],"description":"A parchment heightfield with crisp ink contour lines drawn in a custom shader.","dnas":["docs-solar"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topographic Map — TZ-taste 3D</title>
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#d9cba8}
+#c{position:fixed;inset:0}
+.caption{position:fixed;left:18px;bottom:16px;color:#3a3129;font:12px/1.6 system-ui,sans-serif;letter-spacing:.05em;opacity:.85;pointer-events:none}
+.caption b{display:block;font-size:12px;letter-spacing:.22em;text-transform:uppercase}
+#fallback{display:none;position:fixed;inset:0;align-items:center;justify-content:center;background:#d9cba8;color:#3a3129;font:14px/1.6 system-ui,sans-serif;text-align:center;padding:2rem}
+</style>
+</head>
+<body>
+<div id="c"></div>
+<div class="caption"><b>Topographic Map</b><span>drag to orbit</span></div>
+<div id="fallback"><p></p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let renderer = null;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (err) {
+  const f = document.getElementById('fallback');
+  f.style.display = 'flex';
+  f.querySelector('p').textContent = 'WebGL is unavailable in this browser, so this 3D scene cannot be rendered.';
+}
+
+if (renderer) {
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.getElementById('c').appendChild(renderer.domElement);
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xd9cba8);
+  scene.fog = new THREE.Fog(0xd9cba8, 18, 34);
+
+  const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+  camera.position.set(0, 7.5, 8.5);
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.06;
+  controls.maxPolarAngle = Math.PI * 0.49;
+
+  // Layered sine terrain, normalized to 0..1 and stored as a custom attribute.
+  function terrainH(x, z) {
+    return Math.sin(x * 0.7) * Math.cos(z * 0.6)
+         + 0.5 * Math.sin(x * 1.6 + 1.3) * Math.sin(z * 1.8 + 0.4)
+         + 0.22 * Math.sin(x * 3.3 + 2.1) * Math.cos(z * 2.9 + 1.2);
+  }
+  const SIZE = 9, AMP = 1.1;
+  const geo = new THREE.PlaneGeometry(SIZE, SIZE, 150, 150);
+  geo.rotateX(-Math.PI / 2);
+  const p = geo.attributes.position;
+  const heights = new Float32Array(p.count);
+  for (let i = 0; i < p.count; i++) {
+    const x = p.getX(i), z = p.getZ(i);
+    const h = (terrainH(x, z) + 1.72) / 3.44;   // -> 0..1
+    heights[i] = h;
+    p.setY(i, h * AMP * 2 - AMP);
+  }
+  geo.setAttribute('aH', new THREE.BufferAttribute(heights, 1));
+  geo.computeVertexNormals();
+
+  // Parchment base, hypsometric tint, ink contours from fract(height).
+  const mat = new THREE.ShaderMaterial({
+    vertexShader: `
+      attribute float aH;
+      varying float vH;
+      varying vec3 vNW;
+      void main() {
+        vH = aH;
+        vNW = normalize(mat3(modelMatrix) * normal);
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }`,
+    fragmentShader: `
+      varying float vH;
+      varying vec3 vNW;
+      void main() {
+        vec3 n = normalize(vNW);
+        vec3 l = normalize(vec3(0.45, 0.9, 0.35));
+        float lam = clamp(dot(n, l), 0.0, 1.0);
+        vec3 col = mix(vec3(0.906, 0.847, 0.729), vec3(0.984, 0.953, 0.882), vH);
+        col *= 0.68 + 0.42 * lam;
+        float lv = 16.0;
+        float f = fract(vH * lv);
+        float w = fwidth(f) + 1e-5;
+        float minor = 1.0 - smoothstep(0.0, w * 1.6, min(f, 1.0 - f));
+        float g = fract(vH * lv / 4.0);
+        float major = 1.0 - smoothstep(0.0, w * 2.4, min(g, 1.0 - g));
+        float ink = clamp(minor * 0.55 + major * 0.9, 0.0, 1.0);
+        col = mix(col, vec3(0.23, 0.19, 0.15), ink);
+        gl_FragColor = vec4(col, 1.0);
+      }`
+  });
+  const world = new THREE.Group();
+  world.add(new THREE.Mesh(geo, mat));
+  scene.add(world);
+
+  function tick(t) {
+    world.rotation.y = t * 0.05;
+    controls.update();
+  }
+
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  if (REDUCED) { tick(0); renderer.render(scene, camera); }
+  else {
+    const clock = new THREE.Clock();
+    renderer.setAnimationLoop(() => { tick(clock.getElapsedTime()); renderer.render(scene, camera); });
+  }
+}
+</script>
+</body>
+</html>
