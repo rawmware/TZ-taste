@@ -1,7 +1,7 @@
 <!--tz-meta {"id":"changelog","title":"Changelog","file":"CHANGELOG.md","description":"Release history of the TZ-taste library."} -->
 # Changelog
 
-## v1.1.0 — The Expansion (in progress)
+## v1.1.0 — The Expansion (2026-10-04)
 
 - 36 new style DNAs (48 total), each with a live showcase page
 - 150 new section patterns (164 total) across every category
@@ -10,8 +10,9 @@
 - 30 new build prompts (36 total)
 - 15 CLI tools (slop-audit, dna-pick, token-export, …)
 - 20 new guides (motion, color, type, case studies, …)
-- Sources index doubled: 15 → 30, licenses re-verified
+- Sources index: 15 → 33, licenses re-verified (incl. Babylon.js, Babylon.js Playground, OpenProcessing as study sources)
 - Weekly freshness CI keeps it all current
+- Demo site upgraded: 3D playground, templates gallery, DNA showcase viewer; all counts live from the indexes
 
 ## v1.0.0 — 2026-10-03
 
@@ -34,3 +35,11 @@ The agent-first rebuild. The personal studio (v1) was archived to
 The original personal design-reference studio: a moodboard app with nine
 original studies, saved references, and brief export. Preserved in
 `archive/studio-v1/` for history.
+
+## 2026-10-04
+
+-
+
+## 2026-10-04
+
+-
