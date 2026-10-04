@@ -1,0 +1,3 @@
+//tz-meta {"id":"tailwind-stadium-floodlight","title":"Stadium Floodlight Tailwind preset","category":"Tailwind","file":"tailwind/stadium-floodlight.js","tags":["tailwind","preset","stadium-floodlight"],"description":"Tailwind theme preset for the Stadium Floodlight DNA.","dnas":["stadium-floodlight"]}
+// Tailwind preset for the Stadium Floodlight DNA. Extend tailwind.config with this.
+module.exports={theme:{extend:{colors:{tzbg:"#141719",tzink:"#f4f7f5",tzaccent:"#3fae5a",tzmuted:"#8b9490",tzline:"#3fae5a3d",tzsurface:"#141719"},fontFamily:{display:["Archivo Black","serif"],body:["Archivo","sans-serif"],mono:["JetBrains Mono","monospace"]}}}};
