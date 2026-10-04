@@ -1,7 +1,7 @@
-<!--tz-meta {"id":"three-d-readme","title":"3D Scene Collection","file":"three-d/README.md","description":"Index and engine notes for the 30 standalone Three.js ambient scenes."} -->
+<!--tz-meta {"id":"three-d-readme","title":"3D Scene Collection","file":"three-d/README.md","description":"Index and engine notes for the 40 standalone Three.js ambient scenes."} -->
 # three-d/ — ambient 3D scenes
 
-30 standalone, full-page Three.js environments. Use as hero backgrounds,
+40 standalone, full-page Three.js environments. Use as hero backgrounds,
 fullscreen art, or section backdrops. Every file:
 
 - is **100% original code** — geometry and shaders written from scratch for
