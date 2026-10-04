@@ -1,0 +1,139 @@
+<!--tz-meta {"id":"showcase-y2k-chrome","title":"Y2K Chrome showcase","category":"Showcase","file":"showcase/y2k-chrome.html","tags":["y2k-chrome"],"description":"Live demo page for the Y2K Chrome style DNA.","dnas":["y2k-chrome"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Y2K Chrome — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#0d0d12; --tz-surface:#15151d; --tz-ink:#f4f4f8; --tz-muted:#6e6e80;
+  --tz-accent:#b8c5ff; --tz-line:#ffffff26;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:
+    radial-gradient(45% 32% at 15% 12%, color-mix(in srgb, var(--tz-accent) 22%, transparent), transparent 70%),
+    radial-gradient(40% 30% at 88% 78%, color-mix(in srgb, var(--tz-accent) 12%, transparent), transparent 70%),
+    var(--tz-bg);
+  color:var(--tz-ink);font-family:"Space Grotesk",sans-serif;font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 5vw;max-width:1140px;margin:0 auto}
+.tz-wordmark{font-family:"Unbounded",sans-serif;font-weight:800;font-size:1.05rem;letter-spacing:0.04em}
+.tz-label{font-family:"Space Mono",monospace;font-size:0.66rem;color:var(--tz-muted);letter-spacing:0.1em}
+.tz-hero{max-width:1140px;margin:0 auto;padding:4.5rem 5vw 3.5rem;text-align:center;position:relative}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.24em;color:var(--tz-accent);margin-bottom:1.6rem;text-transform:uppercase}
+.tz-chrome{font-family:"Unbounded",sans-serif;font-weight:800;font-size:clamp(3rem,11vw,8rem);line-height:1;letter-spacing:0.01em;background:linear-gradient(180deg,var(--tz-ink) 15%,var(--tz-accent) 48%,color-mix(in srgb,var(--tz-ink) 38%,var(--tz-bg)) 52%,var(--tz-accent) 82%);-webkit-background-clip:text;background-clip:text;color:transparent;position:relative;display:inline-block}
+.tz-chrome::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,color-mix(in srgb,var(--tz-ink) 65%,transparent) 50%,transparent 60%);-webkit-background-clip:text;background-clip:text;transform:translateX(-120%);animation:tz-shine 4.5s ease-in-out infinite;pointer-events:none}
+@keyframes tz-shine{55%,100%{transform:translateX(120%)}}
+.tz-sub{margin:1.8rem auto 0;max-width:46ch;color:var(--tz-muted);font-size:1.05rem}
+.tz-cta{display:inline-block;margin-top:2.4rem;font-family:"Unbounded",sans-serif;font-weight:600;font-size:0.95rem;color:var(--tz-bg);background:linear-gradient(180deg,var(--tz-ink),var(--tz-accent));text-decoration:none;padding:1.1rem 2.8rem;border-radius:999px;border:1px solid var(--tz-line);box-shadow:inset 0 2px 6px color-mix(in srgb,var(--tz-ink) 70%,transparent),0 10px 30px color-mix(in srgb,var(--tz-accent) 30%,transparent);transition:transform .3s cubic-bezier(0.34,1.56,0.64,1)}
+.tz-cta:hover{transform:scale(1.06)}
+.tz-spark{position:absolute;color:var(--tz-accent);animation:tz-twinkle 3.2s ease-in-out infinite}
+.tz-spark.tz-s1{top:18%;left:8%}
+.tz-spark.tz-s2{top:30%;right:10%;animation-delay:-1.1s}
+.tz-spark.tz-s3{bottom:22%;left:14%;animation-delay:-2.2s}
+@keyframes tz-twinkle{0%,100%{opacity:0.35;transform:scale(0.85) rotate(0deg)}50%{opacity:1;transform:scale(1.15) rotate(20deg)}}
+.tz-content{max-width:1140px;margin:0 auto;padding:3rem 5vw 4rem;display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+.tz-panel{background:color-mix(in srgb,var(--tz-surface) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--tz-line);border-radius:28px;padding:2rem}
+.tz-panel h2{font-family:"Unbounded",sans-serif;font-weight:600;font-size:1.05rem;letter-spacing:0.03em;margin-bottom:1.4rem}
+.tz-dates{list-style:none}
+.tz-dates li{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:0.9rem 0;border-bottom:1px solid var(--tz-line);font-size:0.95rem}
+.tz-dates li:last-child{border-bottom:none}
+.tz-dates .tz-d{font-family:"Space Mono",monospace;font-size:0.78rem;color:var(--tz-accent);white-space:nowrap}
+.tz-dates .tz-v{color:var(--tz-muted)}
+.tz-pet{text-align:center}
+.tz-petface{width:5.5rem;height:5.5rem;margin:0 auto 1rem;border-radius:50%;background:radial-gradient(circle at 32% 28%,var(--tz-ink),var(--tz-accent) 55%,color-mix(in srgb,var(--tz-accent) 55%,var(--tz-bg)));border:1px solid var(--tz-line);position:relative;box-shadow:0 8px 24px color-mix(in srgb,var(--tz-accent) 35%,transparent);animation:tz-bob 4s ease-in-out infinite}
+@keyframes tz-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.tz-petface::before,.tz-petface::after{content:"";position:absolute;top:2rem;width:0.7rem;height:0.95rem;border-radius:50%;background:var(--tz-bg)}
+.tz-petface::before{left:1.5rem}
+.tz-petface::after{right:1.5rem}
+.tz-bar{height:0.7rem;border-radius:999px;background:color-mix(in srgb,var(--tz-ink) 12%,transparent);overflow:hidden;margin:0.55rem 0 1rem;border:1px solid var(--tz-line)}
+.tz-bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--tz-accent),var(--tz-ink));transition:width .6s ease}
+.tz-pet .tz-k{font-family:"Space Mono",monospace;font-size:0.68rem;letter-spacing:0.14em;color:var(--tz-muted);text-transform:uppercase}
+.tz-feed{margin-top:0.6rem;font-family:"Unbounded",sans-serif;font-weight:600;font-size:0.8rem;color:var(--tz-bg);background:var(--tz-accent);border:none;border-radius:999px;padding:0.7rem 1.8rem;cursor:pointer;box-shadow:inset 0 2px 4px color-mix(in srgb,var(--tz-ink) 60%,transparent)}
+.tz-tokens{max-width:1140px;margin:0 auto;padding:3rem 5vw;border-top:1px solid var(--tz-line)}
+.tz-tokens h2{font-family:"Unbounded",sans-serif;font-weight:600;font-size:1.1rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.9rem;list-style:none}
+.tz-swatches li{background:var(--tz-surface);border:1px solid var(--tz-line);border-radius:22px;overflow:hidden;min-width:9rem}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"Space Mono",monospace;font-size:0.64rem;color:var(--tz-muted);padding:0.6rem 0.9rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Space Mono",monospace;font-size:0.74rem;padding:0 0.9rem 0.8rem}
+.tz-foot{max-width:1140px;margin:0 auto;padding:2rem 5vw;border-top:1px solid var(--tz-line);font-family:"Space Mono",monospace;font-size:0.68rem;color:var(--tz-muted);text-align:center}
+@media(max-width:700px){
+  .tz-content{grid-template-columns:1fr;padding:2rem 6vw 3rem}
+  .tz-spark{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">NOVA RAY</span>
+  <span class="tz-label">TZ-taste style DNA</span>
+</header>
+
+<section class="tz-hero">
+  <svg class="tz-spark tz-s1" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><path d="M13 0 L15.5 10.5 L26 13 L15.5 15.5 L13 26 L10.5 15.5 L0 13 L10.5 10.5 Z" fill="currentColor"/></svg>
+  <svg class="tz-spark tz-s2" width="18" height="18" viewBox="0 0 26 26" aria-hidden="true"><path d="M13 0 L15.5 10.5 L26 13 L15.5 15.5 L13 26 L10.5 15.5 L0 13 L10.5 10.5 Z" fill="currentColor"/></svg>
+  <svg class="tz-spark tz-s3" width="22" height="22" viewBox="0 0 26 26" aria-hidden="true"><path d="M13 0 L15.5 10.5 L26 13 L15.5 15.5 L13 26 L10.5 15.5 L0 13 L10.5 10.5 Z" fill="currentColor"/></svg>
+  <p class="tz-eyebrow">New single · Out now</p>
+  <h1><span class="tz-chrome">LIQUID<br>HEART</span></h1>
+  <p class="tz-sub">Three minutes, twelve seconds of pure gloss. Produced on a laptop older than the backup dancers.</p>
+  <a class="tz-cta" href="#">Play the single</a>
+</section>
+
+<section class="tz-content">
+  <div class="tz-panel">
+    <h2>NOVA WORLD TOUR</h2>
+    <ul class="tz-dates">
+      <li><span class="tz-d">OCT 18</span><span>Tokyo Dome</span><span class="tz-v">sold out</span></li>
+      <li><span class="tz-d">OCT 25</span><span>Seoul · Gocheok</span><span class="tz-v">sold out</span></li>
+      <li><span class="tz-d">NOV 02</span><span>London · O2</span><span class="tz-v">low tickets</span></li>
+      <li><span class="tz-d">NOV 09</span><span>New York · MSG</span><span class="tz-v">on sale</span></li>
+    </ul>
+  </div>
+  <div class="tz-panel tz-pet">
+    <h2>HYPE PET</h2>
+    <div class="tz-petface" aria-hidden="true"></div>
+    <p class="tz-k">Streams fed today</p>
+    <div class="tz-bar" aria-hidden="true"><i id="tz-hype" style="width:34%"></i></div>
+    <p class="tz-k" id="tz-petmsg">Glossy is hungry for streams.</p>
+    <button class="tz-feed" id="tz-feedbtn" type="button">Feed a stream</button>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#0d0d12"></span><span class="tz-name">bg</span><span class="tz-hex">#0d0d12</span></li>
+    <li><span class="tz-chip" style="background:#15151d"></span><span class="tz-name">surface</span><span class="tz-hex">#15151d</span></li>
+    <li><span class="tz-chip" style="background:#f4f4f8"></span><span class="tz-name">ink</span><span class="tz-hex">#f4f4f8</span></li>
+    <li><span class="tz-chip" style="background:#6e6e80"></span><span class="tz-name">muted</span><span class="tz-hex">#6e6e80</span></li>
+    <li><span class="tz-chip" style="background:#b8c5ff"></span><span class="tz-name">accent</span><span class="tz-hex">#b8c5ff</span></li>
+    <li><span class="tz-chip" style="background:#ffffff26"></span><span class="tz-name">line</span><span class="tz-hex">#ffffff26</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+
+<script>
+(function(){
+  var bar = document.getElementById('tz-hype');
+  var msg = document.getElementById('tz-petmsg');
+  var btn = document.getElementById('tz-feedbtn');
+  var pct = 34;
+  var notes = ['Glossy is hungry for streams.','Glossy shimmers approvingly.','Glossy is positively radiant.','Glossy has achieved maximum gloss.'];
+  btn.addEventListener('click', function(){
+    pct = Math.min(100, pct + 11);
+    bar.style.width = pct + '%';
+    msg.textContent = notes[Math.min(3, Math.floor(pct / 34))];
+  });
+})();
+</script>
+</body>
+</html>
