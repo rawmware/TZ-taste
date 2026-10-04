@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-kawaii-pixel",
+  "title": "Kawaii Pixel design tokens",
+  "category": "Tokens",
+  "file": "tokens/kawaii-pixel.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "kawaii-pixel"
+  ],
+  "description": "W3C-format design tokens for the Kawaii Pixel style DNA.",
+  "dnas": [
+   "kawaii-pixel"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#fff7f9",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#4a3340",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#ff8fb3",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#b09aa4",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#f3d9e2",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "DotGothic16",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "M PLUS Rounded 1c",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "kawaii-pixel",
+  "name": "Kawaii Pixel",
+  "vibe": "Sticker-sheet joy: pastel pixels, chunky hearts, everything huggable at 8x scale."
+ }
+}
