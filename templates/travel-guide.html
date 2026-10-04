@@ -1,0 +1,409 @@
+<!--tz-meta {"id":"travel-guide","title":"The Ochre Road — Morocco Travel Guide","category":"Template","file":"templates/travel-guide.html","tags":["travel","guide","book"],"description":"Sahara-ochre Morocco travel guide with zellige dividers and route itineraries.","dnas":["sahara-ochre"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Ochre Road — a field guide to Morocco</title>
+<meta name="description" content="The Ochre Road is a 312-page field guide to Morocco: 9 routes, 40 riads, and everything the brochures leave out.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Outfit:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* DNA: sahara-ochre — sun-baked paper, rust accent, zellige geometry */
+:root{
+  --tz-bg:#f4e8d2; --tz-surface:#e9d9b8; --tz-ink:#2b2118; --tz-muted:#6f5c42;
+  --tz-accent:#b34a1b; --tz-deep:#5c2f14; --tz-line:rgba(43,33,24,.25);
+  --tz-display:'Fraunces',serif; --tz-body:'Outfit',sans-serif; --tz-mono:'Space Mono',monospace;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:var(--tz-body);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
+::selection{background:var(--tz-accent);color:#fff}
+a{color:inherit}
+.tz-wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+.tz-mono{font-family:var(--tz-mono)}
+/* zellige divider */
+.tz-zellige{height:26px;background:
+  repeating-linear-gradient(45deg,var(--tz-accent) 0 13px,transparent 13px 26px),
+  repeating-linear-gradient(-45deg,var(--tz-deep) 0 13px,transparent 13px 26px);
+  opacity:.85}
+.tz-nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.tz-brand{font-family:var(--tz-display);font-weight:700;font-size:22px;text-decoration:none}
+.tz-brand em{font-style:italic;color:var(--tz-accent)}
+.tz-navlinks{display:flex;gap:28px;font-family:var(--tz-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.tz-navlinks a{text-decoration:none;color:var(--tz-muted)}
+.tz-navlinks a:hover{color:var(--tz-accent)}
+.tz-btn{display:inline-block;font-family:var(--tz-mono);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;background:var(--tz-ink);color:var(--tz-bg);padding:16px 30px;transition:transform .25s var(--tz-ease),background .25s}
+.tz-btn:hover{transform:translateY(-2px);background:var(--tz-accent)}
+/* hero: arch window */
+.tz-hero{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding:96px 0 104px}
+.tz-kicker{font-family:var(--tz-mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--tz-accent);margin-bottom:24px;display:block}
+.tz-hero h1{font-family:var(--tz-display);font-weight:600;font-size:clamp(50px,6.4vw,92px);line-height:1.02;letter-spacing:-.02em}
+.tz-hero h1 i{font-style:italic;color:var(--tz-accent)}
+.tz-hero p{color:var(--tz-muted);font-size:19px;max-width:46ch;margin:26px 0 34px}
+.tz-arch{border:2px solid var(--tz-ink);border-radius:200px 200px 8px 8px;overflow:hidden;position:relative;aspect-ratio:4/5;background:var(--tz-surface)}
+.tz-arch svg{position:absolute;inset:0;width:100%;height:100%}
+.tz-arch-cap{position:absolute;bottom:0;left:0;right:0;background:var(--tz-ink);color:var(--tz-bg);font-family:var(--tz-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:14px 20px;text-align:center}
+.tz-hero-facts{display:flex;gap:40px;margin-top:44px}
+.tz-hero-facts div b{display:block;font-family:var(--tz-display);font-size:36px;font-weight:600}
+.tz-hero-facts div span{font-family:var(--tz-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--tz-muted)}
+/* sections */
+.tz-section{padding:104px 0}
+.tz-sec-head{margin-bottom:56px;max-width:700px}
+.tz-sec-head h2{font-family:var(--tz-display);font-weight:600;font-size:clamp(36px,4.4vw,60px);line-height:1.05;letter-spacing:-.02em}
+.tz-sec-head h2 i{font-style:italic;color:var(--tz-accent)}
+.tz-sec-head p{color:var(--tz-muted);font-size:18px;margin-top:16px}
+/* routes: numbered, varied */
+.tz-route{display:grid;grid-template-columns:120px 1fr 1fr;gap:40px;padding:44px 0;border-top:2px solid var(--tz-ink);align-items:start;text-decoration:none;transition:background .25s}
+.tz-route:last-child{border-bottom:2px solid var(--tz-ink)}
+.tz-route:hover{background:rgba(179,74,27,.06)}
+.tz-route .tz-n{font-family:var(--tz-display);font-size:64px;font-weight:700;color:var(--tz-accent);line-height:1}
+.tz-route h3{font-family:var(--tz-display);font-size:32px;font-weight:600;margin-bottom:10px}
+.tz-route .tz-meta{font-family:var(--tz-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:14px;display:block}
+.tz-route p{color:var(--tz-muted);font-size:16px;max-width:52ch}
+.tz-route .tz-stops{list-style:none;font-size:15px}
+.tz-route .tz-stops li{padding:10px 0;border-bottom:1px dashed var(--tz-line);display:flex;justify-content:space-between;gap:16px}
+.tz-route .tz-stops li span:last-child{font-family:var(--tz-mono);font-size:12px;color:var(--tz-muted);white-space:nowrap}
+/* cities index */
+.tz-cities{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:2px solid var(--tz-ink)}
+.tz-city{padding:40px 34px;border-right:1px solid var(--tz-line);border-bottom:1px solid var(--tz-line);text-decoration:none;transition:background .25s;display:block}
+.tz-city:nth-child(3n){border-right:none}
+.tz-city:nth-last-child(-n+3){border-bottom:none}
+.tz-city:hover{background:var(--tz-surface)}
+.tz-city .tz-ar{font-family:var(--tz-mono);font-size:12px;color:var(--tz-accent);letter-spacing:.1em;display:block;margin-bottom:12px}
+.tz-city h3{font-family:var(--tz-display);font-size:26px;font-weight:600;margin-bottom:8px}
+.tz-city p{font-size:15px;color:var(--tz-muted)}
+/* practical table */
+.tz-prac{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--tz-ink)}
+.tz-prac>div{padding:40px;border-right:1px solid var(--tz-line)}
+.tz-prac>div:nth-child(even){border-right:none}
+.tz-prac>div:nth-child(n+3){border-top:1px solid var(--tz-line)}
+.tz-prac h3{font-family:var(--tz-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--tz-accent);margin-bottom:16px}
+.tz-prac p{font-size:16px;color:var(--tz-muted)}
+.tz-prac p strong{color:var(--tz-ink)}
+/* packing: checklist */
+.tz-pack{background:var(--tz-ink);color:var(--tz-bg);padding:88px 0}
+.tz-pack h2{font-family:var(--tz-display);font-weight:600;font-size:clamp(34px,4vw,56px);margin-bottom:16px}
+.tz-pack h2 i{font-style:italic;color:var(--tz-accent)}
+.tz-pack .tz-sub{color:#c9b48c;max-width:60ch;margin-bottom:48px;font-size:18px}
+.tz-check{display:grid;grid-template-columns:1fr 1fr;gap:0 64px;list-style:none}
+.tz-check li{padding:16px 0 16px 44px;border-bottom:1px solid rgba(244,232,210,.2);position:relative;font-size:17px}
+.tz-check li::before{content:"✓";position:absolute;left:8px;color:var(--tz-accent);font-weight:700}
+/* author */
+.tz-author{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:center}
+.tz-author-portrait{aspect-ratio:1;border-radius:50%;background:var(--tz-surface);border:2px solid var(--tz-ink);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.tz-author-portrait span{font-family:var(--tz-display);font-size:110px;color:var(--tz-accent)}
+.tz-author blockquote{font-family:var(--tz-display);font-size:clamp(24px,2.8vw,36px);font-style:italic;line-height:1.35;margin-bottom:24px}
+.tz-author p{color:var(--tz-muted);margin-bottom:16px;max-width:56ch}
+/* buy band */
+.tz-buy{border-top:2px solid var(--tz-ink);padding:104px 0;display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:center}
+.tz-buy h2{font-family:var(--tz-display);font-weight:600;font-size:clamp(38px,4.6vw,64px);line-height:1.05;margin-bottom:20px}
+.tz-buy h2 i{font-style:italic;color:var(--tz-accent)}
+.tz-buy p{color:var(--tz-muted);font-size:18px;margin-bottom:28px;max-width:48ch}
+.tz-book3d{background:var(--tz-surface);border:2px solid var(--tz-ink);padding:56px 48px;transform:rotate(1.5deg);box-shadow:10px 10px 0 var(--tz-accent)}
+.tz-book3d h3{font-family:var(--tz-display);font-size:30px;font-weight:700;margin-bottom:6px}
+.tz-book3d .tz-ed{font-family:var(--tz-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tz-accent);margin-bottom:20px;display:block}
+.tz-book3d ul{list-style:none;margin-bottom:28px}
+.tz-book3d li{padding:8px 0;border-bottom:1px dashed var(--tz-line);font-size:15px}
+.tz-book3d .tz-cost{font-family:var(--tz-display);font-size:48px;font-weight:700}
+.tz-book3d .tz-cost small{font-family:var(--tz-mono);font-size:11px;color:var(--tz-muted);font-weight:400;letter-spacing:.1em}
+/* footer */
+.tz-footer{padding:64px 0 36px}
+.tz-footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.tz-footer h4{font-family:var(--tz-mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:18px}
+.tz-footer ul{list-style:none}.tz-footer li{margin-bottom:10px}
+.tz-footer a{text-decoration:none;font-size:15px}
+.tz-footer a:hover{color:var(--tz-accent)}
+.tz-footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-family:var(--tz-mono);font-size:11px;letter-spacing:.1em;color:var(--tz-muted);border-top:1px solid var(--tz-line);padding-top:28px;text-transform:uppercase}
+.tz-reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--tz-ease),transform .7s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}.tz-reveal{opacity:1;transform:none;transition:none}*{transition:none !important}
+  .tz-book3d{transform:none}
+}
+@media(max-width:960px){
+  .tz-hero{grid-template-columns:1fr;gap:48px;padding:64px 0 80px}
+  .tz-arch{max-width:420px}
+  .tz-route{grid-template-columns:1fr;gap:20px}
+  .tz-cities{grid-template-columns:1fr}
+  .tz-city{border-right:none !important}
+  .tz-city:nth-last-child(-n+3){border-bottom:1px solid var(--tz-line)}
+  .tz-city:last-child{border-bottom:none}
+  .tz-prac{grid-template-columns:1fr}
+  .tz-prac>div{border-right:none;border-bottom:1px solid var(--tz-line)}
+  .tz-prac>div:nth-child(n+3){border-top:none}
+  .tz-check{grid-template-columns:1fr}
+  .tz-author{grid-template-columns:1fr;gap:40px}
+  .tz-buy{grid-template-columns:1fr;gap:48px}
+  .tz-navlinks{display:none}
+}
+@media(max-width:600px){
+  .tz-section{padding:72px 0}
+  .tz-hero-facts{gap:24px;flex-wrap:wrap}
+  .tz-footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<!-- DNA: sahara-ochre · design read: a Morocco field guide page with the warmth of sun-baked paper — zellige dividers, arch windows, routes like chapters · dials V6/M3/D6 · one weird thing: zellige-pattern section dividers and an arched "window" hero framing a CSS desert -->
+<header class="tz-wrap">
+  <nav class="tz-nav" aria-label="Main">
+    <a class="tz-brand" href="#">The Ochre <em>Road</em></a>
+    <div class="tz-navlinks">
+      <a href="#routes">Routes</a><a href="#cities">Cities</a><a href="#practical">Practical</a><a href="#buy">The book</a>
+    </div>
+    <a class="tz-btn" href="#buy">Get the guide</a>
+  </nav>
+</header>
+
+<main>
+  <section class="tz-wrap tz-hero">
+    <div>
+      <span class="tz-kicker">3rd edition · 312 pages · 9 routes · 40 riads slept in</span>
+      <h1>Morocco, <i>without</i> the brochure.</h1>
+      <p>The Ochre Road is a field guide written on the ground — nine driving routes, forty riads we actually slept in, and the honest notes: which "ten-minute walk" is forty, where the tagine is worth the detour, how to haggle without hating yourself.</p>
+      <a class="tz-btn" href="#routes">Plan the drive</a>
+      <div class="tz-hero-facts">
+        <div><b>9</b><span>Routes</span></div>
+        <div><b>40</b><span>Riads reviewed</span></div>
+        <div><b>312</b><span>Pages, zero filler</span></div>
+      </div>
+    </div>
+    <div class="tz-arch tz-reveal" role="img" aria-label="Illustration of desert dunes and sun through an arched window">
+      <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+        <rect width="400" height="500" fill="#e9d9b8"/>
+        <circle cx="200" cy="150" r="70" fill="#b34a1b"/>
+        <path d="M0 330 Q 100 280 200 320 T 400 310 V 500 H 0 Z" fill="#d9bd85"/>
+        <path d="M0 380 Q 120 340 240 375 T 400 365 V 500 H 0 Z" fill="#c49a5a"/>
+        <path d="M0 440 Q 150 410 300 435 T 400 430 V 500 H 0 Z" fill="#a87c3e"/>
+        <g stroke="#5c2f14" stroke-width="3" opacity=".6"><path d="M60 420 q 10 -30 20 0 q 10 30 20 0"/><path d="M320 400 q 10 -30 20 0 q 10 30 20 0"/></g>
+        <g fill="#2b2118"><rect x="185" y="380" width="30" height="45"/><polygon points="200,360 218,385 182,385"/></g>
+      </svg>
+      <div class="tz-arch-cap">Erg Chebbi at dawn · Route 7</div>
+    </div>
+  </section>
+
+  <div class="tz-zellige" aria-hidden="true"></div>
+
+  <section class="tz-section" id="routes">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">The heart of the book</span>
+        <h2>Nine routes, <i>driven twice</i></h2>
+        <p>Every route was driven in both directions, in season and out. Distances are real; "scenic detour" warnings are earned.</p>
+      </div>
+      <a class="tz-route tz-reveal" href="#buy">
+        <span class="tz-n">01</span>
+        <div><span class="tz-meta">5 days · 620 km · best Oct–Apr</span><h3>The Imperial Loop</h3><p>Marrakech to Fez via the Middle Atlas — cedar forests, Barbary macaques, and the bluest hour you'll ever photograph in Chefchaouen.</p></div>
+        <ul class="tz-stops"><li><span>Marrakech → Ifrane</span><span>Day 1</span></li><li><span>Azrou cedar forest</span><span>Day 2</span></li><li><span>Chefchaouen</span><span>Day 3–4</span></li><li><span>Fez</span><span>Day 5</span></li></ul>
+      </a>
+      <a class="tz-route tz-reveal" href="#buy">
+        <span class="tz-n">02</span>
+        <div><span class="tz-meta">4 days · 540 km · best Sep–May</span><h3>Road of a Thousand Kasbahs</h3><p>The Dades and Draa valleys: mud-brick fortresses, rose harvest in May, and the gorge road you'll talk about for years.</p></div>
+        <ul class="tz-stops"><li><span>Ouarzazate → Dades Gorge</span><span>Day 1–2</span></li><li><span>Todra Gorge</span><span>Day 3</span></li><li><span>Merzouga dunes</span><span>Day 4</span></li></ul>
+      </a>
+      <a class="tz-route tz-reveal" href="#buy">
+        <span class="tz-n">03</span>
+        <div><span class="tz-meta">6 days · 480 km · best year-round</span><h3>The Atlantic Slow Road</h3><p>No highways: Essaouira's ramparts, Safi's pottery kilns, and beach towns where the grilled fish costs less than the parking.</p></div>
+        <ul class="tz-stops"><li><span>Essaouira</span><span>Day 1–2</span></li><li><span>Safi &amp; Oualidia</span><span>Day 3–4</span></li><li><span>El Jadida</span><span>Day 5–6</span></li></ul>
+      </a>
+    </div>
+  </section>
+
+  <div class="tz-zellige" aria-hidden="true"></div>
+
+  <section class="tz-section" id="cities">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">City dossiers</span>
+        <h2>Know before <i>you go</i></h2>
+        <p>Two-page dossiers for every major stop: where to stay, what to skip, and the one thing worth waking early for.</p>
+      </div>
+      <div class="tz-cities tz-reveal">
+        <a class="tz-city" href="#buy"><span class="tz-ar">مراكش · Marrakech</span><h3>The Red City</h3><p>Souk survival, the Majorelle timing trick, and three riads under $90 that feel like $300.</p></a>
+        <a class="tz-city" href="#buy"><span class="tz-ar">فاس · Fez</span><h3>The Oldest Medina</h3><p>Get gloriously lost on purpose — plus the tannery viewpoint that doesn't require buying a bag.</p></a>
+        <a class="tz-city" href="#buy"><span class="tz-ar">شفشاون · Chefchaouen</span><h3>The Blue Pearl</h3><p>Go on a weekday, climb to the Spanish Mosque at sunset, and leave before the day-trippers arrive.</p></a>
+        <a class="tz-city" href="#buy"><span class="tz-ar">الصويرة · Essaouira</span><h3>The Windy City</h3><p>Grilled catch at the port, gnawa rhythms after dark, and the rampart walk at golden hour.</p></a>
+        <a class="tz-city" href="#buy"><span class="tz-ar">مكناس · Meknes</span><h3>The Quiet Imperial</h3><p>Volubilis at opening time — Roman mosaics with nobody else in the frame.</p></a>
+        <a class="tz-city" href="#buy"><span class="tz-ar">ورزازات · Ouarzazate</span><h3>Hollywood of Africa</h3><p>Atlas Studios, Aït Benhaddou at dawn, and why you should keep driving to the Draa.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="tz-zellige" aria-hidden="true"></div>
+
+  <section class="tz-section" id="practical">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">The unglamorous pages</span>
+        <h2>Practical, <i>honestly</i></h2>
+        <p>The stuff that decides whether a trip sings or stumbles.</p>
+      </div>
+      <div class="tz-prac tz-reveal">
+        <div><h3>Money</h3><p><strong>Dirhams are king.</strong> Cards work in cities; cash rules everywhere else. ATMs are plentiful — withdraw 2,000 MAD at a time to dodge fees. Haggling: start at 40%, meet near 65%, smile throughout.</p></div>
+        <div><h3>Getting around</h3><p><strong>Rent the small car.</strong> A Dacia Logan handles mountain passes and medina-edge parking. Trains link the big cities beautifully; buses (CTM) cover the rest. Never drive the desert roads after dark.</p></div>
+        <div><h3>When to go</h3><p><strong>October to April</strong> for the south and desert; <strong>May and September</strong> for the coast. August in Marrakech is a dare, not a plan. Ramadan is magical and slower — book dinners ahead.</p></div>
+        <div><h3>Staying well</h3><p><strong>Drink bottled water.</strong> Eat where the grill smoke is thickest and the turnover fastest. Pharmacies are excellent and pharmacists diagnose generously — for anything serious, clinics in the big cities are solid.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-pack">
+    <div class="tz-wrap">
+      <h2>Pack <i>light.</i> Pack <i>right.</i></h2>
+      <p class="tz-sub">The tested packing list from three editions. Everything here survived at least two trips; everything cut didn't survive one.</p>
+      <ul class="tz-check">
+        <li>A scarf — sun, dust, mosque visits, improvised picnic blanket</li>
+        <li>Broken-in walking shoes with real grip (medina cobbles are treacherous)</li>
+        <li>A headlamp — for the dunes, the power cuts, and the 5 a.m. gorge</li>
+        <li>Layers, not bulk: desert nights drop 20 degrees</li>
+        <li>A small daypack that zips shut (souk crowds are skilled)</li>
+        <li>Cash in small denominations — the 200-dirham note breaks hearts</li>
+        <li>An unlocked phone + local SIM (20 MAD at any tabac)</li>
+        <li>Patience, in industrial quantities</li>
+      </ul>
+    </div>
+  </section>
+
+<style>
+.tz-edition{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--tz-ink)}
+.tz-ed{padding:48px 44px;border-right:1px solid var(--tz-line)}
+.tz-ed:last-child{border-right:none}
+.tz-ed .tz-tag{font-family:var(--tz-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tz-accent);display:block;margin-bottom:18px}
+.tz-ed h3{font-family:var(--tz-display);font-size:30px;font-weight:600;margin-bottom:14px}
+.tz-ed ul{list-style:none}
+.tz-ed li{padding:10px 0;border-bottom:1px dashed var(--tz-line);font-size:16px;color:var(--tz-muted)}
+.tz-ed li b{color:var(--tz-ink);font-weight:600}
+.tz-letters{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.tz-letter{border-top:3px solid var(--tz-accent);padding-top:28px}
+.tz-letter p{font-family:var(--tz-display);font-size:22px;font-style:italic;line-height:1.5;margin-bottom:18px}
+.tz-letter footer{font-family:var(--tz-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tz-muted)}
+@media(max-width:900px){.tz-edition{grid-template-columns:1fr}.tz-ed{border-right:none;border-bottom:1px solid var(--tz-line)}.tz-ed:last-child{border-bottom:none}.tz-letters{grid-template-columns:1fr}}
+</style>
+  <section class="tz-section" id="new" style="border-top:1px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">3rd edition · September 2026</span>
+        <h2>What's <i>new</i> this printing</h2>
+        <p>Guides rot. Ours gets re-driven every two years.</p>
+      </div>
+      <div class="tz-edition tz-reveal">
+        <div class="tz-ed">
+          <span class="tz-tag">Added</span>
+          <h3>Fresh tarmac</h3>
+          <ul><li><b>Route 9:</b> the new Anti-Atlas circuit, paved 2024</li><li><b>14 riads</b> opened since the 2nd edition, all slept in</li><li><b>EV charging map</b> — the network finally reached the desert</li><li><b>Ramadan chapter:</b> traveling well during the holy month</li></ul>
+        </div>
+        <div class="tz-ed">
+          <span class="tz-tag">Corrected</span>
+          <h3>Mea culpas</h3>
+          <ul><li><b>Route 2, Day 3:</b> the gorge road now closes at dusk — plan adjusted</li><li><b>Fez dossier:</b> two riads changed hands; reviews rewritten</li><li><b>Prices:</b> every price re-checked, 31 corrected upward</li><li><b>47 reader corrections</b> folded in — thank you, all of you</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="readers" style="border-top:1px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">Postcards</span>
+        <h2>Readers <i>write back</i></h2>
+      </div>
+      <div class="tz-letters">
+        <blockquote class="tz-letter tz-reveal"><p>"Followed Route 2 to the letter, including the 'terrible road' warning you said to ignore. Best four days of our year."</p><footer>— Hannah &amp; Tom, Bristol · 2nd edition</footer></blockquote>
+        <blockquote class="tz-letter tz-reveal"><p>"The haggling script on page 41 saved me 600 dirhams in one afternoon. The book paid for itself before lunch."</p><footer>— Marcus, Austin · 2nd edition</footer></blockquote>
+      </div>
+    </div>
+  </section>
+
+<style>
+.tz-phrase{border:2px solid var(--tz-ink);background:#fffdf4}
+.tz-prow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;padding:26px 36px;border-bottom:1px solid var(--tz-line);align-items:baseline}
+.tz-prow:last-child{border-bottom:none}
+.tz-prow .tz-ar{font-size:24px;color:var(--tz-accent)}
+.tz-prow .tz-en{font-family:var(--tz-display);font-size:20px;font-weight:600}
+.tz-prow .tz-note{font-family:var(--tz-mono);font-size:12px;color:var(--tz-muted)}
+.tz-phrase-head{background:var(--tz-ink);color:var(--tz-bg);padding:20px 36px;font-family:var(--tz-mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;display:flex;justify-content:space-between}
+@media(max-width:900px){.tz-prow{grid-template-columns:1fr;gap:6px}}
+</style>
+  <section class="tz-section" id="phrasebook" style="border-top:1px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">From page 298</span>
+        <h2>The ten phrases that <i>matter</i></h2>
+        <p>Forget fluency. These ten, said with a smile, open every door in the country.</p>
+      </div>
+      <div class="tz-phrase tz-reveal">
+        <div class="tz-phrase-head"><span>Phrasebook · Darija</span><span>Audio in the eBook</span></div>
+        <div class="tz-prow"><span class="tz-ar">سلام</span><span class="tz-en">Salam — peace / hello</span><span class="tz-note">Say it first, always. Everything follows.</span></div>
+        <div class="tz-prow"><span class="tz-ar">شكراً بزاف</span><span class="tz-en">Shukran bezaf — thanks a lot</span><span class="tz-note">The single most useful phrase. Use constantly.</span></div>
+        <div class="tz-prow"><span class="tz-ar">بشحال؟</span><span class="tz-en">Bshhal? — how much?</span><span class="tz-note">Asked with a grin, it's the start of the game.</span></div>
+        <div class="tz-prow"><span class="tz-ar">غالي بزاف</span><span class="tz-en">Ghali bezaf — too expensive</span><span class="tz-note">Theatrically. Then counter at 40%.</span></div>
+        <div class="tz-prow"><span class="tz-ar">واخا</span><span class="tz-en">Wakha — okay / deal</span><span class="tz-note">Seals the bargain. Shake on it.</span></div>
+        <div class="tz-prow"><span class="tz-ar">فين الطواليط؟</span><span class="tz-en">Fin toilette? — where's the bathroom?</span><span class="tz-note">You'll need it. Trust the process.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="author">
+    <div class="tz-wrap tz-author">
+      <div class="tz-author-portrait tz-reveal" aria-hidden="true"><span>YB</span></div>
+      <div class="tz-reveal">
+        <span class="tz-kicker">The author</span>
+        <blockquote>"I wrote the guide I kept wishing existed: honest about the hassles, specific about the joys, and never once telling you a sunset is 'magical.'"</blockquote>
+        <p><strong style="color:var(--tz-ink)">Yasmin Bennis</strong> has spent eleven years traveling Morocco — first as a backpacker, then as a fixer for film crews, now as the person friends call before they book. She lives between Marrakech and Lisbon and has strong opinions about tagine (lamb, always lamb).</p>
+        <p class="tz-mono" style="font-size:12px;letter-spacing:.1em;color:var(--tz-muted)">3RD EDITION · UPDATED SEPT 2026 · 40 RIADS RE-SLEPT FOR THIS PRINTING</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-buy" id="buy">
+    <div class="tz-wrap" style="display:contents">
+      <div style="padding-left:32px;max-width:640px">
+        <span class="tz-kicker">Paperback · eBook · Audio walks</span>
+        <h2>Take the <i>road</i> with you.</h2>
+        <p>312 pages, 90 maps, 40 tested riads, 9 routes. Printed on paper that survives a backpack, with a lay-flat binding for the passenger seat.</p>
+        <a class="tz-btn" href="#buy">Order the 3rd edition — $24</a>
+        <p class="tz-mono" style="font-size:12px;margin-top:20px;color:var(--tz-muted)">ALSO: EBOOK $12 · AUDIO CITY WALKS $8 · FREE UPDATES FOR 2 YEARS</p>
+      </div>
+      <div class="tz-book3d tz-reveal" style="margin-right:32px">
+        <span class="tz-ed">3rd edition</span>
+        <h3>The Ochre Road</h3>
+        <p style="font-style:italic;color:var(--tz-muted);margin-bottom:20px">A field guide to Morocco</p>
+        <ul><li>9 driving routes, mapped turn-by-turn</li><li>40 riads, slept in and scored</li><li>City dossiers + phrasebook</li><li>Lay-flat binding, backpack-proof</li></ul>
+        <div class="tz-cost">$24 <small>· free shipping over $35</small></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-zellige" style="margin-bottom:56px" aria-hidden="true"></div>
+    <div class="tz-footer-grid">
+      <div>
+        <h4>The Ochre Road</h4>
+        <p style="font-size:15px;color:var(--tz-muted);max-width:32ch">An independent field guide to Morocco. Written on the ground, updated every two years.</p>
+      </div>
+      <div><h4>Guide</h4><ul><li><a href="#routes">Routes</a></li><li><a href="#cities">Cities</a></li><li><a href="#practical">Practical</a></li></ul></div>
+      <div><h4>More</h4><ul><li><a href="#buy">Order</a></li><li><a href="#">Corrections</a></li><li><a href="mailto:salam@theochreroad.com">salam@theochreroad.com</a></li></ul></div>
+    </div>
+    <div class="tz-footer-bottom">
+      <span>© 2026 Ochre Road Press</span>
+      <span class="tz-mono">بسلامة · travel well</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els=document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('tz-in')});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(en,i){if(en.isIntersecting){setTimeout(function(){en.target.classList.add('tz-in')},(i%3)*70);io.unobserve(en.target);}})},{threshold:.1});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
