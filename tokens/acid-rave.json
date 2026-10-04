@@ -1,0 +1,62 @@
+{
+ "_tzmeta": {
+  "id": "tokens-acid-rave",
+  "title": "Acid Rave design tokens",
+  "category": "Tokens",
+  "file": "tokens/acid-rave.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "acid-rave"
+  ],
+  "description": "W3C-format design tokens for the Acid Rave style DNA.",
+  "dnas": [
+   "acid-rave"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#0a0a0a",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#f2f2f2",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#c6ff00",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#7a7a7a",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#f2f2f21f",
+   "$type": "color"
+  },
+  "surface": {
+   "$value": "#131313",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Anton",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Space Grotesk",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "acid-rave",
+  "name": "Acid Rave",
+  "vibe": "Black room, acid lime, type at maximum volume. Flyers, not landing pages."
+ }
+}
