@@ -1,0 +1,203 @@
+<!--tz-meta {"id":"tide-pools","title":"Tide Pool","category":"3D","file":"three-d/tide-pools.html","tags":["threejs","water"],"description":"Sunlight shimmers across a shallow tide pool ringed with dark rocks.","dnas":["arctic-field"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tide Pool — TZ-taste</title>
+<style>
+  html, body { margin:0; height:100%; overflow:hidden; background:#dfe9ea; }
+  #app { position:fixed; inset:0; }
+  #app canvas { display:block; }
+  .caption { position:fixed; left:18px; bottom:16px; z-index:5; color:#3d4f52;
+    font:12px/1.6 system-ui, -apple-system, sans-serif; letter-spacing:.05em;
+    opacity:.9; pointer-events:none; }
+  .caption b { display:block; font-size:13px; letter-spacing:.22em; text-transform:uppercase; }
+  #fallback { display:none; position:fixed; inset:0; z-index:10; place-items:center;
+    color:#3d4f52; font:14px/1.6 system-ui, sans-serif; text-align:center;
+    padding:32px; background:#dfe9ea; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="caption"><b>Tide Pool</b>an hour of ocean, held still for looking<br/>drag to orbit &middot; scroll to zoom</div>
+<div id="fallback"><p>This scene needs WebGL, which your browser could not provide.<br/>Try a recent version of Chrome, Safari, Firefox or Edge.</p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (e) {
+  document.getElementById('fallback').style.display = 'grid';
+  throw e;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('app').appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xdfe9ea);
+scene.fog = new THREE.Fog(0xdfe9ea, 28, 85);
+
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 300);
+camera.position.set(9, 8.5, 12);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.target.set(0, 0, 0);
+controls.maxPolarAngle = 1.45;
+controls.minDistance = 5;
+controls.maxDistance = 45;
+
+const sun = new THREE.DirectionalLight(0xfff2dd, 2.3);
+sun.position.set(18, 24, 10);
+scene.add(sun);
+scene.add(new THREE.HemisphereLight(0xcfe4ee, 0x9aa78f, 0.75));
+
+/* ---------- sandy bed ---------- */
+const bed = new THREE.Mesh(new THREE.CircleGeometry(7.4, 48),
+  new THREE.MeshStandardMaterial({ color: 0xd9c49a, roughness: 1 }));
+bed.rotation.x = -Math.PI / 2;
+bed.position.y = -0.55;
+scene.add(bed);
+
+/* ---------- water: rippling disc, caustic shimmer ---------- */
+const POOL_R = 6.4;
+const waterUniforms = { uTime: { value: 0 } };
+const water = new THREE.Mesh(
+  new THREE.PlaneGeometry(POOL_R * 2 + 0.6, POOL_R * 2 + 0.6, 88, 88),
+  new THREE.ShaderMaterial({
+    uniforms: waterUniforms,
+    transparent: true,
+    vertexShader: `
+      varying vec2 vXZ;
+      varying float vR;
+      uniform float uTime;
+      void main() {
+        vec3 pos = position;
+        float w = sin(pos.x * 1.35 + uTime * 1.6) * 0.5
+                + cos(pos.y * 1.65 - uTime * 1.2) * 0.5;
+        pos.z += w * 0.075;
+        vR = length(pos.xy) / ${POOL_R.toFixed(1)};
+        vec4 wp = modelMatrix * vec4(pos, 1.0);
+        vXZ = wp.xz;
+        gl_Position = projectionMatrix * viewMatrix * wp;
+      }`,
+    fragmentShader: `
+      varying vec2 vXZ;
+      varying float vR;
+      uniform float uTime;
+      void main() {
+        if (vR > 1.0) discard;
+        vec2 p = vXZ;
+        float t = uTime;
+        float c1 = sin(p.x * 2.6 + t * 1.4) * sin(p.y * 2.2 - t * 1.1);
+        float c2 = sin((p.x + p.y) * 3.4 - t * 1.8) * sin((p.x - p.y) * 2.8 + t * 1.5);
+        float caustic = pow(abs(c1 * 0.6 + c2 * 0.4), 3.0);
+        vec3 shallow = vec3(0.62, 0.78, 0.80);
+        vec3 deep    = vec3(0.16, 0.38, 0.47);
+        vec3 col = mix(shallow, deep, smoothstep(0.05, 1.0, vR));
+        col += caustic * vec3(0.90, 1.0, 0.95) * 0.55;
+        float sparkle = pow(abs(sin(p.x * 7.0 + t * 2.0) * sin(p.y * 6.0 - t * 1.7)), 8.0);
+        col += sparkle * 0.35;
+        float foamBand = smoothstep(0.94, 1.0, vR)
+          * (0.5 + 0.5 * sin(t * 2.2 + atan(p.y, p.x) * 14.0));
+        col = mix(col, vec3(0.97, 0.99, 0.99), foamBand * 0.75);
+        float alpha = mix(0.8, 0.94, smoothstep(0.2, 1.0, vR));
+        gl_FragColor = vec4(col, alpha);
+      }`,
+  })
+);
+water.rotation.x = -Math.PI / 2;
+water.position.y = 0.05;
+scene.add(water);
+
+/* ---------- surrounding rocks ---------- */
+const rockMat = new THREE.MeshStandardMaterial({ color: 0x8a8478, roughness: 1, flatShading: true });
+const rockMat2 = new THREE.MeshStandardMaterial({ color: 0x6f6a5e, roughness: 1, flatShading: true });
+for (let i = 0; i < 11; i++) {
+  const a = (i / 11) * Math.PI * 2 + Math.random() * 0.4;
+  const r = 0.5 + Math.random() * 1.15;
+  const dist = POOL_R + 0.7 + Math.random() * 2.2;
+  const rock = new THREE.Mesh(new THREE.DodecahedronGeometry(r, 1),
+    i % 2 ? rockMat : rockMat2);
+  rock.position.set(Math.cos(a) * dist, r * 0.28, Math.sin(a) * dist);
+  rock.rotation.set(Math.random() * 3, Math.random() * 3, Math.random() * 3);
+  rock.scale.y = 0.75;
+  scene.add(rock);
+}
+
+/* ---------- sea grass tufts in the shallows ---------- */
+const grassMat = new THREE.MeshStandardMaterial({ color: 0x3f7d4e, roughness: 0.9 });
+const tufts = [];
+for (let i = 0; i < 7; i++) {
+  const g = new THREE.Group();
+  for (let b = 0; b < 5; b++) {
+    const blade = new THREE.Mesh(new THREE.ConeGeometry(0.05, 0.7 + Math.random() * 0.5, 5), grassMat);
+    blade.position.set((Math.random() - 0.5) * 0.3, 0.3, (Math.random() - 0.5) * 0.3);
+    blade.rotation.set((Math.random() - 0.5) * 0.5, 0, (Math.random() - 0.5) * 0.5);
+    g.add(blade);
+  }
+  const a = Math.random() * Math.PI * 2, d = 1.5 + Math.random() * 3.6;
+  g.position.set(Math.cos(a) * d, -0.45, Math.sin(a) * d);
+  g.userData.phase = Math.random() * 6.28;
+  scene.add(g);
+  tufts.push(g);
+}
+
+/* ---------- drifting motes ---------- */
+const MOTE_N = 150;
+const motePos = new Float32Array(MOTE_N * 3);
+const moteSeed = new Float32Array(MOTE_N);
+for (let i = 0; i < MOTE_N; i++) {
+  const a = Math.random() * Math.PI * 2, d = Math.sqrt(Math.random()) * (POOL_R - 0.6);
+  motePos[i*3] = Math.cos(a) * d;
+  motePos[i*3+1] = -0.35 + Math.random() * 0.8;
+  motePos[i*3+2] = Math.sin(a) * d;
+  moteSeed[i] = Math.random() * 6.28;
+}
+const moteGeo = new THREE.BufferGeometry();
+moteGeo.setAttribute('position', new THREE.BufferAttribute(motePos, 3));
+scene.add(new THREE.Points(moteGeo, new THREE.PointsMaterial({
+  color: 0xfff6d8, size: 0.075, transparent: true, opacity: 0.75, depthWrite: false })));
+
+/* ---------- frame loop ---------- */
+const clock = new THREE.Clock();
+function renderFrame(t, dt) {
+  waterUniforms.uTime.value = t;
+  for (const g of tufts) g.rotation.z = Math.sin(t * 1.1 + g.userData.phase) * 0.12;
+  const mp = moteGeo.attributes.position;
+  for (let i = 0; i < MOTE_N; i++) {
+    mp.setX(i, mp.getX(i) + Math.sin(t * 0.6 + moteSeed[i]) * dt * 0.25);
+    mp.setZ(i, mp.getZ(i) + Math.cos(t * 0.5 + moteSeed[i]) * dt * 0.25);
+    let y = mp.getY(i) + dt * 0.08;
+    if (y > 0.5) y = -0.35;
+    mp.setY(i, y);
+  }
+  mp.needsUpdate = true;
+  controls.update();
+  renderer.render(scene, camera);
+}
+if (REDUCED) {
+  renderFrame(0, 0);
+} else {
+  renderer.setAnimationLoop(() => {
+  const dt = Math.min(clock.getDelta(), 0.05);
+  renderFrame(clock.elapsedTime, dt);
+});
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
