@@ -1,0 +1,45 @@
+<!--tz-meta {"id":"heroes-sticker-bomb","title":"Sticker bomb hero","category":"Hero","file":"patterns/heroes-sticker-bomb.html","tags":["stickers","playful","chaos"],"description":"Rotated sticker badges with hard shadows overlapping a chunky headline for small-batch hot sauce.","dnas":["neo-brutalist-pop"]} -->
+<section class="tz-stk">
+  <div class="tz-stk-field" aria-hidden="true">
+    <span class="tz-stk-a">Small<br>batch</span>
+    <span class="tz-stk-b">★ 4.9 rated</span>
+    <span class="tz-stk-c">Fermented<br>90 days</span>
+  </div>
+  <p class="tz-stk-eyebrow">Feral Ferments · Hot sauce · Batch N° 12</p>
+  <h1 class="tz-stk-h">Heat with a<br>personality<br>disorder.</h1>
+  <p class="tz-stk-sub">Three peppers, one oak barrel, zero apologies. Bottled the week it peaks, never before.</p>
+  <a class="tz-stk-cta" href="#trio">Get the trio — $29</a>
+</section>
+<style>
+.tz-stk{--paper:#fff4e2;--ink:#16130e;--red:#ff3b1f;--yellow:#ffd21f;--blue:#2f6bff;
+  background:var(--paper);color:var(--ink);position:relative;overflow:hidden;
+  padding:clamp(110px,14vw,190px) clamp(24px,7vw,100px) clamp(80px,10vw,140px);
+  font-family:Arial,Helvetica,sans-serif}
+.tz-stk-field{position:absolute;inset:0;pointer-events:none}
+.tz-stk-field span{position:absolute;display:flex;align-items:center;justify-content:center;
+  text-align:center;font-weight:900;text-transform:uppercase;line-height:1.15;
+  border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink)}
+.tz-stk-a{top:9%;right:8%;width:118px;height:118px;border-radius:50%;background:var(--yellow);
+  font-size:15px;transform:rotate(10deg)}
+.tz-stk-b{top:38%;right:16%;padding:12px 20px;background:var(--red);color:#fff;
+  font-size:14px;letter-spacing:.06em;transform:rotate(-7deg);border-radius:6px}
+.tz-stk-c{bottom:12%;right:6%;width:132px;height:132px;border-radius:50%;background:var(--blue);
+  color:#fff;font-size:14px;transform:rotate(-11deg)}
+.tz-stk-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.2em;
+  text-transform:uppercase;margin:0 0 24px;position:relative}
+.tz-stk-h{font-size:clamp(52px,9vw,128px);line-height:.98;letter-spacing:-.03em;font-weight:900;
+  margin:0 0 28px;position:relative;max-width:12ch}
+.tz-stk-sub{font-size:clamp(16px,1.7vw,19px);line-height:1.6;max-width:36ch;margin:0 0 40px;
+  position:relative;font-weight:700}
+.tz-stk-cta{display:inline-block;background:var(--ink);color:var(--paper);text-decoration:none;
+  font-weight:900;font-size:16px;letter-spacing:.04em;padding:20px 42px;position:relative;
+  border:3px solid var(--ink);box-shadow:6px 6px 0 var(--red);
+  transition:transform .15s ease,box-shadow .15s ease}
+.tz-stk-cta:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--red)}
+.tz-stk-cta:active{transform:translate(4px,4px);box-shadow:2px 2px 0 var(--red)}
+@media (max-width:560px){
+  .tz-stk-a{width:92px;height:92px;font-size:12px;top:6%}
+  .tz-stk-c{width:104px;height:104px;font-size:12px}
+  .tz-stk-b{right:8%}
+}
+</style>
