@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-corner-deli",
+  "title": "Corner Deli design tokens",
+  "category": "Tokens",
+  "file": "tokens/corner-deli.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "corner-deli"
+  ],
+  "description": "W3C-format design tokens for the Corner Deli DNA.",
+  "dnas": [
+   "corner-deli"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#f7f3e8",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#2e2620",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#c0392b",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#7c6f5f",
+   "type": "color"
+  },
+  "line": {
+   "value": "#2e26201f",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#efe7d3",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Bebas Neue",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Karla",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Special Elite",
+   "type": "fontFamily"
+  }
+ }
+}
