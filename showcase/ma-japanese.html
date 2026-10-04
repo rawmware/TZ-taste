@@ -1,0 +1,109 @@
+<!--tz-meta {"id":"showcase-ma-japanese","title":"Ma (Japanese Minimal) showcase","category":"Showcase","file":"showcase/ma-japanese.html","tags":["ma-japanese"],"description":"Live demo page for the Ma (Japanese Minimal) style DNA.","dnas":["ma-japanese"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ma (Japanese Minimal) — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f7f4ec; --tz-surface:#efe9da; --tz-ink:#26221c; --tz-muted:#8a8478;
+  --tz-accent:#a33327; --tz-line:#26221c1f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Zen Kaku Gothic New",sans-serif;font-size:1rem;line-height:1.9;-webkit-font-smoothing:antialiased}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:2rem 8vw;max-width:1200px;margin:0 auto}
+.tz-wordmark{font-family:"Shippori Mincho",serif;font-weight:600;font-size:1.15rem;letter-spacing:0.06em}
+.tz-label{font-family:"Space Mono",monospace;font-size:0.64rem;letter-spacing:0.14em;color:var(--tz-muted)}
+.tz-hero{max-width:1200px;margin:0 auto;padding:10rem 8vw;position:relative}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:0.68rem;letter-spacing:0.22em;color:var(--tz-muted);margin-bottom:3rem;text-transform:uppercase}
+.tz-hero h1{font-family:"Shippori Mincho",serif;font-weight:400;font-size:clamp(2.6rem,6vw,4.8rem);line-height:1.25;letter-spacing:0.02em;max-width:16ch}
+.tz-sub{margin-top:2.5rem;max-width:44ch;color:var(--tz-muted)}
+.tz-cta-row{margin-top:4rem;display:flex;align-items:center;gap:1.4rem}
+.tz-cta{font-size:0.98rem;color:var(--tz-ink);text-decoration:none;border-bottom:1px solid var(--tz-ink);padding-bottom:0.2rem;letter-spacing:0.04em}
+.tz-hanko{width:2.6rem;height:2.6rem;background:var(--tz-accent);color:var(--tz-bg);display:grid;place-items:center;font-family:"Shippori Mincho",serif;font-size:1.3rem;font-weight:600}
+.tz-vertical{position:absolute;right:5vw;top:8rem;writing-mode:vertical-rl;font-family:"Shippori Mincho",serif;font-size:1.05rem;letter-spacing:0.5em;color:var(--tz-muted)}
+.tz-content{max-width:760px;margin:0 auto;padding:10rem 8vw}
+.tz-chapter{margin-bottom:7rem}
+.tz-chapter .tz-no{font-family:"Shippori Mincho",serif;font-size:2.6rem;color:var(--tz-accent);display:block;margin-bottom:1.2rem}
+.tz-chapter h2{font-family:"Shippori Mincho",serif;font-weight:600;font-size:1.6rem;letter-spacing:0.04em}
+.tz-chapter .tz-en{display:block;font-family:"Space Mono",monospace;font-size:0.7rem;letter-spacing:0.2em;color:var(--tz-muted);margin-top:0.3rem;text-transform:uppercase}
+.tz-chapter p{margin-top:1.2rem;color:var(--tz-muted);max-width:52ch}
+.tz-chapter .tz-price{margin-top:1rem;font-family:"Space Mono",monospace;font-size:0.85rem;color:var(--tz-ink)}
+.tz-rule{border:none;border-top:1px solid var(--tz-line);margin:0 0 7rem}
+.tz-tokens{padding:6rem 8vw;max-width:1200px;margin:0 auto;border-top:1px solid var(--tz-line)}
+.tz-tokens h2{font-family:"Shippori Mincho",serif;font-weight:600;font-size:1.6rem;margin-bottom:2rem;letter-spacing:0.04em}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:2rem;list-style:none}
+.tz-swatches li{min-width:7rem}
+.tz-chip{display:block;width:4.5rem;height:4.5rem;border:1px solid var(--tz-line);margin-bottom:0.8rem}
+.tz-swatches .tz-name{display:block;font-family:"Space Mono",monospace;font-size:0.64rem;letter-spacing:0.16em;color:var(--tz-muted)}
+.tz-swatches .tz-hex{display:block;font-family:"Space Mono",monospace;font-size:0.76rem;margin-top:0.2rem}
+.tz-foot{padding:4rem 8vw 5rem;text-align:center;font-family:"Space Mono",monospace;font-size:0.66rem;letter-spacing:0.18em;color:var(--tz-muted)}
+@media(max-width:700px){
+  .tz-hero{padding:6rem 8vw}
+  .tz-vertical{display:none}
+  .tz-content{padding:6rem 8vw}
+  .tz-chapter{margin-bottom:4.5rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">喫茶 紅葉</span>
+  <span class="tz-label">TZ-taste style DNA</span>
+</header>
+
+<section class="tz-hero">
+  <p class="tz-vertical" aria-hidden="true">静けさ</p>
+  <p class="tz-eyebrow">Kissa Kōyō · Kyoto · Est. 1962</p>
+  <h1>Sit. The tea is already warm.</h1>
+  <p class="tz-sub">Twelve seats. One kettle. The menu has not changed since 1974, and neither has the room.</p>
+  <div class="tz-cta-row">
+    <span class="tz-hanko" aria-hidden="true">茶</span>
+    <a class="tz-cta" href="#">Reserve a seat</a>
+  </div>
+</section>
+
+<section class="tz-content">
+  <hr class="tz-rule">
+  <div class="tz-chapter">
+    <span class="tz-no">一</span>
+    <h2>お抹茶<span class="tz-en">Usucha · whisked to order</span></h2>
+    <p>Stone-ground in Uji, whisked in a bowl older than the building. Bitter first, then sweet, then quiet.</p>
+    <p class="tz-price">¥900 — with seasonal sweet</p>
+  </div>
+  <div class="tz-chapter">
+    <span class="tz-no">二</span>
+    <h2>煎茶<span class="tz-en">Sencha · second harvest</span></h2>
+    <p>Steeped at exactly seventy degrees. The kettle is never hurried, and neither are you.</p>
+    <p class="tz-price">¥700</p>
+  </div>
+  <div class="tz-chapter">
+    <span class="tz-no">三</span>
+    <h2>ほうじ茶<span class="tz-en">Hojicha · roasted</span></h2>
+    <p>Roasted in-house each morning. Low in caffeine, long in memory. The regulars drink nothing else.</p>
+    <p class="tz-price">¥650</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#f7f4ec"></span><span class="tz-name">bg</span><span class="tz-hex">#f7f4ec</span></li>
+    <li><span class="tz-chip" style="background:#efe9da"></span><span class="tz-name">surface</span><span class="tz-hex">#efe9da</span></li>
+    <li><span class="tz-chip" style="background:#26221c"></span><span class="tz-name">ink</span><span class="tz-hex">#26221c</span></li>
+    <li><span class="tz-chip" style="background:#8a8478"></span><span class="tz-name">muted</span><span class="tz-hex">#8a8478</span></li>
+    <li><span class="tz-chip" style="background:#a33327"></span><span class="tz-name">accent</span><span class="tz-hex">#a33327</span></li>
+    <li><span class="tz-chip" style="background:#26221c1f"></span><span class="tz-name">line</span><span class="tz-hex">#26221c1f</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
