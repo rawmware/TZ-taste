@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-cottage-warm",
+  "title": "Cottage Warm design tokens",
+  "category": "Tokens",
+  "file": "tokens/cottage-warm.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "cottage-warm"
+  ],
+  "description": "W3C-format design tokens for the Cottage Warm style DNA.",
+  "dnas": [
+   "cottage-warm"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#fbf5ea",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#3d3229",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#b5533c",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#8d7f6e",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#e7dcc6",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "DM Serif Display",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Karla",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "cottage-warm",
+  "name": "Cottage Warm",
+  "vibe": "Cozy domestic: cream, checks, garden warmth. The website equivalent of someone offering you tea."
+ }
+}
