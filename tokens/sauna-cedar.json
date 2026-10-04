@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-sauna-cedar",
+  "title": "Sauna Cedar design tokens",
+  "category": "Tokens",
+  "file": "tokens/sauna-cedar.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "sauna-cedar"
+  ],
+  "description": "W3C-format design tokens for the Sauna Cedar DNA.",
+  "dnas": [
+   "sauna-cedar"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#2b1a0e",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#f3e6d0",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#e07b39",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#a98d68",
+   "type": "color"
+  },
+  "line": {
+   "value": "#e07b3933",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#2b1a0e",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Fraunces",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Karla",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "IBM Plex Mono",
+   "type": "fontFamily"
+  }
+ }
+}
