@@ -1,0 +1,77 @@
+<!--tz-meta {"id":"store-locator","title":"Store locator list","category":"Sections","file":"patterns/store-locator.html","tags":["stores","locator","retail","search"],"description":"Searchable store list with distance badges, hours, and live open status.","dnas":["arctic-field"]} -->
+<section class="tz-store-locator" aria-label="Find a store">
+  <div class="tz-top">
+    <div>
+      <p class="tz-k">Visit us</p>
+      <h2>Four stores, one coastline</h2>
+    </div>
+    <label class="tz-search">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
+      <input type="search" placeholder="City or ZIP — try 03801" aria-label="Search stores">
+    </label>
+  </div>
+  <div class="tz-chips" aria-label="Filters">
+    <button class="tz-on">All stores</button><button>Open now</button><button>Curbside pickup</button>
+  </div>
+  <ul class="tz-list">
+    <li>
+      <span class="tz-dist">0.4 mi</span>
+      <div class="tz-info"><strong>Portsmouth — Market St</strong><span>41 Market St, Portsmouth, NH</span><span class="tz-hours">Mon–Sat 9–9 · Sun 10–6</span></div>
+      <span class="tz-status tz-open"><i></i>Open until 9 PM</span>
+      <a href="#">Directions</a>
+    </li>
+    <li>
+      <span class="tz-dist">8.2 mi</span>
+      <div class="tz-info"><strong>Dover — Central Ave</strong><span>282 Central Ave, Dover, NH</span><span class="tz-hours">Mon–Sat 9–8 · Sun 11–5</span></div>
+      <span class="tz-status tz-open"><i></i>Open until 8 PM</span>
+      <a href="#">Directions</a>
+    </li>
+    <li>
+      <span class="tz-dist">14.6 mi</span>
+      <div class="tz-info"><strong>Newburyport — State St</strong><span>38 State St, Newburyport, MA</span><span class="tz-hours">Mon–Sat 10–7 · Sun 11–5</span></div>
+      <span class="tz-status tz-closed"><i></i>Opens 10 AM tomorrow</span>
+      <a href="#">Directions</a>
+    </li>
+    <li>
+      <span class="tz-dist">46 mi</span>
+      <div class="tz-info"><strong>Portland — Exchange St</strong><span>15 Exchange St, Portland, ME</span><span class="tz-hours">Mon–Sat 9–9 · Sun 10–6</span></div>
+      <span class="tz-status tz-open"><i></i>Open until 9 PM</span>
+      <a href="#">Directions</a>
+    </li>
+  </ul>
+</section>
+<style>
+.tz-store-locator{--bg:#f5f8fa;--ink:#14202b;--accent:#1f6fa3;--muted:#5d7484;--line:#d3e0e8;
+  background:var(--bg);color:var(--ink);padding:clamp(32px,5vw,72px);
+  font-family:'DM Sans',-apple-system,'Segoe UI',sans-serif}
+.tz-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:20px}
+.tz-store-locator .tz-k{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.tz-store-locator h2{font-family:'Archivo',-apple-system,'Segoe UI',sans-serif;font-size:clamp(26px,3.2vw,40px);
+  letter-spacing:-.02em;margin:0}
+.tz-search{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);
+  border-radius:10px;padding:10px 14px;min-width:280px;color:var(--muted)}
+.tz-search input{border:0;outline:0;font:inherit;color:var(--ink);width:100%;background:transparent}
+.tz-search input::placeholder{color:var(--muted)}
+.tz-chips{display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.tz-chips button{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12px;
+  padding:8px 16px;border:1px solid var(--line);background:#fff;color:var(--muted);
+  border-radius:999px;cursor:pointer}
+.tz-chips .tz-on{background:var(--ink);border-color:var(--ink);color:#fff}
+.tz-list{list-style:none;margin:16px 0 0;padding:0}
+.tz-list li{display:grid;grid-template-columns:auto 1fr auto auto;gap:20px;align-items:center;
+  padding:20px 4px;border-bottom:1px solid var(--line)}
+.tz-list li:first-child{border-top:1px solid var(--line)}
+.tz-dist{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12.5px;font-weight:600;
+  background:var(--ink);color:#fff;padding:6px 10px;border-radius:6px;white-space:nowrap}
+.tz-info strong{display:block;font-size:16.5px;margin-bottom:2px}
+.tz-info span{display:block;font-size:13.5px;color:var(--muted)}
+.tz-status{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;white-space:nowrap}
+.tz-status i{width:9px;height:9px;border-radius:50%;background:#2e9e5b}
+.tz-status.tz-closed{color:var(--muted);font-weight:400}
+.tz-status.tz-closed i{background:#c2ccd4}
+.tz-list a{font-size:14px;font-weight:600;color:var(--accent);text-decoration:none;white-space:nowrap}
+.tz-list a:hover{text-decoration:underline}
+@media(max-width:720px){.tz-list li{grid-template-columns:auto 1fr;row-gap:10px}
+  .tz-status{grid-column:2}.tz-list a{grid-column:2}}
+</style>
