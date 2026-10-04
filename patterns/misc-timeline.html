@@ -1,0 +1,89 @@
+<!--tz-meta {"id":"misc-timeline","title":"Vertical timeline","category":"Misc","file":"patterns/misc-timeline.html","tags":["history","steps"],"description":"Dated vertical timeline on a hairline spine with a today marker.","dnas":["docs-solar"]} -->
+<section class="tz-timeline">
+  <p class="tz-tl-kicker">Release history</p>
+  <ol>
+    <li><p class="tz-tl-date">2024 · 03</p><h3>First sketch</h3><p>A weekend prototype and a notebook of bad ideas.</p></li>
+    <li><p class="tz-tl-date">2025 · 06</p><h3>Ten paying users</h3><p>Enough to quit the day job, barely. We kept the receipts.</p></li>
+    <li><p class="tz-tl-date">2026 · 02</p><h3>The rewrite</h3><p>Everything rebuilt in six weeks after the outage we never talk about.</p></li>
+    <li class="tz-tl-today"><p class="tz-tl-date">Today</p><h3>Open source</h3><p>The whole thing, public. Stars welcome, issues answered.</p></li>
+  </ol>
+</section>
+<style>
+.tz-timeline{
+  background:#fdf6e3;
+  color:#3d3a33;
+  font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(32px,5vw,64px) clamp(20px,4vw,48px);
+  max-width:640px;
+}
+.tz-tl-kicker{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#657b83;
+  margin:0 0 24px;
+}
+.tz-timeline ol{
+  list-style:none;
+  margin:0;
+  padding:0 0 0 28px;
+  position:relative;
+}
+.tz-timeline ol::before{
+  content:"";
+  position:absolute;
+  left:7px;
+  top:6px;
+  bottom:6px;
+  width:1px;
+  background:#b8a67e;
+}
+.tz-timeline li{
+  position:relative;
+  padding:0 0 32px;
+}
+.tz-timeline li:last-child{
+  padding-bottom:0;
+}
+.tz-timeline li::before{
+  content:"";
+  position:absolute;
+  left:-26px;
+  top:5px;
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:#fdf6e3;
+  border:2px solid #b8a67e;
+}
+.tz-tl-today::before{
+  background:#dc322f !important;
+  border-color:#dc322f !important;
+}
+.tz-tl-date{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:11px;
+  letter-spacing:.14em;
+  color:#657b83;
+  margin:0 0 6px;
+  text-transform:uppercase;
+}
+.tz-tl-today .tz-tl-date{
+  color:#dc322f;
+  font-weight:700;
+}
+.tz-timeline h3{
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:21px;
+  font-weight:400;
+  margin:0 0 6px;
+}
+.tz-timeline li>p:last-child{
+  font-size:14px;
+  line-height:1.6;
+  margin:0;
+  max-width:44ch;
+  color:#5c574a;
+}
+</style>
