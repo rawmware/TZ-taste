@@ -1,0 +1,122 @@
+<!--tz-meta {"id":"showcase-apotheke","title":"Apotheke showcase","category":"Showcase","file":"showcase/apotheke.html","tags":["apotheke"],"description":"Live demo page for the Apotheke style DNA.","dnas":["apotheke"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Apotheke — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f3f0e6; --tz-surface:#e6e0cd; --tz-ink:#26302a; --tz-muted:#7a8272;
+  --tz-accent:#2e7d4f; --tz-line:#26302a26;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Newsreader",serif;font-size:1.02rem;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 4vw;border-bottom:1px solid var(--tz-line)}
+.tz-wordmark{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:1.3rem;letter-spacing:0.02em}
+.tz-batch{font-family:"Roboto Mono",monospace;font-size:0.72rem;letter-spacing:0.14em;color:var(--tz-muted)}
+.tz-batch strong{color:var(--tz-ink);font-weight:500}
+.tz-hero{padding:6.5rem 4vw 3.5rem}
+.tz-cross{display:inline-block;font-family:"Roboto Mono",monospace;font-weight:500;font-size:0.95rem;color:var(--tz-bg);background:var(--tz-accent);width:2.4rem;height:2.4rem;line-height:2.4rem;text-align:center;margin-bottom:1.6rem}
+.tz-eyebrow{font-family:"Roboto Mono",monospace;font-size:0.72rem;letter-spacing:0.16em;color:var(--tz-muted);margin-bottom:1.4rem}
+.tz-hero h1{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(3rem,9.5vw,6.8rem);line-height:1.02;letter-spacing:-0.015em;max-width:13ch}
+.tz-sub{margin-top:1.8rem;font-size:1.05rem;color:var(--tz-muted);max-width:44ch}
+.tz-sub em{font-style:italic;color:var(--tz-ink)}
+.tz-cta{display:inline-block;margin-top:2.2rem;border:1.5px solid var(--tz-ink);color:var(--tz-ink);font-family:"Cormorant Garamond",serif;font-weight:700;font-size:1.2rem;letter-spacing:0.02em;text-decoration:none;padding:0.85rem 2.3rem;background:transparent}
+.tz-cta:hover{background:var(--tz-accent);border-color:var(--tz-accent);color:var(--tz-bg)}
+.tz-rule{border:0;border-top:1px solid var(--tz-ink);margin:3.5rem 4vw 0}
+.tz-content{padding:3rem 4vw 1rem}
+.tz-content h2{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(1.9rem,5vw,2.9rem);margin-bottom:0.4rem}
+.tz-subhead{font-family:"Roboto Mono",monospace;font-size:0.72rem;letter-spacing:0.12em;color:var(--tz-muted);margin-bottom:1.6rem}
+table.tz-dosage{width:100%;border-collapse:collapse;max-width:740px}
+.tz-dosage th{font-family:"Roboto Mono",monospace;font-size:0.66rem;font-weight:400;letter-spacing:0.14em;color:var(--tz-muted);text-align:left;padding:0.8rem 0;border-bottom:1px solid var(--tz-ink)}
+.tz-dosage td{padding:1.2rem 0;border-bottom:1px solid var(--tz-line);vertical-align:top}
+.tz-dosage td.tz-tier{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:1.5rem;white-space:nowrap}
+.tz-dosage td.tz-tier .tz-rx{font-family:"Roboto Mono",monospace;font-size:0.8rem;color:var(--tz-accent);display:block;letter-spacing:0.1em}
+.tz-dosage td.tz-instr{color:var(--tz-muted);font-size:0.95rem;max-width:34ch}
+.tz-dosage td.tz-cost{font-family:"Roboto Mono",monospace;font-size:1.15rem;font-weight:500;text-align:right;white-space:nowrap}
+.tz-quiet{margin:2.8rem 0 0;background:var(--tz-surface);padding:1.8rem;max-width:560px;border-left:3px solid var(--tz-accent)}
+.tz-quiet p{color:var(--tz-muted)}
+.tz-quiet strong{color:var(--tz-ink)}
+.tz-quiet .tz-no{font-family:"Roboto Mono",monospace;font-size:0.72rem;letter-spacing:0.14em;color:var(--tz-accent)}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.8rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"Roboto Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Roboto Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"Roboto Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-hero{padding-top:4rem}
+  .tz-batch{display:none}
+  .tz-dosage td.tz-cost{text-align:left;display:block}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Mortar &amp; Leaf</span>
+  <span class="tz-batch">BATCH <strong>214</strong> · BOTTLED TUESDAY</span>
+</header>
+
+<section class="tz-hero">
+  <span class="tz-cross" aria-hidden="true">+</span>
+  <p class="tz-eyebrow">AN APOTHECARY · HERBS, TEAS &amp; HONEST ADVICE SINCE 1962</p>
+  <h1>Remedies, measured twice.</h1>
+  <p class="tz-sub">The house blend goes out <em>ex tempore</em> — mixed while you wait, weighed to the gram. Tell us what's wrong and we'll start with the gentlest thing that works.</p>
+  <a class="tz-cta" href="#">Ask the pharmacist</a>
+</section>
+
+<hr class="tz-rule" aria-hidden="true">
+
+<section class="tz-content">
+  <h2>The dosage shelf</h2>
+  <p class="tz-subhead">PRICES AS PRESCRIPTIONS · READ THE INSTRUCTIONS</p>
+  <table class="tz-dosage">
+    <thead><tr><th>DOSE</th><th>DIRECTIONS</th><th style="text-align:right">FEE</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="tz-tier"><span class="tz-rx">No. 1</span>One jar</td>
+        <td class="tz-instr">A month's worth of the house blend. Take one daily, with water and a slow morning.</td>
+        <td class="tz-cost">$14</td>
+      </tr>
+      <tr>
+        <td class="tz-tier"><span class="tz-rx">No. 2</span>Two jars</td>
+        <td class="tz-instr">Apply generously, twice weekly, to whatever the week has done. Refills: two.</td>
+        <td class="tz-cost">$24</td>
+      </tr>
+      <tr>
+        <td class="tz-tier"><span class="tz-rx">No. 3</span>The whole shelf</td>
+        <td class="tz-instr">The full consultation and every remedy we agree on. For households, or the very tired.</td>
+        <td class="tz-cost">$60</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="tz-quiet">
+    <p class="tz-no">LEDGER NOTE · No. 214</p>
+    <p style="margin-top:0.5rem"><strong>Everything is labeled with its batch number.</strong> If a jar doesn't agree with you, bring it back — the mortar keeps records and so do we.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#f3f0e6"></span><span class="tz-name">bg</span><span class="tz-hex">#f3f0e6</span></li>
+    <li><span class="tz-chip" style="background:#e6e0cd"></span><span class="tz-name">surface</span><span class="tz-hex">#e6e0cd</span></li>
+    <li><span class="tz-chip" style="background:#26302a"></span><span class="tz-name">ink</span><span class="tz-hex">#26302a</span></li>
+    <li><span class="tz-chip" style="background:#7a8272"></span><span class="tz-name">muted</span><span class="tz-hex">#7a8272</span></li>
+    <li><span class="tz-chip" style="background:#2e7d4f"></span><span class="tz-name">accent</span><span class="tz-hex">#2e7d4f</span></li>
+    <li><span class="tz-chip" style="background:#26302a26"></span><span class="tz-name">line</span><span class="tz-hex">#26302a26</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
