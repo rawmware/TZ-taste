@@ -1,0 +1,50 @@
+<!--tz-meta {"id":"testimonials-social","title":"Social proof cards","category":"Testimonials","file":"patterns/testimonials-social.html","tags":["social","posts"],"description":"Chunky social-post-style proof cards with hard shadows and a pinned badge.","dnas":["neo-brutalist-pop"]} -->
+<section class="tz-social" aria-label="Social proof">
+  <p class="tz-eyebrow">Straight from the feed</p>
+  <div class="tz-row">
+    <article class="tz-post tz-r1">
+      <header><span class="tz-pa tz-p1" aria-hidden="true">RK</span>
+        <span class="tz-meta"><strong>@renatakim</strong><em>Google review · 2 wks ago</em></span>
+        <span class="tz-stars" aria-label="5 out of 5 stars">★★★★★</span></header>
+      <p>Y'all. My site went from "under construction" embarrassment to something I'm proud to link. He even taught me how to update it myself.</p>
+    </article>
+    <article class="tz-post tz-r2">
+      <span class="tz-pin" aria-hidden="true">Pinned</span>
+      <header><span class="tz-pa tz-p2" aria-hidden="true">JO</span>
+        <span class="tz-meta"><strong>@josiah.owens</strong><em>Instagram · 1 mo ago</em></span></header>
+      <p>Roman took my portfolio from 40 views a month to actual client DMs. The before/after is not even fair. Book him.</p>
+    </article>
+    <article class="tz-post tz-r3">
+      <header><span class="tz-pa tz-p3" aria-hidden="true">AL</span>
+        <span class="tz-meta"><strong>@alba.lindqvist</strong><em>Threads · 3 wks ago</em></span>
+        <span class="tz-stars" aria-label="5 out of 5 stars">★★★★★</span></header>
+      <p>Asked for a booking form, got a whole system that texts me when someone books. I cried a little. Not ashamed.</p>
+    </article>
+  </div>
+</section>
+<style>
+.tz-social{--bg:#fff8e7;--ink:#141310;--soft:#5a554a;--pink:#ff4d8d;--yellow:#ffd21f;--teal:#2ec4b6;
+  background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(56px,9vw,110px) clamp(20px,5vw,72px)}
+.tz-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;margin:0 0 36px;display:inline-block;background:var(--ink);
+  color:#fff;padding:8px 14px}
+.tz-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.tz-post{border:3px solid var(--ink);background:#fff;padding:22px 20px;position:relative;
+  box-shadow:7px 7px 0 var(--ink)}
+.tz-r1{transform:rotate(-1.2deg)}.tz-r2{transform:rotate(.8deg)}.tz-r3{transform:rotate(-.6deg)}
+.tz-post header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.tz-pa{width:44px;height:44px;flex:none;display:inline-flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:15px;border:3px solid var(--ink);color:var(--ink)}
+.tz-p1{background:var(--yellow)}.tz-p2{background:var(--pink);color:#fff}.tz-p3{background:var(--teal)}
+.tz-meta{display:flex;flex-direction:column;gap:2px;min-width:0}
+.tz-meta strong{font-size:14px}
+.tz-meta em{font-style:normal;font-size:11px;color:var(--soft);font-family:ui-monospace,Menlo,monospace}
+.tz-stars{margin-left:auto;color:#b8860b;font-size:14px;letter-spacing:2px;white-space:nowrap}
+.tz-post p{margin:0;font-size:15px;line-height:1.55}
+.tz-pin{position:absolute;top:-16px;right:14px;background:var(--yellow);border:3px solid var(--ink);
+  font-family:ui-monospace,Menlo,monospace;font-size:11px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;padding:5px 10px;transform:rotate(6deg)}
+@media (max-width:820px){.tz-row{grid-template-columns:1fr;max-width:440px}}
+@media (prefers-reduced-motion:reduce){.tz-post{transform:none}}
+</style>
