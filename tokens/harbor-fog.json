@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-harbor-fog",
+  "title": "Harbor Fog design tokens",
+  "category": "Tokens",
+  "file": "tokens/harbor-fog.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "harbor-fog"
+  ],
+  "description": "W3C-format design tokens for the Harbor Fog DNA.",
+  "dnas": [
+   "harbor-fog"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#e8e6df",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#2b3138",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#c33a2c",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#7d838a",
+   "type": "color"
+  },
+  "line": {
+   "value": "#2b31381f",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#e8e6df",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Anton",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Karla",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "IBM Plex Mono",
+   "type": "fontFamily"
+  }
+ }
+}
