@@ -1,0 +1,44 @@
+<!--tz-meta {"id":"testimonials-sticker","title":"Sticker quotes","category":"Testimonials","file":"patterns/testimonials-sticker.html","tags":["playful","gen-z"],"description":"Rotated neon quote stickers slapped on black with white peel borders.","dnas":["acid-rave"]} -->
+<section class="tz-stick" aria-label="Sticker testimonials">
+  <p class="tz-eyebrow">// wall of love</p>
+  <div class="tz-wall">
+    <figure class="tz-s tz-s1">
+      <blockquote>"bro rebuilt my site in a WEEKEND"</blockquote>
+      <figcaption>— @josiah.owens</figcaption>
+    </figure>
+    <figure class="tz-s tz-s2">
+      <blockquote>"my bookings tripled and i don't know how to act"</blockquote>
+      <figcaption>— @renatakim</figcaption>
+    </figure>
+    <figure class="tz-s tz-s3">
+      <blockquote>"explained DNS to me like i'm five. respect."</blockquote>
+      <figcaption>— @alba.lindqvist</figcaption>
+    </figure>
+    <figure class="tz-s tz-s4">
+      <blockquote>"10/10 would get roasted by his feedback again"</blockquote>
+      <figcaption>— @devonpark</figcaption>
+    </figure>
+  </div>
+</section>
+<style>
+.tz-stick{--bg:#0a0a0a;--ink:#f4f4f4;--lime:#c8ff00;--pink:#ff2fb3;--cyan:#37e6ff;--yel:#ffe600;
+  background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(56px,9vw,110px) clamp(20px,6vw,72px);overflow:hidden}
+.tz-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.2em;
+  color:var(--lime);margin:0 0 44px}
+.tz-wall{display:flex;flex-wrap:wrap;gap:34px;justify-content:center}
+.tz-s{margin:0;max-width:280px;padding:22px 20px 18px;border:3px solid var(--ink);
+  background:var(--bg);box-shadow:5px 5px 0 var(--ink)}
+.tz-s1{transform:rotate(-4deg);border-color:var(--lime)}
+.tz-s2{transform:rotate(3deg);border-color:var(--pink);margin-top:26px}
+.tz-s3{transform:rotate(-2.5deg);border-color:var(--cyan)}
+.tz-s4{transform:rotate(4deg);border-color:var(--yel);margin-top:18px}
+.tz-s blockquote{margin:0 0 12px;font-size:19px;line-height:1.35;font-weight:800;
+  letter-spacing:-.01em;text-transform:lowercase}
+.tz-s1 blockquote{color:var(--lime)}.tz-s2 blockquote{color:var(--pink)}
+.tz-s3 blockquote{color:var(--cyan)}.tz-s4 blockquote{color:var(--yel)}
+.tz-s figcaption{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--ink);
+  opacity:.85}
+@media (max-width:520px){.tz-s2,.tz-s4{margin-top:0}}
+@media (prefers-reduced-motion:reduce){.tz-s{transform:none}}
+</style>
