@@ -401,15 +401,15 @@
  },
  {
   "slug": "pulse-dashboard",
-  "name": "Pulse \u2014 Dashboard"
+  "name": "Pulse — Dashboard"
  },
  {
   "slug": "northwind-mail",
-  "name": "Northwind \u2014 Mail"
+  "name": "Northwind — Mail"
  },
  {
   "slug": "taskline",
-  "name": "Taskline \u2014 Tasks"
+  "name": "Taskline — Tasks"
  },
  {
   "slug": "settings-desk",
@@ -417,10 +417,26 @@
  },
  {
   "slug": "gatekeeper-auth",
-  "name": "Gatekeeper \u2014 Sign in"
+  "name": "Gatekeeper — Sign in"
  },
  {
   "slug": "ledger-billing",
-  "name": "Ledger \u2014 Billing"
+  "name": "Ledger — Billing"
+ },
+ {
+  "slug": "meridian-calendar",
+  "name": "Meridian — Calendar"
+ },
+ {
+  "slug": "drift-kanban",
+  "name": "Drift — Kanban"
+ },
+ {
+  "slug": "northbeam-docs",
+  "name": "Northbeam — Docs"
+ },
+ {
+  "slug": "wavelength-player",
+  "name": "Wavelength — Music"
  }
 ]
