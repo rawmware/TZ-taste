@@ -1,0 +1,48 @@
+<!--tz-meta {"id":"how-it-works-overlap","title":"Overlapping cards","category":"How it works","file":"patterns/how-it-works-overlap.html","tags":["overlap","depth"],"description":"Fanned overlapping step cards that spread apart on hover like a dealt hand.","dnas":["neo-brutalist-pop"]} -->
+<section class="tz-ho">
+  <p class="tz-ho-eyebrow">Deal yourself in</p>
+  <h2 class="tz-ho-title">Four cards.<br>One winning hand.</h2>
+  <div class="tz-ho-fan">
+    <article class="tz-ho-card tz-ho-c1" style="--r:-7deg;--x:-8px">
+      <p class="tz-ho-n">01</p><h3>Connect</h3><p>OAuth your inbox in four minutes flat.</p>
+    </article>
+    <article class="tz-ho-card tz-ho-c2" style="--r:-2.5deg;--x:-3px">
+      <p class="tz-ho-n">02</p><h3>Teach</h3><p>Approve twelve drafts; it learns your voice.</p>
+    </article>
+    <article class="tz-ho-card tz-ho-c3" style="--r:2.5deg;--x:3px">
+      <p class="tz-ho-n">03</p><h3>Supervise</h3><p>A week of dry runs. Nothing sends yet.</p>
+    </article>
+    <article class="tz-ho-card tz-ho-c4" style="--r:7deg;--x:8px">
+      <p class="tz-ho-n">04</p><h3>Release</h3><p>Flip senders to auto, one by one.</p>
+    </article>
+  </div>
+  <p class="tz-ho-hint">hover the hand to spread the cards</p>
+</section>
+<style>
+.tz-ho{--bg:#fff6e8;--ink:#141414;--y:#ffd23f;--p:#ff8fc7;--t:#5eead4;--b:#7cc7ff;
+  background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(72px,10vw,140px) clamp(24px,6vw,80px);overflow:hidden}
+.tz-ho-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.24em;
+  text-transform:uppercase;margin:0 0 18px;text-align:center}
+.tz-ho-title{font-size:clamp(38px,6vw,76px);font-weight:900;letter-spacing:-.03em;line-height:.98;
+  margin:0 0 clamp(48px,7vw,88px);text-align:center;text-transform:uppercase}
+.tz-ho-fan{display:flex;justify-content:center;align-items:flex-start;max-width:1000px;margin:0 auto;
+  padding:20px 0 8px}
+.tz-ho-card{width:230px;flex:none;border:3px solid var(--ink);box-shadow:7px 7px 0 var(--ink);
+  padding:28px 24px 32px;margin:0 -26px;transform:rotate(var(--r)) translateY(var(--x));
+  transition:transform .3s cubic-bezier(.22,1,.36,1)}
+.tz-ho-c1{background:var(--y)}.tz-ho-c2{background:var(--p)}
+.tz-ho-c3{background:var(--t)}.tz-ho-c4{background:var(--b)}
+.tz-ho-fan:hover .tz-ho-card{margin:0 10px;transform:rotate(0deg) translateY(-10px)}
+.tz-ho-n{font-size:44px;font-weight:900;margin:0 0 14px;letter-spacing:-.02em}
+.tz-ho-card h3{font-size:20px;font-weight:900;margin:0 0 10px;text-transform:uppercase;letter-spacing:.02em}
+.tz-ho-card p:not(.tz-ho-n){font-size:14px;line-height:1.6;margin:0}
+.tz-ho-hint{text-align:center;font-family:ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;opacity:.5;margin:36px 0 0}
+@media (max-width:760px){
+  .tz-ho-fan{flex-direction:column;align-items:center;gap:18px}
+  .tz-ho-card{margin:0;width:min(320px,100%)}
+  .tz-ho-fan:hover .tz-ho-card{margin:0;transform:rotate(var(--r))}
+}
+@media (prefers-reduced-motion:reduce){.tz-ho-card{transition:none}}
+</style>
