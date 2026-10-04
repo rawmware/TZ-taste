@@ -1,0 +1,67 @@
+<!--tz-meta {"id":"misc-cookie","title":"Cookie banner","category":"Misc","file":"patterns/misc-cookie.html","tags":["consent","privacy"],"description":"Chunky consent bar with hazard-stripe edge and bordered buttons.","dnas":["industrial-brutalist"]} -->
+<section class="tz-cookie" role="region" aria-label="Cookie consent">
+  <p><b>We use cookies</b> to keep the lights on and remember your settings. No ad networks, no reselling.</p>
+  <div class="tz-cookie-actions">
+    <button type="button" class="tz-cookie-solid">Accept all</button>
+    <button type="button" class="tz-cookie-line">Essential only</button>
+  </div>
+</section>
+<style>
+.tz-cookie{
+  background:#e8e6e0;
+  color:#14120e;
+  font-family:Arial,Helvetica,sans-serif;
+  border:3px solid #14120e;
+  border-top:none;
+  padding:20px clamp(20px,4vw,36px);
+  max-width:860px;
+  margin:0 auto;
+  position:relative;
+}
+.tz-cookie::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-3px;
+  right:-3px;
+  height:10px;
+  background:repeating-linear-gradient(-45deg,#f5c518 0 14px,#14120e 0 28px);
+}
+.tz-cookie p{
+  font-size:14px;
+  line-height:1.6;
+  margin:14px 0 16px;
+  max-width:60ch;
+}
+.tz-cookie p b{
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.tz-cookie-actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.tz-cookie-solid,
+.tz-cookie-line{
+  font:700 13px/1 Arial,Helvetica,sans-serif;
+  padding:13px 24px;
+  cursor:pointer;
+  letter-spacing:.04em;
+}
+.tz-cookie-solid{
+  background:#14120e;
+  color:#f5c518;
+  border:3px solid #14120e;
+}
+.tz-cookie-line{
+  background:transparent;
+  color:#14120e;
+  border:3px solid #14120e;
+}
+.tz-cookie-solid:focus-visible,
+.tz-cookie-line:focus-visible{
+  outline:3px solid #d9481c;
+  outline-offset:3px;
+}
+</style>
