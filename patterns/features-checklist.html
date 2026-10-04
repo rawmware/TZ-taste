@@ -1,0 +1,63 @@
+<!--tz-meta {"id":"features-checklist","title":"Giant checklist","category":"Features","file":"patterns/features-checklist.html","tags":["checklist","mono"],"description":"Full-width checklist rows with oversized red checkmarks and mono spec lines.","dnas":["swiss-rational"]} -->
+<section class="tz-fc">
+  <p class="tz-fc-eyebrow">The short version</p>
+  <h2 class="tz-fc-title">Everything included.<br>Nothing hidden.</h2>
+  <ul class="tz-fc-list">
+    <li>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 6.5" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square"/></svg>
+      <div>
+        <h3>Unlimited projects, unlimited seats</h3>
+        <p class="tz-fc-spec">seats ∞ · projects ∞ · storage 1 TB · no per-user pricing</p>
+      </div>
+    </li>
+    <li>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 6.5" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square"/></svg>
+      <div>
+        <h3>Your data stays yours</h3>
+        <p class="tz-fc-spec">export anytime · csv + json · delete on request · 30-day purge</p>
+      </div>
+    </li>
+    <li>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 6.5" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square"/></svg>
+      <div>
+        <h3>Security a bank would sign off on</h3>
+        <p class="tz-fc-spec">soc2 type II · sso/saml · audit logs · eu + us residency</p>
+      </div>
+    </li>
+    <li>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 6.5" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square"/></svg>
+      <div>
+        <h3>Humans on support, seven days a week</h3>
+        <p class="tz-fc-spec">median reply 11 min · no chatbots · engineers on rotation</p>
+      </div>
+    </li>
+    <li>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5.2 5.2L20 6.5" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="square"/></svg>
+      <div>
+        <h3>Cancel in two clicks, keep your exports</h3>
+        <p class="tz-fc-spec">no retention calls · no dark patterns · pro-rated refunds</p>
+      </div>
+    </li>
+  </ul>
+</section>
+<style>
+.tz-fc{--bg:#ffffff;--ink:#111111;--red:#d8231a;--line:rgba(17,17,17,.14);
+  background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(64px,9vw,128px) clamp(24px,8vw,120px)}
+.tz-fc-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--red);margin:0 0 18px}
+.tz-fc-title{font-size:clamp(36px,5.4vw,72px);letter-spacing:-.03em;font-weight:700;
+  line-height:1.02;margin:0 0 clamp(40px,6vw,80px)}
+.tz-fc-list{list-style:none;margin:0;padding:0}
+.tz-fc-list li{display:flex;gap:clamp(20px,4vw,48px);align-items:flex-start;
+  padding:clamp(24px,3.5vw,40px) 0;border-top:1px solid var(--ink)}
+.tz-fc-list li:last-child{border-bottom:1px solid var(--ink)}
+.tz-fc-list svg{width:clamp(56px,8vw,96px);height:auto;flex:none;color:var(--red);margin-top:2px}
+.tz-fc-list h3{font-size:clamp(22px,3vw,38px);letter-spacing:-.02em;font-weight:700;margin:0 0 10px;line-height:1.1}
+.tz-fc-spec{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;letter-spacing:.06em;
+  text-transform:uppercase;color:rgba(17,17,17,.62);margin:0;line-height:1.7}
+@media (max-width:560px){
+  .tz-fc-list li{gap:18px}
+  .tz-fc-list svg{width:48px}
+}
+</style>
