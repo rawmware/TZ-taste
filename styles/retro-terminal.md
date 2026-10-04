@@ -1,3 +1,4 @@
+<!--tz-meta {"id":"retro-terminal","name":"Retro Terminal","vibe":"Phosphor green on black, scanlines, amber warnings. The machine is the message.","file":"styles/retro-terminal.md","tags":["terminal","retro","hacker","mono"],"best_for":["dev tools","games","security","cli products"],"fonts":{"body":"IBM Plex Mono","display":"IBM Plex Mono","mono":"IBM Plex Mono"},"tokens":{"accent":"#ffb000","bg":"#0b0f0a","ink":"#33ff66","line":"#33ff6633","muted":"#1f6b3a","surface":"#0e140d"},"dials":{"density":8,"motion":3,"variance":6}} -->
 # Retro Terminal
 
 > Phosphor green on black, scanlines, amber warnings. The machine is the message.
