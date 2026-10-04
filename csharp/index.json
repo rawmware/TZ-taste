@@ -1,0 +1,157 @@
+{
+ "count": 10,
+ "updated": "2026-10-04",
+ "usage": "C# Razor page templates for ASP.NET, one DNA each.",
+ "csharp_pages": [
+  {
+   "id": "cs-cta",
+   "title": "Concrete-poem CTA (Razor)",
+   "category": "C#",
+   "file": "csharp/Cta.cshtml",
+   "tags": [
+    "csharp",
+    "razor",
+    "cta"
+   ],
+   "description": "CTA for Inkwell Press, a shared letterpress studio — the headline set as a stepped concrete poem in Major Mono, with a rotated rubber-stamp badge counting the 40 remaining drawers.",
+   "dnas": [
+    "concrete-poem"
+   ]
+  },
+  {
+   "id": "cs-features",
+   "title": "Features as spec table (Razor)",
+   "category": "C#",
+   "file": "csharp/Features.cshtml",
+   "tags": [
+    "csharp",
+    "razor",
+    "features"
+   ],
+   "description": "Features for Karton, an inventory app for small makers — rendered as a numbered Swiss spec table with red index numerals and measured mono specs. No cards at all.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "cs-footer",
+   "title": "Poster footer (Razor)",
+   "category": "C#",
+   "file": "csharp/Footer.cshtml",
+   "tags": [
+    "csharp",
+    "razor",
+    "footer"
+   ],
+   "description": "Footer for Studio Bureau — a swiss-poster sign-off: the wordmark oversized as the image, link columns with hairline rules, and a red contact block. A footer with somewhere to go, not a copyright line.",
+   "dnas": [
+    "swiss-poster"
+   ]
+  },
+  {
+   "id": "cs-hero",
+   "title": "Editorial hero (Razor)",
+   "category": "C#",
+   "file": "csharp/Hero.cshtml",
+   "tags": [
+    "csharp",
+    "razor",
+    "hero"
+   ],
+   "description": "Editorial hero for The Slow Margin, a print quarterly for people who still finish books. Giant Fraunces headline, mono meta row, and one deliberate choice: a colossal clipped issue numeral behind the type.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "cs-login",
+   "title": "Railway-ticket login (Razor)",
+   "category": "C#",
+   "file": "csharp/Login.cshtml",
+   "tags": [
+    "csharp",
+    "razor",
+    "login"
+   ],
+   "description": "Login for Nightline sleeper rail — the form is a punched railway ticket with dashed perforations, a rotated ADMIT ONE stub, and brass accents. Your berth is waiting.",
+   "dnas": [
+    "midnight-railway"
+   ]
+  },
+  {
+   "id": "cs-onboarding",
+   "title": "Calm 3-step onboarding (Razor)",
+   "category": "C#",
+   "file": "csharp/Onboarding.cshtml",
+   "tags": [
+    "csharp",
+    "razor",
+    "onboarding"
+   ],
+   "description": "Onboarding for Halcyon, a calm shared family calendar — a frosted 3-step wizard with a hairline progress rule and one deliberate choice: a slow breathing circle behind the card. Three small steps, then quiet.",
+   "dnas": [
+    "glass-calm"
+   ]
+  },
+  {
+   "id": "cs-pricing",
+   "title": "Deco menu-board pricing (Razor)",
+   "category": "C#",
+   "file": "csharp/Pricing.cshtml",
+   "tags": [
+    "csharp",
+    "razor",
+    "pricing"
+   ],
+   "description": "Pricing for Velvet Pour, a natural wine club — set as a black-lacquer deco menu board with gold dotted price leaders, a sunburst divider, and one framed house-favorite tier. A menu, not cards.",
+   "dnas": [
+    "art-deco-luxe"
+   ]
+  },
+  {
+   "id": "cs-settings",
+   "title": "Instrument settings panel (Razor)",
+   "category": "C#",
+   "file": "csharp/Settings.cshtml",
+   "tags": [
+    "csharp",
+    "razor",
+    "settings"
+   ],
+   "description": "Settings for Fieldkit, a wildlife camera-trap companion app — a dense lab-instrument panel with measured mono labels, spec-sheet rows, and real toggle/segmented controls. Every setting changes what the camera does tonight.",
+   "dnas": [
+    "laboratory-clean"
+   ]
+  },
+  {
+   "id": "cs-stats",
+   "title": "Terminal status readout (Razor)",
+   "category": "C#",
+   "file": "csharp/Stats.cshtml",
+   "tags": [
+    "csharp",
+    "razor",
+    "stats"
+   ],
+   "description": "Stats for Hedgehog Host, a small hosting company — delivered as a phosphor-green terminal status readout: sparklines, amber warnings, a blinking block cursor, and a fake tail -f deploy log.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "cs-testimonial",
+   "title": "Single ma testimonial (Razor)",
+   "category": "C#",
+   "file": "csharp/Testimonial.cshtml",
+   "tags": [
+    "csharp",
+    "razor",
+    "testimonial"
+   ],
+   "description": "One testimonial for Kama Kiln, a ceramics studio — set with deliberate ma: a vertical mono column, one enormous Shippori Mincho quote, and a red hanko stamp as the signature. Emptiness used on purpose.",
+   "dnas": [
+    "ma-japanese"
+   ]
+  }
+ ]
+}
