@@ -1,5 +1,5 @@
 {
- "count": 48,
+ "count": 72,
  "updated": "2026-10-04",
  "usage": "W3C-format design tokens, one file per style DNA. Machine-readable color/type.",
  "tokens": [
@@ -16,6 +16,21 @@
    "description": "W3C-format design tokens for the Acid Rave style DNA.",
    "dnas": [
     "acid-rave"
+   ]
+  },
+  {
+   "id": "tokens-alpine-after-dark",
+   "title": "Alpine After Dark design tokens",
+   "category": "Tokens",
+   "file": "tokens/alpine-after-dark.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "alpine-after-dark"
+   ],
+   "description": "W3C-format design tokens for the Alpine After Dark DNA.",
+   "dnas": [
+    "alpine-after-dark"
    ]
   },
   {
@@ -109,6 +124,21 @@
    ]
   },
   {
+   "id": "tokens-bazaar-spice",
+   "title": "Bazaar Spice design tokens",
+   "category": "Tokens",
+   "file": "tokens/bazaar-spice.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "bazaar-spice"
+   ],
+   "description": "W3C-format design tokens for the Bazaar Spice DNA.",
+   "dnas": [
+    "bazaar-spice"
+   ]
+  },
+  {
    "id": "tokens-blueprint-tech",
    "title": "Blueprint Tech design tokens",
    "category": "Tokens",
@@ -136,6 +166,36 @@
    "description": "W3C-format design tokens for the Botanical Lab style DNA.",
    "dnas": [
     "botanical-lab"
+   ]
+  },
+  {
+   "id": "tokens-chalkboard-cafe",
+   "title": "Chalkboard Cafe design tokens",
+   "category": "Tokens",
+   "file": "tokens/chalkboard-cafe.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "chalkboard-cafe"
+   ],
+   "description": "W3C-format design tokens for the Chalkboard Cafe DNA.",
+   "dnas": [
+    "chalkboard-cafe"
+   ]
+  },
+  {
+   "id": "tokens-circus-poster",
+   "title": "Circus Poster design tokens",
+   "category": "Tokens",
+   "file": "tokens/circus-poster.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "circus-poster"
+   ],
+   "description": "W3C-format design tokens for the Circus Poster DNA.",
+   "dnas": [
+    "circus-poster"
    ]
   },
   {
@@ -244,6 +304,21 @@
    ]
   },
   {
+   "id": "tokens-diary-zine",
+   "title": "Diary Zine design tokens",
+   "category": "Tokens",
+   "file": "tokens/diary-zine.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "diary-zine"
+   ],
+   "description": "W3C-format design tokens for the Diary Zine DNA.",
+   "dnas": [
+    "diary-zine"
+   ]
+  },
+  {
    "id": "tokens-docs-solar",
    "title": "Docs Solar design tokens",
    "category": "Tokens",
@@ -304,6 +379,51 @@
    ]
   },
   {
+   "id": "tokens-greenhouse-glass",
+   "title": "Greenhouse Glass design tokens",
+   "category": "Tokens",
+   "file": "tokens/greenhouse-glass.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "greenhouse-glass"
+   ],
+   "description": "W3C-format design tokens for the Greenhouse Glass DNA.",
+   "dnas": [
+    "greenhouse-glass"
+   ]
+  },
+  {
+   "id": "tokens-greenmarket-dawn",
+   "title": "Greenmarket Dawn design tokens",
+   "category": "Tokens",
+   "file": "tokens/greenmarket-dawn.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "greenmarket-dawn"
+   ],
+   "description": "W3C-format design tokens for the Greenmarket Dawn DNA.",
+   "dnas": [
+    "greenmarket-dawn"
+   ]
+  },
+  {
+   "id": "tokens-harbor-fog",
+   "title": "Harbor Fog design tokens",
+   "category": "Tokens",
+   "file": "tokens/harbor-fog.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "harbor-fog"
+   ],
+   "description": "W3C-format design tokens for the Harbor Fog DNA.",
+   "dnas": [
+    "harbor-fog"
+   ]
+  },
+  {
    "id": "tokens-industrial-brutalist",
    "title": "Industrial Brutalist design tokens",
    "category": "Tokens",
@@ -331,6 +451,21 @@
    "description": "W3C-format design tokens for the Ink-Wash Sumi style DNA.",
    "dnas": [
     "ink-wash-sumi"
+   ]
+  },
+  {
+   "id": "tokens-italian-futurist",
+   "title": "Italian Futurist design tokens",
+   "category": "Tokens",
+   "file": "tokens/italian-futurist.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "italian-futurist"
+   ],
+   "description": "W3C-format design tokens for the Italian Futurist DNA.",
+   "dnas": [
+    "italian-futurist"
    ]
   },
   {
@@ -364,6 +499,21 @@
    ]
   },
   {
+   "id": "tokens-lab-notebook",
+   "title": "Lab Notebook design tokens",
+   "category": "Tokens",
+   "file": "tokens/lab-notebook.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "lab-notebook"
+   ],
+   "description": "W3C-format design tokens for the Lab Notebook DNA.",
+   "dnas": [
+    "lab-notebook"
+   ]
+  },
+  {
    "id": "tokens-laboratory-clean",
    "title": "Laboratory Clean design tokens",
    "category": "Tokens",
@@ -376,6 +526,36 @@
    "description": "W3C-format design tokens for the Laboratory Clean style DNA.",
    "dnas": [
     "laboratory-clean"
+   ]
+  },
+  {
+   "id": "tokens-laundromat-neon",
+   "title": "Laundromat Neon design tokens",
+   "category": "Tokens",
+   "file": "tokens/laundromat-neon.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "laundromat-neon"
+   ],
+   "description": "W3C-format design tokens for the Laundromat Neon DNA.",
+   "dnas": [
+    "laundromat-neon"
+   ]
+  },
+  {
+   "id": "tokens-library-oak",
+   "title": "Library Oak design tokens",
+   "category": "Tokens",
+   "file": "tokens/library-oak.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "library-oak"
+   ],
+   "description": "W3C-format design tokens for the Library Oak DNA.",
+   "dnas": [
+    "library-oak"
    ]
   },
   {
@@ -454,6 +634,36 @@
    ]
   },
   {
+   "id": "tokens-neon-diner",
+   "title": "Neon Diner design tokens",
+   "category": "Tokens",
+   "file": "tokens/neon-diner.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "neon-diner"
+   ],
+   "description": "W3C-format design tokens for the Neon Diner DNA.",
+   "dnas": [
+    "neon-diner"
+   ]
+  },
+  {
+   "id": "tokens-newsroom-wire",
+   "title": "Newsroom Wire design tokens",
+   "category": "Tokens",
+   "file": "tokens/newsroom-wire.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "newsroom-wire"
+   ],
+   "description": "W3C-format design tokens for the Newsroom Wire DNA.",
+   "dnas": [
+    "newsroom-wire"
+   ]
+  },
+  {
    "id": "tokens-nordic-noir",
    "title": "Nordic Noir design tokens",
    "category": "Tokens",
@@ -466,6 +676,51 @@
    "description": "W3C-format design tokens for the Nordic Noir style DNA.",
    "dnas": [
     "nordic-noir"
+   ]
+  },
+  {
+   "id": "tokens-observatory-star",
+   "title": "Observatory Star design tokens",
+   "category": "Tokens",
+   "file": "tokens/observatory-star.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "observatory-star"
+   ],
+   "description": "W3C-format design tokens for the Observatory Star DNA.",
+   "dnas": [
+    "observatory-star"
+   ]
+  },
+  {
+   "id": "tokens-origami-fold",
+   "title": "Origami Fold design tokens",
+   "category": "Tokens",
+   "file": "tokens/origami-fold.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "origami-fold"
+   ],
+   "description": "W3C-format design tokens for the Origami Fold DNA.",
+   "dnas": [
+    "origami-fold"
+   ]
+  },
+  {
+   "id": "tokens-paris-metro",
+   "title": "Paris Metro design tokens",
+   "category": "Tokens",
+   "file": "tokens/paris-metro.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "paris-metro"
+   ],
+   "description": "W3C-format design tokens for the Paris Metro DNA.",
+   "dnas": [
+    "paris-metro"
    ]
   },
   {
@@ -496,6 +751,21 @@
    "description": "W3C-format design tokens for the Pixel Arcade style DNA.",
    "dnas": [
     "pixel-arcade"
+   ]
+  },
+  {
+   "id": "tokens-pixel-garden",
+   "title": "Pixel Garden design tokens",
+   "category": "Tokens",
+   "file": "tokens/pixel-garden.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "pixel-garden"
+   ],
+   "description": "W3C-format design tokens for the Pixel Garden DNA.",
+   "dnas": [
+    "pixel-garden"
    ]
   },
   {
@@ -559,6 +829,21 @@
    ]
   },
   {
+   "id": "tokens-sauna-cedar",
+   "title": "Sauna Cedar design tokens",
+   "category": "Tokens",
+   "file": "tokens/sauna-cedar.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "sauna-cedar"
+   ],
+   "description": "W3C-format design tokens for the Sauna Cedar DNA.",
+   "dnas": [
+    "sauna-cedar"
+   ]
+  },
+  {
    "id": "tokens-scandi-calm",
    "title": "Scandi Calm design tokens",
    "category": "Tokens",
@@ -589,6 +874,36 @@
    ]
   },
   {
+   "id": "tokens-stadium-floodlight",
+   "title": "Stadium Floodlight design tokens",
+   "category": "Tokens",
+   "file": "tokens/stadium-floodlight.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "stadium-floodlight"
+   ],
+   "description": "W3C-format design tokens for the Stadium Floodlight DNA.",
+   "dnas": [
+    "stadium-floodlight"
+   ]
+  },
+  {
+   "id": "tokens-storybook-watercolor",
+   "title": "Storybook Watercolor design tokens",
+   "category": "Tokens",
+   "file": "tokens/storybook-watercolor.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "storybook-watercolor"
+   ],
+   "description": "W3C-format design tokens for the Storybook Watercolor DNA.",
+   "dnas": [
+    "storybook-watercolor"
+   ]
+  },
+  {
    "id": "tokens-surf-shack",
    "title": "Surf Shack design tokens",
    "category": "Tokens",
@@ -601,6 +916,21 @@
    "description": "W3C-format design tokens for the Surf Shack style DNA.",
    "dnas": [
     "surf-shack"
+   ]
+  },
+  {
+   "id": "tokens-swiss-airline",
+   "title": "Swiss Airline design tokens",
+   "category": "Tokens",
+   "file": "tokens/swiss-airline.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "swiss-airline"
+   ],
+   "description": "W3C-format design tokens for the Swiss Airline DNA.",
+   "dnas": [
+    "swiss-airline"
    ]
   },
   {
@@ -631,6 +961,21 @@
    "description": "W3C-format design tokens for the Swiss Rational style DNA.",
    "dnas": [
     "swiss-rational"
+   ]
+  },
+  {
+   "id": "tokens-tokyo-kissaten",
+   "title": "Tokyo Kissaten design tokens",
+   "category": "Tokens",
+   "file": "tokens/tokyo-kissaten.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "tokyo-kissaten"
+   ],
+   "description": "W3C-format design tokens for the Tokyo Kissaten DNA.",
+   "dnas": [
+    "tokyo-kissaten"
    ]
   },
   {
@@ -676,6 +1021,21 @@
    "description": "W3C-format design tokens for the Tropical Brutalism style DNA.",
    "dnas": [
     "tropical-brutalism"
+   ]
+  },
+  {
+   "id": "tokens-ukiyo-e-print",
+   "title": "Ukiyo-e Print design tokens",
+   "category": "Tokens",
+   "file": "tokens/ukiyo-e-print.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "ukiyo-e-print"
+   ],
+   "description": "W3C-format design tokens for the Ukiyo-e Print DNA.",
+   "dnas": [
+    "ukiyo-e-print"
    ]
   },
   {
