@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-tokyo-kissaten",
+  "title": "Tokyo Kissaten design tokens",
+  "category": "Tokens",
+  "file": "tokens/tokyo-kissaten.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "tokyo-kissaten"
+  ],
+  "description": "W3C-format design tokens for the Tokyo Kissaten DNA.",
+  "dnas": [
+   "tokyo-kissaten"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#171009",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#f3e4c8",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#d9a441",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#9a7c5e",
+   "type": "color"
+  },
+  "line": {
+   "value": "#d9a44155",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#171009",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Shippori Mincho",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Zen Kaku Gothic New",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "IBM Plex Mono",
+   "type": "fontFamily"
+  }
+ }
+}
