@@ -1,0 +1,309 @@
+<!--tz-meta {"id":"code-diff-viewer","title":"Code diff viewer","category":"App UI","file":"app-ui/code-diff-viewer.html","tags":["diff","code-review","git","developer-tools"],"description":"Retro-terminal diff viewer: file tabs, unified/split views, hunk collapse, j/k navigation, search, whitespace toggle, copy patch. All live.","dnas":["retro-terminal"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>diff — scheduler hotfix · keystone</title>
+<style>
+:root{--bg:#0b0f0a;--surface:#0e140d;--ink:#33ff66;--accent:#ffb000;--muted:#1f6b3a;--line:#33ff6633;
+  --add:#33ff66;--del:#ffb000}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  min-height:100dvh;font-size:13px}
+.tz-diff{min-height:100dvh;display:flex;flex-direction:column}
+.tz-head{padding:18px 24px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.tz-repo{font-size:15px;font-weight:700}
+.tz-repo span{color:var(--muted);font-weight:400}
+.tz-commit{font-size:12px;color:var(--muted)}
+.tz-commit b{color:var(--accent);font-weight:500}
+.tz-stats{margin-left:auto;font-size:12px;display:flex;gap:14px}
+.tz-stats .tz-a{color:var(--add)} .tz-stats .tz-d{color:var(--del)}
+.tz-toolbar{display:flex;align-items:center;gap:10px;padding:10px 24px;border-bottom:1px solid var(--line);
+  flex-wrap:wrap;background:var(--surface)}
+.tz-tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tz-tab{background:transparent;border:1px solid var(--line);color:var(--muted);font:inherit;font-size:12px;
+  padding:8px 14px;cursor:pointer}
+.tz-tab:hover{color:var(--ink)}
+.tz-tab[aria-selected="true"]{color:var(--accent);border-color:var(--accent)}
+.tz-tab .tz-n{opacity:.7;margin-left:8px}
+.tz-tools{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tz-tbtn{background:transparent;border:1px solid var(--line);color:var(--muted);font:inherit;font-size:12px;
+  padding:7px 12px;cursor:pointer}
+.tz-tbtn:hover{color:var(--ink);border-color:var(--muted)}
+.tz-tbtn[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+.tz-search{background:var(--bg);border:1px solid var(--line);color:var(--ink);font:inherit;font-size:12px;
+  padding:7px 12px;width:170px;outline:none}
+.tz-search:focus{border-color:var(--accent)}
+.tz-body{flex:1;overflow:auto;padding:0 0 40px}
+.tz-filehead{position:sticky;top:0;background:var(--surface);border-bottom:1px solid var(--line);
+  padding:10px 24px;display:flex;gap:14px;align-items:center;z-index:2;font-size:12px}
+.tz-filehead .tz-fn{color:var(--ink);font-weight:700}
+.tz-filehead .tz-fs{margin-left:auto;color:var(--muted)}
+.tz-hunk{border-bottom:1px solid var(--line)}
+.tz-hunkhead{background:#33ff660d;color:var(--muted);padding:7px 24px;cursor:pointer;font-size:12px;
+  display:flex;gap:10px;align-items:center;user-select:none}
+.tz-hunkhead:hover{color:var(--ink)}
+.tz-hunkhead .tz-caret{color:var(--accent);font-weight:700}
+.tz-hunk.tz-closed .tz-lines{display:none}
+.tz-lines{overflow-x:auto}
+.tz-row{display:flex;min-width:max-content}
+.tz-row .tz-g{width:52px;flex:0 0 52px;text-align:right;padding:3px 12px 3px 0;color:var(--muted);
+  user-select:none;background:#00000030}
+.tz-row .tz-t{padding:3px 24px 3px 12px;white-space:pre;flex:1}
+.tz-row.tz-add{background:#33ff6612}
+.tz-row.tz-add .tz-t{color:var(--add)}
+.tz-row.tz-del{background:#ffb0000d}
+.tz-row.tz-del .tz-t{color:var(--del)}
+.tz-row.tz-ctx .tz-t{color:#33ff6699}
+.tz-row.tz-cur{outline:1px solid var(--accent);outline-offset:-1px}
+.tz-row .tz-ws{background:#ffb00055;border-radius:2px}
+.tz-split{display:flex;min-width:max-content}
+.tz-pane{flex:1;min-width:0}
+.tz-pane .tz-row .tz-g{width:44px;flex-basis:44px}
+.tz-panehead{padding:6px 24px;color:var(--muted);font-size:11px;letter-spacing:.2em;border-bottom:1px solid var(--line)}
+mark{background:var(--accent);color:#0b0f0a;padding:0 1px}
+.tz-empty{padding:60px 24px;text-align:center;color:var(--muted)}
+.tz-foot{padding:12px 24px;border-top:1px solid var(--line);font-size:11px;color:var(--muted);
+  display:flex;gap:20px;flex-wrap:wrap;background:var(--surface)}
+.tz-foot b{color:var(--ink);font-weight:500}
+.tz-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--surface);
+  border:1px solid var(--accent);color:var(--accent);padding:10px 22px;font-size:13px;display:none;z-index:10}
+@media (max-width:640px){
+  .tz-head,.tz-toolbar{padding-left:14px;padding-right:14px}
+  .tz-filehead{padding-left:14px;padding-right:14px}
+  .tz-row .tz-t{padding-right:14px}
+  .tz-stats{margin-left:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-diff *{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+<div class="tz-diff">
+  <header class="tz-head">
+    <div class="tz-repo">keystone <span>/ pull #482</span></div>
+    <div class="tz-commit">commit <b>a3f9c1d</b> · "scheduler: add jitter to cron retries" · by you, 2h ago</div>
+    <div class="tz-stats"><span>3 files changed</span><span class="tz-a">+142</span><span class="tz-d">−67</span></div>
+  </header>
+  <div class="tz-toolbar">
+    <div class="tz-tabs" role="tablist" id="tabs"></div>
+    <div class="tz-tools">
+      <button class="tz-tbtn" id="viewBtn" type="button" aria-pressed="false">Split view</button>
+      <button class="tz-tbtn" id="wsBtn" type="button" aria-pressed="false">Show whitespace</button>
+      <button class="tz-tbtn" id="copyBtn" type="button">Copy patch</button>
+      <input class="tz-search" id="q" type="search" placeholder="/ search diff" aria-label="Search diff">
+    </div>
+  </div>
+  <div class="tz-body" id="body"></div>
+  <footer class="tz-foot">
+    <span><b>j</b>/<b>k</b> next/prev change</span>
+    <span><b>u</b> toggle unified/split</span>
+    <span><b>/</b> search</span>
+    <span><b>c</b> copy patch</span>
+    <span id="pos">change 1 of 23</span>
+  </footer>
+</div>
+<div class="tz-toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+var FILES=[
+{name:'src/scheduler.js',adds:64,dels:21,hunks:[
+ {h:'@@ -18,7 +18,14 @@ function scheduleRetry(job)',lines:[
+  {t:' ',o:18,n:18,x:'function scheduleRetry(job) {'},
+  {t:' ',o:19,n:19,x:'  const attempt = job.attempts + 1;'},
+  {t:'-',o:20,n:null,x:'  const delay = Math.pow(2, attempt) * 1000;'},
+  {t:'+',o:null,n:20,x:'  // exponential backoff with full jitter (AWS arch. blog)'},
+  {t:'+',o:null,n:21,x:'  const backoff = Math.pow(2, attempt) * 1000;'},
+  {t:'+',o:null,n:22,x:'  const delay = Math.random() * backoff;'},
+  {t:'+',o:null,n:23,x:'  const capped = Math.min(delay, MAX_RETRY_DELAY);'},
+  {t:' ',o:21,n:24,x:''},
+  {t:'-',o:22,n:null,x:'  return setTimeout(() => run(job), delay);'},
+  {t:'+',o:null,n:25,x:'  metrics.histogram("retry.delay", capped, { job: job.name });'},
+  {t:'+',o:null,n:26,x:'  return setTimeout(() => run(job), capped);'},
+  {t:' ',o:23,n:27,x:'}'}]},
+ {h:'@@ -44,10 +51,16 @@ function scheduleRetry(job)',lines:[
+  {t:' ',o:44,n:51,x:'function nextTick(cron) {'},
+  {t:'-',o:45,n:null,x:'  const next = cronParser.next(cron);'},
+  {t:'-',o:46,n:null,x:'  return next.getTime() - Date.now();'},
+  {t:'+',o:null,n:52,x:'  let next;'},
+  {t:'+',o:null,n:53,x:'  try {'},
+  {t:'+',o:null,n:54,x:'    next = cronParser.next(cron);'},
+  {t:'+',o:null,n:55,x:'  } catch (err) {'},
+  {t:'+',o:null,n:56,x:'    logger.warn({ cron }, "invalid cron expression, skipping tick");'},
+  {t:'+',o:null,n:57,x:'    return null;'},
+  {t:'+',o:null,n:58,x:'  }'},
+  {t:' ',o:47,n:59,x:'  const ms = next.getTime() - Date.now();'},
+  {t:'+',o:null,n:60,x:'  // never schedule in the past after clock skew'},
+  {t:'+',o:null,n:61,x:'  return Math.max(ms, 1000);'},
+  {t:' ',o:48,n:62,x:'}'}]}]},
+{name:'src/alerts.py',adds:48,dels:33,hunks:[
+ {h:'@@ -9,14 +9,18 @@ ALERT_TTL = 3600',lines:[
+  {t:' ',o:9,n:9,x:'ALERT_TTL = 3600'},
+  {t:'-',o:10,n:null,x:'seen = {}'},
+  {t:'+',o:null,n:10,x:'seen = {}  # fingerprint -> (first_seen_ts, count)'},
+  {t:' ',o:11,n:11,x:''},
+  {t:' ',o:12,n:12,x:'def fingerprint(alert):'},
+  {t:'-',o:13,n:null,x:'    return hash((alert["rule"], alert["target"]))'},
+  {t:'+',o:null,n:13,x:'    key = (alert["rule"], alert["target"], alert.get("severity", "warn"))'},
+  {t:'+',o:null,n:14,x:'    return hashlib.sha256(repr(key).encode()).hexdigest()[:16]'},
+  {t:' ',o:14,n:15,x:''},
+  {t:' ',o:15,n:16,x:'def should_alert(alert):'},
+  {t:'-',o:16,n:null,x:'    fp = fingerprint(alert)'},
+  {t:'-',o:17,n:null,x:'    if fp in seen:'},
+  {t:'-',o:18,n:null,x:'        return False'},
+  {t:'-',o:19,n:null,x:'    seen[fp] = time.time()'},
+  {t:'-',o:20,n:null,x:'    return True'},
+  {t:'+',o:null,n:17,x:'    fp = fingerprint(alert)'},
+  {t:'+',o:null,n:18,x:'    now = time.time()'},
+  {t:'+',o:null,n:19,x:'    first, count = seen.get(fp, (now, 0))'},
+  {t:'+',o:null,n:20,x:'    # escalate: re-alert every 15m while firing, with count'},
+  {t:'+',o:null,n:21,x:'    if now - first < DEDUPE_WINDOW and count > 0:'},
+  {t:'+',o:null,n:22,x:'        return False'},
+  {t:'+',o:null,n:23,x:'    seen[fp] = (first if count else now, count + 1)'},
+  {t:'+',o:null,n:24,x:'    alert["dedup_count"] = count + 1'},
+  {t:'+',o:null,n:25,x:'    return True'}]}]},
+{name:'README.md',adds:30,dels:13,hunks:[
+ {h:'@@ -88,15 +88,24 @@ backoff without jitter causes thundering herds.',lines:[
+  {t:' ',o:88,n:88,x:'backoff without jitter causes thundering herds.'},
+  {t:' ',o:89,n:89,x:''},
+  {t:'-',o:90,n:null,x:'## Retries'},
+  {t:'-',o:91,n:null,x:''},
+  {t:'-',o:92,n:null,x:'Failed jobs retry after 2^n seconds.'},
+  {t:'+',o:null,n:90,x:'## Retries'},
+  {t:'+',o:null,n:91,x:''},
+  {t:'+',o:null,n:92,x:'Failed jobs retry with exponential backoff and full jitter:'},
+  {t:'+',o:null,n:93,x:''},
+  {t:'+',o:null,n:94,x:'```'},
+  {t:'+',o:null,n:95,x:'delay = random() * min(2^attempt * 1000, 300000)'},
+  {t:'+',o:null,n:96,x:'```'},
+  {t:'+',o:null,n:97,x:''},
+  {t:' ',o:93,n:98,x:'Set `MAX_RETRY_DELAY` (default 300000ms) to cap the wait.'},
+  {t:'+',o:null,n:99,x:'Retry delays are recorded to the `retry.delay` histogram'},
+  {t:'+',o:null,n:100,x:'tagged by job name.'},
+  {t:' ',o:94,n:101,x:''},
+  {t:'-',o:95,n:null,x:'Invalid cron expressions crash the scheduler.'},
+  {t:'+',o:null,n:102,x:'Invalid cron expressions are logged and skipped instead of'},
+  {t:'+',o:null,n:103,x:'crashing the scheduler.'}]}]}];
+
+var st={file:0,split:false,ws:false,q:'',cur:0},
+    tabs=document.getElementById('tabs'),body=document.getElementById('body'),
+    toast=document.getElementById('toast');
+
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function showToast(t){toast.textContent=t;toast.style.display='block';
+  clearTimeout(showToast._t);showToast._t=setTimeout(function(){toast.style.display='none';},1800);}
+
+function hl(text){
+  var out=esc(text);
+  if(st.ws)out=out.replace(/( +)$/,'<span class="tz-ws">$1</span>').replace(/(\t)/g,'<span class="tz-ws">⇥</span>');
+  if(st.q){var q=st.q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    out=out.replace(new RegExp('('+q+')','gi'),'<mark>$1</mark>');}
+  return out;
+}
+function rowUni(l){
+  var cls=l.t==='+'?'tz-add':l.t==='-'?'tz-del':'tz-ctx';
+  return '<div class="tz-row '+cls+(l.t!== ' '?' tz-change':'')+'">'+
+    '<span class="tz-g">'+(l.o==null?'':l.o)+'</span>'+
+    '<span class="tz-g">'+(l.n==null?'':l.n)+'</span>'+
+    '<span class="tz-t">'+l.t+hl(l.x)+'</span></div>';
+}
+function render(){
+  tabs.innerHTML='';
+  FILES.forEach(function(f,i){
+    var b=document.createElement('button');b.type='button';b.className='tz-tab';
+    b.setAttribute('role','tab');b.setAttribute('aria-selected',String(i===st.file));
+    b.innerHTML=esc(f.name)+'<span class="tz-n">+'+f.adds+'/−'+f.dels+'</span>';
+    b.addEventListener('click',function(){st.file=i;st.cur=0;render();});
+    tabs.appendChild(b);
+  });
+  var f=FILES[st.file],html='';
+  html+='<div class="tz-filehead"><span class="tz-fn">'+esc(f.name)+'</span>'+
+        '<span class="tz-fs">+'+f.adds+' −'+f.dels+'</span></div>';
+  var matchCount=0;
+  f.hunks.forEach(function(h,hi){
+    html+='<div class="tz-hunk" data-h="'+hi+'"><div class="tz-hunkhead" role="button" tabindex="0" '+
+          'aria-expanded="true"><span class="tz-caret">▾</span><span>'+esc(h.h)+'</span></div>'+
+          '<div class="tz-lines">';
+    if(st.split){
+      var left='',right='';
+      h.lines.forEach(function(l){
+        if(l.t==='+' ){left+='<div class="tz-row"><span class="tz-g"></span><span class="tz-t"> </span></div>';
+                       right+='<div class="tz-row tz-add tz-change"><span class="tz-g">'+l.n+'</span><span class="tz-t">+'+hl(l.x)+'</span></div>';}
+        else if(l.t==='-'){left+='<div class="tz-row tz-del tz-change"><span class="tz-g">'+l.o+'</span><span class="tz-t">-'+hl(l.x)+'</span></div>';
+                       right+='<div class="tz-row"><span class="tz-g"></span><span class="tz-t"> </span></div>';}
+        else{var r='<div class="tz-row tz-ctx"><span class="tz-g">'+(l.o==null?'':l.o)+'</span><span class="tz-t"> '+hl(l.x)+'</span></div>';
+             left+=r;right+=r.replace(new RegExp('<span class="tz-g">'+(l.o==null?'':l.o)+'</span>'),
+                                     '<span class="tz-g">'+(l.n==null?'':l.n)+'</span>');}
+      });
+      html+='<div class="tz-split"><div class="tz-pane"><div class="tz-panehead">BEFORE</div>'+left+
+            '</div><div class="tz-pane"><div class="tz-panehead">AFTER</div>'+right+'</div></div>';
+    }else{
+      h.lines.forEach(function(l){html+=rowUni(l);});
+    }
+    html+='</div></div>';
+  });
+  if(st.q){
+    var re=new RegExp(st.q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'i');
+    matchCount=f.hunks.reduce(function(a,h){return a+h.lines.filter(function(l){return re.test(l.x);}).length;},0);
+    if(!matchCount)html='<div class="tz-empty">no matches for "'+esc(st.q)+'" in '+esc(f.name)+'</div>';
+  }
+  body.innerHTML=html;
+  body.querySelectorAll('.tz-hunkhead').forEach(function(hd){
+    function tg(){var h=hd.parentElement,open=h.classList.toggle('tz-closed');
+      hd.setAttribute('aria-expanded',String(!open));
+      hd.querySelector('.tz-caret').textContent=open?'▸':'▾';}
+    hd.addEventListener('click',tg);
+    hd.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();tg();}});
+  });
+  syncPos();
+}
+function changes(){return Array.prototype.slice.call(body.querySelectorAll('.tz-change'));}
+function syncPos(){
+  var c=changes();
+  c.forEach(function(el,i){el.classList.toggle('tz-cur',i===st.cur);});
+  var el=c[st.cur];
+  if(el)el.scrollIntoView({block:'nearest'});
+  document.getElementById('pos').textContent=c.length?('change '+(st.cur+1)+' of '+c.length):'no changes';
+}
+function step(d){
+  var c=changes();if(!c.length)return;
+  st.cur=(st.cur+d+c.length)%c.length;syncPos();
+}
+document.getElementById('viewBtn').addEventListener('click',function(){
+  st.split=!st.split;this.setAttribute('aria-pressed',String(st.split));
+  this.textContent=st.split?'Unified view':'Split view';st.cur=0;render();});
+document.getElementById('wsBtn').addEventListener('click',function(){
+  st.ws=!st.ws;this.setAttribute('aria-pressed',String(st.ws));render();});
+function patchText(){
+  var f=FILES[st.file],out='diff --git a/'+f.name+' b/'+f.name+'\n';
+  f.hunks.forEach(function(h){out+=h.h+'\n';
+    h.lines.forEach(function(l){out+=l.t+l.x+'\n';});});
+  return out;
+}
+function copyPatch(){
+  var t=patchText();
+  function done(){showToast('Patch copied — '+FILES[st.file].name);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(t).then(done,function(){fallback();});
+  }else fallback();
+  function fallback(){var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);
+    ta.select();try{document.execCommand('copy');done();}catch(e){showToast('Copy failed — select manually');}
+    document.body.removeChild(ta);}
+}
+document.getElementById('copyBtn').addEventListener('click',copyPatch);
+document.getElementById('q').addEventListener('input',function(){st.q=this.value.trim();render();});
+document.addEventListener('keydown',function(e){
+  if(/INPUT|TEXTAREA/.test(document.activeElement.tagName)&&e.key!=='Escape')return;
+  if(e.key==='j')step(1);else if(e.key==='k')step(-1);
+  else if(e.key==='u')document.getElementById('viewBtn').click();
+  else if(e.key==='c')copyPatch();
+  else if(e.key==='/'){e.preventDefault();document.getElementById('q').focus();}
+});
+render();
+})();
+</script>
+</body>
+</html>
