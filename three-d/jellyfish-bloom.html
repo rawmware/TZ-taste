@@ -1,0 +1,199 @@
+<!--tz-meta {"id":"jellyfish-bloom","title":"Jellyfish Bloom","category":"3D","file":"three-d/jellyfish-bloom.html","tags":["threejs","ocean"],"description":"Translucent bells pulse and rise, trailing ribbons of tentacles.","dnas":["glass-calm"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Jellyfish Bloom — TZ-taste</title>
+<style>
+  html, body { margin:0; height:100%; overflow:hidden; background:#04101d; }
+  #app { position:fixed; inset:0; }
+  #app canvas { display:block; }
+  .caption { position:fixed; left:18px; bottom:16px; z-index:5; color:#9fc6e8;
+    font:12px/1.6 system-ui, -apple-system, sans-serif; letter-spacing:.05em;
+    opacity:.9; pointer-events:none; }
+  .caption b { display:block; font-size:13px; letter-spacing:.22em; text-transform:uppercase; }
+  #fallback { display:none; position:fixed; inset:0; z-index:10; place-items:center;
+    color:#9fc6e8; font:14px/1.6 system-ui, sans-serif; text-align:center;
+    padding:32px; background:#04101d; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="caption"><b>Jellyfish Bloom</b>no hurry, no hunger — just the long way up<br/>drag to orbit &middot; scroll to zoom</div>
+<div id="fallback"><p>This scene needs WebGL, which your browser could not provide.<br/>Try a recent version of Chrome, Safari, Firefox or Edge.</p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (e) {
+  document.getElementById('fallback').style.display = 'grid';
+  throw e;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('app').appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x04101d);
+scene.fog = new THREE.FogExp2(0x04101d, 0.02);
+
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 300);
+camera.position.set(0, 1.5, 17);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.target.set(0, 1, 0);
+controls.minDistance = 5;
+controls.maxDistance = 45;
+
+scene.add(new THREE.HemisphereLight(0x2a4a66, 0x05070c, 0.75));
+const topLight = new THREE.DirectionalLight(0x88bbff, 0.55);
+topLight.position.set(4, 18, 6);
+scene.add(topLight);
+const underGlow = new THREE.PointLight(0x3fb8ff, 26, 34, 1.8);
+underGlow.position.set(0, -5, 2);
+scene.add(underGlow);
+
+/* faint god rays */
+const rayMat = new THREE.MeshBasicMaterial({ color: 0x9fd4ff, transparent: true,
+  opacity: 0.045, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide, fog: false });
+for (let i = 0; i < 3; i++) {
+  const ray = new THREE.Mesh(new THREE.ConeGeometry(3.2, 26, 12, 1, true), rayMat);
+  ray.position.set(-7 + i * 7, 9, -6 - i * 2);
+  ray.rotation.z = 0.08 * (i - 1);
+  scene.add(ray);
+}
+
+/* ---------- jellyfish ---------- */
+const TENT = 14;
+function makeJelly(color, size) {
+  const g = new THREE.Group();
+  const bellMat = new THREE.MeshStandardMaterial({ color, transparent: true, opacity: 0.42,
+    roughness: 0.25, emissive: color, emissiveIntensity: 0.55,
+    side: THREE.DoubleSide, depthWrite: false });
+  const bell = new THREE.Mesh(new THREE.SphereGeometry(1, 28, 14, 0, Math.PI * 2, 0, Math.PI * 0.52), bellMat);
+  bell.scale.setScalar(size);
+  g.add(bell);
+  const core = new THREE.Mesh(new THREE.SphereGeometry(0.42, 16, 10, 0, Math.PI * 2, 0, Math.PI * 0.6),
+    new THREE.MeshStandardMaterial({ color, transparent: true, opacity: 0.5,
+      emissive: color, emissiveIntensity: 1.25, depthWrite: false }));
+  core.scale.setScalar(size);
+  core.position.y = 0.12 * size;
+  g.add(core);
+
+  const tentacles = [];
+  const lineMat = new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.55 });
+  const rimR = Math.sin(Math.PI * 0.52) * size;
+  const rimY = Math.cos(Math.PI * 0.52) * size;
+  for (let k = 0; k < 9; k++) {
+    const a = (k / 9) * Math.PI * 2;
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(TENT * 3), 3));
+    const line = new THREE.Line(geo, lineMat);
+    g.add(line);
+    tentacles.push({ line, ang: a, r0: rimR, y0: rimY, phase: Math.random() * 6.28,
+      len: (0.9 + Math.random() * 0.9) * size });
+  }
+  // oral arms: shorter, brighter, center
+  const armMat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.4 });
+  for (let k = 0; k < 4; k++) {
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(8 * 3), 3));
+    const line = new THREE.Line(geo, armMat);
+    g.add(line);
+    tentacles.push({ line, ang: (k / 4) * Math.PI * 2 + 0.4, r0: 0.18 * size, y0: 0.35 * size,
+      phase: Math.random() * 6.28, len: 0.55 * size, arm: true });
+  }
+  scene.add(g);
+  return { group: g, bell, core, tentacles, size,
+    speed: 0.9 + Math.random() * 0.7, phase: Math.random() * 6.28,
+    rise: 0.25 + Math.random() * 0.3 };
+}
+const jellies = [
+  [0xff9ec7, 1.35, -5.5, 2.5, -4], [0xc39bff, 1.0, 4.5, 0.5, -6],
+  [0x9be8ff, 1.6, 0.5, 4.5, -3],  [0xffb27d, 0.8, -3.0, -1.5, 2],
+  [0x8ff5d2, 1.1, 6.0, 3.0, 1],   [0xff8f9e, 0.9, 2.0, 5.5, -7],
+].map(([c, s, x, y, z]) => {
+  const j = makeJelly(c, s);
+  j.group.position.set(x, y, z);
+  j.homeX = x; j.homeZ = z;
+  return j;
+});
+
+/* marine snow */
+const SNOW_N = 280;
+const snowPos = new Float32Array(SNOW_N * 3);
+for (let i = 0; i < SNOW_N; i++) {
+  snowPos[i*3] = (Math.random() - 0.5) * 46;
+  snowPos[i*3+1] = Math.random() * 24 - 9;
+  snowPos[i*3+2] = (Math.random() - 0.5) * 40;
+}
+const snowGeo = new THREE.BufferGeometry();
+snowGeo.setAttribute('position', new THREE.BufferAttribute(snowPos, 3));
+scene.add(new THREE.Points(snowGeo, new THREE.PointsMaterial({
+  color: 0xbcd8f0, size: 0.08, transparent: true, opacity: 0.5, depthWrite: false })));
+
+/* ---------- frame loop ---------- */
+const clock = new THREE.Clock();
+function renderFrame(t, dt) {
+  for (const j of jellies) {
+    const pulse = Math.sin(t * j.speed + j.phase); // -1..1
+    j.bell.scale.set(j.size * (1 - pulse * 0.09), j.size * (1 + pulse * 0.17), j.size * (1 - pulse * 0.09));
+    j.core.material.emissiveIntensity = 1.1 + pulse * 0.5;
+    const gp = j.group.position;
+    gp.y += dt * j.rise * (1 + pulse * 0.35);
+    gp.x = j.homeX + Math.sin(t * 0.3 + j.phase) * 1.4;
+    gp.z = j.homeZ + Math.cos(t * 0.24 + j.phase) * 1.2;
+    if (gp.y > 10.5) gp.y = -8.5;
+
+    for (const tn of j.tentacles) {
+      const pos = tn.line.geometry.attributes.position;
+      const n = pos.count;
+      for (let k = 0; k < n; k++) {
+        const f = k / (n - 1);
+        const sway = Math.sin(t * 2.0 + tn.phase + k * 0.55) * 0.1 * f;
+        const sway2 = Math.cos(t * 1.6 + tn.phase + k * 0.45) * 0.1 * f;
+        pos.setXYZ(k,
+          Math.cos(tn.ang) * tn.r0 * (1 - f * 0.35) + sway,
+          tn.y0 - f * tn.len * (1 + pulse * 0.08),
+          Math.sin(tn.ang) * tn.r0 * (1 - f * 0.35) + sway2);
+      }
+      pos.needsUpdate = true;
+    }
+  }
+  const sp = snowGeo.attributes.position;
+  for (let i = 0; i < SNOW_N; i++) {
+    let y = sp.getY(i) - dt * 0.22;
+    if (y < -9) y = 15;
+    sp.setY(i, y);
+  }
+  sp.needsUpdate = true;
+
+  controls.update();
+  renderer.render(scene, camera);
+}
+if (REDUCED) {
+  renderFrame(0, 0);
+} else {
+  renderer.setAnimationLoop(() => {
+  const dt = Math.min(clock.getDelta(), 0.05);
+  renderFrame(clock.elapsedTime, dt);
+});
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
