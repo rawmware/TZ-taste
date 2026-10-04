@@ -1,0 +1,154 @@
+<!--tz-meta {"id":"notification-center","title":"Notification center","category":"App UI","file":"app-ui/notification-center.html","tags":["notifications","inbox","alerts","timeline"],"description":"Transit-map notification rail: time-grouped alerts on a station-dot timeline with red unread marks.","dnas":["transit-swiss"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Northline — Notifications</title>
+<style>
+body{margin:0;background:#ffffff}
+.tz-notif{--bg:#ffffff;--ink:#111417;--accent:#d0342c;--muted:#5c6670;--line:#dfe3e6;--wash:#f4f6f7;
+  background:var(--bg);color:var(--ink);min-height:100dvh;
+  font-family:"DM Sans",-apple-system,"Segoe UI",sans-serif}
+.tz-wrap{max-width:680px;margin:0 auto;padding:44px 24px 72px}
+.tz-head{display:flex;align-items:center;gap:14px;margin-bottom:6px;flex-wrap:wrap}
+.tz-head h1{font-family:Archivo,-apple-system,"Segoe UI",sans-serif;font-size:clamp(28px,5vw,38px);
+  font-weight:700;letter-spacing:-.02em;margin:0}
+.tz-unread{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;font-weight:500;
+  letter-spacing:.1em;background:var(--accent);color:#fff;border-radius:2px;padding:5px 10px}
+.tz-markall{margin-left:auto;font:inherit;font-size:13px;font-weight:600;color:var(--ink);
+  background:none;border:1px solid var(--line);border-radius:2px;padding:10px 16px;cursor:pointer;
+  transition:border-color .16s ease,transform .16s cubic-bezier(.22,1,.36,1)}
+.tz-markall:hover{border-color:var(--ink);transform:translateY(-1px)}
+.tz-sub{color:var(--muted);font-size:14px;margin:0 0 30px}
+.tz-group{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.24em;
+  color:var(--muted);margin:34px 0 4px;display:flex;align-items:center;gap:12px}
+.tz-group::after{content:"";flex:1;height:1px;background:var(--line)}
+.tz-list{list-style:none;margin:0;padding:0;position:relative}
+.tz-list::before{content:"";position:absolute;left:26px;top:14px;bottom:14px;width:2px;background:var(--line)}
+.tz-item{position:relative;display:flex;gap:18px;padding:16px 8px 16px 0;border-bottom:1px solid var(--line);
+  transition:background .15s ease}
+.tz-item:last-child{border-bottom:0}
+.tz-item:hover{background:var(--wash)}
+.tz-station{flex:0 0 52px;display:flex;justify-content:center;position:relative;z-index:1}
+.tz-node{width:20px;height:20px;border-radius:50%;border:2px solid var(--muted);background:var(--bg);margin-top:3px}
+.tz-item.tz-un .tz-node{border-color:var(--accent)}
+.tz-item.tz-un .tz-node::after{content:"";display:block;width:8px;height:8px;border-radius:50%;
+  background:var(--accent);margin:4px auto}
+.tz-ico{width:34px;height:34px;flex:0 0 auto;border:1px solid var(--line);border-radius:2px;
+  display:flex;align-items:center;justify-content:center;color:var(--muted);background:var(--bg)}
+.tz-ico svg{width:17px;height:17px;stroke-width:1.5}
+.tz-item.tz-un .tz-ico{color:var(--accent);border-color:var(--accent)}
+.tz-body{flex:1;min-width:0}
+.tz-title{font-size:15px;font-weight:700;margin:0 0 4px;line-height:1.35}
+.tz-item.tz-un .tz-title{font-weight:700}
+.tz-text{font-size:14px;color:var(--muted);margin:0 0 6px;line-height:1.5;max-width:52ch}
+.tz-time{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.1em;color:var(--muted)}
+.tz-foot{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);display:flex;
+  justify-content:space-between;gap:10px;flex-wrap:wrap;
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.12em;color:var(--muted)}
+@media (max-width:520px){
+  .tz-wrap{padding:32px 16px 56px}
+  .tz-item{gap:12px}
+  .tz-list::before{left:22px}
+  .tz-station{flex-basis:44px}
+  .tz-ico{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-notif *,.tz-notif *::before,.tz-notif *::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="tz-notif">
+  <div class="tz-wrap">
+    <div class="tz-head">
+      <h1>Notifications</h1>
+      <span class="tz-unread">4 UNREAD</span>
+      <button class="tz-markall" type="button">Mark all read</button>
+    </div>
+    <p class="tz-sub">Service alerts and trip updates for your saved lines.</p>
+
+    <h2 class="tz-group">TODAY · SAT OCT 3</h2>
+    <ul class="tz-list">
+      <li class="tz-item tz-un">
+        <span class="tz-station" aria-hidden="true"><span class="tz-node"></span></span>
+        <span class="tz-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3L2 20h20z"/><path d="M12 10v4m0 3v.5"/></svg></span>
+        <div class="tz-body">
+          <p class="tz-title">Red Line delays</p>
+          <p class="tz-text">Delays of 10–15 minutes between Park St and Alewife due to signal work. The 77 bus is accepting rail passes.</p>
+          <span class="tz-time">8:42 AM</span>
+        </div>
+      </li>
+      <li class="tz-item tz-un">
+        <span class="tz-station" aria-hidden="true"><span class="tz-node"></span></span>
+        <span class="tz-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21s-7-5.5-7-11a7 7 0 0114 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+        <div class="tz-body">
+          <p class="tz-title">Your stop is next: Davis</p>
+          <p class="tz-text">Doors open on the right. Transfer to the 88 and 90 buses one level up.</p>
+          <span class="tz-time">8:31 AM</span>
+        </div>
+      </li>
+      <li class="tz-item">
+        <span class="tz-station" aria-hidden="true"><span class="tz-node"></span></span>
+        <span class="tz-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 12l5 5L20 7"/></svg></span>
+        <div class="tz-body">
+          <p class="tz-title">Service alert cleared</p>
+          <p class="tz-text">Blue Line running on schedule as of 7:15 AM. Thanks for your patience.</p>
+          <span class="tz-time">7:20 AM</span>
+        </div>
+      </li>
+    </ul>
+
+    <h2 class="tz-group">YESTERDAY · FRI OCT 2</h2>
+    <ul class="tz-list">
+      <li class="tz-item tz-un">
+        <span class="tz-station" aria-hidden="true"><span class="tz-node"></span></span>
+        <span class="tz-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span>
+        <div class="tz-body">
+          <p class="tz-title">Weekend schedule published</p>
+          <p class="tz-text">Saturday service starts at 6:12 AM from Alewife. First bus bridge runs at 12:40 AM.</p>
+          <span class="tz-time">6:05 PM</span>
+        </div>
+      </li>
+      <li class="tz-item">
+        <span class="tz-station" aria-hidden="true"><span class="tz-node"></span></span>
+        <span class="tz-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 8a2 2 0 012-2h12a2 2 0 012 2v2a2 2 0 000 4v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2a2 2 0 000-4z"/><path d="M13 6v12" stroke-dasharray="2 2"/></svg></span>
+        <div class="tz-body">
+          <p class="tz-title">Fare capping reached</p>
+          <p class="tz-text">You've hit the $90 monthly cap. The rest of October rides free.</p>
+          <span class="tz-time">9:14 AM</span>
+        </div>
+      </li>
+    </ul>
+
+    <h2 class="tz-group">EARLIER THIS WEEK</h2>
+    <ul class="tz-list">
+      <li class="tz-item tz-un">
+        <span class="tz-station" aria-hidden="true"><span class="tz-node"></span></span>
+        <span class="tz-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.5 6.5a4 4 0 015.6 4.9L21 12l-1.5 1.5a4 4 0 01-5.6 4.9L12 16.5l-3 3-2-2 3-3-3.5-3.5a4 4 0 015.6-4.9z" transform="rotate(0)"/><path d="M4 20l4-1 9-9"/></svg></span>
+        <div class="tz-body">
+          <p class="tz-title">Planned work: Oct 10–11</p>
+          <p class="tz-text">Buses replace trains between Harvard and Alewife after 9 PM both nights. Plan an extra 20 minutes.</p>
+          <span class="tz-time">THU 4:48 PM</span>
+        </div>
+      </li>
+      <li class="tz-item">
+        <span class="tz-station" aria-hidden="true"><span class="tz-node"></span></span>
+        <span class="tz-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span>
+        <div class="tz-body">
+          <p class="tz-title">New arrival boards at Porter</p>
+          <p class="tz-text">Real-time boards are live on both platforms, plus audio announcements every 3 minutes.</p>
+          <span class="tz-time">THU 11:02 AM</span>
+        </div>
+      </li>
+    </ul>
+
+    <div class="tz-foot">
+      <span>NORTHLINE TRANSIT · ALERTS FEED V3</span>
+      <span>7 NOTIFICATIONS · 4 UNREAD</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>
