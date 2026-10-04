@@ -1,0 +1,95 @@
+{
+ "_tzmeta": {
+  "id": "vscode-bauhaus-primary",
+  "title": "Bauhaus Primary VS Code theme",
+  "category": "VS Code",
+  "file": "vscode/bauhaus-primary.json",
+  "tags": [
+   "vscode",
+   "theme",
+   "bauhaus-primary"
+  ],
+  "description": "VS Code color theme from the Bauhaus Primary DNA tokens.",
+  "dnas": [
+   "bauhaus-primary"
+  ]
+ },
+ "name": "TZ Bauhaus Primary",
+ "type": "light",
+ "colors": {
+  "editor.background": "#f4f1ea",
+  "editor.foreground": "#1a1a1a",
+  "editorLineNumber.foreground": "#6e6a60",
+  "editorCursor.foreground": "#d8342c",
+  "activityBar.background": "#f4f1ea",
+  "activityBar.foreground": "#1a1a1a",
+  "sideBar.background": "#f4f1ea",
+  "statusBar.background": "#d8342c",
+  "statusBar.foreground": "#f4f1ea",
+  "tab.activeBackground": "#f4f1ea",
+  "tab.inactiveBackground": "#f4f1ea",
+  "editorGroupHeader.tabsBackground": "#f4f1ea",
+  "terminal.background": "#f4f1ea",
+  "terminal.foreground": "#1a1a1a",
+  "panel.background": "#f4f1ea",
+  "editorWidget.background": "#f4f1ea",
+  "pickerGroup.foreground": "#d8342c",
+  "progressBar.background": "#d8342c",
+  "focusBorder": "#1a1a1a"
+ },
+ "tokenColors": [
+  {
+   "scope": [
+    "comment"
+   ],
+   "settings": {
+    "foreground": "#6e6a60",
+    "fontStyle": "italic"
+   }
+  },
+  {
+   "scope": [
+    "keyword",
+    "storage"
+   ],
+   "settings": {
+    "foreground": "#d8342c"
+   }
+  },
+  {
+   "scope": [
+    "string"
+   ],
+   "settings": {
+    "foreground": "#1a1a1a"
+   }
+  },
+  {
+   "scope": [
+    "variable",
+    "identifier"
+   ],
+   "settings": {
+    "foreground": "#1a1a1a"
+   }
+  },
+  {
+   "scope": [
+    "entity.name.function"
+   ],
+   "settings": {
+    "foreground": "#d8342c",
+    "fontStyle": "bold"
+   }
+  },
+  {
+   "scope": [
+    "entity.name.type",
+    "support.type"
+   ],
+   "settings": {
+    "foreground": "#6e6a60"
+   }
+  }
+ ]
+}
