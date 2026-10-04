@@ -1,5 +1,5 @@
 {
- "count": 30,
+ "count": 33,
  "note": "Licenses verified against official repos/docs; re-verified by weekly CI freshness checks. 'paid-reference' marks a paid service included for context — TZ-taste exists as its free alternative.",
  "sources": [
   {
@@ -443,6 +443,52 @@
    "tags": [
     "images",
     "performance"
+   ]
+  },
+  {
+   "id": "babylonjs",
+   "name": "Babylon.js",
+   "url": "https://www.babylonjs.com",
+   "license": "Apache-2.0",
+   "cost": "free",
+   "category": "3d",
+   "what": "Full-featured open-source 3D engine (Apache-2.0). The Playground is a live scene laboratory.",
+   "grab": "Study playground.babylonjs.com scenes for lighting/particle/camera principles; write your own code.",
+   "github": "BabylonJS/Babylon.js",
+   "tags": [
+    "3d",
+    "webgl",
+    "engine"
+   ]
+  },
+  {
+   "id": "babylon-playground",
+   "name": "Babylon.js Playground",
+   "url": "https://doc.babylonjs.com/playground",
+   "license": "Apache-2.0 (engine)",
+   "cost": "free",
+   "category": "3d",
+   "what": "Thousands of live, editable 3D scenes. Learn from them; do not repackage community snippets.",
+   "grab": "Search scenes by technique (particles, glow, physics) and rebuild the idea originally.",
+   "tags": [
+    "3d",
+    "playground",
+    "learn"
+   ]
+  },
+  {
+   "id": "openprocessing",
+   "name": "OpenProcessing",
+   "url": "https://openprocessing.org/discover/#/trending",
+   "license": "Varies (per-sketch)",
+   "cost": "free",
+   "category": "generative",
+   "what": "Trending p5.js creative-coding sketches. Study generative principles; check each sketch's license.",
+   "grab": "Flow fields, particle systems, geometric rhythm — rebuild the principle, never the sketch.",
+   "tags": [
+    "generative",
+    "p5js",
+    "inspiration"
    ]
   }
  ],
