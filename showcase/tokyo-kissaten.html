@@ -1,0 +1,109 @@
+<!--tz-meta {"id":"showcase-tokyo-kissaten","title":"Tokyo Kissaten showcase","category":"Showcase","file":"showcase/tokyo-kissaten.html","tags":["tokyo-kissaten"],"description":"Live demo page for the Tokyo Kissaten style DNA.","dnas":["tokyo-kissaten"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tokyo Kissaten — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#171009; --tz-surface:#241a0f; --tz-ink:#f3e4c8; --tz-muted:#9a7c5e;
+  --tz-accent:#d9a441; --tz-line:#d9a44155;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Zen Kaku Gothic New",sans-serif;font-size:1rem;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;animation:tz-dim 1000ms ease-out both}
+@keyframes tz-dim{from{opacity:0}to{opacity:1}}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 6vw;font-family:"IBM Plex Mono",monospace;font-size:0.7rem;letter-spacing:0.12em;color:var(--tz-muted)}
+.tz-wordmark{font-family:"Shippori Mincho",serif;font-weight:700;font-size:1.05rem;color:var(--tz-ink);letter-spacing:0.06em}
+.tz-hero{display:grid;grid-template-columns:auto 1fr;gap:3rem;padding:4rem 6vw 3rem;max-width:1100px;margin:0 auto}
+.tz-noren{writing-mode:vertical-rl;font-family:"Shippori Mincho",serif;font-size:1.5rem;letter-spacing:0.5em;color:var(--tz-accent);border-right:1px solid var(--tz-line);padding-right:1.2rem;justify-self:start}
+.tz-eyebrow{font-family:"IBM Plex Mono",monospace;font-size:0.7rem;letter-spacing:0.18em;color:var(--tz-accent);margin-bottom:1.2rem}
+.tz-hero h1{font-family:"Shippori Mincho",serif;font-weight:700;font-size:clamp(2.6rem,7vw,4.8rem);line-height:1.25}
+.tz-sub{margin-top:1.4rem;color:var(--tz-muted);max-width:44ch}
+.tz-hours{margin-top:1.4rem;font-family:"IBM Plex Mono",monospace;font-size:0.78rem;letter-spacing:0.08em;color:var(--tz-muted)}
+.tz-hours strong{color:var(--tz-accent);font-weight:500}
+.tz-cta{display:inline-block;margin-top:2rem;background:transparent;color:var(--tz-accent);font-family:"Shippori Mincho",serif;font-weight:700;font-size:1rem;letter-spacing:0.06em;text-decoration:none;padding:0.9rem 2.2rem;border:1px solid var(--tz-accent);transition:background .25s ease,color .25s ease}
+.tz-cta:hover{background:var(--tz-accent);color:var(--tz-bg)}
+.tz-content{padding:2rem 6vw 1rem;max-width:1100px;margin:0 auto}
+.tz-board{background:var(--tz-surface);border:1px solid var(--tz-accent);padding:2.2rem;box-shadow:0 0 34px #d9a44122}
+.tz-board h2{font-family:"Shippori Mincho",serif;font-weight:700;font-size:1.6rem;color:var(--tz-accent);margin-bottom:0.4rem}
+.tz-board .tz-sub2{font-family:"IBM Plex Mono",monospace;font-size:0.68rem;letter-spacing:0.16em;color:var(--tz-muted);margin-bottom:1.6rem}
+.tz-board ul{list-style:none}
+.tz-board li{display:flex;align-items:baseline;gap:0.8rem;padding:0.85rem 0;border-bottom:1px solid var(--tz-line)}
+.tz-item{font-size:1.02rem}
+.tz-dots{flex:1;border-bottom:1px dotted var(--tz-muted)}
+.tz-price{font-family:"IBM Plex Mono",monospace;font-size:0.85rem;color:var(--tz-accent)}
+.tz-rule{margin:3rem auto 0;max-width:480px;border:1px solid var(--tz-line);padding:1.6rem 2rem;text-align:center}
+.tz-rule h2{font-family:"IBM Plex Mono",monospace;font-size:0.66rem;letter-spacing:0.2em;color:var(--tz-muted);font-weight:400;margin-bottom:0.7rem}
+.tz-rule p{font-family:"Shippori Mincho",serif;font-size:1.25rem;color:var(--tz-ink)}
+.tz-tokens{padding:3.5rem 6vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Shippori Mincho",serif;font-weight:700;font-size:1.6rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"IBM Plex Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"IBM Plex Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 6vw;border-top:1px solid var(--tz-line);font-family:"IBM Plex Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-hero{grid-template-columns:1fr;gap:1.5rem}
+  .tz-noren{writing-mode:horizontal-tb;border-right:none;border-bottom:1px solid var(--tz-line);padding:0 0 0.8rem;letter-spacing:0.3em;font-size:1.1rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">KISSATEN REN</span>
+  <span>EST. 1968 · TZ-taste style DNA</span>
+</header>
+
+<section class="tz-hero">
+  <p class="tz-noren" aria-label="Showa-era coffee house">昭和の喫茶店</p>
+  <div>
+    <p class="tz-eyebrow">JIMBOCHO, TOKYO · 14 SEATS · NO WI-FI</p>
+    <h1>Slow coffee,<br>since 1968.</h1>
+    <p class="tz-sub">Siphon brewers, velvet booths, and jazz at a volume you can talk under. Time moves at pour-over speed here.</p>
+    <p class="tz-hours">OPEN 10:00–22:00 · <strong>TODAY'S SPECIAL: BLEND NO. 3</strong> · CLOSED MONDAYS</p>
+    <a class="tz-cta" href="#">Reserve a booth</a>
+  </div>
+</section>
+
+<section class="tz-content">
+  <div class="tz-board">
+    <h2>The menu board</h2>
+    <p class="tz-sub2">BACKLIT · BRASS · READ TOP TO BOTTOM</p>
+    <ul>
+      <li><span class="tz-item">Coffee, siphon</span><span class="tz-dots"></span><span class="tz-price">¥600</span></li>
+      <li><span class="tz-item">Blend No. 3, the house cup</span><span class="tz-dots"></span><span class="tz-price">¥650</span></li>
+      <li><span class="tz-item">Vienna coffee, whipped cream</span><span class="tz-dots"></span><span class="tz-price">¥750</span></li>
+      <li><span class="tz-item">Toast set, morning only</span><span class="tz-dots"></span><span class="tz-price">¥800</span></li>
+      <li><span class="tz-item">Pudding, firm and cold</span><span class="tz-dots"></span><span class="tz-price">¥550</span></li>
+      <li><span class="tz-item">Napolitan spaghetti</span><span class="tz-dots"></span><span class="tz-price">¥900</span></li>
+    </ul>
+  </div>
+  <div class="tz-rule">
+    <h2>HOUSE RULE</h2>
+    <p>No Wi-Fi. The coffee is the point.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#171009"></span><span class="tz-name">bg</span><span class="tz-hex">#171009</span></li>
+    <li><span class="tz-chip" style="background:#241a0f"></span><span class="tz-name">surface</span><span class="tz-hex">#241a0f</span></li>
+    <li><span class="tz-chip" style="background:#f3e4c8"></span><span class="tz-name">ink</span><span class="tz-hex">#f3e4c8</span></li>
+    <li><span class="tz-chip" style="background:#9a7c5e"></span><span class="tz-name">muted</span><span class="tz-hex">#9a7c5e</span></li>
+    <li><span class="tz-chip" style="background:#d9a441"></span><span class="tz-name">accent</span><span class="tz-hex">#d9a441</span></li>
+    <li><span class="tz-chip" style="background:#d9a44155"></span><span class="tz-name">line</span><span class="tz-hex">#d9a44155</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
