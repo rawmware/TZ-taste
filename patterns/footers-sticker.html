@@ -1,0 +1,57 @@
+<!--tz-meta {"id":"footers-sticker","title":"Sticker footer","category":"Footer","file":"patterns/footers-sticker.html","tags":["playful","gen-z"],"description":"Sticker badges, a wavy SVG divider, and chunky social buttons on cream.","dnas":["neo-brutalist-pop"]} -->
+<footer class="tz-sfoot">
+  <svg class="tz-sfoot-wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 20 Q 30 0 60 20 T 120 20 T 180 20 T 240 20 T 300 20 T 360 20 T 420 20 T 480 20 T 540 20 T 600 20 T 660 20 T 720 20 T 780 20 T 840 20 T 900 20 T 960 20 T 1020 20 T 1080 20 T 1140 20 T 1200 20 L1200 40 L0 40 Z" fill="#141414"/>
+  </svg>
+  <div class="tz-sfoot-body">
+    <div class="tz-sfoot-badges">
+      <span class="tz-sfoot-badge tz-sfoot-b1">100% human</span>
+      <span class="tz-sfoot-badge tz-sfoot-b2">Est. 2026</span>
+      <span class="tz-sfoot-badge tz-sfoot-b3">No slop</span>
+    </div>
+    <div class="tz-sfoot-cols">
+      <div class="tz-sfoot-col">
+        <p class="tz-sfoot-label">Shop</p>
+        <a href="#">New</a><a href="#">Classics</a><a href="#">Sale</a>
+      </div>
+      <div class="tz-sfoot-col">
+        <p class="tz-sfoot-label">Help</p>
+        <a href="#">Shipping</a><a href="#">Returns</a><a href="#">FAQ</a>
+      </div>
+    </div>
+    <div class="tz-sfoot-social">
+      <a href="#" aria-label="Instagram">IG</a>
+      <a href="#" aria-label="TikTok">TT</a>
+      <a href="#" aria-label="YouTube">YT</a>
+    </div>
+  </div>
+  <p class="tz-sfoot-base">© 2026 PopMart · Stickers ship free with every order</p>
+</footer>
+<style>
+.tz-sfoot{--bg:#fffdf5;--ink:#141414;--pink:#ff5c9e;--yellow:#ffd02e;--mint:#7de3a8;
+  background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+.tz-sfoot-wave{display:block;width:100%;height:40px;background:var(--bg)}
+.tz-sfoot-body{background:#141414;color:#fffdf5;padding:44px clamp(20px,5vw,64px) 40px;
+  display:grid;grid-template-columns:1.2fr 1fr auto;gap:40px;align-items:start}
+.tz-sfoot-badges{display:flex;gap:12px;flex-wrap:wrap}
+.tz-sfoot-badge{border:2px solid #fffdf5;border-radius:999px;padding:8px 16px;font-weight:900;
+  font-size:13px;letter-spacing:.05em;text-transform:uppercase;display:inline-block}
+.tz-sfoot-b1{background:var(--pink);color:#141414;transform:rotate(-4deg)}
+.tz-sfoot-b2{background:var(--yellow);color:#141414;transform:rotate(3deg)}
+.tz-sfoot-b3{background:var(--mint);color:#141414;transform:rotate(-2deg)}
+.tz-sfoot-cols{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.tz-sfoot-col{display:flex;flex-direction:column;gap:9px}
+.tz-sfoot-label{font-size:11px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--yellow);margin:0 0 6px}
+.tz-sfoot-col a{color:#fffdf5;text-decoration:none;font-size:15px}
+.tz-sfoot-col a:hover{color:var(--pink)}
+.tz-sfoot-social{display:flex;gap:12px;flex-wrap:wrap}
+.tz-sfoot-social a{width:56px;height:56px;display:flex;align-items:center;justify-content:center;
+  background:var(--pink);color:#141414;font-weight:900;font-size:15px;text-decoration:none;
+  border:3px solid #fffdf5;border-radius:16px;box-shadow:4px 4px 0 #fffdf5}
+.tz-sfoot-social a:hover{background:var(--yellow)}
+.tz-sfoot-social a:active{transform:translate(2px,2px);box-shadow:2px 2px 0 #fffdf5}
+.tz-sfoot-base{background:#141414;color:#8a8a82;font-size:12px;margin:0;
+  padding:0 clamp(20px,5vw,64px) 28px;font-family:ui-monospace,Menlo,monospace}
+@media (max-width:760px){.tz-sfoot-body{grid-template-columns:1fr}}
+</style>
