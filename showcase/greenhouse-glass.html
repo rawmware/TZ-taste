@@ -1,0 +1,139 @@
+<!--tz-meta {"id":"showcase-greenhouse-glass","title":"Greenhouse Glass showcase","category":"Showcase","file":"showcase/greenhouse-glass.html","tags":["greenhouse-glass"],"description":"Live demo page for the Greenhouse Glass style DNA.","dnas":["greenhouse-glass"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Greenhouse Glass — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Source+Sans+3:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#eef2ea; --tz-surface:#e2e9dc; --tz-ink:#1e2b1f; --tz-muted:#7d8a7a;
+  --tz-accent:#2f7a4d; --tz-line:#2f7a4d4d; --tz-iron:#232a24;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Source Sans 3",sans-serif;font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 4vw;border-bottom:1px solid var(--tz-line);font-family:"Courier Prime",monospace;font-size:0.7rem;letter-spacing:0.1em}
+.tz-wordmark{font-family:"Cormorant Garamond",serif;font-size:1.35rem;font-weight:600;letter-spacing:0.06em}
+.tz-climate{color:var(--tz-accent)}
+.tz-ribs{height:26px;border-bottom:2px solid var(--tz-iron);background:
+  radial-gradient(ellipse 60px 26px at 60px 26px, transparent 56px, var(--tz-iron) 58px, var(--tz-iron) 60px, transparent 62px),
+  radial-gradient(ellipse 60px 26px at 180px 26px, transparent 56px, var(--tz-iron) 58px, var(--tz-iron) 60px, transparent 62px),
+  radial-gradient(ellipse 60px 26px at 300px 26px, transparent 56px, var(--tz-iron) 58px, var(--tz-iron) 60px, transparent 62px),
+  radial-gradient(ellipse 60px 26px at 420px 26px, transparent 56px, var(--tz-iron) 58px, var(--tz-iron) 60px, transparent 62px);
+  background-size:480px 26px;background-repeat:repeat-x}
+.tz-hero{padding:6rem 4vw 5rem;max-width:1100px;margin:0 auto;text-align:center}
+.tz-eyebrow{font-family:"Courier Prime",monospace;font-size:0.75rem;letter-spacing:0.18em;color:var(--tz-muted);margin-bottom:1.4rem}
+.tz-hero h1{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(2.8rem,8vw,6rem);line-height:1.05;letter-spacing:0.01em}
+.tz-hero h1 em{font-style:italic;color:var(--tz-accent)}
+.tz-sub{margin:1.6rem auto 0;font-size:1.05rem;color:var(--tz-muted);max-width:50ch}
+.tz-cta{display:inline-block;margin-top:2.4rem;background:var(--tz-accent);color:var(--tz-bg);font-weight:600;font-size:1rem;letter-spacing:0.04em;text-decoration:none;padding:1rem 2.6rem;border-radius:2px;transition:transform .15s ease}
+.tz-cta:hover{transform:translateY(-2px)}
+.tz-plate{max-width:1100px;margin:3rem auto 0;padding:0 4vw}
+.tz-specimen{border:2px solid var(--tz-iron);background:var(--tz-surface);padding:3rem;position:relative;border-radius:0;text-align:center}
+.tz-specimen .tz-pane{position:absolute;top:0;bottom:0;width:2px;background:var(--tz-iron);opacity:0.25}
+.tz-specimen .tz-pane.tz-p1{left:25%}.tz-specimen .tz-pane.tz-p2{left:50%}.tz-specimen .tz-pane.tz-p3{left:75%}
+.tz-fern{font-size:3rem;color:var(--tz-accent);display:block;margin-bottom:1rem;animation:tz-sway 6s ease-in-out infinite;transform-origin:bottom center}
+@keyframes tz-sway{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(2deg)}}
+.tz-specimen h2{font-family:"Cormorant Garamond",serif;font-size:clamp(2.2rem,6vw,3.8rem);font-weight:600}
+.tz-specimen .tz-latin{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.4rem;color:var(--tz-accent);margin-top:0.3rem}
+.tz-stake{display:inline-block;margin-top:1.2rem;border:1px solid var(--tz-iron);padding:0.4rem 0.9rem;font-family:"Courier Prime",monospace;font-size:0.7rem;letter-spacing:0.1em;border-radius:2px;background:var(--tz-bg)}
+.tz-content{max-width:1100px;margin:0 auto;padding:5rem 4vw 0}
+.tz-content h2{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:600;margin-bottom:0.4rem}
+.tz-content .tz-note{color:var(--tz-muted);margin-bottom:2.4rem;max-width:56ch}
+.tz-bench{list-style:none;border-top:1px solid var(--tz-line)}
+.tz-bench li{display:grid;grid-template-columns:1fr auto;gap:0.5rem 2rem;align-items:baseline;padding:1.8rem 0;border-bottom:1px solid var(--tz-line)}
+.tz-plant h3{font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:600}
+.tz-plant .tz-latin{font-style:italic;color:var(--tz-accent);font-size:1.05rem}
+.tz-plant p{color:var(--tz-muted);font-size:0.95rem;margin-top:0.35rem;max-width:52ch}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:4rem}
+.tz-tokens h2{font-family:"Cormorant Garamond",serif;font-size:1.8rem;font-weight:600;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"Courier Prime",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Courier Prime",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"Courier Prime",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-bench li{grid-template-columns:1fr}
+  .tz-specimen{padding:2rem 1.2rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">The Glasshouse</span>
+  <span class="tz-climate">24°C · 78% HUMIDITY · VENTS OPEN</span>
+</header>
+<div class="tz-ribs" aria-hidden="true"></div>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow">EST. 1894 · PALM HOUSE, EAST WING</p>
+  <h1>Come in out of the <em>cold.</em></h1>
+  <p class="tz-sub">One hundred thirty years of glass and iron, and the ferns have never once complained. Open daily, rain or shine — it's always raining in here, pleasantly.</p>
+  <a class="tz-cta" href="#">Plan your visit</a>
+</section>
+
+<div class="tz-plate">
+  <figure class="tz-specimen">
+    <span class="tz-pane tz-p1" aria-hidden="true"></span>
+    <span class="tz-pane tz-p2" aria-hidden="true"></span>
+    <span class="tz-pane tz-p3" aria-hidden="true"></span>
+    <span class="tz-fern" aria-hidden="true">❦</span>
+    <h2>Boston Fern</h2>
+    <p class="tz-latin">Nephrolepis exaltata</p>
+    <span class="tz-stake">ACC. 1894-221 · POTTED MAR · ORIGIN: FLORIDA</span>
+  </figure>
+</div>
+
+<section class="tz-content">
+  <h2>On the benches this week</h2>
+  <p class="tz-note">Repotted last Tuesday — settling in. Mist twice daily. She likes the humidity.</p>
+  <ul class="tz-bench">
+    <li>
+      <div class="tz-plant">
+        <h3>Maidenhair Fern</h3>
+        <p class="tz-latin">Adiantum raddianum</p>
+        <p>Fussy about drafts, generous with beauty. Keep her away from the door.</p>
+      </div>
+      <span class="tz-stake">ACC. 1911-088 · POTTED JUN</span>
+    </li>
+    <li>
+      <div class="tz-plant">
+        <h3>Staghorn Fern</h3>
+        <p class="tz-latin">Platycerium bifurcatum</p>
+        <p>Mounted on oak, not potted. Water the shield fronds, never the antlers.</p>
+      </div>
+      <span class="tz-stake">ACC. 1932-154 · MOUNTED APR</span>
+    </li>
+    <li>
+      <div class="tz-plant">
+        <h3>Bird's Nest Fern</h3>
+        <p class="tz-latin">Asplenium nidus</p>
+        <p>Water the center rosette like a small well. She'll thank you by doubling in size.</p>
+      </div>
+      <span class="tz-stake">ACC. 1976-042 · POTTED FEB</span>
+    </li>
+  </ul>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#eef2ea"></span><span class="tz-name">bg</span><span class="tz-hex">#eef2ea</span></li>
+    <li><span class="tz-chip" style="background:#e2e9dc"></span><span class="tz-name">surface</span><span class="tz-hex">#e2e9dc</span></li>
+    <li><span class="tz-chip" style="background:#1e2b1f"></span><span class="tz-name">ink</span><span class="tz-hex">#1e2b1f</span></li>
+    <li><span class="tz-chip" style="background:#7d8a7a"></span><span class="tz-name">muted</span><span class="tz-hex">#7d8a7a</span></li>
+    <li><span class="tz-chip" style="background:#2f7a4d"></span><span class="tz-name">accent</span><span class="tz-hex">#2f7a4d</span></li>
+    <li><span class="tz-chip" style="background:#2f7a4d4d"></span><span class="tz-name">line</span><span class="tz-hex">#2f7a4d4d</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
