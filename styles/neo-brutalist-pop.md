@@ -1,3 +1,4 @@
+<!--tz-meta {"id":"neo-brutalist-pop","name":"Neo-Brutalist Pop","vibe":"Thick borders, hard shadows, sticker colors. Playful but engineered.","file":"styles/neo-brutalist-pop.md","tags":["playful","bold","stickers","gen-z"],"best_for":["consumer startups","edtech","creator tools","food"],"fonts":{"body":"Space Grotesk","display":"Archivo Black","mono":"Space Mono"},"tokens":{"accent":"#ff5da2","bg":"#fff6e9","ink":"#1a1a1a","line":"#1a1a1a","muted":"#6b6259","surface":"#ffffff"},"dials":{"density":5,"motion":6,"variance":7}} -->
 # Neo-Brutalist Pop
 
 > Thick borders, hard shadows, sticker colors. Playful but engineered.
