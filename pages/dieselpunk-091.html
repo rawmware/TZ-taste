@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IRONWORKS 27 — Dieselpunk 091 · TZ-taste</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=IBM+Plex+Sans&family=VT323&display=swap" rel="stylesheet">
+<style>
+:root{
+  --t-bg:#262019;--t-surface:#2c211a;--t-ink:#e5e1c7;--t-accent:#a33438;
+  --t-muted:#7c6f55;--t-extra:#cc963d;
+  --t-line:color-mix(in srgb, var(--t-ink) 16%, transparent);
+  --t-rsm:0px;--t-rmd:0px;--t-rlg:0px;--t-rpill:0px;
+  --t-shadow:0 12px 40px rgba(0,0,0,.16);
+  --t-fd:'Special Elite',sans-serif;--t-fb:'IBM Plex Sans',sans-serif;--t-fm:'VT323',monospace;
+  --t-bw:4px;--t-pad:4vw;--t-hscale:clamp(2.8rem,9vw,7.5rem);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--t-bg);color:var(--t-ink);font-family:var(--t-fb),sans-serif;
+  font-size:1.02rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+.t-wrap{max-width:1200px;margin:0 auto;padding-left:var(--t-pad);padding-right:var(--t-pad)}
+.t-top{display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  padding:1rem var(--t-pad);border-bottom:var(--t-bw) solid var(--t-line)}
+.t-word{font-family:var(--t-fd),sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:0.02em;
+  text-transform:uppercase}
+.t-meta{font-family:var(--t-fm),monospace;font-size:.68rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--t-muted)}
+.t-hero{padding:4.5rem var(--t-pad) 3.5rem;text-align:left}
+.t-eyebrow{font-family:var(--t-fm),monospace;font-size:.72rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--t-accent);margin-bottom:1.2rem}
+.t-hero h1{font-family:var(--t-fd),sans-serif;font-size:var(--t-hscale);line-height:.96;
+  letter-spacing:0.02em;text-transform:uppercase;font-weight:700;max-width:12ch;
+  }
+.t-hero h1 .hl{background:var(--t-accent);color:var(--t-bg);padding:0 .1em;display:inline-block}
+.t-hero h1 .ol{color:var(--t-accent)}
+.t-sub{margin-top:1.4rem;color:var(--t-muted);max-width:46ch;font-size:1.05rem;}
+.t-cta-row{margin-top:2rem;display:flex;gap:.8rem;flex-wrap:wrap;}
+.t-cta{display:inline-block;font-family:var(--t-fb),sans-serif;font-weight:700;font-size:.95rem;
+  letter-spacing:.04em;background:var(--t-accent);color:var(--t-bg);text-decoration:none;
+  padding:.95rem 2.1rem;border-radius:var(--t-rmd);box-shadow:var(--t-shadow)}
+.t-cta.ghost{background:transparent;color:var(--t-ink);border:var(--t-bw) solid var(--t-muted);box-shadow:none}
+.t-hero-split{display:grid;grid-template-columns:1.2fr .8fr;gap:3rem;align-items:end}
+.t-hero-card{max-width:780px;margin:0 auto;border:var(--t-bw) solid var(--t-accent);
+  background:var(--t-surface);padding:3.5rem 3rem;border-radius:var(--t-rlg);}
+.t-sec{padding:3.5rem var(--t-pad);border-top:var(--t-bw) solid var(--t-line)}
+.t-sec > .t-wrap{padding-left:0;padding-right:0}
+.t-kicker{font-family:var(--t-fm),monospace;font-size:.7rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--t-muted);margin-bottom:.9rem}
+.t-h2{font-family:var(--t-fd),sans-serif;font-size:clamp(1.7rem,4vw,2.7rem);
+  letter-spacing:0.02em;text-transform:uppercase;line-height:1.02;margin-bottom:1.8rem;font-weight:700}
+.t-marquee{overflow:hidden;white-space:nowrap;border-top:var(--t-bw) solid var(--t-line);
+  border-bottom:var(--t-bw) solid var(--t-line);padding:.75rem 0;background:var(--t-accent);color:var(--t-bg)}
+.t-marquee span{display:inline-block;font-family:var(--t-fd),sans-serif;font-weight:700;
+  font-size:1rem;letter-spacing:.06em;padding-right:2.5rem;animation:t-scroll 18s linear infinite}
+@keyframes t-scroll{to{transform:translateX(-50%)}}
+.t-rows{list-style:none;border-top:var(--t-bw) solid var(--t-line)}
+.t-rows li{display:grid;grid-template-columns:8rem 1fr auto;gap:1rem;align-items:baseline;
+  padding:1.4rem 0;border-bottom:var(--t-bw) solid var(--t-line)}
+.t-time{font-family:var(--t-fm),monospace;font-size:.82rem;color:var(--t-accent)}
+.t-name{font-family:var(--t-fd),sans-serif;font-size:clamp(1.5rem,4vw,2.6rem);
+  letter-spacing:0.02em;text-transform:uppercase;line-height:1;font-weight:700}
+.t-price{font-family:var(--t-fm),monospace;font-size:.85rem;color:var(--t-accent);white-space:nowrap}
+.t-desc{grid-column:2;color:var(--t-muted);font-size:.95rem;max-width:52ch}
+.t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.t-card{background:var(--t-bg);border:var(--t-bw) solid var(--t-line);border-radius:var(--t-rmd);
+  padding:1.8rem;box-shadow:var(--t-shadow)}
+.t-card .t-tag{display:inline-block;font-family:var(--t-fm),monospace;font-size:.66rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--t-bg);background:var(--t-ink);
+  padding:.28rem .7rem;margin-bottom:1rem;border-radius:var(--t-rsm)}
+.t-card h3{font-family:var(--t-fd),sans-serif;font-size:1.3rem;margin-bottom:.6rem;
+  letter-spacing:0.02em;text-transform:uppercase;font-weight:700}
+.t-card p{color:var(--t-muted);font-size:.94rem}
+.t-card .t-amt{font-family:var(--t-fm),monospace;color:var(--t-accent);font-size:.95rem;
+  margin-top:1rem;display:block}
+.t-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;align-items:stretch}
+.t-tier{background:var(--t-bg);border:var(--t-bw) solid var(--t-line);border-radius:var(--t-rlg);
+  padding:2.2rem;display:flex;flex-direction:column;box-shadow:var(--t-shadow)}
+.t-tier.hot{border-color:var(--t-accent);box-shadow:var(--t-shadow)}
+.t-tier h3{font-family:var(--t-fd),sans-serif;font-size:1.4rem;letter-spacing:0.02em;
+  text-transform:uppercase;margin-bottom:.4rem}
+.t-tier .t-cost{font-family:var(--t-fd),sans-serif;font-size:2.4rem;margin:.8rem 0;font-weight:700}
+.t-tier ul{list-style:none;margin:1rem 0 1.6rem;color:var(--t-muted);font-size:.92rem;line-height:2}
+.t-tier .t-cta{align-self:flex-start;margin-top:auto}
+.t-statement{font-family:var(--t-fd),sans-serif;font-size:clamp(2rem,6vw,4.4rem);line-height:1.04;
+  letter-spacing:0.02em;text-transform:uppercase;font-weight:700;max-width:16ch}
+.t-statement .ol{color:var(--t-accent)}
+.t-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;text-align:left}
+.t-stat .t-num{font-family:var(--t-fd),sans-serif;font-size:clamp(2.2rem,5vw,3.6rem);font-weight:700;color:var(--t-accent)}
+.t-stat .t-lab{font-family:var(--t-fm),monospace;font-size:.7rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--t-muted);margin-top:.3rem}
+.t-quotes{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.t-quote{background:var(--t-bg);border:var(--t-bw) solid var(--t-line);
+  border-radius:var(--t-rmd);padding:1.8rem;box-shadow:var(--t-shadow)}
+.t-quote p{font-size:1.05rem;line-height:1.5}
+.t-quote cite{display:block;margin-top:1rem;font-family:var(--t-fm),monospace;font-style:normal;
+  font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--t-muted)}
+.t-band{background:var(--t-accent);color:var(--t-bg);padding:3.5rem var(--t-pad);text-align:left}
+.t-band h2{font-family:var(--t-fd),sans-serif;font-size:clamp(1.8rem,5vw,3.4rem);
+  letter-spacing:0.02em;text-transform:uppercase;line-height:1;font-weight:700;margin-bottom:1rem}
+.t-band p{max-width:52ch;;margin-bottom:1.6rem}
+.t-band .t-cta{background:var(--t-bg);color:var(--t-accent)}
+.t-info{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.t-info h3{font-family:var(--t-fm),monospace;font-size:.72rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--t-muted);margin-bottom:.8rem;font-weight:400}
+.t-info p{line-height:2}
+.t-faq div{border-bottom:var(--t-bw) solid var(--t-line);padding:1.3rem 0}
+.t-faq b{font-family:var(--t-fd),sans-serif;font-size:1.1rem;display:block;margin-bottom:.4rem;
+  letter-spacing:0.02em}
+.t-faq p{color:var(--t-muted)}
+.t-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;counter-reset:st}
+.t-step{border-top:var(--t-bw) solid var(--t-accent);padding-top:1.1rem}
+.t-step .t-n{font-family:var(--t-fm),monospace;color:var(--t-accent);font-size:.8rem;letter-spacing:.1em}
+.t-step h3{font-family:var(--t-fd),sans-serif;font-size:1.2rem;margin:.5rem 0;letter-spacing:0.02em;text-transform:uppercase}
+.t-step p{color:var(--t-muted);font-size:.93rem}
+.t-arts{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+.t-art h3{font-family:var(--t-fd),sans-serif;font-size:clamp(1.4rem,3vw,2rem);
+  letter-spacing:0.02em;text-transform:uppercase;line-height:1.1;margin:.8rem 0;font-weight:700}
+.t-art .t-by{font-family:var(--t-fm),monospace;font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--t-accent)}
+.t-art p{color:var(--t-muted);margin-top:.6rem}
+.t-specs{border:var(--t-bw) solid var(--t-line);border-radius:var(--t-rmd);overflow:hidden}
+.t-specs div{display:grid;grid-template-columns:1fr 1fr;padding:.9rem 1.4rem;
+  border-bottom:1px solid var(--t-line);font-family:var(--t-fm),monospace;font-size:.85rem}
+.t-specs div:last-child{border-bottom:0}
+.t-specs div span:last-child{text-align:right;color:var(--t-accent)}
+.t-notes{background:var(--t-surface);border:var(--t-bw) solid var(--t-line);
+  border-radius:var(--t-rmd);padding:2rem;max-width:620px;box-shadow:var(--t-shadow)}
+.t-notes h3{font-family:var(--t-fm),monospace;font-size:.72rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--t-muted);margin-bottom:.9rem;font-weight:400}
+.t-notes p{color:var(--t-muted)}
+.t-notes strong{color:var(--t-ink);font-weight:600}
+.t-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.t-tile{border-radius:var(--t-rmd);overflow:hidden;border:var(--t-bw) solid var(--t-line)}
+.t-tile .t-art{height:150px}
+.t-tile p{padding:.9rem 1.1rem;font-family:var(--t-fm),monospace;font-size:.72rem;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--t-muted);background:var(--t-surface)}
+.t-div{border:0;border-top:var(--t-bw) solid var(--t-accent);margin:0}
+.t-cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.t-cal span{border:1px solid var(--t-line);border-radius:var(--t-rsm);padding:.7rem .4rem;
+  font-family:var(--t-fm),monospace;font-size:.72rem;text-align:center;color:var(--t-muted)}
+.t-cal span.on{background:var(--t-accent);color:var(--t-bg);border-color:var(--t-accent);font-weight:700}
+.t-cal span.hd{border:0;color:var(--t-ink);font-weight:700}
+.t-tokens{padding:3.5rem var(--t-pad);border-top:var(--t-bw) solid var(--t-line)}
+.t-swatches{display:flex;flex-wrap:wrap;gap:.8rem;list-style:none;margin-top:1.4rem}
+.t-swatches li{border:var(--t-bw) solid var(--t-line);background:var(--t-surface);
+  min-width:8.5rem;flex:1;border-radius:var(--t-rsm);overflow:hidden}
+.t-chip{display:block;height:2.6rem}
+.t-swatches .t-sn{display:block;font-family:var(--t-fm),monospace;font-size:.62rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--t-muted);padding:.55rem .75rem .1rem}
+.t-swatches .t-hx{display:block;font-family:var(--t-fm),monospace;font-size:.74rem;
+  padding:0 .75rem .65rem;user-select:all}
+.t-foot{padding:2rem var(--t-pad);border-top:var(--t-bw) solid var(--t-line);
+  font-family:var(--t-fm),monospace;font-size:.68rem;letter-spacing:.08em;color:var(--t-muted);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.t-foot a{color:var(--t-muted)}
+.t-big{font-family:var(--t-fd),sans-serif;font-size:clamp(4rem,14vw,11rem);line-height:.9;
+  font-weight:700;color:var(--t-accent);letter-spacing:0.02em}
+.t-press{font-family:var(--t-fd),sans-serif;font-size:clamp(1.3rem,3vw,2rem);line-height:1.25;
+  letter-spacing:0.02em;max-width:24ch}
+.t-press small{display:block;margin-top:1rem;font-family:var(--t-fm),monospace;font-size:.7rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--t-muted)}
+.t-tl{border-left:var(--t-bw) solid var(--t-accent);padding-left:1.6rem;display:grid;gap:1.8rem}
+.t-tl .t-y{font-family:var(--t-fm),monospace;color:var(--t-accent);font-size:.8rem;letter-spacing:.12em}
+.t-tl h3{font-family:var(--t-fd),sans-serif;font-size:1.35rem;letter-spacing:0.02em;
+  text-transform:uppercase;margin:.3rem 0 .4rem}
+.t-tl p{color:var(--t-muted);max-width:56ch}
+.t-ed2{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.t-ed2 .t-fig{height:320px;border-radius:var(--t-rlg);border:var(--t-bw) solid var(--t-line)}
+.t-book{display:grid;grid-template-columns:120px 1fr;gap:1.4rem;align-items:start;
+  padding:1.4rem 0;border-bottom:var(--t-bw) solid var(--t-line)}
+.t-book .t-cov{height:170px;border-radius:var(--t-rsm);border:var(--t-bw) solid var(--t-line)}
+.t-book h3{font-family:var(--t-fd),sans-serif;font-size:1.25rem;letter-spacing:0.02em}
+.t-book .t-au{font-family:var(--t-fm),monospace;font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--t-accent);margin:.3rem 0 .5rem}
+.t-book p{color:var(--t-muted);font-size:.94rem}
+.t-book .t-price{margin-top:.5rem}
+.t-rev{display:flex;gap:.4rem;color:var(--t-accent);font-size:1.1rem;margin-bottom:.7rem}
+.t-logos{display:flex;flex-wrap:wrap;gap:2.5rem;align-items:center;justify-content:flex-start}
+.t-logos span{font-family:var(--t-fd),sans-serif;font-weight:700;font-size:1.15rem;
+  letter-spacing:0.02em;color:var(--t-muted);text-transform:uppercase}
+.t-bookui{border:var(--t-bw) solid var(--t-line);border-radius:var(--t-rlg);
+  background:var(--t-surface);padding:2.4rem;max-width:640px;box-shadow:var(--t-shadow);}
+.t-bookui label{display:block;font-family:var(--t-fm),monospace;font-size:.68rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--t-muted);margin:1.1rem 0 .4rem}
+.t-bookui .t-opts{display:flex;gap:.6rem;flex-wrap:wrap}
+.t-bookui .t-opt{border:var(--t-bw) solid var(--t-line);border-radius:var(--t-rpill);
+  padding:.55rem 1.2rem;font-family:var(--t-fm),monospace;font-size:.8rem;cursor:default}
+.t-bookui .t-opt.sel{background:var(--t-ink);color:var(--t-bg);border-color:var(--t-ink)}
+.t-member{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.t-mem{border:var(--t-bw) solid var(--t-line);border-radius:var(--t-rlg);padding:2rem;
+  background:var(--t-bg);box-shadow:var(--t-shadow)}
+.t-mem h3{font-family:var(--t-fd),sans-serif;font-size:1.3rem;letter-spacing:0.02em;
+  text-transform:uppercase;margin-bottom:.5rem}
+.t-mem .t-cost{font-family:var(--t-fd),sans-serif;font-size:2rem;font-weight:700;
+  color:var(--t-accent);margin:.6rem 0}
+.t-mem p{color:var(--t-muted);font-size:.93rem;margin-bottom:1.2rem}
+.t-play{display:grid;grid-template-columns:3rem 1fr auto;gap:1rem;align-items:center;
+  padding:1rem 0;border-bottom:1px solid var(--t-line);font-family:var(--t-fm),monospace;font-size:.85rem}
+.t-play .t-n{color:var(--t-accent)}
+@media(max-width:760px){
+  .t-rows li{grid-template-columns:1fr;gap:.3rem}
+  .t-grid,.t-tiers,.t-quotes,.t-arts,.t-ed2,.t-info{grid-template-columns:1fr}
+  .t-stats{grid-template-columns:1fr 1fr}
+  .t-steps{grid-template-columns:1fr 1fr}
+  .t-tiles{grid-template-columns:1fr 1fr}
+  .t-hero-split{grid-template-columns:1fr}
+  .t-member{grid-template-columns:1fr}
+  .t-cal{grid-template-columns:repeat(7,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  body::after,body::before{display:none}
+}
+
+</style>
+</head>
+<body>
+<header class="t-top"><span class="t-word">IRONWORKS 27</span><span class="t-meta">EST. 2026</span><span class="t-meta">Dieselpunk</span></header>
+<div class="t-marquee" aria-hidden="true"><span>IRONWORKS 27 · Feb 6 · Heavy metal, heavy ideas. ·&nbsp;</span><span>IRONWORKS 27 · Feb 6 · Heavy metal, heavy ideas. ·&nbsp;</span></div><section class="t-hero"><div class="t-wrap"><h1>Heavy metal, heavy ideas.</h1><p class="t-sub">No decks about decks. We design the thing itself.</p><div class="t-cta-row"><a class="t-cta" href="#">See selected work</a></div></div></section>
+<section class="t-sec"><div class="t-wrap"><p class="t-kicker">Process</p><h2 class="t-h2">How it works</h2><div class="t-steps"><div class="t-step"><span class="t-n">01</span><h3>Listen</h3><p>We ask questions until it gets uncomfortable.</p></div><div class="t-step"><span class="t-n">02</span><h3>Sketch</h3><p>A hundred bad ideas, fast, on paper.</p></div><div class="t-step"><span class="t-n">03</span><h3>Build</h3><p>The good three, pushed until they break or sing.</p></div><div class="t-step"><span class="t-n">04</span><h3>Ship</h3><p>Files, guidelines, and a handoff that sticks.</p></div></div></div></section>
+<div class="t-marquee" aria-hidden="true"><span>IRONWORKS 27 · See selected work ·&nbsp;</span><span>IRONWORKS 27 · See selected work ·&nbsp;</span></div><section class="t-band"><h2>Built, not decorated.</h2><p>No decks about decks. We design the thing itself.</p><a class="t-cta" href="#">See selected work</a></section>
+<section class="t-sec"><div class="t-wrap"><p class="t-kicker">Services</p><h2 class="t-h2">What we do</h2><div class="t-grid"><div class="t-card"><h3>Identity</h3><p>Logos, systems, guidelines. The whole face of the thing.</p><span class="t-amt">from $4k</span></div><div class="t-card"><h3>Naming</h3><p>The word before the logo.</p><span class="t-amt">from $2k</span></div><div class="t-card"><h3>Websites</h3><p>Designed, built, launched. Fast and honest.</p><span class="t-amt">from $6k</span></div><div class="t-card"><h3>Type design</h3><p>A face of your own. Worth it.</p><span class="t-amt">from $10k</span></div><div class="t-card"><h3>Editorial</h3><p>Books, zines, and annual reports people keep.</p><span class="t-amt">from $3k</span></div><div class="t-card"><h3>Exhibitions</h3><p>Shows that people line up for.</p><span class="t-amt">from $8k</span></div></div></div></section>
+<section class="t-sec"><div class="t-wrap"><p class="t-kicker">Numbers</p><h2 class="t-h2">By the numbers</h2><div class="t-stats"><div class="t-stat"><div class="t-num">48</div><div class="t-lab">projects shipped</div></div><div class="t-stat"><div class="t-num">12</div><div class="t-lab">years running</div></div><div class="t-stat"><div class="t-num">9</div><div class="t-lab">design awards</div></div><div class="t-stat"><div class="t-num">3</div><div class="t-lab">partners, no account managers</div></div><div class="t-stat"><div class="t-num">100%</div><div class="t-lab">of work we stand behind</div></div></div></div></section>
+<section class="t-sec"><div class="t-wrap"><p class="t-kicker">Word of mouth</p><h2 class="t-h2">People say</h2><div class="t-quotes"><div class="t-quote"><p>“Working with them felt like being edited by someone who cares.”</p><cite>— Priya Raman, editor</cite></div><div class="t-quote"><p>“The only studio that ever sent work back because it wasn&#x27;t good enough.”</p><cite>— Devon Park, CMO</cite></div><div class="t-quote"><p>“They said no to our first three ideas. The fourth doubled our revenue.”</p><cite>— Mara Ellison, founder</cite></div></div></div></section>
+<section class="t-tokens"><div class="t-wrap"><p class="t-kicker">Style tokens · click a hex to copy</p><h2 class="t-h2">Palette</h2><ul class="t-swatches"><li><span class="t-chip" style="background:#262019"></span><span class="t-sn">Background</span><span class="t-hx">#262019</span></li><li><span class="t-chip" style="background:#2c211a"></span><span class="t-sn">Surface</span><span class="t-hx">#2c211a</span></li><li><span class="t-chip" style="background:#e5e1c7"></span><span class="t-sn">Ink</span><span class="t-hx">#e5e1c7</span></li><li><span class="t-chip" style="background:#a33438"></span><span class="t-sn">Accent</span><span class="t-hx">#a33438</span></li><li><span class="t-chip" style="background:#7c6f55"></span><span class="t-sn">Muted</span><span class="t-hx">#7c6f55</span></li><li><span class="t-chip" style="background:#cc963d"></span><span class="t-sn">Extra</span><span class="t-hx">#cc963d</span></li></ul></div></section>
+<footer class="t-foot"><span>IRONWORKS 27 · TZ-taste DNA</span><span><a href="#" id="t-copy">Copy tokens</a> · <a href="../index.html">All pages</a> · MIT</span></footer>
+<script type="application/json" id="t-json">{"$meta": {"name": "Dieselpunk 091", "family": "Dieselpunk", "slug": "dieselpunk-091", "generator": "tz-taste/generate_dnas.py", "seed": 20264621}, "color": {"bg": {"$value": "#262019", "$type": "color"}, "surface": {"$value": "#2c211a", "$type": "color"}, "ink": {"$value": "#e5e1c7", "$type": "color"}, "accent": {"$value": "#a33438", "$type": "color"}, "muted": {"$value": "#7c6f55", "$type": "color"}, "extra": {"$value": "#cc963d", "$type": "color"}}, "fontFamily": {"display": {"$value": "Special Elite", "$type": "fontFamily"}, "body": {"$value": "IBM Plex Sans", "$type": "fontFamily"}, "mono": {"$value": "VT323", "$type": "fontFamily"}}, "fontUrl": {"display": {"$value": "https://fonts.googleapis.com/css2?family=Special+Elite&display=swap", "$type": "other"}, "body": {"$value": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap", "$type": "other"}}, "borderRadius": {"sm": {"$value": "0px", "$type": "borderRadius"}, "md": {"$value": "0px", "$type": "borderRadius"}, "lg": {"$value": "0px", "$type": "borderRadius"}, "pill": {"$value": "0px", "$type": "borderRadius"}}, "boxShadow": {"default": {"$value": "0 12px 40px rgba(0,0,0,.16)", "$type": "boxShadow"}}, "spacing": {"unit": {"$value": "8px", "$type": "dimension"}, "scale": {"$value": [4.0, 8, 16, 24, 48], "$type": "other"}}}</script>
+<script>
+(function(){
+var hx=document.querySelectorAll('.t-hx');
+hx.forEach(function(el){el.style.cursor='pointer';el.title='Click to copy';
+el.addEventListener('click',function(){if(navigator.clipboard){navigator.clipboard.writeText(el.textContent.trim());}});});
+var b=document.getElementById('t-copy');
+if(b){b.addEventListener('click',function(ev){ev.preventDefault();
+var j=document.getElementById('t-json');
+if(j&&navigator.clipboard){navigator.clipboard.writeText(j.textContent);b.textContent='Copied';}});}
+})();
+</script>
+</body>
+</html>

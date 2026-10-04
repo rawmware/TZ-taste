@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DUST &amp; SADDLE — Western 091 · TZ-taste</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Six+Caps&family=IBM+Plex+Sans&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --t-bg:#ecdfce;--t-surface:#f9ecdc;--t-ink:#392c20;--t-accent:#2d4e2b;
+  --t-muted:#ab9573;--t-extra:#9d362b;
+  --t-line:color-mix(in srgb, var(--t-ink) 16%, transparent);
+  --t-rsm:0px;--t-rmd:0px;--t-rlg:0px;--t-rpill:0px;
+  --t-shadow:0 12px 40px rgba(0,0,0,.16);
+  --t-fd:'Six Caps',sans-serif;--t-fb:'IBM Plex Sans',sans-serif;--t-fm:'JetBrains Mono',monospace;
+  --t-bw:2px;--t-pad:4vw;--t-hscale:clamp(2.6rem,8vw,6rem);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--t-bg);color:var(--t-ink);font-family:var(--t-fb),sans-serif;
+  font-size:1.02rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.5;background-image:linear-gradient(color-mix(in srgb, var(--t-ink) 6%, transparent) 1px, transparent 1px),linear-gradient(90deg, color-mix(in srgb, var(--t-ink) 6%, transparent) 1px, transparent 1px);background-size:44px 44px}
+.t-wrap{max-width:1200px;margin:0 auto;padding-left:var(--t-pad);padding-right:var(--t-pad)}
+.t-top{display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  padding:1rem var(--t-pad);border-bottom:var(--t-bw) solid var(--t-line)}
+.t-word{font-family:var(--t-fd),sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:0.03em;
+  text-transform:uppercase}
+.t-meta{font-family:var(--t-fm),monospace;font-size:.68rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--t-muted)}
+.t-hero{padding:4.5rem var(--t-pad) 3.5rem;text-align:left}
+.t-eyebrow{font-family:var(--t-fm),monospace;font-size:.72rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--t-accent);margin-bottom:1.2rem}
+.t-hero h1{font-family:var(--t-fd),sans-serif;font-size:var(--t-hscale);line-height:.96;
+  letter-spacing:0.03em;text-transform:uppercase;font-weight:700;max-width:12ch;
+  }
+.t-hero h1 .hl{background:var(--t-accent);color:var(--t-bg);padding:0 .1em;display:inline-block}
+.t-hero h1 .ol{color:var(--t-accent)}
+.t-sub{margin-top:1.4rem;color:var(--t-muted);max-width:46ch;font-size:1.05rem;}
+.t-cta-row{margin-top:2rem;display:flex;gap:.8rem;flex-wrap:wrap;}
+.t-cta{display:inline-block;font-family:var(--t-fb),sans-serif;font-weight:700;font-size:.95rem;
+  letter-spacing:.04em;background:var(--t-accent);color:var(--t-bg);text-decoration:none;
+  padding:.95rem 2.1rem;border-radius:var(--t-rmd);box-shadow:var(--t-shadow)}
+.t-cta.ghost{background:transparent;color:var(--t-ink);border:var(--t-bw) solid var(--t-muted);box-shadow:none}
+.t-hero-split{display:grid;grid-template-columns:1.2fr .8fr;gap:3rem;align-items:end}
+.t-hero-card{max-width:780px;margin:0 auto;border:var(--t-bw) solid var(--t-accent);
+  background:var(--t-surface);padding:3.5rem 3rem;border-radius:var(--t-rlg);}
+.t-sec{padding:3.5rem var(--t-pad);border-top:var(--t-bw) solid var(--t-line)}
+.t-sec > .t-wrap{padding-left:0;padding-right:0}
+.t-kicker{font-family:var(--t-fm),monospace;font-size:.7rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--t-muted);margin-bottom:.9rem}
+.t-h2{font-family:var(--t-fd),sans-serif;font-size:clamp(1.7rem,4vw,2.7rem);
+  letter-spacing:0.03em;text-transform:uppercase;line-height:1.02;margin-bottom:1.8rem;font-weight:700}
+.t-marquee{overflow:hidden;white-space:nowrap;border-top:var(--t-bw) solid var(--t-line);
+  border-bottom:var(--t-bw) solid var(--t-line);padding:.75rem 0;background:var(--t-accent);color:var(--t-bg)}
+.t-marquee span{display:inline-block;font-family:var(--t-fd),sans-serif;font-weight:700;
+  font-size:1rem;letter-spacing:.06em;padding-right:2.5rem;animation:t-scroll 18s linear infinite}
+@keyframes t-scroll{to{transform:translateX(-50%)}}
+.t-rows{list-style:none;border-top:var(--t-bw) solid var(--t-line)}
+.t-rows li{display:grid;grid-template-columns:8rem 1fr auto;gap:1rem;align-items:baseline;
+  padding:1.4rem 0;border-bottom:var(--t-bw) solid var(--t-line)}
+.t-time{font-family:var(--t-fm),monospace;font-size:.82rem;color:var(--t-accent)}
+.t-name{font-family:var(--t-fd),sans-serif;font-size:clamp(1.5rem,4vw,2.6rem);
+  letter-spacing:0.03em;text-transform:uppercase;line-height:1;font-weight:700}
+.t-price{font-family:var(--t-fm),monospace;font-size:.85rem;color:var(--t-accent);white-space:nowrap}
+.t-desc{grid-column:2;color:var(--t-muted);font-size:.95rem;max-width:52ch}
+.t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.t-card{background:var(--t-bg);border:var(--t-bw) solid var(--t-line);border-radius:var(--t-rmd);
+  padding:1.8rem;box-shadow:var(--t-shadow)}
+.t-card .t-tag{display:inline-block;font-family:var(--t-fm),monospace;font-size:.66rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--t-bg);background:var(--t-ink);
+  padding:.28rem .7rem;margin-bottom:1rem;border-radius:var(--t-rsm)}
+.t-card h3{font-family:var(--t-fd),sans-serif;font-size:1.3rem;margin-bottom:.6rem;
+  letter-spacing:0.03em;text-transform:uppercase;font-weight:700}
+.t-card p{color:var(--t-muted);font-size:.94rem}
+.t-card .t-amt{font-family:var(--t-fm),monospace;color:var(--t-accent);font-size:.95rem;
+  margin-top:1rem;display:block}
+.t-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;align-items:stretch}
+.t-tier{background:var(--t-bg);border:var(--t-bw) solid var(--t-line);border-radius:var(--t-rlg);
+  padding:2.2rem;display:flex;flex-direction:column;box-shadow:var(--t-shadow)}
+.t-tier.hot{border-color:var(--t-accent);box-shadow:var(--t-shadow)}
+.t-tier h3{font-family:var(--t-fd),sans-serif;font-size:1.4rem;letter-spacing:0.03em;
+  text-transform:uppercase;margin-bottom:.4rem}
+.t-tier .t-cost{font-family:var(--t-fd),sans-serif;font-size:2.4rem;margin:.8rem 0;font-weight:700}
+.t-tier ul{list-style:none;margin:1rem 0 1.6rem;color:var(--t-muted);font-size:.92rem;line-height:2}
+.t-tier .t-cta{align-self:flex-start;margin-top:auto}
+.t-statement{font-family:var(--t-fd),sans-serif;font-size:clamp(2rem,6vw,4.4rem);line-height:1.04;
+  letter-spacing:0.03em;text-transform:uppercase;font-weight:700;max-width:16ch}
+.t-statement .ol{color:var(--t-accent)}
+.t-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;text-align:left}
+.t-stat .t-num{font-family:var(--t-fd),sans-serif;font-size:clamp(2.2rem,5vw,3.6rem);font-weight:700;color:var(--t-accent)}
+.t-stat .t-lab{font-family:var(--t-fm),monospace;font-size:.7rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--t-muted);margin-top:.3rem}
+.t-quotes{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.t-quote{background:var(--t-bg);border:var(--t-bw) solid var(--t-line);
+  border-radius:var(--t-rmd);padding:1.8rem;box-shadow:var(--t-shadow)}
+.t-quote p{font-size:1.05rem;line-height:1.5}
+.t-quote cite{display:block;margin-top:1rem;font-family:var(--t-fm),monospace;font-style:normal;
+  font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--t-muted)}
+.t-band{background:var(--t-accent);color:var(--t-bg);padding:3.5rem var(--t-pad);text-align:left}
+.t-band h2{font-family:var(--t-fd),sans-serif;font-size:clamp(1.8rem,5vw,3.4rem);
+  letter-spacing:0.03em;text-transform:uppercase;line-height:1;font-weight:700;margin-bottom:1rem}
+.t-band p{max-width:52ch;;margin-bottom:1.6rem}
+.t-band .t-cta{background:var(--t-bg);color:var(--t-accent)}
+.t-info{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.t-info h3{font-family:var(--t-fm),monospace;font-size:.72rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--t-muted);margin-bottom:.8rem;font-weight:400}
+.t-info p{line-height:2}
+.t-faq div{border-bottom:var(--t-bw) solid var(--t-line);padding:1.3rem 0}
+.t-faq b{font-family:var(--t-fd),sans-serif;font-size:1.1rem;display:block;margin-bottom:.4rem;
+  letter-spacing:0.03em}
+.t-faq p{color:var(--t-muted)}
+.t-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;counter-reset:st}
+.t-step{border-top:var(--t-bw) solid var(--t-accent);padding-top:1.1rem}
+.t-step .t-n{font-family:var(--t-fm),monospace;color:var(--t-accent);font-size:.8rem;letter-spacing:.1em}
+.t-step h3{font-family:var(--t-fd),sans-serif;font-size:1.2rem;margin:.5rem 0;letter-spacing:0.03em;text-transform:uppercase}
+.t-step p{color:var(--t-muted);font-size:.93rem}
+.t-arts{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+.t-art h3{font-family:var(--t-fd),sans-serif;font-size:clamp(1.4rem,3vw,2rem);
+  letter-spacing:0.03em;text-transform:uppercase;line-height:1.1;margin:.8rem 0;font-weight:700}
+.t-art .t-by{font-family:var(--t-fm),monospace;font-size:.7rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--t-accent)}
+.t-art p{color:var(--t-muted);margin-top:.6rem}
+.t-specs{border:var(--t-bw) solid var(--t-line);border-radius:var(--t-rmd);overflow:hidden}
+.t-specs div{display:grid;grid-template-columns:1fr 1fr;padding:.9rem 1.4rem;
+  border-bottom:1px solid var(--t-line);font-family:var(--t-fm),monospace;font-size:.85rem}
+.t-specs div:last-child{border-bottom:0}
+.t-specs div span:last-child{text-align:right;color:var(--t-accent)}
+.t-notes{background:var(--t-surface);border:var(--t-bw) solid var(--t-line);
+  border-radius:var(--t-rmd);padding:2rem;max-width:620px;box-shadow:var(--t-shadow)}
+.t-notes h3{font-family:var(--t-fm),monospace;font-size:.72rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--t-muted);margin-bottom:.9rem;font-weight:400}
+.t-notes p{color:var(--t-muted)}
+.t-notes strong{color:var(--t-ink);font-weight:600}
+.t-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.t-tile{border-radius:var(--t-rmd);overflow:hidden;border:var(--t-bw) solid var(--t-line)}
+.t-tile .t-art{height:150px}
+.t-tile p{padding:.9rem 1.1rem;font-family:var(--t-fm),monospace;font-size:.72rem;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--t-muted);background:var(--t-surface)}
+.t-div{border:0;border-top:var(--t-bw) solid var(--t-accent);margin:0}
+.t-cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.t-cal span{border:1px solid var(--t-line);border-radius:var(--t-rsm);padding:.7rem .4rem;
+  font-family:var(--t-fm),monospace;font-size:.72rem;text-align:center;color:var(--t-muted)}
+.t-cal span.on{background:var(--t-accent);color:var(--t-bg);border-color:var(--t-accent);font-weight:700}
+.t-cal span.hd{border:0;color:var(--t-ink);font-weight:700}
+.t-tokens{padding:3.5rem var(--t-pad);border-top:var(--t-bw) solid var(--t-line)}
+.t-swatches{display:flex;flex-wrap:wrap;gap:.8rem;list-style:none;margin-top:1.4rem}
+.t-swatches li{border:var(--t-bw) solid var(--t-line);background:var(--t-surface);
+  min-width:8.5rem;flex:1;border-radius:var(--t-rsm);overflow:hidden}
+.t-chip{display:block;height:2.6rem}
+.t-swatches .t-sn{display:block;font-family:var(--t-fm),monospace;font-size:.62rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--t-muted);padding:.55rem .75rem .1rem}
+.t-swatches .t-hx{display:block;font-family:var(--t-fm),monospace;font-size:.74rem;
+  padding:0 .75rem .65rem;user-select:all}
+.t-foot{padding:2rem var(--t-pad);border-top:var(--t-bw) solid var(--t-line);
+  font-family:var(--t-fm),monospace;font-size:.68rem;letter-spacing:.08em;color:var(--t-muted);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.t-foot a{color:var(--t-muted)}
+.t-big{font-family:var(--t-fd),sans-serif;font-size:clamp(4rem,14vw,11rem);line-height:.9;
+  font-weight:700;color:var(--t-accent);letter-spacing:0.03em}
+.t-press{font-family:var(--t-fd),sans-serif;font-size:clamp(1.3rem,3vw,2rem);line-height:1.25;
+  letter-spacing:0.03em;max-width:24ch}
+.t-press small{display:block;margin-top:1rem;font-family:var(--t-fm),monospace;font-size:.7rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--t-muted)}
+.t-tl{border-left:var(--t-bw) solid var(--t-accent);padding-left:1.6rem;display:grid;gap:1.8rem}
+.t-tl .t-y{font-family:var(--t-fm),monospace;color:var(--t-accent);font-size:.8rem;letter-spacing:.12em}
+.t-tl h3{font-family:var(--t-fd),sans-serif;font-size:1.35rem;letter-spacing:0.03em;
+  text-transform:uppercase;margin:.3rem 0 .4rem}
+.t-tl p{color:var(--t-muted);max-width:56ch}
+.t-ed2{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.t-ed2 .t-fig{height:320px;border-radius:var(--t-rlg);border:var(--t-bw) solid var(--t-line)}
+.t-book{display:grid;grid-template-columns:120px 1fr;gap:1.4rem;align-items:start;
+  padding:1.4rem 0;border-bottom:var(--t-bw) solid var(--t-line)}
+.t-book .t-cov{height:170px;border-radius:var(--t-rsm);border:var(--t-bw) solid var(--t-line)}
+.t-book h3{font-family:var(--t-fd),sans-serif;font-size:1.25rem;letter-spacing:0.03em}
+.t-book .t-au{font-family:var(--t-fm),monospace;font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--t-accent);margin:.3rem 0 .5rem}
+.t-book p{color:var(--t-muted);font-size:.94rem}
+.t-book .t-price{margin-top:.5rem}
+.t-rev{display:flex;gap:.4rem;color:var(--t-accent);font-size:1.1rem;margin-bottom:.7rem}
+.t-logos{display:flex;flex-wrap:wrap;gap:2.5rem;align-items:center;justify-content:flex-start}
+.t-logos span{font-family:var(--t-fd),sans-serif;font-weight:700;font-size:1.15rem;
+  letter-spacing:0.03em;color:var(--t-muted);text-transform:uppercase}
+.t-bookui{border:var(--t-bw) solid var(--t-line);border-radius:var(--t-rlg);
+  background:var(--t-surface);padding:2.4rem;max-width:640px;box-shadow:var(--t-shadow);}
+.t-bookui label{display:block;font-family:var(--t-fm),monospace;font-size:.68rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--t-muted);margin:1.1rem 0 .4rem}
+.t-bookui .t-opts{display:flex;gap:.6rem;flex-wrap:wrap}
+.t-bookui .t-opt{border:var(--t-bw) solid var(--t-line);border-radius:var(--t-rpill);
+  padding:.55rem 1.2rem;font-family:var(--t-fm),monospace;font-size:.8rem;cursor:default}
+.t-bookui .t-opt.sel{background:var(--t-ink);color:var(--t-bg);border-color:var(--t-ink)}
+.t-member{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem}
+.t-mem{border:var(--t-bw) solid var(--t-line);border-radius:var(--t-rlg);padding:2rem;
+  background:var(--t-bg);box-shadow:var(--t-shadow)}
+.t-mem h3{font-family:var(--t-fd),sans-serif;font-size:1.3rem;letter-spacing:0.03em;
+  text-transform:uppercase;margin-bottom:.5rem}
+.t-mem .t-cost{font-family:var(--t-fd),sans-serif;font-size:2rem;font-weight:700;
+  color:var(--t-accent);margin:.6rem 0}
+.t-mem p{color:var(--t-muted);font-size:.93rem;margin-bottom:1.2rem}
+.t-play{display:grid;grid-template-columns:3rem 1fr auto;gap:1rem;align-items:center;
+  padding:1rem 0;border-bottom:1px solid var(--t-line);font-family:var(--t-fm),monospace;font-size:.85rem}
+.t-play .t-n{color:var(--t-accent)}
+@media(max-width:760px){
+  .t-rows li{grid-template-columns:1fr;gap:.3rem}
+  .t-grid,.t-tiers,.t-quotes,.t-arts,.t-ed2,.t-info{grid-template-columns:1fr}
+  .t-stats{grid-template-columns:1fr 1fr}
+  .t-steps{grid-template-columns:1fr 1fr}
+  .t-tiles{grid-template-columns:1fr 1fr}
+  .t-hero-split{grid-template-columns:1fr}
+  .t-member{grid-template-columns:1fr}
+  .t-cal{grid-template-columns:repeat(7,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  body::after,body::before{display:none}
+}
+
+</style>
+</head>
+<body>
+<header class="t-top"><span class="t-word">DUST &amp; SADDLE</span><span class="t-meta">EST. 2026</span><span class="t-meta">Western</span></header>
+<section class="t-hero"><div class="t-wrap"><p class="t-eyebrow">DUST &amp; SADDLE — Western</p><div class="t-hero-split"><h1>Howdy, partner.</h1><div><p class="t-sub">Guided trips for people who like walking but hate logistics.</p><div class="t-cta-row"><a class="t-cta" href="#">Check dates</a></div></div></div></div></section>
+<section class="t-sec"><div class="t-wrap"><p class="t-kicker">A look around</p><h2 class="t-h2">The scene</h2><div class="t-tiles"><div class="t-tile"><div class="t-art" style="background:linear-gradient(45deg,#9d362b,#ab9573)"></div><p>Glacier Morning · 1 day</p></div><div class="t-tile"><div class="t-art" style="background:linear-gradient(135deg,#2d4e2b,#392c20)"></div><p>Volcano Rim Walk · 1 day</p></div><div class="t-tile"><div class="t-art" style="background:linear-gradient(135deg,#392c20,#9d362b)"></div><p>Ridgeline Traverse · 3 days</p></div><div class="t-tile"><div class="t-art" style="background:linear-gradient(90deg,#2d4e2b,#ab9573)"></div><p>Alpine Lake Swim · 1 day</p></div></div></div></section>
+<div class="t-marquee" aria-hidden="true"><span>DUST &amp; SADDLE · Check dates ·&nbsp;</span><span>DUST &amp; SADDLE · Check dates ·&nbsp;</span></div><section class="t-band"><h2>Go outside. We&#x27;ll handle the rest.</h2><p>Guided trips for people who like walking but hate logistics.</p><a class="t-cta" href="#">Check dates</a></section>
+<section class="t-sec"><div class="t-wrap"><p class="t-statement">12 Orchard Row, corner shop</p><p class="t-kicker" style="margin-top:1.2rem">hello@dustsaddle.co · (555) 014-3497 · Mon–Thu 11:00 — 22:00</p></div></section>
+<section class="t-sec"><div class="t-wrap"><div class="t-notes"><h3>House notes</h3><p>— Ask the staff anything. They know everything.</p><p>— Coat check is $5 and every cent goes to the crew.</p><p>— Water is free. Always.</p><p>— Look after each other — that is the whole policy.</p><p>— Lost something? Check with the bar — it turns up.</p></div></div></section>
+<section class="t-tokens"><div class="t-wrap"><p class="t-kicker">Style tokens · click a hex to copy</p><h2 class="t-h2">Palette</h2><ul class="t-swatches"><li><span class="t-chip" style="background:#ecdfce"></span><span class="t-sn">Background</span><span class="t-hx">#ecdfce</span></li><li><span class="t-chip" style="background:#f9ecdc"></span><span class="t-sn">Surface</span><span class="t-hx">#f9ecdc</span></li><li><span class="t-chip" style="background:#392c20"></span><span class="t-sn">Ink</span><span class="t-hx">#392c20</span></li><li><span class="t-chip" style="background:#2d4e2b"></span><span class="t-sn">Accent</span><span class="t-hx">#2d4e2b</span></li><li><span class="t-chip" style="background:#ab9573"></span><span class="t-sn">Muted</span><span class="t-hx">#ab9573</span></li><li><span class="t-chip" style="background:#9d362b"></span><span class="t-sn">Extra</span><span class="t-hx">#9d362b</span></li></ul></div></section>
+<footer class="t-foot"><span>DUST &amp; SADDLE · TZ-taste DNA</span><span><a href="#" id="t-copy">Copy tokens</a> · <a href="../index.html">All pages</a> · MIT</span></footer>
+<script type="application/json" id="t-json">{"$meta": {"name": "Western 091", "family": "Western", "slug": "western-091", "generator": "tz-taste/generate_dnas.py", "seed": 20264631}, "color": {"bg": {"$value": "#ecdfce", "$type": "color"}, "surface": {"$value": "#f9ecdc", "$type": "color"}, "ink": {"$value": "#392c20", "$type": "color"}, "accent": {"$value": "#2d4e2b", "$type": "color"}, "muted": {"$value": "#ab9573", "$type": "color"}, "extra": {"$value": "#9d362b", "$type": "color"}}, "fontFamily": {"display": {"$value": "Six Caps", "$type": "fontFamily"}, "body": {"$value": "IBM Plex Sans", "$type": "fontFamily"}, "mono": {"$value": "JetBrains Mono", "$type": "fontFamily"}}, "fontUrl": {"display": {"$value": "https://fonts.googleapis.com/css2?family=Six+Caps&display=swap", "$type": "other"}, "body": {"$value": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap", "$type": "other"}}, "borderRadius": {"sm": {"$value": "0px", "$type": "borderRadius"}, "md": {"$value": "0px", "$type": "borderRadius"}, "lg": {"$value": "0px", "$type": "borderRadius"}, "pill": {"$value": "0px", "$type": "borderRadius"}}, "boxShadow": {"default": {"$value": "0 12px 40px rgba(0,0,0,.16)", "$type": "boxShadow"}}, "spacing": {"unit": {"$value": "8px", "$type": "dimension"}, "scale": {"$value": [4.0, 8, 16, 24, 48], "$type": "other"}}}</script>
+<script>
+(function(){
+var hx=document.querySelectorAll('.t-hx');
+hx.forEach(function(el){el.style.cursor='pointer';el.title='Click to copy';
+el.addEventListener('click',function(){if(navigator.clipboard){navigator.clipboard.writeText(el.textContent.trim());}});});
+var b=document.getElementById('t-copy');
+if(b){b.addEventListener('click',function(ev){ev.preventDefault();
+var j=document.getElementById('t-json');
+if(j&&navigator.clipboard){navigator.clipboard.writeText(j.textContent);b.textContent='Copied';}});}
+})();
+</script>
+</body>
+</html>
