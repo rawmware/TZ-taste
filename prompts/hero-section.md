@@ -1,3 +1,4 @@
+<!--tz-meta {"id":"hero-section","title":"Hero section","file":"prompts/hero-section.md","description":"One viewport, one focal point. No template hero compositions."} -->
 # Prompt: Hero section
 
 Copy everything below the line into your AI builder. Fill in the [BRACKETS] first.
