@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-swimming-pool",
+  "title": "Swimming Pool design tokens",
+  "category": "Tokens",
+  "file": "tokens/swimming-pool.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "swimming-pool"
+  ],
+  "description": "W3C-format design tokens for the Swimming Pool DNA.",
+  "dnas": [
+   "swimming-pool"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#e9f4f2",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#123a3f",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#e03e2d",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#5c7a7d",
+   "type": "color"
+  },
+  "line": {
+   "value": "#123a3f1f",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#d8ebe8",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Archivo Black",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Karla",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Space Mono",
+   "type": "fontFamily"
+  }
+ }
+}
