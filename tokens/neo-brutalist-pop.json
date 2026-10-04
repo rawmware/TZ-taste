@@ -1,0 +1,62 @@
+{
+ "_tzmeta": {
+  "id": "tokens-neo-brutalist-pop",
+  "title": "Neo-Brutalist Pop design tokens",
+  "category": "Tokens",
+  "file": "tokens/neo-brutalist-pop.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "neo-brutalist-pop"
+  ],
+  "description": "W3C-format design tokens for the Neo-Brutalist Pop style DNA.",
+  "dnas": [
+   "neo-brutalist-pop"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#fff6e9",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#1a1a1a",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#ff5da2",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#6b6259",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#1a1a1a",
+   "$type": "color"
+  },
+  "surface": {
+   "$value": "#ffffff",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Archivo Black",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Space Grotesk",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "neo-brutalist-pop",
+  "name": "Neo-Brutalist Pop",
+  "vibe": "Thick borders, hard shadows, sticker colors. Playful but engineered."
+ }
+}
