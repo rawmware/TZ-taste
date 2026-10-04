@@ -1,0 +1,34 @@
+<!--tz-meta {"id":"error-404","title":"404 page with character","category":"Misc","file":"patterns/error-404.html","tags":["404","error","terminal","humor"],"description":"A terminal-styled 404 that treats the missing page like a missing file — with blinking cursor and exits.","dnas":["retro-terminal"]} -->
+<section class="tz-error-404" aria-label="Page not found">
+  <div class="tz-term">
+    <p class="tz-line"><span class="tz-prompt">guest@tz</span><span class="tz-path">:~</span>$ open /pages/here</p>
+    <p class="tz-line">bash: /pages/here: <span class="tz-err">No such page on this server</span></p>
+    <p class="tz-line"><span class="tz-prompt">guest@tz</span><span class="tz-path">:~</span>$ ls /pages</p>
+    <p class="tz-line tz-dirs">
+      <a href="#">/home</a> <a href="#">/patterns</a> <a href="#">/styles</a> <a href="#">/docs</a>
+    </p>
+    <p class="tz-line"><span class="tz-prompt">guest@tz</span><span class="tz-path">:~</span>$ <span class="tz-cursor" aria-hidden="true">&nbsp;</span></p>
+    <p class="tz-hint">404 &mdash; the page moved, renamed, or never existed. Pick a directory above.</p>
+  </div>
+</section>
+<style>
+.tz-error-404{--bg:#0b0f0a;--ink:#33ff66;--dim:#1f6b3a;--warn:#ffb000;--panel:#0e140d;
+  background:var(--bg);color:var(--ink);padding:clamp(48px,10vw,140px) clamp(20px,6vw,80px);
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;min-height:480px}
+.tz-term{max-width:680px;margin:0 auto;background:var(--panel);border:1px solid var(--dim);
+  border-radius:8px;padding:32px 28px;box-shadow:0 24px 64px #000a}
+.tz-line{margin:0 0 14px;font-size:15.5px;line-height:1.6}
+.tz-line:last-child{margin-bottom:0}
+.tz-prompt{color:var(--warn);font-weight:700}
+.tz-path{color:var(--dim)}
+.tz-err{color:var(--warn)}
+.tz-dirs a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;margin-right:18px}
+.tz-dirs a:hover{color:var(--warn)}
+.tz-cursor{display:inline-block;width:10px;height:20px;background:var(--ink);
+  vertical-align:-4px;animation:tz-blink 1.1s steps(2) infinite}
+.tz-hint{color:var(--dim);font-size:13.5px;border-top:1px solid var(--dim);
+  padding-top:16px;margin-top:20px}
+@keyframes tz-blink{50%{opacity:0}}
+@media(max-width:560px){.tz-term{padding:22px 18px}.tz-line{font-size:13.5px}}
+@media(prefers-reduced-motion:reduce){.tz-cursor{animation:none;opacity:1}}
+</style>
