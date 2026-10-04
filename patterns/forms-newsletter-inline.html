@@ -1,0 +1,45 @@
+<!--tz-meta {"id":"forms-newsletter-inline","title":"Inline newsletter","category":"Forms","file":"patterns/forms-newsletter-inline.html","tags":["email","row","minimal"],"description":"A single-line email row with an underline input and a CSS-only success state, no JavaScript.","dnas":["soft-minimal"]} -->
+<section class="tz-inl" aria-labelledby="tz-inl-h">
+  <h2 id="tz-inl-h">The Sunday Shelf, in your inbox</h2>
+  <input class="tz-inl-toggle" type="checkbox" id="tz-inl-done" aria-hidden="true" tabindex="-1">
+  <form class="tz-inl-form" action="#" method="post">
+    <label class="tz-inl-sr" for="tz-inl-email">Email address</label>
+    <input id="tz-inl-email" type="email" name="email" placeholder="you@example.com" required>
+    <label class="tz-inl-btn" for="tz-inl-done" role="button" tabindex="0">Subscribe</label>
+  </form>
+  <p class="tz-inl-success">You&rsquo;re in. First essay lands Sunday, 7am sharp.</p>
+  <p class="tz-inl-note">One email a week. Unsubscribe in one click, no hard feelings.</p>
+</section>
+<style>
+.tz-inl{--bg:#faf9f6;--ink:#23211c;--accent:#3f6b4a;
+  background:var(--bg);color:var(--ink);padding:clamp(48px,7vw,96px) clamp(24px,6vw,96px);
+  font-family:Arial,Helvetica,sans-serif}
+.tz-inl h2{font-family:Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:-.02em;
+  font-size:clamp(28px,4.5vw,46px);margin:0 0 28px;max-width:20ch}
+.tz-inl-toggle{position:absolute;opacity:0;pointer-events:none}
+.tz-inl-form{display:flex;align-items:center;gap:0;max-width:520px;border-bottom:2px solid var(--ink);
+  padding-bottom:2px}
+.tz-inl-form input{flex:1;border:0;background:transparent;font-size:18px;font-family:inherit;
+  color:var(--ink);padding:12px 4px;min-width:0}
+.tz-inl-form input::placeholder{color:#23211c66}
+.tz-inl-form input:focus{outline:none}
+.tz-inl-form:focus-within{border-bottom-color:var(--accent)}
+.tz-inl-btn{font-weight:bold;font-size:16px;padding:12px 8px;cursor:pointer;white-space:nowrap;
+  border-bottom:2px solid transparent}
+.tz-inl-btn:hover{color:var(--accent)}
+.tz-inl-btn:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.tz-inl-form input:-webkit-autofill{-webkit-box-shadow:0 0 0 40px var(--bg) inset}
+@media (max-width:480px){
+  .tz-inl-form{flex-wrap:wrap;border-bottom:0}
+  .tz-inl-form input{flex-basis:100%;border-bottom:2px solid var(--ink)}
+  .tz-inl-form:focus-within input{border-bottom-color:var(--accent)}
+  .tz-inl-btn{padding:12px 0}
+}
+.tz-inl-success{display:none;font-size:18px;color:var(--accent);font-weight:bold;margin:0;max-width:520px;
+  border-bottom:2px solid var(--accent);padding-bottom:14px}
+.tz-inl-note{font-size:13px;opacity:.6;margin:16px 0 0}
+.tz-inl-toggle:checked ~ .tz-inl-form{display:none}
+.tz-inl-toggle:checked ~ .tz-inl-success{display:block}
+.tz-inl-toggle:checked ~ .tz-inl-note{display:none}
+.tz-inl-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
