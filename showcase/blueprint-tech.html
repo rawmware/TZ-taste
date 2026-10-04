@@ -1,0 +1,171 @@
+<!--tz-meta {"id":"showcase-blueprint-tech","title":"Blueprint Tech showcase","category":"Showcase","file":"showcase/blueprint-tech.html","tags":["blueprint-tech"],"description":"Live demo page for the Blueprint Tech style DNA.","dnas":["blueprint-tech"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blueprint Tech — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#17407f; --tz-surface:#0f2f66; --tz-ink:#f2f6fc; --tz-muted:#8fb3e8;
+  --tz-accent:#ffcf3f; --tz-line:#ffffff40;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:0.95rem;line-height:1.55;-webkit-font-smoothing:antialiased;
+  background-image:repeating-linear-gradient(0deg,var(--tz-line) 0 1px,transparent 1px 32px),repeating-linear-gradient(90deg,var(--tz-line) 0 1px,transparent 1px 32px)}
+.tz-top{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 5vw;border-bottom:1px solid var(--tz-line);flex-wrap:wrap}
+.tz-wordmark{font-family:"Space Grotesk",sans-serif;font-weight:700;letter-spacing:0.06em;font-size:1.05rem;text-transform:uppercase}
+.tz-sheet{font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-sheet .tz-rev{color:var(--tz-accent);font-weight:700}
+.tz-hero{position:relative;padding:5rem 5vw 4rem;border-bottom:1px solid var(--tz-line);overflow:hidden}
+.tz-crosshair{position:absolute;width:44px;height:44px;pointer-events:none;opacity:0.7;z-index:4;transform:translate(-50%,-50%);transition:opacity 0.3s ease}
+.tz-crosshair::before,.tz-crosshair::after{content:"";position:absolute;background:var(--tz-accent)}
+.tz-crosshair::before{left:50%;top:0;width:1px;height:100%}
+.tz-crosshair::after{top:50%;left:0;height:1px;width:100%}
+.tz-eyebrow{font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:1.5rem}
+.tz-eyebrow .tz-fig{color:var(--tz-accent)}
+.tz-hero h1{font-family:"Space Grotesk",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:0.01em;line-height:1.02;font-size:clamp(2.2rem,7vw,5rem);max-width:13ch;margin-bottom:1.4rem}
+.tz-hero h1 .tz-num{color:var(--tz-accent)}
+.tz-sub{max-width:56ch;color:var(--tz-muted);font-size:0.92rem}
+.tz-sub .tz-w{color:var(--tz-ink)}
+.tz-cta{display:inline-block;margin-top:2.2rem;font-weight:700;font-size:0.85rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;background:var(--tz-accent);color:var(--tz-bg);padding:1rem 2rem;transition:transform 0.18s ease,opacity 0.18s ease}
+.tz-cta:hover{transform:translateY(-3px);opacity:0.92}
+.tz-schem{margin-top:3.2rem;max-width:720px;background:var(--tz-surface);border:1px solid var(--tz-line);padding:1.8rem;position:relative;opacity:0;transform:translateY(18px);transition:opacity 0.6s ease,transform 0.6s ease}
+.tz-schem.tz-in{opacity:1;transform:translateY(0)}
+.tz-schem .tz-mark{position:absolute;font-size:0.8rem;color:var(--tz-muted);line-height:1}
+.tz-schem .tz-m1{top:6px;left:8px}.tz-schem .tz-m2{top:6px;right:8px}.tz-schem .tz-m3{bottom:6px;left:8px}.tz-schem .tz-m4{bottom:6px;right:8px}
+.tz-schem svg{display:block;width:100%;height:auto}
+.tz-schem figcaption{margin-top:1rem;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--tz-muted);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.tz-content{padding:0 0 4rem}
+.tz-sect-label{padding:3rem 5vw 1.2rem;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-sect-label .tz-fig{color:var(--tz-accent)}
+.tz-spec{border-top:1px solid var(--tz-line);border-bottom:1px solid var(--tz-line)}
+.tz-srow{display:grid;grid-template-columns:minmax(180px,260px) 1fr auto;gap:0.6rem 1.5rem;padding:1.05rem 5vw;border-bottom:1px solid var(--tz-line);align-items:baseline}
+.tz-srow:last-child{border-bottom:none}
+.tz-param{font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-val{font-weight:500}
+.tz-val .tz-key{color:var(--tz-accent);font-weight:700}
+.tz-tol{font-size:0.78rem;color:var(--tz-muted)}
+.tz-tokens{padding:3.5rem 5vw;border-top:1px solid var(--tz-line)}
+.tz-tokens h2{font-family:"Space Grotesk",sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:0.02em;font-size:1.4rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;list-style:none;border:1px solid var(--tz-line)}
+.tz-swatches li{flex:1 1 140px;border-right:1px solid var(--tz-line);min-width:130px;background:var(--tz-surface)}
+.tz-swatches li:last-child{border-right:none}
+.tz-chip{display:block;height:3.2rem;border-bottom:1px solid var(--tz-line)}
+.tz-swatches .tz-name{display:block;font-size:0.64rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--tz-muted);padding:0.7rem 0.9rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-size:0.78rem;padding:0 0.9rem 0.8rem}
+.tz-foot{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:1.5rem 5vw;border-top:1px solid var(--tz-line);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--tz-muted)}
+@media(max-width:700px){
+  .tz-srow{grid-template-columns:1fr;gap:0.25rem;padding-left:6vw;padding-right:6vw}
+  .tz-tol{justify-self:start}
+  .tz-sect-label{padding-left:6vw;padding-right:6vw}
+  .tz-crosshair{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-schem{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Meridian Instruments</span>
+  <span class="tz-sheet">Sheet 01/08 — <span class="tz-rev">Rev C</span></span>
+</header>
+
+<section class="tz-hero" id="tzHero">
+  <div class="tz-crosshair" id="tzCross" aria-hidden="true"></div>
+  <p class="tz-eyebrow"><span class="tz-fig">Fig. 1</span> · Environmental sensing · Field grade</p>
+  <h1>LOGS <span class="tz-num">14</span> CHANNELS. MISSES NOTHING.</h1>
+  <p class="tz-sub"><span class="tz-w">AQ-4</span> — a field sensor node for temperature, humidity, barometric pressure, and particulate count. Rated −40 °C to +85 °C, sealed IP68, and it runs 90 days on one charge. Every claim on this page carries a number.</p>
+  <a class="tz-cta" href="#">Request datasheet</a>
+  <figure class="tz-schem" id="tzSchem">
+    <span class="tz-mark tz-m1" aria-hidden="true">+</span><span class="tz-mark tz-m2" aria-hidden="true">+</span><span class="tz-mark tz-m3" aria-hidden="true">+</span><span class="tz-mark tz-m4" aria-hidden="true">+</span>
+    <svg viewBox="0 0 640 300" role="img" aria-label="Schematic of the AQ-4 sensor node with labeled parts">
+      <g fill="none" stroke="#f2f6fc" stroke-width="2">
+        <rect x="230" y="90" width="180" height="130"/>
+        <rect x="246" y="106" width="148" height="98"/>
+        <circle cx="320" cy="155" r="26"/>
+        <circle cx="320" cy="155" r="10"/>
+        <line x1="320" y1="90" x2="320" y2="40"/>
+        <line x1="300" y1="52" x2="340" y2="52"/>
+        <line x1="410" y1="120" x2="470" y2="120"/>
+        <line x1="410" y1="190" x2="470" y2="190"/>
+        <line x1="230" y1="120" x2="170" y2="120"/>
+        <line x1="230" y1="190" x2="170" y2="190"/>
+        <line x1="60" y1="260" x2="580" y2="260"/>
+        <path d="M60 260 l10 -8 M60 260 l10 8 M580 260 l-10 -8 M580 260 l-10 8"/>
+      </g>
+      <g font-family="IBM Plex Mono, monospace" font-size="13" fill="#f2f6fc">
+        <text x="476" y="124">TEMP / RH</text>
+        <text x="476" y="194">BARO + PM</text>
+        <text x="60" y="124">ANT — 868 MHZ</text>
+        <text x="96" y="194">CELL — 90 DAY</text>
+        <text x="300" y="30">AQ-4 NODE</text>
+        <text x="60" y="284">350 MM</text>
+      </g>
+      <g font-family="IBM Plex Mono, monospace" font-size="13" fill="#ffcf3f">
+        <text x="300" y="284">±0.1 MM</text>
+      </g>
+      <g stroke="#ffcf3f" stroke-width="1.5">
+        <line x1="312" y1="20" x2="328" y2="20"/><line x1="320" y1="12" x2="320" y2="28"/>
+      </g>
+    </svg>
+    <figcaption><span>Fig. 1 — AQ-4 node, front elevation</span><span>Scale 1:2 · Rev C</span></figcaption>
+  </figure>
+</section>
+
+<section class="tz-content">
+  <p class="tz-sect-label"><span class="tz-fig">Fig. 2</span> — Specification, AQ-4</p>
+  <div class="tz-spec">
+    <div class="tz-srow"><span class="tz-param">Channels</span><span class="tz-val">14 @ 1 Hz, simultaneous</span><span class="tz-tol">—</span></div>
+    <div class="tz-srow"><span class="tz-param">Temp accuracy</span><span class="tz-val"><span class="tz-key">±0.1 °C</span> across full range</span><span class="tz-tol">calibrated</span></div>
+    <div class="tz-srow"><span class="tz-param">Operating range</span><span class="tz-val">−40 °C to +85 °C</span><span class="tz-tol">IEC 60068</span></div>
+    <div class="tz-srow"><span class="tz-param">Battery</span><span class="tz-val">90 days, 1 Hz logging</span><span class="tz-tol">−20 °C derated</span></div>
+    <div class="tz-srow"><span class="tz-param">Enclosure</span><span class="tz-val">IP68, anodized 6061</span><span class="tz-tol">2 m / 24 h</span></div>
+    <div class="tz-srow"><span class="tz-param">Radio</span><span class="tz-val">LoRa 868 / 915 MHz</span><span class="tz-tol">12 km LOS</span></div>
+    <div class="tz-srow"><span class="tz-param">Weight</span><span class="tz-val">210 g with mount</span><span class="tz-tol">±5 g</span></div>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#17407f"></span><span class="tz-name">bg</span><span class="tz-hex">#17407f</span></li>
+    <li><span class="tz-chip" style="background:#0f2f66"></span><span class="tz-name">surface</span><span class="tz-hex">#0f2f66</span></li>
+    <li><span class="tz-chip" style="background:#f2f6fc"></span><span class="tz-name">ink</span><span class="tz-hex">#f2f6fc</span></li>
+    <li><span class="tz-chip" style="background:#8fb3e8"></span><span class="tz-name">muted</span><span class="tz-hex">#8fb3e8</span></li>
+    <li><span class="tz-chip" style="background:#ffcf3f"></span><span class="tz-name">accent</span><span class="tz-hex">#ffcf3f</span></li>
+    <li><span class="tz-chip" style="background:#ffffff40"></span><span class="tz-name">line</span><span class="tz-hex">#ffffff40</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot"><span>A TZ-taste style DNA showcase — MIT, free forever.</span><span>Sheet 08/08 · End of set</span></footer>
+
+<script>
+(function(){
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var schem = document.getElementById("tzSchem");
+  if("IntersectionObserver" in window && !reduced){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ schem.classList.add("tz-in"); io.disconnect(); } });
+    },{threshold:0.2});
+    io.observe(schem);
+  } else { schem.classList.add("tz-in"); }
+  var hero = document.getElementById("tzHero"), cross = document.getElementById("tzCross");
+  if(!reduced && window.matchMedia("(pointer:fine)").matches){
+    hero.addEventListener("mousemove", function(e){
+      var r = hero.getBoundingClientRect();
+      cross.style.left = (e.clientX - r.left) + "px";
+      cross.style.top = (e.clientY - r.top) + "px";
+      cross.style.opacity = "0.7";
+    });
+    hero.addEventListener("mouseleave", function(){ cross.style.opacity = "0"; });
+  } else { cross.style.display = "none"; }
+})();
+</script>
+</body>
+</html>
