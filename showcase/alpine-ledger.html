@@ -1,0 +1,157 @@
+<!--tz-meta {"id":"showcase-alpine-ledger","title":"Alpine Ledger showcase","category":"Showcase","file":"showcase/alpine-ledger.html","tags":["alpine-ledger"],"description":"Live demo page for the Alpine Ledger style DNA.","dnas":["alpine-ledger"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Alpine Ledger — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Karla:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f0e6d2; --tz-surface:#e7d9bd; --tz-ink:#2b2118; --tz-muted:#7a6c58;
+  --tz-accent:#b33a2b; --tz-accent2:#2f5d50; --tz-line:#c9b98f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Karla",Verdana,sans-serif;font-size:1.02rem;line-height:1.62;-webkit-font-smoothing:antialiased}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 6vw;border-bottom:1px solid var(--tz-line);max-width:1100px;margin:0 auto}
+.tz-wordmark{font-family:"Special Elite",monospace;font-size:1.25rem}
+.tz-label{font-family:"IBM Plex Mono",monospace;font-size:0.66rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-hero{max-width:1100px;margin:0 auto;padding:4.5rem 6vw 3rem}
+.tz-eyebrow{font-family:"IBM Plex Mono",monospace;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:1.6rem}
+.tz-eyebrow .tz-st{color:var(--tz-accent);font-weight:700}
+.tz-hero h1{font-family:"Special Elite",monospace;font-weight:400;font-size:clamp(2rem,5.5vw,3.8rem);line-height:1.15;max-width:18ch;margin-bottom:1.5rem}
+.tz-sub{max-width:56ch}
+.tz-stampbtn{display:inline-block;margin-top:2.4rem;font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:0.85rem;letter-spacing:0.22em;text-transform:uppercase;text-decoration:none;color:var(--tz-accent);border:3px double var(--tz-accent);padding:1rem 2.2rem;transform:rotate(-1.5deg);background:transparent;cursor:pointer;transition:transform 0.12s ease}
+.tz-stampbtn.tz-hit{animation:tz-stamppop 0.28s ease-out}
+@keyframes tz-stamppop{0%{transform:rotate(-1.5deg) scale(1.14);box-shadow:0 0 0 6px var(--tz-accent)}100%{transform:rotate(-1.5deg) scale(1);box-shadow:0 0 0 0 var(--tz-accent)}}
+.tz-fig{margin-top:3.2rem;max-width:760px;background:var(--tz-surface);border:1px solid var(--tz-line);padding:1.8rem}
+.tz-fig svg{display:block;width:100%;height:auto}
+.tz-fig figcaption{margin-top:1rem;font-family:"IBM Plex Mono",monospace;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--tz-muted);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.tz-rope{display:block;width:100%;height:26px;max-width:1100px;margin:0 auto;padding:0 6vw}
+.tz-content{max-width:1100px;margin:0 auto;padding:0 6vw 4.5rem}
+.tz-sect-label{font-family:"IBM Plex Mono",monospace;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--tz-muted);padding:3rem 0 1.5rem}
+.tz-entry{border-top:1px solid var(--tz-line);padding:2.2rem 0;position:relative;opacity:0;transform:translateY(12px);transition:opacity 0.45s ease,transform 0.45s ease}
+.tz-entry.tz-in{opacity:1;transform:translateY(0)}
+.tz-entry:last-child{border-bottom:1px solid var(--tz-line)}
+.tz-estamp{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--tz-bg);background:var(--tz-ink);padding:0.35rem 0.8rem;margin-bottom:1rem}
+.tz-entry h2{font-family:"Special Elite",monospace;font-weight:400;font-size:clamp(1.4rem,3.5vw,2rem);margin-bottom:0.7rem;max-width:26ch}
+.tz-entry p{max-width:60ch}
+.tz-route{margin-top:1rem;font-family:"IBM Plex Mono",monospace;font-size:0.74rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--tz-accent2)}
+.tz-verified{position:absolute;top:2rem;right:0;font-family:"IBM Plex Mono",monospace;font-size:0.66rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--tz-accent);border:2px solid var(--tz-accent);padding:0.4rem 0.9rem;transform:rotate(3deg)}
+.tz-tokens{max-width:1100px;margin:0 auto;padding:3.5rem 6vw;border-top:1px solid var(--tz-line)}
+.tz-tokens h2{font-family:"Special Elite",monospace;font-weight:400;font-size:1.6rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;list-style:none;border:1px solid var(--tz-line)}
+.tz-swatches li{flex:1 1 140px;border-right:1px solid var(--tz-line);min-width:130px;background:var(--tz-surface)}
+.tz-swatches li:last-child{border-right:none}
+.tz-chip{display:block;height:3.2rem;border-bottom:1px solid var(--tz-line)}
+.tz-swatches .tz-name{display:block;font-family:"IBM Plex Mono",monospace;font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--tz-muted);padding:0.7rem 0.9rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"IBM Plex Mono",monospace;font-size:0.76rem;padding:0 0.9rem 0.8rem}
+.tz-foot{max-width:1100px;margin:0 auto;border-top:1px solid var(--tz-line);padding:1.6rem 6vw;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--tz-muted)}
+@media(max-width:700px){
+  .tz-verified{position:static;display:inline-block;margin-bottom:1rem;transform:rotate(-2deg)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-entry{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Ridgeline Guides</span>
+  <span class="tz-label">TZ-taste style DNA</span>
+</header>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow"><span class="tz-st">UIAGM certified</span> · Est. 1974 · Bernese Oberland</p>
+  <h1>THE MOUNTAIN KEEPS THE SCHEDULE.</h1>
+  <p class="tz-sub">Small-group guided climbs in the Bernese Oberland. Four clients per rope team, one certified guide, and routes chosen the morning of — never before. Weather is the boss; we just read its mail.</p>
+  <button class="tz-stampbtn" id="tzStamp" type="button">Book a guide</button>
+  <figure class="tz-fig">
+    <svg viewBox="0 0 700 260" role="img" aria-label="Line drawing of a mountain ridge with the standard route marked in green and the summit marked in red">
+      <path d="M20 220 L150 120 L210 160 L300 60 L360 110 L450 40 L520 120 L600 90 L680 220" fill="none" stroke="#2b2118" stroke-width="3"/>
+      <path d="M20 220 L680 220" stroke="#c9b98f" stroke-width="2"/>
+      <path d="M60 220 C 120 180, 180 170, 230 130 S 330 90, 380 70 S 440 60, 450 44" fill="none" stroke="#2f5d50" stroke-width="3" stroke-dasharray="10 7"/>
+      <g stroke="#b33a2b" stroke-width="3"><line x1="440" y1="34" x2="460" y2="54"/><line x1="460" y1="34" x2="440" y2="54"/></g>
+      <circle cx="150" cy="120" r="5" fill="none" stroke="#2b2118" stroke-width="2"/>
+      <circle cx="300" cy="60" r="5" fill="none" stroke="#2b2118" stroke-width="2"/>
+      <g font-family="IBM Plex Mono, monospace" font-size="14" fill="#2b2118">
+        <text x="470" y="50">SUMMIT 4,478 M</text>
+        <text x="70" y="245">BASE CAMP 2,061 M</text>
+      </g>
+      <g font-family="IBM Plex Mono, monospace" font-size="14" fill="#2f5d50">
+        <text x="240" y="200">STANDARD LINE</text>
+      </g>
+    </svg>
+    <figcaption><span>Fig. A — Standard line, summer conditions</span><span>Surveyed Jun 2026</span></figcaption>
+  </figure>
+</section>
+
+<svg class="tz-rope" viewBox="0 0 1000 26" preserveAspectRatio="none" aria-hidden="true">
+  <line x1="0" y1="13" x2="1000" y2="13" stroke="#7a6c58" stroke-width="3" stroke-dasharray="26 14"/>
+  <circle cx="250" cy="13" r="7" fill="none" stroke="#7a6c58" stroke-width="3"/>
+  <circle cx="500" cy="13" r="7" fill="none" stroke="#7a6c58" stroke-width="3"/>
+  <circle cx="750" cy="13" r="7" fill="none" stroke="#7a6c58" stroke-width="3"/>
+</svg>
+
+<section class="tz-content">
+  <p class="tz-sect-label">Expedition log — Summer 2026</p>
+  <article class="tz-entry">
+    <span class="tz-verified">Verified route</span>
+    <span class="tz-estamp">Day 03 · 3,970 m</span>
+    <h2>Eiger North Face Traverse</h2>
+    <p>Four days on the face with a bivouac at the Stollenloch. Fixed ropes where the rock is honest, free climbing where it isn't. You carry your share; the guide carries the decisions.</p>
+    <p class="tz-route">12 km · +1,840 m · Grade AD · Max 4 clients</p>
+  </article>
+  <article class="tz-entry">
+    <span class="tz-estamp">Day 02 · 4,478 m</span>
+    <h2>Matterhorn via Hörnli Ridge</h2>
+    <p>The classic, done properly: two days, one night at the Hörnlihütte, summit push before the crowds wake. Prior Grade III experience required — we check, kindly but firmly.</p>
+    <p class="tz-route">9 km · +1,220 m · Grade AD− · Max 2 clients</p>
+  </article>
+  <article class="tz-entry">
+    <span class="tz-estamp">Day 01 · 2,061 m</span>
+    <h2>Kleine Scheidegg Sunrise Walk</h2>
+    <p>No ropes, no grades, just the best breakfast view in the Alps. A guided dawn walk for anyone who can stroll uphill for three hours. Children welcome; grumbling tolerated.</p>
+    <p class="tz-route">7 km · +410 m · Grade F · Max 8 clients</p>
+  </article>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#f0e6d2"></span><span class="tz-name">bg</span><span class="tz-hex">#f0e6d2</span></li>
+    <li><span class="tz-chip" style="background:#e7d9bd"></span><span class="tz-name">surface</span><span class="tz-hex">#e7d9bd</span></li>
+    <li><span class="tz-chip" style="background:#2b2118"></span><span class="tz-name">ink</span><span class="tz-hex">#2b2118</span></li>
+    <li><span class="tz-chip" style="background:#7a6c58"></span><span class="tz-name">muted</span><span class="tz-hex">#7a6c58</span></li>
+    <li><span class="tz-chip" style="background:#b33a2b"></span><span class="tz-name">accent</span><span class="tz-hex">#b33a2b</span></li>
+    <li><span class="tz-chip" style="background:#2f5d50"></span><span class="tz-name">accent-2</span><span class="tz-hex">#2f5d50</span></li>
+    <li><span class="tz-chip" style="background:#c9b98f"></span><span class="tz-name">line</span><span class="tz-hex">#c9b98f</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot"><span>A TZ-taste style DNA showcase — MIT, free forever.</span><span>Logged at base camp · Alt. 2,061 m</span></footer>
+
+<script>
+(function(){
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var entries = document.querySelectorAll(".tz-entry");
+  if("IntersectionObserver" in window && !reduced){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("tz-in"); io.unobserve(e.target); } });
+    },{threshold:0.15});
+    entries.forEach(function(r){ io.observe(r); });
+  } else { entries.forEach(function(r){ r.classList.add("tz-in"); }); }
+  var stamp = document.getElementById("tzStamp");
+  stamp.addEventListener("click", function(){
+    if(reduced) return;
+    stamp.classList.remove("tz-hit");
+    void stamp.offsetWidth;
+    stamp.classList.add("tz-hit");
+  });
+})();
+</script>
+</body>
+</html>
