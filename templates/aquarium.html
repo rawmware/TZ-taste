@@ -1,0 +1,386 @@
+<!--tz-meta {"id":"aquarium","title":"Kelp Forest Aquarium — Small Aquarium","category":"Template","file":"templates/aquarium.html","tags":["aquarium","museum","family"],"description":"Night-navy small aquarium: daily feedings as a live departure board, stamped ticket headers, brass rules.","dnas":["midnight-railway"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kelp Forest Aquarium — small tanks, deep water</title>
+<meta name="description" content="Kelp Forest Aquarium is a small independent aquarium: 40 tanks, daily feedings, touch pools, and a giant Pacific octopus named Miso.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#101a2e;
+  --tz-surface:#182439;
+  --tz-ink:#e9e2d0;
+  --tz-muted:#7d8698;
+  --tz-accent:#c9a227;
+  --tz-oxblood:#7a2e22;
+  --tz-line:#2a3a5c;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"DM Sans",sans-serif;background:var(--tz-bg);color:var(--tz-ink);
+  line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-weight:400;
+}
+::selection{background:var(--tz-accent);color:var(--tz-bg)}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.tz-mono{font-family:"Space Mono",monospace}
+.tz-serif{font-family:"DM Serif Display",serif}
+.skip{position:absolute;left:-999px;top:0;background:var(--tz-accent);color:var(--tz-bg);padding:8px 16px;z-index:99}
+.skip:focus{left:8px;top:8px}
+
+/* ---------- header ---------- */
+.tz-header{border-bottom:1px solid var(--tz-accent)}
+.tz-header .tz-wrap{display:flex;justify-content:space-between;align-items:center;min-height:80px;gap:20px}
+.tz-logo{font-family:"DM Serif Display",serif;font-size:23px;letter-spacing:.02em}
+.tz-logo .tz-amp{color:var(--tz-accent);font-style:italic}
+.tz-nav{display:flex;gap:30px;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
+.tz-nav a{color:var(--tz-muted);transition:color .25s}
+.tz-nav a:hover{color:var(--tz-accent)}
+.tz-tix{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.1em;background:var(--tz-accent);color:var(--tz-bg);font-weight:700;padding:12px 22px;border:0;cursor:pointer;transition:transform .2s var(--tz-ease)}
+.tz-tix:hover{transform:translateY(-2px)}
+
+/* ---------- hero: departure board ---------- */
+.tz-hero{padding:96px 0 88px;position:relative}
+.tz-hero .tz-platform{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.3em;color:var(--tz-accent);display:block;margin-bottom:28px}
+.tz-hero h1{font-family:"DM Serif Display",serif;font-weight:400;font-size:clamp(52px,7.6vw,104px);line-height:1.04;letter-spacing:.01em;max-width:14ch}
+.tz-hero h1 em{font-style:italic;color:var(--tz-accent)}
+.tz-hero .tz-lede{margin-top:26px;font-size:18px;color:var(--tz-muted);max-width:56ch}
+.tz-board{
+  margin-top:56px;border:2px solid var(--tz-accent);background:var(--tz-surface);
+  box-shadow:0 0 0 1px var(--tz-bg), 0 0 60px #c9a22722;
+}
+.tz-board-head{display:flex;justify-content:space-between;align-items:center;padding:20px 28px;border-bottom:2px solid var(--tz-accent)}
+.tz-board-head .tz-mono{font-size:12px;letter-spacing:.26em;color:var(--tz-accent)}
+.tz-board-head .tz-clock{font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-muted)}
+.tz-feeding{display:grid;grid-template-columns:110px 1fr auto auto;gap:28px;align-items:center;padding:22px 28px;border-bottom:1px solid var(--tz-line)}
+.tz-feeding:last-child{border-bottom:0}
+.tz-feeding .tz-time{font-family:"Space Mono",monospace;font-weight:700;font-size:17px;color:var(--tz-accent)}
+.tz-feeding .tz-what h3{font-family:"DM Serif Display",serif;font-size:21px;font-weight:400}
+.tz-feeding .tz-what p{font-size:14px;color:var(--tz-muted)}
+.tz-feeding .tz-tank{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.14em;color:var(--tz-muted);text-align:right}
+.tz-feeding .tz-status{font-family:"Space Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.12em;padding:8px 14px;border:1px solid var(--tz-accent);color:var(--tz-accent);white-space:nowrap}
+.tz-feeding--now{background:#c9a22714}
+.tz-feeding--now .tz-status{background:var(--tz-accent);color:var(--tz-bg);border-color:var(--tz-accent)}
+.tz-board-foot{padding:18px 28px;font-family:"Space Mono",monospace;font-size:11.5px;color:var(--tz-muted);letter-spacing:.06em;border-top:1px solid var(--tz-line)}
+
+/* ---------- sections ---------- */
+.tz-section{padding:104px 0;border-top:1px solid var(--tz-line)}
+.tz-ticket{display:inline-block;font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.24em;color:var(--tz-accent);border:1px dashed var(--tz-accent);padding:10px 18px;margin-bottom:28px}
+.tz-sec-head{max-width:660px;margin-bottom:52px}
+.tz-sec-head h2{font-family:"DM Serif Display",serif;font-weight:400;font-size:clamp(38px,5vw,64px);line-height:1.08}
+.tz-sec-head h2 em{font-style:italic;color:var(--tz-accent)}
+.tz-sec-head p{color:var(--tz-muted);font-size:17px;margin-top:14px}
+
+/* ---------- exhibits: timetable idiom ---------- */
+.tz-exhibits{border-top:2px solid var(--tz-accent)}
+.tz-exhibit{display:grid;grid-template-columns:220px 1fr 200px;gap:40px;padding:48px 0;border-bottom:1px solid var(--tz-line);align-items:start}
+.tz-exhibit .tz-no{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.2em;color:var(--tz-accent)}
+.tz-exhibit .tz-no b{display:block;font-family:"DM Serif Display",serif;font-size:44px;font-weight:400;color:var(--tz-ink);letter-spacing:0;margin-top:8px}
+.tz-exhibit h3{font-family:"DM Serif Display",serif;font-weight:400;font-size:32px;margin-bottom:10px}
+.tz-exhibit p{color:var(--tz-muted);font-size:16.5px;max-width:56ch}
+.tz-exhibit .tz-detail{font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-muted);line-height:2.2;text-align:right}
+.tz-exhibit .tz-detail b{color:var(--tz-accent)}
+
+/* ---------- octopus spotlight ---------- */
+.tz-miso{background:var(--tz-oxblood);border:2px solid var(--tz-accent);padding:72px 64px;display:grid;grid-template-columns:1fr 1fr;gap:64px;position:relative;overflow:hidden}
+.tz-miso::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 85% 20%, #c9a22733, transparent 70%);pointer-events:none}
+.tz-miso h2{font-family:"DM Serif Display",serif;font-weight:400;font-size:clamp(36px,4.6vw,58px);line-height:1.08;position:relative}
+.tz-miso h2 em{font-style:italic;color:var(--tz-accent)}
+.tz-miso p{color:#e9e2d0cc;margin-top:18px;position:relative;font-size:17px}
+.tz-miso-facts{position:relative;display:grid;gap:0;border-top:1px solid #c9a22766}
+.tz-miso-facts div{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid #c9a22766;font-size:15px}
+.tz-miso-facts .tz-mono{font-size:10px;letter-spacing:.2em;color:var(--tz-accent);padding-top:5px}
+
+/* ---------- conservation ---------- */
+.tz-cons{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.tz-cons blockquote{font-family:"DM Serif Display",serif;font-style:italic;font-size:clamp(24px,3.2vw,36px);line-height:1.4}
+.tz-cons blockquote footer{margin-top:24px;font-family:"Space Mono",monospace;font-style:normal;font-size:11px;letter-spacing:.2em;color:var(--tz-muted)}
+.tz-cons .tz-prose p{color:var(--tz-muted);font-size:16.5px;margin-bottom:18px}
+.tz-cons .tz-prose p strong{color:var(--tz-ink);font-weight:500}
+
+/* ---------- tickets ---------- */
+.tz-tickets{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.tz-ticket-card{background:var(--tz-surface);border:1px solid var(--tz-line);padding:40px 36px;position:relative}
+.tz-ticket-card::before,.tz-ticket-card::after{
+  content:"";position:absolute;top:50%;width:24px;height:24px;border-radius:50%;background:var(--tz-bg);border:1px solid var(--tz-line);transform:translateY(-50%);
+}
+.tz-ticket-card::before{left:-13px}
+.tz-ticket-card::after{right:-13px}
+.tz-ticket-card .tz-perf{position:absolute;top:0;bottom:0;left:50%;border-left:2px dashed var(--tz-line);display:none}
+.tz-ticket-card h3{font-family:"DM Serif Display",serif;font-size:26px;font-weight:400;margin-bottom:6px}
+.tz-ticket-card .tz-mono{font-size:11px;letter-spacing:.2em;color:var(--tz-accent);display:block;margin-bottom:18px}
+.tz-ticket-card .tz-cost{font-family:"DM Serif Display",serif;font-size:48px;color:var(--tz-accent);line-height:1}
+.tz-ticket-card .tz-cost small{font-family:"Space Mono",monospace;font-size:11px;color:var(--tz-muted)}
+.tz-ticket-card p{font-size:14.5px;color:var(--tz-muted);margin-top:14px}
+.tz-ticket-card--member{border-color:var(--tz-accent)}
+.tz-ticket-card--member .tz-stamp{position:absolute;top:24px;right:24px;font-family:"Space Mono",monospace;font-size:10px;font-weight:700;letter-spacing:.18em;color:var(--tz-bg);background:var(--tz-accent);padding:6px 12px;transform:rotate(6deg)}
+
+/* ---------- visit ---------- */
+.tz-visit-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px}
+.tz-visit-grid h4{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.24em;color:var(--tz-accent);margin-bottom:16px;font-weight:700}
+.tz-visit-grid p{font-size:16px;color:var(--tz-muted);line-height:2}
+.tz-visit-grid strong{color:var(--tz-ink);font-weight:500}
+
+/* ---------- footer ---------- */
+.tz-footer{padding:80px 0 36px;border-top:1px solid var(--tz-accent);margin-top:40px}
+.tz-foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:52px}
+.tz-foot-grid h4{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.24em;color:var(--tz-accent);margin-bottom:16px;font-weight:700}
+.tz-foot-grid ul{list-style:none;display:grid;gap:10px;font-size:15px;color:var(--tz-muted)}
+.tz-foot-grid a:hover{color:var(--tz-accent)}
+.tz-foot-brand{font-family:"DM Serif Display",serif;font-size:25px}
+.tz-foot-brand .tz-amp{color:var(--tz-accent);font-style:italic}
+.tz-foot-note{font-size:15px;color:var(--tz-muted);max-width:34ch;margin-top:12px}
+.tz-foot-bottom{border-top:1px solid var(--tz-line);padding-top:24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.08em;color:var(--tz-muted)}
+
+/* ---------- reveal ---------- */
+.tz-reveal{opacity:0;transform:translateY(16px);transition:opacity .7s var(--tz-ease),transform .7s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:960px){
+  .tz-nav{display:none}
+  .tz-feeding{grid-template-columns:1fr 1fr;gap:12px}
+  .tz-exhibit{grid-template-columns:1fr;gap:16px}
+  .tz-exhibit .tz-detail{text-align:left}
+  .tz-miso{grid-template-columns:1fr;padding:48px 32px}
+  .tz-cons{grid-template-columns:1fr;gap:40px}
+  .tz-tickets{grid-template-columns:1fr}
+  .tz-visit-grid{grid-template-columns:1fr;gap:32px}
+  .tz-foot-grid{grid-template-columns:1fr 1fr}
+  .tz-section{padding:72px 0}
+}
+@media (max-width:560px){
+  .tz-foot-grid{grid-template-columns:1fr}
+  .tz-miso-facts div{grid-template-columns:1fr;gap:4px}
+  .tz-board-head{flex-direction:column;gap:8px;align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<!-- DNA: midnight-railway (night navy, lamp-lit ivory, brass fittings, oxblood; DM Serif Display/DM Sans/Space Mono). Design read: the night-train platform as an aquarium — deep, unhurried, totally confident about what's in each tank — for families who read every placard and couples on their third date. One distinctive choice: the daily feeding schedule is a live departure board — times, exhibits, statuses, one "NOW FEEDING" row lit in brass. Dials V5/M4/D5. -->
+<body>
+<a class="skip" href="#feedings">Skip to today's feedings</a>
+
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-logo" href="#">Kelp Forest <span class="tz-amp">&amp;</span> Aquarium</a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#feedings">Feedings</a><a href="#exhibits">Exhibits</a><a href="#miso">Miso</a><a href="#tickets">Tickets</a>
+    </nav>
+    <a class="tz-tix" href="#tickets">BUY TICKETS</a>
+  </div>
+</header>
+
+<main>
+  <!-- ============ hero + departure board ============ -->
+  <section class="tz-hero" id="feedings">
+    <div class="tz-wrap">
+      <span class="tz-platform tz-reveal tz-in">PLATFORM 1 — NOW BOARDING · 40 TANKS · 1 OCTOPUS</span>
+      <h1 class="tz-reveal tz-in">Small tanks.<br><em>Deep</em> water.</h1>
+      <p class="tz-lede tz-reveal tz-in">We're the little aquarium on the working waterfront — forty tanks, one kelp forest, zero dolphin shows. Everything here is rescue, rehabilitation, or research. The octopus runs the place.</p>
+
+      <div class="tz-board tz-reveal tz-in" role="table" aria-label="Today's feeding schedule">
+        <div class="tz-board-head">
+          <span class="tz-mono">DEPARTURES — DAILY FEEDINGS</span>
+          <span class="tz-clock">SATURDAY · ALL TIMES LOCAL</span>
+        </div>
+        <div class="tz-feeding tz-feeding--now" role="row">
+          <span class="tz-time">11:00</span>
+          <div class="tz-what"><h3>Giant Pacific Octopus</h3><p>Miso solves a puzzle box for her crab. She has never lost.</p></div>
+          <span class="tz-tank">TANK 07<br>THE DEEP CORNER</span>
+          <span class="tz-status">NOW FEEDING</span>
+        </div>
+        <div class="tz-feeding" role="row">
+          <span class="tz-time">12:30</span>
+          <div class="tz-what"><h3>Kelp Forest Canopy</h3><p>Schools of rockfish rise to the surface feed. Watch from the mezzanine.</p></div>
+          <span class="tz-tank">TANK 01<br>THE BIG WINDOW</span>
+          <span class="tz-status">ON TIME</span>
+        </div>
+        <div class="tz-feeding" role="row">
+          <span class="tz-time">14:00</span>
+          <div class="tz-what"><h3>Touch Pool Rotation</h3><p>Sea stars, urchins, and one extremely patient hermit crab. Two-finger touch.</p></div>
+          <span class="tz-tank">TANK 12<br>THE SHALLOWS</span>
+          <span class="tz-status">ON TIME</span>
+        </div>
+        <div class="tz-feeding" role="row">
+          <span class="tz-time">15:30</span>
+          <div class="tz-what"><h3>Harbor Seals</h3><p>Our two rescues, Barnacle and Pebble. Training demo included — they know six behaviors.</p></div>
+          <span class="tz-tank">OUTDOOR<br>THE COVE</span>
+          <span class="tz-status">ON TIME</span>
+        </div>
+        <div class="tz-feeding" role="row">
+          <span class="tz-time">16:45</span>
+          <div class="tz-what"><h3>Jelly Drift</h3><p>Moon jellies pulse to the current. The quietest fifteen minutes of your day.</p></div>
+          <span class="tz-tank">TANK 22<br>THE DARK ROOM</span>
+          <span class="tz-status">ON TIME</span>
+        </div>
+        <div class="tz-board-foot">FEEDINGS RUN DAILY, WEATHER PERMITTING · SEAL FEEDINGS MOVE INDOORS IN HEAVY RAIN · ASK ANY AQUARIST ANYTHING</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ exhibits ============ -->
+  <section class="tz-section" id="exhibits">
+    <div class="tz-wrap">
+      <span class="tz-ticket tz-reveal">ADMIT ONE — SECTION 02 · THE TANKS</span>
+      <div class="tz-sec-head tz-reveal">
+        <h2>Every tank has <em>a reason</em></h2>
+        <p>Forty tanks sounds small until you read forty placards. Each exhibit below is built around one animal and one story about the Gulf of Maine.</p>
+      </div>
+      <div class="tz-exhibits">
+        <div class="tz-exhibit tz-reveal">
+          <div class="tz-no">EXHIBIT<b>01</b></div>
+          <div><h3>The Kelp Forest</h3><p>Our centerpiece: a 12,000-gallon tank with a living kelp canopy, 200 feet of it swaying in the current. Rockfish, cunner, and the occasional lobster who thinks he owns the place.</p></div>
+          <div class="tz-detail"><b>12,000</b> GALLONS<br><b>34</b> SPECIES<br>FED <b>12:30</b> DAILY</div>
+        </div>
+        <div class="tz-exhibit tz-reveal">
+          <div class="tz-no">EXHIBIT<b>07</b></div>
+          <div><h3>The Deep Corner</h3><p>Cold, dark, and pressurized — the way Miso likes it. Wolf eels in the rocks, anemones on the glass, and an octopus who watches you back.</p></div>
+          <div class="tz-detail"><b>4,000</b> GALLONS<br><b>9°C</b> YEAR-ROUND<br>FED <b>11:00</b> DAILY</div>
+        </div>
+        <div class="tz-exhibit tz-reveal">
+          <div class="tz-no">EXHIBIT<b>12</b></div>
+          <div><h3>The Shallows</h3><p>The touch pool, kept at tide-pool temperature. Every animal here was chosen because it tolerates curious fingers — the hermit crab has tenure.</p></div>
+          <div class="tz-detail"><b>800</b> GALLONS<br><b>2-FINGER</b> TOUCH RULE<br>STAFFED <b>10–4</b></div>
+        </div>
+        <div class="tz-exhibit tz-reveal">
+          <div class="tz-no">EXHIBIT<b>22</b></div>
+          <div><h3>The Dark Room</h3><p>Moon jellies in a black room with one blue light. People whisper in here without being asked. We consider this our greatest exhibit design achievement.</p></div>
+          <div class="tz-detail"><b>1,200</b> GALLONS<br><b>~400</b> JELLIES<br>QUIET <b>PLEASE</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ miso spotlight ============ -->
+  <section class="tz-section" id="miso" style="border-top:0">
+    <div class="tz-wrap">
+      <div class="tz-miso tz-reveal">
+        <div>
+          <h2>Meet <em>Miso.</em><br>She runs the place.</h2>
+          <p>Our giant Pacific octopus arrived as a rescue in 2023 — tangled in fishing line, missing an arm. She has since regrown the arm, learned to open every latch we own, and developed strong opinions about which aquarist feeds her.</p>
+        </div>
+        <div class="tz-miso-facts">
+          <div><span class="tz-mono">SPECIES</span><span>Enteroctopus dofleini · Giant Pacific octopus</span></div>
+          <div><span class="tz-mono">ARM SPAN</span><span>Just under 12 feet, and she knows it</span></div>
+          <div><span class="tz-mono">FAVORITE FOOD</span><span>Blue crab, served in a puzzle box she opens in 40 seconds</span></div>
+          <div><span class="tz-mono">PARTY TRICK</span><span>Squirts water at the interns she likes. All of them, eventually.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ conservation ============ -->
+  <section class="tz-section">
+    <div class="tz-wrap">
+      <span class="tz-ticket tz-reveal">ADMIT ONE — SECTION 04 · THE WORK</span>
+      <div class="tz-cons">
+        <blockquote class="tz-reveal">
+          "Every animal here is a rescue, a rehab case, or part of a breeding program. If we can't give it a better life than the ocean gave it, we don't keep it."
+          <footer>— DR. LENA OKAFOR, DIRECTOR OF ANIMAL CARE</footer>
+        </blockquote>
+        <div class="tz-prose tz-reveal">
+          <p>We're a <strong>working waterfront aquarium</strong>, not a theme park. Our seal cove rehabilitates stranded pups for release — <strong>31 released since 2019</strong>. Our kelp research feeds into Gulf of Maine restoration projects.</p>
+          <p>Ticket revenue pays for fish food, vet bills, and the enormous electric bill. Membership pays for the research. The gift shop pays for Miso's puzzle boxes, which she destroys weekly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ tickets ============ -->
+  <section class="tz-section" id="tickets">
+    <div class="tz-wrap">
+      <span class="tz-ticket tz-reveal">ADMIT ONE — SECTION 05 · FARES</span>
+      <div class="tz-sec-head tz-reveal">
+        <h2>Tickets, <em>priced like a museum</em></h2>
+        <p>We're a nonprofit. Tickets cover about half our costs; the rest is memberships and grants. Kids under 3 are free — mostly because they eat the ticket.</p>
+      </div>
+      <div class="tz-tickets">
+        <div class="tz-ticket-card tz-reveal">
+          <h3>Adult</h3><span class="tz-mono">AGES 13+</span>
+          <div class="tz-cost">$19<small> / DAY</small></div>
+          <p>Full-day admission. Come back the same day as often as you like — the jellies look different at 4 PM.</p>
+        </div>
+        <div class="tz-ticket-card tz-reveal">
+          <h3>Child</h3><span class="tz-mono">AGES 3–12</span>
+          <div class="tz-cost">$12<small> / DAY</small></div>
+          <p>Includes a scavenger hunt card and one very official junior aquarist sticker.</p>
+        </div>
+        <div class="tz-ticket-card tz-ticket-card--member tz-reveal">
+          <span class="tz-stamp">BEST VALUE</span>
+          <h3>Family Membership</h3><span class="tz-mono">2 ADULTS + KIDS</span>
+          <div class="tz-cost">$95<small> / YEAR</small></div>
+          <p>Unlimited visits, early entry on Saturdays, and members-only mornings with Miso. Pays for itself in six visits.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ visit ============ -->
+  <section class="tz-section" style="border-bottom:0">
+    <div class="tz-wrap">
+      <span class="tz-ticket tz-reveal">ADMIT ONE — SECTION 06 · ARRIVALS</span>
+      <div class="tz-sec-head tz-reveal">
+        <h2>Find the <em>waterfront</em></h2>
+      </div>
+      <div class="tz-visit-grid">
+        <div class="tz-reveal">
+          <h4>ADDRESS</h4>
+          <p><strong>14 Harbor View Drive<br>Portland, ME 04101</strong><br>On the working waterfront,<br>next to the ferry terminal.</p>
+        </div>
+        <div class="tz-reveal">
+          <h4>HOURS</h4>
+          <p><strong>Daily · 10 AM – 5 PM</strong><br>Last entry 4 PM.<br>Closed Thanksgiving<br>and Christmas Day.</p>
+        </div>
+        <div class="tz-reveal">
+          <h4>GOOD TO KNOW</h4>
+          <p>Stroller-friendly, fully accessible.<br>Café serves chowder till 3.<br><strong>Parking:</strong> use the ferry lot —<br>we validate for 3 hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-foot-grid">
+      <div>
+        <span class="tz-foot-brand">Kelp Forest <span class="tz-amp">&amp;</span> Aquarium</span>
+        <p class="tz-foot-note">A small independent aquarium on the Portland waterfront. Nonprofit since 1998.</p>
+      </div>
+      <div><h4>VISIT</h4><ul><li><a href="#feedings">Feeding schedule</a></li><li><a href="#exhibits">Exhibits</a></li><li><a href="#tickets">Tickets</a></li></ul></div>
+      <div><h4>SUPPORT</h4><ul><li><a href="#">Membership</a></li><li><a href="#">Adopt a tank</a></li><li><a href="#">Volunteer</a></li></ul></div>
+      <div><h4>CONTACT</h4><ul><li><a href="#">hello@kelpforest.aquarium</a></li><li><a href="#">(207) 555-0134</a></li><li><a href="#">Press kit</a></li></ul></div>
+    </div>
+    <div class="tz-foot-bottom">
+      <span>© 2026 KELP FOREST AQUARIUM · A 501(C)(3) NONPROFIT</span>
+      <span class="tz-mono">MIND THE GAP · MIND THE JELLIES</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){e.classList.add('tz-in')});
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en,i){
+        if(en.isIntersecting){ setTimeout(function(){en.target.classList.add('tz-in')}, i*70); io.unobserve(en.target); }
+      });
+    },{threshold:.1});
+    els.forEach(function(e){io.observe(e)});
+  }
+})();
+</script>
+</body>
+</html>
