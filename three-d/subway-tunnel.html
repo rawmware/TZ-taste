@@ -1,0 +1,170 @@
+<!--tz-meta {"id":"subway-tunnel","title":"Downtown Local","category":"3D","file":"three-d/subway-tunnel.html","tags":["threejs","night"],"description":"Light rings rush past in an endless tunnel; the platform never moves.","dnas":["midnight-railway"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Downtown Local — TZ-taste</title>
+<style>
+  html, body { margin:0; height:100%; overflow:hidden; background:#07080b; }
+  #app { position:fixed; inset:0; }
+  #app canvas { display:block; }
+  .caption { position:fixed; left:18px; bottom:16px; z-index:5; color:#9aa4b5;
+    font:12px/1.6 system-ui, -apple-system, sans-serif; letter-spacing:.05em;
+    opacity:.9; pointer-events:none; }
+  .caption b { display:block; font-size:13px; letter-spacing:.22em; text-transform:uppercase; }
+  #fallback { display:none; position:fixed; inset:0; z-index:10; place-items:center;
+    color:#9aa4b5; font:14px/1.6 system-ui, sans-serif; text-align:center;
+    padding:32px; background:#07080b; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="caption"><b>Downtown Local</b>mind the gap between where you are and where you're going<br/>drag to orbit &middot; scroll to zoom</div>
+<div id="fallback"><p>This scene needs WebGL, which your browser could not provide.<br/>Try a recent version of Chrome, Safari, Firefox or Edge.</p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (e) {
+  document.getElementById('fallback').style.display = 'grid';
+  throw e;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('app').appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x07080b);
+scene.fog = new THREE.FogExp2(0x07080b, 0.02);
+
+/* camera rides in a sway rig so OrbitControls stays happy */
+const rig = new THREE.Group();
+scene.add(rig);
+const camera = new THREE.PerspectiveCamera(62, window.innerWidth / window.innerHeight, 0.1, 300);
+camera.position.set(0, 0.4, 9);
+rig.add(camera);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.target.set(0, -0.4, -12);
+controls.minDistance = 2;
+controls.maxDistance = 30;
+
+scene.add(new THREE.HemisphereLight(0x3a4256, 0x0a0b0e, 0.7));
+
+/* ---------- tunnel shell ---------- */
+const shell = new THREE.Mesh(
+  new THREE.CylinderGeometry(4.6, 4.6, 140, 28, 1, true),
+  new THREE.MeshStandardMaterial({ color: 0x14161b, roughness: 0.95, side: THREE.BackSide }));
+shell.rotation.x = Math.PI / 2;
+shell.position.z = -60;
+scene.add(shell);
+
+/* ---------- rushing ring segments ---------- */
+const SEG_N = 14, SEG_GAP = 8, LOOP = SEG_N * SEG_GAP, SPEED = 9;
+const ringGeo = new THREE.TorusGeometry(4.05, 0.26, 10, 30);
+const ringMat = new THREE.MeshStandardMaterial({ color: 0x23262e, roughness: 0.8, metalness: 0.2 });
+const lampGeo = new THREE.BoxGeometry(0.28, 0.2, 1.7);
+const lampMat = new THREE.MeshStandardMaterial({ color: 0x111111,
+  emissive: 0xf5f2e8, emissiveIntensity: 2.2 });
+const segments = [];
+for (let i = 0; i < SEG_N; i++) {
+  const g = new THREE.Group();
+  g.add(new THREE.Mesh(ringGeo, ringMat));
+  for (const sx of [-1, 1]) {
+    const lamp = new THREE.Mesh(lampGeo, lampMat);
+    lamp.position.set(sx * 3.62, 0.9, 0);
+    g.add(lamp);
+  }
+  g.position.z = -i * SEG_GAP + 6;
+  scene.add(g);
+  segments.push(g);
+}
+
+/* ---------- floor + static platform ---------- */
+const floor = new THREE.Mesh(new THREE.PlaneGeometry(11, 140),
+  new THREE.MeshStandardMaterial({ color: 0x0e0f13, roughness: 1 }));
+floor.rotation.x = -Math.PI / 2;
+floor.position.set(0, -3.25, -60);
+scene.add(floor);
+const guideLine = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.03, 140),
+  new THREE.MeshStandardMaterial({ color: 0x111111, emissive: 0xd8b93a, emissiveIntensity: 1.1 }));
+guideLine.position.set(0, -3.22, -60);
+scene.add(guideLine);
+const platform = new THREE.Mesh(new THREE.BoxGeometry(2.2, 1.0, 140),
+  new THREE.MeshStandardMaterial({ color: 0x1b1d23, roughness: 0.95 }));
+platform.position.set(2.6, -2.72, -60);
+scene.add(platform);
+const edgeStrip = new THREE.Mesh(new THREE.BoxGeometry(0.09, 0.07, 140),
+  new THREE.MeshStandardMaterial({ color: 0x111111, emissive: 0xffd75e, emissiveIntensity: 1.8 }));
+edgeStrip.position.set(1.55, -2.18, -60);
+scene.add(edgeStrip);
+/* platform edge lights, spaced down the tunnel */
+for (let i = 0; i < 12; i++) {
+  const dot = new THREE.Mesh(new THREE.SphereGeometry(0.09, 8, 8),
+    new THREE.MeshStandardMaterial({ color: 0x111111, emissive: 0xffd75e, emissiveIntensity: 2.0 }));
+  dot.position.set(1.55, -2.1, 4 - i * 11);
+  scene.add(dot);
+}
+
+/* ---------- far light at the end of the line ---------- */
+const farLight = new THREE.Mesh(new THREE.CircleGeometry(2.4, 32),
+  new THREE.MeshBasicMaterial({ color: 0xfff6dd, fog: false }));
+farLight.position.set(0, -0.2, -126);
+scene.add(farLight);
+const farGlow = new THREE.PointLight(0xfff2cf, 260, 90, 1.9);
+farGlow.position.set(0, 0, -108);
+scene.add(farGlow);
+
+/* red signal on the wall */
+const signal = new THREE.Mesh(new THREE.SphereGeometry(0.16, 10, 8),
+  new THREE.MeshStandardMaterial({ color: 0x220000, emissive: 0xff2a22, emissiveIntensity: 2.6 }));
+signal.position.set(-3.7, 1.4, -38);
+scene.add(signal);
+const signalGlow = new THREE.PointLight(0xff2a22, 9, 14, 1.8);
+signalGlow.position.copy(signal.position);
+scene.add(signalGlow);
+
+/* ---------- frame loop ---------- */
+const clock = new THREE.Clock();
+function renderFrame(t, dt) {
+  for (const g of segments) {
+    g.position.z += SPEED * dt;
+    if (g.position.z > 8) g.position.z -= LOOP;
+  }
+  // gentle sway of the whole ride
+  rig.position.x = Math.sin(t * 0.45) * 0.2;
+  rig.position.y = Math.sin(t * 0.62 + 1.0) * 0.13;
+  rig.rotation.z = Math.sin(t * 0.4) * 0.012;
+
+  signal.material.emissiveIntensity = 2.2 + Math.sin(t * 3.1) * 0.8;
+  farGlow.intensity = 250 + Math.sin(t * 1.4) * 30;
+
+  controls.update();
+  renderer.render(scene, camera);
+}
+if (REDUCED) {
+  renderFrame(0, 0);
+} else {
+  renderer.setAnimationLoop(() => {
+  const dt = Math.min(clock.getDelta(), 0.05);
+  renderFrame(clock.elapsedTime, dt);
+});
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
