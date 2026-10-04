@@ -1,0 +1,124 @@
+<!--tz-meta {"id":"astro-hero-broadsheet","title":"Broadsheet hero (Astro)","category":"Astro","file":"astro/HeroBroadsheet.astro","tags":["astro","hero"],"description":"Dark-academia broadsheet hero: blackletter masthead, dateline rules, two-column lede with a marginalia gutter.","dnas":["gothic-editorial"]} -->
+---
+const {
+  masthead = "The Night Press",
+  edition = "Vol. IX — N° 77",
+  dateline = "Saturday, October 3, 2026",
+  place = "Set by candlelight",
+  headline = "The web forgot how to set type, and the readers noticed",
+  lede = [
+    "For a decade the front page of the internet has been poured from the same mold: a badge, a slogan, two buttons, a row of logos. Visitors stopped reading it years ago. They scroll past the mold the way commuters stop seeing billboards — present, loud, and entirely unregistered.",
+    "This folio is an argument for the slower page. Hairline rules instead of shadows. A masthead with a point of view. Copy that says one thing and means it. The candle is optional; the discipline is not.",
+  ],
+  notes = [
+    { mark: "i", text: "Set in Cormorant Garamond, with blackletter reserved for the masthead alone." },
+    { mark: "ii", text: "Dateline rule is a single hairline — broadsheets never needed more." },
+    { mark: "iii", text: "The lede runs two columns on wide paper, one on the train." },
+  ],
+  ctaLabel = "Read the first folio",
+  ctaHref = "#folio",
+} = Astro.props;
+---
+<section class="tz-broad">
+  <p class="tz-broad-dateline">
+    <span>{edition}</span>
+    <span>{dateline}</span>
+    <span>{place}</span>
+  </p>
+  <h1 class="tz-broad-mast">{masthead}</h1>
+  <div class="tz-broad-rule" aria-hidden="true"></div>
+  <div class="tz-broad-grid">
+    <div class="tz-broad-main">
+      <h2 class="tz-broad-headline">{headline}</h2>
+      <div class="tz-broad-lede">
+        {lede.map((p) => <p>{p}</p>)}
+      </div>
+      <a class="tz-broad-cta" href={ctaHref}>{ctaLabel}</a>
+    </div>
+    <aside class="tz-broad-margin">
+      <p class="tz-broad-margin-label">Marginalia</p>
+      <ul class="tz-broad-notes">
+        {notes.map((n) => (
+          <li>
+            <span class="tz-broad-mark">{n.mark}</span>
+            {n.text}
+          </li>
+        ))}
+      </ul>
+    </aside>
+  </div>
+</section>
+<style>
+  .tz-broad {
+    background: #12100c;
+    color: #e8dfc8;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    padding: clamp(48px, 7vw, 96px) clamp(24px, 6vw, 96px);
+  }
+  .tz-broad-dateline {
+    display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    margin: 0; padding: 12px 0;
+    border-top: 3px double #2e2820; border-bottom: 1px solid #2e2820;
+    font-family: "Space Mono", monospace; font-size: 11px;
+    letter-spacing: 0.18em; text-transform: uppercase; color: #7d7261;
+  }
+  .tz-broad-mast {
+    font-family: "UnifrakturMaguntia", serif; font-weight: 400;
+    font-size: clamp(58px, 10vw, 150px); line-height: 1; text-align: center;
+    margin: 30px 0 24px; animation: tz-broad-rise 0.9s ease-out both;
+  }
+  .tz-broad-rule {
+    height: 7px; border-top: 1px solid #2e2820; border-bottom: 1px solid #2e2820;
+    margin: 0 0 clamp(32px, 4vw, 56px);
+  }
+  .tz-broad-grid {
+    display: grid; grid-template-columns: minmax(0, 1fr) 250px;
+    gap: clamp(32px, 5vw, 72px); max-width: 1180px; margin: 0 auto;
+  }
+  .tz-broad-headline {
+    font-size: clamp(30px, 4.4vw, 56px); line-height: 1.08;
+    letter-spacing: -0.01em; font-weight: 600; margin: 0 0 28px; max-width: 20ch;
+  }
+  .tz-broad-lede {
+    columns: 2; column-gap: 44px; column-rule: 1px solid #2e2820;
+    margin: 0 0 40px; max-width: 900px;
+  }
+  .tz-broad-lede p { font-size: 17px; line-height: 1.75; margin: 0 0 1.2em; break-inside: avoid; }
+  .tz-broad-lede p:first-child::first-letter {
+    font-size: 3.4em; float: left; line-height: 0.85;
+    padding: 6px 10px 0 0; font-weight: 700; color: #a33b2e;
+  }
+  .tz-broad-cta {
+    display: inline-block; background: #a33b2e; color: #e8dfc8; text-decoration: none;
+    font-family: "Space Mono", monospace; font-size: 13px; letter-spacing: 0.14em;
+    text-transform: uppercase; padding: 18px 36px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+  .tz-broad-cta:hover { transform: translateY(-3px); opacity: 0.92; }
+  .tz-broad-margin { border-left: 1px solid #2e2820; padding-left: 28px; align-self: start; }
+  .tz-broad-margin-label {
+    font-family: "Space Mono", monospace; font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: #7d7261; margin: 0 0 20px;
+  }
+  .tz-broad-notes {
+    list-style: none; margin: 0; padding: 0; display: grid; gap: 22px;
+    font-size: 14.5px; line-height: 1.65; color: #7d7261;
+  }
+  .tz-broad-mark { font-family: "Space Mono", monospace; color: #a33b2e; margin-right: 10px; }
+  @keyframes tz-broad-rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (max-width: 820px) {
+    .tz-broad-grid { grid-template-columns: 1fr; }
+    .tz-broad-lede { columns: 1; }
+    .tz-broad-margin {
+      border-left: none; border-top: 1px solid #2e2820;
+      padding-left: 0; padding-top: 28px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tz-broad-mast { animation: none; }
+    .tz-broad-cta { transition: none; }
+  }
+</style>
