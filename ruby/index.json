@@ -1,0 +1,166 @@
+{
+ "count": 10,
+ "updated": "2026-10-04",
+ "usage": "Ruby ERB page builder (stdlib only). Run: ruby ruby/tz_build.rb --dna=<slug> --out=out.html",
+ "ruby_pages": [
+  {
+   "id": "ruby-changelog",
+   "title": "Patchbay — terminal changelog",
+   "category": "Ruby",
+   "file": "ruby/changelog.html.erb",
+   "tags": [
+    "ruby",
+    "erb",
+    "changelog",
+    "release-notes"
+   ],
+   "description": "Retro-terminal changelog for fictional API gateway Patchbay: every release rendered as a typed terminal session with prompts and a blinking cursor.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "ruby-docs",
+   "title": "Sundial — library documentation",
+   "category": "Ruby",
+   "file": "ruby/docs.html.erb",
+   "tags": [
+    "ruby",
+    "erb",
+    "docs",
+    "documentation"
+   ],
+   "description": "Docs-solar documentation page for fictional JS date library Sundial: Tufte-style margin sidenotes in burnt orange beside a warm single column.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "ruby-event",
+   "title": "Static Bloom — warehouse night",
+   "category": "Ruby",
+   "file": "ruby/event.html.erb",
+   "tags": [
+    "ruby",
+    "erb",
+    "event",
+    "music"
+   ],
+   "description": "Acid-rave event page for fictional warehouse night Static Bloom: giant Anton lineup rows and a full-width marquee ticker, lime on black.",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "ruby-hero",
+   "title": "Nightline — sleeper train hero",
+   "category": "Ruby",
+   "file": "ruby/hero.html.erb",
+   "tags": [
+    "ruby",
+    "erb",
+    "hero",
+    "travel"
+   ],
+   "description": "Midnight-railway hero page for fictional Nightline sleeper train: a split-flap departure board as the focal point beside left-aligned editorial type.",
+   "dnas": [
+    "midnight-railway"
+   ]
+  },
+  {
+   "id": "ruby-nonprofit",
+   "title": "Kawa River Trust — river cleanup nonprofit",
+   "category": "Ruby",
+   "file": "ruby/nonprofit.html.erb",
+   "tags": [
+    "ruby",
+    "erb",
+    "nonprofit",
+    "environment"
+   ],
+   "description": "Ma-japanese nonprofit page for fictional Kawa River Trust: vast whitespace, a single vertical hairline with a red hanko circle, sparse program rows.",
+   "dnas": [
+    "ma-japanese"
+   ]
+  },
+  {
+   "id": "ruby-portfolio",
+   "title": "Odile Vane — photographer portfolio",
+   "category": "Ruby",
+   "file": "ruby/portfolio.html.erb",
+   "tags": [
+    "ruby",
+    "erb",
+    "portfolio",
+    "photography"
+   ],
+   "description": "Gothic-editorial portfolio for fictional photographer Odile Vane: works as a vertical index with oversized blackletter numerals bleeding off the margin.",
+   "dnas": [
+    "gothic-editorial"
+   ]
+  },
+  {
+   "id": "ruby-pricing",
+   "title": "Forgework — makerspace membership pricing",
+   "category": "Ruby",
+   "file": "ruby/pricing.html.erb",
+   "tags": [
+    "ruby",
+    "erb",
+    "pricing",
+    "membership"
+   ],
+   "description": "Constructivist-red pricing page for fictional makerspace Forgework: tiers as bold poster rows split by diagonal red bars, no cards.",
+   "dnas": [
+    "constructivist-red"
+   ]
+  },
+  {
+   "id": "ruby-restaurant",
+   "title": "Bar Amaro — aperitivo bar",
+   "category": "Ruby",
+   "file": "ruby/restaurant.html.erb",
+   "tags": [
+    "ruby",
+    "erb",
+    "restaurant",
+    "menu"
+   ],
+   "description": "Aperitivo-italian page for fictional Bar Amaro: the menu is billboard type with dotted price leaders and a rotated golden-hour stamp.",
+   "dnas": [
+    "aperitivo-italian"
+   ]
+  },
+  {
+   "id": "ruby-saas",
+   "title": "Ledgerline — invoicing SaaS landing",
+   "category": "Ruby",
+   "file": "ruby/saas.html.erb",
+   "tags": [
+    "ruby",
+    "erb",
+    "saas",
+    "landing"
+   ],
+   "description": "Swiss-rational SaaS page for fictional invoicer Ledgerline: the hero is a brutal ledger table, steps as numbered hairline rows, one red accent.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "ruby-tz-build",
+   "title": "tz_build — DNA-driven ERB builder",
+   "category": "Ruby",
+   "file": "ruby/tz_build.rb",
+   "tags": [
+    "ruby",
+    "erb",
+    "builder"
+   ],
+   "description": "CLI that renders a complete standalone landing page for any of the 48 style DNAs via an embedded ERB template. Stdlib only (erb, json, optparse).",
+   "dnas": [
+    "soft-minimal"
+   ]
+  }
+ ]
+}
