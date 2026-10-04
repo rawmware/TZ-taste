@@ -1,0 +1,121 @@
+<!--tz-meta {"id":"showcase-typewriter-repair","title":"Typewriter Repair showcase","category":"Showcase","file":"showcase/typewriter-repair.html","tags":["typewriter-repair"],"description":"Live demo page for the Typewriter Repair style DNA.","dnas":["typewriter-repair"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Typewriter Repair — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:wght@400;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#ece7d8; --tz-surface:#dbd0b4; --tz-ink:#26221c; --tz-muted:#857a64;
+  --tz-accent:#8f3b2a; --tz-line:#26221c2b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Courier Prime",monospace;font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 4vw;border-bottom:1px solid var(--tz-line)}
+.tz-wordmark{font-family:"Special Elite",serif;font-size:1.2rem}
+.tz-job{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.14em;color:var(--tz-muted)}
+.tz-job strong{color:var(--tz-ink);font-weight:500}
+.tz-hero{padding:6rem 4vw 3.5rem}
+.tz-ticket{background:var(--tz-surface);border:1px solid var(--tz-line);border-radius:2px;padding:2.2rem 2.4rem;max-width:52rem;margin-bottom:2.6rem;position:relative}
+.tz-ticket .tz-shopmark{position:absolute;top:-2.2rem;right:1.6rem;width:6.4rem;height:6.4rem;border:3px solid var(--tz-accent);border-radius:50%;color:var(--tz-accent);font-family:"Special Elite",serif;font-size:0.72rem;display:flex;align-items:center;justify-content:center;text-align:center;transform:rotate(11deg);line-height:1.4;background:var(--tz-bg)}
+.tz-ticket .tz-jobno{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.16em;color:var(--tz-muted);margin-bottom:1.2rem}
+.tz-eyebrow{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.16em;color:var(--tz-muted);margin-bottom:1.4rem}
+.tz-hero h1{font-family:"Special Elite",serif;font-weight:400;font-size:clamp(2.6rem,8.5vw,5.8rem);line-height:1.08;max-width:14ch}
+.tz-hero h1 .tz-hit{display:inline-block;opacity:0;animation:tz-tap 0.35s ease-out forwards}
+.tz-hero h1 .tz-hit:nth-child(1){animation-delay:0.1s}.tz-hero h1 .tz-hit:nth-child(2){animation-delay:0.22s}.tz-hero h1 .tz-hit:nth-child(3){animation-delay:0.34s}.tz-hero h1 .tz-hit:nth-child(4){animation-delay:0.46s}.tz-hero h1 .tz-hit:nth-child(5){animation-delay:0.58s}
+@keyframes tz-tap{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.tz-sub{margin-top:1.8rem;font-size:1.02rem;color:var(--tz-muted);max-width:46ch}
+.tz-sub strong{color:var(--tz-ink)}
+.tz-cta{display:inline-block;margin-top:2.2rem;background:var(--tz-accent);color:var(--tz-bg);font-family:"Special Elite",serif;font-size:1.25rem;letter-spacing:0.02em;text-decoration:none;padding:0.9rem 2.3rem;border-radius:2px}
+.tz-cta:hover{opacity:0.88}
+.tz-ticket .tz-inout{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.6rem}
+.tz-ticket .tz-cell .tz-k{font-family:"IBM Plex Mono",monospace;font-size:0.66rem;letter-spacing:0.16em;color:var(--tz-muted)}
+.tz-ticket .tz-cell .tz-v{font-size:1.05rem;margin-top:0.3rem}
+.tz-content{padding:3rem 4vw 1rem}
+.tz-content h2{font-family:"Special Elite",serif;font-weight:400;font-size:clamp(1.9rem,5vw,2.8rem);margin-bottom:0.4rem}
+.tz-subhead{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.12em;color:var(--tz-muted);margin-bottom:1.6rem}
+table.tz-bench{width:100%;border-collapse:collapse;max-width:740px}
+.tz-bench th{font-family:"IBM Plex Mono",monospace;font-size:0.66rem;font-weight:400;letter-spacing:0.14em;color:var(--tz-muted);text-align:left;padding:0.8rem 0;border-bottom:1px solid var(--tz-ink)}
+.tz-bench td{font-family:"Courier Prime",monospace;font-size:0.92rem;padding:1rem 0;border-bottom:1px solid var(--tz-line)}
+.tz-bench td.tz-jno{font-family:"IBM Plex Mono",monospace;font-size:0.8rem;color:var(--tz-muted)}
+.tz-bench td.tz-ready{color:var(--tz-accent);font-weight:700}
+.tz-quiet{margin:2.8rem 0 0;background:var(--tz-surface);padding:1.8rem;max-width:560px;border-radius:2px}
+.tz-quiet p{color:var(--tz-muted)}
+.tz-quiet strong{color:var(--tz-ink)}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Special Elite",serif;font-weight:400;font-size:1.7rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1;border-radius:2px}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"IBM Plex Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"IBM Plex Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"IBM Plex Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-hero{padding-top:4rem}
+  .tz-job{display:none}
+  .tz-ticket{padding:1.8rem 1.4rem}
+  .tz-ticket .tz-shopmark{width:5rem;height:5rem;top:-1.8rem}
+  .tz-ticket .tz-inout{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Escapement &amp; Sons</span>
+  <span class="tz-job">SN <strong>4-28117</strong> · READY FRIDAY</span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-ticket">
+    <span class="tz-shopmark" aria-hidden="true">FIXED<br>WHILE<br>YOU WAIT</span>
+    <p class="tz-jobno">WORK ORDER · JOB 114 · OPENED TUE 9:04 AM</p>
+    <div class="tz-inout">
+      <div class="tz-cell"><span class="tz-k">IN</span><p class="tz-v">Sticky spacebar, ribbon like a cobweb, smell of 1962.</p></div>
+      <div class="tz-cell"><span class="tz-k">OUT</span><p class="tz-v">Types like new. New ribbon. We kept the smell.</p></div>
+    </div>
+  </div>
+  <p class="tz-eyebrow">A REPAIR BENCH · SPRINGS, ESCAPEMENTS &amp; HONEST TURNAROUNDS</p>
+  <h1><span class="tz-hit">Every </span><span class="tz-hit">machine </span><span class="tz-hit">leaves </span><span class="tz-hit">typing </span><span class="tz-hit">straighter than it came.</span></h1>
+  <p class="tz-sub"><strong>Machine in Tuesday, out Friday.</strong> That's the promise on the wall and we keep it — a repair shop's word is its warranty.</p>
+  <a class="tz-cta" href="#">Book a repair</a>
+</section>
+
+<section class="tz-content">
+  <h2>On the bench</h2>
+  <p class="tz-subhead">EVERY MACHINE GETS A ROW · EVERY ROW GETS FINISHED</p>
+  <table class="tz-bench">
+    <thead><tr><th>JOB</th><th>MACHINE</th><th>PROBLEM</th><th>OUT</th></tr></thead>
+    <tbody>
+      <tr><td class="tz-jno">114</td><td>Olympia SM3, SN 4-28117</td><td>Sticky spacebar</td><td class="tz-ready">Friday</td></tr>
+      <tr><td class="tz-jno">115</td><td>Hermes 3000, SN 3-90210</td><td>Skips every seventh letter</td><td>Next Tue</td></tr>
+      <tr><td class="tz-jno">116</td><td>Smith-Corona Silent, SN 5-11402</td><td>Ribbon won't advance</td><td>Next Fri</td></tr>
+      <tr><td class="tz-jno">117</td><td>Olivetti Lettera 32, SN 6-77120</td><td>Drawband snapped</td><td>Next Fri</td></tr>
+    </tbody>
+  </table>
+  <div class="tz-quiet">
+    <p><strong>Pickup hours are 9–5, Tue–Sat.</strong> Bring the case if you have it — the bench is rough on cases that arrive without one.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#ece7d8"></span><span class="tz-name">bg</span><span class="tz-hex">#ece7d8</span></li>
+    <li><span class="tz-chip" style="background:#dbd0b4"></span><span class="tz-name">surface</span><span class="tz-hex">#dbd0b4</span></li>
+    <li><span class="tz-chip" style="background:#26221c"></span><span class="tz-name">ink</span><span class="tz-hex">#26221c</span></li>
+    <li><span class="tz-chip" style="background:#857a64"></span><span class="tz-name">muted</span><span class="tz-hex">#857a64</span></li>
+    <li><span class="tz-chip" style="background:#8f3b2a"></span><span class="tz-name">accent</span><span class="tz-hex">#8f3b2a</span></li>
+    <li><span class="tz-chip" style="background:#26221c2b"></span><span class="tz-name">line</span><span class="tz-hex">#26221c2b</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
