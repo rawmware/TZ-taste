@@ -1,0 +1,114 @@
+<!--tz-meta {"id":"java-testimonial","title":"Reader-Letter Testimonial (Java/Thymeleaf)","category":"Java","file":"java/testimonial.html","tags":["java","thymeleaf","testimonial"],"description":"Single-statement zine testimonial: giant Anton pull-quote on pasted paper, rotated red rubber-stamp mark, typewriter caption.","dnas":["diary-zine"]} -->
+<!--
+  Design read: a neighborhood print shop's customer wall — one letter, taped up, worth reading in full.
+  Distinctive choice: the whole page is one giant pull-quote; the attribution is a rotated rubber stamp.
+  Dials: VARIANCE 6 / MOTION 2 / DENSITY 2.
+  Route: GET /stories -> StoryController#show (model: story)
+-->
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title th:text="${story.title}">A letter from Mara</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Special+Elite&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --tz-bg: #e8e4d8;
+      --tz-ink: #111111;
+      --tz-accent: #d81b36;
+      --tz-line: #11111133;
+      --tz-muted: #55524a;
+      --tz-font-display: "Anton", sans-serif;
+      --tz-font-body: "Special Elite", monospace;
+      --tz-font-mono: "Space Mono", monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { background: var(--tz-bg); color: var(--tz-ink); font-family: var(--tz-font-body); }
+    .tz-sheet {
+      max-width: 1100px;
+      margin: clamp(40px, 7vw, 100px) auto;
+      padding: clamp(24px, 5vw, 72px);
+      background: var(--tz-bg);
+      border: 1px solid var(--tz-line);
+      box-shadow: 0 2px 0 var(--tz-line), 0 18px 50px #11111122;
+      position: relative;
+      transform: rotate(-0.6deg);
+    }
+    .tz-tape {
+      position: absolute; top: -16px; left: 8%;
+      width: 130px; height: 36px;
+      background: #55524acc;
+      border-left: 1px dashed var(--tz-muted);
+      border-right: 1px dashed var(--tz-muted);
+      transform: rotate(2deg);
+    }
+    .tz-tape--b { left: auto; right: 10%; transform: rotate(-3deg); }
+    .tz-kicker { font-family: var(--tz-font-mono); font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--tz-muted); margin: 0 0 36px; }
+    .tz-quote {
+      font-family: var(--tz-font-display);
+      font-size: clamp(38px, 6.4vw, 96px);
+      line-height: 1.04;
+      text-transform: uppercase;
+      margin: 0;
+      letter-spacing: 0.005em;
+    }
+    .tz-quote .tz-mark { color: var(--tz-accent); }
+    .tz-body {
+      font-size: clamp(17px, 1.8vw, 21px);
+      line-height: 1.75;
+      max-width: 62ch;
+      margin: 44px 0 0;
+    }
+    .tz-signoff { margin-top: 56px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+    .tz-sig { font-size: 26px; }
+    .tz-who { font-family: var(--tz-font-mono); font-size: 13px; line-height: 1.8; color: var(--tz-muted); margin: 0; }
+    .tz-who strong { color: var(--tz-ink); }
+    .tz-stamp {
+      margin-left: auto;
+      width: 150px; height: 150px;
+      border: 3px solid var(--tz-accent);
+      border-radius: 50%;
+      display: grid; place-items: center;
+      text-align: center;
+      font-family: var(--tz-font-mono); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--tz-accent);
+      transform: rotate(11deg);
+      opacity: 0.9;
+      padding: 18px;
+      line-height: 1.7;
+    }
+    .tz-nav { max-width: 1100px; margin: 0 auto clamp(48px, 7vw, 100px); padding: 0 clamp(24px, 5vw, 72px); display: flex; justify-content: space-between; gap: 16px; }
+    .tz-nav a { font-family: var(--tz-font-mono); font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tz-ink); text-decoration: none; border-bottom: 2px solid var(--tz-accent); padding-bottom: 4px; }
+    @media (max-width: 640px) {
+      .tz-stamp { margin-left: 0; width: 120px; height: 120px; }
+      .tz-sheet { transform: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+</head>
+<body>
+  <article class="tz-sheet">
+    <span class="tz-tape" aria-hidden="true"></span>
+    <span class="tz-tape tz-tape--b" aria-hidden="true"></span>
+    <p class="tz-kicker" th:text="${story.kicker}">Reader letter № 12 · kept on the wall since March</p>
+    <blockquote style="margin:0">
+      <h1 class="tz-quote"><span class="tz-mark" th:text="${story.pullMark}">“</span><span th:text="${story.pullQuote}">I stopped dreading the printer.</span><span class="tz-mark">”</span></h1>
+    </blockquote>
+    <p class="tz-body" th:text="${story.body}">Mara runs a two-room letterpress studio in Providence. Her old printer jammed every third run and ate a $400 plate last winter. Ours has run 11,000 impressions since February without a single misfeed — she sent this note with a photo of the first clean run, and we taped it up the same day.</p>
+    <div class="tz-signoff">
+      <p class="tz-sig" th:text="${story.signature}">— Mara K.</p>
+      <p class="tz-who"><strong th:text="${story.name}">Mara Kowalski</strong><br><span th:text="${story.detail}">Iron &amp; Ink Letterpress · Providence, RI · customer since Feb 2026</span></p>
+      <div class="tz-stamp" aria-hidden="true">Verified buyer · 11k prints</div>
+    </div>
+  </article>
+  <nav class="tz-nav" aria-label="More letters">
+    <a th:href="@{/stories}" href="/stories">← All letters</a>
+    <a th:href="@{/stories/next}" href="/stories/next">Next letter →</a>
+  </nav>
+</body>
+</html>
