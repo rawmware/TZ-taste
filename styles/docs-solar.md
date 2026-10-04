@@ -1,3 +1,4 @@
+<!--tz-meta {"id":"docs-solar","name":"Docs Solar","vibe":"Warm documentation, amber accents, serif readability. Docs people actually enjoy reading.","file":"styles/docs-solar.md","tags":["docs","warm","readable","open-source"],"best_for":["documentation","open source","blogs","handbooks"],"fonts":{"body":"Source Serif 4","display":"Source Serif 4","mono":"IBM Plex Mono"},"tokens":{"accent":"#cb4b16","bg":"#fdf6e3","ink":"#3d3a2e","line":"#3d3a2e1f","muted":"#8a8672","surface":"#f7eeda"},"dials":{"density":6,"motion":2,"variance":3}} -->
 # Docs Solar
 
 > Warm documentation, amber accents, serif readability. Docs people actually
