@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-weather-station",
+  "title": "Weather Station design tokens",
+  "category": "Tokens",
+  "file": "tokens/weather-station.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "weather-station"
+  ],
+  "description": "W3C-format design tokens for the Weather Station DNA.",
+  "dnas": [
+   "weather-station"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#e9eae4",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#23282b",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#c05b2e",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#6f777c",
+   "type": "color"
+  },
+  "line": {
+   "value": "#23282b26",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#dbddd2",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Barlow Condensed",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Barlow",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "IBM Plex Mono",
+   "type": "fontFamily"
+  }
+ }
+}
