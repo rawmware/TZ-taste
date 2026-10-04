@@ -1,0 +1,174 @@
+<!--tz-meta {"id":"feature-announcement","title":"Feature Announcement","category":"Email","file":"emails/feature-announcement.html","tags":["email","changelog","saas","product"],"description":"Changelog-style product email announcing scheduled digests for a deploy-alerts tool.","dnas":["retro-terminal"]} -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- Subject: SignalBox 2.14 — scheduled digests are live -->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light dark" />
+<meta name="supported-color-schemes" content="light dark" />
+<title>SignalBox 2.14 — scheduled digests are live</title>
+<style type="text/css">
+  @media only screen and (max-width: 620px) {
+    .container { width: 100% !important; }
+    .pad { padding-left: 20px !important; padding-right: 20px !important; }
+    .stack { display: block !important; width: 100% !important; }
+  }
+</style>
+</head>
+<body style="margin:0; padding:0; word-spacing:normal; background-color:#0b0f0a;">
+<div style="display:none; font-size:1px; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all;">
+  v2.14.0 shipped Oct 2, 2026: scheduled digests, quiet hours v2, and 4 fixes. Update from your dashboard.
+</div>
+<center role="article" aria-roledescription="email" lang="en" dir="ltr" style="width:100%; table-layout:fixed;">
+  <div style="max-width:600px;">
+    <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" align="center" style="width:600px; max-width:600px; margin:0 auto; background-color:#0b0f0a; border:1px solid #33ff6633;">
+      <!-- Terminal header -->
+      <tr>
+        <td class="pad" style="padding:22px 36px 6px 36px; background-color:#0e140d; border-bottom:1px solid #33ff6633;">
+          <p style="margin:0; font-family:Consolas,Menlo,monospace; font-size:13px; line-height:20px; color:#1f6b3a;">
+            <span style="color:#33ff66;">signalbox</span>@prod <span style="color:#ffb000;">~</span> $ changelog --latest
+          </p>
+        </td>
+      </tr>
+      <!-- Version banner -->
+      <tr>
+        <td class="pad" style="padding:26px 36px 6px 36px;">
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td bgcolor="#ffb000" style="padding:6px 14px; font-family:Consolas,Menlo,monospace; font-size:13px; font-weight:bold; color:#0b0f0a; letter-spacing:1px;">
+                v2.14.0
+              </td>
+              <td style="padding:6px 0 6px 14px; font-family:Consolas,Menlo,monospace; font-size:13px; color:#1f6b3a;">
+                SHIPPED OCT 2, 2026
+              </td>
+            </tr>
+          </table>
+          <h1 style="margin:18px 0 0 0; font-family:Consolas,Menlo,monospace; font-size:30px; line-height:38px; font-weight:bold; color:#33ff66; letter-spacing:-0.01em;">
+            Scheduled digests are live.
+          </h1>
+          <p style="margin:14px 0 0 0; font-family:Consolas,Menlo,monospace; font-size:15px; line-height:24px; color:#33ff66;">
+            <span style="color:#1f6b3a;">&gt;</span> Hi Marcus. You asked for it 214 times in
+            the feedback channel &mdash; so here it is. Instead of a ping per deploy, get one
+            summary every weekday at 8:30 AM your time: what shipped, what failed, what is
+            still red. Zero config &mdash; it reads your existing alert rules.
+          </p>
+        </td>
+      </tr>
+      <!-- Try it box -->
+      <tr>
+        <td class="pad" style="padding:18px 36px 6px 36px;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#0e140d; border:1px solid #33ff6633;">
+            <tr>
+              <td style="padding:18px 22px;">
+                <p style="margin:0; font-family:Consolas,Menlo,monospace; font-size:12px; letter-spacing:2px; color:#ffb000;">
+                  TRY IT IN 30 SECONDS
+                </p>
+                <p style="margin:10px 0 0 0; font-family:Consolas,Menlo,monospace; font-size:14px; line-height:22px; color:#33ff66;">
+                  <span style="color:#1f6b3a;">$</span> signalbox digests enable --time 08:30<br/>
+                  <span style="color:#1f6b3a;">$</span> signalbox digests preview<br/>
+                  <span style="color:#1f6b3a;">#</span> <span style="color:#1f6b3a;">or flip the switch in Settings &rarr; Digests</span>
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <!-- Button -->
+      <tr>
+        <td class="pad" align="center" style="padding:22px 36px 6px 36px;">
+          <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center">
+            <tr>
+              <td align="center" bgcolor="#ffb000">
+                <a href="https://signalbox.example.com/changelog/2-14-0" style="display:inline-block; padding:14px 40px; font-family:Consolas,Menlo,monospace; font-size:15px; font-weight:bold; line-height:22px; color:#0b0f0a; text-decoration:none;">Read the full changelog</a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <!-- Changelog table -->
+      <tr>
+        <td class="pad" style="padding:22px 36px 6px 36px;">
+          <p style="margin:0 0 12px 0; font-family:Consolas,Menlo,monospace; font-size:12px; letter-spacing:2px; color:#1f6b3a;">
+            THE REST OF 2.14.0
+          </p>
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td width="110" valign="top" style="padding:10px 0; border-top:1px solid #33ff6633;">
+                <span style="display:inline-block; padding:3px 10px; background-color:#33ff66; font-family:Consolas,Menlo,monospace; font-size:11px; font-weight:bold; color:#0b0f0a; letter-spacing:1px;">NEW</span>
+              </td>
+              <td valign="top" style="padding:10px 0 10px 12px; border-top:1px solid #33ff6633; font-family:Consolas,Menlo,monospace; font-size:14px; line-height:22px; color:#33ff66;">
+                Scheduled digests &mdash; daily summary of deploys, failures, and open incidents.
+              </td>
+            </tr>
+            <tr>
+              <td width="110" valign="top" style="padding:10px 0; border-top:1px solid #33ff6633;">
+                <span style="display:inline-block; padding:3px 10px; background-color:#ffb000; font-family:Consolas,Menlo,monospace; font-size:11px; font-weight:bold; color:#0b0f0a; letter-spacing:1px;">IMPROVED</span>
+              </td>
+              <td valign="top" style="padding:10px 0 10px 12px; border-top:1px solid #33ff6633; font-family:Consolas,Menlo,monospace; font-size:14px; line-height:22px; color:#33ff66;">
+                Quiet hours v2 &mdash; per-project schedules, plus a &ldquo;wake me only if
+                prod is down&rdquo; override.
+              </td>
+            </tr>
+            <tr>
+              <td width="110" valign="top" style="padding:10px 0; border-top:1px solid #33ff6633;">
+                <span style="display:inline-block; padding:3px 10px; background-color:#ffb000; font-family:Consolas,Menlo,monospace; font-size:11px; font-weight:bold; color:#0b0f0a; letter-spacing:1px;">IMPROVED</span>
+              </td>
+              <td valign="top" style="padding:10px 0 10px 12px; border-top:1px solid #33ff6633; font-family:Consolas,Menlo,monospace; font-size:14px; line-height:22px; color:#33ff66;">
+                Slack threads &mdash; incident updates now reply in-thread instead of
+                starting new messages.
+              </td>
+            </tr>
+            <tr>
+              <td width="110" valign="top" style="padding:10px 0; border-top:1px solid #33ff6633; border-bottom:1px solid #33ff6633;">
+                <span style="display:inline-block; padding:3px 10px; background-color:#0e140d; border:1px solid #1f6b3a; font-family:Consolas,Menlo,monospace; font-size:11px; font-weight:bold; color:#1f6b3a; letter-spacing:1px;">FIXED</span>
+              </td>
+              <td valign="top" style="padding:10px 0 10px 12px; border-top:1px solid #33ff6633; border-bottom:1px solid #33ff6633; font-family:Consolas,Menlo,monospace; font-size:14px; line-height:22px; color:#33ff66;">
+                4 fixes, including the duplicate PagerDuty incident bug (#4821) and slow
+                dashboard loads on accounts with 500+ projects.
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <!-- Sign-off -->
+      <tr>
+        <td class="pad" style="padding:20px 36px 6px 36px;">
+          <p style="margin:0; font-family:Consolas,Menlo,monospace; font-size:14px; line-height:23px; color:#33ff66;">
+            <span style="color:#1f6b3a;">&gt;</span> Digests roll out to all paid workspaces today;
+            free workspaces get them October 16. Questions? Reply to this email &mdash; a human
+            reads every one.<br/>
+            <span style="color:#1f6b3a;">&gt;</span> <span style="color:#ffb000;">exit</span><br/><br/>
+            &mdash; June Park, Product Lead
+          </p>
+        </td>
+      </tr>
+      <!-- Footer -->
+      <tr>
+        <td class="pad" style="padding:20px 36px 6px 36px;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr><td style="border-top:1px solid #33ff6633; font-size:0; line-height:0;">&nbsp;</td></tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td class="pad" align="center" style="padding:6px 36px 36px 36px;">
+          <p style="margin:0 0 10px 0; font-family:Consolas,Menlo,monospace; font-size:12px; line-height:18px; color:#1f6b3a;">
+            <a href="https://signalbox.example.com/unsubscribe" style="color:#ffb000; text-decoration:underline;">Unsubscribe</a>
+            &nbsp;&middot;&nbsp;
+            <a href="https://signalbox.example.com/preferences" style="color:#ffb000; text-decoration:underline;">Email preferences</a>
+          </p>
+          <p style="margin:0 0 10px 0; font-family:Consolas,Menlo,monospace; font-size:12px; line-height:18px; color:#1f6b3a;">
+            SignalBox Inc. &middot; 548 Market St, San Francisco, CA 94104
+          </p>
+          <p style="margin:0; font-family:Consolas,Menlo,monospace; font-size:12px; line-height:18px; color:#1f6b3a;">
+            You got this because your workspace has product updates enabled.
+            Turn them off in Settings &rarr; Notifications.
+          </p>
+        </td>
+      </tr>
+    </table>
+  </div>
+</center>
+</body>
+</html>
