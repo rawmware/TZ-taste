@@ -1,0 +1,111 @@
+<!--tz-meta {"id":"showcase-barbershop-pole","title":"Barbershop Pole showcase","category":"Showcase","file":"showcase/barbershop-pole.html","tags":["barbershop-pole"],"description":"Live demo page for the Barbershop Pole style DNA.","dnas":["barbershop-pole"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Barbershop Pole — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Source+Sans+3:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f6f3ea; --tz-surface:#eae4d3; --tz-ink:#232323; --tz-muted:#8a857a;
+  --tz-accent:#b3312a; --tz-line:#23232326;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Source Sans 3",sans-serif;font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 4vw;border-bottom:1px solid var(--tz-line);gap:1rem}
+.tz-wordmark{font-family:"Alfa Slab One",serif;font-size:1.15rem;letter-spacing:0.02em}
+.tz-hours{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.14em;color:var(--tz-muted)}
+.tz-hours strong{color:var(--tz-ink)}
+.tz-pole{width:14px;height:3.4rem;flex:none;background:repeating-linear-gradient(-55deg,var(--tz-accent) 0 8px,var(--tz-bg) 8px 16px,var(--tz-ink) 16px 24px,var(--tz-bg) 24px 32px);border:1px solid var(--tz-ink);animation:tz-spin 14s linear infinite}
+@keyframes tz-spin{from{background-position:0 0}to{background-position:0 90px}}
+.tz-hero{padding:6.5rem 4vw 3.5rem;position:relative}
+.tz-hero h1{font-family:"Alfa Slab One",serif;font-size:clamp(2.9rem,9vw,6.2rem);line-height:1.02;max-width:12ch}
+.tz-hero h1 .tz-ul{background:linear-gradient(var(--tz-accent),var(--tz-accent)) left bottom/0% 0.09em no-repeat;animation:tz-draw 1s cubic-bezier(0.22,1,0.36,1) .4s forwards}
+@keyframes tz-draw{to{background-size:100% 0.09em}}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.16em;color:var(--tz-muted);margin-bottom:1.4rem}
+.tz-sub{margin-top:1.8rem;font-size:1.05rem;color:var(--tz-muted);max-width:44ch}
+.tz-sub strong{color:var(--tz-ink)}
+.tz-cta{display:inline-block;margin-top:2.2rem;background:var(--tz-accent);color:var(--tz-bg);font-family:"Alfa Slab One",serif;font-size:1.15rem;letter-spacing:0.02em;text-decoration:none;padding:0.95rem 2.4rem}
+.tz-cta:hover{opacity:0.88}
+.tz-brass{border:0;border-top:1px solid var(--tz-ink);border-bottom:1px solid var(--tz-ink);height:5px;margin:3.5rem 4vw 0}
+.tz-content{padding:3rem 4vw 1rem}
+.tz-sechead{display:flex;gap:1rem;align-items:stretch;margin-bottom:0.4rem}
+.tz-sechead .tz-pole{height:auto;min-height:3rem}
+.tz-content h2{font-family:"Alfa Slab One",serif;font-size:clamp(1.9rem,5vw,2.8rem)}
+.tz-subhead{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.12em;color:var(--tz-muted);margin-bottom:1.8rem;margin-left:2.5rem}
+.tz-menu{list-style:none;max-width:640px}
+.tz-menu li{display:flex;align-items:baseline;gap:0.6rem;padding:1.05rem 0;border-bottom:1px solid var(--tz-line);font-size:1.02rem}
+.tz-menu .tz-item{font-weight:600}
+.tz-menu .tz-leader{flex:1;border-bottom:2px dotted var(--tz-muted);opacity:0.6;transform:translateY(-4px)}
+.tz-menu .tz-cost{font-family:"Space Mono",monospace;font-weight:700;white-space:nowrap}
+.tz-menu .tz-note{width:100%;font-family:"Space Mono",monospace;font-size:0.74rem;color:var(--tz-muted);padding:0.2rem 0 0}
+.tz-quiet{margin:2.8rem 0 0;background:var(--tz-surface);padding:1.8rem;max-width:560px}
+.tz-quiet p{color:var(--tz-muted)}
+.tz-quiet strong{color:var(--tz-ink)}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Alfa Slab One",serif;font-size:1.6rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"Space Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Space Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"Space Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-hero{padding-top:4rem}
+  .tz-hours{display:none}
+  .tz-subhead{margin-left:0}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-pole" aria-hidden="true"></span>
+  <span class="tz-wordmark" style="margin-right:auto">Cut &amp; Lather Barbers</span>
+  <span class="tz-hours">TUE–SAT 9–6 · <strong>EST. 1987</strong></span>
+</header>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow">THE WINDOW READS, IN PAINT THAT'S LASTED 30 YEARS</p>
+  <h1><span class="tz-ul">Walk-ins welcome,</span> appointments kept.</h1>
+  <p class="tz-sub"><strong>No appointment? Come anyway.</strong> The chairs turn over every twenty minutes and the coffee's always on. Bay rum on request.</p>
+  <a class="tz-cta" href="#">Book a chair</a>
+</section>
+
+<hr class="tz-brass" aria-hidden="true">
+
+<section class="tz-content">
+  <div class="tz-sechead"><span class="tz-pole" aria-hidden="true"></span><h2>The price list</h2></div>
+  <p class="tz-subhead">SET IN THE WINDOW · NO SURPRISES IN THE CHAIR</p>
+  <ul class="tz-menu">
+    <li><span class="tz-item">Cut</span><span class="tz-leader" aria-hidden="true"></span><span class="tz-cost">$30</span></li>
+    <li><span class="tz-item">Hot shave</span><span class="tz-leader" aria-hidden="true"></span><span class="tz-cost">$25</span></li>
+    <li><span class="tz-item">Cut + shave</span><span class="tz-leader" aria-hidden="true"></span><span class="tz-cost">$50</span></li>
+    <li><span class="tz-item">Beard trim</span><span class="tz-leader" aria-hidden="true"></span><span class="tz-cost">$15</span><span class="tz-note">towel included, obviously</span></li>
+    <li><span class="tz-item">Kids, under 12</span><span class="tz-leader" aria-hidden="true"></span><span class="tz-cost">$22</span></li>
+  </ul>
+  <div class="tz-quiet">
+    <p><strong>Cancellations:</strong> life happens — call by 8am and nobody holds a grudge. No-call, no-show twice and you're buying the shop coffee.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#f6f3ea"></span><span class="tz-name">bg</span><span class="tz-hex">#f6f3ea</span></li>
+    <li><span class="tz-chip" style="background:#eae4d3"></span><span class="tz-name">surface</span><span class="tz-hex">#eae4d3</span></li>
+    <li><span class="tz-chip" style="background:#232323"></span><span class="tz-name">ink</span><span class="tz-hex">#232323</span></li>
+    <li><span class="tz-chip" style="background:#8a857a"></span><span class="tz-name">muted</span><span class="tz-hex">#8a857a</span></li>
+    <li><span class="tz-chip" style="background:#b3312a"></span><span class="tz-name">accent</span><span class="tz-hex">#b3312a</span></li>
+    <li><span class="tz-chip" style="background:#23232326"></span><span class="tz-name">line</span><span class="tz-hex">#23232326</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
