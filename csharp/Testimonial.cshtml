@@ -1,0 +1,92 @@
+@*tz-meta {"id":"cs-testimonial","title":"Single ma testimonial (Razor)","category":"C#","file":"csharp/Testimonial.cshtml","tags":["csharp","razor","testimonial"],"description":"One testimonial for Kama Kiln, a ceramics studio — set with deliberate ma: a vertical mono column, one enormous Shippori Mincho quote, and a red hanko stamp as the signature. Emptiness used on purpose.","dnas":["ma-japanese"]} *@
+@page
+@{
+    ViewData["Title"] = "Kama Kiln — a note from a collector";
+    var bg = "#f7f4ec";
+    var ink = "#26221c";
+    var accent = "#a33327";
+    var muted = "#8a8478";
+    var line = "#26221c1f";
+    var surface = "#efe9da";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>@ViewData["Title"]</title>
+<style>
+  :root{
+    --bg:@bg; --ink:@ink; --accent:@accent; --muted:@muted; --line:@line; --surface:@surface;
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);
+    font-family:'Zen Kaku Gothic New','Hiragino Sans',sans-serif;line-height:1.7}
+  .tz-stage{min-height:100dvh;display:grid;
+    grid-template-columns:clamp(48px,7vw,110px) minmax(0,1fr);
+    max-width:1280px;margin:0 auto}
+  /* The distinctive choice: a vertical column of mono text — the page breathes around it */
+  .tz-rail{border-right:1px solid var(--line);display:flex;justify-content:center;
+    padding-top:clamp(64px,10vw,140px)}
+  .tz-rail p{writing-mode:vertical-rl;font-family:'Space Mono',ui-monospace,monospace;
+    font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted);
+    white-space:nowrap}
+  .tz-main{padding:clamp(64px,10vw,150px) clamp(28px,7vw,110px) clamp(64px,9vw,130px);
+    display:flex;flex-direction:column;justify-content:center;max-width:900px}
+  .tz-mark{font-family:'Space Mono',ui-monospace,monospace;font-size:11px;
+    letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:clamp(40px,6vw,80px)}
+  blockquote{font-family:'Shippori Mincho','Hiragino Mincho ProN',serif;
+    font-weight:400;font-size:clamp(30px,4.6vw,58px);line-height:1.42;
+    letter-spacing:.01em;margin-bottom:clamp(48px,6vw,84px);max-width:20ch}
+  blockquote .q{color:var(--accent)}
+  .tz-attr{display:flex;align-items:center;gap:26px}
+  /* The hanko stamp — the studio's signature, in red */
+  .tz-hanko{width:64px;height:64px;flex:none;background:var(--accent);color:var(--bg);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Shippori Mincho',serif;font-size:30px;line-height:1;
+    transform:rotate(-4deg)}
+  .tz-who{font-size:16px}
+  .tz-who strong{display:block;font-weight:600;font-size:17px}
+  .tz-who span{color:var(--muted);font-size:14.5px}
+  .tz-link{margin-top:clamp(56px,7vw,96px);align-self:flex-start;
+    font-family:'Space Mono',ui-monospace,monospace;font-size:12px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--ink);text-decoration:none;
+    border-bottom:1px solid var(--accent);padding-bottom:6px}
+  .tz-link .arr{display:inline-block;transition:transform .35s var(--ease)}
+  .tz-link:hover .arr{transform:translateX(6px)}
+  .tz-rise{opacity:0;transform:translateY(24px);animation:tz-rise 1s var(--ease) forwards}
+  .tz-rise.d1{animation-delay:.15s}.tz-rise.d2{animation-delay:.35s}
+  @@keyframes tz-rise{to{opacity:1;transform:none}}
+  @@media (max-width:640px){
+    .tz-stage{grid-template-columns:34px minmax(0,1fr)}
+    .tz-rail p{font-size:9px;letter-spacing:.26em}
+    .tz-hanko{width:52px;height:52px;font-size:24px}
+  }
+  @@media (prefers-reduced-motion:reduce){
+    .tz-rise{opacity:1;transform:none;animation:none}
+    *{transition:none !important}
+  }
+</style>
+</head>
+<body>
+  <div class="tz-stage">
+    <div class="tz-rail"><p>a note from a collector — autumn 2026</p></div>
+    <main class="tz-main">
+      <p class="tz-mark tz-rise">Kama Kiln · Wood-fired ceramics</p>
+      <blockquote class="tz-rise d1">
+        <span class="q">“</span>The bowl arrived wrapped in newspaper. I unwrapped it slowly,
+        the way you open something you intend to keep. It has held my mornings ever since.<span class="q">”</span>
+      </blockquote>
+      <div class="tz-attr tz-rise d2">
+        <div class="tz-hanko" aria-hidden="true">釜</div>
+        <p class="tz-who">
+          <strong>Mara Ellison</strong>
+          <span>Collector, Kyoto — on the ash-glazed tea bowls, firing № 12</span>
+        </p>
+      </div>
+      <a class="tz-link tz-rise d2" href="#kiln">See firing № 13 <span class="arr">→</span></a>
+    </main>
+  </div>
+</body>
+</html>
