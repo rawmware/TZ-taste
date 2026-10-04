@@ -1,0 +1,91 @@
+<!--tz-meta {"id":"forms-quote-builder","title":"Quote builder form","category":"Sections","file":"patterns/forms-quote-builder.html","tags":["forms","quote","pricing"],"description":"Blueprint-tech quote builder: pick scope toggles, live price tally in mono, deposit terms, no email required to see the number.","dnas":["blueprint-tech"]} -->
+<section class="tz-forms-quote-builder">
+  <p class="tz-eyebrow">Instant estimate</p>
+  <h2>Build your quote.<br><em>See the number.</em></h2>
+  <p class="tz-lede">Toggle what you need. The price updates live — no email gate, no "talk to sales."</p>
+  <form class="tz-builder" id="tz-quote-form">
+    <fieldset>
+      <legend>Scope</legend>
+      <label class="tz-toggle"><input type="checkbox" checked data-price="1800"><span class="tz-box"></span><span class="tz-name">Marketing site <small>up to 8 pages</small></span><b class="tz-amt">$1,800</b></label>
+      <label class="tz-toggle"><input type="checkbox" data-price="2400"><span class="tz-box"></span><span class="tz-name">Booking system <small>calendar + payments</small></span><b class="tz-amt">$2,400</b></label>
+      <label class="tz-toggle"><input type="checkbox" data-price="1200"><span class="tz-box"></span><span class="tz-name">Copywriting <small>all pages, your voice</small></span><b class="tz-amt">$1,200</b></label>
+      <label class="tz-toggle"><input type="checkbox" data-price="900"><span class="tz-box"></span><span class="tz-name">Brand refresh <small>logo + palette + type</small></span><b class="tz-amt">$900</b></label>
+    </fieldset>
+    <fieldset>
+      <legend>Timeline</legend>
+      <div class="tz-radios">
+        <label><input type="radio" name="speed" checked data-mult="1"><span>Standard <small>6–8 wks</small></span></label>
+        <label><input type="radio" name="speed" data-mult="1.25"><span>Rush <small>3–4 wks · +25%</small></span></label>
+      </div>
+    </fieldset>
+    <div class="tz-total">
+      <div><span class="tz-k">Your estimate</span><b class="tz-sum" id="tz-quote-sum">$1,800</b></div>
+      <p class="tz-terms">50% deposit to start · balance on launch · fixed price, in writing</p>
+      <button class="tz-send" type="submit">Send me this quote</button>
+    </div>
+  </form>
+</section>
+<style>
+.tz-forms-quote-builder{--bg:#0f2a4a;--ink:#eaf3fb;--muted:#8fa8c2;--accent:#7fd0ff;--line:#7fd0ff33;
+  background:var(--bg);color:var(--ink);padding:clamp(72px,10vw,140px) clamp(20px,5vw,64px);
+  font-family:ui-monospace,Menlo,monospace}
+.tz-forms-quote-builder .tz-eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 18px;text-align:center}
+.tz-forms-quote-builder h2{font-size:clamp(34px,5.5vw,58px);font-weight:700;letter-spacing:-.02em;
+  line-height:1.08;margin:0 0 14px;text-align:center}
+.tz-forms-quote-builder h2 em{font-style:normal;color:var(--accent)}
+.tz-forms-quote-builder .tz-lede{text-align:center;color:var(--muted);max-width:52ch;margin:0 auto 48px;
+  font-size:14.5px;line-height:1.7;font-family:-apple-system,'Segoe UI',sans-serif}
+.tz-forms-quote-builder .tz-builder{max-width:680px;margin:0 auto;border:1px solid var(--line);
+  background:#0c2138;padding:clamp(24px,4vw,48px)}
+.tz-forms-quote-builder fieldset{border:0;margin:0 0 36px;padding:0}
+.tz-forms-quote-builder legend{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:18px;padding:0}
+.tz-forms-quote-builder .tz-toggle{display:grid;grid-template-columns:28px 1fr auto;gap:16px;align-items:center;
+  padding:16px 4px;border-bottom:1px dashed var(--line);cursor:pointer;font-family:-apple-system,'Segoe UI',sans-serif}
+.tz-forms-quote-builder .tz-toggle input{position:absolute;opacity:0}
+.tz-forms-quote-builder .tz-box{width:24px;height:24px;border:2px solid var(--muted);position:relative;transition:all .2s}
+.tz-forms-quote-builder .tz-toggle input:checked+.tz-box{background:var(--accent);border-color:var(--accent)}
+.tz-forms-quote-builder .tz-toggle input:checked+.tz-box::after{content:"";position:absolute;left:7px;top:3px;
+  width:6px;height:11px;border:solid #0f2a4a;border-width:0 2.5px 2.5px 0;transform:rotate(42deg)}
+.tz-forms-quote-builder .tz-toggle input:focus-visible+.tz-box{outline:2px solid var(--accent);outline-offset:3px}
+.tz-forms-quote-builder .tz-name{font-size:15.5px;font-weight:600}
+.tz-forms-quote-builder .tz-name small{display:block;font-weight:400;color:var(--muted);font-size:13px}
+.tz-forms-quote-builder .tz-amt{font-family:ui-monospace,Menlo,monospace;font-size:15px;color:var(--accent)}
+.tz-forms-quote-builder .tz-radios{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tz-forms-quote-builder .tz-radios label{border:1px solid var(--line);padding:18px;cursor:pointer;
+  font-family:-apple-system,'Segoe UI',sans-serif;transition:border-color .2s;font-size:15px;font-weight:600}
+.tz-forms-quote-builder .tz-radios label:has(input:checked){border-color:var(--accent);background:#7fd0ff0d}
+.tz-forms-quote-builder .tz-radios small{display:block;font-weight:400;color:var(--muted);font-size:12.5px;margin-top:4px}
+.tz-forms-quote-builder .tz-radios input{accent-color:var(--accent);margin-right:8px}
+.tz-forms-quote-builder .tz-total{border-top:2px solid var(--accent);padding-top:28px;display:grid;gap:18px}
+.tz-forms-quote-builder .tz-k{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
+.tz-forms-quote-builder .tz-sum{display:block;font-size:52px;font-weight:700;color:var(--accent);
+  letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.tz-forms-quote-builder .tz-terms{margin:0;color:var(--muted);font-size:13px;font-family:-apple-system,'Segoe UI',sans-serif}
+.tz-forms-quote-builder .tz-send{background:var(--accent);color:#0f2a4a;border:0;font-family:inherit;font-weight:700;
+  font-size:15px;padding:18px;cursor:pointer;letter-spacing:.04em;transition:transform .25s cubic-bezier(.22,1,.36,1)}
+.tz-forms-quote-builder .tz-send:hover{transform:translateY(-2px)}
+@media (max-width:560px){
+  .tz-forms-quote-builder .tz-radios{grid-template-columns:1fr}
+}
+</style>
+<script>
+(function(){
+  var form=document.getElementById('tz-quote-form');
+  var sum=document.getElementById('tz-quote-sum');
+  function calc(){
+    var total=0;
+    form.querySelectorAll('input[type=checkbox]:checked').forEach(function(c){total+=+c.dataset.price});
+    var mult=+form.querySelector('input[name=speed]:checked').dataset.mult;
+    sum.textContent='$'+Math.round(total*mult).toLocaleString('en-US');
+  }
+  form.addEventListener('change',calc);calc();
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var btn=form.querySelector('.tz-send');
+    btn.textContent='Quote sent — check your inbox';
+    btn.disabled=true;
+  });
+})();
+</script>
