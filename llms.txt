@@ -1,7 +1,9 @@
-# TZ-taste
+# TZ-taste (v1.0.0, updated 2026-10-04)
 
 > The free anti-slop design reference for AI agents and developers.
 > https://github.com/rawmware/TZ-taste · Live demo: https://rawmware.github.io/TZ-taste/
+
+GENERATED FILE — do not edit by hand. Regenerate with: node scripts/llms-build.mjs
 
 ## What this is
 
@@ -23,28 +25,776 @@ The one-line instruction a human gives you:
 > Use https://github.com/rawmware/TZ-taste as a reference to build: [brief].
 > Follow its AGENT.md protocol and pick one style DNA before writing any code.
 
-## Contents
+## Contents (48 DNAs, 164 patterns, 30 3D scenes, 33 sources, 36 prompts)
 
 - `AGENT.md` — agent bootstrap, modes, hard rules, file map
 - `manifest.json` — machine-readable version, counts, and file map
 - `skill/SKILL.md` — portable anti-slop skill (install: `npx skills add https://github.com/rawmware/TZ-taste --skill "tz-taste"`)
-- `styles/` — 12 style DNAs (editorial-serif, swiss-rational, dark-luxe,
-  industrial-brutalist, soft-minimal, acid-rave, glass-calm, retro-terminal,
-  neo-brutalist-pop, ma-japanese, y2k-chrome, docs-solar) with tokens, type
-  pairings, and rules; machine index at `styles/index.json`
-- `patterns/` — 14 copy-paste HTML/CSS section patterns (heroes, navs, bento,
-  pricing, testimonials, stats, marquee, CTA, footer, backgrounds, cards);
-  machine index at `patterns/index.json`
-- `prompts/` — 6 ready-made build prompts: landing-page, hero-section,
-  dashboard, portfolio, mobile-screens, redesign-audit
+- `styles/` — 48 style DNAs with tokens, type pairings, and rules; machine index at `styles/index.json`
+- `patterns/` — 164 copy-paste HTML/CSS section patterns; machine index at `patterns/index.json`
+- `prompts/` — 36 ready-made build prompts: 404-page, about-page, api-docs, blog-magazine, careers-page, changelog-page, checkout-flow, community-forum, contact-page, course-landing, dark-dashboard, dashboard, ecommerce-product, event-page, help-center, hero-section, html-email, job-board, landing-page, link-in-bio, mobile-paywall, mobile-screens, nonprofit-donate, podcast-page, portfolio, press-kit, pricing-page, real-estate-listing, recipe-site, redesign-audit, saas-onboarding, status-page, threejs-hero, waitlist-page, web-pitch-deck, wedding-site
 - `docs/ANTI-SLOP.md` — concrete checklist of AI-slop tells (blockers, warnings, taste test)
 - `docs/DECISION-MATRIX.md` — brief → style DNA routing table
 - `docs/TASTE-GUIDE.md` — the short philosophy
-- `sources/sources.json` — curated index of free design resources (skills,
-  component libraries, motion tools, type) with verified licenses;
+- `sources/sources.json` — curated index of free design resources with verified licenses;
   freshness snapshots in `sources/FRESHNESS.json`
-- `docs/` — live demo site (GitHub Pages): browsable DNAs, patterns with live
-  previews, prompt library, agent kit
+- `docs/` — live demo site (GitHub Pages): browsable DNAs, patterns with live previews, prompt library, agent kit
+
+## Style DNAs
+
+Pick exactly ONE. Load only that DNA's file.
+
+- `acid-rave` — Acid Rave. Black room, acid lime, type at maximum volume. Flyers, not landing pages.
+  File: styles/acid-rave.md. Best for: music, events, streetwear, festivals. Dials: density 4/motion 7/variance 9.
+
+- `alpine-ledger` — Alpine Ledger. A mountaineering logbook: kraft paper, rubber stamps, rope and knot motifs, stamped entries.
+  File: styles/alpine-ledger.md. Best for: outdoor-brands, travel, journals. Dials: density 6/motion 2/variance 5.
+
+- `aperitivo-italian` — Aperitivo Italian. Golden hour at a Milan bar, every night. Campari red, bitter orange, and typography you can taste.
+  File: styles/aperitivo-italian.md. Best for: bars, restaurants, food-brands. Dials: density 4/motion 4/variance 6.
+
+- `arctic-field` — Arctic Field. Expedition research: ice white, glacier blue, instrument precision — data you can trust at −30°.
+  File: styles/arctic-field.md. Best for: science, outdoor-gear, climate. Dials: density 6/motion 3/variance 4.
+
+- `art-deco-luxe` — Art Deco Luxe. 1920s geometric glamour: black lacquer, gold leaf, sunburst symmetry. A jazz-age ballroom rendered as a website.
+  File: styles/art-deco-luxe.md. Best for: hotels, jewelry, events, cocktail-bars. Dials: density 2/motion 3/variance 4.
+
+- `art-nouveau-whiplash` — Art Nouveau Whiplash. Mucha posters and ironwork: organic curves, jewel tones, every frame an ornament.
+  File: styles/art-nouveau-whiplash.md. Best for: theaters, wine, spas. Dials: density 3/motion 4/variance 7.
+
+- `bauhaus-primary` — Bauhaus Primary. Functional geometry: red, yellow, blue on off-white. A workshop poster that refuses to decorate.
+  File: styles/bauhaus-primary.md. Best for: design-schools, furniture, workshops. Dials: density 6/motion 4/variance 6.
+
+- `blueprint-tech` — Blueprint Tech. Cyanotype schematics: deep blueprint blue, white line work, everything labeled.
+  File: styles/blueprint-tech.md. Best for: engineering, hardware, dev-tools. Dials: density 7/motion 3/variance 5.
+
+- `botanical-lab` — Botanical Lab. A greenhouse full of specimens: deep green, pressed-plant delicacy, Latin on every label.
+  File: styles/botanical-lab.md. Best for: skincare, tea, garden-brands. Dials: density 4/motion 3/variance 4.
+
+- `concrete-poem` — Concrete Poem. Typographic art: words arranged as shapes on the page — ink, paper, and the architecture of language.
+  File: styles/concrete-poem.md. Best for: poets, galleries, literary-events. Dials: density 3/motion 4/variance 9.
+
+- `constructivist-red` — Constructivist Red. Propaganda poster as interface: red and black diagonals, type that shouts from a wall.
+  File: styles/constructivist-red.md. Best for: campaigns, unions, exhibitions. Dials: density 5/motion 5/variance 8.
+
+- `cottage-warm` — Cottage Warm. Cozy domestic: cream, checks, garden warmth. The website equivalent of someone offering you tea.
+  File: styles/cottage-warm.md. Best for: food, crafts, bed-and-breakfast. Dials: density 3/motion 3/variance 4.
+
+- `cyberpunk-noir` — Cyberpunk Noir. Rain-slicked neon city: near-black, electric pink and cyan, glitch under the surface. Dense, alert, humming.
+  File: styles/cyberpunk-noir.md. Best for: games, tech, streaming. Dials: density 8/motion 8/variance 7.
+
+- `dark-luxe` — Dark Luxe. Near-black, champagne accents, whisper-thin serif. Expensive by restraint.
+  File: styles/dark-luxe.md. Best for: hospitality, fashion, real estate, premium services. Dials: density 2/motion 4/variance 4.
+
+- `de-stijl-grid` — De Stijl Grid. Mondrian's canvas as a website: primary blocks, black grids, white doing the heavy lifting.
+  File: styles/de-stijl-grid.md. Best for: galleries, design-studios, books. Dials: density 4/motion 3/variance 6.
+
+- `desert-modern` — Desert Modern. Palm Springs at 10am: shade, breeze-block shadows, a pool doing all the talking.
+  File: styles/desert-modern.md. Best for: real-estate, hotels, interiors. Dials: density 3/motion 3/variance 5.
+
+- `docs-solar` — Docs Solar. Warm documentation, amber accents, serif readability. Docs people actually enjoy reading.
+  File: styles/docs-solar.md. Best for: documentation, open source, blogs, handbooks. Dials: density 6/motion 2/variance 3.
+
+- `editorial-serif` — Editorial Serif. Warm paper, oversized serif, hairline rules. A literary magazine that happens to be a website.
+  File: styles/editorial-serif.md. Best for: studios, blogs, portfolios, publishers. Dials: density 2/motion 3/variance 6.
+
+- `glass-calm` — Glass Calm. Frosted surfaces over pastel light. Weather-app serenity as a design language.
+  File: styles/glass-calm.md. Best for: wellness, weather, fintech, consumer apps. Dials: density 3/motion 6/variance 4.
+
+- `gothic-editorial` — Gothic Editorial. Dark academia: candlelit paper, blackletter accents used sparingly, scholarly and brooding. A library after hours.
+  File: styles/gothic-editorial.md. Best for: books, universities, museums. Dials: density 4/motion 3/variance 6.
+
+- `industrial-brutalist` — Industrial Brutalist. Exposed structure, safety orange, condensed type. A factory that ships software.
+  File: styles/industrial-brutalist.md. Best for: dev tools, zines, hardware, labels. Dials: density 7/motion 3/variance 8.
+
+- `ink-wash-sumi` — Ink-Wash Sumi. Brush, ink, rice paper: monochrome gestures and the confidence to leave space alone.
+  File: styles/ink-wash-sumi.md. Best for: tea, galleries, calligraphy. Dials: density 1/motion 3/variance 5.
+
+- `jazz-blue-note` — Jazz Blue Note. Mid-century jazz sleeve art: duotone photography, smoky blue, bold condensed sans, liner-note typography.
+  File: styles/jazz-blue-note.md. Best for: jazz-clubs, labels, bars. Dials: density 4/motion 4/variance 6.
+
+- `kawaii-pixel` — Kawaii Pixel. Sticker-sheet joy: pastel pixels, chunky hearts, everything huggable at 8x scale.
+  File: styles/kawaii-pixel.md. Best for: stationery, cafes, indie-games. Dials: density 4/motion 7/variance 7.
+
+- `laboratory-clean` — Laboratory Clean. A calibrated instrument, not a landing page: sterile white, spec tables, every label measured.
+  File: styles/laboratory-clean.md. Best for: biotech, labs, medical. Dials: density 8/motion 2/variance 3.
+
+- `ma-japanese` — Ma (Japanese Minimal). Rice paper, ink black, vast emptiness used on purpose. Ma — the beauty of negative space.
+  File: styles/ma-japanese.md. Best for: craft, architecture, tea/food, galleries. Dials: density 1/motion 2/variance 5.
+
+- `memphis-milano` — Memphis Milano. 80s postmodern play: squiggles, terrazzo, pastel-neon clashes. Deliberate kitsch that refuses to apologize.
+  File: styles/memphis-milano.md. Best for: toys, parties, creative-studios. Dials: density 4/motion 7/variance 9.
+
+- `midnight-railway` — Midnight Railway. The night train platform: deep navy, brass fittings, timetables set with total confidence.
+  File: styles/midnight-railway.md. Best for: travel, hospitality, whisky. Dials: density 5/motion 4/variance 5.
+
+- `museum-placard` — Museum Placard. Gallery walls and catalog restraint: a placard, a number, and nothing you don't need.
+  File: styles/museum-placard.md. Best for: galleries, museums, auctions. Dials: density 2/motion 2/variance 3.
+
+- `neo-brutalist-pop` — Neo-Brutalist Pop. Thick borders, hard shadows, sticker colors. Playful but engineered.
+  File: styles/neo-brutalist-pop.md. Best for: consumer startups, edtech, creator tools, food. Dials: density 5/motion 6/variance 7.
+
+- `nordic-noir` — Nordic Noir. Overcast crime scene at noon. Desaturated slate, hard facts, no comfort.
+  File: styles/nordic-noir.md. Best for: streaming, publishing, true-crime. Dials: density 6/motion 3/variance 5.
+
+- `parisian-chic` — Parisian Chic. Haute couture polish: black, white, and cream with a high-contrast Didot-style serif and atelier restraint.
+  File: styles/parisian-chic.md. Best for: fashion, perfume, bridal. Dials: density 2/motion 3/variance 4.
+
+- `pixel-arcade` — Pixel Arcade. Insert coin. Dark cabinet, neon scoreboards, chunky pixels you can almost bite.
+  File: styles/pixel-arcade.md. Best for: games, esports, streamers. Dials: density 6/motion 7/variance 7.
+
+- `pop-art-halftone` — Pop-Art Halftone. Ben-Day dots, thick black outlines, and color turned up until it shouts.
+  File: styles/pop-art-halftone.md. Best for: comics, streetwear, youth-brands. Dials: density 5/motion 6/variance 8.
+
+- `retro-terminal` — Retro Terminal. Phosphor green on black, scanlines, amber warnings. The machine is the message.
+  File: styles/retro-terminal.md. Best for: dev tools, games, security, cli products. Dials: density 8/motion 3/variance 6.
+
+- `risograph-grain` — Risograph Grain. Misregistered zine ink on cream: teal over pink, grain you can feel, handmade edges.
+  File: styles/risograph-grain.md. Best for: zines, indie-press, posters. Dials: density 4/motion 3/variance 7.
+
+- `sahara-ochre` — Sahara Ochre. Artisanal earth: terracotta, clay, and spice tones with handmade texture — the craft market, not the museum.
+  File: styles/sahara-ochre.md. Best for: ceramics, spices, craft-markets. Dials: density 3/motion 3/variance 5.
+
+- `scandi-calm` — Scandi Calm. Hygge minimalism: warm whites, pale wood tones, quiet functionality. Nothing shouts; everything breathes.
+  File: styles/scandi-calm.md. Best for: homeware, wellness, interiors. Dials: density 2/motion 2/variance 3.
+
+- `soft-minimal` — Soft Minimal. Off-white calm, iris accent, spring motion. The Linear/Notion register, done right.
+  File: styles/soft-minimal.md. Best for: saas, productivity, developer tools, mobile apps. Dials: density 5/motion 5/variance 3.
+
+- `surf-shack` — Surf Shack. Sun-bleached and hand-painted: faded teal, warm sand, and signage you can tell a person made.
+  File: styles/surf-shack.md. Best for: surf-shops, cafes, travel. Dials: density 3/motion 5/variance 6.
+
+- `swiss-poster` — Swiss Poster. Bold poster art: oversized type AS the image, flat color blocks, one accent. Shout it from the wall.
+  File: styles/swiss-poster.md. Best for: festivals, exhibitions, campaigns. Dials: density 5/motion 4/variance 8.
+
+- `swiss-rational` — Swiss Rational. Strict grid, black on white, one red. Information architecture as aesthetic.
+  File: styles/swiss-rational.md. Best for: agencies, archives, data products, museums. Dials: density 6/motion 2/variance 4.
+
+- `tokyo-neon` — Tokyo Neon. Electric signage culture: hot pink and cyan on black, vertical accents, the glow of a Shinjuku side street.
+  File: styles/tokyo-neon.md. Best for: arcades, ramen-shops, nightlife. Dials: density 5/motion 8/variance 8.
+
+- `transit-swiss` — Transit Swiss. Wayfinding systems: line colors, station dots, route-map clarity — designed to be read at a sprint.
+  File: styles/transit-swiss.md. Best for: transit-apps, cities, campuses. Dials: density 7/motion 2/variance 4.
+
+- `tropical-brutalism` — Tropical Brutalism. Brazilian concrete breathing: raw gray mass, lush green, hard sunlight and deep shadow.
+  File: styles/tropical-brutalism.md. Best for: architecture, hotels, botanical-brands. Dials: density 4/motion 4/variance 6.
+
+- `vaporwave-sunset` — Vaporwave Sunset. Retro-futurist sunset grids in peach, coral, and teal. A chrome sun that never quite sets.
+  File: styles/vaporwave-sunset.md. Best for: music, merch, events. Dials: density 3/motion 6/variance 7.
+
+- `vinyl-crate` — Vinyl Crate. A beloved record store: sleeve grids, kraft dividers, sticker prices — analog warmth with crate-digger discipline.
+  File: styles/vinyl-crate.md. Best for: record-stores, music-blogs, radio. Dials: density 5/motion 4/variance 6.
+
+- `y2k-chrome` — Y2K Chrome. Liquid metal, iridescent gradients, bubbly type. The future as imagined in 1999.
+  File: styles/y2k-chrome.md. Best for: beauty, pop culture, music, fashion. Dials: density 4/motion 8/variance 8.
+
+## Patterns
+
+Copy the snippet's markup plus its <style> block; classes are tz- prefixed.
+
+- `background-aurora` — Aurora canvas (Backgrounds). Animated canvas aurora: three drifting radial blobs. Tune colors to your DNA.
+  File: patterns/background-aurora.html. Tags: canvas, animated, gradient. DNAs: glass-calm, y2k-chrome, dark-luxe.
+
+- `background-grain` — Film grain (Backgrounds). SVG film-grain overlay with stepped animation. Instant texture, zero assets.
+  File: patterns/background-grain.html. Tags: texture, grain, css-only. DNAs: acid-rave, editorial-serif, dark-luxe.
+
+- `backgrounds-blobs` — Pastel blobs (Backgrounds). Generative pastel flow field: seeded ink particles drift on a looping current.
+  File: patterns/backgrounds-blobs.html. Tags: blobs, generative. DNAs: glass-calm.
+
+- `backgrounds-blueprint` — Blueprint grid (Backgrounds). Blueprint overlay: fine and major grids with registration crosses.
+  File: patterns/backgrounds-blueprint.html. Tags: grid, technical. DNAs: industrial-brutalist.
+
+- `backgrounds-checker` — Warped checker (Backgrounds). Acid checkerboard warped in perspective with oversized cells.
+  File: patterns/backgrounds-checker.html. Tags: check, mod. DNAs: acid-rave.
+
+- `backgrounds-crosshatch` — Crosshatch (Backgrounds). Engraved crosshatch: two solarized line sets with mismatched plate tone.
+  File: patterns/backgrounds-crosshatch.html. Tags: engraving, lines. DNAs: docs-solar.
+
+- `backgrounds-diagonal` — Caution stripes (Backgrounds). Caution-stripe band tilted two degrees with a stenciled keep-clear chip.
+  File: patterns/backgrounds-diagonal.html. Tags: stripes, caution. DNAs: industrial-brutalist.
+
+- `backgrounds-dots` — Dot matrix (Backgrounds). Swiss dot-matrix texture with a single flagged red dot.
+  File: patterns/backgrounds-dots.html. Tags: dots, texture. DNAs: swiss-rational.
+
+- `backgrounds-halftone` — Halftone fade (Backgrounds). Halftone dot field fading diagonally from solid to air.
+  File: patterns/backgrounds-halftone.html. Tags: print, dots. DNAs: y2k-chrome.
+
+- `backgrounds-mesh` — Iridescent mesh (Backgrounds). Generative iridescent mesh: five blobs orbit on looping Lissajous paths.
+  File: patterns/backgrounds-mesh.html. Tags: mesh, generative. DNAs: y2k-chrome.
+
+- `backgrounds-noise` — Animated noise (Backgrounds). Animated film grain: two turbulence layers cross-fading in stepped ticks.
+  File: patterns/backgrounds-noise.html. Tags: grain, animated. DNAs: dark-luxe.
+
+- `backgrounds-paper` — Rice paper (Backgrounds). Rice-paper grain with a deckle edge and one vermillion hanko stamp.
+  File: patterns/backgrounds-paper.html. Tags: paper, grain. DNAs: ma-japanese.
+
+- `backgrounds-scanlines` — CRT scanlines (Backgrounds). CRT overlay: scanlines, soft vignette, faint phosphor flicker.
+  File: patterns/backgrounds-scanlines.html. Tags: crt, retro. DNAs: retro-terminal.
+
+- `backgrounds-stars` — Starfield (Backgrounds). Seeded starfield: twinkling phosphor stars on a looping sine cycle.
+  File: patterns/backgrounds-stars.html. Tags: canvas, space. DNAs: retro-terminal.
+
+- `backgrounds-topo` — Topo lines (Backgrounds). Sepia contour lines with one rust elevation ring and a survey label.
+  File: patterns/backgrounds-topo.html. Tags: contour, svg. DNAs: editorial-serif.
+
+- `backgrounds-waves` — Layered waves (Backgrounds). Generative wave bands: five sine layers stack on a looping time cycle.
+  File: patterns/backgrounds-waves.html. Tags: waves, generative. DNAs: soft-minimal.
+
+- `bento` — Bento feature grid (Sections). Asymmetric bento grid: one big cell, supporting cells, one wide quote cell.
+  File: patterns/bento.html. Tags: grid, features, saas. DNAs: soft-minimal, neo-brutalist-pop.
+
+- `cards` — Work cards (Sections). Project cards with gradient thumbs, hover lift, mono tag rows.
+  File: patterns/cards.html. Tags: portfolio, cards, work. DNAs: soft-minimal, glass-calm.
+
+- `cards-article` — Article cards (Cards). Serif article cards led by oversized issue numerals, one feature plus two.
+  File: patterns/cards-article.html. Tags: blog, reading. DNAs: editorial-serif.
+
+- `cards-brutalist` — Neon chunk cards (Cards). Neon-bordered chunk cards on black with glowing edges and varied widths.
+  File: patterns/cards-brutalist.html. Tags: bold, borders. DNAs: acid-rave.
+
+- `cards-data` — Data cards (Cards). Terminal-style metric cards with inline SVG sparklines and deltas.
+  File: patterns/cards-data.html. Tags: dashboard, metrics. DNAs: retro-terminal.
+
+- `cards-editorial` — Quiet cards (Cards). Whisper-quiet magazine cards with vast padding and hairline dividers.
+  File: patterns/cards-editorial.html. Tags: magazine, serif. DNAs: ma-japanese.
+
+- `cards-event` — Event cards (Cards). Industrial date-block event cards with 2px borders and stamp details.
+  File: patterns/cards-event.html. Tags: date, poster. DNAs: industrial-brutalist.
+
+- `cards-glass` — Glass cards (Cards). Frosted info cards floating over soft pastel blobs.
+  File: patterns/cards-glass.html. Tags: frosted, soft. DNAs: glass-calm.
+
+- `cards-job` — Job cards (Cards). Strict Swiss job rows: title, mono salary, tag chips, apply link.
+  File: patterns/cards-job.html. Tags: hiring, roles. DNAs: swiss-rational.
+
+- `cards-product` — Product cards (Cards). Clean product cards in an asymmetric layout: one wide feature, two compact.
+  File: patterns/cards-product.html. Tags: ecommerce, shop. DNAs: soft-minimal.
+
+- `cards-profile` — Profile cards (Cards). Dark profile cards with gold accents: one wide feature, two compact.
+  File: patterns/cards-profile.html. Tags: people, social. DNAs: dark-luxe.
+
+- `cards-recipe` — Recipe cards (Cards). Chunky neo-brutalist recipe cards with sticker time badges and hard shadows.
+  File: patterns/cards-recipe.html. Tags: food, steps. DNAs: neo-brutalist-pop.
+
+- `cta` — CTA banner (Sections). Dark-luxe CTA: champagne eyebrow, serif headline, warm radial glow.
+  File: patterns/cta.html. Tags: conversion, dark, cta. DNAs: dark-luxe, editorial-serif.
+
+- `cta-apps` — App download CTA (CTA). Y2K chrome app-download CTA with glossy store badges and a pure-CSS phone.
+  File: patterns/cta-apps.html. Tags: mobile, badges. DNAs: y2k-chrome.
+
+- `cta-card` — Contained card (CTA). Calm centered CTA card with hairline frame and quiet confidence.
+  File: patterns/cta-card.html. Tags: card, calm. DNAs: soft-minimal.
+
+- `cta-drop` — The drop CTA (CTA). Editorial launch CTA with newspaper dateline and issue number.
+  File: patterns/cta-drop.html. Tags: streetwear, launch. DNAs: editorial-serif.
+
+- `cta-luxe` — Champagne CTA (CTA). Dark champagne CTA with a gold hairline frame and a slow breathing glow.
+  File: patterns/cta-luxe.html. Tags: dark, gold. DNAs: dark-luxe.
+
+- `cta-split` — Split CTA (CTA). Acid split CTA: huge type left, email capture right, black and neon.
+  File: patterns/cta-split.html. Tags: split, conversion. DNAs: acid-rave.
+
+- `cta-sticker` — Sticker CTA (CTA). Sticker-burst CTA with rotated starburst badges and a chunky button.
+  File: patterns/cta-sticker.html. Tags: playful, burst. DNAs: neo-brutalist-pop.
+
+- `cta-terminal` — Terminal CTA (CTA). Deploy-style terminal CTA with a typed command and blinking cursor.
+  File: patterns/cta-terminal.html. Tags: cli, mono. DNAs: retro-terminal.
+
+- `cta-type` — Full-bleed type CTA (CTA). Viewport-filling serif CTA on black with one champagne-italic word.
+  File: patterns/cta-type.html. Tags: giant, type. DNAs: dark-luxe.
+
+- `faq-accordion` — Accordion FAQ (FAQ). Native details/summary accordion with rotating plus markers and amber open states.
+  File: patterns/faq-accordion.html. Tags: details, expandable. DNAs: docs-solar.
+
+- `faq-blocks` — Bordered blocks (FAQ). Chunky 3px-bordered question blocks with offset shadows and stamped answers.
+  File: patterns/faq-blocks.html. Tags: brutal, blocks. DNAs: industrial-brutalist.
+
+- `faq-cards` — FAQ cards (FAQ). Frosted Q&A cards drifting over a warm pastel aurora, one card offset for rhythm.
+  File: patterns/faq-cards.html. Tags: grid, cards. DNAs: glass-calm.
+
+- `faq-columns` — Two-column Q&A (FAQ). Magazine-style two-column Q&A with oversized serif Q markers.
+  File: patterns/faq-columns.html. Tags: editorial, columns. DNAs: editorial-serif.
+
+- `faq-hairline` — Hairline list (FAQ). A whisper-quiet FAQ with hairline separators and vast breathing room.
+  File: patterns/faq-hairline.html. Tags: minimal, quiet. DNAs: ma-japanese.
+
+- `faq-luxe` — Dark luxe FAQ (FAQ). Champagne serif questions on near-black with hairline gold separators.
+  File: patterns/faq-luxe.html. Tags: premium, dark. DNAs: dark-luxe.
+
+- `faq-search` — Searchable FAQ (FAQ). Search field with CSS-only category chips that actually filter the question list.
+  File: patterns/faq-search.html. Tags: search, categories. DNAs: soft-minimal.
+
+- `faq-terminal` — Terminal FAQ (FAQ). Q&A rendered as $ faq --topic commands with echoed queries and green answers.
+  File: patterns/faq-terminal.html. Tags: mono, cli. DNAs: retro-terminal.
+
+- `features-arcade` — Arcade cards (Features). Neon arcade cards under a blinking INSERT COIN header strip with high-score microcopy.
+  File: patterns/features-arcade.html. Tags: pixel, game. DNAs: acid-rave.
+
+- `features-blueprint` — Blueprint annotations (Features). Blueprint sheet with numbered callouts and leader lines pointing at a CSS wireframe.
+  File: patterns/features-blueprint.html. Tags: technical, diagram. DNAs: industrial-brutalist.
+
+- `features-checklist` — Giant checklist (Features). Full-width checklist rows with oversized red checkmarks and mono spec lines.
+  File: patterns/features-checklist.html. Tags: checklist, mono. DNAs: swiss-rational.
+
+- `features-docs` — Docs cards (Features). Warm documentation cards with copyable code snippets and honest capability notes.
+  File: patterns/features-docs.html. Tags: documentation, dev. DNAs: docs-solar.
+
+- `features-glass` — Glass feature cards (Features). Frosted cards floating over a warm pastel aurora of peach, mint, and rose.
+  File: patterns/features-glass.html. Tags: glass, frosted. DNAs: glass-calm.
+
+- `features-luxe` — Luxe hairline list (Features). Near-black hairline rows with champagne serif numerals and wide small caps.
+  File: patterns/features-luxe.html. Tags: dark, gold. DNAs: dark-luxe.
+
+- `features-numbered` — Numbered 01–06 (Features). Vast whitespace with giant hairline numerals and a vertical margin label.
+  File: patterns/features-numbered.html. Tags: numerals, minimal. DNAs: ma-japanese.
+
+- `features-rows` — Alternating rows (Features). Alternating text and visual rows anchored by oversized outline numerals.
+  File: patterns/features-rows.html. Tags: editorial, rows. DNAs: editorial-serif.
+
+- `features-speclist` — Spec list (Features). Phosphor-terminal spec sheet with bright [OK] markers and a scanline overlay.
+  File: patterns/features-speclist.html. Tags: terminal, specs. DNAs: retro-terminal.
+
+- `features-spread` — Magazine spread (Features). Offset overlapping panels with a rotated pull quote spanning the seam.
+  File: patterns/features-spread.html. Tags: magazine, serif. DNAs: editorial-serif.
+
+- `features-stickers` — Sticker features (Features). Scattered rotated sticker cards with thick borders and hard offset shadows.
+  File: patterns/features-stickers.html. Tags: playful, cards. DNAs: neo-brutalist-pop.
+
+- `features-tabs` — Tabbed features (Features). CSS radio-button tabs with four panels, each carrying a pure-CSS product mock.
+  File: patterns/features-tabs.html. Tags: tabs, saas. DNAs: soft-minimal.
+
+- `footer` — Mega footer (Footer). Oversized wordmark footer with link columns and mono baseline.
+  File: patterns/footer.html. Tags: footer, wordmark. DNAs: acid-rave, industrial-brutalist.
+
+- `footers-brutalist` — Brutalist footer (Footer). Raw concrete footer with 3px borders, hard shadows, and a rotated NO SLOP stamp.
+  File: patterns/footers-brutalist.html. Tags: chunky, borders, raw. DNAs: industrial-brutalist.
+
+- `footers-cta-first` — CTA-first footer (Footer). A giant champagne Let's talk CTA floating above hairline link rows on near-black.
+  File: patterns/footers-cta-first.html. Tags: conversion, big-type. DNAs: dark-luxe.
+
+- `footers-docs` — Docs footer (Footer). Docs footer with a version badge, changelog link, and an edit-this-page nudge.
+  File: patterns/footers-docs.html. Tags: version, opensource. DNAs: docs-solar.
+
+- `footers-hairline` — Hairline footer (Footer). One hairline, three quiet links, and an honest colophon note. Nothing else.
+  File: patterns/footers-hairline.html. Tags: minimal, single-line. DNAs: editorial-serif.
+
+- `footers-luxe` — Luxe footer (Footer). Near-black footer with champagne numerals marking each quiet link row.
+  File: patterns/footers-luxe.html. Tags: dark, gold, evening. DNAs: dark-luxe.
+
+- `footers-marquee` — Marquee footer (Footer). A giant scrolling acid wordmark riding above two compact link rows.
+  File: patterns/footers-marquee.html. Tags: scrolling, wordmark. DNAs: acid-rave.
+
+- `footers-newsletter` — Newsletter footer (Footer). A prominent off-center newsletter block above quiet link columns, with a hand-written promise.
+  File: patterns/footers-newsletter.html. Tags: email, signup. DNAs: soft-minimal.
+
+- `footers-sitemap` — Sitemap footer (Footer). Dense six-column directory with mono section labels and hairline column rules.
+  File: patterns/footers-sitemap.html. Tags: dense, links, directory. DNAs: swiss-rational.
+
+- `footers-sticker` — Sticker footer (Footer). Sticker badges, a wavy SVG divider, and chunky social buttons on cream.
+  File: patterns/footers-sticker.html. Tags: playful, gen-z. DNAs: neo-brutalist-pop.
+
+- `footers-terminal` — Terminal footer (Footer). A $ whoami sign-off with [OK] status lines and an ASCII divider.
+  File: patterns/footers-terminal.html. Tags: cli, mono, status. DNAs: retro-terminal.
+
+- `forms-brutalist` — Raw form (Forms). Full-strength black borders, mono labels, square corners, zero softness.
+  File: patterns/forms-brutalist.html. Tags: brutal, raw, bordered. DNAs: swiss-rational.
+
+- `forms-contact-split` — Split contact (Forms). Oversized serif Say hello headline on the left, hairline-ruled form on the right.
+  File: patterns/forms-contact-split.html. Tags: split, agency. DNAs: editorial-serif.
+
+- `forms-demo` — Demo booking (Forms). A bordered booking form with spec-sheet labels like DATE // REQUIRED.
+  File: patterns/forms-demo.html. Tags: calendar, b2b. DNAs: industrial-brutalist.
+
+- `forms-feedback` — Feedback widget (Forms). A floating frosted feedback card with hand-drawn SVG face ratings.
+  File: patterns/forms-feedback.html. Tags: widget, rating. DNAs: glass-calm.
+
+- `forms-login` — Login card (Forms). Centered dark auth card with champagne focus rings and a quiet SSO row.
+  File: patterns/forms-login.html. Tags: auth, centered. DNAs: dark-luxe.
+
+- `forms-multistep` — Multi-step signup (Forms). Three CSS-only signup steps driven by radio inputs, with a filling progress bar.
+  File: patterns/forms-multistep.html. Tags: steps, onboarding. DNAs: soft-minimal.
+
+- `forms-newsletter-card` — Newsletter card (Forms). A chunky Get the drop card with a rotated sticker badge overlapping the corner.
+  File: patterns/forms-newsletter-card.html. Tags: incentive, card. DNAs: neo-brutalist-pop.
+
+- `forms-newsletter-inline` — Inline newsletter (Forms). A single-line email row with an underline input and a CSS-only success state, no JavaScript.
+  File: patterns/forms-newsletter-inline.html. Tags: email, row, minimal. DNAs: soft-minimal.
+
+- `forms-search-hero` — Search hero (Forms). A giant solarized search field with a ⌘K hint and popular-search shortcuts below.
+  File: patterns/forms-search-hero.html. Tags: search, help, large. DNAs: docs-solar.
+
+- `forms-waitlist` — Waitlist (Forms). Acid waitlist with a giant live-position counter and a hard-edged join row.
+  File: patterns/forms-waitlist.html. Tags: launch, counter. DNAs: acid-rave.
+
+- `hero-editorial` — Editorial hero (Hero). Literary hero: mono eyebrow, giant serif headline, hairline meta row, arch graphic.
+  File: patterns/hero-editorial.html. Tags: serif, editorial, landing. DNAs: editorial-serif, ma-japanese, swiss-rational.
+
+- `hero-kinetic` — Kinetic type hero (Hero). Maximum-volume hero: colossal condensed type, acid CTA, scrolling strip.
+  File: patterns/hero-kinetic.html. Tags: bold, loud, type-driven. DNAs: acid-rave, industrial-brutalist, y2k-chrome.
+
+- `heroes-art-deco` — Art deco hero (Hero). Black and gold hero: SVG sunburst rays behind a serif headline, stepped geometric borders.
+  File: patterns/heroes-art-deco.html. Tags: art-deco, gold, geometric. DNAs: dark-luxe.
+
+- `heroes-blueprint` — Blueprint hero (Hero). White-on-blue technical drawing: dimension lines and figure labels annotating the headline.
+  File: patterns/heroes-blueprint.html. Tags: technical, blueprint, diagram. DNAs: industrial-brutalist.
+
+- `heroes-boot-sequence` — Boot sequence hero (Hero). Terminal boot log revealing the value prop line by line, ending in a blinking-cursor call to action.
+  File: patterns/heroes-boot-sequence.html. Tags: terminal, mono, cli. DNAs: retro-terminal.
+
+- `heroes-broadsheet` — Broadsheet hero (Hero). Front-page newspaper hero: masthead, dateline rules, and a two-column lede.
+  File: patterns/heroes-broadsheet.html. Tags: newspaper, editorial, serif. DNAs: editorial-serif.
+
+- `heroes-chrome-type` — Liquid chrome hero (Hero). Massive liquid-chrome gradient headline with a shine sweep that pours across on hover.
+  File: patterns/heroes-chrome-type.html. Tags: chrome, y2k, type. DNAs: y2k-chrome.
+
+- `heroes-diagonal-split` — Diagonal split hero (Hero). Hard diagonal split: safety-orange panel against concrete, with rotated stamped labels.
+  File: patterns/heroes-diagonal-split.html. Tags: split, bold, asymmetric. DNAs: industrial-brutalist.
+
+- `heroes-docs-hero` — Docs hero (Hero). Warm documentation hero with a click-to-select install command block and a five-minute guide link.
+  File: patterns/heroes-docs-hero.html. Tags: docs, code, developer. DNAs: docs-solar.
+
+- `heroes-enso` — Enso hero (Hero). One hand-drawn-feel SVG enso circle, a single vertical line of text, and vast emptiness.
+  File: patterns/heroes-enso.html. Tags: zen, minimal, ink. DNAs: ma-japanese.
+
+- `heroes-gig-poster` — Gig poster hero (Hero). Screenprint gig poster: colossal condensed type, acid highlight bar, and stacked date blocks.
+  File: patterns/heroes-gig-poster.html. Tags: poster, music, loud. DNAs: acid-rave.
+
+- `heroes-glass-orbs` — Glass orbs hero (Hero). Frosted glass orbs drifting over pastel, anchored by one big friendly numeral.
+  File: patterns/heroes-glass-orbs.html. Tags: glass, soft, calm. DNAs: glass-calm.
+
+- `heroes-noir` — Noir hero (Hero). Near-black viewport in a champagne hairline frame; serif headline fades in slow, once.
+  File: patterns/heroes-noir.html. Tags: cinematic, dark, luxe. DNAs: dark-luxe.
+
+- `heroes-pixel-arcade` — Pixel arcade hero (Hero). CRT cabinet hero: pixel-art invader drawn in box-shadows, blinking PRESS START call to action.
+  File: patterns/heroes-pixel-arcade.html. Tags: pixel, retro, game. DNAs: retro-terminal.
+
+- `heroes-product-peek` — Product peek hero (Hero). Calm copy beside a tilted pure-CSS app window: title bar, sidebar, rows, and a bar chart.
+  File: patterns/heroes-product-peek.html. Tags: saas, product, tilt. DNAs: soft-minimal.
+
+- `heroes-scandi-calm` — Scandi calm hero (Hero). Radical restraint: enormous whitespace, one quiet sentence, a single hairline rule.
+  File: patterns/heroes-scandi-calm.html. Tags: minimal, scandi, whitespace. DNAs: soft-minimal.
+
+- `heroes-spec-table` — Spec table hero (Hero). Hero as a rigorous spec table: giant index numeral beside hairline-ruled technical rows.
+  File: patterns/heroes-spec-table.html. Tags: swiss, table, data. DNAs: swiss-rational.
+
+- `heroes-sticker-bomb` — Sticker bomb hero (Hero). Rotated sticker badges with hard shadows overlapping a chunky headline for small-batch hot sauce.
+  File: patterns/heroes-sticker-bomb.html. Tags: stickers, playful, chaos. DNAs: neo-brutalist-pop.
+
+- `heroes-typed-letter` — Typed letter hero (Hero). A typewritten letter on paper — red margin line, struck words, and red-ink corrections.
+  File: patterns/heroes-typed-letter.html. Tags: typewriter, letter, serif. DNAs: editorial-serif.
+
+- `heroes-vaporwave` — Vaporwave hero (Hero). Slitted sunset disc over a perspective grid floor, with a metallic chrome headline and slow sheen sweep.
+  File: patterns/heroes-vaporwave.html. Tags: vaporwave, sunset, retro. DNAs: y2k-chrome.
+
+- `how-it-works-blueprint` — Blueprint steps (How it works). Engineering-drawing steps on a measurement grid with dimension callouts.
+  File: patterns/how-it-works-blueprint.html. Tags: technical, grid. DNAs: swiss-rational.
+
+- `how-it-works-chapters` — Chapters (How it works). Course-style chapter list with serif numerals, dotted leaders, and durations.
+  File: patterns/how-it-works-chapters.html. Tags: course, video. DNAs: editorial-serif.
+
+- `how-it-works-diagram` — Diagram flow (How it works). Pure-CSS boxes-and-arrows system diagram with dashed connectors and mono labels.
+  File: patterns/how-it-works-diagram.html. Tags: arrows, systems. DNAs: industrial-brutalist.
+
+- `how-it-works-minimal` — Mono minimal (How it works). A whisper-quiet numbered list with vast spacing and small mono kickers.
+  File: patterns/how-it-works-minimal.html. Tags: minimal, quiet. DNAs: docs-solar.
+
+- `how-it-works-overlap` — Overlapping cards (How it works). Fanned overlapping step cards that spread apart on hover like a dealt hand.
+  File: patterns/how-it-works-overlap.html. Tags: overlap, depth. DNAs: neo-brutalist-pop.
+
+- `how-it-works-steps` — Three steps (How it works). Three connected steps on a progress line with generous whitespace.
+  File: patterns/how-it-works-steps.html. Tags: timeline, simple. DNAs: soft-minimal.
+
+- `how-it-works-sticky` — Sticky scroll steps (How it works). Champagne-framed sticky visual beside scrolling dark-luxe step narratives.
+  File: patterns/how-it-works-sticky.html. Tags: scroll, narrative. DNAs: dark-luxe.
+
+- `how-it-works-terminal` — Terminal walkthrough (How it works). A $ command walkthrough with typed prompts, green outputs, and a live cursor.
+  File: patterns/how-it-works-terminal.html. Tags: cli, commands. DNAs: retro-terminal.
+
+- `marquee` — Marquee strip (Backgrounds). Infinite CSS marquee strip. Duplicate content spans for a seamless loop.
+  File: patterns/marquee.html. Tags: motion, strip, css-only. DNAs: acid-rave, industrial-brutalist, y2k-chrome.
+
+- `misc-careers` — Job board (Misc). Luxe role listings grouped by department with hairline rules.
+  File: patterns/misc-careers.html. Tags: hiring, roles. DNAs: dark-luxe.
+
+- `misc-changelog` — Changelog feed (Misc). Version entries with solarized tag pills and honest notes.
+  File: patterns/misc-changelog.html. Tags: releases, log. DNAs: docs-solar.
+
+- `misc-command` — Command palette (Misc). Command-K palette with grouped commands and kbd hints.
+  File: patterns/misc-command.html. Tags: cmd-k, power. DNAs: retro-terminal.
+
+- `misc-compare` — Comparison table (Misc). Us-versus-them matrix with SVG check and cross marks.
+  File: patterns/misc-compare.html. Tags: vs, table. DNAs: swiss-rational.
+
+- `misc-cookie` — Cookie banner (Misc). Chunky consent bar with hazard-stripe edge and bordered buttons.
+  File: patterns/misc-cookie.html. Tags: consent, privacy. DNAs: industrial-brutalist.
+
+- `misc-gallery` — Gallery wall (Misc). Gradient artwork tiles with captions; one tile breaks the grid.
+  File: patterns/misc-gallery.html. Tags: images, grid. DNAs: editorial-serif.
+
+- `misc-help` — Help center hero (Misc). Frosted help hero with soft pastel wash and topic chips.
+  File: patterns/misc-help.html. Tags: support, search. DNAs: glass-calm.
+
+- `misc-modal` — Modal dialog (Misc). Modal pattern with backdrop, visible focus ring, and esc hint.
+  File: patterns/misc-modal.html. Tags: dialog, overlay. DNAs: soft-minimal.
+
+- `misc-timeline` — Vertical timeline (Misc). Dated vertical timeline on a hairline spine with a today marker.
+  File: patterns/misc-timeline.html. Tags: history, steps. DNAs: docs-solar.
+
+- `misc-waitlist` — Waitlist meter (Misc). Neon tick-mark progress meter with live count and referrals.
+  File: patterns/misc-waitlist.html. Tags: launch, progress. DNAs: acid-rave.
+
+- `nav-minimal` — Minimal top bar (Nav). Swiss top bar: wordmark, uppercase links with red underline, coordinates.
+  File: patterns/nav-minimal.html. Tags: minimal, swiss, navigation. DNAs: swiss-rational, docs-solar.
+
+- `nav-pill` — Floating pill nav (Nav). Sticky frosted pill nav with CTA. Mobile collapses to a menu button.
+  File: patterns/nav-pill.html. Tags: sticky, glass, navigation. DNAs: soft-minimal, glass-calm.
+
+- `navs-bottom-tabs` — Bottom tab bar (Nav). Frosted-glass bottom tab bar with five tabs and a sliding active pill indicator.
+  File: patterns/navs-bottom-tabs.html. Tags: mobile, tabs, app. DNAs: glass-calm.
+
+- `navs-command` — Command bar nav (Nav). Retro command palette: mono input, grouped results, and kbd hints with a blinking block cursor.
+  File: patterns/navs-command.html. Tags: cmd-k, search, power. DNAs: retro-terminal.
+
+- `navs-dock` — Dock nav (Nav). A macOS-style magnifying dock: chrome-gloss icons that swell as the cursor passes.
+  File: patterns/navs-dock.html. Tags: macos, dock, playful. DNAs: y2k-chrome.
+
+- `navs-index` — Index nav (Nav). Swiss numbered index: 01–05 with hairline rules and a red block marking the active entry.
+  File: patterns/navs-index.html. Tags: numbered, editorial. DNAs: swiss-rational.
+
+- `navs-mega-menu` — Mega menu nav (Nav). Full-width mega panel with four link columns plus an offset featured card, opens on hover or keyboard focus.
+  File: patterns/navs-mega-menu.html. Tags: dropdown, mega, ecommerce. DNAs: soft-minimal.
+
+- `navs-rail` — Side rail nav (Nav). Industrial vertical rail with a chunky active block and labels that slide out on hover.
+  File: patterns/navs-rail.html. Tags: vertical, sidebar, icons. DNAs: industrial-brutalist.
+
+- `navs-split` — Split brand nav (Nav). Links split left and right around an oversized centered serif wordmark, held together by hairlines.
+  File: patterns/navs-split.html. Tags: centered, wordmark. DNAs: editorial-serif.
+
+- `navs-sticker` — Sticker nav (Nav). Chunky bordered nav with a rotated FRESH sticker badge overlapping the corner.
+  File: patterns/navs-sticker.html. Tags: playful, stickers. DNAs: neo-brutalist-pop.
+
+- `navs-terminal-tabs` — Terminal tabs nav (Nav). Docs navigation dressed as terminal tabs, with $ prompts and a live caret on the active tab.
+  File: patterns/navs-terminal-tabs.html. Tags: cli, tabs, mono. DNAs: docs-solar.
+
+- `navs-ticker` — Ticker nav (Nav). Acid announcement ticker scrolling above a stark black-and-lime link row.
+  File: patterns/navs-ticker.html. Tags: marquee, news, bold. DNAs: acid-rave.
+
+- `pricing` — Pricing tiers (Sections). Three-tier pricing with a rotated highlighted tier and hard shadows.
+  File: patterns/pricing.html. Tags: pricing, tiers, conversion. DNAs: neo-brutalist-pop, soft-minimal.
+
+- `pricing-brutalist` — Chunky pricing (Pricing). Raw 3px-border pricing slabs with a rotated BEST VALUE rubber stamp.
+  File: patterns/pricing-brutalist.html. Tags: bold, raw. DNAs: industrial-brutalist.
+
+- `pricing-compare` — Comparison table (Pricing). Full comparison matrix with sticky plan headers and zebra-free hairline rows.
+  File: patterns/pricing-compare.html. Tags: table, detailed. DNAs: swiss-rational.
+
+- `pricing-docs` — Plain docs pricing (Pricing). An honest plain table with zero marketing fluff and a footnote that says so.
+  File: patterns/pricing-docs.html. Tags: simple, opensource. DNAs: docs-solar.
+
+- `pricing-luxe` — Dark luxe pricing (Pricing). Near-black tiers split by a hairline gold divider with wide small caps.
+  File: patterns/pricing-luxe.html. Tags: premium, dark. DNAs: dark-luxe.
+
+- `pricing-single` — Single plan (Pricing). One dramatic plan in a champagne frame with an oversized serif price.
+  File: patterns/pricing-single.html. Tags: focus, simple. DNAs: dark-luxe.
+
+- `pricing-sticker` — Playful pricing (Pricing). Neon tier cards with a rotated starburst POPULAR badge and arcade pricing copy.
+  File: patterns/pricing-sticker.html. Tags: fun, gen-z. DNAs: acid-rave.
+
+- `pricing-toggle` — Billing toggle (Pricing). Chunky CSS-only monthly/annual price toggle over two pop-art plan cards.
+  File: patterns/pricing-toggle.html. Tags: monthly, annual. DNAs: neo-brutalist-pop.
+
+- `pricing-usage` — Usage tiers (Pricing). Metered pricing tiers with CSS usage meters showing where each plan lands.
+  File: patterns/pricing-usage.html. Tags: metered, api. DNAs: soft-minimal.
+
+- `stats` — Stats band (Sections). Brutalist stat band: giant tabular numerals, black rules, one red figure.
+  File: patterns/stats.html. Tags: numbers, proof, data. DNAs: swiss-rational, industrial-brutalist.
+
+- `stats-bars` — Bar stats (Stats). Horizontal bar chart with tabular numerals and one red leader.
+  File: patterns/stats-bars.html. Tags: bars, metrics. DNAs: swiss-rational.
+
+- `stats-compare` — Before/after (Stats). Delta table with SVG trend arrows, measured before and after launch.
+  File: patterns/stats-compare.html. Tags: comparison, delta. DNAs: docs-solar.
+
+- `stats-dotmap` — Dot map (Stats). Dot-grid suggestion of a network arc with gold nodes and one live pulse.
+  File: patterns/stats-dotmap.html. Tags: map, dots. DNAs: dark-luxe.
+
+- `stats-gauges` — Gauges (Stats). Playful chunky SVG gauges with thick ink borders and pop faces.
+  File: patterns/stats-gauges.html. Tags: dial, svg. DNAs: neo-brutalist-pop.
+
+- `stats-logos` — Logo marquee (Stats). Text-wordmark marquee strip; pauses on hover, still under reduced motion.
+  File: patterns/stats-logos.html. Tags: logos, marquee. DNAs: soft-minimal.
+
+- `stats-luxe` — Champagne numerals (Stats). Giant hairline numerals framed by gold rules, asymmetric support rows.
+  File: patterns/stats-luxe.html. Tags: premium, dark. DNAs: dark-luxe.
+
+- `stats-progress` — Progress rings (Stats). Chunky SVG progress rings with one oversized hero ring.
+  File: patterns/stats-progress.html. Tags: rings, svg. DNAs: industrial-brutalist.
+
+- `stats-table` — Data table (Stats). Dense striped ops table with one flagged spike row.
+  File: patterns/stats-table.html. Tags: table, dense. DNAs: docs-solar.
+
+- `stats-terminal` — Mono stats (Stats). Terminal-style stat readout with a blinking block cursor.
+  File: patterns/stats-terminal.html. Tags: cli, metrics. DNAs: retro-terminal.
+
+- `stats-ticker` — Live ticker (Stats). Scrolling mono stat ticker with one blinking LIVE marker.
+  File: patterns/stats-ticker.html. Tags: live, mono. DNAs: retro-terminal.
+
+- `team-bios` — Editorial bios (Team). Magazine-style team bios with drop caps and hairline rules.
+  File: patterns/team-bios.html. Tags: bios, magazine. DNAs: editorial-serif.
+
+- `team-brutalist` — Bordered roster (Team). Raw 2px-bordered roster rows with rotated stamp titles.
+  File: patterns/team-brutalist.html. Tags: raw, borders. DNAs: industrial-brutalist.
+
+- `team-cards` — Profile cards (Team). Calm profile cards with gradient avatars in a staggered offset row.
+  File: patterns/team-cards.html. Tags: cards, profiles. DNAs: soft-minimal.
+
+- `team-grid` — Strict grid (Team). Rigorous spec-sheet avatar grid with numbered cells and mono roles.
+  File: patterns/team-grid.html. Tags: grid, avatars. DNAs: swiss-rational.
+
+- `team-minimal` — Name list (Team). Whisper-quiet name list with muted roles and generous air.
+  File: patterns/team-minimal.html. Tags: minimal, names. DNAs: ma-japanese.
+
+- `team-roster` — Mono roster (Team). Team roster rendered as a $ team --list terminal output.
+  File: patterns/team-roster.html. Tags: terminal, roster. DNAs: retro-terminal.
+
+- `testimonials` — Quote wall (Sections). Editorial testimonial wall: hairline rules, italic serif quotes, mono captions.
+  File: patterns/testimonials.html. Tags: social-proof, quotes. DNAs: editorial-serif, dark-luxe.
+
+- `testimonials-logos` — Quote + logos (Testimonials). Two statement quotes above a hairline row of typographic wordmarks.
+  File: patterns/testimonials-logos.html. Tags: logos, proof. DNAs: swiss-rational.
+
+- `testimonials-masonry` — Masonry quotes (Testimonials). Varied-size serif quote blocks in a loose editorial masonry.
+  File: patterns/testimonials-masonry.html. Tags: masonry, varied. DNAs: editorial-serif.
+
+- `testimonials-snap` — Snap carousel (Testimonials). Scroll-snap quote carousel on warm paper with dot indicators.
+  File: patterns/testimonials-snap.html. Tags: carousel, scroll. DNAs: soft-minimal.
+
+- `testimonials-social` — Social proof cards (Testimonials). Chunky social-post-style proof cards with hard shadows and a pinned badge.
+  File: patterns/testimonials-social.html. Tags: social, posts. DNAs: neo-brutalist-pop.
+
+- `testimonials-solo` — One giant quote (Testimonials). A single enormous quote in vast quiet space with a vertical margin note.
+  File: patterns/testimonials-solo.html. Tags: single, statement. DNAs: ma-japanese.
+
+- `testimonials-sticker` — Sticker quotes (Testimonials). Rotated neon quote stickers slapped on black with white peel borders.
+  File: patterns/testimonials-sticker.html. Tags: playful, gen-z. DNAs: acid-rave.
+
+- `testimonials-terminal` — Mono reviews (Testimonials). Terminal-style review log with star ratings and VERIFIED tags.
+  File: patterns/testimonials-terminal.html. Tags: cli, reviews. DNAs: retro-terminal.
+
+- `testimonials-video` — Video wall (Testimonials). Dark video wall of quote thumbnails with CSS play buttons and a now-playing tile.
+  File: patterns/testimonials-video.html. Tags: video, thumbnails. DNAs: dark-luxe.
+
+## 3D scenes
+
+Standalone Three.js scenes (CDN import). All original, MIT.
+
+- `aurora-dome` — Aurora Dome. An inverted sky-dome carries an original GLSL aurora — warped fbm curtains in teal and violet over a star field.
+  File: three-d/aurora-dome.html.
+
+- `aurora-ribbons` — Borealis Ribbons. Five shader-driven aurora ribbons ripple across a starry night sky.
+  File: three-d/aurora-ribbons.html.
+
+- `chrome-blob` — Liquid Chrome. A molten chrome blob rippling under a procedural studio-light environment.
+  File: three-d/chrome-blob.html.
+
+- `circuit-pulse` — Circuit Traces. Light pulses travel procedural circuit traces across a dark amber PCB.
+  File: three-d/circuit-pulse.html.
+
+- `coral-reef` — Coral Glow. Recursive branching corals glow in a deep teal abyss with drifting plankton.
+  File: three-d/coral-reef.html.
+
+- `crystal-prism` — Prism Study. A tumbling cluster of glass octahedra with inner-glow cores on a soft gallery-white stage.
+  File: three-d/crystal-prism.html.
+
+- `deep-ocean` — Deep Current. Drifting current particles, swaying god-ray shafts, and twinkling bioluminescent plankton.
+  File: three-d/deep-ocean.html.
+
+- `dna-helix` — Helix Drift. Twin teal and magenta particle strands wind into a double helix with glowing rungs on near-black.
+  File: three-d/dna-helix.html.
+
+- `ember-wildfire` — Ember Drift. Rising embers with flicker and drifting smoke over a warm ground glow.
+  File: three-d/ember-wildfire.html.
+
+- `floating-islands` — Low-Poly Islands. Pastel low-poly islands drift and bob at staggered heights under soft directional light.
+  File: three-d/floating-islands.html.
+
+- `glass-torus-knot` — Glass Knot Studio. A transmissive glass torus knot turning slowly under studio three-point lighting on a soft gradient.
+  File: three-d/glass-torus-knot.html.
+
+- `glitch-stream` — Glitch Stream. Abstract phosphor glyphs rain down through scanlines and RGB-split ghosts.
+  File: three-d/glitch-stream.html.
+
+- `ink-bloom` — Ink Bloom. Monochrome ink particles bloom outward with drag and fade, like a drop of sumi ink in water.
+  File: three-d/ink-bloom.html.
+
+- `kaleidoscope-tunnel` — Kaleidoscope Tunnel. Endless tunnel of rotating rings over a folding kaleidoscope shader field.
+  File: three-d/kaleidoscope-tunnel.html.
+
+- `magnetic-field` — Field Lines. A dipole ring magnet wrapped in amber field lines and iron-filing dashes on charcoal.
+  File: three-d/magnetic-field.html.
+
+- `moon-flyover` — Lunar Flyover. Slow camera flyover above a cratered, noise-displaced moon surface.
+  File: three-d/moon-flyover.html.
+
+- `neon-grid-horizon` — Neon Horizon. A teal perspective grid races toward a glowing amber sun over a deep-navy horizon — tasteful synthwave, no purple-blue cliché.
+  File: three-d/neon-grid-horizon.html.
+
+- `origami-cranes` — Crane Flock. Twenty-five faceted paper cranes flapping in V formation across a dawn sky.
+  File: three-d/origami-cranes.html.
+
+- `orrery` — Orrery. A sun and five procedural planets drift through dark, majestic space.
+  File: three-d/orrery.html.
+
+- `paper-lanterns` — Lantern Festival. Forty glowing paper lanterns rise into a starry night sky.
+  File: three-d/paper-lanterns.html.
+
+- `particle-constellation` — Constellation Morph. 1500 additive particles drift and crossfade between sphere, torus and scattered field in deep indigo space.
+  File: three-d/particle-constellation.html.
+
+- `rain-glass` — Rain on Glass. Droplets trickle down glass over blurred city-light bokeh.
+  File: three-d/rain-glass.html.
+
+- `ribbon-flow` — Ribbon Flow Field. Forty-eight translucent ribbons ride a sine-based pseudo-noise flow field through deep teal darkness.
+  File: three-d/ribbon-flow.html.
+
+- `satellite-orbits` — Orbit Map. A stylized shader earth with three tilted orbit rings and drifting satellite dots.
+  File: three-d/satellite-orbits.html.
+
+- `starfield-warp` — Warp Starfield. Stars stream past the camera with motion-stretch trails and a cool-to-warm color shift; click to pause.
+  File: three-d/starfield-warp.html.
+
+- `terrain-waves` — Wireframe Terrain. A cyan wireframe plane ripples with layered sine waves, colored by height, over a near-black field.
+  File: three-d/terrain-waves.html.
+
+- `topo-contours` — Topographic Map. A parchment heightfield with crisp ink contour lines drawn in a custom shader.
+  File: three-d/topo-contours.html.
+
+- `voxel-city` — Voxel City Night. Instanced voxel towers with a procedural lit-window texture drift beneath a slow aerial camera.
+  File: three-d/voxel-city.html.
+
+- `wind-field` — Wind Vectors. Hundreds of particles ride a living pseudo-noise wind field on a pale sky.
+  File: three-d/wind-field.html.
+
+- `zen-garden` — Raked Garden. Concentric raked sand rings circle weathered stones, one painted red.
+  File: three-d/zen-garden.html.
+
+## Sources
+
+33 curated free resources; licenses verified, re-checked weekly by CI.
+  taste-skill (MIT), ThreeUI Community (MIT)
+  React Bits (MIT + Commons Clause), shadcn/ui (MIT), Tailwind CSS (MIT)
+  GSAP (Free (proprietary)), Lenis (MIT), Lucide (ISC), Phosphor Icons (MIT)
+  Fontshare (Free (ITF FFL / OFL)), Google Fonts (OFL / Apache)
+  UI/UX Pro Max skill (MIT), agent-design-taste (MIT)
+  SceneAI (Proprietary (paid)), Lorem Picsum (MIT), Tabler Icons (MIT)
+  Heroicons (MIT), Simple Icons (CC0), Eva Icons (MIT), Hero Patterns (Free)
+  Haikei (Free (freemium)), Get Waves (Free), Shape Divider (Free)
+  uiGradients (Free), Coolors (Freemium), Realtime Colors (Free)
+  Fontjoy (Free), Type Scale (Free), Animista (Free), Squoosh (Apache-2.0)
+  Babylon.js (Apache-2.0), Babylon.js Playground (Apache-2.0 (engine))
+  OpenProcessing (Varies (per-sketch))
+
+Full index: `sources/sources.json`.
 
 ## License
 
