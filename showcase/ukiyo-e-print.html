@@ -1,0 +1,125 @@
+<!--tz-meta {"id":"showcase-ukiyo-e-print","title":"Ukiyo-e Print showcase","category":"Showcase","file":"showcase/ukiyo-e-print.html","tags":["ukiyo-e-print"],"description":"Live demo page for the Ukiyo-e Print style DNA.","dnas":["ukiyo-e-print"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ukiyo-e Print — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f2ead8; --tz-surface:#1b3a5c; --tz-ink:#1a2332; --tz-muted:#6f6a5c;
+  --tz-accent:#c73e2e; --tz-line:#1a233233;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Zen Kaku Gothic New",sans-serif;font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 4vw;font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.1em;color:var(--tz-muted)}
+.tz-wordmark{font-family:"Shippori Mincho B1",serif;font-weight:700;font-size:1.1rem;letter-spacing:0.2em;color:var(--tz-ink)}
+.tz-waves{display:block;width:100%;height:120px;animation:tz-stamp 700ms ease-out both}
+@keyframes tz-stamp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.tz-hero{padding:0 4vw 3.5rem;position:relative;display:grid;grid-template-columns:1fr auto;gap:2rem}
+.tz-reg{position:absolute;left:1.2vw;top:0.6rem;font-family:"Space Mono",monospace;color:var(--tz-muted);font-size:1.1rem;opacity:0.7}
+.tz-cartouche{border:2px solid var(--tz-ink);padding:2.6rem 2.4rem;max-width:640px;position:relative;animation:tz-stamp 700ms ease-out 120ms both}
+.tz-cartouche::before{content:"";position:absolute;inset:6px;border:1px solid var(--tz-line);pointer-events:none}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.16em;color:var(--tz-muted);margin-bottom:1rem}
+.tz-hero h1{font-family:"Shippori Mincho B1",serif;font-weight:700;font-size:clamp(2.6rem,6.5vw,4.6rem);line-height:1.12;letter-spacing:0.04em}
+.tz-sub{margin-top:1.2rem;color:var(--tz-muted);max-width:46ch}
+.tz-cta{display:inline-block;margin-top:1.8rem;background:var(--tz-surface);color:var(--tz-bg);font-family:"Shippori Mincho B1",serif;font-size:1.05rem;letter-spacing:0.08em;text-decoration:none;padding:0.85rem 2.2rem;border:2px solid var(--tz-ink);transition:opacity .2s ease}
+.tz-cta:hover{opacity:0.85}
+.tz-vertical{writing-mode:vertical-rl;font-family:"Shippori Mincho B1",serif;font-size:1.3rem;letter-spacing:0.35em;color:var(--tz-ink);justify-self:end;align-self:start;padding-top:0.5rem}
+.tz-hanko{background:var(--tz-accent);color:var(--tz-bg);width:4.6rem;height:4.6rem;display:flex;align-items:center;justify-content:center;font-family:"Shippori Mincho B1",serif;font-size:1.9rem;transform:rotate(-4deg);position:absolute;right:1.6rem;bottom:1.4rem;box-shadow:inset 0 0 0 3px var(--tz-bg)}
+.tz-drift{overflow:hidden;white-space:nowrap;border-top:1px solid var(--tz-line);border-bottom:1px solid var(--tz-line);padding:0.55rem 0;background:var(--tz-surface)}
+.tz-drift span{display:inline-block;color:var(--tz-bg);font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.22em;padding-right:2rem;animation:tz-wave 40s linear infinite}
+@keyframes tz-wave{to{transform:translateX(-50%)}}
+.tz-content{padding:3.5rem 4vw 1rem;position:relative}
+.tz-reg2{position:absolute;left:1.2vw;top:3.2rem;font-family:"Space Mono",monospace;color:var(--tz-muted);font-size:1.1rem;opacity:0.7}
+.tz-edition{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.16em;color:var(--tz-muted);margin-bottom:0.6rem}
+.tz-content h2{font-family:"Shippori Mincho B1",serif;font-weight:700;font-size:clamp(2rem,5vw,3.2rem);letter-spacing:0.04em;margin-bottom:0.6rem}
+.tz-menu{list-style:none;margin-top:1.6rem;max-width:640px;border-top:2px solid var(--tz-ink)}
+.tz-menu li{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:baseline;padding:1.2rem 0;border-bottom:1px solid var(--tz-line)}
+.tz-bowl{font-family:"Shippori Mincho B1",serif;font-size:1.35rem;font-weight:700}
+.tz-desc{grid-column:1/-1;color:var(--tz-muted);font-size:0.92rem;margin-top:-0.5rem}
+.tz-price{font-family:"Space Mono",monospace;font-size:0.85rem}
+.tz-note{margin:2.5rem 0 0;border:1px solid var(--tz-line);padding:1.4rem;max-width:560px;background:var(--tz-bg)}
+.tz-note h3{font-family:"Space Mono",monospace;font-size:0.7rem;letter-spacing:0.16em;color:var(--tz-muted);font-weight:400;margin-bottom:0.6rem}
+.tz-note p{color:var(--tz-muted);font-size:0.95rem}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Shippori Mincho B1",serif;font-size:1.7rem;letter-spacing:0.05em;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-bg);min-width:9rem;flex:1}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"Space Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Space Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"Space Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-hero{grid-template-columns:1fr}
+  .tz-vertical{display:none}
+  .tz-hanko{position:static;margin-top:1.4rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">NAMI</span>
+  <span>TZ-taste style DNA · ED. 12 / 50</span>
+</header>
+
+<svg class="tz-waves" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+  <rect width="1200" height="120" fill="#1b3a5c"/>
+  <path d="M0,44 q40,-34 80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 L1200,120 L0,120 Z" fill="#f2ead8"/>
+  <path d="M0,66 q40,-30 80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0" fill="none" stroke="#c73e2e" stroke-width="5"/>
+  <path d="M0,88 q40,-26 80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0 t80,0" fill="none" stroke="#1b3a5c" stroke-width="3"/>
+</svg>
+
+<section class="tz-hero">
+  <span class="tz-reg" aria-hidden="true">+</span>
+  <div class="tz-cartouche">
+    <p class="tz-eyebrow">RAMEN · KANDA, TOKYO · SINCE 1987</p>
+    <h1>Noodles from 11.<br>Broth till it's gone.</h1>
+    <p class="tz-sub">Eighteen seats, one pot, forty years of the same tare. The line moves fast; the broth does not hurry.</p>
+    <a class="tz-cta" href="#">See today's bowls</a>
+    <span class="tz-hanko" aria-label="Nami seal">なみ</span>
+  </div>
+  <p class="tz-vertical" aria-hidden="true">波の味、昔のまま</p>
+</section>
+
+<div class="tz-drift" aria-hidden="true">
+  <span>SHOYU · SHIO · MISO · TSUKEMEN · SHOUYU · SHIO · MISO · TSUKEMEN · SHOUYU · SHIO · MISO · TSUKEMEN ·&nbsp;</span><span>SHOYU · SHIO · MISO · TSUKEMEN · SHOUYU · SHIO · MISO · TSUKEMEN · SHOUYU · SHIO · MISO · TSUKEMEN ·&nbsp;</span>
+</div>
+
+<section class="tz-content">
+  <span class="tz-reg2" aria-hidden="true">+</span>
+  <p class="tz-edition">NO. 04 — THE MORNING MENU</p>
+  <h2>Four bowls, no more</h2>
+  <ul class="tz-menu">
+    <li><span class="tz-bowl">Shoyu, the original</span><span class="tz-price">¥950</span><span class="tz-desc">The 1987 recipe. Soy tare, chicken and dashi, nori, menma.</span></li>
+    <li><span class="tz-bowl">Shio, clear and sharp</span><span class="tz-price">¥950</span><span class="tz-desc">Salt tare, yuzu peel in winter. The broth you can see through.</span></li>
+    <li><span class="tz-bowl">Miso, for cold days</span><span class="tz-price">¥1,050</span><span class="tz-desc">Three misos, butter on request, corn when the sign says so.</span></li>
+    <li><span class="tz-bowl">Tsukemen, dip it</span><span class="tz-price">¥1,100</span><span class="tz-desc">Thick noodles, hot concentrated broth. Summer's answer.</span></li>
+  </ul>
+  <div class="tz-note">
+    <h3>HOUSE RULES</h3>
+    <p>Cash only. No photos of the kitchen. Extra noodles are free — ask before you're full, not after.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#f2ead8"></span><span class="tz-name">bg</span><span class="tz-hex">#f2ead8</span></li>
+    <li><span class="tz-chip" style="background:#1b3a5c"></span><span class="tz-name">surface</span><span class="tz-hex">#1b3a5c</span></li>
+    <li><span class="tz-chip" style="background:#1a2332"></span><span class="tz-name">ink</span><span class="tz-hex">#1a2332</span></li>
+    <li><span class="tz-chip" style="background:#6f6a5c"></span><span class="tz-name">muted</span><span class="tz-hex">#6f6a5c</span></li>
+    <li><span class="tz-chip" style="background:#c73e2e"></span><span class="tz-name">accent</span><span class="tz-hex">#c73e2e</span></li>
+    <li><span class="tz-chip" style="background:#1a233233"></span><span class="tz-name">line</span><span class="tz-hex">#1a233233</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
