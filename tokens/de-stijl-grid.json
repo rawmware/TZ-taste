@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-de-stijl-grid",
+  "title": "De Stijl Grid design tokens",
+  "category": "Tokens",
+  "file": "tokens/de-stijl-grid.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "de-stijl-grid"
+  ],
+  "description": "W3C-format design tokens for the De Stijl Grid style DNA.",
+  "dnas": [
+   "de-stijl-grid"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#faf8f4",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#111111",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#e3002b",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#8c877e",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#111111",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Archivo Black",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Archivo",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "de-stijl-grid",
+  "name": "De Stijl Grid",
+  "vibe": "Mondrian's canvas as a website: primary blocks, black grids, white doing the heavy lifting."
+ }
+}
