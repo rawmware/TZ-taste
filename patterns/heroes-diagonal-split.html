@@ -1,0 +1,46 @@
+<!--tz-meta {"id":"heroes-diagonal-split","title":"Diagonal split hero","category":"Hero","file":"patterns/heroes-diagonal-split.html","tags":["split","bold","asymmetric"],"description":"Hard diagonal split: safety-orange panel against concrete, with rotated stamped labels.","dnas":["industrial-brutalist"]} -->
+<section class="tz-split">
+  <div class="tz-split-a">
+    <p class="tz-split-stamp" aria-hidden="true">Field tested</p>
+    <p class="tz-split-eyebrow">Ironhide Boot Co. · Work line</p>
+    <h1 class="tz-split-h">Boots that outlast the job.</h1>
+    <a class="tz-split-cta" href="#shop">Shop the line</a>
+  </div>
+  <div class="tz-split-b">
+    <p class="tz-split-note">Full-grain leather. Goodyear welt. Resoleable for decades — because landfills are not a business plan.</p>
+    <p class="tz-split-est">Est. 1987 · Lewiston, Maine</p>
+  </div>
+</section>
+<style>
+.tz-split{--orange:#ff5a00;--concrete:#d8d5cf;--ink:#141210;
+  display:grid;grid-template-columns:1.25fr 1fr;min-height:82dvh;color:var(--ink);
+  font-family:Arial,Helvetica,sans-serif;overflow:hidden}
+.tz-split-a{background:var(--orange);position:relative;
+  clip-path:polygon(0 0,100% 0,calc(100% - 90px) 100%,0 100%);
+  padding:clamp(72px,10vw,140px) clamp(90px,10vw,150px) clamp(72px,10vw,140px) clamp(28px,6vw,90px);
+  display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.tz-split-b{background:var(--concrete);
+  padding:clamp(72px,10vw,140px) clamp(28px,5vw,70px);
+  display:flex;flex-direction:column;justify-content:center;gap:28px;margin-left:-90px;
+  padding-left:clamp(110px,12vw,170px)}
+.tz-split-stamp{position:absolute;top:34px;right:110px;margin:0;transform:rotate(8deg);
+  font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;
+  border:2px solid var(--ink);padding:10px 16px;background:#ffffff33}
+.tz-split-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.2em;
+  text-transform:uppercase;margin:0 0 22px}
+.tz-split-h{font-size:clamp(46px,6.8vw,100px);line-height:.98;letter-spacing:-.03em;
+  font-weight:900;margin:0 0 40px;max-width:11ch}
+.tz-split-cta{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;
+  font-weight:900;font-size:15px;letter-spacing:.08em;text-transform:uppercase;padding:20px 44px}
+.tz-split-cta:hover{background:#000}
+.tz-split-note{font-size:clamp(17px,1.9vw,22px);line-height:1.6;margin:0;max-width:30ch;font-weight:700}
+.tz-split-est{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.2em;
+  text-transform:uppercase;margin:0;opacity:.7}
+@media (max-width:720px){
+  .tz-split{grid-template-columns:1fr;min-height:0}
+  .tz-split-a{clip-path:polygon(0 0,100% 0,100% calc(100% - 50px),0 100%);
+    padding:64px 28px 110px}
+  .tz-split-b{margin-left:0;padding:70px 28px 64px;margin-top:-50px}
+  .tz-split-stamp{right:28px}
+}
+</style>
