@@ -1,0 +1,60 @@
+<!--tz-meta {"id":"misc-language-switcher","title":"Language switcher","category":"Sections","file":"patterns/misc-language-switcher.html","tags":["i18n","language"],"description":"Paris-metro language switcher: enamel-sign pill, instant headline translation demo, remembers choice locally.","dnas":["paris-metro"]} -->
+<section class="tz-misc-language-switcher">
+  <div class="tz-sign">
+    <p class="tz-eyebrow">Choose your language</p>
+    <div class="tz-langs" role="group" aria-label="Language">
+      <button type="button" class="tz-lang tz-on" data-lang="en">EN</button>
+      <button type="button" class="tz-lang" data-lang="fr">FR</button>
+      <button type="button" class="tz-lang" data-lang="es">ES</button>
+      <button type="button" class="tz-lang" data-lang="de">DE</button>
+    </div>
+    <h2 data-i18n="headline">The whole city, one pass.</h2>
+    <p class="tz-lede" data-i18n="lede">Museums, metro, and river cruises — every ticket translated, every sign understood.</p>
+    <a class="tz-cta" href="#pass" data-i18n="cta">Get the city pass</a>
+    <p class="tz-note" data-i18n="note">Available in 12 languages · support répond en français aussi</p>
+  </div>
+</section>
+<style>
+.tz-misc-language-switcher{--bg:#101828;--ink:#f2ede0;--muted:#8a93a8;--accent:#e8b93f;--line:#e8b93f44;
+  background:radial-gradient(80% 100% at 50% 0%,#1a2742 0%,var(--bg) 70%),var(--bg);
+  color:var(--ink);padding:clamp(72px,10vw,130px) clamp(20px,5vw,64px);font-family:Georgia,serif;text-align:center}
+.tz-misc-language-switcher .tz-sign{max-width:680px;margin:0 auto;border:2px solid var(--line);
+  padding:clamp(40px,6vw,72px) clamp(24px,5vw,64px);background:#101828cc}
+.tz-misc-language-switcher .tz-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin:0 0 24px}
+.tz-misc-language-switcher .tz-langs{display:inline-flex;border:2px solid var(--accent);border-radius:999px;
+  padding:4px;margin-bottom:36px;background:#101828}
+.tz-misc-language-switcher .tz-lang{border:0;background:transparent;color:var(--muted);font-family:ui-monospace,Menlo,monospace;
+  font-weight:700;font-size:13px;padding:10px 20px;border-radius:999px;cursor:pointer;letter-spacing:.08em}
+.tz-misc-language-switcher .tz-lang.tz-on{background:var(--accent);color:#101828}
+.tz-misc-language-switcher h2{font-weight:400;font-size:clamp(34px,5.5vw,58px);line-height:1.08;margin:0 0 18px;letter-spacing:-.01em}
+.tz-misc-language-switcher .tz-lede{color:var(--muted);font-size:17px;max-width:48ch;margin:0 auto 32px;
+  font-family:-apple-system,'Segoe UI',sans-serif;line-height:1.65}
+.tz-misc-language-switcher .tz-cta{display:inline-block;background:var(--accent);color:#101828;text-decoration:none;
+  font-weight:700;font-family:-apple-system,'Segoe UI',sans-serif;padding:16px 40px;font-size:15px;margin-bottom:24px}
+.tz-misc-language-switcher .tz-note{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--muted);margin:0}
+@media (max-width:520px){
+  .tz-misc-language-switcher .tz-lang{padding:10px 14px}
+}
+</style>
+<script>
+(function(){
+  var copy={
+    en:{headline:"The whole city, one pass.",lede:"Museums, metro, and river cruises — every ticket translated, every sign understood.",cta:"Get the city pass",note:"Available in 12 languages · support répond en français aussi"},
+    fr:{headline:"Toute la ville, un seul pass.",lede:"Musées, métro et croisières — chaque billet traduit, chaque panneau compris.",cta:"Obtenir le pass",note:"Disponible en 12 langues · support also replies in English"},
+    es:{headline:"Toda la ciudad, un pase.",lede:"Museos, metro y cruceros — cada billete traducido, cada señal comprendida.",cta:"Conseguir el pase",note:"Disponible en 12 idiomas · support also replies in English"},
+    de:{headline:"Die ganze Stadt, ein Pass.",lede:"Museen, Metro und Flusskreuzfahrten — jedes Ticket übersetzt, jedes Schild verstanden.",cta:"City-Pass holen",note:"In 12 Sprachen verfügbar · support also replies in English"}
+  };
+  var root=document.querySelector('.tz-misc-language-switcher');
+  var btns=root.querySelectorAll('.tz-lang');
+  function set(lang){
+    btns.forEach(function(b){b.classList.toggle('tz-on',b.dataset.lang===lang)});
+    var c=copy[lang]||copy.en;
+    root.querySelectorAll('[data-i18n]').forEach(function(el){el.textContent=c[el.dataset.i18n]});
+    try{localStorage.setItem('tz-lang',lang)}catch(e){}
+    document.documentElement.setAttribute('lang',lang);
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){set(b.dataset.lang)})});
+  try{var saved=localStorage.getItem('tz-lang');if(saved&&copy[saved])set(saved)}catch(e){}
+})();
+</script>
