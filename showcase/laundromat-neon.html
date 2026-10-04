@@ -1,0 +1,180 @@
+<!--tz-meta {"id":"showcase-laundromat-neon","title":"Laundromat Neon showcase","category":"Showcase","file":"showcase/laundromat-neon.html","tags":["laundromat-neon"],"description":"Live demo page for the Laundromat Neon style DNA.","dnas":["laundromat-neon"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Laundromat Neon — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=DM+Sans:wght@400;500;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f3f7f5; --tz-surface:#e4efe9; --tz-ink:#14201c; --tz-muted:#6b7f76;
+  --tz-accent:#2fd08a; --tz-line:#14201c21;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"DM Sans",sans-serif;font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 4vw;font-family:"Fira Code",monospace;font-size:0.72rem;letter-spacing:0.1em}
+.tz-sign{font-family:"Bungee",sans-serif;font-size:1.1rem;color:var(--tz-accent);animation:tz-hum 3s ease-in-out infinite, tz-flick 0.35s steps(2) 1}
+@keyframes tz-hum{0%,100%{opacity:1}50%{opacity:0.82}}
+@keyframes tz-flick{0%{opacity:0}50%{opacity:0.4}100%{opacity:1}}
+.tz-label{color:var(--tz-muted)}
+.tz-hero{padding:4rem 4vw 3rem;max-width:1000px;margin:0 auto}
+.tz-hero h1{font-family:"Bungee",sans-serif;font-size:clamp(2.8rem,9vw,6.5rem);line-height:1.02}
+.tz-hero h1 .tz-mint{color:var(--tz-accent)}
+.tz-sub{margin-top:1.4rem;font-size:1.1rem;color:var(--tz-muted);max-width:48ch}
+.tz-cta{display:inline-block;margin-top:2.2rem;background:var(--tz-ink);color:var(--tz-bg);font-weight:700;font-size:1rem;letter-spacing:0.03em;text-decoration:none;padding:1rem 2.4rem;border-radius:4px;transition:transform .15s ease}
+.tz-cta:hover{transform:translateY(-2px)}
+.tz-board{margin:3rem 4vw 0;max-width:1000px;border:1px solid var(--tz-line);border-radius:4px;background:var(--tz-surface)}
+.tz-board .tz-boardhead{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;border-bottom:1px solid var(--tz-line);font-family:"Fira Code",monospace;font-size:0.75rem;letter-spacing:0.12em}
+.tz-board .tz-boardhead .tz-live{color:var(--tz-accent);font-weight:600;animation:tz-hum 3s ease-in-out infinite}
+.tz-row{display:grid;grid-template-columns:8rem 1fr auto auto;gap:1.5rem;align-items:center;padding:0.9rem 1.5rem;border-bottom:1px solid var(--tz-line)}
+.tz-row:last-child{border-bottom:none}
+.tz-machine{font-family:"Fira Code",monospace;font-weight:600;font-size:0.85rem;letter-spacing:0.06em}
+.tz-bar{height:8px;background:#cfdcd4;border-radius:4px;overflow:hidden}
+.tz-bar i{display:block;height:100%;background:var(--tz-accent);border-radius:4px;transition:width 1s linear}
+.tz-row.tz-open .tz-bar i{background:#b9c7c0}
+.tz-timer{font-family:"Fira Code",monospace;font-size:0.85rem;color:var(--tz-muted);min-width:7rem;text-align:right}
+.tz-state{font-family:"Fira Code",monospace;font-size:0.72rem;font-weight:600;letter-spacing:0.12em;color:var(--tz-accent)}
+.tz-row.tz-open .tz-state{color:var(--tz-muted)}
+.tz-content{padding:3.5rem 4vw 0;max-width:1000px;margin:0 auto}
+.tz-content h2{font-family:"Bungee",sans-serif;font-size:clamp(1.6rem,4.5vw,2.6rem);margin-bottom:0.4rem}
+.tz-content .tz-note{color:var(--tz-muted);margin-bottom:2rem;max-width:56ch}
+.tz-prices{list-style:none;border-top:1px solid var(--tz-line)}
+.tz-prices li{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:baseline;padding:1.3rem 0;border-bottom:1px solid var(--tz-line)}
+.tz-service{font-weight:700;font-size:1.15rem}
+.tz-service small{display:block;font-weight:400;color:var(--tz-muted);font-size:0.9rem}
+.tz-cost{font-family:"Fira Code",monospace;font-weight:600;font-size:1rem}
+.tz-aside{margin-top:2.5rem;background:var(--tz-surface);border:1px solid var(--tz-line);border-radius:4px;padding:1.6rem;max-width:640px}
+.tz-aside p{font-size:0.95rem;color:var(--tz-muted)}
+.tz-aside strong{color:var(--tz-ink)}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Bungee",sans-serif;font-size:1.6rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1;border-radius:4px;overflow:hidden}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"Fira Code",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Fira Code",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"Fira Code",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-row{grid-template-columns:1fr 1fr;grid-template-rows:auto auto;row-gap:0.4rem}
+  .tz-bar{grid-column:1/-1}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-sign">OPEN 24 HOURS</span>
+  <span class="tz-label">SOMEBODY'S ALWAYS FOLDING</span>
+</header>
+
+<section class="tz-hero">
+  <h1>Your laundry<br><span class="tz-mint">never sleeps.</span></h1>
+  <p class="tz-sub">Humming fluorescents, honest machines, fair prices. Nobody is here for the atmosphere — everybody is here because it works.</p>
+  <a class="tz-cta" href="#machines">Check a machine</a>
+</section>
+
+<div class="tz-board" id="machines">
+  <div class="tz-boardhead">
+    <span>WASHER ROW — LIVE STATUS</span>
+    <span class="tz-live">● 5 RUNNING</span>
+  </div>
+  <div class="tz-row" data-minutes="23">
+    <span class="tz-machine">WASHER 01</span><span class="tz-bar"><i style="width:62%"></i></span><span class="tz-timer">00:23 LEFT</span><span class="tz-state">RUNNING</span>
+  </div>
+  <div class="tz-row tz-open" data-minutes="0">
+    <span class="tz-machine">WASHER 02</span><span class="tz-bar"><i style="width:100%"></i></span><span class="tz-timer">READY</span><span class="tz-state">OPEN</span>
+  </div>
+  <div class="tz-row" data-minutes="11">
+    <span class="tz-machine">WASHER 03</span><span class="tz-bar"><i style="width:78%"></i></span><span class="tz-timer">00:11 LEFT</span><span class="tz-state">RUNNING</span>
+  </div>
+  <div class="tz-row tz-open" data-minutes="0">
+    <span class="tz-machine">WASHER 04</span><span class="tz-bar"><i style="width:100%"></i></span><span class="tz-timer">READY</span><span class="tz-state">OPEN</span>
+  </div>
+  <div class="tz-row" data-minutes="34">
+    <span class="tz-machine">WASHER 05</span><span class="tz-bar"><i style="width:45%"></i></span><span class="tz-timer">00:34 LEFT</span><span class="tz-state">RUNNING</span>
+  </div>
+  <div class="tz-row" data-minutes="6">
+    <span class="tz-machine">WASHER 06</span><span class="tz-bar"><i style="width:86%"></i></span><span class="tz-timer">00:06 LEFT</span><span class="tz-state">RUNNING</span>
+  </div>
+  <div class="tz-row tz-open" data-minutes="0">
+    <span class="tz-machine">WASHER 07</span><span class="tz-bar"><i style="width:100%"></i></span><span class="tz-timer">READY</span><span class="tz-state">OPEN</span>
+  </div>
+  <div class="tz-row" data-minutes="29">
+    <span class="tz-machine">WASHER 08</span><span class="tz-bar"><i style="width:52%"></i></span><span class="tz-timer">00:29 LEFT</span><span class="tz-state">RUNNING</span>
+  </div>
+</div>
+
+<section class="tz-content">
+  <h2>The price board</h2>
+  <p class="tz-note">Ranked by use. The wall chart doesn't lie — neither do we.</p>
+  <ul class="tz-prices">
+    <li>
+      <span class="tz-service">Wash — top loader<small>hot, warm, or cold · 35 min cycle</small></span>
+      <span class="tz-cost">$4.50</span>
+    </li>
+    <li>
+      <span class="tz-service">Dry — 7 minutes<small>quarter per increment · high heat available</small></span>
+      <span class="tz-cost">25¢ / 7 MIN</span>
+    </li>
+    <li>
+      <span class="tz-service">Extra-large washer<small>comforters, sleeping bags, the dog's bed</small></span>
+      <span class="tz-cost">$7.00</span>
+    </li>
+    <li>
+      <span class="tz-service">Soap vending<small>single-load powder · dye-free available</small></span>
+      <span class="tz-cost">$1.25</span>
+    </li>
+    <li>
+      <span class="tz-service">Drop-off wash &amp; fold<small>by the pound · ready next day</small></span>
+      <span class="tz-cost">$1.75 / LB</span>
+    </li>
+  </ul>
+  <div class="tz-aside">
+    <p><strong>Lost sock?</strong> Check the wall of fame by dryer 12. Unclaimed loners are donated on the first of the month.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#f3f7f5"></span><span class="tz-name">bg</span><span class="tz-hex">#f3f7f5</span></li>
+    <li><span class="tz-chip" style="background:#e4efe9"></span><span class="tz-name">surface</span><span class="tz-hex">#e4efe9</span></li>
+    <li><span class="tz-chip" style="background:#14201c"></span><span class="tz-name">ink</span><span class="tz-hex">#14201c</span></li>
+    <li><span class="tz-chip" style="background:#6b7f76"></span><span class="tz-name">muted</span><span class="tz-hex">#6b7f76</span></li>
+    <li><span class="tz-chip" style="background:#2fd08a"></span><span class="tz-name">accent</span><span class="tz-hex">#2fd08a</span></li>
+    <li><span class="tz-chip" style="background:#14201c21"></span><span class="tz-name">line</span><span class="tz-hex">#14201c21</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+<script>
+(function(){
+  var rows=document.querySelectorAll('.tz-row');
+  function pad(n){return (n<10?'0':'')+n;}
+  setInterval(function(){
+    rows.forEach(function(row){
+      if(row.classList.contains('tz-open')) return;
+      var mins=parseInt(row.getAttribute('data-minutes'),10);
+      var timer=row.querySelector('.tz-timer');
+      var bar=row.querySelector('.tz-bar i');
+      if(mins<=0){
+        row.classList.add('tz-open');
+        timer.textContent='READY';
+        row.querySelector('.tz-state').textContent='OPEN';
+        bar.style.width='100%';
+        return;
+      }
+      mins--; row.setAttribute('data-minutes',mins);
+      timer.textContent='00:'+pad(mins)+' LEFT';
+      bar.style.width=Math.min(100,62+((40-mins)*0.95))+'%';
+    });
+  },60000);
+})();
+</script>
+</body>
+</html>
