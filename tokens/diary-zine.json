@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-diary-zine",
+  "title": "Diary Zine design tokens",
+  "category": "Tokens",
+  "file": "tokens/diary-zine.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "diary-zine"
+  ],
+  "description": "W3C-format design tokens for the Diary Zine DNA.",
+  "dnas": [
+   "diary-zine"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#e8e4d8",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#111111",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#d81b36",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#55524a",
+   "type": "color"
+  },
+  "line": {
+   "value": "#11111133",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#e8e4d8",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Anton",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Special Elite",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Space Mono",
+   "type": "fontFamily"
+  }
+ }
+}
