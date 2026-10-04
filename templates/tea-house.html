@@ -1,0 +1,333 @@
+<!--tz-meta {"id":"tea-house","title":"Stillwater — Quiet Tea Room","category":"Template","file":"templates/tea-house.html","tags":["tea","local","cafe"],"description":"Rice-paper quiet tea room: vast negative space, hanko stamp, the menu served as a four-course tasting flight.","dnas":["ma-japanese"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stillwater — a quiet tea room</title>
+<meta name="description" content="Stillwater is a quiet tea room: eight teas served as a tasting flight, one room, no music, no rush.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f7f4ec;
+  --tz-surface:#efe9da;
+  --tz-ink:#26221c;
+  --tz-muted:#8a8478;
+  --tz-accent:#a33327;
+  --tz-line:#26221c1f;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Zen Kaku Gothic New",sans-serif;background:var(--tz-bg);color:var(--tz-ink);
+  line-height:1.9;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-weight:400;
+}
+::selection{background:var(--tz-accent);color:var(--tz-bg)}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:760px;margin:0 auto;padding:0 32px}
+.tz-mono{font-family:"Space Mono",monospace}
+.skip{position:absolute;left:-999px;top:0;background:var(--tz-ink);color:var(--tz-bg);padding:8px 16px;z-index:99}
+.skip:focus{left:8px;top:8px}
+
+/* hanko stamp: the one red element's family */
+.tz-hanko{
+  width:52px;height:52px;background:var(--tz-accent);color:var(--tz-bg);
+  display:inline-flex;align-items:center;justify-content:center;border-radius:3px;
+  font-family:"Shippori Mincho",serif;font-size:28px;font-weight:800;flex:none;
+}
+
+/* ---------- header ---------- */
+.tz-header{position:absolute;top:0;left:0;right:0;z-index:10}
+.tz-header .tz-wrap{max-width:1100px;display:flex;justify-content:space-between;align-items:center;padding-top:40px}
+.tz-logo{display:flex;align-items:center;gap:16px}
+.tz-logo .tz-word{font-family:"Shippori Mincho",serif;font-size:22px;letter-spacing:.06em}
+.tz-nav{display:flex;gap:36px;font-size:14px;letter-spacing:.12em}
+.tz-nav a{color:var(--tz-muted);transition:color .3s}
+.tz-nav a:hover{color:var(--tz-ink)}
+
+/* ---------- hero ---------- */
+.tz-hero{padding:240px 0 200px;position:relative}
+.tz-hero .tz-vertical{
+  position:absolute;right:6%;top:180px;writing-mode:vertical-rl;
+  font-family:"Shippori Mincho",serif;font-size:20px;letter-spacing:.5em;color:var(--tz-muted);
+}
+.tz-hero .tz-chapter{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.3em;color:var(--tz-muted);display:block;margin-bottom:48px}
+.tz-hero h1{
+  font-family:"Shippori Mincho",serif;font-weight:400;
+  font-size:clamp(52px,8vw,104px);line-height:1.25;letter-spacing:.04em;
+}
+.tz-hero h1 .tz-seal{display:inline-block;vertical-align:middle;margin-left:16px}
+.tz-hero .tz-sub{margin-top:64px;max-width:52ch;font-size:17px;color:var(--tz-muted)}
+.tz-hero .tz-sub strong{color:var(--tz-ink);font-weight:500}
+.tz-enso{position:absolute;left:50%;top:120px;transform:translateX(-50%);opacity:.14;pointer-events:none}
+
+/* ---------- sections ---------- */
+.tz-section{padding:180px 0}
+.tz-chapter-label{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.3em;color:var(--tz-muted);display:block;margin-bottom:56px}
+.tz-sec-title{font-family:"Shippori Mincho",serif;font-weight:400;font-size:clamp(38px,5vw,64px);line-height:1.3;letter-spacing:.03em;margin-bottom:40px;max-width:18ch}
+.tz-prose{font-size:17px;color:var(--tz-muted);max-width:56ch}
+.tz-prose strong{color:var(--tz-ink);font-weight:500}
+
+/* ---------- the flight: the one weird thing ---------- */
+.tz-flight{border-top:1px solid var(--tz-line)}
+.tz-course{display:grid;grid-template-columns:120px 1fr 90px;gap:40px;padding:64px 0;border-bottom:1px solid var(--tz-line);align-items:start}
+.tz-course .tz-stepno{font-family:"Shippori Mincho",serif;font-size:15px;color:var(--tz-accent);letter-spacing:.1em;padding-top:6px}
+.tz-course h3{font-family:"Shippori Mincho",serif;font-weight:600;font-size:30px;letter-spacing:.04em;margin-bottom:4px}
+.tz-course .tz-jp{font-family:"Shippori Mincho",serif;font-size:15px;color:var(--tz-muted);letter-spacing:.2em;display:block;margin-bottom:16px}
+.tz-course p{font-size:16px;color:var(--tz-muted);max-width:52ch}
+.tz-course .tz-temp{font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-muted);display:block;margin-top:14px;letter-spacing:.06em}
+.tz-course .tz-price{font-family:"Shippori Mincho",serif;font-size:26px;text-align:right;padding-top:4px}
+.tz-course .tz-price small{display:block;font-family:"Space Mono",monospace;font-size:11px;color:var(--tz-muted);margin-top:6px}
+.tz-flight-note{margin-top:56px;display:flex;gap:20px;align-items:flex-start}
+.tz-flight-note p{font-size:15px;color:var(--tz-muted);max-width:58ch}
+
+/* ---------- the room ---------- */
+.tz-room{background:var(--tz-surface)}
+.tz-room-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:40px}
+.tz-room h3{font-family:"Shippori Mincho",serif;font-weight:600;font-size:24px;letter-spacing:.04em;margin-bottom:16px}
+.tz-room p{font-size:16px;color:var(--tz-muted)}
+.tz-quiet-list{list-style:none;margin-top:64px;display:grid;gap:0;border-top:1px solid var(--tz-line)}
+.tz-quiet-list li{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:28px 0;border-bottom:1px solid var(--tz-line);font-size:16px}
+.tz-quiet-list .tz-mono{font-size:11px;letter-spacing:.24em;color:var(--tz-accent);flex:none}
+
+/* ---------- master ---------- */
+.tz-master{display:grid;grid-template-columns:200px 1fr;gap:64px;align-items:start}
+.tz-portrait{width:200px;height:260px;background:var(--tz-surface);border:1px solid var(--tz-line);position:relative;overflow:hidden}
+.tz-portrait .tz-silhouette{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:120px;height:170px;background:var(--tz-ink);border-radius:60px 60px 0 0;opacity:.85}
+.tz-portrait .tz-cap{position:absolute;bottom:120px;left:50%;transform:translateX(-50%);font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.2em;color:var(--tz-muted);text-align:center;width:100%}
+.tz-master blockquote{font-family:"Shippori Mincho",serif;font-size:clamp(24px,3.2vw,34px);line-height:1.6;letter-spacing:.02em}
+.tz-master blockquote footer{margin-top:28px;font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.2em;color:var(--tz-muted);font-style:normal}
+.tz-master .tz-bio{margin-top:24px;font-size:16px;color:var(--tz-muted);max-width:56ch}
+
+/* ---------- visit ---------- */
+.tz-visit{text-align:left}
+.tz-visit-cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:48px;margin-top:56px}
+.tz-visit-cols h4{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.26em;color:var(--tz-accent);margin-bottom:18px;font-weight:400}
+.tz-visit-cols p{font-size:16px;color:var(--tz-muted);line-height:2}
+.tz-visit-cols strong{color:var(--tz-ink);font-weight:500}
+.tz-reserve{margin-top:96px;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;border-top:1px solid var(--tz-line);border-bottom:1px solid var(--tz-line);padding:48px 0}
+.tz-reserve h3{font-family:"Shippori Mincho",serif;font-weight:400;font-size:32px;letter-spacing:.03em}
+.tz-reserve p{font-size:15px;color:var(--tz-muted);margin-top:8px}
+.tz-btn{
+  display:inline-block;font-size:15px;letter-spacing:.1em;border:1px solid var(--tz-ink);
+  padding:18px 44px;color:var(--tz-ink);transition:background .35s,color .35s;
+}
+.tz-btn:hover{background:var(--tz-ink);color:var(--tz-bg)}
+
+/* ---------- footer ---------- */
+.tz-footer{padding:120px 0 48px;border-top:1px solid var(--tz-line)}
+.tz-foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap;margin-bottom:80px}
+.tz-foot-links{display:flex;gap:56px;font-size:14px;letter-spacing:.08em}
+.tz-foot-links a{color:var(--tz-muted);display:block;margin-bottom:10px}
+.tz-foot-links a:hover{color:var(--tz-ink)}
+.tz-foot-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.14em;color:var(--tz-muted);border-top:1px solid var(--tz-line);padding-top:32px}
+
+/* ---------- reveal ---------- */
+.tz-reveal{opacity:0;transition:opacity 1.2s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .tz-hero{padding:180px 0 140px}
+  .tz-hero .tz-vertical{display:none}
+  .tz-nav{display:none}
+  .tz-section{padding:120px 0}
+  .tz-course{grid-template-columns:1fr;gap:12px;padding:48px 0}
+  .tz-course .tz-price{text-align:left}
+  .tz-room-grid{grid-template-columns:1fr;gap:48px}
+  .tz-master{grid-template-columns:1fr;gap:32px}
+  .tz-visit-cols{grid-template-columns:1fr;gap:32px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-reveal{opacity:1}
+}
+</style>
+</head>
+<!-- DNA: ma-japanese (rice paper, sumi ink, one shu-iro red; Shippori Mincho/Zen Kaku Gothic New/Space Mono). Design read: a pause with a roof — rice-paper calm for people who have forgotten how to sit still, who want tea, not a cafe experience. One distinctive choice: the menu is a tasting flight — teas ordered as first cup through fourth, light to dark, like courses. Dials V5/M2/D1. -->
+<body>
+<a class="skip" href="#flight">Skip to the tea flight</a>
+
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-logo" href="#"><span class="tz-hanko">静</span><span class="tz-word">Stillwater</span></a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#flight">The flight</a><a href="#room">The room</a><a href="#master">The keeper</a><a href="#visit">Visit</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- ============ hero ============ -->
+  <section class="tz-hero">
+    <svg class="tz-enso" width="420" height="420" viewBox="0 0 200 200" aria-hidden="true">
+      <path d="M100 15 C 150 15, 185 50, 185 100 C 185 150, 150 185, 100 185 C 50 185, 15 150, 15 100 C 15 55, 48 20, 95 16" fill="none" stroke="#26221c" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <span class="tz-vertical" aria-hidden="true">一期一会 · one time, one meeting</span>
+    <div class="tz-wrap">
+      <span class="tz-chapter tz-reveal tz-in">CHAPTER ONE — ARRIVAL</span>
+      <h1 class="tz-reveal tz-in">Sit down.<br>The water is<br>already hot. <span class="tz-seal tz-hanko">静</span></h1>
+      <p class="tz-sub tz-reveal tz-in">Stillwater is a tea room, not a cafe. <strong>Eight teas. One quiet room. No music, no laptops, no rush.</strong> You stay for one pot or three hours — the room does not check the clock, so neither do we.</p>
+    </div>
+  </section>
+
+  <!-- ============ the flight ============ -->
+  <section class="tz-section" id="flight">
+    <div class="tz-wrap">
+      <span class="tz-chapter-label tz-reveal">CHAPTER TWO — THE FLIGHT</span>
+      <h2 class="tz-sec-title tz-reveal">Tea, in the order<br>it should be drunk</h2>
+      <p class="tz-prose tz-reveal" style="margin-bottom:72px">We serve tea as a flight: <strong>four cups, light to dark,</strong> each one steeped to its own temperature. Order the full flight, or stop anywhere along the way. Refills of hot water are free and unlimited.</p>
+      <div class="tz-flight">
+        <div class="tz-course tz-reveal">
+          <span class="tz-stepno">FIRST CUP</span>
+          <div>
+            <h3>Spring Sencha</h3><span class="tz-jp">煎茶 · shincha, first harvest</span>
+            <p>Steamed green tea from Uji, picked in late April. Bright and grassy, the way a garden smells after rain. The cup we give people who say they don't like green tea.</p>
+            <span class="tz-temp">70°C · 90 seconds · two steeps</span>
+          </div>
+          <span class="tz-price">$6<small>pot for one</small></span>
+        </div>
+        <div class="tz-course tz-reveal">
+          <span class="tz-stepno">SECOND CUP</span>
+          <div>
+            <h3>Shade-Grown Gyokuro</h3><span class="tz-jp">玉露 · the slow one</span>
+            <p>Three weeks under shade cloth before picking. Thick, savory, almost brothy — drink it in small sips, the way you would a good soup.</p>
+            <span class="tz-temp">55°C · 120 seconds · three steeps</span>
+          </div>
+          <span class="tz-price">$14<small>pot for one</small></span>
+        </div>
+        <div class="tz-course tz-reveal">
+          <span class="tz-stepno">THIRD CUP</span>
+          <div>
+            <h3>Roasted Hojicha</h3><span class="tz-jp">焙じ茶 · evening tea</span>
+            <p>Green tea roasted over charcoal until it turns the color of toast. Low in caffeine, warm as a blanket. The cup most regulars end the day on.</p>
+            <span class="tz-temp">90°C · 30 seconds · three steeps</span>
+          </div>
+          <span class="tz-price">$5<small>pot for one</small></span>
+        </div>
+        <div class="tz-course tz-reveal">
+          <span class="tz-stepno">FOURTH CUP</span>
+          <div>
+            <h3>Stone-Ground Matcha</h3><span class="tz-jp">抹茶 · whisked to order</span>
+            <p>Ceremonial grade, whisked in the bowl in front of you. Bitter at first sip, sweet at the third. We serve it with one piece of seasonal wagashi.</p>
+            <span class="tz-temp">80°C · whisked 15 seconds</span>
+          </div>
+          <span class="tz-price">$9<small>with wagashi</small></span>
+        </div>
+      </div>
+      <div class="tz-flight-note tz-reveal">
+        <span class="tz-hanko" style="width:40px;height:40px;font-size:20px">静</span>
+        <p>The full flight — all four cups, in order — is <strong style="color:var(--tz-ink)">$24</strong>. It takes about ninety minutes. Most people finish the fourth cup and order the first one again. We are ready for this.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ the room ============ -->
+  <section class="tz-section tz-room" id="room">
+    <div class="tz-wrap">
+      <span class="tz-chapter-label tz-reveal">CHAPTER THREE — THE ROOM</span>
+      <h2 class="tz-sec-title tz-reveal">Twelve seats.<br>One long table.<br>No music.</h2>
+      <div class="tz-room-grid">
+        <div class="tz-reveal">
+          <h3>What the room asks of you</h3>
+          <p>Speak quietly or not at all. Phones stay in pockets — there is a basket by the door, and yes, people use it. Children are welcome when they can be quiet; we have cushions, not high chairs.</p>
+        </div>
+        <div class="tz-reveal">
+          <h3>What the room gives back</h3>
+          <p>Light from the north windows, which never glares. Water that is always hot. A keeper who notices when your pot is empty and refills it without a word.</p>
+        </div>
+      </div>
+      <ul class="tz-quiet-list">
+        <li class="tz-reveal"><span class="tz-mono">RULE 01</span><span>No laptops. The table is for tea and the people across from you.</span></li>
+        <li class="tz-reveal"><span class="tz-mono">RULE 02</span><span>No photographs of other guests. Your own cup is fair game.</span></li>
+        <li class="tz-reveal"><span class="tz-mono">RULE 03</span><span>Stay as long as you like. We have never once asked anyone to leave.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ the keeper ============ -->
+  <section class="tz-section" id="master">
+    <div class="tz-wrap">
+      <span class="tz-chapter-label tz-reveal">CHAPTER FOUR — THE KEEPER</span>
+      <div class="tz-master tz-reveal">
+        <figure class="tz-portrait" aria-label="Portrait of the tea keeper, drawn in ink">
+          <span class="tz-cap">the keeper, at the table</span>
+          <span class="tz-silhouette" aria-hidden="true"></span>
+        </figure>
+        <div>
+          <blockquote>
+            "I opened Stillwater because I missed the version of myself that sits still. The tea is just the excuse."
+            <footer>— HANA MORI, KEEPER OF THE ROOM</footer>
+          </blockquote>
+          <p class="tz-bio">Hana trained in Kyoto for six years and spent four more running a kissaten in Osaka before moving here. She chooses the eight teas, fires the kiln-warmed cups, and decides when the room is full. Trust her judgment; it is the whole business model.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ visit ============ -->
+  <section class="tz-section" id="visit" style="padding-top:0">
+    <div class="tz-wrap tz-visit">
+      <span class="tz-chapter-label tz-reveal">CHAPTER FIVE — VISIT</span>
+      <h2 class="tz-sec-title tz-reveal">Come when<br>you need it</h2>
+      <div class="tz-visit-cols">
+        <div class="tz-reveal">
+          <h4>FIND US</h4>
+          <p><strong>88 Mill Lane<br>Portsmouth, NH 03801</strong><br>Behind the bookbinder's shop.<br>Look for the noren curtain.</p>
+        </div>
+        <div class="tz-reveal">
+          <h4>HOURS</h4>
+          <p><strong>Wed – Sun · 11 AM – 7 PM</strong><br>Last seating at 6 PM.<br>Closed Mon &amp; Tue.<br>The room rests too.</p>
+        </div>
+        <div class="tz-reveal">
+          <h4>SEATING</h4>
+          <p>Twelve seats, no reservations<br>for parties under four.<br>Groups of four or more:<br>write to <strong>sit@stillwater.tea</strong></p>
+        </div>
+      </div>
+      <div class="tz-reserve tz-reveal">
+        <div>
+          <h3>The evening sitting</h3>
+          <p>First Friday of the month, 7–9 PM. Four teas, one wagashi course, eight guests. $45.</p>
+        </div>
+        <a class="tz-btn" href="mailto:sit@stillwater.tea?subject=Evening%20sitting">Reserve a seat</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-foot-top">
+      <span class="tz-hanko">静</span>
+      <div class="tz-foot-links">
+        <div><a href="#flight">The flight</a><a href="#room">The room</a></div>
+        <div><a href="#master">The keeper</a><a href="#visit">Visit</a></div>
+        <div><a href="#">Teaware shelf</a><a href="#">sit@stillwater.tea</a></div>
+      </div>
+    </div>
+    <div class="tz-foot-bottom">
+      <span>© 2026 STILLWATER TEA ROOM · 88 MILL LANE</span>
+      <span>一期一会 · ONE TIME, ONE MEETING</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){e.classList.add('tz-in')});
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en,i){
+        if(en.isIntersecting){ setTimeout(function(){en.target.classList.add('tz-in')}, i*120); io.unobserve(en.target); }
+      });
+    },{threshold:.1});
+    els.forEach(function(e){io.observe(e)});
+  }
+})();
+</script>
+</body>
+</html>
