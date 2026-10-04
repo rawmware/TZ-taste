@@ -1,0 +1,95 @@
+{
+ "_tzmeta": {
+  "id": "vscode-concrete-poem",
+  "title": "Concrete Poem VS Code theme",
+  "category": "VS Code",
+  "file": "vscode/concrete-poem.json",
+  "tags": [
+   "vscode",
+   "theme",
+   "concrete-poem"
+  ],
+  "description": "VS Code color theme from the Concrete Poem DNA tokens.",
+  "dnas": [
+   "concrete-poem"
+  ]
+ },
+ "name": "TZ Concrete Poem",
+ "type": "light",
+ "colors": {
+  "editor.background": "#f7f3ea",
+  "editor.foreground": "#1c1a16",
+  "editorLineNumber.foreground": "#8a8072",
+  "editorCursor.foreground": "#8c1f28",
+  "activityBar.background": "#f7f3ea",
+  "activityBar.foreground": "#1c1a16",
+  "sideBar.background": "#f7f3ea",
+  "statusBar.background": "#8c1f28",
+  "statusBar.foreground": "#f7f3ea",
+  "tab.activeBackground": "#f7f3ea",
+  "tab.inactiveBackground": "#f7f3ea",
+  "editorGroupHeader.tabsBackground": "#f7f3ea",
+  "terminal.background": "#f7f3ea",
+  "terminal.foreground": "#1c1a16",
+  "panel.background": "#f7f3ea",
+  "editorWidget.background": "#f7f3ea",
+  "pickerGroup.foreground": "#8c1f28",
+  "progressBar.background": "#8c1f28",
+  "focusBorder": "#ddd4c2"
+ },
+ "tokenColors": [
+  {
+   "scope": [
+    "comment"
+   ],
+   "settings": {
+    "foreground": "#8a8072",
+    "fontStyle": "italic"
+   }
+  },
+  {
+   "scope": [
+    "keyword",
+    "storage"
+   ],
+   "settings": {
+    "foreground": "#8c1f28"
+   }
+  },
+  {
+   "scope": [
+    "string"
+   ],
+   "settings": {
+    "foreground": "#1c1a16"
+   }
+  },
+  {
+   "scope": [
+    "variable",
+    "identifier"
+   ],
+   "settings": {
+    "foreground": "#1c1a16"
+   }
+  },
+  {
+   "scope": [
+    "entity.name.function"
+   ],
+   "settings": {
+    "foreground": "#8c1f28",
+    "fontStyle": "bold"
+   }
+  },
+  {
+   "scope": [
+    "entity.name.type",
+    "support.type"
+   ],
+   "settings": {
+    "foreground": "#8a8072"
+   }
+  }
+ ]
+}
