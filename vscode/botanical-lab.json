@@ -1,0 +1,95 @@
+{
+ "_tzmeta": {
+  "id": "vscode-botanical-lab",
+  "title": "Botanical Lab VS Code theme",
+  "category": "VS Code",
+  "file": "vscode/botanical-lab.json",
+  "tags": [
+   "vscode",
+   "theme",
+   "botanical-lab"
+  ],
+  "description": "VS Code color theme from the Botanical Lab DNA tokens.",
+  "dnas": [
+   "botanical-lab"
+  ]
+ },
+ "name": "TZ Botanical Lab",
+ "type": "light",
+ "colors": {
+  "editor.background": "#f4f6ec",
+  "editor.foreground": "#1b3a2b",
+  "editorLineNumber.foreground": "#6f867a",
+  "editorCursor.foreground": "#3e7d4e",
+  "activityBar.background": "#f4f6ec",
+  "activityBar.foreground": "#1b3a2b",
+  "sideBar.background": "#f4f6ec",
+  "statusBar.background": "#3e7d4e",
+  "statusBar.foreground": "#f4f6ec",
+  "tab.activeBackground": "#f4f6ec",
+  "tab.inactiveBackground": "#f4f6ec",
+  "editorGroupHeader.tabsBackground": "#f4f6ec",
+  "terminal.background": "#f4f6ec",
+  "terminal.foreground": "#1b3a2b",
+  "panel.background": "#f4f6ec",
+  "editorWidget.background": "#f4f6ec",
+  "pickerGroup.foreground": "#3e7d4e",
+  "progressBar.background": "#3e7d4e",
+  "focusBorder": "#cdd8bd"
+ },
+ "tokenColors": [
+  {
+   "scope": [
+    "comment"
+   ],
+   "settings": {
+    "foreground": "#6f867a",
+    "fontStyle": "italic"
+   }
+  },
+  {
+   "scope": [
+    "keyword",
+    "storage"
+   ],
+   "settings": {
+    "foreground": "#3e7d4e"
+   }
+  },
+  {
+   "scope": [
+    "string"
+   ],
+   "settings": {
+    "foreground": "#1b3a2b"
+   }
+  },
+  {
+   "scope": [
+    "variable",
+    "identifier"
+   ],
+   "settings": {
+    "foreground": "#1b3a2b"
+   }
+  },
+  {
+   "scope": [
+    "entity.name.function"
+   ],
+   "settings": {
+    "foreground": "#3e7d4e",
+    "fontStyle": "bold"
+   }
+  },
+  {
+   "scope": [
+    "entity.name.type",
+    "support.type"
+   ],
+   "settings": {
+    "foreground": "#6f867a"
+   }
+  }
+ ]
+}
