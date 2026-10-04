@@ -1,5 +1,5 @@
 {
- "count": 194,
+ "count": 219,
  "updated": "2026-10-04",
  "usage": "Each file is a standalone snippet: markup plus a <style> block. Copy both into your page. Classes are tz- prefixed to avoid collisions.",
  "patterns": [
@@ -411,6 +411,21 @@
    ]
   },
   {
+   "id": "cards-menu",
+   "title": "Menu cards",
+   "category": "Sections",
+   "file": "patterns/cards-menu.html",
+   "tags": [
+    "cards",
+    "menu",
+    "food"
+   ],
+   "description": "Chalkboard-cafe menu: leader-dot price rows grouped by course, chef's notes in the margin, dietary marks.",
+   "dnas": [
+    "chalkboard-cafe"
+   ]
+  },
+  {
    "id": "cards-product",
    "title": "Product cards",
    "category": "Cards",
@@ -572,6 +587,20 @@
    ]
   },
   {
+   "id": "cta-referral",
+   "title": "Referral CTA",
+   "category": "Sections",
+   "file": "patterns/cta-referral.html",
+   "tags": [
+    "cta",
+    "referral"
+   ],
+   "description": "Kawaii-pixel referral card: sticker-sheet framing, give-$20-get-$20 math shown plainly, copy-link button.",
+   "dnas": [
+    "kawaii-pixel"
+   ]
+  },
+  {
    "id": "cta-split",
    "title": "Split CTA",
    "category": "CTA",
@@ -597,6 +626,20 @@
    "description": "Sticker-burst CTA with rotated starburst badges and a chunky button.",
    "dnas": [
     "neo-brutalist-pop"
+   ]
+  },
+  {
+   "id": "cta-sticky-bar",
+   "title": "Sticky bottom CTA bar",
+   "category": "Sections",
+   "file": "patterns/cta-sticky-bar.html",
+   "tags": [
+    "cta",
+    "sticky"
+   ],
+   "description": "Neon-diner sticky bar: slides up after scroll, order-ahead CTA with today's special, dismissible, respects reduced motion.",
+   "dnas": [
+    "neon-diner"
    ]
   },
   {
@@ -772,6 +815,20 @@
    ]
   },
   {
+   "id": "faq-video",
+   "title": "FAQ with video answers",
+   "category": "Sections",
+   "file": "patterns/faq-video.html",
+   "tags": [
+    "faq",
+    "video"
+   ],
+   "description": "Chalkboard-cafe FAQ: each answer is a 60-second video thumbnail with transcript toggle, handwritten chalk dividers.",
+   "dnas": [
+    "chalkboard-cafe"
+   ]
+  },
+  {
    "id": "features-arcade",
    "title": "Arcade cards",
    "category": "Features",
@@ -811,6 +868,20 @@
    "description": "Full-width checklist rows with oversized red checkmarks and mono spec lines.",
    "dnas": [
     "swiss-rational"
+   ]
+  },
+  {
+   "id": "features-comparison-slider",
+   "title": "Feature comparison slider",
+   "category": "Sections",
+   "file": "patterns/features-comparison-slider.html",
+   "tags": [
+    "features",
+    "comparison"
+   ],
+   "description": "Lab-notebook comparison slider: drag between us and the old way, handwritten annotations, honest deltas.",
+   "dnas": [
+    "lab-notebook"
    ]
   },
   {
@@ -952,6 +1023,20 @@
    "dnas": [
     "acid-rave",
     "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "footer-minimal",
+   "title": "Minimal footer",
+   "category": "Sections",
+   "file": "patterns/footer-minimal.html",
+   "tags": [
+    "footer",
+    "minimal"
+   ],
+   "description": "Ma-japanese footer: vast whitespace, one line of links, a single red seal mark, nothing else.",
+   "dnas": [
+    "ma-japanese"
    ]
   },
   {
@@ -1213,6 +1298,21 @@
    ]
   },
   {
+   "id": "forms-quote-builder",
+   "title": "Quote builder form",
+   "category": "Sections",
+   "file": "patterns/forms-quote-builder.html",
+   "tags": [
+    "forms",
+    "quote",
+    "pricing"
+   ],
+   "description": "Blueprint-tech quote builder: pick scope toggles, live price tally in mono, deposit terms, no email required to see the number.",
+   "dnas": [
+    "blueprint-tech"
+   ]
+  },
+  {
    "id": "forms-search-hero",
    "title": "Search hero",
    "category": "Forms",
@@ -1274,6 +1374,36 @@
    ]
   },
   {
+   "id": "hero-before-after",
+   "title": "Hero with before/after slider",
+   "category": "Sections",
+   "file": "patterns/hero-before-after.html",
+   "tags": [
+    "hero",
+    "comparison",
+    "slider"
+   ],
+   "description": "Aperitivo-italian before/after: draggable divider over a room transformation, golden-hour copy, book-the-look CTA.",
+   "dnas": [
+    "aperitivo-italian"
+   ]
+  },
+  {
+   "id": "hero-countdown",
+   "title": "Hero with launch countdown",
+   "category": "Sections",
+   "file": "patterns/hero-countdown.html",
+   "tags": [
+    "hero",
+    "countdown",
+    "launch"
+   ],
+   "description": "Drive-in-theater hero: marquee countdown flip-clock to launch, ticket CTA, showtime list.",
+   "dnas": [
+    "drive-in-theater"
+   ]
+  },
+  {
    "id": "hero-editorial",
    "title": "Editorial hero",
    "category": "Hero",
@@ -1305,6 +1435,34 @@
     "acid-rave",
     "industrial-brutalist",
     "y2k-chrome"
+   ]
+  },
+  {
+   "id": "hero-video-loop",
+   "title": "Hero with ambient video loop",
+   "category": "Sections",
+   "file": "patterns/hero-video-loop.html",
+   "tags": [
+    "hero",
+    "video"
+   ],
+   "description": "Surf-shack hero: full-bleed looping video with hand-painted headline, pause control, reduced-motion poster fallback.",
+   "dnas": [
+    "surf-shack"
+   ]
+  },
+  {
+   "id": "hero-weather-aware",
+   "title": "Weather-aware hero",
+   "category": "Sections",
+   "file": "patterns/hero-weather-aware.html",
+   "tags": [
+    "hero",
+    "weather"
+   ],
+   "description": "Weather-station hero: headline and CTA change with live conditions — brass-dial aesthetic, honest fallback copy.",
+   "dnas": [
+    "weather-station"
    ]
   },
   {
@@ -1738,6 +1896,49 @@
    ]
   },
   {
+   "id": "marquee-press",
+   "title": "Press logo marquee",
+   "category": "Sections",
+   "file": "patterns/marquee-press.html",
+   "tags": [
+    "marquee",
+    "press",
+    "logos"
+   ],
+   "description": "Newsroom-wire press marquee: teletype headline ticker, outlet names in a slow infinite scroll, pause on hover.",
+   "dnas": [
+    "newsroom-wire"
+   ]
+  },
+  {
+   "id": "misc-age-gate",
+   "title": "Age gate",
+   "category": "Sections",
+   "file": "patterns/misc-age-gate.html",
+   "tags": [
+    "age-gate",
+    "compliance"
+   ],
+   "description": "Drive-in-theater age gate: marquee-styled 21+ check with birthdate entry, remembers via localStorage, no dark patterns.",
+   "dnas": [
+    "drive-in-theater"
+   ]
+  },
+  {
+   "id": "misc-back-to-top",
+   "title": "Back to top button",
+   "category": "Sections",
+   "file": "patterns/misc-back-to-top.html",
+   "tags": [
+    "navigation",
+    "scroll"
+   ],
+   "description": "Ticket-stub back-to-top: perforated stub button appears after scroll, smooth return, keyboard accessible.",
+   "dnas": [
+    "ticket-stub"
+   ]
+  },
+  {
    "id": "misc-careers",
    "title": "Job board",
    "category": "Misc",
@@ -1836,6 +2037,20 @@
    ]
   },
   {
+   "id": "misc-language-switcher",
+   "title": "Language switcher",
+   "category": "Sections",
+   "file": "patterns/misc-language-switcher.html",
+   "tags": [
+    "i18n",
+    "language"
+   ],
+   "description": "Paris-metro language switcher: enamel-sign pill, instant headline translation demo, remembers choice locally.",
+   "dnas": [
+    "paris-metro"
+   ]
+  },
+  {
    "id": "misc-modal",
    "title": "Modal dialog",
    "category": "Misc",
@@ -1847,6 +2062,35 @@
    "description": "Modal pattern with backdrop, visible focus ring, and esc hint.",
    "dnas": [
     "soft-minimal"
+   ]
+  },
+  {
+   "id": "misc-qr-download",
+   "title": "QR app download",
+   "category": "Sections",
+   "file": "patterns/misc-qr-download.html",
+   "tags": [
+    "qr",
+    "app",
+    "download"
+   ],
+   "description": "Matchbook-cover QR download: strike-a-match framing, real QR placeholder with store buttons, SMS-the-link fallback.",
+   "dnas": [
+    "matchbook-cover"
+   ]
+  },
+  {
+   "id": "misc-reading-progress",
+   "title": "Reading progress indicator",
+   "category": "Sections",
+   "file": "patterns/misc-reading-progress.html",
+   "tags": [
+    "reading",
+    "progress"
+   ],
+   "description": "Library-oak reading progress: brass hairline fills as you read, chapter marks, time-remaining estimate.",
+   "dnas": [
+    "library-oak"
    ]
   },
   {
@@ -1907,6 +2151,20 @@
    "dnas": [
     "soft-minimal",
     "glass-calm"
+   ]
+  },
+  {
+   "id": "nav-scroll-progress",
+   "title": "Nav with scroll progress",
+   "category": "Sections",
+   "file": "patterns/nav-scroll-progress.html",
+   "tags": [
+    "nav",
+    "scroll"
+   ],
+   "description": "Docs-solar nav: slim reading-progress hairline under the header, section-aware active link, back-to-top on long scroll.",
+   "dnas": [
+    "docs-solar"
    ]
   },
   {
@@ -2105,6 +2363,20 @@
    ]
   },
   {
+   "id": "pricing-annual-toggle",
+   "title": "Pricing with annual/monthly toggle",
+   "category": "Sections",
+   "file": "patterns/pricing-annual-toggle.html",
+   "tags": [
+    "pricing",
+    "toggle"
+   ],
+   "description": "Soft-minimal pricing: animated annual/monthly switch, per-seat math shown inline, most-popular plan offset.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
    "id": "pricing-brutalist",
    "title": "Chunky pricing",
    "category": "Pricing",
@@ -2147,6 +2419,20 @@
    ]
   },
   {
+   "id": "pricing-enterprise-table",
+   "title": "Enterprise pricing table",
+   "category": "Sections",
+   "file": "patterns/pricing-enterprise-table.html",
+   "tags": [
+    "pricing",
+    "enterprise"
+   ],
+   "description": "Swiss-rational enterprise table: strict grid, check/dash matrix, procurement-friendly terms row, talk-to-sales as the CTA.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
    "id": "pricing-luxe",
    "title": "Dark luxe pricing",
    "category": "Pricing",
@@ -2158,6 +2444,20 @@
    "description": "Near-black tiers split by a hairline gold divider with wide small caps.",
    "dnas": [
     "dark-luxe"
+   ]
+  },
+  {
+   "id": "pricing-pay-what-you-want",
+   "title": "Pay-what-you-want pricing",
+   "category": "Sections",
+   "file": "patterns/pricing-pay-what-you-want.html",
+   "tags": [
+    "pricing",
+    "pwyw"
+   ],
+   "description": "Farmers-almanac pay-what-you-want: honest slider with suggested price, what each tier funds, no guilt design.",
+   "dnas": [
+    "farmers-almanac"
    ]
   },
   {
@@ -2477,6 +2777,20 @@
    ]
   },
   {
+   "id": "stats-odometer",
+   "title": "Stats with odometer roll",
+   "category": "Sections",
+   "file": "patterns/stats-odometer.html",
+   "tags": [
+    "stats",
+    "numbers"
+   ],
+   "description": "Stadium-floodlight stats: numbers roll like an odometer when scrolled into view, floodlight glow on the hero figure.",
+   "dnas": [
+    "stadium-floodlight"
+   ]
+  },
+  {
    "id": "stats-progress",
    "title": "Progress rings",
    "category": "Stats",
@@ -2563,6 +2877,20 @@
    "description": "Searchable store list with distance badges, hours, and live open status.",
    "dnas": [
     "arctic-field"
+   ]
+  },
+  {
+   "id": "team-advisors",
+   "title": "Advisors roster",
+   "category": "Sections",
+   "file": "patterns/team-advisors.html",
+   "tags": [
+    "team",
+    "advisors"
+   ],
+   "description": "Museum-placard advisors: numbered roster with one-line credentials, office-hours note, no headshots.",
+   "dnas": [
+    "museum-placard"
    ]
   },
   {
@@ -2663,6 +2991,20 @@
    "description": "Team roster rendered as a $ team --list terminal output.",
    "dnas": [
     "retro-terminal"
+   ]
+  },
+  {
+   "id": "testimonial-carousel",
+   "title": "Testimonial carousel",
+   "category": "Sections",
+   "file": "patterns/testimonial-carousel.html",
+   "tags": [
+    "testimonials",
+    "carousel"
+   ],
+   "description": "Editorial-serif testimonial carousel: oversized pull-quote, client index dots, auto-advance with pause on hover.",
+   "dnas": [
+    "editorial-serif"
    ]
   },
   {
@@ -2790,6 +3132,20 @@
    "description": "Dark video wall of quote thumbnails with CSS play buttons and a now-playing tile.",
    "dnas": [
     "dark-luxe"
+   ]
+  },
+  {
+   "id": "testimonials-wall-live",
+   "title": "Live testimonial wall",
+   "category": "Sections",
+   "file": "patterns/testimonials-wall-live.html",
+   "tags": [
+    "testimonials",
+    "social-proof"
+   ],
+   "description": "Night-market testimonial wall: lantern-lit review cards stream in, filterable by dish, newest-first with timestamps.",
+   "dnas": [
+    "night-market"
    ]
   },
   {
