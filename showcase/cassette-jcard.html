@@ -1,0 +1,114 @@
+<!--tz-meta {"id":"showcase-cassette-jcard","title":"Cassette J-Card showcase","category":"Showcase","file":"showcase/cassette-jcard.html","tags":["cassette-jcard"],"description":"Live demo page for the Cassette J-Card style DNA.","dnas":["cassette-jcard"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cassette J-Card — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f2ede0; --tz-surface:#e3dac2; --tz-ink:#1e1c18; --tz-muted:#75705f;
+  --tz-accent:#c2452d; --tz-line:#1e1c1826;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Archivo",sans-serif;font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-spine{background:var(--tz-ink);color:var(--tz-bg);display:flex;justify-content:space-between;align-items:center;padding:0.9rem 4vw;transform:translateX(0);animation:tz-nudge 9s ease-in-out infinite alternate}
+@keyframes tz-nudge{from{transform:translateX(0)}to{transform:translateX(-6px)}}
+.tz-spine .tz-wordmark{font-family:"Archivo Black",sans-serif;font-size:0.95rem;letter-spacing:0.06em}
+.tz-counter{display:flex;align-items:center;gap:0.6rem;font-family:"Courier Prime",monospace;font-size:0.85rem;letter-spacing:0.1em}
+.tz-dot{width:0.7rem;height:0.7rem;border-radius:50%;background:var(--tz-accent)}
+.tz-digit{overflow:hidden;height:1.2em;display:inline-block}
+.tz-digit .tz-strip{display:inline-flex;flex-direction:column;animation:tz-roll 24s steps(10) infinite}
+@keyframes tz-roll{from{transform:translateY(0)}to{transform:translateY(-100%)}}
+.tz-digit .tz-strip span{height:1.2em;line-height:1.2em}
+.tz-hero{padding:5.5rem 4vw 3.5rem}
+.tz-eyebrow{font-family:"Courier Prime",monospace;font-size:0.78rem;letter-spacing:0.2em;color:var(--tz-muted);margin-bottom:1.4rem}
+.tz-eyebrow strong{color:var(--tz-accent)}
+.tz-hero h1{font-family:"Archivo Black",sans-serif;font-size:clamp(2.8rem,10vw,6.5rem);line-height:0.98;letter-spacing:-0.01em;text-transform:uppercase;max-width:11ch}
+.tz-sub{margin-top:1.6rem;font-size:1.02rem;color:var(--tz-muted);max-width:44ch}
+.tz-cta{display:inline-block;margin-top:2.2rem;background:var(--tz-ink);color:var(--tz-bg);font-family:"Archivo Black",sans-serif;font-size:1.05rem;letter-spacing:0.04em;text-decoration:none;text-transform:uppercase;padding:1rem 2.2rem;border-radius:2px}
+.tz-cta:hover{background:var(--tz-accent)}
+.tz-aside{position:relative;display:inline-block;margin-top:2.6rem;padding:0.7rem 1.1rem;background:var(--tz-surface);font-family:"Courier Prime",monospace;font-size:0.85rem;transform:rotate(-2deg);border:1px solid var(--tz-line);border-radius:2px}
+.tz-side{font-family:"Archivo Black",sans-serif;font-size:1.5rem;letter-spacing:0.1em;margin:0;padding:1.1rem 4vw;background:var(--tz-surface);border-top:1px solid var(--tz-ink);border-bottom:1px solid var(--tz-ink)}
+.tz-content{padding:3rem 4vw 1rem}
+.tz-content h2{font-family:"Archivo Black",sans-serif;font-size:clamp(1.6rem,4.5vw,2.4rem);text-transform:uppercase;margin-bottom:0.4rem}
+.tz-subhead{font-family:"Courier Prime",monospace;font-size:0.74rem;letter-spacing:0.14em;color:var(--tz-muted);margin-bottom:1.6rem}
+table.tz-tracks{width:100%;border-collapse:collapse;max-width:680px}
+.tz-tracks th{font-family:"Courier Prime",monospace;font-size:0.66rem;font-weight:400;letter-spacing:0.14em;color:var(--tz-muted);text-align:left;padding:0.8rem 0;border-bottom:1px solid var(--tz-ink)}
+.tz-tracks td{font-family:"Courier Prime",monospace;font-size:0.9rem;padding:0.95rem 0;border-bottom:1px solid var(--tz-line)}
+.tz-tracks td.tz-n{color:var(--tz-muted)}
+.tz-tracks td.tz-t{color:var(--tz-muted)}
+.tz-quiet{margin:2.8rem 0 0;background:var(--tz-surface);padding:1.8rem;max-width:560px;border-radius:2px}
+.tz-quiet p{font-family:"Courier Prime",monospace;font-size:0.92rem;color:var(--tz-muted)}
+.tz-quiet strong{color:var(--tz-ink)}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Archivo Black",sans-serif;font-size:1.6rem;text-transform:uppercase;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1;border-radius:2px}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"Courier Prime",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Courier Prime",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"Courier Prime",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-hero{padding-top:3.5rem}
+  .tz-counter{display:none}
+  .tz-aside{transform:rotate(-1deg)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-spine">
+  <span class="tz-wordmark">DUBHOUSE TAPES</span>
+  <span class="tz-counter" aria-hidden="true"><span class="tz-dot"></span>A&nbsp;04<span class="tz-digit"><span class="tz-strip"><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>0</span><span>1</span></span></span></span>
+</header>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow"><strong>●</strong> DUB 014 · KITCHEN SESSIONS · NORMAL BIAS · 60 MIN</p>
+  <h1>Side A still hits harder.</h1>
+  <p class="tz-sub">Eight songs recorded at the kitchen table, mixed on headphones, dubbed in real time. The hiss is part of the band.</p>
+  <a class="tz-cta" href="#">Play the first three tracks</a><br>
+  <span class="tz-aside">dubbed twice, still good.</span>
+</section>
+
+<p class="tz-side">SIDE A</p>
+
+<section class="tz-content">
+  <h2>Tracklist</h2>
+  <p class="tz-subhead">TYPED WITH A TIRED RIBBON · CHECK THE TIMES YOURSELF</p>
+  <table class="tz-tracks">
+    <thead><tr><th>NO.</th><th>TITLE</th><th>TIME</th></tr></thead>
+    <tbody>
+      <tr><td class="tz-n">A1</td><td>Kitchen Radio</td><td class="tz-t">3:42</td></tr>
+      <tr><td class="tz-n">A2</td><td>Bus Fare</td><td class="tz-t">2:58</td></tr>
+      <tr><td class="tz-n">A3</td><td>Track 3 is the one</td><td class="tz-t">4:15</td></tr>
+      <tr><td class="tz-n">A4</td><td>Spare Key</td><td class="tz-t">3:07</td></tr>
+      <tr><td class="tz-n">B1</td><td>Second Dub</td><td class="tz-t">5:01</td></tr>
+      <tr><td class="tz-n">B2</td><td>Landlord's Lullaby</td><td class="tz-t">2:44</td></tr>
+    </tbody>
+  </table>
+  <div class="tz-quiet">
+    <p><strong>Thanks:</strong> the radiator for the room tone, the neighbor for not calling, and everyone who rewound the good part twice.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#f2ede0"></span><span class="tz-name">bg</span><span class="tz-hex">#f2ede0</span></li>
+    <li><span class="tz-chip" style="background:#e3dac2"></span><span class="tz-name">surface</span><span class="tz-hex">#e3dac2</span></li>
+    <li><span class="tz-chip" style="background:#1e1c18"></span><span class="tz-name">ink</span><span class="tz-hex">#1e1c18</span></li>
+    <li><span class="tz-chip" style="background:#75705f"></span><span class="tz-name">muted</span><span class="tz-hex">#75705f</span></li>
+    <li><span class="tz-chip" style="background:#c2452d"></span><span class="tz-name">accent</span><span class="tz-hex">#c2452d</span></li>
+    <li><span class="tz-chip" style="background:#1e1c1826"></span><span class="tz-name">line</span><span class="tz-hex">#1e1c1826</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
