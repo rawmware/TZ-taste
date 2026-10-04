@@ -1,0 +1,12 @@
+<!--tz-meta {"id":"backgrounds-scanlines","title":"CRT scanlines","category":"Backgrounds","file":"patterns/backgrounds-scanlines.html","tags":["crt","retro"],"description":"CRT overlay: scanlines, soft vignette, faint phosphor flicker.","dnas":["retro-terminal"]} -->
+<!-- Usage: .tz-scan lays over dark retro content; flicker stops under reduced motion. -->
+<div class="tz-scan" aria-hidden="true"></div>
+<style>
+.tz-scan{position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(0,0,0,.30) 0 1px,transparent 1px 3px);
+  animation:tz-flick 4s steps(12) infinite}
+.tz-scan::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse at center,transparent 52%,rgba(0,0,0,.5) 100%)}
+@keyframes tz-flick{0%,100%{opacity:1}50%{opacity:.96}}
+@media (prefers-reduced-motion:reduce){.tz-scan{animation:none}}
+</style>
