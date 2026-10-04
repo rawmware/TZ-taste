@@ -1,0 +1,116 @@
+<!--tz-meta {"id":"showcase-sewing-pattern","title":"Sewing Pattern showcase","category":"Showcase","file":"showcase/sewing-pattern.html","tags":["sewing-pattern"],"description":"Live demo page for the Sewing Pattern style DNA.","dnas":["sewing-pattern"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sewing Pattern — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f7f2e7; --tz-surface:#ede2cb; --tz-ink:#33291f; --tz-muted:#97826a;
+  --tz-accent:#9c3d54; --tz-line:#33291f26;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Nunito Sans",sans-serif;font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 4vw;border-bottom:1px solid var(--tz-line)}
+.tz-wordmark{font-family:"DM Serif Display",serif;font-size:1.3rem}
+.tz-env{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.14em;color:var(--tz-muted)}
+.tz-env strong{color:var(--tz-ink)}
+.tz-hero{padding:5.5rem 4vw 3.5rem}
+.tz-piece{border:2px dashed var(--tz-muted);padding:2.4rem 2.6rem 2rem;position:relative;max-width:56rem;margin-bottom:2.4rem;background:var(--tz-bg)}
+.tz-piece .tz-tab{position:absolute;top:-0.85rem;left:1.6rem;background:var(--tz-accent);color:var(--tz-bg);font-family:"Space Mono",monospace;font-size:0.68rem;letter-spacing:0.14em;padding:0.3rem 0.8rem}
+.tz-piece .tz-notch{position:absolute;width:0.9rem;height:0.9rem;background:var(--tz-accent);clip-path:polygon(0 50%,100% 0,100% 100%)}
+.tz-piece .tz-notch.tz-n1{left:-0.45rem;top:30%}
+.tz-piece .tz-notch.tz-n2{left:-0.45rem;top:60%}
+.tz-piece .tz-grain{display:flex;align-items:center;gap:0.8rem;font-family:"Space Mono",monospace;font-size:0.7rem;letter-spacing:0.18em;color:var(--tz-muted);margin-top:1.8rem}
+.tz-piece .tz-grain .tz-arrow{flex:1;height:2px;background:var(--tz-muted);position:relative;opacity:0.6}
+.tz-piece .tz-grain .tz-arrow::after{content:"";position:absolute;right:0;top:-4px;border:5px solid transparent;border-left-color:var(--tz-muted)}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.16em;color:var(--tz-muted);margin-bottom:1.4rem}
+.tz-hero h1{font-family:"DM Serif Display",serif;font-weight:400;font-size:clamp(3rem,10vw,6.8rem);line-height:1.02;letter-spacing:-0.01em;max-width:13ch}
+.tz-sub{margin-top:1.8rem;font-size:1.05rem;color:var(--tz-muted);max-width:44ch}
+.tz-sub strong{color:var(--tz-ink)}
+.tz-cta{display:inline-block;margin-top:2.2rem;background:var(--tz-accent);color:var(--tz-bg);font-family:"DM Serif Display",serif;font-size:1.2rem;letter-spacing:0.01em;text-decoration:none;padding:0.85rem 2.3rem}
+.tz-cta:hover{opacity:0.9}
+.tz-content{padding:3rem 4vw 1rem}
+.tz-content h2{font-family:"DM Serif Display",serif;font-weight:400;font-size:clamp(1.9rem,5vw,2.9rem);margin-bottom:0.4rem}
+.tz-subhead{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.12em;color:var(--tz-muted);margin-bottom:1.6rem}
+table.tz-sizes{width:100%;border-collapse:collapse;max-width:680px}
+.tz-sizes th{font-family:"Space Mono",monospace;font-size:0.66rem;font-weight:400;letter-spacing:0.14em;color:var(--tz-muted);text-align:left;padding:0.8rem 0;border-bottom:1px solid var(--tz-ink)}
+.tz-sizes td{font-family:"Space Mono",monospace;font-size:0.9rem;padding:1rem 0;border-bottom:1px solid var(--tz-line)}
+.tz-sizes td.tz-s{font-weight:700;color:var(--tz-accent)}
+.tz-quiet{margin:2.8rem 0 0;background:var(--tz-surface);padding:1.8rem;max-width:560px;border:2px dashed var(--tz-muted)}
+.tz-quiet p{color:var(--tz-muted)}
+.tz-quiet strong{color:var(--tz-ink)}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"DM Serif Display",serif;font-weight:400;font-size:1.8rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"Space Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Space Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"Space Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-hero{padding-top:3.5rem}
+  .tz-env{display:none}
+  .tz-piece{padding:1.8rem 1.4rem 1.4rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Pin &amp; Fold Patterns</span>
+  <span class="tz-env">ENVELOPE <strong>12</strong> · 58 IN WIDE</span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-piece">
+    <span class="tz-tab">PIECE 0 — COVER, CUT 1</span>
+    <span class="tz-notch tz-n1" aria-hidden="true"></span>
+    <span class="tz-notch tz-n2" aria-hidden="true"></span>
+    <p class="tz-eyebrow">THE EVERYDAY JACKET · SKILL LEVEL: SECOND QUILT</p>
+    <h1>Measure twice, sew once.</h1>
+    <p class="tz-sub"><strong>Pin, then cut. Don't stretch the bias.</strong> Six pattern pieces, one afternoon, and a jacket that fits the person you actually are — the size chart below has no vanity in it.</p>
+    <a class="tz-cta" href="#">See the size chart</a>
+    <div class="tz-grain" aria-hidden="true"><span>GRAINLINE</span><span class="tz-arrow"></span></div>
+  </div>
+</section>
+
+<section class="tz-content">
+  <h2>The size chart</h2>
+  <p class="tz-subhead">FINISHED GARMENT MEASUREMENTS · INCHES · CHECK OUR MATH</p>
+  <table class="tz-sizes">
+    <thead><tr><th>SIZE</th><th>BUST</th><th>WAIST</th><th>HIP</th><th>CUT</th></tr></thead>
+    <tbody>
+      <tr><td class="tz-s">XS</td><td>32–34</td><td>25–27</td><td>35–37</td><td>1 FRONT, 1 BACK</td></tr>
+      <tr><td class="tz-s">S</td><td>34–36</td><td>27–29</td><td>37–39</td><td>1 FRONT, 1 BACK</td></tr>
+      <tr><td class="tz-s">M</td><td>36–38</td><td>29–31</td><td>39–41</td><td>1 FRONT, 1 BACK</td></tr>
+      <tr><td class="tz-s">L</td><td>38–41</td><td>31–34</td><td>41–44</td><td>1 FRONT, 1 BACK</td></tr>
+      <tr><td class="tz-s">XL</td><td>41–44</td><td>34–37</td><td>44–47</td><td>1 FRONT, 1 BACK</td></tr>
+    </tbody>
+  </table>
+  <div class="tz-quiet">
+    <p><strong>Between sizes? Cut the larger.</strong> Tissue forgives, finished seams don't. Every notch on the pieces above has a match — line them up and the seam will sit straight.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#f7f2e7"></span><span class="tz-name">bg</span><span class="tz-hex">#f7f2e7</span></li>
+    <li><span class="tz-chip" style="background:#ede2cb"></span><span class="tz-name">surface</span><span class="tz-hex">#ede2cb</span></li>
+    <li><span class="tz-chip" style="background:#33291f"></span><span class="tz-name">ink</span><span class="tz-hex">#33291f</span></li>
+    <li><span class="tz-chip" style="background:#97826a"></span><span class="tz-name">muted</span><span class="tz-hex">#97826a</span></li>
+    <li><span class="tz-chip" style="background:#9c3d54"></span><span class="tz-name">accent</span><span class="tz-hex">#9c3d54</span></li>
+    <li><span class="tz-chip" style="background:#33291f26"></span><span class="tz-name">line</span><span class="tz-hex">#33291f26</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
