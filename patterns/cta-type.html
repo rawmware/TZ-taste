@@ -1,0 +1,93 @@
+<!--tz-meta {"id":"cta-type","title":"Full-bleed type CTA","category":"CTA","file":"patterns/cta-type.html","tags":["giant","type"],"description":"Viewport-filling serif CTA on black with one champagne-italic word.","dnas":["dark-luxe"]} -->
+<section class="tz-ctype" aria-label="Call to action">
+  <p class="tz-eyebrow">Commissions open — two slots left</p>
+  <h2>Your business deserves<br>a website that <em>works</em><br>as hard as you do.</h2>
+  <p class="tz-sub">Most sites sit there. Ours answer the phone, take the booking, and close while you sleep.</p>
+  <a class="tz-link" href="#contact">Start the conversation <span aria-hidden="true">→</span></a>
+  <ol class="tz-steps">
+    <li><strong>01</strong> You write three sentences about the problem.</li>
+    <li><strong>02</strong> We reply with a plan, a price, and a date.</li>
+    <li><strong>03</strong> You approve the draft. We launch it.</li>
+  </ol>
+  <div class="tz-meta">
+    <span>Replies within a day</span><span>Fixed quote, in writing</span><span>No retainers</span>
+  </div>
+</section>
+<style>
+.tz-ctype{
+  --bg:#0e0d0b;--ink:#f2e9d8;--gold:#c9a24a;--soft:#b9ac93;--line:#f2e9d81f;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:Georgia,'Times New Roman',serif;
+  padding:clamp(90px,14vw,180px) clamp(20px,6vw,80px);
+  text-align:left;
+}
+.tz-eyebrow{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:11px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--soft);
+  margin:0 0 36px;
+}
+.tz-ctype h2{
+  margin:0 0 28px;
+  font-size:clamp(44px,8.5vw,124px);
+  line-height:1.02;
+  letter-spacing:-.035em;
+  font-weight:400;
+  max-width:18ch;
+}
+.tz-ctype h2 em{font-style:italic;color:var(--gold)}
+.tz-sub{
+  margin:0 0 44px;
+  font-size:19px;
+  line-height:1.6;
+  color:var(--soft);
+  max-width:52ch;
+}
+.tz-link{
+  display:inline-block;
+  color:var(--ink);
+  text-decoration:none;
+  font-size:22px;
+  border-bottom:2px solid var(--gold);
+  padding-bottom:8px;
+  margin-bottom:56px;
+}
+.tz-link span{
+  display:inline-block;
+  transition:transform .35s cubic-bezier(.22,1,.36,1);
+}
+.tz-link:hover span{transform:translateX(8px)}
+.tz-steps{
+  list-style:none;
+  margin:0 0 56px;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.tz-steps li{font-size:17px;color:var(--soft)}
+.tz-steps strong{
+  color:var(--gold);
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:13px;
+  margin-right:14px;
+}
+.tz-meta{
+  display:flex;
+  gap:28px;
+  flex-wrap:wrap;
+  border-top:1px solid var(--line);
+  padding-top:18px;
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--soft);
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-link span{transition:none}
+}
+</style>
