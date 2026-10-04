@@ -1,0 +1,42 @@
+<!--tz-meta {"id":"team-grid","title":"Strict grid","category":"Team","file":"patterns/team-grid.html","tags":["grid","avatars"],"description":"Rigorous spec-sheet avatar grid with numbered cells and mono roles.","dnas":["swiss-rational"]} -->
+<section class="tz-tgrid" aria-label="Team">
+  <div class="tz-head">
+    <h2>The team</h2>
+    <p class="tz-note">Eight people. No account managers.</p>
+  </div>
+  <div class="tz-cells">
+    <div class="tz-cell"><span class="tz-num">01</span><span class="tz-face tz-f1" aria-hidden="true">RC</span><strong>Roman Cottonham</strong><em>founder / build</em></div>
+    <div class="tz-cell"><span class="tz-num">02</span><span class="tz-face tz-f2" aria-hidden="true">MJ</span><strong>Mara Jensen</strong><em>design / type</em></div>
+    <div class="tz-cell"><span class="tz-num">03</span><span class="tz-face tz-f3" aria-hidden="true">TO</span><strong>Theo Okafor</strong><em>backend / data</em></div>
+    <div class="tz-cell"><span class="tz-num">04</span><span class="tz-face tz-f4" aria-hidden="true">AL</span><strong>Ana Lindqvist</strong><em>content / words</em></div>
+    <div class="tz-cell"><span class="tz-num">05</span><span class="tz-face tz-f5" aria-hidden="true">DP</span><strong>Devon Park</strong><em>frontend / motion</em></div>
+    <div class="tz-cell"><span class="tz-num">06</span><span class="tz-face tz-f6" aria-hidden="true">SK</span><strong>Sana Kapoor</strong><em>support / humans</em></div>
+    <div class="tz-cell"><span class="tz-num">07</span><span class="tz-face tz-f7" aria-hidden="true">EB</span><strong>Elias Brandt</strong><em>video / photo</em></div>
+    <div class="tz-cell"><span class="tz-num">08</span><span class="tz-face tz-f8" aria-hidden="true">NW</span><strong>Nia Washington</strong><em>ops / schedule</em></div>
+  </div>
+  <p class="tz-foot">Everyone listed does the work. Nobody listed manages it.</p>
+</section>
+<style>
+.tz-tgrid{--bg:#fff;--ink:#111;--soft:#4a4a4a;--red:#d30b18;--line:#1111112b;
+  background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(56px,9vw,120px) clamp(20px,6vw,80px)}
+.tz-head{display:flex;align-items:baseline;gap:24px;flex-wrap:wrap;margin-bottom:40px}
+.tz-head h2{margin:0;font-size:clamp(30px,4.5vw,52px);letter-spacing:-.03em;font-weight:700}
+.tz-note{margin:0;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--soft);letter-spacing:.06em}
+.tz-cells{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  border-top:1px solid var(--ink);border-left:1px solid var(--ink)}
+.tz-cell{border-right:1px solid var(--ink);border-bottom:1px solid var(--ink);
+  padding:20px 16px 24px;position:relative;display:flex;flex-direction:column;gap:10px}
+.tz-num{position:absolute;top:10px;right:12px;font-family:ui-monospace,Menlo,monospace;
+  font-size:11px;color:var(--red);letter-spacing:.1em}
+.tz-face{width:64px;height:64px;border-radius:50%;display:inline-flex;align-items:center;
+  justify-content:center;font-weight:800;font-size:18px;color:#fff;margin-top:14px}
+.tz-f1{background:linear-gradient(140deg,#8a8a8a,#3d3d3d)}.tz-f2{background:linear-gradient(140deg,#c96f3f,#7a2f14)}
+.tz-f3{background:linear-gradient(140deg,#4d6b52,#22331f)}.tz-f4{background:linear-gradient(140deg,#b98a2f,#6e4d10)}
+.tz-f5{background:linear-gradient(140deg,#5f6f7a,#2c383f)}.tz-f6{background:linear-gradient(140deg,#96505a,#4e232a)}
+.tz-f7{background:linear-gradient(140deg,#7a6a8a,#3a3040)}.tz-f8{background:linear-gradient(140deg,#4a7a72,#1f3833)}
+.tz-cell strong{font-size:15px}
+.tz-cell em{font-style:normal;font-family:ui-monospace,Menlo,monospace;font-size:11px;
+  color:var(--soft);letter-spacing:.04em}
+.tz-foot{margin:28px 0 0;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--soft)}
+</style>
