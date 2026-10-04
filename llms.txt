@@ -1,5 +1,6 @@
-wrote llms.txt (72 DNAs, 164 patterns, 30 3D scenes, 33 sources)
-ign reference for AI agents and developers.
+# TZ-taste (v1.0.0, updated 2026-10-04)
+
+> The free anti-slop design reference for AI agents and developers.
 > https://github.com/rawmware/TZ-taste · Live demo: https://rawmware.github.io/TZ-taste/
 
 GENERATED FILE — do not edit by hand. Regenerate with: node scripts/llms-build.mjs
@@ -24,14 +25,14 @@ The one-line instruction a human gives you:
 > Use https://github.com/rawmware/TZ-taste as a reference to build: [brief].
 > Follow its AGENT.md protocol and pick one style DNA before writing any code.
 
-## Contents (72 DNAs, 164 patterns, 30 3D scenes, 33 sources, 36 prompts)
+## Contents (92 DNAs, 194 patterns, 40 3D scenes, 33 sources, 48 prompts)
 
 - `AGENT.md` — agent bootstrap, modes, hard rules, file map
 - `manifest.json` — machine-readable version, counts, and file map
 - `skill/SKILL.md` — portable anti-slop skill (install: `npx skills add https://github.com/rawmware/TZ-taste --skill "tz-taste"`)
-- `styles/` — 72 style DNAs with tokens, type pairings, and rules; machine index at `styles/index.json`
-- `patterns/` — 164 copy-paste HTML/CSS section patterns; machine index at `patterns/index.json`
-- `prompts/` — 36 ready-made build prompts: 404-page, about-page, api-docs, blog-magazine, careers-page, changelog-page, checkout-flow, community-forum, contact-page, course-landing, dark-dashboard, dashboard, ecommerce-product, event-page, help-center, hero-section, html-email, job-board, landing-page, link-in-bio, mobile-paywall, mobile-screens, nonprofit-donate, podcast-page, portfolio, press-kit, pricing-page, real-estate-listing, recipe-site, redesign-audit, saas-onboarding, status-page, threejs-hero, waitlist-page, web-pitch-deck, wedding-site
+- `styles/` — 92 style DNAs with tokens, type pairings, and rules; machine index at `styles/index.json`
+- `patterns/` — 194 copy-paste HTML/CSS section patterns; machine index at `patterns/index.json`
+- `prompts/` — 48 ready-made build prompts: 404-page, about-page, api-docs, blog-magazine, booking-flow, brand-refresh, careers-page, changelog-page, checkout-flow, community-forum, community-onboarding, contact-page, course-landing, dark-dashboard, dashboard, dashboard-redesign, design-system-audit, developer-docs-site, ecommerce-product, email-sequence, event-page, feature-launch-page, help-center, hero-section, html-email, job-board, landing-page, link-in-bio, mobile-app-onboarding, mobile-paywall, mobile-screens, newsletter-landing, nonprofit-donate, podcast-page, portfolio, press-kit, pricing-page, real-estate-listing, recipe-site, redesign-audit, saas-onboarding, status-page, testimonials-page, threejs-hero, video-sales-landing, waitlist-page, web-pitch-deck, wedding-site
 - `docs/ANTI-SLOP.md` — concrete checklist of AI-slop tells (blockers, warnings, taste test)
 - `docs/DECISION-MATRIX.md` — brief → style DNA routing table
 - `docs/TASTE-GUIDE.md` — the short philosophy
@@ -55,6 +56,9 @@ Pick exactly ONE. Load only that DNA's file.
 - `aperitivo-italian` — Aperitivo Italian. Golden hour at a Milan bar, every night. Campari red, bitter orange, and typography you can taste.
   File: styles/aperitivo-italian.md. Best for: bars, restaurants, food-brands. Dials: density 4/motion 4/variance 6.
 
+- `apotheke` — Apotheke. Amber bottles in a row, labels in careful Latin, the mortar never quite clean. Remedies, measured twice.
+  File: styles/apotheke.md. Best for: clinics, wellness, skincare, tea-brands. Dials: density 5/motion 3/variance 4.
+
 - `arctic-field` — Arctic Field. Expedition research: ice white, glacier blue, instrument precision — data you can trust at −30°.
   File: styles/arctic-field.md. Best for: science, outdoor-gear, climate. Dials: density 6/motion 3/variance 4.
 
@@ -64,17 +68,26 @@ Pick exactly ONE. Load only that DNA's file.
 - `art-nouveau-whiplash` — Art Nouveau Whiplash. Mucha posters and ironwork: organic curves, jewel tones, every frame an ornament.
   File: styles/art-nouveau-whiplash.md. Best for: theaters, wine, spas. Dials: density 3/motion 4/variance 7.
 
+- `barbershop-pole` — Barbershop Pole. Vitrolite tile, spinning stripes, the honest smell of bay rum. Walk-ins welcome, appointments kept.
+  File: styles/barbershop-pole.md. Best for: barbershops, groomers, tailors, local-shops. Dials: density 4/motion 3/variance 5.
+
 - `bauhaus-primary` — Bauhaus Primary. Functional geometry: red, yellow, blue on off-white. A workshop poster that refuses to decorate.
   File: styles/bauhaus-primary.md. Best for: design-schools, furniture, workshops. Dials: density 6/motion 4/variance 6.
 
 - `bazaar-spice` — Bazaar Spice. Spice-market maximalism: turmeric dust in the air, paprika-red textiles, patterned awnings, and stalls stacked to the sky.
   File: styles/bazaar-spice.md. Best for: food-brands, restaurants, markets, travel. Dials: density 9/motion 5/variance 9.
 
+- `bike-repair` — Bike Repair. Workbench hours: grease under the nails, a truing stand that never lies, and the quiet pride of a drivetrain that finally shifts clean.
+  File: styles/bike-repair.md. Best for: bike-shops, repair-services, cycling-clubs, makers. Dials: density 6/motion 4/variance 5.
+
 - `blueprint-tech` — Blueprint Tech. Cyanotype schematics: deep blueprint blue, white line work, everything labeled.
   File: styles/blueprint-tech.md. Best for: engineering, hardware, dev-tools. Dials: density 7/motion 3/variance 5.
 
 - `botanical-lab` — Botanical Lab. A greenhouse full of specimens: deep green, pressed-plant delicacy, Latin on every label.
   File: styles/botanical-lab.md. Best for: skincare, tea, garden-brands. Dials: density 4/motion 3/variance 4.
+
+- `cassette-jcard` — Cassette J-Card. Photocopied liner notes, hand-labeled spines, tracklists typed with a tired ribbon. Side A still hits harder.
+  File: styles/cassette-jcard.md. Best for: bands, labels, playlists, zines. Dials: density 4/motion 5/variance 7.
 
 - `chalkboard-cafe` — Chalkboard Cafe. A cafe menu board in chalk: slate black, hand-lettered specials, doodled borders.
   File: styles/chalkboard-cafe.md. Best for: cafes, bakeries, menus, small-shops. Dials: density 6/motion 2/variance 5.
@@ -87,6 +100,9 @@ Pick exactly ONE. Load only that DNA's file.
 
 - `constructivist-red` — Constructivist Red. Propaganda poster as interface: red and black diagonals, type that shouts from a wall.
   File: styles/constructivist-red.md. Best for: campaigns, unions, exhibitions. Dials: density 5/motion 5/variance 8.
+
+- `corner-deli` — Corner Deli. Daytime awning: the slicer is already warm, the ticket rail is full by eleven, and everybody's order is remembered whether they want it to be or not.
+  File: styles/corner-deli.md. Best for: delis, cafes, sandwich-shops, neighborhood-services. Dials: density 6/motion 3/variance 5.
 
 - `cottage-warm` — Cottage Warm. Cozy domestic: cream, checks, garden warmth. The website equivalent of someone offering you tea.
   File: styles/cottage-warm.md. Best for: food, crafts, bed-and-breakfast. Dials: density 3/motion 3/variance 4.
@@ -109,8 +125,17 @@ Pick exactly ONE. Load only that DNA's file.
 - `docs-solar` — Docs Solar. Warm documentation, amber accents, serif readability. Docs people actually enjoy reading.
   File: styles/docs-solar.md. Best for: documentation, open source, blogs, handbooks. Dials: density 6/motion 2/variance 3.
 
+- `drive-in-theater` — Drive-In Theater. Dusk at the lot: the sky goes flat indigo, the marquee flickers on, and the second feature starts whether you are back from the snack bar or not.
+  File: styles/drive-in-theater.md. Best for: film-festivals, event-venues, nostalgia-brands, music. Dials: density 3/motion 6/variance 6.
+
 - `editorial-serif` — Editorial Serif. Warm paper, oversized serif, hairline rules. A literary magazine that happens to be a website.
   File: styles/editorial-serif.md. Best for: studios, blogs, portfolios, publishers. Dials: density 2/motion 3/variance 6.
+
+- `farmers-almanac` — Farmers Almanac. Print reference craft: aged paper, inked tables, the moon doing the scheduling. Weather wisdom set by hand, one season at a time.
+  File: styles/farmers-almanac.md. Best for: gardening, weather, heritage-brands, cookbooks. Dials: density 8/motion 2/variance 4.
+
+- `fishing-tackle` — Fishing Tackle. Retail wall craft: pegboard, price guns, and a thousand small decisions behind glass. The lure wall is organized by someone who takes this very seriously.
+  File: styles/fishing-tackle.md. Best for: outdoor-retail, bait-shops, gear-guides, charters. Dials: density 8/motion 4/variance 5.
 
 - `glass-calm` — Glass Calm. Frosted surfaces over pastel light. Weather-app serenity as a design language.
   File: styles/glass-calm.md. Best for: wellness, weather, fintech, consumer apps. Dials: density 3/motion 6/variance 4.
@@ -154,8 +179,14 @@ Pick exactly ONE. Load only that DNA's file.
 - `library-oak` — Library Oak. Leather and brass: card catalogs, reading lamps, the hush of old oak stacks.
   File: styles/library-oak.md. Best for: bookstores, publishers, archives, universities. Dials: density 5/motion 2/variance 2.
 
+- `locksmith-shop` — Locksmith Shop. Brass and steel: the key machine hums, the ticket book never lies, and every key leaves with a story the customer almost tells you.
+  File: styles/locksmith-shop.md. Best for: tradespeople, repair-shops, local-services, security. Dials: density 6/motion 3/variance 4.
+
 - `ma-japanese` — Ma (Japanese Minimal). Rice paper, ink black, vast emptiness used on purpose. Ma — the beauty of negative space.
   File: styles/ma-japanese.md. Best for: craft, architecture, tea/food, galleries. Dials: density 1/motion 2/variance 5.
+
+- `matchbook-cover` — Matchbook Cover. Two inches of advertising you kept in your pocket. Strike anywhere, remember everything.
+  File: styles/matchbook-cover.md. Best for: bars, restaurants, local-services, events. Dials: density 6/motion 4/variance 5.
 
 - `memphis-milano` — Memphis Milano. 80s postmodern play: squiggles, terrazzo, pastel-neon clashes. Deliberate kitsch that refuses to apologize.
   File: styles/memphis-milano.md. Best for: toys, parties, creative-studios. Dials: density 4/motion 7/variance 9.
@@ -174,6 +205,9 @@ Pick exactly ONE. Load only that DNA's file.
 
 - `newsroom-wire` — Newsroom Wire. The copy desk at 2am: teletype clatter, urgent red wire alerts, ink on newsprint.
   File: styles/newsroom-wire.md. Best for: news-sites, media-kits, crisis-comms, sports-scores. Dials: density 8/motion 3/variance 4.
+
+- `night-market` — Night Market. Strings of lanterns over wet pavement, hand-painted stall signs, steam off the grill. Eat first, ask questions later.
+  File: styles/night-market.md. Best for: food-trucks, festivals, restaurants, travel. Dials: density 4/motion 5/variance 6.
 
 - `nordic-noir` — Nordic Noir. Overcast crime scene at noon. Desaturated slate, hard facts, no comfort.
   File: styles/nordic-noir.md. Best for: streaming, publishing, true-crime. Dials: density 6/motion 3/variance 5.
@@ -199,11 +233,20 @@ Pick exactly ONE. Load only that DNA's file.
 - `pop-art-halftone` — Pop-Art Halftone. Ben-Day dots, thick black outlines, and color turned up until it shouts.
   File: styles/pop-art-halftone.md. Best for: comics, streetwear, youth-brands. Dials: density 5/motion 6/variance 8.
 
+- `postage-stamp` — Postage Stamp. Engraved portraits the size of a thumbnail, perforated edges, gum on the back. Mail still moves at the speed of care.
+  File: styles/postage-stamp.md. Best for: museums, newsletters, small-brands, wedding-sites. Dials: density 5/motion 3/variance 6.
+
+- `postcard-rack` — Postcard Rack. Tourist ephemera: sun-faded ink, a spinning rack of somewhere-elses, and handwriting on the back that says the weather is perfect.
+  File: styles/postcard-rack.md. Best for: tourism, souvenir-shops, travel-blogs, local-history. Dials: density 5/motion 5/variance 7.
+
 - `retro-terminal` — Retro Terminal. Phosphor green on black, scanlines, amber warnings. The machine is the message.
   File: styles/retro-terminal.md. Best for: dev tools, games, security, cli products. Dials: density 8/motion 3/variance 6.
 
 - `risograph-grain` — Risograph Grain. Misregistered zine ink on cream: teal over pink, grain you can feel, handmade edges.
   File: styles/risograph-grain.md. Best for: zines, indie-press, posters. Dials: density 4/motion 3/variance 7.
+
+- `roadside-motel` — Roadside Motel. Highway typography: the sign is taller than the building, the pool is closed, and the vacancy light has been on since 1962 and it is still on.
+  File: styles/roadside-motel.md. Best for: motels, roadside-attractions, retro-brands, travel. Dials: density 3/motion 5/variance 6.
 
 - `sahara-ochre` — Sahara Ochre. Artisanal earth: terracotta, clay, and spice tones with handmade texture — the craft market, not the museum.
   File: styles/sahara-ochre.md. Best for: ceramics, spices, craft-markets. Dials: density 3/motion 3/variance 5.
@@ -213,6 +256,12 @@ Pick exactly ONE. Load only that DNA's file.
 
 - `scandi-calm` — Scandi Calm. Hygge minimalism: warm whites, pale wood tones, quiet functionality. Nothing shouts; everything breathes.
   File: styles/scandi-calm.md. Best for: homeware, wellness, interiors. Dials: density 2/motion 2/variance 3.
+
+- `seed-packet` — Seed Packet. Engraved print ephemera: kraft paper, copperplate vegetables, and planting instructions set like they matter — because they do.
+  File: styles/seed-packet.md. Best for: seed-companies, garden-centers, farm-stores, botanical-shops. Dials: density 6/motion 2/variance 4.
+
+- `sewing-pattern` — Sewing Pattern. Tissue thin as breath, dashed lines that mean cut here, notches that have to match. Measure twice, sew once.
+  File: styles/sewing-pattern.md. Best for: makers, craft-shops, courses, pattern-sellers. Dials: density 6/motion 3/variance 5.
 
 - `soft-minimal` — Soft Minimal. Off-white calm, iris accent, spring motion. The Linear/Notion register, done right.
   File: styles/soft-minimal.md. Best for: saas, productivity, developer tools, mobile apps. Dials: density 5/motion 5/variance 3.
@@ -226,6 +275,9 @@ Pick exactly ONE. Load only that DNA's file.
 - `surf-shack` — Surf Shack. Sun-bleached and hand-painted: faded teal, warm sand, and signage you can tell a person made.
   File: styles/surf-shack.md. Best for: surf-shops, cafes, travel. Dials: density 3/motion 5/variance 6.
 
+- `swimming-pool` — Swimming Pool. Chlorinated summer: pale water, hot concrete, the lifeguard's red stand. Everything smells like sunscreen and the deep end is always colder than you remember.
+  File: styles/swimming-pool.md. Best for: summer-camps, swim-schools, parks-rec, community-pools. Dials: density 3/motion 5/variance 5.
+
 - `swiss-airline` — Swiss Airline. Mid-century airline identity: timetable grids, the red arrow, Helvetica-like order. Departures on time, forever.
   File: styles/swiss-airline.md. Best for: airlines, travel-agencies, rail-operators, logistics. Dials: density 8/motion 2/variance 2.
 
@@ -234,6 +286,9 @@ Pick exactly ONE. Load only that DNA's file.
 
 - `swiss-rational` — Swiss Rational. Strict grid, black on white, one red. Information architecture as aesthetic.
   File: styles/swiss-rational.md. Best for: agencies, archives, data products, museums. Dials: density 6/motion 2/variance 4.
+
+- `ticket-stub` — Ticket Stub. Admit one. The paper left in your pocket after the lights came up. Keep it — you'll want the date.
+  File: styles/ticket-stub.md. Best for: venues, festivals, theaters, tours. Dials: density 5/motion 4/variance 6.
 
 - `tokyo-kissaten` — Tokyo Kissaten. Showa-era Japanese coffee house: dark walnut, worn velvet booths, low brass lamps, and the slow pour of a siphon brewer.
   File: styles/tokyo-kissaten.md. Best for: cafes, restaurants, jazz-bars, bookshops. Dials: density 3/motion 2/variance 4.
@@ -247,6 +302,9 @@ Pick exactly ONE. Load only that DNA's file.
 - `tropical-brutalism` — Tropical Brutalism. Brazilian concrete breathing: raw gray mass, lush green, hard sunlight and deep shadow.
   File: styles/tropical-brutalism.md. Best for: architecture, hotels, botanical-brands. Dials: density 4/motion 4/variance 6.
 
+- `typewriter-repair` — Typewriter Repair. Springs, escapements, and ribbon tins spread across the bench. Every machine leaves typing straighter than it came.
+  File: styles/typewriter-repair.md. Best for: repair-shops, vintage-stores, craftspeople, makers. Dials: density 5/motion 3/variance 4.
+
 - `ukiyo-e-print` — Ukiyo-e Print. Japanese woodblock print: Prussian blue, vermillion, wave compositions. The floating world, keyed and registered.
   File: styles/ukiyo-e-print.md. Best for: tea-houses, onsen, museums, ramen-shops. Dials: density 4/motion 3/variance 6.
 
@@ -256,12 +314,24 @@ Pick exactly ONE. Load only that DNA's file.
 - `vinyl-crate` — Vinyl Crate. A beloved record store: sleeve grids, kraft dividers, sticker prices — analog warmth with crate-digger discipline.
   File: styles/vinyl-crate.md. Best for: record-stores, music-blogs, radio. Dials: density 5/motion 4/variance 6.
 
+- `weather-station` — Weather Station. Brass dials, aneroid needles, the logbook filled at 0600 Zulu. The sky, measured honestly.
+  File: styles/weather-station.md. Best for: outdoor-brands, farms, aviation, science. Dials: density 7/motion 3/variance 4.
+
 - `y2k-chrome` — Y2K Chrome. Liquid metal, iridescent gradients, bubbly type. The future as imagined in 1999.
   File: styles/y2k-chrome.md. Best for: beauty, pop culture, music, fashion. Dials: density 4/motion 8/variance 8.
 
 ## Patterns
 
 Copy the snippet's markup plus its <style> block; classes are tz- prefixed.
+
+- `affiliate-strip` — Affiliate partner strip (Misc). Bauhaus payout strip: partner wordmarks with commission rate and cookie window.
+  File: patterns/affiliate-strip.html. Tags: affiliate, partners, payouts, strip. DNAs: bauhaus-primary.
+
+- `announcement-bar` — Announcement bar (Nav). Dismissible top bar for one urgent message; checkbox hack, no JavaScript.
+  File: patterns/announcement-bar.html. Tags: announcement, banner, dismiss, css-only. DNAs: swiss-rational.
+
+- `avatar-stack` — Avatar stack (Team). Overlapping initial-avatars with a count chip and one line of proof.
+  File: patterns/avatar-stack.html. Tags: avatars, team, social-proof. DNAs: editorial-serif.
 
 - `background-aurora` — Aurora canvas (Backgrounds). Animated canvas aurora: three drifting radial blobs. Tune colors to your DNA.
   File: patterns/background-aurora.html. Tags: canvas, animated, gradient. DNAs: glass-calm, y2k-chrome, dark-luxe.
@@ -347,6 +417,15 @@ Copy the snippet's markup plus its <style> block; classes are tz- prefixed.
 - `cards-recipe` — Recipe cards (Cards). Chunky neo-brutalist recipe cards with sticker time badges and hard shadows.
   File: patterns/cards-recipe.html. Tags: food, steps. DNAs: neo-brutalist-pop.
 
+- `changelog-feed` — Changelog feed (Sections). Dated release entries with version chips and labeled change rows — a logbook, not a blog.
+  File: patterns/changelog-feed.html. Tags: changelog, versions, release-notes. DNAs: ink-wash-sumi.
+
+- `comparison-table` — Product comparison table (Pricing). Brutal lab-notebook comparison: us vs. the two incumbents, check and dash, one highlighted column.
+  File: patterns/comparison-table.html. Tags: comparison, table, pricing, features. DNAs: lab-notebook.
+
+- `cookie-banner` — Cookie consent banner (Misc). Plain-spoken consent banner with real choice; dismisses with the checkbox hack.
+  File: patterns/cookie-banner.html. Tags: cookies, consent, privacy, css-only. DNAs: tokyo-kissaten.
+
 - `cta` — CTA banner (Sections). Dark-luxe CTA: champagne eyebrow, serif headline, warm radial glow.
   File: patterns/cta.html. Tags: conversion, dark, cta. DNAs: dark-luxe, editorial-serif.
 
@@ -373,6 +452,12 @@ Copy the snippet's markup plus its <style> block; classes are tz- prefixed.
 
 - `cta-type` — Full-bleed type CTA (CTA). Viewport-filling serif CTA on black with one champagne-italic word.
   File: patterns/cta-type.html. Tags: giant, type. DNAs: dark-luxe.
+
+- `download-cta` — App download CTA (CTA). Arcade-dark app CTA with platform badges, real rating, and a scanline texture.
+  File: patterns/download-cta.html. Tags: download, app, mobile, badges. DNAs: pixel-arcade.
+
+- `error-404` — 404 page with character (Misc). A terminal-styled 404 that treats the missing page like a missing file — with blinking cursor and exits.
+  File: patterns/error-404.html. Tags: 404, error, terminal, humor. DNAs: retro-terminal.
 
 - `faq-accordion` — Accordion FAQ (FAQ). Native details/summary accordion with rotating plus markers and amber open states.
   File: patterns/faq-accordion.html. Tags: details, expandable. DNAs: docs-solar.
@@ -497,6 +582,12 @@ Copy the snippet's markup plus its <style> block; classes are tz- prefixed.
 - `forms-waitlist` — Waitlist (Forms). Acid waitlist with a giant live-position counter and a hard-edged join row.
   File: patterns/forms-waitlist.html. Tags: launch, counter. DNAs: acid-rave.
 
+- `gift-options` — Gift options at checkout (Forms). Kraft-and-twine gift block: wrap, handwritten card, priced gift receipt.
+  File: patterns/gift-options.html. Tags: gift, checkout, ecommerce, wrap. DNAs: aperitivo-italian.
+
+- `hackathon-schedule` — Hackathon schedule grid (Sections). Blueprint-dark two-day schedule with track dots and a highlighted judging block.
+  File: patterns/hackathon-schedule.html. Tags: hackathon, schedule, event, agenda. DNAs: blueprint-tech.
+
 - `hero-editorial` — Editorial hero (Hero). Literary hero: mono eyebrow, giant serif headline, hairline meta row, arch graphic.
   File: patterns/hero-editorial.html. Tags: serif, editorial, landing. DNAs: editorial-serif, ma-japanese, swiss-rational.
 
@@ -581,6 +672,12 @@ Copy the snippet's markup plus its <style> block; classes are tz- prefixed.
 - `how-it-works-terminal` — Terminal walkthrough (How it works). A $ command walkthrough with typed prompts, green outputs, and a live cursor.
   File: patterns/how-it-works-terminal.html. Tags: cli, commands. DNAs: retro-terminal.
 
+- `logo-marquee` — Client logo marquee (Sections). CSS-only scrolling strip of client wordmarks; pauses on hover, static under reduced motion.
+  File: patterns/logo-marquee.html. Tags: marquee, logos, social-proof, animation. DNAs: swiss-airline.
+
+- `maintenance-page` — Maintenance mode page (Misc). Metro-sign style service board: what's down, when it returns, and one honest line.
+  File: patterns/maintenance-page.html. Tags: maintenance, status, downtime. DNAs: paris-metro.
+
 - `marquee` — Marquee strip (Backgrounds). Infinite CSS marquee strip. Duplicate content spans for a seamless loop.
   File: patterns/marquee.html. Tags: motion, strip, css-only. DNAs: acid-rave, industrial-brutalist, y2k-chrome.
 
@@ -650,6 +747,12 @@ Copy the snippet's markup plus its <style> block; classes are tz- prefixed.
 - `navs-ticker` — Ticker nav (Nav). Acid announcement ticker scrolling above a stark black-and-lime link row.
   File: patterns/navs-ticker.html. Tags: marquee, news, bold. DNAs: acid-rave.
 
+- `notification-toast` — Notification toast (Misc). Slide-in toast with progress timer and one honest state each. One tiny inline script.
+  File: patterns/notification-toast.html. Tags: toast, notifications, feedback, script. DNAs: soft-minimal.
+
+- `press-quotes` — Press quotes strip (Testimonials). One pull quote flanked by mastheads; typographic, no fake logos.
+  File: patterns/press-quotes.html. Tags: press, quotes, testimonials, logos. DNAs: library-oak.
+
 - `pricing` — Pricing tiers (Sections). Three-tier pricing with a rotated highlighted tier and hard shadows.
   File: patterns/pricing.html. Tags: pricing, tiers, conversion. DNAs: neo-brutalist-pop, soft-minimal.
 
@@ -676,6 +779,36 @@ Copy the snippet's markup plus its <style> block; classes are tz- prefixed.
 
 - `pricing-usage` — Usage tiers (Pricing). Metered pricing tiers with CSS usage meters showing where each plan lands.
   File: patterns/pricing-usage.html. Tags: metered, api. DNAs: soft-minimal.
+
+- `progress-tracker` — Checkout progress tracker (How it works). Five-step checkout rail with completed, current, and upcoming states.
+  File: patterns/progress-tracker.html. Tags: checkout, onboarding, steps, rail. DNAs: soft-minimal.
+
+- `rating-summary` — Rating summary with distribution (Stats). Oversized score numeral, star row, and animated 5-to-1 distribution bars.
+  File: patterns/rating-summary.html. Tags: reviews, stars, ratings, social-proof. DNAs: bazaar-spice.
+
+- `referral-card` — Refer-a-friend card (Cards). Sticker-style referral card: give/get offer, dashed code box, three plain steps.
+  File: patterns/referral-card.html. Tags: referral, share, promo, code. DNAs: neo-brutalist-pop.
+
+- `reservation-widget` — Restaurant table reservation (Forms). Date strip, party stepper, and time-slot grid with one honest sold-out slot.
+  File: patterns/reservation-widget.html. Tags: restaurant, booking, reservation, hospitality. DNAs: aperitivo-italian.
+
+- `roadmap-timeline` — Public roadmap timeline (Sections). Art-deco quarterly timeline with a gold 'now' marker and honest shipped/in-progress labels.
+  File: patterns/roadmap-timeline.html. Tags: roadmap, timeline, planning, quarters. DNAs: art-deco-luxe.
+
+- `search-results` — Search results list (Sections). Ranked results with highlighted matches, type tags, and a visible keyboard hint.
+  File: patterns/search-results.html. Tags: search, results, keyboard, documentation. DNAs: newsroom-wire.
+
+- `shipping-calculator` — Shipping estimate ticket (Forms). Ledger-style shipping ticket: ZIP input, three speed rows, honest arrival date.
+  File: patterns/shipping-calculator.html. Tags: shipping, checkout, ecommerce, estimate. DNAs: alpine-ledger.
+
+- `size-guide` — Apparel size guide (Sections). Brutalist spec table with Women/Men tabs and real inch measurements.
+  File: patterns/size-guide.html. Tags: sizing, table, ecommerce, apparel. DNAs: swiss-rational.
+
+- `speaker-lineup` — Speaker lineup, asymmetric (Team). One featured keynote left, numbered hairline index of talks right — no equal cards.
+  File: patterns/speaker-lineup.html. Tags: speakers, event, lineup, conference. DNAs: swiss-rational.
+
+- `sponsor-wall` — Tiered sponsor wall (Sections). Founding, patron, and supporter tiers sized by contribution — deliberately not equal cards.
+  File: patterns/sponsor-wall.html. Tags: sponsors, tiers, funding, open-source. DNAs: museum-placard.
 
 - `stats` — Stats band (Sections). Brutalist stat band: giant tabular numerals, black rules, one red figure.
   File: patterns/stats.html. Tags: numbers, proof, data. DNAs: swiss-rational, industrial-brutalist.
@@ -710,6 +843,12 @@ Copy the snippet's markup plus its <style> block; classes are tz- prefixed.
 - `stats-ticker` — Live ticker (Stats). Scrolling mono stat ticker with one blinking LIVE marker.
   File: patterns/stats-ticker.html. Tags: live, mono. DNAs: retro-terminal.
 
+- `sticky-subnav` — Sticky docs sub-navigation (Nav). Sticky docs nav whose active link follows the section via :target — no JavaScript.
+  File: patterns/sticky-subnav.html. Tags: nav, docs, sticky, active-state, css-only. DNAs: docs-solar.
+
+- `store-locator` — Store locator list (Sections). Searchable store list with distance badges, hours, and live open status.
+  File: patterns/store-locator.html. Tags: stores, locator, retail, search. DNAs: arctic-field.
+
 - `team-bios` — Editorial bios (Team). Magazine-style team bios with drop caps and hairline rules.
   File: patterns/team-bios.html. Tags: bios, magazine. DNAs: editorial-serif.
 
@@ -721,6 +860,9 @@ Copy the snippet's markup plus its <style> block; classes are tz- prefixed.
 
 - `team-grid` — Strict grid (Team). Rigorous spec-sheet avatar grid with numbered cells and mono roles.
   File: patterns/team-grid.html. Tags: grid, avatars. DNAs: swiss-rational.
+
+- `team-index` — Team index list (Team). Editorial team index: giant numerals, hairline rows, invert-on-hover — no avatar grid.
+  File: patterns/team-index.html. Tags: team, about, people, index. DNAs: bauhaus-primary.
 
 - `team-minimal` — Name list (Team). Whisper-quiet name list with muted roles and generous air.
   File: patterns/team-minimal.html. Tags: minimal, names. DNAs: ma-japanese.
@@ -755,6 +897,15 @@ Copy the snippet's markup plus its <style> block; classes are tz- prefixed.
 - `testimonials-video` — Video wall (Testimonials). Dark video wall of quote thumbnails with CSS play buttons and a now-playing tile.
   File: patterns/testimonials-video.html. Tags: video, thumbnails. DNAs: dark-luxe.
 
+- `ticket-tiers` — Event ticket tiers, asymmetric (Pricing). Deco pricing with one tall featured Patron tier — two modest tiers stacked beside it.
+  File: patterns/ticket-tiers.html. Tags: tickets, pricing, event, tiers. DNAs: art-deco-luxe.
+
+- `venue-map` — Venue info with schematic map (Sections). Styled venue fact list beside an honest schematic grid — labeled, not a fake map image.
+  File: patterns/venue-map.html. Tags: venue, map, directions, event. DNAs: arctic-field.
+
+- `waitlist-form` — Product waitlist with counter (CTA). Deco-dark waitlist: live position counter, email row, refer-to-jump note.
+  File: patterns/waitlist-form.html. Tags: waitlist, signup, launch, counter. DNAs: alpine-after-dark.
+
 ## 3D scenes
 
 Standalone Three.js scenes (CDN import). All original, MIT.
@@ -780,6 +931,9 @@ Standalone Three.js scenes (CDN import). All original, MIT.
 - `deep-ocean` — Deep Current. Drifting current particles, swaying god-ray shafts, and twinkling bioluminescent plankton.
   File: three-d/deep-ocean.html.
 
+- `desert-caravan` — Caravan at Golden Hour. Low-poly dunes, drifting sand, and a camel caravan crossing at golden hour.
+  File: three-d/desert-caravan.html.
+
 - `dna-helix` — Helix Drift. Twin teal and magenta particle strands wind into a double helix with glowing rungs on near-black.
   File: three-d/dna-helix.html.
 
@@ -789,17 +943,32 @@ Standalone Three.js scenes (CDN import). All original, MIT.
 - `floating-islands` — Low-Poly Islands. Pastel low-poly islands drift and bob at staggered heights under soft directional light.
   File: three-d/floating-islands.html.
 
+- `gearworks` — The Gearworks. Brass gears turn at meshed ratios while steam rises through warm lamplight.
+  File: three-d/gearworks.html.
+
 - `glass-torus-knot` — Glass Knot Studio. A transmissive glass torus knot turning slowly under studio three-point lighting on a soft gradient.
   File: three-d/glass-torus-knot.html.
 
 - `glitch-stream` — Glitch Stream. Abstract phosphor glyphs rain down through scanlines and RGB-split ghosts.
   File: three-d/glitch-stream.html.
 
+- `greenhouse-rain` — Rain on Glass. Rain streaks the panes while seedlings sway in warm interior light.
+  File: three-d/greenhouse-rain.html.
+
 - `ink-bloom` — Ink Bloom. Monochrome ink particles bloom outward with drag and fade, like a drop of sumi ink in water.
   File: three-d/ink-bloom.html.
 
+- `jellyfish-bloom` — Jellyfish Bloom. Translucent bells pulse and rise, trailing ribbons of tentacles.
+  File: three-d/jellyfish-bloom.html.
+
 - `kaleidoscope-tunnel` — Kaleidoscope Tunnel. Endless tunnel of rotating rings over a folding kaleidoscope shader field.
   File: three-d/kaleidoscope-tunnel.html.
+
+- `kite-festival` — Kite Festival. Diamond kites dance on their strings while gusts roll across a flat blue sky.
+  File: three-d/kite-festival.html.
+
+- `lighthouse-storm` — Storm Watch. A lighthouse beam sweeps through rain over a choppy night sea.
+  File: three-d/lighthouse-storm.html.
 
 - `magnetic-field` — Field Lines. A dipole ring magnet wrapped in amber field lines and iron-filing dashes on charcoal.
   File: three-d/magnetic-field.html.
@@ -807,8 +976,14 @@ Standalone Three.js scenes (CDN import). All original, MIT.
 - `moon-flyover` — Lunar Flyover. Slow camera flyover above a cratered, noise-displaced moon surface.
   File: three-d/moon-flyover.html.
 
+- `mushroom-grove` — Glowing Grove. Bioluminescent caps light a dark forest floor; spores drift overhead.
+  File: three-d/mushroom-grove.html.
+
 - `neon-grid-horizon` — Neon Horizon. A teal perspective grid races toward a glowing amber sun over a deep-navy horizon — tasteful synthwave, no purple-blue cliché.
   File: three-d/neon-grid-horizon.html.
+
+- `observatory-night` — Counting Stars. An open dome slit tracks the sky while the stars wheel slowly overhead.
+  File: three-d/observatory-night.html.
 
 - `origami-cranes` — Crane Flock. Twenty-five faceted paper cranes flapping in V formation across a dawn sky.
   File: three-d/origami-cranes.html.
@@ -834,8 +1009,14 @@ Standalone Three.js scenes (CDN import). All original, MIT.
 - `starfield-warp` — Warp Starfield. Stars stream past the camera with motion-stretch trails and a cool-to-warm color shift; click to pause.
   File: three-d/starfield-warp.html.
 
+- `subway-tunnel` — Downtown Local. Light rings rush past in an endless tunnel; the platform never moves.
+  File: three-d/subway-tunnel.html.
+
 - `terrain-waves` — Wireframe Terrain. A cyan wireframe plane ripples with layered sine waves, colored by height, over a near-black field.
   File: three-d/terrain-waves.html.
+
+- `tide-pools` — Tide Pool. Sunlight shimmers across a shallow tide pool ringed with dark rocks.
+  File: three-d/tide-pools.html.
 
 - `topo-contours` — Topographic Map. A parchment heightfield with crisp ink contour lines drawn in a custom shader.
   File: three-d/topo-contours.html.
