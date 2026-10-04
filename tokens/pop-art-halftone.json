@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-pop-art-halftone",
+  "title": "Pop-Art Halftone design tokens",
+  "category": "Tokens",
+  "file": "tokens/pop-art-halftone.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "pop-art-halftone"
+  ],
+  "description": "W3C-format design tokens for the Pop-Art Halftone style DNA.",
+  "dnas": [
+   "pop-art-halftone"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#fff6e8",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#171412",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#e83a2f",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#8f8577",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#171412",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Bungee",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Space Grotesk",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "pop-art-halftone",
+  "name": "Pop-Art Halftone",
+  "vibe": "Ben-Day dots, thick black outlines, and color turned up until it shouts."
+ }
+}
