@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-alpine-after-dark",
+  "title": "Alpine After Dark design tokens",
+  "category": "Tokens",
+  "file": "tokens/alpine-after-dark.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "alpine-after-dark"
+  ],
+  "description": "W3C-format design tokens for the Alpine After Dark DNA.",
+  "dnas": [
+   "alpine-after-dark"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#0b1026",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#e8e4d8",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#f5a623",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#6b7394",
+   "type": "color"
+  },
+  "line": {
+   "value": "#f5a62333",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#0b1026",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Fraunces",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Mulish",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Spline Sans Mono",
+   "type": "fontFamily"
+  }
+ }
+}
