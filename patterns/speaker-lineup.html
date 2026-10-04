@@ -1,0 +1,49 @@
+<!--tz-meta {"id":"speaker-lineup","title":"Speaker lineup, asymmetric","category":"Team","file":"patterns/speaker-lineup.html","tags":["speakers","event","lineup","conference"],"description":"One featured keynote left, numbered hairline index of talks right — no equal cards.","dnas":["swiss-rational"]} -->
+<section class="tz-speaker-lineup" aria-label="Speaker lineup">
+  <p class="tz-k">Type &amp; Grid Conf · Nov 14</p>
+  <div class="tz-grid">
+    <article class="tz-feat">
+      <p class="tz-tag">Keynote</p>
+      <h2>Dr. Amara Osei</h2>
+      <p class="tz-talk">&ldquo;The grid is the message&rdquo;</p>
+      <p class="tz-bio">Design systems lead who rebuilt three newsroom front pages without breaking a single deadline. Argues — convincingly — that constraints are the whole job.</p>
+      <p class="tz-when">Sat 2:30 PM · Main Hall · 45 min + Q&amp;A</p>
+      <a class="tz-cta" href="#">Save my seat</a>
+    </article>
+    <ol class="tz-index">
+      <li><span class="tz-n">02</span><div><strong>Jonas Lindqvist</strong><span>Type crimes: a field guide</span></div><time>10:00</time></li>
+      <li><span class="tz-n">03</span><div><strong>Priya Nair</strong><span>Color under pressure</span></div><time>11:30</time></li>
+      <li><span class="tz-n">04</span><div><strong>Tomás Rivera</strong><span>Paper prototypes, steel results</span></div><time>4:00</time></li>
+      <li><span class="tz-n">05</span><div><strong>Wren Takahashi</strong><span>Motion that shuts up</span></div><time>5:15</time></li>
+      <li class="tz-more"><span class="tz-n">+</span><div><strong>11 more speakers</strong><span>Full program drops Oct 20</span></div><a href="#">Program</a></li>
+    </ol>
+  </div>
+</section>
+<style>
+.tz-speaker-lineup{--bg:#fafafa;--ink:#111111;--accent:#e30613;--muted:#6b6b6b;--line:#111111;
+  background:var(--bg);color:var(--ink);padding:clamp(36px,5vw,80px);
+  font-family:'Archivo',-apple-system,'Segoe UI',sans-serif}
+.tz-speaker-lineup .tz-k{font-family:'Space Mono',ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0 0 28px}
+.tz-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(32px,6vw,96px);align-items:start}
+.tz-tag{display:inline-block;font-family:'Space Mono',ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.16em;text-transform:uppercase;background:var(--accent);color:#fff;
+  padding:6px 12px;margin:0 0 18px}
+.tz-feat h2{font-size:clamp(40px,5.4vw,72px);letter-spacing:-.035em;line-height:1.02;margin:0 0 10px;font-weight:800}
+.tz-talk{font-size:clamp(19px,2.2vw,26px);font-style:italic;margin:0 0 18px}
+.tz-bio{color:var(--muted);font-size:15.5px;line-height:1.7;margin:0 0 20px;max-width:44ch}
+.tz-when{font-family:'Space Mono',ui-monospace,Menlo,monospace;font-size:12.5px;color:var(--muted);margin:0 0 26px}
+.tz-cta{display:inline-block;font-weight:700;font-size:15px;color:var(--bg);background:var(--ink);
+  padding:14px 28px;text-decoration:none}
+.tz-cta:hover{background:var(--accent)}
+.tz-index{list-style:none;margin:6px 0 0;padding:0;border-top:2px solid var(--line)}
+.tz-index li{display:grid;grid-template-columns:48px 1fr auto;gap:16px;align-items:center;
+  padding:18px 4px;border-bottom:1px solid #11111126}
+.tz-n{font-family:'Space Mono',ui-monospace,Menlo,monospace;font-size:15px;font-weight:700;color:var(--accent)}
+.tz-index strong{display:block;font-size:16.5px}
+.tz-index div span{font-size:13.5px;color:var(--muted)}
+.tz-index time{font-family:'Space Mono',ui-monospace,Menlo,monospace;font-size:12.5px;color:var(--muted)}
+.tz-more .tz-n{color:var(--muted)}
+.tz-more a{font-size:13.5px;font-weight:700;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+@media(max-width:760px){.tz-grid{grid-template-columns:1fr}}
+</style>
