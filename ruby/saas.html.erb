@@ -1,0 +1,212 @@
+<!--tz-meta {"id":"ruby-saas","title":"Ledgerline — invoicing SaaS landing","category":"Ruby","file":"ruby/saas.html.erb","tags":["ruby","erb","saas","landing"],"description":"Swiss-rational SaaS page for fictional invoicer Ledgerline: the hero is a brutal ledger table, steps as numbered hairline rows, one red accent.","dnas":["swiss-rational"]} -->
+<% bg = "#fafafa" %>
+<% ink = "#111111" %>
+<% accent = "#e30613" %>
+<% muted = "#6b6b6b" %>
+<% line = "#111111" %>
+<% surface = "#f0f0f0" %>
+<% display = "Archivo" %>
+<% body = "Archivo" %>
+<% mono = "Space Mono" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ledgerline — invoicing for people who'd rather be working</title>
+<meta name="description" content="Ledgerline is invoicing stripped to the bone: send it, get paid, go home. Built for independent contractors.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:<%= bg %>; --ink:<%= ink %>; --accent:<%= accent %>;
+  --muted:<%= muted %>; --line:<%= line %>; --surface:<%= surface %>;
+  --display:"<%= display %>",Helvetica,Arial,sans-serif;
+  --body:"<%= body %>",Helvetica,Arial,sans-serif;
+  --mono:"<%= mono %>",ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);
+     font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent);color:#fff}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+/* header: hard rule, uppercase mono nav */
+.site-head{border-bottom:3px solid var(--line)}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;
+                 padding-top:18px;padding-bottom:18px}
+.brand{font-weight:800;font-size:19px;letter-spacing:-.02em;text-decoration:none;color:var(--ink)}
+.brand span{color:var(--accent)}
+nav{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+nav a{color:var(--ink);text-decoration:none;margin-left:26px}
+nav a:hover{color:var(--accent)}
+/* hero: asymmetric — type column + ledger table dropped below the fold line */
+.hero{padding:clamp(56px,8vw,110px) 0 clamp(48px,6vw,80px)}
+.hero-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,5vw,72px);align-items:start}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;
+        color:var(--muted);margin-bottom:20px}
+h1{font-weight:800;font-size:clamp(42px,6vw,80px);line-height:.98;letter-spacing:-.03em;
+   text-transform:uppercase;margin-bottom:22px;text-wrap:balance}
+h1 .red{color:var(--accent)}
+.lede{font-size:17px;color:var(--muted);max-width:40ch;margin-bottom:32px}
+.btn{display:inline-block;background:var(--ink);color:var(--bg);font-weight:700;font-size:15px;
+     padding:15px 30px;border-radius:4px;text-decoration:none}
+.btn:hover{background:var(--accent)}
+.btn-line{display:inline-block;border:2px solid var(--ink);color:var(--ink);font-weight:700;
+          font-size:15px;padding:13px 28px;border-radius:4px;text-decoration:none;margin-left:14px}
+.btn-line:hover{border-color:var(--accent);color:var(--accent)}
+.cta-row{margin-bottom:18px}
+.micro{font-family:var(--mono);font-size:12px;color:var(--muted)}
+/* the ledger: the page's one distinctive choice — a brutal table as hero art */
+.ledger{margin-top:clamp(20px,4vw,56px);border:3px solid var(--line);background:#fff}
+.ledger-head{display:flex;justify-content:space-between;align-items:center;
+             padding:12px 18px;border-bottom:3px solid var(--line);
+             font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.ledger-head .total{font-weight:700;color:var(--accent)}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+   text-align:left;color:var(--muted);padding:12px 18px;border-bottom:2px solid var(--line);font-weight:400}
+td{padding:14px 18px;border-bottom:1px solid var(--surface);vertical-align:baseline}
+tr:last-child td{border-bottom:0}
+td.num{font-family:var(--mono);text-align:right;white-space:nowrap}
+td .client{font-weight:700}
+.stamp{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+       border:2px solid var(--ink);padding:3px 10px 2px;transform:rotate(-2deg)}
+.stamp.paid{border-color:var(--ink);color:var(--ink)}
+.stamp.due{border-color:var(--accent);color:var(--accent)}
+tr:hover td{background:var(--surface)}
+/* sections */
+section.block{padding:clamp(56px,7vw,104px) 0;border-top:3px solid var(--line)}
+.sec-head{display:grid;grid-template-columns:80px 1fr;gap:20px;align-items:baseline;margin-bottom:8px}
+.sec-no{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:.1em}
+h2{font-weight:800;font-size:clamp(28px,3.8vw,46px);letter-spacing:-.025em;
+   text-transform:uppercase;line-height:1.02;margin-bottom:14px;text-wrap:balance}
+.sec-sub{color:var(--muted);max-width:58ch;margin-bottom:36px}
+.rows{list-style:none;border-top:2px solid var(--line)}
+.rows li{display:grid;grid-template-columns:64px 1fr 1fr;gap:24px;padding:28px 0;
+         border-bottom:2px solid var(--line);align-items:baseline}
+.rows .n{font-family:var(--mono);font-size:13px;color:var(--accent)}
+.rows h3{font-size:19px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
+.rows p{color:var(--muted);font-size:15px;max-width:52ch}
+/* quote band: offset, oversized */
+.quote{padding:clamp(56px,7vw,104px) 0;border-top:3px solid var(--line)}
+.quote blockquote{font-weight:800;font-size:clamp(26px,4vw,52px);line-height:1.05;
+                  letter-spacing:-.025em;text-transform:uppercase;max-width:22ch}
+.quote blockquote .red{color:var(--accent)}
+.quote cite{display:block;margin-top:22px;font-family:var(--mono);font-style:normal;
+            font-size:13px;color:var(--muted)}
+/* pricing strip: single brutal row */
+.plan{border:3px solid var(--line);padding:clamp(24px,4vw,44px);margin-top:8px;
+      display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;background:#fff}
+.plan .price{font-weight:800;font-size:clamp(44px,5vw,72px);letter-spacing:-.03em;white-space:nowrap}
+.plan .price small{font-size:15px;font-weight:400;letter-spacing:0;color:var(--muted)}
+.plan p{color:var(--muted);max-width:50ch;margin-top:8px}
+/* footer */
+footer{border-top:3px solid var(--line);margin-top:0}
+footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;
+             padding:48px 0 40px}
+footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+          color:var(--muted);margin-bottom:16px;font-weight:400}
+footer a{display:block;color:var(--ink);text-decoration:none;font-size:14.5px;margin-bottom:10px}
+footer a:hover{color:var(--accent)}
+footer .blurb{font-size:14.5px;color:var(--muted);max-width:34ch}
+.fine{border-top:2px solid var(--line)}
+.fine .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+            padding-top:18px;padding-bottom:24px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+@media (max-width:860px){
+  .hero-grid{grid-template-columns:1fr}
+  .rows li{grid-template-columns:1fr;gap:8px}
+  .plan{grid-template-columns:1fr}
+  footer .cols{grid-template-columns:1fr 1fr}
+  .btn-line{margin-left:0;margin-top:12px}
+}
+</style>
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="#">LEDGER<span>LINE</span></a>
+  <nav><a href="#how">How</a><a href="#pricing">Pricing</a><a href="#start">Start</a></nav>
+</div></header>
+
+<main>
+<div class="wrap hero"><div class="hero-grid">
+  <div>
+    <p class="kicker">Invoicing for independents</p>
+    <h1>Send the invoice. <span class="red">Get paid.</span> Go home.</h1>
+    <p class="lede">Ledgerline strips billing to the bone: one page, your logo, a pay
+    button that works. No accounting degree, no 40-field forms, no chasing.</p>
+    <div class="cta-row">
+      <a class="btn" href="#start">Create your first invoice</a>
+      <a class="btn-line" href="#how">How it works</a>
+    </div>
+    <p class="micro">Free for your first 3 invoices · no card · 2 minutes to set up</p>
+  </div>
+  <div class="ledger" role="img" aria-label="Sample invoice ledger showing paid and due invoices">
+    <div class="ledger-head"><span>March ledger — R. Okafor, carpentry</span><span class="total">$8,450 collected</span></div>
+    <table>
+      <thead><tr><th>Client</th><th>Invoice</th><th style="text-align:right">Amount</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td><span class="client">Harbor Dental</span></td><td class="num">#1042</td><td class="num">$2,800</td><td><span class="stamp paid">Paid</span></td></tr>
+        <tr><td><span class="client">Bluefin Realty</span></td><td class="num">#1043</td><td class="num">$1,950</td><td><span class="stamp paid">Paid</span></td></tr>
+        <tr><td><span class="client">Cedar &amp; Pine</span></td><td class="num">#1044</td><td class="num">$3,200</td><td><span class="stamp due">Due Fri</span></td></tr>
+        <tr><td><span class="client">Loft 9 Coffee</span></td><td class="num">#1045</td><td class="num">$500</td><td><span class="stamp paid">Paid</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div></div>
+
+<div class="wrap">
+<section class="block" id="how">
+  <div class="sec-head"><span class="sec-no">01</span>
+    <div><h2>Three steps, then you're done</h2>
+    <p class="sec-sub">Most invoicing tools were built for accounting departments. This one was
+    built for the person doing the work <em>and</em> the billing, usually after dinner.</p></div>
+  </div>
+  <ol class="rows">
+    <li><span class="n">/01</span><div><h3>Describe the job in one line</h3>
+      <p>"Rebuilt the deck stairs, materials included." That's the whole form, plus an amount.</p></div>
+      <div><p class="micro">Takes about 40 seconds. We timed it.</p></div></li>
+    <li><span class="n">/02</span><div><h3>Send a link, not a PDF</h3>
+      <p>Your client opens a clean payment page on their phone. Card, bank transfer, done.</p></div>
+      <div><p class="micro">No account needed on their end. Ever.</p></div></li>
+    <li><span class="n">/03</span><div><h3>Get reminded without the awkwardness</h3>
+      <p>Polite automatic nudges at 7 and 14 days. You never have to write "just bumping this."</p></div>
+      <div><p class="micro">Nudges recover 31% of late invoices in testing.</p></div></li>
+  </ol>
+</section>
+
+<section class="quote">
+  <blockquote>“I sent Tuesday's invoice from the truck. <span class="red">Paid by Thursday.</span>”</blockquote>
+  <cite>— Marcus T., electrician, Portland ME · 212 invoices sent</cite>
+</section>
+
+<section class="block" id="pricing">
+  <div class="sec-head"><span class="sec-no">02</span>
+    <div><h2>One plan. No tiers to decode.</h2></div>
+  </div>
+  <div class="plan" id="start">
+    <div>
+      <div class="price">$9 <small>/ month, unlimited invoices</small></div>
+      <p>Plus 2.9% + 30¢ per card payment — the same as everyone else, printed here
+      instead of buried in a footnote. Cancel in two clicks, keep your data.</p>
+    </div>
+    <a class="btn" href="#start">Start free</a>
+  </div>
+</section>
+</div>
+</main>
+
+<footer><div class="wrap cols">
+  <div><h4>Ledgerline</h4>
+    <p class="blurb">Invoicing stripped to the bone, made in Providence RI by four
+    people who used to chase payments too.</p></div>
+  <div><h4>Product</h4><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#">Payment methods</a></div>
+  <div><h4>Company</h4><a href="#">About</a><a href="#">Contact a human</a><a href="#">Security</a></div>
+  <div><h4>Fine print</h4><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Status</a></div>
+</div>
+<div class="fine"><div class="wrap">
+  <span>© 2026 Ledgerline Co. Invoices sent this year: 1,204,882.</span>
+  <span>Set in Archivo + Space Mono</span>
+</div></div></footer>
+</body>
+</html>
