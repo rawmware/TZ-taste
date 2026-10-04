@@ -1,0 +1,311 @@
+<!--tz-meta {"id":"map-embed-panel","title":"Map embed panel","category":"App UI","file":"app-ui/map-embed-panel.html","tags":["map","embed","poi","pan-zoom"],"description":"Harbor-fog interactive map panel: drag pan, wheel zoom, POI markers with cards, layer toggles, search, live scale bar.","dnas":["harbor-fog"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Port Ellis Harbor — Interactive map</title>
+<style>
+:root{--bg:#e8e6df;--ink:#2b3138;--accent:#c33a2c;--muted:#7d838a;--line:#2b31381f;
+  --water:#9fb6c3;--land:#e8e6df;--park:#b9c9a8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Karla,-apple-system,"Segoe UI",sans-serif;
+  min-height:100dvh;padding:36px 16px;display:flex;flex-direction:column;align-items:center}
+.tz-kicker{font-size:11px;letter-spacing:.3em;color:var(--muted);margin:0 0 8px}
+.tz-title{font-family:Anton,Arial,sans-serif;font-size:clamp(28px,4.5vw,44px);margin:0 0 6px;
+  letter-spacing:.02em}
+.tz-title span{color:var(--accent)}
+.tz-sub{font-size:14px;color:var(--muted);margin:0 0 24px;max-width:640px;text-align:center;line-height:1.6}
+.tz-mapwrap{width:100%;max-width:1080px;display:grid;grid-template-columns:1fr 300px;gap:0;
+  border:2px solid var(--ink);background:var(--land);box-shadow:8px 8px 0 var(--ink)}
+.tz-mapcol{position:relative;min-width:0}
+.tz-map{position:relative;height:520px;overflow:hidden;cursor:grab;touch-action:none;background:var(--water)}
+.tz-map:active{cursor:grabbing}
+.tz-map svg{position:absolute;top:0;left:0}
+.tz-mapctl{position:absolute;top:14px;right:14px;display:flex;flex-direction:column;gap:8px;z-index:3}
+.tz-mapctl button{width:38px;height:38px;background:var(--bg);border:2px solid var(--ink);color:var(--ink);
+  font:inherit;font-size:18px;font-weight:700;cursor:pointer;line-height:1}
+.tz-mapctl button:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.tz-scale{position:absolute;left:14px;bottom:14px;z-index:3;background:#ffffffe6;border:1px solid var(--ink);
+  padding:5px 10px;font-size:11px;letter-spacing:.08em}
+.tz-scalebar{height:4px;background:var(--ink);margin-top:4px}
+.tz-coords{position:absolute;left:14px;top:14px;z-index:3;background:#ffffffe6;border:1px solid var(--ink);
+  padding:5px 10px;font-size:11px;font-family:"IBM Plex Mono",monospace;letter-spacing:.04em}
+.tz-side{border-left:2px solid var(--ink);display:flex;flex-direction:column;min-height:0;background:var(--bg)}
+.tz-search{padding:14px;border-bottom:2px solid var(--ink)}
+.tz-search input{width:100%;font:inherit;font-size:14px;padding:10px 12px;border:2px solid var(--ink);
+  background:#fff;color:var(--ink);outline:none}
+.tz-search input:focus{border-color:var(--accent)}
+.tz-layers{padding:12px 14px;border-bottom:2px solid var(--ink);display:flex;gap:14px;flex-wrap:wrap}
+.tz-layers label{font-size:12px;letter-spacing:.06em;display:flex;align-items:center;gap:7px;cursor:pointer}
+.tz-layers input{accent-color:var(--accent);width:15px;height:15px}
+.tz-results{flex:1;overflow-y:auto;padding:8px;min-height:120px;max-height:300px}
+.tz-poi{width:100%;text-align:left;background:transparent;border:1px solid transparent;font:inherit;
+  padding:10px 12px;cursor:pointer;display:block}
+.tz-poi:hover{background:#ffffff80;border-color:var(--line)}
+.tz-poi.tz-active{background:#fff;border-color:var(--accent)}
+.tz-poi b{display:block;font-size:14px}
+.tz-poi small{color:var(--muted);font-size:12px}
+.tz-poi[hidden]{display:none}
+.tz-card{border-top:2px solid var(--ink);padding:16px;background:#fff;min-height:150px}
+.tz-card[hidden]{display:none}
+.tz-card h3{font-family:Anton,Arial,sans-serif;font-size:19px;margin:0 0 4px;letter-spacing:.02em}
+.tz-card .tz-tag{display:inline-block;font-size:10px;letter-spacing:.18em;color:#fff;background:var(--accent);
+  padding:3px 9px;margin-bottom:10px}
+.tz-card p{font-size:13px;line-height:1.65;color:var(--ink);margin:0 0 10px}
+.tz-card .tz-meta{font-size:12px;color:var(--muted)}
+.tz-card button{background:var(--ink);color:#fff;border:0;font:inherit;font-size:13px;padding:9px 18px;
+  cursor:pointer;margin-top:10px;letter-spacing:.04em}
+.tz-card button:hover{background:var(--accent)}
+.tz-foot{max-width:1080px;width:100%;margin-top:16px;font-size:12px;color:var(--muted);line-height:1.7}
+.tz-foot kbd{border:1px solid var(--line);border-radius:3px;padding:1px 6px;background:#fff;font-family:inherit}
+@media (max-width:860px){
+  .tz-mapwrap{grid-template-columns:1fr}
+  .tz-side{border-left:0;border-top:2px solid var(--ink)}
+  .tz-map{height:380px}
+  .tz-results{max-height:200px}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-mapwrap *{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+<p class="tz-kicker">HARBOR DISTRICT · CHART Nº 7</p>
+<h1 class="tz-title">PORT ELLIS <span>HARBOR</span></h1>
+<p class="tz-sub">Drag to pan, scroll to zoom. Eight points of interest, three chart layers, one honest scale bar.</p>
+
+<div class="tz-mapwrap">
+  <div class="tz-mapcol">
+    <div class="tz-map" id="map" tabindex="0" role="application"
+         aria-label="Interactive map of Port Ellis harbor. Arrow keys pan, plus and minus zoom.">
+      <svg id="chart" width="2000" height="1400" aria-hidden="true">
+        <g id="vp">
+          <rect x="-600" y="-400" width="3200" height="2200" fill="#9fb6c3"/>
+          <path d="M-600,-400 L2000,-400 L2000,300 C1500,340 1300,520 1180,700 C1050,900 900,980 700,1040
+                   C450,1110 300,1250 200,1400 L-600,1400 Z" fill="#e8e6df"/>
+          <path d="M-600,1150 C-200,1120 100,1180 260,1300" stroke="#7d838a" stroke-width="2"
+                stroke-dasharray="10 8" fill="none" id="ferry" opacity=".9"/>
+          <g id="streets" stroke="#2b3138" stroke-width="3" opacity=".28">
+            <line x1="700" y1="-400" x2="700" y2="1100"/><line x1="950" y1="-400" x2="950" y2="1000"/>
+            <line x1="1200" y1="-400" x2="1200" y2="900"/><line x1="1450" y1="-400" x2="1450" y2="700"/>
+            <line x1="1700" y1="-400" x2="1700" y2="500"/>
+            <line x1="500" y1="-200" x2="2000" y2="-200"/><line x1="500" y1="50" x2="2000" y2="50"/>
+            <line x1="550" y1="300" x2="2000" y2="300"/><line x1="600" y1="550" x2="1900" y2="550"/>
+            <line x1="620" y1="800" x2="1500" y2="800"/>
+          </g>
+          <g id="labels" font-family="Karla,sans-serif" font-size="26" fill="#2b3138" opacity=".75">
+            <text x="760" y="-240">HARBOUR ST</text><text x="1010" y="10">MARKET ST</text>
+            <text x="1260" y="260">PIER RD</text><text x="300" y="900" font-size="34" fill="#5c6b7a">ELLIS BAY</text>
+            <text x="1350" y="620" font-size="24">TIDEFLATS</text>
+            <text x="1440" y="-225" font-size="26" text-anchor="middle">GULL PARK</text>
+          </g>
+          <rect x="1250" y="-350" width="380" height="220" fill="#b9c9a8" stroke="#2b3138" stroke-width="3"/>
+          <g id="fog" fill="#e8e6df" opacity=".5">
+            <ellipse cx="300" cy="700" rx="260" ry="120"/><ellipse cx="700" cy="1150" rx="300" ry="130"/>
+            <ellipse cx="100" cy="1100" rx="200" ry="100"/>
+          </g>
+          <g id="markers"></g>
+        </g>
+      </svg>
+      <div class="tz-coords" id="coords">43.07°N · 70.76°W</div>
+      <div class="tz-mapctl">
+        <button id="zin" type="button" aria-label="Zoom in">+</button>
+        <button id="zout" type="button" aria-label="Zoom out">−</button>
+        <button id="recenter" type="button" aria-label="Recenter map" style="font-size:14px">◎</button>
+      </div>
+      <div class="tz-scale"><span id="scaleTxt">500 m</span><div class="tz-scalebar" id="scaleBar" style="width:100px"></div></div>
+    </div>
+  </div>
+  <aside class="tz-side">
+    <div class="tz-search">
+      <input id="q" type="search" placeholder="Search points of interest…" aria-label="Search points of interest">
+    </div>
+    <div class="tz-layers" role="group" aria-label="Map layers">
+      <label><input type="checkbox" id="lyrLabels" checked> Labels</label>
+      <label><input type="checkbox" id="lyrFerry" checked> Ferry route</label>
+      <label><input type="checkbox" id="lyrFog" checked> Fog banks</label>
+    </div>
+    <div class="tz-results" id="results" role="listbox" aria-label="Points of interest"></div>
+    <div class="tz-card" id="card" hidden>
+      <span class="tz-tag" id="cardTag">PIER</span>
+      <h3 id="cardName"></h3>
+      <p id="cardDesc"></p>
+      <div class="tz-meta" id="cardMeta"></div>
+      <button id="cardGo" type="button">Center on map</button>
+    </div>
+  </aside>
+</div>
+
+<p class="tz-foot">Keyboard: <kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd> pan · <kbd>+</kbd><kbd>−</kbd> zoom ·
+<kbd>0</kbd> recenter. Chart is illustrative — soundings not for navigation.</p>
+
+<script>
+(function(){
+  var POIS=[
+    {id:'ferry', name:'Ferry Terminal', tag:'TRANSIT', x:560, y:1010,
+     desc:'Hourly crossings to Gull Island, 6am–11pm. Bikes ride free on weekdays.',
+     meta:'43.0712°N, 70.7611°W · Step-free access'},
+    {id:'light', name:'Lighthouse Point', tag:'LANDMARK', x:180, y:1240,
+     desc:'1874 lighthouse, still active. Grounds open dawn to dusk; tower tours Saturdays.',
+     meta:'43.0698°N, 70.7742°W · Free grounds'},
+    {id:'customs', name:'Old Customs House', tag:'HISTORY', x:1050, y:420,
+     desc:'Granite block from 1836, now the harbor museum. The smugglers’ tunnel tour is worth it.',
+     meta:'43.0741°N, 70.7520°W · $8 admission'},
+    {id:'wharf', name:"Fisherman's Wharf", tag:'WORKING', x:760, y:880,
+     desc:'Active lobster fleet. Buy off the boat 2–4pm when the day boats land.',
+     meta:'43.0722°N, 70.7589°W · Cash preferred'},
+    {id:'market', name:'Harbor Market Hall', tag:'FOOD', x:1150, y:330,
+     desc:'Forty stalls under one roof. The chowder bread bowl line moves faster than it looks.',
+     meta:'43.0748°N, 70.7495°W · Open daily 9–6'},
+    {id:'foghorn', name:'Fog Signal Station', tag:'HISTORY', x:420, y:1180,
+     desc:'Decommissioned 1962. The horn still sounds once a year, on the first foggy morning of October.',
+     meta:'43.0701°N, 70.7698°W · Exterior only'},
+    {id:'tide', name:'Tidal Pools', tag:'NATURE', x:1420, y:700,
+     desc:'Best at low tide ±2 hours. Starfish, crabs, and one very territorial heron.',
+     meta:'Check tide tables · No collecting'},
+    {id:'pier', name:'North Pier', tag:'VIEWS', x:1560, y:420,
+     desc:'The sunset spot. Benches face west; the ferry passes close enough to wave at.',
+     meta:'43.0755°N, 70.7440°W · Always open'}
+  ];
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+      vp=document.getElementById('vp'), map=document.getElementById('map'),
+      view={x:-160,y:-60,z:0.62}, HOME={x:-160,y:-60,z:0.62},
+      ZMIN=0.3, ZMAX=3;
+
+  function render(){
+    vp.setAttribute('transform','translate('+view.x+','+view.y+') scale('+view.z+')');
+    // scale bar: world is 2000px = 4km → 1 world px = 2m; screen px = world px * z
+    var mPer100=200/view.z, nice=[100,200,500,1000,2000], pick=nice[0], k;
+    for(k=0;k<nice.length;k++)if(Math.abs(nice[k]-mPer100)<Math.abs(pick-mPer100))pick=nice[k];
+    document.getElementById('scaleTxt').textContent=pick>=1000?(pick/1000)+' km':pick+' m';
+    document.getElementById('scaleBar').style.width=(pick/mPer100*100)+'px';
+  }
+  function zoomAt(cx,cy,f){
+    var nz=Math.min(ZMAX,Math.max(ZMIN,view.z*f)), r=map.getBoundingClientRect(),
+        mx=cx-r.left, my=cy-r.top,
+        wx=(mx-view.x)/view.z, wy=(my-view.y)/view.z;
+    view.z=nz; view.x=mx-wx*nz; view.y=my-wy*nz; render();
+  }
+  function flyTo(wx,wy,z){
+    var from={x:view.x,y:view.y,z:view.z}, r=map.getBoundingClientRect(),
+        tx=r.width/2-wx*z, ty=r.height/2-wy*z;
+    if(reduced){view.x=tx;view.y=ty;view.z=z;render();return;}
+    var t0=performance.now();
+    (function step(now){
+      var p=Math.min(1,(now-t0)/450), e=1-Math.pow(1-p,3);
+      view.x=from.x+(tx-from.x)*e; view.y=from.y+(ty-from.y)*e; view.z=from.z+(z-from.z)*e;
+      render(); if(p<1)requestAnimationFrame(step);
+    })(t0);
+  }
+
+  // markers
+  var mg=document.getElementById('markers'), NS='http://www.w3.org/2000/svg';
+  POIS.forEach(function(p){
+    var g=document.createElementNS(NS,'g');
+    g.setAttribute('transform','translate('+p.x+','+p.y+')');
+    g.style.cursor='pointer';
+    var c=document.createElementNS(NS,'circle');
+    c.setAttribute('r','26');c.setAttribute('fill','#c33a2c');c.setAttribute('stroke','#fff');
+    c.setAttribute('stroke-width','5');g.appendChild(c);
+    var t=document.createElementNS(NS,'text');
+    t.setAttribute('text-anchor','middle');t.setAttribute('dy','9');
+    t.setAttribute('font-family','Karla,sans-serif');t.setAttribute('font-size','24');
+    t.setAttribute('font-weight','700');t.setAttribute('fill','#fff');
+    t.textContent='i';g.appendChild(t);
+    var ring=document.createElementNS(NS,'circle');
+    ring.setAttribute('r','26');ring.setAttribute('fill','none');
+    ring.setAttribute('stroke','#c33a2c');ring.setAttribute('stroke-width','3');
+    ring.setAttribute('opacity','0');ring.setAttribute('class','tz-ring');g.appendChild(ring);
+    g.addEventListener('click',function(e){e.stopPropagation();selectPoi(p.id,false);});
+    g.dataset.pid=p.id;mg.appendChild(g);p.el=g;
+  });
+
+  // list + search
+  var results=document.getElementById('results');
+  POIS.forEach(function(p){
+    var b=document.createElement('button');b.type='button';b.className='tz-poi';
+    b.setAttribute('role','option');b.dataset.pid=p.id;
+    b.innerHTML='<b></b><small></small>';
+    b.querySelector('b').textContent=p.name;
+    b.querySelector('small').textContent=p.tag+' · '+p.meta.split('·')[0].trim();
+    b.addEventListener('click',function(){selectPoi(p.id,true);});
+    results.appendChild(b);p.btn=b;
+  });
+  document.getElementById('q').addEventListener('input',function(){
+    var q=this.value.trim().toLowerCase();
+    POIS.forEach(function(p){
+      var hit=!q||p.name.toLowerCase().indexOf(q)>-1||p.tag.toLowerCase().indexOf(q)>-1;
+      p.btn.hidden=!hit;
+    });
+  });
+
+  var card=document.getElementById('card'), activeId=null;
+  function selectPoi(id,center){
+    activeId=id;
+    var p=POIS.filter(function(x){return x.id===id;})[0];
+    document.getElementById('cardTag').textContent=p.tag;
+    document.getElementById('cardName').textContent=p.name;
+    document.getElementById('cardDesc').textContent=p.desc;
+    document.getElementById('cardMeta').textContent=p.meta;
+    card.hidden=false;
+    POIS.forEach(function(x){
+      x.btn.classList.toggle('tz-active',x.id===id);
+      var ring=x.el.querySelector('.tz-ring');
+      ring.setAttribute('opacity',x.id===id?'1':'0');
+    });
+    if(center)flyTo(p.x,p.y,Math.max(view.z,1.1));
+  }
+  document.getElementById('cardGo').addEventListener('click',function(){
+    var p=POIS.filter(function(x){return x.id===activeId;})[0];
+    if(p)flyTo(p.x,p.y,Math.max(view.z,1.1));
+  });
+
+  // pan
+  var drag=null;
+  map.addEventListener('pointerdown',function(e){drag={x:e.clientX-view.x,y:e.clientY-view.y};map.setPointerCapture(e.pointerId);});
+  map.addEventListener('pointermove',function(e){
+    if(!drag)return;
+    view.x=e.clientX-drag.x;view.y=e.clientY-drag.y;render();updateCoords(e);
+  });
+  ['pointerup','pointercancel'].forEach(function(ev){map.addEventListener(ev,function(){drag=null;});});
+  map.addEventListener('wheel',function(e){
+    e.preventDefault();zoomAt(e.clientX,e.clientY,e.deltaY<0?1.15:1/1.15);
+  },{passive:false});
+  function updateCoords(e){
+    var r=map.getBoundingClientRect(),
+        wx=((e.clientX-r.left)-view.x)/view.z, wy=((e.clientY-r.top)-view.y)/view.z,
+        lat=(43.08-(wy/1400)*0.03).toFixed(4), lon=(70.79-(wx/2000)*0.06).toFixed(4);
+    document.getElementById('coords').textContent=lat+'°N · '+lon+'°W';
+  }
+  document.getElementById('zin').addEventListener('click',function(){
+    var r=map.getBoundingClientRect();zoomAt(r.left+r.width/2,r.top+r.height/2,1.3);});
+  document.getElementById('zout').addEventListener('click',function(){
+    var r=map.getBoundingClientRect();zoomAt(r.left+r.width/2,r.top+r.height/2,1/1.3);});
+  document.getElementById('recenter').addEventListener('click',function(){
+    view={x:HOME.x,y:HOME.y,z:HOME.z};render();});
+
+  map.addEventListener('keydown',function(e){
+    var step=60,handled=true;
+    if(e.key==='ArrowLeft')view.x+=step;else if(e.key==='ArrowRight')view.x-=step;
+    else if(e.key==='ArrowUp')view.y+=step;else if(e.key==='ArrowDown')view.y-=step;
+    else if(e.key==='+'||e.key==='='){var r=map.getBoundingClientRect();zoomAt(r.left+r.width/2,r.top+r.height/2,1.25);}
+    else if(e.key==='-'||e.key==='_'){var r2=map.getBoundingClientRect();zoomAt(r2.left+r2.width/2,r2.top+r2.height/2,1/1.25);}
+    else if(e.key==='0'){view={x:HOME.x,y:HOME.y,z:HOME.z};}
+    else handled=false;
+    if(handled){e.preventDefault();render();}
+  });
+
+  // layers
+  function bindLayer(id,target){
+    document.getElementById(id).addEventListener('change',function(){
+      document.getElementById(target).style.display=this.checked?'':'none';
+    });
+  }
+  bindLayer('lyrLabels','labels');bindLayer('lyrFerry','ferry');bindLayer('lyrFog','fog');
+
+  render();
+})();
+</script>
+</body>
+</html>
