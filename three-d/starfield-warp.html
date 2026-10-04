@@ -1,0 +1,119 @@
+<!--tz-meta {"id":"starfield-warp","title":"Warp Starfield","category":"3D","file":"three-d/starfield-warp.html","tags":["threejs","hyperspace"],"description":"Stars stream past the camera with motion-stretch trails and a cool-to-warm color shift; click to pause.","dnas":["dark-luxe"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Warp Starfield — TZ-taste</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#04060c}
+  #c{position:fixed;inset:0;display:block}
+  .caption{position:fixed;left:18px;bottom:16px;color:#9fb3c8;font:12px/1.6 system-ui,sans-serif;
+    letter-spacing:.14em;text-transform:uppercase;pointer-events:none;opacity:.85}
+  .caption b{display:block;font-size:13px;letter-spacing:.28em;color:#e8f1ff}
+  #fallback{position:fixed;inset:0;display:none;place-items:center;color:#c8d4e3;
+    font:14px system-ui,sans-serif;background:#04060c;text-align:center;padding:2rem}
+</style>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div class="caption"><b>Warp Starfield</b>click to pause</div>
+<div id="fallback"><p>WebGL is unavailable in this browser, so the starfield cannot render.</p></div>
+<script type="module">
+import * as THREE from 'three';
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('c'), antialias: true });
+} catch (e) {
+  document.getElementById('fallback').style.display = 'grid';
+  throw e;
+}
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x04060c);
+scene.fog = new THREE.FogExp2(0x04060c, 0.028);
+const camera = new THREE.PerspectiveCamera(70, innerWidth / innerHeight, 0.1, 200);
+
+// ---- star field: each star is a stretched line segment (trail) + a head point
+const COUNT = 900;
+const spread = 90, depth = 160;
+const starGeo = new THREE.BufferGeometry();
+const sPos = new Float32Array(COUNT * 6);   // line segments: tail -> head
+const sCol = new Float32Array(COUNT * 6);
+const pGeo = new THREE.BufferGeometry();
+const pPos = new Float32Array(COUNT * 3);
+const stars = [];
+for (let i = 0; i < COUNT; i++) {
+  stars.push({
+    x: (Math.random() - 0.5) * spread,
+    y: (Math.random() - 0.5) * spread,
+    z: Math.random() * depth,
+    v: 28 + Math.random() * 46,
+    hue: Math.random()
+  });
+}
+const cool = new THREE.Color(0xbfd9ff), warm = new THREE.Color(0xffe3c2), c = new THREE.Color();
+function placeStar(i, first) {
+  const s = stars[i];
+  if (first) s.z = Math.random() * depth;
+  else { s.z = depth; s.x = (Math.random() - 0.5) * spread; s.y = (Math.random() - 0.5) * spread; }
+}
+stars.forEach((s, i) => placeStar(i, true));
+const lines = new THREE.LineSegments(starGeo,
+  new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.85, blending: THREE.AdditiveBlending }));
+const heads = new THREE.Points(pGeo,
+  new THREE.PointsMaterial({ size: 0.55, vertexColors: true, transparent: true, opacity: 0.95, blending: THREE.AdditiveBlending }));
+scene.add(lines, heads);
+
+const pCol = new Float32Array(COUNT * 3);
+pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+pGeo.setAttribute('color', new THREE.BufferAttribute(pCol, 3));
+starGeo.setAttribute('position', new THREE.BufferAttribute(sPos, 6).setUsage(THREE.DynamicDrawUsage));
+starGeo.setAttribute('color', new THREE.BufferAttribute(sCol, 6).setUsage(THREE.DynamicDrawUsage));
+
+let paused = false;
+addEventListener('click', () => { paused = !paused; });
+
+const clock = new THREE.Clock();
+function tick() {
+  const dt = Math.min(clock.getDelta(), 0.05);
+  if (!paused) {
+    for (let i = 0; i < COUNT; i++) {
+      const s = stars[i];
+      s.z -= s.v * dt;
+      if (s.z < 1) placeStar(i, false);
+      const trail = Math.min(14, s.v * 0.28);
+      const o = i * 6, q = i * 3;
+      sPos[o] = s.x; sPos[o+1] = s.y; sPos[o+2] = s.z + trail;
+      sPos[o+3] = s.x; sPos[o+4] = s.y; sPos[o+5] = s.z;
+      // subtle color shift: cool in the far field, warming as it rushes past
+      c.lerpColors(cool, warm, THREE.MathUtils.clamp(1 - s.z / 70, 0, 1));
+      sCol[o] = c.r * 0.25; sCol[o+1] = c.g * 0.25; sCol[o+2] = c.b * 0.25;
+      sCol[o+3] = c.r; sCol[o+4] = c.g; sCol[o+5] = c.b;
+      pPos[q] = s.x; pPos[q+1] = s.y; pPos[q+2] = s.z;
+      pCol[q] = c.r; pCol[q+1] = c.g; pCol[q+2] = c.b;
+    }
+    starGeo.attributes.position.needsUpdate = true;
+    starGeo.attributes.color.needsUpdate = true;
+    pGeo.attributes.position.needsUpdate = true;
+    pGeo.attributes.color.needsUpdate = true;
+  }
+  renderer.render(scene, camera);
+  if (!reduced) requestAnimationFrame(tick);
+}
+
+function resize() {
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+}
+addEventListener('resize', resize);
+resize();
+tick();
+</script>
+</body>
+</html>
