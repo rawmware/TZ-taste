@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-art-nouveau-whiplash",
+  "title": "Art Nouveau Whiplash design tokens",
+  "category": "Tokens",
+  "file": "tokens/art-nouveau-whiplash.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "art-nouveau-whiplash"
+  ],
+  "description": "W3C-format design tokens for the Art Nouveau Whiplash style DNA.",
+  "dnas": [
+   "art-nouveau-whiplash"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#1c1a16",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#ece2cd",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#c9a227",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#8a7a5e",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#3a342a",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Cinzel Decorative",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Cormorant Garamond",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "art-nouveau-whiplash",
+  "name": "Art Nouveau Whiplash",
+  "vibe": "Mucha posters and ironwork: organic curves, jewel tones, every frame an ornament."
+ }
+}
