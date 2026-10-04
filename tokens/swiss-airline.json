@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-swiss-airline",
+  "title": "Swiss Airline design tokens",
+  "category": "Tokens",
+  "file": "tokens/swiss-airline.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "swiss-airline"
+  ],
+  "description": "W3C-format design tokens for the Swiss Airline DNA.",
+  "dnas": [
+   "swiss-airline"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#f7f5ef",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#1a1a1a",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#d52b1e",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#6e6e6e",
+   "type": "color"
+  },
+  "line": {
+   "value": "#1a1a1a1f",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#f7f5ef",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Archivo",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Libre Franklin",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "IBM Plex Mono",
+   "type": "fontFamily"
+  }
+ }
+}
