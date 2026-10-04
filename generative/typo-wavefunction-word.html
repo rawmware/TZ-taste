@@ -1,0 +1,99 @@
+<!--tz-meta {"id":"gen-typo-wavefunction-word","title":"Wavefunction Word","category":"Generative","file":"generative/typo-wavefunction-word.html","tags":["typography","wave","particles"],"description":"The word WAVE is a cloud of particles held near their letterforms by probability — each one jittering on its own orbit.","dnas":["cyberpunk-noir"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wavefunction Word — TZ-taste Generative</title>
+<style>
+*{box-sizing:border-box}
+.tz-gen-body{margin:0;background:#08080d;color:#e8e6f0;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;min-height:100vh}
+.tz-gen-wrap{max-width:1120px;margin:0 auto;padding:48px 24px 64px}
+.tz-gen-head{margin:0 0 28px}
+.tz-gen-kicker{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#ff2e88;margin:0 0 14px}
+.tz-gen-head h1{font-size:clamp(30px,5vw,52px);line-height:1.05;margin:0 0 12px;font-weight:800;letter-spacing:-0.02em}
+.tz-gen-caption{font-size:16px;line-height:1.6;color:#6b6f85;margin:0;max-width:62ch}
+.tz-gen-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:26px 0 14px}
+.tz-gen-btn{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;background:transparent;color:#e8e6f0;border:1px solid #1e2030;padding:10px 18px;border-radius:3px;cursor:pointer}
+.tz-gen-btn:hover{border-color:#ff2e88;color:#ff2e88}
+.tz-gen-seed{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:12px;color:#6b6f85;margin-left:auto}
+.tz-gen-canvas{display:block;width:100%;height:70vh;border:1px solid #1e2030;border-radius:3px;background:#08080d}
+.tz-gen-note{font-size:14px;line-height:1.65;color:#6b6f85;margin:18px 0 0;max-width:70ch}
+@media(max-width:520px){.tz-gen-wrap{padding:32px 16px 48px}.tz-gen-seed{margin-left:0;width:100%}}
+</style>
+</head>
+<body class="tz-gen-body">
+<div class="tz-gen-wrap">
+  <header class="tz-gen-head">
+    <p class="tz-gen-kicker">TZ-taste · Generative</p>
+    <h1>Wavefunction Word</h1>
+    <p class="tz-gen-caption">The word is a probability cloud: two thousand particles orbit their home pixels but never sit still. Look away and it is still WAVE when you look back.</p>
+  </header>
+  <div class="tz-gen-bar">
+    <button class="tz-gen-btn" id="tzSeed">New seed</button>
+    <button class="tz-gen-btn" id="tzPause">Pause</button>
+    <button class="tz-gen-btn" id="tzClear">Clear</button>
+    <span class="tz-gen-seed" id="tzSeedLabel">Seed 0</span>
+  </div>
+  <canvas class="tz-gen-canvas" id="tzCv" aria-label="The word WAVE formed by orbiting particles"></canvas>
+  <p class="tz-gen-note">New seeds change the orbit radius and the phase each particle jitters on. The letters hold either way.</p>
+</div>
+<script>
+'use strict';
+const cv=document.getElementById('tzCv'),ctx=cv.getContext('2d');
+const seedLabel=document.getElementById('tzSeedLabel');
+let W=0,H=0,seed=(Math.random()*1e9)|0,rand=null,parts=[],t=0,running=true;
+let orb=12,f1=1.3,f2=1.7;
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const BG='#08080d',ACC='#ff2e88',CY='#29e6ff';
+const WORD='WAVE';
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function init(){
+  rand=mulberry32(seed);parts=[];t=0;
+  orb=8+rand()*10;f1=0.9+rand()*1.1;f2=1.2+rand()*1.2;
+  ctx.fillStyle=BG;ctx.fillRect(0,0,W,H);
+  const off=document.createElement('canvas');
+  off.width=W;off.height=H;
+  const g=off.getContext('2d');
+  g.fillStyle='#fff';
+  g.font='800 '+Math.min(230,Math.floor(W/3.4))+'px system-ui,sans-serif';
+  g.textAlign='center';g.textBaseline='middle';
+  g.fillText(WORD,W/2,H/2);
+  const data=g.getImageData(0,0,W,H).data;
+  const cell=4;
+  for(let y=0;y<H;y+=cell)for(let x=0;x<W;x+=cell){
+    if(data[(y*W+x)*4+3]>128&&rand()<0.75){
+      parts.push({hx:x,hy:y,ph:rand()*6.28,cy:rand()<0.12,s:1.4+rand()*1.6});
+    }
+  }
+  seedLabel.textContent='Seed '+seed+' · '+parts.length+' particles';
+}
+function step(){
+  if(!reduced)t+=0.016;else t=1.5;
+  ctx.fillStyle='rgba(8,8,13,0.28)';ctx.fillRect(0,0,W,H);
+  for(const p of parts){
+    const x=p.hx+Math.sin(t*f1+p.hy*0.02+p.ph)*orb;
+    const y=p.hy+Math.cos(t*f2+p.hx*0.02+p.ph*1.7)*orb*0.8;
+    ctx.fillStyle=p.cy?CY:ACC;
+    ctx.globalAlpha=0.8;
+    ctx.fillRect(x,y,p.s,p.s);
+  }
+  ctx.globalAlpha=1;
+}
+function resize(){
+  const d=Math.min(window.devicePixelRatio||1,2),r=cv.getBoundingClientRect();
+  W=Math.max(2,Math.round(r.width));H=Math.max(2,Math.round(r.height));
+  cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);init();
+}
+window.addEventListener('resize',resize);
+document.getElementById('tzSeed').addEventListener('click',()=>{seed=(Math.random()*1e9)|0;init();if(!running)toggle();});
+document.getElementById('tzClear').addEventListener('click',init);
+function toggle(){running=!running;document.getElementById('tzPause').textContent=running?'Pause':'Resume';if(running&&!reduced)tick();}
+document.getElementById('tzPause').addEventListener('click',toggle);
+function tick(){if(!running)return;step();requestAnimationFrame(tick);}
+resize();
+if(reduced){step();}
+else tick();
+</script>
+</body>
+</html>
