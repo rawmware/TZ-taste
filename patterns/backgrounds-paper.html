@@ -1,0 +1,12 @@
+<!--tz-meta {"id":"backgrounds-paper","title":"Rice paper","category":"Backgrounds","file":"patterns/backgrounds-paper.html","tags":["paper","grain"],"description":"Rice-paper grain with a deckle edge and one vermillion hanko stamp.","dnas":["ma-japanese"]} -->
+<!-- Usage: warm paper texture; the deckle edge clips to the section bounds. -->
+<div class="tz-paper" aria-hidden="true"><span class="tz-hanko">印</span></div>
+<style>
+.tz-paper{position:absolute;inset:0;pointer-events:none;background-color:#f6f1e5;
+  clip-path:polygon(.8% .6%,6% .3%,12% .9%,18% .4%,25% 1%,31% .5%,38% .9%,44% .4%,51% 1%,57% .5%,64% .9%,70% .4%,77% 1%,83% .5%,90% .9%,96% .5%,99.4% 1%,99.1% 7%,99.6% 13%,99.2% 20%,99.5% 27%,99% 34%,99.6% 41%,99.2% 48%,99.5% 55%,99.1% 62%,99.6% 69%,99.2% 76%,99.5% 83%,99.1% 90%,99.4% 96%,93% 99.5%,86% 99%,79% 99.6%,72% 99.1%,65% 99.5%,58% 99.2%,51% 99.6%,44% 99%,37% 99.5%,30% 99.1%,23% 99.6%,16% 99.2%,9% 99.5%,3% 99.1%,.6% 95%,1% 88%,.5% 81%,.9% 74%,.4% 67%,1% 60%,.5% 53%,.9% 46%,.4% 39%,1% 32%,.5% 25%,.9% 18%,.4% 11%,.8% 5%)}
+.tz-paper::before{content:"";position:absolute;inset:0;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.38 0 0 0 0 0.28 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23p)'/%3E%3C/svg%3E")}
+.tz-hanko{position:absolute;right:7%;bottom:9%;width:44px;height:44px;transform:rotate(-4deg);
+  background:#c73e1d;color:#f6f1e5;display:flex;align-items:center;justify-content:center;
+  font:700 24px/1 Georgia,'Times New Roman',serif}
+</style>
