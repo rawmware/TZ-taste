@@ -1,1 +1,1628 @@
-{"count":12,"dnas":[{"best_for":["studios","blogs","portfolios","publishers"],"dials":{"density":2,"motion":3,"variance":6},"file":"styles/editorial-serif.md","fonts":{"body":"Newsreader","display":"Fraunces","mono":"Space Mono"},"id":"editorial-serif","name":"Editorial Serif","tags":["warm","serif","literary","calm"],"tokens":{"accent":"#b5461f","bg":"#f5f1e8","ink":"#1c1a15","line":"#1c1a1526","muted":"#6f6a5e","surface":"#efe9da"},"vibe":"Warm paper, oversized serif, hairline rules. A literary magazine that happens to be a website."},{"best_for":["agencies","archives","data products","museums"],"dials":{"density":6,"motion":2,"variance":4},"file":"styles/swiss-rational.md","fonts":{"body":"Archivo","display":"Archivo","mono":"Space Mono"},"id":"swiss-rational","name":"Swiss Rational","tags":["grid","minimal","rational","uppercase"],"tokens":{"accent":"#e30613","bg":"#fafafa","ink":"#111111","line":"#111111","muted":"#6b6b6b","surface":"#f0f0f0"},"vibe":"Strict grid, black on white, one red. Information architecture as aesthetic."},{"best_for":["hospitality","fashion","real estate","premium services"],"dials":{"density":2,"motion":4,"variance":4},"file":"styles/dark-luxe.md","fonts":{"body":"Outfit","display":"Cormorant Garamond","mono":"Space Mono"},"id":"dark-luxe","name":"Dark Luxe","tags":["dark","premium","serif","restrained"],"tokens":{"accent":"#c9a96a","bg":"#0e0d0b","ink":"#ece5d8","line":"#ece5d822","muted":"#8a8177","surface":"#161411"},"vibe":"Near-black, champagne accents, whisper-thin serif. Expensive by restraint."},{"best_for":["dev tools","zines","hardware","labels"],"dials":{"density":7,"motion":3,"variance":8},"file":"styles/industrial-brutalist.md","fonts":{"body":"Space Grotesk","display":"Anton","mono":"JetBrains Mono"},"id":"industrial-brutalist","name":"Industrial Brutalist","tags":["brutalist","raw","mono","high-contrast"],"tokens":{"accent":"#ff4d00","bg":"#d8d8d4","ink":"#141412","line":"#141412","muted":"#5c5c58","surface":"#c9c9c4"},"vibe":"Exposed structure, safety orange, condensed type. A factory that ships software."},{"best_for":["saas","productivity","developer tools","mobile apps"],"dials":{"density":5,"motion":5,"variance":3},"file":"styles/soft-minimal.md","fonts":{"body":"Instrument Sans","display":"Instrument Sans","mono":"JetBrains Mono"},"id":"soft-minimal","name":"Soft Minimal","tags":["saas","calm","product","clean"],"tokens":{"accent":"#5b5bd6","bg":"#f7f7f5","ink":"#1a1a1a","line":"#1a1a1414","muted":"#8a8a93","surface":"#ffffff"},"vibe":"Off-white calm, iris accent, spring motion. The Linear/Notion register, done right."},{"best_for":["music","events","streetwear","festivals"],"dials":{"density":4,"motion":7,"variance":9},"file":"styles/acid-rave.md","fonts":{"body":"Space Grotesk","display":"Anton","mono":"Space Mono"},"id":"acid-rave","name":"Acid Rave","tags":["bold","music","streetwear","loud"],"tokens":{"accent":"#c6ff00","bg":"#0a0a0a","ink":"#f2f2f2","line":"#f2f2f21f","muted":"#7a7a7a","surface":"#131313"},"vibe":"Black room, acid lime, type at maximum volume. Flyers, not landing pages."},{"best_for":["wellness","weather","fintech","consumer apps"],"dials":{"density":3,"motion":6,"variance":4},"file":"styles/glass-calm.md","fonts":{"body":"Outfit","display":"Outfit","mono":"JetBrains Mono"},"id":"glass-calm","name":"Glass Calm","tags":["glass","soft","pastel","calm"],"tokens":{"accent":"#7c8cf8","bg":"#e8ecf5","ink":"#2b3245","line":"#ffffff88","muted":"#8b93a8","surface":"#ffffff8c"},"vibe":"Frosted surfaces over pastel light. Weather-app serenity as a design language."},{"best_for":["dev tools","games","security","cli products"],"dials":{"density":8,"motion":3,"variance":6},"file":"styles/retro-terminal.md","fonts":{"body":"IBM Plex Mono","display":"IBM Plex Mono","mono":"IBM Plex Mono"},"id":"retro-terminal","name":"Retro Terminal","tags":["terminal","retro","hacker","mono"],"tokens":{"accent":"#ffb000","bg":"#0b0f0a","ink":"#33ff66","line":"#33ff6633","muted":"#1f6b3a","surface":"#0e140d"},"vibe":"Phosphor green on black, scanlines, amber warnings. The machine is the message."},{"best_for":["consumer startups","edtech","creator tools","food"],"dials":{"density":5,"motion":6,"variance":7},"file":"styles/neo-brutalist-pop.md","fonts":{"body":"Space Grotesk","display":"Archivo Black","mono":"Space Mono"},"id":"neo-brutalist-pop","name":"Neo-Brutalist Pop","tags":["playful","bold","stickers","gen-z"],"tokens":{"accent":"#ff5da2","bg":"#fff6e9","ink":"#1a1a1a","line":"#1a1a1a","muted":"#6b6259","surface":"#ffffff"},"vibe":"Thick borders, hard shadows, sticker colors. Playful but engineered."},{"best_for":["craft","architecture","tea/food","galleries"],"dials":{"density":1,"motion":2,"variance":5},"file":"styles/ma-japanese.md","fonts":{"body":"Zen Kaku Gothic New","display":"Shippori Mincho","mono":"Space Mono"},"id":"ma-japanese","name":"Ma (Japanese Minimal)","tags":["minimal","japanese","whitespace","craft"],"tokens":{"accent":"#a33327","bg":"#f7f4ec","ink":"#26221c","line":"#26221c1f","muted":"#8a8478","surface":"#efe9da"},"vibe":"Rice paper, ink black, vast emptiness used on purpose. Ma — the beauty of negative space."},{"best_for":["beauty","pop culture","music","fashion"],"dials":{"density":4,"motion":8,"variance":8},"file":"styles/y2k-chrome.md","fonts":{"body":"Space Grotesk","display":"Unbounded","mono":"Space Mono"},"id":"y2k-chrome","name":"Y2K Chrome","tags":["y2k","chrome","iridescent","pop"],"tokens":{"accent":"#b8c5ff","bg":"#0d0d12","ink":"#f4f4f8","line":"#ffffff26","muted":"#6e6e80","surface":"#15151d"},"vibe":"Liquid metal, iridescent gradients, bubbly type. The future as imagined in 1999."},{"best_for":["documentation","open source","blogs","handbooks"],"dials":{"density":6,"motion":2,"variance":3},"file":"styles/docs-solar.md","fonts":{"body":"Source Serif 4","display":"Source Serif 4","mono":"IBM Plex Mono"},"id":"docs-solar","name":"Docs Solar","tags":["docs","warm","readable","open-source"],"tokens":{"accent":"#cb4b16","bg":"#fdf6e3","ink":"#3d3a2e","line":"#3d3a2e1f","muted":"#8a8672","surface":"#f7eeda"},"vibe":"Warm documentation, amber accents, serif readability. Docs people actually enjoy reading."}],"updated":"2026-10-03","usage":"Agents: pick exactly ONE dna. Load only that file. Never load all twelve.","version":"1.0.0"}
+{
+ "count": 48,
+ "updated": "2026-10-04",
+ "usage": "Agents: pick exactly ONE dna. Load only that file. Never load all.",
+ "dnas": [
+  {
+   "id": "acid-rave",
+   "name": "Acid Rave",
+   "vibe": "Black room, acid lime, type at maximum volume. Flyers, not landing pages.",
+   "file": "styles/acid-rave.md",
+   "tags": [
+    "bold",
+    "music",
+    "streetwear",
+    "loud"
+   ],
+   "best_for": [
+    "music",
+    "events",
+    "streetwear",
+    "festivals"
+   ],
+   "fonts": {
+    "body": "Space Grotesk",
+    "display": "Anton",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "accent": "#c6ff00",
+    "bg": "#0a0a0a",
+    "ink": "#f2f2f2",
+    "line": "#f2f2f21f",
+    "muted": "#7a7a7a",
+    "surface": "#131313"
+   },
+   "dials": {
+    "density": 4,
+    "motion": 7,
+    "variance": 9
+   }
+  },
+  {
+   "id": "alpine-ledger",
+   "name": "Alpine Ledger",
+   "vibe": "A mountaineering logbook: kraft paper, rubber stamps, rope and knot motifs, stamped entries.",
+   "file": "styles/alpine-ledger.md",
+   "tags": [
+    "alpine",
+    "ledger",
+    "expedition"
+   ],
+   "best_for": [
+    "outdoor-brands",
+    "travel",
+    "journals"
+   ],
+   "fonts": {
+    "display": "Special Elite",
+    "body": "Karla",
+    "mono": "IBM Plex Mono"
+   },
+   "tokens": {
+    "bg": "#f0e6d2",
+    "ink": "#2b2118",
+    "accent": "#b33a2b",
+    "muted": "#7a6c58",
+    "line": "#c9b98f"
+   },
+   "dials": {
+    "variance": 5,
+    "motion": 2,
+    "density": 6
+   }
+  },
+  {
+   "id": "aperitivo-italian",
+   "name": "Aperitivo Italian",
+   "vibe": "Golden hour at a Milan bar, every night. Campari red, bitter orange, and typography you can taste.",
+   "file": "styles/aperitivo-italian.md",
+   "tags": [
+    "italian",
+    "retro",
+    "aperitivo"
+   ],
+   "best_for": [
+    "bars",
+    "restaurants",
+    "food-brands"
+   ],
+   "fonts": {
+    "display": "Alfa Slab One",
+    "body": "DM Sans",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#f7efdc",
+    "ink": "#2b1f14",
+    "accent": "#c93a2e",
+    "muted": "#a08872",
+    "line": "#e3d3b8"
+   },
+   "dials": {
+    "variance": 6,
+    "motion": 4,
+    "density": 4
+   }
+  },
+  {
+   "id": "arctic-field",
+   "name": "Arctic Field",
+   "vibe": "Expedition research: ice white, glacier blue, instrument precision — data you can trust at −30°.",
+   "file": "styles/arctic-field.md",
+   "tags": [
+    "arctic",
+    "expedition",
+    "research"
+   ],
+   "best_for": [
+    "science",
+    "outdoor-gear",
+    "climate"
+   ],
+   "fonts": {
+    "display": "Archivo",
+    "body": "DM Sans",
+    "mono": "IBM Plex Mono"
+   },
+   "tokens": {
+    "bg": "#f5f8fa",
+    "ink": "#14202b",
+    "accent": "#1f6fa3",
+    "muted": "#5d7484",
+    "line": "#d3e0e8"
+   },
+   "dials": {
+    "variance": 4,
+    "motion": 3,
+    "density": 6
+   }
+  },
+  {
+   "id": "art-deco-luxe",
+   "name": "Art Deco Luxe",
+   "vibe": "1920s geometric glamour: black lacquer, gold leaf, sunburst symmetry. A jazz-age ballroom rendered as a website.",
+   "file": "styles/art-deco-luxe.md",
+   "tags": [
+    "deco",
+    "gold",
+    "glamour"
+   ],
+   "best_for": [
+    "hotels",
+    "jewelry",
+    "events",
+    "cocktail-bars"
+   ],
+   "fonts": {
+    "display": "Cinzel",
+    "body": "Jost",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#0d0b08",
+    "ink": "#f2e7c9",
+    "accent": "#c9a227",
+    "muted": "#8a7f63",
+    "line": "#c9a2274d"
+   },
+   "dials": {
+    "variance": 4,
+    "motion": 3,
+    "density": 2
+   }
+  },
+  {
+   "id": "art-nouveau-whiplash",
+   "name": "Art Nouveau Whiplash",
+   "vibe": "Mucha posters and ironwork: organic curves, jewel tones, every frame an ornament.",
+   "file": "styles/art-nouveau-whiplash.md",
+   "tags": [
+    "art-nouveau",
+    "ornamental",
+    "organic"
+   ],
+   "best_for": [
+    "theaters",
+    "wine",
+    "spas"
+   ],
+   "fonts": {
+    "display": "Cinzel Decorative",
+    "body": "Cormorant Garamond",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#1c1a16",
+    "ink": "#ece2cd",
+    "accent": "#c9a227",
+    "muted": "#8a7a5e",
+    "line": "#3a342a"
+   },
+   "dials": {
+    "variance": 7,
+    "motion": 4,
+    "density": 3
+   }
+  },
+  {
+   "id": "bauhaus-primary",
+   "name": "Bauhaus Primary",
+   "vibe": "Functional geometry: red, yellow, blue on off-white. A workshop poster that refuses to decorate.",
+   "file": "styles/bauhaus-primary.md",
+   "tags": [
+    "bauhaus",
+    "geometric",
+    "functional"
+   ],
+   "best_for": [
+    "design-schools",
+    "furniture",
+    "workshops"
+   ],
+   "fonts": {
+    "display": "Archivo Black",
+    "body": "Archivo",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#f4f1ea",
+    "ink": "#1a1a1a",
+    "accent": "#d8342c",
+    "muted": "#6e6a60",
+    "line": "#1a1a1a"
+   },
+   "dials": {
+    "variance": 6,
+    "motion": 4,
+    "density": 6
+   }
+  },
+  {
+   "id": "blueprint-tech",
+   "name": "Blueprint Tech",
+   "vibe": "Cyanotype schematics: deep blueprint blue, white line work, everything labeled.",
+   "file": "styles/blueprint-tech.md",
+   "tags": [
+    "blueprint",
+    "technical",
+    "schematic"
+   ],
+   "best_for": [
+    "engineering",
+    "hardware",
+    "dev-tools"
+   ],
+   "fonts": {
+    "display": "Space Grotesk",
+    "body": "IBM Plex Mono",
+    "mono": "IBM Plex Mono"
+   },
+   "tokens": {
+    "bg": "#17407f",
+    "ink": "#f2f6fc",
+    "accent": "#ffcf3f",
+    "muted": "#8fb3e8",
+    "line": "#ffffff40"
+   },
+   "dials": {
+    "variance": 5,
+    "motion": 3,
+    "density": 7
+   }
+  },
+  {
+   "id": "botanical-lab",
+   "name": "Botanical Lab",
+   "vibe": "A greenhouse full of specimens: deep green, pressed-plant delicacy, Latin on every label.",
+   "file": "styles/botanical-lab.md",
+   "tags": [
+    "botanical",
+    "greenhouse",
+    "specimen"
+   ],
+   "best_for": [
+    "skincare",
+    "tea",
+    "garden-brands"
+   ],
+   "fonts": {
+    "display": "DM Serif Display",
+    "body": "Karla",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#f4f6ec",
+    "ink": "#1b3a2b",
+    "accent": "#3e7d4e",
+    "muted": "#6f867a",
+    "line": "#cdd8bd"
+   },
+   "dials": {
+    "variance": 4,
+    "motion": 3,
+    "density": 4
+   }
+  },
+  {
+   "id": "concrete-poem",
+   "name": "Concrete Poem",
+   "vibe": "Typographic art: words arranged as shapes on the page — ink, paper, and the architecture of language.",
+   "file": "styles/concrete-poem.md",
+   "tags": [
+    "concrete-poetry",
+    "typographic",
+    "art"
+   ],
+   "best_for": [
+    "poets",
+    "galleries",
+    "literary-events"
+   ],
+   "fonts": {
+    "display": "Major Mono Display",
+    "body": "Space Mono",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#f7f3ea",
+    "ink": "#1c1a16",
+    "accent": "#8c1f28",
+    "muted": "#8a8072",
+    "line": "#ddd4c2"
+   },
+   "dials": {
+    "variance": 9,
+    "motion": 4,
+    "density": 3
+   }
+  },
+  {
+   "id": "constructivist-red",
+   "name": "Constructivist Red",
+   "vibe": "Propaganda poster as interface: red and black diagonals, type that shouts from a wall.",
+   "file": "styles/constructivist-red.md",
+   "tags": [
+    "constructivist",
+    "propaganda",
+    "diagonal"
+   ],
+   "best_for": [
+    "campaigns",
+    "unions",
+    "exhibitions"
+   ],
+   "fonts": {
+    "display": "Russo One",
+    "body": "Oswald",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#f2ede4",
+    "ink": "#141414",
+    "accent": "#d4201e",
+    "muted": "#6e675c",
+    "line": "#141414"
+   },
+   "dials": {
+    "variance": 8,
+    "motion": 5,
+    "density": 5
+   }
+  },
+  {
+   "id": "cottage-warm",
+   "name": "Cottage Warm",
+   "vibe": "Cozy domestic: cream, checks, garden warmth. The website equivalent of someone offering you tea.",
+   "file": "styles/cottage-warm.md",
+   "tags": [
+    "cottage",
+    "cozy",
+    "warm"
+   ],
+   "best_for": [
+    "food",
+    "crafts",
+    "bed-and-breakfast"
+   ],
+   "fonts": {
+    "display": "DM Serif Display",
+    "body": "Karla",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#fbf5ea",
+    "ink": "#3d3229",
+    "accent": "#b5533c",
+    "muted": "#8d7f6e",
+    "line": "#e7dcc6"
+   },
+   "dials": {
+    "variance": 4,
+    "motion": 3,
+    "density": 3
+   }
+  },
+  {
+   "id": "cyberpunk-noir",
+   "name": "Cyberpunk Noir",
+   "vibe": "Rain-slicked neon city: near-black, electric pink and cyan, glitch under the surface. Dense, alert, humming.",
+   "file": "styles/cyberpunk-noir.md",
+   "tags": [
+    "cyberpunk",
+    "neon",
+    "dark"
+   ],
+   "best_for": [
+    "games",
+    "tech",
+    "streaming"
+   ],
+   "fonts": {
+    "display": "Orbitron",
+    "body": "Rajdhani",
+    "mono": "Share Tech Mono"
+   },
+   "tokens": {
+    "bg": "#08080d",
+    "ink": "#e8e6f0",
+    "accent": "#ff2e88",
+    "muted": "#6b6f85",
+    "line": "#1e2030"
+   },
+   "dials": {
+    "variance": 7,
+    "motion": 8,
+    "density": 8
+   }
+  },
+  {
+   "id": "dark-luxe",
+   "name": "Dark Luxe",
+   "vibe": "Near-black, champagne accents, whisper-thin serif. Expensive by restraint.",
+   "file": "styles/dark-luxe.md",
+   "tags": [
+    "dark",
+    "premium",
+    "serif",
+    "restrained"
+   ],
+   "best_for": [
+    "hospitality",
+    "fashion",
+    "real estate",
+    "premium services"
+   ],
+   "fonts": {
+    "body": "Outfit",
+    "display": "Cormorant Garamond",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "accent": "#c9a96a",
+    "bg": "#0e0d0b",
+    "ink": "#ece5d8",
+    "line": "#ece5d822",
+    "muted": "#8a8177",
+    "surface": "#161411"
+   },
+   "dials": {
+    "density": 2,
+    "motion": 4,
+    "variance": 4
+   }
+  },
+  {
+   "id": "de-stijl-grid",
+   "name": "De Stijl Grid",
+   "vibe": "Mondrian's canvas as a website: primary blocks, black grids, white doing the heavy lifting.",
+   "file": "styles/de-stijl-grid.md",
+   "tags": [
+    "de-stijl",
+    "mondrian",
+    "neoplasticism"
+   ],
+   "best_for": [
+    "galleries",
+    "design-studios",
+    "books"
+   ],
+   "fonts": {
+    "display": "Archivo Black",
+    "body": "Archivo",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#faf8f4",
+    "ink": "#111111",
+    "accent": "#e3002b",
+    "muted": "#8c877e",
+    "line": "#111111"
+   },
+   "dials": {
+    "variance": 6,
+    "motion": 3,
+    "density": 4
+   }
+  },
+  {
+   "id": "desert-modern",
+   "name": "Desert Modern",
+   "vibe": "Palm Springs at 10am: shade, breeze-block shadows, a pool doing all the talking.",
+   "file": "styles/desert-modern.md",
+   "tags": [
+    "desert",
+    "modernist",
+    "architecture"
+   ],
+   "best_for": [
+    "real-estate",
+    "hotels",
+    "interiors"
+   ],
+   "fonts": {
+    "display": "DM Serif Display",
+    "body": "DM Sans",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#f4ecdc",
+    "ink": "#33291f",
+    "accent": "#7fb3c4",
+    "muted": "#a89a80",
+    "line": "#dccfb2"
+   },
+   "dials": {
+    "variance": 5,
+    "motion": 3,
+    "density": 3
+   }
+  },
+  {
+   "id": "docs-solar",
+   "name": "Docs Solar",
+   "vibe": "Warm documentation, amber accents, serif readability. Docs people actually enjoy reading.",
+   "file": "styles/docs-solar.md",
+   "tags": [
+    "docs",
+    "warm",
+    "readable",
+    "open-source"
+   ],
+   "best_for": [
+    "documentation",
+    "open source",
+    "blogs",
+    "handbooks"
+   ],
+   "fonts": {
+    "body": "Source Serif 4",
+    "display": "Source Serif 4",
+    "mono": "IBM Plex Mono"
+   },
+   "tokens": {
+    "accent": "#cb4b16",
+    "bg": "#fdf6e3",
+    "ink": "#3d3a2e",
+    "line": "#3d3a2e1f",
+    "muted": "#8a8672",
+    "surface": "#f7eeda"
+   },
+   "dials": {
+    "density": 6,
+    "motion": 2,
+    "variance": 3
+   }
+  },
+  {
+   "id": "editorial-serif",
+   "name": "Editorial Serif",
+   "vibe": "Warm paper, oversized serif, hairline rules. A literary magazine that happens to be a website.",
+   "file": "styles/editorial-serif.md",
+   "tags": [
+    "warm",
+    "serif",
+    "literary",
+    "calm"
+   ],
+   "best_for": [
+    "studios",
+    "blogs",
+    "portfolios",
+    "publishers"
+   ],
+   "fonts": {
+    "body": "Newsreader",
+    "display": "Fraunces",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "accent": "#b5461f",
+    "bg": "#f5f1e8",
+    "ink": "#1c1a15",
+    "line": "#1c1a1526",
+    "muted": "#6f6a5e",
+    "surface": "#efe9da"
+   },
+   "dials": {
+    "density": 2,
+    "motion": 3,
+    "variance": 6
+   }
+  },
+  {
+   "id": "glass-calm",
+   "name": "Glass Calm",
+   "vibe": "Frosted surfaces over pastel light. Weather-app serenity as a design language.",
+   "file": "styles/glass-calm.md",
+   "tags": [
+    "glass",
+    "soft",
+    "pastel",
+    "calm"
+   ],
+   "best_for": [
+    "wellness",
+    "weather",
+    "fintech",
+    "consumer apps"
+   ],
+   "fonts": {
+    "body": "Outfit",
+    "display": "Outfit",
+    "mono": "JetBrains Mono"
+   },
+   "tokens": {
+    "accent": "#7c8cf8",
+    "bg": "#e8ecf5",
+    "ink": "#2b3245",
+    "line": "#ffffff88",
+    "muted": "#8b93a8",
+    "surface": "#ffffff8c"
+   },
+   "dials": {
+    "density": 3,
+    "motion": 6,
+    "variance": 4
+   }
+  },
+  {
+   "id": "gothic-editorial",
+   "name": "Gothic Editorial",
+   "vibe": "Dark academia: candlelit paper, blackletter accents used sparingly, scholarly and brooding. A library after hours.",
+   "file": "styles/gothic-editorial.md",
+   "tags": [
+    "gothic",
+    "academia",
+    "dark"
+   ],
+   "best_for": [
+    "books",
+    "universities",
+    "museums"
+   ],
+   "fonts": {
+    "display": "UnifrakturMaguntia",
+    "body": "Cormorant Garamond",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#12100c",
+    "ink": "#e8dfc8",
+    "accent": "#a33b2e",
+    "muted": "#7d7261",
+    "line": "#2e2820"
+   },
+   "dials": {
+    "variance": 6,
+    "motion": 3,
+    "density": 4
+   }
+  },
+  {
+   "id": "industrial-brutalist",
+   "name": "Industrial Brutalist",
+   "vibe": "Exposed structure, safety orange, condensed type. A factory that ships software.",
+   "file": "styles/industrial-brutalist.md",
+   "tags": [
+    "brutalist",
+    "raw",
+    "mono",
+    "high-contrast"
+   ],
+   "best_for": [
+    "dev tools",
+    "zines",
+    "hardware",
+    "labels"
+   ],
+   "fonts": {
+    "body": "Space Grotesk",
+    "display": "Anton",
+    "mono": "JetBrains Mono"
+   },
+   "tokens": {
+    "accent": "#ff4d00",
+    "bg": "#d8d8d4",
+    "ink": "#141412",
+    "line": "#141412",
+    "muted": "#5c5c58",
+    "surface": "#c9c9c4"
+   },
+   "dials": {
+    "density": 7,
+    "motion": 3,
+    "variance": 8
+   }
+  },
+  {
+   "id": "ink-wash-sumi",
+   "name": "Ink-Wash Sumi",
+   "vibe": "Brush, ink, rice paper: monochrome gestures and the confidence to leave space alone.",
+   "file": "styles/ink-wash-sumi.md",
+   "tags": [
+    "sumi",
+    "ink-wash",
+    "brush"
+   ],
+   "best_for": [
+    "tea",
+    "galleries",
+    "calligraphy"
+   ],
+   "fonts": {
+    "display": "Zen Old Mincho",
+    "body": "Zen Kaku Gothic New",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#f5f1e8",
+    "ink": "#1a1a1a",
+    "accent": "#a33b32",
+    "muted": "#8a8478",
+    "line": "#d8d0bd"
+   },
+   "dials": {
+    "variance": 5,
+    "motion": 3,
+    "density": 1
+   }
+  },
+  {
+   "id": "jazz-blue-note",
+   "name": "Jazz Blue Note",
+   "vibe": "Mid-century jazz sleeve art: duotone photography, smoky blue, bold condensed sans, liner-note typography.",
+   "file": "styles/jazz-blue-note.md",
+   "tags": [
+    "jazz",
+    "mid-century",
+    "sleeve"
+   ],
+   "best_for": [
+    "jazz-clubs",
+    "labels",
+    "bars"
+   ],
+   "fonts": {
+    "display": "Bebas Neue",
+    "body": "DM Sans",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#101418",
+    "ink": "#eef2f5",
+    "accent": "#e8734a",
+    "muted": "#7a8a96",
+    "line": "#243038"
+   },
+   "dials": {
+    "variance": 6,
+    "motion": 4,
+    "density": 4
+   }
+  },
+  {
+   "id": "kawaii-pixel",
+   "name": "Kawaii Pixel",
+   "vibe": "Sticker-sheet joy: pastel pixels, chunky hearts, everything huggable at 8x scale.",
+   "file": "styles/kawaii-pixel.md",
+   "tags": [
+    "kawaii",
+    "pixel",
+    "pastel"
+   ],
+   "best_for": [
+    "stationery",
+    "cafes",
+    "indie-games"
+   ],
+   "fonts": {
+    "display": "DotGothic16",
+    "body": "M PLUS Rounded 1c",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#fff7f9",
+    "ink": "#4a3340",
+    "accent": "#ff8fb3",
+    "muted": "#b09aa4",
+    "line": "#f3d9e2"
+   },
+   "dials": {
+    "variance": 7,
+    "motion": 7,
+    "density": 4
+   }
+  },
+  {
+   "id": "laboratory-clean",
+   "name": "Laboratory Clean",
+   "vibe": "A calibrated instrument, not a landing page: sterile white, spec tables, every label measured.",
+   "file": "styles/laboratory-clean.md",
+   "tags": [
+    "laboratory",
+    "clinical",
+    "precision"
+   ],
+   "best_for": [
+    "biotech",
+    "labs",
+    "medical"
+   ],
+   "fonts": {
+    "display": "IBM Plex Sans",
+    "body": "IBM Plex Sans",
+    "mono": "IBM Plex Mono"
+   },
+   "tokens": {
+    "bg": "#fbfcfd",
+    "ink": "#0f1720",
+    "accent": "#0a7d8c",
+    "muted": "#6b7684",
+    "line": "#dfe4ea"
+   },
+   "dials": {
+    "variance": 3,
+    "motion": 2,
+    "density": 8
+   }
+  },
+  {
+   "id": "ma-japanese",
+   "name": "Ma (Japanese Minimal)",
+   "vibe": "Rice paper, ink black, vast emptiness used on purpose. Ma — the beauty of negative space.",
+   "file": "styles/ma-japanese.md",
+   "tags": [
+    "minimal",
+    "japanese",
+    "whitespace",
+    "craft"
+   ],
+   "best_for": [
+    "craft",
+    "architecture",
+    "tea/food",
+    "galleries"
+   ],
+   "fonts": {
+    "body": "Zen Kaku Gothic New",
+    "display": "Shippori Mincho",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "accent": "#a33327",
+    "bg": "#f7f4ec",
+    "ink": "#26221c",
+    "line": "#26221c1f",
+    "muted": "#8a8478",
+    "surface": "#efe9da"
+   },
+   "dials": {
+    "density": 1,
+    "motion": 2,
+    "variance": 5
+   }
+  },
+  {
+   "id": "memphis-milano",
+   "name": "Memphis Milano",
+   "vibe": "80s postmodern play: squiggles, terrazzo, pastel-neon clashes. Deliberate kitsch that refuses to apologize.",
+   "file": "styles/memphis-milano.md",
+   "tags": [
+    "memphis",
+    "playful",
+    "postmodern"
+   ],
+   "best_for": [
+    "toys",
+    "parties",
+    "creative-studios"
+   ],
+   "fonts": {
+    "display": "Shrikhand",
+    "body": "Space Grotesk",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#f7efe3",
+    "ink": "#1c1a22",
+    "accent": "#ff4d8d",
+    "muted": "#7a7488",
+    "line": "#1c1a22"
+   },
+   "dials": {
+    "variance": 9,
+    "motion": 7,
+    "density": 4
+   }
+  },
+  {
+   "id": "midnight-railway",
+   "name": "Midnight Railway",
+   "vibe": "The night train platform: deep navy, brass fittings, timetables set with total confidence.",
+   "file": "styles/midnight-railway.md",
+   "tags": [
+    "railway",
+    "night-train",
+    "timetable"
+   ],
+   "best_for": [
+    "travel",
+    "hospitality",
+    "whisky"
+   ],
+   "fonts": {
+    "display": "DM Serif Display",
+    "body": "DM Sans",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#101a2e",
+    "ink": "#e9e2d0",
+    "accent": "#c9a227",
+    "muted": "#7d8698",
+    "line": "#2a3a5c"
+   },
+   "dials": {
+    "variance": 5,
+    "motion": 4,
+    "density": 5
+   }
+  },
+  {
+   "id": "museum-placard",
+   "name": "Museum Placard",
+   "vibe": "Gallery walls and catalog restraint: a placard, a number, and nothing you don't need.",
+   "file": "styles/museum-placard.md",
+   "tags": [
+    "museum",
+    "gallery",
+    "placard"
+   ],
+   "best_for": [
+    "galleries",
+    "museums",
+    "auctions"
+   ],
+   "fonts": {
+    "display": "Cormorant Garamond",
+    "body": "EB Garamond",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#f7f4ed",
+    "ink": "#1c1a16",
+    "accent": "#8c2b1f",
+    "muted": "#7a746a",
+    "line": "#d8d3c6"
+   },
+   "dials": {
+    "variance": 3,
+    "motion": 2,
+    "density": 2
+   }
+  },
+  {
+   "id": "neo-brutalist-pop",
+   "name": "Neo-Brutalist Pop",
+   "vibe": "Thick borders, hard shadows, sticker colors. Playful but engineered.",
+   "file": "styles/neo-brutalist-pop.md",
+   "tags": [
+    "playful",
+    "bold",
+    "stickers",
+    "gen-z"
+   ],
+   "best_for": [
+    "consumer startups",
+    "edtech",
+    "creator tools",
+    "food"
+   ],
+   "fonts": {
+    "body": "Space Grotesk",
+    "display": "Archivo Black",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "accent": "#ff5da2",
+    "bg": "#fff6e9",
+    "ink": "#1a1a1a",
+    "line": "#1a1a1a",
+    "muted": "#6b6259",
+    "surface": "#ffffff"
+   },
+   "dials": {
+    "density": 5,
+    "motion": 6,
+    "variance": 7
+   }
+  },
+  {
+   "id": "nordic-noir",
+   "name": "Nordic Noir",
+   "vibe": "Overcast crime scene at noon. Desaturated slate, hard facts, no comfort.",
+   "file": "styles/nordic-noir.md",
+   "tags": [
+    "nordic",
+    "noir",
+    "crime"
+   ],
+   "best_for": [
+    "streaming",
+    "publishing",
+    "true-crime"
+   ],
+   "fonts": {
+    "display": "Bebas Neue",
+    "body": "DM Sans",
+    "mono": "IBM Plex Mono"
+   },
+   "tokens": {
+    "bg": "#dfe3e6",
+    "ink": "#131a24",
+    "accent": "#3f647f",
+    "muted": "#7d8994",
+    "line": "#b9c1c9"
+   },
+   "dials": {
+    "variance": 5,
+    "motion": 3,
+    "density": 6
+   }
+  },
+  {
+   "id": "parisian-chic",
+   "name": "Parisian Chic",
+   "vibe": "Haute couture polish: black, white, and cream with a high-contrast Didot-style serif and atelier restraint.",
+   "file": "styles/parisian-chic.md",
+   "tags": [
+    "parisian",
+    "couture",
+    "chic"
+   ],
+   "best_for": [
+    "fashion",
+    "perfume",
+    "bridal"
+   ],
+   "fonts": {
+    "display": "Playfair Display",
+    "body": "Jost",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#faf7f2",
+    "ink": "#141210",
+    "accent": "#141210",
+    "muted": "#8a8178",
+    "line": "#e4ddd2"
+   },
+   "dials": {
+    "variance": 4,
+    "motion": 3,
+    "density": 2
+   }
+  },
+  {
+   "id": "pixel-arcade",
+   "name": "Pixel Arcade",
+   "vibe": "Insert coin. Dark cabinet, neon scoreboards, chunky pixels you can almost bite.",
+   "file": "styles/pixel-arcade.md",
+   "tags": [
+    "pixel",
+    "arcade",
+    "retro-gaming"
+   ],
+   "best_for": [
+    "games",
+    "esports",
+    "streamers"
+   ],
+   "fonts": {
+    "display": "Press Start 2P",
+    "body": "Space Mono",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#0b0b14",
+    "ink": "#e8f0e8",
+    "accent": "#ff2fb3",
+    "muted": "#5c6b8c",
+    "line": "#1f2a44"
+   },
+   "dials": {
+    "variance": 7,
+    "motion": 7,
+    "density": 6
+   }
+  },
+  {
+   "id": "pop-art-halftone",
+   "name": "Pop-Art Halftone",
+   "vibe": "Ben-Day dots, thick black outlines, and color turned up until it shouts.",
+   "file": "styles/pop-art-halftone.md",
+   "tags": [
+    "pop-art",
+    "halftone",
+    "comic"
+   ],
+   "best_for": [
+    "comics",
+    "streetwear",
+    "youth-brands"
+   ],
+   "fonts": {
+    "display": "Bungee",
+    "body": "Space Grotesk",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#fff6e8",
+    "ink": "#171412",
+    "accent": "#e83a2f",
+    "muted": "#8f8577",
+    "line": "#171412"
+   },
+   "dials": {
+    "variance": 8,
+    "motion": 6,
+    "density": 5
+   }
+  },
+  {
+   "id": "retro-terminal",
+   "name": "Retro Terminal",
+   "vibe": "Phosphor green on black, scanlines, amber warnings. The machine is the message.",
+   "file": "styles/retro-terminal.md",
+   "tags": [
+    "terminal",
+    "retro",
+    "hacker",
+    "mono"
+   ],
+   "best_for": [
+    "dev tools",
+    "games",
+    "security",
+    "cli products"
+   ],
+   "fonts": {
+    "body": "IBM Plex Mono",
+    "display": "IBM Plex Mono",
+    "mono": "IBM Plex Mono"
+   },
+   "tokens": {
+    "accent": "#ffb000",
+    "bg": "#0b0f0a",
+    "ink": "#33ff66",
+    "line": "#33ff6633",
+    "muted": "#1f6b3a",
+    "surface": "#0e140d"
+   },
+   "dials": {
+    "density": 8,
+    "motion": 3,
+    "variance": 6
+   }
+  },
+  {
+   "id": "risograph-grain",
+   "name": "Risograph Grain",
+   "vibe": "Misregistered zine ink on cream: teal over pink, grain you can feel, handmade edges.",
+   "file": "styles/risograph-grain.md",
+   "tags": [
+    "riso",
+    "zine",
+    "print"
+   ],
+   "best_for": [
+    "zines",
+    "indie-press",
+    "posters"
+   ],
+   "fonts": {
+    "display": "Archivo Black",
+    "body": "Space Grotesk",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#f5eedd",
+    "ink": "#26413c",
+    "accent": "#117d78",
+    "muted": "#8d8a76",
+    "line": "#d8cfae"
+   },
+   "dials": {
+    "variance": 7,
+    "motion": 3,
+    "density": 4
+   }
+  },
+  {
+   "id": "sahara-ochre",
+   "name": "Sahara Ochre",
+   "vibe": "Artisanal earth: terracotta, clay, and spice tones with handmade texture — the craft market, not the museum.",
+   "file": "styles/sahara-ochre.md",
+   "tags": [
+    "sahara",
+    "terracotta",
+    "artisanal"
+   ],
+   "best_for": [
+    "ceramics",
+    "spices",
+    "craft-markets"
+   ],
+   "fonts": {
+    "display": "DM Serif Display",
+    "body": "Karla",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#f4e7d3",
+    "ink": "#3a2418",
+    "accent": "#b4552d",
+    "muted": "#8d7057",
+    "line": "#d9c3a3"
+   },
+   "dials": {
+    "variance": 5,
+    "motion": 3,
+    "density": 3
+   }
+  },
+  {
+   "id": "scandi-calm",
+   "name": "Scandi Calm",
+   "vibe": "Hygge minimalism: warm whites, pale wood tones, quiet functionality. Nothing shouts; everything breathes.",
+   "file": "styles/scandi-calm.md",
+   "tags": [
+    "scandi",
+    "hygge",
+    "calm"
+   ],
+   "best_for": [
+    "homeware",
+    "wellness",
+    "interiors"
+   ],
+   "fonts": {
+    "display": "DM Serif Display",
+    "body": "DM Sans",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#faf7f1",
+    "ink": "#2e2a25",
+    "accent": "#a9805a",
+    "muted": "#9a917f",
+    "line": "#e4dccb"
+   },
+   "dials": {
+    "variance": 3,
+    "motion": 2,
+    "density": 2
+   }
+  },
+  {
+   "id": "soft-minimal",
+   "name": "Soft Minimal",
+   "vibe": "Off-white calm, iris accent, spring motion. The Linear/Notion register, done right.",
+   "file": "styles/soft-minimal.md",
+   "tags": [
+    "saas",
+    "calm",
+    "product",
+    "clean"
+   ],
+   "best_for": [
+    "saas",
+    "productivity",
+    "developer tools",
+    "mobile apps"
+   ],
+   "fonts": {
+    "body": "Instrument Sans",
+    "display": "Instrument Sans",
+    "mono": "JetBrains Mono"
+   },
+   "tokens": {
+    "accent": "#5b5bd6",
+    "bg": "#f7f7f5",
+    "ink": "#1a1a1a",
+    "line": "#1a1a1414",
+    "muted": "#8a8a93",
+    "surface": "#ffffff"
+   },
+   "dials": {
+    "density": 5,
+    "motion": 5,
+    "variance": 3
+   }
+  },
+  {
+   "id": "surf-shack",
+   "name": "Surf Shack",
+   "vibe": "Sun-bleached and hand-painted: faded teal, warm sand, and signage you can tell a person made.",
+   "file": "styles/surf-shack.md",
+   "tags": [
+    "surf",
+    "beach",
+    "shack"
+   ],
+   "best_for": [
+    "surf-shops",
+    "cafes",
+    "travel"
+   ],
+   "fonts": {
+    "display": "Shrikhand",
+    "body": "DM Sans",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#f9ecd8",
+    "ink": "#40342a",
+    "accent": "#2e8f8a",
+    "muted": "#a08d70",
+    "line": "#e0d0ae"
+   },
+   "dials": {
+    "variance": 6,
+    "motion": 5,
+    "density": 3
+   }
+  },
+  {
+   "id": "swiss-poster",
+   "name": "Swiss Poster",
+   "vibe": "Bold poster art: oversized type AS the image, flat color blocks, one accent. Shout it from the wall.",
+   "file": "styles/swiss-poster.md",
+   "tags": [
+    "poster",
+    "bold",
+    "type-as-image"
+   ],
+   "best_for": [
+    "festivals",
+    "exhibitions",
+    "campaigns"
+   ],
+   "fonts": {
+    "display": "Archivo Black",
+    "body": "Archivo",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#f2ede3",
+    "ink": "#141414",
+    "accent": "#e8401f",
+    "muted": "#7a766c",
+    "line": "#141414"
+   },
+   "dials": {
+    "variance": 8,
+    "motion": 4,
+    "density": 5
+   }
+  },
+  {
+   "id": "swiss-rational",
+   "name": "Swiss Rational",
+   "vibe": "Strict grid, black on white, one red. Information architecture as aesthetic.",
+   "file": "styles/swiss-rational.md",
+   "tags": [
+    "grid",
+    "minimal",
+    "rational",
+    "uppercase"
+   ],
+   "best_for": [
+    "agencies",
+    "archives",
+    "data products",
+    "museums"
+   ],
+   "fonts": {
+    "body": "Archivo",
+    "display": "Archivo",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "accent": "#e30613",
+    "bg": "#fafafa",
+    "ink": "#111111",
+    "line": "#111111",
+    "muted": "#6b6b6b",
+    "surface": "#f0f0f0"
+   },
+   "dials": {
+    "density": 6,
+    "motion": 2,
+    "variance": 4
+   }
+  },
+  {
+   "id": "tokyo-neon",
+   "name": "Tokyo Neon",
+   "vibe": "Electric signage culture: hot pink and cyan on black, vertical accents, the glow of a Shinjuku side street.",
+   "file": "styles/tokyo-neon.md",
+   "tags": [
+    "tokyo",
+    "neon",
+    "signage"
+   ],
+   "best_for": [
+    "arcades",
+    "ramen-shops",
+    "nightlife"
+   ],
+   "fonts": {
+    "display": "Zen Dots",
+    "body": "Space Grotesk",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#0a0a10",
+    "ink": "#f4f4f0",
+    "accent": "#ff2e88",
+    "muted": "#6b6b78",
+    "line": "#232330"
+   },
+   "dials": {
+    "variance": 8,
+    "motion": 8,
+    "density": 5
+   }
+  },
+  {
+   "id": "transit-swiss",
+   "name": "Transit Swiss",
+   "vibe": "Wayfinding systems: line colors, station dots, route-map clarity — designed to be read at a sprint.",
+   "file": "styles/transit-swiss.md",
+   "tags": [
+    "transit",
+    "wayfinding",
+    "signage"
+   ],
+   "best_for": [
+    "transit-apps",
+    "cities",
+    "campuses"
+   ],
+   "fonts": {
+    "display": "Archivo",
+    "body": "DM Sans",
+    "mono": "IBM Plex Mono"
+   },
+   "tokens": {
+    "bg": "#ffffff",
+    "ink": "#111417",
+    "accent": "#d0342c",
+    "muted": "#5c6670",
+    "line": "#dfe3e6"
+   },
+   "dials": {
+    "variance": 4,
+    "motion": 2,
+    "density": 7
+   }
+  },
+  {
+   "id": "tropical-brutalism",
+   "name": "Tropical Brutalism",
+   "vibe": "Brazilian concrete breathing: raw gray mass, lush green, hard sunlight and deep shadow.",
+   "file": "styles/tropical-brutalism.md",
+   "tags": [
+    "tropical",
+    "brutalism",
+    "concrete"
+   ],
+   "best_for": [
+    "architecture",
+    "hotels",
+    "botanical-brands"
+   ],
+   "fonts": {
+    "display": "Anton",
+    "body": "Space Grotesk",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#e8e2d4",
+    "ink": "#20241e",
+    "accent": "#2e6b34",
+    "muted": "#7a7f6a",
+    "line": "#3c4036"
+   },
+   "dials": {
+    "variance": 6,
+    "motion": 4,
+    "density": 4
+   }
+  },
+  {
+   "id": "vaporwave-sunset",
+   "name": "Vaporwave Sunset",
+   "vibe": "Retro-futurist sunset grids in peach, coral, and teal. A chrome sun that never quite sets.",
+   "file": "styles/vaporwave-sunset.md",
+   "tags": [
+    "vaporwave",
+    "retro",
+    "sunset"
+   ],
+   "best_for": [
+    "music",
+    "merch",
+    "events"
+   ],
+   "fonts": {
+    "display": "Monoton",
+    "body": "Space Grotesk",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#1a1216",
+    "ink": "#f7e8d8",
+    "accent": "#ff7e5f",
+    "muted": "#9a7f72",
+    "line": "#3a2a30"
+   },
+   "dials": {
+    "variance": 7,
+    "motion": 6,
+    "density": 3
+   }
+  },
+  {
+   "id": "vinyl-crate",
+   "name": "Vinyl Crate",
+   "vibe": "A beloved record store: sleeve grids, kraft dividers, sticker prices — analog warmth with crate-digger discipline.",
+   "file": "styles/vinyl-crate.md",
+   "tags": [
+    "vinyl",
+    "records",
+    "crate-digging"
+   ],
+   "best_for": [
+    "record-stores",
+    "music-blogs",
+    "radio"
+   ],
+   "fonts": {
+    "display": "Alfa Slab One",
+    "body": "DM Sans",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#efe3cb",
+    "ink": "#221a12",
+    "accent": "#c0392b",
+    "muted": "#7d6a52",
+    "line": "#d8c4a0"
+   },
+   "dials": {
+    "variance": 6,
+    "motion": 4,
+    "density": 5
+   }
+  },
+  {
+   "id": "y2k-chrome",
+   "name": "Y2K Chrome",
+   "vibe": "Liquid metal, iridescent gradients, bubbly type. The future as imagined in 1999.",
+   "file": "styles/y2k-chrome.md",
+   "tags": [
+    "y2k",
+    "chrome",
+    "iridescent",
+    "pop"
+   ],
+   "best_for": [
+    "beauty",
+    "pop culture",
+    "music",
+    "fashion"
+   ],
+   "fonts": {
+    "body": "Space Grotesk",
+    "display": "Unbounded",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "accent": "#b8c5ff",
+    "bg": "#0d0d12",
+    "ink": "#f4f4f8",
+    "line": "#ffffff26",
+    "muted": "#6e6e80",
+    "surface": "#15151d"
+   },
+   "dials": {
+    "density": 4,
+    "motion": 8,
+    "variance": 8
+   }
+  }
+ ]
+}
