@@ -1,0 +1,54 @@
+<!--tz-meta {"id":"testimonials-terminal","title":"Mono reviews","category":"Testimonials","file":"patterns/testimonials-terminal.html","tags":["cli","reviews"],"description":"Terminal-style review log with star ratings and VERIFIED tags.","dnas":["retro-terminal"]} -->
+<section class="tz-term" aria-label="Client reviews in terminal style">
+  <p class="tz-line"><span class="tz-p">$</span> cat reviews.txt</p>
+  <p class="tz-line tz-dim">────────────────────────────────────────────────────────────</p>
+  <p class="tz-line"><span class="tz-stars">★★★★★</span> "Site went live Friday, booked out by Monday." — @renatakim <span class="tz-tag">[VERIFIED]</span></p>
+  <p class="tz-line"><span class="tz-stars">★★★★★</span> "He answers email faster than my landlord." — @josiah.owens <span class="tz-tag">[VERIFIED]</span></p>
+  <p class="tz-line"><span class="tz-stars">★★★★★</span> "Plain words, no jargon, done on time." — @alba.lindqvist <span class="tz-tag">[VERIFIED]</span></p>
+  <p class="tz-line"><span class="tz-stars">★★★★☆</span> "Wanted more colors. He talked me out of it. He was right." — @devonpark <span class="tz-tag">[VERIFIED]</span></p>
+  <p class="tz-line"><span class="tz-stars">★★★★★</span> "My mom can update the menu herself now." — @toms.kitchen <span class="tz-tag">[VERIFIED]</span></p>
+  <p class="tz-line"><span class="tz-stars">★★★★★</span> "Fixed in one call what two agencies couldn't." — @whitaker.auto <span class="tz-tag">[VERIFIED]</span></p>
+  <p class="tz-line"><span class="tz-stars">★★★★★</span> "The invoice matched the quote. Imagine that." — @calloway.floral <span class="tz-tag">[VERIFIED]</span></p>
+  <p class="tz-line tz-dim">────────────────────────────────────────────────────────────</p>
+  <p class="tz-line"><span class="tz-p">$</span> avg --rating <span class="tz-out">→ 4.9 / 5.0 (127 reviews)</span></p>
+  <p class="tz-line"><span class="tz-p">$</span> hist --stars</p>
+  <p class="tz-line tz-dim">  5 ★ <span class="tz-bar5">████████████████████</span> 118</p>
+  <p class="tz-line tz-dim">  4 ★ <span class="tz-bar4">██</span> 7</p>
+  <p class="tz-line tz-dim">  3 ★ <span class="tz-bar4">·</span> 2</p>
+  <p class="tz-line"><span class="tz-p">$</span> would-recommend <span class="tz-out">→ 98% yes</span></p>
+  <p class="tz-line"><span class="tz-p">$</span> <span class="tz-cursor" aria-hidden="true">▊</span></p>
+</section>
+<style>
+.tz-term{
+  --bg:#0c0c0c;--green:#33dd66;--amber:#ffb000;--dim:#6f7a6f;
+  background:var(--bg);
+  color:var(--green);
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:clamp(12px,1.8vw,15px);
+  line-height:2.05;
+  padding:clamp(40px,6vw,72px) clamp(20px,5vw,64px);
+  overflow-x:auto;
+}
+.tz-line{margin:0;white-space:nowrap}
+.tz-p{color:var(--amber)}
+.tz-dim{color:var(--dim)}
+.tz-stars{color:var(--amber);letter-spacing:2px}
+.tz-tag{
+  color:var(--bg);
+  background:var(--green);
+  padding:1px 7px;
+  font-size:.82em;
+  letter-spacing:.06em;
+}
+.tz-out{color:#e8f5e9}
+.tz-bar5{color:var(--green)}
+.tz-bar4{color:var(--dim)}
+.tz-cursor{
+  display:inline-block;
+  animation:tz-blink 1.1s steps(1) infinite;
+}
+@keyframes tz-blink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){
+  .tz-cursor{animation:none}
+}
+</style>
