@@ -1,0 +1,84 @@
+<!--tz-meta {"id":"stats-progress","title":"Progress rings","category":"Stats","file":"patterns/stats-progress.html","tags":["rings","svg"],"description":"Chunky SVG progress rings with one oversized hero ring.","dnas":["industrial-brutalist"]} -->
+<section class="tz-rings">
+  <p class="tz-rings-kicker">Shop floor · Week 40</p>
+  <div class="tz-rings-row">
+    <figure class="tz-ring tz-ring-hero">
+      <svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="84" class="tz-ring-track"/><circle cx="100" cy="100" r="84" class="tz-ring-fill" stroke-dasharray="380.1 527.8" transform="rotate(-90 100 100)"/><text x="100" y="96" text-anchor="middle" class="tz-ring-num">72%</text><text x="100" y="118" text-anchor="middle" class="tz-ring-sub">on schedule</text></svg>
+      <figcaption>Jobs on schedule</figcaption>
+    </figure>
+    <figure class="tz-ring">
+      <svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="84" class="tz-ring-track"/><circle cx="100" cy="100" r="84" class="tz-ring-fill" stroke-dasharray="496.1 527.8" transform="rotate(-90 100 100)"/><text x="100" y="112" text-anchor="middle" class="tz-ring-num">94%</text></svg>
+      <figcaption>Inspections passed</figcaption>
+    </figure>
+    <figure class="tz-ring">
+      <svg viewBox="0 0 200 200"><circle cx="100" cy="100" r="84" class="tz-ring-track"/><circle cx="100" cy="100" r="84" class="tz-ring-fill" stroke-dasharray="31.7 527.8" transform="rotate(-90 100 100)"/><text x="100" y="112" text-anchor="middle" class="tz-ring-num">6%</text></svg>
+      <figcaption>Rework rate</figcaption>
+    </figure>
+  </div>
+</section>
+<style>
+.tz-rings{
+  background:#e8e6e0;
+  color:#14120e;
+  font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(32px,5vw,64px) clamp(20px,4vw,48px);
+}
+.tz-rings-kicker{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  opacity:.6;
+  margin:0 0 28px;
+}
+.tz-rings-row{
+  display:flex;
+  gap:clamp(20px,4vw,56px);
+  align-items:flex-end;
+  flex-wrap:wrap;
+}
+.tz-ring{
+  margin:0;
+  width:128px;
+}
+.tz-ring-hero{
+  width:min(240px,64vw);
+}
+.tz-ring svg{
+  width:100%;
+  height:auto;
+  display:block;
+}
+.tz-ring-track{
+  fill:none;
+  stroke:#cfccc2;
+  stroke-width:22;
+}
+.tz-ring-fill{
+  fill:none;
+  stroke:#d9481c;
+  stroke-width:22;
+  stroke-linecap:butt;
+}
+.tz-ring-num{
+  font:700 30px Arial,Helvetica,sans-serif;
+  fill:#14120e;
+  font-variant-numeric:tabular-nums;
+}
+.tz-ring-hero .tz-ring-num{
+  font-size:40px;
+}
+.tz-ring-sub{
+  font:10px ui-monospace,Menlo,monospace;
+  letter-spacing:.14em;
+  fill:#14120e;
+  opacity:.6;
+  text-transform:uppercase;
+}
+.tz-ring figcaption{
+  font-size:12px;
+  letter-spacing:.06em;
+  margin-top:10px;
+  opacity:.75;
+}
+</style>
