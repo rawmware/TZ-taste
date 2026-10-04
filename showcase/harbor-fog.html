@@ -1,0 +1,111 @@
+<!--tz-meta {"id":"showcase-harbor-fog","title":"Harbor Fog showcase","category":"Showcase","file":"showcase/harbor-fog.html","tags":["harbor-fog"],"description":"Live demo page for the Harbor Fog style DNA.","dnas":["harbor-fog"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Harbor Fog — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#e8e6df; --tz-surface:#dcd9d0; --tz-ink:#2b3138; --tz-muted:#7d838a;
+  --tz-accent:#c33a2c; --tz-line:#2b31381f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Karla",sans-serif;font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 4vw;border-bottom:1px solid var(--tz-line)}
+.tz-wordmark{font-family:"Anton",sans-serif;font-size:1.15rem;letter-spacing:0.05em}
+.tz-vis{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.14em;color:var(--tz-muted)}
+.tz-vis strong{color:var(--tz-ink);font-weight:500}
+.tz-hero{padding:7rem 4vw 4rem;position:relative;overflow:hidden}
+.tz-band{position:absolute;left:0;right:0;height:5.5rem;background:var(--tz-surface);opacity:0.75;pointer-events:none;animation:tz-drift 60s ease-in-out infinite alternate}
+.tz-band.tz-b1{top:2rem}
+.tz-band.tz-b2{top:16rem;animation-delay:-30s}
+@keyframes tz-drift{from{transform:translateX(-4%)}to{transform:translateX(4%)}}
+.tz-eyebrow{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.16em;color:var(--tz-muted);margin-bottom:1.4rem;position:relative}
+.tz-hero h1{font-family:"Anton",sans-serif;font-size:clamp(3.6rem,12vw,9rem);line-height:0.95;letter-spacing:0.005em;text-transform:uppercase;position:relative;animation:tz-blast 1.2s ease-out both}
+@keyframes tz-blast{from{opacity:0;transform:scale(1.04)}to{opacity:1;transform:scale(1)}}
+.tz-sub{margin-top:1.8rem;font-size:1.05rem;color:var(--tz-muted);max-width:44ch;position:relative}
+.tz-cta{display:inline-block;margin-top:2.2rem;background:var(--tz-accent);color:var(--tz-bg);font-family:"Anton",sans-serif;font-size:1.2rem;letter-spacing:0.06em;text-decoration:none;text-transform:uppercase;padding:1rem 2.4rem;position:relative;transition:opacity .15s ease}
+.tz-cta:hover{opacity:0.88}
+.tz-stripes{border-top:2px solid var(--tz-accent);border-bottom:2px solid var(--tz-accent);height:6px;margin:3.5rem 0 0}
+.tz-content{padding:3rem 4vw 1rem}
+.tz-content h2{font-family:"Anton",sans-serif;font-size:clamp(1.8rem,5vw,2.8rem);text-transform:uppercase;letter-spacing:0.02em;margin-bottom:0.4rem}
+.tz-subhead{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.12em;color:var(--tz-muted);margin-bottom:1.6rem}
+table.tz-tides{width:100%;border-collapse:collapse;max-width:680px}
+.tz-tides th{font-family:"IBM Plex Mono",monospace;font-size:0.66rem;font-weight:400;letter-spacing:0.14em;color:var(--tz-muted);text-align:left;padding:0.8rem 0;border-bottom:1px solid var(--tz-ink)}
+.tz-tides td{font-family:"IBM Plex Mono",monospace;font-size:0.88rem;padding:1rem 0;border-bottom:1px solid var(--tz-line)}
+.tz-tides td.tz-hi{color:var(--tz-ink)}
+.tz-quiet{margin:2.8rem 0 0;background:var(--tz-surface);padding:1.8rem;max-width:560px}
+.tz-quiet h2{font-family:"IBM Plex Mono",monospace;font-size:0.7rem;letter-spacing:0.16em;color:var(--tz-muted);font-weight:400;margin-bottom:0.7rem}
+.tz-quiet p{color:var(--tz-muted)}
+.tz-quiet strong{color:var(--tz-ink);font-weight:700}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Anton",sans-serif;font-size:1.7rem;text-transform:uppercase;letter-spacing:0.03em;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"IBM Plex Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"IBM Plex Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"IBM Plex Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-hero{padding-top:4.5rem}
+  .tz-vis{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">FOGLINE FERRY CO.</span>
+  <span class="tz-vis">VISIBILITY · <strong>200 M</strong></span>
+</header>
+
+<section class="tz-hero">
+  <span class="tz-band tz-b1" aria-hidden="true"></span>
+  <span class="tz-band tz-b2" aria-hidden="true"></span>
+  <p class="tz-eyebrow">43.07° N · 70.71° W · HARBOR REPORT 06:00</p>
+  <h1>Fog till noon.<br>Ferry runs anyway.</h1>
+  <p class="tz-sub">Low cloud, flat water, one horn every two minutes. The 07:15 leaves on time — it always leaves on time.</p>
+  <a class="tz-cta" href="#">Check today's crossings</a>
+</section>
+
+<div class="tz-stripes" aria-hidden="true"></div>
+
+<section class="tz-content">
+  <h2>Tide table</h2>
+  <p class="tz-subhead">OCT 3 · ALL TIMES LOCAL · METERS ABOVE CHART DATUM</p>
+  <table class="tz-tides">
+    <thead><tr><th>TIDE</th><th>TIME</th><th>HEIGHT</th></tr></thead>
+    <tbody>
+      <tr><td class="tz-hi">HIGH</td><td>06:12</td><td>2.8 M</td></tr>
+      <tr><td class="tz-hi">LOW</td><td>12:38</td><td>0.4 M</td></tr>
+      <tr><td class="tz-hi">HIGH</td><td>18:47</td><td>3.1 M</td></tr>
+      <tr><td class="tz-hi">LOW</td><td>00:59</td><td>0.2 M</td></tr>
+    </tbody>
+  </table>
+  <div class="tz-quiet">
+    <h2>FROM THE HARBORMASTER</h2>
+    <p><strong>Last crossing 23:40. Don't miss it.</strong> Bikes ride free before 8am. Dogs welcome, leashed, unimpressed by the fog like everyone else.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#e8e6df"></span><span class="tz-name">bg</span><span class="tz-hex">#e8e6df</span></li>
+    <li><span class="tz-chip" style="background:#dcd9d0"></span><span class="tz-name">surface</span><span class="tz-hex">#dcd9d0</span></li>
+    <li><span class="tz-chip" style="background:#2b3138"></span><span class="tz-name">ink</span><span class="tz-hex">#2b3138</span></li>
+    <li><span class="tz-chip" style="background:#7d838a"></span><span class="tz-name">muted</span><span class="tz-hex">#7d838a</span></li>
+    <li><span class="tz-chip" style="background:#c33a2c"></span><span class="tz-name">accent</span><span class="tz-hex">#c33a2c</span></li>
+    <li><span class="tz-chip" style="background:#2b31381f"></span><span class="tz-name">line</span><span class="tz-hex">#2b31381f</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
