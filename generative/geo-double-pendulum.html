@@ -1,0 +1,188 @@
+<!--tz-meta {"id":"gen-geo-double-pendulum","title":"Double Pendulum","category":"Generative","file":"generative/geo-double-pendulum.html","tags":["chaos","pendulum","physics"],"description":"A chaotic double pendulum integrated with RK4 paints a fading trail — drag the bob to rewrite its future.","dnas":["de-stijl-grid"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Double Pendulum · TZ-taste</title>
+<style>
+  .tz-page{background:#F4EFE4;color:#1A1A1A;min-height:100vh;font-family:Georgia,'Times New Roman',serif;margin:0}
+  .tz-wrap{max-width:1080px;margin:0 auto;padding:32px 20px 48px}
+  .tz-kicker{font-family:'Courier New',Courier,monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#D92B1F;margin:0 0 12px}
+  .tz-title{font-size:clamp(32px,6vw,52px);font-weight:700;margin:0 0 10px;line-height:1.05}
+  .tz-caption{font-size:16px;line-height:1.6;max-width:62ch;margin:0 0 4px;color:#4a4a4a}
+  .tz-controls{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+  .tz-btn{font-family:'Courier New',Courier,monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;background:transparent;color:#1A1A1A;border:2px solid #1A1A1A;padding:10px 18px;cursor:pointer}
+  .tz-btn:hover{background:#1A1A1A;color:#F4EFE4}
+  .tz-btn:active{transform:translateY(1px)}
+  .tz-canvas{display:block;width:100%;height:70vh;background:#F4EFE4;border:2px solid #1A1A1A;cursor:grab}
+  .tz-canvas:active{cursor:grabbing}
+  .tz-foot{font-family:'Courier New',Courier,monospace;font-size:12px;color:#8a8a8a;margin:14px 0 0;line-height:1.6}
+</style>
+</head>
+<body class="tz-page">
+<div class="tz-wrap">
+  <p class="tz-kicker">TZ-taste · Generative</p>
+  <h1 class="tz-title">Double Pendulum</h1>
+  <p class="tz-caption">A double pendulum integrated with RK4 — fully deterministic, utterly unpredictable. The red trail is just translucent overpaint fading each frame. Grab the outer bob and throw it somewhere new.</p>
+  <div class="tz-controls">
+    <button class="tz-btn" id="tz-seed" type="button">New seed</button>
+    <button class="tz-btn" id="tz-pause" type="button">Pause</button>
+    <button class="tz-btn" id="tz-clear" type="button">Clear</button>
+  </div>
+  <canvas class="tz-canvas" id="tz-canvas"></canvas>
+  <p class="tz-foot">One distinctive choice: the trail never stores history — each frame is 94% of the last. Drag the red bob to perturb. Seed <span id="tz-seednum"></span>.</p>
+</div>
+<script>
+(function(){
+  var BG='#F4EFE4', INK='#1A1A1A', RED='#D92B1F';
+  var canvas=document.getElementById('tz-canvas'), ctx=canvas.getContext('2d');
+  var seedBtn=document.getElementById('tz-seed'), pauseBtn=document.getElementById('tz-pause'),
+      clearBtn=document.getElementById('tz-clear'), seedNum=document.getElementById('tz-seednum');
+  var seed=31337, rng=mulberry32(seed);
+  var W=0,H=0, px=0, py=0, L1=0, L2=0;
+  var s=[2.4,2.0,0,0]; // th1, th2, w1, w2
+  var prevBob=null, dragging=false;
+  var running=true, raf=null;
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+
+  function accel(st){
+    var th1=st[0],th2=st[1],w1=st[2],w2=st[3];
+    var m1=1,m2=1,g=900;
+    var dd=th1-th2;
+    var den=2*m1+m2-m2*Math.cos(2*th1-2*th2);
+    var a1=(-g*(2*m1+m2)*Math.sin(th1)-m2*g*Math.sin(th1-2*th2)-2*Math.sin(dd)*m2*(w2*w2*L2+w1*w1*L1*Math.cos(dd)))/(L1*den);
+    var a2=(2*Math.sin(dd)*(w1*w1*L1*(m1+m2)+g*(m1+m2)*Math.cos(th1)+w2*w2*L2*m2*Math.cos(dd)))/(L2*den);
+    return [w1,w2,a1,a2];
+  }
+  function rk4(st,dt){
+    var k1=accel(st), i;
+    var s2=[],s3=[],s4=[];
+    for(i=0;i<4;i++)s2.push(st[i]+k1[i]*dt/2);
+    var k2=accel(s2);
+    for(i=0;i<4;i++)s3.push(st[i]+k2[i]*dt/2);
+    var k3=accel(s3);
+    for(i=0;i<4;i++)s4.push(st[i]+k3[i]*dt);
+    var k4=accel(s4);
+    var out=[];
+    for(i=0;i<4;i++)out.push(st[i]+dt/6*(k1[i]+2*k2[i]+2*k3[i]+k4[i]));
+    return out;
+  }
+
+  function bobPos(){
+    var x1=px+L1*Math.sin(s[0]), y1=py+L1*Math.cos(s[0]);
+    var x2=x1+L2*Math.sin(s[1]), y2=y1+L2*Math.cos(s[1]);
+    return {x1:x1,y1:y1,x2:x2,y2:y2};
+  }
+
+  function clearFull(){
+    ctx.fillStyle=BG;ctx.fillRect(0,0,W,H);
+  }
+
+  function render(fade,trailFrom){
+    if(fade){
+      ctx.fillStyle='rgba(244,239,228,0.06)';
+      ctx.fillRect(0,0,W,H);
+    }
+    var b=bobPos();
+    if(trailFrom&&prevBob){
+      ctx.strokeStyle=RED;ctx.lineWidth=2.5;ctx.lineCap='round';
+      ctx.beginPath();ctx.moveTo(prevBob.x,prevBob.y);ctx.lineTo(b.x2,b.y2);ctx.stroke();
+    }
+    ctx.strokeStyle=INK;ctx.lineWidth=4;ctx.lineCap='round';
+    ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(b.x1,b.y1);ctx.lineTo(b.x2,b.y2);ctx.stroke();
+    ctx.fillStyle=INK;
+    ctx.beginPath();ctx.arc(px,py,7,0,6.2832);ctx.fill();
+    ctx.beginPath();ctx.arc(b.x1,b.y1,10,0,6.2832);ctx.fill();
+    ctx.fillStyle=RED;
+    ctx.beginPath();ctx.arc(b.x2,b.y2,12,0,6.2832);ctx.fill();
+    ctx.strokeStyle=INK;ctx.lineWidth=2;
+    ctx.beginPath();ctx.arc(b.x2,b.y2,12,0,6.2832);ctx.stroke();
+    prevBob={x:b.x2,y:b.y2};
+  }
+
+  function initState(){
+    rng=mulberry32(seed);
+    s=[2.3+rng()*0.9, 1.9+rng()*0.9, 0, 0];
+    prevBob=null;
+    seedNum.textContent=seed;
+  }
+
+  function reseed(){
+    seed=(seed*9301+49297)%233280;
+    initState();clearFull();render(false,false);
+  }
+
+  function frame(){
+    if(!running){raf=null;return;}
+    if(!dragging){
+      s=rk4(s,1/120);
+      s=rk4(s,1/120);
+    }
+    render(true,true);
+    raf=requestAnimationFrame(frame);
+  }
+
+  function resize(){
+    var dpr=Math.min(window.devicePixelRatio||1,2);
+    var r=canvas.getBoundingClientRect();
+    W=r.width;H=r.height;
+    canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    px=W/2;py=H*0.30;L1=H*0.27;L2=H*0.23;
+    clearFull();render(false,false);
+  }
+
+  function canvasPos(e){
+    var r=canvas.getBoundingClientRect();
+    return {x:e.clientX-r.left, y:e.clientY-r.top};
+  }
+
+  canvas.addEventListener('pointerdown',function(e){
+    var p=canvasPos(e), b=bobPos();
+    var dx=p.x-b.x2, dy=p.y-b.y2;
+    if(dx*dx+dy*dy<28*28){
+      dragging=true;
+      canvas.setPointerCapture(e.pointerId);
+    }
+  });
+  canvas.addEventListener('pointermove',function(e){
+    if(!dragging)return;
+    var p=canvasPos(e);
+    var dx=p.x-px, dy=p.y-py;
+    var d=Math.hypot(dx,dy);
+    var maxD=L1+L2-2, minD=Math.abs(L1-L2)+2;
+    if(d>maxD){dx*=maxD/d;dy*=maxD/d;d=maxD;}
+    if(d<minD){dx*=minD/d;dy*=minD/d;d=minD;}
+    var a1=Math.atan2(dx,dy);
+    var cosA=(L1*L1+d*d-L2*L2)/(2*L1*d);
+    cosA=Math.max(-1,Math.min(1,cosA));
+    s[0]=a1-Math.acos(cosA);
+    var b1x=px+L1*Math.sin(s[0]), b1y=py+L1*Math.cos(s[0]);
+    s[1]=Math.atan2(p.x-b1x,p.y-b1y);
+    s[2]=0;s[3]=0;
+    var b=bobPos();
+    prevBob={x:b.x2,y:b.y2};
+    render(false,false);
+  });
+  function endDrag(){dragging=false;}
+  canvas.addEventListener('pointerup',endDrag);
+  canvas.addEventListener('pointercancel',endDrag);
+
+  seedBtn.addEventListener('click',reseed);
+  pauseBtn.addEventListener('click',function(){
+    running=!running;pauseBtn.textContent=running?'Pause':'Resume';
+    if(running&&!reduced&&!raf)raf=requestAnimationFrame(frame);
+  });
+  clearBtn.addEventListener('click',function(){clearFull();render(false,false);});
+
+  window.addEventListener('resize',resize);
+  initState();
+  resize();
+  if(!reduced)raf=requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
