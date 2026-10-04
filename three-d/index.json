@@ -1,0 +1,433 @@
+{
+ "count": 31,
+ "updated": "2026-10-04",
+ "usage": "Each file is a standalone Three.js scene (CDN import). Copy the whole file or lift the scene code. All original, MIT.",
+ "scenes": [
+  {
+   "id": "aurora-dome",
+   "title": "Aurora Dome",
+   "category": "3D",
+   "file": "three-d/aurora-dome.html",
+   "tags": [
+    "threejs",
+    "nocturnal"
+   ],
+   "description": "An inverted sky-dome carries an original GLSL aurora — warped fbm curtains in teal and violet over a star field.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "aurora-ribbons",
+   "title": "Borealis Ribbons",
+   "category": "3D",
+   "file": "three-d/aurora-ribbons.html",
+   "tags": [
+    "threejs",
+    "nocturne"
+   ],
+   "description": "Five shader-driven aurora ribbons ripple across a starry night sky.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "chrome-blob",
+   "title": "Liquid Chrome",
+   "category": "3D",
+   "file": "three-d/chrome-blob.html",
+   "tags": [
+    "threejs",
+    "lux"
+   ],
+   "description": "A molten chrome blob rippling under a procedural studio-light environment.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "circuit-pulse",
+   "title": "Circuit Traces",
+   "category": "3D",
+   "file": "three-d/circuit-pulse.html",
+   "tags": [
+    "threejs",
+    "electric"
+   ],
+   "description": "Light pulses travel procedural circuit traces across a dark amber PCB.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "coral-reef",
+   "title": "Coral Glow",
+   "category": "3D",
+   "file": "three-d/coral-reef.html",
+   "tags": [
+    "threejs",
+    "bioluminescent"
+   ],
+   "description": "Recursive branching corals glow in a deep teal abyss with drifting plankton.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "crystal-prism",
+   "title": "Prism Study",
+   "category": "3D",
+   "file": "three-d/crystal-prism.html",
+   "tags": [
+    "threejs",
+    "calm"
+   ],
+   "description": "A tumbling cluster of glass octahedra with inner-glow cores on a soft gallery-white stage.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "deep-ocean",
+   "title": "Deep Current",
+   "category": "3D",
+   "file": "three-d/deep-ocean.html",
+   "tags": [
+    "threejs",
+    "abyssal"
+   ],
+   "description": "Drifting current particles, swaying god-ray shafts, and twinkling bioluminescent plankton.",
+   "dnas": [
+    "glass-calm"
+   ]
+  },
+  {
+   "id": "dna-helix",
+   "title": "Helix Drift",
+   "category": "3D",
+   "file": "three-d/dna-helix.html",
+   "tags": [
+    "threejs",
+    "electric"
+   ],
+   "description": "Twin teal and magenta particle strands wind into a double helix with glowing rungs on near-black.",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "ember-wildfire",
+   "title": "Ember Drift",
+   "category": "3D",
+   "file": "three-d/ember-wildfire.html",
+   "tags": [
+    "threejs",
+    "warm"
+   ],
+   "description": "Rising embers with flicker and drifting smoke over a warm ground glow.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "floating-islands",
+   "title": "Low-Poly Islands",
+   "category": "3D",
+   "file": "three-d/floating-islands.html",
+   "tags": [
+    "threejs",
+    "serene"
+   ],
+   "description": "Pastel low-poly islands drift and bob at staggered heights under soft directional light.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "glass-torus-knot",
+   "title": "Glass Knot Studio",
+   "category": "3D",
+   "file": "three-d/glass-torus-knot.html",
+   "tags": [
+    "threejs",
+    "refined"
+   ],
+   "description": "A transmissive glass torus knot turning slowly under studio three-point lighting on a soft gradient.",
+   "dnas": [
+    "glass-calm"
+   ]
+  },
+  {
+   "id": "glitch-stream",
+   "title": "Glitch Stream",
+   "category": "3D",
+   "file": "three-d/glitch-stream.html",
+   "tags": [
+    "threejs",
+    "glitch"
+   ],
+   "description": "Abstract phosphor glyphs rain down through scanlines and RGB-split ghosts.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "ink-bloom",
+   "title": "Ink Bloom",
+   "category": "3D",
+   "file": "three-d/ink-bloom.html",
+   "tags": [
+    "threejs",
+    "minimal"
+   ],
+   "description": "Monochrome ink particles bloom outward with drag and fade, like a drop of sumi ink in water.",
+   "dnas": [
+    "ma-japanese"
+   ]
+  },
+  {
+   "id": "kaleidoscope-tunnel",
+   "title": "Kaleidoscope Tunnel",
+   "category": "3D",
+   "file": "three-d/kaleidoscope-tunnel.html",
+   "tags": [
+    "threejs",
+    "hypnotic"
+   ],
+   "description": "Endless tunnel of rotating rings over a folding kaleidoscope shader field.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "magnetic-field",
+   "title": "Field Lines",
+   "category": "3D",
+   "file": "three-d/magnetic-field.html",
+   "tags": [
+    "threejs",
+    "ambient"
+   ],
+   "description": "A dipole ring magnet wrapped in amber field lines and iron-filing dashes on charcoal.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "moon-flyover",
+   "title": "Lunar Flyover",
+   "category": "3D",
+   "file": "three-d/moon-flyover.html",
+   "tags": [
+    "threejs",
+    "stark"
+   ],
+   "description": "Slow camera flyover above a cratered, noise-displaced moon surface.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "neon-grid-horizon",
+   "title": "Neon Horizon",
+   "category": "3D",
+   "file": "three-d/neon-grid-horizon.html",
+   "tags": [
+    "threejs",
+    "synthwave"
+   ],
+   "description": "A teal perspective grid races toward a glowing amber sun over a deep-navy horizon — tasteful synthwave, no purple-blue cliché.",
+   "dnas": [
+    "glass-calm"
+   ]
+  },
+  {
+   "id": "origami-cranes",
+   "title": "Crane Flock",
+   "category": "3D",
+   "file": "three-d/origami-cranes.html",
+   "tags": [
+    "threejs",
+    "serene"
+   ],
+   "description": "Twenty-five faceted paper cranes flapping in V formation across a dawn sky.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "orrery",
+   "title": "Orrery",
+   "category": "3D",
+   "file": "three-d/orrery.html",
+   "tags": [
+    "threejs",
+    "cosmic"
+   ],
+   "description": "A sun and five procedural planets drift through dark, majestic space.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "paper-lanterns",
+   "title": "Lantern Festival",
+   "category": "3D",
+   "file": "three-d/paper-lanterns.html",
+   "tags": [
+    "threejs",
+    "serene"
+   ],
+   "description": "Forty glowing paper lanterns rise into a starry night sky.",
+   "dnas": [
+    "ma-japanese"
+   ]
+  },
+  {
+   "id": "particle-constellation",
+   "title": "Constellation Morph",
+   "category": "3D",
+   "file": "three-d/particle-constellation.html",
+   "tags": [
+    "threejs",
+    "ethereal"
+   ],
+   "description": "1500 additive particles drift and crossfade between sphere, torus and scattered field in deep indigo space.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "rain-glass",
+   "title": "Rain on Glass",
+   "category": "3D",
+   "file": "three-d/rain-glass.html",
+   "tags": [
+    "threejs",
+    "moody"
+   ],
+   "description": "Droplets trickle down glass over blurred city-light bokeh.",
+   "dnas": [
+    "glass-calm"
+   ]
+  },
+  {
+   "id": "ribbon-flow",
+   "title": "Ribbon Flow Field",
+   "category": "3D",
+   "file": "three-d/ribbon-flow.html",
+   "tags": [
+    "threejs",
+    "flow"
+   ],
+   "description": "Forty-eight translucent ribbons ride a sine-based pseudo-noise flow field through deep teal darkness.",
+   "dnas": [
+    "glass-calm"
+   ]
+  },
+  {
+   "id": "satellite-orbits",
+   "title": "Orbit Map",
+   "category": "3D",
+   "file": "three-d/satellite-orbits.html",
+   "tags": [
+    "threejs",
+    "orbital"
+   ],
+   "description": "A stylized shader earth with three tilted orbit rings and drifting satellite dots.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "starfield-warp",
+   "title": "Warp Starfield",
+   "category": "3D",
+   "file": "three-d/starfield-warp.html",
+   "tags": [
+    "threejs",
+    "hyperspace"
+   ],
+   "description": "Stars stream past the camera with motion-stretch trails and a cool-to-warm color shift; click to pause.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "terrain-waves",
+   "title": "Wireframe Terrain",
+   "category": "3D",
+   "file": "three-d/terrain-waves.html",
+   "tags": [
+    "threejs",
+    "technical"
+   ],
+   "description": "A cyan wireframe plane ripples with layered sine waves, colored by height, over a near-black field.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "three-d-readme",
+   "title": "3D Scene Collection",
+   "file": "three-d/README.md",
+   "description": "Index and engine notes for the 30 standalone Three.js ambient scenes."
+  },
+  {
+   "id": "topo-contours",
+   "title": "Topographic Map",
+   "category": "3D",
+   "file": "three-d/topo-contours.html",
+   "tags": [
+    "threejs",
+    "calm"
+   ],
+   "description": "A parchment heightfield with crisp ink contour lines drawn in a custom shader.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "voxel-city",
+   "title": "Voxel City Night",
+   "category": "3D",
+   "file": "three-d/voxel-city.html",
+   "tags": [
+    "threejs",
+    "city"
+   ],
+   "description": "Instanced voxel towers with a procedural lit-window texture drift beneath a slow aerial camera.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "wind-field",
+   "title": "Wind Vectors",
+   "category": "3D",
+   "file": "three-d/wind-field.html",
+   "tags": [
+    "threejs",
+    "airy"
+   ],
+   "description": "Hundreds of particles ride a living pseudo-noise wind field on a pale sky.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "zen-garden",
+   "title": "Raked Garden",
+   "category": "3D",
+   "file": "three-d/zen-garden.html",
+   "tags": [
+    "threejs",
+    "calm"
+   ],
+   "description": "Concentric raked sand rings circle weathered stones, one painted red.",
+   "dnas": [
+    "ma-japanese"
+   ]
+  }
+ ]
+}
