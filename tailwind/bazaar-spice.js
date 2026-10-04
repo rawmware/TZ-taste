@@ -1,0 +1,3 @@
+//tz-meta {"id":"tailwind-bazaar-spice","title":"Bazaar Spice Tailwind preset","category":"Tailwind","file":"tailwind/bazaar-spice.js","tags":["tailwind","preset","bazaar-spice"],"description":"Tailwind theme preset for the Bazaar Spice DNA.","dnas":["bazaar-spice"]}
+// Tailwind preset for the Bazaar Spice DNA. Extend tailwind.config with this.
+module.exports={theme:{extend:{colors:{tzbg:"#241109",tzink:"#f7e8cf",tzaccent:"#e9a820",tzmuted:"#b0854f",tzline:"#e9a82066",tzsurface:"#241109"},fontFamily:{display:["Yeseva One","serif"],body:["Work Sans","sans-serif"],mono:["IBM Plex Mono","monospace"]}}}};
