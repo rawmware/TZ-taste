@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-vinyl-crate",
+  "title": "Vinyl Crate design tokens",
+  "category": "Tokens",
+  "file": "tokens/vinyl-crate.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "vinyl-crate"
+  ],
+  "description": "W3C-format design tokens for the Vinyl Crate style DNA.",
+  "dnas": [
+   "vinyl-crate"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#efe3cb",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#221a12",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#c0392b",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#7d6a52",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#d8c4a0",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Alfa Slab One",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "DM Sans",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "vinyl-crate",
+  "name": "Vinyl Crate",
+  "vibe": "A beloved record store: sleeve grids, kraft dividers, sticker prices — analog warmth with crate-digger discipline."
+ }
+}
