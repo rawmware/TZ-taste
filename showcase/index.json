@@ -1,5 +1,5 @@
 {
- "count": 72,
+ "count": 92,
  "updated": "2026-10-04",
  "usage": "One live demo page per style DNA. Open in a browser to see the DNA working. Classes are tz- prefixed.",
  "showcases": [
@@ -56,6 +56,19 @@
    ]
   },
   {
+   "id": "showcase-apotheke",
+   "title": "Apotheke showcase",
+   "category": "Showcase",
+   "file": "showcase/apotheke.html",
+   "tags": [
+    "apotheke"
+   ],
+   "description": "Live demo page for the Apotheke style DNA.",
+   "dnas": [
+    "apotheke"
+   ]
+  },
+  {
    "id": "showcase-arctic-field",
    "title": "Arctic Field showcase",
    "category": "Showcase",
@@ -95,6 +108,19 @@
    ]
   },
   {
+   "id": "showcase-barbershop-pole",
+   "title": "Barbershop Pole showcase",
+   "category": "Showcase",
+   "file": "showcase/barbershop-pole.html",
+   "tags": [
+    "barbershop-pole"
+   ],
+   "description": "Live demo page for the Barbershop Pole style DNA.",
+   "dnas": [
+    "barbershop-pole"
+   ]
+  },
+  {
    "id": "showcase-bauhaus-primary",
    "title": "Bauhaus Primary showcase",
    "category": "Showcase",
@@ -121,6 +147,19 @@
    ]
   },
   {
+   "id": "showcase-bike-repair",
+   "title": "Bike Repair showcase",
+   "category": "Showcase",
+   "file": "showcase/bike-repair.html",
+   "tags": [
+    "bike-repair"
+   ],
+   "description": "Live demo page for the Bike Repair style DNA.",
+   "dnas": [
+    "bike-repair"
+   ]
+  },
+  {
    "id": "showcase-blueprint-tech",
    "title": "Blueprint Tech showcase",
    "category": "Showcase",
@@ -144,6 +183,19 @@
    "description": "Live demo page for the Botanical Lab style DNA.",
    "dnas": [
     "botanical-lab"
+   ]
+  },
+  {
+   "id": "showcase-cassette-jcard",
+   "title": "Cassette J-Card showcase",
+   "category": "Showcase",
+   "file": "showcase/cassette-jcard.html",
+   "tags": [
+    "cassette-jcard"
+   ],
+   "description": "Live demo page for the Cassette J-Card style DNA.",
+   "dnas": [
+    "cassette-jcard"
    ]
   },
   {
@@ -196,6 +248,19 @@
    "description": "Live demo page for the Constructivist Red style DNA.",
    "dnas": [
     "constructivist-red"
+   ]
+  },
+  {
+   "id": "showcase-corner-deli",
+   "title": "Corner Deli showcase",
+   "category": "Showcase",
+   "file": "showcase/corner-deli.html",
+   "tags": [
+    "corner-deli"
+   ],
+   "description": "Live demo page for the Corner Deli style DNA.",
+   "dnas": [
+    "corner-deli"
    ]
   },
   {
@@ -290,6 +355,19 @@
    ]
   },
   {
+   "id": "showcase-drive-in-theater",
+   "title": "Drive-In Theater showcase",
+   "category": "Showcase",
+   "file": "showcase/drive-in-theater.html",
+   "tags": [
+    "drive-in-theater"
+   ],
+   "description": "Live demo page for the Drive-In Theater style DNA.",
+   "dnas": [
+    "drive-in-theater"
+   ]
+  },
+  {
    "id": "showcase-editorial-serif",
    "title": "Editorial Serif showcase",
    "category": "Showcase",
@@ -300,6 +378,32 @@
    "description": "Live demo page for the Editorial Serif style DNA.",
    "dnas": [
     "editorial-serif"
+   ]
+  },
+  {
+   "id": "showcase-farmers-almanac",
+   "title": "Farmers Almanac showcase",
+   "category": "Showcase",
+   "file": "showcase/farmers-almanac.html",
+   "tags": [
+    "farmers-almanac"
+   ],
+   "description": "Live demo page for the Farmers Almanac style DNA.",
+   "dnas": [
+    "farmers-almanac"
+   ]
+  },
+  {
+   "id": "showcase-fishing-tackle",
+   "title": "Fishing Tackle showcase",
+   "category": "Showcase",
+   "file": "showcase/fishing-tackle.html",
+   "tags": [
+    "fishing-tackle"
+   ],
+   "description": "Live demo page for the Fishing Tackle style DNA.",
+   "dnas": [
+    "fishing-tackle"
    ]
   },
   {
@@ -485,6 +589,19 @@
    ]
   },
   {
+   "id": "showcase-locksmith-shop",
+   "title": "Locksmith Shop showcase",
+   "category": "Showcase",
+   "file": "showcase/locksmith-shop.html",
+   "tags": [
+    "locksmith-shop"
+   ],
+   "description": "Live demo page for the Locksmith Shop style DNA.",
+   "dnas": [
+    "locksmith-shop"
+   ]
+  },
+  {
    "id": "showcase-ma-japanese",
    "title": "Ma (Japanese Minimal) showcase",
    "category": "Showcase",
@@ -495,6 +612,19 @@
    "description": "Live demo page for the Ma (Japanese Minimal) style DNA.",
    "dnas": [
     "ma-japanese"
+   ]
+  },
+  {
+   "id": "showcase-matchbook-cover",
+   "title": "Matchbook Cover showcase",
+   "category": "Showcase",
+   "file": "showcase/matchbook-cover.html",
+   "tags": [
+    "matchbook-cover"
+   ],
+   "description": "Live demo page for the Matchbook Cover style DNA.",
+   "dnas": [
+    "matchbook-cover"
    ]
   },
   {
@@ -573,6 +703,19 @@
    "description": "Live demo page for the Newsroom Wire style DNA.",
    "dnas": [
     "newsroom-wire"
+   ]
+  },
+  {
+   "id": "showcase-night-market",
+   "title": "Night Market showcase",
+   "category": "Showcase",
+   "file": "showcase/night-market.html",
+   "tags": [
+    "night-market"
+   ],
+   "description": "Live demo page for the Night Market style DNA.",
+   "dnas": [
+    "night-market"
    ]
   },
   {
@@ -680,6 +823,32 @@
    ]
   },
   {
+   "id": "showcase-postage-stamp",
+   "title": "Postage Stamp showcase",
+   "category": "Showcase",
+   "file": "showcase/postage-stamp.html",
+   "tags": [
+    "postage-stamp"
+   ],
+   "description": "Live demo page for the Postage Stamp style DNA.",
+   "dnas": [
+    "postage-stamp"
+   ]
+  },
+  {
+   "id": "showcase-postcard-rack",
+   "title": "Postcard Rack showcase",
+   "category": "Showcase",
+   "file": "showcase/postcard-rack.html",
+   "tags": [
+    "postcard-rack"
+   ],
+   "description": "Live demo page for the Postcard Rack style DNA.",
+   "dnas": [
+    "postcard-rack"
+   ]
+  },
+  {
    "id": "showcase-retro-terminal",
    "title": "Retro Terminal showcase",
    "category": "Showcase",
@@ -703,6 +872,19 @@
    "description": "Live demo page for the Risograph Grain style DNA.",
    "dnas": [
     "risograph-grain"
+   ]
+  },
+  {
+   "id": "showcase-roadside-motel",
+   "title": "Roadside Motel showcase",
+   "category": "Showcase",
+   "file": "showcase/roadside-motel.html",
+   "tags": [
+    "roadside-motel"
+   ],
+   "description": "Live demo page for the Roadside Motel style DNA.",
+   "dnas": [
+    "roadside-motel"
    ]
   },
   {
@@ -742,6 +924,32 @@
    "description": "Live demo page for the Scandi Calm style DNA.",
    "dnas": [
     "scandi-calm"
+   ]
+  },
+  {
+   "id": "showcase-seed-packet",
+   "title": "Seed Packet showcase",
+   "category": "Showcase",
+   "file": "showcase/seed-packet.html",
+   "tags": [
+    "seed-packet"
+   ],
+   "description": "Live demo page for the Seed Packet style DNA.",
+   "dnas": [
+    "seed-packet"
+   ]
+  },
+  {
+   "id": "showcase-sewing-pattern",
+   "title": "Sewing Pattern showcase",
+   "category": "Showcase",
+   "file": "showcase/sewing-pattern.html",
+   "tags": [
+    "sewing-pattern"
+   ],
+   "description": "Live demo page for the Sewing Pattern style DNA.",
+   "dnas": [
+    "sewing-pattern"
    ]
   },
   {
@@ -797,6 +1005,19 @@
    ]
   },
   {
+   "id": "showcase-swimming-pool",
+   "title": "Swimming Pool showcase",
+   "category": "Showcase",
+   "file": "showcase/swimming-pool.html",
+   "tags": [
+    "swimming-pool"
+   ],
+   "description": "Live demo page for the Swimming Pool style DNA.",
+   "dnas": [
+    "swimming-pool"
+   ]
+  },
+  {
    "id": "showcase-swiss-airline",
    "title": "Swiss Airline showcase",
    "category": "Showcase",
@@ -833,6 +1054,19 @@
    "description": "Live demo page for the Swiss Rational style DNA.",
    "dnas": [
     "swiss-rational"
+   ]
+  },
+  {
+   "id": "showcase-ticket-stub",
+   "title": "Ticket Stub showcase",
+   "category": "Showcase",
+   "file": "showcase/ticket-stub.html",
+   "tags": [
+    "ticket-stub"
+   ],
+   "description": "Live demo page for the Ticket Stub style DNA.",
+   "dnas": [
+    "ticket-stub"
    ]
   },
   {
@@ -888,6 +1122,19 @@
    ]
   },
   {
+   "id": "showcase-typewriter-repair",
+   "title": "Typewriter Repair showcase",
+   "category": "Showcase",
+   "file": "showcase/typewriter-repair.html",
+   "tags": [
+    "typewriter-repair"
+   ],
+   "description": "Live demo page for the Typewriter Repair style DNA.",
+   "dnas": [
+    "typewriter-repair"
+   ]
+  },
+  {
    "id": "showcase-ukiyo-e-print",
    "title": "Ukiyo-e Print showcase",
    "category": "Showcase",
@@ -924,6 +1171,19 @@
    "description": "Live demo page for the Vinyl Crate style DNA.",
    "dnas": [
     "vinyl-crate"
+   ]
+  },
+  {
+   "id": "showcase-weather-station",
+   "title": "Weather Station showcase",
+   "category": "Showcase",
+   "file": "showcase/weather-station.html",
+   "tags": [
+    "weather-station"
+   ],
+   "description": "Live demo page for the Weather Station style DNA.",
+   "dnas": [
+    "weather-station"
    ]
   },
   {
