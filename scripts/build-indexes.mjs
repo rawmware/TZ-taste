@@ -50,6 +50,10 @@ const INDEXES = [
     usage: "SwiftUI view ports of the best patterns. Self-contained files with #Preview." },
   { dir: "starters", key: "starters", index: "starters/index.json", recursive: true,
     usage: "Runnable project starters (Next.js, Nuxt, SvelteKit, Astro), each wired to one DNA." },
+  { dir: "vscode", key: "vscode_themes", index: "vscode/index.json",
+    usage: "VS Code color themes, one per style DNA. Copy into your settings or an extension." },
+  { dir: "wallpapers", key: "wallpapers", index: "wallpapers/index.json",
+    usage: "Generative SVG wallpapers, one per style DNA. Open in a browser, set as desktop." },
 ];
 
 function metaOf(file) {
