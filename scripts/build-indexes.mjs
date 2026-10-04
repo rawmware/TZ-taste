@@ -4,7 +4,7 @@
 // This is how parallel contributors avoid index conflicts: files carry metadata,
 // indexes are derived.
 
-import { readFileSync, writeFileSync, readdirSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, readdirSync, existsSync, statSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -46,6 +46,10 @@ const INDEXES = [
     usage: "Table-based HTML email templates, inline CSS, Outlook-safe. Real email engineering." },
   { dir: "app-ui", key: "app_ui", index: "app-ui/index.json",
     usage: "App-interface patterns (dashboards, kanban, tables). Same conventions as patterns/." },
+  { dir: "swiftui", key: "swiftui_views", index: "swiftui/index.json",
+    usage: "SwiftUI view ports of the best patterns. Self-contained files with #Preview." },
+  { dir: "starters", key: "starters", index: "starters/index.json", recursive: true,
+    usage: "Runnable project starters (Next.js, Nuxt, SvelteKit, Astro), each wired to one DNA." },
 ];
 
 function metaOf(file) {
@@ -56,25 +60,49 @@ function metaOf(file) {
   if (file.endsWith(".json")) {
     try {
       const j = JSON.parse(text);
-      return j._tzmeta || null;
+      if (j._tzmeta) return j._tzmeta;
+      if (j["tz-taste"] && typeof j["tz-taste"] === "object") {
+        const t = j["tz-taste"];
+        const rel = file.startsWith(root) ? file.slice(root.length + 1) : file;
+        return { id: "starter-" + rel.split("/")[1], title: t.description || rel,
+          file: rel, dnas: t.dna ? [t.dna] : [], description: t.description || "" };
+      }
+      return null;
     } catch { return null; }
   }
   return null;
 }
 
 const counts = {};
-for (const { dir, key, index, usage } of INDEXES) {
+function walkFiles(dirPath, out) {
+  for (const f of readdirSync(dirPath).sort()) {
+    if (f === "index.json" || f.startsWith(".")) continue;
+    const full = join(dirPath, f);
+    let stat;
+    try { stat = statSync(full); } catch { continue; }
+    if (stat.isDirectory()) { walkFiles(full, out); continue; }
+    if (!stat.isFile()) continue;
+    out.push(full);
+  }
+}
+for (const { dir, key, index, usage, recursive } of INDEXES) {
   const dirPath = join(root, dir);
   if (!existsSync(dirPath)) { console.log(`skip ${dir} (missing)`); continue; }
   const entries = [];
-  for (const f of readdirSync(dirPath).sort()) {
+  const files = [];
+  if (recursive) walkFiles(dirPath, files);
+  else for (const f of readdirSync(dirPath).sort()) {
     if (f === "index.json" || f.startsWith(".")) continue;
     const full = join(dirPath, f);
     let stat;
     try { stat = (await import("node:fs")).statSync(full); } catch { continue; }
     if (!stat.isFile()) continue;
+    files.push(full);
+  }
+  for (const full of files) {
+    const rel = full.slice(root.length + 1);
     const meta = metaOf(full);
-    if (!meta) { console.log(`WARN: ${dir}/${f} has no tz-meta header`); continue; }
+    if (!meta) { console.log(`WARN: ${rel} has no tz-meta header`); continue; }
     entries.push(meta);
   }
   entries.sort((a, b) => String(a.id).localeCompare(String(b.id)));
@@ -100,6 +128,8 @@ if (existsSync(mPath)) {
     tailwind_presets: counts.presets ?? 0,
     emails: counts.emails ?? 0,
     app_ui: counts.app_ui ?? 0,
+    swiftui_views: counts.swiftui_views ?? 0,
+    starters: counts.starters ?? 0,
   };
   m.updated = today;
   writeFileSync(mPath, JSON.stringify(m, null, 1) + "\n");
