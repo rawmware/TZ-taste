@@ -1,0 +1,3 @@
+//tz-meta {"id":"tailwind-greenmarket-dawn","title":"Greenmarket Dawn Tailwind preset","category":"Tailwind","file":"tailwind/greenmarket-dawn.js","tags":["tailwind","preset","greenmarket-dawn"],"description":"Tailwind theme preset for the Greenmarket Dawn DNA.","dnas":["greenmarket-dawn"]}
+// Tailwind preset for the Greenmarket Dawn DNA. Extend tailwind.config with this.
+module.exports={theme:{extend:{colors:{tzbg:"#faf6ec",tzink:"#243015",tzaccent:"#4a7c2f",tzmuted:"#8a8468",tzline:"#24301529",tzsurface:"#faf6ec"},fontFamily:{display:["DM Serif Display","serif"],body:["Work Sans","sans-serif"],mono:["Courier Prime","monospace"]}}}};
