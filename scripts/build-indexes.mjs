@@ -50,6 +50,20 @@ const INDEXES = [
     usage: "SwiftUI view ports of the best patterns. Self-contained files with #Preview." },
   { dir: "starters", key: "starters", index: "starters/index.json", recursive: true,
     usage: "Runnable project starters (Next.js, Nuxt, SvelteKit, Astro), each wired to one DNA." },
+  { dir: "go", key: "go_pages", index: "go/index.json",
+    usage: "Go page programs (stdlib only). Run: go run go/<page>.go > out.html; tzserve.go serves any DNA." },
+  { dir: "ruby", key: "ruby_pages", index: "ruby/index.json",
+    usage: "Ruby ERB page builder (stdlib only). Run: ruby ruby/tz_build.rb --dna=<slug> --out=out.html" },
+  { dir: "kotlin", key: "kotlin_components", index: "kotlin/index.json",
+    usage: "Jetpack Compose-style Kotlin components, one DNA each." },
+  { dir: "dart", key: "dart_widgets", index: "dart/index.json",
+    usage: "Flutter widget ports of the best patterns. Self-contained with previews." },
+  { dir: "php", key: "php_pages", index: "php/index.json",
+    usage: "PHP page scripts (zero deps). Run: php php/<page>.php > out.html; TzBuild.php is the CLI builder." },
+  { dir: "csharp", key: "csharp_pages", index: "csharp/index.json",
+    usage: "C# Razor page templates for ASP.NET, one DNA each." },
+  { dir: "rust", key: "rust_pages", index: "rust/index.json",
+    usage: "Rust page renderers (zero deps). Compile: rustc rust/<page>.rs && ./<page> > out.html" },
   { dir: "vscode", key: "vscode_themes", index: "vscode/index.json",
     usage: "VS Code color themes, one per style DNA. Copy into your settings or an extension." },
   { dir: "wallpapers", key: "wallpapers", index: "wallpapers/index.json",
@@ -59,7 +73,9 @@ const INDEXES = [
 function metaOf(file) {
   const text = readFileSync(file, "utf8");
   let m = text.match(/<!--tz-meta\s+(\{.*?\})\s*-->/s)
-       || text.match(/^\/\/tz-meta\s+(\{.*?\})/m);
+       || text.match(/\/\/tz-meta\s+(\{.*?\})/)
+       || text.match(/^#<%# tz-meta\s+(\{.*?\})\s*%>/m)
+       || text.match(/^@\*tz-meta\s+(\{.*?\})\s*\*@/m);
   if (m) { try { return JSON.parse(m[1]); } catch { return null; } }
   if (file.endsWith(".json")) {
     try {
