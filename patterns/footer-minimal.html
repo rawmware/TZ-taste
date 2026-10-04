@@ -1,0 +1,33 @@
+<!--tz-meta {"id":"footer-minimal","title":"Minimal footer","category":"Sections","file":"patterns/footer-minimal.html","tags":["footer","minimal"],"description":"Ma-japanese footer: vast whitespace, one line of links, a single red seal mark, nothing else.","dnas":["ma-japanese"]} -->
+<section class="tz-footer-minimal">
+  <div class="tz-inner">
+    <a class="tz-mark" href="#top" aria-label="Back to top">
+      <span class="tz-seal">印</span>
+    </a>
+    <nav class="tz-links" aria-label="Footer">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <p class="tz-line">© 2026 Studio Kana · Kyoto</p>
+  </div>
+</section>
+<style>
+.tz-footer-minimal{--bg:#f7f5f0;--ink:#1a1a1a;--muted:#9a958a;--accent:#b3402e;
+  background:var(--bg);color:var(--ink);padding:clamp(80px,12vw,160px) 24px 56px;
+  font-family:Georgia,serif;text-align:center}
+.tz-footer-minimal .tz-inner{max-width:640px;margin:0 auto}
+.tz-footer-minimal .tz-mark{display:inline-block;margin-bottom:56px;text-decoration:none}
+.tz-footer-minimal .tz-seal{display:grid;place-items:center;width:64px;height:64px;background:var(--accent);
+  color:#fff;font-size:30px;border-radius:4px;transition:transform .3s cubic-bezier(.22,1,.36,1)}
+.tz-footer-minimal .tz-mark:hover .tz-seal{transform:rotate(-8deg)}
+.tz-footer-minimal .tz-links{display:flex;justify-content:center;gap:40px;margin-bottom:64px}
+.tz-footer-minimal .tz-links a{color:var(--ink);text-decoration:none;font-size:16px;position:relative}
+.tz-footer-minimal .tz-links a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;
+  background:var(--accent);transform:scaleX(0);transition:transform .3s cubic-bezier(.22,1,.36,1)}
+.tz-footer-minimal .tz-links a:hover::after{transform:scaleX(1)}
+.tz-footer-minimal .tz-line{font-size:13px;color:var(--muted);letter-spacing:.06em;margin:0}
+@media (max-width:520px){
+  .tz-footer-minimal .tz-links{gap:26px}
+}
+</style>
