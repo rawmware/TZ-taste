@@ -1,0 +1,401 @@
+<!--tz-meta {"id":"portfolio","title":"Mara Lindqvist — Brand Designer Portfolio","category":"Template","file":"templates/portfolio.html","tags":["portfolio"],"description":"Literary-magazine portfolio with an oversized folio index, hairline rules, and drop-cap colophon.","dnas":["editorial-serif"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mara Lindqvist — Brand designer, Lisbon</title>
+<meta name="description" content="Mara Lindqvist designs identities for publishers, restaurants, and cultural institutions. Selected work 2019–2026.">
+<!-- DNA: editorial-serif (styles/editorial-serif.md). Design read: a literary magazine that happens to be a portfolio, for a brand designer clients read before they hire. One distinctive choice: the folio — an oversized numbered index of twelve projects set like a magazine contents page. Dials V6/M3/D2. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f5f1e8;
+  --tz-surface:#efe9da;
+  --tz-ink:#1c1a15;
+  --tz-ink-soft:color-mix(in srgb, var(--tz-ink) 72%, var(--tz-bg));
+  --tz-accent:#b5461f;
+  --tz-accent-deep:#933511;
+  --tz-line:#1c1a1526;
+  --tz-line-strong:#1c1a154d;
+  --tz-muted:#6f6a5e;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+  --tz-s1:8px;--tz-s2:16px;--tz-s3:32px;--tz-s4:64px;--tz-s5:128px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Newsreader",Georgia,serif;
+  background:var(--tz-bg);color:var(--tz-ink);
+  font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--tz-accent);color:#fff}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.tz-mono{font-family:"Space Mono",monospace}
+.tz-rule{border:0;border-top:1px solid var(--tz-line-strong)}
+.tz-label{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--tz-ink-soft)}
+.skip{position:absolute;left:-999px;top:0;background:var(--tz-ink);color:#fff;padding:8px 16px;z-index:99;font-family:sans-serif}
+.skip:focus{left:8px;top:8px}
+
+/* ---------- masthead ---------- */
+.tz-masthead{border-bottom:1px solid var(--tz-line-strong)}
+.tz-masthead-top{display:flex;justify-content:space-between;align-items:baseline;padding:18px 0 14px}
+.tz-masthead-top .tz-name{font-family:"Fraunces",serif;font-weight:600;font-size:20px;letter-spacing:-0.01em}
+.tz-masthead-top nav{display:flex;gap:26px}
+.tz-masthead-top nav a{font-size:15px;color:var(--tz-ink-soft);border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.tz-masthead-top nav a:hover{color:var(--tz-accent-deep);border-color:var(--tz-accent-deep)}
+.tz-masthead-meta{display:flex;justify-content:space-between;padding:10px 0;font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--tz-ink-soft)}
+
+/* ---------- hero: full-bleed offset type ---------- */
+.tz-hero{padding:var(--tz-s5) 0 var(--tz-s4)}
+.tz-hero .tz-kicker{display:flex;align-items:center;gap:14px;margin-bottom:var(--tz-s3)}
+.tz-hero .tz-kicker::after{content:"";flex:1;height:1px;background:var(--tz-line-strong);max-width:420px}
+.tz-hero h1{
+  font-family:"Fraunces",serif;font-weight:400;letter-spacing:-0.03em;
+  font-size:clamp(52px,9vw,132px);line-height:.98;margin-left:-0.04em;
+}
+.tz-hero h1 em{font-style:italic;color:var(--tz-accent-deep)}
+.tz-hero-sub{display:grid;grid-template-columns:1fr 1fr;gap:var(--tz-s3);margin-top:var(--tz-s3)}
+.tz-hero-sub p{font-size:19px;max-width:44ch;color:var(--tz-ink-soft)}
+.tz-hero-sub p strong{color:var(--tz-ink);font-weight:600}
+.tz-folio-note{border-left:2px solid var(--tz-accent);padding-left:20px;align-self:start}
+.tz-folio-note .tz-num{font-family:"Fraunces",serif;font-size:44px;font-weight:300;color:var(--tz-accent-deep);line-height:1}
+.tz-folio-note p{font-size:15px;margin-top:8px}
+
+/* ---------- about with drop cap ---------- */
+.tz-about{padding:var(--tz-s4) 0;border-top:1px solid var(--tz-line-strong)}
+.tz-about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:var(--tz-s4)}
+.tz-dropcap::first-letter{
+  font-family:"Fraunces",serif;font-size:4.4em;float:left;line-height:.82;
+  padding-right:12px;color:var(--tz-accent-deep);font-weight:500;
+}
+.tz-about p+p{margin-top:1.2em}
+.tz-about aside{border-top:3px double var(--tz-line-strong);padding-top:20px;align-self:start}
+.tz-facts{list-style:none;display:grid;gap:14px;font-size:15px}
+.tz-facts li{display:grid;grid-template-columns:110px 1fr;gap:12px}
+.tz-facts .tz-label{padding-top:3px}
+
+/* ---------- folio index: the one weird thing ---------- */
+.tz-folio{padding:var(--tz-s4) 0 var(--tz-s5);border-top:1px solid var(--tz-line-strong)}
+.tz-folio-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--tz-s3)}
+.tz-folio-head h2{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(36px,5vw,64px);letter-spacing:-0.03em}
+.tz-folio-list{list-style:none}
+.tz-folio-item{
+  display:grid;grid-template-columns:88px 1fr auto;gap:24px;align-items:baseline;
+  padding:26px 0;border-top:1px solid var(--tz-line-strong);
+  transition:background .25s var(--tz-ease),padding .25s var(--tz-ease);
+  position:relative;
+}
+.tz-folio-item:last-child{border-bottom:1px solid var(--tz-line-strong)}
+.tz-folio-item:hover{background:var(--tz-surface);padding-left:16px;padding-right:16px}
+.tz-folio-item .tz-no{font-family:"Fraunces",serif;font-size:40px;font-weight:300;color:var(--tz-accent-deep);line-height:1}
+.tz-folio-item h3{font-family:"Fraunces",serif;font-size:clamp(24px,3vw,36px);font-weight:500;letter-spacing:-0.02em;line-height:1.1}
+.tz-folio-item h3 em{font-style:italic;color:var(--tz-ink-soft);font-weight:400;font-size:.72em;display:block;margin-top:4px}
+.tz-folio-item .tz-meta{text-align:right;font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-ink-soft);line-height:1.9}
+.tz-folio-item .tz-arrow{
+  position:absolute;right:16px;top:50%;transform:translate(-8px,-50%);opacity:0;
+  color:var(--tz-accent-deep);transition:opacity .25s,transform .25s var(--tz-ease);
+}
+.tz-folio-item:hover .tz-arrow{opacity:1;transform:translate(0,-50%)}
+.tz-folio-item:hover .tz-meta{padding-right:40px}
+
+/* ---------- process ---------- */
+.tz-process{padding:var(--tz-s4) 0;border-top:1px solid var(--tz-line-strong);background:var(--tz-surface)}
+.tz-process h2{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(32px,4vw,52px);letter-spacing:-0.03em;margin-bottom:var(--tz-s3)}
+.tz-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--tz-line-strong)}
+.tz-step{padding:28px 24px;border-right:1px solid var(--tz-line-strong)}
+.tz-step:last-child{border-right:0}
+.tz-step .tz-no{font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-accent-deep);letter-spacing:.12em}
+.tz-step h3{font-family:"Fraunces",serif;font-size:22px;font-weight:500;margin:12px 0 8px}
+.tz-step p{font-size:15px;color:var(--tz-ink-soft)}
+
+/* ---------- testimonial ---------- */
+.tz-praise{padding:var(--tz-s5) 0;border-top:1px solid var(--tz-line-strong)}
+.tz-praise blockquote{font-family:"Fraunces",serif;font-style:italic;font-weight:300;font-size:clamp(28px,4vw,48px);line-height:1.25;letter-spacing:-0.01em;max-width:24ch;text-wrap:balance}
+.tz-praise blockquote::before{content:"“";color:var(--tz-accent-deep)}
+.tz-praise blockquote::after{content:"”";color:var(--tz-accent-deep)}
+.tz-praise figcaption{margin-top:28px;font-size:16px;color:var(--tz-ink-soft)}
+.tz-praise figcaption b{color:var(--tz-ink);font-weight:600;display:block}
+
+/* ---------- contact ---------- */
+.tz-contact{padding:var(--tz-s5) 0;border-top:3px double var(--tz-line-strong)}
+.tz-contact h2{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(40px,6vw,80px);letter-spacing:-0.03em;line-height:1.02}
+.tz-contact h2 a{color:var(--tz-accent-deep);border-bottom:2px solid var(--tz-accent-deep);transition:color .2s}
+.tz-contact h2 a:hover{color:var(--tz-ink)}
+.tz-contact-meta{display:flex;gap:48px;margin-top:var(--tz-s3);flex-wrap:wrap}
+.tz-contact-meta div .tz-label{display:block;margin-bottom:8px}
+
+/* ---------- footer ---------- */
+.tz-footer{border-top:1px solid var(--tz-line-strong);padding:24px 0 40px}
+.tz-footer .tz-wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-ink-soft)}
+
+/* ---------- commissions ---------- */
+.tz-offer{padding:var(--tz-s4) 0;border-top:1px solid var(--tz-line-strong)}
+.tz-offer h2{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(32px,4vw,52px);letter-spacing:-0.03em;margin-bottom:var(--tz-s3)}
+.tz-offer-list{list-style:none;border-top:1px solid var(--tz-line-strong)}
+.tz-offer-list li{
+  display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;
+  padding:30px 0;border-bottom:1px solid var(--tz-line-strong);
+}
+.tz-offer-list h3{font-family:"Fraunces",serif;font-size:26px;font-weight:500;margin-bottom:6px}
+.tz-offer-list h3 em{font-style:italic;color:var(--tz-ink-soft);font-size:.7em}
+.tz-offer-list p{font-size:16px;color:var(--tz-ink-soft);max-width:56ch}
+.tz-offer-list .tz-fee{font-family:"Space Mono",monospace;font-size:13px;text-align:right;color:var(--tz-ink-soft);line-height:1.9;white-space:nowrap}
+.tz-offer-list .tz-fee b{color:var(--tz-accent-deep);font-size:16px}
+/* ---------- press ---------- */
+.tz-press{padding:var(--tz-s4) 0;border-top:1px solid var(--tz-line-strong);background:var(--tz-surface)}
+.tz-press h2{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(28px,3.4vw,42px);letter-spacing:-0.02em;margin-bottom:var(--tz-s3)}
+.tz-press-list{list-style:none;display:grid;gap:0}
+.tz-press-list li{
+  display:grid;grid-template-columns:1fr auto;gap:20px;align-items:baseline;
+  padding:20px 0;border-top:1px solid var(--tz-line-strong);font-size:17px;
+}
+.tz-press-list li:last-child{border-bottom:1px solid var(--tz-line-strong)}
+.tz-press-list cite{font-style:italic}
+.tz-press-list .tz-label{white-space:nowrap}
+
+/* ---------- now ---------- */
+.tz-now{padding:var(--tz-s4) 0;border-top:1px solid var(--tz-line-strong)}
+.tz-now-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:var(--tz-s4);align-items:start}
+.tz-now h2{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(30px,3.6vw,46px);letter-spacing:-0.02em;margin-bottom:16px}
+.tz-now h2 em{font-style:italic;color:var(--tz-accent-deep)}
+.tz-now-list{list-style:none;border-top:1px solid var(--tz-line-strong)}
+.tz-now-list li{padding:22px 0;border-bottom:1px solid var(--tz-line-strong);display:grid;grid-template-columns:120px 1fr;gap:16px;font-size:16px}
+.tz-now-list .tz-label{padding-top:4px}
+.tz-now-list p{color:var(--tz-ink-soft)}
+.tz-now-list p b{color:var(--tz-ink);font-weight:600}
+
+/* ---------- reveal ---------- */
+.tz-reveal{opacity:0;transform:translateY(16px);transition:opacity .7s var(--tz-ease),transform .7s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .tz-hero-sub,.tz-about-grid{grid-template-columns:1fr}
+  .tz-steps{grid-template-columns:1fr 1fr}
+  .tz-step:nth-child(2){border-right:0}
+  .tz-step{border-bottom:1px solid var(--tz-line-strong)}
+  .tz-step:nth-child(3),.tz-step:nth-child(4){border-bottom:0}
+  .tz-masthead-top nav{display:none}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .tz-folio-item{grid-template-columns:56px 1fr;gap:14px}
+  .tz-folio-item .tz-no{font-size:28px}
+  .tz-folio-item .tz-meta{display:none}
+  .tz-steps{grid-template-columns:1fr}
+  .tz-step{border-right:0;border-bottom:1px solid var(--tz-line-strong)}
+  .tz-step:last-child{border-bottom:0}
+  .tz-contact-meta{gap:24px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#folio">Skip to selected work</a>
+
+<header class="tz-masthead">
+  <div class="tz-wrap">
+    <div class="tz-masthead-top">
+      <span class="tz-name">Mara Lindqvist</span>
+      <nav aria-label="Primary">
+        <a href="#folio">Work</a><a href="#about">About</a><a href="#process">Process</a><a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="tz-masthead-meta">
+      <span>Brand designer · Lisbon</span>
+      <span>Vol. VII — 2019–2026</span>
+      <span>Available from March</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ============ hero ============ -->
+  <section class="tz-hero">
+    <div class="tz-wrap">
+      <p class="tz-kicker tz-label tz-reveal tz-in">Identity &amp; editorial design</p>
+      <h1 class="tz-reveal tz-in">I make businesses <em>look like</em> they mean it.</h1>
+      <div class="tz-hero-sub">
+        <p class="tz-reveal tz-in">I'm Mara Lindqvist, a brand designer working with publishers, restaurants, and cultural institutions. <strong>My work is the difference between a company that explains itself and one that simply is believed.</strong> Twelve projects below, each one still in the wild.</p>
+        <div class="tz-folio-note tz-reveal tz-in">
+          <div class="tz-num">12</div>
+          <p class="tz-label">Selected projects,<br>2019 – 2026</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ about ============ -->
+  <section class="tz-about" id="about">
+    <div class="tz-wrap tz-about-grid">
+      <aside class="tz-reveal">
+        <ul class="tz-facts">
+          <li><span class="tz-label">Based</span><span>Lisbon, working across Europe</span></li>
+          <li><span class="tz-label">Focus</span><span>Identity, editorial, wayfinding</span></li>
+          <li><span class="tz-label">Clients</span><span>Publishers, restaurants, museums, festivals</span></li>
+          <li><span class="tz-label">Awards</span><span>D&amp;AD Wood Pencil ×2, ADC Merit</span></li>
+          <li><span class="tz-label">Elsewhere</span><span>Guest critic, ESAD Matosinhos</span></li>
+        </ul>
+      </aside>
+      <div class="tz-reveal">
+        <p class="tz-dropcap">Good identities are not decorated; they are decided. For seven years I've worked with founders and directors who know their business is better than it looks, and we fix that — slowly, on paper first, in rooms together. I take four commissions a year. Each one gets my full attention and my full stubbornness.</p>
+        <p>My studio is small on purpose: me, a printmaker I share a press with, and a developer who tolerates my opinions about letterspacing. We have never missed a deadline we set ourselves, which is why I set so few.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ folio index: the one weird thing ============ -->
+  <section class="tz-folio" id="folio">
+    <div class="tz-wrap">
+      <div class="tz-folio-head tz-reveal">
+        <h2>Selected work</h2>
+        <span class="tz-label">Contents · hover to open</span>
+      </div>
+      <ol class="tz-folio-list">
+        <li><a class="tz-folio-item tz-reveal" href="#contact"><span class="tz-no">01</span><h3>Casa Verde<em>Identity &amp; packaging — organic grocer, Porto</em></h3><span class="tz-meta">2025<br>Identity</span><span class="tz-arrow" aria-hidden="true">→</span></a></li>
+        <li><a class="tz-folio-item tz-reveal" href="#contact"><span class="tz-no">02</span><h3>The Salt Review<em>Editorial system — quarterly food journal</em></h3><span class="tz-meta">2025<br>Editorial</span><span class="tz-arrow" aria-hidden="true">→</span></a></li>
+        <li><a class="tz-folio-item tz-reveal" href="#contact"><span class="tz-no">03</span><h3>Museu do Fado<em>Wayfinding &amp; exhibition graphics — Lisbon</em></h3><span class="tz-meta">2024<br>Wayfinding</span><span class="tz-arrow" aria-hidden="true">→</span></a></li>
+        <li><a class="tz-folio-item tz-reveal" href="#contact"><span class="tz-no">04</span><h3>Forno Antigo<em>Rebrand — 112-year-old bakery, Braga</em></h3><span class="tz-meta">2024<br>Identity</span><span class="tz-arrow" aria-hidden="true">→</span></a></li>
+        <li><a class="tz-folio-item tz-reveal" href="#contact"><span class="tz-no">05</span><h3>Atlas Editions<em>Cover system — independent publisher</em></h3><span class="tz-meta">2023<br>Editorial</span><span class="tz-arrow" aria-hidden="true">→</span></a></li>
+        <li><a class="tz-folio-item tz-reveal" href="#contact"><span class="tz-no">06</span><h3>Jardim Seco<em>Identity — landscape studio, Alentejo</em></h3><span class="tz-meta">2023<br>Identity</span><span class="tz-arrow" aria-hidden="true">→</span></a></li>
+        <li><a class="tz-folio-item tz-reveal" href="#contact"><span class="tz-no">07</span><h3>Noite Branca<em>Festival identity — Braga's all-night arts festival</em></h3><span class="tz-meta">2022<br>Campaign</span><span class="tz-arrow" aria-hidden="true">→</span></a></li>
+        <li><a class="tz-folio-item tz-reveal" href="#contact"><span class="tz-no">08</span><h3>Tipografia Real<em>Typeface &amp; specimen — revival of a 1920s foundry face</em></h3><span class="tz-meta">2022<br>Type</span><span class="tz-arrow" aria-hidden="true">→</span></a></li>
+        <li><a class="tz-folio-item tz-reveal" href="#contact"><span class="tz-no">09</span><h3>Quinta das Flores<em>Wine labels — Douro valley estate</em></h3><span class="tz-meta">2021<br>Packaging</span><span class="tz-arrow" aria-hidden="true">→</span></a></li>
+        <li><a class="tz-folio-item tz-reveal" href="#contact"><span class="tz-no">10</span><h3>Biblioteca Viva<em>Identity — mobile library, rural schools</em></h3><span class="tz-meta">2021<br>Identity</span><span class="tz-arrow" aria-hidden="true">→</span></a></li>
+        <li><a class="tz-folio-item tz-reveal" href="#contact"><span class="tz-no">11</span><h3>Cerâmica Sul<em>Rebrand — tile workshop, third generation</em></h3><span class="tz-meta">2020<br>Identity</span><span class="tz-arrow" aria-hidden="true">→</span></a></li>
+        <li><a class="tz-folio-item tz-reveal" href="#contact"><span class="tz-no">12</span><h3>Papel &amp; Pedra<em>First commission — stationery studio, my own</em></h3><span class="tz-meta">2019<br>Identity</span><span class="tz-arrow" aria-hidden="true">→</span></a></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ process ============ -->
+  <section class="tz-process" id="process">
+    <div class="tz-wrap">
+      <h2 class="tz-reveal">How a commission goes</h2>
+      <div class="tz-steps tz-reveal">
+        <div class="tz-step"><p class="tz-no">PHASE I</p><h3>The long conversation</h3><p>Two weeks of talking, visiting, and looking at everything you've ever made. I take notes on paper.</p></div>
+        <div class="tz-step"><p class="tz-no">PHASE II</p><h3>The shortlist</h3><p>Three directions, presented in the room, pinned to the wall. We argue. One survives.</p></div>
+        <div class="tz-step"><p class="tz-no">PHASE III</p><h3>The system</h3><p>The surviving direction becomes rules: type, color, layout, voice. Rules you can actually follow.</p></div>
+        <div class="tz-step"><p class="tz-no">PHASE IV</p><h3>The handover</h3><p>A printed manual, digital files, and one training session with whoever touches the brand daily.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ commissions ============ -->
+  <section class="tz-offer">
+    <div class="tz-wrap">
+      <h2 class="tz-reveal">What a commission covers</h2>
+      <ul class="tz-offer-list">
+        <li class="tz-reveal">
+          <div><h3>Identity <em>— the full instrument</em></h3><p>Naming, logo, typography, color, and a printed manual your team can actually follow. Includes one training session.</p></div>
+          <span class="tz-fee"><b>from €18k</b><br>12–16 weeks</span>
+        </li>
+        <li class="tz-reveal">
+          <div><h3>Editorial <em>— systems for publishers</em></h3><p>Grids, type systems, and cover logic for magazines, journals, and book series. Built to survive staff changes.</p></div>
+          <span class="tz-fee"><b>from €12k</b><br>8–12 weeks</span>
+        </li>
+        <li class="tz-reveal">
+          <div><h3>Wayfinding <em>— buildings that explain themselves</em></h3><p>Signage and environmental graphics for museums, libraries, and cultural spaces. Prototyped at full scale.</p></div>
+          <span class="tz-fee"><b>from €24k</b><br>16–24 weeks</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ press ============ -->
+  <section class="tz-press">
+    <div class="tz-wrap">
+      <h2 class="tz-reveal">In print</h2>
+      <ul class="tz-press-list tz-reveal">
+        <li><cite>"Lindqvist designs identities the way editors cut copy — nothing wasted."</cite><span class="tz-label">— Form Magazine, 2025</span></li>
+        <li><cite>"The Fado museum wayfinding is a masterclass in restraint."</cite><span class="tz-label">— Design Weekly, 2024</span></li>
+        <li><cite>"Twelve projects, twelve arguments won. The portfolio of the year."</cite><span class="tz-label">— Papel Journal, 2023</span></li>
+        <li><cite>"Proof that a small studio with strong opinions beats a big one with none."</cite><span class="tz-label">— The Brand Review, 2022</span></li>
+        <li><cite>"Her specimens read like short stories. You finish them wanting more."</cite><span class="tz-label">— Type Notes, 2021</span></li>
+        <li><cite>"The rare designer clients describe as 'difficult' the way athletes describe a good coach."</cite><span class="tz-label">— Studio Visit Podcast, 2020</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ praise ============ -->
+  <section class="tz-praise">
+    <div class="tz-wrap tz-reveal">
+      <blockquote>She argued with us for a month about a comma in our tagline, and she was right. Sales are up, but more importantly, we finally look like ourselves.</blockquote>
+      <figcaption><b>Tomás Ribeiro</b>Director, Museu do Fado</figcaption>
+    </div>
+  </section>
+
+  <!-- ============ now ============ -->
+  <section class="tz-now">
+    <div class="tz-wrap tz-now-grid">
+      <div class="tz-reveal">
+        <h2>What I'm <em>into now</em></h2>
+        <p style="color:var(--tz-ink-soft)">The studio notebook, unedited. Updated when something earns it.</p>
+      </div>
+      <ul class="tz-now-list tz-reveal">
+        <li><span class="tz-label">Reading</span><p><b>The Architecture of Persuasion</b> — on how buildings argue. Slowly changing how I think about wayfinding briefs.</p></li>
+        <li><span class="tz-label">Making</span><p>A revival of a 1920s Portuguese foundry face, cut for screen. Currently arguing with the lowercase <b>g</b>.</p></li>
+        <li><span class="tz-label">Teaching</span><p>Guest critic at ESAD Matosinhos this spring — second-years, identity briefs, wonderfully stubborn students.</p></li>
+        <li><span class="tz-label">Booking</span><p><b>One commission slot left for 2026.</b> A publisher, a restaurant, or something I haven't imagined yet.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ working note ============ -->
+  <section class="tz-about" style="border-top:0">
+    <div class="tz-wrap tz-reveal">
+      <p class="tz-label" style="margin-bottom:20px">A note on working together</p>
+      <p style="font-family:'Fraunces',serif;font-weight:300;font-size:clamp(26px,3.2vw,40px);line-height:1.35;max-width:32ch;letter-spacing:-0.01em">
+        "The best identities come from clients who bring a strong opinion
+        and let me argue with it. If you already know exactly what you want,
+        you don't need me — <em style="color:var(--tz-accent-deep)">you need a production artist.</em>"
+      </p>
+      <p class="tz-label" style="margin-top:20px">— from the commission FAQ, question one</p>
+    </div>
+  </section>
+
+  <!-- ============ contact ============ -->
+  <section class="tz-contact" id="contact">
+    <div class="tz-wrap">
+      <p class="tz-label tz-reveal">Commissions open March 2027</p>
+      <h2 class="tz-reveal" style="margin-top:16px">Write to <a href="mailto:hello@maralindqvist.studio">hello@maralindqvist.studio</a> with the problem, not the solution.</h2>
+      <div class="tz-contact-meta tz-reveal">
+        <div><span class="tz-label">Studio</span><span>Rua das Flores 94, Lisbon<br>Visits by appointment</span></div>
+        <div><span class="tz-label">Response time</span><span>Within five working days</span></div>
+        <div><span class="tz-label">Elsewhere</span><span>Instagram · Are.na · LinkedIn</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <span>© 2026 Mara Lindqvist · Set in Fraunces &amp; Newsreader</span>
+    <span>This page is the portfolio — no templates were harmed.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){e.classList.add('tz-in')}); return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en,i){
+      if(en.isIntersecting){ setTimeout(function(){en.target.classList.add('tz-in')}, i*70); io.unobserve(en.target); }
+    });
+  },{threshold:.1});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
