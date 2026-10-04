@@ -1,0 +1,199 @@
+{
+ "count": 12,
+ "updated": "2026-10-04",
+ "usage": "Table-based HTML email templates, inline CSS, Outlook-safe. Real email engineering.",
+ "emails": [
+  {
+   "id": "abandoned-cart",
+   "title": "Abandoned Cart Reminder",
+   "category": "Email",
+   "file": "emails/abandoned-cart.html",
+   "tags": [
+    "email",
+    "ecommerce",
+    "retention",
+    "cart"
+   ],
+   "description": "Honest cart-reminder email for a ceramics shop: item rows, one nudge, zero dark patterns.",
+   "dnas": [
+    "sahara-ochre"
+   ]
+  },
+  {
+   "id": "event-invite",
+   "title": "Event Invitation Email",
+   "category": "Email",
+   "file": "emails/event-invite.html",
+   "tags": [
+    "event",
+    "invitation",
+    "rsvp",
+    "music"
+   ],
+   "description": "Concrete Frequencies warehouse techno night invite: black room, acid lime, date, venue, lineup and RSVP.",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "feature-announcement",
+   "title": "Feature Announcement",
+   "category": "Email",
+   "file": "emails/feature-announcement.html",
+   "tags": [
+    "email",
+    "changelog",
+    "saas",
+    "product"
+   ],
+   "description": "Changelog-style product email announcing scheduled digests for a deploy-alerts tool.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "fundraising-appeal",
+   "title": "Fundraising Appeal",
+   "category": "Email",
+   "file": "emails/fundraising-appeal.html",
+   "tags": [
+    "email",
+    "nonprofit",
+    "donation",
+    "fundraising"
+   ],
+   "description": "Honest winter donation appeal for a community food shelf: specific numbers, specific ask, no guilt.",
+   "dnas": [
+    "cottage-warm"
+   ]
+  },
+  {
+   "id": "job-application-update",
+   "title": "Job Application Update — Interview Invite",
+   "category": "Email",
+   "file": "emails/job-application-update.html",
+   "tags": [
+    "email",
+    "hiring",
+    "interview",
+    "hr"
+   ],
+   "description": "Application status email inviting a candidate to interview: date, interviewer, format, prep.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "newsletter",
+   "title": "Weekly Newsletter Email",
+   "category": "Email",
+   "file": "emails/newsletter.html",
+   "tags": [
+    "newsletter",
+    "weekly",
+    "editorial",
+    "publishing"
+   ],
+   "description": "Dog-Ear weekly books newsletter, issue 214, with three real story blurbs and a hairline editorial layout.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "onboarding-drip-1",
+   "title": "Onboarding Drip, Day 3",
+   "category": "Email",
+   "file": "emails/onboarding-drip-1.html",
+   "tags": [
+    "email",
+    "onboarding",
+    "saas",
+    "lifecycle"
+   ],
+   "description": "Day-3 onboarding email for a transit app: one power tip, one rider success story, one action.",
+   "dnas": [
+    "transit-swiss"
+   ]
+  },
+  {
+   "id": "password-reset",
+   "title": "Password Reset Email",
+   "category": "Email",
+   "file": "emails/password-reset.html",
+   "tags": [
+    "password-reset",
+    "security",
+    "transactional",
+    "banking"
+   ],
+   "description": "Lumen Bank security-conscious password reset: 30-minute link, request details, and what Lumen will never ask for.",
+   "dnas": [
+    "laboratory-clean"
+   ]
+  },
+  {
+   "id": "product-launch",
+   "title": "Product Launch Email",
+   "category": "Email",
+   "file": "emails/product-launch.html",
+   "tags": [
+    "launch",
+    "product",
+    "announcement",
+    "hardware"
+   ],
+   "description": "Anvil Keyboards launches the ANVIL-65 mechanical keyboard: brutal spec table, square corners, safety-orange CTA.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "receipt",
+   "title": "Order Receipt Email",
+   "category": "Email",
+   "file": "emails/receipt.html",
+   "tags": [
+    "receipt",
+    "transactional",
+    "order",
+    "ecommerce"
+   ],
+   "description": "Vessel Coffee Roasters order receipt with tabulated line items, shipping, tax and totals.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "welcome",
+   "title": "SaaS Welcome Email",
+   "category": "Email",
+   "file": "emails/welcome.html",
+   "tags": [
+    "welcome",
+    "onboarding",
+    "saas",
+    "transactional"
+   ],
+   "description": "Cadence scheduling-SaaS welcome with one clear first action: connect your calendar.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "winback",
+   "title": "Winback — We Miss You",
+   "category": "Email",
+   "file": "emails/winback.html",
+   "tags": [
+    "email",
+    "winback",
+    "retention",
+    "retail"
+   ],
+   "description": "Re-engagement email for a record store: a genuine reason to return, no fake discount.",
+   "dnas": [
+    "vinyl-crate"
+   ]
+  }
+ ]
+}
