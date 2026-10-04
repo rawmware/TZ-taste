@@ -1,0 +1,80 @@
+<!--tz-meta {"id":"testimonial-carousel","title":"Testimonial carousel","category":"Sections","file":"patterns/testimonial-carousel.html","tags":["testimonials","carousel"],"description":"Editorial-serif testimonial carousel: oversized pull-quote, client index dots, auto-advance with pause on hover.","dnas":["editorial-serif"]} -->
+<section class="tz-testimonial-carousel" aria-roledescription="carousel" aria-label="Client testimonials">
+  <p class="tz-eyebrow">Word of mouth</p>
+  <div class="tz-stage">
+    <blockquote class="tz-slide tz-active">
+      <p class="tz-quote">"They rebuilt our booking flow in three weeks. Online reservations went from 12% of covers to 61% — I stopped answering the phone during service."</p>
+      <footer><b>Amara Osei</b><span>Owner, Ember &amp; Oak Restaurant</span></footer>
+    </blockquote>
+    <blockquote class="tz-slide">
+      <p class="tz-quote">"The first agency that asked what our regulars actually wanted instead of pitching a rebrand. The site pays for itself every Friday night."</p>
+      <footer><b>Tomás Rivera</b><span>GM, Copperline Brewery</span></footer>
+    </blockquote>
+    <blockquote class="tz-slide">
+      <p class="tz-quote">"I sent a voice memo at midnight with half an idea. By Friday there was a working prototype my investors could click through."</p>
+      <footer><b>June Park</b><span>Founder, Fieldnotes App</span></footer>
+    </blockquote>
+  </div>
+  <div class="tz-controls">
+    <button class="tz-prev" type="button" aria-label="Previous testimonial">←</button>
+    <div class="tz-dots" role="tablist" aria-label="Choose testimonial">
+      <button type="button" class="tz-dot tz-on" aria-label="Show testimonial 1"></button>
+      <button type="button" class="tz-dot" aria-label="Show testimonial 2"></button>
+      <button type="button" class="tz-dot" aria-label="Show testimonial 3"></button>
+    </div>
+    <button class="tz-next" type="button" aria-label="Next testimonial">→</button>
+  </div>
+</section>
+<style>
+.tz-testimonial-carousel{--bg:#f6f1e7;--ink:#26221a;--muted:#8a7f68;--accent:#a4552e;
+  background:var(--bg);color:var(--ink);text-align:center;
+  padding:clamp(72px,10vw,140px) clamp(20px,6vw,80px);font-family:Georgia,serif}
+.tz-testimonial-carousel .tz-eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 40px;font-family:-apple-system,'Segoe UI',sans-serif;font-weight:600}
+.tz-testimonial-carousel .tz-stage{max-width:860px;margin:0 auto;position:relative;min-height:300px}
+.tz-testimonial-carousel .tz-slide{position:absolute;inset:0;opacity:0;transform:translateX(36px);
+  transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1);
+  pointer-events:none;margin:0;display:flex;flex-direction:column;justify-content:center}
+.tz-testimonial-carousel .tz-slide.tz-active{opacity:1;transform:none;pointer-events:auto;position:relative}
+.tz-testimonial-carousel .tz-quote{font-size:clamp(24px,3.6vw,40px);line-height:1.35;font-style:italic;
+  margin:0 0 32px;letter-spacing:-.01em;text-wrap:balance}
+.tz-testimonial-carousel .tz-quote::before{content:"“";color:var(--accent)}
+.tz-testimonial-carousel .tz-quote::after{content:"”";color:var(--accent)}
+.tz-testimonial-carousel footer b{display:block;font-family:-apple-system,'Segoe UI',sans-serif;
+  font-size:15px;font-weight:700;font-style:normal}
+.tz-testimonial-carousel footer span{font-family:-apple-system,'Segoe UI',sans-serif;font-size:13.5px;color:var(--muted)}
+.tz-testimonial-carousel .tz-controls{display:flex;align-items:center;justify-content:center;gap:28px;margin-top:48px}
+.tz-testimonial-carousel .tz-prev,.tz-testimonial-carousel .tz-next{width:52px;height:52px;border-radius:50%;
+  border:1px solid #26221a33;background:transparent;color:var(--ink);font-size:20px;cursor:pointer;
+  transition:all .25s}
+.tz-testimonial-carousel .tz-prev:hover,.tz-testimonial-carousel .tz-next:hover{border-color:var(--accent);color:var(--accent)}
+.tz-testimonial-carousel .tz-dots{display:flex;gap:10px}
+.tz-testimonial-carousel .tz-dot{width:34px;height:4px;border:0;background:#26221a22;cursor:pointer;padding:0;
+  transition:background .3s}
+.tz-testimonial-carousel .tz-dot.tz-on{background:var(--accent)}
+@media (max-width:560px){
+  .tz-testimonial-carousel .tz-stage{min-height:380px}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-testimonial-carousel .tz-slide{transition:none}
+}
+</style>
+<script>
+(function(){
+  var root=document.querySelector('.tz-testimonial-carousel');
+  var slides=root.querySelectorAll('.tz-slide'),dots=root.querySelectorAll('.tz-dot'),i=0,timer;
+  function go(n){
+    i=(n+slides.length)%slides.length;
+    slides.forEach(function(s,k){s.classList.toggle('tz-active',k===i)});
+    dots.forEach(function(d,k){d.classList.toggle('tz-on',k===i)});
+  }
+  function auto(){timer=setInterval(function(){go(i+1)},6000)}
+  function stop(){clearInterval(timer)}
+  root.querySelector('.tz-prev').addEventListener('click',function(){stop();go(i-1);auto()});
+  root.querySelector('.tz-next').addEventListener('click',function(){stop();go(i+1);auto()});
+  dots.forEach(function(d,k){d.addEventListener('click',function(){stop();go(k);auto()})});
+  root.addEventListener('mouseenter',stop);
+  root.addEventListener('mouseleave',auto);
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches)auto();
+})();
+</script>
