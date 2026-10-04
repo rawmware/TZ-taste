@@ -1,0 +1,208 @@
+{
+ "count": 14,
+ "updated": "2026-10-04",
+ "usage": "React (TSX) component ports of the best patterns. Props-driven, zero extra deps.",
+ "react_components": [
+  {
+   "id": "react-bento-features",
+   "title": "Bento features (React)",
+   "category": "React",
+   "file": "react/BentoFeatures.tsx",
+   "tags": [
+    "react",
+    "bento",
+    "features"
+   ],
+   "description": "Asymmetric Memphis bento: hard shadows, squiggles, a rotated sticker card. Deliberately never three equal cards.",
+   "dnas": [
+    "memphis-milano"
+   ]
+  },
+  {
+   "id": "react-cta-deploy",
+   "title": "Deploy CTA (React)",
+   "category": "React",
+   "file": "react/CtaDeploy.tsx",
+   "tags": [
+    "react",
+    "cta"
+   ],
+   "description": "Laboratory-clean call to action: a typed deploy command with calibration meta, spec table and a single measured button.",
+   "dnas": [
+    "laboratory-clean"
+   ]
+  },
+  {
+   "id": "react-faq-accordion",
+   "title": "FAQ accordion (React)",
+   "category": "React",
+   "file": "react/FaqAccordion.tsx",
+   "tags": [
+    "react",
+    "faq"
+   ],
+   "description": "Scandi-calm accordion: hairline dividers, serif numerals, a plus that folds into a cross. One open at a time.",
+   "dnas": [
+    "scandi-calm"
+   ]
+  },
+  {
+   "id": "react-features-tabs",
+   "title": "Tabbed features (React)",
+   "category": "React",
+   "file": "react/FeaturesTabs.tsx",
+   "tags": [
+    "react",
+    "features",
+    "tabs"
+   ],
+   "description": "Blueprint-styled tabs where every feature reads like a labeled schematic figure with spec tables and corner registration marks.",
+   "dnas": [
+    "blueprint-tech"
+   ]
+  },
+  {
+   "id": "react-footer-luxe",
+   "title": "Luxe footer (React)",
+   "category": "React",
+   "file": "react/FooterLuxe.tsx",
+   "tags": [
+    "react",
+    "footer"
+   ],
+   "description": "Near-black footer with champagne numerals marking each quiet serif link row. Translated from the luxe footer pattern.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "react-hero-editorial",
+   "title": "Editorial hero (React)",
+   "category": "React",
+   "file": "react/HeroEditorial.tsx",
+   "tags": [
+    "react",
+    "hero",
+    "editorial"
+   ],
+   "description": "Mono eyebrow, oversized Fraunces headline, hairline meta row, arch graphic and a rotated margin label. Translated from the editorial hero pattern.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "react-hero-vaporwave",
+   "title": "Vaporwave hero (React)",
+   "category": "React",
+   "file": "react/HeroVaporwave.tsx",
+   "tags": [
+    "react",
+    "hero",
+    "vaporwave"
+   ],
+   "description": "Amber-to-rose slitted sunset disc over a perspective grid floor, chrome Unbounded headline, on-air mono row. Translated from the vaporwave hero pattern.",
+   "dnas": [
+    "y2k-chrome"
+   ]
+  },
+  {
+   "id": "react-how-it-works",
+   "title": "How it works (React)",
+   "category": "React",
+   "file": "react/HowItWorks.tsx",
+   "tags": [
+    "react",
+    "steps"
+   ],
+   "description": "Museum-placard steps: sticky roman numerals beside catalog-numbered placards with hairline rules.",
+   "dnas": [
+    "museum-placard"
+   ]
+  },
+  {
+   "id": "react-logo-marquee",
+   "title": "Logo ticker marquee (React)",
+   "category": "React",
+   "file": "react/LogoMarquee.tsx",
+   "tags": [
+    "react",
+    "marquee",
+    "logos"
+   ],
+   "description": "Industrial-brutalist ticker: numbered condensed Anton wordmarks scrolling under a hazard stripe, orange diamonds, factory spec plate below.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "react-nav-mega-menu",
+   "title": "Mega menu nav (React)",
+   "category": "React",
+   "file": "react/NavMegaMenu.tsx",
+   "tags": [
+    "react",
+    "nav"
+   ],
+   "description": "Swiss-rational top bar with numbered items and a full-width hover panel of link columns, red index markers throughout.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "react-newsletter-form",
+   "title": "Newsletter form (React)",
+   "category": "React",
+   "file": "react/NewsletterForm.tsx",
+   "tags": [
+    "react",
+    "newsletter"
+   ],
+   "description": "Cottage-warm signup card with a stamp-like border and a React-state success note. No page reload, no false promises.",
+   "dnas": [
+    "cottage-warm"
+   ]
+  },
+  {
+   "id": "react-pricing-honest",
+   "title": "Honest pricing matrix (React)",
+   "category": "React",
+   "file": "react/PricingHonest.tsx",
+   "tags": [
+    "react",
+    "pricing"
+   ],
+   "description": "Comparison matrix that lists what each plan leaves out, not just what it includes. Fine-print strip included.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "react-stats-terminal",
+   "title": "Terminal stats readout (React)",
+   "category": "React",
+   "file": "react/StatsTerminal.tsx",
+   "tags": [
+    "react",
+    "stats"
+   ],
+   "description": "Stats rendered as a phosphor-terminal session: command line, dotted leaders, meter bars, scanlines, blinking block cursor.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "react-testimonial-wall",
+   "title": "Testimonial wall (React)",
+   "category": "React",
+   "file": "react/TestimonialWall.tsx",
+   "tags": [
+    "react",
+    "testimonials"
+   ],
+   "description": "Offset masonry wall of quotes in Parisian chic: serif pull quotes, atelier numerals, no two cards alike.",
+   "dnas": [
+    "parisian-chic"
+   ]
+  }
+ ]
+}
