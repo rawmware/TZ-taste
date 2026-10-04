@@ -1,0 +1,175 @@
+<!--tz-meta {"id":"paper-boat-pond","title":"Paper Boat Pond","category":"3D","file":"three-d/paper-boat-pond.html","tags":["threejs","paper","pond"],"description":"Folded paper sailboats drift across a still pond, trailing expanding ripples past lily pads.","dnas":["origami-fold"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Paper Boat Pond — TZ-taste</title>
+<style>
+  html, body { margin:0; height:100%; overflow:hidden; background:#dfe8e4; }
+  #app { position:fixed; inset:0; }
+  #app canvas { display:block; }
+  .caption { position:fixed; left:18px; bottom:16px; z-index:5; color:#3a4a44;
+    font:12px/1.6 system-ui, -apple-system, sans-serif; letter-spacing:.05em;
+    opacity:.9; pointer-events:none; }
+  .caption b { display:block; font-size:13px; letter-spacing:.22em; text-transform:uppercase; }
+  #fallback { display:none; position:fixed; inset:0; z-index:10; place-items:center;
+    color:#3a4a44; font:14px/1.6 system-ui, sans-serif; text-align:center;
+    padding:32px; background:#dfe8e4; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="caption"><b>Paper Boat Pond</b>five boats, one pond, no wind required<br/>drag to orbit &middot; scroll to zoom</div>
+<div id="fallback"><p>This scene needs WebGL, which your browser could not provide.<br/>Try a recent version of Chrome, Safari, Firefox or Edge.</p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (e) {
+  document.getElementById('fallback').style.display = 'grid';
+  throw e;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('app').appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xdfe8e4);
+scene.fog = new THREE.Fog(0xdfe8e4, 40, 120);
+
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 400);
+camera.position.set(16, 11, 20);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.target.set(0, 0.5, 0);
+controls.maxPolarAngle = 1.5;
+controls.minDistance = 8;
+controls.maxDistance = 70;
+
+scene.add(new THREE.HemisphereLight(0xf4f2e8, 0x8fa89a, 0.9));
+const sun = new THREE.DirectionalLight(0xfff2dd, 1.1);
+sun.position.set(24, 30, 12);
+scene.add(sun);
+
+/* ---------- pond ---------- */
+const pond = new THREE.Mesh(
+  new THREE.CircleGeometry(30, 48),
+  new THREE.MeshStandardMaterial({ color: 0x9fc8d4, roughness: 0.25, metalness: 0.1 }));
+pond.rotation.x = -Math.PI / 2;
+scene.add(pond);
+const bank = new THREE.Mesh(
+  new THREE.RingGeometry(30, 46, 48),
+  new THREE.MeshStandardMaterial({ color: 0xb9c9a8, roughness: 1 }));
+bank.rotation.x = -Math.PI / 2;
+bank.position.y = -0.05;
+scene.add(bank);
+
+/* ---------- paper boats ---------- */
+const paperMat = new THREE.MeshStandardMaterial({ color: 0xf6f2e8, roughness: 0.85, side: THREE.DoubleSide });
+const accentMat = new THREE.MeshStandardMaterial({ color: 0xb3402e, roughness: 0.85, side: THREE.DoubleSide });
+function makeBoat(sailMat) {
+  const g = new THREE.Group();
+  const hull = new THREE.Mesh(new THREE.CylinderGeometry(0.85, 0.45, 0.7, 4, 1), paperMat);
+  hull.rotation.y = Math.PI / 4;
+  hull.scale.set(1, 1, 1.7);
+  hull.position.y = 0.25;
+  g.add(hull);
+  const mast = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 2.4, 6), paperMat);
+  mast.position.y = 1.6;
+  g.add(mast);
+  const shape = new THREE.Shape();
+  shape.moveTo(0, 0); shape.lineTo(1.15, 0.9); shape.lineTo(0, 1.8); shape.closePath();
+  const sail = new THREE.Mesh(new THREE.ShapeGeometry(shape), sailMat);
+  sail.position.set(0.06, 0.9, 0);
+  g.add(sail);
+  return g;
+}
+const boats = [];
+const boatSeeds = [[-8, -4, 0.4], [6, 3, 2.2], [-2, 8, 4.0], [10, -7, 1.1], [-11, 6, 5.3]];
+for (let i = 0; i < boatSeeds.length; i++) {
+  const b = makeBoat(i % 2 === 0 ? paperMat : accentMat);
+  b.position.set(boatSeeds[i][0], 0, boatSeeds[i][1]);
+  b.rotation.y = boatSeeds[i][2];
+  scene.add(b);
+  boats.push({ g: b, ph: i * 1.7, spd: 0.25 + (i % 3) * 0.12 });
+}
+
+/* ---------- lily pads + reeds ---------- */
+const padMat = new THREE.MeshStandardMaterial({ color: 0x3e7d4e, roughness: 0.9 });
+const padSpots = [[4, -10], [-6, 10], [12, 6], [-13, -8], [2, 13]];
+for (const s of padSpots) {
+  const pad = new THREE.Mesh(new THREE.CircleGeometry(0.9 + Math.random() * 0.5, 20), padMat);
+  pad.rotation.x = -Math.PI / 2;
+  pad.position.set(s[0], 0.03, s[1]);
+  scene.add(pad);
+}
+const reedMat = new THREE.MeshStandardMaterial({ color: 0x6f7f52, roughness: 1 });
+for (let i = 0; i < 14; i++) {
+  const a = (i / 14) * Math.PI * 2 + 0.2;
+  const h = 2.2 + Math.random() * 1.6;
+  const reed = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.08, h, 5), reedMat);
+  reed.position.set(Math.cos(a) * 31.5, h / 2 - 0.1, Math.sin(a) * 31.5);
+  reed.rotation.z = (Math.random() - 0.5) * 0.14;
+  scene.add(reed);
+}
+
+/* ---------- ripples ---------- */
+const ripples = [];
+const ripMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.5, side: THREE.DoubleSide });
+for (let i = 0; i < 7; i++) {
+  const ring = new THREE.Mesh(new THREE.RingGeometry(0.9, 1.0, 40), ripMat.clone());
+  ring.rotation.x = -Math.PI / 2;
+  ring.position.y = 0.04;
+  scene.add(ring);
+  ripples.push({ m: ring, t: Math.random() });
+}
+
+/* ---------- frame loop ---------- */
+const clock = new THREE.Clock();
+function renderFrame(t, dt) {
+  for (const b of boats) {
+    b.g.rotation.y += dt * b.spd * 0.15;
+    b.g.position.y = 0.12 + Math.sin(t * 1.2 + b.ph) * 0.1;
+    b.g.rotation.z = Math.sin(t * 1.5 + b.ph) * 0.05;
+  }
+  for (const r of ripples) {
+    r.t += dt * 0.18;
+    if (r.t > 1) {
+      r.t = 0;
+      const b = boats[Math.floor(Math.random() * boats.length)];
+      r.m.position.x = b.g.position.x;
+      r.m.position.z = b.g.position.z;
+    }
+    const s = 0.5 + r.t * 3.2;
+    r.m.scale.set(s, s, 1);
+    r.m.material.opacity = 0.5 * (1 - r.t);
+  }
+  controls.update();
+  renderer.render(scene, camera);
+}
+if (REDUCED) {
+  renderFrame(1.2, 0);
+} else {
+  renderer.setAnimationLoop(() => {
+    const dt = Math.min(clock.getDelta(), 0.05);
+    renderFrame(clock.elapsedTime, dt);
+  });
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
