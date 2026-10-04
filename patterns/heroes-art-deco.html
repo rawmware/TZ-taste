@@ -1,0 +1,42 @@
+<!--tz-meta {"id":"heroes-art-deco","title":"Art deco hero","category":"Hero","file":"patterns/heroes-art-deco.html","tags":["art-deco","gold","geometric"],"description":"Black and gold hero: SVG sunburst rays behind a serif headline, stepped geometric borders.","dnas":["dark-luxe"]} -->
+<section class="tz-deco">
+  <div class="tz-deco-rays" aria-hidden="true"></div>
+  <div class="tz-deco-frame" aria-hidden="true"></div>
+  <svg class="tz-deco-steps" viewBox="0 0 220 24" aria-hidden="true">
+    <polyline points="2,22 2,12 22,12 22,4 42,4 42,12 62,12 62,22" fill="none" stroke="#c9a24b" stroke-width="2"/>
+    <polyline points="79,22 79,12 99,12 99,4 119,4 119,12 139,12 139,22" fill="none" stroke="#c9a24b" stroke-width="2"/>
+    <polyline points="156,22 156,12 176,12 176,4 196,4 196,12 216,12 216,22" fill="none" stroke="#c9a24b" stroke-width="2"/>
+  </svg>
+  <p class="tz-deco-kicker">Maison Aurélie · Fine Jewellery · Est. 1962</p>
+  <h1 class="tz-deco-h">Cut for the city<br>that never <em>sleeps.</em></h1>
+  <p class="tz-deco-sub">Bespoke pieces cast in our New York atelier, finished by hand, guaranteed for life.</p>
+  <a class="tz-deco-cta" href="#viewing">Book a private viewing</a>
+  <p class="tz-deco-note">Walk-ins welcome Thursday to Saturday, eleven to seven.</p>
+</section>
+<style>
+.tz-deco{--black:#0d0c0a;--gold:#c9a24b;--gold-dim:#c9a24b55;--cream:#f3ead6;
+  background:var(--black);color:var(--cream);position:relative;overflow:hidden;
+  padding:clamp(88px,11vw,160px) clamp(32px,7vw,110px);
+  font-family:Georgia,'Times New Roman',serif}
+.tz-deco-rays{position:absolute;top:-160px;right:-120px;width:min(620px,110vw);aspect-ratio:1;
+  background:repeating-conic-gradient(from 0deg,#c9a24b2e 0deg 4deg,transparent 4deg 10deg);
+  -webkit-mask-image:radial-gradient(circle,#000 0%,transparent 66%);
+  mask-image:radial-gradient(circle,#000 0%,transparent 66%);pointer-events:none}
+.tz-deco-frame{position:absolute;inset:16px;border:1px solid var(--gold-dim);pointer-events:none;
+  box-shadow:inset 0 0 0 7px var(--black),inset 0 0 0 8px #c9a24b33}
+.tz-deco-steps{width:220px;max-width:60vw;height:auto;margin:0 0 30px;position:relative}
+.tz-deco-kicker{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--gold);margin:0 0 26px;position:relative}
+.tz-deco-h{font-size:clamp(46px,7.5vw,104px);line-height:1.04;letter-spacing:-.02em;
+  font-weight:400;margin:0 0 28px;position:relative;max-width:14ch}
+.tz-deco-h em{font-style:italic;color:var(--gold)}
+.tz-deco-sub{font-size:clamp(16px,1.6vw,20px);line-height:1.6;max-width:38ch;opacity:.82;
+  margin:0 0 44px;position:relative}
+.tz-deco-cta{display:inline-block;color:var(--gold);text-decoration:none;position:relative;
+  font-family:ui-monospace,Menlo,monospace;font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+  border:1px solid var(--gold);padding:18px 34px;transition:background .25s ease,color .25s ease}
+.tz-deco-cta:hover{background:var(--gold);color:var(--black)}
+.tz-deco-note{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cream);opacity:.55;margin:26px 0 0;position:relative}
+@media (max-width:520px){.tz-deco-frame{inset:10px}}
+</style>
