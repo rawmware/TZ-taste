@@ -1,0 +1,154 @@
+<!--tz-meta {"id":"dna-helix","title":"Helix Drift","category":"3D","file":"three-d/dna-helix.html","tags":["threejs","electric"],"description":"Twin teal and magenta particle strands wind into a double helix with glowing rungs on near-black.","dnas":["acid-rave"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Helix Drift — TZ-taste</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #050507; }
+  canvas { display: block; }
+  .caption {
+    position: fixed; left: 18px; bottom: 16px; color: #f0abfc; pointer-events: none;
+    font: 12px/1.6 system-ui, -apple-system, sans-serif; letter-spacing: .14em;
+    text-transform: uppercase; opacity: .85;
+  }
+  .caption small { display: block; letter-spacing: .05em; text-transform: none; opacity: .55; }
+  .fallback {
+    position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+    color: #f0abfc; font: 14px system-ui, sans-serif; padding: 2rem; text-align: center;
+  }
+</style>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+</head>
+<body>
+<div class="caption">Helix Drift<small>drag to orbit &middot; 1200 particles, additive glow</small></div>
+<div class="fallback" id="fallback" hidden>WebGL is unavailable in this browser, so this scene cannot render.</div>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const fallback = document.getElementById('fallback');
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (err) {
+  fallback.hidden = false;
+  throw err;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x050507);
+scene.fog = new THREE.FogExp2(0x050507, 0.03);
+
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 200);
+camera.position.set(6, 2, 17);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+
+const group = new THREE.Group();
+scene.add(group);
+
+const TURNS = 4.5, HEIGHT = 15, RADIUS = 2.4, PER = 600;
+const teal = new THREE.Color(0x2dd4bf), magenta = new THREE.Color(0xf0f);
+const tealDim = new THREE.Color(0x0e7490), magDim = new THREE.Color(0xa21caf);
+
+function strandPoints(phase, colorA, colorB) {
+  const pos = new Float32Array(PER * 3);
+  const col = new Float32Array(PER * 3);
+  const tmp = new THREE.Color();
+  for (let i = 0; i < PER; i++) {
+    const f = i / (PER - 1);
+    const a = f * TURNS * Math.PI * 2 + phase;
+    const jitter = 0.12;
+    pos[i*3]   = Math.cos(a) * RADIUS + (Math.random() - 0.5) * jitter;
+    pos[i*3+1] = (f - 0.5) * HEIGHT + (Math.random() - 0.5) * jitter;
+    pos[i*3+2] = Math.sin(a) * RADIUS + (Math.random() - 0.5) * jitter;
+    tmp.copy(colorA).lerp(colorB, Math.random() * 0.55);
+    col[i*3] = tmp.r; col[i*3+1] = tmp.g; col[i*3+2] = tmp.b;
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  g.setAttribute('color', new THREE.BufferAttribute(col, 3));
+  return g;
+}
+
+const ptsMat = new THREE.PointsMaterial({
+  size: 0.14, vertexColors: true, transparent: true, opacity: 0.95,
+  blending: THREE.AdditiveBlending, depthWrite: false
+});
+group.add(new THREE.Points(strandPoints(0, teal, tealDim), ptsMat));
+group.add(new THREE.Points(strandPoints(Math.PI, magenta, magDim), ptsMat));
+
+// Rungs connecting the strands every few steps
+const RUNGS = 46;
+const rungPos = new Float32Array(RUNGS * 6);
+const rungCol = new Float32Array(RUNGS * 6);
+{
+  const tmp = new THREE.Color();
+  for (let i = 0; i < RUNGS; i++) {
+    const f = i / (RUNGS - 1);
+    const a = f * TURNS * Math.PI * 2;
+    rungPos[i*6]   = Math.cos(a) * RADIUS;
+    rungPos[i*6+1] = (f - 0.5) * HEIGHT;
+    rungPos[i*6+2] = Math.sin(a) * RADIUS;
+    rungPos[i*6+3] = Math.cos(a + Math.PI) * RADIUS;
+    rungPos[i*6+4] = (f - 0.5) * HEIGHT;
+    rungPos[i*6+5] = Math.sin(a + Math.PI) * RADIUS;
+    tmp.copy(teal).lerp(magenta, f);
+    rungCol[i*6] = tmp.r * 0.8; rungCol[i*6+1] = tmp.g * 0.8; rungCol[i*6+2] = tmp.b * 0.8;
+    rungCol[i*6+3] = tmp.r * 0.8; rungCol[i*6+4] = tmp.g * 0.8; rungCol[i*6+5] = tmp.b * 0.8;
+  }
+}
+const rungGeo = new THREE.BufferGeometry();
+rungGeo.setAttribute('position', new THREE.BufferAttribute(rungPos, 3));
+rungGeo.setAttribute('color', new THREE.BufferAttribute(rungCol, 3));
+group.add(new THREE.LineSegments(rungGeo, new THREE.LineBasicMaterial({
+  vertexColors: true, transparent: true, opacity: 0.35, blending: THREE.AdditiveBlending
+})));
+
+// sparse ambient dust for depth
+const dust = new Float32Array(200 * 3);
+for (let i = 0; i < 200; i++) {
+  dust[i*3] = (Math.random() - 0.5) * 30;
+  dust[i*3+1] = (Math.random() - 0.5) * 22;
+  dust[i*3+2] = (Math.random() - 0.5) * 30;
+}
+const dustGeo = new THREE.BufferGeometry();
+dustGeo.setAttribute('position', new THREE.BufferAttribute(dust, 3));
+scene.add(new THREE.Points(dustGeo, new THREE.PointsMaterial({
+  color: 0x64748b, size: 0.06, transparent: true, opacity: 0.6
+})));
+
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const clock = new THREE.Clock();
+
+function tick() {
+  const t = clock.getElapsedTime();
+  if (!reduced) {
+    group.rotation.y = t * 0.22;
+    group.rotation.z = Math.sin(t * 0.15) * 0.06;
+    group.position.y = Math.sin(t * 0.4) * 0.4;
+    controls.update();
+  }
+  renderer.render(scene, camera);
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+if (reduced) {
+  group.rotation.y = 0.6;
+  renderer.render(scene, camera);
+} else {
+  renderer.setAnimationLoop(tick);
+}
+</script>
+</body>
+</html>
