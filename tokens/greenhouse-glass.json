@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-greenhouse-glass",
+  "title": "Greenhouse Glass design tokens",
+  "category": "Tokens",
+  "file": "tokens/greenhouse-glass.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "greenhouse-glass"
+  ],
+  "description": "W3C-format design tokens for the Greenhouse Glass DNA.",
+  "dnas": [
+   "greenhouse-glass"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#eef2ea",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#1e2b1f",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#2f7a4d",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#7d8a7a",
+   "type": "color"
+  },
+  "line": {
+   "value": "#2f7a4d4d",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#eef2ea",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Cormorant Garamond",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Source Sans 3",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Courier Prime",
+   "type": "fontFamily"
+  }
+ }
+}
