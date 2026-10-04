@@ -1,0 +1,40 @@
+<!--tz-meta {"id":"heroes-docs-hero","title":"Docs hero","category":"Hero","file":"patterns/heroes-docs-hero.html","tags":["docs","code","developer"],"description":"Warm documentation hero with a click-to-select install command block and a five-minute guide link.","dnas":["docs-solar"]} -->
+<section class="tz-docs">
+  <p class="tz-docs-eyebrow">Shipkit · Docs · v3.2</p>
+  <h1 class="tz-docs-h">Deploys before your coffee does.</h1>
+  <p class="tz-docs-sub">Shipkit turns a repo into a live URL with one command. Free for side projects, forever — no credit card, no trial clock.</p>
+  <div class="tz-docs-cmd">
+    <code class="tz-docs-code">npm install -g shipkit</code>
+    <span class="tz-docs-hint">click to select · ⌘C to copy</span>
+  </div>
+  <p class="tz-docs-also">Prefer Homebrew? <code>brew install shipkit/tap/shipkit</code> works too.</p>
+  <p class="tz-docs-note">Docs, CLI reference, and migration guides ship with every release.</p>
+  <a class="tz-docs-cta" href="#guide">Read the 5-minute guide <span aria-hidden="true">→</span></a>
+</section>
+<style>
+.tz-docs{--paper:#faf5ea;--ink:#262019;--amber:#b97f1f;--term:#1f1b14;--term-ink:#f5c86b;
+  background:var(--paper);color:var(--ink);
+  padding:clamp(72px,10vw,150px) clamp(24px,7vw,100px);
+  font-family:Georgia,'Times New Roman',serif}
+.tz-docs-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--amber);margin:0 0 26px}
+.tz-docs-h{font-size:clamp(42px,6.4vw,92px);line-height:1.04;letter-spacing:-.02em;
+  font-weight:400;margin:0 0 26px;max-width:13ch}
+.tz-docs-sub{font-size:clamp(16px,1.7vw,20px);line-height:1.65;max-width:44ch;
+  margin:0 0 38px;opacity:.82}
+.tz-docs-cmd{background:var(--term);border-radius:10px;padding:6px;max-width:520px;margin:0 0 40px;
+  border:1px solid #26201933;box-shadow:0 18px 44px #26201926}
+.tz-docs-code{display:block;user-select:all;cursor:copy;color:var(--term-ink);
+  font-family:ui-monospace,Menlo,monospace;font-size:clamp(15px,2.6vw,18px);
+  padding:18px 20px;border:1px dashed #f5c86b55;border-radius:6px}
+.tz-docs-code::before{content:"$ ";opacity:.55}
+.tz-docs-hint{display:block;font-family:ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.08em;color:#f5c86b99;padding:10px 14px 12px}
+.tz-docs-also{font-family:ui-monospace,Menlo,monospace;font-size:13px;margin:0 0 36px;opacity:.75}
+.tz-docs-also code{background:#26201914;padding:3px 8px;border-radius:4px}
+.tz-docs-note{font-size:15px;font-style:italic;opacity:.7;margin:0 0 38px;max-width:44ch}
+.tz-docs-cta{color:var(--ink);text-decoration:none;font-size:19px;font-style:italic;
+  border-bottom:2px solid var(--amber);padding-bottom:4px}
+.tz-docs-cta span{display:inline-block;transition:transform .3s cubic-bezier(.22,1,.36,1)}
+.tz-docs-cta:hover span{transform:translateX(6px)}
+</style>
