@@ -1,0 +1,176 @@
+/* <!--tz-meta {"id":"sveltekit-css","title":"Botanical Lab tokens","category":"Starter","file":"starters/sveltekit/src/app.css","tags":["css","tokens"],"description":"DNA tokens as CSS vars.","dnas":["botanical-lab"]} --> */
+
+/* ————————————————————————————————
+   Verde starter · botanical-lab DNA
+   All color values resolve to the DNA tokens below. No stray hexes.
+   ———————————————————————————————— */
+
+:root {
+	--bg: #f4f6ec;
+	--ink: #1b3a2b;
+	--accent: #3e7d4e;
+	--muted: #6f867a;
+	--line: #cdd8bd;
+
+	--font-display: 'DM Serif Display', Georgia, serif;
+	--font-body: 'Karla', -apple-system, sans-serif;
+	--font-mono: 'Space Mono', ui-monospace, monospace;
+
+	/* type scale */
+	--text-display: clamp(3rem, 7.5vw, 5.5rem);
+	--text-h2: clamp(1.9rem, 3.6vw, 2.9rem);
+	--text-h3: 1.35rem;
+	--text-body: 1.0625rem;
+	--text-small: 0.9375rem;
+	--text-micro: 0.75rem;
+
+	/* spacing scale: 8 / 16 / 32 / 64 / 128 */
+	--space-1: 0.5rem;
+	--space-2: 1rem;
+	--space-3: 2rem;
+	--space-4: 4rem;
+	--space-5: 8rem;
+
+	--ease: cubic-bezier(0.22, 1, 0.36, 1);
+	--radius: 2px;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	background: var(--bg);
+	color: var(--ink);
+	font-family: var(--font-body);
+	font-size: var(--text-body);
+	line-height: 1.65;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* measure: keep body copy between 45–75 characters */
+p {
+	max-width: 62ch;
+}
+
+h1,
+h2,
+h3 {
+	font-family: var(--font-display);
+	font-weight: 400;
+	letter-spacing: -0.02em;
+	line-height: 1.05;
+	margin: 0;
+}
+
+h1 {
+	font-size: var(--text-display);
+}
+
+h2 {
+	font-size: var(--text-h2);
+}
+
+h3 {
+	font-size: var(--text-h3);
+}
+
+a {
+	color: var(--accent);
+	text-underline-offset: 3px;
+}
+
+img,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+/* latin names + plate captions read as field-journal labels */
+.latin {
+	font-style: italic;
+}
+
+.label {
+	font-family: var(--font-mono);
+	font-size: var(--text-micro);
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--muted);
+}
+
+/* one button style: rectangular, ink on paper with a hairline — no pills */
+.btn {
+	display: inline-block;
+	padding: 0.9rem 2rem;
+	background: var(--ink);
+	color: var(--bg);
+	font-family: var(--font-mono);
+	font-size: var(--text-small);
+	letter-spacing: 0.06em;
+	text-decoration: none;
+	border: 1px solid var(--ink);
+	border-radius: var(--radius);
+	transition:
+		background-color 0.25s var(--ease),
+		color 0.25s var(--ease),
+		transform 0.25s var(--ease);
+}
+
+.btn:hover {
+	background: var(--accent);
+	border-color: var(--accent);
+	transform: translateY(-2px);
+}
+
+.btn-ghost {
+	background: transparent;
+	color: var(--ink);
+}
+
+/* hairline frame used on specimen plates */
+.frame {
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+}
+
+/* gentle entrance: transform + opacity only, staggered */
+@keyframes rise {
+	from {
+		opacity: 0;
+		transform: translateY(24px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.rise {
+	animation: rise 0.7s var(--ease) both;
+}
+
+.rise-1 { animation-delay: 0.08s; }
+.rise-2 { animation-delay: 0.16s; }
+.rise-3 { animation-delay: 0.24s; }
+.rise-4 { animation-delay: 0.32s; }
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation: none !important;
+		transition: none !important;
+	}
+
+	html {
+		scroll-behavior: auto;
+	}
+}
