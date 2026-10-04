@@ -1,0 +1,38 @@
+<!--tz-meta {"id":"cookie-banner","title":"Cookie consent banner","category":"Misc","file":"patterns/cookie-banner.html","tags":["cookies","consent","privacy","css-only"],"description":"Plain-spoken consent banner with real choice; dismisses with the checkbox hack.","dnas":["tokyo-kissaten"]} -->
+<div class="tz-cookie">
+  <input type="checkbox" id="tz-cookie-hide" class="tz-hide-check">
+  <div class="tz-banner" role="dialog" aria-label="Cookie notice">
+    <div class="tz-copy">
+      <h3>A quick word on cookies</h3>
+      <p>We use exactly one cookie: it remembers whether you dismissed this banner. No tracking, no analytics, nothing to sell. The full story is two paragraphs in our <a href="#">privacy note</a>.</p>
+    </div>
+    <div class="tz-actions">
+      <label for="tz-cookie-hide" class="tz-btn tz-primary">Fine by me</label>
+      <label for="tz-cookie-hide" class="tz-btn">No thanks</label>
+    </div>
+  </div>
+</div>
+<style>
+.tz-cookie{--bg:#171009;--ink:#f3e4c8;--accent:#d9a441;--muted:#9a7c5e;
+  font-family:Georgia,'Times New Roman',serif}
+.tz-hide-check{position:absolute;opacity:0;pointer-events:none}
+.tz-banner{position:sticky;bottom:24px;margin:24px auto 0;max-width:860px;
+  display:flex;gap:24px;align-items:center;justify-content:space-between;
+  background:var(--bg);color:var(--ink);border:1px solid var(--accent);
+  border-left:6px solid var(--accent);border-radius:10px;
+  padding:20px 24px;box-shadow:0 12px 32px #17100955}
+.tz-copy h3{margin:0 0 6px;font-size:17px;letter-spacing:-.01em}
+.tz-copy p{margin:0;font-size:14px;line-height:1.6;color:var(--ink);opacity:.92}
+.tz-copy a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+.tz-actions{display:flex;gap:10px;flex-shrink:0}
+.tz-btn{cursor:pointer;border:1px solid var(--accent);color:var(--ink);
+  padding:10px 20px;border-radius:6px;font-size:14px;font-weight:600;
+  font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;
+  background:transparent;transition:background .18s ease,color .18s ease}
+.tz-btn:hover{border-color:var(--ink)}
+.tz-primary{background:var(--accent);color:#171009;border-color:var(--accent)}
+.tz-primary:hover{background:var(--ink);color:#171009;border-color:var(--ink)}
+.tz-hide-check:checked + .tz-banner{display:none}
+@media(max-width:700px){.tz-banner{flex-direction:column;align-items:stretch;gap:16px;margin:16px}
+  .tz-actions{justify-content:flex-end}}
+</style>
