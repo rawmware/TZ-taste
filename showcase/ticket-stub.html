@@ -1,0 +1,121 @@
+<!--tz-meta {"id":"showcase-ticket-stub","title":"Ticket Stub showcase","category":"Showcase","file":"showcase/ticket-stub.html","tags":["ticket-stub"],"description":"Live demo page for the Ticket Stub style DNA.","dnas":["ticket-stub"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ticket Stub — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Public+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f1ece1; --tz-surface:#e3d9c4; --tz-ink:#241f18; --tz-muted:#8a7d66;
+  --tz-accent:#b23a2e; --tz-line:#241f182b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Public Sans",sans-serif;font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 4vw;border-bottom:1px solid var(--tz-line)}
+.tz-wordmark{font-family:"Oswald",sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:0.06em;text-transform:uppercase}
+.tz-doors{font-family:"DM Mono",monospace;font-size:0.72rem;letter-spacing:0.14em;color:var(--tz-muted)}
+.tz-doors strong{color:var(--tz-ink);font-weight:500}
+.tz-hero{padding:5rem 4vw 3rem}
+.tz-window{border:2px solid var(--tz-ink);background:var(--tz-surface);padding:1.6rem 1.8rem;max-width:30rem;margin-bottom:2.4rem;position:relative;transform:rotate(-0.6deg)}
+.tz-window .tz-stamp{position:absolute;top:-1.1rem;right:1.2rem;background:var(--tz-accent);color:var(--tz-bg);font-family:"Oswald",sans-serif;font-weight:700;font-size:0.85rem;letter-spacing:0.18em;padding:0.45rem 1rem;transform:rotate(4deg)}
+.tz-window .tz-row{display:flex;justify-content:space-between;gap:1rem;font-family:"DM Mono",monospace;font-size:0.85rem;padding:0.35rem 0}
+.tz-window .tz-row .tz-k{color:var(--tz-muted);letter-spacing:0.1em}
+.tz-eyebrow{font-family:"DM Mono",monospace;font-size:0.72rem;letter-spacing:0.16em;color:var(--tz-muted);margin-bottom:1.4rem}
+.tz-hero h1{font-family:"Oswald",sans-serif;font-weight:700;font-size:clamp(3rem,10vw,7rem);line-height:1.0;letter-spacing:0.005em;text-transform:uppercase;max-width:11ch}
+.tz-sub{margin-top:1.8rem;font-size:1.05rem;color:var(--tz-muted);max-width:44ch}
+.tz-sub strong{color:var(--tz-ink)}
+.tz-cta{display:inline-block;margin-top:2.2rem;background:var(--tz-ink);color:var(--tz-bg);font-family:"Oswald",sans-serif;font-weight:600;font-size:1.2rem;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;padding:1rem 2.4rem}
+.tz-cta:hover{background:var(--tz-accent)}
+.tz-tear{height:1.2rem;margin:3.2rem 0 0;background-image:radial-gradient(circle at 8px 50%,var(--tz-ink) 3px,transparent 3.5px);background-size:22px 100%;opacity:0.5}
+.tz-content{padding:3rem 4vw 1rem}
+.tz-content h2{font-family:"Oswald",sans-serif;font-weight:700;font-size:clamp(1.9rem,5vw,2.8rem);text-transform:uppercase;margin-bottom:0.4rem}
+.tz-subhead{font-family:"DM Mono",monospace;font-size:0.72rem;letter-spacing:0.12em;color:var(--tz-muted);margin-bottom:1.6rem}
+table.tz-shows{width:100%;border-collapse:collapse;max-width:720px}
+.tz-shows th{font-family:"DM Mono",monospace;font-size:0.66rem;font-weight:400;letter-spacing:0.14em;color:var(--tz-muted);text-align:left;padding:0.8rem 0;border-bottom:1px solid var(--tz-ink)}
+.tz-shows td{padding:1.05rem 0;border-bottom:1px solid var(--tz-line);font-size:0.98rem}
+.tz-shows td.tz-date{font-family:"DM Mono",monospace;font-weight:500;white-space:nowrap}
+.tz-shows td.tz-seat{font-family:"DM Mono",monospace;font-size:0.8rem;color:var(--tz-muted);white-space:nowrap}
+.tz-shows td.tz-status{font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:0.08em;font-size:0.85rem;text-transform:uppercase}
+.tz-shows td.tz-status.tz-hot{color:var(--tz-accent)}
+.tz-shows tr:hover td{background:var(--tz-surface)}
+.tz-quiet{margin:2.8rem 0 0;background:var(--tz-surface);padding:1.8rem;max-width:560px;border-left:4px solid var(--tz-accent)}
+.tz-quiet p{color:var(--tz-muted)}
+.tz-quiet strong{color:var(--tz-ink)}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Oswald",sans-serif;font-weight:700;font-size:1.7rem;text-transform:uppercase;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"DM Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"DM Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"DM Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-hero{padding-top:3.5rem}
+  .tz-doors{display:none}
+  .tz-window{transform:none}
+  .tz-shows td.tz-seat{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Stardust Theater</span>
+  <span class="tz-doors">BOX OFFICE · <strong>OPEN DAILY 12–8</strong></span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-window">
+    <span class="tz-stamp">ON SALE NOW</span>
+    <div class="tz-row"><span class="tz-k">TONIGHT</span><span>FRI OCT 9</span></div>
+    <div class="tz-row"><span class="tz-k">DOORS</span><span>7:00 PM</span></div>
+    <div class="tz-row"><span class="tz-k">SHOW</span><span>8:00 PM</span></div>
+    <div class="tz-row"><span class="tz-k">SEC C / ROW 9</span><span>$28</span></div>
+    <div class="tz-row"><span class="tz-k">FINE PRINT</span><span>NO REFUNDS</span></div>
+  </div>
+  <p class="tz-eyebrow">ADMIT ONE · THE PAPER LEFT IN YOUR POCKET</p>
+  <h1>The lights go down. The stub stays.</h1>
+  <p class="tz-sub"><strong>Doors 7, show 8.</strong> Latecomers seated at intermission — the ushers don't bend and neither do we. Keep this stub: it's also your coat-check claim.</p>
+  <a class="tz-cta" href="#">Buy Friday's ticket</a>
+</section>
+
+<div class="tz-tear" aria-hidden="true"></div>
+
+<section class="tz-content">
+  <h2>Coming up</h2>
+  <p class="tz-subhead">DATES SET LIKE BOX-OFFICE TYPE · ALL TIMES LOCAL</p>
+  <table class="tz-shows">
+    <thead><tr><th>DATE</th><th>SHOW</th><th>SEAT</th><th>STATUS</th></tr></thead>
+    <tbody>
+      <tr><td class="tz-date">FRI OCT 9</td><td>The Low Notes, two sets</td><td class="tz-seat">SEC C / ROW 9</td><td class="tz-status tz-hot">On sale now</td></tr>
+      <tr><td class="tz-date">SAT OCT 10</td><td>Midnight Matinee: Paper Moon</td><td class="tz-seat">SEC A / ROW 3</td><td class="tz-status tz-hot">On sale now</td></tr>
+      <tr><td class="tz-date">THU OCT 15</td><td>Storytellers: five true tales</td><td class="tz-seat">GENERAL</td><td class="tz-status">Few left</td></tr>
+      <tr><td class="tz-date">SAT OCT 17</td><td>The Brass Band Returns</td><td class="tz-seat">SEC B / ROW 12</td><td class="tz-status">Sold out</td></tr>
+    </tbody>
+  </table>
+  <div class="tz-quiet">
+    <p><strong>Group of ten or more?</strong> Call the box office and ask for the corner booth — it isn't on the website and it never will be.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#f1ece1"></span><span class="tz-name">bg</span><span class="tz-hex">#f1ece1</span></li>
+    <li><span class="tz-chip" style="background:#e3d9c4"></span><span class="tz-name">surface</span><span class="tz-hex">#e3d9c4</span></li>
+    <li><span class="tz-chip" style="background:#241f18"></span><span class="tz-name">ink</span><span class="tz-hex">#241f18</span></li>
+    <li><span class="tz-chip" style="background:#8a7d66"></span><span class="tz-name">muted</span><span class="tz-hex">#8a7d66</span></li>
+    <li><span class="tz-chip" style="background:#b23a2e"></span><span class="tz-name">accent</span><span class="tz-hex">#b23a2e</span></li>
+    <li><span class="tz-chip" style="background:#241f182b"></span><span class="tz-name">line</span><span class="tz-hex">#241f182b</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
