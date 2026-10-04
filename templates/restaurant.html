@@ -1,0 +1,401 @@
+<!--tz-meta {"id":"restaurant","title":"Osteria Alba — Italian Restaurant","category":"Template","file":"templates/restaurant.html","tags":["restaurant"],"description":"Warm trattoria page with a printed-style menu, dotted leaders, and italic serif voice.","dnas":["aperitivo-italian"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Osteria Alba — Cucina della nonna, Portland ME</title>
+<meta name="description" content="Osteria Alba: handmade pasta, natural wine, and a wood oven in Portland, Maine. Dinner Tue–Sun from 5pm.">
+<!-- DNA: aperitivo-italian (new DNA — tokens inferred from the name: warm cream, terracotta, olive; italic serif voice, printed-menu craft). Design read: a paper menu that grew into a website — warm, unhurried, hungry-making — for people choosing Friday dinner. One distinctive choice: the menu is set like a real printed menu, dotted leaders and all. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..600;1,8..60,300..600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#faf3e6;
+  --tz-surface:#fffdf6;
+  --tz-ink:#2a2118;
+  --tz-ink-soft:color-mix(in srgb, var(--tz-ink) 72%, var(--tz-bg));
+  --tz-accent:#b3401f;
+  --tz-accent-deep:#8c3016;
+  --tz-olive:#5f6b3a;
+  --tz-line:#2a21181f;
+  --tz-line-strong:#2a211840;
+  --tz-muted:#8a7c66;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Source Serif 4",Georgia,serif;background:var(--tz-bg);color:var(--tz-ink);
+  font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--tz-accent);color:#fff}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1100px;margin:0 auto;padding:0 28px}
+.tz-mono{font-family:"Space Mono",monospace}
+.tz-serif-d{font-family:"Fraunces",serif}
+.skip{position:absolute;left:-999px;top:0;background:var(--tz-ink);color:#fff;padding:8px 16px;z-index:99}
+.skip:focus{left:8px;top:8px}
+
+/* ---------- header ---------- */
+.tz-header{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--tz-bg) 88%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--tz-line)}
+.tz-header .tz-wrap{display:flex;justify-content:space-between;align-items:center;height:66px}
+.tz-logo{font-family:"Fraunces",serif;font-style:italic;font-size:24px;font-weight:600}
+.tz-logo small{font-family:"Space Mono",monospace;font-style:normal;font-size:10px;letter-spacing:.2em;display:block;color:var(--tz-accent-deep)}
+.tz-nav{display:flex;gap:28px;font-size:16px}
+.tz-nav a{color:var(--tz-ink-soft);transition:color .2s}
+.tz-nav a:hover{color:var(--tz-accent-deep)}
+.tz-book{
+  font-family:"Space Mono",monospace;font-size:13px;font-weight:700;letter-spacing:.08em;
+  background:var(--tz-accent);color:#fff;border:0;padding:11px 22px;cursor:pointer;border-radius:2px;
+  transition:transform .25s var(--tz-ease),background .2s;
+}
+.tz-book:hover{background:var(--tz-accent-deep);transform:translateY(-2px)}
+
+/* ---------- hero ---------- */
+.tz-hero{padding:96px 0 72px;position:relative;overflow:hidden}
+.tz-hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center}
+.tz-hero .tz-over{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--tz-accent-deep);display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.tz-hero .tz-over::after{content:"";width:64px;height:1px;background:var(--tz-accent-deep)}
+.tz-hero h1{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(48px,6.4vw,88px);line-height:1.02;letter-spacing:-0.02em}
+.tz-hero h1 em{font-style:italic;color:var(--tz-accent-deep)}
+.tz-hero p.tz-lede{margin-top:24px;font-size:19px;color:var(--tz-ink-soft);max-width:44ch}
+.tz-hero-cta{display:flex;gap:16px;margin-top:32px;flex-wrap:wrap;align-items:center}
+.tz-ghost{font-family:"Space Mono",monospace;font-size:13px;letter-spacing:.06em;border:1px solid var(--tz-line-strong);padding:12px 22px;border-radius:2px;transition:border-color .2s,background .2s}
+.tz-ghost:hover{border-color:var(--tz-ink);background:var(--tz-surface)}
+.tz-hours{margin-top:28px;font-family:"Space Mono",monospace;font-size:13px;color:var(--tz-ink-soft);line-height:2}
+/* plate illustration: pure CSS */
+.tz-plate{position:relative;aspect-ratio:1;max-width:420px;margin:0 auto}
+.tz-plate .tz-rim{position:absolute;inset:0;border-radius:50%;border:10px solid var(--tz-surface);box-shadow:0 24px 60px #2a211826, inset 0 0 0 1px var(--tz-line-strong);background:radial-gradient(circle at 50% 42%, #fffdf8 0 34%, #f3e6cd 35% 46%, #e2cda4 47% 60%, #d4b98c 61% 72%, #c9a878 73% 100%)}
+.tz-plate .tz-pasta{position:absolute;inset:22%;border-radius:50%;background:
+  repeating-conic-gradient(from 20deg, #e8b64c 0 14deg, #d99f3a 14deg 26deg, #f0c668 26deg 40deg);
+  filter:saturate(1.05);box-shadow:inset 0 -18px 40px #8c301633}
+.tz-plate .tz-basil{position:absolute;width:9%;aspect-ratio:1.4;background:var(--tz-olive);border-radius:60% 4px 60% 4px;box-shadow:0 2px 4px #0003}
+.tz-plate figcaption{text-align:center;margin-top:20px;font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-ink-soft);letter-spacing:.06em}
+
+/* ---------- marquee strip ---------- */
+.tz-strip{background:var(--tz-ink);color:var(--tz-bg);overflow:hidden;white-space:nowrap}
+.tz-strip-track{display:inline-block;padding:14px 0;animation:tz-scroll 26s linear infinite;font-family:"Fraunces",serif;font-style:italic;font-size:20px}
+.tz-strip-track span{margin:0 30px}
+.tz-strip-track b{color:#e8b64c;font-style:normal;font-family:"Space Mono",monospace;font-size:13px;letter-spacing:.14em}
+@keyframes tz-scroll{to{transform:translateX(-50%)}}
+
+/* ---------- about ---------- */
+.tz-section{padding:112px 0}
+.tz-about{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+.tz-about h2{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(34px,4vw,54px);letter-spacing:-0.02em;line-height:1.08}
+.tz-about h2 em{font-style:italic;color:var(--tz-accent-deep)}
+.tz-about .tz-body p{margin-bottom:1.3em;color:var(--tz-ink-soft)}
+.tz-about .tz-body p strong{color:var(--tz-ink);font-weight:600}
+.tz-sign{font-family:"Fraunces",serif;font-style:italic;font-size:26px;color:var(--tz-accent-deep);margin-top:8px}
+
+/* ---------- menu: the one weird thing ---------- */
+.tz-menu-section{background:var(--tz-surface);border-top:1px solid var(--tz-line-strong);border-bottom:1px solid var(--tz-line-strong);padding:112px 0;position:relative}
+.tz-menu-head{text-align:center;margin-bottom:64px;position:relative}
+.tz-menu-head .tz-vertical{
+  position:absolute;left:0;top:50%;transform:translateY(-50%) rotate(180deg);
+  writing-mode:vertical-rl;font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.4em;
+  text-transform:uppercase;color:var(--tz-accent-deep);
+}
+.tz-menu-head h2{font-family:"Fraunces",serif;font-style:italic;font-weight:400;font-size:clamp(40px,5vw,64px)}
+.tz-menu-head p{font-family:"Space Mono",monospace;font-size:13px;color:var(--tz-ink-soft);margin-top:12px;letter-spacing:.06em}
+.tz-menu-cols{display:grid;grid-template-columns:1fr 1fr;gap:64px;max-width:960px;margin:0 auto}
+.tz-course h3{font-family:"Fraunces",serif;font-size:26px;font-weight:600;margin-bottom:6px;display:flex;align-items:center;gap:14px}
+.tz-course h3::after{content:"";flex:1;height:1px;background:var(--tz-line-strong)}
+.tz-course .tz-course-sub{font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-ink-soft);letter-spacing:.1em;margin-bottom:24px}
+.tz-dish{margin-bottom:26px}
+.tz-dish-line{display:flex;align-items:baseline;gap:10px}
+.tz-dish-line .tz-name{font-family:"Fraunces",serif;font-size:20px;font-weight:600}
+.tz-dish-line .tz-dots{flex:1;border-bottom:2px dotted var(--tz-line-strong);transform:translateY(-5px)}
+.tz-dish-line .tz-price{font-family:"Space Mono",monospace;font-size:15px;font-weight:700;color:var(--tz-accent-deep)}
+.tz-dish p{font-size:15px;font-style:italic;color:var(--tz-ink-soft);margin-top:4px;max-width:42ch}
+.tz-dish .tz-star{font-family:"Space Mono",monospace;font-style:normal;font-size:11px;letter-spacing:.1em;color:var(--tz-olive);text-transform:uppercase}
+.tz-menu-foot{text-align:center;margin-top:64px;font-family:"Space Mono",monospace;font-size:13px;color:var(--tz-ink-soft);line-height:2}
+.tz-menu-foot b{color:var(--tz-accent-deep)}
+
+/* ---------- wine / aperitivo note ---------- */
+.tz-note{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.tz-note-card{background:var(--tz-ink);color:var(--tz-bg);padding:48px;border-radius:4px;position:relative;overflow:hidden}
+.tz-note-card::before{content:"";position:absolute;inset:0;background:radial-gradient(300px 200px at 85% 10%, #b3401f33, transparent 70%)}
+.tz-note-card h3{font-family:"Fraunces",serif;font-style:italic;font-size:32px;font-weight:400;margin-bottom:16px;position:relative}
+.tz-note-card p{color:#e8dcc4;font-size:16px;position:relative}
+.tz-note-card .tz-big{font-family:"Fraunces",serif;font-size:64px;color:#e8b64c;position:relative;margin:20px 0 8px;line-height:1}
+.tz-note-text h2{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(32px,4vw,50px);letter-spacing:-0.02em;margin-bottom:20px}
+.tz-note-text p{color:var(--tz-ink-soft);margin-bottom:1.2em}
+.tz-note-text ul{list-style:none;margin-top:24px;display:grid;gap:14px}
+.tz-note-text li{display:flex;gap:14px;align-items:baseline;font-size:16px}
+.tz-note-text li::before{content:"—";color:var(--tz-accent-deep);font-weight:700}
+
+/* ---------- visit ---------- */
+.tz-visit{background:var(--tz-surface);border-top:1px solid var(--tz-line-strong);padding:112px 0}
+.tz-visit-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px}
+.tz-visit h2{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(36px,4.6vw,60px);letter-spacing:-0.02em;margin-bottom:32px}
+.tz-visit-rows{display:grid;gap:0;border-top:1px solid var(--tz-line-strong)}
+.tz-visit-rows div{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--tz-line)}
+.tz-visit-rows .tz-mono{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--tz-ink-soft);padding-top:4px}
+.tz-reserve{background:var(--tz-bg);border:1px solid var(--tz-line-strong);padding:40px;border-radius:4px}
+.tz-reserve h3{font-family:"Fraunces",serif;font-size:28px;font-weight:600;margin-bottom:8px}
+.tz-reserve p{font-size:15px;color:var(--tz-ink-soft);margin-bottom:24px}
+.tz-field{margin-bottom:16px}
+.tz-field label{display:block;font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;color:var(--tz-ink-soft)}
+.tz-field input,.tz-field select{width:100%;padding:13px 14px;border:1px solid var(--tz-line-strong);border-radius:2px;background:var(--tz-surface);font-family:inherit;font-size:16px;color:var(--tz-ink)}
+.tz-field input:focus,.tz-field select:focus{outline:2px solid var(--tz-accent);outline-offset:1px}
+.tz-reserve .tz-book{width:100%;margin-top:8px}
+.tz-fine{font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-ink-soft);margin-top:16px;line-height:1.8}
+
+/* ---------- footer ---------- */
+.tz-footer{background:var(--tz-ink);color:var(--tz-bg);padding:64px 0 40px}
+.tz-footer .tz-foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.tz-footer .tz-logo{color:var(--tz-bg)}
+.tz-footer p{color:#cbbfa8;font-size:15px;max-width:36ch;margin-top:12px}
+.tz-footer h4{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#e8b64c;margin-bottom:16px}
+.tz-footer ul{list-style:none;display:grid;gap:10px;font-size:15px}
+.tz-footer a{color:#e8dcc4}
+.tz-footer a:hover{color:#fff}
+.tz-footer-bottom{border-top:1px solid #ffffff22;padding-top:24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:"Space Mono",monospace;font-size:12px;color:#a99c83}
+
+/* ---------- private dining ---------- */
+.tz-private{background:var(--tz-ink);color:var(--tz-bg);padding:112px 0;position:relative;overflow:hidden}
+.tz-private::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 320px at 12% 90%, #b3401f2e, transparent 70%);pointer-events:none}
+.tz-private .tz-wrap{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.tz-private h2{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(36px,4.6vw,60px);line-height:1.05;margin-bottom:20px}
+.tz-private h2 em{font-style:italic;color:#e8b64c}
+.tz-private p{color:#d8cbb2;font-size:17px;margin-bottom:1.2em;max-width:46ch}
+.tz-private ul{list-style:none;margin:28px 0;display:grid;gap:14px}
+.tz-private li{display:flex;gap:14px;align-items:baseline;font-size:16px;color:#e8dcc4}
+.tz-private li::before{content:"—";color:#e8b64c;font-weight:700}
+.tz-private .tz-book{display:inline-block;margin-top:8px}
+@media (max-width:900px){.tz-private .tz-wrap{grid-template-columns:1fr;gap:40px}.tz-private{padding:72px 0}}
+
+/* ---------- reveal ---------- */
+.tz-reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--tz-ease),transform .7s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .tz-hero-grid,.tz-about,.tz-note,.tz-visit-grid{grid-template-columns:1fr;gap:40px}
+  .tz-menu-cols{grid-template-columns:1fr}
+  .tz-menu-head .tz-vertical{display:none}
+  .tz-nav{display:none}
+  .tz-plate{max-width:320px}
+  .tz-section,.tz-menu-section,.tz-visit{padding:72px 0}
+  .tz-footer .tz-foot-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#menu">Skip to the menu</a>
+
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-logo" href="#">Osteria Alba<small>Portland · Maine</small></a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#about">Our story</a><a href="#menu">Menu</a><a href="#vino">Vino</a><a href="#visit">Visit</a>
+    </nav>
+    <a class="tz-book" href="#visit">Book a table</a>
+  </div>
+</header>
+
+<main>
+  <!-- ============ hero ============ -->
+  <section class="tz-hero">
+    <div class="tz-wrap tz-hero-grid">
+      <div class="tz-reveal tz-in">
+        <p class="tz-over">Est. 2011 · Wood oven · Natural wine</p>
+        <h1>Pasta pulled by hand, <em>wine poured like family.</em></h1>
+        <p class="tz-lede">Osteria Alba is a twenty-eight-seat room in the Old Port where the menu follows the market and the oven never really cools. Come hungry; leave unhurried.</p>
+        <div class="tz-hero-cta">
+          <a class="tz-book" href="#visit">Reserve a table</a>
+          <a class="tz-ghost" href="#menu">Read tonight's menu</a>
+        </div>
+        <p class="tz-hours">Tue – Sun · 5pm – 10pm<br>Kitchen closes 9:30 · Bar till late</p>
+      </div>
+      <figure class="tz-plate tz-reveal tz-in" aria-label="Illustration of a plate of tagliatelle">
+        <div class="tz-rim"></div>
+        <div class="tz-pasta"></div>
+        <span class="tz-basil" style="top:30%;left:38%;transform:rotate(24deg)"></span>
+        <span class="tz-basil" style="top:52%;left:56%;transform:rotate(-30deg)"></span>
+        <span class="tz-basil" style="top:44%;left:30%;transform:rotate(70deg)"></span>
+        <figcaption>Tagliatelle al ragù — tonight's special</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="tz-strip" aria-hidden="true">
+    <div class="tz-strip-track">
+      <span>fatto a mano</span><b>·</b><span>forno a legna</span><b>·</b><span>vino naturale</span><b>·</b><span>dal 2011</span><b>·</b>
+      <span>fatto a mano</span><b>·</b><span>forno a legna</span><b>·</b><span>vino naturale</span><b>·</b><span>dal 2011</span><b>·</b>
+    </div>
+  </div>
+
+  <!-- ============ about ============ -->
+  <section class="tz-section" id="about">
+    <div class="tz-wrap tz-about">
+      <div class="tz-reveal">
+        <h2>A room that smells like <em>Sunday at nonna's.</em></h2>
+      </div>
+      <div class="tz-body tz-reveal">
+        <p><strong>Elena Marchetti</strong> opened Osteria Alba with her brother Marco after ten years cooking in Bologna. The recipes are her grandmother's; the room is pure Portland — brick, low light, and a wood oven Marco built himself over one very long winter.</p>
+        <p>Everything is made in-house: pasta rolled each afternoon, bread from the oven's first heat, gelato churned to order. The menu is short because the market is the menu — if the fishermen didn't bring it, we're not serving it.</p>
+        <p class="tz-sign">— Elena &amp; Marco</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ menu ============ -->
+  <section class="tz-menu-section" id="menu">
+    <div class="tz-wrap">
+      <div class="tz-menu-head tz-reveal">
+        <span class="tz-vertical" aria-hidden="true">Il menu · stasera</span>
+        <h2>Tonight's menu</h2>
+        <p>Printed daily at 4pm · subject to the market's mood</p>
+      </div>
+      <div class="tz-menu-cols">
+        <div>
+          <div class="tz-course tz-reveal">
+            <h3>Antipasti</h3>
+            <p class="tz-course-sub">TO BEGIN</p>
+            <div class="tz-dish"><div class="tz-dish-line"><span class="tz-name">Burrata e prosciutto</span><span class="tz-dots"></span><span class="tz-price">18</span></div><p>Creamy Puglian burrata, 18-month prosciutto, grilled bread.</p></div>
+            <div class="tz-dish"><div class="tz-dish-line"><span class="tz-name">Carciofi fritti</span><span class="tz-dots"></span><span class="tz-price">14</span></div><p>Crispy artichokes, lemon aioli, pecorino. <span class="tz-star">· vegetarian</span></p></div>
+            <div class="tz-dish"><div class="tz-dish-line"><span class="tz-name">Polpette della casa</span><span class="tz-dots"></span><span class="tz-price">13</span></div><p>Elena's meatballs, Sunday sugo, torn basil.</p></div>
+          </div>
+          <div class="tz-course tz-reveal" style="margin-top:48px">
+            <h3>Primi</h3>
+            <p class="tz-course-sub">PASTA · MADE AT 3PM DAILY</p>
+            <div class="tz-dish"><div class="tz-dish-line"><span class="tz-name">Tagliatelle al ragù</span><span class="tz-dots"></span><span class="tz-price">24</span></div><p>Slow beef and pork ragù, 24-month parmigiano. <span class="tz-star">· the famous one</span></p></div>
+            <div class="tz-dish"><div class="tz-dish-line"><span class="tz-name">Cacio e pepe</span><span class="tz-dots"></span><span class="tz-price">19</span></div><p>Tonnarelli, pecorino romano, cracked black pepper. <span class="tz-star">· vegetarian</span></p></div>
+            <div class="tz-dish"><div class="tz-dish-line"><span class="tz-name">Orecchiette con salsiccia</span><span class="tz-dots"></span><span class="tz-price">22</span></div><p>Broccoli rabe, fennel sausage, chili, garlic.</p></div>
+          </div>
+        </div>
+        <div>
+          <div class="tz-course tz-reveal">
+            <h3>Secondi</h3>
+            <p class="tz-course-sub">FROM THE WOOD OVEN</p>
+            <div class="tz-dish"><div class="tz-dish-line"><span class="tz-name">Branzino al forno</span><span class="tz-dots"></span><span class="tz-price">32</span></div><p>Whole roasted sea bass, fennel, salsa verde.</p></div>
+            <div class="tz-dish"><div class="tz-dish-line"><span class="tz-name">Pollo al mattone</span><span class="tz-dots"></span><span class="tz-price">26</span></div><p>Half chicken under brick, rosemary jus, charred lemon.</p></div>
+            <div class="tz-dish"><div class="tz-dish-line"><span class="tz-name">Melanzane alla parmigiana</span><span class="tz-dots"></span><span class="tz-price">21</span></div><p>Baked eggplant, fior di latte, basil. <span class="tz-star">· vegetarian</span></p></div>
+          </div>
+          <div class="tz-course tz-reveal" style="margin-top:48px">
+            <h3>Dolci</h3>
+            <p class="tz-course-sub">CHURNED &amp; BAKED IN-HOUSE</p>
+            <div class="tz-dish"><div class="tz-dish-line"><span class="tz-name">Tiramisù classico</span><span class="tz-dots"></span><span class="tz-price">11</span></div><p>Espresso-soaked savoiardi, mascarpone cloud.</p></div>
+            <div class="tz-dish"><div class="tz-dish-line"><span class="tz-name">Panna cotta</span><span class="tz-dots"></span><span class="tz-price">10</span></div><p>Vanilla bean, macerated Maine strawberries.</p></div>
+            <div class="tz-dish"><div class="tz-dish-line"><span class="tz-name">Olive oil cake</span><span class="tz-dots"></span><span class="tz-price">10</span></div><p>With rosemary gelato — sounds odd, trust us.</p></div>
+          </div>
+        </div>
+      </div>
+      <p class="tz-menu-foot tz-reveal">A 20% service charge is shared with the whole team — <b>no tipping math required.</b><br>Ask about tonight's off-menu <b>piatto del giorno</b>.</p>
+      <p class="tz-menu-foot tz-reveal" style="margin-top:24px;font-style:italic">Sunday supper club: one seating, one menu, twenty-two strangers who leave as friends. <b>First Sunday monthly, $55.</b></p>
+    </div>
+  </section>
+
+  <!-- ============ vino note ============ -->
+  <section class="tz-section" id="vino">
+    <div class="tz-wrap tz-note">
+      <div class="tz-note-card tz-reveal">
+        <div class="tz-big">5–6</div>
+        <h3>Aperitivo hour, every evening.</h3>
+        <p>Five to six, Tuesday through Sunday: a spritz or a glass of something orange, with whatever Marco is pulling from the oven. Twelve dollars. No reservation needed — just show up thirsty.</p>
+      </div>
+      <div class="tz-note-text tz-reveal">
+        <h2>Sixty wines. Zero intimidation.</h2>
+        <p>Our list leans Italian and natural — small producers, honest farming, labels with stories. Every wine is available by the glass because choosing shouldn't require a commitment.</p>
+        <ul>
+          <li>Ask for Lucia — she'll find your bottle in three questions or less.</li>
+          <li>Bring your own on Tuesdays: no corkage, ever.</li>
+          <li>The orange wine flight: three pours, one very good evening.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ private dining ============ -->
+  <section class="tz-private">
+    <div class="tz-wrap">
+      <div class="tz-reveal">
+        <h2>The back room, <em>yours for the evening.</em></h2>
+        <p>Behind the kitchen sits our fourteen-seat cantina — stone walls, one long table, and a menu Elena writes for your table alone.</p>
+        <ul>
+          <li>Family-style feasts from $65 per person, wine pairings from $40</li>
+          <li>Full buyouts for up to 28 — weddings, long overdue reunions</li>
+          <li>Pasta-making classes Sunday afternoons, flour everywhere guaranteed</li>
+        </ul>
+        <a class="tz-book" href="#visit">Ask about the cantina</a>
+      </div>
+      <div class="tz-reveal">
+        <p style="font-family:'Fraunces',serif;font-style:italic;font-size:24px;color:#e8dcc4;line-height:1.5">"We hosted my parents' fortieth anniversary in the cantina. Elena cried during the toast. So did everyone else."</p>
+        <p class="tz-mono" style="font-size:12px;color:#a99c83;margin-top:16px;letter-spacing:.1em">— THE ALMEIDA FAMILY, TABLE OF FOURTEEN</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ visit / reserve ============ -->
+  <section class="tz-visit" id="visit">
+    <div class="tz-wrap tz-visit-grid">
+      <div class="tz-reveal">
+        <h2>Come hungry.</h2>
+        <div class="tz-visit-rows">
+          <div><span class="tz-mono">Address</span><span>214 Commercial Street<br>Portland, Maine 04101</span></div>
+          <div><span class="tz-mono">Hours</span><span>Tue – Sun · 5pm – 10pm<br>Closed Mondays (pasta rests too)</span></div>
+          <div><span class="tz-mono">Phone</span><span>(207) 555-0148</span></div>
+          <div><span class="tz-mono">Parties of 7+</span><span>Call us — we'll push tables together and open something good.</span></div>
+          <div>
+            <span class="tz-mono">Private events</span>
+            <span>Full buyouts for up to 28 guests.<br>Write to events@osteria-alba.example.</span>
+          </div>
+        </div>
+      </div>
+      <div class="tz-reserve tz-reveal">
+        <h3>Reserve a table</h3>
+        <p>We hold tables for 15 minutes past the hour. Running late? Call — we'd rather wait than wonder.</p>
+        <form action="#" method="get" onsubmit="return false">
+          <div class="tz-field"><label for="r-date">Date</label><input id="r-date" type="date" required></div>
+          <div class="tz-field"><label for="r-time">Time</label><select id="r-time"><option>5:00 PM</option><option>5:30 PM</option><option>6:00 PM</option><option>6:30 PM</option><option>7:00 PM</option><option>7:30 PM</option><option>8:00 PM</option><option>8:30 PM</option></select></div>
+          <div class="tz-field"><label for="r-party">Party size</label><select id="r-party"><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5 guests</option><option>6 guests</option></select></div>
+          <button class="tz-book" type="submit">Request table</button>
+        </form>
+        <p class="tz-fine">No card required for parties under 6. Confirmation by text within the hour.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-foot-grid">
+      <div>
+        <span class="tz-logo">Osteria Alba<small style="color:#e8b64c">Portland · Maine</small></span>
+        <p>Handmade pasta, natural wine, and a wood oven — since 2011.</p>
+      </div>
+      <div><h4>Visit</h4><ul><li><a href="#menu">Tonight's menu</a></li><li><a href="#visit">Reservations</a></li><li><a href="#vino">Wine list</a></li><li><a href="#">Gift cards</a></li></ul></div>
+      <div><h4>Follow</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">Our suppliers</a></li><li><a href="#">Jobs — we're hiring a pastaio</a></li></ul></div>
+    </div>
+    <div class="tz-footer-bottom">
+      <span>© 2026 Osteria Alba · 214 Commercial St, Portland ME</span>
+      <span>Buon appetito.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){e.classList.add('tz-in')}); return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en,i){
+      if(en.isIntersecting){ setTimeout(function(){en.target.classList.add('tz-in')}, i*70); io.unobserve(en.target); }
+    });
+  },{threshold:.1});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
