@@ -1,0 +1,133 @@
+<!--tz-meta {"id":"showcase-soft-minimal","title":"Soft Minimal showcase","category":"Showcase","file":"showcase/soft-minimal.html","tags":["soft-minimal"],"description":"Live demo page for the Soft Minimal style DNA.","dnas":["soft-minimal"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Soft Minimal — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f7f7f5; --tz-surface:#ffffff; --tz-ink:#1a1a1a; --tz-muted:#8a8a93;
+  --tz-accent:#5b5bd6; --tz-line:#1a1a1414;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Instrument Sans",-apple-system,sans-serif;font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 5vw;max-width:1120px;margin:0 auto}
+.tz-wordmark{font-weight:600;letter-spacing:-0.02em;font-size:1.05rem}
+.tz-wordmark .tz-dot{color:var(--tz-accent)}
+.tz-label{font-family:"JetBrains Mono",monospace;font-size:0.68rem;color:var(--tz-muted)}
+.tz-hero{max-width:1120px;margin:0 auto;padding:4.5rem 5vw 3.5rem;text-align:left;background:radial-gradient(60% 50% at 20% 0%,color-mix(in srgb,var(--tz-accent) 8%,transparent),transparent 70%)}
+.tz-eyebrow{font-family:"JetBrains Mono",monospace;font-size:0.72rem;color:var(--tz-muted);letter-spacing:0.06em;margin-bottom:1.2rem}
+.tz-hero h1{font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:600;letter-spacing:-0.03em;line-height:1.05;max-width:16ch}
+.tz-sub{margin-top:1.2rem;color:var(--tz-muted);max-width:52ch;font-size:1.08rem}
+.tz-cta{display:inline-block;margin-top:2rem;background:var(--tz-accent);color:var(--tz-surface);font-weight:600;font-size:0.95rem;padding:0.8rem 1.7rem;border-radius:8px;text-decoration:none;transition:transform .25s cubic-bezier(0.22,1,0.36,1)}
+.tz-cta:hover{transform:translateY(-2px)}
+.tz-widget{margin-top:3rem;background:var(--tz-surface);border:1px solid var(--tz-line);border-radius:14px;box-shadow:0 1px 2px color-mix(in srgb,var(--tz-ink) 8%,transparent),0 8px 24px color-mix(in srgb,var(--tz-ink) 8%,transparent);padding:1.6rem;max-width:520px}
+.tz-widget .tz-whead{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.tz-widget .tz-wtitle{font-weight:600;font-size:0.95rem;letter-spacing:-0.01em}
+.tz-widget .tz-wcount{font-family:"JetBrains Mono",monospace;font-size:0.72rem;color:var(--tz-muted)}
+.tz-task{display:flex;align-items:center;gap:0.9rem;padding:0.85rem 0;border-top:1px solid var(--tz-line);cursor:pointer;list-style:none}
+.tz-box{flex:none;width:1.3rem;height:1.3rem;border-radius:6px;border:1.5px solid var(--tz-muted);display:grid;place-items:center;font-size:0.85rem;color:var(--tz-surface);transition:all .2s ease}
+.tz-task.tz-done .tz-box{background:var(--tz-accent);border-color:var(--tz-accent)}
+.tz-task.tz-done .tz-t{color:var(--tz-muted);text-decoration:line-through}
+.tz-task .tz-t{font-size:0.98rem}
+.tz-task .tz-kbd{margin-left:auto;font-family:"JetBrains Mono",monospace;font-size:0.7rem;color:var(--tz-muted);border:1px solid var(--tz-line);border-radius:6px;padding:0.15rem 0.5rem;background:var(--tz-bg)}
+.tz-wfoot{margin-top:1rem;font-size:0.9rem;color:var(--tz-muted)}
+.tz-content{max-width:1120px;margin:0 auto;padding:4rem 5vw 5rem}
+.tz-feats{list-style:none;max-width:640px}
+.tz-feats li{display:flex;gap:1rem;padding:1.3rem 0;border-bottom:1px solid var(--tz-line);align-items:flex-start}
+.tz-feats li:last-child{border-bottom:none}
+.tz-check{flex:none;width:1.5rem;height:1.5rem;border-radius:50%;background:color-mix(in srgb,var(--tz-accent) 12%,transparent);color:var(--tz-accent);display:grid;place-items:center;font-size:0.85rem;font-weight:700}
+.tz-feats strong{display:block;font-weight:600;letter-spacing:-0.01em}
+.tz-feats p{color:var(--tz-muted);font-size:0.95rem;margin-top:0.2rem}
+.tz-tokens{border-top:1px solid var(--tz-line);padding:3.5rem 5vw;max-width:1120px;margin:0 auto}
+.tz-tokens h2{font-size:1.3rem;font-weight:600;letter-spacing:-0.02em;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{background:var(--tz-surface);border:1px solid var(--tz-line);border-radius:12px;overflow:hidden;min-width:9rem}
+.tz-chip{display:block;height:3rem}
+.tz-swatches .tz-name{display:block;font-family:"JetBrains Mono",monospace;font-size:0.66rem;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"JetBrains Mono",monospace;font-size:0.76rem;padding:0 0.8rem 0.7rem}
+.tz-foot{border-top:1px solid var(--tz-line);padding:2rem 5vw;max-width:1120px;margin:0 auto;font-family:"JetBrains Mono",monospace;font-size:0.72rem;color:var(--tz-muted)}
+@media(max-width:700px){
+  .tz-hero{padding:3rem 6vw 2.5rem}
+  .tz-task .tz-kbd{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">driftline<span class="tz-dot">.</span></span>
+  <span class="tz-label">TZ-taste style DNA</span>
+</header>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow">For teams of one to fifty</p>
+  <h1>Your tasks, minus the noise.</h1>
+  <p class="tz-sub">A to-do list that loads in 0.4 seconds and has never once sent a motivational quote. Try the real thing below — it works.</p>
+  <a class="tz-cta" href="#">Start free</a>
+
+  <div class="tz-widget" role="group" aria-label="Live task list demo">
+    <div class="tz-whead">
+      <span class="tz-wtitle">Today</span>
+      <span class="tz-wcount" id="tz-count">1 of 3 done</span>
+    </div>
+    <ul id="tz-tasks">
+      <li class="tz-task tz-done" tabindex="0"><span class="tz-box">✓</span><span class="tz-t">Ship the onboarding email</span><span class="tz-kbd">E</span></li>
+      <li class="tz-task" tabindex="0"><span class="tz-box"></span><span class="tz-t">Review Maya's mockups</span><span class="tz-kbd">M</span></li>
+      <li class="tz-task" tabindex="0"><span class="tz-box"></span><span class="tz-t">Book dentist (finally)</span><span class="tz-kbd">D</span></li>
+    </ul>
+    <p class="tz-wfoot" id="tz-empty" hidden>Nothing due. The day is yours.</p>
+  </div>
+</section>
+
+<section class="tz-content">
+  <ul class="tz-feats">
+    <li><span class="tz-check">✓</span><div><strong>Keyboard-first everything</strong><p>Press ⌘K to jump anywhere. Your mouse will get lonely.</p></div></li>
+    <li><span class="tz-check">✓</span><div><strong>Offline-first, syncs when you're back</strong><p>Airplane mode is a feature, not an edge case.</p></div></li>
+    <li><span class="tz-check">✓</span><div><strong>No streaks, no badges, no guilt</strong><p>Productivity software should not have opinions about your worth.</p></div></li>
+  </ul>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#f7f7f5"></span><span class="tz-name">bg</span><span class="tz-hex">#f7f7f5</span></li>
+    <li><span class="tz-chip" style="background:#ffffff"></span><span class="tz-name">surface</span><span class="tz-hex">#ffffff</span></li>
+    <li><span class="tz-chip" style="background:#1a1a1a"></span><span class="tz-name">ink</span><span class="tz-hex">#1a1a1a</span></li>
+    <li><span class="tz-chip" style="background:#8a8a93"></span><span class="tz-name">muted</span><span class="tz-hex">#8a8a93</span></li>
+    <li><span class="tz-chip" style="background:#5b5bd6"></span><span class="tz-name">accent</span><span class="tz-hex">#5b5bd6</span></li>
+    <li><span class="tz-chip" style="background:#1a1a1414"></span><span class="tz-name">line</span><span class="tz-hex">#1a1a1414</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+
+<script>
+(function(){
+  var tasks = document.querySelectorAll('.tz-task');
+  var count = document.getElementById('tz-count');
+  var empty = document.getElementById('tz-empty');
+  function update(){
+    var done = document.querySelectorAll('.tz-task.tz-done').length;
+    count.textContent = done + ' of ' + tasks.length + ' done';
+    empty.hidden = done !== tasks.length;
+  }
+  tasks.forEach(function(t){
+    function toggle(){
+      t.classList.toggle('tz-done');
+      t.querySelector('.tz-box').textContent = t.classList.contains('tz-done') ? '✓' : '';
+      update();
+    }
+    t.addEventListener('click', toggle);
+    t.addEventListener('keydown', function(e){ if(e.key===' '||e.key==='Enter'){ e.preventDefault(); toggle(); } });
+  });
+})();
+</script>
+</body>
+</html>
