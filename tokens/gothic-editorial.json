@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-gothic-editorial",
+  "title": "Gothic Editorial design tokens",
+  "category": "Tokens",
+  "file": "tokens/gothic-editorial.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "gothic-editorial"
+  ],
+  "description": "W3C-format design tokens for the Gothic Editorial style DNA.",
+  "dnas": [
+   "gothic-editorial"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#12100c",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#e8dfc8",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#a33b2e",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#7d7261",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#2e2820",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "UnifrakturMaguntia",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Cormorant Garamond",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "gothic-editorial",
+  "name": "Gothic Editorial",
+  "vibe": "Dark academia: candlelit paper, blackletter accents used sparingly, scholarly and brooding. A library after hours."
+ }
+}
