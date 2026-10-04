@@ -1,0 +1,187 @@
+{
+ "count": 12,
+ "updated": "2026-10-04",
+ "usage": "VS Code color themes, one per style DNA. Copy into your settings or an extension.",
+ "vscode_themes": [
+  {
+   "id": "vscode-acid-rave",
+   "title": "Acid Rave VS Code theme",
+   "category": "VS Code",
+   "file": "vscode/acid-rave.json",
+   "tags": [
+    "vscode",
+    "theme",
+    "acid-rave"
+   ],
+   "description": "VS Code color theme from the Acid Rave DNA tokens.",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "vscode-alpine-ledger",
+   "title": "Alpine Ledger VS Code theme",
+   "category": "VS Code",
+   "file": "vscode/alpine-ledger.json",
+   "tags": [
+    "vscode",
+    "theme",
+    "alpine-ledger"
+   ],
+   "description": "VS Code color theme from the Alpine Ledger DNA tokens.",
+   "dnas": [
+    "alpine-ledger"
+   ]
+  },
+  {
+   "id": "vscode-aperitivo-italian",
+   "title": "Aperitivo Italian VS Code theme",
+   "category": "VS Code",
+   "file": "vscode/aperitivo-italian.json",
+   "tags": [
+    "vscode",
+    "theme",
+    "aperitivo-italian"
+   ],
+   "description": "VS Code color theme from the Aperitivo Italian DNA tokens.",
+   "dnas": [
+    "aperitivo-italian"
+   ]
+  },
+  {
+   "id": "vscode-arctic-field",
+   "title": "Arctic Field VS Code theme",
+   "category": "VS Code",
+   "file": "vscode/arctic-field.json",
+   "tags": [
+    "vscode",
+    "theme",
+    "arctic-field"
+   ],
+   "description": "VS Code color theme from the Arctic Field DNA tokens.",
+   "dnas": [
+    "arctic-field"
+   ]
+  },
+  {
+   "id": "vscode-art-deco-luxe",
+   "title": "Art Deco Luxe VS Code theme",
+   "category": "VS Code",
+   "file": "vscode/art-deco-luxe.json",
+   "tags": [
+    "vscode",
+    "theme",
+    "art-deco-luxe"
+   ],
+   "description": "VS Code color theme from the Art Deco Luxe DNA tokens.",
+   "dnas": [
+    "art-deco-luxe"
+   ]
+  },
+  {
+   "id": "vscode-art-nouveau-whiplash",
+   "title": "Art Nouveau Whiplash VS Code theme",
+   "category": "VS Code",
+   "file": "vscode/art-nouveau-whiplash.json",
+   "tags": [
+    "vscode",
+    "theme",
+    "art-nouveau-whiplash"
+   ],
+   "description": "VS Code color theme from the Art Nouveau Whiplash DNA tokens.",
+   "dnas": [
+    "art-nouveau-whiplash"
+   ]
+  },
+  {
+   "id": "vscode-bauhaus-primary",
+   "title": "Bauhaus Primary VS Code theme",
+   "category": "VS Code",
+   "file": "vscode/bauhaus-primary.json",
+   "tags": [
+    "vscode",
+    "theme",
+    "bauhaus-primary"
+   ],
+   "description": "VS Code color theme from the Bauhaus Primary DNA tokens.",
+   "dnas": [
+    "bauhaus-primary"
+   ]
+  },
+  {
+   "id": "vscode-blueprint-tech",
+   "title": "Blueprint Tech VS Code theme",
+   "category": "VS Code",
+   "file": "vscode/blueprint-tech.json",
+   "tags": [
+    "vscode",
+    "theme",
+    "blueprint-tech"
+   ],
+   "description": "VS Code color theme from the Blueprint Tech DNA tokens.",
+   "dnas": [
+    "blueprint-tech"
+   ]
+  },
+  {
+   "id": "vscode-botanical-lab",
+   "title": "Botanical Lab VS Code theme",
+   "category": "VS Code",
+   "file": "vscode/botanical-lab.json",
+   "tags": [
+    "vscode",
+    "theme",
+    "botanical-lab"
+   ],
+   "description": "VS Code color theme from the Botanical Lab DNA tokens.",
+   "dnas": [
+    "botanical-lab"
+   ]
+  },
+  {
+   "id": "vscode-concrete-poem",
+   "title": "Concrete Poem VS Code theme",
+   "category": "VS Code",
+   "file": "vscode/concrete-poem.json",
+   "tags": [
+    "vscode",
+    "theme",
+    "concrete-poem"
+   ],
+   "description": "VS Code color theme from the Concrete Poem DNA tokens.",
+   "dnas": [
+    "concrete-poem"
+   ]
+  },
+  {
+   "id": "vscode-constructivist-red",
+   "title": "Constructivist Red VS Code theme",
+   "category": "VS Code",
+   "file": "vscode/constructivist-red.json",
+   "tags": [
+    "vscode",
+    "theme",
+    "constructivist-red"
+   ],
+   "description": "VS Code color theme from the Constructivist Red DNA tokens.",
+   "dnas": [
+    "constructivist-red"
+   ]
+  },
+  {
+   "id": "vscode-cottage-warm",
+   "title": "Cottage Warm VS Code theme",
+   "category": "VS Code",
+   "file": "vscode/cottage-warm.json",
+   "tags": [
+    "vscode",
+    "theme",
+    "cottage-warm"
+   ],
+   "description": "VS Code color theme from the Cottage Warm DNA tokens.",
+   "dnas": [
+    "cottage-warm"
+   ]
+  }
+ ]
+}
