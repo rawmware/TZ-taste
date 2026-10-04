@@ -1,0 +1,72 @@
+<!--tz-meta {"id":"stats-dotmap","title":"Dot map","category":"Stats","file":"patterns/stats-dotmap.html","tags":["map","dots"],"description":"Dot-grid suggestion of a network arc with gold nodes and one live pulse.","dnas":["dark-luxe"]} -->
+<section class="tz-dotmap">
+  <div class="tz-dotmap-field" aria-hidden="true">
+    <span style="top:64%;left:12%"></span><span style="top:58%;left:17%"></span><span style="top:52%;left:22%"></span><span style="top:47%;left:27%"></span><span style="top:43%;left:32%"></span><span style="top:40%;left:37%"></span><span style="top:38%;left:42%"></span><span style="top:37%;left:47%"></span><span style="top:37%;left:52%"></span><span style="top:38%;left:57%"></span><span style="top:40%;left:62%"></span><span style="top:43%;left:66%"></span><span style="top:47%;left:70%"></span><span style="top:52%;left:73%"></span><span style="top:58%;left:75%"></span><span style="top:64%;left:76%"></span>
+    <span style="top:50%;left:30%"></span><span style="top:46%;left:35%"></span><span style="top:44%;left:40%"></span><span style="top:44%;left:45%"></span><span style="top:45%;left:50%"></span><span style="top:47%;left:55%"></span><span style="top:50%;left:60%"></span><span style="top:54%;left:64%"></span>
+    <span class="tz-dotmap-live" style="top:37%;left:52%"><b></b></span>
+  </div>
+  <div class="tz-dotmap-meta">
+    <p class="tz-dotmap-num">28</p>
+    <p class="tz-dotmap-cap">edge nodes online · Frankfurt live</p>
+  </div>
+</section>
+<style>
+.tz-dotmap{
+  background:#0d0c0a;
+  color:#efe9dc;
+  font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(32px,5vw,64px) clamp(20px,4vw,48px);
+}
+.tz-dotmap-field{
+  position:relative;
+  min-height:280px;
+  background-image:radial-gradient(#2e2a21 1px,transparent 1.2px);
+  background-size:18px 18px;
+  border:1px solid #2e2a21;
+  margin-bottom:24px;
+}
+.tz-dotmap-field span{
+  position:absolute;
+  width:7px;
+  height:7px;
+  margin:-3px;
+  border-radius:50%;
+  background:#c9a24b;
+}
+.tz-dotmap-live b{
+  position:absolute;
+  inset:-6px;
+  border-radius:50%;
+  border:2px solid #c9a24b;
+  animation:tz-ping 2s cubic-bezier(.22,1,.36,1) infinite;
+}
+@keyframes tz-ping{
+  0%{transform:scale(.5);opacity:1}
+  100%{transform:scale(1.8);opacity:0}
+}
+.tz-dotmap-meta{
+  display:flex;
+  align-items:baseline;
+  gap:20px;
+  flex-wrap:wrap;
+}
+.tz-dotmap-num{
+  font-size:clamp(56px,8vw,96px);
+  font-weight:100;
+  letter-spacing:-.04em;
+  margin:0;
+  color:#c9a24b;
+  font-variant-numeric:tabular-nums;
+}
+.tz-dotmap-cap{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  opacity:.65;
+  margin:0;
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-dotmap-live b{animation:none;opacity:0}
+}
+</style>
