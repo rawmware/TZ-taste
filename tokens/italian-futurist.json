@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-italian-futurist",
+  "title": "Italian Futurist design tokens",
+  "category": "Tokens",
+  "file": "tokens/italian-futurist.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "italian-futurist"
+  ],
+  "description": "W3C-format design tokens for the Italian Futurist DNA.",
+  "dnas": [
+   "italian-futurist"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#f5f1e4",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#16130e",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#d62b1f",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#7c7568",
+   "type": "color"
+  },
+  "line": {
+   "value": "#16130e26",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#f5f1e4",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Archivo Black",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Archivo",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Space Mono",
+   "type": "fontFamily"
+  }
+ }
+}
