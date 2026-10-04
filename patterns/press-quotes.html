@@ -1,0 +1,31 @@
+<!--tz-meta {"id":"press-quotes","title":"Press quotes strip","category":"Testimonials","file":"patterns/press-quotes.html","tags":["press","quotes","testimonials","logos"],"description":"One pull quote flanked by mastheads; typographic, no fake logos.","dnas":["library-oak"]} -->
+<section class="tz-press-quotes" aria-label="Press">
+  <div class="tz-masts">
+    <span>The Meridian Post</span><span class="tz-dot">&middot;</span>
+    <span>Dispatch Weekly</span><span class="tz-dot">&middot;</span>
+    <span>Harbor Review</span><span class="tz-dot">&middot;</span>
+    <span>Northline Journal</span>
+  </div>
+  <figure class="tz-quote">
+    <blockquote>&ldquo;The rare tool that gets out of the way. We shipped a full campaign site in an afternoon and never once fought the software.&rdquo;</blockquote>
+    <figcaption>&mdash; <cite>Dispatch Weekly</cite>, on the 4.0 release</figcaption>
+  </figure>
+</section>
+<style>
+.tz-press-quotes{--bg:#ece0c8;--ink:#211810;--accent:#c9973f;--muted:#93805f;
+  --line:#21181026;
+  background:var(--bg);color:var(--ink);padding:clamp(48px,7vw,104px) clamp(20px,8vw,120px);
+  font-family:Georgia,'Times New Roman',serif;text-align:center}
+.tz-masts{font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 36px;display:flex;justify-content:center;
+  flex-wrap:wrap;gap:10px 16px;align-items:center}
+.tz-dot{color:var(--accent)}
+.tz-quote{max-width:760px;margin:0 auto}
+.tz-quote blockquote{font-size:clamp(22px,3.4vw,36px);line-height:1.35;
+  letter-spacing:-.01em;margin:0 0 24px;font-style:italic}
+.tz-quote blockquote::before{content:"";display:block;width:56px;height:3px;
+  background:var(--accent);margin:0 auto 28px}
+.tz-quote figcaption{font-size:14.5px;color:var(--muted)}
+.tz-quote cite{font-style:normal;font-weight:700;color:var(--ink)}
+@media(max-width:560px){.tz-masts{letter-spacing:.12em}}
+</style>
