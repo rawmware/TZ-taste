@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-bazaar-spice",
+  "title": "Bazaar Spice design tokens",
+  "category": "Tokens",
+  "file": "tokens/bazaar-spice.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "bazaar-spice"
+  ],
+  "description": "W3C-format design tokens for the Bazaar Spice DNA.",
+  "dnas": [
+   "bazaar-spice"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#241109",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#f7e8cf",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#e9a820",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#b0854f",
+   "type": "color"
+  },
+  "line": {
+   "value": "#e9a82066",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#241109",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Yeseva One",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Work Sans",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "IBM Plex Mono",
+   "type": "fontFamily"
+  }
+ }
+}
