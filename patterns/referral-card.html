@@ -1,0 +1,46 @@
+<!--tz-meta {"id":"referral-card","title":"Refer-a-friend card","category":"Cards","file":"patterns/referral-card.html","tags":["referral","share","promo","code"],"description":"Sticker-style referral card: give/get offer, dashed code box, three plain steps.","dnas":["neo-brutalist-pop"]} -->
+<section class="tz-referral-card" aria-label="Refer a friend">
+  <div class="tz-badge" aria-hidden="true"><span>Give $20<br>Get $20</span></div>
+  <p class="tz-k">Referrals</p>
+  <h2>Your friends get $20 off.<br>You get $20 credit.</h2>
+  <p class="tz-sub">No limits, no expiry games. If they buy, you both win — that&rsquo;s the whole pitch.</p>
+  <div class="tz-code">
+    <code>ROMAN-20-XKQ</code>
+    <button>Copy code</button>
+  </div>
+  <ol class="tz-how">
+    <li><strong>1</strong> Share your link or code</li>
+    <li><strong>2</strong> They save $20 on their first order</li>
+    <li><strong>3</strong> You bank $20 in credit</li>
+  </ol>
+</section>
+<style>
+.tz-referral-card{--bg:#fff6e9;--ink:#1a1a1a;--accent:#ff5da2;--muted:#6b6259;--surface:#ffffff;--line:#1a1a1a;
+  background:var(--bg);color:var(--ink);padding:clamp(40px,6vw,88px);position:relative;overflow:hidden;
+  font-family:'Space Grotesk',-apple-system,'Segoe UI',sans-serif;max-width:640px}
+.tz-badge{position:absolute;top:28px;right:28px;width:118px;height:118px;border-radius:50%;
+  background:var(--accent);border:3px solid var(--line);display:grid;place-items:center;
+  transform:rotate(12deg);box-shadow:4px 4px 0 var(--line)}
+.tz-badge span{font-family:'Archivo Black','Arial Black',sans-serif;font-size:15px;line-height:1.25;
+  text-align:center;color:#fff}
+.tz-referral-card .tz-k{font-family:'Space Mono',ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+.tz-referral-card h2{font-family:'Archivo Black','Arial Black',sans-serif;font-size:clamp(26px,3.6vw,42px);
+  line-height:1.12;letter-spacing:-.01em;margin:0 130px 14px 0}
+.tz-sub{color:var(--muted);font-size:15px;line-height:1.65;margin:0 130px 28px 0;max-width:38ch}
+.tz-code{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  border:2px dashed var(--line);border-radius:14px;background:var(--surface);
+  padding:16px 16px 16px 22px;margin-bottom:28px;box-shadow:5px 5px 0 #1a1a122}
+.tz-code code{font-family:'Space Mono',ui-monospace,Menlo,monospace;font-size:19px;
+  font-weight:700;letter-spacing:.08em}
+.tz-code button{font:inherit;font-weight:700;font-size:14px;background:var(--ink);color:#fff;
+  border:0;border-radius:10px;padding:12px 20px;cursor:pointer;white-space:nowrap}
+.tz-code button:hover{background:var(--accent)}
+.tz-how{list-style:none;margin:0;padding:22px 0 0;border-top:2px solid var(--line);
+  display:flex;flex-direction:column;gap:14px}
+.tz-how li{display:flex;align-items:center;gap:14px;font-size:15px}
+.tz-how strong{width:30px;height:30px;flex:none;display:grid;place-items:center;
+  background:var(--ink);color:#fff;border-radius:50%;font-family:'Space Mono',ui-monospace,Menlo,monospace;font-size:13px}
+@media(max-width:560px){.tz-referral-card h2,.tz-sub{margin-right:0}.tz-badge{position:static;transform:rotate(-6deg);margin-bottom:20px}
+  .tz-code{flex-direction:column;align-items:stretch;text-align:center}.tz-code button{width:100%}}
+</style>
