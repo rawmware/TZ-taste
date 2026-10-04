@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-bike-repair",
+  "title": "Bike Repair design tokens",
+  "category": "Tokens",
+  "file": "tokens/bike-repair.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "bike-repair"
+  ],
+  "description": "W3C-format design tokens for the Bike Repair DNA.",
+  "dnas": [
+   "bike-repair"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#e9e6dd",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#232323",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#d99a1f",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#6f6a5e",
+   "type": "color"
+  },
+  "line": {
+   "value": "#2323231f",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#d9d4c6",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Chakra Petch",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Public Sans",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "JetBrains Mono",
+   "type": "fontFamily"
+  }
+ }
+}
