@@ -1,0 +1,214 @@
+<!--tz-meta {"id":"ruby-docs","title":"Sundial — library documentation","category":"Ruby","file":"ruby/docs.html.erb","tags":["ruby","erb","docs","documentation"],"description":"Docs-solar documentation page for fictional JS date library Sundial: Tufte-style margin sidenotes in burnt orange beside a warm single column.","dnas":["docs-solar"]} -->
+<% bg = "#fdf6e3" %>
+<% ink = "#3d3a2e" %>
+<% accent = "#cb4b16" %>
+<% muted = "#8a8672" %>
+<% line = "#3d3a2e1f" %>
+<% surface = "#f7eeda" %>
+<% display = "Source Serif 4" %>
+<% body = "Source Serif 4" %>
+<% mono = "IBM Plex Mono" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sundial — dates without the dread · docs</title>
+<meta name="description" content="Sundial is a 4kb JavaScript date library with a humane API. Installation, quick start, and full API reference.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:<%= bg %>; --ink:<%= ink %>; --accent:<%= accent %>;
+  --muted:<%= muted %>; --line:<%= line %>; --surface:<%= surface %>;
+  --ink-2:color-mix(in srgb, var(--ink) 74%, var(--bg));
+  --display:"<%= display %>",Georgia,serif;
+  --body:"<%= body %>",Georgia,serif;
+  --mono:"<%= mono %>",ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);
+     font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent);color:var(--bg)}
+.wrap{max-width:1140px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+/* top bar */
+.topbar{border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);z-index:10}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;
+              padding-top:14px;padding-bottom:14px}
+.wordmark{font-weight:700;font-size:19px;text-decoration:none;color:var(--ink);letter-spacing:-.01em}
+.wordmark i{font-style:normal;color:var(--accent)}
+.topbar nav{font-family:var(--mono);font-size:12.5px}
+.topbar nav a{color:var(--ink-2);text-decoration:none;margin-left:24px}
+.topbar nav a:hover{color:var(--accent)}
+.ver{font-family:var(--mono);font-size:11.5px;border:1px solid var(--line);border-radius:4px;
+     padding:3px 10px;color:var(--ink-2);margin-left:24px;background:var(--surface)}
+/* hero: left-aligned, generous, no badge-buttons-logo-row */
+.hero{padding:clamp(64px,9vw,120px) 0 clamp(40px,5vw,64px);border-bottom:1px solid var(--line)}
+.hero .kicker{font-family:var(--mono);font-size:12px;letter-spacing:.24em;text-transform:uppercase;
+              color:var(--accent);margin-bottom:20px}
+h1{font-weight:600;font-size:clamp(40px,5.6vw,68px);line-height:1.08;letter-spacing:-.02em;
+   max-width:20ch;margin-bottom:20px;text-wrap:balance}
+.hero p{font-size:19px;color:var(--ink-2);max-width:60ch}
+.hero .cta{margin-top:30px;display:flex;gap:26px;align-items:center;flex-wrap:wrap}
+.btn{background:var(--accent);color:var(--bg);font-family:var(--mono);font-size:14px;font-weight:700;
+     padding:13px 26px;border-radius:5px;text-decoration:none}
+.btn:hover{filter:brightness(1.07)}
+.linklike{font-family:var(--mono);font-size:14px;color:var(--ink);text-decoration:none;
+          border-bottom:2px solid var(--accent)}
+/* doc grid: content + margin notes — the page's one distinctive choice */
+.doc{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:clamp(32px,6vw,88px);
+     padding:clamp(48px,6vw,80px) 0;align-items:start}
+.toc{position:sticky;top:76px;font-family:var(--mono);font-size:13px}
+.toc h4{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-2);
+        font-weight:500;margin-bottom:14px}
+.toc a{display:block;color:var(--ink-2);text-decoration:none;padding:7px 0;border-top:1px solid var(--line)}
+.toc a:hover{color:var(--accent)}
+.prose section{margin-bottom:clamp(48px,6vw,80px)}
+.prose h2{font-size:32px;font-weight:600;letter-spacing:-.015em;margin-bottom:6px}
+.prose h2 .anchor{color:var(--accent);text-decoration:none;font-size:.7em;vertical-align:middle}
+.prose h3{font-size:21px;font-weight:600;margin:34px 0 8px}
+.prose p{margin-bottom:1.1em;max-width:66ch}
+.prose p code, .prose li code{font-family:var(--mono);font-size:.86em;background:var(--surface);
+     border:1px solid var(--line);border-radius:4px;padding:1px 7px;color:var(--accent)}
+.prose ul{margin:0 0 1.2em 1.3em;color:var(--ink-2)}
+.prose li{margin-bottom:.5em;max-width:62ch}
+/* code block */
+pre{background:var(--ink);color:var(--bg);border-radius:8px;padding:22px 24px;overflow-x:auto;
+    margin:22px 0;font-family:var(--mono);font-size:14px;line-height:1.7}
+pre .c{color:#a89a80} pre .s{color:#e8a25e} pre .k{color:#7fb3c4} pre .f{color:#cb4b16}
+/* margin note */
+.note{border-left:3px solid var(--accent);padding:2px 0 2px 16px;margin:22px 0;
+      font-size:14.5px;line-height:1.65;color:var(--ink-2)}
+.note b{color:var(--accent);font-family:var(--mono);font-size:11px;letter-spacing:.18em;
+        text-transform:uppercase;display:block;margin-bottom:6px;font-weight:700}
+/* API rows */
+.api{border-top:2px solid var(--ink);margin-top:24px}
+.api-row{display:grid;grid-template-columns:280px 1fr;gap:24px;padding:22px 0;
+         border-bottom:1px solid var(--line);align-items:start}
+.api-row code.sig{font-family:var(--mono);font-size:14.5px;font-weight:700;color:var(--accent);
+                  word-break:break-word}
+.api-row p{font-size:15.5px;color:var(--ink-2);max-width:56ch}
+.api-row p code{font-family:var(--mono);font-size:.85em;background:var(--surface);
+                border:1px solid var(--line);border-radius:4px;padding:0 6px}
+/* footer */
+footer{border-top:1px solid var(--line);margin-top:24px}
+footer .wrap{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:32px;
+             padding-top:44px;padding-bottom:36px}
+footer h4{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+          color:var(--ink-2);font-weight:500;margin-bottom:14px}
+footer a{display:block;color:var(--ink);text-decoration:none;font-size:15px;margin-bottom:9px}
+footer a:hover{color:var(--accent)}
+footer p{font-size:15px;color:var(--ink-2);max-width:36ch}
+.fine{border-top:1px solid var(--line)}
+.fine .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+            padding-top:18px;padding-bottom:26px;font-family:var(--mono);font-size:12px;color:var(--ink-2)}
+@media (max-width:900px){
+  .doc{grid-template-columns:1fr}
+  .toc{position:static;display:flex;flex-wrap:wrap;gap:4px 20px;margin-bottom:8px}
+  .toc h4{width:100%}
+  .toc a{border:0;padding:4px 0}
+  .api-row{grid-template-columns:1fr;gap:8px}
+  footer .wrap{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="wrap">
+  <a class="wordmark" href="#">sundial<i>.</i>js</a>
+  <nav><a href="#install">Install</a><a href="#quickstart">Quick start</a><a href="#api">API</a><span class="ver">v3.2.1</span></nav>
+</div></header>
+
+<main>
+<div class="wrap hero">
+  <p class="kicker">Documentation</p>
+  <h1>Dates without the dread.</h1>
+  <p>Sundial is a 4&nbsp;kb JavaScript date library with a humane API: no moment-shaped
+  regrets, no 70&nbsp;kb bundle, no "why is February like this" at 2 a.m. Time zones
+  handled; daylight saving survived.</p>
+  <div class="cta"><a class="btn" href="#install">Install Sundial</a>
+  <a class="linklike" href="#api">Skip to the API ↓</a></div>
+</div>
+
+<div class="wrap doc">
+  <aside class="toc" aria-label="On this page">
+    <h4>On this page</h4>
+    <a href="#install">Installation</a>
+    <a href="#quickstart">Quick start</a>
+    <a href="#api">API reference</a>
+    <a href="#license">License</a>
+  </aside>
+
+  <div class="prose">
+    <section id="install">
+      <h2>Installation <a class="anchor" href="#install">#</a></h2>
+      <p>One package, zero dependencies. Works in the browser, Node, Deno, and Bun —
+      anywhere JavaScript runs, Sundial keeps the time.</p>
+<pre><span class="c"># npm</span>
+npm install sundial-js
+
+<span class="c"># or straight in the browser</span>
+&lt;<span class="k">script</span> <span class="k">src</span>=<span class="s">"https://unpkg.com/sundial-js"</span>&gt;&lt;/<span class="k">script</span>&gt;</pre>
+      <div class="note"><b>Why 4 kb</b>Most date libraries ship a timezone database the size of a novella. Sundial ships the offsets and computes the rest — the whole thing gzips smaller than most hero images.</div>
+    </section>
+
+    <section id="quickstart">
+      <h2>Quick start <a class="anchor" href="#quickstart">#</a></h2>
+      <p>Everything starts with <code>sun()</code>. It returns an immutable object, so
+      every operation gives you a new date and leaves the old one alone.</p>
+<pre><span class="k">import</span> { sun } <span class="k">from</span> <span class="s">"sundial-js"</span>;
+
+<span class="k">const</span> <span class="f">launch</span> = <span class="f">sun</span>(<span class="s">"2026-11-02T09:00"</span>, <span class="s">"America/New_York"</span>);
+launch.<span class="f">add</span>(<span class="s">"3 days"</span>).<span class="f">format</span>(<span class="s">"EEEE, MMMM d"</span>);
+<span class="c">// → "Thursday, November 5"</span></pre>
+      <div class="note"><b>Immutable by default</b>If you have ever been bitten by a date that changed itself mid-function, this is the part of the docs where you exhale.</div>
+      <h3>Things people ask for first</h3>
+      <ul>
+        <li><b>Relative time:</b> <code>sun("2026-01-01").fromNow()</code> → "9 months ago"</li>
+        <li><b>Calendars:</b> <code>sun().startOf("week")</code> respects locale week starts</li>
+        <li><b>Parsing:</b> strict by default — <code>sun("not a date")</code> throws, loudly</li>
+      </ul>
+    </section>
+
+    <section id="api">
+      <h2>API reference <a class="anchor" href="#api">#</a></h2>
+      <p>The complete surface. If a method isn't listed here, it doesn't exist —
+      that's a feature.</p>
+      <div class="api">
+        <div class="api-row"><code class="sig">sun(input?, zone?)</code>
+          <p>Creates a Sundial. Accepts ISO strings, <code>Date</code> objects, and Unix timestamps. No arguments means right now, wherever you are.</p></div>
+        <div class="api-row"><code class="sig">.add(amount) / .subtract(amount)</code>
+          <p>Shifts the date: <code>.add("2 weeks")</code>, <code>.subtract("90 minutes")</code>. Returns a new Sundial; the original is untouched.</p></div>
+        <div class="api-row"><code class="sig">.format(pattern)</code>
+          <p>Formats with Unicode tokens: <code>"yyyy-MM-dd"</code>, <code>"EEEE, h:mm a"</code>. Unknown tokens throw instead of silently printing themselves.</p></div>
+        <div class="api-row"><code class="sig">.inZone(zone)</code>
+          <p>Converts to an IANA zone: <code>.inZone("Asia/Tokyo")</code>. DST transitions are handled — spring forward doesn't eat your meeting.</p></div>
+        <div class="api-row"><code class="sig">.fromNow() / .calendar()</code>
+          <p>Human-friendly output: "in 3 hours", "yesterday". <code>.calendar()</code> gives "Today at 4:30 PM" style strings, localized.</p></div>
+        <div class="api-row"><code class="sig">.isBefore(other) / .isAfter(other)</code>
+          <p>Comparisons that read like English and behave like math. Granularity optional: <code>.isBefore(other, "day")</code>.</p></div>
+      </div>
+      <div class="note"><b>Design note</b>Every method returns either a Sundial, a string, or a boolean. If you find yourself nesting three calls deep, file an issue — the API probably owes you a method.</div>
+    </section>
+
+    <section id="license">
+      <h2>License <a class="anchor" href="#license">#</a></h2>
+      <p>MIT. Use it in the side project, the startup, and the bank. If it saves you
+      from one timezone bug, consider <a href="#" style="color:var(--accent)">sponsoring a coffee</a>.</p>
+    </section>
+  </div>
+</div>
+</main>
+
+<footer><div class="wrap">
+  <div><h4>Sundial</h4>
+    <p>A 4 kb date library for people who have been hurt by dates before. Maintained by June Park and 41 contributors.</p></div>
+  <div><h4>Docs</h4><a href="#install">Installation</a><a href="#quickstart">Quick start</a><a href="#api">API reference</a></div>
+  <div><h4>Elsewhere</h4><a href="#">GitHub</a><a href="#">Changelog</a><a href="#">Report a timezone crime</a></div>
+</div>
+<div class="fine"><div class="wrap">
+  <span>© 2026 Sundial contributors · MIT licensed</span>
+  <span>This page rendered at 4 kb of CSS. The docs practice what the library preaches.</span>
+</div></div></footer>
+</body>
+</html>
