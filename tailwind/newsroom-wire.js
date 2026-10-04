@@ -1,0 +1,3 @@
+//tz-meta {"id":"tailwind-newsroom-wire","title":"Newsroom Wire Tailwind preset","category":"Tailwind","file":"tailwind/newsroom-wire.js","tags":["tailwind","preset","newsroom-wire"],"description":"Tailwind theme preset for the Newsroom Wire DNA.","dnas":["newsroom-wire"]}
+// Tailwind preset for the Newsroom Wire DNA. Extend tailwind.config with this.
+module.exports={theme:{extend:{colors:{tzbg:"#f7f4ec",tzink:"#16130e",tzaccent:"#c8102e",tzmuted:"#6f6a5e",tzline:"#16130e29",tzsurface:"#f7f4ec"},fontFamily:{display:["Special Elite","serif"],body:["PT Serif","sans-serif"],mono:["Courier Prime","monospace"]}}}};
