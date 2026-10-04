@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-cyberpunk-noir",
+  "title": "Cyberpunk Noir design tokens",
+  "category": "Tokens",
+  "file": "tokens/cyberpunk-noir.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "cyberpunk-noir"
+  ],
+  "description": "W3C-format design tokens for the Cyberpunk Noir style DNA.",
+  "dnas": [
+   "cyberpunk-noir"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#08080d",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#e8e6f0",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#ff2e88",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#6b6f85",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#1e2030",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Orbitron",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Rajdhani",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Share Tech Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "cyberpunk-noir",
+  "name": "Cyberpunk Noir",
+  "vibe": "Rain-slicked neon city: near-black, electric pink and cyan, glitch under the surface. Dense, alert, humming."
+ }
+}
