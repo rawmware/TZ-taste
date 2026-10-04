@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-circus-poster",
+  "title": "Circus Poster design tokens",
+  "category": "Tokens",
+  "file": "tokens/circus-poster.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "circus-poster"
+  ],
+  "description": "W3C-format design tokens for the Circus Poster DNA.",
+  "dnas": [
+   "circus-poster"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#f5e8c8",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#2b1408",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#b3202c",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#8a6b45",
+   "type": "color"
+  },
+  "line": {
+   "value": "#2b140829",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#f5e8c8",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Rye",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Bitter",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Space Mono",
+   "type": "fontFamily"
+  }
+ }
+}
