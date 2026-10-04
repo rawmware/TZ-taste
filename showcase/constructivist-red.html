@@ -1,0 +1,138 @@
+<!--tz-meta {"id":"showcase-constructivist-red","title":"Constructivist Red showcase","category":"Showcase","file":"showcase/constructivist-red.html","tags":["constructivist-red"],"description":"Live demo page for the Constructivist Red style DNA.","dnas":["constructivist-red"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Constructivist Red — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Oswald:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f2ede4; --tz-card:#e6ded0; --tz-ink:#141414; --tz-muted:#6e675c;
+  --tz-accent:#d4201e; --tz-line:#141414;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Oswald",sans-serif;line-height:1.5;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;padding:1rem 1.5rem;border-bottom:6px solid var(--tz-ink);font-family:"Space Mono",monospace;font-size:.68rem;letter-spacing:.12em}
+.tz-top .tz-wordmark{font-weight:700}
+.tz-top .tz-dna-label{color:var(--tz-muted)}
+.tz-hero{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden;padding:4rem 1.5rem}
+.tz-crop{position:absolute;right:-22vmin;top:-14vmin;width:64vmin;height:64vmin;background:var(--tz-ink);border-radius:50%;pointer-events:none}
+.tz-bar{position:absolute;background:var(--tz-accent);pointer-events:none}
+.tz-bar-1{left:-6%;top:18%;width:130%;height:5.5rem;transform:rotate(-14deg)}
+.tz-bar-2{left:-6%;top:64%;width:130%;height:2.5rem;transform:rotate(-14deg);opacity:.85}
+.tz-hero-inner{position:relative;z-index:2;max-width:1100px;margin:0 auto;width:100%}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:.75rem;letter-spacing:.22em;color:var(--tz-accent);margin-bottom:1rem;font-weight:700}
+.tz-hero h1{font-family:"Russo One",sans-serif;text-transform:uppercase;font-size:clamp(3rem,11vw,9rem);line-height:.95;transform:rotate(-4deg);max-width:10ch}
+.tz-hero h1 .tz-red{color:var(--tz-accent)}
+.tz-hero-sub{margin-top:2rem;max-width:34rem;font-size:1.15rem;font-weight:500}
+.tz-hero-sub .tz-mono{font-family:"Space Mono",monospace;font-size:.8rem;color:var(--tz-muted);display:block;margin-top:1rem;letter-spacing:.08em}
+.tz-cta{display:inline-block;margin-top:2rem;background:var(--tz-accent);color:var(--tz-bg);font-family:"Oswald",sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:.14em;text-transform:uppercase;padding:1.1rem 2.75rem;text-decoration:none;border:4px solid var(--tz-ink)}
+.tz-cta:hover{background:var(--tz-ink);color:var(--tz-bg)}
+.tz-ribbon{background:var(--tz-ink);color:var(--tz-bg);overflow:hidden;white-space:nowrap;padding:.9rem 0;transform:rotate(-2deg);margin:0 -2rem}
+.tz-ribbon span{display:inline-block;font-family:"Russo One",sans-serif;font-size:1.05rem;letter-spacing:.18em;padding-right:3rem;animation:tz-march 14s linear infinite}
+.tz-ribbon span b{color:var(--tz-accent)}
+@keyframes tz-march{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.tz-content{max-width:1100px;margin:0 auto;padding:4rem 1.5rem 5rem}
+.tz-sec-head{font-family:"Russo One",sans-serif;text-transform:uppercase;font-size:clamp(1.8rem,5vw,3rem);margin-bottom:2.5rem;transform:rotate(-2deg)}
+.tz-demand{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center;padding:2.5rem 0;border-top:6px solid var(--tz-ink)}
+.tz-demand:last-of-type{border-bottom:6px solid var(--tz-ink)}
+.tz-figure{font-family:"Russo One",sans-serif;font-size:clamp(3.5rem,10vw,7rem);line-height:1;color:var(--tz-accent);min-width:3.5ch}
+.tz-demand:nth-child(even) .tz-figure{color:var(--tz-ink)}
+.tz-demand h3{font-family:"Oswald",sans-serif;font-weight:700;text-transform:uppercase;font-size:1.5rem;letter-spacing:.06em;margin-bottom:.5rem}
+.tz-demand p{color:var(--tz-muted);max-width:44ch;font-size:1.05rem}
+.tz-vote{margin-top:4rem;background:var(--tz-ink);color:var(--tz-bg);padding:3rem;transform:rotate(1.5deg)}
+.tz-vote h2{font-family:"Russo One",sans-serif;text-transform:uppercase;font-size:clamp(1.6rem,5vw,2.8rem);margin-bottom:1rem}
+.tz-vote h2 .tz-red{color:var(--tz-accent)}
+.tz-vote p{font-size:1.05rem;max-width:52ch}
+.tz-vote .tz-mono{font-family:"Space Mono",monospace;font-size:.8rem;letter-spacing:.1em;color:var(--tz-accent);display:block;margin-top:1.25rem}
+.tz-tokens{max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem;border-top:6px solid var(--tz-ink)}
+.tz-tokens h2{font-family:"Russo One",sans-serif;text-transform:uppercase;font-size:1.4rem;margin-bottom:1.5rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:1rem}
+.tz-chip{display:flex;align-items:center;gap:.6rem;font-family:"Space Mono",monospace;font-size:.68rem;color:var(--tz-muted)}
+.tz-chip i{display:block;width:2.5rem;height:2.5rem;border:2px solid var(--tz-ink)}
+.tz-foot{border-top:6px solid var(--tz-ink);padding:1.75rem;font-family:"Space Mono",monospace;font-size:.68rem;color:var(--tz-muted);text-align:center;letter-spacing:.1em}
+@media(max-width:700px){
+  .tz-top,.tz-hero,.tz-content,.tz-tokens{padding-left:1rem;padding-right:1rem}
+  .tz-demand{grid-template-columns:1fr;gap:.75rem}
+  .tz-vote{padding:2rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-ribbon span{animation:none}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">TZ—taste</span>
+  <span class="tz-dna-label">STYLE DNA · CONSTRUCTIVIST-RED</span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-crop" aria-hidden="true"></div>
+  <div class="tz-bar tz-bar-1" aria-hidden="true"></div>
+  <div class="tz-bar tz-bar-2" aria-hidden="true"></div>
+  <div class="tz-hero-inner">
+    <p class="tz-eyebrow">HARBOR WORKERS UNION · LOCAL 27</p>
+    <h1>Every <span class="tz-red">shift</span> counts.</h1>
+    <p class="tz-hero-sub">The harbor runs on our hands. Fourteen hundred members, one contract, zero patience left for stalling at the table.
+      <span class="tz-mono">CONTRACT EXPIRES 2026-11-30 · STRIKE VOTE 2026-10-24</span>
+    </p>
+    <a class="tz-cta" href="#tz-demands">Sign the pledge</a>
+  </div>
+</section>
+
+<div class="tz-ribbon" aria-hidden="true">
+  <span>FAIR WAGES <b>///</b> SAFE DOCKS <b>///</b> UNION YES <b>///</b> FAIR WAGES <b>///</b> SAFE DOCKS <b>///</b> UNION YES <b>///</b>&nbsp;</span><span>FAIR WAGES <b>///</b> SAFE DOCKS <b>///</b> UNION YES <b>///</b> FAIR WAGES <b>///</b> SAFE DOCKS <b>///</b> UNION YES <b>///</b>&nbsp;</span>
+</div>
+
+<section class="tz-content" id="tz-demands">
+  <h2 class="tz-sec-head">Three demands. No footnotes.</h2>
+
+  <div class="tz-demand">
+    <div class="tz-figure">$25</div>
+    <div>
+      <h3>A floor wage of twenty-five dollars</h3>
+      <p>No dockworker in this port earns less than $25 an hour. The cranes cost more per minute than we make per hour — the math is public.</p>
+    </div>
+  </div>
+
+  <div class="tz-demand">
+    <div class="tz-figure">8</div>
+    <div>
+      <h3>The eight-hour day, enforced</h3>
+      <p>Overtime paid at double after eight, triple after twelve. Tired hands drop cargo; rested hands move it.</p>
+    </div>
+  </div>
+
+  <div class="tz-demand">
+    <div class="tz-figure">12</div>
+    <div>
+      <h3>Twelve paid sick days</h3>
+      <p>Nobody should choose between a fever and the rent. Twelve days, no doctor's note under three.</p>
+    </div>
+  </div>
+
+  <div class="tz-vote">
+    <h2>Strike vote — <span class="tz-red">Oct 24</span></h2>
+    <p>Union hall, 18:00 sharp. Bring your card and your crew. A two-thirds vote authorizes the committee to call the walkout the day the contract dies.</p>
+    <span class="tz-mono">HALL 27 · 44 PIER ST · DOORS 17:30</span>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <div class="tz-swatches">
+    <span class="tz-chip"><i style="background:#f2ede4"></i>#f2ede4 · bg</span>
+    <span class="tz-chip"><i style="background:#141414"></i>#141414 · ink</span>
+    <span class="tz-chip"><i style="background:#d4201e"></i>#d4201e · accent</span>
+    <span class="tz-chip"><i style="background:#6e675c"></i>#6e675c · muted</span>
+    <span class="tz-chip"><i style="background:#141414"></i>#141414 · line</span>
+  </div>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
