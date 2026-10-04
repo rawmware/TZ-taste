@@ -1,0 +1,223 @@
+{
+ "count": 36,
+ "updated": "2026-10-04",
+ "usage": "Copy-paste build prompts. Fill the [BRACKETS], paste into any AI builder.",
+ "prompts": [
+  {
+   "id": "404-page",
+   "title": "404 page",
+   "file": "prompts/404-page.md",
+   "description": "Error page with one good gag, a working search, and a way home."
+  },
+  {
+   "id": "about-page",
+   "title": "About page",
+   "file": "prompts/about-page.md",
+   "description": "Company story page: one portrait, real facts, no stock-team hero."
+  },
+  {
+   "id": "api-docs",
+   "title": "API docs",
+   "file": "prompts/api-docs.md",
+   "description": "API docs landing: copy-paste quickstart, real code, sidebar that reads like a map."
+  },
+  {
+   "id": "blog-magazine",
+   "title": "Blog / magazine",
+   "file": "prompts/blog-magazine.md",
+   "description": "Editorial homepage plus article template: reading-first typography, real bylines, archive discipline."
+  },
+  {
+   "id": "careers-page",
+   "title": "Careers page",
+   "file": "prompts/careers-page.md",
+   "description": "Jobs page that earns applications: honest comp, real team proof, low-friction role list."
+  },
+  {
+   "id": "changelog-page",
+   "title": "Changelog page",
+   "file": "prompts/changelog-page.md",
+   "description": "Release-notes page: reverse-chron entries, semantic labels, anchorable versions, subscribe hook."
+  },
+  {
+   "id": "checkout-flow",
+   "title": "Checkout flow",
+   "file": "prompts/checkout-flow.md",
+   "description": "Three-step ecommerce checkout: guest-first, sticky summary, error states that actually help."
+  },
+  {
+   "id": "community-forum",
+   "title": "Community forum",
+   "file": "prompts/community-forum.md",
+   "description": "Forum/community homepage: index-style categories, live activity, visible rules."
+  },
+  {
+   "id": "contact-page",
+   "title": "Contact page",
+   "file": "prompts/contact-page.md",
+   "description": "Contact page with a form that states what happens next."
+  },
+  {
+   "id": "course-landing",
+   "title": "Course landing",
+   "file": "prompts/course-landing.md",
+   "description": "Online course sales page with visible curriculum and honest pricing."
+  },
+  {
+   "id": "dark-dashboard",
+   "title": "Dark-mode analytics dashboard",
+   "file": "prompts/dark-dashboard.md",
+   "description": "Analytics dashboard in dark mode: dense but disciplined, honest charts, one accent."
+  },
+  {
+   "id": "dashboard",
+   "title": "Dashboard",
+   "file": "prompts/dashboard.md",
+   "description": "Dense, keyboard-friendly product UI with real interactive workflows."
+  },
+  {
+   "id": "ecommerce-product",
+   "title": "E-commerce product page",
+   "file": "prompts/ecommerce-product.md",
+   "description": "Product detail page: gallery, specs, reviews, sticky buy — with honest commerce copy."
+  },
+  {
+   "id": "event-page",
+   "title": "Event page",
+   "file": "prompts/event-page.md",
+   "description": "Single event/conference page: lineup, schedule, one sticky ticket CTA."
+  },
+  {
+   "id": "help-center",
+   "title": "Help center",
+   "file": "prompts/help-center.md",
+   "description": "Support knowledge base: search-first, scannable articles, escalation that doesn't hide the humans."
+  },
+  {
+   "id": "hero-section",
+   "title": "Hero section",
+   "file": "prompts/hero-section.md",
+   "description": "One viewport, one focal point. No template hero compositions."
+  },
+  {
+   "id": "html-email",
+   "title": "Marketing email template",
+   "file": "prompts/html-email.md",
+   "description": "Responsive HTML email: one idea, one CTA, bulletproof buttons, dark-mode safe."
+  },
+  {
+   "id": "job-board",
+   "title": "Job board",
+   "file": "prompts/job-board.md",
+   "description": "Niche job board: brutal table, salaries required, no ghost listings."
+  },
+  {
+   "id": "landing-page",
+   "title": "Landing page",
+   "file": "prompts/landing-page.md",
+   "description": "Full marketing page: hero → proof → pricing → FAQ. The flagship prompt."
+  },
+  {
+   "id": "link-in-bio",
+   "title": "Link-in-bio page",
+   "file": "prompts/link-in-bio.md",
+   "description": "Creator link hub: one-tap links, latest work up top, profile header with a point of view."
+  },
+  {
+   "id": "mobile-paywall",
+   "title": "Mobile app paywall",
+   "file": "prompts/mobile-paywall.md",
+   "description": "Subscription paywall screen set: honest plan comparison, clear trial terms, zero dark patterns."
+  },
+  {
+   "id": "mobile-screens",
+   "title": "Mobile screens",
+   "file": "prompts/mobile-screens.md",
+   "description": "A framed 3–5 screen flow with platform conventions respected."
+  },
+  {
+   "id": "nonprofit-donate",
+   "title": "Nonprofit donate",
+   "file": "prompts/nonprofit-donate.md",
+   "description": "Donation page: concrete impact amounts, honest financials, zero guilt trips."
+  },
+  {
+   "id": "podcast-page",
+   "title": "Podcast page",
+   "file": "prompts/podcast-page.md",
+   "description": "Podcast show page: latest episode up front, dense episode index, honest subscribe."
+  },
+  {
+   "id": "portfolio",
+   "title": "Portfolio",
+   "file": "prompts/portfolio.md",
+   "description": "Work-first portfolio with actual voice. A taste demonstration in itself."
+  },
+  {
+   "id": "press-kit",
+   "title": "Press kit",
+   "file": "prompts/press-kit.md",
+   "description": "Media press kit: fact sheet, downloadable assets, logo rules, real contact."
+  },
+  {
+   "id": "pricing-page",
+   "title": "Pricing page",
+   "file": "prompts/pricing-page.md",
+   "description": "Standalone pricing: honest comparison table, real FAQ, annual toggle, no fake scarcity."
+  },
+  {
+   "id": "real-estate-listing",
+   "title": "Real estate listing",
+   "file": "prompts/real-estate-listing.md",
+   "description": "Single property page: gallery-first, specs as a table, honest details."
+  },
+  {
+   "id": "recipe-site",
+   "title": "Recipe site",
+   "file": "prompts/recipe-site.md",
+   "description": "Recipe collection: the recipe in 10 seconds, no life story before the ingredients."
+  },
+  {
+   "id": "redesign-audit",
+   "title": "Redesign audit",
+   "file": "prompts/redesign-audit.md",
+   "description": "Audit existing UI against the anti-slop checklist before rebuilding."
+  },
+  {
+   "id": "saas-onboarding",
+   "title": "SaaS onboarding flow",
+   "file": "prompts/saas-onboarding.md",
+   "description": "Multi-step first-run flow: one job per screen, honest progress, skip without shame."
+  },
+  {
+   "id": "status-page",
+   "title": "Status page",
+   "file": "prompts/status-page.md",
+   "description": "Service status page: honest uptime grid, dated incident history, subscribe."
+  },
+  {
+   "id": "threejs-hero",
+   "title": "Three.js hero section",
+   "file": "prompts/threejs-hero.md",
+   "description": "Interactive WebGL hero: one scene, one interaction, real fallback, perf budget enforced."
+  },
+  {
+   "id": "waitlist-page",
+   "title": "Waitlist page",
+   "file": "prompts/waitlist-page.md",
+   "description": "Pre-launch waitlist: honest position counter, referral mechanics, launch-day payoff."
+  },
+  {
+   "id": "web-pitch-deck",
+   "title": "Web pitch deck",
+   "file": "prompts/web-pitch-deck.md",
+   "description": "Investor pitch as a scrollable page: narrative arc, one idea per section, honest numbers."
+  },
+  {
+   "id": "wedding-site",
+   "title": "Wedding site",
+   "file": "prompts/wedding-site.md",
+   "description": "Wedding website: story, details, RSVP with meal choice, no cheese."
+  }
+ ]
+}
