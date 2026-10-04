@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-greenmarket-dawn",
+  "title": "Greenmarket Dawn design tokens",
+  "category": "Tokens",
+  "file": "tokens/greenmarket-dawn.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "greenmarket-dawn"
+  ],
+  "description": "W3C-format design tokens for the Greenmarket Dawn DNA.",
+  "dnas": [
+   "greenmarket-dawn"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#faf6ec",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#243015",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#4a7c2f",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#8a8468",
+   "type": "color"
+  },
+  "line": {
+   "value": "#24301529",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#faf6ec",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "DM Serif Display",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Work Sans",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Courier Prime",
+   "type": "fontFamily"
+  }
+ }
+}
