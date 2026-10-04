@@ -1,0 +1,85 @@
+<!--tz-meta {"id":"misc-compare","title":"Comparison table","category":"Misc","file":"patterns/misc-compare.html","tags":["vs","table"],"description":"Us-versus-them matrix with SVG check and cross marks.","dnas":["swiss-rational"]} -->
+<section class="tz-vs">
+  <p class="tz-vs-kicker">An honest comparison</p>
+  <table>
+    <thead><tr><th scope="col"><span class="tz-sr">Feature</span></th><th scope="col" class="tz-vs-us">Roman's Proposal</th><th scope="col">Typical agency</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Fixed quote up front</th><td class="tz-vs-us"><svg viewBox="0 0 16 16" aria-label="Yes"><path d="M3 8.5l3.5 3.5L13 4.5"/></svg></td><td><svg viewBox="0 0 16 16" aria-label="No"><path d="M4 4l8 8M12 4l-8 8"/></svg></td></tr>
+      <tr><th scope="row">You own the code</th><td class="tz-vs-us"><svg viewBox="0 0 16 16" aria-label="Yes"><path d="M3 8.5l3.5 3.5L13 4.5"/></svg></td><td><svg viewBox="0 0 16 16" aria-label="No"><path d="M4 4l8 8M12 4l-8 8"/></svg></td></tr>
+      <tr><th scope="row">Launch in under 2 weeks</th><td class="tz-vs-us"><svg viewBox="0 0 16 16" aria-label="Yes"><path d="M3 8.5l3.5 3.5L13 4.5"/></svg></td><td><svg viewBox="0 0 16 16" aria-label="No"><path d="M4 4l8 8M12 4l-8 8"/></svg></td></tr>
+      <tr><th scope="row">Monthly retainer required</th><td class="tz-vs-us"><svg viewBox="0 0 16 16" aria-label="No"><path d="M4 4l8 8M12 4l-8 8"/></svg></td><td><svg viewBox="0 0 16 16" aria-label="Yes"><path d="M3 8.5l3.5 3.5L13 4.5"/></svg></td></tr>
+    </tbody>
+  </table>
+</section>
+<style>
+.tz-vs{
+  background:#fff;
+  color:#161616;
+  font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(32px,5vw,64px) clamp(20px,4vw,48px);
+  max-width:760px;
+}
+.tz-vs-kicker{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  opacity:.6;
+  margin:0 0 20px;
+}
+.tz-vs table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:14px;
+}
+.tz-vs th,
+.tz-vs td{
+  padding:14px 16px;
+  border-bottom:1px solid #e2e2e0;
+  text-align:center;
+}
+.tz-vs thead th{
+  font-size:13px;
+  letter-spacing:.04em;
+  border-bottom:2px solid #161616;
+}
+.tz-vs tbody th{
+  text-align:left;
+  font-weight:400;
+  max-width:24ch;
+}
+.tz-vs .tz-vs-us{
+  background:#f1f1ef;
+}
+.tz-vs thead .tz-vs-us{
+  background:#161616;
+  color:#fff;
+}
+.tz-vs td svg{
+  width:16px;
+  height:16px;
+  stroke-width:2;
+  fill:none;
+  vertical-align:middle;
+}
+.tz-vs-us svg{
+  stroke:#161616;
+}
+.tz-vs td:not(.tz-vs-us) svg{
+  stroke:#a9a9a4;
+}
+.tz-vs .tz-sr{
+  position:absolute;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  clip:rect(0 0 0 0);
+}
+@media (max-width:520px){
+  .tz-vs th,
+  .tz-vs td{
+    padding:10px 8px;
+    font-size:12px;
+  }
+}
+</style>
