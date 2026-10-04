@@ -1,0 +1,62 @@
+{
+ "_tzmeta": {
+  "id": "tokens-retro-terminal",
+  "title": "Retro Terminal design tokens",
+  "category": "Tokens",
+  "file": "tokens/retro-terminal.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "retro-terminal"
+  ],
+  "description": "W3C-format design tokens for the Retro Terminal style DNA.",
+  "dnas": [
+   "retro-terminal"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#0b0f0a",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#33ff66",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#ffb000",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#1f6b3a",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#33ff6633",
+   "$type": "color"
+  },
+  "surface": {
+   "$value": "#0e140d",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "IBM Plex Mono",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "IBM Plex Mono",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "IBM Plex Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "retro-terminal",
+  "name": "Retro Terminal",
+  "vibe": "Phosphor green on black, scanlines, amber warnings. The machine is the message."
+ }
+}
