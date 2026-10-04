@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-jazz-blue-note",
+  "title": "Jazz Blue Note design tokens",
+  "category": "Tokens",
+  "file": "tokens/jazz-blue-note.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "jazz-blue-note"
+  ],
+  "description": "W3C-format design tokens for the Jazz Blue Note style DNA.",
+  "dnas": [
+   "jazz-blue-note"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#101418",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#eef2f5",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#e8734a",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#7a8a96",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#243038",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Bebas Neue",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "DM Sans",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "jazz-blue-note",
+  "name": "Jazz Blue Note",
+  "vibe": "Mid-century jazz sleeve art: duotone photography, smoky blue, bold condensed sans, liner-note typography."
+ }
+}
