@@ -1,0 +1,3 @@
+//tz-meta {"id":"tailwind-observatory-star","title":"Observatory Star Tailwind preset","category":"Tailwind","file":"tailwind/observatory-star.js","tags":["tailwind","preset","observatory-star"],"description":"Tailwind theme preset for the Observatory Star DNA.","dnas":["observatory-star"]}
+// Tailwind preset for the Observatory Star DNA. Extend tailwind.config with this.
+module.exports={theme:{extend:{colors:{tzbg:"#060a18",tzink:"#dfe6f5",tzaccent:"#c9a24b",tzmuted:"#5f6b8a",tzline:"#c9a24b44",tzsurface:"#060a18"},fontFamily:{display:["Marcellus","serif"],body:["Spectral","sans-serif"],mono:["Spline Sans Mono","monospace"]}}}};
