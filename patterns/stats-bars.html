@@ -1,0 +1,80 @@
+<!--tz-meta {"id":"stats-bars","title":"Bar stats","category":"Stats","file":"patterns/stats-bars.html","tags":["bars","metrics"],"description":"Horizontal bar chart with tabular numerals and one red leader.","dnas":["swiss-rational"]} -->
+<section class="tz-bars">
+  <p class="tz-bars-kicker">Capacity · October</p>
+  <ul>
+    <li class="tz-bars-lead"><span class="tz-bars-label">Websites</span><span class="tz-bars-track"><span class="tz-bars-fill" style="width:88%"></span></span><span class="tz-bars-val">44</span></li>
+    <li><span class="tz-bars-label">Web apps</span><span class="tz-bars-track"><span class="tz-bars-fill" style="width:62%"></span></span><span class="tz-bars-val">31</span></li>
+    <li><span class="tz-bars-label">AI setups</span><span class="tz-bars-track"><span class="tz-bars-fill" style="width:54%"></span></span><span class="tz-bars-val">27</span></li>
+    <li><span class="tz-bars-label">Training seats</span><span class="tz-bars-track"><span class="tz-bars-fill" style="width:41%"></span></span><span class="tz-bars-val">19</span></li>
+  </ul>
+  <p class="tz-bars-note">Completed client engagements, Jan–Sep 2026. Websites lead the board.</p>
+</section>
+<style>
+.tz-bars{
+  font-family:Arial,Helvetica,sans-serif;
+  color:#161616;
+  background:#fff;
+  padding:clamp(32px,5vw,64px) clamp(20px,4vw,48px);
+  max-width:720px;
+}
+.tz-bars-kicker{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#161616;
+  opacity:.6;
+  margin:0 0 24px;
+}
+.tz-bars ul{
+  list-style:none;
+  margin:0 0 20px;
+  padding:0;
+  display:grid;
+  gap:14px;
+}
+.tz-bars li{
+  display:grid;
+  grid-template-columns:minmax(96px,140px) 1fr 52px;
+  gap:16px;
+  align-items:center;
+}
+.tz-bars-label{
+  font-size:13px;
+  letter-spacing:.04em;
+}
+.tz-bars-track{
+  display:block;
+  height:10px;
+  background:#ececea;
+}
+.tz-bars-fill{
+  display:block;
+  height:100%;
+  background:#161616;
+}
+.tz-bars-lead .tz-bars-fill{
+  background:#e30613;
+}
+.tz-bars-val{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:15px;
+  text-align:right;
+  font-variant-numeric:tabular-nums;
+}
+.tz-bars-lead .tz-bars-val{
+  font-size:22px;
+  font-weight:700;
+}
+.tz-bars-note{
+  font-size:12px;
+  color:#161616;
+  opacity:.6;
+  margin:0;
+  max-width:52ch;
+}
+@media (max-width:480px){
+  .tz-bars li{grid-template-columns:1fr 44px}
+  .tz-bars-label{grid-column:1/-1}
+}
+</style>
