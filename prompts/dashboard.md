@@ -1,3 +1,4 @@
+<!--tz-meta {"id":"dashboard","title":"Dashboard","file":"prompts/dashboard.md","description":"Dense, keyboard-friendly product UI with real interactive workflows."} -->
 # Prompt: Dashboard
 
 Copy everything below the line into your AI builder. Fill in the [BRACKETS] first.
