@@ -1,0 +1,147 @@
+<!--tz-meta {"id":"typewriter-keys-rain","title":"Typewriter Keys Rain","category":"3D","file":"three-d/typewriter-keys-rain.html","tags":["threejs","typewriter","rain"],"description":"Typewriter keycaps rain onto a workbench, bounce once, rest a moment, and fall again.","dnas":["typewriter-repair"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Typewriter Keys Rain — TZ-taste</title>
+<style>
+  html, body { margin:0; height:100%; overflow:hidden; background:#ece7d8; }
+  #app { position:fixed; inset:0; }
+  #app canvas { display:block; }
+  .caption { position:fixed; left:18px; bottom:16px; z-index:5; color:#5a5145;
+    font:12px/1.6 system-ui, -apple-system, sans-serif; letter-spacing:.05em;
+    opacity:.9; pointer-events:none; }
+  .caption b { display:block; font-size:13px; letter-spacing:.22em; text-transform:uppercase; }
+  #fallback { display:none; position:fixed; inset:0; z-index:10; place-items:center;
+    color:#5a5145; font:14px/1.6 system-ui, sans-serif; text-align:center;
+    padding:32px; background:#ece7d8; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="caption"><b>Typewriter Keys Rain</b>forty keycaps, one workbench, endless weather<br/>drag to orbit &middot; scroll to zoom</div>
+<div id="fallback"><p>This scene needs WebGL, which your browser could not provide.<br/>Try a recent version of Chrome, Safari, Firefox or Edge.</p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (e) {
+  document.getElementById('fallback').style.display = 'grid';
+  throw e;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('app').appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xece7d8);
+scene.fog = new THREE.Fog(0xece7d8, 30, 90);
+
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 400);
+camera.position.set(12, 10, 16);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.target.set(0, 2, 0);
+controls.maxPolarAngle = 1.52;
+controls.minDistance = 6;
+controls.maxDistance = 60;
+
+scene.add(new THREE.HemisphereLight(0xfffaf0, 0x9a8f76, 0.95));
+const lamp = new THREE.DirectionalLight(0xfff2dd, 1.0);
+lamp.position.set(14, 22, 10);
+scene.add(lamp);
+
+/* ---------- workbench ---------- */
+const bench = new THREE.Mesh(
+  new THREE.BoxGeometry(26, 1.2, 16),
+  new THREE.MeshStandardMaterial({ color: 0x8a6b45, roughness: 0.9 }));
+bench.position.y = -0.6;
+scene.add(bench);
+const paper = new THREE.Mesh(
+  new THREE.BoxGeometry(9, 0.08, 12),
+  new THREE.MeshStandardMaterial({ color: 0xf7f2e7, roughness: 0.95 }));
+paper.position.set(-6, 0.05, 0);
+paper.rotation.y = 0.12;
+scene.add(paper);
+
+/* ---------- falling keycaps ---------- */
+const creamMat = new THREE.MeshStandardMaterial({ color: 0xf2ecdd, roughness: 0.6 });
+const inkMat = new THREE.MeshStandardMaterial({ color: 0x26221c, roughness: 0.6 });
+const redMat = new THREE.MeshStandardMaterial({ color: 0x8f3b2a, roughness: 0.6 });
+const keyGeoCap = new THREE.BoxGeometry(1.05, 0.55, 1.05);
+const keyGeoTop = new THREE.BoxGeometry(0.8, 0.18, 0.8);
+const keys = [];
+function resetKey(k, randomY) {
+  k.g.position.set((Math.random() - 0.5) * 22, randomY ? Math.random() * 16 + 2 : 15 + Math.random() * 8, (Math.random() - 0.5) * 12);
+  k.vy = 0;
+  k.rest = 0;
+  k.g.rotation.set(Math.random() * 0.6 - 0.3, Math.random() * Math.PI, Math.random() * 0.6 - 0.3);
+  k.spin.set((Math.random() - 0.5) * 2, (Math.random() - 0.5) * 2, (Math.random() - 0.5) * 2);
+}
+for (let i = 0; i < 40; i++) {
+  const g = new THREE.Group();
+  const mat = i % 9 === 0 ? redMat : (i % 2 === 0 ? creamMat : inkMat);
+  const cap = new THREE.Mesh(keyGeoCap, mat);
+  const top = new THREE.Mesh(keyGeoTop, mat);
+  top.position.y = 0.34;
+  g.add(cap); g.add(top);
+  scene.add(g);
+  const k = { g: g, vy: 0, rest: 0, spin: new THREE.Vector3() };
+  resetKey(k, true);
+  keys.push(k);
+}
+
+/* ---------- frame loop ---------- */
+const clock = new THREE.Clock();
+function renderFrame(t, dt) {
+  for (const k of keys) {
+    if (k.rest > 0) {
+      k.rest -= dt;
+      if (k.rest <= 0) resetKey(k, false);
+      continue;
+    }
+    k.vy -= 22 * dt;
+    k.g.position.y += k.vy * dt;
+    k.g.rotation.x += k.spin.x * dt;
+    k.g.rotation.y += k.spin.y * dt;
+    k.g.rotation.z += k.spin.z * dt;
+    if (k.g.position.y <= 0.32) {
+      k.g.position.y = 0.32;
+      if (Math.abs(k.vy) > 3.5) {
+        k.vy = -k.vy * 0.32;
+        k.spin.multiplyScalar(0.5);
+      } else {
+        k.rest = 1.2 + Math.random() * 2.4;
+        k.vy = 0;
+      }
+    }
+  }
+  controls.update();
+  renderer.render(scene, camera);
+}
+if (REDUCED) {
+  renderFrame(0, 0);
+} else {
+  renderer.setAnimationLoop(() => {
+    const dt = Math.min(clock.getDelta(), 0.05);
+    renderFrame(clock.elapsedTime, dt);
+  });
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
