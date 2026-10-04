@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-paris-metro",
+  "title": "Paris Metro design tokens",
+  "category": "Tokens",
+  "file": "tokens/paris-metro.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "paris-metro"
+  ],
+  "description": "W3C-format design tokens for the Paris Metro DNA.",
+  "dnas": [
+   "paris-metro"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#f4efe3",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#14243d",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#b98a2f",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#7d7a6e",
+   "type": "color"
+  },
+  "line": {
+   "value": "#14243d33",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#f4efe3",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Marcellus",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Cormorant Garamond",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Space Mono",
+   "type": "fontFamily"
+  }
+ }
+}
