@@ -1,3 +1,4 @@
+<!--tz-meta {"id":"swiss-rational","name":"Swiss Rational","vibe":"Strict grid, black on white, one red. Information architecture as aesthetic.","file":"styles/swiss-rational.md","tags":["grid","minimal","rational","uppercase"],"best_for":["agencies","archives","data products","museums"],"fonts":{"body":"Archivo","display":"Archivo","mono":"Space Mono"},"tokens":{"accent":"#e30613","bg":"#fafafa","ink":"#111111","line":"#111111","muted":"#6b6b6b","surface":"#f0f0f0"},"dials":{"density":6,"motion":2,"variance":4}} -->
 # Swiss Rational
 
 > Strict grid, black on white, one red. Information architecture as aesthetic.
