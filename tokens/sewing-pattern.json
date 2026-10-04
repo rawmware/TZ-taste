@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-sewing-pattern",
+  "title": "Sewing Pattern design tokens",
+  "category": "Tokens",
+  "file": "tokens/sewing-pattern.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "sewing-pattern"
+  ],
+  "description": "W3C-format design tokens for the Sewing Pattern DNA.",
+  "dnas": [
+   "sewing-pattern"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#f7f2e7",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#33291f",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#9c3d54",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#97826a",
+   "type": "color"
+  },
+  "line": {
+   "value": "#33291f26",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#ede2cb",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "DM Serif Display",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Nunito Sans",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Space Mono",
+   "type": "fontFamily"
+  }
+ }
+}
