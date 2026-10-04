@@ -1,0 +1,148 @@
+<!--tz-meta {"id":"showcase-midnight-railway","title":"Midnight Railway showcase","category":"Showcase","file":"showcase/midnight-railway.html","tags":["midnight-railway"],"description":"Live demo page for the Midnight Railway style DNA.","dnas":["midnight-railway"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Midnight Railway — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#101a2e; --tz-car:#182439; --tz-ink:#e9e2d0; --tz-muted:#7d8698;
+  --tz-accent:#c9a227; --tz-ox:#7a2e22; --tz-line:#2a3a5c;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"DM Sans",sans-serif;line-height:1.6}
+.tz-top{display:flex;justify-content:space-between;padding:1rem 2rem;border-bottom:2px solid var(--tz-accent);font-family:"Space Mono",monospace;font-size:.68rem;letter-spacing:.14em}
+.tz-top .tz-wordmark{font-weight:700}
+.tz-top .tz-dna-label{color:var(--tz-muted)}
+.tz-hero{max-width:1100px;margin:0 auto;padding:4rem 2rem 3rem}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.26em;color:var(--tz-accent);margin-bottom:1.25rem}
+.tz-hero h1{font-family:"DM Serif Display",serif;font-size:clamp(2.4rem,6.5vw,5rem);line-height:1.08;max-width:16ch}
+.tz-hero h1 em{color:var(--tz-accent);font-style:italic}
+.tz-hero p{color:var(--tz-muted);margin:1.5rem 0 2.5rem;max-width:52ch;font-size:1.05rem}
+.tz-board{background:var(--tz-car);border:2px solid var(--tz-line);margin-bottom:2.5rem}
+.tz-board-head{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;border-bottom:2px solid var(--tz-accent);font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.2em;color:var(--tz-accent)}
+.tz-dep{display:grid;grid-template-columns:auto 1fr auto auto;gap:1.5rem;align-items:center;padding:1.1rem 1.5rem;border-bottom:1px solid var(--tz-line);font-family:"Space Mono",monospace;font-size:.92rem;opacity:.4}
+.tz-dep:last-child{border-bottom:0}
+.tz-dep .tz-time{font-weight:700;color:var(--tz-ink);font-size:1.05rem}
+.tz-dep .tz-dest{font-family:"DM Sans",sans-serif;font-weight:700;letter-spacing:.06em}
+.tz-dep .tz-plat{color:var(--tz-muted);font-size:.75rem}
+.tz-dep .tz-status{font-size:.7rem;letter-spacing:.14em;font-weight:700;color:var(--tz-accent);border:1px solid var(--tz-accent);padding:.35rem .7rem}
+.tz-dep.tz-d1{animation:tz-flip 12s infinite}
+.tz-dep.tz-d2{animation:tz-flip 12s infinite 4s}
+.tz-dep.tz-d3{animation:tz-flip 12s infinite 8s}
+@keyframes tz-flip{0%,100%{opacity:.4}6%,30%{opacity:1}36%{opacity:.4}}
+.tz-cta{display:inline-block;font-family:"Space Mono",monospace;font-size:.8rem;font-weight:700;letter-spacing:.16em;color:var(--tz-bg);background:var(--tz-accent);padding:1.05rem 2.4rem;text-decoration:none;border:2px solid var(--tz-accent)}
+.tz-cta:hover{background:transparent;color:var(--tz-accent)}
+.tz-content{max-width:1100px;margin:0 auto;padding:2rem 2rem 5rem}
+.tz-content h2{font-family:"DM Serif Display",serif;font-size:2.2rem;margin:3rem 0 1.5rem}
+.tz-content h2 .tz-no{font-family:"Space Mono",monospace;font-size:.7rem;letter-spacing:.2em;color:var(--tz-accent);display:block;margin-bottom:.75rem}
+.tz-table{width:100%;border-collapse:collapse;font-size:.95rem}
+.tz-table th{font-family:"Space Mono",monospace;font-size:.65rem;letter-spacing:.18em;color:var(--tz-muted);text-align:left;padding:.8rem .75rem;border-bottom:2px solid var(--tz-accent);font-weight:400}
+.tz-table td{padding:.9rem .75rem;border-bottom:1px solid var(--tz-line)}
+.tz-table td.tz-mono{font-family:"Space Mono",monospace}
+.tz-table tr:hover td{background:var(--tz-car)}
+.tz-classes{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border:2px solid var(--tz-line);margin-top:1rem}
+.tz-class{padding:2rem;border-right:1px solid var(--tz-line)}
+.tz-class:last-child{border-right:0}
+.tz-class.tz-first{background:var(--tz-ox)}
+.tz-class h3{font-family:"DM Serif Display",serif;font-size:1.4rem;margin-bottom:.5rem}
+.tz-class .tz-price{font-family:"Space Mono",monospace;font-size:1.1rem;color:var(--tz-accent);font-weight:700}
+.tz-class p{font-size:.9rem;color:var(--tz-muted);margin-top:.75rem}
+.tz-class.tz-first p{color:var(--tz-ink);opacity:.85}
+.tz-ticket{margin-top:4rem;border:2px dashed var(--tz-accent);padding:2rem 2.5rem;display:flex;justify-content:space-between;align-items:center;gap:2rem;background:var(--tz-car)}
+.tz-ticket .tz-stub{font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.14em;line-height:2.2;color:var(--tz-muted)}
+.tz-ticket .tz-stub b{color:var(--tz-accent)}
+.tz-ticket .tz-big{font-family:"DM Serif Display",serif;font-size:1.8rem;text-align:right}
+.tz-tokens{max-width:1100px;margin:0 auto;padding:2.5rem 2rem;border-top:2px solid var(--tz-accent)}
+.tz-tokens h2{font-family:"DM Serif Display",serif;font-size:1.6rem;margin-bottom:1.25rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:1rem}
+.tz-chip{display:flex;align-items:center;gap:.6rem;font-family:"Space Mono",monospace;font-size:.68rem;color:var(--tz-muted)}
+.tz-chip i{display:block;width:2.5rem;height:2.5rem;border:1px solid var(--tz-line)}
+.tz-foot{border-top:2px solid var(--tz-accent);padding:2rem;font-family:"Space Mono",monospace;font-size:.68rem;color:var(--tz-muted);text-align:center;letter-spacing:.1em}
+@media(max-width:700px){
+  .tz-top,.tz-hero,.tz-content,.tz-tokens{padding-left:1.25rem;padding-right:1.25rem}
+  .tz-dep{grid-template-columns:auto 1fr auto;font-size:.8rem}
+  .tz-dep .tz-plat{display:none}
+  .tz-classes{grid-template-columns:1fr}
+  .tz-class{border-right:0;border-bottom:1px solid var(--tz-line)}
+  .tz-class:last-child{border-bottom:0}
+  .tz-ticket{flex-direction:column;align-items:flex-start}
+  .tz-ticket .tz-big{text-align:left}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-dep{animation:none;opacity:1}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">TZ—taste</span>
+  <span class="tz-dna-label">STYLE DNA · MIDNIGHT-RAILWAY</span>
+</header>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow">THE NIGHTJAR · SLEEPER SERVICE</p>
+  <h1>Ashford Vale to Greyharbor, <em>while you sleep.</em></h1>
+  <p>One train, eleven hours, four hundred miles of dark. Board at nine, wake to the harbor fog, and let the timetable do the worrying.</p>
+  <div class="tz-board" aria-label="Departure board">
+    <div class="tz-board-head"><span>DEPARTURES · ASHFORD VALE</span><span>PLATFORM 9</span></div>
+    <div class="tz-dep tz-d1"><span class="tz-time">21:04</span><span class="tz-dest">THE NIGHTJAR — GREYHARBOR</span><span class="tz-plat">PLAT 9</span><span class="tz-status">NOW BOARDING</span></div>
+    <div class="tz-dep tz-d2"><span class="tz-time">21:47</span><span class="tz-dest">THE NIGHTJAR — GREYHARBOR</span><span class="tz-plat">PLAT 9</span><span class="tz-status">ON TIME</span></div>
+    <div class="tz-dep tz-d3"><span class="tz-time">22:30</span><span class="tz-dest">MAIL &amp; PARCELS — NORTH</span><span class="tz-plat">PLAT 11</span><span class="tz-status">LOADING</span></div>
+  </div>
+  <a class="tz-cta" href="#tz-timetable">READ THE TIMETABLE</a>
+</section>
+
+<section class="tz-content" id="tz-timetable">
+  <h2><span class="tz-no">SECTION 01 · ADMIT ONE</span>The night's stations</h2>
+  <table class="tz-table">
+    <thead><tr><th>STATION</th><th>ARRIVE</th><th>DEPART</th><th>NOTE</th></tr></thead>
+    <tbody>
+      <tr><td>Ashford Vale</td><td class="tz-mono">—</td><td class="tz-mono">21:04</td><td>Boarding from 20:30</td></tr>
+      <tr><td>Millcross Junction</td><td class="tz-mono">23:12</td><td class="tz-mono">23:18</td><td>Crew change, no alighting</td></tr>
+      <tr><td>The Moors Halt</td><td class="tz-mono">01:40</td><td class="tz-mono">01:44</td><td>Request stop only</td></tr>
+      <tr><td>Dunmere</td><td class="tz-mono">04:55</td><td class="tz-mono">05:10</td><td>Breakfast served from 05:00</td></tr>
+      <tr><td>Greyharbor</td><td class="tz-mono">08:12</td><td class="tz-mono">—</td><td>Harbor fog likely; dress warm</td></tr>
+    </tbody>
+  </table>
+
+  <h2><span class="tz-no">SECTION 02 · ADMIT ONE</span>Classes of service</h2>
+  <div class="tz-classes">
+    <div class="tz-class">
+      <h3>Standard Seat</h3><p class="tz-price">$75</p>
+      <p>Reclining armchair, reading lamp, blanket. The honest way across the country.</p>
+    </div>
+    <div class="tz-class">
+      <h3>First Class</h3><p class="tz-price">$120</p>
+      <p>Wider berth-chair, breakfast in the dining car, priority boarding at Platform 9.</p>
+    </div>
+    <div class="tz-class tz-first">
+      <h3>Sleeper Berth</h3><p class="tz-price">$180</p>
+      <p>A private compartment, a real mattress, and a steward who knocks twice before Dunmere.</p>
+    </div>
+  </div>
+
+  <div class="tz-ticket">
+    <div class="tz-stub"><b>ADMIT ONE</b> · THE NIGHTJAR<br>ASHFORD VALE → GREYHARBOR<br>BERTH 14 · CAR C · NON-TRANSFERABLE</div>
+    <div class="tz-big">Sleep well.<br>We'll drive.</div>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <div class="tz-swatches">
+    <span class="tz-chip"><i style="background:#101a2e"></i>#101a2e · bg</span>
+    <span class="tz-chip"><i style="background:#e9e2d0"></i>#e9e2d0 · ink</span>
+    <span class="tz-chip"><i style="background:#c9a227"></i>#c9a227 · accent</span>
+    <span class="tz-chip"><i style="background:#7d8698"></i>#7d8698 · muted</span>
+    <span class="tz-chip"><i style="background:#2a3a5c"></i>#2a3a5c · line</span>
+  </div>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
