@@ -1,0 +1,85 @@
+<!--tz-meta {"id":"navs-mega-menu","title":"Mega menu nav","category":"Nav","file":"patterns/navs-mega-menu.html","tags":["dropdown","mega","ecommerce"],"description":"Full-width mega panel with four link columns plus an offset featured card, opens on hover or keyboard focus.","dnas":["soft-minimal"]} -->
+<nav class="tz-mm" aria-label="Primary">
+  <a class="tz-mm-brand" href="#">Fern &amp; Field</a>
+  <ul class="tz-mm-list">
+    <li class="tz-mm-has">
+      <a class="tz-mm-link" href="#" aria-haspopup="true">Shop</a>
+      <div class="tz-mm-panel">
+        <div class="tz-mm-cols">
+          <div class="tz-mm-col">
+            <p class="tz-mm-label">Room</p>
+            <a href="#">Living</a><a href="#">Bedroom</a><a href="#">Kitchen</a><a href="#">Study</a>
+          </div>
+          <div class="tz-mm-col">
+            <p class="tz-mm-label">Material</p>
+            <a href="#">Oak</a><a href="#">Linen</a><a href="#">Stone</a><a href="#">Wool</a>
+          </div>
+          <div class="tz-mm-col">
+            <p class="tz-mm-label">Collections</p>
+            <a href="#">The Autumn Edit</a><a href="#">Small Spaces</a><a href="#">Heirlooms</a><a href="#">Sale</a>
+          </div>
+          <div class="tz-mm-col">
+            <p class="tz-mm-label">Help</p>
+            <a href="#">Delivery</a><a href="#">Returns</a><a href="#">Care guides</a><a href="#">Contact</a>
+          </div>
+        </div>
+        <a class="tz-mm-card" href="#">
+          <p class="tz-mm-eyebrow">Featured</p>
+          <p class="tz-mm-cardtitle">The Autumn Edit</p>
+          <p class="tz-mm-cardtext">Twelve pieces, made to be kept. Ends Sunday.</p>
+          <span class="tz-mm-cardlink">Browse the edit <i>→</i></span>
+        </a>
+      </div>
+    </li>
+    <li><a class="tz-mm-link" href="#">Journal</a></li>
+    <li><a class="tz-mm-link" href="#">Our makers</a></li>
+    <li><a class="tz-mm-link" href="#">Visit</a></li>
+  </ul>
+  <a class="tz-mm-cart" href="#">Cart (2)</a>
+</nav>
+<style>
+.tz-mm{--bg:#faf9f6;--ink:#23211c;--line:#e2dccf;--accent:#3f6b4a;--card:#edf2ea;
+  background:var(--bg);color:var(--ink);display:flex;align-items:center;gap:32px;
+  padding:0 clamp(20px,4vw,48px);min-height:72px;position:relative;
+  font-family:Arial,Helvetica,sans-serif;border-bottom:1px solid var(--line)}
+.tz-mm-brand{font-family:Georgia,'Times New Roman',serif;font-size:22px;letter-spacing:-.02em;
+  color:var(--ink);text-decoration:none;white-space:nowrap}
+.tz-mm-list{display:flex;gap:4px;list-style:none;margin:0;padding:0;flex:1;flex-wrap:wrap}
+.tz-mm-link{display:block;padding:24px 14px;color:var(--ink);text-decoration:none;font-size:15px}
+.tz-mm-link:hover,.tz-mm-link:focus-visible{color:var(--accent)}
+.tz-mm-cart{font-size:14px;color:var(--ink);text-decoration:none;border:1px solid var(--line);
+  border-radius:999px;padding:8px 16px;white-space:nowrap}
+.tz-mm-cart:hover{border-color:var(--accent);color:var(--accent)}
+.tz-mm-has{position:static}
+.tz-mm-panel{position:absolute;left:0;right:0;top:100%;background:var(--bg);
+  border-bottom:1px solid var(--line);display:flex;gap:clamp(24px,5vw,72px);
+  padding:36px clamp(20px,4vw,48px) 44px;opacity:0;visibility:hidden;
+  transform:translateY(10px);transition:opacity .25s ease,transform .25s cubic-bezier(.22,1,.36,1),visibility 0s .25s}
+.tz-mm-has:hover .tz-mm-panel,.tz-mm-has:focus-within .tz-mm-panel{opacity:1;visibility:visible;
+  transform:translateY(0);transition:opacity .25s ease,transform .25s cubic-bezier(.22,1,.36,1)}
+.tz-mm-cols{display:grid;grid-template-columns:repeat(4,minmax(120px,1fr));gap:32px;flex:1}
+.tz-mm-col{display:flex;flex-direction:column;gap:10px}
+.tz-mm-label{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+.tz-mm-col a{color:var(--ink);text-decoration:none;font-size:15px}
+.tz-mm-col a:hover{text-decoration:underline;text-underline-offset:4px}
+.tz-mm-card{background:var(--card);color:var(--ink);text-decoration:none;padding:28px;
+  max-width:300px;align-self:start;margin-top:22px;display:block}
+.tz-mm-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.tz-mm-cardtitle{font-family:Georgia,'Times New Roman',serif;font-size:26px;margin:0 0 8px;letter-spacing:-.02em}
+.tz-mm-cardtext{font-size:14px;line-height:1.5;margin:0 0 14px;opacity:.75}
+.tz-mm-cardlink{font-size:14px;font-weight:bold;color:var(--accent)}
+.tz-mm-cardlink i{font-style:normal;display:inline-block;transition:transform .25s cubic-bezier(.22,1,.36,1)}
+.tz-mm-card:hover .tz-mm-cardlink i{transform:translateX(5px)}
+@media (max-width:720px){
+  .tz-mm{gap:16px;flex-wrap:wrap;padding-top:12px;padding-bottom:12px}
+  .tz-mm-cols{grid-template-columns:repeat(2,1fr);gap:24px}
+  .tz-mm-panel{flex-direction:column;gap:28px}
+  .tz-mm-card{margin-top:0;max-width:none}
+  .tz-mm-link{padding:10px 8px}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-mm-panel,.tz-mm-cardlink i{transition:none}
+}
+</style>
