@@ -1,0 +1,144 @@
+<!--tz-meta {"id":"magnetic-field","title":"Field Lines","category":"3D","file":"three-d/magnetic-field.html","tags":["threejs","ambient"],"description":"A dipole ring magnet wrapped in amber field lines and iron-filing dashes on charcoal.","dnas":["dark-luxe"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Field Lines — TZ-taste 3D</title>
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#141311}
+#c{position:fixed;inset:0}
+.caption{position:fixed;left:18px;bottom:16px;color:#f3e9d2;font:12px/1.6 system-ui,sans-serif;letter-spacing:.05em;opacity:.8;pointer-events:none;text-shadow:0 1px 10px rgba(0,0,0,.7)}
+.caption b{display:block;font-size:12px;letter-spacing:.22em;text-transform:uppercase}
+#fallback{display:none;position:fixed;inset:0;align-items:center;justify-content:center;background:#141311;color:#f3e9d2;font:14px/1.6 system-ui,sans-serif;text-align:center;padding:2rem}
+</style>
+</head>
+<body>
+<div id="c"></div>
+<div class="caption"><b>Field Lines</b><span>drag to orbit</span></div>
+<div id="fallback"><p></p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let renderer = null;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (err) {
+  const f = document.getElementById('fallback');
+  f.style.display = 'flex';
+  f.querySelector('p').textContent = 'WebGL is unavailable in this browser, so this 3D scene cannot be rendered.';
+}
+
+if (renderer) {
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.getElementById('c').appendChild(renderer.domElement);
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x141311);
+  scene.fog = new THREE.Fog(0x141311, 10, 26);
+
+  const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+  camera.position.set(0, 2.6, 9.5);
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.06;
+
+  scene.add(new THREE.AmbientLight(0x40342a, 1.2));
+  const key = new THREE.PointLight(0xffb35c, 60, 40);
+  key.position.set(4, 6, 5);
+  scene.add(key);
+  const rim = new THREE.PointLight(0x5c7bff, 25, 40);
+  rim.position.set(-6, -2, -5);
+  scene.add(rim);
+
+  const world = new THREE.Group();
+  scene.add(world);
+
+  // The dipole magnet: a torus ring, warm amber.
+  const magnet = new THREE.Mesh(
+    new THREE.TorusGeometry(0.62, 0.24, 24, 72),
+    new THREE.MeshStandardMaterial({ color: 0xc97a1e, emissive: 0x5a2c00, emissiveIntensity: 0.7, metalness: 0.65, roughness: 0.32 })
+  );
+  magnet.rotation.x = Math.PI / 2;
+  world.add(magnet);
+
+  // Dipole field of a moment along +Y: B = (3*r_hat*(m.r_hat) - m) / r^3
+  const _b = new THREE.Vector3();
+  function dipole(x, y, z, out) {
+    const r2 = x * x + y * y + z * z;
+    const r = Math.sqrt(r2);
+    const r5 = r2 * r2 * r + 1e-9;
+    const my = y / r;
+    out.set(3 * x * my / r5, (3 * y * my - r) / r5, 3 * z * my / r5);
+    return out;
+  }
+
+  // Trace field lines: seeds ring the poles, each stepped both directions.
+  const linePts = [];
+  for (const th of [0.55, 0.9, 1.25, 1.62, 1.97, 2.32, 2.67]) {
+    for (let k = 0; k < 10; k++) {
+      const ph = (k / 10) * Math.PI * 2;
+      const sx = Math.sin(th) * Math.cos(ph) * 1.15;
+      const sy = Math.cos(th) * 1.15;
+      const sz = Math.sin(th) * Math.sin(ph) * 1.15;
+      for (const dir of [1, -1]) {
+        let x = sx, y = sy, z = sz;
+        for (let s = 0; s < 70; s++) {
+          dipole(x, y, z, _b).normalize().multiplyScalar(0.14 * dir);
+          const nx = x + _b.x, ny = y + _b.y, nz = z + _b.z;
+          const r = Math.sqrt(nx * nx + ny * ny + nz * nz);
+          if (r < 0.85 || r > 9) break;
+          linePts.push(x, y, z, nx, ny, nz);
+          x = nx; y = ny; z = nz;
+        }
+      }
+    }
+  }
+  const lineGeo = new THREE.BufferGeometry();
+  lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(linePts, 3));
+  world.add(new THREE.LineSegments(lineGeo,
+    new THREE.LineBasicMaterial({ color: 0xe8a33d, transparent: true, opacity: 0.34 })));
+
+  // Iron-filing dashes: short segments aligned to the local field direction.
+  const dashPts = [];
+  for (let i = 0; i < 650; i++) {
+    const r = 1.2 + Math.random() * 4.2;
+    const th = Math.acos(2 * Math.random() - 1);
+    const ph = Math.random() * Math.PI * 2;
+    const x = r * Math.sin(th) * Math.cos(ph);
+    const y = r * Math.cos(th);
+    const z = r * Math.sin(th) * Math.sin(ph);
+    dipole(x, y, z, _b).normalize();
+    const L = 0.07 + Math.random() * 0.1;
+    dashPts.push(x - _b.x * L, y - _b.y * L, z - _b.z * L, x + _b.x * L, y + _b.y * L, z + _b.z * L);
+  }
+  const dashGeo = new THREE.BufferGeometry();
+  dashGeo.setAttribute('position', new THREE.Float32BufferAttribute(dashPts, 3));
+  world.add(new THREE.LineSegments(dashGeo,
+    new THREE.LineBasicMaterial({ color: 0xffcf7d, transparent: true, opacity: 0.5 })));
+
+  function tick(t) {
+    world.rotation.y = t * 0.07;
+    magnet.rotation.z = t * 0.1;
+    controls.update();
+  }
+
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  if (REDUCED) { tick(0); renderer.render(scene, camera); }
+  else {
+    const clock = new THREE.Clock();
+    renderer.setAnimationLoop(() => { tick(clock.getElapsedTime()); renderer.render(scene, camera); });
+  }
+}
+</script>
+</body>
+</html>
