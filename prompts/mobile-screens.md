@@ -1,3 +1,4 @@
+<!--tz-meta {"id":"mobile-screens","title":"Mobile screens","file":"prompts/mobile-screens.md","description":"A framed 3–5 screen flow with platform conventions respected."} -->
 # Prompt: Mobile screen set
 
 Copy everything below the line into your AI builder. Fill in the [BRACKETS] first.
