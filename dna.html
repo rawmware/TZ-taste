@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TZ-taste DNA</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { background: #fff; color: #111; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif; }
+  /* ---- neutral chrome ---- */
+  .chrome { position: sticky; top: 0; z-index: 20; background: #fff; border-bottom: 1px solid #e5e5e5; }
+  .bar { max-width: 1100px; margin: 0 auto; padding: 10px 16px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .back { font-size: 14px; font-weight: 700; color: #111; text-decoration: none; letter-spacing: -0.01em; }
+  .back:hover { color: #6b7280; }
+  .dna-name { font-size: 15px; font-weight: 700; color: #111; }
+  .dna-meta { font-size: 12px; color: #9ca3af; }
+  .spacer { flex: 1; }
+  .btn { font: inherit; font-size: 13px; font-weight: 600; color: #111; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 7px 12px; cursor: pointer; text-decoration: none; white-space: nowrap; }
+  .btn:hover { border-color: #9ca3af; }
+  .btn.on { background: #111; color: #fff; border-color: #111; }
+  /* ---- DNA stage ---- */
+  .stage {
+    --bg: #fff; --surface: #f5f5f5; --ink: #111; --accent: #2563eb; --muted: #6b7280; --extra: #111;
+    --r-sm: 6px; --r-md: 12px; --r-lg: 20px; --r-pill: 999px;
+    --shadow: none;
+    --font-display: sans-serif; --font-body: sans-serif; --font-mono: monospace;
+    background: var(--bg); color: var(--ink);
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+  .hero { padding: 72px 0 56px; }
+  .eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+  .hero h1 { font-family: var(--font-display); font-size: clamp(2.6rem, 7vw, 5.2rem); line-height: 1.02; letter-spacing: -0.01em; margin-bottom: 18px; font-weight: 400; }
+  .hero p { font-family: var(--font-body); font-size: 17px; line-height: 1.6; color: var(--muted); max-width: 560px; margin-bottom: 28px; }
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .cta { font-family: var(--font-body); font-size: 15px; font-weight: 600; padding: 13px 26px; border-radius: var(--r-md); cursor: pointer; border: 1px solid transparent; }
+  .cta.primary { background: var(--accent); color: var(--bg); box-shadow: var(--shadow); }
+  .cta.secondary { background: transparent; color: var(--ink); border-color: var(--muted); }
+  .cta.ghost { background: transparent; color: var(--accent); }
+  .cta.pill { border-radius: var(--r-pill); background: var(--ink); color: var(--bg); }
+  section.block { padding: 44px 0; border-top: 1px solid color-mix(in srgb, var(--muted) 25%, transparent); }
+  .block h2 { font-family: var(--font-display); font-size: 26px; margin-bottom: 20px; font-weight: 400; }
+  .cards3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .dcard { background: var(--surface); border-radius: var(--r-md); padding: 24px; box-shadow: var(--shadow); }
+  .dcard h3 { font-family: var(--font-display); font-size: 19px; margin-bottom: 10px; font-weight: 400; }
+  .dcard p { font-family: var(--font-body); font-size: 14px; line-height: 1.6; color: var(--muted); }
+  .dcard .tag { display: inline-block; font-family: var(--font-mono); font-size: 11px; color: var(--accent); margin-bottom: 12px; }
+  .typescale > div { margin-bottom: 14px; }
+  .ts-label { font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+  .pal { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; }
+  .sw { border-radius: var(--r-sm); height: 92px; cursor: pointer; position: relative; box-shadow: var(--shadow); }
+  .sw span { position: absolute; left: 10px; bottom: 8px; font-family: var(--font-mono); font-size: 11px; padding: 2px 6px; border-radius: 4px; background: rgba(255,255,255,.85); color: #111; }
+  .codehead { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .copy { font: inherit; font-size: 12px; font-weight: 600; color: #111; background: #fff; border: 1px solid #e5e5e5; border-radius: 7px; padding: 6px 12px; cursor: pointer; }
+  .copy:hover { border-color: #9ca3af; }
+  pre.code { background: #111; color: #e5e5e5; border-radius: 12px; padding: 20px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; line-height: 1.6; overflow: auto; max-height: 420px; }
+  .promptbox { background: var(--surface); border-radius: var(--r-md); padding: 24px; box-shadow: var(--shadow); }
+  .promptbox p { font-family: var(--font-body); font-size: 15px; line-height: 1.7; margin-bottom: 16px; }
+  .promptbox code { font-family: var(--font-mono); font-size: 12px; color: var(--accent); }
+  .foot { border-top: 1px solid #e5e5e5; margin-top: 8px; }
+  .foot div { max-width: 1100px; margin: 0 auto; padding: 14px 16px; font-size: 12px; color: #9ca3af; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  .foot a { color: #6b7280; text-decoration: none; }
+  #toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #111; color: #fff; font-size: 13px; padding: 10px 18px; border-radius: 999px; opacity: 0; pointer-events: none; transition: opacity .2s; z-index: 50; }
+  #toast.show { opacity: 1; }
+  .loading { padding: 120px 20px; text-align: center; color: #9ca3af; font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="chrome">
+  <div class="bar">
+    <a class="back" href="./">← TZ-taste</a>
+    <span class="dna-name" id="dnaName">…</span>
+    <span class="dna-meta" id="dnaMeta"></span>
+    <div class="spacer"></div>
+    <button class="btn" id="prev" type="button">← Prev</button>
+    <button class="btn" id="next" type="button">Next →</button>
+    <button class="btn" id="loop" type="button">Loop: off</button>
+  </div>
+</div>
+<div class="stage" id="stage"><div class="loading">Loading…</div></div>
+<div class="foot"><div><span>MIT · free forever</span><a href="https://github.com/rawmware/TZ-taste">rawmware/TZ-taste</a></div></div>
+<div id="toast"></div>
+<script>
+(function () {
+  "use strict";
+  var stage = document.getElementById("stage"),
+      dnaName = document.getElementById("dnaName"),
+      dnaMeta = document.getElementById("dnaMeta"),
+      loopBtn = document.getElementById("loop"),
+      toast = document.getElementById("toast"),
+      index = [], order = {}, slug = null, loopTimer = null;
+
+  function param(n) { var m = new RegExp("[?&]" + n + "=([^&]*)").exec(location.search); return m ? decodeURIComponent(m[1]) : null; }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+  function showToast(msg) { toast.textContent = msg; toast.classList.add("show"); clearTimeout(showToast._t); showToast._t = setTimeout(function(){ toast.classList.remove("show"); }, 1400); }
+  function copyText(t, msg) {
+    (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject())
+      .then(function(){ showToast(msg || "Copied"); })
+      .catch(function(){ var ta = document.createElement("textarea"); ta.value = t; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); showToast(msg || "Copied"); } catch(e){ showToast("Copy failed"); } document.body.removeChild(ta); });
+  }
+  function gfHref(fonts) {
+    return "https://fonts.googleapis.com/css2?" + fonts.map(function(f){ return "family=" + f.replace(/ /g, "+"); }).join("&") + "&display=swap";
+  }
+
+  function render(d) {
+    document.title = d.name + " — TZ-taste";
+    dnaName.textContent = d.name;
+    var pos = order[d.slug];
+    dnaMeta.textContent = d.familyName + " · " + (pos + 1).toLocaleString("en-US") + " / " + index.length.toLocaleString("en-US");
+    slug = d.slug;
+    history.replaceState(null, "", "dna.html?d=" + d.slug);
+
+    var link = document.getElementById("dnafonts");
+    if (!link) { link = document.createElement("link"); link.id = "dnafonts"; link.rel = "stylesheet"; document.head.appendChild(link); }
+    link.href = gfHref([d.fonts.display, d.fonts.body, d.fonts.mono]);
+
+    var r = d.radius, f = d.fonts;
+    var css = {
+      "--bg": d.palette[0], "--surface": d.palette[1], "--ink": d.palette[2],
+      "--accent": d.palette[3], "--muted": d.palette[4], "--extra": d.palette[5] || d.palette[3],
+      "--r-sm": r.sm, "--r-md": r.md, "--r-lg": r.lg, "--r-pill": r.pill,
+      "--shadow": d.shadow === "none" ? "none" : d.shadow,
+      "--font-display": "'" + f.display + "', sans-serif",
+      "--font-body": "'" + f.body + "', sans-serif",
+      "--font-mono": "'" + f.mono + "', monospace"
+    };
+    Object.keys(css).forEach(function (k) { stage.style.setProperty(k, css[k]); });
+
+    var pal = d.palette.map(function (h) {
+      return '<div class="sw" data-hex="' + h + '" style="background:' + h + '"><span>' + h + '</span></div>';
+    }).join("");
+
+    stage.innerHTML =
+      '<div class="wrap"><div class="hero">' +
+        '<div class="eyebrow">' + esc(d.familyName) + ' — ' + esc(d.name) + '</div>' +
+        '<h1>Build anything.<br>Make it unmistakable.</h1>' +
+        '<p>This page is wearing the ' + esc(d.name) + ' style DNA. Every color, typeface, radius and shadow below comes from its token set — copy the tokens or the build prompt and hand them to your agent.</p>' +
+        '<div class="cta-row"><button class="cta primary" type="button">Get started</button>' +
+        '<button class="cta secondary" type="button">See how it works</button>' +
+        '<button class="cta ghost" type="button">Learn more →</button></div>' +
+      '</div></div>' +
+      '<div class="wrap"><section class="block"><h2>Buttons</h2>' +
+        '<div class="cta-row"><button class="cta primary" type="button">Primary</button>' +
+        '<button class="cta secondary" type="button">Secondary</button>' +
+        '<button class="cta ghost" type="button">Ghost</button>' +
+        '<button class="cta pill" type="button">Pill</button></div>' +
+      '</section>' +
+      '<section class="block"><h2>Cards</h2><div class="cards3">' +
+        '<div class="dcard"><div class="tag">FEATURE</div><h3>Designed, not decorated</h3><p>Tokens drive every decision: color roles, type scale, radius and shadow are set once and reused everywhere.</p></div>' +
+        '<div class="dcard"><div class="tag">TOKENS</div><h3>One source of truth</h3><p>The W3C token JSON below is the whole system. Change a value there and the entire page follows.</p></div>' +
+        '<div class="dcard"><div class="tag">PROMPT</div><h3>Agent-ready</h3><p>Copy the build prompt at the bottom and paste it into any AI builder with your brief.</p></div>' +
+      '</div></section>' +
+      '<section class="block"><h2>Type scale</h2><div class="typescale">' +
+        '<div><div class="ts-label">Display · ' + esc(f.display) + '</div><div style="font-family:var(--font-display);font-size:44px;line-height:1.1">The quick brown fox</div></div>' +
+        '<div><div class="ts-label">Body · ' + esc(f.body) + '</div><div style="font-family:var(--font-body);font-size:17px;line-height:1.6;max-width:620px">Pack my box with five dozen liquor jugs. Good design is invisible until it is missing — then everything feels wrong and nobody can say why.</div></div>' +
+        '<div><div class="ts-label">Mono · ' + esc(f.mono) + '</div><div style="font-family:var(--font-mono);font-size:14px">--accent: ' + esc(d.palette[3]) + ';</div></div>' +
+      '</div></section>' +
+      '<section class="block"><div class="codehead"><h2 style="margin:0">Palette</h2><span class="ts-label">click a swatch to copy</span></div>' +
+        '<div class="pal">' + pal + '</div></section>' +
+      '<section class="block"><div class="codehead"><h2 style="margin:0">Design tokens</h2><button class="copy" id="copyTokens" type="button">Copy JSON</button></div>' +
+        '<pre class="code" id="tokensPre"></pre></section>' +
+      '<section class="block"><div class="codehead"><h2 style="margin:0">Tailwind preset</h2><button class="copy" id="copyTw" type="button">Copy preset</button></div>' +
+        '<pre class="code" id="twPre"></pre></section>' +
+      '<section class="block"><h2>Build prompt</h2><div class="promptbox">' +
+        '<p>' + esc(d.buildPrompt).replace("[brief]", "<code>[brief]</code>") + '</p>' +
+        '<button class="copy" id="copyPrompt" type="button">Copy build prompt</button>' +
+      '</div></section></div>';
+
+    document.getElementById("tokensPre").textContent = JSON.stringify(d.tokens, null, 2);
+    document.getElementById("twPre").textContent = d.tailwind;
+    document.getElementById("copyTokens").addEventListener("click", function(){ copyText(JSON.stringify(d.tokens, null, 2), "Tokens copied"); });
+    document.getElementById("copyTw").addEventListener("click", function(){ copyText(d.tailwind, "Tailwind preset copied"); });
+    document.getElementById("copyPrompt").addEventListener("click", function(){ copyText(d.buildPrompt, "Build prompt copied"); });
+    Array.prototype.forEach.call(stage.querySelectorAll(".sw"), function (el) {
+      el.addEventListener("click", function(){ copyText(el.getAttribute("data-hex"), el.getAttribute("data-hex") + " copied"); });
+    });
+  }
+
+  function load(s) {
+    fetch("data/dnas/" + s + ".json").then(function (r) {
+      if (!r.ok) throw new Error("not found");
+      return r.json();
+    }).then(render).catch(function () {
+      stage.innerHTML = '<div class="loading">Style not found. <a href="./" style="color:#111">Back to all styles</a></div>';
+    });
+  }
+
+  function randomSlug() { return index[Math.floor(Math.random() * index.length)].slug; }
+
+  document.getElementById("prev").addEventListener("click", function () {
+    if (!index.length) return;
+    var i = (order[slug] - 1 + index.length) % index.length;
+    load(index[i].slug);
+  });
+  document.getElementById("next").addEventListener("click", function () {
+    if (!index.length) return;
+    load(index[(order[slug] + 1) % index.length].slug);
+  });
+  loopBtn.addEventListener("click", function () {
+    if (loopTimer) {
+      clearInterval(loopTimer); loopTimer = null;
+      loopBtn.textContent = "Loop: off"; loopBtn.classList.remove("on");
+    } else {
+      loopBtn.textContent = "Loop: on"; loopBtn.classList.add("on");
+      showToast("Cycling styles every 6s");
+      loopTimer = setInterval(function () { load(randomSlug()); }, 6000);
+    }
+  });
+
+  fetch("data/index.json").then(function (r) { return r.json(); }).then(function (data) {
+    index = data;
+    data.forEach(function (d, i) { order[d.slug] = i; });
+    var s = param("d");
+    load(order.hasOwnProperty(s) ? s : randomSlug());
+  }).catch(function () {
+    stage.innerHTML = '<div class="loading">Failed to load style index.</div>';
+  });
+})();
+</script>
+</body>
+</html>

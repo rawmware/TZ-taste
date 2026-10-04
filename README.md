@@ -26,7 +26,8 @@ That is the whole product. Everything in this repo exists to make that sentence 
 |---|---|
 | `AGENT.md` | Machine-first bootstrap. The file your agent reads first. |
 | `skill/SKILL.md` | Portable anti-slop skill: dials, pre-flight checks, the slop blocklist. Drop it into any agent or conversation. |
-| `styles/` | 92 style DNAs — complete visual languages with tokens, type pairings, and rules. Machine-readable via `styles/index.json`. |
+| `styles/` | 92 hand-written style DNAs — complete visual languages with tokens, type pairings, and rules. Machine-readable via `styles/index.json`. |
+| `data/dnas/` | 5,000 generated style DNAs — one JSON per style (tokens, fonts, palette, Tailwind preset, build prompt). Machine index at `data/index.json`. |
 | `patterns/` | 194 copy-paste HTML/CSS section patterns (heroes, navs, bento grids, pricing, backgrounds…). Each with a live preview on the demo site. `patterns/index.json` for machines. |
 | `three-d/` | 40 original Three.js ambient 3D environments — aurora domes, voxel cities, coral reefs. Standalone files, zero external assets. `three-d/index.json` for machines. |
 | `generative/` | 55 interactive generative-art pieces (flow fields, boids, reaction-diffusion…). Vanilla canvas, zero deps. |

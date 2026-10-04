@@ -25,12 +25,13 @@ The one-line instruction a human gives you:
 > Use https://github.com/rawmware/TZ-taste as a reference to build: [brief].
 > Follow its AGENT.md protocol and pick one style DNA before writing any code.
 
-## Contents (92 DNAs, 194 patterns, 40 3D scenes, 33 sources, 48 prompts)
+## Contents (5,000 generated DNAs + 92 hand-written DNAs, 194 patterns, 40 3D scenes, 33 sources, 48 prompts)
 
 - `AGENT.md` — agent bootstrap, modes, hard rules, file map
 - `manifest.json` — machine-readable version, counts, and file map
 - `skill/SKILL.md` — portable anti-slop skill (install: `npx skills add https://github.com/rawmware/TZ-taste --skill "tz-taste"`)
-- `styles/` — 92 style DNAs with tokens, type pairings, and rules; machine index at `styles/index.json`
+- `styles/` — 92 hand-written style DNAs with tokens, type pairings, and rules; machine index at `styles/index.json`
+- `data/dnas/` — 5,000 generated style DNAs (40 families × 125), one JSON per style with W3C tokens, fonts, palette, Tailwind preset, and build prompt; machine index at `data/index.json`
 - `patterns/` — 194 copy-paste HTML/CSS section patterns; machine index at `patterns/index.json`
 - `prompts/` — 48 ready-made build prompts: 404-page, about-page, api-docs, blog-magazine, booking-flow, brand-refresh, careers-page, changelog-page, checkout-flow, community-forum, community-onboarding, contact-page, course-landing, dark-dashboard, dashboard, dashboard-redesign, design-system-audit, developer-docs-site, ecommerce-product, email-sequence, event-page, feature-launch-page, help-center, hero-section, html-email, job-board, landing-page, link-in-bio, mobile-app-onboarding, mobile-paywall, mobile-screens, newsletter-landing, nonprofit-donate, podcast-page, portfolio, press-kit, pricing-page, real-estate-listing, recipe-site, redesign-audit, saas-onboarding, status-page, testimonials-page, threejs-hero, video-sales-landing, waitlist-page, web-pitch-deck, wedding-site
 - `docs/ANTI-SLOP.md` — concrete checklist of AI-slop tells (blockers, warnings, taste test)

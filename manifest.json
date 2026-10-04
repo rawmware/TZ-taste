@@ -13,7 +13,9 @@
   "emails": 22,
   "app_ui": 25,
   "swiftui_views": 14,
-  "starters": 23
+  "starters": 23,
+  "generated_dnas": 5000,
+  "dna_families": 40
  },
  "demo": "https://rawmware.github.io/TZ-taste/",
  "files": {
@@ -25,7 +27,9 @@
   "prompts": "prompts/",
   "sources": "sources/sources.json",
   "styles": "styles/index.json",
-  "taste_guide": "docs/TASTE-GUIDE.md"
+  "taste_guide": "docs/TASTE-GUIDE.md",
+  "dna_index": "data/index.json",
+  "dna_page": "dna.html"
  },
  "license": "MIT",
  "protocol": [

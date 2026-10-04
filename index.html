@@ -1,277 +1,168 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TZ-taste — Give your AI agent taste</title>
-<meta name="description" content="The free anti-slop design reference for AI agents and developers. 92 style DNAs, 219 copy-paste patterns, 70 generative canvases, 50 3D scenes, 55 page templates, 58 build prompts. MIT licensed, free forever.">
-<meta name="theme-color" content="#eef1f4">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./assets/site.css?v=3">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0e13'/%3E%3Crect x='7' y='14' width='18' height='4' rx='2' fill='%2346e6ff'/%3E%3Ccircle cx='23' cy='9' r='3' fill='%23b6f000'/%3E%3C/svg%3E">
+<title>TZ-taste — 5,000 style DNAs</title>
+<meta name="description" content="5,000 style DNAs. Pick one. Build like that.">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { background: #fff; color: #111; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif; }
+  header { position: sticky; top: 0; z-index: 10; background: #fff; border-bottom: 1px solid #e5e5e5; }
+  .bar { max-width: 1400px; margin: 0 auto; padding: 12px 16px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .wordmark { font-size: 20px; font-weight: 800; letter-spacing: -0.02em; color: #111; text-decoration: none; white-space: nowrap; }
+  .count { font-size: 12px; color: #6b7280; border: 1px solid #e5e5e5; border-radius: 999px; padding: 3px 10px; white-space: nowrap; }
+  .spacer { flex: 1; }
+  input[type="search"], select { font: inherit; font-size: 13px; color: #111; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px; padding: 8px 10px; outline: none; }
+  input[type="search"] { width: 220px; }
+  input[type="search"]:focus, select:focus { border-color: #9ca3af; }
+  .shuffle { font: inherit; font-size: 13px; font-weight: 600; color: #fff; background: #111; border: 1px solid #111; border-radius: 8px; padding: 8px 14px; cursor: pointer; white-space: nowrap; }
+  .shuffle:hover { background: #333; }
+  main { max-width: 1400px; margin: 0 auto; padding: 16px; }
+  #grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+  .card { display: block; background: #fff; border: 1px solid #e5e5e5; border-radius: 10px; padding: 12px; text-decoration: none; color: inherit; transition: border-color .15s, transform .15s; }
+  .card:hover { border-color: #9ca3af; transform: translateY(-2px); }
+  .nm { font-size: 13px; font-weight: 650; color: #111; margin-bottom: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .dots { display: flex; gap: 5px; margin-bottom: 10px; }
+  .dots span { width: 14px; height: 14px; border-radius: 50%; border: 1px solid rgba(0,0,0,.08); }
+  .sw { border-radius: 6px; padding: 10px 12px; min-height: 74px; display: flex; flex-direction: column; justify-content: center; gap: 2px; overflow: hidden; }
+  .aa { font-size: 26px; line-height: 1.1; font-weight: 400; }
+  .tx { font-size: 11px; line-height: 1.4; opacity: .85; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .fam { margin-top: 8px; font-size: 10.5px; color: #9ca3af; text-transform: uppercase; letter-spacing: .06em; }
+  #sentinel { height: 1px; }
+  #empty { display: none; text-align: center; color: #9ca3af; font-size: 14px; padding: 80px 20px; }
+  footer { border-top: 1px solid #e5e5e5; margin-top: 24px; }
+  footer div { max-width: 1400px; margin: 0 auto; padding: 14px 16px; font-size: 12px; color: #9ca3af; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  footer a { color: #6b7280; text-decoration: none; }
+  @media (max-width: 640px) { input[type="search"] { width: 140px; } #grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); } }
+</style>
 </head>
-<body id="top">
-
-<header class="topbar">
-  <a class="wordmark" href="#top" aria-label="TZ-taste — back to top">TZ&#8209;TASTE</a>
-  <nav aria-label="Sections">
-    <a href="#dna">DNA</a>
-    <a href="#templates">Templates</a>
-    <a href="#generative">Generative</a>
-    <a href="#scenes">3D</a>
-    <a href="#patterns">Patterns</a>
-    <a href="#tools">Tools</a>
-    <a href="#sources">Sources</a>
-  </nav>
-  <button class="btn-copy" type="button" data-copy="agent-brief">Copy agent brief</button>
+<body>
+<header>
+  <div class="bar">
+    <a class="wordmark" href="./">TZ-taste</a>
+    <span class="count" id="count">… styles</span>
+    <div class="spacer"></div>
+    <input type="search" id="q" placeholder="Search styles…" autocomplete="off" aria-label="Search styles">
+    <select id="fam" aria-label="Filter by family"><option value="">All families</option></select>
+    <button class="shuffle" id="shuffle" type="button">Shuffle</button>
+  </div>
 </header>
-
 <main>
-  <!-- HERO · live showcase, no words needed -->
-  <section class="hero" aria-label="Live animation showcase">
-    <canvas id="silk" aria-hidden="true"></canvas>
-    <p class="hero-mark" aria-hidden="true">TZ-TASTE</p>
-    <div class="filmstrip" aria-label="Live animation studies">
-      <figure class="cell"><canvas data-fx="flow" aria-hidden="true"></canvas><figcaption>flow field</figcaption></figure>
-      <figure class="cell"><canvas data-fx="waves" aria-hidden="true"></canvas><figcaption>interference</figcaption></figure>
-      <figure class="cell"><canvas data-fx="orbit" aria-hidden="true"></canvas><figcaption>orbital</figcaption></figure>
-      <figure class="cell"><canvas data-fx="grid" aria-hidden="true"></canvas><figcaption>pulse grid</figcaption></figure>
-      <figure class="cell"><canvas data-fx="rain" aria-hidden="true"></canvas><figcaption>signal rain</figcaption></figure>
-      <figure class="cell"><canvas data-fx="bloom" aria-hidden="true"></canvas><figcaption>bloom</figcaption></figure>
-    </div>
-  </section>
-
-  <div class="ticker" aria-hidden="true"><div class="ticker-track" id="ticker-track"></div></div>
-
-  <!-- 01 · STYLE DNA WALL -->
-  <section class="section" id="dna" aria-labelledby="dna-h">
-    <header class="ticket-head">
-      <p class="platform"><span class="p-no">Platform 01</span><span class="p-rule" aria-hidden="true"></span><span class="p-note">92 departures · style DNAs</span></p>
-      <h2 id="dna-h">Ninety-two visual languages.<br><em>One per project.</em></h2>
-      <p class="section-sub">Every DNA is a finished design system — tokens, type pairings, house
-        rules, and the one deliberate choice that makes it unmistakable. An agent loads exactly
-        one. You can walk the whole wall. Search, filter by mood, click any plaque for a live preview.</p>
-    </header>
-    <div class="controls">
-      <label class="visually-hidden" for="dna-search">Search style DNAs</label>
-      <input id="dna-search" type="search" placeholder="Search 92 style DNAs…" autocomplete="off">
-      <div id="tag-filters" role="group" aria-label="Filter DNAs by tag"></div>
-    </div>
-    <div class="dna-grid" id="dna-grid" aria-live="polite"></div>
-  </section>
-
-  <!-- 02 · TEMPLATES -->
-  <section class="section" id="templates" aria-labelledby="templates-h">
-    <header class="ticket-head">
-      <p class="platform"><span class="p-no">Platform 02</span><span class="p-rule" aria-hidden="true"></span><span class="p-note">55 arrivals · page templates</span></p>
-      <h2 id="templates-h">Whole pages,<br><em>ready to board.</em></h2>
-      <p class="section-sub">Forty complete landing pages, each committed to a single style DNA —
-        no half-measures, no mixed metaphors. Preview the composition, lift the code, make it yours.</p>
-    </header>
-    <div class="templates-grid" id="templates-grid" aria-live="polite"></div>
-  </section>
-
-  <!-- 03 · GENERATIVE -->
-  <section class="section" id="generative" aria-labelledby="generative-h">
-    <header class="ticket-head">
-      <p class="platform"><span class="p-no">Platform 03</span><span class="p-rule" aria-hidden="true"></span><span class="p-note">70 in motion · generative art</span></p>
-      <h2 id="generative-h">Canvases<br><em>that move.</em></h2>
-      <p class="section-sub">Fifty-five hand-rolled generative pieces — flow fields, flocks, tilings,
-        ink blooms. Vanilla canvas, zero dependencies, every technique named so you can steal it properly.</p>
-    </header>
-    <div class="generative-grid" id="generative-grid" aria-live="polite"></div>
-  </section>
-
-  <!-- 04 · 3D SCENES -->
-  <section class="section" id="scenes" aria-labelledby="scenes-h">
-    <header class="ticket-head">
-      <p class="platform"><span class="p-no">Platform 04</span><span class="p-rule" aria-hidden="true"></span><span class="p-note">50 environments · 3D scenes</span></p>
-      <h2 id="scenes-h">Atmosphere,<br><em>on rails.</em></h2>
-      <p class="section-sub">Forty original Three.js environments — fog domes, voxel harbors, night
-        reefs. Standalone files, no external assets. Launch one live, lift the technique.</p>
-    </header>
-    <div class="scenes-grid" id="scenes-grid" aria-live="polite"></div>
-  </section>
-
-  <!-- 05 · PATTERNS -->
-  <section class="section" id="patterns" aria-labelledby="patterns-h">
-    <header class="ticket-head">
-      <p class="platform"><span class="p-no">Platform 05</span><span class="p-rule" aria-hidden="true"></span><span class="p-note">219 entries · pattern index</span></p>
-      <h2 id="patterns-h">One hundred ninety-four<br><em>sections that behave.</em></h2>
-      <p class="section-sub">Standalone HTML + CSS snippets: navs, heroes, pricing, footers. No
-        dependencies, no build step. Search the index, preview, paste.</p>
-    </header>
-    <div class="controls">
-      <label class="visually-hidden" for="pattern-search">Search patterns</label>
-      <input id="pattern-search" type="search" placeholder="Search 219 patterns…" autocomplete="off">
-      <label class="visually-hidden" for="pattern-cat">Filter by category</label>
-      <select id="pattern-cat">
-        <option value="">All categories</option>
-      </select>
-    </div>
-    <div class="pattern-list" id="pattern-grid" aria-live="polite"></div>
-  </section>
-
-  <!-- 06 · TOOLS -->
-  <section class="section" id="tools" aria-labelledby="tools-h">
-    <header class="ticket-head">
-      <p class="platform"><span class="p-no">Platform 06</span><span class="p-rule" aria-hidden="true"></span><span class="p-note">2 instruments · the conductor's desk</span></p>
-      <h2 id="tools-h">The conductor's<br><em>desk.</em></h2>
-      <p class="section-sub">Two instruments for using the library: a token exporter that speaks
-        CSS, Tailwind, and JSON, and a brief builder that writes the agent prompt for you.</p>
-    </header>
-
-    <div class="tool-panels">
-      <!-- Token exporter -->
-      <article class="tool-panel" aria-labelledby="export-h">
-        <p class="tool-no">Instrument 01</p>
-        <h3 id="export-h">The token exporter</h3>
-        <p class="tool-sub">Pick a DNA. Take its tokens in the format your stack speaks.</p>
-        <div class="field">
-          <label for="export-dna">Style DNA</label>
-          <select id="export-dna">
-            <option value="">Choose a DNA…</option>
-          </select>
-        </div>
-        <div class="export-panels">
-          <div class="export-panel">
-            <div class="export-head"><h4>CSS variables</h4><button class="btn-mini" type="button" data-copy-target="export-css">Copy</button></div>
-            <pre id="export-css" tabindex="0"><code>Select a DNA to export its tokens.</code></pre>
-          </div>
-          <div class="export-panel">
-            <div class="export-head"><h4>Tailwind theme</h4><button class="btn-mini" type="button" data-copy-target="export-tw">Copy</button></div>
-            <pre id="export-tw" tabindex="0"><code>Select a DNA to export its tokens.</code></pre>
-          </div>
-          <div class="export-panel">
-            <div class="export-head"><h4>W3C tokens JSON</h4><button class="btn-mini" type="button" data-copy-target="export-json">Copy</button></div>
-            <pre id="export-json" tabindex="0"><code>Select a DNA to export its tokens.</code></pre>
-          </div>
-        </div>
-      </article>
-
-      <!-- Prompt builder -->
-      <article class="tool-panel" aria-labelledby="pb-h">
-        <p class="tool-no">Instrument 02</p>
-        <h3 id="pb-h">The brief builder</h3>
-        <p class="tool-sub">Assemble the one-liner your agent actually needs. Copy, paste, build.</p>
-        <div class="pb-row">
-          <div class="field">
-            <label for="pb-type">Page type</label>
-            <select id="pb-type">
-              <option>Landing page</option>
-              <option>Portfolio</option>
-              <option>Pricing page</option>
-              <option>Docs site</option>
-              <option>Dashboard</option>
-              <option>Mobile onboarding</option>
-              <option>Blog</option>
-              <option>Waitlist page</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="pb-dna">Style DNA</label>
-            <select id="pb-dna">
-              <option value="">Choose a DNA…</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="pb-tone">Tone</label>
-            <select id="pb-tone">
-              <option>Direct</option>
-              <option>Playful</option>
-              <option>Luxurious</option>
-              <option>Technical</option>
-              <option>Warm</option>
-            </select>
-          </div>
-        </div>
-        <pre id="pb-output" tabindex="0"><code>Pick a page type and a DNA — your brief assembles here.</code></pre>
-        <button class="btn-solid" type="button" id="pb-copy">Copy brief</button>
-      </article>
-    </div>
-  </section>
-
-  <!-- AGENT KIT -->
-  <section class="agentkit" aria-labelledby="agentkit-h">
-    <div class="agentkit-inner">
-      <p class="platform"><span class="p-no">Agent kit</span><span class="p-rule" aria-hidden="true"></span><span class="p-note">one line · any agent</span></p>
-      <h2 id="agentkit-h">One line. <em>Any agent.</em></h2>
-      <div class="brief-box">
-        <code id="agent-brief-text">Use https://github.com/rawmware/TZ-taste as a reference to build: [your brief]. Follow its AGENT.md protocol and pick one style DNA before writing any code.</code>
-        <button class="btn-solid" type="button" data-copy="agent-brief">Copy brief</button>
-      </div>
-      <div class="kit-links">
-        <a href="https://github.com/rawmware/TZ-taste/blob/main/AGENT.md" target="_blank" rel="noopener">AGENT.md&nbsp;→</a>
-        <a href="https://github.com/rawmware/TZ-taste/blob/main/skill/SKILL.md" target="_blank" rel="noopener">skill/SKILL.md&nbsp;→</a>
-        <a href="https://github.com/rawmware/TZ-taste/blob/main/docs/ANTI-SLOP.md" target="_blank" rel="noopener">ANTI-SLOP.md&nbsp;→</a>
-        <code class="install">npx skills add https://github.com/rawmware/TZ-taste --skill "tz-taste"</code>
-      </div>
-    </div>
-  </section>
-
-  <!-- 07 · SOURCES -->
-  <section class="section" id="sources" aria-labelledby="sources-h">
-    <header class="ticket-head">
-      <p class="platform"><span class="p-no">Platform 07</span><span class="p-rule" aria-hidden="true"></span><span class="p-note">33 verified · curated sources</span></p>
-      <h2 id="sources-h">Standing on<br><em>open shoulders.</em></h2>
-      <p class="section-sub">Thirty-three of the best free design resources anywhere — licenses
-        verified, freshness checked weekly by CI, so you never build on a dead link.</p>
-    </header>
-    <div class="source-table" id="source-table" aria-live="polite"></div>
-    <p class="freshness-note" id="freshness-note"></p>
-  </section>
+  <div id="grid"></div>
+  <div id="empty">No styles match.</div>
+  <div id="sentinel"></div>
 </main>
+<footer><div><span>MIT · free forever</span><a href="https://github.com/rawmware/TZ-taste">rawmware/TZ-taste</a></div></footer>
+<script>
+(function () {
+  "use strict";
+  var grid = document.getElementById("grid"),
+      q = document.getElementById("q"),
+      famSel = document.getElementById("fam"),
+      empty = document.getElementById("empty"),
+      sentinel = document.getElementById("sentinel"),
+      countEl = document.getElementById("count"),
+      all = [], filtered = [], rendered = 0, BATCH = 800,
+      loadedFonts = {};
 
-<footer class="footer">
-  <a class="foot-word" href="#top">TZ&#8209;TASTE</a>
-  <div class="foot-grid">
-    <nav aria-label="Library">
-      <p class="f-h">Library</p>
-      <a href="#dna">Style DNAs</a>
-      <a href="#templates">Templates</a>
-      <a href="#generative">Generative</a>
-      <a href="#scenes">3D scenes</a>
-      <a href="#patterns">Patterns</a>
-    </nav>
-    <nav aria-label="Agents">
-      <p class="f-h">Agents</p>
-      <a href="#tools">Tools</a>
-      <a href="#agent-kit">Agent kit</a>
-      <a href="https://github.com/rawmware/TZ-taste/blob/main/skill/SKILL.md" target="_blank" rel="noopener">Skill</a>
-      <a href="https://github.com/rawmware/TZ-taste/blob/main/docs/ANTI-SLOP.md" target="_blank" rel="noopener">Anti-slop</a>
-    </nav>
-    <nav aria-label="Project">
-      <p class="f-h">Project</p>
-      <a href="https://github.com/rawmware/TZ-taste" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://github.com/rawmware/TZ-taste/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contribute</a>
-      <a href="https://github.com/rawmware/TZ-taste/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
-    </nav>
-  </div>
-  <div class="foot-base">
-    <span>© 2026 Roman's Proposal — free forever.</span>
-    <span><a href="https://github.com/rawmware/TZ-taste" target="_blank" rel="noopener">GitHub</a>&nbsp;&nbsp;·&nbsp;&nbsp;MIT licensed</span>
-  </div>
-</footer>
+  function gfUrl(a, b) {
+    return "https://fonts.googleapis.com/css2?family=" + a.replace(/ /g, "+") +
+           "&family=" + b.replace(/ /g, "+") + "&display=swap";
+  }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
 
-<!-- Shared preview modal -->
-<div id="tz-modal" class="tz-modal" role="dialog" aria-modal="true" aria-labelledby="tz-modal-title" hidden>
-  <div class="tz-modal-box">
-    <header>
-      <h3 id="tz-modal-title">Preview</h3>
-      <button id="tz-modal-close" type="button" aria-label="Close">×</button>
-    </header>
-    <div id="tz-modal-loading" role="status">Warming up the preview…</div>
-    <iframe id="tz-modal-frame" title="Live preview"></iframe>
-    <div id="tz-modal-meta"></div>
-    <div id="tz-modal-actions"></div>
-  </div>
-</div>
+  var fontObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var card = e.target;
+      fontObs.unobserve(card);
+      var d = card._dna;
+      var key = d.display + "|" + d.body;
+      var apply = function () {
+        var aa = card.querySelector(".aa"), tx = card.querySelector(".tx");
+        if (aa) aa.style.fontFamily = "'" + d.display + "', sans-serif";
+        if (tx) tx.style.fontFamily = "'" + d.body + "', sans-serif";
+      };
+      if (loadedFonts[key]) { apply(); return; }
+      loadedFonts[key] = true;
+      var link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = gfUrl(d.display, d.body);
+      link.onload = apply;
+      document.head.appendChild(link);
+      setTimeout(apply, 1200);
+    });
+  }, { rootMargin: "400px" });
 
-<div id="toast" role="status"></div>
+  function cardHTML(d) {
+    var dots = d.palette.map(function (h) { return '<span style="background:' + h + '"></span>'; }).join("");
+    return '<a class="card" href="dna.html?d=' + d.slug + '">' +
+      '<div class="nm">' + esc(d.name) + '</div>' +
+      '<div class="dots">' + dots + '</div>' +
+      '<div class="sw" style="background:' + d.palette[0] + '">' +
+        '<div class="aa" style="color:' + d.palette[2] + '">Aa</div>' +
+        '<div class="tx" style="color:' + d.palette[4] + '">Pack my box with five dozen liquor jugs</div>' +
+      '</div>' +
+      '<div class="fam">' + esc(d.familyName) + '</div>' +
+    '</a>';
+  }
 
-<script src="./assets/data.js?v=3"></script>
-<script src="./assets/site.js?v=3"></script>
+  function renderMore() {
+    if (rendered >= filtered.length) return;
+    var frag = document.createDocumentFragment();
+    var tmp = document.createElement("div");
+    var end = Math.min(rendered + BATCH, filtered.length);
+    for (var i = rendered; i < end; i++) {
+      tmp.innerHTML = cardHTML(filtered[i]);
+      var node = tmp.firstChild;
+      node._dna = filtered[i];
+      frag.appendChild(node);
+      fontObs.observe(node);
+    }
+    grid.appendChild(frag);
+    rendered = end;
+  }
+
+  var gridObs = new IntersectionObserver(function (entries) {
+    if (entries[0].isIntersecting) renderMore();
+  }, { rootMargin: "1200px" });
+  gridObs.observe(sentinel);
+
+  function applyFilter() {
+    var term = q.value.trim().toLowerCase(), f = famSel.value;
+    filtered = all.filter(function (d) {
+      if (f && d.family !== f) return false;
+      if (term && d.name.toLowerCase().indexOf(term) < 0 &&
+          d.familyName.toLowerCase().indexOf(term) < 0) return false;
+      return true;
+    });
+    grid.innerHTML = ""; rendered = 0;
+    empty.style.display = filtered.length ? "none" : "block";
+    renderMore();
+  }
+
+  var deb;
+  q.addEventListener("input", function () { clearTimeout(deb); deb = setTimeout(applyFilter, 120); });
+  famSel.addEventListener("change", applyFilter);
+  document.getElementById("shuffle").addEventListener("click", function () {
+    if (!all.length) return;
+    var d = all[Math.floor(Math.random() * all.length)];
+    location.href = "dna.html?d=" + d.slug;
+  });
+
+  fetch("data/index.json").then(function (r) { return r.json(); }).then(function (data) {
+    all = data; filtered = data;
+    countEl.textContent = data.length.toLocaleString("en-US") + " styles";
+    var seen = {}, opts = ['<option value="">All families</option>'];
+    data.forEach(function (d) {
+      if (!seen[d.family]) { seen[d.family] = d.familyName; opts.push('<option value="' + d.family + '">' + esc(d.familyName) + '</option>'); }
+    });
+    famSel.innerHTML = opts.join("");
+    renderMore();
+  }).catch(function () { countEl.textContent = "failed to load"; });
+})();
+</script>
 </body>
 </html>
