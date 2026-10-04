@@ -1,0 +1,57 @@
+<!--tz-meta {"id":"footers-newsletter","title":"Newsletter footer","category":"Footer","file":"patterns/footers-newsletter.html","tags":["email","signup"],"description":"A prominent off-center newsletter block above quiet link columns, with a hand-written promise.","dnas":["soft-minimal"]} -->
+<footer class="tz-newsfoot">
+  <div class="tz-newsfoot-top">
+    <div class="tz-newsfoot-pitch">
+      <p class="tz-newsfoot-eyebrow">The Sunday Shelf</p>
+      <h2>One good essay,<br>every Sunday morning.</h2>
+      <p class="tz-newsfoot-sub">No growth hacks. No funnels. Unsubscribe whenever — I&rsquo;ll survive.</p>
+      <form class="tz-newsfoot-form" action="#" method="post">
+        <label class="tz-newsfoot-sr" for="tz-nf-email">Email address</label>
+        <input id="tz-nf-email" type="email" name="email" placeholder="you@example.com" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+    <div class="tz-newsfoot-cols">
+      <div class="tz-newsfoot-col">
+        <p class="tz-newsfoot-label">Read</p>
+        <a href="#">Essays</a><a href="#">Interviews</a><a href="#">Archive</a>
+      </div>
+      <div class="tz-newsfoot-col">
+        <p class="tz-newsfoot-label">About</p>
+        <a href="#">Manifesto</a><a href="#">Speaking</a><a href="#">Contact</a>
+      </div>
+    </div>
+  </div>
+  <p class="tz-newsfoot-base">© 2026 The Sunday Shelf · Written by a person, sent by a server</p>
+</footer>
+<style>
+.tz-newsfoot{--bg:#faf9f6;--ink:#23211c;--line:#e2dccf;--accent:#3f6b4a;
+  background:var(--bg);color:var(--ink);padding:64px clamp(20px,5vw,72px) 28px;
+  font-family:Arial,Helvetica,sans-serif;border-top:1px solid var(--line)}
+.tz-newsfoot-top{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(32px,6vw,96px);margin-bottom:56px}
+.tz-newsfoot-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 16px}
+.tz-newsfoot-pitch h2{font-family:Georgia,'Times New Roman',serif;font-size:clamp(34px,5vw,56px);
+  letter-spacing:-.025em;line-height:1.05;margin:0 0 16px;font-weight:400}
+.tz-newsfoot-sub{font-size:16px;line-height:1.6;opacity:.72;margin:0 0 28px;max-width:44ch}
+.tz-newsfoot-form{display:flex;gap:0;max-width:440px;border-bottom:2px solid var(--ink)}
+.tz-newsfoot-form input{flex:1;border:0;background:transparent;padding:14px 4px;font-size:16px;
+  font-family:inherit;color:var(--ink);min-width:0}
+.tz-newsfoot-form input:focus{outline:none}
+.tz-newsfoot-form:focus-within{border-bottom-color:var(--accent)}
+.tz-newsfoot-form button{border:0;background:var(--ink);color:#fff;font-size:15px;font-weight:bold;
+  padding:0 26px;cursor:pointer;font-family:inherit}
+.tz-newsfoot-form button:hover{background:var(--accent)}
+.tz-newsfoot-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.tz-newsfoot-cols{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-content:start;padding-top:44px}
+.tz-newsfoot-col{display:flex;flex-direction:column;gap:10px}
+.tz-newsfoot-label{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+.tz-newsfoot-col a{color:var(--ink);text-decoration:none;font-size:15px}
+.tz-newsfoot-col a:hover{text-decoration:underline;text-underline-offset:4px}
+.tz-newsfoot-base{font-size:13px;opacity:.55;margin:0;border-top:1px solid var(--line);padding-top:20px}
+@media (max-width:720px){
+  .tz-newsfoot-top{grid-template-columns:1fr}
+  .tz-newsfoot-cols{padding-top:0}
+}
+</style>
