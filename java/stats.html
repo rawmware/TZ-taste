@@ -1,0 +1,86 @@
+<!--tz-meta {"id":"java-stats","title":"Terminal Stats Readout (Java/Thymeleaf)","category":"Java","file":"java/stats.html","tags":["java","thymeleaf","stats"],"description":"Retro-terminal company stats: a typed ./report command, amber values on phosphor green, blinking block cursor, scanline texture.","dnas":["retro-terminal"]} -->
+<!--
+  Design read: quarterly numbers for engineers who live in a terminal — typed, not designed.
+  Distinctive choice: the stats arrive as a typed shell transcript with a blinking block cursor.
+  Dials: VARIANCE 5 / MOTION 6 / DENSITY 8.
+  Route: GET /stats -> StatsController#index (model: report)
+-->
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title th:text="${report.title}">packetline — Q3 report</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --tz-bg: #0b0f0a;
+      --tz-ink: #33ff66;
+      --tz-accent: #ffb000;
+      --tz-surface: #0e140d;
+      --tz-line: #33ff6633;
+      --tz-muted: #1f6b3a;
+      --tz-font-mono: "IBM Plex Mono", monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { background: var(--tz-bg); color: var(--tz-ink); font-family: var(--tz-font-mono); min-height: 100dvh; }
+    .tz-scan { position: fixed; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, #00000026 0 1px, transparent 1px 3px); z-index: 5; }
+    .tz-term { max-width: 900px; margin: 0 auto; padding: clamp(48px, 8vw, 110px) clamp(18px, 4vw, 40px); position: relative; z-index: 1; }
+    .tz-bar { display: flex; gap: 8px; margin-bottom: 40px; }
+    .tz-bar span { width: 12px; height: 12px; border-radius: 50%; border: 1px solid var(--tz-line); }
+    .tz-bar span:first-child { background: var(--tz-accent); border-color: var(--tz-accent); }
+    .tz-line { font-size: clamp(14px, 1.7vw, 17px); line-height: 1.9; margin: 0; white-space: pre-wrap; word-break: break-word; }
+    .tz-prompt { color: var(--tz-accent); font-weight: 700; }
+    .tz-cmd { color: var(--tz-ink); }
+    .tz-dim { color: var(--tz-muted); }
+    .tz-cursor { display: inline-block; width: 0.62em; height: 1.15em; background: var(--tz-ink); vertical-align: text-bottom; animation: tz-blink 1.06s steps(1) infinite; }
+    @keyframes tz-blink { 50% { opacity: 0; } }
+    .tz-out { border: 1px solid var(--tz-line); background: var(--tz-surface); margin: 28px 0 36px; }
+    .tz-row { display: grid; grid-template-columns: 1fr auto; gap: 8px 24px; padding: 16px 20px; border-bottom: 1px dashed var(--tz-line); align-items: baseline; }
+    .tz-row:last-child { border-bottom: none; }
+    .tz-label { color: var(--tz-ink); }
+    .tz-label .tz-unit { color: var(--tz-muted); font-size: 0.85em; }
+    .tz-value { color: var(--tz-accent); font-weight: 700; font-size: 1.25em; text-align: right; }
+    .tz-delta { display: block; font-size: 0.72em; font-weight: 400; color: var(--tz-ink); }
+    .tz-foot { margin-top: 40px; }
+    .tz-type { overflow: hidden; border-right: 0; }
+    @media (prefers-reduced-motion: reduce) {
+      .tz-cursor { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tz-scan" aria-hidden="true"></div>
+  <main class="tz-term">
+    <div class="tz-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+    <p class="tz-line"><span class="tz-prompt">ops@packetline</span><span class="tz-dim">:~$</span> <span class="tz-cmd" th:text="${report.command}">./report --q3 --plain</span><span class="tz-cursor" aria-hidden="true"></span></p>
+    <p class="tz-line tz-dim" th:text="${report.generated}">compiled 2026-10-01 06:00 UTC · source: billing + edge logs</p>
+    <div class="tz-out" role="table" aria-label="Quarterly statistics">
+      <div class="tz-row" role="row" th:each="s : ${report.stats}">
+        <span class="tz-label" role="cell"><span th:text="${s.label}">Packets routed</span> <span class="tz-unit" th:text="${s.unit}">/ quarter</span></span>
+        <span class="tz-value" role="cell"><span th:text="${s.value}">41.2B</span><span class="tz-delta" th:text="${s.delta}">▲ 18% vs Q2</span></span>
+      </div>
+      <div class="tz-row" role="row" th:if="${#lists.isEmpty(report.stats)}">
+        <span class="tz-label" role="cell">Median edge latency <span class="tz-unit">/ p50 worldwide</span></span>
+        <span class="tz-value" role="cell">9ms<span class="tz-delta">▼ 2ms vs Q2</span></span>
+      </div>
+      <div class="tz-row" role="row" th:if="${#lists.isEmpty(report.stats)}">
+        <span class="tz-label" role="cell">Uptime <span class="tz-unit">/ trailing 12 mo</span></span>
+        <span class="tz-value" role="cell">99.99%<span class="tz-delta">2 incidents, both &lt; 4 min</span></span>
+      </div>
+      <div class="tz-row" role="row" th:if="${#lists.isEmpty(report.stats)}">
+        <span class="tz-label" role="cell">Paying networks <span class="tz-unit">/ customers</span></span>
+        <span class="tz-value" role="cell">312<span class="tz-delta">▲ 44 new in Q3</span></span>
+      </div>
+      <div class="tz-row" role="row" th:if="${#lists.isEmpty(report.stats)}">
+        <span class="tz-label" role="cell">Support replies <span class="tz-unit">/ median, human</span></span>
+        <span class="tz-value" role="cell">47 min<span class="tz-delta">no bots, ever</span></span>
+      </div>
+    </div>
+    <p class="tz-line tz-foot"><span class="tz-prompt">ops@packetline</span><span class="tz-dim">:~$</span> <span class="tz-dim">echo "methodology:" && cat </span><a class="tz-cmd" th:href="@{/stats/methodology}" href="/stats/methodology" style="color:var(--tz-accent)">METHODOLOGY.md</a></p>
+  </main>
+</body>
+</html>
