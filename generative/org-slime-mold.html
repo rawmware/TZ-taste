@@ -1,0 +1,118 @@
+<!--tz-meta {"id":"gen-org-slime-mold","title":"Slime Mold Trails","category":"Generative","file":"generative/org-slime-mold.html","tags":["slime-mold","agents","simulation"],"description":"Agent-based slime mold: sniff, steer, deposit, decay — trails with no leader.","dnas":["botanical-lab"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slime Mold Trails — TZ-taste</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#07100e;color:#dfeee7;font-family:"Avenir Next","Segoe UI",Verdana,sans-serif;-webkit-font-smoothing:antialiased}
+.tz-wrap{max-width:760px;margin:0 auto;padding:20px 16px 32px}
+.tz-kicker{font-size:11px;letter-spacing:.22em;text-transform:uppercase;opacity:.65;margin:0 0 8px}
+.tz-title{font-family:Georgia,"Iowan Old Style",serif;font-weight:600;font-size:30px;margin:0 0 8px;letter-spacing:.01em}
+.tz-caption{font-size:14px;line-height:1.55;opacity:.78;margin:0 0 16px;max-width:58ch}
+.tz-controls{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+.tz-btn{appearance:none;border:1px solid currentColor;background:transparent;color:inherit;font:inherit;font-size:13px;padding:8px 14px;border-radius:999px;cursor:pointer;opacity:.9}
+.tz-btn:hover{opacity:1;background:rgba(223,238,231,.08)}
+.tz-btn:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.tz-canvas{display:block;width:100%;height:70vh;min-height:340px;border-radius:14px;border:1px solid rgba(223,238,231,.18);background:#07100e}
+.tz-foot{font-size:12px;opacity:.55;margin:12px 0 0;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="tz-wrap">
+<header>
+<p class="tz-kicker">TZ-taste &middot; Generative</p>
+<h1 class="tz-title">Slime Mold Trails</h1>
+<p class="tz-caption">Hundreds of agents sniff the trail ahead, steer toward stronger scent, and deposit their own. No leader &mdash; just local sensing, like real slime mold.</p>
+</header>
+<div class="tz-controls">
+<button class="tz-btn" type="button" id="tz-seed">New seed</button>
+<button class="tz-btn" type="button" id="tz-pause">Pause</button>
+<button class="tz-btn" type="button" id="tz-clear">Clear</button>
+</div>
+<canvas class="tz-canvas" id="tz-cv"></canvas>
+<p class="tz-foot">Real agent steering (sensor angle, sensor distance, turn speed) on a decaying, diffusing trail grid. Seeded with mulberry32.</p>
+</div>
+<script>
+(function(){
+"use strict";
+var cv=document.getElementById('tz-cv'),ctx=cv.getContext('2d');
+var seedB=document.getElementById('tz-seed'),pauseB=document.getElementById('tz-pause'),clearB=document.getElementById('tz-clear');
+var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var DPR=Math.min(window.devicePixelRatio||1,2),W=0,H=0;
+var tw=0,th=0,trail=null,trail2=null,agents=[];
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+var rng=mulberry32((Math.random()*4294967296)|0);
+var SA=0.42,SD=9,TURN=0.32,SPEED=1.15;
+var off=document.createElement('canvas'),octx=off.getContext('2d');
+function init(){
+  tw=Math.min(180,Math.max(90,Math.round(W/2.4)));th=Math.max(60,Math.round(tw*H/Math.max(1,W)));
+  off.width=tw;off.height=th;
+  trail=new Float32Array(tw*th);trail2=new Float32Array(tw*th);
+  var n=Math.min(1000,Math.max(300,Math.round(W*H/1100)));
+  agents=[];
+  for(var i=0;i<n;i++)agents.push({x:rng()*W,y:rng()*H,a:rng()*Math.PI*2});
+}
+function sense(x,y,a){
+  var sx=x+Math.cos(a)*SD,sy=y+Math.sin(a)*SD;
+  var gx=((sx/W)*tw)|0,gy=((sy/H)*th)|0;
+  if(gx<0)gx=0;if(gx>=tw)gx=tw-1;if(gy<0)gy=0;if(gy>=th)gy=th-1;
+  return trail[gy*tw+gx];
+}
+function step(){
+  for(var i=0;i<agents.length;i++){
+    var g=agents[i];
+    var l=sense(g.x,g.y,g.a+SA),c=sense(g.x,g.y,g.a),r=sense(g.x,g.y,g.a-SA);
+    if(c>l&&c>r){}
+    else if(l<r)g.a-=TURN+rng()*0.2;
+    else if(r<l)g.a+=TURN+rng()*0.2;
+    else g.a+=(rng()-0.5)*0.7;
+    g.x+=Math.cos(g.a)*SPEED;g.y+=Math.sin(g.a)*SPEED;
+    if(g.x<0)g.x+=W;if(g.x>=W)g.x-=W;if(g.y<0)g.y+=H;if(g.y>=H)g.y-=H;
+    var gx=((g.x/W)*tw)|0,gy=((g.y/H)*th)|0,idx=gy*tw+gx;
+    trail[idx]=Math.min(1,trail[idx]+0.35);
+  }
+  for(var y=0;y<th;y++){
+    var ym=(y-1+th)%th,yP=(y+1)%th;
+    for(var x=0;x<tw;x++){
+      var xm=(x-1+tw)%tw,xP=(x+1)%tw;
+      var avg=(trail[y*tw+xm]+trail[y*tw+xP]+trail[ym*tw+x]+trail[yP*tw+x])*0.25;
+      trail2[y*tw+x]=avg*0.94;
+    }
+  }
+  var t=trail;trail=trail2;trail2=t;
+}
+var img=null,idata=null;
+function draw(){
+  if(!img||img.width!==tw){img=octx.createImageData(tw,th);idata=img.data;}
+  for(var i=0;i<tw*th;i++){
+    var val=Math.min(1,trail[i]*1.6),p=i*4;
+    idata[p]=5+val*36;idata[p+1]=14+val*190;idata[p+2]=12+val*160;idata[p+3]=255;
+  }
+  octx.putImageData(img,0,0);
+  ctx.fillStyle='#07100e';ctx.fillRect(0,0,W,H);
+  ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
+  ctx.drawImage(off,0,0,tw,th,0,0,W,H);
+}
+var raf=0,paused=false;
+function loop(){if(paused)return;step();draw();raf=requestAnimationFrame(loop);}
+function settle(){for(var i=0;i<320;i++)step();draw();}
+function resize(){
+  var r=cv.getBoundingClientRect();
+  W=Math.max(1,Math.round(r.width));H=Math.max(1,Math.round(r.height));
+  cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR);
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  init();
+  if(reduced)settle();
+}
+seedB.addEventListener('click',function(){rng=mulberry32((Math.random()*4294967296)|0);paused=false;pauseB.textContent='Pause';cancelAnimationFrame(raf);init();if(reduced)settle();else loop();});
+pauseB.addEventListener('click',function(){if(reduced)return;paused=!paused;pauseB.textContent=paused?'Resume':'Pause';if(!paused)loop();});
+clearB.addEventListener('click',function(){trail.fill(0);draw();});
+window.addEventListener('resize',function(){cancelAnimationFrame(raf);resize();if(!reduced&&!paused)loop();});
+resize();if(!reduced)loop();
+})();
+</script>
+</body>
+</html>
