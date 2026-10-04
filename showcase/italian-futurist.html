@@ -1,0 +1,130 @@
+<!--tz-meta {"id":"showcase-italian-futurist","title":"Italian Futurist showcase","category":"Showcase","file":"showcase/italian-futurist.html","tags":["italian-futurist"],"description":"Live demo page for the Italian Futurist style DNA.","dnas":["italian-futurist"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Italian Futurist — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f5f1e4; --tz-surface:#16130e; --tz-ink:#16130e; --tz-muted:#7c7568;
+  --tz-accent:#d62b1f; --tz-line:#16130e26;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Archivo",sans-serif;font-size:1rem;line-height:1.45;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 4vw;font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.1em}
+.tz-wordmark{font-family:"Archivo Black",sans-serif;font-size:1.1rem;letter-spacing:0.02em;transform:skewX(-8deg)}
+.tz-label{color:var(--tz-muted)}
+.tz-marquee{overflow:hidden;white-space:nowrap;background:var(--tz-accent);color:var(--tz-bg);padding:0.65rem 0;transform:skewX(-8deg) scale(1.02)}
+.tz-marquee span{display:inline-block;font-family:"Archivo Black",sans-serif;font-size:0.95rem;letter-spacing:0.05em;padding-right:2rem;animation:tz-rush 12s linear infinite}
+@keyframes tz-rush{to{transform:translateX(-50%)}}
+.tz-hero{position:relative;overflow:hidden;padding:4rem 4vw 5rem}
+.tz-giant{position:absolute;top:0.5rem;right:-3rem;font-family:"Archivo Black",sans-serif;font-size:clamp(9rem,30vw,24rem);line-height:0.8;letter-spacing:-0.02em;transform:skewX(-8deg);color:transparent;-webkit-text-stroke:2px var(--tz-ink);opacity:0.16;pointer-events:none;white-space:nowrap}
+.tz-burst{position:absolute;top:-3rem;left:-4rem;width:26rem;height:26rem;opacity:0.9;pointer-events:none;animation:tz-streak 450ms ease-out both}
+@keyframes tz-streak{from{opacity:0;transform:translateX(-60px)}to{opacity:0.9;transform:translateX(0)}}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:0.75rem;letter-spacing:0.14em;color:var(--tz-accent);margin-bottom:1rem;position:relative}
+.tz-hero h1{font-family:"Archivo Black",sans-serif;font-size:clamp(3.4rem,12vw,9rem);line-height:0.9;letter-spacing:-0.02em;text-transform:uppercase;transform:skewX(-8deg);position:relative;animation:tz-streak 400ms ease-out 80ms both}
+.tz-hero h1 .tz-red{color:var(--tz-accent)}
+.tz-sub{margin-top:1.5rem;font-weight:500;max-width:42ch;position:relative}
+.tz-cta{display:inline-block;margin-top:2rem;background:var(--tz-surface);color:var(--tz-bg);font-family:"Archivo Black",sans-serif;font-size:1.1rem;letter-spacing:0.04em;text-decoration:none;padding:1rem 2.2rem;transform:skewX(-8deg);transition:transform .15s ease}
+.tz-cta:hover{transform:skewX(-8deg) translateX(10px);background:var(--tz-accent)}
+.tz-content{padding:2rem 4vw 0;position:relative}
+.tz-repeat{margin-bottom:2.5rem;line-height:0.85;text-transform:uppercase;font-family:"Archivo Black",sans-serif;color:var(--tz-accent)}
+.tz-repeat span{display:block;transform:skewX(-8deg)}
+.tz-repeat .tz-r1{font-size:clamp(3rem,9vw,6rem)}
+.tz-repeat .tz-r2{font-size:clamp(2rem,6vw,4rem);opacity:0.65}
+.tz-repeat .tz-r3{font-size:clamp(1.3rem,4vw,2.4rem);opacity:0.35}
+.tz-list{list-style:none;border-top:2px solid var(--tz-ink);max-width:680px}
+.tz-list li{display:grid;grid-template-columns:8rem 1fr auto;gap:1rem;align-items:baseline;padding:1.4rem 0;border-bottom:1px solid var(--tz-line);animation:tz-streak 450ms ease-out both}
+.tz-list li:nth-child(2){animation-delay:90ms}.tz-list li:nth-child(3){animation-delay:180ms}.tz-list li:nth-child(4){animation-delay:270ms}
+.tz-speed{font-family:"Space Mono",monospace;font-size:0.85rem;color:var(--tz-accent);font-weight:700}
+.tz-drink{font-family:"Archivo Black",sans-serif;font-size:clamp(1.6rem,4.5vw,2.6rem);text-transform:uppercase;letter-spacing:0.01em}
+.tz-blurb{font-size:0.9rem;color:var(--tz-muted);grid-column:2}
+.tz-panel{margin:3.5rem 0 0;background:var(--tz-surface);color:var(--tz-bg);padding:2.2rem;transform:skewX(-4deg);max-width:640px}
+.tz-panel h2{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.16em;color:var(--tz-accent);margin-bottom:0.8rem;font-weight:400}
+.tz-panel p{font-weight:500}
+.tz-tokens{padding:3.5rem 4vw;border-top:2px solid var(--tz-ink);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Archivo Black",sans-serif;font-size:1.6rem;letter-spacing:0.02em;margin-bottom:1.4rem;text-transform:uppercase;transform:skewX(-8deg);display:inline-block}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-bg);min-width:9rem;flex:1}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"Space Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Space Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:2px solid var(--tz-ink);font-family:"Space Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-list li{grid-template-columns:1fr;gap:0.3rem}
+  .tz-blurb{grid-column:1}
+  .tz-burst{width:16rem;height:16rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-giant{opacity:0.16}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">MACCHINA</span>
+  <span class="tz-label">TZ-taste style DNA</span>
+</header>
+
+<div class="tz-marquee" aria-hidden="true">
+  <span>VELOCITÀ · ESPRESSO IN 20 SECONDI · DRINK IT STANDING · VELOCITÀ · ESPRESSO IN 20 SECONDI · DRINK IT STANDING ·&nbsp;</span><span>VELOCITÀ · ESPRESSO IN 20 SECONDI · DRINK IT STANDING · VELOCITÀ · ESPRESSO IN 20 SECONDI · DRINK IT STANDING ·&nbsp;</span>
+</div>
+
+<section class="tz-hero">
+  <span class="tz-giant" aria-hidden="true">CAFFÈ</span>
+  <svg class="tz-burst" viewBox="0 0 400 400" aria-hidden="true">
+    <g stroke="#d62b1f" stroke-width="9">
+      <g transform="rotate(0 200 200)"><line x1="200" y1="200" x2="200" y2="8"/></g>
+      <g transform="rotate(25 200 200)"><line x1="200" y1="200" x2="200" y2="8"/></g>
+      <g transform="rotate(50 200 200)"><line x1="200" y1="200" x2="200" y2="8"/></g>
+      <g transform="rotate(75 200 200)"><line x1="200" y1="200" x2="200" y2="8"/></g>
+      <g transform="rotate(100 200 200)"><line x1="200" y1="200" x2="200" y2="8"/></g>
+      <g transform="rotate(125 200 200)"><line x1="200" y1="200" x2="200" y2="8"/></g>
+      <g transform="rotate(150 200 200)"><line x1="200" y1="200" x2="200" y2="8"/></g>
+      <g transform="rotate(175 200 200)"><line x1="200" y1="200" x2="200" y2="8"/></g>
+    </g>
+  </svg>
+  <p class="tz-eyebrow">MILANO · BAR DAL 1962 · DOM 14</p>
+  <h1>Faster <span class="tz-red">than</span><br>the ferry.</h1>
+  <p class="tz-sub">Espresso in 20 seconds. No waiting, no small talk. You order at the counter, you drink it standing, you're gone.</p>
+  <a class="tz-cta" href="#">DRINK IT STANDING</a>
+</section>
+
+<section class="tz-content">
+  <div class="tz-repeat" aria-hidden="true">
+    <span class="tz-r1">VELOCE</span>
+    <span class="tz-r2">VELOCE</span>
+    <span class="tz-r3">VELOCE</span>
+  </div>
+  <ul class="tz-list">
+    <li><span class="tz-speed">20 SEC</span><span class="tz-drink">Espresso</span><span class="tz-price"></span><span class="tz-blurb">One euro at the bar. Two if you sit. Don't sit.</span></li>
+    <li><span class="tz-speed">40 SEC</span><span class="tz-drink">Macchiato</span><span class="tz-blurb">Espresso stained with milk. Drunk in three sips.</span></li>
+    <li><span class="tz-speed">55 SEC</span><span class="tz-drink">Caffè corretto</span><span class="tz-blurb">With a drop of grappa. For the slow mornings.</span></li>
+    <li><span class="tz-speed">90 SEC</span><span class="tz-drink">Marocchino</span><span class="tz-blurb">Cocoa, milk, espresso in a small glass. The full stop.</span></li>
+  </ul>
+  <div class="tz-panel">
+    <h2>HOUSE RULES</h2>
+    <p>Cappuccino ends at 11:00. After that you are on your own and everyone will know.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#f5f1e4"></span><span class="tz-name">bg</span><span class="tz-hex">#f5f1e4</span></li>
+    <li><span class="tz-chip" style="background:#16130e"></span><span class="tz-name">surface</span><span class="tz-hex">#16130e</span></li>
+    <li><span class="tz-chip" style="background:#16130e"></span><span class="tz-name">ink</span><span class="tz-hex">#16130e</span></li>
+    <li><span class="tz-chip" style="background:#7c7568"></span><span class="tz-name">muted</span><span class="tz-hex">#7c7568</span></li>
+    <li><span class="tz-chip" style="background:#d62b1f"></span><span class="tz-name">accent</span><span class="tz-hex">#d62b1f</span></li>
+    <li><span class="tz-chip" style="background:#16130e26"></span><span class="tz-name">line</span><span class="tz-hex">#16130e26</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
