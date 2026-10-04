@@ -1,0 +1,49 @@
+<!--tz-meta {"id":"footers-sitemap","title":"Sitemap footer","category":"Footer","file":"patterns/footers-sitemap.html","tags":["dense","links","directory"],"description":"Dense six-column directory with mono section labels and hairline column rules.","dnas":["swiss-rational"]} -->
+<footer class="tz-sitemap">
+  <div class="tz-sitemap-grid">
+    <div class="tz-sitemap-col">
+      <p class="tz-sitemap-label">Company</p>
+      <a href="#">About</a><a href="#">Careers</a><a href="#">Press kit</a><a href="#">Investors</a>
+    </div>
+    <div class="tz-sitemap-col">
+      <p class="tz-sitemap-label">Product</p>
+      <a href="#">Features</a><a href="#">Pricing</a><a href="#">Changelog</a><a href="#">Roadmap</a>
+    </div>
+    <div class="tz-sitemap-col">
+      <p class="tz-sitemap-label">Resources</p>
+      <a href="#">Documentation</a><a href="#">API reference</a><a href="#">Status</a><a href="#">Blog</a>
+    </div>
+    <div class="tz-sitemap-col">
+      <p class="tz-sitemap-label">Solutions</p>
+      <a href="#">Startups</a><a href="#">Agencies</a><a href="#">Education</a><a href="#">Nonprofits</a>
+    </div>
+    <div class="tz-sitemap-col">
+      <p class="tz-sitemap-label">Legal</p>
+      <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Security</a><a href="#">Cookies</a>
+    </div>
+    <div class="tz-sitemap-col">
+      <p class="tz-sitemap-label">Elsewhere</p>
+      <a href="#">Mastodon</a><a href="#">RSS</a><a href="#">Newsletter</a><a href="#">Contact</a>
+    </div>
+  </div>
+  <div class="tz-sitemap-base">
+    <span class="tz-sitemap-word">Northbeam</span>
+    <span>© 2026 Northbeam Systems · 48 links, zero dead ends</span>
+  </div>
+</footer>
+<style>
+.tz-sitemap{--bg:#fff;--ink:#111;--line:#e3e3e3;--mut:#5c5c5c;
+  background:var(--bg);color:var(--ink);padding:56px clamp(20px,4vw,56px) 28px;
+  font-family:Arial,Helvetica,sans-serif;border-top:2px solid var(--ink)}
+.tz-sitemap-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:32px;margin-bottom:48px}
+.tz-sitemap-col{display:flex;flex-direction:column;gap:9px;border-left:1px solid var(--line);padding-left:20px}
+.tz-sitemap-label{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--mut);margin:0 0 8px}
+.tz-sitemap-col a{color:var(--ink);text-decoration:none;font-size:14px}
+.tz-sitemap-col a:hover{text-decoration:underline;text-underline-offset:4px}
+.tz-sitemap-base{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;
+  border-top:1px solid var(--line);padding-top:20px;font-size:13px;color:var(--mut)}
+.tz-sitemap-word{font-weight:900;font-size:20px;letter-spacing:-.02em;color:var(--ink)}
+@media (max-width:900px){.tz-sitemap-grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:520px){.tz-sitemap-grid{grid-template-columns:repeat(2,1fr);gap:28px}}
+</style>
