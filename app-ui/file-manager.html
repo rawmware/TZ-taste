@@ -1,0 +1,131 @@
+<!--tz-meta {"id":"file-manager","title":"File Manager","category":"App UI","file":"app-ui/file-manager.html","tags":["files","browser","storage","documents"],"description":"Blueprint-labeled engineering document manager with rows, storage meter, and a schematic preview.","dnas":["blueprint-tech"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>File Manager — Meridian Planroom</title>
+<style>
+body{margin:0;background:#0f2c5c;}
+.tz-fm{--bg:#17407f;--ink:#f2f6fc;--accent:#ffcf3f;--muted:#8fb3e8;--line:#ffffff40;--panel:#1d4a8f;
+  background:var(--bg);color:var(--ink);font-family:Verdana,Geneva,'DejaVu Sans',sans-serif;
+  max-width:1200px;margin:0 auto;padding:clamp(16px,3vw,36px);min-height:100dvh;}
+.tz-fm-top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px;}
+.tz-fm-top h1{font-family:'Franklin Gothic Medium','Arial Narrow',Arial,sans-serif;text-transform:uppercase;
+  font-size:clamp(24px,4vw,40px);letter-spacing:.02em;margin:0;}
+.tz-fm-top h1 span{color:var(--accent);}
+.tz-crumbs{display:flex;flex-wrap:wrap;gap:0;align-items:center;font-family:ui-monospace,Menlo,Consolas,monospace;
+  font-size:12px;border:1px solid var(--line);margin-bottom:20px;}
+.tz-crumbs span{padding:10px 14px;color:var(--muted);}
+.tz-crumbs span.tz-cur{background:var(--accent);color:#17407f;font-weight:700;}
+.tz-crumbs i{font-style:normal;color:var(--muted);padding:0 2px;}
+.tz-fm-grid{display:grid;grid-template-columns:220px 1fr 260px;gap:0;border:1px solid var(--line);}
+.tz-fm-side{border-right:1px solid var(--line);padding:20px;font-size:13px;}
+.tz-fm-side h2,.tz-preview h2{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 14px;}
+.tz-folder{padding:9px 10px;border:1px solid transparent;margin-bottom:4px;cursor:pointer;}
+.tz-folder:hover{border-color:var(--line);}
+.tz-folder.tz-sel{border-color:var(--accent);background:#ffffff10;}
+.tz-folder b{display:block;font-weight:600;}
+.tz-folder small{color:var(--muted);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;}
+.tz-meter{margin-top:28px;border-top:1px solid var(--line);padding-top:16px;}
+.tz-meter .tz-bar{height:8px;background:#ffffff18;position:relative;}
+.tz-meter .tz-bar i{position:absolute;left:0;top:0;bottom:0;width:76%;background:var(--accent);}
+.tz-meter p{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--muted);margin:10px 0 0;letter-spacing:.06em;}
+.tz-fm-main{min-width:0;}
+.tz-fm-tools{display:flex;gap:10px;padding:14px 20px;border-bottom:1px solid var(--line);flex-wrap:wrap;}
+.tz-fm-tools input{flex:1;min-width:160px;background:#ffffff10;border:1px solid var(--line);color:var(--ink);
+  padding:9px 12px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;}
+.tz-fm-tools input::placeholder{color:var(--muted);}
+.tz-fm-tools .tz-sort{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;color:var(--muted);
+  align-self:center;letter-spacing:.06em;}
+.tz-row{display:grid;grid-template-columns:1fr 110px 90px 60px;gap:12px;align-items:center;padding:13px 20px;
+  border-bottom:1px solid var(--line);font-size:13px;cursor:pointer;}
+.tz-row:hover{background:#ffffff0a;}
+.tz-row.tz-head{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);cursor:default;}
+.tz-row.tz-head:hover{background:none;}
+.tz-row .tz-name b{display:block;font-weight:600;}
+.tz-row .tz-name small{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--muted);}
+.tz-row .tz-meta2{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;color:var(--muted);}
+.tz-rev{display:inline-block;border:1px solid var(--accent);color:var(--accent);font-family:ui-monospace,Menlo,Consolas,monospace;
+  font-size:10px;padding:3px 8px;letter-spacing:.08em;}
+.tz-preview{border-left:1px solid var(--line);padding:20px;}
+.tz-scheme{border:1px dashed var(--line);height:220px;position:relative;margin-bottom:16px;background:#ffffff06;}
+.tz-scheme .tz-part{position:absolute;border:2px solid var(--accent);}
+.tz-scheme .tz-p1{left:18%;top:24%;width:56%;height:40%;}
+.tz-scheme .tz-p2{left:34%;top:12%;width:24%;height:14%;border-color:var(--muted);}
+.tz-scheme .tz-lab{position:absolute;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9px;
+  color:var(--accent);letter-spacing:.1em;}
+.tz-scheme .tz-l1{left:18%;top:18%;}
+.tz-scheme .tz-l2{left:62%;top:66%;}
+.tz-preview dl{margin:0;font-size:12px;}
+.tz-preview dt{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);margin-top:12px;}
+.tz-preview dd{margin:4px 0 0;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;}
+.tz-preview button{margin-top:18px;width:100%;background:var(--accent);border:none;color:#17407f;font-weight:700;
+  padding:12px;font-family:inherit;font-size:13px;cursor:pointer;letter-spacing:.04em;}
+@media(max-width:900px){
+  .tz-fm-grid{grid-template-columns:1fr;}
+  .tz-fm-side{border-right:none;border-bottom:1px solid var(--line);}
+  .tz-preview{border-left:none;border-top:1px solid var(--line);}
+}
+@media(prefers-reduced-motion:reduce){
+  .tz-fm *{animation:none!important;transition:none!important;}
+}
+</style>
+</head>
+<body>
+<section class="tz-fm">
+  <div class="tz-fm-top">
+    <h1>Plan<span>room</span></h1>
+    <p style="font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;color:#8fb3e8;margin:0;letter-spacing:.14em;">MERIDIAN FABRICATIONS &middot; DOC CTL 07</p>
+  </div>
+  <nav class="tz-crumbs" aria-label="Breadcrumb">
+    <span>MERIDIAN</span><i>/</i><span>FABRICATION</span><i>/</i><span>2026</span><i>/</i><span class="tz-cur">DWG-1042 GANTRY</span>
+  </nav>
+  <div class="tz-fm-grid">
+    <aside class="tz-fm-side">
+      <h2>Folders &middot; 04</h2>
+      <div class="tz-folder"><b>01 Weldments</b><small>38 FILES</small></div>
+      <div class="tz-folder tz-sel"><b>02 Gantry frames</b><small>12 FILES</small></div>
+      <div class="tz-folder"><b>03 Finishing</b><small>21 FILES</small></div>
+      <div class="tz-folder"><b>04 Archive</b><small>410 FILES</small></div>
+      <div class="tz-meter">
+        <h2>Storage</h2>
+        <div class="tz-bar"><i></i></div>
+        <p>612 OF 800 GB &middot; 76%<br>PLAN: SHOP FLOOR</p>
+      </div>
+    </aside>
+    <div class="tz-fm-main">
+      <div class="tz-fm-tools">
+        <input type="text" placeholder="SEARCH: DWG-1042-*" aria-label="Search files">
+        <span class="tz-sort">SORT: MODIFIED &darr;</span>
+      </div>
+      <div class="tz-row tz-head"><span>Document</span><span>Modified</span><span>Size</span><span>Rev</span></div>
+      <div class="tz-row"><span class="tz-name"><b>DWG-1042-01_frame-assembly</b><small>MAIN FRAME &middot; 14 SHEETS</small></span><span class="tz-meta2">OCT 02 09:14</span><span class="tz-meta2">48.2 MB</span><span class="tz-rev">C</span></div>
+      <div class="tz-row"><span class="tz-name"><b>DWG-1042-02_rail-mount</b><small>LINEAR RAIL BRACKETS</small></span><span class="tz-meta2">OCT 01 16:40</span><span class="tz-meta2">12.7 MB</span><span class="tz-rev">B</span></div>
+      <div class="tz-row"><span class="tz-name"><b>DWG-1042-03_cable-chain</b><small>ENERGY CHAIN ROUTING</small></span><span class="tz-meta2">SEP 29 11:02</span><span class="tz-meta2">9.4 MB</span><span class="tz-rev">B</span></div>
+      <div class="tz-row"><span class="tz-name"><b>DWG-1042-04_motor-plate</b><small>SERVO MOUNTING PLATE</small></span><span class="tz-meta2">SEP 26 14:55</span><span class="tz-meta2">6.1 MB</span><span class="tz-rev">A</span></div>
+      <div class="tz-row"><span class="tz-name"><b>DWG-1042-05_weld-map</b><small>WPS + WELD SYMBOLS</small></span><span class="tz-meta2">SEP 24 08:31</span><span class="tz-meta2">3.8 MB</span><span class="tz-rev">A</span></div>
+      <div class="tz-row"><span class="tz-name"><b>DWG-1042-06_BOM</b><small>BILL OF MATERIALS &middot; CSV</small></span><span class="tz-meta2">SEP 22 17:20</span><span class="tz-meta2">184 KB</span><span class="tz-rev">C</span></div>
+    </div>
+    <aside class="tz-preview">
+      <h2>Preview &middot; FIG 01</h2>
+      <div class="tz-scheme">
+        <span class="tz-lab tz-l1">RAIL, LIN-25</span>
+        <div class="tz-part tz-p2"></div>
+        <div class="tz-part tz-p1"></div>
+        <span class="tz-lab tz-l2">FRAME, 80&times;80 EXT</span>
+      </div>
+      <dl>
+        <dt>Selected</dt><dd>DWG-1042-01_frame-assembly</dd>
+        <dt>Checked out by</dt><dd>R. OKAFOR &middot; 2H AGO</dd>
+        <dt>Tolerance class</dt><dd>ISO 2768-mK</dd>
+      </dl>
+      <button type="button">Open in viewer</button>
+    </aside>
+  </div>
+</section>
+</body>
+</html>
