@@ -41,7 +41,7 @@
         one DNA, one voice, zero template-hero.</p>
       <div class="hero-cta">
         <a class="btn-solid" href="#dna">Browse the index</a>
-        <a class="btn-outline" href="#tools">Take the style quiz</a>
+        <a class="btn-outline" href="#generative">See it in motion</a>
       </div>
 
       <div class="deck" aria-label="Live system status">
@@ -152,58 +152,16 @@
   <!-- 06 · TOOLS -->
   <section class="section" id="tools" aria-labelledby="tools-h">
     <header class="ticket-head">
-      <p class="platform"><span class="p-no">Platform 06</span><span class="p-rule" aria-hidden="true"></span><span class="p-note">3 instruments · the conductor's desk</span></p>
+      <p class="platform"><span class="p-no">Platform 06</span><span class="p-rule" aria-hidden="true"></span><span class="p-note">2 instruments · the conductor's desk</span></p>
       <h2 id="tools-h">The conductor's<br><em>desk.</em></h2>
-      <p class="section-sub">Three instruments for choosing and using the library: a quiz that
-        matches a DNA to your project, a token exporter that speaks CSS, Tailwind, and JSON, and
-        a brief builder that writes the agent prompt for you.</p>
+      <p class="section-sub">Two instruments for using the library: a token exporter that speaks
+        CSS, Tailwind, and JSON, and a brief builder that writes the agent prompt for you.</p>
     </header>
 
     <div class="tool-panels">
-      <!-- Style quiz -->
-      <article class="tool-panel" aria-labelledby="quiz-h">
-        <p class="tool-no">Instrument 01</p>
-        <h3 id="quiz-h">The style quiz</h3>
-        <p class="tool-sub">Three questions. Three DNAs worth your evening.</p>
-        <form id="quiz-form">
-          <div class="field">
-            <label for="quiz-q1">What are you building?</label>
-            <select id="quiz-q1" name="quiz-q1">
-              <option value="landing">Landing page</option>
-              <option value="portfolio">Portfolio</option>
-              <option value="saas">SaaS product</option>
-              <option value="docs">Docs site</option>
-              <option value="mobile">Mobile app</option>
-              <option value="ecommerce">E-commerce</option>
-              <option value="event">Event/festival</option>
-              <option value="blog">Publication/blog</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="quiz-q2">What mood?</label>
-            <select id="quiz-q2" name="quiz-q2">
-              <option value="quiet">Quiet luxury</option>
-              <option value="loud">Loud &amp; brash</option>
-              <option value="playful">Playful</option>
-              <option value="clinical">Clinical/minimal</option>
-              <option value="warm">Warm/handmade</option>
-              <option value="dark">Dark/mysterious</option>
-              <option value="retro">Retro</option>
-              <option value="future">Futuristic</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="quiz-q3">How bold? <output id="quiz-q3-val" for="quiz-q3">6</output> / 10</label>
-            <input type="range" id="quiz-q3" name="quiz-q3" min="1" max="10" value="6">
-          </div>
-          <button class="btn-solid" type="submit">Recommend DNAs</button>
-        </form>
-        <div id="quiz-result" aria-live="polite"></div>
-      </article>
-
       <!-- Token exporter -->
       <article class="tool-panel" aria-labelledby="export-h">
-        <p class="tool-no">Instrument 02</p>
+        <p class="tool-no">Instrument 01</p>
         <h3 id="export-h">The token exporter</h3>
         <p class="tool-sub">Pick a DNA. Take its tokens in the format your stack speaks.</p>
         <div class="field">
@@ -230,7 +188,7 @@
 
       <!-- Prompt builder -->
       <article class="tool-panel" aria-labelledby="pb-h">
-        <p class="tool-no">Instrument 03</p>
+        <p class="tool-no">Instrument 02</p>
         <h3 id="pb-h">The brief builder</h3>
         <p class="tool-sub">Assemble the one-liner your agent actually needs. Copy, paste, build.</p>
         <div class="pb-row">
