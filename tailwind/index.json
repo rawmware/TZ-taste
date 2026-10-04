@@ -1,5 +1,5 @@
 {
- "count": 48,
+ "count": 72,
  "updated": "2026-10-04",
  "usage": "Tailwind theme presets, one per style DNA. Extend tailwind.config with one.",
  "presets": [
@@ -15,6 +15,21 @@
    "description": "Tailwind theme preset for the Acid Rave style DNA.",
    "dnas": [
     "acid-rave"
+   ]
+  },
+  {
+   "id": "tailwind-alpine-after-dark",
+   "title": "Alpine After Dark Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/alpine-after-dark.js",
+   "tags": [
+    "tailwind",
+    "preset",
+    "alpine-after-dark"
+   ],
+   "description": "Tailwind theme preset for the Alpine After Dark DNA.",
+   "dnas": [
+    "alpine-after-dark"
    ]
   },
   {
@@ -102,6 +117,21 @@
    ]
   },
   {
+   "id": "tailwind-bazaar-spice",
+   "title": "Bazaar Spice Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/bazaar-spice.js",
+   "tags": [
+    "tailwind",
+    "preset",
+    "bazaar-spice"
+   ],
+   "description": "Tailwind theme preset for the Bazaar Spice DNA.",
+   "dnas": [
+    "bazaar-spice"
+   ]
+  },
+  {
    "id": "tailwind-blueprint-tech",
    "title": "Blueprint Tech Tailwind preset",
    "category": "Tailwind",
@@ -127,6 +157,36 @@
    "description": "Tailwind theme preset for the Botanical Lab style DNA.",
    "dnas": [
     "botanical-lab"
+   ]
+  },
+  {
+   "id": "tailwind-chalkboard-cafe",
+   "title": "Chalkboard Cafe Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/chalkboard-cafe.js",
+   "tags": [
+    "tailwind",
+    "preset",
+    "chalkboard-cafe"
+   ],
+   "description": "Tailwind theme preset for the Chalkboard Cafe DNA.",
+   "dnas": [
+    "chalkboard-cafe"
+   ]
+  },
+  {
+   "id": "tailwind-circus-poster",
+   "title": "Circus Poster Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/circus-poster.js",
+   "tags": [
+    "tailwind",
+    "preset",
+    "circus-poster"
+   ],
+   "description": "Tailwind theme preset for the Circus Poster DNA.",
+   "dnas": [
+    "circus-poster"
    ]
   },
   {
@@ -228,6 +288,21 @@
    ]
   },
   {
+   "id": "tailwind-diary-zine",
+   "title": "Diary Zine Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/diary-zine.js",
+   "tags": [
+    "tailwind",
+    "preset",
+    "diary-zine"
+   ],
+   "description": "Tailwind theme preset for the Diary Zine DNA.",
+   "dnas": [
+    "diary-zine"
+   ]
+  },
+  {
    "id": "tailwind-docs-solar",
    "title": "Docs Solar Tailwind preset",
    "category": "Tailwind",
@@ -284,6 +359,51 @@
    ]
   },
   {
+   "id": "tailwind-greenhouse-glass",
+   "title": "Greenhouse Glass Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/greenhouse-glass.js",
+   "tags": [
+    "tailwind",
+    "preset",
+    "greenhouse-glass"
+   ],
+   "description": "Tailwind theme preset for the Greenhouse Glass DNA.",
+   "dnas": [
+    "greenhouse-glass"
+   ]
+  },
+  {
+   "id": "tailwind-greenmarket-dawn",
+   "title": "Greenmarket Dawn Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/greenmarket-dawn.js",
+   "tags": [
+    "tailwind",
+    "preset",
+    "greenmarket-dawn"
+   ],
+   "description": "Tailwind theme preset for the Greenmarket Dawn DNA.",
+   "dnas": [
+    "greenmarket-dawn"
+   ]
+  },
+  {
+   "id": "tailwind-harbor-fog",
+   "title": "Harbor Fog Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/harbor-fog.js",
+   "tags": [
+    "tailwind",
+    "preset",
+    "harbor-fog"
+   ],
+   "description": "Tailwind theme preset for the Harbor Fog DNA.",
+   "dnas": [
+    "harbor-fog"
+   ]
+  },
+  {
    "id": "tailwind-industrial-brutalist",
    "title": "Industrial Brutalist Tailwind preset",
    "category": "Tailwind",
@@ -309,6 +429,21 @@
    "description": "Tailwind theme preset for the Ink-Wash Sumi style DNA.",
    "dnas": [
     "ink-wash-sumi"
+   ]
+  },
+  {
+   "id": "tailwind-italian-futurist",
+   "title": "Italian Futurist Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/italian-futurist.js",
+   "tags": [
+    "tailwind",
+    "preset",
+    "italian-futurist"
+   ],
+   "description": "Tailwind theme preset for the Italian Futurist DNA.",
+   "dnas": [
+    "italian-futurist"
    ]
   },
   {
@@ -340,6 +475,21 @@
    ]
   },
   {
+   "id": "tailwind-lab-notebook",
+   "title": "Lab Notebook Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/lab-notebook.js",
+   "tags": [
+    "tailwind",
+    "preset",
+    "lab-notebook"
+   ],
+   "description": "Tailwind theme preset for the Lab Notebook DNA.",
+   "dnas": [
+    "lab-notebook"
+   ]
+  },
+  {
    "id": "tailwind-laboratory-clean",
    "title": "Laboratory Clean Tailwind preset",
    "category": "Tailwind",
@@ -351,6 +501,36 @@
    "description": "Tailwind theme preset for the Laboratory Clean style DNA.",
    "dnas": [
     "laboratory-clean"
+   ]
+  },
+  {
+   "id": "tailwind-laundromat-neon",
+   "title": "Laundromat Neon Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/laundromat-neon.js",
+   "tags": [
+    "tailwind",
+    "preset",
+    "laundromat-neon"
+   ],
+   "description": "Tailwind theme preset for the Laundromat Neon DNA.",
+   "dnas": [
+    "laundromat-neon"
+   ]
+  },
+  {
+   "id": "tailwind-library-oak",
+   "title": "Library Oak Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/library-oak.js",
+   "tags": [
+    "tailwind",
+    "preset",
+    "library-oak"
+   ],
+   "description": "Tailwind theme preset for the Library Oak DNA.",
+   "dnas": [
+    "library-oak"
    ]
   },
   {
@@ -424,6 +604,36 @@
    ]
   },
   {
+   "id": "tailwind-neon-diner",
+   "title": "Neon Diner Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/neon-diner.js",
+   "tags": [
+    "tailwind",
+    "preset",
+    "neon-diner"
+   ],
+   "description": "Tailwind theme preset for the Neon Diner DNA.",
+   "dnas": [
+    "neon-diner"
+   ]
+  },
+  {
+   "id": "tailwind-newsroom-wire",
+   "title": "Newsroom Wire Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/newsroom-wire.js",
+   "tags": [
+    "tailwind",
+    "preset",
+    "newsroom-wire"
+   ],
+   "description": "Tailwind theme preset for the Newsroom Wire DNA.",
+   "dnas": [
+    "newsroom-wire"
+   ]
+  },
+  {
    "id": "tailwind-nordic-noir",
    "title": "Nordic Noir Tailwind preset",
    "category": "Tailwind",
@@ -435,6 +645,51 @@
    "description": "Tailwind theme preset for the Nordic Noir style DNA.",
    "dnas": [
     "nordic-noir"
+   ]
+  },
+  {
+   "id": "tailwind-observatory-star",
+   "title": "Observatory Star Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/observatory-star.js",
+   "tags": [
+    "tailwind",
+    "preset",
+    "observatory-star"
+   ],
+   "description": "Tailwind theme preset for the Observatory Star DNA.",
+   "dnas": [
+    "observatory-star"
+   ]
+  },
+  {
+   "id": "tailwind-origami-fold",
+   "title": "Origami Fold Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/origami-fold.js",
+   "tags": [
+    "tailwind",
+    "preset",
+    "origami-fold"
+   ],
+   "description": "Tailwind theme preset for the Origami Fold DNA.",
+   "dnas": [
+    "origami-fold"
+   ]
+  },
+  {
+   "id": "tailwind-paris-metro",
+   "title": "Paris Metro Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/paris-metro.js",
+   "tags": [
+    "tailwind",
+    "preset",
+    "paris-metro"
+   ],
+   "description": "Tailwind theme preset for the Paris Metro DNA.",
+   "dnas": [
+    "paris-metro"
    ]
   },
   {
@@ -463,6 +718,21 @@
    "description": "Tailwind theme preset for the Pixel Arcade style DNA.",
    "dnas": [
     "pixel-arcade"
+   ]
+  },
+  {
+   "id": "tailwind-pixel-garden",
+   "title": "Pixel Garden Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/pixel-garden.js",
+   "tags": [
+    "tailwind",
+    "preset",
+    "pixel-garden"
+   ],
+   "description": "Tailwind theme preset for the Pixel Garden DNA.",
+   "dnas": [
+    "pixel-garden"
    ]
   },
   {
@@ -522,6 +792,21 @@
    ]
   },
   {
+   "id": "tailwind-sauna-cedar",
+   "title": "Sauna Cedar Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/sauna-cedar.js",
+   "tags": [
+    "tailwind",
+    "preset",
+    "sauna-cedar"
+   ],
+   "description": "Tailwind theme preset for the Sauna Cedar DNA.",
+   "dnas": [
+    "sauna-cedar"
+   ]
+  },
+  {
    "id": "tailwind-scandi-calm",
    "title": "Scandi Calm Tailwind preset",
    "category": "Tailwind",
@@ -550,6 +835,36 @@
    ]
   },
   {
+   "id": "tailwind-stadium-floodlight",
+   "title": "Stadium Floodlight Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/stadium-floodlight.js",
+   "tags": [
+    "tailwind",
+    "preset",
+    "stadium-floodlight"
+   ],
+   "description": "Tailwind theme preset for the Stadium Floodlight DNA.",
+   "dnas": [
+    "stadium-floodlight"
+   ]
+  },
+  {
+   "id": "tailwind-storybook-watercolor",
+   "title": "Storybook Watercolor Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/storybook-watercolor.js",
+   "tags": [
+    "tailwind",
+    "preset",
+    "storybook-watercolor"
+   ],
+   "description": "Tailwind theme preset for the Storybook Watercolor DNA.",
+   "dnas": [
+    "storybook-watercolor"
+   ]
+  },
+  {
    "id": "tailwind-surf-shack",
    "title": "Surf Shack Tailwind preset",
    "category": "Tailwind",
@@ -561,6 +876,21 @@
    "description": "Tailwind theme preset for the Surf Shack style DNA.",
    "dnas": [
     "surf-shack"
+   ]
+  },
+  {
+   "id": "tailwind-swiss-airline",
+   "title": "Swiss Airline Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/swiss-airline.js",
+   "tags": [
+    "tailwind",
+    "preset",
+    "swiss-airline"
+   ],
+   "description": "Tailwind theme preset for the Swiss Airline DNA.",
+   "dnas": [
+    "swiss-airline"
    ]
   },
   {
@@ -589,6 +919,21 @@
    "description": "Tailwind theme preset for the Swiss Rational style DNA.",
    "dnas": [
     "swiss-rational"
+   ]
+  },
+  {
+   "id": "tailwind-tokyo-kissaten",
+   "title": "Tokyo Kissaten Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/tokyo-kissaten.js",
+   "tags": [
+    "tailwind",
+    "preset",
+    "tokyo-kissaten"
+   ],
+   "description": "Tailwind theme preset for the Tokyo Kissaten DNA.",
+   "dnas": [
+    "tokyo-kissaten"
    ]
   },
   {
@@ -631,6 +976,21 @@
    "description": "Tailwind theme preset for the Tropical Brutalism style DNA.",
    "dnas": [
     "tropical-brutalism"
+   ]
+  },
+  {
+   "id": "tailwind-ukiyo-e-print",
+   "title": "Ukiyo-e Print Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/ukiyo-e-print.js",
+   "tags": [
+    "tailwind",
+    "preset",
+    "ukiyo-e-print"
+   ],
+   "description": "Tailwind theme preset for the Ukiyo-e Print DNA.",
+   "dnas": [
+    "ukiyo-e-print"
    ]
   },
   {
