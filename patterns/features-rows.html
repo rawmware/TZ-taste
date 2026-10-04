@@ -1,0 +1,81 @@
+<!--tz-meta {"id":"features-rows","title":"Alternating rows","category":"Features","file":"patterns/features-rows.html","tags":["editorial","rows"],"description":"Alternating text and visual rows anchored by oversized outline numerals.","dnas":["editorial-serif"]} -->
+<section class="tz-fr">
+  <p class="tz-fr-eyebrow">Features · N°02</p>
+  <h2 class="tz-fr-title">Built for the way small teams <em>actually</em> work.</h2>
+
+  <div class="tz-fr-row">
+    <div class="tz-fr-num" aria-hidden="true">01</div>
+    <div class="tz-fr-body">
+      <div class="tz-fr-copy">
+        <h3>One inbox for every channel</h3>
+        <p>Every message — email, chat, the contact form you forgot about — lands in a single queue the whole team can see. Nothing lives in one person's inbox anymore.</p>
+        <a href="#demo">Watch it in action <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="tz-fr-visual" aria-hidden="true">
+        <div class="tz-fr-bars"><i style="height:38%"></i><i style="height:72%"></i><i style="height:55%;background:var(--accent)"></i><i style="height:90%"></i><i style="height:64%"></i></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tz-fr-row tz-fr-flip">
+    <div class="tz-fr-num" aria-hidden="true">02</div>
+    <div class="tz-fr-body">
+      <div class="tz-fr-copy">
+        <h3>Reports your accountant can read</h3>
+        <p>Month-end exports land as clean CSVs with plain-English column names. No pivot-table archaeology to figure out what you billed last Tuesday.</p>
+        <a href="#demo">See a sample export <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="tz-fr-visual tz-fr-dots" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <div class="tz-fr-row">
+    <div class="tz-fr-num" aria-hidden="true">03</div>
+    <div class="tz-fr-body">
+      <div class="tz-fr-copy">
+        <h3>Reminders that sound like you</h3>
+        <p>Write one follow-up template in your own voice. The system sends it at the right moment and logs the reply. You stay the human in the loop.</p>
+        <a href="#demo">Read the template guide <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="tz-fr-visual" aria-hidden="true">
+        <div class="tz-fr-ring"><i></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+.tz-fr{--paper:#f5f1e8;--ink:#1c1a15;--accent:#b5461f;--line:rgba(28,26,21,.16);
+  background:var(--paper);color:var(--ink);font-family:Georgia,'Times New Roman',serif;
+  padding:clamp(64px,9vw,128px) clamp(24px,6vw,88px)}
+.tz-fr-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;opacity:.6;margin:0 0 20px}
+.tz-fr-title{font-size:clamp(34px,5vw,64px);line-height:1.05;letter-spacing:-.02em;
+  font-weight:400;margin:0 0 clamp(48px,7vw,96px);max-width:16ch}
+.tz-fr-title em{font-style:italic;color:var(--accent)}
+.tz-fr-row{display:grid;grid-template-columns:auto 1fr;gap:8px clamp(20px,4vw,56px);
+  padding:clamp(36px,5vw,64px) 0;border-top:1px solid var(--line)}
+.tz-fr-row:last-child{border-bottom:1px solid var(--line)}
+.tz-fr-num{font-size:clamp(76px,10vw,152px);line-height:.82;font-weight:400;letter-spacing:-.04em;
+  color:transparent;-webkit-text-stroke:2px var(--accent);user-select:none}
+.tz-fr-body{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);align-items:center}
+.tz-fr-flip .tz-fr-copy{order:2}
+.tz-fr-copy h3{font-size:clamp(22px,2.6vw,32px);font-weight:400;letter-spacing:-.01em;margin:0 0 12px}
+.tz-fr-copy p{font-size:16px;line-height:1.65;opacity:.85;margin:0 0 18px;max-width:44ch}
+.tz-fr-copy a{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--accent);
+  padding-bottom:2px;font-size:15px}
+.tz-fr-visual{min-height:170px;display:flex;align-items:center;justify-content:center}
+.tz-fr-bars{display:flex;gap:10px;align-items:flex-end;height:140px}
+.tz-fr-bars i{width:34px;background:var(--ink);display:block}
+.tz-fr-dots{width:min(240px,70%);aspect-ratio:4/3;
+  background-image:radial-gradient(circle,var(--ink) 1.6px,transparent 1.7px);
+  background-size:20px 20px;background-position:center}
+.tz-fr-ring{width:150px;aspect-ratio:1;border:3px solid var(--ink);border-radius:50%;
+  display:flex;align-items:center;justify-content:center}
+.tz-fr-ring i{width:34px;aspect-ratio:1;border-radius:50%;background:var(--accent);display:block}
+@media (max-width:760px){
+  .tz-fr-row{grid-template-columns:1fr;gap:16px}
+  .tz-fr-body{grid-template-columns:1fr}
+  .tz-fr-flip .tz-fr-copy{order:0}
+  .tz-fr-visual{min-height:140px}
+}
+</style>
