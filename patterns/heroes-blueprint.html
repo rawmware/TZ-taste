@@ -1,0 +1,42 @@
+<!--tz-meta {"id":"heroes-blueprint","title":"Blueprint hero","category":"Hero","file":"patterns/heroes-blueprint.html","tags":["technical","blueprint","diagram"],"description":"White-on-blue technical drawing: dimension lines and figure labels annotating the headline.","dnas":["industrial-brutalist"]} -->
+<section class="tz-bp">
+  <p class="tz-bp-eyebrow">Hartline &amp; Moss · Structural Studio · Sheet A-101</p>
+  <div class="tz-bp-measure">
+    <span class="tz-bp-tag" aria-hidden="true">Fig. 01 — Headline, set 96 pt</span>
+    <h1 class="tz-bp-h">We draw it before<br>anyone builds it.</h1>
+  </div>
+  <p class="tz-bp-sub">Structural engineers for the buildings this county actually stands on. Drawings first, concrete second, excuses never.</p>
+  <div class="tz-bp-dimline" aria-hidden="true"><span>Scale 1:50</span></div>
+  <a class="tz-bp-cta" href="#drawings">See the drawings</a>
+</section>
+<style>
+.tz-bp{--blue:#123f7b;--paper:#f4f7fb;--amber:#ffc53d;
+  background-color:var(--blue);color:var(--paper);position:relative;
+  background-image:linear-gradient(#ffffff12 1px,transparent 1px),
+    linear-gradient(90deg,#ffffff12 1px,transparent 1px);
+  background-size:34px 34px;
+  padding:clamp(72px,10vw,140px) clamp(24px,7vw,100px);
+  font-family:Arial,Helvetica,sans-serif}
+.tz-bp-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.2em;
+  text-transform:uppercase;margin:0 0 40px;color:var(--amber)}
+.tz-bp-measure{position:relative;border:1px dashed #ffffff80;padding:clamp(24px,4vw,48px);
+  margin:0 0 36px;max-width:900px}
+.tz-bp-measure::before,.tz-bp-measure::after{content:"";position:absolute;width:14px;height:14px;
+  border:2px solid var(--paper)}
+.tz-bp-measure::before{top:-9px;left:-9px;border-right:none;border-bottom:none}
+.tz-bp-measure::after{bottom:-9px;right:-9px;border-left:none;border-top:none}
+.tz-bp-tag{position:absolute;top:-13px;left:24px;background:var(--blue);padding:2px 12px;
+  font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+.tz-bp-h{font-size:clamp(40px,6.5vw,96px);line-height:1.04;letter-spacing:-.02em;
+  font-weight:700;margin:0}
+.tz-bp-sub{font-size:clamp(15px,1.6vw,18px);line-height:1.65;max-width:46ch;margin:0 0 30px;
+  color:#f4f7fbE6}
+.tz-bp-dimline{display:flex;align-items:center;gap:14px;margin:0 0 40px;max-width:420px;
+  font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.tz-bp-dimline::before,.tz-bp-dimline::after{content:"";height:1px;flex:1;background:#ffffff80;position:relative}
+.tz-bp-dimline::before{clip-path:polygon(0 35%,100% 35%,100% 65%,0 65%)}
+.tz-bp-cta{display:inline-block;color:var(--blue);background:var(--paper);text-decoration:none;
+  font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase;padding:18px 36px;
+  transition:background .2s ease}
+.tz-bp-cta:hover{background:var(--amber)}
+</style>
