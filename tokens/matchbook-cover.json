@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-matchbook-cover",
+  "title": "Matchbook Cover design tokens",
+  "category": "Tokens",
+  "file": "tokens/matchbook-cover.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "matchbook-cover"
+  ],
+  "description": "W3C-format design tokens for the Matchbook Cover DNA.",
+  "dnas": [
+   "matchbook-cover"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#efe6d4",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#262019",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#b3402a",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#8d7f63",
+   "type": "color"
+  },
+  "line": {
+   "value": "#2620192b",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#e2d4b6",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Limelight",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Josefin Sans",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Inconsolata",
+   "type": "fontFamily"
+  }
+ }
+}
