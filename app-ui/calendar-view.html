@@ -1,0 +1,126 @@
+<!--tz-meta {"id":"calendar-view","title":"Calendar View","category":"App UI","file":"app-ui/calendar-view.html","tags":["calendar","scheduling","agenda","events"],"description":"Month grid with event chips and a liner-note agenda rail for a jazz club residency.","dnas":["jazz-blue-note"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calendar View — The Copper Line</title>
+<style>
+body{margin:0;background:#0b0e12;}
+.tz-cal{--bg:#101418;--ink:#eef2f5;--accent:#e8734a;--muted:#7a8a96;--line:#243038;--accent2:#3d6b8e;
+  background:var(--bg);color:var(--ink);padding:clamp(24px,4vw,56px);
+  font-family:Verdana,Geneva,'DejaVu Sans',sans-serif;max-width:1120px;margin:0 auto;}
+.tz-cal-kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 8px;}
+.tz-cal-masthead{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:24px;}
+.tz-cal-masthead h1{font-family:'Franklin Gothic Medium','Arial Narrow',Arial,sans-serif;font-weight:900;
+  text-transform:uppercase;font-size:clamp(52px,8vw,110px);line-height:.9;letter-spacing:-.01em;margin:0;}
+.tz-cal-masthead h1 span{color:var(--accent);}
+.tz-cal-year{font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--muted);font-size:13px;letter-spacing:.2em;}
+.tz-cal-body{display:grid;grid-template-columns:1fr 280px;gap:32px;}
+.tz-cal-week{display:grid;grid-template-columns:repeat(7,1fr);border-bottom:1px solid var(--line);}
+.tz-cal-week span{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.18em;
+  color:var(--muted);padding:10px 8px;text-transform:uppercase;}
+.tz-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);border-left:1px solid var(--line);}
+.tz-cal-day{min-height:96px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:8px;font-size:13px;position:relative;}
+.tz-cal-day .tz-d{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;color:var(--muted);}
+.tz-cal-day.tz-dim .tz-d,.tz-cal-day.tz-dim .tz-ev{opacity:.32;}
+.tz-cal-day.tz-today{background:var(--accent);}
+.tz-cal-day.tz-today .tz-d,.tz-cal-day.tz-today .tz-ev{color:#101418;opacity:1;}
+.tz-cal-day.tz-today .tz-d{font-weight:700;}
+.tz-ev{display:block;font-size:10.5px;line-height:1.35;margin-top:6px;padding-left:8px;position:relative;color:var(--ink);}
+.tz-ev::before{content:"";position:absolute;left:0;top:4px;width:4px;height:calc(100% - 8px);background:var(--accent);}
+.tz-ev.tz-b::before{background:var(--accent2);}
+.tz-cal-agenda{border-left:1px solid var(--line);padding-left:24px;}
+.tz-cal-agenda h2{font-family:'Franklin Gothic Medium','Arial Narrow',Arial,sans-serif;text-transform:uppercase;
+  font-size:15px;letter-spacing:.12em;margin:0 0 4px;}
+.tz-cal-agenda .tz-sub{font-size:12px;color:var(--muted);margin:0 0 20px;}
+.tz-cal-agenda ol{list-style:none;margin:0;padding:0;}
+.tz-cal-agenda li{padding:14px 0;border-bottom:1px solid var(--line);display:grid;
+  grid-template-columns:52px 1fr;gap:12px;align-items:start;}
+.tz-cal-date{display:block;background:var(--accent);color:#101418;text-align:center;padding:8px 0 6px;}
+.tz-cal-date b{display:block;font-family:'Franklin Gothic Medium','Arial Narrow',Arial,sans-serif;font-size:20px;line-height:1;}
+.tz-cal-date i{display:block;font-style:normal;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9px;letter-spacing:.14em;}
+.tz-cal-agenda h3{margin:0 0 4px;font-size:14px;font-weight:600;}
+.tz-cal-agenda p{margin:0;font-size:12px;color:var(--muted);line-height:1.5;}
+.tz-cal-cat{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--accent);letter-spacing:.14em;margin-top:6px;display:block;}
+@media(max-width:760px){
+  .tz-cal-body{grid-template-columns:1fr;}
+  .tz-cal-agenda{border-left:none;padding-left:0;border-top:1px solid var(--line);padding-top:20px;}
+  .tz-cal-day{min-height:64px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .tz-cal *{animation:none!important;transition:none!important;}
+}
+</style>
+</head>
+<body>
+<section class="tz-cal">
+  <p class="tz-cal-kicker">The Copper Line &middot; Residency Calendar</p>
+  <div class="tz-cal-masthead">
+    <h1>Oct<span>ober</span></h1>
+    <span class="tz-cal-year">2026 &middot; SET 042</span>
+  </div>
+  <div class="tz-cal-body">
+    <div>
+      <div class="tz-cal-week">
+        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+      </div>
+      <div class="tz-cal-grid">
+        <div class="tz-cal-day tz-dim"><span class="tz-d">27</span></div>
+        <div class="tz-cal-day tz-dim"><span class="tz-d">28</span></div>
+        <div class="tz-cal-day tz-dim"><span class="tz-d">29</span></div>
+        <div class="tz-cal-day tz-dim"><span class="tz-d">30</span></div>
+        <div class="tz-cal-day"><span class="tz-d">1</span></div>
+        <div class="tz-cal-day"><span class="tz-d">2</span><span class="tz-ev">Rehearsal, hall B<br>2&ndash;5pm</span></div>
+        <div class="tz-cal-day tz-today"><span class="tz-d">3 &middot; today</span><span class="tz-ev">Saturday Jam<br>9pm, two sets</span></div>
+        <div class="tz-cal-day"><span class="tz-d">4</span></div>
+        <div class="tz-cal-day"><span class="tz-d">5</span></div>
+        <div class="tz-cal-day"><span class="tz-d">6</span></div>
+        <div class="tz-cal-day"><span class="tz-d">7</span></div>
+        <div class="tz-cal-day"><span class="tz-d">8</span></div>
+        <div class="tz-cal-day"><span class="tz-d">9</span><span class="tz-ev">Mara Voss Quartet<br>8pm</span></div>
+        <div class="tz-cal-day"><span class="tz-d">10</span><span class="tz-ev tz-b">Organ trio night<br>10pm late</span></div>
+        <div class="tz-cal-day"><span class="tz-d">11</span></div>
+        <div class="tz-cal-day"><span class="tz-d">12</span></div>
+        <div class="tz-cal-day"><span class="tz-d">13</span></div>
+        <div class="tz-cal-day"><span class="tz-d">14</span></div>
+        <div class="tz-cal-day"><span class="tz-d">15</span></div>
+        <div class="tz-cal-day"><span class="tz-d">16</span><span class="tz-ev">Late set: Blue Hour<br>11pm</span></div>
+        <div class="tz-cal-day"><span class="tz-d">17</span><span class="tz-ev">Ada Bloom, vocals<br>8pm</span></div>
+        <div class="tz-cal-day"><span class="tz-d">18</span></div>
+        <div class="tz-cal-day"><span class="tz-d">19</span></div>
+        <div class="tz-cal-day"><span class="tz-d">20</span></div>
+        <div class="tz-cal-day"><span class="tz-d">21</span></div>
+        <div class="tz-cal-day"><span class="tz-d">22</span></div>
+        <div class="tz-cal-day"><span class="tz-d">23</span><span class="tz-ev tz-b">House band<br>8 + 10pm</span></div>
+        <div class="tz-cal-day"><span class="tz-d">24</span><span class="tz-ev">Theo Marsh Trio<br>8pm</span></div>
+        <div class="tz-cal-day"><span class="tz-d">25</span></div>
+        <div class="tz-cal-day"><span class="tz-d">26</span></div>
+        <div class="tz-cal-day"><span class="tz-d">27</span></div>
+        <div class="tz-cal-day"><span class="tz-d">28</span></div>
+        <div class="tz-cal-day"><span class="tz-d">29</span></div>
+        <div class="tz-cal-day"><span class="tz-d">30</span><span class="tz-ev">All Hallows session<br>9pm</span></div>
+        <div class="tz-cal-day"><span class="tz-d">31</span><span class="tz-ev tz-b">Midnight set<br>11:30pm</span></div>
+      </div>
+    </div>
+    <aside class="tz-cal-agenda">
+      <h2>Coming up</h2>
+      <p class="tz-sub">Four nights, one room, no opener.</p>
+      <ol>
+        <li><span class="tz-cal-date"><b>3</b><i>OCT</i></span>
+          <div><h3>Saturday Jam</h3><p>House rhythm section, sign-up at the bar from 7. Two sets, no cover.</p><span class="tz-cal-cat">CL-1042 &middot; TONIGHT</span></div></li>
+        <li><span class="tz-cal-date"><b>9</b><i>OCT</i></span>
+          <div><h3>Mara Voss Quartet</h3><p>Standards and two new charts. Doors 7, downbeat 8.</p><span class="tz-cal-cat">CL-1043 &middot; TICKETED</span></div></li>
+        <li><span class="tz-cal-date"><b>10</b><i>OCT</i></span>
+          <div><h3>Organ Trio Night</h3><p>B3, guitar, drums. Late set only, cash bar.</p><span class="tz-cal-cat">CL-1044 &middot; LATE</span></div></li>
+        <li><span class="tz-cal-date"><b>16</b><i>OCT</i></span>
+          <div><h3>Late Set: Blue Hour</h3><p>Quiet ballads after 11. The room dims, the talk stops.</p><span class="tz-cal-cat">CL-1045 &middot; LATE</span></div></li>
+      </ol>
+    </aside>
+  </div>
+</section>
+</body>
+</html>
