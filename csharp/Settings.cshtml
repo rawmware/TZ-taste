@@ -1,0 +1,155 @@
+@*tz-meta {"id":"cs-settings","title":"Instrument settings panel (Razor)","category":"C#","file":"csharp/Settings.cshtml","tags":["csharp","razor","settings"],"description":"Settings for Fieldkit, a wildlife camera-trap companion app — a dense lab-instrument panel with measured mono labels, spec-sheet rows, and real toggle/segmented controls. Every setting changes what the camera does tonight.","dnas":["laboratory-clean"]} *@
+@page
+@{
+    ViewData["Title"] = "Fieldkit — camera settings";
+    var bg = "#fbfcfd";
+    var ink = "#0f1720";
+    var accent = "#0a7d8c";
+    var muted = "#6b7684";
+    var line = "#dfe4ea";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>@ViewData["Title"]</title>
+<style>
+  :root{
+    --bg:@bg; --ink:@ink; --accent:@accent; --muted:@muted; --line:@line;
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);
+    font-family:'IBM Plex Sans','Segoe UI',system-ui,sans-serif;line-height:1.5}
+  .tz-wrap{max-width:880px;margin:0 auto;
+    padding:clamp(56px,8vw,110px) clamp(20px,5vw,48px) clamp(64px,8vw,110px)}
+  .tz-eyebrow{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+  h1{font-weight:600;letter-spacing:-.03em;font-size:clamp(34px,5.4vw,60px);
+    line-height:1.05;margin-bottom:12px}
+  .tz-dek{color:var(--muted);font-size:16px;max-width:56ch;
+    margin-bottom:clamp(44px,6vw,72px)}
+  .tz-dek strong{color:var(--ink);font-weight:600}
+  fieldset{border:0;margin-bottom:clamp(36px,5vw,56px)}
+  legend{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--accent);
+    padding:0;margin-bottom:4px}
+  /* The distinctive choice: spec-sheet rows, numbered like lab equipment */
+  .tz-row{display:grid;grid-template-columns:44px minmax(0,1fr) auto;
+    gap:clamp(12px,3vw,28px);align-items:center;
+    padding:20px 0;border-bottom:1px solid var(--line)}
+  .tz-row:first-of-type{border-top:1px solid var(--line)}
+  .tz-no{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;color:var(--muted)}
+  .tz-lab{font-weight:600;font-size:15.5px}
+  .tz-lab small{display:block;font-weight:400;color:var(--muted);font-size:13.5px;margin-top:3px}
+  .tz-val{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12.5px;
+    color:var(--muted);text-align:right}
+  /* Toggle: a real checkbox, styled as an instrument switch */
+  .tz-toggle{position:relative;display:inline-block;width:52px;height:30px;flex:none}
+  .tz-toggle input{position:absolute;opacity:0;inset:0;cursor:pointer;z-index:1;margin:0}
+  .tz-toggle .tk{position:absolute;inset:0;border:1.5px solid var(--muted);border-radius:4px;
+    transition:background .25s var(--ease),border-color .25s var(--ease)}
+  .tz-toggle .tk::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;
+    background:var(--muted);border-radius:2px;transition:transform .25s var(--ease),background .25s var(--ease)}
+  .tz-toggle input:checked + .tk{background:var(--accent);border-color:var(--accent)}
+  .tz-toggle input:checked + .tk::after{transform:translateX(22px);background:#fbfcfd}
+  .tz-toggle input:focus-visible + .tk{outline:2px solid var(--accent);outline-offset:3px}
+  /* Segmented control */
+  .tz-seg{display:inline-flex;border:1.5px solid var(--muted);border-radius:4px;overflow:hidden}
+  .tz-seg button{font:inherit;font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:12.5px;padding:9px 16px;background:transparent;color:var(--muted);
+    border:0;cursor:pointer}
+  .tz-seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+  .tz-seg button + button{border-left:1.5px solid var(--muted)}
+  /* Range readout */
+  .tz-range{display:flex;align-items:center;gap:14px}
+  .tz-range input[type="range"]{accent-color:var(--accent);width:150px}
+  .tz-range output{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:13px;
+    min-width:48px;text-align:right}
+  .tz-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;
+    flex-wrap:wrap;border-top:2px solid var(--ink);padding-top:24px}
+  .tz-note{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;
+    color:var(--muted);letter-spacing:.06em}
+  .tz-btn{background:var(--ink);color:var(--bg);font:inherit;font-weight:600;font-size:14.5px;
+    border:0;padding:15px 34px;cursor:pointer;border-radius:4px;
+    transition:background .25s var(--ease)}
+  .tz-btn:hover{background:var(--accent)}
+  @@media (max-width:620px){
+    .tz-row{grid-template-columns:32px minmax(0,1fr);grid-template-areas:"no lab" "no ctl";row-gap:10px}
+    .tz-no{grid-area:no}.tz-lab{grid-area:lab}
+    .tz-toggle,.tz-seg,.tz-range,.tz-val{grid-area:ctl;justify-self:start;text-align:left}
+  }
+  @@media (prefers-reduced-motion:reduce){
+    *{transition:none !important}
+  }
+</style>
+</head>
+<body>
+  <div class="tz-wrap">
+    <p class="tz-eyebrow">Fieldkit · Camera 04 — “Heron blind”</p>
+    <h1>Tune the instrument.</h1>
+    <p class="tz-dek">Every setting on this page changes what the camera does <strong>tonight</strong>.
+    Changes sync over the trail radio link and take effect at the next wake cycle.</p>
+
+    <form method="post" action="#save">
+      <fieldset>
+        <legend>01 · Capture</legend>
+        <div class="tz-row">
+          <span class="tz-no">1.1</span>
+          <p class="tz-lab">Motion trigger<small>Wakes the sensor when something warm moves through frame.</small></p>
+          <label class="tz-toggle"><input type="checkbox" checked /><span class="tk" aria-hidden="true"></span><span class="tz-val" style="position:absolute;left:-9999px">Motion trigger</span></label>
+        </div>
+        <div class="tz-row">
+          <span class="tz-no">1.2</span>
+          <p class="tz-lab">Capture mode<small>Stills sip battery. Video drinks it.</small></p>
+          <div class="tz-seg" role="group" aria-label="Capture mode">
+            <button type="button" aria-pressed="true">Still</button><button type="button" aria-pressed="false">Video</button><button type="button" aria-pressed="false">Both</button>
+          </div>
+        </div>
+        <div class="tz-row">
+          <span class="tz-no">1.3</span>
+          <p class="tz-lab">Trigger sensitivity<small>Higher catches mice. Lower ignores branches.</small></p>
+          <div class="tz-range">
+            <input type="range" min="0" max="100" value="72" aria-label="Trigger sensitivity" />
+            <output>72%</output>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>02 · Alerts</legend>
+        <div class="tz-row">
+          <span class="tz-no">2.1</span>
+          <p class="tz-lab">Night ping<small>One quiet message when the first animal of the night arrives.</small></p>
+          <label class="tz-toggle"><input type="checkbox" checked /><span class="tk" aria-hidden="true"></span><span class="tz-val" style="position:absolute;left:-9999px">Night ping</span></label>
+        </div>
+        <div class="tz-row">
+          <span class="tz-no">2.2</span>
+          <p class="tz-lab">Species filter<small>Only ping for the shortlist. Raccoons excluded by default.</small></p>
+          <span class="tz-val">heron · fox · owl</span>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>03 · Storage</legend>
+        <div class="tz-row">
+          <span class="tz-no">3.1</span>
+          <p class="tz-lab">Upload on wake<small>Sends thumbnails over the trail link. Full frames stay on the card.</small></p>
+          <label class="tz-toggle"><input type="checkbox" /><span class="tk" aria-hidden="true"></span><span class="tz-val" style="position:absolute;left:-9999px">Upload on wake</span></label>
+        </div>
+        <div class="tz-row">
+          <span class="tz-no">3.2</span>
+          <p class="tz-lab">Card capacity<small>At current settings, the 64 GB card fills in about this long.</small></p>
+          <span class="tz-val">≈ 41 days</span>
+        </div>
+      </fieldset>
+
+      <div class="tz-foot">
+        <p class="tz-note">Next wake cycle: 21:40 · battery 87%</p>
+        <button class="tz-btn" type="submit">Send to camera</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
