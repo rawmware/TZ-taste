@@ -1,0 +1,135 @@
+<!--tz-meta {"id":"showcase-lab-notebook","title":"Lab Notebook showcase","category":"Showcase","file":"showcase/lab-notebook.html","tags":["lab-notebook"],"description":"Live demo page for the Lab Notebook style DNA.","dnas":["lab-notebook"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lab Notebook — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Karla:wght@400;500;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f4f1e6; --tz-surface:#ece7d6; --tz-ink:#2b2a26; --tz-muted:#7a756a;
+  --tz-accent:#b3402e; --tz-line:#2b2a2633;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Karla",sans-serif;font-size:0.98rem;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cpath d='M24 0H0v24' fill='none' stroke='%232b2a26' stroke-opacity='0.14'/%3E%3C/svg%3E")}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 4vw;border-bottom:1px solid var(--tz-line);font-family:"Courier Prime",monospace;font-size:0.72rem;letter-spacing:0.08em;color:var(--tz-muted)}
+.tz-wordmark{font-family:"Caveat",cursive;font-weight:700;font-size:1.5rem;color:var(--tz-ink)}
+.tz-hero{padding:3.5rem 4vw 2rem;display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
+.tz-entry{font-family:"Courier Prime",monospace;font-size:0.75rem;letter-spacing:0.1em;color:var(--tz-muted);margin-bottom:1rem}
+.tz-hero h1{font-family:"Caveat",cursive;font-weight:700;font-size:clamp(2.8rem,7vw,4.6rem);line-height:1.05;transform:rotate(-1.5deg);animation:tz-fade 500ms ease-out both}
+@keyframes tz-fade{from{opacity:0}to{opacity:1}}
+.tz-hero h1 .tz-red{color:var(--tz-accent);text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:6px}
+.tz-sub{margin-top:1.3rem;color:var(--tz-muted);max-width:42ch}
+.tz-cta{display:inline-block;margin-top:1.8rem;background:var(--tz-ink);color:var(--tz-bg);font-family:"Courier Prime",monospace;font-size:0.85rem;letter-spacing:0.08em;text-decoration:none;padding:0.9rem 1.8rem;transition:opacity .2s ease}
+.tz-cta:hover{opacity:0.85}
+.tz-plate{position:relative;background:var(--tz-surface);border:1px solid var(--tz-line);padding:1.6rem;transform:rotate(1.8deg);transition:transform .25s ease;justify-self:end;max-width:380px}
+.tz-plate:hover{transform:rotate(0deg)}
+.tz-tape{position:absolute;width:96px;height:26px;background:#e8e0c8ee;border-left:1px dashed #00000022;border-right:1px dashed #00000022;border-radius:1px}
+.tz-tape.tz-t1{top:-13px;left:12%;transform:rotate(-6deg)}
+.tz-tape.tz-t2{bottom:-13px;right:14%;transform:rotate(5deg)}
+.tz-plate h2{font-family:"Courier Prime",monospace;font-size:0.7rem;letter-spacing:0.12em;color:var(--tz-muted);margin-bottom:0.8rem;font-weight:400}
+.tz-plate table{width:100%;border-collapse:collapse;font-family:"Courier Prime",monospace;font-size:0.78rem}
+.tz-plate td,.tz-plate th{border:1px solid var(--tz-line);padding:0.5rem 0.6rem;text-align:left}
+.tz-plate th{color:var(--tz-muted);font-weight:400}
+.tz-plate .tz-circ{color:var(--tz-accent);font-weight:700}
+.tz-margin{font-family:"Caveat",cursive;font-size:1.25rem;color:var(--tz-accent);transform:rotate(-3deg);margin-top:0.9rem}
+.tz-ring{position:absolute;bottom:-1.6rem;left:-1.4rem;width:4rem;height:4rem;border:3px solid #8a6a3f;border-radius:50%;opacity:0.15;pointer-events:none}
+.tz-content{padding:2rem 4vw 1rem;position:relative}
+.tz-log{list-style:none;max-width:680px}
+.tz-log li{padding:1.5rem 0;border-bottom:1px solid var(--tz-line)}
+.tz-loghead{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:0.5rem}
+.tz-loghead h3{font-family:"Caveat",cursive;font-weight:700;font-size:1.7rem;transform:rotate(-0.8deg)}
+.tz-stamp{font-family:"Courier Prime",monospace;font-size:0.7rem;letter-spacing:0.08em;color:var(--tz-muted)}
+.tz-log p{color:var(--tz-muted)}
+.tz-log .tz-struck{text-decoration:line-through;text-decoration-color:var(--tz-accent);text-decoration-thickness:2px}
+.tz-log .tz-fix{font-family:"Caveat",cursive;color:var(--tz-accent);font-size:1.15rem}
+.tz-note{margin:2.5rem 0 0;border:1px solid var(--tz-line);background:var(--tz-surface);padding:1.6rem;max-width:560px;transform:rotate(-0.6deg)}
+.tz-note h2{font-family:"Courier Prime",monospace;font-size:0.7rem;letter-spacing:0.14em;color:var(--tz-muted);font-weight:400;margin-bottom:0.6rem}
+.tz-note p{color:var(--tz-muted)}
+.tz-note strong{color:var(--tz-ink)}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Caveat",cursive;font-weight:700;font-size:2.2rem;margin-bottom:1.2rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"Courier Prime",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Courier Prime",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"Courier Prime",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.06em}
+@media(max-width:700px){
+  .tz-hero{grid-template-columns:1fr}
+  .tz-plate{justify-self:start}
+  .tz-loghead{flex-direction:column;gap:0.1rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Bog Study</span>
+  <span>FIELD LOG 2026 · VOL. 3 · TZ-taste style DNA</span>
+</header>
+
+<section class="tz-hero">
+  <div>
+    <p class="tz-entry">ENTRY 12 · 14 JUN · OVERCAST · 11°C</p>
+    <h1>The bog, <span class="tz-red">measured.</span></h1>
+    <p class="tz-sub">One season, one transect, one battered notebook. Every reading taken by hand — wind ate the first attempt, the second held.</p>
+    <a class="tz-cta" href="#">READ THE FIELD LOG</a>
+  </div>
+  <figure class="tz-plate">
+    <span class="tz-tape tz-t1" aria-hidden="true"></span>
+    <span class="tz-tape tz-t2" aria-hidden="true"></span>
+    <h2>FIG. 3 — QUADRAT READINGS, EAST TRANSECT</h2>
+    <table>
+      <tr><th>QUAD</th><th>SPEC</th><th>COUNT</th></tr>
+      <tr><td>Q-04</td><td>SPEC-114</td><td class="tz-circ">37</td></tr>
+      <tr><td>Q-05</td><td>SPEC-118</td><td>22</td></tr>
+      <tr><td>Q-06</td><td>SPEC-121</td><td>41</td></tr>
+    </table>
+    <p class="tz-margin">recheck Q-04 — n=3, redo</p>
+    <span class="tz-ring" aria-hidden="true"></span>
+  </figure>
+</section>
+
+<section class="tz-content">
+  <ul class="tz-log">
+    <li>
+      <div class="tz-loghead"><h3>Entry 09 — the north line</h3><span class="tz-stamp">SPEC-102 · 06:42 · FOG</span></div>
+      <p><span class="tz-struck">The north transect was dry all week.</span> <span class="tz-fix">Wrong — gauge was clogged. Actual: 4cm standing water.</span> Lesson logged, gauge cleaned.</p>
+    </li>
+    <li>
+      <div class="tz-loghead"><h3>Entry 10 — sphagnum counts</h3><span class="tz-stamp">SPEC-109 · 11:15 · DRIZZLE</span></div>
+      <p>Three quadrats, hand-counted. The drizzle stopped at noon and took the midges with it. Ask Mara about the missing sample.</p>
+    </li>
+    <li>
+      <div class="tz-loghead"><h3>Entry 11 — evening round</h3><span class="tz-stamp">SPEC-113 · 19:05 · CLEAR</span></div>
+      <p>Frogs louder than the data logger. Water temp 9°C, falling. Tomorrow: the east transect, finally.</p>
+    </li>
+  </ul>
+  <div class="tz-note">
+    <h2>REVIEWER'S MARK — SEE FIG. 3!</h2>
+    <p><strong>Q-04's count of 37 doesn't match the June 10 sheet.</strong> Recount before the report goes out — the mess is the proof, but the numbers still have to add up.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#f4f1e6"></span><span class="tz-name">bg</span><span class="tz-hex">#f4f1e6</span></li>
+    <li><span class="tz-chip" style="background:#ece7d6"></span><span class="tz-name">surface</span><span class="tz-hex">#ece7d6</span></li>
+    <li><span class="tz-chip" style="background:#2b2a26"></span><span class="tz-name">ink</span><span class="tz-hex">#2b2a26</span></li>
+    <li><span class="tz-chip" style="background:#7a756a"></span><span class="tz-name">muted</span><span class="tz-hex">#7a756a</span></li>
+    <li><span class="tz-chip" style="background:#b3402e"></span><span class="tz-name">accent</span><span class="tz-hex">#b3402e</span></li>
+    <li><span class="tz-chip" style="background:#2b2a2633"></span><span class="tz-name">line</span><span class="tz-hex">#2b2a2633</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
