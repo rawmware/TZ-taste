@@ -1,0 +1,44 @@
+<!--tz-meta {"id":"pricing-single","title":"Single plan","category":"Pricing","file":"patterns/pricing-single.html","tags":["focus","simple"],"description":"One dramatic plan in a champagne frame with an oversized serif price.","dnas":["dark-luxe"]} -->
+<section class="tz-ps">
+  <p class="tz-ps-eyebrow">Pricing</p>
+  <h2 class="tz-ps-title">One plan.<br>Everything in it.</h2>
+  <div class="tz-ps-frame">
+    <p class="tz-ps-plan">The Everything Plan</p>
+    <p class="tz-ps-price"><span class="tz-ps-cur">$</span>79<span class="tz-ps-per">/month</span></p>
+    <p class="tz-ps-sub">per team · unlimited seats · cancel anytime</p>
+    <ul class="tz-ps-list">
+      <li>Unlimited inboxes, channels, and seats</li>
+      <li>10,000 drafted replies a month</li>
+      <li>Routing rules and voice profiles for everyone</li>
+      <li>Single-tenant hosting in your region</li>
+      <li>A human who answers within the hour</li>
+    </ul>
+    <a class="tz-ps-cta" href="#start">Start your free month</a>
+    <p class="tz-ps-fine">No tiers to decode. No "contact sales" maze. If you outgrow it, we'll tell you — it hasn't happened yet.</p>
+  </div>
+</section>
+<style>
+.tz-ps{--bg:#101010;--ink:#ece7db;--gold:#d4af6e;--line:rgba(212,175,110,.3);
+  background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;
+  padding:clamp(72px,10vw,140px) clamp(24px,6vw,88px)}
+.tz-ps-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.34em;
+  text-transform:uppercase;color:var(--gold);margin:0 0 24px;text-align:center}
+.tz-ps-title{font-size:clamp(38px,5.6vw,74px);font-weight:400;letter-spacing:-.02em;line-height:1.06;
+  margin:0 auto clamp(48px,7vw,88px);text-align:center}
+.tz-ps-frame{max-width:640px;margin:0 auto;border:1px solid var(--gold);padding:clamp(40px,6vw,72px);
+  text-align:center;box-shadow:inset 0 0 0 8px var(--bg),inset 0 0 0 9px var(--line)}
+.tz-ps-plan{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--gold);margin:0 0 28px}
+.tz-ps-price{font-size:clamp(96px,14vw,160px);line-height:1;letter-spacing:-.04em;margin:0;color:var(--ink)}
+.tz-ps-cur{font-size:.4em;vertical-align:.9em;font-style:italic;color:var(--gold)}
+.tz-ps-per{font-size:20px;letter-spacing:.06em;font-style:italic;color:rgba(236,231,219,.6)}
+.tz-ps-sub{font-size:14px;font-style:italic;color:rgba(236,231,219,.65);margin:18px 0 36px}
+.tz-ps-list{list-style:none;margin:0 0 40px;padding:32px 0;border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:14px;text-align:left}
+.tz-ps-list li{font-size:16.5px;padding-left:30px;position:relative;line-height:1.5}
+.tz-ps-list li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.tz-ps-cta{display:inline-block;background:var(--gold);color:#101010;text-decoration:none;
+  font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:15px;letter-spacing:.08em;
+  text-transform:uppercase;padding:18px 44px;margin-bottom:28px}
+.tz-ps-fine{font-size:13.5px;font-style:italic;color:rgba(236,231,219,.55);margin:0;line-height:1.7;max-width:44ch;margin-left:auto;margin-right:auto}
+</style>
