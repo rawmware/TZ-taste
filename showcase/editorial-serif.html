@@ -1,0 +1,103 @@
+<!--tz-meta {"id":"showcase-editorial-serif","title":"Editorial Serif showcase","category":"Showcase","file":"showcase/editorial-serif.html","tags":["editorial-serif"],"description":"Live demo page for the Editorial Serif style DNA.","dnas":["editorial-serif"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Editorial Serif — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Newsreader:opsz,wght@6..72,400..500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f5f1e8; --tz-surface:#efe9da; --tz-ink:#1c1a15; --tz-muted:#6f6a5e;
+  --tz-accent:#b5461f; --tz-line:#1c1a1526;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Newsreader",Georgia,serif;font-size:1.08rem;line-height:1.65;-webkit-font-smoothing:antialiased}
+.tz-top{display:flex;justify-content:space-between;align-items:baseline;padding:1.4rem 5vw;border-bottom:1px solid var(--tz-line)}
+.tz-wordmark{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1.25rem;letter-spacing:-0.02em}
+.tz-label{font-family:"Space Mono",monospace;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-hero{position:relative;padding:6rem 5vw 5rem;overflow:hidden;border-bottom:1px solid var(--tz-line)}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:1.6rem}
+.tz-hero h1{font-family:"Fraunces",Georgia,serif;font-weight:400;font-size:clamp(2.6rem,6.5vw,5.2rem);line-height:1.02;letter-spacing:-0.03em;max-width:14ch}
+.tz-hero h1 em{font-style:italic;color:var(--tz-accent)}
+.tz-sub{max-width:60ch;margin-top:1.6rem;color:var(--tz-muted)}
+.tz-cta{display:inline-block;margin-top:2.2rem;font-family:"Space Mono",monospace;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--tz-accent);text-decoration:none;border-bottom:1px solid var(--tz-accent);padding-bottom:0.25rem}
+.tz-numeral{position:absolute;right:-2rem;top:2rem;font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:300;font-size:clamp(10rem,26vw,22rem);line-height:1;color:var(--tz-ink);opacity:0.08;pointer-events:none;user-select:none}
+.tz-margin-note{position:absolute;right:6vw;bottom:4.5rem;transform:rotate(-3deg);font-family:"Space Mono",monospace;font-size:0.72rem;color:var(--tz-muted);border:1px solid var(--tz-line);background:var(--tz-surface);padding:0.5rem 0.8rem;border-radius:2px}
+.tz-content{padding:5rem 5vw;max-width:1100px;margin:0 auto}
+.tz-lead::first-letter{font-family:"Fraunces",Georgia,serif;font-size:3.6em;float:left;line-height:0.85;padding:0.08em 0.12em 0 0;color:var(--tz-accent)}
+.tz-lead{max-width:60ch;margin-bottom:3rem}
+.tz-index{list-style:none;border-top:1px solid var(--tz-line)}
+.tz-index li{display:grid;grid-template-columns:3.5rem 1fr auto;gap:1.5rem;align-items:baseline;padding:1.4rem 0;border-bottom:1px solid var(--tz-line)}
+.tz-index .tz-no{font-family:"Space Mono",monospace;font-size:0.75rem;color:var(--tz-muted)}
+.tz-index .tz-title{font-family:"Fraunces",Georgia,serif;font-size:1.35rem;letter-spacing:-0.01em}
+.tz-index .tz-by{font-size:0.95rem;color:var(--tz-muted);font-style:italic}
+.tz-pull{font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:300;font-size:clamp(1.6rem,3.4vw,2.4rem);line-height:1.25;letter-spacing:-0.01em;margin:4rem 0;padding-left:1.8rem;border-left:2px solid var(--tz-accent);max-width:26ch}
+.tz-footnote{font-size:0.9rem;color:var(--tz-muted);max-width:60ch;border-top:1px solid var(--tz-line);padding-top:1rem}
+.tz-tokens{padding:4rem 5vw;border-top:1px solid var(--tz-line)}
+.tz-tokens h2{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:1.5rem;letter-spacing:-0.02em;margin-bottom:1.5rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.9rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);border-radius:2px;overflow:hidden;background:var(--tz-surface);min-width:9.5rem}
+.tz-chip{display:block;height:3.2rem}
+.tz-swatches .tz-name{display:block;font-family:"Space Mono",monospace;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.6rem 0.8rem 0.1rem;color:var(--tz-muted)}
+.tz-swatches .tz-hex{display:block;font-family:"Space Mono",monospace;font-size:0.78rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2.5rem 5vw;border-top:1px solid var(--tz-line);font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.08em;color:var(--tz-muted)}
+@media(max-width:700px){
+  .tz-hero{padding:4rem 6vw 4rem}
+  .tz-margin-note{display:none}
+  .tz-numeral{font-size:9rem;top:1rem}
+  .tz-index li{grid-template-columns:2.5rem 1fr;gap:0.8rem}
+  .tz-index .tz-by{grid-column:2}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">The Commonplace</span>
+  <span class="tz-label">TZ-taste style DNA</span>
+</header>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow">Fieldnotes · A studio journal · Issue Twelve</p>
+  <h1>The <em>sentence</em> is the product.</h1>
+  <p class="tz-sub">A quarterly journal on writing, editing, and the long patience of revision — published by a design studio that believes taste is a practice, not a talent.</p>
+  <a class="tz-cta" href="#">Read issue twelve</a>
+  <div class="tz-numeral" aria-hidden="true">12</div>
+  <p class="tz-margin-note">set in Fraunces, obviously</p>
+</section>
+
+<section class="tz-content">
+  <p class="tz-lead">We started this journal because client work kept teaching us things no brief ever asked for: that a headline rewritten eleven times reads differently than one written once, that white space is an argument, and that the second draft is where the thinking actually happens.</p>
+
+  <ul class="tz-index">
+    <li><span class="tz-no">p. 12</span><span class="tz-title">On the second draft</span><span class="tz-by">M. Okafor</span></li>
+    <li><span class="tz-no">p. 28</span><span class="tz-title">Commas are load-bearing</span><span class="tz-by">J. Lindqvist</span></li>
+    <li><span class="tz-no">p. 41</span><span class="tz-title">Notes toward a slower internet</span><span class="tz-by">R. Alvarez</span></li>
+    <li><span class="tz-no">p. 57</span><span class="tz-title">The margin is the message</span><span class="tz-by">T. Nakamura</span></li>
+  </ul>
+
+  <blockquote class="tz-pull">A first draft is a rumor. Revision is the reporting.</blockquote>
+
+  <p class="tz-footnote">1. Printed on 120gsm recycled stock for subscribers; published here in full because paywalls are for people with something to hide.</p>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#f5f1e8"></span><span class="tz-name">bg</span><span class="tz-hex">#f5f1e8</span></li>
+    <li><span class="tz-chip" style="background:#efe9da"></span><span class="tz-name">surface</span><span class="tz-hex">#efe9da</span></li>
+    <li><span class="tz-chip" style="background:#1c1a15"></span><span class="tz-name">ink</span><span class="tz-hex">#1c1a15</span></li>
+    <li><span class="tz-chip" style="background:#6f6a5e"></span><span class="tz-name">muted</span><span class="tz-hex">#6f6a5e</span></li>
+    <li><span class="tz-chip" style="background:#b5461f"></span><span class="tz-name">accent</span><span class="tz-hex">#b5461f</span></li>
+    <li><span class="tz-chip" style="background:#1c1a1526"></span><span class="tz-name">line</span><span class="tz-hex">#1c1a1526</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
