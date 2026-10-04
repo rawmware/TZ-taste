@@ -1,0 +1,135 @@
+<!--tz-meta {"id":"ex-footer","title":"Footer — Lighthouse","category":"Elixir","file":"elixir/footer.heex","tags":["heex","phoenix","footer","editorial","typographic"],"description":"The lighthouse footer: a foghorn-sized Anton wordmark under signal-red rules, columns set like tide charts, honest small print.","dnas":["harbor-fog"]} -->
+<%!-- def footer(assigns) — attr :wordmark, :string, default: "LATCH" · attr :columns, :list — each: %{title: string, links: list of %{label: string, href: string}} · attr :tagline, :string · attr :locale_line, :string --%>
+<%!--
+Design read: The lighthouse footer — a foghorn-sized wordmark rolling in under signal-red rules, link columns set like tide charts, and small print that actually says something.
+Distinctive choice: the 17vw wordmark cropped at the viewport's bottom edge, so the brand looms like a hull in fog.
+Dials: VARIANCE 6 / MOTION 1 / DENSITY 6. DNA: harbor-fog (Anton / Karla / IBM Plex Mono).
+--%>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Karla:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap");
+.tz-foot {
+  --tz-bg: #e8e6df;
+  --tz-ink: #2b3138;
+  --tz-muted: #7d838a;
+  --tz-accent: #c33a2c;
+  --tz-line: #2b31381f;
+  --tz-font-display: "Anton", "Arial Narrow", sans-serif;
+  --tz-font-body: "Karla", "Helvetica Neue", sans-serif;
+  --tz-font-mono: "IBM Plex Mono", "SFMono-Regular", monospace;
+  background: var(--tz-bg);
+  color: var(--tz-ink);
+  font-family: var(--tz-font-body);
+  border-top: 3px solid var(--tz-accent);
+  overflow: hidden;
+}
+.tz-foot__inner { max-width: 1440px; margin: 0 auto; padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 4vw, 4rem) 0; }
+.tz-foot__top {
+  display: grid;
+  grid-template-columns: 1.2fr repeat(4, 1fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
+  padding-bottom: 3.5rem;
+}
+.tz-foot__brand p.tz-foot__tagline {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 30ch;
+  margin: 1rem 0 1.5rem;
+}
+.tz-foot__signal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--tz-font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tz-muted);
+}
+.tz-foot__signal-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--tz-accent);
+}
+.tz-foot__col-title {
+  font-family: var(--tz-font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--tz-muted);
+  margin: 0 0 1.1rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--tz-line);
+}
+.tz-foot__col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.65rem; }
+.tz-foot__col a {
+  color: var(--tz-ink);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.tz-foot__col a:hover { color: var(--tz-accent); border-bottom-color: var(--tz-accent); }
+.tz-foot__legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2.5rem;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--tz-line);
+  padding: 1.4rem 0;
+  font-family: var(--tz-font-mono);
+  font-size: 0.78rem;
+  color: var(--tz-muted);
+}
+.tz-foot__legal p { margin: 0; }
+.tz-foot__wordmark {
+  font-family: var(--tz-font-display);
+  font-size: 17.5vw;
+  line-height: 0.8;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--tz-ink);
+  margin: 1rem 0 -0.16em;
+  text-align: center;
+  user-select: none;
+}
+.tz-foot__wordmark .tz-foot__wm-dot { color: var(--tz-accent); }
+@media (max-width: 1000px) {
+  .tz-foot__top { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .tz-foot__top { grid-template-columns: 1fr; }
+  .tz-foot__wordmark { font-size: 24vw; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tz-foot__col a { transition: none; }
+}
+</style>
+<footer class="tz-foot">
+  <div class="tz-foot__inner">
+    <div class="tz-foot__top">
+      <div class="tz-foot__brand">
+        <p class="tz-foot__tagline">{@tagline}</p>
+        <span class="tz-foot__signal"><span class="tz-foot__signal-dot" aria-hidden="true"></span> All systems nominal</span>
+      </div>
+      {for col <- @columns do}
+        <nav class="tz-foot__col" aria-label={col.title}>
+          <h3 class="tz-foot__col-title">{col.title}</h3>
+          <ul>
+            {for l <- col.links do}
+              <li><.link href={l.href}>{l.label}</.link></li>
+            {/for}
+          </ul>
+        </nav>
+      {/for}
+    </div>
+    <div class="tz-foot__legal">
+      <p>© 2026 Latch Systems, Inc. — invoices paid, friendships kept.</p>
+      <p>{@locale_line}</p>
+    </div>
+    <div class="tz-foot__wordmark" aria-hidden="true">{@wordmark}<span class="tz-foot__wm-dot">.</span></div>
+  </div>
+</footer>
