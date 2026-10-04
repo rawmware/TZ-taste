@@ -1,0 +1,95 @@
+{
+ "_tzmeta": {
+  "id": "vscode-art-deco-luxe",
+  "title": "Art Deco Luxe VS Code theme",
+  "category": "VS Code",
+  "file": "vscode/art-deco-luxe.json",
+  "tags": [
+   "vscode",
+   "theme",
+   "art-deco-luxe"
+  ],
+  "description": "VS Code color theme from the Art Deco Luxe DNA tokens.",
+  "dnas": [
+   "art-deco-luxe"
+  ]
+ },
+ "name": "TZ Art Deco Luxe",
+ "type": "dark",
+ "colors": {
+  "editor.background": "#0d0b08",
+  "editor.foreground": "#f2e7c9",
+  "editorLineNumber.foreground": "#8a7f63",
+  "editorCursor.foreground": "#c9a227",
+  "activityBar.background": "#0d0b08",
+  "activityBar.foreground": "#f2e7c9",
+  "sideBar.background": "#0d0b08",
+  "statusBar.background": "#c9a227",
+  "statusBar.foreground": "#0d0b08",
+  "tab.activeBackground": "#0d0b08",
+  "tab.inactiveBackground": "#0d0b08",
+  "editorGroupHeader.tabsBackground": "#0d0b08",
+  "terminal.background": "#0d0b08",
+  "terminal.foreground": "#f2e7c9",
+  "panel.background": "#0d0b08",
+  "editorWidget.background": "#0d0b08",
+  "pickerGroup.foreground": "#c9a227",
+  "progressBar.background": "#c9a227",
+  "focusBorder": "#c9a2274d"
+ },
+ "tokenColors": [
+  {
+   "scope": [
+    "comment"
+   ],
+   "settings": {
+    "foreground": "#8a7f63",
+    "fontStyle": "italic"
+   }
+  },
+  {
+   "scope": [
+    "keyword",
+    "storage"
+   ],
+   "settings": {
+    "foreground": "#c9a227"
+   }
+  },
+  {
+   "scope": [
+    "string"
+   ],
+   "settings": {
+    "foreground": "#f2e7c9"
+   }
+  },
+  {
+   "scope": [
+    "variable",
+    "identifier"
+   ],
+   "settings": {
+    "foreground": "#f2e7c9"
+   }
+  },
+  {
+   "scope": [
+    "entity.name.function"
+   ],
+   "settings": {
+    "foreground": "#c9a227",
+    "fontStyle": "bold"
+   }
+  },
+  {
+   "scope": [
+    "entity.name.type",
+    "support.type"
+   ],
+   "settings": {
+    "foreground": "#8a7f63"
+   }
+  }
+ ]
+}
