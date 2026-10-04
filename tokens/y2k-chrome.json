@@ -1,0 +1,62 @@
+{
+ "_tzmeta": {
+  "id": "tokens-y2k-chrome",
+  "title": "Y2K Chrome design tokens",
+  "category": "Tokens",
+  "file": "tokens/y2k-chrome.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "y2k-chrome"
+  ],
+  "description": "W3C-format design tokens for the Y2K Chrome style DNA.",
+  "dnas": [
+   "y2k-chrome"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#0d0d12",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#f4f4f8",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#b8c5ff",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#6e6e80",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#ffffff26",
+   "$type": "color"
+  },
+  "surface": {
+   "$value": "#15151d",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Unbounded",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Space Grotesk",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "y2k-chrome",
+  "name": "Y2K Chrome",
+  "vibe": "Liquid metal, iridescent gradients, bubbly type. The future as imagined in 1999."
+ }
+}
