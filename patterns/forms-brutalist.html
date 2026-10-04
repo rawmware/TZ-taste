@@ -1,0 +1,47 @@
+<!--tz-meta {"id":"forms-brutalist","title":"Raw form","category":"Forms","file":"patterns/forms-brutalist.html","tags":["brutal","raw","bordered"],"description":"Full-strength black borders, mono labels, square corners, zero softness.","dnas":["swiss-rational"]} -->
+<section class="tz-raw" aria-labelledby="tz-raw-h">
+  <p class="tz-raw-eyebrow">Form N°07 · No placeholders were harmed</p>
+  <h2 id="tz-raw-h">Request access</h2>
+  <form action="#" method="post">
+    <div class="tz-raw-grid">
+      <div class="tz-raw-field">
+        <label for="tz-rf-name">Full name</label>
+        <input id="tz-rf-name" type="text" name="name" autocomplete="name" required>
+      </div>
+      <div class="tz-raw-field">
+        <label for="tz-rf-email">Email</label>
+        <input id="tz-rf-email" type="email" name="email" autocomplete="email" required>
+      </div>
+    </div>
+    <div class="tz-raw-field">
+      <label for="tz-rf-use">What will you build?</label>
+      <textarea id="tz-rf-use" name="use" rows="3" required></textarea>
+    </div>
+    <label class="tz-raw-check"><input type="checkbox" name="terms" required> I read the terms. All six pages.</label>
+    <button type="submit">Submit request</button>
+  </form>
+  <p class="tz-raw-note">We reply within 2 business days. Usually faster.</p>
+</section>
+<style>
+.tz-raw{--bg:#fff;--ink:#111;--red:#b32d22;
+  background:var(--bg);color:var(--ink);padding:clamp(56px,8vw,110px) clamp(24px,6vw,96px);
+  font-family:Arial,Helvetica,sans-serif;max-width:720px;margin:0 auto}
+.tz-raw-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--red);margin:0 0 16px}
+.tz-raw h2{font-size:clamp(38px,6vw,62px);letter-spacing:-.03em;margin:0 0 36px;font-weight:900}
+.tz-raw-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.tz-raw-field{margin-bottom:22px}
+.tz-raw-field label{display:block;font-family:ui-monospace,Menlo,monospace;font-size:12px;
+  letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;font-weight:bold}
+.tz-raw-field input,.tz-raw-field textarea{width:100%;box-sizing:border-box;border:3px solid var(--ink);
+  border-radius:0;background:#fff;font-size:17px;font-family:inherit;color:var(--ink);padding:14px}
+.tz-raw-field input:focus,.tz-raw-field textarea:focus{outline:none;box-shadow:5px 5px 0 var(--red)}
+.tz-raw-field textarea{resize:vertical}
+.tz-raw-check{display:flex;align-items:center;gap:12px;font-size:15px;margin:4px 0 30px;cursor:pointer}
+.tz-raw-check input{width:22px;height:22px;accent-color:var(--red);flex:none}
+.tz-raw form button{background:var(--ink);color:#fff;border:0;border-radius:0;font-size:17px;
+  font-weight:900;padding:18px 44px;cursor:pointer;font-family:inherit;letter-spacing:.02em}
+.tz-raw form button:hover{background:var(--red)}
+.tz-raw-note{font-family:ui-monospace,Menlo,monospace;font-size:13px;margin:24px 0 0;color:#555}
+@media (max-width:560px){.tz-raw-grid{grid-template-columns:1fr}}
+</style>
