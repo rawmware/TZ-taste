@@ -1,0 +1,400 @@
+<!--tz-meta {"id":"bookstore","title":"Obsidian & Oak — Independent Bookstore","category":"Template","file":"templates/bookstore.html","tags":["bookstore","retail","books"],"description":"Gothic-editorial independent bookstore with chaptered sections and candlelit dark tones.","dnas":["gothic-editorial"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Obsidian &amp; Oak — an independent bookstore</title>
+<meta name="description" content="Obsidian & Oak is an independent bookstore in Salem, Massachusetts. New, used, and rare books; weekly readings; staff picks with opinions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* DNA: gothic-editorial — candlelit dark, oxblood accent, drop caps and roman numerals */
+:root{
+  --tz-bg:#131013; --tz-surface:#1c181b; --tz-ink:#e8dfcc; --tz-muted:#b3a891;
+  --tz-accent:#c33a4e; --tz-line:rgba(232,223,204,.16);
+  --tz-display:'Cormorant Garamond',serif; --tz-body:'Newsreader',serif; --tz-mono:'Space Mono',monospace;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:var(--tz-body);font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased}
+::selection{background:var(--tz-accent);color:#fff}
+a{color:inherit}
+.tz-wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+.tz-mono{font-family:var(--tz-mono)}
+.tz-nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0;border-bottom:1px solid var(--tz-line)}
+.tz-brand{font-family:var(--tz-display);font-weight:700;font-size:24px;text-decoration:none;letter-spacing:.04em}
+.tz-brand em{font-style:normal;color:var(--tz-accent)}
+.tz-navlinks{display:flex;gap:30px;font-family:var(--tz-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.tz-navlinks a{text-decoration:none;color:var(--tz-muted)}
+.tz-navlinks a:hover{color:var(--tz-accent)}
+.tz-btn{display:inline-block;font-family:var(--tz-mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border:1px solid var(--tz-accent);color:var(--tz-accent);padding:15px 30px;transition:all .3s var(--tz-ease)}
+.tz-btn:hover{background:var(--tz-accent);color:#131013;transform:translateY(-2px)}
+/* hero: colophon composition */
+.tz-hero{padding:110px 0 90px;display:grid;grid-template-columns:1fr;gap:0;text-align:left}
+.tz-chapter{font-family:var(--tz-mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--tz-accent);margin-bottom:28px;display:flex;align-items:center;gap:16px}
+.tz-chapter::after{content:"";flex:1;height:1px;background:var(--tz-line)}
+.tz-hero h1{font-family:var(--tz-display);font-weight:600;font-size:clamp(52px,7vw,102px);line-height:1;letter-spacing:-.01em;max-width:12ch}
+.tz-hero h1 i{font-style:italic;color:var(--tz-accent)}
+.tz-hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:72px;margin-top:48px;align-items:start}
+.tz-hero-grid .tz-drop::first-letter{font-family:var(--tz-display);font-size:64px;font-weight:700;float:left;line-height:.85;padding:6px 12px 0 0;color:var(--tz-accent)}
+.tz-hero-grid p{color:var(--tz-muted);margin-bottom:20px;max-width:52ch}
+.tz-hero-grid p strong{color:var(--tz-ink);font-weight:500}
+.tz-colophon{border:1px solid var(--tz-line);padding:40px;background:var(--tz-surface)}
+.tz-colophon h3{font-family:var(--tz-mono);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--tz-accent);margin-bottom:20px}
+.tz-colophon dl{display:grid;grid-template-columns:auto 1fr;gap:10px 24px;font-size:15px}
+.tz-colophon dt{font-family:var(--tz-mono);font-size:12px;color:var(--tz-muted);text-transform:uppercase;letter-spacing:.1em}
+.tz-colophon dd{margin:0}
+/* sections */
+.tz-section{padding:96px 0;border-top:1px solid var(--tz-line)}
+.tz-sec-head{margin-bottom:56px;max-width:700px}
+.tz-sec-head h2{font-family:var(--tz-display);font-weight:600;font-size:clamp(38px,4.6vw,62px);line-height:1.05}
+.tz-sec-head h2 i{font-style:italic;color:var(--tz-accent)}
+.tz-sec-head p{color:var(--tz-muted);margin-top:16px;font-size:18px}
+/* staff picks: book spines, varied */
+.tz-shelf{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--tz-line)}
+.tz-book{display:grid;grid-template-columns:110px 1fr;gap:28px;padding:40px;border-bottom:1px solid var(--tz-line);text-decoration:none;transition:background .3s}
+.tz-book:nth-child(odd){border-right:1px solid var(--tz-line)}
+.tz-book:nth-last-child(-n+2){border-bottom:none}
+.tz-book:hover{background:var(--tz-surface)}
+.tz-spine{width:110px;height:168px;background:linear-gradient(135deg,#2a2328,#1c181b);border:1px solid var(--tz-line);display:flex;align-items:center;justify-content:center;padding:14px;text-align:center;position:relative}
+.tz-spine::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:1px;background:var(--tz-line)}
+.tz-spine span{font-family:var(--tz-display);font-size:15px;font-weight:600;line-height:1.25;color:var(--tz-ink)}
+.tz-book:nth-child(1) .tz-spine{background:linear-gradient(135deg,#3d1f26,#241317)}
+.tz-book:nth-child(2) .tz-spine{background:linear-gradient(135deg,#1f2a26,#121a17)}
+.tz-book:nth-child(3) .tz-spine{background:linear-gradient(135deg,#2a2f45,#171a28)}
+.tz-book:nth-child(4) .tz-spine{background:linear-gradient(135deg,#3a2c18,#211809)}
+.tz-book h3{font-family:var(--tz-display);font-size:26px;font-weight:600;margin-bottom:4px}
+.tz-book .tz-author{font-style:italic;color:var(--tz-muted);font-size:16px;margin-bottom:12px;display:block}
+.tz-book p{font-size:16px;color:var(--tz-muted)}
+.tz-book .tz-pickby{font-family:var(--tz-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tz-accent);margin-top:14px;display:block}
+.tz-book .tz-price{font-family:var(--tz-mono);font-size:13px;color:var(--tz-ink);margin-top:6px;display:block}
+/* events: broadsheet rows */
+.tz-event{display:grid;grid-template-columns:150px 1fr auto;gap:32px;align-items:center;padding:30px 0;border-top:1px solid var(--tz-line);text-decoration:none}
+.tz-event:last-child{border-bottom:1px solid var(--tz-line)}
+.tz-event:hover .tz-ev-title{color:var(--tz-accent)}
+.tz-ev-date{font-family:var(--tz-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-ev-date b{display:block;font-family:var(--tz-display);font-size:34px;color:var(--tz-ink);letter-spacing:0}
+.tz-ev-title{font-family:var(--tz-display);font-size:28px;font-weight:600;transition:color .25s}
+.tz-event p{color:var(--tz-muted);font-size:16px}
+.tz-ev-rsvp{font-family:var(--tz-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;border:1px solid var(--tz-line);padding:12px 20px;white-space:nowrap}
+/* rare shelf: single statement + list */
+.tz-rare{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+.tz-rare blockquote{font-family:var(--tz-display);font-size:clamp(28px,3.2vw,42px);font-style:italic;line-height:1.3;border-left:3px solid var(--tz-accent);padding-left:32px}
+.tz-rare ul{list-style:none}
+.tz-rare li{display:flex;justify-content:space-between;gap:20px;padding:18px 0;border-bottom:1px solid var(--tz-line);font-size:16px}
+.tz-rare li span:last-child{font-family:var(--tz-mono);font-size:13px;color:var(--tz-accent);white-space:nowrap}
+/* membership: two ledgers, asymmetric */
+.tz-plans{display:grid;grid-template-columns:1fr 1.35fr;gap:32px;align-items:stretch}
+.tz-plan{border:1px solid var(--tz-line);padding:48px;text-decoration:none;display:block;transition:transform .3s var(--tz-ease)}
+.tz-plan:hover{transform:translateY(-4px)}
+.tz-plan--dark{background:var(--tz-accent);border-color:var(--tz-accent);color:#131013}
+.tz-plan .tz-tier{font-family:var(--tz-mono);font-size:11px;letter-spacing:.26em;text-transform:uppercase;margin-bottom:18px;display:block}
+.tz-plan--dark .tz-tier{color:#131013}
+.tz-plan h3{font-family:var(--tz-display);font-size:36px;font-weight:600;margin-bottom:14px}
+.tz-plan p{font-size:16px;margin-bottom:24px}
+.tz-plan--dark p{color:#3a1219}
+.tz-plan ul{list-style:none;margin-bottom:28px}
+.tz-plan li{padding:8px 0;border-bottom:1px dashed var(--tz-line);font-size:15px}
+.tz-plan--dark li{border-color:rgba(19,16,19,.3)}
+.tz-plan .tz-cost{font-family:var(--tz-display);font-size:44px;font-weight:700}
+.tz-plan .tz-cost small{font-family:var(--tz-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:400}
+/* footer */
+.tz-footer{border-top:1px solid var(--tz-line);padding:64px 0 36px}
+.tz-footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.tz-footer h4{font-family:var(--tz-mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:18px}
+.tz-footer ul{list-style:none}.tz-footer li{margin-bottom:10px}
+.tz-footer a{text-decoration:none;font-size:15px}
+.tz-footer a:hover{color:var(--tz-accent)}
+.tz-footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-family:var(--tz-mono);font-size:11px;letter-spacing:.1em;color:var(--tz-muted);border-top:1px solid var(--tz-line);padding-top:28px;text-transform:uppercase}
+.tz-reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--tz-ease),transform .7s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}.tz-reveal{opacity:1;transform:none;transition:none}*{transition:none !important}
+}
+@media(max-width:900px){
+  .tz-hero-grid{grid-template-columns:1fr;gap:40px}
+  .tz-shelf{grid-template-columns:1fr}
+  .tz-book:nth-child(odd){border-right:none}
+  .tz-book:nth-last-child(-n+2){border-bottom:1px solid var(--tz-line)}
+  .tz-book:last-child{border-bottom:none}
+  .tz-rare{grid-template-columns:1fr;gap:40px}
+  .tz-plans{grid-template-columns:1fr}
+  .tz-navlinks{display:none}
+  .tz-event{grid-template-columns:1fr;gap:12px}
+}
+@media(max-width:600px){
+  .tz-section{padding:64px 0}
+  .tz-book{grid-template-columns:84px 1fr;padding:28px;gap:20px}
+  .tz-spine{width:84px;height:130px}
+  .tz-footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<!-- DNA: gothic-editorial · design read: an independent bookstore page set like a gothic novel's front matter — chapters, colophons, candlelit dark · dials V6/M3/D5 · one weird thing: sections numbered as chapters (I–VI) with a drop-cap manifesto -->
+<header class="tz-wrap">
+  <nav class="tz-nav" aria-label="Main">
+    <a class="tz-brand" href="#">Obsidian <em>&amp;</em> Oak</a>
+    <div class="tz-navlinks">
+      <a href="#picks">Staff picks</a><a href="#events">Readings</a><a href="#rare">Rare shelf</a><a href="#circle">Circle</a>
+    </div>
+    <a class="tz-btn" href="#visit">Plan a visit</a>
+  </nav>
+</header>
+
+<main>
+  <section class="tz-wrap tz-hero">
+    <span class="tz-chapter">Chapter I · The Shop</span>
+    <h1>A bookstore for people who <i>read past midnight.</i></h1>
+    <div class="tz-hero-grid">
+      <p class="tz-drop">Obsidian &amp; Oak has stood on Essex Street since 1987 — three floors of new, used, and genuinely rare books, a resident shop cat named Marginalia, and booksellers who will argue with you, affectionately, about endings. We don't do algorithms. We do opinions, strongly held and freely given.</p>
+      <aside class="tz-colophon">
+        <h3>Colophon</h3>
+        <dl>
+          <dt>Address</dt><dd>214 Essex Street, Salem, MA</dd>
+          <dt>Hours</dt><dd>Daily, 10am – 9pm</dd>
+          <dt>Shelves</dt><dd>~40,000 volumes</dd>
+          <dt>Cat</dt><dd>Marginalia (tabby, judgmental)</dd>
+          <dt>Est.</dt><dd>1987</dd>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <section class="tz-section" id="picks">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-chapter">Chapter II · Staff Picks</span>
+        <h2>What we're <i>pressing</i> into hands this month</h2>
+        <p>Every pick below was argued over at the Tuesday meeting. The dissenting opinions are available in person.</p>
+      </div>
+      <div class="tz-shelf">
+        <a class="tz-book tz-reveal" href="#visit">
+          <div class="tz-spine" aria-hidden="true"><span>The Salt Meridian</span></div>
+          <div><h3>The Salt Meridian</h3><span class="tz-author">by Ines Duarte</span><p>A cartographer's widow redraws the maps her husband lied on — and finds an island that shouldn't exist. The rare literary mystery that earns its ending.</p><span class="tz-pickby">Picked by June · Fiction</span><span class="tz-price">$27.00 hardcover</span></div>
+        </a>
+        <a class="tz-book tz-reveal" href="#visit">
+          <div class="tz-spine" aria-hidden="true"><span>A Field Guide to Vanishing</span></div>
+          <div><h3>A Field Guide to Vanishing</h3><span class="tz-author">by Theo Marchetti</span><p>Essays on the last lighthouse keepers, night-shift bakers, and other people the century misplaced. Read the chapter on the ferry captain twice.</p><span class="tz-pickby">Picked by Theo · Essays</span><span class="tz-price">$18.00 paperback</span></div>
+        </a>
+        <a class="tz-book tz-reveal" href="#visit">
+          <div class="tz-spine" aria-hidden="true"><span>Hollow House</span></div>
+          <div><h3>Hollow House</h3><span class="tz-author">by R. V. Ashworth</span><p>A gothic that understands the assignment: a crumbling manor, an unreliable heir, and dread that builds like weather. Our October handsell.</p><span class="tz-pickby">Picked by Priya · Horror</span><span class="tz-price">$19.00 paperback</span></div>
+        </a>
+        <a class="tz-book tz-reveal" href="#visit">
+          <div class="tz-spine" aria-hidden="true"><span>The Commonplace Rebellion</span></div>
+          <div><h3>The Commonplace Rebellion</h3><span class="tz-author">by Ada Okafor</span><p>A history of marginalia — readers talking back to books for five hundred years. You'll never read a used book the same way.</p><span class="tz-pickby">Picked by Marcus · History</span><span class="tz-price">$32.00 hardcover</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="events">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-chapter">Chapter III · Readings</span>
+        <h2>Evenings <i>at the shop</i></h2>
+        <p>Free, always. Wine is two dollars and goes to the literacy fund.</p>
+      </div>
+      <a class="tz-event tz-reveal" href="#visit">
+        <div class="tz-ev-date"><b>09</b>Oct · Thu 7pm</div>
+        <div><div class="tz-ev-title">Ines Duarte reads from The Salt Meridian</div><p>With a Q&amp;A on lying cartographers and the maps in the shop's rare room.</p></div>
+        <span class="tz-ev-rsvp">RSVP free</span>
+      </a>
+      <a class="tz-event tz-reveal" href="#visit">
+        <div class="tz-ev-date"><b>16</b>Oct · Thu 7pm</div>
+        <div><div class="tz-ev-title">The Midnight Anthology: local horror writers</div><p>Five Salem writers, five new stories, read by candlelight. Not for the faint of heart.</p></div>
+        <span class="tz-ev-rsvp">RSVP free</span>
+      </a>
+      <a class="tz-event tz-reveal" href="#visit">
+        <div class="tz-ev-date"><b>23</b>Oct · Thu 7pm</div>
+        <div><div class="tz-ev-title">Silent reading party</div><p>Bring whatever you're reading. We provide the chairs, the quiet, and the tea.</p></div>
+        <span class="tz-ev-rsvp">RSVP free</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="tz-section" id="rare">
+    <div class="tz-wrap tz-rare">
+      <div class="tz-reveal">
+        <span class="tz-chapter">Chapter IV · The Rare Room</span>
+        <blockquote>"The rare room is appointment-only, climate-controlled, and the reason three of our regulars have trust funds slightly smaller than they used to."</blockquote>
+        <p style="color:var(--tz-muted);margin-top:24px">First editions, signed printings, and oddities — from a 1794 herbal to the complete run of a 1970s underground comics zine. Ask Marcus. He'll light up like the chandelier.</p>
+        <div style="margin-top:28px"><a class="tz-btn" href="#visit">Request an appointment</a></div>
+      </div>
+      <ul class="tz-reveal">
+        <li><span>1794 — Culpeper's Complete Herbal, rebound</span><span>$1,850</span></li>
+        <li><span>1925 — First American edition, unclipped jacket</span><span>$4,200</span></li>
+        <li><span>1968 — Signed first printing, author's inscription</span><span>$675</span></li>
+        <li><span>1974–79 — Complete zine run, 23 issues</span><span>$940</span></li>
+        <li><span>1911 — Illustrated bestiary, 40 hand-colored plates</span><span>$2,300</span></li>
+      </ul>
+    </div>
+  </section>
+
+<style>
+.tz-clubs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border:1px solid var(--tz-line)}
+.tz-club{padding:40px 34px;border-right:1px solid var(--tz-line);text-decoration:none;display:block;transition:background .25s}
+.tz-club:last-child{border-right:none}
+.tz-club:hover{background:var(--tz-surface)}
+.tz-club .tz-when{font-family:var(--tz-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tz-accent);display:block;margin-bottom:14px}
+.tz-club h3{font-family:var(--tz-display);font-size:26px;font-weight:600;margin-bottom:10px}
+.tz-club p{font-size:15px;color:var(--tz-muted);margin-bottom:14px}
+.tz-club .tz-now{font-style:italic;font-size:15px;color:var(--tz-ink)}
+.tz-kids{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+.tz-kids h2{font-family:var(--tz-display);font-weight:600;font-size:clamp(34px,4vw,54px);line-height:1.05;margin-bottom:20px}
+.tz-kids h2 i{font-style:italic;color:var(--tz-accent)}
+.tz-kids p{color:var(--tz-muted);margin-bottom:16px;font-size:18px}
+.tz-giftcard{border:1px solid var(--tz-accent);background:var(--tz-surface);padding:56px;text-align:center;position:relative}
+.tz-giftcard::before{content:"";position:absolute;inset:10px;border:1px dashed var(--tz-line);pointer-events:none}
+.tz-giftcard h3{font-family:var(--tz-display);font-size:32px;font-weight:600;margin-bottom:12px}
+.tz-giftcard p{color:var(--tz-muted);font-size:16px;max-width:44ch;margin:0 auto 28px}
+@media(max-width:900px){.tz-clubs{grid-template-columns:1fr}.tz-club{border-right:none;border-bottom:1px solid var(--tz-line)}.tz-club:last-child{border-bottom:none}.tz-kids{grid-template-columns:1fr;gap:40px}}
+</style>
+  <section class="tz-section" id="clubs" style="border-top:1px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-chapter">Interlude · The Clubs</span>
+        <h2>Read <i>together</i></h2>
+        <p>Three clubs, all free, all opinionated. Visitors welcome; regulars bring the snacks.</p>
+      </div>
+      <div class="tz-clubs tz-reveal">
+        <a class="tz-club" href="#visit"><span class="tz-when">First Tuesdays · 7pm</span><h3>The Midnight Society</h3><p>Horror and gothic, naturally. October is sacred; jump scares are discussed academically.</p><span class="tz-now">Now reading: <i>Hollow House</i></span></a>
+        <a class="tz-club" href="#visit"><span class="tz-when">Third Thursdays · 7pm</span><h3>The Commonplace</h3><p>Nonfiction with teeth — history, science, and the occasional memoir that starts a fight.</p><span class="tz-now">Now reading: <i>The Commonplace Rebellion</i></span></a>
+        <a class="tz-club" href="#visit"><span class="tz-when">Sundays · 11am</span><h3>Small Readers</h3><p>Story hour for ages 4–8, then twenty minutes of gloriously unstructured browsing.</p><span class="tz-now">This week: <i>dragons, obviously</i></span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="young" style="border-top:1px solid var(--tz-line)">
+    <div class="tz-wrap tz-kids">
+      <div class="tz-reveal">
+        <span class="tz-chapter">Chapter V½ · The Young</span>
+        <h2>The children's room is <i>downstairs.</i></h2>
+        <p>The whole third floor belongs to readers under twelve: picture books at knee height, a reading nook shaped like a ship, and a wall where kids review books in crayon — the most honest criticism in the building.</p>
+        <p>Saturday story hour at 11am. Birthday parties among the stacks (ten kids max, cake allowed, glitter negotiable).</p>
+        <div style="margin-top:28px"><a class="tz-btn" href="#visit">Plan a visit</a></div>
+      </div>
+      <div class="tz-giftcard tz-reveal">
+        <h3>The gift card</h3>
+        <p>Good in-store and online, never expires, and arrives in a hand-stamped envelope. The correct answer to "what do you get a reader."</p>
+        <a class="tz-btn" href="#visit">Buy a gift card</a>
+        <p class="tz-mono" style="font-size:11px;letter-spacing:.12em;color:var(--tz-muted);margin-top:20px">ALSO AVAILABLE: SIGNED-STOCK ALERTS · FIRST-EDITION FINDING SERVICE</p>
+        <p class="tz-mono" style="font-size:11px;letter-spacing:.12em;color:var(--tz-muted);margin-top:10px">BULK ORDERS FOR BOOK CLUBS (8+ COPIES): 15% OFF · WE'LL HOLD THEM UNDER THE COUNTER</p>
+        <p class="tz-mono" style="font-size:11px;letter-spacing:.12em;color:var(--tz-muted);margin-top:10px">RARE BOOK FINDING SERVICE: TELL MARCUS WHAT YOU'RE HUNTING · HE LIVES FOR THIS</p>
+        <p class="tz-mono" style="font-size:11px;letter-spacing:.12em;color:var(--tz-muted);margin-top:10px">WRAPPING IS ALWAYS FREE · AND ALWAYS INVOLVES ACTUAL PAPER, NEVER A BAG</p>
+        <p class="tz-mono" style="font-size:11px;letter-spacing:.12em;color:var(--tz-muted);margin-top:10px">LOST IN THE STACKS? ASK ANYONE — GETTING LOST IS HALF THE POINT</p>
+      </div>
+    </div>
+  </section>
+
+<style>
+.tz-sell{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.tz-sell h2{font-family:var(--tz-display);font-weight:600;font-size:clamp(34px,4vw,54px);line-height:1.05;margin-bottom:20px}
+.tz-sell h2 i{font-style:italic;color:var(--tz-accent)}
+.tz-sell p{color:var(--tz-muted);font-size:18px;margin-bottom:16px;max-width:52ch}
+.tz-sell ul{list-style:none;margin:24px 0}
+.tz-sell li{padding:12px 0;border-bottom:1px solid var(--tz-line);font-size:16px;display:flex;justify-content:space-between;gap:20px}
+.tz-sell li span:last-child{font-family:var(--tz-mono);font-size:13px;color:var(--tz-accent);white-space:nowrap}
+.tz-cat-card{border:1px solid var(--tz-line);background:var(--tz-surface);padding:56px 48px;text-align:center;transform:rotate(-1deg)}
+.tz-cat-card .tz-catname{font-family:var(--tz-display);font-size:64px;font-weight:700;color:var(--tz-accent);display:block;margin-bottom:16px}
+.tz-cat-card h3{font-family:var(--tz-display);font-size:28px;font-weight:600;margin-bottom:12px}
+.tz-cat-card p{color:var(--tz-muted);font-size:16px;margin-bottom:24px}
+@media(max-width:900px){.tz-sell{grid-template-columns:1fr;gap:40px}}
+</style>
+  <section class="tz-section" id="sell" style="border-top:1px solid var(--tz-line)">
+    <div class="tz-wrap tz-sell">
+      <div class="tz-reveal">
+        <span class="tz-chapter">Chapter V¾ · Sell Us Books</span>
+        <h2>Your shelves are <i>our</i> inventory.</h2>
+        <p>We buy used books every afternoon, 1–5pm. Bring a box; leave with store credit (50% of what we'll price them at) or cash (30%). No appointment needed for under two boxes.</p>
+        <ul>
+          <li><span>Literary fiction, poetry, history</span><span>always buying</span></li>
+          <li><span>Science fiction &amp; fantasy, complete series</span><span>always buying</span></li>
+          <li><span>Children's picture books, gently loved</span><span>always buying</span></li>
+          <li><span>Textbooks older than 3 years</span><span>regretfully, no</span></li>
+          <li><span>Encyclopedias, Reader's Digest</span><span>kindly, no</span></li>
+        </ul>
+        <p class="tz-mono" style="font-size:12px;letter-spacing:.08em;color:var(--tz-muted);margin-top:20px">LARGE COLLECTIONS (10+ BOXES): EMAIL PHOTOS FIRST · WE MAKE HOUSE CALLS FOR ESTATES</p>
+      </div>
+      <div class="tz-cat-card tz-reveal">
+        <span class="tz-catname">M.</span>
+        <h3>Marginalia, shop cat</h3>
+        <p>Tabby, twelve pounds, judgmental. Inspects all incoming boxes by sitting on them. Has strong opinions about dust jackets and can be bribed with chin scratches.</p>
+        <p class="tz-mono" style="font-size:11px;letter-spacing:.14em;color:var(--tz-muted)">ON DUTY DAILY · NAPS 2–4PM · DO NOT WAKE</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="circle">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-chapter">Chapter V · The Circle</span>
+        <h2>Join the <i>First Editions Circle</i></h2>
+        <p>Our membership for people who want first dibs and signed everything.</p>
+      </div>
+      <div class="tz-plans">
+        <a class="tz-plan tz-reveal" href="#visit">
+          <span class="tz-tier">Reader</span>
+          <h3>The Browser</h3>
+          <p>For the regular who wants a little more.</p>
+          <ul><li>10% off new hardcovers, always</li><li>First notice of signed stock</li><li>Monthly staff-picks letter</li></ul>
+          <div class="tz-cost">$45 <small>/ year</small></div>
+        </a>
+        <a class="tz-plan tz-plan--dark tz-reveal" href="#visit">
+          <span class="tz-tier">Collector</span>
+          <h3>The First Editions Circle</h3>
+          <p>For the ones who ask about the rare room by name.</p>
+          <ul><li>Everything in The Browser</li><li>Reserved signed first editions, monthly</li><li>Two rare-room appointments a year</li><li>Annual members' dinner in the stacks</li><li>20% off all used books</li></ul>
+          <div class="tz-cost">$180 <small>/ year</small></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="visit" style="padding-bottom:96px">
+    <div class="tz-wrap">
+      <span class="tz-chapter">Chapter VI · Visit</span>
+      <div class="tz-hero-grid" style="margin-top:32px">
+        <div>
+          <h2 style="font-family:var(--tz-display);font-size:clamp(34px,4vw,54px);font-weight:600;margin-bottom:20px">Come get <i style="color:var(--tz-accent)">lost</i> in the stacks.</h2>
+          <p style="color:var(--tz-muted)">214 Essex Street, Salem, MA · daily 10am–9pm · (978) 555-0147 · <a href="mailto:hello@obsidianandoak.books" style="color:var(--tz-accent)">hello@obsidianandoak.books</a></p>
+          <p style="color:var(--tz-muted)">We buy used books every afternoon — bring a box, leave with credit or cash and a lighter bag.</p>
+        </div>
+        <div><a class="tz-btn" href="mailto:hello@obsidianandoak.books">Write to the shop</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-footer-grid">
+      <div>
+        <h4>Obsidian &amp; Oak</h4>
+        <p style="font-size:15px;color:var(--tz-muted);max-width:32ch">Independent since 1987. New, used, and rare books in Salem, Massachusetts.</p>
+      </div>
+      <div><h4>Shop</h4><ul><li><a href="#picks">Staff picks</a></li><li><a href="#rare">Rare room</a></li><li><a href="#">Sell us books</a></li></ul></div>
+      <div><h4>Elsewhere</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">Bookshop.org</a></li><li><a href="#">Gift cards</a></li></ul></div>
+    </div>
+    <div class="tz-footer-bottom">
+      <span>© 2026 Obsidian &amp; Oak Booksellers</span>
+      <span class="tz-mono">Fin · Marginalia approves this site</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els=document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('tz-in')});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(en,i){if(en.isIntersecting){setTimeout(function(){en.target.classList.add('tz-in')},(i%3)*80);io.unobserve(en.target);}})},{threshold:.1});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
