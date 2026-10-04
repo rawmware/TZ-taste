@@ -1,3 +1,4 @@
+<!--tz-meta {"id":"soft-minimal","name":"Soft Minimal","vibe":"Off-white calm, iris accent, spring motion. The Linear/Notion register, done right.","file":"styles/soft-minimal.md","tags":["saas","calm","product","clean"],"best_for":["saas","productivity","developer tools","mobile apps"],"fonts":{"body":"Instrument Sans","display":"Instrument Sans","mono":"JetBrains Mono"},"tokens":{"accent":"#5b5bd6","bg":"#f7f7f5","ink":"#1a1a1a","line":"#1a1a1414","muted":"#8a8a93","surface":"#ffffff"},"dials":{"density":5,"motion":5,"variance":3}} -->
 # Soft Minimal
 
 > Off-white calm, iris accent, spring motion. The Linear/Notion register, done right.
