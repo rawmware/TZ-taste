@@ -1,0 +1,52 @@
+<!--tz-meta {"id":"team-cards","title":"Profile cards","category":"Team","file":"patterns/team-cards.html","tags":["cards","profiles"],"description":"Calm profile cards with gradient avatars in a staggered offset row.","dnas":["soft-minimal"]} -->
+<section class="tz-pcards" aria-label="Team profiles">
+  <p class="tz-eyebrow">The people behind the work</p>
+  <div class="tz-deck">
+    <article class="tz-pc tz-o1">
+      <span class="tz-face tz-f1" aria-hidden="true">RC</span>
+      <h3>Roman Cottonham</h3>
+      <p class="tz-role">Founder · builds everything</p>
+      <p class="tz-bio">Fourteen years fixing things for neighbors, now for clients. Answers his own email.</p>
+    </article>
+    <article class="tz-pc tz-o2">
+      <span class="tz-face tz-f2" aria-hidden="true">MJ</span>
+      <h3>Mara Jensen</h3>
+      <p class="tz-role">Design · typography</p>
+      <p class="tz-bio">Print-trained, web-defected. Kills gradients that don't earn their place.</p>
+    </article>
+    <article class="tz-pc tz-o3">
+      <span class="tz-face tz-f3" aria-hidden="true">TO</span>
+      <h3>Theo Okafor</h3>
+      <p class="tz-role">Backend · data</p>
+      <p class="tz-bio">Keeps servers upright and documents the code. A personality trait around here.</p>
+    </article>
+    <article class="tz-pc tz-o4">
+      <span class="tz-face tz-f4" aria-hidden="true">AL</span>
+      <h3>Ana Lindqvist</h3>
+      <p class="tz-role">Content · words</p>
+      <p class="tz-bio">Writes the sentences clients are too busy to write. Reads everything aloud first.</p>
+    </article>
+  </div>
+</section>
+<style>
+.tz-pcards{--bg:#faf8f4;--ink:#2b2a26;--soft:#5f5b53;--card:#ffffff;--rust:#a34a24;
+  background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;
+  padding:clamp(56px,9vw,120px) clamp(20px,6vw,80px)}
+.tz-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--soft);margin:0 0 48px}
+.tz-deck{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px;align-items:start}
+.tz-pc{background:var(--card);border:1px solid #2b2a2618;padding:28px 24px 30px;margin:0}
+.tz-o2{margin-top:36px}.tz-o3{margin-top:12px}.tz-o4{margin-top:48px}
+.tz-face{width:60px;height:60px;border-radius:50%;display:inline-flex;align-items:center;
+  justify-content:center;font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:17px;
+  color:#fff;margin-bottom:18px}
+.tz-f1{background:linear-gradient(140deg,#c96f3f,#8a3c18)}.tz-f2{background:linear-gradient(140deg,#8a9a5b,#4d5c2a)}
+.tz-f3{background:linear-gradient(140deg,#5f7a84,#2c383f)}.tz-f4{background:linear-gradient(140deg,#d9a441,#9a6b14)}
+.tz-pc h3{margin:0 0 4px;font-size:21px;font-weight:400;letter-spacing:-.01em}
+.tz-role{margin:0 0 12px;font-family:ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.08em;color:var(--rust);text-transform:uppercase}
+.tz-bio{margin:0;font-size:15px;line-height:1.6;color:var(--soft)}
+@media (max-width:900px){.tz-deck{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tz-o2,.tz-o3,.tz-o4{margin-top:0}.tz-o2,.tz-o4{margin-top:28px}}
+@media (max-width:520px){.tz-deck{grid-template-columns:1fr}.tz-o2,.tz-o4{margin-top:0}}
+</style>
