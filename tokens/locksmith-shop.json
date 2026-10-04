@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-locksmith-shop",
+  "title": "Locksmith Shop design tokens",
+  "category": "Tokens",
+  "file": "tokens/locksmith-shop.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "locksmith-shop"
+  ],
+  "description": "W3C-format design tokens for the Locksmith Shop DNA.",
+  "dnas": [
+   "locksmith-shop"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#ece7db",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#26221a",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#a67c2e",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#7d7461",
+   "type": "color"
+  },
+  "line": {
+   "value": "#26221a1f",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#ded6c2",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Big Shoulders Stencil Text",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Karla",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "JetBrains Mono",
+   "type": "fontFamily"
+  }
+ }
+}
