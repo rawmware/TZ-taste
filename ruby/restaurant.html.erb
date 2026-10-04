@@ -1,0 +1,173 @@
+<!--tz-meta {"id":"ruby-restaurant","title":"Bar Amaro — aperitivo bar","category":"Ruby","file":"ruby/restaurant.html.erb","tags":["ruby","erb","restaurant","menu"],"description":"Aperitivo-italian page for fictional Bar Amaro: the menu is billboard type with dotted price leaders and a rotated golden-hour stamp.","dnas":["aperitivo-italian"]} -->
+<% bg = "#f7efdc" %>
+<% ink = "#2b1f14" %>
+<% accent = "#c93a2e" %>
+<% muted = "#a08872" %>
+<% line = "#e3d3b8" %>
+<% display = "Alfa Slab One" %>
+<% body = "DM Sans" %>
+<% mono = "Space Mono" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bar Amaro — aperitivo, every evening · Portland ME</title>
+<meta name="description" content="Bar Amaro is a Milan-style aperitivo bar in Portland, Maine. Bitter drinks, small plates, golden hour from 5 to 7.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:<%= bg %>; --ink:<%= ink %>; --accent:<%= accent %>;
+  --muted:<%= muted %>; --line:<%= line %>;
+  --ink-2:color-mix(in srgb, var(--ink) 72%, var(--bg));
+  --display:"<%= display %>",serif;
+  --body:"<%= body %>",-apple-system,sans-serif;
+  --mono:"<%= mono %>",ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);
+     font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent);color:var(--bg)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+/* masthead */
+.masthead{border-bottom:2px solid var(--ink)}
+.masthead .wrap{display:flex;justify-content:space-between;align-items:center;
+                padding-top:22px;padding-bottom:22px}
+.brand{font-family:var(--display);font-size:26px;color:var(--ink);text-decoration:none;letter-spacing:.01em}
+.brand em{font-style:normal;color:var(--accent)}
+.masthead .addr{font-family:var(--mono);font-size:12px;color:var(--ink-2);text-align:right;line-height:1.8}
+/* hero: off-center, type-led, stamp rotated over the corner */
+.hero{position:relative;padding:clamp(64px,9vw,130px) 0 clamp(40px,5vw,64px);
+      border-bottom:2px solid var(--ink);overflow:hidden}
+.hero .over{font-family:var(--mono);font-size:12px;letter-spacing:.28em;text-transform:uppercase;
+            color:var(--ink-2);margin-bottom:24px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(52px,9vw,128px);
+   line-height:.98;margin-bottom:26px;max-width:12ch}
+h1 .bitter{color:var(--accent)}
+.hero p.lede{font-size:19px;color:var(--ink-2);max-width:46ch}
+.stamp{position:absolute;top:clamp(48px,7vw,96px);right:clamp(16px,6vw,80px);
+       width:150px;height:150px;border:3px solid var(--accent);border-radius:50%;
+       display:flex;align-items:center;justify-content:center;text-align:center;
+       font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+       color:var(--accent);transform:rotate(12deg);line-height:1.7;background:var(--bg)}
+.stamp b{display:block;font-size:15px}
+/* menu: billboard type with dotted leaders — the distinctive choice */
+.menu{padding:clamp(56px,8vw,110px) 0}
+.menu-head{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;
+           margin-bottom:8px}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(38px,5.4vw,72px);line-height:1}
+.menu-head .note{font-family:var(--mono);font-size:12.5px;color:var(--ink-2);max-width:30ch;text-align:right}
+h3.cat{font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;
+       color:var(--accent);margin:54px 0 6px;font-weight:700}
+.dish{display:flex;align-items:baseline;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+.dish .name{font-family:var(--display);font-size:clamp(21px,2.8vw,32px);font-weight:400;white-space:nowrap}
+.dish .dots{flex:1;border-bottom:3px dotted var(--muted);transform:translateY(-7px);min-width:24px}
+.dish .price{font-family:var(--mono);font-size:17px;font-weight:700;white-space:nowrap}
+.dish .desc{flex-basis:100%;font-size:14.5px;color:var(--ink-2);margin-top:2px}
+.dish-wrap{display:flex;flex-wrap:wrap;align-items:baseline}
+/* visit: asymmetric two blocks */
+.visit{border-top:2px solid var(--ink);padding:clamp(56px,8vw,104px) 0;
+       display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,90px)}
+.visit h2{margin-bottom:22px}
+.hours{font-family:var(--mono);font-size:14.5px;width:100%}
+.hours div{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line)}
+.hours div b{font-weight:700}
+.hours .gh{color:var(--accent);font-weight:700}
+.visit p{color:var(--ink-2);margin-bottom:1.1em;max-width:44ch}
+.visit p b{color:var(--ink)}
+.btn{display:inline-block;background:var(--ink);color:var(--bg);font-weight:700;font-size:15px;
+     padding:15px 30px;border-radius:5px;text-decoration:none;margin-top:14px}
+.btn:hover{background:var(--accent)}
+/* footer */
+footer{border-top:2px solid var(--ink)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+             padding-top:24px;padding-bottom:32px;font-family:var(--mono);font-size:12.5px;color:var(--ink-2)}
+footer a{color:var(--ink);text-decoration:none}
+footer a:hover{color:var(--accent)}
+@media (max-width:760px){
+  .stamp{position:static;transform:rotate(12deg);margin-bottom:32px;width:132px;height:132px}
+  .visit{grid-template-columns:1fr}
+  .dish .name{white-space:normal}
+  .menu-head .note{text-align:left}
+}
+</style>
+</head>
+<body>
+<header class="masthead"><div class="wrap">
+  <a class="brand" href="#">Bar <em>Amaro</em></a>
+  <p class="addr">47 Exchange Street<br>Portland, Maine</p>
+</div></header>
+
+<main>
+<div class="wrap hero">
+  <div class="stamp" aria-label="Golden hour, 5 to 7 every evening"><span>golden<br><b>hour</b>5 – 7<br>every evening</span></div>
+  <p class="over">Aperitivo bar · dal 2019</p>
+  <h1>Bitter drinks, <span class="bitter">golden</span> evenings.</h1>
+  <p class="lede">Milan's best hour, transplanted to Exchange Street. A proper spritz,
+  a plate of something salty, and nowhere else you need to be until seven.</p>
+</div>
+
+<div class="wrap menu">
+  <div class="menu-head">
+    <h2>The menu</h2>
+    <p class="note">Changes with the market and the bartender's mood. This is tonight.</p>
+  </div>
+
+  <h3 class="cat">— Spritz &amp; highballs</h3>
+  <div class="dish"><div class="dish-wrap" style="flex:1;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+    <span class="name">Amaro Spritz</span><span class="dots"></span><span class="price">$13</span>
+    <span class="desc">House amaro, prosecco, grapefruit — the one we’re known for.</span></div></div>
+  <div class="dish"><div class="dish-wrap" style="flex:1;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+    <span class="name">Negroni Sbagliato</span><span class="dots"></span><span class="price">$14</span>
+    <span class="desc">The "mistaken" negroni. Prosecco instead of gin. Nobody's complaining.</span></div></div>
+  <div class="dish"><div class="dish-wrap" style="flex:1;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+    <span class="name">Chinotto &amp; Rye</span><span class="dots"></span><span class="price">$15</span>
+    <span class="desc">Rye whiskey, chinotto, lemon oil. Bitter the way espresso wishes it was.</span></div></div>
+
+  <h3 class="cat">— Small plates</h3>
+  <div class="dish"><div class="dish-wrap" style="flex:1;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+    <span class="name">Mortadella Board</span><span class="dots"></span><span class="price">$18</span>
+    <span class="desc">Mortadella, pistachio, grilled bread, pickled shallot. Feeds two, or one optimist.</span></div></div>
+  <div class="dish"><div class="dish-wrap" style="flex:1;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+    <span class="name">Carciofi Fritti</span><span class="dots"></span><span class="price">$12</span>
+    <span class="desc">Crispy artichokes, lemon aioli, pecorino snow.</span></div></div>
+  <div class="dish"><div class="dish-wrap" style="flex:1;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+    <span class="name">Olives Ascolane</span><span class="dots"></span><span class="price">$11</span>
+    <span class="desc">Fried stuffed olives, the way they do it in the Marche. Dangerously poppable.</span></div></div>
+
+  <h3 class="cat">— Dolci</h3>
+  <div class="dish"><div class="dish-wrap" style="flex:1;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+    <span class="name">Olive Oil Cake</span><span class="dots"></span><span class="price">$9</span>
+    <span class="desc">With mascarpone and whatever citrus looked best this morning.</span></div></div>
+  <div class="dish"><div class="dish-wrap" style="flex:1;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+    <span class="name">Affogato Amaro</span><span class="dots"></span><span class="price">$10</span>
+    <span class="desc">Fior di latte drowned in espresso with a spoonful of amaro. Order two.</span></div></div>
+</div>
+
+<div class="wrap visit">
+  <div>
+    <h2>Visit</h2>
+    <p><b>47 Exchange Street, Portland ME.</b> Two doors down from the bookshop,
+    across from the bakery that makes the whole block smell like butter at 7 a.m.</p>
+    <p>Walk-ins only — no reservations, no velvet rope. If there's a wait, we'll hand
+    you a spritz for the sidewalk. Groups of eight or more: <b>call ahead</b> and
+    we'll push tables together.</p>
+    <a class="btn" href="tel:+12075550147">Call (207) 555-0147</a>
+  </div>
+  <div class="hours" aria-label="Opening hours">
+    <div><span>Monday – Thursday</span><b>5pm – 11pm</b></div>
+    <div><span>Friday – Saturday</span><b>5pm – 1am</b></div>
+    <div><span>Sunday</span><b>4pm – 10pm</b></div>
+    <div><span class="gh">Golden hour, daily</span><b class="gh">5 – 7pm · $9 spritzes</b></div>
+  </div>
+</div>
+</main>
+
+<footer><div class="wrap">
+  <span>© 2026 Bar Amaro · 47 Exchange St, Portland ME</span>
+  <span><a href="#">Instagram</a> · <a href="tel:+12075550147">(207) 555-0147</a> · <a href="#">Private events</a></span>
+</div></footer>
+</body>
+</html>
