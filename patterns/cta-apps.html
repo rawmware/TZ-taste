@@ -1,0 +1,49 @@
+<!--tz-meta {"id":"cta-apps","title":"App download CTA","category":"CTA","file":"patterns/cta-apps.html","tags":["mobile","badges"],"description":"Y2K chrome app-download CTA with glossy store badges and a pure-CSS phone.","dnas":["y2k-chrome"]} -->
+<section class="tz-apps" aria-label="Download the app">
+  <div class="tz-copy">
+    <p class="tz-kick">Pocket Agent · iOS &amp; Android</p>
+    <h2>Your agent,<br>in your pocket.</h2>
+    <p class="tz-sub">Chat with your own AI on the go. Your key, your models, your memory — nothing of ours.</p>
+    <div class="tz-badges">
+      <a class="tz-badge" href="#ios"><span class="tz-bt">Download on the</span><strong>App Store</strong></a>
+      <a class="tz-badge" href="#android"><span class="tz-bt">Get it on</span><strong>Google Play</strong></a>
+    </div>
+    <p class="tz-fine">Free. 12 MB. No account required.</p>
+  </div>
+  <div class="tz-phone" aria-hidden="true">
+    <div class="tz-screen">
+      <p class="tz-msg tz-them">booked the plumber for tuesday</p>
+      <p class="tz-msg tz-me">Done. Anything else?</p>
+      <p class="tz-msg tz-them">remind me sunday</p>
+    </div>
+  </div>
+</section>
+<style>
+.tz-apps{--ink:#101014;--soft:#3c3c46;--aqua:#00c2a8;
+  background:linear-gradient(180deg,#f2f3f5 0%,#d9dce1 60%,#c3c7ce 100%);
+  color:var(--ink);font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(64px,10vw,130px) clamp(20px,6vw,80px);
+  display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(32px,6vw,80px);align-items:center}
+.tz-kick{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--soft);margin:0 0 18px}
+.tz-copy h2{margin:0 0 18px;font-size:clamp(44px,7vw,96px);line-height:.98;
+  letter-spacing:-.04em;font-weight:900}
+.tz-sub{margin:0 0 30px;font-size:17px;line-height:1.6;color:var(--soft);max-width:40ch}
+.tz-badges{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.tz-badge{display:flex;flex-direction:column;justify-content:center;text-decoration:none;
+  color:#fff;background:linear-gradient(180deg,#5a5e66 0%,#23252b 48%,#101114 52%,#33363d 100%);
+  border:1px solid #0a0a0c;border-radius:10px;padding:10px 22px 12px;
+  box-shadow:inset 0 1px 0 #ffffff55,0 3px 8px #00000033}
+.tz-bt{font-size:10px;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+.tz-badge strong{font-size:20px;letter-spacing:-.01em}
+.tz-fine{margin:0;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--soft)}
+.tz-phone{width:min(250px,70vw);aspect-ratio:9/18.5;margin:0 auto;
+  background:linear-gradient(160deg,#4a4e56,#1a1b1f);border-radius:38px;padding:12px;
+  box-shadow:0 24px 60px #00000044,inset 0 1px 0 #ffffff66}
+.tz-screen{background:linear-gradient(180deg,#eef3f4,#dfe7ea);border-radius:28px;height:100%;
+  padding:34px 14px 14px;display:flex;flex-direction:column;gap:10px;justify-content:flex-end}
+.tz-msg{margin:0;font-size:13px;padding:10px 12px;border-radius:14px;max-width:85%;line-height:1.4}
+.tz-them{background:#fff;align-self:flex-start;border:1px solid #00000018}
+.tz-me{background:var(--aqua);color:#fff;align-self:flex-end}
+@media (max-width:760px){.tz-apps{grid-template-columns:1fr}.tz-phone{margin:0}}
+</style>
