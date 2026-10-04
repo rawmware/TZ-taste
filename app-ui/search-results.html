@@ -1,0 +1,120 @@
+<!--tz-meta {"id":"search-results","title":"Search Results","category":"App UI","file":"app-ui/search-results.html","tags":["search","results","filters","pagination"],"description":"Help-center search with transit-line filters, station-dot result rows, and pagination.","dnas":["transit-swiss"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Search Results — Wayfare Help Center</title>
+<style>
+body{margin:0;background:#eef1f3;}
+.tz-sr{--bg:#ffffff;--ink:#111417;--accent:#d0342c;--muted:#5c6670;--line:#dfe3e6;--lineB:#2b6cb0;--lineG:#2f9e44;
+  background:var(--bg);color:var(--ink);font-family:Verdana,Geneva,'DejaVu Sans',sans-serif;
+  max-width:1100px;margin:0 auto;padding:clamp(20px,4vw,44px);min-height:100dvh;}
+.tz-sr-bar{display:flex;gap:12px;align-items:center;border:2px solid var(--ink);padding:6px 6px 6px 18px;margin-bottom:8px;}
+.tz-sr-bar input{flex:1;border:none;font-size:16px;font-family:inherit;color:var(--ink);outline:none;min-width:0;}
+.tz-sr-bar button{background:var(--accent);color:#fff;border:none;padding:12px 26px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;}
+.tz-sr-count{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.12em;color:var(--muted);margin:0 0 24px;}
+.tz-sr-count b{color:var(--accent);}
+.tz-sr-grid{display:grid;grid-template-columns:250px 1fr;gap:36px;align-items:start;}
+.tz-filters h2{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 12px;}
+.tz-filters fieldset{border:none;padding:0;margin:0 0 24px;}
+.tz-filters legend{font-size:13px;font-weight:700;margin-bottom:10px;padding:0;}
+.tz-fline{display:flex;align-items:center;gap:10px;font-size:13px;padding:7px 0;cursor:pointer;}
+.tz-dot{width:12px;height:12px;border-radius:50%;flex:none;}
+.tz-dot.tz-r{background:var(--accent);} .tz-dot.tz-b{background:var(--lineB);} .tz-dot.tz-g{background:var(--lineG);}
+.tz-fline .tz-n{margin-left:auto;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;color:var(--muted);}
+.tz-fline input{accent-color:var(--accent);}
+.tz-results{list-style:none;margin:0;padding:0;position:relative;}
+.tz-results::before{content:"";position:absolute;left:5px;top:14px;bottom:14px;width:2px;background:var(--line);}
+.tz-results li{position:relative;padding:0 0 26px 30px;}
+.tz-results li::before{content:"";position:absolute;left:0;top:6px;width:12px;height:12px;border-radius:50%;
+  background:var(--bg);border:3px solid var(--muted);}
+.tz-results li.tz-r::before{border-color:var(--accent);}
+.tz-results li.tz-b::before{border-color:var(--lineB);}
+.tz-results li.tz-g::before{border-color:var(--lineG);}
+.tz-results h3{margin:0 0 6px;font-size:17px;font-weight:700;}
+.tz-results h3 a{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--accent);}
+.tz-results h3 a:hover{color:var(--accent);}
+.tz-results p{margin:0 0 8px;font-size:13.5px;color:var(--muted);line-height:1.6;max-width:62ch;}
+.tz-results p b{color:var(--ink);font-weight:600;}
+.tz-rmeta{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10.5px;color:var(--muted);letter-spacing:.06em;}
+.tz-rmeta .tz-lbl{display:inline-block;padding:2px 8px;border:1px solid var(--line);margin-right:8px;letter-spacing:.1em;}
+.tz-pages{display:flex;gap:6px;align-items:center;margin-top:8px;flex-wrap:wrap;}
+.tz-pages a,.tz-pages span{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;padding:9px 14px;
+  border:1px solid var(--line);color:var(--ink);text-decoration:none;min-width:20px;text-align:center;}
+.tz-pages a:hover{border-color:var(--ink);}
+.tz-pages .tz-cur{background:var(--ink);color:#fff;border-color:var(--ink);}
+.tz-pages .tz-gap{border:none;color:var(--muted);}
+.tz-miss{margin-top:20px;font-size:13px;color:var(--muted);border-top:2px solid var(--ink);padding-top:16px;}
+.tz-miss a{color:var(--accent);font-weight:700;}
+@media(max-width:760px){
+  .tz-sr-grid{grid-template-columns:1fr;}
+  .tz-filters{display:grid;grid-template-columns:1fr 1fr;gap:0 20px;border:1px solid var(--line);padding:16px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .tz-sr *{animation:none!important;transition:none!important;}
+}
+</style>
+</head>
+<body>
+<section class="tz-sr">
+  <form class="tz-sr-bar" onsubmit="return false" role="search">
+    <input type="text" value="refund for a canceled trip" aria-label="Search help center">
+    <button type="submit">Search</button>
+  </form>
+  <p class="tz-sr-count"><b>47 results</b> &middot; searched 12,408 articles &middot; 0.3s</p>
+  <div class="tz-sr-grid">
+    <aside class="tz-filters">
+      <h2>Refine</h2>
+      <fieldset>
+        <legend>Line</legend>
+        <label class="tz-fline"><input type="checkbox" checked><span class="tz-dot tz-r"></span>Harbor line<span class="tz-n">18</span></label>
+        <label class="tz-fline"><input type="checkbox" checked><span class="tz-dot tz-b"></span>North line<span class="tz-n">21</span></label>
+        <label class="tz-fline"><input type="checkbox"><span class="tz-dot tz-g"></span>Green loop<span class="tz-n">8</span></label>
+      </fieldset>
+      <fieldset>
+        <legend>Article type</legend>
+        <label class="tz-fline"><input type="checkbox" checked>Fare rules<span class="tz-n">12</span></label>
+        <label class="tz-fline"><input type="checkbox" checked>How-to guides<span class="tz-n">19</span></label>
+        <label class="tz-fline"><input type="checkbox">Policy<span class="tz-n">6</span></label>
+      </fieldset>
+      <fieldset>
+        <legend>Updated</legend>
+        <label class="tz-fline"><input type="radio" name="u" checked>Any time</label>
+        <label class="tz-fline"><input type="radio" name="u">Past year</label>
+        <label class="tz-fline"><input type="radio" name="u">Past 30 days</label>
+      </fieldset>
+    </aside>
+    <div>
+      <ol class="tz-results">
+        <li class="tz-r"><h3><a href="#">How refunds work when we cancel your trip</a></h3>
+          <p>If Wayfare cancels a departure, you get a <b>full refund to your original payment method</b> within 5 business days &mdash; no form needed. Voucher credit is optional, never automatic.</p>
+          <span class="tz-rmeta"><span class="tz-lbl">FARE RULES</span>UPDATED SEP 28 &middot; 4 MIN READ &middot; 12,408 VIEWS</span></li>
+        <li class="tz-b"><h3><a href="#">Cancel a booking and request a refund</a></h3>
+          <p>Cancel from <b>My trips</b> up to 24 hours before departure for a full refund. Inside 24 hours, flex tickets refund at 50%; saver tickets convert to credit.</p>
+          <span class="tz-rmeta"><span class="tz-lbl">HOW-TO</span>UPDATED SEP 12 &middot; 3 MIN READ &middot; 8,931 VIEWS</span></li>
+        <li class="tz-r"><h3><a href="#">Refund timelines by payment method</a></h3>
+          <p>Cards post in 3&ndash;5 business days, bank transfer in 7&ndash;10, and Wayfare credit is <b>instant</b>. Weekends and holidays add a day on each end.</p>
+          <span class="tz-rmeta"><span class="tz-lbl">FARE RULES</span>UPDATED AUG 30 &middot; 2 MIN READ &middot; 6,204 VIEWS</span></li>
+        <li class="tz-g"><h3><a href="#">What happens to seat reservations on a refunded trip</a></h3>
+          <p>Reserved seats refund with the ticket. If you rebook within 48 hours, we hold your seat free &mdash; <b>mention it in the chat</b> and an agent confirms.</p>
+          <span class="tz-rmeta"><span class="tz-lbl">HOW-TO</span>UPDATED AUG 14 &middot; 2 MIN READ &middot; 3,377 VIEWS</span></li>
+        <li class="tz-b"><h3><a href="#">Disputing a refund decision</a></h3>
+          <p>Disagree with a partial refund? Reply to the decision email within 30 days. A <b>second reviewer</b> looks at every appeal &mdash; the first agent never reviews their own call.</p>
+          <span class="tz-rmeta"><span class="tz-lbl">POLICY</span>UPDATED JUL 22 &middot; 5 MIN READ &middot; 2,845 VIEWS</span></li>
+        <li class="tz-g"><h3><a href="#">Green loop service alerts and your refund rights</a></h3>
+          <p>Planned closures never count against you: if we reroute your trip, the <b>fare difference refunds automatically</b> and the original ticket stays valid for 30 days.</p>
+          <span class="tz-rmeta"><span class="tz-lbl">POLICY</span>UPDATED JUN 30 &middot; 3 MIN READ &middot; 1,912 VIEWS</span></li>
+      </ol>
+      <nav class="tz-pages" aria-label="Pagination">
+        <a href="#">&larr; Prev</a>
+        <span class="tz-cur">1</span><a href="#">2</a><a href="#">3</a><span class="tz-gap">&hellip;</span><a href="#">10</a>
+        <a href="#">Next &rarr;</a>
+      </nav>
+      <p class="tz-miss">Can't find it? <a href="#">Ask an agent</a> &mdash; median reply 4 minutes, real humans on the Harbor line until 10pm.</p>
+    </div>
+  </div>
+</section>
+</body>
+</html>
