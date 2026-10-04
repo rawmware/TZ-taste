@@ -1,0 +1,136 @@
+<!--tz-meta {"id":"gen-org-dla-crystal","title":"DLA Crystal","category":"Generative","file":"generative/org-dla-crystal.html","tags":["dla","crystal","frost","aggregation"],"description":"Random walkers drift until they touch the crystal and freeze — click to release more walkers.","dnas":["ink-wash-sumi"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DLA Crystal · TZ-taste</title>
+<style>
+  .tz-page{background:#F5F1E6;color:#1F1F1F;min-height:100vh;font-family:Georgia,'Times New Roman',serif;margin:0}
+  .tz-wrap{max-width:1080px;margin:0 auto;padding:32px 20px 48px}
+  .tz-kicker{font-family:'Courier New',Courier,monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#B33A2B;margin:0 0 12px}
+  .tz-title{font-size:clamp(32px,6vw,52px);font-weight:700;margin:0 0 10px;line-height:1.05}
+  .tz-caption{font-size:16px;line-height:1.6;max-width:62ch;margin:0 0 4px;color:#5a554a}
+  .tz-controls{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+  .tz-btn{font-family:'Courier New',Courier,monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;background:transparent;color:#1F1F1F;border:2px solid #1F1F1F;padding:10px 18px;cursor:pointer}
+  .tz-btn:hover{background:#1F1F1F;color:#F5F1E6}
+  .tz-btn:active{transform:translateY(1px)}
+  .tz-canvas{display:block;width:100%;height:70vh;background:#F5F1E6;border:2px solid #1F1F1F;cursor:pointer}
+  .tz-foot{font-family:'Courier New',Courier,monospace;font-size:12px;color:#8a8574;margin:14px 0 0;line-height:1.6}
+</style>
+</head>
+<body class="tz-page">
+<div class="tz-wrap">
+  <p class="tz-kicker">TZ-taste · Generative</p>
+  <h1 class="tz-title">DLA Crystal</h1>
+  <p class="tz-caption">Diffusion-limited aggregation: hundreds of particles wander randomly from the edges, and the moment one touches the crystal it freezes in place. Outer branches shield the interior, so the frost grows dendritic arms instead of a blob.</p>
+  <div class="tz-controls">
+    <button class="tz-btn" id="tz-seed" type="button">New seed</button>
+    <button class="tz-btn" id="tz-pause" type="button">Pause</button>
+    <button class="tz-btn" id="tz-clear" type="button">Clear</button>
+  </div>
+  <canvas class="tz-canvas" id="tz-canvas"></canvas>
+  <p class="tz-foot">One distinctive choice: click the plate to release 80 more walkers wherever the crystal is thin. Seed <span id="tz-seednum"></span>.</p>
+</div>
+<script>
+(function(){
+  var BG='#F5F1E6', INK='#1F1F1F', SOFT='#9A9484', CELL=3;
+  var canvas=document.getElementById('tz-canvas'), ctx=canvas.getContext('2d');
+  var seedBtn=document.getElementById('tz-seed'), pauseBtn=document.getElementById('tz-pause'),
+      clearBtn=document.getElementById('tz-clear'), seedNum=document.getElementById('tz-seednum');
+  var seed=424242, rng=mulberry32(seed);
+  var W=0, H=0, cx=0, cy=0;
+  var crystal=null, bboxR=0, walkers=[];
+  var running=true, raf=null;
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+
+  function key(x,y){return x+','+y;}
+  function launchR(){return Math.max(46,bboxR+26);}
+  function killR(){return launchR()*2.4;}
+
+  function respawn(w){
+    var a=rng()*Math.PI*2, R=launchR();
+    w.x=Math.round(Math.cos(a)*R); w.y=Math.round(Math.sin(a)*R);
+  }
+
+  function drawDot(x,y,c){
+    ctx.fillStyle=c;
+    ctx.fillRect(cx+x*CELL, cy+y*CELL, CELL, CELL);
+  }
+
+  function stick(w){
+    var k=key(w.x,w.y);
+    if(crystal.has(k)){respawn(w);return;}
+    var shade=rng()<0.12?SOFT:INK;
+    crystal.set(k,shade);
+    drawDot(w.x,w.y,shade);
+    var r=Math.ceil(Math.sqrt(w.x*w.x+w.y*w.y));
+    if(r>bboxR)bboxR=r;
+    respawn(w);
+  }
+
+  function stepWalker(w){
+    var kr=killR();
+    for(var s=0;s<10;s++){
+      var d=(rng()*4)|0;
+      if(d===0)w.x++; else if(d===1)w.x--; else if(d===2)w.y++; else w.y--;
+      if(w.x*w.x+w.y*w.y>kr*kr){respawn(w);return;}
+      if(crystal.has(key(w.x+1,w.y))||crystal.has(key(w.x-1,w.y))||
+         crystal.has(key(w.x,w.y+1))||crystal.has(key(w.x,w.y-1))){
+        stick(w);return;
+      }
+    }
+  }
+
+  function reset(){
+    rng=mulberry32(seed);
+    crystal=new Map(); bboxR=0; walkers=[];
+    for(var i=0;i<450;i++){var w={x:0,y:0};respawn(w);walkers.push(w);}
+    crystal.set(key(0,0),INK);
+    ctx.fillStyle=BG; ctx.fillRect(0,0,W,H);
+    drawDot(0,0,INK);
+    seedNum.textContent=seed;
+  }
+
+  function reseed(){
+    seed=(seed*9301+49297)%233280; reset();
+  }
+
+  function frame(){
+    if(!running){raf=null;return;}
+    for(var i=0;i<walkers.length;i++)stepWalker(walkers[i]);
+    raf=requestAnimationFrame(frame);
+  }
+
+  function resize(){
+    var dpr=Math.min(window.devicePixelRatio||1,2);
+    var r=canvas.getBoundingClientRect();
+    W=r.width; H=r.height;
+    canvas.width=Math.round(W*dpr); canvas.height=Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    cx=W/2; cy=H/2;
+    reset();
+  }
+
+  seedBtn.addEventListener('click',reseed);
+  clearBtn.addEventListener('click',function(){reset();});
+  canvas.addEventListener('click',function(){
+    for(var i=0;i<80;i++){var w={x:0,y:0};respawn(w);walkers.push(w);}
+  });
+  pauseBtn.addEventListener('click',function(){
+    running=!running; pauseBtn.textContent=running?'Pause':'Resume';
+    if(running&&!reduced)raf=requestAnimationFrame(frame);
+  });
+  window.addEventListener('resize',resize);
+  resize();
+  if(reduced){
+    for(var g=0;g<140;g++)for(var i=0;i<walkers.length;i++)stepWalker(walkers[i]);
+  }else{
+    raf=requestAnimationFrame(frame);
+  }
+})();
+</script>
+</body>
+</html>
