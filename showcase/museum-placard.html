@@ -1,0 +1,187 @@
+<!--tz-meta {"id":"showcase-museum-placard","title":"Museum Placard showcase","category":"Showcase","file":"showcase/museum-placard.html","tags":["museum-placard"],"description":"Live demo page for the Museum Placard style DNA.","dnas":["museum-placard"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Museum Placard — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=EB+Garamond:ital,wght@0,400;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f7f4ed; --tz-surface:#ffffff; --tz-ink:#1c1a16; --tz-muted:#7a746a;
+  --tz-accent:#8c2b1f; --tz-line:#d8d3c6;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"EB Garamond",Georgia,serif;font-size:1.12rem;line-height:1.6;-webkit-font-smoothing:antialiased;animation:tz-lights 1.6s ease-out}
+@keyframes tz-lights{from{opacity:0}to{opacity:1}}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1.4rem 6vw;border-bottom:1px solid var(--tz-line)}
+.tz-wordmark{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.25rem;letter-spacing:0.04em}
+.tz-label{font-family:"Space Mono",monospace;font-size:0.66rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-hero{padding:6rem 6vw 5rem;max-width:1200px;margin:0 auto}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:2rem}
+.tz-hero h1{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(3rem,8vw,6.4rem);line-height:1.02;letter-spacing:-0.01em;max-width:10ch;margin-bottom:1.6rem}
+.tz-wall{max-width:62ch;font-size:1.2rem}
+.tz-rule{border:none;border-top:1px solid var(--tz-accent);margin:2.4rem 0;width:72px}
+.tz-cta{display:inline-block;margin-top:0.6rem;font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;text-decoration:none;color:var(--tz-ink);border:1px solid var(--tz-ink);padding:0.95rem 2rem;transition:background 0.25s ease,color 0.25s ease}
+.tz-cta:hover{background:var(--tz-ink);color:var(--tz-bg)}
+.tz-plate{margin-top:4.5rem;max-width:760px}
+.tz-frame{border:1px solid var(--tz-line);background:var(--tz-surface);padding:clamp(1.5rem,4vw,3rem)}
+.tz-art{position:relative;aspect-ratio:4/3;background:var(--tz-bg);border:1px solid var(--tz-line);overflow:hidden}
+.tz-art .tz-win{position:absolute;left:18%;top:12%;width:26%;height:64%;background:var(--tz-surface);border:1px solid var(--tz-line)}
+.tz-art .tz-win::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:var(--tz-line)}
+.tz-art .tz-light{position:absolute;left:34%;top:0;bottom:0;width:38%;background:var(--tz-surface);opacity:0.55;transform:skewX(-8deg)}
+.tz-art .tz-table{position:absolute;left:8%;right:8%;bottom:14%;height:22%;border-top:2px solid var(--tz-ink)}
+.tz-art .tz-vessel{position:absolute;left:56%;bottom:36%;width:9%;height:16%;background:var(--tz-ink)}
+.tz-placard{margin-top:1.4rem;display:grid;grid-template-columns:1fr auto;gap:0.4rem 2rem;align-items:start}
+.tz-placard .tz-ptitle{font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:500;font-size:1.6rem}
+.tz-placard .tz-pmeta{font-size:1.02rem;color:var(--tz-ink)}
+.tz-placard .tz-pnote{font-size:1.02rem;color:var(--tz-muted);grid-column:1;max-width:52ch}
+.tz-placard .tz-pno{font-family:"Space Mono",monospace;font-size:0.7rem;letter-spacing:0.14em;color:var(--tz-muted);text-align:right}
+.tz-dot{width:14px;height:14px;border-radius:50%;background:var(--tz-accent);justify-self:end;margin-top:0.4rem;opacity:0;transform:scale(0.4);transition:opacity 0.8s ease,transform 0.8s ease}
+.tz-dot.tz-on{opacity:1;transform:scale(1)}
+.tz-content{padding:0 0 5rem}
+.tz-room{max-width:1200px;margin:0 auto;padding:4.5rem 6vw 0}
+.tz-room + .tz-room{margin-top:1rem}
+.tz-roomhead{border-top:1px solid var(--tz-line);padding-top:2rem;margin-bottom:2.5rem}
+.tz-roomhead .tz-rno{font-family:"Space Mono",monospace;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-roomhead h2{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(1.8rem,4vw,2.8rem);margin-top:0.6rem}
+.tz-work{display:grid;grid-template-columns:280px 1fr;gap:2.5rem;padding:2.8rem 0;border-top:1px solid var(--tz-line);align-items:start}
+.tz-thumb{background:var(--tz-surface);border:1px solid var(--tz-line);padding:1rem;transition:transform 0.3s ease}
+.tz-work:hover .tz-thumb{transform:scale(1.025)}
+.tz-thumb .tz-mini{aspect-ratio:4/3;background:var(--tz-bg);border:1px solid var(--tz-line);position:relative;overflow:hidden}
+.tz-mini .tz-m1{position:absolute;background:var(--tz-ink)}
+.tz-mini .tz-m2{position:absolute;border:1px solid var(--tz-line)}
+.tz-mini .tz-m3{position:absolute;background:var(--tz-accent);border-radius:50%}
+.tz-work .tz-placard{margin-top:0}
+.tz-tokens{padding:4rem 6vw;border-top:1px solid var(--tz-line);max-width:1200px;margin:0 auto}
+.tz-tokens h2{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.8rem;margin-bottom:1.6rem}
+.tz-swatches{display:flex;flex-wrap:wrap;list-style:none;border:1px solid var(--tz-line)}
+.tz-swatches li{flex:1 1 140px;border-right:1px solid var(--tz-line);min-width:130px;background:var(--tz-surface)}
+.tz-swatches li:last-child{border-right:none}
+.tz-chip{display:block;height:3.2rem;border-bottom:1px solid var(--tz-line)}
+.tz-swatches .tz-name{display:block;font-family:"Space Mono",monospace;font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--tz-muted);padding:0.7rem 0.9rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Space Mono",monospace;font-size:0.76rem;padding:0 0.9rem 0.8rem}
+.tz-foot{border-top:1px solid var(--tz-line);padding:1.8rem 6vw;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:"Space Mono",monospace;font-size:0.66rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--tz-muted)}
+@media(max-width:700px){
+  .tz-work{grid-template-columns:1fr;gap:1.4rem}
+  .tz-placard{grid-template-columns:1fr}
+  .tz-placard .tz-pno{text-align:left}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-dot{opacity:1;transform:scale(1)}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">The Long Room Gallery</span>
+  <span class="tz-label">TZ-taste style DNA</span>
+</header>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow">Room 1 · Oct 03 — Nov 30, 2026</p>
+  <h1>Light, held still.</h1>
+  <p class="tz-wall"><em>Pearl Hour</em> gathers eleven paintings made within a single decade of the Dutch interior. Each one stages the same quiet drama: a window, a wall, and light deciding what matters. Nothing here is loud; that is the point.</p>
+  <hr class="tz-rule">
+  <a class="tz-cta" href="#">Plan your visit</a>
+  <figure class="tz-plate">
+    <div class="tz-frame">
+      <div class="tz-art" role="img" aria-label="Abstract study of a window, a table, and a vessel in black, white, and warm gray">
+        <div class="tz-win"></div><div class="tz-light"></div><div class="tz-table"></div><div class="tz-vessel"></div>
+      </div>
+    </div>
+    <div class="tz-placard">
+      <div>
+        <p class="tz-ptitle">Study for a Window, No. 4</p>
+        <p class="tz-pmeta">Anonymous, c. 1662 · Oil on panel · 41 × 52 cm</p>
+        <p class="tz-pnote">A rehearsal in geometry: the light enters at the same hour it has entered for three hundred years.</p>
+      </div>
+      <span class="tz-pno">No. 004</span>
+    </div>
+  </figure>
+</section>
+
+<section class="tz-content">
+  <div class="tz-room">
+    <div class="tz-roomhead">
+      <p class="tz-rno">Room 1 — The hang</p>
+      <h2>Four works, one wall</h2>
+    </div>
+    <article class="tz-work">
+      <div class="tz-thumb"><div class="tz-mini"><span class="tz-m1" style="left:20%;top:15%;width:24%;height:55%"></span><span class="tz-m2" style="right:18%;top:30%;width:30%;height:40%"></span></div></div>
+      <div class="tz-placard">
+        <div>
+          <p class="tz-ptitle">Interior with a Letter</p>
+          <p class="tz-pmeta">C. van der Meer, 1658 · Oil on canvas · 73 × 92 cm</p>
+          <p class="tz-pnote">The letter is never read. The painting is about the hand that holds it.</p>
+        </div>
+        <span class="tz-pno">No. 011<br><span class="tz-dot" aria-label="Acquired"></span></span>
+      </div>
+    </article>
+    <article class="tz-work">
+      <div class="tz-thumb"><div class="tz-mini"><span class="tz-m2" style="left:15%;top:20%;width:70%;height:50%"></span><span class="tz-m1" style="left:45%;bottom:12%;width:10%;height:22%"></span></div></div>
+      <div class="tz-placard">
+        <div>
+          <p class="tz-ptitle">Morning, Delft</p>
+          <p class="tz-pmeta">J. Oosterlinck, 1661 · Oil on panel · 38 × 44 cm</p>
+          <p class="tz-pnote">One chair, one map, one hour of sun. The map is of a street the painter never visited.</p>
+        </div>
+        <span class="tz-pno">No. 012</span>
+      </div>
+    </article>
+    <article class="tz-work">
+      <div class="tz-thumb"><div class="tz-mini"><span class="tz-m3" style="left:60%;top:24%;width:14px;height:14px"></span><span class="tz-m1" style="left:12%;top:40%;width:76%;height:3%"></span><span class="tz-m2" style="left:30%;top:15%;width:20%;height:60%"></span></div></div>
+      <div class="tz-placard">
+        <div>
+          <p class="tz-ptitle">The Lacemaker's Window</p>
+          <p class="tz-pmeta">A. Brant, 1665 · Oil on canvas · 55 × 48 cm</p>
+          <p class="tz-pnote">The red dot on this label means it has found a home. The painting stays until November.</p>
+        </div>
+        <span class="tz-pno">No. 013<br><span class="tz-dot" aria-label="Acquired"></span></span>
+      </div>
+    </article>
+    <article class="tz-work">
+      <div class="tz-thumb"><div class="tz-mini"><span class="tz-m1" style="left:25%;top:25%;width:50%;height:45%"></span></div></div>
+      <div class="tz-placard">
+        <div>
+          <p class="tz-ptitle">Still Life with Pewter</p>
+          <p class="tz-pmeta">M. Claesz, 1659 · Oil on panel · 44 × 61 cm</p>
+          <p class="tz-pnote">Pewter holds a reflection the way a wall holds the hour. Nothing here was arranged twice.</p>
+        </div>
+        <span class="tz-pno">No. 014</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#f7f4ed"></span><span class="tz-name">bg</span><span class="tz-hex">#f7f4ed</span></li>
+    <li><span class="tz-chip" style="background:#ffffff"></span><span class="tz-name">surface</span><span class="tz-hex">#ffffff</span></li>
+    <li><span class="tz-chip" style="background:#1c1a16"></span><span class="tz-name">ink</span><span class="tz-hex">#1c1a16</span></li>
+    <li><span class="tz-chip" style="background:#7a746a"></span><span class="tz-name">muted</span><span class="tz-hex">#7a746a</span></li>
+    <li><span class="tz-chip" style="background:#8c2b1f"></span><span class="tz-name">accent</span><span class="tz-hex">#8c2b1f</span></li>
+    <li><span class="tz-chip" style="background:#d8d3c6"></span><span class="tz-name">line</span><span class="tz-hex">#d8d3c6</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot"><span>A TZ-taste style DNA showcase — MIT, free forever.</span><span>Admission free · Wed — Sun</span></footer>
+
+<script>
+(function(){
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var dots = document.querySelectorAll(".tz-dot");
+  if("IntersectionObserver" in window && !reduced){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("tz-on"); io.unobserve(e.target); } });
+    },{threshold:0.6});
+    dots.forEach(function(d){ io.observe(d); });
+  } else { dots.forEach(function(d){ d.classList.add("tz-on"); }); }
+})();
+</script>
+</body>
+</html>
