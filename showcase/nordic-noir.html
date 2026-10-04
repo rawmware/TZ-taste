@@ -1,0 +1,137 @@
+<!--tz-meta {"id":"showcase-nordic-noir","title":"Nordic Noir showcase","category":"Showcase","file":"showcase/nordic-noir.html","tags":["nordic-noir"],"description":"Live demo page for the Nordic Noir style DNA.","dnas":["nordic-noir"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nordic Noir — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#dfe3e6; --tz-surface:#f1f3f5; --tz-ink:#131a24; --tz-muted:#7d8994;
+  --tz-accent:#3f647f; --tz-line:#b9c1c9;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"DM Sans",Helvetica,sans-serif;font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+.tz-top{display:flex;justify-content:space-between;align-items:baseline;padding:1.1rem 4vw;border-bottom:2px solid var(--tz-line)}
+.tz-wordmark{font-family:"Bebas Neue",sans-serif;font-size:1.4rem;letter-spacing:0.08em}
+.tz-label{font-family:"IBM Plex Mono",monospace;font-size:0.66rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-hero{padding:4.5rem 4vw 4rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:64px 1fr;gap:2rem}
+.tz-margin-no{font-family:"Bebas Neue",sans-serif;font-size:2.2rem;color:var(--tz-muted);line-height:1;padding-top:0.4rem}
+.tz-loc{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.18em;color:var(--tz-muted);text-transform:uppercase;margin-bottom:1.2rem}
+.tz-hero h1{font-family:"Bebas Neue",sans-serif;font-size:clamp(3rem,8.5vw,6.8rem);line-height:0.95;letter-spacing:0.015em;max-width:12ch}
+.tz-hero h1 .tz-case{color:var(--tz-accent)}
+.tz-sub{margin-top:1.4rem;max-width:52ch;color:var(--tz-ink)}
+.tz-still{margin-top:2.4rem;background:var(--tz-ink);aspect-ratio:21/9;position:relative;overflow:hidden}
+.tz-still::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(223,227,230,0.08) 3px 4px)}
+.tz-still .tz-scan{position:absolute;left:0;right:0;top:0;height:2px;background:var(--tz-bg);opacity:0.7;animation:tz-scan 6s linear infinite}
+@keyframes tz-scan{from{transform:translateY(0)}to{transform:translateY(32vh)}}
+.tz-still figcaption{position:absolute;left:1rem;bottom:0.8rem;font-family:"IBM Plex Mono",monospace;font-size:0.66rem;letter-spacing:0.12em;color:var(--tz-bg);opacity:0.85}
+.tz-cta{display:inline-block;margin-top:2.2rem;font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--tz-bg);background:var(--tz-accent);text-decoration:none;padding:1rem 2.2rem}
+.tz-cta:hover{background:var(--tz-ink)}
+.tz-redact{display:flex;gap:0.6rem;align-items:center;margin:0 auto;max-width:1100px;padding:0 4vw}
+.tz-redact i{display:block;height:14px;background:var(--tz-ink)}
+.tz-content{padding:4rem 4vw;max-width:1100px;margin:0 auto}
+.tz-ep{display:grid;grid-template-columns:64px 1fr;gap:2rem;padding:2.6rem 0;border-top:2px solid var(--tz-line)}
+.tz-ep:last-child{border-bottom:2px solid var(--tz-line)}
+.tz-ep .tz-margin-no{font-size:1.8rem}
+.tz-ep .tz-loc{margin-bottom:0.8rem}
+.tz-ep h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(1.9rem,4.5vw,3rem);line-height:1;letter-spacing:0.015em;margin-bottom:0.8rem}
+.tz-ep p{max-width:58ch;color:var(--tz-ink)}
+.tz-ep .tz-time{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.1em;color:var(--tz-muted);margin-top:1rem;display:block}
+.tz-tokens{padding:4rem 4vw;border-top:2px solid var(--tz-line)}
+.tz-tokens-inner{max-width:1100px;margin:0 auto}
+.tz-tokens h2{font-family:"Bebas Neue",sans-serif;font-size:1.6rem;letter-spacing:0.06em;margin-bottom:1.5rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.9rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9.5rem}
+.tz-chip{display:block;height:3.2rem}
+.tz-swatches .tz-name{display:block;font-family:"IBM Plex Mono",monospace;font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.6rem 0.8rem 0.1rem;color:var(--tz-muted)}
+.tz-swatches .tz-hex{display:block;font-family:"IBM Plex Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:2px solid var(--tz-line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.tz-foot,.tz-foot span{font-family:"IBM Plex Mono",monospace;font-size:0.66rem;letter-spacing:0.1em;color:var(--tz-muted);text-transform:uppercase}
+.tz-snap{animation:tz-snap 0.3s steps(2) both}
+.tz-snap.tz-d1{animation-delay:0.15s}.tz-snap.tz-d2{animation-delay:0.3s}
+@keyframes tz-snap{from{opacity:0}to{opacity:1}}
+@media(max-width:700px){
+  .tz-hero,.tz-ep{grid-template-columns:1fr;gap:0.8rem}
+  .tz-margin-no{font-size:1.4rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-snap{opacity:1}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">The Harbor</span>
+  <span class="tz-label">TZ-taste style DNA</span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-margin-no" aria-hidden="true">01</div>
+  <div>
+    <p class="tz-loc">Malm&ouml; &mdash; February &mdash; 3&deg;C</p>
+    <h1 class="tz-snap">Everyone in this town <span class="tz-case">is lying.</span></h1>
+    <p class="tz-sub tz-snap tz-d1">A six-part crime series. A harbor detective returns home to bury her father and finds the water has kept a secret for eleven years.</p>
+    <figure class="tz-still tz-snap tz-d2">
+      <div class="tz-scan" aria-hidden="true"></div>
+      <figcaption>EXHIBIT A &mdash; HARBOR CAM 04 &mdash; 02:14</figcaption>
+    </figure>
+    <a class="tz-cta" href="#">Watch episode one</a>
+  </div>
+</section>
+
+<div class="tz-redact" aria-hidden="true"><i style="width:18%"></i><i style="width:9%"></i><i style="width:26%"></i><i style="width:12%"></i></div>
+
+<section class="tz-content">
+  <div class="tz-ep">
+    <div class="tz-margin-no" aria-hidden="true">02</div>
+    <div>
+      <p class="tz-loc">Malm&ouml; &mdash; February &mdash; 1&deg;C</p>
+      <h2>Episode one &mdash; the dredging</h2>
+      <p>The harbor is dredged for the new ferry terminal. The crew finds a car. The car has been there longer than the detective has been alive.</p>
+      <span class="tz-time">CASE 07-118 &mdash; 04:12 &mdash; 55.60&deg; N</span>
+    </div>
+  </div>
+  <div class="tz-ep">
+    <div class="tz-margin-no" aria-hidden="true">03</div>
+    <div>
+      <p class="tz-loc">Limhamn &mdash; March &mdash; 0&deg;C</p>
+      <h2>Episode two &mdash; the manifest</h2>
+      <p>The ferry manifest lists nine names. The car held ten seatbelts. Somebody counted wrong, and it was not an accident.</p>
+      <span class="tz-time">CASE 07-118 &mdash; 11:47 &mdash; 55.58&deg; N</span>
+    </div>
+  </div>
+  <div class="tz-ep">
+    <div class="tz-margin-no" aria-hidden="true">04</div>
+    <div>
+      <p class="tz-loc">The boathouse &mdash; March &mdash; &minus;2&deg;C</p>
+      <h2>Episode three &mdash; low water</h2>
+      <p>She never called back. The tide goes out and the town starts talking, which is worse.</p>
+      <span class="tz-time">CASE 07-118 &mdash; 23:05 &mdash; 55.61&deg; N</span>
+    </div>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <div class="tz-tokens-inner">
+    <h2>Tokens</h2>
+    <ul class="tz-swatches">
+      <li><span class="tz-chip" style="background:#dfe3e6"></span><span class="tz-name">bg</span><span class="tz-hex">#dfe3e6</span></li>
+      <li><span class="tz-chip" style="background:#131a24"></span><span class="tz-name">ink</span><span class="tz-hex">#131a24</span></li>
+      <li><span class="tz-chip" style="background:#3f647f"></span><span class="tz-name">accent</span><span class="tz-hex">#3f647f</span></li>
+      <li><span class="tz-chip" style="background:#7d8994"></span><span class="tz-name">muted</span><span class="tz-hex">#7d8994</span></li>
+      <li><span class="tz-chip" style="background:#b9c1c9"></span><span class="tz-name">line</span><span class="tz-hex">#b9c1c9</span></li>
+    </ul>
+  </div>
+</section>
+
+<footer class="tz-foot">
+  <span>A TZ-taste style DNA showcase &mdash; MIT, free forever.</span>
+  <span>File closed &mdash; pending review</span>
+</footer>
+</body>
+</html>
