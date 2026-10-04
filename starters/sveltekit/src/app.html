@@ -1,0 +1,22 @@
+<!--tz-meta {"id":"sveltekit-app-html","title":"App HTML shell","category":"Starter","file":"starters/sveltekit/src/app.html","tags":["html","fonts"],"description":"SvelteKit HTML shell with Google Fonts links for the botanical-lab DNA (DM Serif Display, Karla, Space Mono).","dnas":["botanical-lab"]} -->
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta
+			name="description"
+			content="Verde — a houseplant care app that feels like a botanist's field journal. Watering reminders, light meter, repotting calendar."
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Karla:ital,wght@0,400;0,500;0,600;1,400&family=Space+Mono:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>
