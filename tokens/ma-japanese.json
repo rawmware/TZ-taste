@@ -1,0 +1,62 @@
+{
+ "_tzmeta": {
+  "id": "tokens-ma-japanese",
+  "title": "Ma (Japanese Minimal) design tokens",
+  "category": "Tokens",
+  "file": "tokens/ma-japanese.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "ma-japanese"
+  ],
+  "description": "W3C-format design tokens for the Ma (Japanese Minimal) style DNA.",
+  "dnas": [
+   "ma-japanese"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#f7f4ec",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#26221c",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#a33327",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#8a8478",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#26221c1f",
+   "$type": "color"
+  },
+  "surface": {
+   "$value": "#efe9da",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Shippori Mincho",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Zen Kaku Gothic New",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "ma-japanese",
+  "name": "Ma (Japanese Minimal)",
+  "vibe": "Rice paper, ink black, vast emptiness used on purpose. Ma — the beauty of negative space."
+ }
+}
