@@ -1,0 +1,62 @@
+{
+ "_tzmeta": {
+  "id": "tokens-industrial-brutalist",
+  "title": "Industrial Brutalist design tokens",
+  "category": "Tokens",
+  "file": "tokens/industrial-brutalist.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "industrial-brutalist"
+  ],
+  "description": "W3C-format design tokens for the Industrial Brutalist style DNA.",
+  "dnas": [
+   "industrial-brutalist"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#d8d8d4",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#141412",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#ff4d00",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#5c5c58",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#141412",
+   "$type": "color"
+  },
+  "surface": {
+   "$value": "#c9c9c4",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Anton",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Space Grotesk",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "JetBrains Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "industrial-brutalist",
+  "name": "Industrial Brutalist",
+  "vibe": "Exposed structure, safety orange, condensed type. A factory that ships software."
+ }
+}
