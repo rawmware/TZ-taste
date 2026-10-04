@@ -1,0 +1,413 @@
+<!--tz-meta {"id":"open-source-project","title":"Mason — Open-Source CLI Tool","category":"Template","file":"templates/open-source-project.html","tags":["open-source","developer-tools","cli"],"description":"Retro-terminal landing for Mason, an open-source scaffolding CLI with boot-sequence hero.","dnas":["retro-terminal"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mason — the scaffolding CLI that respects your setup</title>
+<meta name="description" content="mason is an open-source CLI that scaffolds projects without the bloat. 4,200 stars on GitHub. MIT licensed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* DNA: retro-terminal — phosphor green on black, amber warnings, ASCII ornament */
+:root{
+  --tz-bg:#0b0f0a; --tz-surface:#0e140d; --tz-ink:#33ff66; --tz-muted:#1f6b3a;
+  --tz-accent:#ffb000; --tz-line:rgba(51,255,102,.2);
+  --tz-mono:'IBM Plex Mono',monospace;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:var(--tz-mono);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;text-shadow:0 0 8px rgba(51,255,102,.25)}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;
+  background:repeating-linear-gradient(0deg,transparent 0 3px,rgba(0,0,0,.18) 3px 4px)}
+::selection{background:var(--tz-accent);color:#0b0f0a;text-shadow:none}
+a{color:inherit}
+.tz-wrap{max-width:1060px;margin:0 auto;padding:0 28px}
+.tz-accent{color:var(--tz-accent);text-shadow:0 0 8px rgba(255,176,0,.3)}
+.tz-dim{color:var(--tz-muted);text-shadow:none}
+/* boot bar */
+.tz-boot{background:var(--tz-surface);border-bottom:1px solid var(--tz-line);padding:10px 0;font-size:12px;overflow:hidden;white-space:nowrap}
+.tz-boot-inner{display:inline-block;animation:tz-boot 30s linear infinite}
+@keyframes tz-boot{to{transform:translateX(-50%)}}
+/* nav */
+.tz-nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.tz-brand{font-weight:700;font-size:20px;text-decoration:none}
+.tz-brand::before{content:"$ ";color:var(--tz-accent)}
+.tz-navlinks{display:flex;gap:26px;font-size:13px}
+.tz-navlinks a{text-decoration:none;color:var(--tz-muted)}
+.tz-navlinks a:hover{color:var(--tz-ink)}
+.tz-navlinks a::before{content:"> "}
+.tz-btn{display:inline-block;font-size:13px;font-weight:700;text-decoration:none;border:1px solid var(--tz-accent);color:var(--tz-accent);padding:13px 26px;text-shadow:0 0 8px rgba(255,176,0,.3);transition:background .25s,color .25s}
+.tz-btn:hover{background:var(--tz-accent);color:#0b0f0a;text-shadow:none}
+/* hero: terminal */
+.tz-hero{padding:72px 0 88px}
+.tz-term{border:1px solid var(--tz-line);background:var(--tz-surface);box-shadow:0 0 60px rgba(51,255,102,.07)}
+.tz-term-bar{display:flex;gap:8px;align-items:center;padding:12px 18px;border-bottom:1px solid var(--tz-line);font-size:12px;color:var(--tz-muted);text-shadow:none}
+.tz-term-bar i{width:10px;height:10px;border-radius:50%;background:var(--tz-muted);display:inline-block}
+.tz-term-bar i:first-child{background:var(--tz-accent)}
+.tz-term-body{padding:36px;min-height:340px;font-size:16px}
+.tz-line{margin-bottom:6px}
+.tz-prompt{color:var(--tz-accent)}
+.tz-cursor{display:inline-block;width:10px;height:20px;background:var(--tz-ink);vertical-align:-4px;animation:tz-blink 1s steps(1) infinite}
+@keyframes tz-blink{50%{opacity:0}}
+.tz-out{color:var(--tz-muted);text-shadow:none}
+.tz-ok{color:var(--tz-ink)}
+/* hero copy under terminal */
+.tz-hero-copy{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end;margin-top:56px}
+.tz-hero h1{font-size:clamp(30px,4vw,48px);font-weight:700;line-height:1.2}
+.tz-hero h1 .tz-accent{font-weight:700}
+.tz-hero p{color:var(--tz-muted);text-shadow:none;max-width:52ch;margin-top:18px;font-size:16px}
+/* sections */
+.tz-section{padding:88px 0;border-top:1px dashed var(--tz-line)}
+.tz-sec-head{margin-bottom:48px}
+.tz-sec-head h2{font-size:clamp(24px,3vw,36px);font-weight:700;margin-bottom:12px}
+.tz-sec-head h2::before{content:"# ";color:var(--tz-accent)}
+.tz-sec-head p{color:var(--tz-muted);text-shadow:none;max-width:64ch}
+/* install: code block */
+.tz-code{border:1px solid var(--tz-line);background:#080b08;padding:32px;position:relative;overflow-x:auto}
+.tz-code pre{font-size:15px;line-height:1.9}
+.tz-code .tz-c{color:var(--tz-muted);text-shadow:none}
+.tz-copy{position:absolute;top:16px;right:16px;background:transparent;border:1px solid var(--tz-line);color:var(--tz-muted);font-family:var(--tz-mono);font-size:11px;padding:8px 14px;cursor:pointer;text-shadow:none}
+.tz-copy:hover{color:var(--tz-ink);border-color:var(--tz-ink)}
+/* commands table */
+.tz-cmds{width:100%;border-collapse:collapse}
+.tz-cmds td{padding:18px 12px;border-bottom:1px dashed var(--tz-line);vertical-align:top}
+.tz-cmds td:first-child{white-space:nowrap;color:var(--tz-accent);font-weight:700;text-shadow:0 0 8px rgba(255,176,0,.3)}
+.tz-cmds td:last-child{color:var(--tz-muted);text-shadow:none}
+.tz-cmds tr:hover td{background:rgba(51,255,102,.04)}
+/* why: ASCII diagram + points */
+.tz-why{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.tz-ascii{border:1px solid var(--tz-line);padding:32px;font-size:13px;line-height:1.7;color:var(--tz-muted);text-shadow:none;overflow-x:auto;white-space:pre}
+.tz-points{list-style:none}
+.tz-points li{padding:20px 0;border-bottom:1px dashed var(--tz-line)}
+.tz-points li:last-child{border-bottom:none}
+.tz-points b{color:var(--tz-ink);display:block;margin-bottom:6px}
+.tz-points b::before{content:"[OK] ";color:var(--tz-accent)}
+.tz-points span{color:var(--tz-muted);text-shadow:none;font-size:15px}
+/* stats strip */
+.tz-stats{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--tz-line)}
+.tz-stat{padding:36px 28px;border-right:1px dashed var(--tz-line)}
+.tz-stat:last-child{border-right:none}
+.tz-stat b{display:block;font-size:38px;font-weight:700;color:var(--tz-accent);text-shadow:0 0 8px rgba(255,176,0,.3);margin-bottom:8px}
+.tz-stat span{font-size:12px;color:var(--tz-muted);text-shadow:none;text-transform:uppercase;letter-spacing:.08em}
+/* changelog */
+.tz-log{border:1px solid var(--tz-line)}
+.tz-ver{padding:28px 32px;border-bottom:1px dashed var(--tz-line)}
+.tz-ver:last-child{border-bottom:none}
+.tz-ver h3{font-size:17px;margin-bottom:12px}
+.tz-ver h3 .tz-tag{font-size:11px;border:1px solid var(--tz-accent);color:var(--tz-accent);padding:3px 10px;margin-left:12px;text-shadow:0 0 8px rgba(255,176,0,.3)}
+.tz-ver ul{list-style:none;color:var(--tz-muted);text-shadow:none;font-size:15px}
+.tz-ver li{margin-bottom:6px}
+.tz-ver li::before{content:"* "}
+/* contributors */
+.tz-people{display:flex;flex-wrap:wrap;gap:14px}
+.tz-person{border:1px solid var(--tz-line);padding:14px 20px;font-size:14px;text-decoration:none;transition:border-color .25s}
+.tz-person:hover{border-color:var(--tz-accent)}
+.tz-person b{color:var(--tz-ink)}
+.tz-person span{color:var(--tz-muted);text-shadow:none;font-size:12px;display:block}
+/* cta */
+.tz-cta{border:1px solid var(--tz-accent);padding:72px 56px;text-align:left;position:relative;overflow:hidden}
+.tz-cta h2{font-size:clamp(28px,4vw,46px);font-weight:700;margin-bottom:18px}
+.tz-cta p{color:var(--tz-muted);text-shadow:none;max-width:56ch;margin-bottom:32px}
+.tz-cta-row{display:flex;gap:16px;flex-wrap:wrap}
+/* footer */
+.tz-footer{border-top:1px dashed var(--tz-line);padding:56px 0 36px;margin-top:88px}
+.tz-footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.tz-footer h4{font-size:12px;color:var(--tz-muted);text-shadow:none;text-transform:uppercase;letter-spacing:.12em;margin-bottom:16px}
+.tz-footer ul{list-style:none}.tz-footer li{margin-bottom:8px}
+.tz-footer a{text-decoration:none;font-size:14px}
+.tz-footer a:hover{color:var(--tz-accent)}
+.tz-footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--tz-muted);text-shadow:none;border-top:1px dashed var(--tz-line);padding-top:24px}
+.tz-reveal{opacity:0;transform:translateY(18px);transition:opacity .6s var(--tz-ease),transform .6s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none;text-shadow:0 0 8px rgba(51,255,102,.25)}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}.tz-boot-inner{animation:none}.tz-cursor{animation:none}.tz-reveal{opacity:1;transform:none;transition:none}*{transition:none !important}
+}
+@media(max-width:860px){
+  .tz-hero-copy{grid-template-columns:1fr;gap:24px}
+  .tz-why{grid-template-columns:1fr}
+  .tz-stats{grid-template-columns:1fr 1fr}
+  .tz-stat:nth-child(2){border-right:none}
+  .tz-stat{border-bottom:1px dashed var(--tz-line)}
+  .tz-navlinks{display:none}
+  .tz-term-body{padding:24px;min-height:280px;font-size:14px}
+}
+@media(max-width:560px){
+  .tz-section{padding:64px 0}
+  .tz-stats{grid-template-columns:1fr}
+  .tz-stat{border-right:none}
+  .tz-footer-grid{grid-template-columns:1fr}
+  .tz-cta{padding:48px 28px}
+}
+</style>
+</head>
+<body>
+<!-- DNA: retro-terminal · design read: an open-source CLI page that boots like the tool it sells — phosphor green, scanlines, zero chrome · dials V6/M3/D8 · one weird thing: the hero terminal types a real install sequence on load, and the changelog is the social proof -->
+<div class="tz-boot" aria-hidden="true">
+  <div class="tz-boot-inner">
+    <span class="tz-dim">[boot] mason v3.2.1 · kernel ok · templates indexed: 48 · plugins: 12 loaded · </span><span>[OK] ready · </span>
+    <span class="tz-dim">[boot] mason v3.2.1 · kernel ok · templates indexed: 48 · plugins: 12 loaded · </span><span>[OK] ready · </span>
+  </div>
+</div>
+
+<header class="tz-wrap">
+  <nav class="tz-nav" aria-label="Main">
+    <a class="tz-brand" href="#">mason</a>
+    <div class="tz-navlinks">
+      <a href="#install">install</a><a href="#commands">commands</a><a href="#why">why</a><a href="#changelog">changelog</a>
+    </div>
+    <a class="tz-btn" href="#install">★ 4.2k on GitHub</a>
+  </nav>
+</header>
+
+<main>
+  <section class="tz-wrap tz-hero">
+    <div class="tz-term" role="img" aria-label="Terminal showing mason scaffolding a project">
+      <div class="tz-term-bar"><i></i><i></i><i></i><span style="margin-left:8px">mason — zsh</span></div>
+      <div class="tz-term-body" id="tz-term" aria-hidden="true"></div>
+    </div>
+    <div class="tz-hero-copy">
+      <div>
+        <h1>The scaffolding CLI that <span class="tz-accent">respects your setup.</span></h1>
+        <p>mason generates project scaffolding from templates you actually control — no 400-file dumps, no mystery configs, no "opinionated" anything. Open source, MIT licensed, 48 templates maintained by people who ship.</p>
+      </div>
+      <div><a class="tz-btn" href="#install">Install mason</a></div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="install">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <h2>install</h2>
+        <p>One line. No package-manager drama, no post-install survey, no telemetry. (We don't phone home. Check the source.)</p>
+      </div>
+      <div class="tz-code tz-reveal">
+        <button class="tz-copy" id="tz-copy">copy</button>
+        <pre><span class="tz-c"># macOS / Linux</span>
+curl -fsSL https://mason.dev/install.sh | sh
+
+<span class="tz-c"># or, if you prefer to see what you're running</span>
+brew install mason-cli        <span class="tz-c"># homebrew</span>
+cargo install mason           <span class="tz-c"># rust</span>
+npm i -g @mason/cli          <span class="tz-c"># npm</span></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="commands">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <h2>commands</h2>
+        <p>Eight commands. You'll use three daily and forget the rest exist — which is the point.</p>
+      </div>
+      <table class="tz-cmds tz-reveal">
+        <tr><td>mason new</td><td>Scaffold a project from any template. Interactive, skippable, resumable.</td></tr>
+        <tr><td>mason add</td><td>Graft a template into an existing project without clobbering your files.</td></tr>
+        <tr><td>mason list</td><td>Show installed templates with versions, sources, and last-used dates.</td></tr>
+        <tr><td>mason diff</td><td>Preview exactly what a template would change before it touches disk.</td></tr>
+        <tr><td>mason pin</td><td>Lock a template version per project. Upgrades are always opt-in.</td></tr>
+        <tr><td>mason make</td><td>Turn your current project into a template. Share it or keep it.</td></tr>
+        <tr><td>mason doctor</td><td>Diagnose your setup: runtimes, versions, PATH. Fixes what it can.</td></tr>
+        <tr><td>mason --help</td><td>The manual. Written by humans, with examples that run.</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section class="tz-section" id="why">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <h2>why mason</h2>
+        <p>Every scaffolding tool promises speed. mason promises something rarer: you stay in charge.</p>
+      </div>
+      <div class="tz-why">
+        <div class="tz-ascii tz-reveal" aria-hidden="true">  other tools          mason
+  +----------+       +----------+
+  | template |       | template |
+  |  (blob)  |       | (recipe) |
+  +----+-----+       +----+-----+
+       |                  |
+       v                  v
+  +----------+       +----------+
+  | 400 files|       | 12 files |
+  | "trust   |       | + a diff |
+  |  me"     |       | you read |
+  +----------+       +----------+</div>
+        <ul class="tz-points">
+          <li class="tz-reveal"><b>Diffs before writes</b><span><span class="tz-out">mason diff shows every file it would create, change, or skip — before anything happens. No surprises in your repo.</span></span></li>
+          <li class="tz-reveal"><b>Templates are recipes, not blobs</b><span><span class="tz-out">A mason template is a readable script with variables and conditions. Fork it in an afternoon; understand it in an hour.</span></span></li>
+          <li class="tz-reveal"><b>Zero lock-in</b><span><span class="tz-out">Output is plain files. Uninstall mason tomorrow and everything still builds. We consider that a feature, not a bug.</span></span></li>
+          <li class="tz-reveal"><b>Fast enough to forget</b><span><span class="tz-out">Cold start in 40ms. Scaffolding a full-stack app takes under two seconds — most of it is your disk.</span></span></li>
+        </ul>
+      </div>
+      <div class="tz-stats tz-reveal" style="margin-top:64px">
+        <div class="tz-stat"><b>4.2k</b><span>GitHub stars</span></div>
+        <div class="tz-stat"><b>48</b><span>Maintained templates</span></div>
+        <div class="tz-stat"><b>190k</b><span>Monthly installs</span></div>
+        <div class="tz-stat"><b>0</b><span>Telemetry calls</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="changelog">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <h2>changelog</h2>
+        <p>Shipped in the open. Every release notes what changed and who to thank.</p>
+      </div>
+      <div class="tz-log tz-reveal">
+        <div class="tz-ver"><h3>v3.2.1 <span class="tz-tag">latest</span></h3><ul><li>Fix: mason add no longer follows symlinks outside the project root</li><li>Perf: template index loads 3x faster on spinning disks (thanks @ruth)</li></ul></div>
+        <div class="tz-ver"><h3>v3.2.0</h3><ul><li>New: mason make turns any project into a shareable template</li><li>New: --dry-run flag on every write command</li></ul></div>
+        <div class="tz-ver"><h3>v3.1.4</h3><ul><li>Fix: Windows path handling in 14 templates</li><li>Docs: full rewrite of the template-authoring guide</li></ul></div>
+      </div>
+      <div style="margin-top:48px">
+        <div class="tz-sec-head" style="margin-bottom:24px"><h2 style="font-size:22px">maintainers</h2></div>
+        <div class="tz-people tz-reveal">
+          <a class="tz-person" href="#"><b>@devorah</b><span>creator · 312 commits</span></a>
+          <a class="tz-person" href="#"><b>@ruth</b><span>perf · 98 commits</span></a>
+          <a class="tz-person" href="#"><b>@kaito</b><span>templates · 141 commits</span></a>
+          <a class="tz-person" href="#"><b>@sanne</b><span>docs · 87 commits</span></a>
+          <a class="tz-person" href="#"><b>+46</b><span>contributors</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<style>
+.tz-plugins{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--tz-line)}
+.tz-plugin{padding:36px 32px;border-bottom:1px dashed var(--tz-line);text-decoration:none;display:block;transition:background .25s}
+.tz-plugin:nth-child(odd){border-right:1px dashed var(--tz-line)}
+.tz-plugin:nth-last-child(-n+2){border-bottom:none}
+.tz-plugin:hover{background:rgba(51,255,102,.04)}
+.tz-plugin h3{font-size:17px;margin-bottom:8px}
+.tz-plugin h3 .tz-accent{font-size:12px;margin-left:10px}
+.tz-plugin p{color:var(--tz-muted);text-shadow:none;font-size:14px}
+.tz-involve{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border:1px solid var(--tz-line);margin-top:0}
+.tz-way{padding:40px 32px;border-right:1px dashed var(--tz-line);text-decoration:none;display:block}
+.tz-way:last-child{border-right:none}
+.tz-way:hover{background:rgba(51,255,102,.04)}
+.tz-way .tz-n{color:var(--tz-accent);font-size:13px;display:block;margin-bottom:14px}
+.tz-way h3{font-size:18px;margin-bottom:10px}
+.tz-way p{color:var(--tz-muted);text-shadow:none;font-size:14px}
+@media(max-width:860px){.tz-plugins{grid-template-columns:1fr}.tz-plugin:nth-child(odd){border-right:none}.tz-plugin:nth-last-child(-n+2){border-bottom:1px dashed var(--tz-line)}.tz-plugin:last-child{border-bottom:none}.tz-involve{grid-template-columns:1fr}.tz-way{border-right:none;border-bottom:1px dashed var(--tz-line)}.tz-way:last-child{border-bottom:none}}
+</style>
+  <section class="tz-section" id="plugins">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <h2>plugins</h2>
+        <p>The community extends mason. Twelve official plugins, four hundred in the wild.</p>
+      </div>
+      <div class="tz-plugins tz-reveal">
+        <a class="tz-plugin" href="#"><h3>mason-docker <span class="tz-accent">★ 812</span></h3><p>Containerize any scaffold with one command. Multi-stage builds, sane defaults.</p></a>
+        <a class="tz-plugin" href="#"><h3>mason-i18n <span class="tz-accent">★ 445</span></h3><p>Graft internationalization into existing projects — 40 locales, ICU formats.</p></a>
+        <a class="tz-plugin" href="#"><h3>mason-ci <span class="tz-accent">★ 690</span></h3><p>GitHub Actions, GitLab CI, or Buildkite pipelines matched to your stack.</p></a>
+        <a class="tz-plugin" href="#"><h3>mason-secrets <span class="tz-accent">★ 388</span></h3><p>Wire up 1Password, Vault, or Doppler env management without the YAML archaeology.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="involve">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <h2>get involved</h2>
+        <p>mason is built by its users. Here's where to start, whatever your speed.</p>
+      </div>
+      <div class="tz-involve tz-reveal">
+        <a class="tz-way" href="#"><span class="tz-n">[01]</span><h3>Write a template</h3><p>The authoring guide takes an afternoon. Publish to the registry with one command.</p></a>
+        <a class="tz-way" href="#"><span class="tz-n">[02]</span><h3>Fix a paper cut</h3><p>Issues tagged "good first issue" are real, small, and reviewed within 48 hours.</p></a>
+        <a class="tz-way" href="#"><span class="tz-n">[03]</span><h3>Fund the work</h3><p>Open Collective covers CI and docs hosting. $5/month keeps the lights blinking.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-wrap">
+    <div class="tz-cta tz-reveal">
+      <h2>Stop hand-rolling <span class="tz-accent">boilerplate.</span></h2>
+      <p>mason is free, open source, and MIT licensed — use it at work, in secret, wherever. If it saves you an afternoon, star the repo. That's the whole business model.</p>
+      <div class="tz-cta-row">
+        <a class="tz-btn" href="#install">Install mason</a>
+        <a class="tz-btn" href="#" style="border-color:var(--tz-line);color:var(--tz-ink);text-shadow:none">Read the docs</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-footer-grid">
+      <div>
+        <h4>mason</h4>
+        <p style="font-size:14px;color:var(--tz-muted);text-shadow:none;max-width:34ch">Open-source scaffolding CLI. MIT licensed. No telemetry, no accounts, no nonsense.</p>
+      </div>
+      <div><h4>Project</h4><ul><li><a href="#">GitHub</a></li><li><a href="#changelog">Changelog</a></li><li><a href="#">Contributing</a></li></ul></div>
+      <div><h4>Docs</h4><ul><li><a href="#install">Install</a></li><li><a href="#commands">Commands</a></li><li><a href="#">Write a template</a></li></ul></div>
+    </div>
+    <div class="tz-footer-bottom">
+      <span>© 2026 the mason contributors · MIT</span>
+      <span>v3.2.1 · exit code 0</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var term=document.getElementById('tz-term');
+  var script=[
+    {t:'$ mason new saas --template next-supabase',d:0},
+    {t:'[?] Project name: harbor-lights',d:1,out:1},
+    {t:'[?] Include auth? (Y/n) Y',d:1,out:1},
+    {t:'[?] Database: (p)ostgres / (s)qlite > p',d:1,out:1},
+    {t:'[OK] 12 files written · 0 conflicts · 0 surprises',d:1,ok:1},
+    {t:'[OK] git init · first commit: "mason: scaffold"',d:1,ok:1},
+    {t:'$ cd harbor-lights && npm run dev',d:1},
+    {t:'[OK] ready in 1.8s — go build something',d:1,ok:1}
+  ];
+  function renderAll(){
+    var h='';
+    script.forEach(function(s){
+      if(s.out){h+='<div class="tz-line tz-out">'+s.t+'</div>';}
+      else if(s.ok){h+='<div class="tz-line tz-ok">'+s.t+'</div>';}
+      else{h+='<div class="tz-line"><span class="tz-prompt">'+s.t.split(' ')[0]+'</span> '+s.t.split(' ').slice(1).join(' ')+'</div>';}
+    });
+    term.innerHTML=h;
+  }
+  if(reduce){renderAll();}
+  else{
+    var i=0;
+    function step(){
+      if(i>=script.length){term.innerHTML+='<div class="tz-line"><span class="tz-prompt">$</span> <span class="tz-cursor"></span></div>';return;}
+      var s=script[i], line=document.createElement('div');line.className='tz-line';
+      if(s.out){line.className+=' tz-out';line.textContent=s.t;}
+      else if(s.ok){line.className+=' tz-ok';line.textContent=s.t;}
+      else{
+        var parts=s.t.split(' ');
+        line.innerHTML='<span class="tz-prompt">'+parts[0]+'</span> ';
+        var rest=parts.slice(1).join(' '), j=0;
+        var span=document.createElement('span');line.appendChild(span);
+        term.appendChild(line);
+        var iv=setInterval(function(){
+          span.textContent=rest.slice(0,++j);
+          if(j>=rest.length){clearInterval(iv);i++;setTimeout(step,260);}
+        },22);
+        return;
+      }
+      term.appendChild(line);i++;setTimeout(step,s.d?420:700);
+    }
+    step();
+  }
+  var cp=document.getElementById('tz-copy');
+  cp.addEventListener('click',function(){
+    var txt='curl -fsSL https://mason.dev/install.sh | sh';
+    if(navigator.clipboard){navigator.clipboard.writeText(txt).then(function(){cp.textContent='copied';setTimeout(function(){cp.textContent='copy'},1500);});}
+  });
+  if(reduce) return;
+  var els=document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('tz-in')});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(en,i){if(en.isIntersecting){setTimeout(function(){en.target.classList.add('tz-in')},(i%3)*70);io.unobserve(en.target);}})},{threshold:.1});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
