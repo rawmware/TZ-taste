@@ -1,0 +1,95 @@
+<!--tz-meta {"id":"misc-modal","title":"Modal dialog","category":"Misc","file":"patterns/misc-modal.html","tags":["dialog","overlay"],"description":"Modal pattern with backdrop, visible focus ring, and esc hint.","dnas":["soft-minimal"]} -->
+<section class="tz-stage">
+  <div class="tz-backdrop" aria-hidden="true"></div>
+  <div class="tz-dialog" role="dialog" aria-modal="true" aria-labelledby="tz-dlg-t">
+    <h2 id="tz-dlg-t">Delete this draft?</h2>
+    <p>The draft and its 14 revisions will be gone for good. Published work is never touched.</p>
+    <div class="tz-dialog-actions">
+      <button type="button" class="tz-btn-ghost">Keep draft</button>
+      <button type="button" class="tz-btn-solid" autofocus>Delete</button>
+    </div>
+    <p class="tz-dialog-hint">Tab to see the focus ring · <kbd>esc</kbd> closes</p>
+  </div>
+</section>
+<style>
+.tz-stage{
+  position:relative;
+  min-height:380px;
+  background:#eef1f4;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:32px 20px;
+  font-family:Arial,Helvetica,sans-serif;
+  overflow:hidden;
+}
+.tz-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(26,32,38,.45);
+  backdrop-filter:blur(3px);
+}
+.tz-dialog{
+  position:relative;
+  background:#faf9f7;
+  color:#1a1a1a;
+  max-width:400px;
+  width:100%;
+  padding:32px;
+  border:1px solid #dcd8cf;
+  box-shadow:0 24px 60px rgba(26,32,38,.25);
+}
+.tz-dialog h2{
+  font-family:Georgia,'Times New Roman',serif;
+  font-weight:400;
+  font-size:26px;
+  margin:0 0 12px;
+}
+.tz-dialog p{
+  font-size:14px;
+  line-height:1.65;
+  margin:0 0 24px;
+  color:#3c3a35;
+}
+.tz-dialog-actions{
+  display:flex;
+  gap:12px;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+}
+.tz-btn-ghost,
+.tz-btn-solid{
+  font:600 13px/1 Arial,Helvetica,sans-serif;
+  padding:13px 22px;
+  cursor:pointer;
+  border-radius:2px;
+}
+.tz-btn-ghost{
+  background:transparent;
+  border:1px solid #1a1a1a;
+  color:#1a1a1a;
+}
+.tz-btn-solid{
+  background:#8f2f16;
+  border:1px solid #8f2f16;
+  color:#faf9f7;
+}
+.tz-btn-ghost:focus-visible,
+.tz-btn-solid:focus-visible{
+  outline:3px solid #0f766e;
+  outline-offset:3px;
+}
+.tz-dialog-hint{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:11px;
+  color:#6b675c;
+  margin:20px 0 0 !important;
+}
+.tz-dialog-hint kbd{
+  border:1px solid #b9b4a6;
+  border-bottom-width:2px;
+  padding:1px 6px;
+  border-radius:3px;
+  background:#fff;
+}
+</style>
