@@ -1,5 +1,5 @@
 {
- "count": 23,
+ "count": 33,
  "updated": "2026-10-04",
  "usage": "Prose guides for humans and agents. Not code.",
  "docs": [
@@ -34,6 +34,12 @@
    "description": "Before/after teardown of a generic restaurant site: diagnosis, DNA pick, rebuild notes."
   },
   {
+   "id": "color-psychology",
+   "title": "Color Psychology",
+   "file": "docs/COLOR-PSYCHOLOGY.md",
+   "description": "What colors make people feel and do — emotion, cultural meaning, and conversion effects, with concrete usage rules."
+  },
+  {
    "id": "color-theory-crash",
    "title": "Color Theory Crash Course",
    "file": "docs/color-theory-crash.md",
@@ -44,6 +50,12 @@
    "title": "The Copywriting Guide",
    "file": "docs/copywriting-guide.md",
    "description": "Headlines that make claims, button copy, microcopy, killing jargon, and voice per DNA."
+  },
+  {
+   "id": "cta-design",
+   "title": "CTA Design",
+   "file": "docs/CTA-DESIGN.md",
+   "description": "Button copy that says what happens, hierarchy with one primary per viewport, and placement rules."
   },
   {
    "id": "dark-mode-guide",
@@ -70,6 +82,30 @@
    "description": "Labels, error states, input styling per DNA, multi-step flows, validation copy."
   },
   {
+   "id": "empty-states",
+   "title": "Empty States",
+   "file": "docs/EMPTY-STATES.md",
+   "description": "Zero-data screens that teach instead of dead-end — anatomy, types, and tone rules."
+  },
+  {
+   "id": "error-handling-ux",
+   "title": "Error Handling UX",
+   "file": "docs/ERROR-HANDLING-UX.md",
+   "description": "Inline errors, validation timing, retries, and tone — errors that help instead of punish."
+  },
+  {
+   "id": "footer-strategy",
+   "title": "Footer Strategy",
+   "file": "docs/FOOTER-STRATEGY.md",
+   "description": "What footers actually do — trust, wayfinding, SEO, and the conversion safety net."
+  },
+  {
+   "id": "hero-anatomy",
+   "title": "Hero Anatomy",
+   "file": "docs/HERO-ANATOMY.md",
+   "description": "Seven hero compositions that aren't the template — structure, copy budgets, and per-DNA variants."
+  },
+  {
    "id": "icon-usage",
    "title": "Icon Usage",
    "file": "docs/icon-usage.md",
@@ -88,10 +124,22 @@
    "description": "12-column grids, asymmetric grids, bento logic, rhythm, and breaking the grid exactly once."
   },
   {
+   "id": "loading-performance-ux",
+   "title": "Loading & Performance UX",
+   "file": "docs/LOADING-PERFORMANCE-UX.md",
+   "description": "Skeletons, perceived performance, and performance budgets — making waits feel short and honest."
+  },
+  {
    "id": "motion-guide",
    "title": "The Motion Guide",
    "file": "docs/motion-guide.md",
    "description": "When and how to animate: easing, duration, stagger, scroll choreography, reduced motion, per-DNA motion notes."
+  },
+  {
+   "id": "navigation-patterns",
+   "title": "Navigation Patterns",
+   "file": "docs/NAVIGATION-PATTERNS.md",
+   "description": "Nav architectures that orient instead of overwhelm — top bar, mega menu, rail, command palette, mobile."
   },
   {
    "id": "picking-type-pairings",
@@ -100,10 +148,22 @@
    "description": "The display/body/mono trio, contrast vs harmony, and 8 example pairings mapped to DNAs."
   },
   {
+   "id": "pricing-psychology",
+   "title": "Pricing Psychology",
+   "file": "docs/PRICING-PSYCHOLOGY.md",
+   "description": "Anchoring, decoys, tier naming, and annual framing — how pricing pages actually persuade."
+  },
+  {
    "id": "shipping-checklist",
    "title": "The Shipping Checklist",
    "file": "docs/shipping-checklist.md",
    "description": "Pre-launch QA: viewports, performance, SEO basics, legal, analytics, the ANTI-SLOP final pass."
+  },
+  {
+   "id": "social-proof",
+   "title": "Social Proof",
+   "file": "docs/SOCIAL-PROOF.md",
+   "description": "Logos, testimonials, and stats that earn trust — credibility rules, placement, and fake-proof detection."
   },
   {
    "id": "spacing-rhythm",
