@@ -1,0 +1,113 @@
+<!--tz-meta {"id":"showcase-swimming-pool","title":"Swimming Pool showcase","category":"Showcase","file":"showcase/swimming-pool.html","tags":["swimming-pool"],"description":"Live demo page for the Swimming Pool style DNA.","dnas":["swimming-pool"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Swimming Pool — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Karla:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#e9f4f2; --tz-surface:#d8ebe8; --tz-ink:#123a3f; --tz-muted:#5c7a7d;
+  --tz-accent:#e03e2d; --tz-line:#123a3f1f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Karla",sans-serif;font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 4vw;border-bottom:2px solid var(--tz-ink)}
+.tz-wordmark{font-family:"Archivo Black",sans-serif;font-size:1.1rem;letter-spacing:0.04em}
+.tz-temp{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.1em;color:var(--tz-muted);display:flex;align-items:center;gap:0.7rem}
+.tz-temp strong{color:var(--tz-ink)}
+.tz-gauge{display:inline-block;width:5rem;height:0.45rem;background:var(--tz-surface);border:1px solid var(--tz-line);border-radius:2px;position:relative;overflow:hidden}
+.tz-gauge i{position:absolute;left:0;top:0;bottom:0;width:62%;background:var(--tz-ink)}
+.tz-hero{padding:6.5rem 4vw 3.5rem;position:relative;overflow:hidden}
+.tz-lane{position:absolute;left:0;right:0;height:2px;background:var(--tz-line);pointer-events:none}
+.tz-lane.tz-l1{top:8rem}
+.tz-lane.tz-l2{top:15rem}
+.tz-lane.tz-l3{top:22rem}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.16em;color:var(--tz-muted);margin-bottom:1.4rem}
+.tz-hero h1{font-family:"Archivo Black",sans-serif;font-size:clamp(2.8rem,9.5vw,6.5rem);line-height:0.98;letter-spacing:-0.01em;text-transform:uppercase;max-width:12ch;animation:tz-ripple 1s cubic-bezier(0.22,1,0.36,1) both}
+@keyframes tz-ripple{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.tz-sub{margin-top:1.6rem;font-size:1.05rem;color:var(--tz-muted);max-width:46ch}
+.tz-cta{display:inline-block;margin-top:2.2rem;background:var(--tz-accent);color:#fff;font-family:"Archivo Black",sans-serif;font-size:1.05rem;letter-spacing:0.05em;text-decoration:none;text-transform:uppercase;padding:1rem 2.2rem;border-radius:2px;transition:opacity .15s ease}
+.tz-cta:hover{opacity:0.88}
+.tz-rules{margin:3.5rem 0 0;border-top:2px solid var(--tz-ink);padding:1.2rem 0}
+.tz-rules p{font-family:"Space Mono",monospace;font-size:0.78rem;letter-spacing:0.04em;line-height:2}
+.tz-rules b{color:var(--tz-accent)}
+.tz-content{padding:2rem 4vw 1rem}
+.tz-content h2{font-family:"Archivo Black",sans-serif;font-size:clamp(1.7rem,4.5vw,2.6rem);text-transform:uppercase;letter-spacing:0.01em;margin-bottom:0.4rem}
+.tz-subhead{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.12em;color:var(--tz-muted);margin-bottom:1.6rem}
+table.tz-sched{width:100%;border-collapse:collapse;max-width:720px;background:var(--tz-surface);border-radius:2px}
+.tz-sched th{font-family:"Space Mono",monospace;font-size:0.66rem;font-weight:700;letter-spacing:0.14em;color:var(--tz-muted);text-align:left;padding:1rem 1.2rem;border-bottom:1px solid var(--tz-line)}
+.tz-sched td{font-family:"Space Mono",monospace;font-size:0.86rem;padding:1rem 1.2rem;border-bottom:1px solid var(--tz-line)}
+.tz-sched tr:last-child td{border-bottom:none}
+.tz-sched td.tz-day{color:var(--tz-ink);font-weight:700}
+.tz-note{margin:2.4rem 0 0;max-width:560px;font-size:0.95rem;color:var(--tz-muted)}
+.tz-note strong{color:var(--tz-ink)}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Archivo Black",sans-serif;font-size:1.6rem;text-transform:uppercase;letter-spacing:0.02em;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1;border-radius:2px;overflow:hidden}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"Space Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Space Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"Space Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-hero{padding-top:4rem}
+  .tz-temp .tz-gauge{display:none}
+  .tz-sched th:nth-child(4),.tz-sched td:nth-child(4){display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">MAPLE ST. POOL</span>
+  <span class="tz-temp">WATER <strong>78&deg;F</strong> <span class="tz-gauge" aria-hidden="true"><i></i></span></span>
+</header>
+
+<section class="tz-hero">
+  <span class="tz-lane tz-l1" aria-hidden="true"></span>
+  <span class="tz-lane tz-l2" aria-hidden="true"></span>
+  <span class="tz-lane tz-l3" aria-hidden="true"></span>
+  <p class="tz-eyebrow">PARKS &amp; REC &middot; OPEN DAILY 11&ndash;7 &middot; SEASON THRU AUG 31</p>
+  <h1>The deep end is colder than you remember.</h1>
+  <p class="tz-sub">Two lanes for laps, one for walking, and the deep end opens Saturday. Showers before you swim. We mean it.</p>
+  <a class="tz-cta" href="#">See this week's lap hours</a>
+  <div class="tz-rules">
+    <p>RULES BOARD &middot; NO DIVING IN THE SHALLOW END &middot; <b>THE WHISTLE MEANS OUT</b> &middot; LANE 1 IS FOR WALKING &middot; KIDS UNDER 8 WITHIN ARM'S REACH</p>
+  </div>
+</section>
+
+<section class="tz-content">
+  <h2>Pool schedule</h2>
+  <p class="tz-subhead">WEEK OF JUL 13 &middot; ALL TIMES LOCAL &middot; LANES 25 M</p>
+  <table class="tz-sched">
+    <thead><tr><th>DAY</th><th>OPEN SWIM</th><th>LAP LANES</th><th>ADULT SWIM</th></tr></thead>
+    <tbody>
+      <tr><td class="tz-day">MON&ndash;FRI</td><td>11:00&ndash;4:00</td><td>LANES 2&ndash;3 AFTER 5</td><td>12:00&ndash;1:00</td></tr>
+      <tr><td class="tz-day">SAT</td><td>11:00&ndash;5:00</td><td>DEEP END OPENS</td><td>9:00&ndash;10:00</td></tr>
+      <tr><td class="tz-day">SUN</td><td>12:00&ndash;5:00</td><td>LANE 4 ONLY</td><td>11:00&ndash;12:00</td></tr>
+    </tbody>
+  </table>
+  <p class="tz-note"><strong>Swim lessons run 4&ndash;6 p.m. weekdays.</strong> The shallow end gets loud, the parking lot gets full, and the ice cream truck knows exactly what it's doing.</p>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#e9f4f2"></span><span class="tz-name">bg</span><span class="tz-hex">#e9f4f2</span></li>
+    <li><span class="tz-chip" style="background:#d8ebe8"></span><span class="tz-name">surface</span><span class="tz-hex">#d8ebe8</span></li>
+    <li><span class="tz-chip" style="background:#123a3f"></span><span class="tz-name">ink</span><span class="tz-hex">#123a3f</span></li>
+    <li><span class="tz-chip" style="background:#5c7a7d"></span><span class="tz-name">muted</span><span class="tz-hex">#5c7a7d</span></li>
+    <li><span class="tz-chip" style="background:#e03e2d"></span><span class="tz-name">accent</span><span class="tz-hex">#e03e2d</span></li>
+    <li><span class="tz-chip" style="background:#123a3f1f"></span><span class="tz-name">line</span><span class="tz-hex">#123a3f1f</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
