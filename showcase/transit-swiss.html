@@ -1,0 +1,160 @@
+<!--tz-meta {"id":"showcase-transit-swiss","title":"Transit Swiss showcase","category":"Showcase","file":"showcase/transit-swiss.html","tags":["transit-swiss"],"description":"Live demo page for the Transit Swiss style DNA.","dnas":["transit-swiss"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Transit Swiss — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#ffffff; --tz-surface:#f2f4f5; --tz-ink:#111417; --tz-muted:#5c6670;
+  --tz-accent:#d0342c; --tz-blue:#0f6fbf; --tz-line:#dfe3e6;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"DM Sans",sans-serif;font-size:1.05rem;line-height:1.5}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:.9rem 1.5rem;border-bottom:3px solid var(--tz-ink);font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.1em}
+.tz-top .tz-wordmark{font-weight:700}
+.tz-top .tz-dna-label{color:var(--tz-muted)}
+.tz-route{display:flex;align-items:center;gap:0;padding:1rem 1.5rem;border-bottom:1px solid var(--tz-line);overflow-x:auto;font-family:"IBM Plex Mono",monospace;font-size:.72rem}
+.tz-stop{display:flex;align-items:center;gap:.5rem;white-space:nowrap;color:var(--tz-muted);text-decoration:none;padding:.4rem .6rem}
+.tz-stop .tz-dot{width:12px;height:12px;border-radius:50%;background:var(--tz-bg);border:3px solid var(--tz-muted);flex:none}
+.tz-stop.tz-here{color:var(--tz-ink);font-weight:700}
+.tz-stop.tz-here .tz-dot{background:var(--tz-accent);border-color:var(--tz-accent)}
+.tz-seg{width:44px;height:4px;background:var(--tz-line);flex:none}
+.tz-here-tag{margin-left:auto;background:var(--tz-accent);color:var(--tz-bg);padding:.3rem .7rem;font-weight:700;white-space:nowrap}
+.tz-hero{padding:3rem 1.5rem 2rem;max-width:1100px;margin:0 auto}
+.tz-eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.75rem;letter-spacing:.18em;color:var(--tz-accent);margin-bottom:.75rem}
+.tz-hero h1{font-family:"Archivo",sans-serif;font-weight:800;text-transform:uppercase;font-size:clamp(2.2rem,6vw,4.5rem);line-height:1.02;letter-spacing:-.01em;max-width:14ch}
+.tz-hero p{color:var(--tz-muted);margin:1rem 0 1.5rem;max-width:52ch}
+.tz-board{border:3px solid var(--tz-ink);margin:0 0 1.75rem}
+.tz-board-head{display:flex;justify-content:space-between;background:var(--tz-ink);color:var(--tz-bg);font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.14em;padding:.6rem 1rem}
+.tz-row{display:grid;grid-template-columns:auto 1fr auto auto;gap:1rem;align-items:center;padding:.85rem 1rem;border-top:1px solid var(--tz-line);font-family:"IBM Plex Mono",monospace;font-size:.95rem;opacity:.45}
+.tz-row .tz-chip{width:22px;height:22px;border-radius:5px;flex:none}
+.tz-row .tz-dest{font-weight:700;letter-spacing:.02em}
+.tz-row .tz-time{color:var(--tz-muted)}
+.tz-row .tz-status{font-size:.72rem;letter-spacing:.1em;font-weight:700}
+.tz-row.tz-r1{animation:tz-live 9s infinite}
+.tz-row.tz-r2{animation:tz-live 9s infinite 3s}
+.tz-row.tz-r3{animation:tz-live 9s infinite 6s}
+@keyframes tz-live{0%,100%{opacity:.45;background:transparent}8%,33%{opacity:1;background:var(--tz-surface)}41%{opacity:.45;background:transparent}}
+.tz-row .tz-s-board{color:var(--tz-accent)}
+.tz-row .tz-s-late{color:var(--tz-blue)}
+.tz-cta{display:inline-block;background:var(--tz-accent);color:var(--tz-bg);font-family:"IBM Plex Mono",monospace;font-size:.85rem;font-weight:700;letter-spacing:.1em;padding:1rem 2rem;text-decoration:none}
+.tz-cta:hover{background:var(--tz-ink)}
+.tz-map{margin-top:2.5rem;border:3px solid var(--tz-ink);background:var(--tz-surface);padding:1rem}
+.tz-map svg{display:block;width:100%;height:auto}
+.tz-map .tz-draw{stroke-dasharray:900;stroke-dashoffset:900;animation:tz-draw 2.6s ease forwards}
+@keyframes tz-draw{to{stroke-dashoffset:0}}
+.tz-content{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 4rem}
+.tz-content h2{font-family:"Archivo",sans-serif;font-weight:800;text-transform:uppercase;font-size:1.75rem;margin:2.5rem 0 1rem;display:flex;align-items:center;gap:.75rem}
+.tz-content h2 .tz-dot{width:16px;height:16px;border-radius:50%;background:var(--tz-accent);flex:none}
+.tz-table{width:100%;border-collapse:collapse;font-family:"IBM Plex Mono",monospace;font-size:.92rem}
+.tz-table th{text-align:left;font-size:.7rem;letter-spacing:.14em;color:var(--tz-muted);padding:.75rem .75rem;border-bottom:3px solid var(--tz-ink)}
+.tz-table td{padding:.8rem .75rem;border-bottom:1px solid var(--tz-line)}
+.tz-table tr:hover td{background:var(--tz-surface)}
+.tz-table .tz-st{font-weight:700;font-family:"DM Sans",sans-serif}
+.tz-table .tz-p{color:var(--tz-muted)}
+.tz-note{margin-top:2rem;background:var(--tz-surface);border-left:8px solid var(--tz-blue);padding:1.25rem 1.5rem;font-size:.98rem}
+.tz-note strong{font-family:"IBM Plex Mono",monospace;font-size:.75rem;letter-spacing:.14em;display:block;margin-bottom:.4rem}
+.tz-key{display:flex;flex-wrap:wrap;gap:1.25rem;margin:1.5rem 0;font-family:"IBM Plex Mono",monospace;font-size:.78rem}
+.tz-key span{display:flex;align-items:center;gap:.5rem}
+.tz-key i{width:20px;height:20px;border-radius:5px;display:block}
+.tz-tokens{max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem;border-top:3px solid var(--tz-ink)}
+.tz-tokens h2{font-family:"Archivo",sans-serif;font-weight:800;text-transform:uppercase;font-size:1.5rem;margin-bottom:1.25rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:1rem}
+.tz-chip-row{display:flex;align-items:center;gap:.6rem;font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--tz-muted)}
+.tz-chip-row i{display:block;width:2.75rem;height:2.75rem;border:1px solid var(--tz-line)}
+.tz-foot{border-top:3px solid var(--tz-ink);padding:1.5rem;font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--tz-muted);text-align:center;letter-spacing:.08em}
+@media(max-width:700px){
+  .tz-top{padding:.8rem 1rem}
+  .tz-hero,.tz-content,.tz-tokens{padding-left:1rem;padding-right:1rem}
+  .tz-row{grid-template-columns:auto 1fr auto;font-size:.82rem}
+  .tz-row .tz-time{display:none}
+  .tz-here-tag{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-row{animation:none;opacity:1}
+  .tz-map .tz-draw{animation:none;stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">TZ—taste</span>
+  <span class="tz-dna-label">STYLE DNA · TRANSIT-SWISS</span>
+</header>
+
+<nav class="tz-route" aria-label="Page route map">
+  <a class="tz-stop tz-here" href="#tz-board"><span class="tz-dot"></span>BOARD</a><span class="tz-seg"></span>
+  <a class="tz-stop" href="#tz-timetable"><span class="tz-dot"></span>TIMETABLE</a><span class="tz-seg"></span>
+  <a class="tz-stop" href="#tz-service"><span class="tz-dot"></span>SERVICE</a>
+  <span class="tz-here-tag">YOU ARE HERE</span>
+</nav>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow">MERIDIAN CITY TRANSIT · LINE 4 RIVERSIDE</p>
+  <h1>The whole city, on one red line.</h1>
+  <p>Harbor Gate to Riverside in 31 minutes, every 6 minutes at peak. This page is the line — everything below is a stop on it.</p>
+  <div class="tz-board" id="tz-board" aria-label="Live departures">
+    <div class="tz-board-head"><span>DEPARTURES · HARBOR GATE</span><span>SAT 2026-10-03</span></div>
+    <div class="tz-row tz-r1"><span class="tz-chip" style="background:#d0342c"></span><span class="tz-dest">RIVERSIDE</span><span class="tz-time">12:04</span><span class="tz-status tz-s-board">BOARDING</span></div>
+    <div class="tz-row tz-r2"><span class="tz-chip" style="background:#d0342c"></span><span class="tz-dest">RIVERSIDE</span><span class="tz-time">12:10</span><span class="tz-status tz-s-late">+3 MIN</span></div>
+    <div class="tz-row tz-r3"><span class="tz-chip" style="background:#d0342c"></span><span class="tz-dest">RIVERSIDE</span><span class="tz-time">12:16</span><span class="tz-status">ON TIME</span></div>
+  </div>
+  <a class="tz-cta" href="#tz-timetable">READ THE TIMETABLE</a>
+  <div class="tz-map" aria-label="Line 4 route map">
+    <svg viewBox="0 0 1000 180" role="img" aria-label="Line 4 route from Harbor Gate to Riverside">
+      <line x1="60" y1="90" x2="940" y2="90" stroke="#dfe3e6" stroke-width="14"/>
+      <path class="tz-draw" d="M60 90 L940 90" stroke="#d0342c" stroke-width="14" fill="none"/>
+      <g font-family="IBM Plex Mono, monospace" font-size="22" fill="#111417">
+        <circle cx="60" cy="90" r="16" fill="#ffffff" stroke="#d0342c" stroke-width="8"/><text x="30" y="140">HARBOR GATE</text>
+        <circle cx="248" cy="90" r="12" fill="#ffffff" stroke="#111417" stroke-width="8"/><text x="212" y="140">FOUNDRY ROW</text>
+        <circle cx="436" cy="90" r="12" fill="#ffffff" stroke="#111417" stroke-width="8"/><text x="412" y="140">OLD MILL</text>
+        <circle cx="624" cy="90" r="14" fill="#ffffff" stroke="#111417" stroke-width="8"/><text x="596" y="140">CATHEDRAL</text>
+        <circle cx="812" cy="90" r="12" fill="#ffffff" stroke="#111417" stroke-width="8"/><text x="776" y="140">MUSEUM MILE</text>
+        <circle cx="940" cy="90" r="16" fill="#ffffff" stroke="#d0342c" stroke-width="8"/><text x="896" y="140">RIVERSIDE</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section class="tz-content">
+  <div class="tz-key" aria-label="Line key">
+    <span><i style="background:#d0342c"></i>LINE 4 · RIVERSIDE</span>
+    <span><i style="background:#0f6fbf"></i>TRANSFER · LINES 1/2/7</span>
+  </div>
+  <h2 id="tz-timetable"><span class="tz-dot"></span>Line 4 timetable</h2>
+  <table class="tz-table">
+    <thead><tr><th>STATION</th><th>PEAK</th><th>OFF-PEAK</th><th>PLATFORM</th></tr></thead>
+    <tbody>
+      <tr><td class="tz-st">Harbor Gate</td><td>:04 :10 :16</td><td>:05 :20 :35 :50</td><td class="tz-p">1 · STREET</td></tr>
+      <tr><td class="tz-st">Foundry Row</td><td>:07 :13 :19</td><td>:08 :23 :38 :53</td><td class="tz-p">2 · UNDER</td></tr>
+      <tr><td class="tz-st">Old Mill</td><td>:11 :17 :23</td><td>:12 :27 :42 :57</td><td class="tz-p">2 · UNDER</td></tr>
+      <tr><td class="tz-st">Cathedral ◎</td><td>:15 :21 :27</td><td>:16 :31 :46 :01</td><td class="tz-p">1 · UNDER</td></tr>
+      <tr><td class="tz-st">Museum Mile</td><td>:21 :27 :33</td><td>:22 :37 :52 :07</td><td class="tz-p">3 · VIADUCT</td></tr>
+      <tr><td class="tz-st">Riverside</td><td>:27 :33 :39</td><td>:28 :43 :58 :13</td><td class="tz-p">1 · STREET</td></tr>
+    </tbody>
+  </table>
+  <div class="tz-note" id="tz-service">
+    <strong>SERVICE NOTICE · 04:12</strong>
+    Cathedral interchange elevators are out until Monday. Transfer at Old Mill for step-free access to Lines 1 and 7. We will hold the 12:16 at Harbor Gate for the shuttle bus.
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <div class="tz-swatches">
+    <span class="tz-chip-row"><i style="background:#ffffff"></i>#ffffff · bg</span>
+    <span class="tz-chip-row"><i style="background:#111417"></i>#111417 · ink</span>
+    <span class="tz-chip-row"><i style="background:#d0342c"></i>#d0342c · accent</span>
+    <span class="tz-chip-row"><i style="background:#5c6670"></i>#5c6670 · muted</span>
+    <span class="tz-chip-row"><i style="background:#dfe3e6"></i>#dfe3e6 · line</span>
+  </div>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
