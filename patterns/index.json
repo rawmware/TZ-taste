@@ -1,1 +1,2366 @@
-{"count":14,"patterns":[{"category":"Hero","description":"Literary hero: mono eyebrow, giant serif headline, hairline meta row, arch graphic.","dnas":["editorial-serif","ma-japanese","swiss-rational"],"file":"patterns/hero-editorial.html","id":"hero-editorial","tags":["serif","editorial","landing"],"title":"Editorial hero"},{"category":"Hero","description":"Maximum-volume hero: colossal condensed type, acid CTA, scrolling strip.","dnas":["acid-rave","industrial-brutalist","y2k-chrome"],"file":"patterns/hero-kinetic.html","id":"hero-kinetic","tags":["bold","loud","type-driven"],"title":"Kinetic type hero"},{"category":"Nav","description":"Sticky frosted pill nav with CTA. Mobile collapses to a menu button.","dnas":["soft-minimal","glass-calm"],"file":"patterns/nav-pill.html","id":"nav-pill","tags":["sticky","glass","navigation"],"title":"Floating pill nav"},{"category":"Nav","description":"Swiss top bar: wordmark, uppercase links with red underline, coordinates.","dnas":["swiss-rational","docs-solar"],"file":"patterns/nav-minimal.html","id":"nav-minimal","tags":["minimal","swiss","navigation"],"title":"Minimal top bar"},{"category":"Sections","description":"Asymmetric bento grid: one big cell, supporting cells, one wide quote cell.","dnas":["soft-minimal","neo-brutalist-pop"],"file":"patterns/bento.html","id":"bento","tags":["grid","features","saas"],"title":"Bento feature grid"},{"category":"Sections","description":"Three-tier pricing with a rotated highlighted tier and hard shadows.","dnas":["neo-brutalist-pop","soft-minimal"],"file":"patterns/pricing.html","id":"pricing","tags":["pricing","tiers","conversion"],"title":"Pricing tiers"},{"category":"Sections","description":"Editorial testimonial wall: hairline rules, italic serif quotes, mono captions.","dnas":["editorial-serif","dark-luxe"],"file":"patterns/testimonials.html","id":"testimonials","tags":["social-proof","quotes"],"title":"Quote wall"},{"category":"Sections","description":"Brutalist stat band: giant tabular numerals, black rules, one red figure.","dnas":["swiss-rational","industrial-brutalist"],"file":"patterns/stats.html","id":"stats","tags":["numbers","proof","data"],"title":"Stats band"},{"category":"Backgrounds","description":"Infinite CSS marquee strip. Duplicate content spans for a seamless loop.","dnas":["acid-rave","industrial-brutalist","y2k-chrome"],"file":"patterns/marquee.html","id":"marquee","tags":["motion","strip","css-only"],"title":"Marquee strip"},{"category":"Sections","description":"Dark-luxe CTA: champagne eyebrow, serif headline, warm radial glow.","dnas":["dark-luxe","editorial-serif"],"file":"patterns/cta.html","id":"cta","tags":["conversion","dark","cta"],"title":"CTA banner"},{"category":"Footer","description":"Oversized wordmark footer with link columns and mono baseline.","dnas":["acid-rave","industrial-brutalist"],"file":"patterns/footer.html","id":"footer","tags":["footer","wordmark"],"title":"Mega footer"},{"category":"Backgrounds","description":"Animated canvas aurora: three drifting radial blobs. Tune colors to your DNA.","dnas":["glass-calm","y2k-chrome","dark-luxe"],"file":"patterns/background-aurora.html","id":"background-aurora","tags":["canvas","animated","gradient"],"title":"Aurora canvas"},{"category":"Backgrounds","description":"SVG film-grain overlay with stepped animation. Instant texture, zero assets.","dnas":["acid-rave","editorial-serif","dark-luxe"],"file":"patterns/background-grain.html","id":"background-grain","tags":["texture","grain","css-only"],"title":"Film grain"},{"category":"Sections","description":"Project cards with gradient thumbs, hover lift, mono tag rows.","dnas":["soft-minimal","glass-calm"],"file":"patterns/cards.html","id":"cards","tags":["portfolio","cards","work"],"title":"Work cards"}],"updated":"2026-10-03","usage":"Each file is a standalone snippet: a <section> (or <div>/<nav>) plus a <style> block. Copy both into your page. Classes are tz- prefixed to avoid collisions."}
+{
+ "count": 164,
+ "updated": "2026-10-04",
+ "usage": "Each file is a standalone snippet: markup plus a <style> block. Copy both into your page. Classes are tz- prefixed to avoid collisions.",
+ "patterns": [
+  {
+   "id": "background-aurora",
+   "title": "Aurora canvas",
+   "category": "Backgrounds",
+   "file": "patterns/background-aurora.html",
+   "tags": [
+    "canvas",
+    "animated",
+    "gradient"
+   ],
+   "description": "Animated canvas aurora: three drifting radial blobs. Tune colors to your DNA.",
+   "dnas": [
+    "glass-calm",
+    "y2k-chrome",
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "background-grain",
+   "title": "Film grain",
+   "category": "Backgrounds",
+   "file": "patterns/background-grain.html",
+   "tags": [
+    "texture",
+    "grain",
+    "css-only"
+   ],
+   "description": "SVG film-grain overlay with stepped animation. Instant texture, zero assets.",
+   "dnas": [
+    "acid-rave",
+    "editorial-serif",
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "backgrounds-blobs",
+   "title": "Pastel blobs",
+   "category": "Backgrounds",
+   "file": "patterns/backgrounds-blobs.html",
+   "tags": [
+    "blobs",
+    "generative"
+   ],
+   "description": "Generative pastel flow field: seeded ink particles drift on a looping current.",
+   "dnas": [
+    "glass-calm"
+   ]
+  },
+  {
+   "id": "backgrounds-blueprint",
+   "title": "Blueprint grid",
+   "category": "Backgrounds",
+   "file": "patterns/backgrounds-blueprint.html",
+   "tags": [
+    "grid",
+    "technical"
+   ],
+   "description": "Blueprint overlay: fine and major grids with registration crosses.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "backgrounds-checker",
+   "title": "Warped checker",
+   "category": "Backgrounds",
+   "file": "patterns/backgrounds-checker.html",
+   "tags": [
+    "check",
+    "mod"
+   ],
+   "description": "Acid checkerboard warped in perspective with oversized cells.",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "backgrounds-crosshatch",
+   "title": "Crosshatch",
+   "category": "Backgrounds",
+   "file": "patterns/backgrounds-crosshatch.html",
+   "tags": [
+    "engraving",
+    "lines"
+   ],
+   "description": "Engraved crosshatch: two solarized line sets with mismatched plate tone.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "backgrounds-diagonal",
+   "title": "Caution stripes",
+   "category": "Backgrounds",
+   "file": "patterns/backgrounds-diagonal.html",
+   "tags": [
+    "stripes",
+    "caution"
+   ],
+   "description": "Caution-stripe band tilted two degrees with a stenciled keep-clear chip.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "backgrounds-dots",
+   "title": "Dot matrix",
+   "category": "Backgrounds",
+   "file": "patterns/backgrounds-dots.html",
+   "tags": [
+    "dots",
+    "texture"
+   ],
+   "description": "Swiss dot-matrix texture with a single flagged red dot.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "backgrounds-halftone",
+   "title": "Halftone fade",
+   "category": "Backgrounds",
+   "file": "patterns/backgrounds-halftone.html",
+   "tags": [
+    "print",
+    "dots"
+   ],
+   "description": "Halftone dot field fading diagonally from solid to air.",
+   "dnas": [
+    "y2k-chrome"
+   ]
+  },
+  {
+   "id": "backgrounds-mesh",
+   "title": "Iridescent mesh",
+   "category": "Backgrounds",
+   "file": "patterns/backgrounds-mesh.html",
+   "tags": [
+    "mesh",
+    "generative"
+   ],
+   "description": "Generative iridescent mesh: five blobs orbit on looping Lissajous paths.",
+   "dnas": [
+    "y2k-chrome"
+   ]
+  },
+  {
+   "id": "backgrounds-noise",
+   "title": "Animated noise",
+   "category": "Backgrounds",
+   "file": "patterns/backgrounds-noise.html",
+   "tags": [
+    "grain",
+    "animated"
+   ],
+   "description": "Animated film grain: two turbulence layers cross-fading in stepped ticks.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "backgrounds-paper",
+   "title": "Rice paper",
+   "category": "Backgrounds",
+   "file": "patterns/backgrounds-paper.html",
+   "tags": [
+    "paper",
+    "grain"
+   ],
+   "description": "Rice-paper grain with a deckle edge and one vermillion hanko stamp.",
+   "dnas": [
+    "ma-japanese"
+   ]
+  },
+  {
+   "id": "backgrounds-scanlines",
+   "title": "CRT scanlines",
+   "category": "Backgrounds",
+   "file": "patterns/backgrounds-scanlines.html",
+   "tags": [
+    "crt",
+    "retro"
+   ],
+   "description": "CRT overlay: scanlines, soft vignette, faint phosphor flicker.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "backgrounds-stars",
+   "title": "Starfield",
+   "category": "Backgrounds",
+   "file": "patterns/backgrounds-stars.html",
+   "tags": [
+    "canvas",
+    "space"
+   ],
+   "description": "Seeded starfield: twinkling phosphor stars on a looping sine cycle.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "backgrounds-topo",
+   "title": "Topo lines",
+   "category": "Backgrounds",
+   "file": "patterns/backgrounds-topo.html",
+   "tags": [
+    "contour",
+    "svg"
+   ],
+   "description": "Sepia contour lines with one rust elevation ring and a survey label.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "backgrounds-waves",
+   "title": "Layered waves",
+   "category": "Backgrounds",
+   "file": "patterns/backgrounds-waves.html",
+   "tags": [
+    "waves",
+    "generative"
+   ],
+   "description": "Generative wave bands: five sine layers stack on a looping time cycle.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "bento",
+   "title": "Bento feature grid",
+   "category": "Sections",
+   "file": "patterns/bento.html",
+   "tags": [
+    "grid",
+    "features",
+    "saas"
+   ],
+   "description": "Asymmetric bento grid: one big cell, supporting cells, one wide quote cell.",
+   "dnas": [
+    "soft-minimal",
+    "neo-brutalist-pop"
+   ]
+  },
+  {
+   "id": "cards",
+   "title": "Work cards",
+   "category": "Sections",
+   "file": "patterns/cards.html",
+   "tags": [
+    "portfolio",
+    "cards",
+    "work"
+   ],
+   "description": "Project cards with gradient thumbs, hover lift, mono tag rows.",
+   "dnas": [
+    "soft-minimal",
+    "glass-calm"
+   ]
+  },
+  {
+   "id": "cards-article",
+   "title": "Article cards",
+   "category": "Cards",
+   "file": "patterns/cards-article.html",
+   "tags": [
+    "blog",
+    "reading"
+   ],
+   "description": "Serif article cards led by oversized issue numerals, one feature plus two.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "cards-brutalist",
+   "title": "Neon chunk cards",
+   "category": "Cards",
+   "file": "patterns/cards-brutalist.html",
+   "tags": [
+    "bold",
+    "borders"
+   ],
+   "description": "Neon-bordered chunk cards on black with glowing edges and varied widths.",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "cards-data",
+   "title": "Data cards",
+   "category": "Cards",
+   "file": "patterns/cards-data.html",
+   "tags": [
+    "dashboard",
+    "metrics"
+   ],
+   "description": "Terminal-style metric cards with inline SVG sparklines and deltas.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "cards-editorial",
+   "title": "Quiet cards",
+   "category": "Cards",
+   "file": "patterns/cards-editorial.html",
+   "tags": [
+    "magazine",
+    "serif"
+   ],
+   "description": "Whisper-quiet magazine cards with vast padding and hairline dividers.",
+   "dnas": [
+    "ma-japanese"
+   ]
+  },
+  {
+   "id": "cards-event",
+   "title": "Event cards",
+   "category": "Cards",
+   "file": "patterns/cards-event.html",
+   "tags": [
+    "date",
+    "poster"
+   ],
+   "description": "Industrial date-block event cards with 2px borders and stamp details.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "cards-glass",
+   "title": "Glass cards",
+   "category": "Cards",
+   "file": "patterns/cards-glass.html",
+   "tags": [
+    "frosted",
+    "soft"
+   ],
+   "description": "Frosted info cards floating over soft pastel blobs.",
+   "dnas": [
+    "glass-calm"
+   ]
+  },
+  {
+   "id": "cards-job",
+   "title": "Job cards",
+   "category": "Cards",
+   "file": "patterns/cards-job.html",
+   "tags": [
+    "hiring",
+    "roles"
+   ],
+   "description": "Strict Swiss job rows: title, mono salary, tag chips, apply link.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "cards-product",
+   "title": "Product cards",
+   "category": "Cards",
+   "file": "patterns/cards-product.html",
+   "tags": [
+    "ecommerce",
+    "shop"
+   ],
+   "description": "Clean product cards in an asymmetric layout: one wide feature, two compact.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "cards-profile",
+   "title": "Profile cards",
+   "category": "Cards",
+   "file": "patterns/cards-profile.html",
+   "tags": [
+    "people",
+    "social"
+   ],
+   "description": "Dark profile cards with gold accents: one wide feature, two compact.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "cards-recipe",
+   "title": "Recipe cards",
+   "category": "Cards",
+   "file": "patterns/cards-recipe.html",
+   "tags": [
+    "food",
+    "steps"
+   ],
+   "description": "Chunky neo-brutalist recipe cards with sticker time badges and hard shadows.",
+   "dnas": [
+    "neo-brutalist-pop"
+   ]
+  },
+  {
+   "id": "cta",
+   "title": "CTA banner",
+   "category": "Sections",
+   "file": "patterns/cta.html",
+   "tags": [
+    "conversion",
+    "dark",
+    "cta"
+   ],
+   "description": "Dark-luxe CTA: champagne eyebrow, serif headline, warm radial glow.",
+   "dnas": [
+    "dark-luxe",
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "cta-apps",
+   "title": "App download CTA",
+   "category": "CTA",
+   "file": "patterns/cta-apps.html",
+   "tags": [
+    "mobile",
+    "badges"
+   ],
+   "description": "Y2K chrome app-download CTA with glossy store badges and a pure-CSS phone.",
+   "dnas": [
+    "y2k-chrome"
+   ]
+  },
+  {
+   "id": "cta-card",
+   "title": "Contained card",
+   "category": "CTA",
+   "file": "patterns/cta-card.html",
+   "tags": [
+    "card",
+    "calm"
+   ],
+   "description": "Calm centered CTA card with hairline frame and quiet confidence.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "cta-drop",
+   "title": "The drop CTA",
+   "category": "CTA",
+   "file": "patterns/cta-drop.html",
+   "tags": [
+    "streetwear",
+    "launch"
+   ],
+   "description": "Editorial launch CTA with newspaper dateline and issue number.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "cta-luxe",
+   "title": "Champagne CTA",
+   "category": "CTA",
+   "file": "patterns/cta-luxe.html",
+   "tags": [
+    "dark",
+    "gold"
+   ],
+   "description": "Dark champagne CTA with a gold hairline frame and a slow breathing glow.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "cta-split",
+   "title": "Split CTA",
+   "category": "CTA",
+   "file": "patterns/cta-split.html",
+   "tags": [
+    "split",
+    "conversion"
+   ],
+   "description": "Acid split CTA: huge type left, email capture right, black and neon.",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "cta-sticker",
+   "title": "Sticker CTA",
+   "category": "CTA",
+   "file": "patterns/cta-sticker.html",
+   "tags": [
+    "playful",
+    "burst"
+   ],
+   "description": "Sticker-burst CTA with rotated starburst badges and a chunky button.",
+   "dnas": [
+    "neo-brutalist-pop"
+   ]
+  },
+  {
+   "id": "cta-terminal",
+   "title": "Terminal CTA",
+   "category": "CTA",
+   "file": "patterns/cta-terminal.html",
+   "tags": [
+    "cli",
+    "mono"
+   ],
+   "description": "Deploy-style terminal CTA with a typed command and blinking cursor.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "cta-type",
+   "title": "Full-bleed type CTA",
+   "category": "CTA",
+   "file": "patterns/cta-type.html",
+   "tags": [
+    "giant",
+    "type"
+   ],
+   "description": "Viewport-filling serif CTA on black with one champagne-italic word.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "faq-accordion",
+   "title": "Accordion FAQ",
+   "category": "FAQ",
+   "file": "patterns/faq-accordion.html",
+   "tags": [
+    "details",
+    "expandable"
+   ],
+   "description": "Native details/summary accordion with rotating plus markers and amber open states.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "faq-blocks",
+   "title": "Bordered blocks",
+   "category": "FAQ",
+   "file": "patterns/faq-blocks.html",
+   "tags": [
+    "brutal",
+    "blocks"
+   ],
+   "description": "Chunky 3px-bordered question blocks with offset shadows and stamped answers.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "faq-cards",
+   "title": "FAQ cards",
+   "category": "FAQ",
+   "file": "patterns/faq-cards.html",
+   "tags": [
+    "grid",
+    "cards"
+   ],
+   "description": "Frosted Q&A cards drifting over a warm pastel aurora, one card offset for rhythm.",
+   "dnas": [
+    "glass-calm"
+   ]
+  },
+  {
+   "id": "faq-columns",
+   "title": "Two-column Q&A",
+   "category": "FAQ",
+   "file": "patterns/faq-columns.html",
+   "tags": [
+    "editorial",
+    "columns"
+   ],
+   "description": "Magazine-style two-column Q&A with oversized serif Q markers.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "faq-hairline",
+   "title": "Hairline list",
+   "category": "FAQ",
+   "file": "patterns/faq-hairline.html",
+   "tags": [
+    "minimal",
+    "quiet"
+   ],
+   "description": "A whisper-quiet FAQ with hairline separators and vast breathing room.",
+   "dnas": [
+    "ma-japanese"
+   ]
+  },
+  {
+   "id": "faq-luxe",
+   "title": "Dark luxe FAQ",
+   "category": "FAQ",
+   "file": "patterns/faq-luxe.html",
+   "tags": [
+    "premium",
+    "dark"
+   ],
+   "description": "Champagne serif questions on near-black with hairline gold separators.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "faq-search",
+   "title": "Searchable FAQ",
+   "category": "FAQ",
+   "file": "patterns/faq-search.html",
+   "tags": [
+    "search",
+    "categories"
+   ],
+   "description": "Search field with CSS-only category chips that actually filter the question list.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "faq-terminal",
+   "title": "Terminal FAQ",
+   "category": "FAQ",
+   "file": "patterns/faq-terminal.html",
+   "tags": [
+    "mono",
+    "cli"
+   ],
+   "description": "Q&A rendered as $ faq --topic commands with echoed queries and green answers.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "features-arcade",
+   "title": "Arcade cards",
+   "category": "Features",
+   "file": "patterns/features-arcade.html",
+   "tags": [
+    "pixel",
+    "game"
+   ],
+   "description": "Neon arcade cards under a blinking INSERT COIN header strip with high-score microcopy.",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "features-blueprint",
+   "title": "Blueprint annotations",
+   "category": "Features",
+   "file": "patterns/features-blueprint.html",
+   "tags": [
+    "technical",
+    "diagram"
+   ],
+   "description": "Blueprint sheet with numbered callouts and leader lines pointing at a CSS wireframe.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "features-checklist",
+   "title": "Giant checklist",
+   "category": "Features",
+   "file": "patterns/features-checklist.html",
+   "tags": [
+    "checklist",
+    "mono"
+   ],
+   "description": "Full-width checklist rows with oversized red checkmarks and mono spec lines.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "features-docs",
+   "title": "Docs cards",
+   "category": "Features",
+   "file": "patterns/features-docs.html",
+   "tags": [
+    "documentation",
+    "dev"
+   ],
+   "description": "Warm documentation cards with copyable code snippets and honest capability notes.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "features-glass",
+   "title": "Glass feature cards",
+   "category": "Features",
+   "file": "patterns/features-glass.html",
+   "tags": [
+    "glass",
+    "frosted"
+   ],
+   "description": "Frosted cards floating over a warm pastel aurora of peach, mint, and rose.",
+   "dnas": [
+    "glass-calm"
+   ]
+  },
+  {
+   "id": "features-luxe",
+   "title": "Luxe hairline list",
+   "category": "Features",
+   "file": "patterns/features-luxe.html",
+   "tags": [
+    "dark",
+    "gold"
+   ],
+   "description": "Near-black hairline rows with champagne serif numerals and wide small caps.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "features-numbered",
+   "title": "Numbered 01–06",
+   "category": "Features",
+   "file": "patterns/features-numbered.html",
+   "tags": [
+    "numerals",
+    "minimal"
+   ],
+   "description": "Vast whitespace with giant hairline numerals and a vertical margin label.",
+   "dnas": [
+    "ma-japanese"
+   ]
+  },
+  {
+   "id": "features-rows",
+   "title": "Alternating rows",
+   "category": "Features",
+   "file": "patterns/features-rows.html",
+   "tags": [
+    "editorial",
+    "rows"
+   ],
+   "description": "Alternating text and visual rows anchored by oversized outline numerals.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "features-speclist",
+   "title": "Spec list",
+   "category": "Features",
+   "file": "patterns/features-speclist.html",
+   "tags": [
+    "terminal",
+    "specs"
+   ],
+   "description": "Phosphor-terminal spec sheet with bright [OK] markers and a scanline overlay.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "features-spread",
+   "title": "Magazine spread",
+   "category": "Features",
+   "file": "patterns/features-spread.html",
+   "tags": [
+    "magazine",
+    "serif"
+   ],
+   "description": "Offset overlapping panels with a rotated pull quote spanning the seam.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "features-stickers",
+   "title": "Sticker features",
+   "category": "Features",
+   "file": "patterns/features-stickers.html",
+   "tags": [
+    "playful",
+    "cards"
+   ],
+   "description": "Scattered rotated sticker cards with thick borders and hard offset shadows.",
+   "dnas": [
+    "neo-brutalist-pop"
+   ]
+  },
+  {
+   "id": "features-tabs",
+   "title": "Tabbed features",
+   "category": "Features",
+   "file": "patterns/features-tabs.html",
+   "tags": [
+    "tabs",
+    "saas"
+   ],
+   "description": "CSS radio-button tabs with four panels, each carrying a pure-CSS product mock.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "footer",
+   "title": "Mega footer",
+   "category": "Footer",
+   "file": "patterns/footer.html",
+   "tags": [
+    "footer",
+    "wordmark"
+   ],
+   "description": "Oversized wordmark footer with link columns and mono baseline.",
+   "dnas": [
+    "acid-rave",
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "footers-brutalist",
+   "title": "Brutalist footer",
+   "category": "Footer",
+   "file": "patterns/footers-brutalist.html",
+   "tags": [
+    "chunky",
+    "borders",
+    "raw"
+   ],
+   "description": "Raw concrete footer with 3px borders, hard shadows, and a rotated NO SLOP stamp.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "footers-cta-first",
+   "title": "CTA-first footer",
+   "category": "Footer",
+   "file": "patterns/footers-cta-first.html",
+   "tags": [
+    "conversion",
+    "big-type"
+   ],
+   "description": "A giant champagne Let's talk CTA floating above hairline link rows on near-black.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "footers-docs",
+   "title": "Docs footer",
+   "category": "Footer",
+   "file": "patterns/footers-docs.html",
+   "tags": [
+    "version",
+    "opensource"
+   ],
+   "description": "Docs footer with a version badge, changelog link, and an edit-this-page nudge.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "footers-hairline",
+   "title": "Hairline footer",
+   "category": "Footer",
+   "file": "patterns/footers-hairline.html",
+   "tags": [
+    "minimal",
+    "single-line"
+   ],
+   "description": "One hairline, three quiet links, and an honest colophon note. Nothing else.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "footers-luxe",
+   "title": "Luxe footer",
+   "category": "Footer",
+   "file": "patterns/footers-luxe.html",
+   "tags": [
+    "dark",
+    "gold",
+    "evening"
+   ],
+   "description": "Near-black footer with champagne numerals marking each quiet link row.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "footers-marquee",
+   "title": "Marquee footer",
+   "category": "Footer",
+   "file": "patterns/footers-marquee.html",
+   "tags": [
+    "scrolling",
+    "wordmark"
+   ],
+   "description": "A giant scrolling acid wordmark riding above two compact link rows.",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "footers-newsletter",
+   "title": "Newsletter footer",
+   "category": "Footer",
+   "file": "patterns/footers-newsletter.html",
+   "tags": [
+    "email",
+    "signup"
+   ],
+   "description": "A prominent off-center newsletter block above quiet link columns, with a hand-written promise.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "footers-sitemap",
+   "title": "Sitemap footer",
+   "category": "Footer",
+   "file": "patterns/footers-sitemap.html",
+   "tags": [
+    "dense",
+    "links",
+    "directory"
+   ],
+   "description": "Dense six-column directory with mono section labels and hairline column rules.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "footers-sticker",
+   "title": "Sticker footer",
+   "category": "Footer",
+   "file": "patterns/footers-sticker.html",
+   "tags": [
+    "playful",
+    "gen-z"
+   ],
+   "description": "Sticker badges, a wavy SVG divider, and chunky social buttons on cream.",
+   "dnas": [
+    "neo-brutalist-pop"
+   ]
+  },
+  {
+   "id": "footers-terminal",
+   "title": "Terminal footer",
+   "category": "Footer",
+   "file": "patterns/footers-terminal.html",
+   "tags": [
+    "cli",
+    "mono",
+    "status"
+   ],
+   "description": "A $ whoami sign-off with [OK] status lines and an ASCII divider.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "forms-brutalist",
+   "title": "Raw form",
+   "category": "Forms",
+   "file": "patterns/forms-brutalist.html",
+   "tags": [
+    "brutal",
+    "raw",
+    "bordered"
+   ],
+   "description": "Full-strength black borders, mono labels, square corners, zero softness.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "forms-contact-split",
+   "title": "Split contact",
+   "category": "Forms",
+   "file": "patterns/forms-contact-split.html",
+   "tags": [
+    "split",
+    "agency"
+   ],
+   "description": "Oversized serif Say hello headline on the left, hairline-ruled form on the right.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "forms-demo",
+   "title": "Demo booking",
+   "category": "Forms",
+   "file": "patterns/forms-demo.html",
+   "tags": [
+    "calendar",
+    "b2b"
+   ],
+   "description": "A bordered booking form with spec-sheet labels like DATE // REQUIRED.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "forms-feedback",
+   "title": "Feedback widget",
+   "category": "Forms",
+   "file": "patterns/forms-feedback.html",
+   "tags": [
+    "widget",
+    "rating"
+   ],
+   "description": "A floating frosted feedback card with hand-drawn SVG face ratings.",
+   "dnas": [
+    "glass-calm"
+   ]
+  },
+  {
+   "id": "forms-login",
+   "title": "Login card",
+   "category": "Forms",
+   "file": "patterns/forms-login.html",
+   "tags": [
+    "auth",
+    "centered"
+   ],
+   "description": "Centered dark auth card with champagne focus rings and a quiet SSO row.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "forms-multistep",
+   "title": "Multi-step signup",
+   "category": "Forms",
+   "file": "patterns/forms-multistep.html",
+   "tags": [
+    "steps",
+    "onboarding"
+   ],
+   "description": "Three CSS-only signup steps driven by radio inputs, with a filling progress bar.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "forms-newsletter-card",
+   "title": "Newsletter card",
+   "category": "Forms",
+   "file": "patterns/forms-newsletter-card.html",
+   "tags": [
+    "incentive",
+    "card"
+   ],
+   "description": "A chunky Get the drop card with a rotated sticker badge overlapping the corner.",
+   "dnas": [
+    "neo-brutalist-pop"
+   ]
+  },
+  {
+   "id": "forms-newsletter-inline",
+   "title": "Inline newsletter",
+   "category": "Forms",
+   "file": "patterns/forms-newsletter-inline.html",
+   "tags": [
+    "email",
+    "row",
+    "minimal"
+   ],
+   "description": "A single-line email row with an underline input and a CSS-only success state, no JavaScript.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "forms-search-hero",
+   "title": "Search hero",
+   "category": "Forms",
+   "file": "patterns/forms-search-hero.html",
+   "tags": [
+    "search",
+    "help",
+    "large"
+   ],
+   "description": "A giant solarized search field with a ⌘K hint and popular-search shortcuts below.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "forms-waitlist",
+   "title": "Waitlist",
+   "category": "Forms",
+   "file": "patterns/forms-waitlist.html",
+   "tags": [
+    "launch",
+    "counter"
+   ],
+   "description": "Acid waitlist with a giant live-position counter and a hard-edged join row.",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "hero-editorial",
+   "title": "Editorial hero",
+   "category": "Hero",
+   "file": "patterns/hero-editorial.html",
+   "tags": [
+    "serif",
+    "editorial",
+    "landing"
+   ],
+   "description": "Literary hero: mono eyebrow, giant serif headline, hairline meta row, arch graphic.",
+   "dnas": [
+    "editorial-serif",
+    "ma-japanese",
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "hero-kinetic",
+   "title": "Kinetic type hero",
+   "category": "Hero",
+   "file": "patterns/hero-kinetic.html",
+   "tags": [
+    "bold",
+    "loud",
+    "type-driven"
+   ],
+   "description": "Maximum-volume hero: colossal condensed type, acid CTA, scrolling strip.",
+   "dnas": [
+    "acid-rave",
+    "industrial-brutalist",
+    "y2k-chrome"
+   ]
+  },
+  {
+   "id": "heroes-art-deco",
+   "title": "Art deco hero",
+   "category": "Hero",
+   "file": "patterns/heroes-art-deco.html",
+   "tags": [
+    "art-deco",
+    "gold",
+    "geometric"
+   ],
+   "description": "Black and gold hero: SVG sunburst rays behind a serif headline, stepped geometric borders.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "heroes-blueprint",
+   "title": "Blueprint hero",
+   "category": "Hero",
+   "file": "patterns/heroes-blueprint.html",
+   "tags": [
+    "technical",
+    "blueprint",
+    "diagram"
+   ],
+   "description": "White-on-blue technical drawing: dimension lines and figure labels annotating the headline.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "heroes-boot-sequence",
+   "title": "Boot sequence hero",
+   "category": "Hero",
+   "file": "patterns/heroes-boot-sequence.html",
+   "tags": [
+    "terminal",
+    "mono",
+    "cli"
+   ],
+   "description": "Terminal boot log revealing the value prop line by line, ending in a blinking-cursor call to action.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "heroes-broadsheet",
+   "title": "Broadsheet hero",
+   "category": "Hero",
+   "file": "patterns/heroes-broadsheet.html",
+   "tags": [
+    "newspaper",
+    "editorial",
+    "serif"
+   ],
+   "description": "Front-page newspaper hero: masthead, dateline rules, and a two-column lede.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "heroes-chrome-type",
+   "title": "Liquid chrome hero",
+   "category": "Hero",
+   "file": "patterns/heroes-chrome-type.html",
+   "tags": [
+    "chrome",
+    "y2k",
+    "type"
+   ],
+   "description": "Massive liquid-chrome gradient headline with a shine sweep that pours across on hover.",
+   "dnas": [
+    "y2k-chrome"
+   ]
+  },
+  {
+   "id": "heroes-diagonal-split",
+   "title": "Diagonal split hero",
+   "category": "Hero",
+   "file": "patterns/heroes-diagonal-split.html",
+   "tags": [
+    "split",
+    "bold",
+    "asymmetric"
+   ],
+   "description": "Hard diagonal split: safety-orange panel against concrete, with rotated stamped labels.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "heroes-docs-hero",
+   "title": "Docs hero",
+   "category": "Hero",
+   "file": "patterns/heroes-docs-hero.html",
+   "tags": [
+    "docs",
+    "code",
+    "developer"
+   ],
+   "description": "Warm documentation hero with a click-to-select install command block and a five-minute guide link.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "heroes-enso",
+   "title": "Enso hero",
+   "category": "Hero",
+   "file": "patterns/heroes-enso.html",
+   "tags": [
+    "zen",
+    "minimal",
+    "ink"
+   ],
+   "description": "One hand-drawn-feel SVG enso circle, a single vertical line of text, and vast emptiness.",
+   "dnas": [
+    "ma-japanese"
+   ]
+  },
+  {
+   "id": "heroes-gig-poster",
+   "title": "Gig poster hero",
+   "category": "Hero",
+   "file": "patterns/heroes-gig-poster.html",
+   "tags": [
+    "poster",
+    "music",
+    "loud"
+   ],
+   "description": "Screenprint gig poster: colossal condensed type, acid highlight bar, and stacked date blocks.",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "heroes-glass-orbs",
+   "title": "Glass orbs hero",
+   "category": "Hero",
+   "file": "patterns/heroes-glass-orbs.html",
+   "tags": [
+    "glass",
+    "soft",
+    "calm"
+   ],
+   "description": "Frosted glass orbs drifting over pastel, anchored by one big friendly numeral.",
+   "dnas": [
+    "glass-calm"
+   ]
+  },
+  {
+   "id": "heroes-noir",
+   "title": "Noir hero",
+   "category": "Hero",
+   "file": "patterns/heroes-noir.html",
+   "tags": [
+    "cinematic",
+    "dark",
+    "luxe"
+   ],
+   "description": "Near-black viewport in a champagne hairline frame; serif headline fades in slow, once.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "heroes-pixel-arcade",
+   "title": "Pixel arcade hero",
+   "category": "Hero",
+   "file": "patterns/heroes-pixel-arcade.html",
+   "tags": [
+    "pixel",
+    "retro",
+    "game"
+   ],
+   "description": "CRT cabinet hero: pixel-art invader drawn in box-shadows, blinking PRESS START call to action.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "heroes-product-peek",
+   "title": "Product peek hero",
+   "category": "Hero",
+   "file": "patterns/heroes-product-peek.html",
+   "tags": [
+    "saas",
+    "product",
+    "tilt"
+   ],
+   "description": "Calm copy beside a tilted pure-CSS app window: title bar, sidebar, rows, and a bar chart.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "heroes-scandi-calm",
+   "title": "Scandi calm hero",
+   "category": "Hero",
+   "file": "patterns/heroes-scandi-calm.html",
+   "tags": [
+    "minimal",
+    "scandi",
+    "whitespace"
+   ],
+   "description": "Radical restraint: enormous whitespace, one quiet sentence, a single hairline rule.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "heroes-spec-table",
+   "title": "Spec table hero",
+   "category": "Hero",
+   "file": "patterns/heroes-spec-table.html",
+   "tags": [
+    "swiss",
+    "table",
+    "data"
+   ],
+   "description": "Hero as a rigorous spec table: giant index numeral beside hairline-ruled technical rows.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "heroes-sticker-bomb",
+   "title": "Sticker bomb hero",
+   "category": "Hero",
+   "file": "patterns/heroes-sticker-bomb.html",
+   "tags": [
+    "stickers",
+    "playful",
+    "chaos"
+   ],
+   "description": "Rotated sticker badges with hard shadows overlapping a chunky headline for small-batch hot sauce.",
+   "dnas": [
+    "neo-brutalist-pop"
+   ]
+  },
+  {
+   "id": "heroes-typed-letter",
+   "title": "Typed letter hero",
+   "category": "Hero",
+   "file": "patterns/heroes-typed-letter.html",
+   "tags": [
+    "typewriter",
+    "letter",
+    "serif"
+   ],
+   "description": "A typewritten letter on paper — red margin line, struck words, and red-ink corrections.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "heroes-vaporwave",
+   "title": "Vaporwave hero",
+   "category": "Hero",
+   "file": "patterns/heroes-vaporwave.html",
+   "tags": [
+    "vaporwave",
+    "sunset",
+    "retro"
+   ],
+   "description": "Slitted sunset disc over a perspective grid floor, with a metallic chrome headline and slow sheen sweep.",
+   "dnas": [
+    "y2k-chrome"
+   ]
+  },
+  {
+   "id": "how-it-works-blueprint",
+   "title": "Blueprint steps",
+   "category": "How it works",
+   "file": "patterns/how-it-works-blueprint.html",
+   "tags": [
+    "technical",
+    "grid"
+   ],
+   "description": "Engineering-drawing steps on a measurement grid with dimension callouts.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "how-it-works-chapters",
+   "title": "Chapters",
+   "category": "How it works",
+   "file": "patterns/how-it-works-chapters.html",
+   "tags": [
+    "course",
+    "video"
+   ],
+   "description": "Course-style chapter list with serif numerals, dotted leaders, and durations.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "how-it-works-diagram",
+   "title": "Diagram flow",
+   "category": "How it works",
+   "file": "patterns/how-it-works-diagram.html",
+   "tags": [
+    "arrows",
+    "systems"
+   ],
+   "description": "Pure-CSS boxes-and-arrows system diagram with dashed connectors and mono labels.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "how-it-works-minimal",
+   "title": "Mono minimal",
+   "category": "How it works",
+   "file": "patterns/how-it-works-minimal.html",
+   "tags": [
+    "minimal",
+    "quiet"
+   ],
+   "description": "A whisper-quiet numbered list with vast spacing and small mono kickers.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "how-it-works-overlap",
+   "title": "Overlapping cards",
+   "category": "How it works",
+   "file": "patterns/how-it-works-overlap.html",
+   "tags": [
+    "overlap",
+    "depth"
+   ],
+   "description": "Fanned overlapping step cards that spread apart on hover like a dealt hand.",
+   "dnas": [
+    "neo-brutalist-pop"
+   ]
+  },
+  {
+   "id": "how-it-works-steps",
+   "title": "Three steps",
+   "category": "How it works",
+   "file": "patterns/how-it-works-steps.html",
+   "tags": [
+    "timeline",
+    "simple"
+   ],
+   "description": "Three connected steps on a progress line with generous whitespace.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "how-it-works-sticky",
+   "title": "Sticky scroll steps",
+   "category": "How it works",
+   "file": "patterns/how-it-works-sticky.html",
+   "tags": [
+    "scroll",
+    "narrative"
+   ],
+   "description": "Champagne-framed sticky visual beside scrolling dark-luxe step narratives.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "how-it-works-terminal",
+   "title": "Terminal walkthrough",
+   "category": "How it works",
+   "file": "patterns/how-it-works-terminal.html",
+   "tags": [
+    "cli",
+    "commands"
+   ],
+   "description": "A $ command walkthrough with typed prompts, green outputs, and a live cursor.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "marquee",
+   "title": "Marquee strip",
+   "category": "Backgrounds",
+   "file": "patterns/marquee.html",
+   "tags": [
+    "motion",
+    "strip",
+    "css-only"
+   ],
+   "description": "Infinite CSS marquee strip. Duplicate content spans for a seamless loop.",
+   "dnas": [
+    "acid-rave",
+    "industrial-brutalist",
+    "y2k-chrome"
+   ]
+  },
+  {
+   "id": "misc-careers",
+   "title": "Job board",
+   "category": "Misc",
+   "file": "patterns/misc-careers.html",
+   "tags": [
+    "hiring",
+    "roles"
+   ],
+   "description": "Luxe role listings grouped by department with hairline rules.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "misc-changelog",
+   "title": "Changelog feed",
+   "category": "Misc",
+   "file": "patterns/misc-changelog.html",
+   "tags": [
+    "releases",
+    "log"
+   ],
+   "description": "Version entries with solarized tag pills and honest notes.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "misc-command",
+   "title": "Command palette",
+   "category": "Misc",
+   "file": "patterns/misc-command.html",
+   "tags": [
+    "cmd-k",
+    "power"
+   ],
+   "description": "Command-K palette with grouped commands and kbd hints.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "misc-compare",
+   "title": "Comparison table",
+   "category": "Misc",
+   "file": "patterns/misc-compare.html",
+   "tags": [
+    "vs",
+    "table"
+   ],
+   "description": "Us-versus-them matrix with SVG check and cross marks.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "misc-cookie",
+   "title": "Cookie banner",
+   "category": "Misc",
+   "file": "patterns/misc-cookie.html",
+   "tags": [
+    "consent",
+    "privacy"
+   ],
+   "description": "Chunky consent bar with hazard-stripe edge and bordered buttons.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "misc-gallery",
+   "title": "Gallery wall",
+   "category": "Misc",
+   "file": "patterns/misc-gallery.html",
+   "tags": [
+    "images",
+    "grid"
+   ],
+   "description": "Gradient artwork tiles with captions; one tile breaks the grid.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "misc-help",
+   "title": "Help center hero",
+   "category": "Misc",
+   "file": "patterns/misc-help.html",
+   "tags": [
+    "support",
+    "search"
+   ],
+   "description": "Frosted help hero with soft pastel wash and topic chips.",
+   "dnas": [
+    "glass-calm"
+   ]
+  },
+  {
+   "id": "misc-modal",
+   "title": "Modal dialog",
+   "category": "Misc",
+   "file": "patterns/misc-modal.html",
+   "tags": [
+    "dialog",
+    "overlay"
+   ],
+   "description": "Modal pattern with backdrop, visible focus ring, and esc hint.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "misc-timeline",
+   "title": "Vertical timeline",
+   "category": "Misc",
+   "file": "patterns/misc-timeline.html",
+   "tags": [
+    "history",
+    "steps"
+   ],
+   "description": "Dated vertical timeline on a hairline spine with a today marker.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "misc-waitlist",
+   "title": "Waitlist meter",
+   "category": "Misc",
+   "file": "patterns/misc-waitlist.html",
+   "tags": [
+    "launch",
+    "progress"
+   ],
+   "description": "Neon tick-mark progress meter with live count and referrals.",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "nav-minimal",
+   "title": "Minimal top bar",
+   "category": "Nav",
+   "file": "patterns/nav-minimal.html",
+   "tags": [
+    "minimal",
+    "swiss",
+    "navigation"
+   ],
+   "description": "Swiss top bar: wordmark, uppercase links with red underline, coordinates.",
+   "dnas": [
+    "swiss-rational",
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "nav-pill",
+   "title": "Floating pill nav",
+   "category": "Nav",
+   "file": "patterns/nav-pill.html",
+   "tags": [
+    "sticky",
+    "glass",
+    "navigation"
+   ],
+   "description": "Sticky frosted pill nav with CTA. Mobile collapses to a menu button.",
+   "dnas": [
+    "soft-minimal",
+    "glass-calm"
+   ]
+  },
+  {
+   "id": "navs-bottom-tabs",
+   "title": "Bottom tab bar",
+   "category": "Nav",
+   "file": "patterns/navs-bottom-tabs.html",
+   "tags": [
+    "mobile",
+    "tabs",
+    "app"
+   ],
+   "description": "Frosted-glass bottom tab bar with five tabs and a sliding active pill indicator.",
+   "dnas": [
+    "glass-calm"
+   ]
+  },
+  {
+   "id": "navs-command",
+   "title": "Command bar nav",
+   "category": "Nav",
+   "file": "patterns/navs-command.html",
+   "tags": [
+    "cmd-k",
+    "search",
+    "power"
+   ],
+   "description": "Retro command palette: mono input, grouped results, and kbd hints with a blinking block cursor.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "navs-dock",
+   "title": "Dock nav",
+   "category": "Nav",
+   "file": "patterns/navs-dock.html",
+   "tags": [
+    "macos",
+    "dock",
+    "playful"
+   ],
+   "description": "A macOS-style magnifying dock: chrome-gloss icons that swell as the cursor passes.",
+   "dnas": [
+    "y2k-chrome"
+   ]
+  },
+  {
+   "id": "navs-index",
+   "title": "Index nav",
+   "category": "Nav",
+   "file": "patterns/navs-index.html",
+   "tags": [
+    "numbered",
+    "editorial"
+   ],
+   "description": "Swiss numbered index: 01–05 with hairline rules and a red block marking the active entry.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "navs-mega-menu",
+   "title": "Mega menu nav",
+   "category": "Nav",
+   "file": "patterns/navs-mega-menu.html",
+   "tags": [
+    "dropdown",
+    "mega",
+    "ecommerce"
+   ],
+   "description": "Full-width mega panel with four link columns plus an offset featured card, opens on hover or keyboard focus.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "navs-rail",
+   "title": "Side rail nav",
+   "category": "Nav",
+   "file": "patterns/navs-rail.html",
+   "tags": [
+    "vertical",
+    "sidebar",
+    "icons"
+   ],
+   "description": "Industrial vertical rail with a chunky active block and labels that slide out on hover.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "navs-split",
+   "title": "Split brand nav",
+   "category": "Nav",
+   "file": "patterns/navs-split.html",
+   "tags": [
+    "centered",
+    "wordmark"
+   ],
+   "description": "Links split left and right around an oversized centered serif wordmark, held together by hairlines.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "navs-sticker",
+   "title": "Sticker nav",
+   "category": "Nav",
+   "file": "patterns/navs-sticker.html",
+   "tags": [
+    "playful",
+    "stickers"
+   ],
+   "description": "Chunky bordered nav with a rotated FRESH sticker badge overlapping the corner.",
+   "dnas": [
+    "neo-brutalist-pop"
+   ]
+  },
+  {
+   "id": "navs-terminal-tabs",
+   "title": "Terminal tabs nav",
+   "category": "Nav",
+   "file": "patterns/navs-terminal-tabs.html",
+   "tags": [
+    "cli",
+    "tabs",
+    "mono"
+   ],
+   "description": "Docs navigation dressed as terminal tabs, with $ prompts and a live caret on the active tab.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "navs-ticker",
+   "title": "Ticker nav",
+   "category": "Nav",
+   "file": "patterns/navs-ticker.html",
+   "tags": [
+    "marquee",
+    "news",
+    "bold"
+   ],
+   "description": "Acid announcement ticker scrolling above a stark black-and-lime link row.",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "pricing",
+   "title": "Pricing tiers",
+   "category": "Sections",
+   "file": "patterns/pricing.html",
+   "tags": [
+    "pricing",
+    "tiers",
+    "conversion"
+   ],
+   "description": "Three-tier pricing with a rotated highlighted tier and hard shadows.",
+   "dnas": [
+    "neo-brutalist-pop",
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "pricing-brutalist",
+   "title": "Chunky pricing",
+   "category": "Pricing",
+   "file": "patterns/pricing-brutalist.html",
+   "tags": [
+    "bold",
+    "raw"
+   ],
+   "description": "Raw 3px-border pricing slabs with a rotated BEST VALUE rubber stamp.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "pricing-compare",
+   "title": "Comparison table",
+   "category": "Pricing",
+   "file": "patterns/pricing-compare.html",
+   "tags": [
+    "table",
+    "detailed"
+   ],
+   "description": "Full comparison matrix with sticky plan headers and zebra-free hairline rows.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "pricing-docs",
+   "title": "Plain docs pricing",
+   "category": "Pricing",
+   "file": "patterns/pricing-docs.html",
+   "tags": [
+    "simple",
+    "opensource"
+   ],
+   "description": "An honest plain table with zero marketing fluff and a footnote that says so.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "pricing-luxe",
+   "title": "Dark luxe pricing",
+   "category": "Pricing",
+   "file": "patterns/pricing-luxe.html",
+   "tags": [
+    "premium",
+    "dark"
+   ],
+   "description": "Near-black tiers split by a hairline gold divider with wide small caps.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "pricing-single",
+   "title": "Single plan",
+   "category": "Pricing",
+   "file": "patterns/pricing-single.html",
+   "tags": [
+    "focus",
+    "simple"
+   ],
+   "description": "One dramatic plan in a champagne frame with an oversized serif price.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "pricing-sticker",
+   "title": "Playful pricing",
+   "category": "Pricing",
+   "file": "patterns/pricing-sticker.html",
+   "tags": [
+    "fun",
+    "gen-z"
+   ],
+   "description": "Neon tier cards with a rotated starburst POPULAR badge and arcade pricing copy.",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "pricing-toggle",
+   "title": "Billing toggle",
+   "category": "Pricing",
+   "file": "patterns/pricing-toggle.html",
+   "tags": [
+    "monthly",
+    "annual"
+   ],
+   "description": "Chunky CSS-only monthly/annual price toggle over two pop-art plan cards.",
+   "dnas": [
+    "neo-brutalist-pop"
+   ]
+  },
+  {
+   "id": "pricing-usage",
+   "title": "Usage tiers",
+   "category": "Pricing",
+   "file": "patterns/pricing-usage.html",
+   "tags": [
+    "metered",
+    "api"
+   ],
+   "description": "Metered pricing tiers with CSS usage meters showing where each plan lands.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "stats",
+   "title": "Stats band",
+   "category": "Sections",
+   "file": "patterns/stats.html",
+   "tags": [
+    "numbers",
+    "proof",
+    "data"
+   ],
+   "description": "Brutalist stat band: giant tabular numerals, black rules, one red figure.",
+   "dnas": [
+    "swiss-rational",
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "stats-bars",
+   "title": "Bar stats",
+   "category": "Stats",
+   "file": "patterns/stats-bars.html",
+   "tags": [
+    "bars",
+    "metrics"
+   ],
+   "description": "Horizontal bar chart with tabular numerals and one red leader.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "stats-compare",
+   "title": "Before/after",
+   "category": "Stats",
+   "file": "patterns/stats-compare.html",
+   "tags": [
+    "comparison",
+    "delta"
+   ],
+   "description": "Delta table with SVG trend arrows, measured before and after launch.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "stats-dotmap",
+   "title": "Dot map",
+   "category": "Stats",
+   "file": "patterns/stats-dotmap.html",
+   "tags": [
+    "map",
+    "dots"
+   ],
+   "description": "Dot-grid suggestion of a network arc with gold nodes and one live pulse.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "stats-gauges",
+   "title": "Gauges",
+   "category": "Stats",
+   "file": "patterns/stats-gauges.html",
+   "tags": [
+    "dial",
+    "svg"
+   ],
+   "description": "Playful chunky SVG gauges with thick ink borders and pop faces.",
+   "dnas": [
+    "neo-brutalist-pop"
+   ]
+  },
+  {
+   "id": "stats-logos",
+   "title": "Logo marquee",
+   "category": "Stats",
+   "file": "patterns/stats-logos.html",
+   "tags": [
+    "logos",
+    "marquee"
+   ],
+   "description": "Text-wordmark marquee strip; pauses on hover, still under reduced motion.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "stats-luxe",
+   "title": "Champagne numerals",
+   "category": "Stats",
+   "file": "patterns/stats-luxe.html",
+   "tags": [
+    "premium",
+    "dark"
+   ],
+   "description": "Giant hairline numerals framed by gold rules, asymmetric support rows.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "stats-progress",
+   "title": "Progress rings",
+   "category": "Stats",
+   "file": "patterns/stats-progress.html",
+   "tags": [
+    "rings",
+    "svg"
+   ],
+   "description": "Chunky SVG progress rings with one oversized hero ring.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "stats-table",
+   "title": "Data table",
+   "category": "Stats",
+   "file": "patterns/stats-table.html",
+   "tags": [
+    "table",
+    "dense"
+   ],
+   "description": "Dense striped ops table with one flagged spike row.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "stats-terminal",
+   "title": "Mono stats",
+   "category": "Stats",
+   "file": "patterns/stats-terminal.html",
+   "tags": [
+    "cli",
+    "metrics"
+   ],
+   "description": "Terminal-style stat readout with a blinking block cursor.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "stats-ticker",
+   "title": "Live ticker",
+   "category": "Stats",
+   "file": "patterns/stats-ticker.html",
+   "tags": [
+    "live",
+    "mono"
+   ],
+   "description": "Scrolling mono stat ticker with one blinking LIVE marker.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "team-bios",
+   "title": "Editorial bios",
+   "category": "Team",
+   "file": "patterns/team-bios.html",
+   "tags": [
+    "bios",
+    "magazine"
+   ],
+   "description": "Magazine-style team bios with drop caps and hairline rules.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "team-brutalist",
+   "title": "Bordered roster",
+   "category": "Team",
+   "file": "patterns/team-brutalist.html",
+   "tags": [
+    "raw",
+    "borders"
+   ],
+   "description": "Raw 2px-bordered roster rows with rotated stamp titles.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "team-cards",
+   "title": "Profile cards",
+   "category": "Team",
+   "file": "patterns/team-cards.html",
+   "tags": [
+    "cards",
+    "profiles"
+   ],
+   "description": "Calm profile cards with gradient avatars in a staggered offset row.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "team-grid",
+   "title": "Strict grid",
+   "category": "Team",
+   "file": "patterns/team-grid.html",
+   "tags": [
+    "grid",
+    "avatars"
+   ],
+   "description": "Rigorous spec-sheet avatar grid with numbered cells and mono roles.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "team-minimal",
+   "title": "Name list",
+   "category": "Team",
+   "file": "patterns/team-minimal.html",
+   "tags": [
+    "minimal",
+    "names"
+   ],
+   "description": "Whisper-quiet name list with muted roles and generous air.",
+   "dnas": [
+    "ma-japanese"
+   ]
+  },
+  {
+   "id": "team-roster",
+   "title": "Mono roster",
+   "category": "Team",
+   "file": "patterns/team-roster.html",
+   "tags": [
+    "terminal",
+    "roster"
+   ],
+   "description": "Team roster rendered as a $ team --list terminal output.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "testimonials",
+   "title": "Quote wall",
+   "category": "Sections",
+   "file": "patterns/testimonials.html",
+   "tags": [
+    "social-proof",
+    "quotes"
+   ],
+   "description": "Editorial testimonial wall: hairline rules, italic serif quotes, mono captions.",
+   "dnas": [
+    "editorial-serif",
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "testimonials-logos",
+   "title": "Quote + logos",
+   "category": "Testimonials",
+   "file": "patterns/testimonials-logos.html",
+   "tags": [
+    "logos",
+    "proof"
+   ],
+   "description": "Two statement quotes above a hairline row of typographic wordmarks.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "testimonials-masonry",
+   "title": "Masonry quotes",
+   "category": "Testimonials",
+   "file": "patterns/testimonials-masonry.html",
+   "tags": [
+    "masonry",
+    "varied"
+   ],
+   "description": "Varied-size serif quote blocks in a loose editorial masonry.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "testimonials-snap",
+   "title": "Snap carousel",
+   "category": "Testimonials",
+   "file": "patterns/testimonials-snap.html",
+   "tags": [
+    "carousel",
+    "scroll"
+   ],
+   "description": "Scroll-snap quote carousel on warm paper with dot indicators.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "testimonials-social",
+   "title": "Social proof cards",
+   "category": "Testimonials",
+   "file": "patterns/testimonials-social.html",
+   "tags": [
+    "social",
+    "posts"
+   ],
+   "description": "Chunky social-post-style proof cards with hard shadows and a pinned badge.",
+   "dnas": [
+    "neo-brutalist-pop"
+   ]
+  },
+  {
+   "id": "testimonials-solo",
+   "title": "One giant quote",
+   "category": "Testimonials",
+   "file": "patterns/testimonials-solo.html",
+   "tags": [
+    "single",
+    "statement"
+   ],
+   "description": "A single enormous quote in vast quiet space with a vertical margin note.",
+   "dnas": [
+    "ma-japanese"
+   ]
+  },
+  {
+   "id": "testimonials-sticker",
+   "title": "Sticker quotes",
+   "category": "Testimonials",
+   "file": "patterns/testimonials-sticker.html",
+   "tags": [
+    "playful",
+    "gen-z"
+   ],
+   "description": "Rotated neon quote stickers slapped on black with white peel borders.",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "testimonials-terminal",
+   "title": "Mono reviews",
+   "category": "Testimonials",
+   "file": "patterns/testimonials-terminal.html",
+   "tags": [
+    "cli",
+    "reviews"
+   ],
+   "description": "Terminal-style review log with star ratings and VERIFIED tags.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "testimonials-video",
+   "title": "Video wall",
+   "category": "Testimonials",
+   "file": "patterns/testimonials-video.html",
+   "tags": [
+    "video",
+    "thumbnails"
+   ],
+   "description": "Dark video wall of quote thumbnails with CSS play buttons and a now-playing tile.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  }
+ ]
+}
