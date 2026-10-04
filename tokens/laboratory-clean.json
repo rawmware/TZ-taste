@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-laboratory-clean",
+  "title": "Laboratory Clean design tokens",
+  "category": "Tokens",
+  "file": "tokens/laboratory-clean.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "laboratory-clean"
+  ],
+  "description": "W3C-format design tokens for the Laboratory Clean style DNA.",
+  "dnas": [
+   "laboratory-clean"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#fbfcfd",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#0f1720",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#0a7d8c",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#6b7684",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#dfe4ea",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "IBM Plex Sans",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "IBM Plex Sans",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "IBM Plex Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "laboratory-clean",
+  "name": "Laboratory Clean",
+  "vibe": "A calibrated instrument, not a landing page: sterile white, spec tables, every label measured."
+ }
+}
