@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-drive-in-theater",
+  "title": "Drive-In Theater design tokens",
+  "category": "Tokens",
+  "file": "tokens/drive-in-theater.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "drive-in-theater"
+  ],
+  "description": "W3C-format design tokens for the Drive-In Theater DNA.",
+  "dnas": [
+   "drive-in-theater"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#151423",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#f4efe4",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#f2a93b",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#8f8ba0",
+   "type": "color"
+  },
+  "line": {
+   "value": "#f4efe41f",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#211f33",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Limelight",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Figtree",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "IBM Plex Mono",
+   "type": "fontFamily"
+  }
+ }
+}
