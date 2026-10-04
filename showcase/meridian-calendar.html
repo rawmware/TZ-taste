@@ -1,0 +1,274 @@
+<!--tz-meta {"id":"showcase-meridian-calendar","title":"Meridian — calendar","category":"Showcase","file":"showcase/meridian-calendar.html","tags":["app-ui","calendar","shadcn"],"description":"Meridian calendar app: month/week views, mini calendar, event creation, calendar filters, dark mode.","dnas":[]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Meridian — Calendar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --fg:#09090b; --muted:#f4f4f5; --muted-fg:#71717a;
+  --border:#e4e4e7; --card:#ffffff; --primary:#18181b; --primary-fg:#fafafa;
+  --ring:#18181b; --blue:#2563eb; --green:#16a34a; --amber:#d97706; --violet:#7c3aed;
+}
+html.dark{
+  --bg:#09090b; --fg:#fafafa; --muted:#18181b; --muted-fg:#a1a1aa;
+  --border:#27272a; --card:#101013; --primary:#fafafa; --primary-fg:#09090b;
+  --ring:#fafafa; --blue:#60a5fa; --green:#4ade80; --amber:#fbbf24; --violet:#a78bfa;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:Inter,-apple-system,"Segoe UI",sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button{font:inherit;cursor:pointer}
+.num{font-variant-numeric:tabular-nums}
+.app{display:flex;height:100vh;overflow:hidden}
+/* sidebar */
+.side{width:264px;flex-shrink:0;border-right:1px solid var(--border);display:flex;flex-direction:column;padding:16px;gap:16px;overflow:auto}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;letter-spacing:-.01em}
+.mark{width:26px;height:26px;border-radius:7px;background:var(--primary);color:var(--primary-fg);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.side h3{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--muted-fg);margin-bottom:8px}
+.mini-cal{border:1px solid var(--border);border-radius:10px;padding:10px}
+.mini-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;font-size:12.5px;font-weight:600}
+.mini-nav{display:flex;gap:2px}
+.iconbtn{width:24px;height:24px;border-radius:6px;border:1px solid transparent;background:transparent;color:var(--muted-fg);display:flex;align-items:center;justify-content:center;font-size:13px}
+.iconbtn:hover{background:var(--muted);color:var(--fg)}
+.mini-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;text-align:center}
+.mini-grid .dw{font-size:10px;color:var(--muted-fg);font-weight:600;padding:3px 0}
+.mini-grid button{border:0;background:transparent;color:var(--fg);font-size:11.5px;border-radius:6px;padding:4px 0;font-family:inherit}
+.mini-grid button:hover{background:var(--muted)}
+.mini-grid button.dim{color:var(--muted-fg);opacity:.45}
+.mini-grid button.sel{background:var(--primary);color:var(--primary-fg);font-weight:600}
+.mini-grid button.today:not(.sel){color:var(--blue);font-weight:700}
+.calrow{display:flex;align-items:center;gap:9px;padding:6px 8px;border-radius:7px;font-size:13px;cursor:pointer;user-select:none}
+.calrow:hover{background:var(--muted)}
+.calrow .dot{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+.calrow span:last-child{margin-left:auto;color:var(--muted-fg);font-size:12px}
+.calrow.off{opacity:.4}
+/* main */
+.main{flex:1;display:flex;flex-direction:column;min-width:0}
+.topbar{display:flex;align-items:center;gap:10px;padding:12px 20px;border-bottom:1px solid var(--border)}
+.topbar h1{font-size:16px;font-weight:600;letter-spacing:-.01em;min-width:190px}
+.btn{border:1px solid var(--border);background:var(--card);color:var(--fg);border-radius:8px;padding:7px 13px;font-size:13px;font-weight:500}
+.btn:hover{background:var(--muted)}
+.btn.primary{background:var(--primary);border-color:var(--primary);color:var(--primary-fg)}
+.btn.primary:hover{opacity:.9}
+.seg{display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-left:auto}
+.seg button{border:0;background:var(--card);color:var(--muted-fg);padding:7px 14px;font-size:13px;font-weight:500}
+.seg button.on{background:var(--muted);color:var(--fg);font-weight:600}
+.grid{flex:1;overflow:auto;padding:16px 20px 28px}
+.mgrid{display:grid;grid-template-columns:repeat(7,1fr);border:1px solid var(--border);border-radius:12px;overflow:hidden;min-height:100%}
+.dwhead{background:var(--muted);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted-fg);padding:8px 10px;text-align:right;border-bottom:1px solid var(--border)}
+.day{border-bottom:1px solid var(--border);border-right:1px solid var(--border);min-height:104px;padding:6px;cursor:pointer;position:relative;background:var(--card)}
+.day:nth-child(7n){border-right:0}
+.day:hover{background:var(--muted)}
+.day.dim{background:var(--muted);opacity:.55}
+.day .dnum{font-size:12.5px;font-weight:500;width:26px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.day.today .dnum{background:var(--blue);color:#fff;font-weight:600}
+.ev{font-size:11.5px;font-weight:500;border-radius:5px;padding:2px 6px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-left:3px solid}
+.ev.work{background:color-mix(in srgb,var(--blue) 12%,transparent);border-color:var(--blue);color:var(--fg)}
+.ev.personal{background:color-mix(in srgb,var(--green) 12%,transparent);border-color:var(--green);color:var(--fg)}
+.ev.side{background:color-mix(in srgb,var(--violet) 12%,transparent);border-color:var(--violet);color:var(--fg)}
+.more{font-size:11px;color:var(--muted-fg);margin-top:2px;padding-left:6px}
+/* week view */
+.wgrid{display:grid;grid-template-columns:repeat(7,1fr);border:1px solid var(--border);border-radius:12px;overflow:hidden;min-height:100%}
+.wcol{border-right:1px solid var(--border);padding:8px;min-height:420px;cursor:pointer;background:var(--card)}
+.wcol:last-child{border-right:0}
+.wcol:hover{background:var(--muted)}
+.wcol.today{background:color-mix(in srgb,var(--blue) 5%,transparent)}
+.wcol .wh{font-size:12px;font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.wcol .wh .dnum{font-size:11px;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.wcol.today .wh .dnum{background:var(--blue);color:#fff}
+/* modal */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;z-index:50;padding:16px}
+.overlay.open{display:flex}
+.modal{background:var(--card);border:1px solid var(--border);border-radius:14px;width:380px;max-width:100%;padding:20px;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.modal h2{font-size:15px;font-weight:600;margin-bottom:14px}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:12.5px;font-weight:500;margin-bottom:5px}
+.field input,.field select{width:100%;border:1px solid var(--border);border-radius:8px;padding:8px 10px;font:inherit;font-size:13.5px;background:var(--bg);color:var(--fg);outline:none}
+.field input:focus,.field select:focus{border-color:var(--ring);box-shadow:0 0 0 2px color-mix(in srgb,var(--ring) 15%,transparent)}
+.mrow{display:flex;gap:10px;justify-content:flex-end;margin-top:16px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--primary);color:var(--primary-fg);font-size:13px;font-weight:500;padding:10px 18px;border-radius:10px;opacity:0;transition:.25s;z-index:60;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:860px){.side{display:none}.topbar h1{min-width:0}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand"><span class="mark">M</span>Meridian</div>
+    <button class="btn primary" id="createBtn" style="width:100%">+ Create event</button>
+    <div>
+      <h3 id="miniTitle">October 2026</h3>
+      <div class="mini-cal">
+        <div class="mini-head"><span id="miniLabel"></span>
+          <span class="mini-nav"><button class="iconbtn" id="miniPrev">‹</button><button class="iconbtn" id="miniNext">›</button></span>
+        </div>
+        <div class="mini-grid" id="miniGrid"></div>
+      </div>
+    </div>
+    <div>
+      <h3>Calendars</h3>
+      <div id="calList"></div>
+    </div>
+    <div style="margin-top:auto">
+      <button class="btn" id="themeBtn" style="width:100%">Toggle dark mode</button>
+    </div>
+  </aside>
+  <div class="main">
+    <div class="topbar">
+      <button class="btn" id="todayBtn">Today</button>
+      <button class="iconbtn" id="prevBtn" style="width:30px;height:30px;border:1px solid var(--border)">‹</button>
+      <button class="iconbtn" id="nextBtn" style="width:30px;height:30px;border:1px solid var(--border)">›</button>
+      <h1 id="viewTitle" class="num"></h1>
+      <div class="seg"><button id="monthBtn" class="on">Month</button><button id="weekBtn">Week</button></div>
+    </div>
+    <div class="grid"><div id="calView"></div></div>
+  </div>
+</div>
+<div class="overlay" id="overlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-label="Create event">
+    <h2>New event</h2>
+    <div class="field"><label>Title</label><input id="evTitle" placeholder="e.g. Design review" autocomplete="off"></div>
+    <div class="field"><label>Date</label><input id="evDate" type="date"></div>
+    <div class="field"><label>Time</label><input id="evTime" type="time" value="10:00"></div>
+    <div class="field"><label>Calendar</label><select id="evCal"><option value="work">Work</option><option value="personal">Personal</option><option value="side">Side project</option></select></div>
+    <div class="mrow"><button class="btn" id="cancelBtn">Cancel</button><button class="btn primary" id="saveBtn">Save event</button></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+(function(){
+  "use strict";
+  var $=function(id){return document.getElementById(id)};
+  var MONTHS=["January","February","March","April","May","June","July","August","September","October","November","December"];
+  var DOW=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  var today=new Date(); today.setHours(0,0,0,0);
+  var view=new Date(today.getFullYear(),today.getMonth(),1);
+  var miniView=new Date(view);
+  var mode="month";
+  var selectedISO=iso(today);
+  var uid=100;
+  var CALENDARS=[
+    {id:"work",name:"Work",color:"var(--blue)",on:true},
+    {id:"personal",name:"Personal",color:"var(--green)",on:true},
+    {id:"side",name:"Side project",color:"var(--violet)",on:true}
+  ];
+  function iso(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+  function parseISO(s){var p=s.split("-");return new Date(+p[0],+p[1]-1,+p[2])}
+  function off(n){var d=new Date(today);d.setDate(d.getDate()+n);return iso(d)}
+  var events=[
+    {id:++uid,date:off(0),title:"Design review — onboarding flow",time:"10:00",cal:"work"},
+    {id:++uid,date:off(0),title:"1:1 with Priya",time:"14:30",cal:"work"},
+    {id:++uid,date:off(1),title:"Ship v2.4 to staging",time:"11:00",cal:"work"},
+    {id:++uid,date:off(1),title:"Dentist appointment",time:"16:00",cal:"personal"},
+    {id:++uid,date:off(2),title:"Long run — 14 km",time:"07:00",cal:"personal"},
+    {id:++uid,date:off(3),title:"Investor update draft",time:"09:30",cal:"side"},
+    {id:++uid,date:off(4),title:"Team retro",time:"15:00",cal:"work"},
+    {id:++uid,date:off(6),title:"Dinner with Sam",time:"19:30",cal:"personal"},
+    {id:++uid,date:off(8),title:"Launch checklist",time:"10:00",cal:"side"},
+    {id:++uid,date:off(-2),title:"Q3 planning doc",time:"13:00",cal:"work"}
+  ];
+  function toast(msg){var t=$("toast");t.textContent=msg;t.classList.add("show");clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove("show")},2200)}
+  function evsOn(dateISO){var on={};CALENDARS.forEach(function(c){on[c.id]=c.on});
+    return events.filter(function(e){return e.date===dateISO&&on[e.cal]}).sort(function(a,b){return a.time<b.time?-1:1})}
+
+  /* ---- sidebar ---- */
+  function renderCalList(){
+    $("calList").innerHTML=CALENDARS.map(function(c){
+      return '<div class="calrow'+(c.on?"":" off")+'" data-cal="'+c.id+'"><span class="dot" style="background:'+c.color+'"></span>'+c.name+'<span>'+events.filter(function(e){return e.cal===c.id}).length+'</span></div>';
+    }).join("");
+    Array.prototype.forEach.call($("calList").children,function(el){
+      el.onclick=function(){var c=CALENDARS.filter(function(x){return x.id===el.dataset.cal})[0];c.on=!c.on;renderCalList();render()};
+    });
+  }
+  function renderMini(){
+    $("miniLabel").textContent=MONTHS[miniView.getMonth()]+" "+miniView.getFullYear();
+    var y=miniView.getFullYear(),m=miniView.getMonth();
+    var first=new Date(y,m,1),start=new Date(first);start.setDate(start.getDate()-first.getDay());
+    var h=DOW.map(function(d){return '<span class="dw">'+d[0]+'</span>'}).join("");
+    for(var i=0;i<42;i++){
+      var d=new Date(start);d.setDate(d.getDate()+i);var s=iso(d);
+      var cls=d.getMonth()!==m?"dim":"";if(s===selectedISO)cls+=" sel";else if(s===iso(today))cls+=" today";
+      h+='<button class="'+cls+'" data-d="'+s+'">'+d.getDate()+'</button>';
+    }
+    $("miniGrid").innerHTML=h;
+    Array.prototype.forEach.call($("miniGrid").querySelectorAll("button[data-d]"),function(b){
+      b.onclick=function(){selectedISO=b.dataset.d;var p=parseISO(selectedISO);view=new Date(p.getFullYear(),p.getMonth(),1);render();renderMini()};
+    });
+  }
+
+  /* ---- main views ---- */
+  function render(){
+    $("viewTitle").textContent=mode==="month"?MONTHS[view.getMonth()]+" "+view.getFullYear():"Week of "+MONTHS[view.getMonth()]+" "+view.getDate();
+    $("calView").innerHTML=mode==="month"?monthHTML():weekHTML();
+    bindDays();
+  }
+  function monthHTML(){
+    var y=view.getFullYear(),m=view.getMonth();
+    var first=new Date(y,m,1),start=new Date(first);start.setDate(start.getDate()-first.getDay());
+    var h='<div class="mgrid">'+DOW.map(function(d){return '<div class="dwhead">'+d+'</div>'}).join("");
+    for(var i=0;i<42;i++){
+      var d=new Date(start);d.setDate(d.getDate()+i);var s=iso(d);
+      var cls=d.getMonth()!==m?"dim":"";if(s===iso(today))cls+=" today";
+      var evs=evsOn(s),chips=evs.slice(0,2).map(function(e){
+        return '<div class="ev '+e.cal+'">'+e.time+' '+esc(e.title)+'</div>';
+      }).join("");
+      if(evs.length>2)chips+='<div class="more">+'+(evs.length-2)+' more</div>';
+      h+='<div class="day '+cls+'" data-d="'+s+'"><div class="dnum num">'+d.getDate()+'</div>'+chips+'</div>';
+    }
+    return h+'</div>';
+  }
+  function weekHTML(){
+    var ws=new Date(view);ws.setDate(ws.getDate()-ws.getDay());
+    var h='<div class="wgrid">';
+    for(var i=0;i<7;i++){
+      var d=new Date(ws);d.setDate(d.getDate()+i);var s=iso(d);
+      var cls=s===iso(today)?"today":"";
+      var evs=evsOn(s).map(function(e){return '<div class="ev '+e.cal+'">'+e.time+' '+esc(e.title)+'</div>'}).join("");
+      h+='<div class="wcol '+cls+'" data-d="'+s+'"><div class="wh"><span class="dnum num">'+d.getDate()+'</span>'+DOW[i]+'</div>'+evs+'</div>';
+    }
+    return h+'</div>';
+  }
+  function bindDays(){
+    Array.prototype.forEach.call($("calView").querySelectorAll("[data-d]"),function(el){
+      el.onclick=function(){openModal(el.dataset.d)};
+    });
+  }
+  function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+
+  /* ---- modal ---- */
+  function openModal(dateISO){$("evDate").value=dateISO;$("evTitle").value="";$("overlay").classList.add("open");setTimeout(function(){$("evTitle").focus()},50)}
+  function closeModal(){$("overlay").classList.remove("open")}
+  $("saveBtn").onclick=function(){
+    var t=$("evTitle").value.trim();
+    if(!t){$("evTitle").focus();return}
+    events.push({id:++uid,date:$("evDate").value,title:t,time:$("evTime").value||"09:00",cal:$("evCal").value});
+    closeModal();renderCalList();render();toast("Event created");
+  };
+  $("cancelBtn").onclick=closeModal;
+  $("overlay").onclick=function(e){if(e.target===$("overlay"))closeModal()};
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")closeModal()});
+  $("createBtn").onclick=function(){openModal(selectedISO)};
+
+  /* ---- nav ---- */
+  $("prevBtn").onclick=function(){shift(-1)};$("nextBtn").onclick=function(){shift(1)};
+  function shift(n){if(mode==="month")view.setMonth(view.getMonth()+n);else view.setDate(view.getDate()+n*7);render()}
+  $("todayBtn").onclick=function(){view=new Date(today.getFullYear(),today.getMonth(),1);selectedISO=iso(today);render();renderMini()};
+  $("monthBtn").onclick=function(){mode="month";$("monthBtn").classList.add("on");$("weekBtn").classList.remove("on");render()};
+  $("weekBtn").onclick=function(){mode="week";$("weekBtn").classList.add("on");$("monthBtn").classList.remove("on");render()};
+  $("miniPrev").onclick=function(){miniView.setMonth(miniView.getMonth()-1);renderMini()};
+  $("miniNext").onclick=function(){miniView.setMonth(miniView.getMonth()+1);renderMini()};
+
+  /* ---- theme ---- */
+  function setDark(d){document.documentElement.classList.toggle("dark",d);try{localStorage.setItem("meridian-dark",d?"1":"0")}catch(e){}}
+  $("themeBtn").onclick=function(){setDark(!document.documentElement.classList.contains("dark"))};
+  try{if(localStorage.getItem("meridian-dark")==="1")setDark(true)}catch(e){}
+
+  renderCalList();renderMini();render();
+})();
+</script>
+</body>
+</html>
