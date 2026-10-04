@@ -1,0 +1,3 @@
+//tz-meta {"id":"tailwind-pixel-garden","title":"Pixel Garden Tailwind preset","category":"Tailwind","file":"tailwind/pixel-garden.js","tags":["tailwind","preset","pixel-garden"],"description":"Tailwind theme preset for the Pixel Garden DNA.","dnas":["pixel-garden"]}
+// Tailwind preset for the Pixel Garden DNA. Extend tailwind.config with this.
+module.exports={theme:{extend:{colors:{tzbg:"#20291d",tzink:"#f5efdc",tzaccent:"#ffc93c",tzmuted:"#8a9a7b",tzline:"#7fc24d55",tzsurface:"#20291d"},fontFamily:{display:["Press Start 2P","serif"],body:["DotGothic16","sans-serif"],mono:["VT323","monospace"]}}}};
