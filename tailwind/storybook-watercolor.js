@@ -1,0 +1,3 @@
+//tz-meta {"id":"tailwind-storybook-watercolor","title":"Storybook Watercolor Tailwind preset","category":"Tailwind","file":"tailwind/storybook-watercolor.js","tags":["tailwind","preset","storybook-watercolor"],"description":"Tailwind theme preset for the Storybook Watercolor DNA.","dnas":["storybook-watercolor"]}
+// Tailwind preset for the Storybook Watercolor DNA. Extend tailwind.config with this.
+module.exports={theme:{extend:{colors:{tzbg:"#f7f0dc",tzink:"#2e2a23",tzaccent:"#d95f43",tzmuted:"#8a7f6c",tzline:"#2e2a2326",tzsurface:"#f7f0dc"},fontFamily:{display:["Caveat","serif"],body:["Karla","sans-serif"],mono:["Space Mono","monospace"]}}}};
