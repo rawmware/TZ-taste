@@ -1,0 +1,115 @@
+<!--tz-meta {"id":"showcase-corner-deli","title":"Corner Deli showcase","category":"Showcase","file":"showcase/corner-deli.html","tags":["corner-deli"],"description":"Live demo page for the Corner Deli style DNA.","dnas":["corner-deli"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Corner Deli — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Karla:wght@400;500;700&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f7f3e8; --tz-surface:#efe7d3; --tz-ink:#2e2620; --tz-muted:#7c6f5f;
+  --tz-accent:#c0392b; --tz-line:#2e26201f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Karla",sans-serif;font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 4vw;border-bottom:1px solid var(--tz-line)}
+.tz-wordmark{font-family:"Bebas Neue",sans-serif;font-size:1.5rem;letter-spacing:0.08em}
+.tz-now{background:var(--tz-ink);color:var(--tz-bg);font-family:"Special Elite",monospace;font-size:0.78rem;letter-spacing:0.1em;padding:0.55rem 1rem;border-radius:2px}
+.tz-now strong{color:var(--tz-accent);font-weight:400}
+.tz-awning{display:flex;height:1.1rem}
+.tz-awning i{flex:1}
+.tz-awning i:nth-child(odd){background:var(--tz-accent)}
+.tz-awning i:nth-child(even){background:var(--tz-bg)}
+.tz-hero{padding:5rem 4vw 3rem}
+.tz-eyebrow{font-family:"Special Elite",monospace;font-size:0.78rem;letter-spacing:0.1em;color:var(--tz-muted);margin-bottom:1.4rem}
+.tz-hero h1{font-family:"Bebas Neue",sans-serif;font-size:clamp(3.4rem,11vw,7.5rem);line-height:0.95;letter-spacing:0.02em;max-width:10ch}
+.tz-sub{margin-top:1.6rem;font-size:1.05rem;color:var(--tz-muted);max-width:44ch}
+.tz-cta{display:inline-block;margin-top:2.2rem;background:var(--tz-accent);color:#fff;font-family:"Bebas Neue",sans-serif;font-size:1.4rem;letter-spacing:0.08em;text-decoration:none;padding:0.8rem 2.4rem;border-radius:2px;transition:opacity .15s ease}
+.tz-cta:hover{opacity:0.88}
+.tz-content{padding:2.5rem 4vw 1rem}
+.tz-content h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(2.2rem,6vw,3.4rem);letter-spacing:0.04em;margin-bottom:0.3rem}
+.tz-subhead{font-family:"Special Elite",monospace;font-size:0.76rem;letter-spacing:0.08em;color:var(--tz-muted);margin-bottom:1.6rem}
+.tz-menu{background:var(--tz-surface);border-radius:2px;padding:0.6rem 2rem;max-width:760px}
+.tz-menu .tz-row{display:flex;align-items:baseline;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--tz-line);font-family:"Special Elite",monospace}
+.tz-menu .tz-row:last-child{border-bottom:none}
+.tz-menu .tz-num{color:var(--tz-accent);font-size:0.9rem;min-width:2.6rem}
+.tz-menu .tz-item{font-size:0.98rem;color:var(--tz-ink)}
+.tz-menu .tz-dots{flex:1;border-bottom:2px dotted var(--tz-muted);transform:translateY(-4px);opacity:0.6}
+.tz-menu .tz-price{font-size:0.98rem;color:var(--tz-ink)}
+.tz-menu .tz-desc{width:100%;font-size:0.72rem;color:var(--tz-muted);font-family:"Karla",sans-serif;margin-top:0.25rem}
+.tz-counter{margin:2.6rem 0 0;max-width:580px;color:var(--tz-muted)}
+.tz-counter strong{color:var(--tz-ink);font-weight:700}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Bebas Neue",sans-serif;font-size:2rem;letter-spacing:0.05em;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1;border-radius:2px;overflow:hidden}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"Special Elite",monospace;font-size:0.64rem;letter-spacing:0.1em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Special Elite",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"Special Elite",monospace;font-size:0.72rem;color:var(--tz-muted);letter-spacing:0.06em}
+@media(max-width:700px){
+  .tz-hero{padding-top:3.5rem}
+  .tz-now{display:none}
+  .tz-menu{padding:0.6rem 1.2rem}
+  .tz-menu .tz-dots{display:none}
+  .tz-menu .tz-row{flex-wrap:wrap}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Sal&rsquo;s Corner Deli</span>
+  <span class="tz-now">NOW SERVING <strong id="tz-ticket">#47</strong></span>
+</header>
+<div class="tz-awning" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow">OPEN 7&ndash;3 &middot; SLICER WARM BY EIGHT &middot; CASH OR CARD</p>
+  <h1>The #4. You know the #4.</h1>
+  <p class="tz-sub">The slicer is already warm and the ticket rail is full by eleven. Everybody's order is remembered, whether they want it to be or not.</p>
+  <a class="tz-cta" href="#">Read the menu board</a>
+</section>
+
+<section class="tz-content">
+  <h2>Menu board</h2>
+  <p class="tz-subhead">CHALKED DAILY &middot; BREAD BAKED ACROSS THE STREET</p>
+  <div class="tz-menu">
+    <div class="tz-row"><span class="tz-num">#1</span><span class="tz-item">HOT PASTRAMI</span><span class="tz-dots"></span><span class="tz-price">$11.50</span><span class="tz-desc">Mustard, rye, pickles on the side. The line moves fast.</span></div>
+    <div class="tz-row"><span class="tz-num">#2</span><span class="tz-item">TURKEY CLUB</span><span class="tz-dots"></span><span class="tz-price">$10.75</span><span class="tz-desc">Triple-decker, bacon, the works. Nap required after.</span></div>
+    <div class="tz-row"><span class="tz-num">#3</span><span class="tz-item">ITALIAN COMBO</span><span class="tz-dots"></span><span class="tz-price">$11.00</span><span class="tz-desc">Salami, capicola, provolone, oil and vinegar.</span></div>
+    <div class="tz-row"><span class="tz-num">#4</span><span class="tz-item">THE #4</span><span class="tz-dots"></span><span class="tz-price">$12.25</span><span class="tz-desc">Roast beef, horseradish cheddar, crispy onions. You know it.</span></div>
+    <div class="tz-row"><span class="tz-num">#5</span><span class="tz-item">EGG SALAD</span><span class="tz-dots"></span><span class="tz-price">$8.50</span><span class="tz-desc">Made this morning. Gone by one, usually.</span></div>
+  </div>
+  <p class="tz-counter"><strong>Counter rule:</strong> extra pickles? You got it. Substitutions before noon are a conversation; after noon they're a negotiation.</p>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#f7f3e8"></span><span class="tz-name">bg</span><span class="tz-hex">#f7f3e8</span></li>
+    <li><span class="tz-chip" style="background:#efe7d3"></span><span class="tz-name">surface</span><span class="tz-hex">#efe7d3</span></li>
+    <li><span class="tz-chip" style="background:#2e2620"></span><span class="tz-name">ink</span><span class="tz-hex">#2e2620</span></li>
+    <li><span class="tz-chip" style="background:#7c6f5f"></span><span class="tz-name">muted</span><span class="tz-hex">#7c6f5f</span></li>
+    <li><span class="tz-chip" style="background:#c0392b"></span><span class="tz-name">accent</span><span class="tz-hex">#c0392b</span></li>
+    <li><span class="tz-chip" style="background:#2e26201f"></span><span class="tz-name">line</span><span class="tz-hex">#2e26201f</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+<script>
+(function(){
+  try{
+    var n = parseInt(localStorage.getItem('tz-deli-ticket') || '47', 10) + 1;
+    localStorage.setItem('tz-deli-ticket', String(n));
+    document.getElementById('tz-ticket').textContent = '#' + n;
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
