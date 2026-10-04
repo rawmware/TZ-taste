@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-scandi-calm",
+  "title": "Scandi Calm design tokens",
+  "category": "Tokens",
+  "file": "tokens/scandi-calm.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "scandi-calm"
+  ],
+  "description": "W3C-format design tokens for the Scandi Calm style DNA.",
+  "dnas": [
+   "scandi-calm"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#faf7f1",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#2e2a25",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#a9805a",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#9a917f",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#e4dccb",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "DM Serif Display",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "DM Sans",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "scandi-calm",
+  "name": "Scandi Calm",
+  "vibe": "Hygge minimalism: warm whites, pale wood tones, quiet functionality. Nothing shouts; everything breathes."
+ }
+}
