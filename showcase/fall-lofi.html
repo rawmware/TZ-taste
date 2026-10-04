@@ -1,0 +1,196 @@
+<!--tz-meta {"id":"showcase-fall-lofi","title":"Maple & Static — 24/7 lofi radio","category":"Showcase","file":"showcase/fall-lofi.html","tags":["lofi","cozy","autumn"],"description":"MAPLE & STATIC, a 24/7 fall lofi radio page — tracklist, moods, study timer, journal.","dnas":["cottagecore","zen"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Maple &amp; Static — 24/7 fall lofi radio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#2b1d16; --tz-panel:#3a2a20; --tz-ink:#f3e6d4; --tz-muted:#a88f73;
+  --tz-accent:#e8a04c; --tz-leaf:#c96f4a; --tz-rain:#7fa8c9; --tz-line:#4d382a;
+  --tz-glow:rgba(232,160,76,.16);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Nunito",sans-serif;
+  line-height:1.65;overflow-x:hidden;transition:background 1s}
+body[data-mood="rain"]{--tz-glow:rgba(127,168,201,.14)}
+body[data-mood="fire"]{--tz-glow:rgba(232,120,60,.22)}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;
+  border-bottom:1px solid var(--tz-line);font-size:.72rem;letter-spacing:.18em;color:var(--tz-muted)}
+.tz-top .tz-wordmark{font-family:"Caveat",cursive;font-size:1.5rem;color:var(--tz-accent);letter-spacing:0}
+.tz-live{display:inline-flex;align-items:center;gap:.5rem;color:var(--tz-accent);font-weight:700}
+.tz-live::before{content:"";width:9px;height:9px;border-radius:50%;background:#e05a4e;
+  box-shadow:0 0 10px #e05a4e;animation:tz-pulse 2s infinite}
+@keyframes tz-pulse{50%{opacity:.4}}
+.tz-hero{max-width:1000px;margin:0 auto;padding:3.5rem 1.5rem 2rem;text-align:center}
+.tz-window{position:relative;max-width:640px;margin:0 auto 2.2rem;height:300px;border-radius:18px;
+  overflow:hidden;border:1px solid var(--tz-line);
+  background:linear-gradient(#1d2b3a 0 52%, #3a2a20 52% 62%, #2b1d16 62% 100%)}
+.tz-window .tz-moon{position:absolute;top:26px;left:36px;width:54px;height:54px;border-radius:50%;
+  background:#f3e6d4;box-shadow:0 0 40px rgba(243,230,212,.35)}
+.tz-window .tz-cat{position:absolute;bottom:24%;left:50%;transform:translateX(-50%);
+  width:74px;height:52px;background:#1a1410;border-radius:38px 38px 8px 8px}
+.tz-window .tz-cat::before,.tz-window .tz-cat::after{content:"";position:absolute;top:-14px;
+  width:20px;height:22px;background:#1a1410;clip-path:polygon(0 100%,50% 0,100% 100%)}
+.tz-window .tz-cat::before{left:10px}.tz-window .tz-cat::after{right:10px}
+.tz-window .tz-tail{position:absolute;bottom:26%;left:calc(50% + 34px);width:10px;height:56px;
+  background:#1a1410;border-radius:8px;transform-origin:bottom;animation:tz-tail 4s ease-in-out infinite}
+@keyframes tz-tail{0%,100%{transform:rotate(-14deg)}50%{transform:rotate(10deg)}}
+.tz-window .tz-lamp{position:absolute;bottom:12%;right:12%;width:10px;height:70px;background:#241a12}
+.tz-window .tz-lamp::before{content:"";position:absolute;top:-34px;left:50%;transform:translateX(-50%);
+  border:26px solid transparent;border-bottom:34px solid var(--tz-accent);opacity:.9}
+.tz-window .tz-lamp::after{content:"";position:absolute;top:-40px;left:50%;transform:translateX(-50%);
+  width:90px;height:90px;border-radius:50%;background:var(--tz-glow);transition:background 1s}
+.tz-window .tz-glass{position:absolute;inset:0;
+  background:repeating-linear-gradient(105deg, transparent 0 14px, rgba(127,168,201,.10) 14px 16px)}
+.tz-window .tz-rain{position:absolute;inset:-40% 0;opacity:0;pointer-events:none;
+  background:repeating-linear-gradient(100deg, transparent 0 22px, rgba(174,204,228,.35) 22px 23px);
+  animation:tz-rain .7s linear infinite;transition:opacity .8s}
+body[data-mood="rain"] .tz-rain{opacity:1}
+@keyframes tz-rain{to{transform:translateY(40%)}}
+.tz-window .tz-cap{position:absolute;left:1rem;bottom:.8rem;font-family:"Caveat",cursive;
+  font-size:1.25rem;color:var(--tz-ink);background:rgba(43,29,22,.75);padding:.2rem .9rem;border-radius:8px}
+.tz-hero h1{font-family:"Caveat",cursive;font-size:clamp(2.6rem,7vw,4.4rem);line-height:1.05;
+  margin-bottom:.6rem}
+.tz-hero h1 .tz-a{color:var(--tz-accent)}
+.tz-hero>p{color:var(--tz-muted);max-width:50ch;margin:0 auto 2rem}
+.tz-player{max-width:640px;margin:0 auto 1rem;background:var(--tz-panel);border:1px solid var(--tz-line);
+  border-radius:16px;padding:1.4rem 1.6rem;display:flex;align-items:center;gap:1.2rem;text-align:left}
+.tz-play{flex:none;width:58px;height:58px;border-radius:50%;border:none;cursor:pointer;
+  background:var(--tz-accent);color:#2b1d16;font-size:1.3rem}
+.tz-eq{display:flex;align-items:flex-end;gap:4px;height:34px}
+.tz-eq span{width:5px;background:var(--tz-accent);border-radius:3px;height:30%}
+.tz-player.tz-on .tz-eq span{animation:tz-eq 1s ease-in-out infinite}
+.tz-player.tz-on .tz-eq span:nth-child(2){animation-delay:.15s}.tz-player.tz-on .tz-eq span:nth-child(3){animation-delay:.3s}
+.tz-player.tz-on .tz-eq span:nth-child(4){animation-delay:.45s}.tz-player.tz-on .tz-eq span:nth-child(5){animation-delay:.6s}
+@keyframes tz-eq{0%,100%{height:22%}50%{height:100%}}
+.tz-now{font-size:.85rem}.tz-now strong{display:block;font-size:1rem}
+.tz-now span{color:var(--tz-muted)}
+.tz-moods{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.6rem}
+.tz-mood{font:inherit;font-size:.82rem;font-weight:700;color:var(--tz-muted);background:transparent;
+  border:1px solid var(--tz-line);border-radius:99px;padding:.5rem 1.2rem;cursor:pointer}
+.tz-mood.tz-pick{color:#2b1d16;background:var(--tz-accent);border-color:var(--tz-accent)}
+.tz-content{max-width:1000px;margin:0 auto;padding:1rem 1.5rem 3rem}
+.tz-panel{background:var(--tz-panel);border:1px solid var(--tz-line);border-radius:16px;
+  padding:2rem;margin-bottom:2rem}
+.tz-panel h2{font-family:"Caveat",cursive;font-size:2rem;color:var(--tz-accent);margin-bottom:1.2rem}
+.tz-track{display:flex;justify-content:space-between;gap:1rem;padding:.75rem .2rem;
+  border-bottom:1px dashed var(--tz-line);font-size:.92rem}
+.tz-track:last-child{border-bottom:none}
+.tz-track .tz-t{color:var(--tz-muted);white-space:nowrap}
+.tz-track .tz-art{color:var(--tz-muted);font-size:.8rem}
+.tz-timer{text-align:center}
+.tz-timer .tz-clock{font-size:3.4rem;font-weight:800;letter-spacing:.04em;margin-bottom:1rem;
+  font-variant-numeric:tabular-nums}
+.tz-timer .tz-row{display:flex;gap:.8rem;justify-content:center}
+.tz-btn{font:inherit;font-weight:800;font-size:.85rem;color:#2b1d16;background:var(--tz-accent);
+  border:none;border-radius:10px;padding:.7rem 1.6rem;cursor:pointer}
+.tz-btn.alt{background:transparent;color:var(--tz-accent);border:1px solid var(--tz-accent)}
+.tz-journal p{font-family:"Caveat",cursive;font-size:1.5rem;color:var(--tz-ink);margin-bottom:.8rem}
+.tz-journal .tz-q{font-family:"Nunito",sans-serif;font-size:.92rem;color:var(--tz-muted)}
+.tz-foot{border-top:1px solid var(--tz-line);padding:1.5rem;font-size:.72rem;letter-spacing:.12em;
+  color:var(--tz-muted);text-align:center}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important}}
+</style>
+</head>
+<body data-mood="lamp">
+<header class="tz-top">
+  <span class="tz-wordmark">maple &amp; static</span>
+  <span class="tz-live">ON AIR · 24/7</span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-window" role="img" aria-label="Cozy autumn window: cat silhouette, lamp glow, rain on glass">
+    <div class="tz-moon"></div>
+    <div class="tz-cat"></div><div class="tz-tail"></div>
+    <div class="tz-lamp"></div>
+    <div class="tz-glass"></div><div class="tz-rain"></div>
+    <p class="tz-cap">november, somewhere quiet</p>
+  </div>
+  <h1>study with the <span class="tz-a">rain</span></h1>
+  <p>Endless fall lofi for homework, novels, and 2am thoughts. The cat stays. The rain stays. You stay a while too.</p>
+
+  <div class="tz-player" id="player">
+    <button class="tz-play" id="playbtn" aria-label="Play or pause">▶</button>
+    <div class="tz-eq" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="tz-now"><strong id="nowtitle">cardigan weather</strong><span>maple &amp; static residents · 2:47</span></div>
+  </div>
+  <div class="tz-moods" id="moods">
+    <button class="tz-mood tz-pick" data-m="lamp">🪔 lamp</button>
+    <button class="tz-mood" data-m="rain">🌧 rain</button>
+    <button class="tz-mood" data-m="fire">🔥 fireplace</button>
+  </div>
+</section>
+
+<section class="tz-content">
+  <div class="tz-panel">
+    <h2>tonight's tracklist</h2>
+    <div class="tz-track"><div><strong>cardigan weather</strong><div class="tz-art">maple &amp; static residents</div></div><span class="tz-t">2:47</span></div>
+    <div class="tz-track"><div><strong>pumpkin spice static</strong><div class="tz-art">junior cassette</div></div><span class="tz-t">3:12</span></div>
+    <div class="tz-track"><div><strong>library at closing time</strong><div class="tz-art">the overdue collective</div></div><span class="tz-t">2:58</span></div>
+    <div class="tz-track"><div><strong>fog on route 9</strong><div class="tz-art">deer crossing</div></div><span class="tz-t">3:31</span></div>
+    <div class="tz-track"><div><strong>tea going lukewarm</strong><div class="tz-art">maple &amp; static residents</div></div><span class="tz-t">2:22</span></div>
+    <div class="tz-track"><div><strong>leaves in the gutter</strong><div class="tz-art">october tapes</div></div><span class="tz-t">3:05</span></div>
+    <div class="tz-track"><div><strong>chapter seven</strong><div class="tz-art">the overdue collective</div></div><span class="tz-t">4:01</span></div>
+    <div class="tz-track"><div><strong>porch light</strong><div class="tz-art">junior cassette</div></div><span class="tz-t">2:49</span></div>
+  </div>
+
+  <div class="tz-panel tz-timer">
+    <h2>the focus timer</h2>
+    <p class="tz-clock" id="clock">25:00</p>
+    <div class="tz-row">
+      <button class="tz-btn" id="tstart">start studying</button>
+      <button class="tz-btn alt" id="treset">reset</button>
+    </div>
+    <p style="margin-top:1rem;color:var(--tz-muted);font-size:.85rem">25 minutes on, 5 off. The cat believes in you.</p>
+  </div>
+
+  <div class="tz-panel tz-journal">
+    <h2>one line a day</h2>
+    <p>"The rain sounds different when you're not in a hurry."</p>
+    <p class="tz-q">Tonight's prompt: what did the quiet teach you today? Write it in the margins of whatever you're working on.</p>
+  </div>
+</section>
+
+<footer class="tz-foot">MAPLE &amp; STATIC · BROADCASTING FROM A ROOM THAT SMELLS LIKE CINNAMON</footer>
+
+<script>
+(function(){
+  var player = document.getElementById('player'),
+      btn = document.getElementById('playbtn'),
+      title = document.getElementById('nowtitle'),
+      tracks = ['cardigan weather','pumpkin spice static','library at closing time','fog on route 9',
+                'tea going lukewarm','leaves in the gutter','chapter seven','porch light'],
+      ti = 0, on = false;
+  btn.addEventListener('click', function(){
+    on = !on;
+    player.classList.toggle('tz-on', on);
+    btn.textContent = on ? '⏸' : '▶';
+    if(on){ ti = (ti+1) % tracks.length; title.textContent = tracks[ti]; }
+  });
+  document.getElementById('moods').addEventListener('click', function(e){
+    var b = e.target.closest('.tz-mood'); if(!b) return;
+    this.querySelectorAll('.tz-mood').forEach(function(x){ x.classList.remove('tz-pick'); });
+    b.classList.add('tz-pick');
+    document.body.dataset.mood = b.dataset.m;
+  });
+  var clock = document.getElementById('clock'), total = 25*60, left = total, timer = null;
+  function fmt(s){ return String(Math.floor(s/60)).padStart(2,'0') + ':' + String(s%60).padStart(2,'0'); }
+  document.getElementById('tstart').addEventListener('click', function(){
+    if(timer) return;
+    timer = setInterval(function(){
+      left--; clock.textContent = fmt(Math.max(left,0));
+      if(left <= 0){ clearInterval(timer); timer = null; clock.textContent = 'done — stretch.'; }
+    }, 1000);
+  });
+  document.getElementById('treset').addEventListener('click', function(){
+    clearInterval(timer); timer = null; left = total; clock.textContent = fmt(total);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!--tz-meta {"id":"showcase-roller-disco","title":"Moonlight Wheels — roller disco","category":"Showcase","file":"showcase/roller-disco.html","tags":["disco","70s","rink"],"description":"MOONLIGHT WHEELS — a 70s roller disco rink. Sessions, rentals, snack bar, house rules.","dnas":["pop-art","neon"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Moonlight Wheels — roller disco</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#12071f; --tz-panel:#1e0f33; --tz-ink:#fff6e8; --tz-muted:#a58fc9;
+  --tz-pink:#ff4fd8; --tz-cyan:#4fe3ff; --tz-yel:#ffe14f; --tz-line:#3d2364;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Space Grotesk",sans-serif;
+  line-height:1.65;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;
+  border-bottom:2px solid var(--tz-line);font-size:.72rem;letter-spacing:.2em;color:var(--tz-muted)}
+.tz-top .tz-wordmark{font-family:"Monoton",cursive;font-size:1.05rem;color:var(--tz-pink)}
+.tz-hero{max-width:1000px;margin:0 auto;padding:3.5rem 1.5rem 2.5rem;text-align:center;position:relative}
+.tz-ball{width:130px;height:130px;margin:0 auto 1.6rem;border-radius:50%;position:relative;
+  background:radial-gradient(circle at 35% 30%, #fff6e8 0%, #cdbcf0 35%, #5a3f8f 75%, #2a1a4d 100%);
+  box-shadow:0 0 60px rgba(255,79,216,.35)}
+.tz-ball::before{content:"";position:absolute;top:-46px;left:50%;transform:translateX(-50%);
+  width:3px;height:46px;background:var(--tz-line)}
+.tz-ball::after{content:"";position:absolute;inset:-70px;pointer-events:none;opacity:.5;
+  background:conic-gradient(from 0deg, transparent 0deg, rgba(255,79,216,.14) 12deg, transparent 24deg,
+    transparent 60deg, rgba(79,227,255,.12) 72deg, transparent 84deg,
+    transparent 140deg, rgba(255,225,79,.10) 152deg, transparent 164deg,
+    transparent 220deg, rgba(255,79,216,.14) 232deg, transparent 244deg,
+    transparent 300deg, rgba(79,227,255,.12) 312deg, transparent 324deg);
+  animation:tz-spin 24s linear infinite}
+@keyframes tz-spin{to{transform:rotate(360deg)}}
+.tz-eyebrow{font-size:.72rem;letter-spacing:.3em;color:var(--tz-cyan);margin-bottom:1rem}
+.tz-hero h1{font-family:"Monoton",cursive;font-size:clamp(2.4rem,8vw,5.4rem);line-height:1.15;
+  color:var(--tz-pink);text-shadow:0 0 18px rgba(255,79,216,.8), 0 0 60px rgba(255,79,216,.4);
+  margin-bottom:1rem}
+.tz-hero p{color:var(--tz-muted);max-width:50ch;margin:0 auto 2rem}
+.tz-cta-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.tz-cta{font-weight:700;letter-spacing:.06em;color:#12071f;background:var(--tz-pink);
+  padding:.9rem 2rem;text-decoration:none;border-radius:99px;
+  box-shadow:0 0 24px rgba(255,79,216,.5)}
+.tz-cta:hover{background:#ff7fe2}
+.tz-cta.ghost{background:transparent;color:var(--tz-cyan);box-shadow:inset 0 0 0 2px var(--tz-cyan)}
+.tz-content{max-width:1000px;margin:0 auto;padding:3rem 1.5rem}
+.tz-panel{background:var(--tz-panel);border:1px solid var(--tz-line);border-radius:16px;
+  padding:2.2rem;margin-bottom:2.4rem}
+.tz-panel h2{font-family:"Monoton",cursive;font-size:1.5rem;color:var(--tz-cyan);
+  text-shadow:0 0 14px rgba(79,227,255,.6);margin-bottom:1.6rem}
+.tz-sess{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+  padding:1rem .2rem;border-bottom:1px dashed var(--tz-line)}
+.tz-sess:last-child{border-bottom:none}
+.tz-sess .tz-s strong{display:block;font-size:1.1rem}
+.tz-sess .tz-s span{font-size:.85rem;color:var(--tz-muted)}
+.tz-sess .tz-p{font-weight:700;color:var(--tz-yel);white-space:nowrap}
+.tz-sess .tz-when{font-size:.7rem;letter-spacing:.14em;color:#12071f;background:var(--tz-cyan);
+  padding:.15rem .6rem;border-radius:99px;margin-left:.6rem;vertical-align:middle;white-space:nowrap}
+.tz-cols{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem}
+.tz-card{border:1px solid var(--tz-line);border-radius:12px;padding:1.6rem}
+.tz-card h3{font-family:"Monoton",cursive;font-size:1rem;color:var(--tz-pink);margin-bottom:.8rem}
+.tz-card ul{list-style:none;font-size:.9rem;color:var(--tz-muted)}
+.tz-card li{margin-bottom:.5rem}
+.tz-card li strong{color:var(--tz-ink)}
+.tz-note{border:1px dashed var(--tz-yel);border-radius:12px;padding:1.4rem 1.6rem;
+  font-size:.9rem;color:var(--tz-muted);margin-bottom:2.4rem}
+.tz-note strong{color:var(--tz-yel)}
+.tz-foot{border-top:2px solid var(--tz-line);padding:1.6rem;font-size:.72rem;letter-spacing:.14em;
+  color:var(--tz-muted);text-align:center}
+@media(max-width:640px){.tz-cols{grid-template-columns:1fr}.tz-panel{padding:1.5rem}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important}}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">MOONLIGHT WHEELS</span>
+  <span>EST. 1978 · STILL ROLLING</span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-ball" role="img" aria-label="Spinning disco ball"></div>
+  <p class="tz-eyebrow">THE FLOOR IS MAPLE · THE LIGHTS ARE NOT</p>
+  <h1>MOONLIGHT<br>WHEELS</h1>
+  <p>Eight wheels, one mirror ball, and a DJ who has not played a song newer than 1984 since 1984. Lace up — the couples skate waits for no one.</p>
+  <div class="tz-cta-row">
+    <a class="tz-cta" href="#sessions">SEE SESSIONS</a>
+    <a class="tz-cta ghost" href="#rentals">RENT SKATES</a>
+  </div>
+</section>
+
+<section class="tz-content">
+  <div class="tz-panel" id="sessions">
+    <h2>◉ WEEKLY SESSIONS</h2>
+    <div class="tz-sess"><div class="tz-s"><strong>All-Skate<span class="tz-when">FAMILY</span></strong><span>Saturdays 1–4pm · limbo contest at 3</span></div><span class="tz-p">$9</span></div>
+    <div class="tz-sess"><div class="tz-s"><strong>Couples Skate<span class="tz-when">DATE NIGHT</span></strong><span>Fridays 8–11pm · slow jams, dimmer ball</span></div><span class="tz-p">$12</span></div>
+    <div class="tz-sess"><div class="tz-s"><strong>Adult Skate 21+<span class="tz-when">LATE</span></strong><span>Saturdays 9pm–12am · the regulars run this one</span></div><span class="tz-p">$14</span></div>
+    <div class="tz-sess"><div class="tz-s"><strong>Soul Train Sunday<span class="tz-when">LEGEND</span></strong><span>Sundays 5–8pm · the line dance is mandatory-ish</span></div><span class="tz-p">$10</span></div>
+  </div>
+
+  <div class="tz-cols" id="rentals">
+    <div class="tz-card">
+      <h3>RENTALS</h3>
+      <ul>
+        <li><strong>Quad skates — $6.</strong> The classic. If you grew up here, you already own some.</li>
+        <li><strong>Inline skates — $7.</strong> Allowed, but the regulars will talk.</li>
+        <li><strong>Wrist guards — free.</strong> Pride is not protective gear.</li>
+        <li><strong>Skate mates (walkers) — $4.</strong> For beginners and the recently brave.</li>
+      </ul>
+    </div>
+    <div class="tz-card">
+      <h3>SNACK BAR</h3>
+      <ul>
+        <li><strong>Pizza rolls (6) — $5.</strong> Engineered for one-handed eating at speed.</li>
+        <li><strong>Blue raspberry slush — $4.</strong> Will stain. That's the point.</li>
+        <li><strong>Pickle on a stick — $2.</strong> A rink institution since forever.</li>
+        <li><strong>Nachos — $6.</strong> Cheese distribution is a skill. Ours is elite.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tz-note" style="margin-top:2.4rem">
+    <strong>HOUSE RULES:</strong> skate in one direction (it's always the same one). No speed skating during couples skate. Fall funny — the regulars respect commitment. The DJ takes requests written on napkins only.
+  </div>
+</section>
+
+<footer class="tz-foot">MOONLIGHT WHEELS · 1978 DISCO WAY · BIRTHDAY PARTIES: ASK FOR MARLA</footer>
+</body>
+</html>

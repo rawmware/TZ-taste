@@ -1,0 +1,151 @@
+<!--tz-meta {"id":"showcase-lighthouse-keeper","title":"Greypoint Light — lighthouse tours","category":"Showcase","file":"showcase/lighthouse-keeper.html","tags":["lighthouse","coastal","history"],"description":"GREYPOINT LIGHT, est. 1873 — keeper's log, tower tours, storm protocol, and the light itself.","dnas":["harbor","noir"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Greypoint Light — est. 1873</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#10161d; --tz-panel:#18222c; --tz-ink:#ece7db; --tz-muted:#6b7a88;
+  --tz-accent:#ffb43a; --tz-fog:#93a3b3; --tz-line:#2b3947;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"IBM Plex Mono",monospace;
+  line-height:1.7;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;
+  border-bottom:1px solid var(--tz-line);font-size:.7rem;letter-spacing:.22em;color:var(--tz-muted)}
+.tz-top .tz-wordmark{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:1.2rem;
+  letter-spacing:.02em;color:var(--tz-ink)}
+.tz-hero{max-width:1000px;margin:0 auto;padding:4rem 1.5rem 2.5rem;text-align:center}
+.tz-tower{position:relative;width:120px;height:300px;margin:0 auto 2rem}
+.tz-tower .tz-beam{position:absolute;top:6px;left:50%;width:340px;height:56px;
+  transform-origin:0 50%;transform:translateX(-50%) rotate(0deg);
+  background:linear-gradient(90deg, rgba(255,180,58,.55), transparent 75%);
+  clip-path:polygon(0 42%, 100% 0, 100% 100%, 0 58%);
+  animation:tz-sweep 9s linear infinite;z-index:1}
+@keyframes tz-sweep{to{transform:translateX(-50%) rotate(360deg)}}
+.tz-tower .tz-lamp{position:absolute;top:0;left:50%;transform:translateX(-50%);width:56px;height:64px;
+  background:var(--tz-accent);border:3px solid var(--tz-line);z-index:2;
+  box-shadow:0 0 50px rgba(255,180,58,.7)}
+.tz-tower .tz-shaft{position:absolute;top:64px;left:50%;transform:translateX(-50%);
+  width:64px;height:190px;z-index:2;
+  background:repeating-linear-gradient(0deg, var(--tz-ink) 0 38px, var(--tz-blood,#a33327) 38px 76px);
+  border:3px solid var(--tz-line);border-top:none}
+.tz-tower .tz-rock{position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);
+  width:190px;height:52px;background:var(--tz-panel);border:3px solid var(--tz-line);
+  border-radius:50% 50% 0 0;z-index:1}
+.tz-eyebrow{font-size:.7rem;letter-spacing:.3em;color:var(--tz-fog);margin-bottom:1rem}
+.tz-hero h1{font-family:"Cormorant Garamond",serif;font-weight:700;
+  font-size:clamp(2.8rem,8vw,5.4rem);line-height:1.05;margin-bottom:.8rem}
+.tz-hero h1 em{color:var(--tz-accent);font-style:normal}
+.tz-hero p{color:var(--tz-muted);max-width:52ch;margin:0 auto 2rem;font-size:.95rem}
+.tz-stats{display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.4rem}
+.tz-stat{text-align:center}
+.tz-stat .tz-v{font-family:"Cormorant Garamond",serif;font-size:2.2rem;color:var(--tz-accent)}
+.tz-stat .tz-k{font-size:.68rem;letter-spacing:.2em;color:var(--tz-muted)}
+.tz-cta-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.tz-cta{font-weight:700;font-size:.85rem;letter-spacing:.08em;color:#10161d;background:var(--tz-accent);
+  padding:.9rem 2rem;text-decoration:none}
+.tz-cta:hover{background:#ffc86e}
+.tz-cta.ghost{background:transparent;color:var(--tz-accent);box-shadow:inset 0 0 0 2px var(--tz-accent)}
+.tz-content{max-width:1000px;margin:0 auto;padding:3rem 1.5rem}
+.tz-panel{background:var(--tz-panel);border:1px solid var(--tz-line);padding:2.2rem;margin-bottom:2.4rem}
+.tz-panel h2{font-family:"Cormorant Garamond",serif;font-size:1.8rem;margin-bottom:1.4rem;
+  color:var(--tz-ink)}
+.tz-log{border-left:2px solid var(--tz-accent);padding-left:1.4rem;margin-bottom:1.6rem}
+.tz-log:last-child{margin-bottom:0}
+.tz-log .tz-date{font-size:.7rem;letter-spacing:.2em;color:var(--tz-accent);margin-bottom:.3rem}
+.tz-log p{font-size:.92rem;color:var(--tz-muted)}
+.tz-log p strong{color:var(--tz-ink)}
+.tz-tours{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.4rem}
+.tz-tour{border:1px solid var(--tz-line);padding:1.6rem}
+.tz-tour h3{font-family:"Cormorant Garamond",serif;font-size:1.3rem;margin-bottom:.4rem}
+.tz-tour .tz-p{color:var(--tz-accent);font-weight:700;margin-bottom:.6rem}
+.tz-tour p{font-size:.88rem;color:var(--tz-muted)}
+.tz-specs{width:100%;border-collapse:collapse;font-size:.88rem}
+.tz-specs td{border-bottom:1px solid var(--tz-line);padding:.7rem .3rem}
+.tz-specs td:first-child{color:var(--tz-muted);font-size:.72rem;letter-spacing:.16em;width:45%}
+.tz-foot{border-top:1px solid var(--tz-line);padding:1.6rem;font-size:.7rem;letter-spacing:.16em;
+  color:var(--tz-muted);text-align:center}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important}}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Greypoint Light</span>
+  <span>51°09′N · FOG SIGNAL ACTIVE</span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-tower" role="img" aria-label="Lighthouse with rotating beam">
+    <div class="tz-beam"></div>
+    <div class="tz-lamp"></div><div class="tz-shaft"></div><div class="tz-rock"></div>
+  </div>
+  <p class="tz-eyebrow">EST. 1873 · STILL BURNING</p>
+  <h1>112 FEET OF <em>STUBBORN.</em></h1>
+  <p>Greypoint Light has warned ships off the rocks for 153 years, through two wars, one fire, and a keeper who swore the fog had a favorite song. Climb it. Read the log. Mind the gulls.</p>
+  <div class="tz-stats">
+    <div class="tz-stat"><p class="tz-v">153</p><p class="tz-k">YEARS LIT</p></div>
+    <div class="tz-stat"><p class="tz-v">19</p><p class="tz-k">NAUTICAL MILES</p></div>
+    <div class="tz-stat"><p class="tz-v">217</p><p class="tz-k">STEPS TO THE TOP</p></div>
+  </div>
+  <div class="tz-cta-row">
+    <a class="tz-cta" href="#tours">BOOK A CLIMB</a>
+    <a class="tz-cta ghost" href="#log">READ THE LOG</a>
+  </div>
+</section>
+
+<section class="tz-content">
+  <div class="tz-panel" id="log">
+    <h2>From the keeper's log</h2>
+    <div class="tz-log">
+      <p class="tz-date">OCT 12, 1962 — KEEPER E. VOSS</p>
+      <p><strong>Fog for the ninth straight day.</strong> The signal sounds every 40 seconds and I have started answering it. Polished the lens twice. The lens does not need it. I needed it.</p>
+    </div>
+    <div class="tz-log">
+      <p class="tz-date">NOV 03, 1978 — KEEPER M. OKAFOR</p>
+      <p><strong>Storm took the flagpole again.</strong> Third one this decade. The gulls watched the whole thing and did not help. Repainted the door red, since the sea keeps trying to take the color.</p>
+    </div>
+    <div class="tz-log">
+      <p class="tz-date">JAN 28, 1994 — KEEPER R. LINDQVIST</p>
+      <p><strong>A ship radioed to thank us.</strong> First thank-you in eleven years. Wrote it in the log twice so nobody thinks I imagined it. Burned an extra lamp in celebration.</p>
+    </div>
+  </div>
+
+  <div class="tz-panel" id="tours">
+    <h2>Tower tours</h2>
+    <div class="tz-tours">
+      <div class="tz-tour">
+        <h3>The Day Climb</h3><p class="tz-p">$18 · 45 minutes</p>
+        <p>All 217 steps, the gallery deck, and the best view of the rocks you'll ever be grateful for. Weekends, 10am–4pm.</p>
+      </div>
+      <div class="tz-tour">
+        <h3>Sunset Watch</h3><p class="tz-p">$32 · 90 minutes</p>
+        <p>Climb at dusk, watch the lamp take over from the sun. Includes cocoa and one (1) dramatic silhouette photo.</p>
+      </div>
+      <div class="tz-tour">
+        <h3>Keeper for a Night</h3><p class="tz-p">$140 · overnight</p>
+        <p>Sleep in the keeper's cottage, wind the clockwork, log the fog signal. Checkout is whenever the gulls say.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tz-panel">
+    <h2>The light itself</h2>
+    <table class="tz-specs">
+      <tr><td>LENS</td><td>First-order Fresnel, 1873 — 1,008 prisms, still original</td></tr>
+      <tr><td>CHARACTERISTIC</td><td>Flashing white every 15 seconds (ask it nicely)</td></tr>
+      <tr><td>RANGE</td><td>19 nautical miles in clear weather</td></tr>
+      <tr><td>FOG SIGNAL</td><td>Two blasts every 40 seconds — you will hear it in your sleep</td></tr>
+      <tr><td>POWER</td><td>1,000-watt lamp since 1962; oil before that; stubbornness throughout</td></tr>
+    </table>
+  </div>
+</section>
+
+<footer class="tz-foot">GREYPOINT LIGHT · END OF KEEPER'S LANE · IF THE FOG HORN STOPS, CALL SOMEONE</footer>
+</body>
+</html>

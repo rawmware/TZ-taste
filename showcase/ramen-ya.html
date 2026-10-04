@@ -1,0 +1,127 @@
+<!--tz-meta {"id":"showcase-ramen-ya","title":"Menya Midnight — late-night ramen","category":"Showcase","file":"showcase/ramen-ya.html","tags":["ramen","tokyo","restaurant"],"description":"MENYA MIDNIGHT — an 18-seat ramen counter open 11pm to 4am. Ticket machine menu, house rules.","dnas":["tokyo-neon","noir"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Menya Midnight — ramen · 11pm–4am</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#14100c; --tz-panel:#1f1812; --tz-ink:#f7f0e1; --tz-muted:#8a7a63;
+  --tz-accent:#d93a2b; --tz-gold:#e0a93e; --tz-line:#3a2d20;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Zen Kaku Gothic New",sans-serif;
+  line-height:1.7;overflow-x:hidden}
+.tz-noren{display:flex;justify-content:center;gap:0;border-bottom:3px solid var(--tz-line)}
+.tz-noren span{font-family:"Shippori Mincho",serif;font-weight:800;font-size:1.6rem;
+  padding:.9rem 1.1rem;border-right:3px solid var(--tz-line);color:var(--tz-ink)}
+.tz-noren span:first-child{border-left:3px solid var(--tz-line)}
+.tz-noren span.tz-r{color:var(--tz-accent)}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:.9rem 1.5rem;
+  font-size:.72rem;letter-spacing:.2em;color:var(--tz-muted)}
+.tz-hero{max-width:1000px;margin:0 auto;padding:3.5rem 1.5rem 2.5rem;text-align:center}
+.tz-bowl{position:relative;width:220px;height:150px;margin:0 auto 2rem}
+.tz-bowl .tz-cup{position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:190px;height:92px;background:var(--tz-panel);border:3px solid var(--tz-line);
+  border-radius:12px 12px 90px 90px}
+.tz-bowl .tz-broth{position:absolute;bottom:64px;left:50%;transform:translateX(-50%);
+  width:164px;height:22px;background:var(--tz-gold);border-radius:50%;opacity:.9}
+.tz-bowl .tz-steam{position:absolute;bottom:80px;left:50%;width:8px;height:60px;
+  background:linear-gradient(transparent, rgba(247,240,225,.5));border-radius:6px;
+  filter:blur(3px);animation:tz-steam 3s ease-in-out infinite}
+.tz-bowl .tz-steam:nth-child(2){left:38%;animation-delay:1s}
+.tz-bowl .tz-steam:nth-child(3){left:62%;animation-delay:2s}
+@keyframes tz-steam{0%,100%{transform:translateX(-50%) translateY(0) scaleY(1)}
+  50%{transform:translateX(-50%) translateY(-14px) scaleY(1.3)}}
+.tz-eyebrow{font-size:.72rem;letter-spacing:.3em;color:var(--tz-gold);margin-bottom:1rem}
+.tz-hero h1{font-family:"Shippori Mincho",serif;font-weight:800;
+  font-size:clamp(2.6rem,8vw,5.2rem);line-height:1.1;margin-bottom:1rem}
+.tz-hero h1 .tz-r{color:var(--tz-accent)}
+.tz-hero p{color:var(--tz-muted);max-width:52ch;margin:0 auto 2rem}
+.tz-hours{display:inline-block;border:1px solid var(--tz-gold);color:var(--tz-gold);
+  padding:.5rem 1.4rem;letter-spacing:.18em;font-size:.78rem;font-weight:700}
+.tz-content{max-width:1000px;margin:0 auto;padding:3rem 1.5rem}
+.tz-panel{background:var(--tz-panel);border:1px solid var(--tz-line);padding:2.2rem;margin-bottom:2.4rem}
+.tz-panel h2{font-family:"Shippori Mincho",serif;font-size:1.6rem;margin-bottom:1.6rem;
+  display:flex;align-items:center;gap:.8rem}
+.tz-panel h2::after{content:"";flex:1;height:1px;background:var(--tz-line)}
+.tz-ticket{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+  padding:1rem .2rem;border-bottom:1px dashed var(--tz-line)}
+.tz-ticket:last-child{border-bottom:none}
+.tz-ticket .tz-item strong{display:block;font-size:1.15rem}
+.tz-ticket .tz-item span{font-size:.85rem;color:var(--tz-muted)}
+.tz-ticket .tz-p{font-family:"Shippori Mincho",serif;font-size:1.4rem;color:var(--tz-gold);white-space:nowrap}
+.tz-ticket .tz-no{font-size:.7rem;color:var(--tz-accent);border:1px solid var(--tz-accent);
+  padding:.15rem .5rem;margin-right:.7rem;letter-spacing:.1em}
+.tz-rules{list-style:none}
+.tz-rules li{padding:.8rem 0 .8rem 2.2rem;position:relative;border-bottom:1px solid var(--tz-line);
+  font-size:.95rem}
+.tz-rules li:last-child{border-bottom:none}
+.tz-rules li::before{content:"一";position:absolute;left:.2rem;color:var(--tz-accent);
+  font-family:"Shippori Mincho",serif;font-weight:800}
+.tz-rules li:nth-child(2)::before{content:"二"}.tz-rules li:nth-child(3)::before{content:"三"}
+.tz-rules li:nth-child(4)::before{content:"四"}.tz-rules li:nth-child(5)::before{content:"五"}
+.tz-story p{color:var(--tz-muted);margin-bottom:1rem;font-size:.95rem}
+.tz-story strong{color:var(--tz-ink)}
+.tz-foot{border-top:3px solid var(--tz-line);padding:1.6rem;font-size:.72rem;letter-spacing:.14em;
+  color:var(--tz-muted);text-align:center}
+.tz-foot .tz-jp{font-family:"Shippori Mincho",serif;color:var(--tz-gold);font-size:1rem;display:block;margin-bottom:.4rem}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="tz-noren" aria-hidden="true"><span>麺</span><span class="tz-r">屋</span><span>真</span><span>夜</span></div>
+<header class="tz-top">
+  <span>MENYA MIDNIGHT</span>
+  <span>18 SEATS · NO RESERVATIONS</span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-bowl" role="img" aria-label="Steaming bowl of ramen">
+    <div class="tz-steam"></div><div class="tz-steam"></div><div class="tz-steam"></div>
+    <div class="tz-broth"></div><div class="tz-cup"></div>
+  </div>
+  <p class="tz-eyebrow">新宿 · SHINJUKU BACK ALLEY</p>
+  <h1>THE LAST TRAIN LEFT.<br><span class="tz-r">THE BROTH DIDN'T.</span></h1>
+  <p>Eighteen counter seats, one 40-year-old pot, and a ticket machine that has never once been wrong. Open when the city is done pretending.</p>
+  <p class="tz-hours">OPEN 11PM – 4AM · CLOSED WHEN THE BROTH RUNS OUT</p>
+</section>
+
+<section class="tz-content">
+  <div class="tz-panel">
+    <h2>券売機 — THE TICKET MACHINE</h2>
+    <div class="tz-ticket"><div class="tz-item"><strong><span class="tz-no">01</span>Shoyu Classic</strong><span>clear chicken broth, bamboo shoots, nori, half egg</span></div><span class="tz-p">¥950</span></div>
+    <div class="tz-ticket"><div class="tz-item"><strong><span class="tz-no">02</span>Midnight Miso</strong><span>three-miso blend, butter corn, thick wavy noodles</span></div><span class="tz-p">¥1,050</span></div>
+    <div class="tz-ticket"><div class="tz-item"><strong><span class="tz-no">03</span>Tonkotsu 18-Hour</strong><span>pork bone broth, black garlic oil, chashu that falls apart</span></div><span class="tz-p">¥1,100</span></div>
+    <div class="tz-ticket"><div class="tz-item"><strong><span class="tz-no">04</span>Tantan 3AM</strong><span>sesame-chili, minced pork, bok choy — for the brave</span></div><span class="tz-p">¥1,100</span></div>
+    <div class="tz-ticket"><div class="tz-item"><strong><span class="tz-no">05</span>Kaedama</strong><span>extra noodles, because one bowl is a rumor</span></div><span class="tz-p">¥200</span></div>
+  </div>
+
+  <div class="tz-panel tz-story">
+    <h2>THE POT</h2>
+    <p><strong>Master Sato</strong> has run the same tonkotsu pot since 1986. It has never been fully emptied — every night's broth starts with yesterday's. Regulars swear they can taste 1989 in it. They're right.</p>
+    <p>The noodles are pulled at 10pm, the eggs marinated for exactly 26 hours, and the chili oil is a family secret that died with grandma and was resurrected from a stained notebook.</p>
+  </div>
+
+  <div class="tz-panel">
+    <h2>COUNTER RULES</h2>
+    <ul class="tz-rules">
+      <li>Slurp loudly. Silence insults the noodles.</li>
+      <li>Buy your ticket first, sit second, talk never (to the chef).</li>
+      <li>Eighteen seats means eighteen fates. Don't linger past your last sip.</li>
+      <li>Photos of the ramen: yes. Photos of Master Sato: he will end you.</li>
+      <li>Cash only. The machine eats bills, not excuses.</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="tz-foot">
+  <span class="tz-jp">腹が減っては戦はできぬ</span>
+  MENYA MIDNIGHT · 2-14-8 SHINJUKU, DOWN THE STAIRS PAST THE VENDING MACHINES
+</footer>
+</body>
+</html>

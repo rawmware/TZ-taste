@@ -1,0 +1,122 @@
+<!--tz-meta {"id":"showcase-tiki-bar","title":"The Brass Parrot — tiki bar","category":"Showcase","file":"showcase/tiki-bar.html","tags":["tiki","cocktails","bar"],"description":"THE BRASS PARROT — a basement tiki bar. Exotica cocktails, happy hour, live band Fridays.","dnas":["tropical","retro-diner"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Brass Parrot — tiki bar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Karla:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#0f2e2b; --tz-panel:#16403a; --tz-ink:#fdf3d8; --tz-muted:#9dbfa8;
+  --tz-accent:#ff9e4f; --tz-pink:#ef5d7a; --tz-bamboo:#c9a35f; --tz-line:#245a52;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Karla",sans-serif;
+  line-height:1.65;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:40;opacity:.5;
+  background:repeating-linear-gradient(90deg, transparent 0 46px, rgba(201,163,95,.06) 46px 48px)}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;
+  border-bottom:2px solid var(--tz-line);font-size:.72rem;letter-spacing:.2em;color:var(--tz-muted)}
+.tz-top .tz-wordmark{font-family:"Bungee",cursive;font-size:1rem;color:var(--tz-accent)}
+.tz-hero{max-width:1000px;margin:0 auto;padding:4rem 1.5rem 2.5rem;text-align:center}
+.tz-sun{width:170px;height:85px;margin:0 auto 1.8rem;border-radius:170px 170px 0 0;
+  background:linear-gradient(var(--tz-pink), var(--tz-accent));
+  box-shadow:0 0 70px rgba(255,158,79,.4);position:relative;overflow:hidden}
+.tz-sun::after{content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(0deg, transparent 0 12px, rgba(15,46,43,.55) 12px 16px)}
+.tz-eyebrow{font-size:.72rem;letter-spacing:.3em;color:var(--tz-bamboo);margin-bottom:1rem}
+.tz-hero h1{font-family:"Bungee",cursive;font-size:clamp(2.2rem,7vw,4.6rem);line-height:1.05;
+  color:var(--tz-ink);margin-bottom:1rem}
+.tz-hero h1 .tz-o{color:var(--tz-accent)}
+.tz-hero p{color:var(--tz-muted);max-width:50ch;margin:0 auto 2rem}
+.tz-cta-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.tz-cta{font-family:"Bungee",cursive;font-size:.95rem;color:#0f2e2b;background:var(--tz-accent);
+  padding:.9rem 2rem;text-decoration:none;border-radius:99px}
+.tz-cta:hover{background:#ffbe7d}
+.tz-cta.ghost{background:transparent;color:var(--tz-accent);box-shadow:inset 0 0 0 2px var(--tz-accent)}
+.tz-content{max-width:1000px;margin:0 auto;padding:3rem 1.5rem}
+.tz-panel{background:var(--tz-panel);border:1px solid var(--tz-line);border-radius:14px;
+  padding:2.2rem;margin-bottom:2.4rem}
+.tz-panel h2{font-family:"Bungee",cursive;font-size:1.4rem;color:var(--tz-accent);margin-bottom:1.6rem}
+.tz-drink{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+  padding:1rem .2rem;border-bottom:1px dashed var(--tz-line)}
+.tz-drink:last-child{border-bottom:none}
+.tz-drink .tz-d strong{display:block;font-size:1.1rem}
+.tz-drink .tz-d span{font-size:.85rem;color:var(--tz-muted);font-style:italic}
+.tz-drink .tz-p{font-family:"Bungee",cursive;color:var(--tz-accent);white-space:nowrap}
+.tz-drink .tz-tag{font-size:.62rem;letter-spacing:.14em;color:#0f2e2b;background:var(--tz-pink);
+  padding:.15rem .55rem;border-radius:99px;margin-left:.6rem;vertical-align:middle}
+.tz-cols{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem}
+.tz-card{border:1px solid var(--tz-line);border-radius:12px;padding:1.6rem}
+.tz-card h3{font-family:"Bungee",cursive;font-size:1rem;color:var(--tz-pink);margin-bottom:.7rem}
+.tz-card p{font-size:.9rem;color:var(--tz-muted)}
+.tz-card strong{color:var(--tz-ink)}
+.tz-mugs{display:flex;gap:1rem;flex-wrap:wrap}
+.tz-mug{flex:1;min-width:140px;text-align:center;border:1px solid var(--tz-line);border-radius:12px;
+  padding:1.4rem .8rem}
+.tz-mug .tz-face{font-size:2.6rem;display:block;margin-bottom:.5rem}
+.tz-mug strong{display:block;font-size:.85rem}
+.tz-mug span{font-size:.75rem;color:var(--tz-muted)}
+.tz-foot{border-top:2px solid var(--tz-line);padding:1.6rem;font-size:.72rem;letter-spacing:.14em;
+  color:var(--tz-muted);text-align:center}
+@media(max-width:640px){.tz-cols{grid-template-columns:1fr}.tz-panel{padding:1.5rem}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important}}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">THE BRASS PARROT</span>
+  <span>BASEMENT · UNMARKED DOOR · SINCE 1962</span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-sun" role="img" aria-label="Retro striped sunset"></div>
+  <p class="tz-eyebrow">EST. 1962 · STILL NO WINDOWS</p>
+  <h1>ESCAPE THE ORDINARY.<br><span class="tz-o">EMBRACE THE RUM.</span></h1>
+  <p>Forty seats, three hundred rums, and a parrot named Douglas who has heard every breakup story since 1974. Find the brass parrot on the door. Knock twice.</p>
+  <div class="tz-cta-row">
+    <a class="tz-cta" href="#menu">SEE THE MENU</a>
+    <a class="tz-cta ghost" href="#visit">FIND US</a>
+  </div>
+</section>
+
+<section class="tz-content">
+  <div class="tz-panel" id="menu">
+    <h2>☙ THE EXOTICA MENU</h2>
+    <div class="tz-drink"><div class="tz-d"><strong>Douglas's Revenge<span class="tz-tag">HOUSE LEGEND</span></strong><span>aged rum, passionfruit, lime, a whisper of smoke, served in the parrot mug</span></div><span class="tz-p">$16</span></div>
+    <div class="tz-drink"><div class="tz-d"><strong>The Brass Parrot</strong><span>two rums, orgeat, pineapple, nutmeg snow — our namesake</span></div><span class="tz-p">$15</span></div>
+    <div class="tz-drink"><div class="tz-d"><strong>Volcano Bowl for Two</strong><span>overproof rum, guava, flaming lime shell — comes with a story you'll forget</span></div><span class="tz-p">$28</span></div>
+    <div class="tz-drink"><div class="tz-d"><strong>Quiet Storm</strong><span>white rum, coconut, blue curaçao — tastes like a weather report</span></div><span class="tz-p">$14</span></div>
+    <div class="tz-drink"><div class="tz-d"><strong>The Castaway</strong><span>demerara rum, banana, cold brew — for people who brunch at midnight</span></div><span class="tz-p">$15</span></div>
+    <div class="tz-drink"><div class="tz-d"><strong>Captain's Regret</strong><span>navy rum, falernum, bitters — zero umbrellas, maximum consequences</span></div><span class="tz-p">$16</span></div>
+  </div>
+
+  <div class="tz-cols">
+    <div class="tz-card">
+      <h3>HAPPY HOUR</h3>
+      <p><strong>5–7pm, Tuesday to Friday.</strong> All exotica $9. The jukebox only plays exotica vinyl and one very confused jazz record. Nobody skips it anymore.</p>
+    </div>
+    <div class="tz-card">
+      <h3>LIVE: THE PALM COURT FIVE</h3>
+      <p><strong>Every Friday, 9pm.</strong> Vibraphone, bird calls, and a theremin played by a man named Sal. Dancing encouraged; the floor is older than you.</p>
+    </div>
+  </div>
+
+  <div class="tz-panel" style="margin-top:2.4rem" id="visit">
+    <h2>☙ THE MUG WALL</h2>
+    <p style="color:var(--tz-muted);font-size:.9rem;margin-bottom:1.4rem">Finish any three house drinks and your mug joins the wall. 2,400 mugs and counting — including one shaped like Douglas, which Douglas hates.</p>
+    <div class="tz-mugs">
+      <div class="tz-mug"><span class="tz-face">🦜</span><strong>Douglas</strong><span>the namesake · 412 claimed</span></div>
+      <div class="tz-mug"><span class="tz-face">🌋</span><strong>Volcano</strong><span>smokes (safely) · 388 claimed</span></div>
+      <div class="tz-mug"><span class="tz-face">🐚</span><strong>Scrimshaw</strong><span>for the quiet ones · 291 claimed</span></div>
+      <div class="tz-mug"><span class="tz-face">🍍</span><strong>Pineapple King</strong><span>retired 1989 · 97 claimed</span></div>
+    </div>
+  </div>
+</section>
+
+<footer class="tz-foot">THE BRASS PARROT · 44 HARBOR LANE, DOWNSTAIRS · KNOCK TWICE · DOUGLAS BITES</footer>
+</body>
+</html>

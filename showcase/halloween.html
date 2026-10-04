@@ -1,0 +1,186 @@
+<!--tz-meta {"id":"showcase-halloween","title":"Dreadhollow Manor — Fright Nights","category":"Showcase","file":"showcase/halloween.html","tags":["halloween","horror","event"],"description":"FRIGHT NIGHTS at Dreadhollow Manor — haunted attraction with ticket tiers and nightly schedule.","dnas":["gothic","noir"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dreadhollow Manor — Fright Nights</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#0e0918; --tz-panel:#1a1030; --tz-ink:#f5ead9; --tz-muted:#8d7fb8;
+  --tz-accent:#ff7b1c; --tz-blood:#c1121f; --tz-line:#33245c;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Special Elite",monospace;
+  line-height:1.65;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:40;
+  background:
+    radial-gradient(60% 30% at 20% 110%, rgba(141,127,184,.14), transparent 70%),
+    radial-gradient(50% 25% at 80% 108%, rgba(141,127,184,.10), transparent 70%);
+  animation:tz-fog 14s ease-in-out infinite alternate}
+@keyframes tz-fog{to{transform:translateX(-4%) scale(1.06)}}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;
+  border-bottom:2px solid var(--tz-line);font-size:.72rem;letter-spacing:.18em;color:var(--tz-muted)}
+.tz-top .tz-wordmark{font-family:"Creepster",cursive;font-size:1.05rem;letter-spacing:.06em;color:var(--tz-accent)}
+.tz-hero{max-width:1100px;margin:0 auto;padding:4rem 1.5rem 2.5rem;text-align:center;position:relative}
+.tz-pumpkin{width:150px;height:118px;margin:0 auto 1.6rem;position:relative;
+  background:radial-gradient(ellipse at 50% 35%, #ff9a3c 0%, #ff7b1c 55%, #b34a08 100%);
+  border-radius:48% 48% 46% 46%/58% 58% 42% 42%;
+  box-shadow:0 0 60px 18px rgba(255,123,28,.35), inset -14px -18px 0 rgba(120,40,0,.35)}
+.tz-pumpkin::before{content:"";position:absolute;top:-16px;left:50%;transform:translateX(-50%) rotate(8deg);
+  width:22px;height:26px;background:#3f6b2a;border-radius:6px 10px 4px 8px}
+.tz-pumpkin::after{content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(14px 18px at 32% 42%, #0e0918 98%, transparent),
+    radial-gradient(14px 18px at 68% 42%, #0e0918 98%, transparent),
+    radial-gradient(30px 12px at 50% 66%, #0e0918 98%, transparent),
+    radial-gradient(10px 10px at 38% 60%, #0e0918 98%, transparent),
+    radial-gradient(10px 10px at 62% 60%, #0e0918 98%, transparent);
+  filter:drop-shadow(0 0 8px rgba(255,220,120,.9))}
+.tz-eyebrow{font-size:.72rem;letter-spacing:.28em;color:var(--tz-blood);margin-bottom:1.2rem}
+.tz-hero h1{font-family:"Creepster",cursive;font-size:clamp(3rem,10vw,7rem);line-height:.95;
+  color:var(--tz-ink);text-shadow:0 0 34px rgba(255,123,28,.45);margin-bottom:1.2rem}
+.tz-hero h1 .tz-o{color:var(--tz-accent)}
+.tz-hero p{color:var(--tz-muted);max-width:52ch;margin:0 auto 2rem}
+.tz-cta-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.tz-cta{display:inline-block;font-family:"Creepster",cursive;font-size:1.15rem;letter-spacing:.05em;
+  color:#0e0918;background:var(--tz-accent);padding:.9rem 2rem;text-decoration:none;
+  box-shadow:0 0 26px rgba(255,123,28,.5)}
+.tz-cta:hover{background:#ffa14f}
+.tz-cta.ghost{background:transparent;color:var(--tz-accent);box-shadow:inset 0 0 0 2px var(--tz-accent)}
+.tz-content{max-width:1100px;margin:0 auto;padding:3rem 1.5rem}
+.tz-panel{border:2px solid var(--tz-line);background:var(--tz-panel);padding:2.2rem;margin-bottom:2.6rem}
+.tz-panel h2{font-family:"Creepster",cursive;font-size:1.7rem;color:var(--tz-accent);
+  letter-spacing:.04em;margin-bottom:1.6rem}
+.tz-haunts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.4rem}
+.tz-haunt{border:1px dashed var(--tz-line);padding:1.6rem}
+.tz-haunt .tz-scare{font-size:.68rem;letter-spacing:.2em;color:var(--tz-blood);margin-bottom:.6rem}
+.tz-haunt h3{font-family:"Creepster",cursive;font-size:1.25rem;margin-bottom:.6rem;color:var(--tz-ink)}
+.tz-haunt p{font-size:.9rem;color:var(--tz-muted)}
+.tz-tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.4rem}
+.tz-tier{border:2px solid var(--tz-line);padding:1.8rem;text-align:center;cursor:pointer;transition:border-color .15s}
+.tz-tier:hover{border-color:var(--tz-accent)}
+.tz-tier.tz-pick{border-color:var(--tz-accent);box-shadow:0 0 24px rgba(255,123,28,.35)}
+.tz-tier .tz-tname{font-family:"Creepster",cursive;font-size:1.3rem;color:var(--tz-ink);margin-bottom:.4rem}
+.tz-tier .tz-price{font-size:2rem;color:var(--tz-accent);margin-bottom:.8rem}
+.tz-tier ul{list-style:none;font-size:.88rem;color:var(--tz-muted);text-align:left}
+.tz-tier li{margin-bottom:.4rem;padding-left:1.2rem;position:relative}
+.tz-tier li::before{content:"☠";position:absolute;left:0;font-size:.7rem}
+.tz-sked{width:100%;border-collapse:collapse;font-size:.92rem}
+.tz-sked th{text-align:left;font-size:.68rem;letter-spacing:.2em;color:var(--tz-muted);
+  border-bottom:2px solid var(--tz-line);padding:.7rem .5rem}
+.tz-sked td{border-bottom:1px solid var(--tz-line);padding:.8rem .5rem}
+.tz-sked td:first-child{color:var(--tz-accent);white-space:nowrap}
+.tz-faq p{margin-bottom:1.1rem;font-size:.92rem;color:var(--tz-muted)}
+.tz-faq strong{color:var(--tz-ink)}
+.tz-foot{border-top:2px solid var(--tz-line);padding:1.6rem;font-size:.72rem;letter-spacing:.1em;
+  color:var(--tz-muted);text-align:center}
+@media(max-width:640px){.tz-panel{padding:1.5rem}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important}}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">DREADHOLLOW MANOR</span>
+  <span>EST. 1966 · OCT 1–31 · GATES 7PM</span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-pumpkin" role="img" aria-label="Glowing jack-o-lantern"></div>
+  <p class="tz-eyebrow">THE 59TH ANNUAL</p>
+  <h1>FRIGHT<br><span class="tz-o">NIGHTS</span></h1>
+  <p>Thirteen nights. One manor. Four acres of corn that whispers back. No refunds for cowardice — you were warned on the poster.</p>
+  <div class="tz-cta-row">
+    <a class="tz-cta" href="#tickets">GET TICKETS</a>
+    <a class="tz-cta ghost" href="#haunts">SEE THE HAUNTS</a>
+  </div>
+</section>
+
+<section class="tz-content">
+  <div class="tz-panel" id="haunts">
+    <h2>◈ THIS YEAR'S HAUNTS</h2>
+    <div class="tz-haunts">
+      <div class="tz-haunt">
+        <p class="tz-scare">SCARE LEVEL ☠☠☠☠</p>
+        <h3>The Corn Maze of Whispers</h3>
+        <p>Forty minutes in, the stalks start saying your name. They learned it from the ticket stub. Don't run — the scarecrows can tell.</p>
+      </div>
+      <div class="tz-haunt">
+        <p class="tz-scare">SCARE LEVEL ☠☠☠☠☠</p>
+        <h3>Cellar of Teeth</h3>
+        <p>Our oldest haunt, dug in 1911 and never fully mapped. The dentists of Dreadhollow County have asked us, politely, to stop.</p>
+      </div>
+      <div class="tz-haunt">
+        <p class="tz-scare">SCARE LEVEL ☠☠☠</p>
+        <h3>Hayride of the Headless</h3>
+        <p>A tractor, a trailer, and one very committed horseman. Blankets provided. Screaming encouraged. The horses are used to it.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tz-panel" id="tickets">
+    <h2>◈ TICKETS <span style="font-size:.85rem;color:var(--tz-muted)">— tap a tier</span></h2>
+    <div class="tz-tiers" id="tiers">
+      <div class="tz-tier" data-t="Witching Hour">
+        <p class="tz-tname">Witching Hour</p>
+        <p class="tz-price">$29</p>
+        <ul><li>All three haunts, one night</li><li>General entry line</li><li>Free cider at the gate</li></ul>
+      </div>
+      <div class="tz-tier tz-pick" data-t="Fast Fright">
+        <p class="tz-tname">Fast Fright</p>
+        <p class="tz-price">$49</p>
+        <ul><li>All three haunts, one night</li><li>Skip every line, twice</li><li>Front-row hayride bale</li><li>Commemorative toe tag</li></ul>
+      </div>
+      <div class="tz-tier" data-t="Séance VIP">
+        <p class="tz-tname">Séance VIP</p>
+        <p class="tz-price">$89</p>
+        <ul><li>Everything in Fast Fright</li><li>Private midnight séance</li><li>Dinner in the embalming room</li><li>The manor keeps your name</li></ul>
+      </div>
+    </div>
+    <p id="tier-note" style="margin-top:1.2rem;color:var(--tz-accent)">Selected: Fast Fright — $49. Good choice. The séance is not for beginners.</p>
+  </div>
+
+  <div class="tz-panel">
+    <h2>◈ NIGHTLY SCHEDULE</h2>
+    <table class="tz-sked">
+      <tr><th>TIME</th><th>WHAT HAPPENS</th></tr>
+      <tr><td>7:00 PM</td><td>Gates creak open. Cider stand fires up.</td></tr>
+      <tr><td>8:30 PM</td><td>The Bellringer's first walk — follow at your own pace.</td></tr>
+      <tr><td>9:00 PM</td><td>Parade of Ghouls down Lantern Row.</td></tr>
+      <tr><td>11:11 PM</td><td>The manor goes quiet for one full minute. Do not speak.</td></tr>
+      <tr><td>12:00 AM</td><td>Last entry. The corn keeps whispering without you.</td></tr>
+    </table>
+  </div>
+
+  <div class="tz-panel tz-faq">
+    <h2>◈ BEFORE YOU SCREAM</h2>
+    <p><strong>Is it too scary for kids?</strong><br>Under 12 must bring an adult they trust. Under 8 must bring an adult the manor trusts.</p>
+    <p><strong>What if it rains?</strong><br>The haunts run in all weather. Ghosts don't check the forecast, and neither do we.</p>
+    <p><strong>Can I get a refund?</strong><br>Only if you can prove you weren't scared. Nobody has managed it since 1987.</p>
+  </div>
+</section>
+
+<footer class="tz-foot">DREADHOLLOW MANOR · 13 BLACKTHORN LANE · PARK IN THE FIELD, NOT THE CORN</footer>
+
+<script>
+(function(){
+  var tiers = document.getElementById('tiers'),
+      note = document.getElementById('tier-note');
+  tiers.addEventListener('click', function(e){
+    var t = e.target.closest('.tz-tier');
+    if(!t) return;
+    tiers.querySelectorAll('.tz-tier').forEach(function(x){ x.classList.remove('tz-pick'); });
+    t.classList.add('tz-pick');
+    var price = t.querySelector('.tz-price').textContent;
+    note.textContent = 'Selected: ' + t.dataset.t + ' — ' + price + '. ' +
+      (t.dataset.t === 'Séance VIP' ? 'The manor already knows your name.' :
+       t.dataset.t === 'Fast Fright' ? 'Good choice. The séance is not for beginners.' :
+       'A brave, economical scream.');
+  });
+})();
+</script>
+</body>
+</html>
