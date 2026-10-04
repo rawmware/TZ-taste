@@ -1,0 +1,141 @@
+<!--tz-meta {"id":"astro-pricing-matrix","title":"Pricing matrix (Astro)","category":"Astro","file":"astro/PricingMatrix.astro","tags":["astro","pricing"],"description":"Blueprint-style pricing matrix: cyanotype sheet, drafting frame, and the standard plan hand-circled in amber annotation.","dnas":["blueprint-tech"]} -->
+---
+const {
+  eyebrow = "Schedule of rates · Sheet 3 of 3",
+  title = "Pick the plan like you would pick a tool",
+  drawing = "DWG TZ-114 · Scale 1:1 · All dimensions in USD",
+  revision = "REV C — checked by R.C. · 2026-10-03",
+  plans = [
+    {
+      fig: "Fig. A",
+      name: "Field Kit",
+      code: "PK-01",
+      price: "$0",
+      unit: "forever",
+      blurb: "For one person keeping the lights on: every core tool, one project at a time.",
+      features: ["3 projects", "Weekly reports", "Community docs", "Export anytime"],
+    },
+    {
+      fig: "Fig. B",
+      name: "Workshop",
+      code: "PK-02",
+      price: "$29",
+      unit: "per month",
+      blurb: "For small teams shipping weekly: the full bench, shared and versioned.",
+      features: ["Unlimited projects", "Daily reports + API", "Priority inbox", "2 seats included"],
+      standard: true,
+    },
+    {
+      fig: "Fig. C",
+      name: "Foundry",
+      code: "PK-03",
+      price: "$99",
+      unit: "per month",
+      blurb: "For crews running hot: dedicated capacity and a human on call.",
+      features: ["Everything in Workshop", "10 seats included", "SSO / SAML", "Phone support"],
+    },
+  ],
+} = Astro.props;
+---
+<section class="tz-pm">
+  <div class="tz-pm-sheet">
+    <div class="tz-pm-head">
+      <div>
+        <p class="tz-pm-eyebrow">{eyebrow}</p>
+        <h2 class="tz-pm-title">{title}</h2>
+      </div>
+      <p class="tz-pm-dwg">{drawing}</p>
+    </div>
+    <div class="tz-pm-grid">
+      {plans.map((p) => (
+        <article class={p.standard ? "tz-pm-plan tz-pm-plan--std" : "tz-pm-plan"}>
+          {p.standard && <span class="tz-pm-callout">Standard issue</span>}
+          <p class="tz-pm-fig">{p.fig} · {p.code}</p>
+          <h3 class="tz-pm-name">{p.name}</h3>
+          <p class="tz-pm-price">{p.price}<span> / {p.unit}</span></p>
+          <p class="tz-pm-blurb">{p.blurb}</p>
+          <ul class="tz-pm-feats">
+            {p.features.map((f) => <li>{f}</li>)}
+          </ul>
+          <a class="tz-pm-cta" href="#start">Start with {p.name}</a>
+        </article>
+      ))}
+    </div>
+    <p class="tz-pm-rev">{revision}</p>
+  </div>
+</section>
+<style>
+  .tz-pm {
+    background: #17407f; color: #f2f6fc; font-family: "IBM Plex Mono", monospace;
+    padding: clamp(56px, 8vw, 110px) clamp(20px, 6vw, 96px);
+  }
+  .tz-pm-sheet {
+    border: 1px solid #ffffff40; outline: 1px solid #ffffff40; outline-offset: 8px;
+    padding: clamp(28px, 4vw, 56px); max-width: 1200px; margin: 0 auto;
+  }
+  .tz-pm-head {
+    display: flex; justify-content: space-between; align-items: end;
+    gap: 24px; flex-wrap: wrap; border-bottom: 1px solid #ffffff40;
+    padding-bottom: 28px; margin-bottom: 8px;
+  }
+  .tz-pm-eyebrow {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: #8fb3e8; margin: 0 0 14px;
+  }
+  .tz-pm-title {
+    font-family: "Space Grotesk", sans-serif; font-size: clamp(28px, 4vw, 50px);
+    letter-spacing: -0.02em; line-height: 1.05; margin: 0; max-width: 18ch;
+  }
+  .tz-pm-dwg {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #8fb3e8; margin: 0; text-align: right;
+  }
+  .tz-pm-grid { display: grid; grid-template-columns: 1fr 1.18fr 1fr; }
+  .tz-pm-plan { position: relative; padding: 32px 30px 36px; border-right: 1px solid #ffffff40; }
+  .tz-pm-plan:last-child { border-right: none; }
+  .tz-pm-plan--std { background: #ffffff08; }
+  .tz-pm-plan--std::before {
+    content: ""; position: absolute; inset: 12px 8px;
+    border: 2px solid #ffcf3f; border-radius: 48% 52% 50% 50% / 8% 8% 92% 92%;
+    pointer-events: none;
+  }
+  .tz-pm-callout {
+    position: absolute; top: -14px; left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    background: #ffcf3f; color: #17407f; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase; padding: 6px 14px; white-space: nowrap;
+  }
+  .tz-pm-fig {
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: #8fb3e8; margin: 0 0 12px;
+  }
+  .tz-pm-name { font-family: "Space Grotesk", sans-serif; font-size: 26px; margin: 0 0 16px; }
+  .tz-pm-price {
+    font-family: "Space Grotesk", sans-serif; font-size: 46px;
+    letter-spacing: -0.02em; margin: 0 0 14px;
+  }
+  .tz-pm-price span { font-family: "IBM Plex Mono", monospace; font-size: 12px; letter-spacing: 0.1em; color: #8fb3e8; }
+  .tz-pm-blurb { font-size: 13.5px; line-height: 1.7; color: #8fb3e8; margin: 0 0 24px; min-height: 69px; }
+  .tz-pm-feats { list-style: none; margin: 0 0 30px; padding: 0; font-size: 13px; }
+  .tz-pm-feats li { padding: 10px 0; border-top: 1px dashed #ffffff40; }
+  .tz-pm-feats li:last-child { border-bottom: 1px dashed #ffffff40; }
+  .tz-pm-feats li::before { content: "▸ "; color: #ffcf3f; }
+  .tz-pm-cta {
+    display: inline-block; color: #f2f6fc; text-decoration: none;
+    font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+    border-bottom: 2px solid #ffcf3f; padding-bottom: 6px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+  .tz-pm-cta:hover { transform: translateX(5px); opacity: 0.9; }
+  .tz-pm-rev {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #8fb3e8; border-top: 1px solid #ffffff40; margin: 8px 0 0; padding-top: 20px;
+  }
+  @media (max-width: 860px) {
+    .tz-pm-grid { grid-template-columns: 1fr; }
+    .tz-pm-plan { border-right: none; border-bottom: 1px solid #ffffff40; }
+    .tz-pm-plan:last-child { border-bottom: none; }
+    .tz-pm-blurb { min-height: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) { .tz-pm-cta { transition: none; } }
+</style>
