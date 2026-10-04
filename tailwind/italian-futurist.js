@@ -1,0 +1,3 @@
+//tz-meta {"id":"tailwind-italian-futurist","title":"Italian Futurist Tailwind preset","category":"Tailwind","file":"tailwind/italian-futurist.js","tags":["tailwind","preset","italian-futurist"],"description":"Tailwind theme preset for the Italian Futurist DNA.","dnas":["italian-futurist"]}
+// Tailwind preset for the Italian Futurist DNA. Extend tailwind.config with this.
+module.exports={theme:{extend:{colors:{tzbg:"#f5f1e4",tzink:"#16130e",tzaccent:"#d62b1f",tzmuted:"#7c7568",tzline:"#16130e26",tzsurface:"#f5f1e4"},fontFamily:{display:["Archivo Black","serif"],body:["Archivo","sans-serif"],mono:["Space Mono","monospace"]}}}};
