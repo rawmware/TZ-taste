@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-transit-swiss",
+  "title": "Transit Swiss design tokens",
+  "category": "Tokens",
+  "file": "tokens/transit-swiss.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "transit-swiss"
+  ],
+  "description": "W3C-format design tokens for the Transit Swiss style DNA.",
+  "dnas": [
+   "transit-swiss"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#ffffff",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#111417",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#d0342c",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#5c6670",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#dfe3e6",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Archivo",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "DM Sans",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "IBM Plex Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "transit-swiss",
+  "name": "Transit Swiss",
+  "vibe": "Wayfinding systems: line colors, station dots, route-map clarity — designed to be read at a sprint."
+ }
+}
