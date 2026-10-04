@@ -1,0 +1,88 @@
+<!--tz-meta {"id":"cta-card","title":"Contained card","category":"CTA","file":"patterns/cta-card.html","tags":["card","calm"],"description":"Calm centered CTA card with hairline frame and quiet confidence.","dnas":["soft-minimal"]} -->
+<section class="tz-ccard" aria-label="Get started">
+  <div class="tz-box">
+    <p class="tz-eyebrow">Free 20-minute call</p>
+    <h2>Talk it through before you pay for anything.</h2>
+    <p class="tz-sub">Bring the napkin sketch, the half-finished site, or just the worry. We'll tell you honestly what it needs — even if the answer is “nothing yet.”</p>
+    <ul class="tz-points">
+      <li>You describe the problem, in your words</li>
+      <li>We say what we'd build and what it costs</li>
+      <li>You decide. No pressure either way</li>
+    </ul>
+    <a class="tz-btn" href="#book">Book the call</a>
+    <p class="tz-fine">No pitch. If we're not the right fit, we'll say so — and point you somewhere better.</p>
+    <p class="tz-alt">Prefer writing? <a href="#email">roman.proposal@gmail.com</a></p>
+  </div>
+</section>
+<style>
+.tz-ccard{
+  --bg:#faf8f4;--ink:#2b2a26;--soft:#5f5b53;--rust:#a34a24;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:Georgia,'Times New Roman',serif;
+  padding:clamp(72px,11vw,150px) clamp(20px,6vw,80px);
+  display:flex;
+  justify-content:center;
+}
+.tz-box{
+  max-width:620px;
+  text-align:center;
+  border:1px solid #2b2a262e;
+  padding:clamp(44px,6vw,72px) clamp(28px,5vw,64px);
+  background:#faf8f4;
+}
+.tz-eyebrow{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--rust);
+  margin:0 0 22px;
+}
+.tz-box h2{
+  margin:0 0 18px;
+  font-size:clamp(30px,4.5vw,48px);
+  line-height:1.12;
+  letter-spacing:-.025em;
+  font-weight:400;
+}
+.tz-sub{
+  margin:0 0 28px;
+  font-size:17px;
+  line-height:1.65;
+  color:var(--soft);
+}
+.tz-points{
+  list-style:none;
+  margin:0 0 36px;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.tz-points li{font-size:15px;color:var(--soft)}
+.tz-points li::before{content:"— ";color:var(--rust)}
+.tz-btn{
+  display:inline-block;
+  background:var(--ink);
+  color:var(--bg);
+  text-decoration:none;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:16px;
+  font-weight:700;
+  padding:16px 40px;
+  transition:background .3s cubic-bezier(.22,1,.36,1);
+}
+.tz-btn:hover{background:var(--rust)}
+.tz-fine{
+  margin:22px 0 14px;
+  font-size:13px;
+  font-style:italic;
+  color:var(--soft);
+}
+.tz-alt{margin:0;font-size:14px;color:var(--soft)}
+.tz-alt a{color:var(--rust)}
+@media (prefers-reduced-motion:reduce){
+  .tz-btn{transition:none}
+}
+</style>
