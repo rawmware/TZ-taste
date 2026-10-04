@@ -1,0 +1,119 @@
+<!--tz-meta {"id":"analytics-dashboard","title":"Analytics Dashboard","category":"App UI","file":"app-ui/analytics-dashboard.html","tags":["analytics","dashboard","kpi","metrics"],"description":"Dense bakery analytics with one oversized KPI, pure-CSS bar chart, and ranked page list.","dnas":["laboratory-clean"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analytics Dashboard — Kiln Metrics</title>
+<style>
+body{margin:0;background:#eef1f4;}
+.tz-dash{--bg:#fbfcfd;--ink:#0f1720;--accent:#0a7d8c;--muted:#6b7684;--line:#dfe4ea;--surface:#f1f4f6;
+  background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;
+  max-width:1140px;margin:0 auto;padding:clamp(20px,3vw,40px);}
+.tz-dash-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;
+  border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:0;}
+.tz-dash-top h1{font-size:20px;margin:0;font-weight:700;}
+.tz-dash-top h1 small{display:block;font-weight:400;color:var(--muted);font-size:12px;margin-top:4px;}
+.tz-range{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;color:var(--muted);letter-spacing:.08em;}
+.tz-kpis{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);}
+.tz-kpi{background:var(--bg);padding:24px;}
+.tz-kpi .tz-k{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 10px;}
+.tz-kpi.tz-hero .tz-n{font-size:clamp(56px,7vw,88px);font-weight:800;letter-spacing:-.04em;line-height:1;margin:0;}
+.tz-kpi .tz-n{font-size:38px;font-weight:700;letter-spacing:-.03em;margin:0;line-height:1.1;}
+.tz-kpi .tz-d{font-size:12px;color:var(--muted);margin:8px 0 0;}
+.tz-kpi .tz-d b{color:var(--accent);}
+.tz-panel{border:1px solid var(--line);border-top:none;padding:24px;background:var(--bg);}
+.tz-panel h2{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 4px;}
+.tz-panel .tz-cap{font-size:12px;color:var(--muted);margin:0 0 20px;}
+.tz-chart{display:grid;grid-template-columns:32px 1fr;gap:8px;align-items:stretch;}
+.tz-y{display:flex;flex-direction:column;justify-content:space-between;font-family:ui-monospace,Menlo,Consolas,monospace;
+  font-size:10px;color:var(--muted);text-align:right;padding-bottom:22px;}
+.tz-bars{display:flex;align-items:flex-end;gap:10px;height:200px;border-bottom:2px solid var(--ink);}
+.tz-bar{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;}
+.tz-bar i{display:block;width:100%;max-width:44px;background:var(--accent);opacity:.55;min-height:3px;}
+.tz-bar.tz-peak i{opacity:1;}
+.tz-bar em{font-style:normal;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:9px;color:var(--muted);margin-top:8px;}
+.tz-note{margin-top:16px;background:var(--surface);border-left:3px solid var(--accent);padding:12px 16px;font-size:13px;}
+.tz-note b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.14em;color:var(--accent);display:block;margin-bottom:4px;}
+.tz-foot{margin:16px 0 0;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--muted);letter-spacing:.04em;}
+.tz-pages{list-style:none;margin:0;padding:0;}
+.tz-pages li{display:grid;grid-template-columns:36px 1fr auto;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);}
+.tz-pages .tz-rank{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;color:var(--muted);}
+.tz-pages h3{margin:0 0 3px;font-size:14px;font-weight:600;}
+.tz-pages .tz-url{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;color:var(--muted);}
+.tz-pg-meter{width:140px;height:6px;background:var(--surface);position:relative;}
+.tz-pg-meter i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);}
+.tz-pages .tz-v{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;color:var(--ink);text-align:right;}
+@media(max-width:700px){
+  .tz-kpis{grid-template-columns:1fr;}
+  .tz-pages .tz-pg-meter{width:80px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .tz-dash *{animation:none!important;transition:none!important;}
+}
+</style>
+</head>
+<body>
+<section class="tz-dash">
+  <div class="tz-dash-top">
+    <h1>Kiln Metrics<small>Hearth &amp; Thistle Bakery &middot; online ordering</small></h1>
+    <span class="tz-range">SEP 21 &ndash; OCT 03 &middot; 14 DAYS &middot; ALL CHANNELS</span>
+  </div>
+  <div class="tz-kpis">
+    <div class="tz-kpi tz-hero">
+      <p class="tz-k">Orders this week</p>
+      <p class="tz-n">1,284</p>
+      <p class="tz-d"><b>+11.4%</b> vs prior week &middot; 96% fulfilled on time</p>
+    </div>
+    <div class="tz-kpi">
+      <p class="tz-k">Conversion</p>
+      <p class="tz-n">3.8%</p>
+      <p class="tz-d"><b>+0.6 pt</b> since the menu photos were redone</p>
+    </div>
+    <div class="tz-kpi">
+      <p class="tz-k">Avg. ticket</p>
+      <p class="tz-n">$18.42</p>
+      <p class="tz-d"><b>&minus;$1.10</b> &middot; more single-loaf orders</p>
+    </div>
+  </div>
+  <div class="tz-panel">
+    <h2>Online orders &middot; weekly</h2>
+    <p class="tz-cap">Twelve weeks, counted every Sunday at close.</p>
+    <div class="tz-chart">
+      <div class="tz-y"><span>1.4k</span><span>1.0k</span><span>600</span><span>200</span></div>
+      <div class="tz-bars">
+        <div class="tz-bar"><i style="height:34%"></i><em>J13</em></div>
+        <div class="tz-bar"><i style="height:41%"></i><em>J20</em></div>
+        <div class="tz-bar"><i style="height:38%"></i><em>J27</em></div>
+        <div class="tz-bar"><i style="height:47%"></i><em>A03</em></div>
+        <div class="tz-bar"><i style="height:52%"></i><em>A10</em></div>
+        <div class="tz-bar"><i style="height:49%"></i><em>A17</em></div>
+        <div class="tz-bar"><i style="height:58%"></i><em>A24</em></div>
+        <div class="tz-bar"><i style="height:63%"></i><em>A31</em></div>
+        <div class="tz-bar"><i style="height:71%"></i><em>S07</em></div>
+        <div class="tz-bar"><i style="height:66%"></i><em>S14</em></div>
+        <div class="tz-bar"><i style="height:78%"></i><em>S21</em></div>
+        <div class="tz-bar tz-peak"><i style="height:92%"></i><em>S28</em></div>
+      </div>
+    </div>
+    <div class="tz-note"><b>Reading</b>Saturday 9:12am is the peak order minute. Staff the ovens for it, not the average.</div>
+  </div>
+  <div class="tz-panel">
+    <h2>Top pages</h2>
+    <p class="tz-cap">Where the orders start.</p>
+    <ol class="tz-pages">
+      <li><span class="tz-rank">01</span><div><h3>Sourdough pre-order</h3><span class="tz-url">/menu/sourdough</span></div><span class="tz-pg-meter"><i style="width:100%"></i></span><span class="tz-v">8,412</span></li>
+      <li><span class="tz-rank">02</span><div><h3>Saturday market pickup</h3><span class="tz-url">/pickup</span></div><span class="tz-pg-meter"><i style="width:72%"></i></span><span class="tz-v">6,108</span></li>
+      <li><span class="tz-rank">03</span><div><h3>Wholesale inquiry</h3><span class="tz-url">/wholesale</span></div><span class="tz-pg-meter"><i style="width:41%"></i></span><span class="tz-v">3,470</span></li>
+      <li><span class="tz-rank">04</span><div><h3>Our story</h3><span class="tz-url">/about</span></div><span class="tz-pg-meter"><i style="width:28%"></i></span><span class="tz-v">2,355</span></li>
+      <li><span class="tz-rank">05</span><div><h3>Gift cards</h3><span class="tz-url">/gift</span></div><span class="tz-pg-meter"><i style="width:19%"></i></span><span class="tz-v">1,590</span></li>
+      <li><span class="tz-rank">06</span><div><h3>Wholesale price sheet</h3><span class="tz-url">/wholesale/prices.pdf</span></div><span class="tz-pg-meter"><i style="width:12%"></i></span><span class="tz-v">1,042</span></li>
+    </ol>
+    <div class="tz-note"><b>Reading</b>Two thirds of wholesale traffic arrives from a shared PDF link, not the site nav. Give it a real landing page.</div>
+    <p class="tz-foot">Counts exclude staff devices and the catering tablet. All figures in shop local time.</p>
+  </div>
+</section>
+</body>
+</html>
