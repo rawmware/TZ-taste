@@ -1,0 +1,148 @@
+<!--tz-meta {"id":"showcase-cyberpunk-noir","title":"Cyberpunk Noir showcase","category":"Showcase","file":"showcase/cyberpunk-noir.html","tags":["cyberpunk-noir"],"description":"Live demo page for the Cyberpunk Noir style DNA.","dnas":["cyberpunk-noir"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cyberpunk Noir — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#08080d; --tz-surface:#101018; --tz-ink:#e8e6f0; --tz-muted:#6b6f85;
+  --tz-accent:#ff2e88; --tz-accent-2:#00e5ff; --tz-line:#1e2030;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Rajdhani",Helvetica,sans-serif;font-size:1.05rem;line-height:1.55;font-weight:500;-webkit-font-smoothing:antialiased;position:relative}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:0.05;
+  background:repeating-linear-gradient(0deg,var(--tz-ink) 0 1px,transparent 1px 4px)}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 4vw;border-bottom:1px solid var(--tz-line);background:var(--tz-surface)}
+.tz-wordmark{font-family:"Orbitron",sans-serif;font-weight:900;font-size:0.95rem;letter-spacing:0.1em;text-transform:uppercase}
+.tz-wordmark .tz-pink{color:var(--tz-accent)}
+.tz-label{font-family:"Share Tech Mono",monospace;font-size:0.68rem;letter-spacing:0.12em;color:var(--tz-muted)}
+.tz-hero{padding:4.5rem 4vw;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:start}
+.tz-eyebrow{font-family:"Share Tech Mono",monospace;font-size:0.72rem;letter-spacing:0.16em;color:var(--tz-accent-2);margin-bottom:1.4rem}
+.tz-glitch{position:relative;font-family:"Orbitron",sans-serif;font-weight:900;font-size:clamp(2.2rem,5.6vw,4.4rem);line-height:1.08;letter-spacing:0.06em;text-transform:uppercase}
+.tz-glitch::before,.tz-glitch::after{content:attr(data-text);position:absolute;inset:0;overflow:hidden}
+.tz-glitch::before{color:var(--tz-accent);transform:translate(-3px,-2px);opacity:0.75;animation:tz-flicker 4s steps(2) infinite}
+.tz-glitch::after{color:var(--tz-accent-2);transform:translate(3px,2px);opacity:0.75;animation:tz-flicker 4s steps(2) 1.3s infinite}
+@keyframes tz-flicker{0%,92%,100%{opacity:0.75}93%,96%{opacity:0.1}}
+.tz-sub{margin-top:1.6rem;color:var(--tz-muted);max-width:44ch;font-weight:600}
+.tz-cta{display:inline-block;margin-top:2rem;font-family:"Orbitron",sans-serif;font-weight:700;font-size:0.85rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--tz-bg);background:var(--tz-accent);text-decoration:none;padding:1rem 2.2rem;clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);text-shadow:none;box-shadow:0 0 18px var(--tz-accent)}
+.tz-cta:hover{background:var(--tz-ink);box-shadow:none}
+.tz-term{background:var(--tz-surface);border:1px solid var(--tz-line);clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,0 100%)}
+.tz-term-head{display:flex;justify-content:space-between;padding:0.7rem 1.1rem;border-bottom:1px solid var(--tz-line);font-family:"Share Tech Mono",monospace;font-size:0.68rem;letter-spacing:0.14em;color:var(--tz-accent-2)}
+.tz-term-body{padding:1.2rem 1.1rem 1.4rem;font-family:"Share Tech Mono",monospace;font-size:0.8rem;line-height:2;color:var(--tz-ink)}
+.tz-term-body .tz-ok{color:var(--tz-accent-2)}
+.tz-term-body .tz-warn{color:var(--tz-accent)}
+.tz-term-body .tz-dim{color:var(--tz-muted)}
+.tz-cursor{display:inline-block;width:0.6em;height:1em;background:var(--tz-accent);vertical-align:-0.15em;animation:tz-blink 1s steps(1) infinite}
+@keyframes tz-blink{50%{opacity:0}}
+.tz-content{padding:4rem 4vw;max-width:1240px;margin:0 auto;border-top:1px solid var(--tz-line)}
+.tz-content h2{font-family:"Orbitron",sans-serif;font-weight:900;font-size:clamp(1.4rem,3vw,2.2rem);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.6rem}
+.tz-content .tz-kicker{font-family:"Share Tech Mono",monospace;font-size:0.72rem;letter-spacing:0.14em;color:var(--tz-muted);margin-bottom:2.2rem}
+.tz-builds{width:100%;border-collapse:collapse;font-size:0.98rem}
+.tz-builds th{font-family:"Share Tech Mono",monospace;font-size:0.68rem;letter-spacing:0.14em;text-align:left;color:var(--tz-muted);padding:0.8rem 1rem;border-bottom:1px solid var(--tz-line)}
+.tz-builds td{padding:1.2rem 1rem;border-bottom:1px solid var(--tz-line);vertical-align:top}
+.tz-builds tr:hover td{background:var(--tz-surface)}
+.tz-builds .tz-title{font-family:"Orbitron",sans-serif;font-weight:700;font-size:0.95rem;letter-spacing:0.06em;text-transform:uppercase}
+.tz-builds .tz-title .tz-pink{color:var(--tz-accent)}
+.tz-builds .tz-mono{font-family:"Share Tech Mono",monospace;font-size:0.78rem;color:var(--tz-accent-2)}
+.tz-builds .tz-desc{color:var(--tz-muted);font-size:0.92rem;max-width:40ch}
+.tz-status{font-family:"Share Tech Mono",monospace;font-size:0.72rem;letter-spacing:0.1em;padding:0.4rem 0.8rem;border:1px solid var(--tz-accent-2);color:var(--tz-accent-2);white-space:nowrap}
+.tz-status.tz-live{border-color:var(--tz-accent);color:var(--tz-accent)}
+.tz-tokens{padding:4rem 4vw;border-top:1px solid var(--tz-line)}
+.tz-tokens-inner{max-width:1240px;margin:0 auto}
+.tz-tokens h2{font-family:"Orbitron",sans-serif;font-weight:900;font-size:1.3rem;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:1.5rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.9rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9.5rem}
+.tz-chip{display:block;height:3.2rem}
+.tz-swatches .tz-name{display:block;font-family:"Share Tech Mono",monospace;font-size:0.66rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.6rem 0.8rem 0.1rem;color:var(--tz-muted)}
+.tz-swatches .tz-hex{display:block;font-family:"Share Tech Mono",monospace;font-size:0.76rem;padding:0 0.8rem 0.7rem;color:var(--tz-ink)}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);background:var(--tz-surface);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.tz-foot,.tz-foot span{font-family:"Share Tech Mono",monospace;font-size:0.7rem;letter-spacing:0.1em;color:var(--tz-muted)}
+.tz-foot .tz-gridtime{color:var(--tz-accent-2)}
+@media(max-width:700px){
+  .tz-hero{grid-template-columns:1fr;padding:3rem 6vw}
+  .tz-builds .tz-hide{display:none}
+  .tz-builds td{padding:1rem 0.5rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-glitch::before,.tz-glitch::after{opacity:0}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Rainline<span class="tz-pink">_</span>Interactive</span>
+  <span class="tz-label">TZ-taste style DNA</span>
+</header>
+
+<section class="tz-hero">
+  <div>
+    <p class="tz-eyebrow">// GAME STUDIO &middot; SECTOR 7 &middot; EST. 2021</p>
+    <h1 class="tz-glitch" data-text="We build cities you can get lost in.">We build cities you can get lost in.</h1>
+    <p class="tz-sub">Rain-soaked open worlds, hand-tuned gunplay, stories that don't flinch. Server's up. Yours?</p>
+    <a class="tz-cta" href="#">Wishlist Neon Requiem</a>
+  </div>
+  <div class="tz-term" aria-label="Studio status terminal">
+    <div class="tz-term-head"><span>SYS.LOG</span><span>NET.STATUS</span></div>
+    <div class="tz-term-body">
+      <span class="tz-dim">$</span> rainline --status<br>
+      <span class="tz-ok">[OK]</span> build pipeline &middot; 214 green<br>
+      <span class="tz-ok">[OK]</span> playtest cohort 09 &middot; 1,204 active<br>
+      <span class="tz-warn">[HOT]</span> neon_requiem &middot; cert in 41 days<br>
+      <span class="tz-dim">$</span> deploy --target launch <span class="tz-cursor" aria-hidden="true"></span>
+    </div>
+  </div>
+</section>
+
+<section class="tz-content">
+  <h2>Active builds</h2>
+  <p class="tz-kicker">Compiled 03:12 &middot; all times grid</p>
+  <table class="tz-builds">
+    <thead><tr><th>Title</th><th class="tz-hide">Build</th><th class="tz-hide">Notes</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="tz-title">Neon <span class="tz-pink">Requiem</span></span><br><span class="tz-mono">PC / PS6 / XBX</span></td>
+        <td class="tz-hide"><span class="tz-mono">v0.9.4-rc</span></td>
+        <td class="tz-hide"><span class="tz-desc">Open-world heist RPG. Three districts, one storm that never leaves.</span></td>
+        <td><span class="tz-status tz-live">CERT QUEUE</span></td>
+      </tr>
+      <tr>
+        <td><span class="tz-title">Gridrunners</span><br><span class="tz-mono">PC / SWITCH 2</span></td>
+        <td class="tz-hide"><span class="tz-mono">v2.1.0</span></td>
+        <td class="tz-hide"><span class="tz-desc">Four-player courier racing through a blackout grid. Out now.</span></td>
+        <td><span class="tz-status">LIVE</span></td>
+      </tr>
+      <tr>
+        <td><span class="tz-title">Static Bloom</span><br><span class="tz-mono">DLC &middot; ALL</span></td>
+        <td class="tz-hide"><span class="tz-mono">v0.3.0-a</span></td>
+        <td class="tz-hide"><span class="tz-desc">A quiet expansion about the city after the signal dies. In alpha.</span></td>
+        <td><span class="tz-status">ALPHA</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="tz-tokens">
+  <div class="tz-tokens-inner">
+    <h2>Tokens</h2>
+    <ul class="tz-swatches">
+      <li><span class="tz-chip" style="background:#08080d"></span><span class="tz-name">bg</span><span class="tz-hex">#08080d</span></li>
+      <li><span class="tz-chip" style="background:#e8e6f0"></span><span class="tz-name">ink</span><span class="tz-hex">#e8e6f0</span></li>
+      <li><span class="tz-chip" style="background:#ff2e88"></span><span class="tz-name">accent</span><span class="tz-hex">#ff2e88</span></li>
+      <li><span class="tz-chip" style="background:#6b6f85"></span><span class="tz-name">muted</span><span class="tz-hex">#6b6f85</span></li>
+      <li><span class="tz-chip" style="background:#1e2030"></span><span class="tz-name">line</span><span class="tz-hex">#1e2030</span></li>
+    </ul>
+  </div>
+</section>
+
+<footer class="tz-foot">
+  <span>A TZ-taste style DNA showcase &mdash; MIT, free forever.</span>
+  <span class="tz-gridtime">GRID TIME 03:47 &middot; SECTOR 7 &middot; RAIN: HEAVY &middot; 11&deg;C</span>
+</footer>
+</body>
+</html>
