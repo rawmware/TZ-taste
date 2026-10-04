@@ -1,3 +1,4 @@
+<!--tz-meta {"id":"industrial-brutalist","name":"Industrial Brutalist","vibe":"Exposed structure, safety orange, condensed type. A factory that ships software.","file":"styles/industrial-brutalist.md","tags":["brutalist","raw","mono","high-contrast"],"best_for":["dev tools","zines","hardware","labels"],"fonts":{"body":"Space Grotesk","display":"Anton","mono":"JetBrains Mono"},"tokens":{"accent":"#ff4d00","bg":"#d8d8d4","ink":"#141412","line":"#141412","muted":"#5c5c58","surface":"#c9c9c4"},"dials":{"density":7,"motion":3,"variance":8}} -->
 # Industrial Brutalist
 
 > Exposed structure, safety orange, condensed type. A factory that ships software.
