@@ -1,0 +1,188 @@
+<!--tz-meta {"id":"ex-hero","title":"Hero — Factory Floor","category":"Elixir","file":"elixir/hero.heex","tags":["heex","phoenix","hero","brutalist","editorial"],"description":"Offset industrial hero: giant Anton headline slammed against a rotated safety-orange serial plate, spec manifest down the side.","dnas":["industrial-brutalist"]} -->
+<%!-- def hero(assigns) — attr :eyebrow, :string, default: "FIELD UNIT 001" · attr :headline, :string · attr :standfirst, :string · attr :cta_label, :string · attr :cta_href, :string · attr :specs, :list, default: [] --%>
+<%!--
+Design read: A factory-floor hero for Latch — oversized condensed type pinned against a safety-orange serial plate, specs running down a side manifest like a machine door stenciled with its own data.
+Distinctive choice: the rotated "UNIT 001" plate overlapping the headline's first line, like a stamp slapped on after the paint dried.
+Dials: VARIANCE 8 / MOTION 4 / DENSITY 5. DNA: industrial-brutalist (Anton / Space Grotesk / JetBrains Mono).
+--%>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap");
+.tz-hero {
+  --tz-bg: #d8d8d4;
+  --tz-surface: #c9c9c4;
+  --tz-ink: #141412;
+  --tz-muted: #5c5c58;
+  --tz-accent: #ff4d00;
+  --tz-line: #141412;
+  --tz-font-display: "Anton", "Arial Narrow", sans-serif;
+  --tz-font-body: "Space Grotesk", "Helvetica Neue", sans-serif;
+  --tz-font-mono: "JetBrains Mono", "SFMono-Regular", monospace;
+  background: var(--tz-bg);
+  color: var(--tz-ink);
+  font-family: var(--tz-font-body);
+  border-bottom: 2px solid var(--tz-line);
+  overflow: hidden;
+}
+.tz-hero__grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.tz-hero__main {
+  grid-column: 1 / 9;
+  padding: clamp(3rem, 7vw, 6rem) clamp(1.5rem, 4vw, 4rem) clamp(3rem, 6vw, 5rem);
+  border-right: 2px solid var(--tz-line);
+  position: relative;
+}
+.tz-hero__plate {
+  display: inline-block;
+  background: var(--tz-accent);
+  color: var(--tz-bg);
+  font-family: var(--tz-font-mono);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  padding: 0.55rem 1rem;
+  transform: rotate(-2.5deg);
+  margin-bottom: 1.75rem;
+  box-shadow: 5px 5px 0 var(--tz-ink);
+  animation: tz-hero-plate-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.tz-hero__headline {
+  font-family: var(--tz-font-display);
+  font-size: clamp(3.4rem, 9.5vw, 8.5rem);
+  line-height: 0.94;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  margin: 0 0 1.75rem;
+  max-width: 12ch;
+  animation: tz-hero-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.08s both;
+}
+.tz-hero__headline .tz-hero__strike {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--tz-ink);
+}
+.tz-hero__standfirst {
+  font-size: 1.13rem;
+  line-height: 1.55;
+  max-width: 44ch;
+  color: var(--tz-ink);
+  margin: 0 0 2.25rem;
+  animation: tz-hero-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.16s both;
+}
+.tz-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  animation: tz-hero-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both;
+}
+.tz-hero__cta {
+  display: inline-block;
+  background: var(--tz-ink);
+  color: var(--tz-bg);
+  font-family: var(--tz-font-mono);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  padding: 1rem 1.75rem;
+  box-shadow: 6px 6px 0 var(--tz-accent);
+  transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tz-hero__cta:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--tz-accent);
+}
+.tz-hero__note {
+  font-family: var(--tz-font-mono);
+  font-size: 0.8rem;
+  color: var(--tz-muted);
+}
+.tz-hero__manifest {
+  grid-column: 9 / 13;
+  background: var(--tz-surface);
+  padding: clamp(3rem, 7vw, 6rem) clamp(1.5rem, 3vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.tz-hero__manifest-title {
+  font-family: var(--tz-font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--tz-muted);
+  margin: 0 0 1.5rem;
+  text-transform: uppercase;
+}
+.tz-hero__spec {
+  border-top: 1px solid var(--tz-line);
+  padding: 1.1rem 0;
+  animation: tz-hero-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.tz-hero__spec:last-child {
+  border-bottom: 1px solid var(--tz-line);
+}
+.tz-hero__spec-label {
+  font-family: var(--tz-font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--tz-muted);
+  text-transform: uppercase;
+  margin: 0 0 0.35rem;
+}
+.tz-hero__spec-value {
+  font-family: var(--tz-font-display);
+  font-size: 1.9rem;
+  text-transform: uppercase;
+  margin: 0;
+}
+.tz-hero__spec-value em {
+  font-style: normal;
+  color: var(--tz-accent);
+}
+@keyframes tz-hero-rise {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes tz-hero-plate-in {
+  from { opacity: 0; transform: rotate(-9deg) scale(0.85); }
+  to { opacity: 1; transform: rotate(-2.5deg) scale(1); }
+}
+@media (max-width: 900px) {
+  .tz-hero__main { grid-column: 1 / 13; border-right: none; border-bottom: 2px solid var(--tz-line); }
+  .tz-hero__manifest { grid-column: 1 / 13; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tz-hero__plate, .tz-hero__headline, .tz-hero__standfirst, .tz-hero__actions, .tz-hero__spec {
+    animation: none;
+  }
+  .tz-hero__cta { transition: none; }
+}
+</style>
+<section class="tz-hero" aria-label="Introduction">
+  <div class="tz-hero__grid">
+    <div class="tz-hero__main">
+      <span class="tz-hero__plate">{@eyebrow}</span>
+      <h1 class="tz-hero__headline">
+        Send the invoice. <span class="tz-hero__strike">Get paid.</span> Go home.
+      </h1>
+      <p class="tz-hero__standfirst">{@standfirst}</p>
+      <div class="tz-hero__actions">
+        <.link href={@cta_href} class="tz-hero__cta">{@cta_label} →</.link>
+        <span class="tz-hero__note">Free for your first 5 invoices · no card needed</span>
+      </div>
+    </div>
+    <aside class="tz-hero__manifest" aria-label="Latch at a glance">
+      <p class="tz-hero__manifest-title">Manifest — read before operating</p>
+      {for {spec, i} <- Enum.with_index(@specs) do}
+        <div class="tz-hero__spec" style={"animation-delay: " <> to_string(0.1 + i * 0.08) <> "s"}>
+          <p class="tz-hero__spec-label">{spec.label}</p>
+          <p class="tz-hero__spec-value">{spec.value}</p>
+        </div>
+      {/for}
+    </aside>
+  </div>
+</section>
