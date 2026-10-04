@@ -1,0 +1,127 @@
+<!--tz-meta {"id":"ex-testimonial-wall","title":"Testimonial Wall — Guest Book","category":"Elixir","file":"elixir/testimonial_wall.heex","tags":["heex","phoenix","testimonials","editorial","dark"],"description":"A Showa coffee-house guest-book wall: testimonial notes clipped along a brass rail at varying heights, lamplight typography.","dnas":["tokyo-kissaten"]} -->
+<%!-- def testimonial_wall(assigns) — attr :heading, :string · attr :testimonials, :list — each: %{quote: string, name: string, role: string, drop: string} --%>
+<%!--
+Design read: The guest-book wall of a Showa-era coffee house — customer notes clipped along a brass rail at different heights, warm lamplight type on dark walnut, each one signed like it mattered.
+Distinctive choice: notes hang from a single brass rail with staggered drops, like index cards clipped to a wire behind the counter.
+Dials: VARIANCE 6 / MOTION 4 / DENSITY 6. DNA: tokyo-kissaten (Shippori Mincho / Zen Kaku Gothic New / IBM Plex Mono).
+--%>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap");
+.tz-wall {
+  --tz-bg: #171009;
+  --tz-ink: #f3e4c8;
+  --tz-muted: #9a7c5e;
+  --tz-accent: #d9a441;
+  --tz-line: #d9a44155;
+  --tz-font-display: "Shippori Mincho", "Hiragino Mincho ProN", serif;
+  --tz-font-body: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", sans-serif;
+  --tz-font-mono: "IBM Plex Mono", "SFMono-Regular", monospace;
+  background: var(--tz-bg);
+  color: var(--tz-ink);
+  font-family: var(--tz-font-body);
+  padding: clamp(4rem, 9vw, 8rem) clamp(1.25rem, 4vw, 4rem);
+  position: relative;
+}
+.tz-wall__inner { max-width: 1280px; margin: 0 auto; }
+.tz-wall__eyebrow {
+  font-family: var(--tz-font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--tz-accent);
+  margin: 0 0 1rem;
+}
+.tz-wall__heading {
+  font-family: var(--tz-font-display);
+  font-weight: 700;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  line-height: 1.15;
+  margin: 0 0 1rem;
+  max-width: 20ch;
+}
+.tz-wall__sub { color: var(--tz-muted); font-size: 1.05rem; margin: 0 0 3.5rem; max-width: 56ch; line-height: 1.6; }
+.tz-wall__rail {
+  height: 2px;
+  background: var(--tz-accent);
+  opacity: 0.85;
+  margin-bottom: 0;
+  position: relative;
+}
+.tz-wall__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 2vw, 1.75rem);
+  align-items: start;
+}
+.tz-wall__note {
+  border: 1px solid var(--tz-line);
+  background: rgba(243, 228, 200, 0.03);
+  padding: 1.75rem 1.5rem 1.5rem;
+  margin-top: var(--drop, 0px);
+  position: relative;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease;
+}
+.tz-wall__note:hover { transform: translateY(-6px); border-color: var(--tz-accent); }
+.tz-wall__note::before {
+  content: "";
+  position: absolute;
+  top: calc(var(--drop, 0px) * -1 - 9px);
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--tz-accent);
+  transform: translateX(-50%);
+  box-shadow: 0 0 12px rgba(217, 164, 65, 0.7);
+}
+.tz-wall__quote {
+  font-family: var(--tz-font-display);
+  font-size: 1.22rem;
+  line-height: 1.55;
+  margin: 0 0 1.5rem;
+}
+.tz-wall__quote::before { content: "\201C"; color: var(--tz-accent); }
+.tz-wall__quote::after { content: "\201D"; color: var(--tz-accent); }
+.tz-wall__sig { border-top: 1px solid var(--tz-line); padding-top: 1rem; }
+.tz-wall__name { font-weight: 700; font-size: 0.98rem; margin: 0; }
+.tz-wall__role { font-family: var(--tz-font-mono); font-size: 0.76rem; color: var(--tz-muted); margin: 0.3rem 0 0; letter-spacing: 0.04em; }
+.tz-wall__count {
+  margin-top: 3.5rem;
+  font-family: var(--tz-font-mono);
+  font-size: 0.8rem;
+  color: var(--tz-muted);
+  letter-spacing: 0.06em;
+}
+.tz-wall__count strong { color: var(--tz-accent); font-weight: 500; }
+@media (max-width: 1000px) {
+  .tz-wall__grid { grid-template-columns: repeat(2, 1fr); }
+  .tz-wall__note { margin-top: 0 !important; }
+  .tz-wall__note::before { display: none; }
+}
+@media (max-width: 560px) {
+  .tz-wall__grid { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tz-wall__note { transition: none; }
+}
+</style>
+<section class="tz-wall" aria-label="Customer notes">
+  <div class="tz-wall__inner">
+    <p class="tz-wall__eyebrow">Guest book — vol. IV</p>
+    <h2 class="tz-wall__heading">{@heading}</h2>
+    <p class="tz-wall__sub">Pinned up behind the counter. We didn't ask for permission to be this proud of them.</p>
+    <div class="tz-wall__rail" aria-hidden="true"></div>
+    <div class="tz-wall__grid">
+      {for t <- @testimonials do}
+        <figure class="tz-wall__note" style={"--drop: " <> t.drop}>
+          <blockquote class="tz-wall__quote">{t.quote}</blockquote>
+          <figcaption class="tz-wall__sig">
+            <p class="tz-wall__name">{t.name}</p>
+            <p class="tz-wall__role">{t.role}</p>
+          </figcaption>
+        </figure>
+      {/for}
+    </div>
+    <p class="tz-wall__count"><strong>4,812 notes</strong> and counting — the wall is load-bearing at this point</p>
+  </div>
+</section>
