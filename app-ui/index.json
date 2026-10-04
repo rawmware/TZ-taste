@@ -1,5 +1,5 @@
 {
- "count": 20,
+ "count": 25,
  "updated": "2026-10-04",
  "usage": "App-interface patterns (dashboards, kanban, tables). Same conventions as patterns/.",
  "app_ui": [
@@ -100,6 +100,22 @@
    ]
   },
   {
+   "id": "code-diff-viewer",
+   "title": "Code diff viewer",
+   "category": "App UI",
+   "file": "app-ui/code-diff-viewer.html",
+   "tags": [
+    "diff",
+    "code-review",
+    "git",
+    "developer-tools"
+   ],
+   "description": "Retro-terminal diff viewer: file tabs, unified/split views, hunk collapse, j/k navigation, search, whitespace toggle, copy patch. All live.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
    "id": "command-palette",
    "title": "Command palette",
    "category": "App UI",
@@ -163,6 +179,22 @@
    ]
   },
   {
+   "id": "image-editor-toolbar",
+   "title": "Image editor toolbar",
+   "category": "App UI",
+   "file": "app-ui/image-editor-toolbar.html",
+   "tags": [
+    "image-editor",
+    "toolbar",
+    "filters",
+    "photo"
+   ],
+   "description": "Dark-luxe photo editor: tool rail, live filter sliders, presets, crop guides, rotate/flip, hold-to-compare. Every control works.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
    "id": "kanban-board",
    "title": "Kanban board",
    "category": "App UI",
@@ -192,6 +224,22 @@
    "description": "Split-screen sign-in for Harbor Ledger: gold deco brand panel beside a framed form with social buttons and a live wrong-password error state.",
    "dnas": [
     "art-deco-luxe"
+   ]
+  },
+  {
+   "id": "map-embed-panel",
+   "title": "Map embed panel",
+   "category": "App UI",
+   "file": "app-ui/map-embed-panel.html",
+   "tags": [
+    "map",
+    "embed",
+    "poi",
+    "pan-zoom"
+   ],
+   "description": "Harbor-fog interactive map panel: drag pan, wheel zoom, POI markers with cards, layer toggles, search, live scale bar.",
+   "dnas": [
+    "harbor-fog"
    ]
   },
   {
@@ -308,6 +356,22 @@
    ]
   },
   {
+   "id": "timeline-gantt",
+   "title": "Timeline Gantt chart",
+   "category": "App UI",
+   "file": "app-ui/timeline-gantt.html",
+   "tags": [
+    "gantt",
+    "timeline",
+    "project",
+    "planning"
+   ],
+   "description": "Blueprint-tech Gantt: week/month zoom, dependency arrows, milestones, today line, click-for-detail with progress stepper. Fully interactive.",
+   "dnas": [
+    "blueprint-tech"
+   ]
+  },
+  {
    "id": "user-profile",
    "title": "User Profile",
    "category": "App UI",
@@ -321,6 +385,22 @@
    "description": "Crate-digger profile on a record-sharing app: header, sticker stats, activity spine.",
    "dnas": [
     "vinyl-crate"
+   ]
+  },
+  {
+   "id": "video-player-custom",
+   "title": "Custom video player",
+   "category": "App UI",
+   "file": "app-ui/video-player-custom.html",
+   "tags": [
+    "video-player",
+    "media",
+    "controls",
+    "canvas"
+   ],
+   "description": "Drive-in theater custom player: canvas feature film, seek with chapters, speed, synthesized projector audio, captions, fullscreen, keyboard shortcuts.",
+   "dnas": [
+    "drive-in-theater"
    ]
   }
  ]
