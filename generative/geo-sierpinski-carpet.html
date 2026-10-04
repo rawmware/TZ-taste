@@ -1,0 +1,97 @@
+<!--tz-meta {"id":"gen-geo-sierpinski-carpet","title":"Sierpinski Carpet","category":"Generative","file":"generative/geo-sierpinski-carpet.html","tags":["fractal","recursive","carpet"],"description":"A Sierpinski carpet grows square by square; each seed varies removal odds, depth, and accent color.","dnas":["desert-modern"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sierpinski Carpet — TZ-taste Generative</title>
+<style>
+*{box-sizing:border-box}
+.tz-gen-body{margin:0;background:#f4ecdc;color:#33291f;font-family:Georgia,'Times New Roman',serif;min-height:100vh}
+.tz-gen-wrap{max-width:1120px;margin:0 auto;padding:48px 24px 64px}
+.tz-gen-head{margin:0 0 28px}
+.tz-gen-kicker{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#7fb3c4;margin:0 0 14px}
+.tz-gen-head h1{font-size:clamp(30px,5vw,52px);line-height:1.05;margin:0 0 12px;font-weight:600}
+.tz-gen-caption{font-size:16px;line-height:1.6;color:#a89a80;margin:0;max-width:62ch}
+.tz-gen-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:26px 0 14px}
+.tz-gen-btn{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;background:transparent;color:#33291f;border:1px solid #dccfb2;padding:10px 18px;border-radius:3px;cursor:pointer}
+.tz-gen-btn:hover{border-color:#7fb3c4;color:#5d8fa0}
+.tz-gen-seed{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:12px;color:#a89a80;margin-left:auto}
+.tz-gen-canvas{display:block;width:100%;height:70vh;border:1px solid #dccfb2;border-radius:3px;background:#f4ecdc}
+.tz-gen-note{font-size:14px;line-height:1.65;color:#a89a80;margin:18px 0 0;max-width:70ch}
+@media(max-width:520px){.tz-gen-wrap{padding:32px 16px 48px}.tz-gen-seed{margin-left:0;width:100%}}
+</style>
+</head>
+<body class="tz-gen-body">
+<div class="tz-gen-wrap">
+  <header class="tz-gen-head">
+    <p class="tz-gen-kicker">TZ-taste · Generative</p>
+    <h1>Sierpinski Carpet</h1>
+    <p class="tz-gen-caption">Divide each square into nine, drop the middle, repeat. The carpet weaves itself one square at a time — the seed decides how deep it goes.</p>
+  </header>
+  <div class="tz-gen-bar">
+    <button class="tz-gen-btn" id="tzSeed">New seed</button>
+    <button class="tz-gen-btn" id="tzPause">Pause</button>
+    <button class="tz-gen-btn" id="tzClear">Clear</button>
+    <span class="tz-gen-seed" id="tzSeedLabel">Seed 0</span>
+  </div>
+  <canvas class="tz-gen-canvas" id="tzCv" aria-label="A Sierpinski carpet fractal drawing itself"></canvas>
+  <p class="tz-gen-note">Higher-depth seeds hold finer detail. Every square is drawn exactly once, in a single pass.</p>
+</div>
+<script>
+'use strict';
+const cv=document.getElementById('tzCv'),ctx=cv.getContext('2d');
+const seedLabel=document.getElementById('tzSeedLabel');
+let W=0,H=0,seed=(Math.random()*1e9)|0,rand=null,queue=[],maxDepth=5,t=0,running=true;
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const BG='#f4ecdc',INK='#33291f',ACC='#7fb3c4';
+const SHADES=['#e7d9bd','#dcc9a4','#cdb68a','#33291f'];
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function init(){
+  rand=mulberry32(seed);queue=[];t=0;
+  maxDepth=4+Math.floor(rand()*2);
+  const s=Math.min(W,H)*0.92;
+  queue.push({x:(W-s)/2,y:(H-s)/2,s:s,d:0});
+  ctx.fillStyle=BG;ctx.fillRect(0,0,W,H);
+  seedLabel.textContent='Seed '+seed+' · depth '+maxDepth;
+}
+function drawSquare(q){
+  if(q.d===0){ctx.fillStyle=INK;ctx.fillRect(q.x,q.y,q.s,q.s);}
+  else{
+    const pick=rand();
+    ctx.fillStyle=pick<0.08?ACC:SHADES[Math.min(SHADES.length-1,q.d-1)];
+    ctx.fillRect(q.x+0.5,q.y+0.5,q.s-1,q.s-1);
+  }
+}
+function step(){
+  t+=0.016;
+  if(queue.length===0)return;
+  const budget=reduced?queue.length:60;
+  for(let i=0;i<budget&&queue.length>0;i++){
+    const q=queue.shift();
+    drawSquare(q);
+    if(q.d>=maxDepth)continue;
+    const c=q.s/3;
+    for(let ix=0;ix<3;ix++)for(let iy=0;iy<3;iy++){
+      if(ix===1&&iy===1)continue;
+      queue.push({x:q.x+ix*c,y:q.y+iy*c,s:c,d:q.d+1});
+    }
+  }
+}
+function resize(){
+  const d=Math.min(window.devicePixelRatio||1,2),r=cv.getBoundingClientRect();
+  W=Math.max(2,Math.round(r.width));H=Math.max(2,Math.round(r.height));
+  cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);init();
+}
+window.addEventListener('resize',resize);
+document.getElementById('tzSeed').addEventListener('click',()=>{seed=(Math.random()*1e9)|0;init();if(!running)toggle();});
+document.getElementById('tzClear').addEventListener('click',init);
+function toggle(){running=!running;document.getElementById('tzPause').textContent=running?'Pause':'Resume';if(running&&!reduced)tick();}
+document.getElementById('tzPause').addEventListener('click',toggle);
+function tick(){if(!running)return;step();requestAnimationFrame(tick);}
+resize();
+if(reduced){while(queue.length>0)step();}
+else tick();
+</script>
+</body>
+</html>
