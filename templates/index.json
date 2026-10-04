@@ -1,5 +1,5 @@
 {
- "count": 40,
+ "count": 55,
  "updated": "2026-10-04",
  "usage": "Complete standalone landing pages. Open in a browser, view source, adapt. All original, MIT.",
  "templates": [
@@ -60,6 +60,21 @@
    ]
   },
   {
+   "id": "arcade-bar",
+   "title": "Insert Coin — Arcade Bar & Late Kitchen",
+   "category": "Template",
+   "file": "templates/arcade-bar.html",
+   "tags": [
+    "bar",
+    "arcade",
+    "nightlife"
+   ],
+   "description": "Pixel-arcade bar landing: coin-op cabinet index, tap list ticker, high-score board, token economy explained.",
+   "dnas": [
+    "pixel-arcade"
+   ]
+  },
+  {
    "id": "architecture",
    "title": "Studio Prisma — Architecture Studio",
    "category": "Template",
@@ -103,6 +118,36 @@
    "description": "Instrument-grade bike shop page: repair spec table with service codes, repair queue tracker, dense inventory index.",
    "dnas": [
     "laboratory-clean"
+   ]
+  },
+  {
+   "id": "bike-tour",
+   "title": "Red Arrow Cycling — Guided Bike Tours",
+   "category": "Template",
+   "file": "templates/bike-tour.html",
+   "tags": [
+    "travel",
+    "cycling",
+    "tours"
+   ],
+   "description": "Swiss-airline bike tour operator: timetable-grid itineraries, red-arrow route system, fleet ledger, booking flow.",
+   "dnas": [
+    "swiss-airline"
+   ]
+  },
+  {
+   "id": "board-game-cafe",
+   "title": "Meeple & Miso — Board Game Café",
+   "category": "Template",
+   "file": "templates/board-game-cafe.html",
+   "tags": [
+    "cafe",
+    "games",
+    "local"
+   ],
+   "description": "Tokyo-kissaten board game café: showa-era warmth, the 800-game library index, table-booking flow, snack menu.",
+   "dnas": [
+    "tokyo-kissaten"
    ]
   },
   {
@@ -207,6 +252,21 @@
    ]
   },
   {
+   "id": "dog-grooming",
+   "title": "The Dapper Mutt — Dog Grooming Studio",
+   "category": "Template",
+   "file": "templates/dog-grooming.html",
+   "tags": [
+    "pets",
+    "grooming",
+    "local"
+   ],
+   "description": "Memphis-Milano dog grooming: squiggle-and-terrazzo joy, the spa menu as a diner ticket, breed gallery wall, booking flow.",
+   "dnas": [
+    "memphis-milano"
+   ]
+  },
+  {
    "id": "escape-room",
    "title": "The Locked Study — Mystery Escape Rooms",
    "category": "Template",
@@ -263,6 +323,21 @@
    ]
   },
   {
+   "id": "ferry-service",
+   "title": "Crossharbor Ferry — Harbor Ferry Service",
+   "category": "Template",
+   "file": "templates/ferry-service.html",
+   "tags": [
+    "transport",
+    "ferry",
+    "local"
+   ],
+   "description": "Harbor-fog ferry service: foghorn typography, departure board, route ledger, commuter passes.",
+   "dnas": [
+    "harbor-fog"
+   ]
+  },
+  {
    "id": "fitness-studio",
    "title": "IRONWORKS — Strength Gym",
    "category": "Template",
@@ -273,6 +348,21 @@
    "description": "Raw industrial strength-gym page: concrete, safety orange, stencil type, brutal schedule table.",
    "dnas": [
     "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "flower-farm",
+   "title": "Petal & Post — Cut-Flower Farm",
+   "category": "Template",
+   "file": "templates/flower-farm.html",
+   "tags": [
+    "farm",
+    "flowers",
+    "local"
+   ],
+   "description": "Seed-packet flower farm: engraved print craft, what's-blooming-now board, CSA shares, u-pick calendar.",
+   "dnas": [
+    "seed-packet"
    ]
   },
   {
@@ -288,6 +378,66 @@
    "description": "Postmodern birria truck page: menu as a loud price-list poster, weekly route as a ticker strip.",
    "dnas": [
     "memphis-milano"
+   ]
+  },
+  {
+   "id": "hot-sauce-brand",
+   "title": "Volcano Tongue — Small-Batch Hot Sauce",
+   "category": "Template",
+   "file": "templates/hot-sauce-brand.html",
+   "tags": [
+    "food",
+    "brand",
+    "ecommerce"
+   ],
+   "description": "Bazaar-spice hot sauce brand: heat-level odometer, pepper origin ledger, tasting-flight trio, scoville chart.",
+   "dnas": [
+    "bazaar-spice"
+   ]
+  },
+  {
+   "id": "laundromat-deluxe",
+   "title": "Spin Cycle Deluxe — Premium Laundromat",
+   "category": "Template",
+   "file": "templates/laundromat-deluxe.html",
+   "tags": [
+    "local",
+    "service",
+    "laundromat"
+   ],
+   "description": "Laundromat-neon deluxe wash: humming-fluorescent tile aesthetic, machine availability board, wash-and-fold pricing, loyalty spin.",
+   "dnas": [
+    "laundromat-neon"
+   ]
+  },
+  {
+   "id": "locksmith-24h",
+   "title": "Iron & Key — 24-Hour Locksmith",
+   "category": "Template",
+   "file": "templates/locksmith-24h.html",
+   "tags": [
+    "locksmith",
+    "local",
+    "emergency"
+   ],
+   "description": "Locksmith-shop emergency page: brass-and-steel ticket-book aesthetic, big call panel, service ledger, honest pricing.",
+   "dnas": [
+    "locksmith-shop"
+   ]
+  },
+  {
+   "id": "magic-show",
+   "title": "The Velvet Rabbit — Magic Show & Parlor",
+   "category": "Template",
+   "file": "templates/magic-show.html",
+   "tags": [
+    "entertainment",
+    "theater",
+    "tickets"
+   ],
+   "description": "Ticket-stub magic show: perforated-ticket hero, the repertoire as a playbill, seating chart, private bookings.",
+   "dnas": [
+    "ticket-stub"
    ]
   },
   {
@@ -344,6 +494,21 @@
    "description": "Warm cottage-style nonprofit page: community board, volunteer notes, honest impact numbers.",
    "dnas": [
     "cottage-warm"
+   ]
+  },
+  {
+   "id": "observatory-public",
+   "title": "Meridian Hill Observatory — Public Nights",
+   "category": "Template",
+   "file": "templates/observatory-public.html",
+   "tags": [
+    "science",
+    "observatory",
+    "tickets"
+   ],
+   "description": "Observatory-star public observatory: deep-space navy, brass instrument dials, tonight's-sky ledger, telescope booking.",
+   "dnas": [
+    "observatory-star"
    ]
   },
   {
@@ -405,6 +570,21 @@
    "description": "True-crime podcast show page styled like a used-record-shop sleeve, vinyl-crate DNA.",
    "dnas": [
     "vinyl-crate"
+   ]
+  },
+  {
+   "id": "poetry-press",
+   "title": "Hinge & Quill — Independent Poetry Press",
+   "category": "Template",
+   "file": "templates/poetry-press.html",
+   "tags": [
+    "publishing",
+    "poetry",
+    "books"
+   ],
+   "description": "Concrete-poem poetry press: typographic art as layout, the catalog as verse blocks, submissions window, readings calendar.",
+   "dnas": [
+    "concrete-poem"
    ]
   },
   {
@@ -492,6 +672,36 @@
    ]
   },
   {
+   "id": "seed-library",
+   "title": "The Seed Library — Borrow Seeds, Grow Food",
+   "category": "Template",
+   "file": "templates/seed-library.html",
+   "tags": [
+    "library",
+    "seeds",
+    "community"
+   ],
+   "description": "Library-oak seed library: card-catalog seed index, how borrowing works, grow-out reports, volunteer nights.",
+   "dnas": [
+    "library-oak"
+   ]
+  },
+  {
+   "id": "ski-lodge",
+   "title": "Emberline Lodge — Ski Lodge & Night Skiing",
+   "category": "Template",
+   "file": "templates/ski-lodge.html",
+   "tags": [
+    "travel",
+    "ski",
+    "lodge"
+   ],
+   "description": "Alpine-after-dark lodge: headlamp-amber on deep indigo, night-skiing schedule, trail ledger, fireside booking.",
+   "dnas": [
+    "alpine-after-dark"
+   ]
+  },
+  {
    "id": "skincare",
    "title": "Formula 04 — Clinical Skincare",
    "category": "Template",
@@ -519,6 +729,20 @@
    "description": "Hand-painted surf school page: daily wave-report chalkboard, lesson schedule as punched wax tickets.",
    "dnas": [
     "surf-shack"
+   ]
+  },
+  {
+   "id": "tattoo-studio",
+   "title": "Black Lantern Tattoo — Sideshow Flash Studio",
+   "category": "Template",
+   "file": "templates/tattoo-studio.html",
+   "tags": [
+    "tattoo",
+    "studio"
+   ],
+   "description": "1910 circus-bill tattoo parlor: wood type, starbursts, flash sheets, playbill artist roster, booking ledger.",
+   "dnas": [
+    "circus-poster"
    ]
   },
   {
