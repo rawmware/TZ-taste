@@ -1,0 +1,48 @@
+<!--tz-meta {"id":"comparison-table","title":"Product comparison table","category":"Pricing","file":"patterns/comparison-table.html","tags":["comparison","table","pricing","features"],"description":"Brutal lab-notebook comparison: us vs. the two incumbents, check and dash, one highlighted column.","dnas":["lab-notebook"]} -->
+<section class="tz-comparison-table" aria-label="Compare plans">
+  <h2 class="tz-head">Honestly? Compare the three of us.</h2>
+  <div class="tz-scroll">
+  <table>
+    <thead>
+      <tr>
+        <th scope="col" class="tz-rowhead"></th>
+        <th scope="col" class="tz-us"><span class="tz-our">Our pick</span>Fieldbook</th>
+        <th scope="col">BigCorp Suite</th>
+        <th scope="col">Startup-Y</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><th scope="row">Flat monthly price</th><td class="tz-us">$19</td><td>$89 + add-ons</td><td>$24</td></tr>
+      <tr><th scope="row">Exports your data</th><td class="tz-us tz-yes">&#10003;</td><td class="tz-no">&mdash;</td><td class="tz-yes">&#10003;</td></tr>
+      <tr><th scope="row">Works offline</th><td class="tz-us tz-yes">&#10003;</td><td class="tz-no">&mdash;</td><td class="tz-no">&mdash;</td></tr>
+      <tr><th scope="row">Ads or tracking</th><td class="tz-us">None</td><td>Sponsored slots</td><td>Analytics SDK</td></tr>
+      <tr><th scope="row">Real human support</th><td class="tz-us tz-yes">&#10003;</td><td>Enterprise tier only</td><td class="tz-yes">&#10003;</td></tr>
+      <tr><th scope="row">Cancel in one click</th><td class="tz-us tz-yes">&#10003;</td><td class="tz-no">&mdash;</td><td class="tz-yes">&#10003;</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="tz-note">Prices checked October 2026. Tell us if we got a competitor wrong &mdash; we&rsquo;ll fix it within a day.</p>
+</section>
+<style>
+.tz-comparison-table{--bg:#f4f1e6;--ink:#2b2a26;--accent:#b3402e;--muted:#7a756a;
+  --line:#2b2a2626;--hi:#b3402e14;
+  background:var(--bg);color:var(--ink);padding:clamp(56px,9vw,128px) clamp(16px,6vw,80px);
+  font-family:Georgia,'Times New Roman',serif}
+.tz-head{font-size:clamp(26px,4vw,42px);letter-spacing:-.02em;text-align:center;
+  margin:0 0 40px}
+.tz-scroll{overflow-x:auto;max-width:900px;margin:0 auto}
+.tz-comparison-table table{width:100%;border-collapse:collapse;min-width:600px}
+.tz-comparison-table th,.tz-comparison-table td{padding:16px 18px;text-align:left;
+  border-top:1px solid var(--line);font-size:15.5px}
+.tz-comparison-table thead th{border-top:none;border-bottom:2px solid var(--ink);
+  font-size:17px;vertical-align:bottom}
+.tz-rowhead{font-weight:400;color:var(--muted);font-size:14px}
+.tz-us{background:var(--hi)}
+.tz-our{display:block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:6px}
+.tz-yes{color:#2e6b46;font-weight:700}
+.tz-no{color:var(--muted)}
+.tz-note{max-width:900px;margin:24px auto 0;font-size:13.5px;color:var(--muted);line-height:1.6}
+@media(max-width:640px){.tz-comparison-table th,.tz-comparison-table td{padding:12px 10px;font-size:14px}}
+</style>
