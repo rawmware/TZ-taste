@@ -1,0 +1,184 @@
+<!--tz-meta {"id":"ruby-portfolio","title":"Odile Vane — photographer portfolio","category":"Ruby","file":"ruby/portfolio.html.erb","tags":["ruby","erb","portfolio","photography"],"description":"Gothic-editorial portfolio for fictional photographer Odile Vane: works as a vertical index with oversized blackletter numerals bleeding off the margin.","dnas":["gothic-editorial"]} -->
+<% bg = "#12100c" %>
+<% ink = "#e8dfc8" %>
+<% accent = "#a33b2e" %>
+<% muted = "#7d7261" %>
+<% line = "#2e2820" %>
+<% display = "UnifrakturMaguntia" %>
+<% body = "Cormorant Garamond" %>
+<% mono = "Space Mono" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Odile Vane — rooms after midnight</title>
+<meta name="description" content="Odile Vane photographs empty rooms after midnight: theatres, chapels, waiting rooms. Portfolio and commissions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:<%= bg %>; --ink:<%= ink %>; --accent:<%= accent %>;
+  --muted:<%= muted %>; --line:<%= line %>;
+  --ink-2:color-mix(in srgb, var(--ink) 72%, var(--bg));
+  --display:"<%= display %>",serif;
+  --body:"<%= body %>",Georgia,serif;
+  --mono:"<%= mono %>",ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);
+     font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent);color:var(--bg)}
+.wrap{max-width:1060px;margin:0 auto;padding:0 clamp(24px,5vw,56px)}
+/* masthead */
+.masthead{border-bottom:1px solid var(--line);padding:26px 0}
+.masthead .wrap{display:flex;justify-content:space-between;align-items:baseline}
+.sig{font-family:var(--display);font-size:30px;color:var(--ink);text-decoration:none}
+.masthead nav{font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase}
+.masthead nav a{color:var(--ink-2);text-decoration:none;margin-left:26px}
+.masthead nav a:hover{color:var(--accent)}
+/* hero: offset, full-bleed blackletter statement */
+.hero{padding:clamp(72px,10vw,150px) 0 clamp(48px,6vw,88px);overflow:hidden}
+.hero .rule{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+            color:var(--ink-2);margin-bottom:28px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(64px,11vw,160px);
+   line-height:.95;margin-left:-.06em;margin-bottom:30px}
+h1 .blood{color:var(--accent)}
+.hero p.lede{font-size:21px;font-style:italic;color:var(--ink-2);max-width:34ch;
+             margin-left:clamp(0px,12vw,180px)}
+.hero .scroll{margin-top:56px;font-family:var(--mono);font-size:11px;letter-spacing:.3em;
+              text-transform:uppercase;color:var(--ink-2)}
+/* the index: one distinctive choice — blackletter numerals bleeding off the left margin */
+.index{list-style:none;border-top:1px solid var(--line);margin:0;
+       padding:clamp(40px,5vw,72px) 0}
+.index li{position:relative;display:grid;grid-template-columns:1fr auto;gap:12px 32px;
+           padding:34px 0 34px clamp(90px,14vw,170px);border-bottom:1px solid var(--line);
+           align-items:baseline}
+.index .num{position:absolute;left:0;top:50%;transform:translateY(-52%);
+            font-family:var(--display);font-size:clamp(64px,8vw,110px);line-height:1;
+            color:var(--muted);opacity:.5;transition:color .25s ease,opacity .25s ease}
+.index li:hover .num{color:var(--accent);opacity:1}
+.index h2{font-size:clamp(26px,3.4vw,40px);font-weight:600;letter-spacing:.005em;line-height:1.15}
+.index h2 a{color:var(--ink);text-decoration:none}
+.index li:hover h2 a{color:var(--accent)}
+.index .meta{font-family:var(--mono);font-size:12px;color:var(--ink-2);letter-spacing:.08em;
+            text-align:right}
+.index .note{grid-column:1/-1;font-style:italic;color:var(--ink-2);font-size:16.5px;max-width:56ch}
+.sec-label{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+           color:var(--ink-2);margin-bottom:6px}
+/* about: drop cap, narrow measure, offset right */
+.about{padding:clamp(56px,8vw,120px) 0 clamp(48px,6vw,88px);border-top:1px solid var(--line)}
+.about-inner{max-width:620px;margin-left:auto}
+.about h2{font-family:var(--display);font-size:clamp(40px,5vw,64px);font-weight:400;
+          margin-bottom:28px}
+.about p{margin-bottom:1.2em;color:var(--ink-2)}
+.about p:first-of-type::first-letter{font-family:var(--display);font-size:3.4em;float:left;
+          line-height:.82;padding:6px 12px 0 0;color:var(--accent)}
+/* commissions */
+.commissions{border-top:1px solid var(--line);padding:clamp(56px,8vw,110px) 0}
+.commissions .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);
+                   align-items:start;margin-top:32px}
+.commissions h2{font-family:var(--display);font-size:clamp(38px,4.6vw,60px);font-weight:400;
+               line-height:1.05;margin-bottom:20px}
+.commissions ul{list-style:none;font-family:var(--mono);font-size:13.5px;color:var(--ink-2)}
+.commissions ul li{padding:14px 0;border-bottom:1px solid var(--line);display:flex;
+                   justify-content:space-between;gap:16px}
+.commissions ul li b{color:var(--ink);font-weight:700}
+.biglink{display:inline-block;margin-top:36px;font-family:var(--display);font-size:clamp(30px,4vw,48px);
+         color:var(--ink);text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:4px}
+.biglink:hover{color:var(--accent)}
+/* footer */
+footer{border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;
+             padding-top:26px;padding-bottom:34px;font-family:var(--mono);font-size:12px;
+             color:var(--ink-2);letter-spacing:.06em}
+footer a{color:var(--ink-2);text-decoration:none}
+footer a:hover{color:var(--accent)}
+@media (max-width:760px){
+  .index li{padding-left:clamp(64px,16vw,90px)}
+  .commissions .grid{grid-template-columns:1fr}
+  .hero p.lede{margin-left:0}
+  .index .meta{text-align:left}
+}
+@media (prefers-reduced-motion:reduce){.index .num{transition:none}}
+</style>
+</head>
+<body>
+<header class="masthead"><div class="wrap">
+  <a class="sig" href="#">Odile Vane</a>
+  <nav><a href="#works">Works</a><a href="#about">About</a><a href="#commissions">Commissions</a></nav>
+</div></header>
+
+<main>
+<div class="wrap hero">
+  <p class="rule">Photographs · Est. 2014 · Providence &amp; elsewhere</p>
+  <h1>Rooms <span class="blood">after</span><br>midnight</h1>
+  <p class="lede">Empty theatres, chapels, and waiting rooms — photographed between
+  midnight and 4 a.m., when buildings finally tell the truth.</p>
+  <p class="scroll">↓ &nbsp;Selected works, 2019 – 2026</p>
+</div>
+
+<div class="wrap">
+  <p class="sec-label" id="works">Selected works</p>
+  <ol class="index">
+    <li><span class="num" aria-hidden="true">01</span>
+      <h2><a href="#">The Orpheum, Row K</a></h2>
+      <p class="meta">2026 · silver gelatin · 14 prints</p>
+      <p class="note">A vaudeville house in New Bedford, shot over eleven nights. The seats outnumber the audience by four hundred to none.</p></li>
+    <li><span class="num" aria-hidden="true">02</span>
+      <h2><a href="#">Chapel of the Ferry</a></h2>
+      <p class="meta">2024 · digital · 9 prints</p>
+      <p class="note">A decommissioned ferry terminal chapel in Staten Island. Salt on every surface, including the lens.</p></li>
+    <li><span class="num" aria-hidden="true">03</span>
+      <h2><a href="#">Waiting Room Studies</a></h2>
+      <p class="meta">2023 · silver gelatin · 22 prints</p>
+      <p class="note">Hospital and station waiting rooms across three states. Nobody is ever coming back for the chair they chose.</p></li>
+    <li><span class="num" aria-hidden="true">04</span>
+      <h2><a href="#">The Last Projectionist</a></h2>
+      <p class="meta">2021 · digital · 7 prints</p>
+      <p class="note">Projection booths of single-screen cinemas, most of them closed within a year of the photograph.</p></li>
+    <li><span class="num" aria-hidden="true">05</span>
+      <h2><a href="#">Narthex</a></h2>
+      <p class="meta">2019 · silver gelatin · 11 prints</p>
+      <p class="note">Church vestibules in mill towns. The series that started all of this, shot on borrowed film.</p></li>
+  </ol>
+
+  <section class="about" id="about"><div class="about-inner">
+    <h2>About</h2>
+    <p>I photograph buildings when the people have gone home. For twelve years I've
+    worked the hours nobody wants — midnight to four — because that's when a room
+    stops performing and starts remembering.</p>
+    <p>My prints are made by hand in a darkroom in Providence, Rhode Island, in
+    editions of fourteen or fewer. When an edition sells out, the negative is retired.</p>
+    <p>Represented by Halden &amp; Wren Gallery, Boston. Previous exhibitions in
+    Providence, New York, and Lisbon.</p>
+  </div></section>
+
+  <section class="commissions" id="commissions">
+    <p class="sec-label">Commissions</p>
+    <div class="grid">
+      <div>
+        <h2>A building you love, at the hour it deserves</h2>
+        <p style="color:var(--ink-2)">I take on four private commissions a year —
+        theatres, libraries, houses of worship, family homes with long hallways.
+        You get the night shoot, a hand-printed edition, and the only key that matters: mine, returned at dawn.</p>
+        <a class="biglink" href="mailto:studio@odilevane.example">studio@odilevane.example →</a>
+      </div>
+      <ul>
+        <li><span>2027 availability</span><b>2 of 4 remaining</b></li>
+        <li><span>Single room</span><b>from $2,400</b></li>
+        <li><span>Full building</span><b>from $6,800</b></li>
+        <li><span>Turnaround</span><b>8–12 weeks</b></li>
+      </ul>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer><div class="wrap">
+  <span>© 2026 Odile Vane · All negatives retired on schedule</span>
+  <span><a href="#">Instagram</a> · <a href="#">Halden &amp; Wren</a> · <a href="mailto:studio@odilevane.example">Email</a></span>
+</div></footer>
+</body>
+</html>
