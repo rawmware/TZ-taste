@@ -1,0 +1,400 @@
+<!--tz-meta {"id":"coworking","title":"Fjord House — Coworking Space","category":"Template","file":"templates/coworking.html","tags":["coworking","workspace","local"],"description":"Nordic-noir coworking space with moody dark tones and a silence-first manifesto.","dnas":["nordic-noir"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fjord House — work after dark</title>
+<meta name="description" content="Fjord House is a night-owl coworking space in Oslo. Deep-work rooms, a silence policy, and coffee that respects the hour. Open 24/7.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* DNA: nordic-noir — fjord-black, candlelit ember, whisper serif */
+:root{
+  --tz-bg:#0f1113; --tz-surface:#171a1d; --tz-ink:#e9e6dc; --tz-muted:#b0aea0;
+  --tz-accent:#e08a3c; --tz-line:rgba(233,230,220,.14);
+  --tz-display:'Cormorant Garamond',serif; --tz-body:'Outfit',sans-serif; --tz-mono:'Space Mono',monospace;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:var(--tz-body);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
+::selection{background:var(--tz-accent);color:#0f1113}
+a{color:inherit}
+.tz-wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+.tz-mono{font-family:var(--tz-mono)}
+.tz-nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid var(--tz-line)}
+.tz-brand{font-family:var(--tz-display);font-size:26px;font-weight:600;text-decoration:none;letter-spacing:.03em}
+.tz-brand em{font-style:normal;color:var(--tz-accent)}
+.tz-navlinks{display:flex;gap:30px;font-family:var(--tz-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.tz-navlinks a{text-decoration:none;color:var(--tz-muted)}
+.tz-navlinks a:hover{color:var(--tz-ink)}
+.tz-open{display:flex;align-items:center;gap:10px;font-family:var(--tz-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-dot{width:9px;height:9px;border-radius:50%;background:var(--tz-accent);animation:tz-pulse 2.4s ease-in-out infinite}
+@keyframes tz-pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.tz-btn{display:inline-block;font-family:var(--tz-mono);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;background:var(--tz-accent);color:#0f1113;padding:16px 32px;transition:transform .25s var(--tz-ease),background .25s}
+.tz-btn:hover{transform:translateY(-2px);background:#eda45c}
+/* hero: night window */
+.tz-hero{position:relative;padding:130px 0 120px;overflow:hidden}
+.tz-night{position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(600px 300px at 82% 18%,rgba(224,138,60,.14),transparent 70%),
+             radial-gradient(400px 200px at 12% 82%,rgba(224,138,60,.08),transparent 70%)}
+.tz-hero .tz-kicker{font-family:var(--tz-mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--tz-accent);margin-bottom:26px;display:block}
+.tz-hero h1{font-family:var(--tz-display);font-weight:500;font-size:clamp(60px,8.5vw,128px);line-height:.98;letter-spacing:-.01em;max-width:11ch}
+.tz-hero h1 i{font-style:italic;color:var(--tz-accent)}
+.tz-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:48px;align-items:end}
+.tz-hero p{color:var(--tz-muted);font-size:19px;max-width:44ch}
+.tz-clock{font-family:var(--tz-mono);font-size:13px;letter-spacing:.1em;color:var(--tz-muted);text-align:right}
+.tz-clock b{display:block;font-size:44px;color:var(--tz-ink);letter-spacing:.04em;margin-bottom:6px}
+/* manifesto: the silence policy */
+.tz-mani{border-top:1px solid var(--tz-line);border-bottom:1px solid var(--tz-line);padding:96px 0;display:grid;grid-template-columns:.9fr 1.1fr;gap:72px}
+.tz-mani h2{font-family:var(--tz-display);font-weight:500;font-size:clamp(36px,4.4vw,60px);line-height:1.05}
+.tz-mani h2 i{font-style:italic;color:var(--tz-accent)}
+.tz-rules{list-style:none;counter-reset:rule}
+.tz-rules li{counter-increment:rule;padding:22px 0 22px 64px;border-bottom:1px solid var(--tz-line);position:relative;font-size:17px;color:var(--tz-muted)}
+.tz-rules li:first-child{border-top:1px solid var(--tz-line)}
+.tz-rules li::before{content:counter(rule,decimal-leading-zero);position:absolute;left:0;top:24px;font-family:var(--tz-mono);font-size:13px;color:var(--tz-accent)}
+.tz-rules li strong{color:var(--tz-ink);font-weight:600}
+/* spaces: asymmetric rooms */
+.tz-section{padding:104px 0}
+.tz-sec-head{margin-bottom:60px;max-width:680px}
+.tz-sec-head h2{font-family:var(--tz-display);font-weight:500;font-size:clamp(38px,4.6vw,62px);line-height:1.05}
+.tz-sec-head h2 i{font-style:italic;color:var(--tz-accent)}
+.tz-sec-head p{color:var(--tz-muted);margin-top:16px;font-size:18px}
+.tz-rooms{display:grid;grid-template-columns:1.25fr .75fr;gap:32px}
+.tz-room{background:var(--tz-surface);border:1px solid var(--tz-line);padding:0;text-decoration:none;display:block;transition:transform .3s var(--tz-ease);overflow:hidden}
+.tz-room:hover{transform:translateY(-4px)}
+.tz-room-img{height:280px;background:linear-gradient(160deg,#23272b,#14161a);position:relative;overflow:hidden}
+.tz-room-img::after{content:"";position:absolute;inset:0;background:radial-gradient(220px 140px at 70% 30%,rgba(224,138,60,.28),transparent 70%)}
+.tz-room-img span{position:absolute;bottom:20px;left:24px;font-family:var(--tz-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tz-accent);z-index:2}
+.tz-room-body{padding:36px}
+.tz-room h3{font-family:var(--tz-display);font-size:32px;font-weight:600;margin-bottom:10px}
+.tz-room p{color:var(--tz-muted);font-size:16px;margin-bottom:18px}
+.tz-room .tz-cap{font-family:var(--tz-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-room--tall .tz-room-img{height:420px}
+.tz-rooms-2{display:grid;grid-template-columns:.75fr 1.25fr;gap:32px;margin-top:32px}
+/* membership ledger */
+.tz-ledger{border:1px solid var(--tz-line)}
+.tz-row{display:grid;grid-template-columns:1fr 1.4fr auto;gap:32px;align-items:center;padding:34px 40px;border-bottom:1px solid var(--tz-line);text-decoration:none;transition:background .25s}
+.tz-row:last-child{border-bottom:none}
+.tz-row:hover{background:var(--tz-surface)}
+.tz-row h3{font-family:var(--tz-display);font-size:30px;font-weight:600}
+.tz-row p{color:var(--tz-muted);font-size:15px}
+.tz-row .tz-cost{text-align:right}
+.tz-row .tz-cost b{font-family:var(--tz-display);font-size:38px;font-weight:600;display:block}
+.tz-row .tz-cost span{font-family:var(--tz-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-row--hi{background:rgba(224,138,60,.07);border-left:4px solid var(--tz-accent)}
+/* neighborhood */
+.tz-hood{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.tz-hood h2{font-family:var(--tz-display);font-weight:500;font-size:clamp(34px,4vw,56px);line-height:1.05;margin-bottom:24px}
+.tz-hood h2 i{font-style:italic;color:var(--tz-accent)}
+.tz-hood p{color:var(--tz-muted);margin-bottom:18px;font-size:18px}
+.tz-hood ul{list-style:none;margin-top:28px}
+.tz-hood li{font-family:var(--tz-mono);font-size:13px;letter-spacing:.06em;padding:12px 0;border-bottom:1px dashed var(--tz-line);display:flex;justify-content:space-between}
+.tz-hood li span:last-child{color:var(--tz-accent)}
+/* cta */
+.tz-cta{border-top:1px solid var(--tz-line);padding:110px 0;text-align:left}
+.tz-cta h2{font-family:var(--tz-display);font-weight:500;font-size:clamp(44px,5.6vw,80px);line-height:1;max-width:14ch}
+.tz-cta h2 i{font-style:italic;color:var(--tz-accent)}
+.tz-cta p{color:var(--tz-muted);font-size:19px;margin:24px 0 36px;max-width:50ch}
+/* footer */
+.tz-footer{border-top:1px solid var(--tz-line);padding:64px 0 36px}
+.tz-footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.tz-footer h4{font-family:var(--tz-mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:18px}
+.tz-footer ul{list-style:none}.tz-footer li{margin-bottom:10px}
+.tz-footer a{text-decoration:none;font-size:15px}
+.tz-footer a:hover{color:var(--tz-accent)}
+.tz-footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-family:var(--tz-mono);font-size:11px;letter-spacing:.1em;color:var(--tz-muted);border-top:1px solid var(--tz-line);padding-top:28px;text-transform:uppercase}
+.tz-reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--tz-ease),transform .7s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}.tz-dot{animation:none}.tz-reveal{opacity:1;transform:none;transition:none}*{transition:none !important}
+}
+@media(max-width:960px){
+  .tz-hero-grid{grid-template-columns:1fr;gap:32px}
+  .tz-clock{text-align:left}
+  .tz-mani{grid-template-columns:1fr;gap:40px}
+  .tz-rooms,.tz-rooms-2{grid-template-columns:1fr}
+  .tz-hood{grid-template-columns:1fr;gap:40px}
+  .tz-navlinks{display:none}
+  .tz-row{grid-template-columns:1fr;gap:12px}
+  .tz-row .tz-cost{text-align:left}
+}
+@media(max-width:600px){
+  .tz-section{padding:72px 0}
+  .tz-hero{padding:88px 0 80px}
+  .tz-footer-grid{grid-template-columns:1fr}
+  .tz-room--tall .tz-room-img{height:280px}
+}
+</style>
+</head>
+<body>
+<!-- DNA: nordic-noir · design read: a night-owl coworking page with the hush of a fjord at 1 a.m. — candlelit ember on near-black, silence as a feature · dials V5/M4/D4 · one weird thing: a live Oslo clock proving the 24/7 claim, and a published silence policy -->
+<header class="tz-wrap">
+  <nav class="tz-nav" aria-label="Main">
+    <a class="tz-brand" href="#">Fjord <em>House</em></a>
+    <div class="tz-navlinks">
+      <a href="#spaces">Spaces</a><a href="#membership">Membership</a><a href="#house">The house</a><a href="#visit">Visit</a>
+    </div>
+    <div class="tz-open"><span class="tz-dot" aria-hidden="true"></span><span id="tz-open-label">Open now</span></div>
+  </nav>
+</header>
+
+<main>
+  <section class="tz-hero">
+    <div class="tz-night" aria-hidden="true"></div>
+    <div class="tz-wrap">
+      <span class="tz-kicker">Oslo · Grünerløkka · Open 24/7, all year</span>
+      <h1>Work <i>after</i> dark.</h1>
+      <div class="tz-hero-grid">
+        <div>
+          <p>Fjord House is a coworking space for people who do their best thinking when the city goes quiet. Deep-work rooms, a written silence policy, and coffee calibrated for 2 a.m. — in a converted 1911 print works by the Akerselva.</p>
+          <div style="margin-top:32px"><a class="tz-btn" href="#membership">See membership</a></div>
+        </div>
+        <div class="tz-clock">
+          <b id="tz-clock">--:--</b>
+          <span>Oslo time · the night shift is on<br>someone is always here</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-mani">
+    <div class="tz-wrap" style="display:contents">
+      <div style="padding-left:32px;max-width:520px">
+        <h2>The silence <i>policy.</i></h2>
+        <p style="color:var(--tz-muted);margin-top:20px;font-size:18px">Posted by the door, enforced by culture. It's why members stay for years.</p>
+      </div>
+      <ol class="tz-rules tz-reveal" style="padding-right:32px">
+        <li><strong>No calls in the Long Room.</strong> Phone booths on every floor; the deep-work floor stays library-quiet.</li>
+        <li><strong>Headphones mean do not disturb.</strong> It's the house signal. Respect it absolutely.</li>
+        <li><strong>Keyboards stay quiet after midnight.</strong> We stock silent switches at the front desk — free to borrow.</li>
+        <li><strong>The kitchen is for conversation.</strong> Loud, happy, unlimited. Sound stays behind its door.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="tz-section" id="spaces">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker" style="font-family:var(--tz-mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--tz-accent);margin-bottom:20px;display:block">The rooms</span>
+        <h2>Three rooms, <i>three</i> kinds of quiet</h2>
+        <p>Pick your depth. Move between them as the night demands.</p>
+      </div>
+      <div class="tz-rooms">
+        <a class="tz-room tz-reveal" href="#membership">
+          <div class="tz-room-img" role="img" aria-label="The Long Room"><span>Floor 2 · Silent</span></div>
+          <div class="tz-room-body"><h3>The Long Room</h3><p>A 40-meter oak table under low brass lamps. Forty desks, zero talking. The room that built three startups and one novel.</p><div class="tz-cap">40 desks · from the Night Owl plan</div></div>
+        </a>
+        <a class="tz-room tz-room--tall tz-reveal" href="#membership">
+          <div class="tz-room-img" role="img" aria-label="The Cellar"><span>Basement · Silent+</span></div>
+          <div class="tz-room-body"><h3>The Cellar</h3><p>Windowless, phone-free, twelve carrels with doors that close. For deadlines and dissertations.</p><div class="tz-cap">12 carrels · Resident plan only</div></div>
+        </a>
+      </div>
+      <div class="tz-rooms-2">
+        <a class="tz-room tz-reveal" href="#membership">
+          <div class="tz-room-img" role="img" aria-label="The Loft" style="height:240px"><span>Floor 3 · Social</span></div>
+          <div class="tz-room-body"><h3>The Loft</h3><p>Conversation allowed, collaboration encouraged. Whiteboards, a record player, and the best sunset in Grünerløkka.</p><div class="tz-cap">20 desks · all plans</div></div>
+        </a>
+        <a class="tz-room tz-reveal" href="#membership">
+          <div class="tz-room-img" role="img" aria-label="Phone booths" style="height:240px"><span>Every floor</span></div>
+          <div class="tz-room-body"><h3>Booths &amp; the kitchen</h3><p>Six acoustic call booths, a kitchen that seats thirty, and coffee from a roaster two streets over — on the house, around the clock.</p><div class="tz-cap">Included in every plan</div></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="membership" style="border-top:1px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker" style="font-family:var(--tz-mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--tz-accent);margin-bottom:20px;display:block">Membership</span>
+        <h2>Priced for <i>how</i> you work</h2>
+        <p>Month-to-month, no deposit games. Every plan includes 24/7 access, coffee, and the silence policy.</p>
+      </div>
+      <div class="tz-ledger tz-reveal">
+        <a class="tz-row" href="#visit">
+          <div><h3>Drifter</h3></div>
+          <p>Ten day-passes a month, any room, any hour. For the curious and the visiting.</p>
+          <div class="tz-cost"><b>kr 1,900</b><span>/ month</span></div>
+        </a>
+        <a class="tz-row tz-row--hi" href="#visit">
+          <div><h3>Night Owl</h3></div>
+          <p>Unlimited access 6pm–9am plus weekends. The Long Room's home shift — most popular for a reason.</p>
+          <div class="tz-cost"><b>kr 2,900</b><span>/ month</span></div>
+        </a>
+        <a class="tz-row" href="#visit">
+          <div><h3>Resident</h3></div>
+          <p>Your own desk in the Long Room, Cellar carrel priority, and a locker with your name on it.</p>
+          <div class="tz-cost"><b>kr 4,900</b><span>/ month</span></div>
+        </a>
+        <a class="tz-row" href="#visit">
+          <div><h3>Studio</h3></div>
+          <p>A lockable 12 m² studio for teams of 2–4. Four available; two currently open.</p>
+          <div class="tz-cost"><b>kr 11,500</b><span>/ month</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="house" style="border-top:1px solid var(--tz-line)">
+    <div class="tz-wrap tz-hood">
+      <div class="tz-reveal">
+        <h2>A 1911 print works, <i>kept honest.</i></h2>
+        <p>We kept the steel windows, the concrete floors, and the freight elevator (it works; it's slow; we love it). The presses left in 1987. The quiet moved in and never left.</p>
+        <p>Grünerløkka puts dinner, the river walk, and the night bus within five minutes — useful at 3 a.m., essential at 6.</p>
+        <ul>
+          <li><span>Address</span><span>Markveien 42B, Oslo</span></li>
+          <li><span>Transit</span><span>Bus 21 · 4 min · runs all night Fri–Sat</span></li>
+          <li><span>Members</span><span>210 · avg. stay 2.4 years</span></li>
+          <li><span>Noise floor</span><span>28 dB in the Long Room</span></li>
+        </ul>
+      </div>
+      <div class="tz-reveal" style="border:1px solid var(--tz-line);padding:48px;background:var(--tz-surface)">
+        <p style="font-family:var(--tz-display);font-size:24px;font-style:italic;line-height:1.5;margin-bottom:24px">"I wrote my entire thesis in the Cellar between midnight and five. I've never told my advisor. She thinks I'm a morning person."</p>
+        <footer class="tz-mono" style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tz-muted)">Ingrid S. · member since 2022</footer>
+      </div>
+    </div>
+  </section>
+
+<style>
+.tz-events{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border:1px solid var(--tz-line)}
+.tz-ev{padding:40px 34px;border-right:1px solid var(--tz-line);text-decoration:none;display:block;transition:background .25s}
+.tz-ev:last-child{border-right:none}
+.tz-ev:hover{background:var(--tz-surface)}
+.tz-ev .tz-date{font-family:var(--tz-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tz-accent);display:block;margin-bottom:14px}
+.tz-ev h3{font-family:var(--tz-display);font-size:26px;font-weight:600;margin-bottom:10px}
+.tz-ev p{font-size:15px;color:var(--tz-muted)}
+.tz-daypass{display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:center;border:1px solid var(--tz-line);background:var(--tz-surface);padding:64px 56px}
+.tz-daypass h2{font-family:var(--tz-display);font-weight:500;font-size:clamp(32px,3.8vw,52px);line-height:1.05;margin-bottom:18px}
+.tz-daypass h2 i{font-style:italic;color:var(--tz-accent)}
+.tz-daypass p{color:var(--tz-muted);font-size:18px;margin-bottom:26px;max-width:46ch}
+.tz-daypass .tz-cost{font-family:var(--tz-display);font-size:56px;font-weight:600}
+.tz-daypass .tz-cost small{font-family:var(--tz-mono);font-size:12px;color:var(--tz-muted);letter-spacing:.1em}
+.tz-faqc{max-width:780px}
+.tz-faqc details{border-bottom:1px solid var(--tz-line)}
+.tz-faqc summary{font-family:var(--tz-display);font-size:22px;padding:24px 0;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px}
+.tz-faqc summary::-webkit-details-marker{display:none}
+.tz-faqc summary::after{content:"+";font-family:var(--tz-mono);color:var(--tz-accent)}
+.tz-faqc details[open] summary::after{content:"–"}
+.tz-faqc details p{color:var(--tz-muted);padding:0 0 26px;max-width:62ch}
+@media(max-width:900px){.tz-events{grid-template-columns:1fr}.tz-ev{border-right:none;border-bottom:1px solid var(--tz-line)}.tz-ev:last-child{border-bottom:none}.tz-daypass{grid-template-columns:1fr;gap:32px;padding:48px 32px}}
+</style>
+  <section class="tz-section" id="evenings" style="border-top:1px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker" style="font-family:var(--tz-mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--tz-accent);margin-bottom:20px;display:block">After hours</span>
+        <h2>Evenings at the <i>house</i></h2>
+        <p>Members only, always free. The one time talking is encouraged.</p>
+      </div>
+      <div class="tz-events tz-reveal">
+        <a class="tz-ev" href="#visit"><span class="tz-date">First Thursdays · 8pm</span><h3>Demo night</h3><p>Five members, five minutes each, showing what the quiet hours produced. Applause is mandatory.</p></a>
+        <a class="tz-ev" href="#visit"><span class="tz-date">Third Wednesdays · 9pm</span><h3>Night writing club</h3><p>Two silent hours in the Long Room, then readings in the kitchen. Thesis chapters welcome.</p></a>
+        <a class="tz-ev" href="#visit"><span class="tz-date">Last Fridays · 10pm</span><h3>Vinyl &amp; code</h3><p>Someone brings records, everyone brings a side project. The Loft's record player does the rest.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="daypass" style="border-top:1px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-daypass tz-reveal">
+        <div>
+          <h2>Try one <i>night</i> first.</h2>
+          <p>A day pass runs 24 hours from first tap-in — arrive at 9pm, leave at 9pm, see what the quiet does for you. Credited toward membership if you join within a week.</p>
+          <a class="tz-btn" href="#visit">Get a day pass</a>
+        </div>
+        <div style="text-align:right"><div class="tz-cost">kr 290 <small>/ 24 hours</small></div><p class="tz-mono" style="font-size:12px;color:var(--tz-muted);margin-top:12px;letter-spacing:.08em">COFFEE INCLUDED · OBVIOUSLY</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="faq" style="border-top:1px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker" style="font-family:var(--tz-mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--tz-accent);margin-bottom:20px;display:block">Asked at the door</span>
+        <h2>Questions</h2>
+      </div>
+      <div class="tz-faqc tz-reveal">
+        <details><summary>Is it really open 24/7?</summary><p>Really. Your keycard works at 4am on a Tuesday in February. Night staff are members on a rota — there's always a human in the building, and the coffee machine never sleeps.</p></details>
+        <details><summary>What if I need to take calls during the day?</summary><p>That's what the Night Owl plan and the six phone booths are for. Daytime callers usually pick the Loft or a booth — the Long Room stays silent around the clock.</p></details>
+        <details><summary>Can I receive mail and packages?</summary><p>Residents and Studios get a real street address and parcel receiving. Drifters and Night Owls can use the address for occasional packages — just warn us about the large ones.</p></details>
+        <details><summary>Is there a minimum commitment?</summary><p>No. Every plan is month-to-month with 30 days' notice. The average member stays 2.4 years, which we take as a compliment and a responsibility.</p></details>
+      </div>
+    </div>
+  </section>
+
+<style>
+.tz-getting{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.tz-getting h2{font-family:var(--tz-display);font-weight:500;font-size:clamp(32px,3.8vw,52px);line-height:1.05;margin-bottom:20px}
+.tz-getting h2 i{font-style:italic;color:var(--tz-accent)}
+.tz-getting p{color:var(--tz-muted);font-size:18px;margin-bottom:16px;max-width:50ch}
+.tz-transit{list-style:none;margin-top:28px}
+.tz-transit li{display:grid;grid-template-columns:90px 1fr;gap:20px;padding:18px 0;border-bottom:1px solid var(--tz-line);font-size:16px}
+.tz-transit li b{font-family:var(--tz-mono);font-size:12px;letter-spacing:.1em;color:var(--tz-accent);text-transform:uppercase;padding-top:4px}
+.tz-transit li span{color:var(--tz-muted)}
+.tz-transit li span strong{color:var(--tz-ink);font-weight:600}
+@media(max-width:900px){.tz-getting{grid-template-columns:1fr;gap:40px}}
+</style>
+  <section class="tz-section" id="getting" style="border-top:1px solid var(--tz-line)">
+    <div class="tz-wrap tz-getting">
+      <div class="tz-reveal">
+        <h2>Getting here at <i>2 a.m.</i></h2>
+        <p>The night shift only works if you can actually reach us. Grünerløkka is one of the few Oslo neighborhoods where "open all night" applies to the streets too.</p>
+        <ul class="tz-transit">
+          <li><b>Night bus</b><span><strong>21N</strong> runs Fri–Sat all night, stops 3 minutes' walk away. Weeknights, the last regular bus is 00:40.</span></li>
+          <li><b>Bike</b><span>Covered bike parking in the courtyard, plus a repair stand. The ride along the Akerselva is lit all night.</span></li>
+          <li><b>Car</b><span>Street parking is free 8pm–8am. We validate the Grünerløkka garage for day-pass holders.</span></li>
+          <li><b>Safety</b><span>Well-lit entrance, staffed 24/7, and a walking-buddy board for the late shift. Ask anyone.</span></li>
+        </ul>
+      </div>
+      <div class="tz-reveal" style="border:1px solid var(--tz-line);background:var(--tz-surface);padding:48px">
+        <p style="font-family:var(--tz-display);font-size:24px;font-style:italic;line-height:1.5;margin-bottom:24px">"I moved my whole practice here because of the 2 a.m. bus. My accountant thinks I'm joking. I'm not."</p>
+        <footer class="tz-mono" style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tz-muted)">Jonas K. · Night Owl since 2021</footer>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-cta" id="visit">
+    <div class="tz-wrap">
+      <h2>Come see it <i>at 11pm.</i></h2>
+      <p>Tours run every evening — because that's when the house shows its true self. Bring your laptop; stay for an hour on us.</p>
+      <a class="tz-btn" href="mailto:night@fjordhouse.no">Book a night tour</a>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-footer-grid">
+      <div>
+        <h4>Fjord House</h4>
+        <p style="font-size:15px;color:var(--tz-muted);max-width:32ch">Night-owl coworking in Oslo. Open 24/7, every day of the year — including the ones you'd rather forget.</p>
+      </div>
+      <div><h4>House</h4><ul><li><a href="#spaces">Spaces</a></li><li><a href="#membership">Membership</a></li><li><a href="#house">The building</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="mailto:night@fjordhouse.no">night@fjordhouse.no</a></li><li><a href="tel:+4722550147">+47 22 55 01 47</a></li><li><a href="#">Instagram</a></li></ul></div>
+    </div>
+    <div class="tz-footer-bottom">
+      <span>© 2026 Fjord House AS · Org. 918 442 107</span>
+      <span>Shhh. It works.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  function tick(){
+    try{
+      var t=new Date().toLocaleTimeString('en-GB',{timeZone:'Europe/Oslo',hour:'2-digit',minute:'2-digit'});
+      document.getElementById('tz-clock').textContent=t;
+    }catch(e){document.getElementById('tz-clock').textContent='24/7';}
+  }
+  tick(); setInterval(tick,30000);
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els=document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('tz-in')});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(en,i){if(en.isIntersecting){setTimeout(function(){en.target.classList.add('tz-in')},(i%3)*80);io.unobserve(en.target);}})},{threshold:.1});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
