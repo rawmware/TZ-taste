@@ -1,0 +1,72 @@
+<!--tz-meta {"id":"pricing-pay-what-you-want","title":"Pay-what-you-want pricing","category":"Sections","file":"patterns/pricing-pay-what-you-want.html","tags":["pricing","pwyw"],"description":"Farmers-almanac pay-what-you-want: honest slider with suggested price, what each tier funds, no guilt design.","dnas":["farmers-almanac"]} -->
+<section class="tz-pricing-pay-what-you-want">
+  <p class="tz-eyebrow">Pay what you want</p>
+  <h2>The course costs <em>what it's worth to you.</em></h2>
+  <p class="tz-lede">Suggested: $49. Pay more and you fund a scholarship seat. Pay less and you still get everything — no locked lessons, ever.</p>
+  <div class="tz-widget">
+    <div class="tz-slider-row">
+      <span class="tz-min">$5</span>
+      <input type="range" id="tz-pwyw" min="5" max="150" value="49" step="1" aria-label="Choose your price">
+      <span class="tz-max">$150</span>
+    </div>
+    <p class="tz-chosen">You'll pay <b id="tz-pwyw-val">$49</b></p>
+    <div class="tz-tiers">
+      <div class="tz-tier" data-min="5" data-max="24"><b>Seedling</b><span>Covers hosting for 10 students</span></div>
+      <div class="tz-tier tz-on" data-min="25" data-max="74"><b>Sprout</b><span>The suggested price — keeps the lights on</span></div>
+      <div class="tz-tier" data-min="75" data-max="150"><b>Oak</b><span>Funds a full scholarship seat</span></div>
+    </div>
+    <a class="tz-cta" href="#enroll">Enroll now</a>
+    <p class="tz-fine">One-time payment · lifetime access · 30-day refund, no questions</p>
+  </div>
+</section>
+<style>
+.tz-pricing-pay-what-you-want{--bg:#efe6d0;--ink:#2b2419;--muted:#7a6c52;--accent:#3f7043;--gold:#b98a1e;
+  background:var(--bg);color:var(--ink);padding:clamp(72px,10vw,130px) clamp(20px,5vw,64px);
+  font-family:Georgia,serif;text-align:center}
+.tz-pricing-pay-what-you-want .tz-eyebrow{font-family:'Courier New',monospace;font-size:11px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 18px;font-weight:700}
+.tz-pricing-pay-what-you-want h2{font-weight:400;font-size:clamp(36px,5.5vw,60px);line-height:1.08;
+  margin:0 auto 16px;max-width:18ch;letter-spacing:-.01em}
+.tz-pricing-pay-what-you-want h2 em{font-style:italic;color:var(--accent)}
+.tz-pricing-pay-what-you-want .tz-lede{color:var(--muted);font-size:16.5px;max-width:54ch;margin:0 auto 44px;line-height:1.7}
+.tz-pricing-pay-what-you-want .tz-widget{max-width:620px;margin:0 auto;border:2px solid var(--ink);
+  background:#f7f1e2;padding:clamp(32px,5vw,52px);box-shadow:8px 8px 0 #2b241922}
+.tz-pricing-pay-what-you-want .tz-slider-row{display:flex;align-items:center;gap:18px;margin-bottom:20px}
+.tz-pricing-pay-what-you-want .tz-min,.tz-pricing-pay-what-you-want .tz-max{font-family:'Courier New',monospace;
+  font-weight:700;font-size:14px;color:var(--muted)}
+.tz-pricing-pay-what-you-want input[type=range]{flex:1;accent-color:var(--accent);height:32px;cursor:pointer}
+.tz-pricing-pay-what-you-want .tz-chosen{font-size:17px;margin:0 0 30px}
+.tz-pricing-pay-what-you-want .tz-chosen b{font-size:44px;color:var(--accent);font-weight:400;letter-spacing:-.02em}
+.tz-pricing-pay-what-you-want .tz-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid #2b241933;
+  margin-bottom:32px;text-align:left}
+.tz-pricing-pay-what-you-want .tz-tier{padding:20px 18px;border-right:1px solid #2b241933;opacity:.55;transition:all .25s}
+.tz-pricing-pay-what-you-want .tz-tier:last-child{border-right:0}
+.tz-pricing-pay-what-you-want .tz-tier.tz-on{opacity:1;background:#3f704312;box-shadow:inset 0 3px 0 var(--accent)}
+.tz-pricing-pay-what-you-want .tz-tier b{display:block;font-size:16px;margin-bottom:6px}
+.tz-pricing-pay-what-you-want .tz-tier.tz-on b{color:var(--accent)}
+.tz-pricing-pay-what-you-want .tz-tier span{font-size:12.5px;color:var(--muted);line-height:1.5;display:block}
+.tz-pricing-pay-what-you-want .tz-cta{display:inline-block;background:var(--ink);color:#f7f1e2;text-decoration:none;
+  font-weight:700;font-family:-apple-system,'Segoe UI',sans-serif;padding:17px 54px;font-size:16px;transition:background .2s}
+.tz-pricing-pay-what-you-want .tz-cta:hover{background:var(--accent)}
+.tz-pricing-pay-what-you-want .tz-fine{font-family:'Courier New',monospace;font-size:11.5px;color:var(--muted);margin:22px 0 0}
+@media (max-width:560px){
+  .tz-pricing-pay-what-you-want .tz-tiers{grid-template-columns:1fr}
+  .tz-pricing-pay-what-you-want .tz-tier{border-right:0;border-bottom:1px solid #2b241933}
+  .tz-pricing-pay-what-you-want .tz-tier:last-child{border-bottom:0}
+}
+</style>
+<script>
+(function(){
+  var root=document.querySelector('.tz-pricing-pay-what-you-want');
+  var slider=root.querySelector('#tz-pwyw'),val=root.querySelector('#tz-pwyw-val');
+  var tiers=root.querySelectorAll('.tz-tier');
+  function update(){
+    var v=+slider.value;
+    val.textContent='$'+v;
+    tiers.forEach(function(t){
+      t.classList.toggle('tz-on',v>=+t.dataset.min&&v<=+t.dataset.max);
+    });
+  }
+  slider.addEventListener('input',update);update();
+})();
+</script>
