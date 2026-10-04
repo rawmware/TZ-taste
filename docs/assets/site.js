@@ -332,6 +332,12 @@
     label: "Template", cta: "Live preview", dir: "templates" });
   makeGallery({ index: "showcase/index.json", key: "showcases", grid: "showcase-grid",
     label: "DNA showcase", cta: "View demo", dir: "showcase" });
+  makeGallery({ index: "generative/index.json", key: "generative", grid: "generative-grid",
+    label: "Generative", cta: "Open piece", dir: "generative" });
+  makeGallery({ index: "emails/index.json", key: "emails", grid: "emails-grid",
+    label: "Email", cta: "Preview email", dir: "emails" });
+  makeGallery({ index: "app-ui/index.json", key: "app_ui", grid: "appui-grid",
+    label: "App UI", cta: "Live preview", dir: "app-ui" });
 
   /* ---------- sources ---------- */
   Promise.all([
