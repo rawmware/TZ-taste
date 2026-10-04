@@ -1,0 +1,110 @@
+<!--tz-meta {"id":"showcase-pixel-garden","title":"Pixel Garden showcase","category":"Showcase","file":"showcase/pixel-garden.html","tags":["pixel-garden"],"description":"Live demo page for the Pixel Garden style DNA.","dnas":["pixel-garden"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pixel Garden — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=DotGothic16&family=VT323&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#20291d; --tz-surface:#2c3a27; --tz-ink:#f5efdc; --tz-muted:#8a9a7b;
+  --tz-accent:#ffc93c; --tz-line:#7fc24d55;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"DotGothic16",sans-serif;font-size:1rem;line-height:1.7;-webkit-font-smoothing:none;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 4vw;border-bottom:3px solid var(--tz-line);font-family:"VT323",monospace;font-size:1.1rem;color:var(--tz-muted)}
+.tz-wordmark{font-family:"Press Start 2P",monospace;font-size:0.85rem;color:var(--tz-ink)}
+.tz-day{color:var(--tz-accent)}
+.tz-hero{padding:4rem 4vw 3.5rem;position:relative}
+.tz-sun{width:12px;height:12px;background:var(--tz-accent);position:absolute;top:2.2rem;right:8vw;animation:tz-rise 2.4s steps(8) both;
+  box-shadow:12px 0 var(--tz-accent),24px 0 var(--tz-accent),-12px 12px var(--tz-accent),0 12px var(--tz-accent),12px 12px var(--tz-accent),24px 12px var(--tz-accent),36px 12px var(--tz-accent),-24px 24px var(--tz-accent),-12px 24px var(--tz-accent),0 24px var(--tz-accent),12px 24px var(--tz-accent),24px 24px var(--tz-accent),36px 24px var(--tz-accent),48px 24px var(--tz-accent),-24px 36px var(--tz-accent),-12px 36px var(--tz-accent),0 36px var(--tz-accent),12px 36px var(--tz-accent),24px 36px var(--tz-accent),36px 36px var(--tz-accent),48px 36px var(--tz-accent),-24px 48px var(--tz-accent),-12px 48px var(--tz-accent),0 48px var(--tz-accent),12px 48px var(--tz-accent),24px 48px var(--tz-accent),36px 48px var(--tz-accent),48px 48px var(--tz-accent),-12px 60px var(--tz-accent),0 60px var(--tz-accent),12px 60px var(--tz-accent),24px 60px var(--tz-accent),36px 60px var(--tz-accent),12px 72px var(--tz-accent),24px 72px var(--tz-accent)}
+@keyframes tz-rise{from{transform:translateY(72px)}to{transform:translateY(0)}}
+.tz-weather{font-family:"VT323",monospace;font-size:1.2rem;color:var(--tz-muted);margin-bottom:1.4rem;letter-spacing:0.06em}
+.tz-weather strong{color:var(--tz-accent);font-weight:400}
+.tz-hero h1{font-family:"Press Start 2P",monospace;font-size:clamp(1.3rem,4.5vw,2.2rem);line-height:1.7;max-width:20ch}
+.tz-hero h1 .tz-suny{color:var(--tz-accent)}
+.tz-sub{margin-top:1.6rem;color:var(--tz-muted);max-width:46ch;font-size:1.05rem}
+.tz-cta{display:inline-block;margin-top:2.2rem;background:var(--tz-accent);color:var(--tz-bg);font-family:"Press Start 2P",monospace;font-size:0.8rem;text-decoration:none;padding:1.1rem 1.8rem;border:3px solid var(--tz-ink);box-shadow:6px 6px 0 #00000066;transition:transform .1s steps(2)}
+.tz-cta:hover{transform:translate(3px,3px);box-shadow:3px 3px 0 #00000066}
+.tz-content{padding:2.5rem 4vw 1rem}
+.tz-furrow{border-top:3px dotted var(--tz-line);padding-top:2.5rem}
+.tz-content h2{font-family:"Press Start 2P",monospace;font-size:clamp(0.9rem,3vw,1.2rem);line-height:1.7;margin-bottom:0.6rem}
+.tz-subhead{font-family:"VT323",monospace;font-size:1.15rem;color:var(--tz-muted);margin-bottom:1.8rem}
+.tz-packets{display:flex;gap:1.2rem;flex-wrap:wrap}
+.tz-packet{background:var(--tz-surface);border:3px solid var(--tz-line);box-shadow:6px 6px 0 #00000055;padding:1.4rem;flex:1;min-width:11rem;animation:tz-pop 400ms steps(4) both}
+.tz-packet:nth-child(2){animation-delay:120ms}.tz-packet:nth-child(3){animation-delay:240ms}.tz-packet:nth-child(4){animation-delay:360ms}
+@keyframes tz-pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.tz-seed{font-family:"Press Start 2P",monospace;font-size:0.62rem;line-height:1.8;color:var(--tz-ink);margin-bottom:0.7rem}
+.tz-packet p{color:var(--tz-muted);font-size:0.95rem}
+.tz-packet .tz-cost{font-family:"VT323",monospace;font-size:1.25rem;color:var(--tz-accent);margin-top:0.8rem;display:block}
+.tz-shed{margin:2.8rem 0 0;border:3px solid var(--tz-line);background:var(--tz-surface);padding:1.6rem;max-width:620px;box-shadow:6px 6px 0 #00000055}
+.tz-shed h2{font-family:"VT323",monospace;font-size:1.3rem;color:var(--tz-muted);letter-spacing:0.06em;margin-bottom:0.7rem}
+.tz-shed p{color:var(--tz-muted)}
+.tz-shed strong{color:var(--tz-ink);font-weight:400}
+.tz-tokens{padding:3.5rem 4vw;border-top:3px dotted var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Press Start 2P",monospace;font-size:1rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:3px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1;box-shadow:6px 6px 0 #00000055}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"VT323",monospace;font-size:1rem;letter-spacing:0.08em;color:var(--tz-muted);padding:0.6rem 0.8rem 0}
+.tz-swatches .tz-hex{display:block;font-family:"VT323",monospace;font-size:1.2rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:3px dotted var(--tz-line);font-family:"VT323",monospace;font-size:1.05rem;color:var(--tz-muted)}
+.tz-sprout{display:inline-block;margin-right:0.8rem}
+@media(max-width:700px){
+  .tz-sun{right:4vw;transform:scale(0.7);transform-origin:top right}
+  .tz-packets{flex-direction:column}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">SPROUT FARM</span>
+  <span class="tz-day">DAY 12 OF THE SEASON</span>
+</header>
+
+<section class="tz-hero">
+  <span class="tz-sun" aria-hidden="true"></span>
+  <p class="tz-weather">WEATHER · <strong>SUNNY</strong> · SOIL 14°C · LAST RAIN: 3 DAYS AGO</p>
+  <h1>Plant. Water. <span class="tz-suny">Wait.</span></h1>
+  <p class="tz-sub">A weekly veg box from four acres of stubborn soil. Press START, pick your seeds, and the pixels remember what you planted.</p>
+  <a class="tz-cta" href="#">PRESS START</a>
+</section>
+
+<section class="tz-content">
+  <div class="tz-furrow">
+    <h2>This week's seed packets</h2>
+    <p class="tz-subhead">HARVESTED TUESDAY · BOXES GO OUT FRIDAY</p>
+    <div class="tz-packets">
+      <div class="tz-packet"><p class="tz-seed">HEIRLOOM<br>TOMATO</p><p>Brandywine, sun-warm. Ugly in the best way.</p><span class="tz-cost">$4 / LB</span></div>
+      <div class="tz-packet"><p class="tz-seed">RAINBOW<br>CHARD</p><p>Stems like a sunset. Sautés in four minutes.</p><span class="tz-cost">$3 / BUNCH</span></div>
+      <div class="tz-packet"><p class="tz-seed">SUGAR SNAP<br>PEAS</p><p>Eat half standing in the row. We all do.</p><span class="tz-cost">$5 / BAG</span></div>
+      <div class="tz-packet"><p class="tz-seed">FRESH<br>BASIL</p><p>Genovese, cut this morning. Smells like July.</p><span class="tz-cost">$2.50 / BUNCH</span></div>
+    </div>
+  </div>
+  <div class="tz-shed">
+    <h2>TOOL-SHED RULES</h2>
+    <p><strong>Water daily. The pixels remember.</strong> Miss a week and your box pauses — no guilt, no phone calls, just seeds waiting.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#20291d"></span><span class="tz-name">bg</span><span class="tz-hex">#20291d</span></li>
+    <li><span class="tz-chip" style="background:#2c3a27"></span><span class="tz-name">surface</span><span class="tz-hex">#2c3a27</span></li>
+    <li><span class="tz-chip" style="background:#f5efdc"></span><span class="tz-name">ink</span><span class="tz-hex">#f5efdc</span></li>
+    <li><span class="tz-chip" style="background:#8a9a7b"></span><span class="tz-name">muted</span><span class="tz-hex">#8a9a7b</span></li>
+    <li><span class="tz-chip" style="background:#ffc93c"></span><span class="tz-name">accent</span><span class="tz-hex">#ffc93c</span></li>
+    <li><span class="tz-chip" style="background:#7fc24d55"></span><span class="tz-name">line</span><span class="tz-hex">#7fc24d55</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot"><span class="tz-sprout" aria-hidden="true">v</span>A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
