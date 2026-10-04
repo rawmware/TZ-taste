@@ -1,0 +1,9 @@
+<!--tz-meta {"id":"backgrounds-checker","title":"Warped checker","category":"Backgrounds","file":"patterns/backgrounds-checker.html","tags":["check","mod"],"description":"Acid checkerboard warped in perspective with oversized cells.","dnas":["acid-rave"]} -->
+<!-- Usage: full-bleed warped checker; pair with a solid scrim behind any text. -->
+<div class="tz-checker" aria-hidden="true"></div>
+<style>
+.tz-checker{position:absolute;left:0;right:0;top:-12%;bottom:-12%;pointer-events:none;
+  background:repeating-conic-gradient(#c8ff1f 0% 25%,#0b0b0b 0% 50%);
+  background-size:88px 88px;
+  transform:perspective(700px) rotateX(32deg);transform-origin:50% 0%}
+</style>
