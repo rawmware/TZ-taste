@@ -1,0 +1,324 @@
+<!--tz-meta {"id":"escape-room","title":"The Locked Study — Mystery Escape Rooms","category":"Template","file":"templates/escape-room.html","tags":["escape-room","entertainment","local"],"description":"Gothic-editorial escape rooms: each room presented as a stamped case dossier, booking as an evidence log.","dnas":["gothic-editorial"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Locked Study — three rooms, sixty minutes, one way out</title>
+<meta name="description" content="The Locked Study is a mystery escape room house: three hand-built rooms, candlelit and story-first. Book your case file.">
+<!-- DNA: gothic-editorial. Design read: dark academia, a library after hours — candlelit paper, blackletter used sparingly, oxblood red — for groups who want a story, not a padlock farm. One distinctive choice: every room is a stamped case dossier — evidence tags, difficulty filed like a case number, and booking reads like signing out evidence. Dials V6/M3/D4. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#12100c;
+  --tz-ink:#e8dfc8;
+  --tz-accent:#a33b2e;
+  --tz-accent-bright:color-mix(in srgb, var(--tz-accent) 72%, var(--tz-ink));
+  --tz-muted:#7d7261;
+  --tz-fog:color-mix(in srgb, var(--tz-fog) 42%, var(--tz-ink) 58%);
+  --tz-line:#2e2820;
+  --tz-line-soft:color-mix(in srgb, var(--tz-ink) 11%, transparent);
+  --tz-paper:color-mix(in srgb, var(--tz-bg) 72%, var(--tz-ink));
+  --tz-deep:color-mix(in srgb, var(--tz-bg) 72%, black);
+  --tz-ink-soft:color-mix(in srgb, var(--tz-ink) 82%, var(--tz-bg));
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Cormorant Garamond",serif;background:var(--tz-bg);color:var(--tz-ink);font-weight:500;font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--tz-accent);color:var(--tz-bg)}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.tz-black{font-family:"UnifrakturMaguntia",serif}
+.tz-mono{font-family:"Space Mono",monospace}
+.skip{position:absolute;left:-999px;top:0;background:var(--tz-accent);color:var(--tz-bg);padding:8px 16px;z-index:99;font-size:15px}
+.skip:focus{left:8px;top:8px}
+
+/* ---------- header ---------- */
+.tz-header{border-bottom:1px solid var(--tz-line);background:color-mix(in srgb, var(--tz-bg) 90%, transparent);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
+.tz-header .tz-wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.tz-logo{font-family:"UnifrakturMaguntia",serif;font-size:27px;display:flex;align-items:center;gap:12px}
+.tz-logo svg{width:24px;height:24px;flex:none}
+.tz-nav{display:flex;gap:30px;font-size:17px}
+.tz-nav a{color:var(--tz-ink-soft)}
+.tz-nav a:hover{color:var(--tz-accent-bright)}
+.tz-book{font-family:"Space Mono",monospace;font-size:13px;letter-spacing:.08em;border:1px solid var(--tz-accent);color:var(--tz-accent-bright);background:transparent;padding:11px 22px;cursor:pointer;transition:background .2s,color .2s}
+.tz-book:hover{background:var(--tz-accent);color:var(--tz-bg)}
+
+/* ---------- hero ---------- */
+.tz-hero{padding:96px 0 80px;position:relative;overflow:hidden}
+.tz-candle{position:absolute;top:70px;right:8%;width:14px;height:120px;pointer-events:none;opacity:.85}
+.tz-candle .tz-wick{position:absolute;top:-14px;left:50%;transform:translateX(-50%);width:10px;height:18px;background:radial-gradient(circle, var(--tz-accent-bright) 0%, transparent 70%);border-radius:50%;animation:tz-flick 1.8s ease-in-out infinite;filter:blur(1px)}
+.tz-candle .tz-stick{position:absolute;inset:0;background:linear-gradient(90deg, var(--tz-line), var(--tz-ink-soft), var(--tz-line));opacity:.5}
+@keyframes tz-flick{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-58%) scale(1.25,.85)}}
+.tz-hero .tz-wrap{position:relative}
+.tz-hero .tz-kicker{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.3em;color:var(--tz-accent-bright);margin-bottom:24px}
+.tz-hero h1{font-family:"UnifrakturMaguntia",serif;font-weight:400;font-size:clamp(56px,9vw,128px);line-height:1.02;max-width:12ch}
+.tz-hero h1 .tz-red{color:var(--tz-accent-bright)}
+.tz-hero .tz-lede{margin-top:26px;font-size:21px;max-width:46ch;color:var(--tz-ink-soft);font-style:italic}
+.tz-hero-cta{margin-top:34px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.tz-btn{display:inline-flex;align-items:center;gap:10px;font-family:"Space Mono",monospace;font-size:14px;letter-spacing:.04em;padding:16px 30px;cursor:pointer;border:1px solid var(--tz-accent);transition:transform .25s var(--tz-ease),background .2s}
+.tz-btn--blood{background:var(--tz-accent);color:var(--tz-bg)}
+.tz-btn--blood:hover{background:var(--tz-accent-bright);transform:translateY(-2px)}
+.tz-btn--ghost{background:transparent;color:var(--tz-accent-bright)}
+.tz-btn--ghost:hover{transform:translateY(-2px);background:color-mix(in srgb, var(--tz-accent) 14%, transparent)}
+.tz-hero-stats{margin-top:44px;display:flex;gap:48px;flex-wrap:wrap}
+.tz-hero-stats div .tz-mono{font-size:11px;letter-spacing:.24em;color:var(--tz-fog);display:block;margin-bottom:6px}
+.tz-hero-stats div strong{font-family:"UnifrakturMaguntia",serif;font-size:40px;font-weight:400;color:var(--tz-ink)}
+
+/* ---------- sections ---------- */
+.tz-section{padding:104px 0}
+.tz-sechead{margin-bottom:52px;max-width:660px}
+.tz-sechead .tz-mono{font-size:12px;letter-spacing:.3em;color:var(--tz-accent-bright);display:block;margin-bottom:18px}
+.tz-sechead h2{font-weight:600;font-size:clamp(38px,4.8vw,60px);line-height:1.1}
+.tz-sechead p{margin-top:14px;font-size:19px;color:var(--tz-ink-soft);font-style:italic}
+
+/* dossiers: the one weird thing */
+.tz-dossier{border:1px solid var(--tz-line);background:var(--tz-paper);margin-bottom:36px;position:relative;transition:border-color .3s}
+.tz-dossier:hover{border-color:var(--tz-accent)}
+.tz-dossier-head{display:grid;grid-template-columns:1fr auto;gap:20px;padding:34px 38px 28px;border-bottom:1px solid var(--tz-line);align-items:start}
+.tz-caseno{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.24em;color:var(--tz-accent-bright);margin-bottom:12px;display:block}
+.tz-dossier h3{font-family:"UnifrakturMaguntia",serif;font-weight:400;font-size:clamp(38px,4.6vw,58px);line-height:1.05}
+.tz-stamp{font-family:"Space Mono",monospace;font-size:12px;font-weight:700;letter-spacing:.2em;color:var(--tz-accent-bright);border:2px solid var(--tz-accent);padding:10px 18px;transform:rotate(6deg);white-space:nowrap;align-self:center}
+.tz-stamp.tz-open{color:var(--tz-ink);border-color:var(--tz-fog)}
+.tz-dossier-body{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;padding:30px 38px 38px}
+.tz-dossier-body .tz-story{font-size:18.5px;color:var(--tz-ink-soft)}
+.tz-dossier-body .tz-story em{color:var(--tz-ink)}
+.tz-evidence{list-style:none;font-family:"Space Mono",monospace;font-size:13px}
+.tz-evidence li{padding:10px 0;border-bottom:1px dashed var(--tz-line);display:flex;justify-content:space-between;gap:16px}
+.tz-evidence li:last-child{border-bottom:0}
+.tz-evidence .tz-k{color:var(--tz-fog);letter-spacing:.1em}
+.tz-evidence .tz-v{color:var(--tz-ink);text-align:right}
+.tz-dossier-foot{display:flex;justify-content:space-between;align-items:center;padding:22px 38px;border-top:1px solid var(--tz-line);flex-wrap:wrap;gap:16px}
+.tz-dossier-foot .tz-price{font-family:"Space Mono",monospace;font-size:15px}
+.tz-dossier-foot .tz-price strong{font-size:22px;color:var(--tz-accent-bright)}
+.tz-dossier-foot a{font-family:"Space Mono",monospace;font-size:13px;letter-spacing:.1em;color:var(--tz-accent-bright);border-bottom:1px solid var(--tz-accent)}
+.tz-dossier-foot a:hover{color:var(--tz-ink);border-color:var(--tz-ink)}
+
+/* interrogation FAQ */
+.tz-faq{border-top:1px solid var(--tz-line)}
+.tz-q{border-bottom:1px solid var(--tz-line);padding:28px 4px;display:grid;grid-template-columns:64px 1fr;gap:20px}
+.tz-q .tz-who{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.18em;color:var(--tz-accent-bright);padding-top:6px}
+.tz-q h3{font-size:23px;font-weight:600;margin-bottom:8px}
+.tz-q p{font-size:17.5px;color:var(--tz-ink-soft);max-width:64ch}
+
+/* evidence log booking */
+.tz-log{background:var(--tz-paper);border:1px solid var(--tz-line);padding:48px 44px;position:relative}
+.tz-log::before{content:"";position:absolute;inset:10px;border:1px solid var(--tz-line-soft);pointer-events:none}
+.tz-log h2{font-family:"UnifrakturMaguntia",serif;font-weight:400;font-size:clamp(36px,4.4vw,54px);margin-bottom:10px}
+.tz-log>p{font-size:18px;color:var(--tz-ink-soft);font-style:italic;margin-bottom:32px;max-width:52ch}
+.tz-slots{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.tz-slot{border:1px solid var(--tz-line);background:var(--tz-deep);padding:20px 16px;text-align:center;cursor:pointer;transition:border-color .2s,transform .25s var(--tz-ease)}
+.tz-slot:hover{border-color:var(--tz-accent);transform:translateY(-3px)}
+.tz-slot.tz-full{opacity:.35;cursor:not-allowed;transform:none}
+.tz-slot .tz-mono{font-size:11px;letter-spacing:.16em;color:var(--tz-fog);display:block;margin-bottom:8px}
+.tz-slot strong{font-size:19px;font-weight:600}
+.tz-slot .tz-left{font-family:"Space Mono",monospace;font-size:11px;color:var(--tz-accent-bright);display:block;margin-top:8px}
+.tz-log-foot{margin-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.tz-log-foot p{font-family:"Space Mono",monospace;font-size:12.5px;color:var(--tz-fog);max-width:52ch}
+
+/* ---------- footer ---------- */
+.tz-footer{border-top:1px solid var(--tz-line);padding:64px 0 36px;background:var(--tz-deep)}
+.tz-foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:44px;margin-bottom:44px}
+.tz-foot-brand{font-family:"UnifrakturMaguntia",serif;font-size:30px;margin-bottom:10px}
+.tz-foot-grid p,.tz-foot-grid li{font-size:16.5px;color:var(--tz-fog);list-style:none;margin-bottom:10px}
+.tz-foot-grid h4{font-family:"Space Mono",monospace;font-size:11.5px;letter-spacing:.24em;color:var(--tz-accent-bright);margin-bottom:16px}
+.tz-foot-grid a:hover{color:var(--tz-accent-bright)}
+.tz-base{border-top:1px solid var(--tz-line);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-fog)}
+
+@media (max-width:960px){
+  .tz-dossier-body{grid-template-columns:1fr}
+  .tz-slots{grid-template-columns:repeat(2,1fr)}
+  .tz-foot-grid{grid-template-columns:1fr}
+  .tz-nav{display:none}
+  .tz-candle{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#dossiers">Skip to the dossiers</a>
+
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-logo" href="#" aria-label="The Locked Study home">
+      <svg viewBox="0 0 24 24" fill="none" style="stroke:var(--tz-accent-bright)" stroke-width="1.7" aria-hidden="true"><rect x="5" y="10" width="14" height="10"/><path d="M8 10V7a4 4 0 018 0v3"/><circle cx="12" cy="15" r="1.6"/></svg>
+      The Locked Study
+    </a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#dossiers">The Rooms</a><a href="#questions">Questions</a><a href="#book">Book</a><a href="#visit">Visit</a>
+    </nav>
+    <a class="tz-book" href="#book">Sign out a room</a>
+  </div>
+</header>
+
+<main>
+<section class="tz-hero">
+  <div class="tz-candle" aria-hidden="true"><div class="tz-wick"></div><div class="tz-stick"></div></div>
+  <div class="tz-wrap">
+    <p class="tz-kicker">AN ESCAPE ROOM HOUSE · THREE CASES ON FILE</p>
+    <h1>Sixty minutes.<br><span class="tz-red">One way out.</span></h1>
+    <p class="tz-lede">No laser grids, no padlock farms. Just hand-built rooms, real stories, and puzzles that respect your intelligence. Bring four to eight minds — leave with one shared alibi.</p>
+    <div class="tz-hero-cta">
+      <a class="tz-btn tz-btn--blood" href="#dossiers">Open the case files</a>
+      <a class="tz-btn tz-btn--ghost" href="#book">Check availability</a>
+    </div>
+    <div class="tz-hero-stats">
+      <div><span class="tz-mono">ESCAPE RATE</span><strong>38%</strong></div>
+      <div><span class="tz-mono">TEAMS HOSTED</span><strong>9,400</strong></div>
+      <div><span class="tz-mono">AVG GROUP</span><strong>5.2</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="tz-section" id="dossiers" style="padding-top:72px">
+  <div class="tz-wrap">
+    <div class="tz-sechead">
+      <span class="tz-mono">EVIDENCE ROOM — DOSSIERS</span>
+      <h2>Three rooms. Choose your case.</h2>
+      <p>Every dossier is the honest file: what you'll face, how hard it bites, and what escaped teams wish they'd known.</p>
+    </div>
+
+    <article class="tz-dossier">
+      <div class="tz-dossier-head">
+        <div><span class="tz-caseno">CASE № 014 — FILED 2019</span><h3>The Curator's Office</h3></div>
+        <span class="tz-stamp tz-open">OPEN</span>
+      </div>
+      <div class="tz-dossier-body">
+        <p class="tz-story">A museum curator vanished mid-exhibition, leaving his office exactly as it was — <em>except nothing in it is quite what it seems.</em> Catalog the collection, decode his private cipher, and find where he went before the museum board arrives at closing.</p>
+        <ul class="tz-evidence">
+          <li><span class="tz-k">DIFFICULTY</span><span class="tz-v">3 of 5 — steady</span></li>
+          <li><span class="tz-k">PARTY SIZE</span><span class="tz-v">4–8 investigators</span></li>
+          <li><span class="tz-k">FRIGHT LEVEL</span><span class="tz-v">none — pure mystery</span></li>
+          <li><span class="tz-k">BEST FOR</span><span class="tz-v">first-timers, families 10+</span></li>
+        </ul>
+      </div>
+      <div class="tz-dossier-foot">
+        <p class="tz-price"><strong>$32</strong> / investigator · 60 min</p>
+        <a href="#book">Sign out this room →</a>
+      </div>
+    </article>
+
+    <article class="tz-dossier">
+      <div class="tz-dossier-head">
+        <div><span class="tz-caseno">CASE № 027 — FILED 2021</span><h3>The Alchemist's Basement</h3></div>
+        <span class="tz-stamp">MOST FEARED</span>
+      </div>
+      <div class="tz-dossier-body">
+        <p class="tz-story">Beneath a 19th-century apothecary, an alchemist's laboratory still bubbles. <em>Complete his final experiment before the reagents run dry</em> — the room gets darker, and the clock gets louder. Our lowest escape rate, on purpose.</p>
+        <ul class="tz-evidence">
+          <li><span class="tz-k">DIFFICULTY</span><span class="tz-v">5 of 5 — brutal</span></li>
+          <li><span class="tz-k">PARTY SIZE</span><span class="tz-v">4–6 investigators</span></li>
+          <li><span class="tz-k">FRIGHT LEVEL</span><span class="tz-v">low — but tense</span></li>
+          <li><span class="tz-k">BEST FOR</span><span class="tz-v">veterans, bachelor parties</span></li>
+        </ul>
+      </div>
+      <div class="tz-dossier-foot">
+        <p class="tz-price"><strong>$36</strong> / investigator · 60 min</p>
+        <a href="#book">Sign out this room →</a>
+      </div>
+    </article>
+
+    <article class="tz-dossier">
+      <div class="tz-dossier-head">
+        <div><span class="tz-caseno">CASE № 033 — FILED 2024</span><h3>The Sunken Telegram</h3></div>
+        <span class="tz-stamp tz-open">NEW FILE</span>
+      </div>
+      <div class="tz-dossier-body">
+        <p class="tz-story">A 1943 telegram never reached its ship. <em>Reconstruct the message from a drowned radio room</em> before the tide — simulated, theatrical, mildly damp — takes the evidence. Our most cinematic room.</p>
+        <ul class="tz-evidence">
+          <li><span class="tz-k">DIFFICULTY</span><span class="tz-v">4 of 5 — clever</span></li>
+          <li><span class="tz-k">PARTY SIZE</span><span class="tz-v">3–6 investigators</span></li>
+          <li><span class="tz-k">FRIGHT LEVEL</span><span class="tz-v">none — period drama</span></li>
+          <li><span class="tz-k">BEST FOR</span><span class="tz-v">date nights, puzzle people</span></li>
+        </ul>
+      </div>
+      <div class="tz-dossier-foot">
+        <p class="tz-price"><strong>$34</strong> / investigator · 60 min</p>
+        <a href="#book">Sign out this room →</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="tz-section" id="questions" style="padding-top:0">
+  <div class="tz-wrap">
+    <div class="tz-sechead">
+      <span class="tz-mono">INTERROGATION TRANSCRIPT — EXCERPTS</span>
+      <h2>Questions we get asked.</h2>
+    </div>
+    <div class="tz-faq">
+      <div class="tz-q"><span class="tz-who">Q · 01</span><div><h3>Are we actually locked in?</h3><p>No. Every door opens from the inside with a push — the "locked" part is theatrical. Anyone can step out anytime; your team keeps playing.</p></div></div>
+      <div class="tz-q"><span class="tz-who">Q · 02</span><div><h3>What if we get stuck?</h3><p>Your game master watches the whole time and nudges before frustration sets in. Hints are unlimited and judgment-free.</p></div></div>
+      <div class="tz-q"><span class="tz-who">Q · 03</span><div><h3>Is it scary?</h3><p>The Alchemist's Basement is tense; the other two aren't scary at all. Nothing jumps out. We promise, in writing, on the waiver.</p></div></div>
+      <div class="tz-q"><span class="tz-who">Q · 04</span><div><h3>Can kids play?</h3><p>Ages 10 and up with an adult. The Curator's Office is the family favorite — no reading level required beyond "can follow a treasure map."</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="tz-section" id="book" style="padding-top:0">
+  <div class="tz-wrap">
+    <div class="tz-log">
+      <p class="tz-mono" style="font-size:12px;letter-spacing:.3em;color:var(--tz-accent-bright);margin-bottom:16px">EVIDENCE SIGN-OUT LOG</p>
+      <h2>Book your sixty minutes.</h2>
+      <p>Pick a slot and the room is yours alone — we never mix groups. Arrive fifteen minutes early; the briefing starts on the dot.</p>
+      <div class="tz-slots">
+        <div class="tz-slot tz-full"><span class="tz-mono">SAT · 2 PM</span><strong>Curator</strong><span class="tz-left">SIGNED OUT</span></div>
+        <div class="tz-slot"><span class="tz-mono">SAT · 4 PM</span><strong>Curator</strong><span class="tz-left">3 TEAMS OPEN</span></div>
+        <div class="tz-slot"><span class="tz-mono">SAT · 6 PM</span><strong>Alchemist</strong><span class="tz-left">2 TEAMS OPEN</span></div>
+        <div class="tz-slot"><span class="tz-mono">SAT · 8 PM</span><strong>Telegram</strong><span class="tz-left">4 TEAMS OPEN</span></div>
+        <div class="tz-slot"><span class="tz-mono">SUN · 1 PM</span><strong>Curator</strong><span class="tz-left">5 TEAMS OPEN</span></div>
+        <div class="tz-slot"><span class="tz-mono">SUN · 3 PM</span><strong>Telegram</strong><span class="tz-left">3 TEAMS OPEN</span></div>
+        <div class="tz-slot"><span class="tz-mono">SUN · 5 PM</span><strong>Alchemist</strong><span class="tz-left">2 TEAMS OPEN</span></div>
+        <div class="tz-slot tz-full"><span class="tz-mono">SUN · 7 PM</span><strong>All rooms</strong><span class="tz-left">SIGNED OUT</span></div>
+      </div>
+      <div class="tz-log-foot">
+        <p>PRIVATE ROOMS ALWAYS · FREE RESCHEDULING UP TO 24 HRS BEFORE · GIFT DOSSIERS AVAILABLE AT THE COUNTER</p>
+        <a class="tz-btn tz-btn--blood" href="#visit">Request a slot</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tz-section" id="visit" style="padding-top:0">
+  <div class="tz-wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:56px">
+    <div>
+      <div class="tz-sechead" style="margin-bottom:20px"><span class="tz-mono">THE PREMISES</span><h2>Find the green door.</h2></div>
+      <p style="font-size:19px"><strong>9 Lantern Court, Old District</strong><br><span style="color:var(--tz-fog)">Look for the brass plaque, not a sign. We're discreet.</span></p>
+    </div>
+    <div>
+      <p class="tz-mono" style="font-size:13px;line-height:2.2;color:var(--tz-fog)">THU–SUN · 12 PM–10 PM<br>MON–WED · PRIVATE EVENTS ONLY<br><br>(555) 640-9912<br>CASES@THELOCKEDSTUDY.COM<br><br>PARKING: HARROW ST GARAGE, 2 BLOCKS<br>TRANSIT: OLD DISTRICT STATION, EXIT 3</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-foot-grid">
+      <div>
+        <p class="tz-foot-brand">The Locked Study</p>
+        <p>Three hand-built mystery rooms in the Old District. Story first, padlocks last.</p>
+      </div>
+      <div>
+        <h4>THE HOUSE</h4>
+        <ul><li><a href="#dossiers">Case dossiers</a></li><li><a href="#questions">Questions</a></li><li><a href="#book">Book a room</a></li></ul>
+      </div>
+      <div>
+        <h4>HOUSE RULES</h4>
+        <ul><li>Private rooms, always</li><li>No phones inside (photos after)</li><li>Unlimited hints, zero judgment</li></ul>
+      </div>
+    </div>
+    <div class="tz-base">
+      <span>© 2026 THE LOCKED STUDY — 9 LANTERN COURT</span>
+      <span class="tz-mono">CASE FILES 014 · 027 · 033 — ALL STILL OPEN</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
