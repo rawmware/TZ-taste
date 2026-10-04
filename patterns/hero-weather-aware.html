@@ -1,0 +1,85 @@
+<!--tz-meta {"id":"hero-weather-aware","title":"Weather-aware hero","category":"Sections","file":"patterns/hero-weather-aware.html","tags":["hero","weather"],"description":"Weather-station hero: headline and CTA change with live conditions — brass-dial aesthetic, honest fallback copy.","dnas":["weather-station"]} -->
+<section class="tz-hero-weather-aware">
+  <div class="tz-dial" aria-hidden="true">
+    <div class="tz-face"><span class="tz-needle" id="tz-needle"></span><span class="tz-hub"></span></div>
+    <p class="tz-reading"><b id="tz-temp">58°F</b><span id="tz-cond">overcast</span></p>
+  </div>
+  <p class="tz-eyebrow">Harbor forecast · updated hourly</p>
+  <h2 id="tz-headline">Gray skies.<br><em>Perfect sailing.</em></h2>
+  <p class="tz-lede" id="tz-sub">Overcast means steady wind and empty water. The 2pm harbor tour leaves in any weather — we provide the foulies.</p>
+  <div class="tz-row">
+    <a class="tz-primary" href="#book" id="tz-cta">Book the 2pm tour</a>
+    <a class="tz-secondary" href="#forecast">Full 7-day forecast</a>
+  </div>
+  <p class="tz-fine">Tours run rain or shine · lightning cancels, full refund</p>
+</section>
+<style>
+.tz-hero-weather-aware{--bg:#e9e4d6;--ink:#2b2b26;--muted:#7a7565;--accent:#b3541e;--brass:#a8823c;
+  background:var(--bg);color:var(--ink);padding:clamp(72px,10vw,130px) clamp(20px,5vw,64px);
+  font-family:Georgia,serif;text-align:center}
+.tz-hero-weather-aware .tz-dial{display:inline-block;margin-bottom:36px}
+.tz-hero-weather-aware .tz-face{width:150px;height:150px;border-radius:50%;border:6px solid var(--brass);
+  background:radial-gradient(circle,#f4efe0 0%,#e0d6ba 100%);position:relative;margin:0 auto 16px;
+  box-shadow:0 8px 24px #2b2b2622}
+.tz-hero-weather-aware .tz-needle{position:absolute;left:50%;bottom:50%;width:4px;height:58px;background:var(--accent);
+  transform-origin:bottom center;transform:translateX(-50%) rotate(-38deg);transition:transform 1.2s cubic-bezier(.22,1,.36,1)}
+.tz-hero-weather-aware .tz-hub{position:absolute;left:50%;top:50%;width:16px;height:16px;border-radius:50%;
+  background:var(--brass);transform:translate(-50%,-50%)}
+.tz-hero-weather-aware .tz-reading b{font-family:ui-monospace,Menlo,monospace;font-size:22px;display:block}
+.tz-hero-weather-aware .tz-reading span{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--muted)}
+.tz-hero-weather-aware .tz-reading{margin:0}
+.tz-hero-weather-aware .tz-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 18px}
+.tz-hero-weather-aware h2{font-weight:400;font-size:clamp(44px,7vw,88px);line-height:1.02;margin:0 0 20px;letter-spacing:-.01em}
+.tz-hero-weather-aware h2 em{font-style:italic;color:var(--accent)}
+.tz-hero-weather-aware .tz-lede{font-family:-apple-system,'Segoe UI',sans-serif;font-size:17px;color:var(--muted);
+  max-width:52ch;margin:0 auto 34px;line-height:1.65}
+.tz-hero-weather-aware .tz-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:26px}
+.tz-hero-weather-aware .tz-primary{background:var(--accent);color:#fff;text-decoration:none;font-weight:700;
+  font-family:-apple-system,'Segoe UI',sans-serif;padding:16px 36px;font-size:15px}
+.tz-hero-weather-aware .tz-secondary{color:var(--ink);text-decoration:none;font-family:-apple-system,'Segoe UI',sans-serif;
+  padding:16px 36px;font-size:15px;border:1px solid #2b2b2633}
+.tz-hero-weather-aware .tz-fine{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);margin:0}
+@media (max-width:560px){
+  .tz-hero-weather-aware .tz-row{flex-direction:column;align-items:stretch}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-hero-weather-aware .tz-needle{transition:none}
+}
+</style>
+<script>
+(function(){
+  // Demo: cycles representative conditions. In production, swap for a weather API.
+  var states=[
+    {temp:"58°F",cond:"overcast",needle:-38,
+     h:"Gray skies.<br><em>Perfect sailing.</em>",
+     s:"Overcast means steady wind and empty water. The 2pm harbor tour leaves in any weather — we provide the foulies.",
+     cta:"Book the 2pm tour"},
+    {temp:"72°F",cond:"sunny",needle:42,
+     h:"Bluebird day.<br><em>The water is waiting.</em>",
+     s:"Light breeze, flat harbor, visibility for miles. Sunset tours sell out on days like this — book ahead.",
+     cta:"Book the sunset tour"},
+    {temp:"49°F",cond:"rain",needle:-72,
+     h:"Rain on the <em>windows.</em><br>Not on you.",
+     s:"Our boats are covered and heated. Rainy-day tours are the quietest, moodiest rides we run — half price today.",
+     cta:"Book the rainy-day tour"}
+  ];
+  var i=0,root=document.querySelector('.tz-hero-weather-aware');
+  function render(){
+    var s=states[i%states.length];
+    root.querySelector('#tz-temp').textContent=s.temp;
+    root.querySelector('#tz-cond').textContent=s.cond;
+    root.querySelector('#tz-needle').style.transform='translateX(-50%) rotate('+s.needle+'deg)';
+    root.querySelector('#tz-headline').innerHTML=s.h;
+    root.querySelector('#tz-sub').textContent=s.s;
+    root.querySelector('#tz-cta').textContent=s.cta;
+  }
+  render();
+  // rotate demo states every 9s so reviewers see all variants
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    setInterval(function(){i++;render();},9000);
+  }
+})();
+</script>
