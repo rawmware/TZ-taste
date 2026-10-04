@@ -1,0 +1,48 @@
+<!--tz-meta {"id":"pricing-compare","title":"Comparison table","category":"Pricing","file":"patterns/pricing-compare.html","tags":["table","detailed"],"description":"Full comparison matrix with sticky plan headers and zebra-free hairline rows.","dnas":["swiss-rational"]} -->
+<section class="tz-pc">
+  <p class="tz-pc-eyebrow">Pricing · compare every plan</p>
+  <h2 class="tz-pc-title">The fine print,<br>up front.</h2>
+  <div class="tz-pc-scroll">
+    <table class="tz-pc-table">
+      <thead>
+        <tr><th scope="col"><span class="tz-pc-sr">Feature</span></th>
+          <th scope="col">Starter<br><b>$0</b></th>
+          <th scope="col">Pro<br><b>$29</b></th>
+          <th scope="col">Team<br><b>$79</b></th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row">Inboxes</th><td>1</td><td>3</td><td>Unlimited</td></tr>
+        <tr><th scope="row">Drafted replies / mo</th><td>100</td><td>2,000</td><td>10,000</td></tr>
+        <tr><th scope="row">Routing rules</th><td>—</td><td><span class="tz-pc-y">✓</span></td><td><span class="tz-pc-y">✓</span></td></tr>
+        <tr><th scope="row">Voice profiles</th><td>—</td><td>1</td><td>Unlimited</td></tr>
+        <tr><th scope="row">Friday reports</th><td><span class="tz-pc-y">✓</span></td><td><span class="tz-pc-y">✓</span></td><td><span class="tz-pc-y">✓</span></td></tr>
+        <tr><th scope="row">SSO / SAML</th><td>—</td><td>—</td><td><span class="tz-pc-y">✓</span></td></tr>
+        <tr><th scope="row">Data residency</th><td>US</td><td>US / EU</td><td>US / EU / UK</td></tr>
+        <tr><th scope="row">Support</th><td>Docs</td><td>Email, 24h</td><td>Humans, 7 days</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="tz-pc-foot">All plans: no per-seat fees · cancel in two clicks · exports always free</p>
+</section>
+<style>
+.tz-pc{--bg:#ffffff;--ink:#111111;--red:#d8231a;--line:rgba(17,17,17,.16);
+  background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(64px,9vw,120px) clamp(20px,6vw,88px)}
+.tz-pc-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--red);margin:0 0 16px}
+.tz-pc-title{font-size:clamp(34px,5vw,62px);font-weight:700;letter-spacing:-.03em;
+  line-height:1.02;margin:0 0 clamp(36px,5vw,60px)}
+.tz-pc-scroll{overflow-x:auto;max-width:1000px;border:2px solid var(--ink)}
+.tz-pc-table{border-collapse:collapse;width:100%;min-width:560px;font-size:15px}
+.tz-pc-table th,.tz-pc-table td{padding:18px 22px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+.tz-pc-table thead th{position:sticky;top:0;background:var(--ink);color:#fff;font-size:14px;
+  letter-spacing:.08em;text-transform:uppercase;z-index:1}
+.tz-pc-table thead th b{display:block;font-size:26px;letter-spacing:-.02em;margin-top:6px}
+.tz-pc-table tbody th{font-weight:700;font-size:14px}
+.tz-pc-table tbody tr:last-child th,.tz-pc-table tbody tr:last-child td{border-bottom:none}
+.tz-pc-y{color:var(--red);font-weight:900;font-size:18px}
+.tz-pc-sr{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(255,255,255,.6)}
+.tz-pc-foot{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.08em;
+  color:rgba(17,17,17,.6);margin:24px 0 0}
+</style>
