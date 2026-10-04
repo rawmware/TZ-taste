@@ -1,0 +1,63 @@
+{
+ "count": 4,
+ "updated": "2026-10-04",
+ "usage": "Astro component ports of the best patterns. Scoped styles, zero extra deps.",
+ "astro_components": [
+  {
+   "id": "astro-features-speclist",
+   "title": "Spec-list features (Astro)",
+   "category": "Astro",
+   "file": "astro/FeaturesSpecList.astro",
+   "tags": [
+    "astro",
+    "features"
+   ],
+   "description": "Laboratory-clean feature spec table: numbered test IDs, right-aligned mono values, reference notes — a calibrated instrument, not cards.",
+   "dnas": [
+    "laboratory-clean"
+   ]
+  },
+  {
+   "id": "astro-footer-sitemap",
+   "title": "Sitemap footer (Astro)",
+   "category": "Astro",
+   "file": "astro/FooterSitemap.astro",
+   "tags": [
+    "astro",
+    "footer"
+   ],
+   "description": "Transit-style sitemap footer: station header, line-badge section labels, and a route strip of wayfinding dots.",
+   "dnas": [
+    "transit-swiss"
+   ]
+  },
+  {
+   "id": "astro-hero-broadsheet",
+   "title": "Broadsheet hero (Astro)",
+   "category": "Astro",
+   "file": "astro/HeroBroadsheet.astro",
+   "tags": [
+    "astro",
+    "hero"
+   ],
+   "description": "Dark-academia broadsheet hero: blackletter masthead, dateline rules, two-column lede with a marginalia gutter.",
+   "dnas": [
+    "gothic-editorial"
+   ]
+  },
+  {
+   "id": "astro-pricing-matrix",
+   "title": "Pricing matrix (Astro)",
+   "category": "Astro",
+   "file": "astro/PricingMatrix.astro",
+   "tags": [
+    "astro",
+    "pricing"
+   ],
+   "description": "Blueprint-style pricing matrix: cyanotype sheet, drafting frame, and the standard plan hand-circled in amber annotation.",
+   "dnas": [
+    "blueprint-tech"
+   ]
+  }
+ ]
+}
