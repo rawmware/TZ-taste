@@ -1,0 +1,49 @@
+<!--tz-meta {"id":"size-guide","title":"Apparel size guide","category":"Sections","file":"patterns/size-guide.html","tags":["sizing","table","ecommerce","apparel"],"description":"Brutalist spec table with Women/Men tabs and real inch measurements.","dnas":["swiss-rational"]} -->
+<section class="tz-size-guide" aria-label="Size guide">
+  <div class="tz-head">
+    <h2>Size guide</h2>
+    <div class="tz-tabs" role="tablist" aria-label="Fit">
+      <button role="tab" aria-selected="true" class="tz-on">Women</button>
+      <button role="tab" aria-selected="false">Men</button>
+    </div>
+  </div>
+  <div class="tz-scroll">
+    <table>
+      <caption>Women&rsquo;s tops &amp; bottoms — body measurements in inches</caption>
+      <thead><tr><th scope="col">Size</th><th scope="col">Chest</th><th scope="col">Waist</th><th scope="col">Hip</th><th scope="col">Inseam</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">XS</th><td>32</td><td>25</td><td>35</td><td>30</td></tr>
+        <tr><th scope="row">S</th><td>34</td><td>27</td><td>37</td><td>30&frac12;</td></tr>
+        <tr><th scope="row">M</th><td>36</td><td>29</td><td>39</td><td>31</td></tr>
+        <tr><th scope="row">L</th><td>38&frac12;</td><td>32</td><td>41&frac12;</td><td>31&frac12;</td></tr>
+        <tr><th scope="row">XL</th><td>41</td><td>35</td><td>44</td><td>32</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="tz-fit">Between sizes? Size up — our cuts run slim. Measured flat, in inches; 1 in = 2.54 cm.</p>
+</section>
+<style>
+.tz-size-guide{--bg:#fafafa;--ink:#111111;--accent:#e30613;--muted:#6b6b6b;--line:#111111;
+  background:var(--bg);color:var(--ink);padding:clamp(32px,5vw,72px);
+  font-family:'Archivo',-apple-system,'Segoe UI',sans-serif}
+.tz-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
+  margin-bottom:28px;flex-wrap:wrap}
+.tz-head h2{font-size:clamp(28px,3.4vw,44px);letter-spacing:-.03em;margin:0;font-weight:800}
+.tz-tabs{display:flex;border:2px solid var(--line)}
+.tz-tabs button{font-family:'Space Mono',ui-monospace,Menlo,monospace;font-size:12px;
+  letter-spacing:.12em;text-transform:uppercase;padding:10px 22px;background:transparent;
+  border:0;cursor:pointer;color:var(--muted)}
+.tz-tabs .tz-on{background:var(--ink);color:var(--bg)}
+.tz-scroll{overflow-x:auto;border:2px solid var(--line)}
+.tz-size-guide table{width:100%;border-collapse:collapse;min-width:560px;font-size:15px}
+.tz-size-guide caption{text-align:left;font-family:'Space Mono',ui-monospace,Menlo,monospace;
+  font-size:12px;letter-spacing:.08em;color:var(--muted);padding:14px 18px;border-bottom:2px solid var(--line)}
+.tz-size-guide th,.tz-size-guide td{padding:14px 18px;text-align:left;border-bottom:1px solid #11111122}
+.tz-size-guide thead th{font-family:'Space Mono',ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.tz-size-guide tbody th{font-weight:800;color:var(--accent)}
+.tz-size-guide tbody tr:last-child th,.tz-size-guide tbody tr:last-child td{border-bottom:0}
+.tz-size-guide tbody tr:hover{background:#e306130d}
+.tz-fit{margin:18px 0 0;font-size:14px;color:var(--muted);line-height:1.6;max-width:60ch}
+@media(max-width:560px){.tz-head{align-items:flex-start;flex-direction:column}}
+</style>
