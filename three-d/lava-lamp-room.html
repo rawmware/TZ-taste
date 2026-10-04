@@ -1,0 +1,202 @@
+<!--tz-meta {"id":"lava-lamp-room","title":"Lava Lamp Room","category":"3D","file":"three-d/lava-lamp-room.html","tags":["threejs","lava-lamp","room"],"description":"A corner room at dusk with a lava lamp on the table — wax blobs rising, warm light breathing.","dnas":["vaporwave-sunset"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lava Lamp Room — TZ-taste</title>
+<style>
+  html, body { margin:0; height:100%; overflow:hidden; background:#1a1216; }
+  #app { position:fixed; inset:0; }
+  #app canvas { display:block; }
+  .caption { position:fixed; left:18px; bottom:16px; z-index:5; color:#c8a48f;
+    font:12px/1.6 system-ui, -apple-system, sans-serif; letter-spacing:.05em;
+    opacity:.9; pointer-events:none; }
+  .caption b { display:block; font-size:13px; letter-spacing:.22em; text-transform:uppercase; }
+  #fallback { display:none; position:fixed; inset:0; z-index:10; place-items:center;
+    color:#c8a48f; font:14px/1.6 system-ui, sans-serif; text-align:center;
+    padding:32px; background:#1a1216; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="caption"><b>Lava Lamp Room</b>the lamp is the whole evening<br/>drag to orbit &middot; scroll to zoom</div>
+<div id="fallback"><p>This scene needs WebGL, which your browser could not provide.<br/>Try a recent version of Chrome, Safari, Firefox or Edge.</p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (e) {
+  document.getElementById('fallback').style.display = 'grid';
+  throw e;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('app').appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x1a1216);
+scene.fog = new THREE.Fog(0x1a1216, 25, 70);
+
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 400);
+camera.position.set(8, 6, 11);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.target.set(0, 3, 0);
+controls.maxPolarAngle = 1.55;
+controls.minDistance = 4;
+controls.maxDistance = 40;
+
+scene.add(new THREE.HemisphereLight(0x5c4a5c, 0x120c10, 0.5));
+
+/* ---------- room ---------- */
+const wallMat = new THREE.MeshStandardMaterial({ color: 0x241a24, roughness: 1 });
+const floor = new THREE.Mesh(new THREE.PlaneGeometry(50, 50),
+  new THREE.MeshStandardMaterial({ color: 0x2a1f28, roughness: 0.9 }));
+floor.rotation.x = -Math.PI / 2;
+scene.add(floor);
+const wall1 = new THREE.Mesh(new THREE.PlaneGeometry(50, 20), wallMat);
+wall1.position.set(0, 10, -12);
+scene.add(wall1);
+const wall2 = new THREE.Mesh(new THREE.PlaneGeometry(50, 20), wallMat);
+wall2.rotation.y = Math.PI / 2;
+wall2.position.set(-12, 10, 0);
+scene.add(wall2);
+const rug = new THREE.Mesh(new THREE.CircleGeometry(4.4, 36),
+  new THREE.MeshStandardMaterial({ color: 0x4a3040, roughness: 1 }));
+rug.rotation.x = -Math.PI / 2;
+rug.position.y = 0.02;
+scene.add(rug);
+
+/* ---------- poster ---------- */
+const poster = new THREE.Mesh(new THREE.PlaneGeometry(3.4, 4.6),
+  new THREE.MeshStandardMaterial({ color: 0x0f0d12, roughness: 0.9 }));
+poster.position.set(3.4, 7.4, -11.9);
+scene.add(poster);
+const sunDisc = new THREE.Mesh(new THREE.CircleGeometry(1.05, 32),
+  new THREE.MeshBasicMaterial({ color: 0xff7e5f }));
+sunDisc.position.set(3.4, 7.9, -11.88);
+scene.add(sunDisc);
+for (let i = 0; i < 4; i++) {
+  const bar = new THREE.Mesh(new THREE.PlaneGeometry(3.0 - i * 0.35, 0.16),
+    new THREE.MeshBasicMaterial({ color: 0xb8c5ff }));
+  bar.position.set(3.4, 6.6 - i * 0.5, -11.88);
+  scene.add(bar);
+}
+
+/* ---------- table ---------- */
+const tableMat = new THREE.MeshStandardMaterial({ color: 0x3a2a34, roughness: 0.7 });
+const table = new THREE.Group();
+const top = new THREE.Mesh(new THREE.BoxGeometry(5.4, 0.35, 3.6), tableMat);
+top.position.y = 2.6;
+table.add(top);
+for (const sx of [-2.4, 2.4]) for (const sz of [-1.5, 1.5]) {
+  const leg = new THREE.Mesh(new THREE.BoxGeometry(0.3, 2.6, 0.3), tableMat);
+  leg.position.set(sx, 1.3, sz);
+  table.add(leg);
+}
+scene.add(table);
+
+/* ---------- lava lamp ---------- */
+const lampGroup = new THREE.Group();
+const base = new THREE.Mesh(new THREE.CylinderGeometry(1.15, 1.3, 0.7, 24),
+  new THREE.MeshStandardMaterial({ color: 0x151014, roughness: 0.4, metalness: 0.5 }));
+base.position.y = 0.35;
+lampGroup.add(base);
+const glass = new THREE.Mesh(new THREE.CylinderGeometry(0.85, 1.0, 3.4, 24, 1, true),
+  new THREE.MeshStandardMaterial({ color: 0xffd9c0, transparent: true, opacity: 0.22,
+    roughness: 0.1, metalness: 0, side: THREE.DoubleSide }));
+glass.position.y = 2.4;
+lampGroup.add(glass);
+const liquid = new THREE.Mesh(new THREE.CylinderGeometry(0.78, 0.93, 3.1, 20),
+  new THREE.MeshStandardMaterial({ color: 0x7a2f1f, transparent: true, opacity: 0.55,
+    emissive: 0xff7e5f, emissiveIntensity: 0.35 }));
+liquid.position.y = 2.35;
+lampGroup.add(liquid);
+const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.85, 0.6, 24),
+  new THREE.MeshStandardMaterial({ color: 0x151014, roughness: 0.4, metalness: 0.5 }));
+cap.position.y = 4.35;
+lampGroup.add(cap);
+const waxMat = new THREE.MeshStandardMaterial({ color: 0xff7e5f, emissive: 0xff5f3f,
+  emissiveIntensity: 0.9, roughness: 0.35 });
+const blobs = [];
+for (let i = 0; i < 6; i++) {
+  const r = 0.28 + Math.random() * 0.22;
+  const b = new THREE.Mesh(new THREE.SphereGeometry(r, 14, 12), waxMat);
+  b.position.set((Math.random() - 0.5) * 0.8, 1.1 + Math.random() * 2.4, (Math.random() - 0.5) * 0.8);
+  lampGroup.add(b);
+  blobs.push({ m: b, r: r, sp: 0.22 + Math.random() * 0.3, ph: Math.random() * 6.28 });
+}
+const lampLight = new THREE.PointLight(0xff7e5f, 26, 16, 1.8);
+lampLight.position.y = 2.4;
+lampGroup.add(lampLight);
+lampGroup.position.set(-0.6, 2.78, 0.2);
+scene.add(lampGroup);
+
+/* ---------- books ---------- */
+const bookCols = [0x2e8f8a, 0xc9402e, 0xe8a13c];
+for (let i = 0; i < 3; i++) {
+  const bk = new THREE.Mesh(new THREE.BoxGeometry(0.5, 1.6, 1.1),
+    new THREE.MeshStandardMaterial({ color: bookCols[i], roughness: 0.8 }));
+  bk.position.set(1.5 + i * 0.55, 3.6, -0.9);
+  bk.rotation.z = i === 2 ? -0.22 : 0;
+  scene.add(bk);
+}
+
+/* ---------- dust motes ---------- */
+const moteGeo = new THREE.BufferGeometry();
+const motePos = new Float32Array(120 * 3);
+for (let i = 0; i < 120; i++) {
+  motePos[i * 3] = (Math.random() - 0.5) * 18;
+  motePos[i * 3 + 1] = Math.random() * 10;
+  motePos[i * 3 + 2] = (Math.random() - 0.5) * 18;
+}
+moteGeo.setAttribute('position', new THREE.BufferAttribute(motePos, 3));
+const motes = new THREE.Points(moteGeo, new THREE.PointsMaterial({
+  color: 0xffc9a8, size: 0.06, transparent: true, opacity: 0.6 }));
+scene.add(motes);
+
+/* ---------- frame loop ---------- */
+const clock = new THREE.Clock();
+function renderFrame(t, dt) {
+  for (const b of blobs) {
+    b.m.position.y += dt * b.sp;
+    b.m.position.x = Math.sin(t * 1.2 + b.ph) * 0.3;
+    const s = 0.75 + 0.25 * Math.sin(t * 2 + b.ph);
+    b.m.scale.set(s, 1.15 / Math.max(s, 0.4), s);
+    if (b.m.position.y > 3.6) {
+      b.m.position.y = 1.0;
+      b.m.position.x = (Math.random() - 0.5) * 0.8;
+      b.m.position.z = (Math.random() - 0.5) * 0.8;
+    }
+  }
+  lampLight.intensity = 24 + Math.sin(t * 2.2) * 4;
+  motes.rotation.y = t * 0.015;
+  controls.update();
+  renderer.render(scene, camera);
+}
+if (REDUCED) {
+  renderFrame(3.0, 0);
+} else {
+  renderer.setAnimationLoop(() => {
+    const dt = Math.min(clock.getDelta(), 0.05);
+    renderFrame(clock.elapsedTime, dt);
+  });
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
