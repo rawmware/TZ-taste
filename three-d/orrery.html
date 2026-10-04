@@ -1,0 +1,199 @@
+<!--tz-meta {"id":"orrery","title":"Orrery","category":"3D","file":"three-d/orrery.html","tags":["threejs","cosmic"],"description":"A sun and five procedural planets drift through dark, majestic space.","dnas":["dark-luxe"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Orrery — TZ-taste</title>
+<style>
+  html, body { margin:0; height:100%; overflow:hidden; background:#04060c; }
+  #app { position:fixed; inset:0; }
+  #app canvas { display:block; }
+  .caption { position:fixed; left:18px; bottom:16px; z-index:5; color:#cfe0f7;
+    font:12px/1.6 system-ui, -apple-system, sans-serif; letter-spacing:.05em;
+    opacity:.82; pointer-events:none; text-shadow:0 1px 8px rgba(0,0,0,.7); }
+  .caption b { display:block; font-size:13px; letter-spacing:.22em; text-transform:uppercase; }
+  #fallback { display:none; position:fixed; inset:0; z-index:10; place-items:center;
+    color:#9fb2c8; font:14px/1.6 system-ui, sans-serif; text-align:center;
+    padding:32px; background:#04060c; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="caption"><b>Orrery</b>drag to orbit &middot; scroll to zoom</div>
+<div id="fallback"><p>This scene needs WebGL, which your browser could not provide.<br/>Try a recent version of Chrome, Safari, Firefox or Edge.</p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (e) {
+  document.getElementById('fallback').style.display = 'grid';
+  throw e;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('app').appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x04060c);
+scene.fog = new THREE.FogExp2(0x04060c, 0.008);
+
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 600);
+camera.position.set(0, 14, 32);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.minDistance = 8;
+controls.maxDistance = 90;
+
+/* ---------- procedural texture helpers ---------- */
+function canvasTexture(w, h, draw) {
+  const c = document.createElement('canvas');
+  c.width = w; c.height = h;
+  draw(c.getContext('2d'), w, h);
+  const t = new THREE.CanvasTexture(c);
+  t.colorSpace = THREE.SRGBColorSpace;
+  return t;
+}
+function planetTexture(base) {
+  return canvasTexture(256, 128, (g, w, h) => {
+    g.fillStyle = base; g.fillRect(0, 0, w, h);
+    for (let i = 0; i < 30; i++) {
+      const y = Math.random() * h, bh = 2 + Math.random() * 12;
+      g.fillStyle = Math.random() > 0.5
+        ? `rgba(255,255,255,${0.04 + Math.random() * 0.08})`
+        : `rgba(0,0,0,${0.06 + Math.random() * 0.12})`;
+      g.fillRect(0, y, w, bh);
+    }
+    for (let i = 0; i < 140; i++) {
+      g.fillStyle = `rgba(0,0,0,${Math.random() * 0.16})`;
+      g.fillRect(Math.random() * w, Math.random() * h, 1.6, 1.6);
+    }
+  });
+}
+function makeLabel(text) {
+  const t = canvasTexture(256, 64, (g, w, h) => {
+    g.clearRect(0, 0, w, h);
+    g.font = '500 26px system-ui, sans-serif';
+    g.textAlign = 'center'; g.textBaseline = 'middle';
+    g.fillStyle = 'rgba(214,228,246,0.95)';
+    g.fillText(text, w / 2, h / 2);
+  });
+  const s = new THREE.Sprite(new THREE.SpriteMaterial({
+    map: t, transparent: true, depthWrite: false, fog: false }));
+  s.scale.set(3.4, 0.85, 1);
+  return s;
+}
+function glowSprite(stops, size) {
+  const t = canvasTexture(128, 128, (g) => {
+    const r = g.createRadialGradient(64, 64, 0, 64, 64, 64);
+    stops.forEach(([o, c]) => r.addColorStop(o, c));
+    g.fillStyle = r; g.fillRect(0, 0, 128, 128);
+  });
+  const s = new THREE.Sprite(new THREE.SpriteMaterial({
+    map: t, transparent: true, depthWrite: false,
+    blending: THREE.AdditiveBlending, fog: false }));
+  s.scale.set(size, size, 1);
+  return s;
+}
+
+/* ---------- lights ---------- */
+scene.add(new THREE.AmbientLight(0x33415e, 0.55));
+const sunLight = new THREE.PointLight(0xffe7c4, 130, 0, 2);
+scene.add(sunLight);
+
+/* ---------- the sun ---------- */
+const sun = new THREE.Mesh(
+  new THREE.SphereGeometry(2.2, 48, 32),
+  new THREE.MeshBasicMaterial({ color: 0xffdf9e })
+);
+scene.add(sun);
+scene.add(glowSprite([[0, 'rgba(255,214,150,0.9)'], [0.45, 'rgba(255,170,90,0.28)'], [1, 'rgba(255,150,70,0)']], 11));
+scene.add(glowSprite([[0, 'rgba(255,190,120,0.35)'], [1, 'rgba(255,160,80,0)']], 20));
+
+/* ---------- orbit rings ---------- */
+function orbitRing(r) {
+  const pts = [];
+  for (let i = 0; i <= 180; i++) {
+    const a = (i / 180) * Math.PI * 2;
+    pts.push(new THREE.Vector3(Math.cos(a) * r, 0, Math.sin(a) * r));
+  }
+  return new THREE.Line(
+    new THREE.BufferGeometry().setFromPoints(pts),
+    new THREE.LineBasicMaterial({ color: 0x44567a, transparent: true, opacity: 0.45 })
+  );
+}
+
+/* ---------- planets ---------- */
+const DEFS = [
+  { name: 'Meridian', color: '#c98f5e', size: 0.45, dist: 5.5,  speed: 0.42, tilt: 0.030 },
+  { name: 'Verdant',  color: '#7fb069', size: 0.62, dist: 8.2,  speed: 0.30, tilt: -0.022 },
+  { name: 'Azure',    color: '#5aa9e6', size: 0.74, dist: 11.0, speed: 0.22, tilt: 0.048 },
+  { name: 'Rust',     color: '#c1553b', size: 0.50, dist: 13.8, speed: 0.16, tilt: -0.035 },
+  { name: 'Frost',    color: '#a8d5e2', size: 0.92, dist: 17.0, speed: 0.11, tilt: 0.018 },
+];
+const planets = DEFS.map((d, i) => {
+  const group = new THREE.Group();
+  group.rotation.x = d.tilt;
+  group.add(orbitRing(d.dist));
+  const mesh = new THREE.Mesh(
+    new THREE.SphereGeometry(d.size, 48, 32),
+    new THREE.MeshStandardMaterial({ map: planetTexture(d.color), roughness: 0.95, metalness: 0 })
+  );
+  const label = makeLabel(d.name);
+  label.position.y = d.size + 1.05;
+  mesh.add(label);
+  group.add(mesh);
+  scene.add(group);
+  return { mesh, angle: i * 1.35 + 0.4, ...d };
+});
+
+/* ---------- starfield ---------- */
+{
+  const n = 1100, p = new Float32Array(n * 3);
+  for (let i = 0; i < n; i++) {
+    const r = 130 + Math.random() * 120;
+    const th = Math.random() * Math.PI * 2, ph = Math.acos(2 * Math.random() - 1);
+    p[i * 3] = r * Math.sin(ph) * Math.cos(th);
+    p[i * 3 + 1] = Math.abs(r * Math.cos(ph)) * 0.7 - 8;
+    p[i * 3 + 2] = r * Math.sin(ph) * Math.sin(th);
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(p, 3));
+  scene.add(new THREE.Points(g, new THREE.PointsMaterial({
+    color: 0xb9cdf2, size: 0.85, transparent: true, opacity: 0.85, fog: false })));
+}
+
+/* ---------- frame loop ---------- */
+const clock = new THREE.Clock();
+function renderFrame(dt) {
+  planets.forEach(p => {
+    p.angle += p.speed * dt * 0.14;
+    p.mesh.position.set(Math.cos(p.angle) * p.dist, 0, Math.sin(p.angle) * p.dist);
+    p.mesh.rotation.y += dt * 0.35;
+  });
+  sun.rotation.y += dt * 0.05;
+  controls.update();
+  renderer.render(scene, camera);
+}
+if (REDUCED) {
+  renderFrame(0.016); // exactly one static frame
+} else {
+  renderer.setAnimationLoop(() => renderFrame(Math.min(clock.getDelta(), 0.05)));
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
