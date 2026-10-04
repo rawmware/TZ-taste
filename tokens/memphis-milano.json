@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-memphis-milano",
+  "title": "Memphis Milano design tokens",
+  "category": "Tokens",
+  "file": "tokens/memphis-milano.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "memphis-milano"
+  ],
+  "description": "W3C-format design tokens for the Memphis Milano style DNA.",
+  "dnas": [
+   "memphis-milano"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#f7efe3",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#1c1a22",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#ff4d8d",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#7a7488",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#1c1a22",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Shrikhand",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Space Grotesk",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "memphis-milano",
+  "name": "Memphis Milano",
+  "vibe": "80s postmodern play: squiggles, terrazzo, pastel-neon clashes. Deliberate kitsch that refuses to apologize."
+ }
+}
