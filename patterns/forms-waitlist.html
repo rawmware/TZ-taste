@@ -1,0 +1,41 @@
+<!--tz-meta {"id":"forms-waitlist","title":"Waitlist","category":"Forms","file":"patterns/forms-waitlist.html","tags":["launch","counter"],"description":"Acid waitlist with a giant live-position counter and a hard-edged join row.","dnas":["acid-rave"]} -->
+<section class="tz-wait" aria-labelledby="tz-wait-h">
+  <p class="tz-wait-eyebrow">Pulse OS · Private beta</p>
+  <h2 id="tz-wait-h">Get in line.</h2>
+  <p class="tz-wait-count">You are <strong>#4,213</strong> in line</p>
+  <p class="tz-wait-sub">We let in 200 people every Friday. Refer a friend, jump 50 spots.</p>
+  <form class="tz-wait-form" action="#" method="post">
+    <label class="tz-wait-sr" for="tz-wait-email">Email address</label>
+    <input id="tz-wait-email" type="email" name="email" placeholder="you@example.com" required>
+    <button type="submit">Join the line</button>
+  </form>
+  <p class="tz-wait-fine">No spam, ever. One email when your invite is ready.</p>
+  <p class="tz-wait-refer">Skip ahead: <span class="tz-wait-link">pulse.os/r/fern-field-4213</span> · each signup moves you up 50 spots</p>
+</section>
+<style>
+.tz-wait{--bg:#0d0d0b;--ink:#f2f2ec;--acid:#d9f731;--dim:#8f8f85;
+  background:var(--bg);color:var(--ink);padding:clamp(64px,9vw,130px) clamp(24px,6vw,96px);
+  font-family:Arial,Helvetica,sans-serif;text-align:left}
+.tz-wait-eyebrow{display:inline-block;font-size:12px;font-weight:bold;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--bg);background:var(--acid);padding:8px 16px;margin:0 0 28px}
+.tz-wait h2{font-size:clamp(52px,10vw,130px);letter-spacing:-.04em;line-height:.95;margin:0 0 24px;
+  font-weight:900}
+.tz-wait-count{font-size:clamp(22px,4vw,34px);margin:0 0 12px}
+.tz-wait-count strong{color:var(--acid);font-variant-numeric:tabular-nums}
+.tz-wait-sub{color:var(--dim);font-size:16px;max-width:46ch;line-height:1.6;margin:0 0 36px}
+.tz-wait-form{display:flex;max-width:560px;flex-wrap:wrap}
+.tz-wait-form input{flex:1;min-width:220px;background:transparent;border:2px solid var(--ink);
+  border-right:0;color:var(--ink);font-size:17px;padding:18px 22px;font-family:inherit}
+.tz-wait-form input::placeholder{color:var(--dim)}
+.tz-wait-form input:focus{outline:none;border-color:var(--acid)}
+.tz-wait-form button{background:var(--acid);color:#0d0d0b;border:2px solid var(--acid);
+  font-size:17px;font-weight:900;padding:18px 34px;cursor:pointer;font-family:inherit;
+  letter-spacing:.02em}
+.tz-wait-form button:hover{background:#e8ff70;border-color:#e8ff70}
+.tz-wait-form button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.tz-wait-form input:focus-visible{outline:none}
+.tz-wait-fine{color:var(--dim);font-size:13px;margin:20px 0 14px;font-family:ui-monospace,Menlo,monospace}
+.tz-wait-refer{font-family:ui-monospace,Menlo,monospace;font-size:13px;color:var(--dim);margin:0}
+.tz-wait-link{color:var(--acid);border:1px dashed var(--acid);padding:4px 10px;white-space:nowrap}
+.tz-wait-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
