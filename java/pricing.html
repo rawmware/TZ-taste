@@ -1,0 +1,117 @@
+<!--tz-meta {"id":"java-pricing","title":"Reading-Room Pricing Ledger (Java/Thymeleaf)","category":"Java","file":"java/pricing.html","tags":["java","thymeleaf","pricing"],"description":"Dark library-oak pricing as a ruled ledger table: three plans as rows with brass rules, stamped recommendation, honest footnotes.","dnas":["library-oak"]} -->
+<!--
+  Design read: pricing for a research archive service — a quiet reading room, prices written in ink.
+  Distinctive choice: plans are ledger rows under a brass rule; the recommended plan carries a rubber-stamp mark.
+  Dials: VARIANCE 4 / MOTION 1 / DENSITY 6.
+  Route: GET /pricing -> PricingController#index (model: plans)
+-->
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title th:text="${pricing.title}">Folio — Plans</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=EB+Garamond:wght@400;500&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --tz-bg: #211810;
+      --tz-ink: #ece0c8;
+      --tz-accent: #c9973f;
+      --tz-line: #c9973f40;
+      --tz-muted: #93805f;
+      --tz-font-display: "Cormorant Garamond", serif;
+      --tz-font-body: "EB Garamond", serif;
+      --tz-font-mono: "Roboto Mono", monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { background: var(--tz-bg); color: var(--tz-ink); font-family: var(--tz-font-body); }
+    .tz-wrap { max-width: 980px; margin: 0 auto; padding: clamp(64px, 9vw, 130px) clamp(20px, 5vw, 48px) clamp(80px, 10vw, 140px); }
+    .tz-eyebrow { font-family: var(--tz-font-mono); font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--tz-accent); margin: 0 0 24px; }
+    .tz-title { font-family: var(--tz-font-display); font-weight: 500; font-size: clamp(44px, 6vw, 84px); line-height: 1.02; letter-spacing: -0.01em; margin: 0 0 20px; }
+    .tz-lede { font-size: clamp(18px, 2vw, 22px); line-height: 1.6; color: var(--tz-muted); max-width: 56ch; margin: 0 0 clamp(48px, 6vw, 80px); font-style: italic; font-family: var(--tz-font-display); }
+    .tz-ledger { border-top: 1px solid var(--tz-accent); }
+    .tz-plan { display: grid; grid-template-columns: 1.2fr 0.8fr 1.4fr auto; gap: 16px 32px; padding: 40px 8px; border-bottom: 1px solid var(--tz-line); position: relative; align-items: start; }
+    .tz-plan-name { font-family: var(--tz-font-display); font-size: clamp(28px, 3vw, 40px); font-weight: 600; margin: 0; line-height: 1.1; }
+    .tz-plan-tag { font-family: var(--tz-font-mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--tz-muted); display: block; margin-top: 10px; }
+    .tz-price { font-family: var(--tz-font-display); font-size: clamp(40px, 4.5vw, 60px); font-weight: 500; margin: 0; line-height: 1; }
+    .tz-price small { font-size: 16px; font-family: var(--tz-font-body); color: var(--tz-muted); font-style: italic; }
+    .tz-perks { list-style: none; margin: 0; padding: 0; font-size: 17px; line-height: 1.5; }
+    .tz-perks li { padding: 7px 0 7px 28px; position: relative; }
+    .tz-perks li::before { content: ""; position: absolute; left: 4px; top: 15px; width: 12px; height: 7px; border-left: 2px solid var(--tz-accent); border-bottom: 2px solid var(--tz-accent); transform: rotate(-45deg) translateY(-3px); }
+    .tz-cta { font-family: var(--tz-font-mono); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--tz-ink); text-decoration: none; border: 1px solid var(--tz-accent); padding: 14px 26px; white-space: nowrap; transition: background 0.2s ease, color 0.2s ease; }
+    .tz-cta:hover { background: var(--tz-accent); color: var(--tz-bg); }
+    .tz-stamp {
+      position: absolute; top: 28px; right: 8px;
+      font-family: var(--tz-font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--tz-accent); border: 2px solid var(--tz-accent); border-radius: 4px; padding: 8px 14px;
+      transform: rotate(-6deg); opacity: 0.92;
+    }
+    .tz-plan--chosen { background: #c9973f0f; }
+    .tz-notes { margin-top: 56px; font-family: var(--tz-font-mono); font-size: 13px; line-height: 2; color: var(--tz-muted); }
+    .tz-notes dt { color: var(--tz-accent); display: inline; }
+    .tz-notes dd { display: inline; margin: 0; }
+    .tz-notes div { margin-bottom: 4px; }
+    @media (max-width: 820px) {
+      .tz-plan { grid-template-columns: 1fr auto; }
+      .tz-perks { grid-column: 1 / -1; }
+      .tz-stamp { position: static; display: inline-block; transform: rotate(-3deg); margin-bottom: 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .tz-cta { transition: none; } }
+  </style>
+</head>
+<body>
+  <div class="tz-wrap">
+    <p class="tz-eyebrow" th:text="${pricing.eyebrow}">Folio · Research archive</p>
+    <h1 class="tz-title" th:text="${pricing.title}">One shelf, three keys.</h1>
+    <p class="tz-lede" th:text="${pricing.lede}">Folio keeps every paper, scan, and note your lab has ever touched — searchable, citable, and yours. Pick the key that fits the size of your reading room.</p>
+    <div class="tz-ledger">
+      <section class="tz-plan" th:each="plan : ${plans}">
+        <div>
+          <h2 class="tz-plan-name" th:text="${plan.name}">Reader</h2>
+          <span class="tz-plan-tag" th:text="${plan.tag}">For the curious</span>
+        </div>
+        <p class="tz-price"><span th:text="${plan.price}">$0</span> <small th:text="${plan.per}">/ forever</small></p>
+        <ul class="tz-perks">
+          <li th:each="perk : ${plan.perks}" th:text="${perk}">500 documents</li>
+        </ul>
+        <a class="tz-cta" th:href="@{/signup(plan=${plan.slug})}" href="/signup" th:text="${plan.cta}">Start reading</a>
+      </section>
+      <section class="tz-plan tz-plan--chosen" th:if="${#lists.isEmpty(plans)}">
+        <span class="tz-stamp">Most borrowed</span>
+        <div>
+          <h2 class="tz-plan-name">Scholar</h2>
+          <span class="tz-plan-tag">For working researchers</span>
+        </div>
+        <p class="tz-price">$12 <small>/ month</small></p>
+        <ul class="tz-perks">
+          <li>Unlimited documents and OCR</li>
+          <li>Citation export in 9 styles</li>
+          <li>Private collections for a team of 5</li>
+        </ul>
+        <a class="tz-cta" href="/signup?plan=scholar">Take the key</a>
+      </section>
+      <section class="tz-plan" th:if="${#lists.isEmpty(plans)}">
+        <div>
+          <h2 class="tz-plan-name">Athenaeum</h2>
+          <span class="tz-plan-tag">For institutions</span>
+        </div>
+        <p class="tz-price">$480 <small>/ year</small></p>
+        <ul class="tz-perks">
+          <li>Everything in Scholar, seats for 200</li>
+          <li>On-premise option and audit logs</li>
+          <li>A human who answers the phone</li>
+        </ul>
+        <a class="tz-cta" href="/contact">Talk to us</a>
+      </section>
+    </div>
+    <dl class="tz-notes">
+      <div><dt>On refunds — </dt><dd>cancel in the first 30 days and we return every cent, no form to fill.</dd></div>
+      <div><dt>On your data — </dt><dd>export everything as plain files at any time; we never hold it hostage.</dd></div>
+      <div><dt>On students — </dt><dd>Scholar is free with a university email. We were students once.</dd></div>
+    </dl>
+  </div>
+</body>
+</html>
