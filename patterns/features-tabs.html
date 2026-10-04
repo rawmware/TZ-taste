@@ -1,0 +1,116 @@
+<!--tz-meta {"id":"features-tabs","title":"Tabbed features","category":"Features","file":"patterns/features-tabs.html","tags":["tabs","saas"],"description":"CSS radio-button tabs with four panels, each carrying a pure-CSS product mock.","dnas":["soft-minimal"]} -->
+<section class="tz-ft">
+  <p class="tz-ft-eyebrow">Product tour</p>
+  <h2 class="tz-ft-title">Pick a lane. We handle the rest.</h2>
+
+  <input class="tz-ft-r" type="radio" name="tzft" id="tzft-1" checked>
+  <input class="tz-ft-r" type="radio" name="tzft" id="tzft-2">
+  <input class="tz-ft-r" type="radio" name="tzft" id="tzft-3">
+  <input class="tz-ft-r" type="radio" name="tzft" id="tzft-4">
+
+  <div class="tz-ft-tabs">
+    <label for="tzft-1"><i aria-hidden="true"></i>Capture</label>
+    <label for="tzft-2"><i aria-hidden="true"></i>Organize</label>
+    <label for="tzft-3"><i aria-hidden="true"></i>Automate</label>
+    <label for="tzft-4"><i aria-hidden="true"></i>Report</label>
+  </div>
+
+  <div class="tz-ft-panels">
+    <div class="tz-ft-panel" id="tzft-p1">
+      <div class="tz-ft-mock" aria-hidden="true">
+        <b></b><b></b><b class="tz-ft-hot"></b><b></b>
+      </div>
+      <div class="tz-ft-copy">
+        <p class="tz-ft-kicker">01 · Capture</p>
+        <h3>Every message, one queue</h3>
+        <p>Email, chat, and form submissions arrive in a shared inbox. Assign, reply, or snooze — the thread keeps its full history either way.</p>
+      </div>
+    </div>
+    <div class="tz-ft-panel" id="tzft-p2">
+      <div class="tz-ft-mock tz-ft-kanban" aria-hidden="true">
+        <div><b></b><b></b></div><div><b></b></div><div><b></b><b></b><b></b></div>
+      </div>
+      <div class="tz-ft-copy">
+        <p class="tz-ft-kicker">02 · Organize</p>
+        <h3>Boards that sort themselves</h3>
+        <p>Rules route each thread to the right column the moment it arrives. Drag a card when a human disagrees — the rule learns from the correction.</p>
+      </div>
+    </div>
+    <div class="tz-ft-panel" id="tzft-p3">
+      <div class="tz-ft-mock tz-ft-toggles" aria-hidden="true">
+        <span><i></i></span><span class="tz-ft-on"><i></i></span><span><i></i></span><span class="tz-ft-on"><i></i></span>
+      </div>
+      <div class="tz-ft-copy">
+        <p class="tz-ft-kicker">03 · Automate</p>
+        <h3>Follow-ups on rails</h3>
+        <p>Set the trigger — three days of silence, an unpaid invoice, a trial ending — and the message goes out in your voice, on schedule.</p>
+      </div>
+    </div>
+    <div class="tz-ft-panel" id="tzft-p4">
+      <div class="tz-ft-mock tz-ft-chart" aria-hidden="true">
+        <i style="height:34%"></i><i style="height:58%"></i><i style="height:44%"></i><i style="height:82%"></i><i style="height:66%"></i>
+      </div>
+      <div class="tz-ft-copy">
+        <p class="tz-ft-kicker">04 · Report</p>
+        <h3>Numbers without the spreadsheet</h3>
+        <p>Response times, resolution rates, and revenue per channel — rendered as charts you can actually read, exported in one click.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+.tz-ft{--bg:#f7f5f1;--ink:#1d1c19;--accent:#4f6b4a;--line:rgba(29,28,25,.14);
+  background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(64px,9vw,120px) clamp(24px,6vw,88px)}
+.tz-ft-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 16px}
+.tz-ft-title{font-size:clamp(32px,4.6vw,58px);letter-spacing:-.02em;font-weight:700;
+  margin:0 0 40px;max-width:14ch;line-height:1.05}
+.tz-ft-r{position:absolute;opacity:0;pointer-events:none}
+.tz-ft-tabs{display:flex;gap:4px;flex-wrap:wrap;border-bottom:2px solid var(--ink);margin-bottom:0}
+.tz-ft-tabs label{display:flex;align-items:center;gap:10px;padding:14px 22px;cursor:pointer;
+  font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border:2px solid transparent;border-bottom:none;color:rgba(29,28,25,.55)}
+.tz-ft-tabs label i{width:8px;height:8px;border-radius:50%;background:rgba(29,28,25,.25);display:block}
+.tz-ft-panel{display:none;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);
+  align-items:center;border:2px solid var(--ink);border-top:none;
+  padding:clamp(28px,4vw,56px);background:#fff}
+#tzft-1:checked ~ .tz-ft-panels #tzft-p1,
+#tzft-2:checked ~ .tz-ft-panels #tzft-p2,
+#tzft-3:checked ~ .tz-ft-panels #tzft-p3,
+#tzft-4:checked ~ .tz-ft-panels #tzft-p4{display:grid;animation:tzft-in .45s cubic-bezier(.22,1,.36,1)}
+#tzft-1:checked ~ .tz-ft-tabs label[for="tzft-1"],
+#tzft-2:checked ~ .tz-ft-tabs label[for="tzft-2"],
+#tzft-3:checked ~ .tz-ft-tabs label[for="tzft-3"],
+#tzft-4:checked ~ .tz-ft-tabs label[for="tzft-4"]{color:var(--ink);border-color:var(--ink);background:#fff}
+#tzft-1:checked ~ .tz-ft-tabs label[for="tzft-1"] i,
+#tzft-2:checked ~ .tz-ft-tabs label[for="tzft-2"] i,
+#tzft-3:checked ~ .tz-ft-tabs label[for="tzft-3"] i,
+#tzft-4:checked ~ .tz-ft-tabs label[for="tzft-4"] i{background:var(--accent)}
+@keyframes tzft-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.tz-ft-kicker{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+.tz-ft-copy h3{font-size:clamp(24px,3vw,38px);letter-spacing:-.02em;margin:0 0 14px;font-weight:700}
+.tz-ft-copy p{font-size:16px;line-height:1.65;color:rgba(29,28,25,.78);margin:0;max-width:44ch}
+.tz-ft-mock{background:var(--bg);border:1px solid var(--line);padding:24px;min-height:220px;
+  display:flex;flex-direction:column;gap:12px;justify-content:center}
+.tz-ft-mock b{display:block;height:34px;background:#fff;border:1px solid var(--line)}
+.tz-ft-mock b.tz-ft-hot{border-left:6px solid var(--accent)}
+.tz-ft-kanban{flex-direction:row;align-items:stretch}
+.tz-ft-kanban div{flex:1;display:flex;flex-direction:column;gap:10px}
+.tz-ft-toggles{flex-direction:row;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap}
+.tz-ft-toggles span{width:64px;height:34px;border:2px solid var(--ink);border-radius:20px;position:relative;background:#fff}
+.tz-ft-toggles span i{position:absolute;top:3px;left:4px;width:22px;height:22px;border-radius:50%;background:var(--ink);display:block}
+.tz-ft-toggles span.tz-ft-on{background:var(--accent);border-color:var(--accent)}
+.tz-ft-toggles span.tz-ft-on i{left:32px;background:#fff}
+.tz-ft-chart{flex-direction:row;align-items:flex-end;justify-content:center;gap:12px}
+.tz-ft-chart i{width:40px;background:var(--ink);display:block}
+.tz-ft-chart i:nth-child(4){background:var(--accent)}
+@media (max-width:760px){.tz-ft-panel{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){
+  #tzft-1:checked ~ .tz-ft-panels #tzft-p1,
+  #tzft-2:checked ~ .tz-ft-panels #tzft-p2,
+  #tzft-3:checked ~ .tz-ft-panels #tzft-p3,
+  #tzft-4:checked ~ .tz-ft-panels #tzft-p4{animation:none}
+}
+</style>
