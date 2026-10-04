@@ -1,0 +1,297 @@
+<!--tz-meta {"id":"timeline-gantt","title":"Timeline Gantt chart","category":"App UI","file":"app-ui/timeline-gantt.html","tags":["gantt","timeline","project","planning"],"description":"Blueprint-tech Gantt: week/month zoom, dependency arrows, milestones, today line, click-for-detail with progress stepper. Fully interactive.","dnas":["blueprint-tech"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harbor Site Rebuild — Timeline</title>
+<style>
+:root{--bg:#17407f;--panel:#12315f;--ink:#f2f6fc;--accent:#ffcf3f;--muted:#8fb3e8;--line:#ffffff40}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  min-height:100dvh;padding:36px 16px;display:flex;flex-direction:column;align-items:center}
+.tz-kicker{font-size:11px;letter-spacing:.3em;color:var(--muted);margin:0 0 8px}
+.tz-title{font-family:"Space Grotesk",Arial,sans-serif;font-size:clamp(26px,4vw,40px);margin:0 0 6px;letter-spacing:-.01em}
+.tz-sub{font-size:13px;color:var(--muted);margin:0 0 24px}
+.tz-gantt{width:100%;max-width:1120px;border:1px solid var(--line);background:var(--panel);
+  box-shadow:0 24px 70px #00000055}
+.tz-bar{display:flex;align-items:center;gap:12px;padding:12px 18px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.tz-range{font-size:12px;color:var(--muted);letter-spacing:.08em}
+.tz-bar .tz-sp{flex:1}
+.tz-seg{display:flex;border:1px solid var(--line)}
+.tz-seg button{background:transparent;border:0;color:var(--muted);font:inherit;font-size:12px;
+  padding:8px 16px;cursor:pointer;letter-spacing:.06em}
+.tz-seg button+button{border-left:1px solid var(--line)}
+.tz-seg button[aria-pressed="true"]{background:var(--accent);color:#17407f;font-weight:700}
+.tz-tgl{background:transparent;border:1px solid var(--line);color:var(--muted);font:inherit;font-size:12px;
+  padding:8px 14px;cursor:pointer;letter-spacing:.06em}
+.tz-tgl[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+.tz-grid{display:flex;overflow-x:auto;position:relative}
+.tz-tasks{flex:0 0 230px;position:sticky;left:0;z-index:4;background:var(--panel);border-right:1px solid var(--line)}
+.tz-tasks .tz-th{height:44px;border-bottom:1px solid var(--line);display:flex;align-items:flex-end;
+  padding:0 16px 8px;font-size:10px;letter-spacing:.24em;color:var(--muted)}
+.tz-task{height:48px;display:flex;align-items:center;gap:8px;padding:0 16px;border-bottom:1px solid #ffffff14;
+  cursor:pointer;font-size:12.5px}
+.tz-task:hover{background:#ffffff0d}
+.tz-task.tz-sel{background:#ffcf3f18;box-shadow:inset 3px 0 0 var(--accent)}
+.tz-task .tz-dot{width:9px;height:9px;flex:0 0 9px;border:1px solid var(--muted)}
+.tz-task.tz-done .tz-dot{background:var(--ink)}
+.tz-task.tz-prog .tz-dot{background:var(--accent);border-color:var(--accent)}
+.tz-task small{display:block;color:var(--muted);font-size:10.5px}
+.tz-time{position:relative;flex:1;min-width:0}
+.tz-head{height:44px;position:relative;border-bottom:1px solid var(--line);overflow:hidden}
+.tz-head span{position:absolute;top:0;bottom:0;border-left:1px solid var(--line);font-size:10px;
+  color:var(--muted);padding:22px 0 0 8px;letter-spacing:.1em;white-space:nowrap}
+.tz-head span.tz-maj{color:var(--ink);font-weight:700}
+.tz-rows{position:relative}
+.tz-trow{height:48px;border-bottom:1px solid #ffffff14;position:relative}
+.tz-trow.tz-sel{background:#ffcf3f10}
+.tz-bar-el{position:absolute;top:13px;height:22px;border:1px solid var(--ink);background:#ffffff14;cursor:pointer}
+.tz-bar-el:hover{border-color:var(--accent)}
+.tz-bar-el .tz-fill{position:absolute;left:0;top:0;bottom:0;background:var(--accent);opacity:.85}
+.tz-bar-el .tz-pl{position:absolute;right:6px;top:2px;font-size:10px;color:var(--ink)}
+.tz-ms{position:absolute;top:14px;width:20px;height:20px;background:var(--accent);cursor:pointer;
+  transform:rotate(45deg);border:1px solid #17407f}
+.tz-today{position:absolute;top:0;bottom:0;border-left:2px dashed var(--accent);z-index:3;pointer-events:none}
+.tz-today i{position:absolute;top:2px;left:4px;font-style:normal;font-size:10px;color:var(--accent);
+  letter-spacing:.14em;white-space:nowrap}
+.tz-deps{position:absolute;inset:0;pointer-events:none;z-index:2}
+.tz-detail{border-top:1px solid var(--line);padding:18px;display:none;gap:18px;flex-wrap:wrap;align-items:center}
+.tz-detail.tz-open{display:flex}
+.tz-detail h3{margin:0;font-family:"Space Grotesk",Arial,sans-serif;font-size:18px}
+.tz-detail .tz-dmeta{font-size:12px;color:var(--muted);line-height:1.9}
+.tz-detail .tz-dmeta b{color:var(--ink);font-weight:500}
+.tz-stepper{display:flex;align-items:center;gap:10px;margin-left:auto}
+.tz-stepper button{width:34px;height:34px;background:transparent;border:1px solid var(--line);color:var(--ink);
+  font:inherit;font-size:16px;cursor:pointer}
+.tz-stepper button:hover{border-color:var(--accent);color:var(--accent)}
+.tz-pbar{width:170px;height:10px;border:1px solid var(--line);position:relative}
+.tz-pbar i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);display:block}
+.tz-stepper output{font-size:13px;min-width:44px;text-align:right}
+.tz-legend{display:flex;gap:22px;flex-wrap:wrap;max-width:1120px;width:100%;margin-top:14px;
+  font-size:12px;color:var(--muted)}
+.tz-legend i{display:inline-block;width:12px;height:12px;margin-right:7px;vertical-align:-1px}
+@media (max-width:700px){
+  .tz-tasks{flex-basis:150px}
+  .tz-task{font-size:11px;padding:0 10px}
+  body{padding:24px 8px}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-gantt *{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+<p class="tz-kicker">PROJECT PLAN · Q4 2026</p>
+<h1 class="tz-title">Harbor Site Rebuild</h1>
+<p class="tz-sub">Oct 1 – Dec 31, 2026 · 7 workstreams · click any bar for detail</p>
+
+<div class="tz-gantt">
+  <div class="tz-bar">
+    <span class="tz-range" id="rangeLbl">OCT 1 — DEC 31, 2026</span>
+    <span class="tz-sp"></span>
+    <div class="tz-seg" role="group" aria-label="Zoom">
+      <button type="button" id="zWeeks" aria-pressed="true">Weeks</button>
+      <button type="button" id="zMonths" aria-pressed="false">Months</button>
+    </div>
+    <button class="tz-tgl" id="tglDeps" type="button" aria-pressed="true">Dependencies</button>
+    <button class="tz-tgl" id="tglProg" type="button" aria-pressed="true">Progress</button>
+    <button class="tz-tgl" id="tglToday" type="button" aria-pressed="false">Go to today</button>
+  </div>
+  <div class="tz-grid" id="grid">
+    <div class="tz-tasks" id="taskCol"><div class="tz-th">WORKSTREAM</div></div>
+    <div class="tz-time">
+      <div class="tz-head" id="headRow"></div>
+      <div class="tz-rows" id="rows">
+        <svg class="tz-deps" id="depsSvg"></svg>
+        <div class="tz-today" id="todayLine"><i>TODAY · OCT 4</i></div>
+      </div>
+    </div>
+  </div>
+  <div class="tz-detail" id="detail" aria-live="polite">
+    <div>
+      <h3 id="dName"></h3>
+      <div class="tz-dmeta" id="dMeta"></div>
+    </div>
+    <div class="tz-stepper">
+      <span style="font-size:12px;color:var(--muted)">PROGRESS</span>
+      <button id="pDown" type="button" aria-label="Decrease progress">−</button>
+      <div class="tz-pbar"><i id="pFill"></i></div>
+      <output id="pOut">0%</output>
+      <button id="pUp" type="button" aria-label="Increase progress">+</button>
+    </div>
+  </div>
+</div>
+
+<div class="tz-legend">
+  <span><i style="background:#ffcf3f"></i>progress</span>
+  <span><i style="border:1px solid #f2f6fc;background:#ffffff14"></i>scheduled work</span>
+  <span><i style="background:#ffcf3f;transform:rotate(45deg);width:10px;height:10px"></i>milestone</span>
+  <span><i style="border-left:2px dashed #ffcf3f;background:none"></i>today</span>
+  <span>keyboard: <b>↑</b><b>↓</b> select · <b>Enter</b> detail</span>
+</div>
+
+<script>
+(function(){
+var DAY=86400000,
+    T0=Date.UTC(2026,9,1), TEND=Date.UTC(2027,0,1),
+    TODAY=Date.UTC(2026,9,4),
+    DAYS=(TEND-T0)/DAY,
+    TASKS=[
+     {id:'disc', name:'Discovery & research', owner:'Priya Nair', s:'2026-10-05', e:'2026-10-16', prog:100, deps:[]},
+     {id:'ia', name:'IA & wireframes', owner:'Theo Marchetti', s:'2026-10-12', e:'2026-10-23', prog:100, deps:['disc']},
+     {id:'vis', name:'Visual design', owner:'June Okafor', s:'2026-10-19', e:'2026-11-06', prog:70, deps:['ia']},
+     {id:'fe', name:'Frontend build', owner:'Sam Whitfield', s:'2026-10-26', e:'2026-11-27', prog:45, deps:['vis']},
+     {id:'cms', name:'CMS & content', owner:'Priya Nair', s:'2026-11-09', e:'2026-12-04', prog:20, deps:['ia']},
+     {id:'qa', name:'QA & accessibility', owner:'Theo Marchetti', s:'2026-11-30', e:'2026-12-11', prog:0, deps:['fe','cms']},
+     {id:'launch', name:'Launch', owner:'June Okafor', s:'2026-12-18', e:'2026-12-18', prog:0, deps:['qa'], ms:true}
+    ],
+    st={ppd:26, showDeps:true, showProg:true, sel:-1},
+    MONTHS=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+
+function d(s){var p=s.split('-');return Date.UTC(+p[0],+p[1]-1,+p[2]);}
+function x(date){return (date-T0)/DAY*st.ppd;}
+function fmt(s){var p=s.split('-');return MONTHS[+p[1]-1]+' '+ +p[2];}
+function dur(t){return Math.round((d(t.e)-d(t.s))/DAY)+1;}
+function status(t){return t.prog>=100?'Complete':t.prog>0?'In progress':'Not started';}
+TASKS.forEach(function(t){t._s=d(t.s);t._e=d(t.e);});
+
+var taskCol=document.getElementById('taskCol'),headRow=document.getElementById('headRow'),
+    rows=document.getElementById('rows'),depsSvg=document.getElementById('depsSvg'),
+    todayLine=document.getElementById('todayLine'),grid=document.getElementById('grid');
+
+function buildHead(){
+  headRow.innerHTML='';headRow.style.width=(DAYS*st.ppd)+'px';
+  var html='';
+  if(st.ppd>=20){
+    for(var i=0;i<DAYS;i+=7){
+      var dt=new Date(T0+i*DAY);
+      html+='<span style="left:'+(i*st.ppd)+'px" class="'+(dt.getUTCDate()<=7?'tz-maj':'')+'">'+
+            MONTHS[dt.getUTCMonth()]+' '+dt.getUTCDate()+'</span>';
+    }
+  }else{
+    for(var m=9;m<=11;m++){
+      var off=(Date.UTC(2026,m,1)-T0)/DAY*st.ppd;
+      html+='<span class="tz-maj" style="left:'+off+'px">'+MONTHS[m]+'</span>';
+    }
+  }
+  headRow.innerHTML=html;
+}
+function buildRows(){
+  taskCol.querySelectorAll('.tz-task').forEach(function(e){e.remove();});
+  rows.querySelectorAll('.tz-trow,.tz-bar-el,.tz-ms').forEach(function(e){e.remove();});
+  var W=DAYS*st.ppd;
+  rows.style.width=W+'px';
+  TASKS.forEach(function(t,i){
+    var row=document.createElement('div');row.className='tz-task'+(i===st.sel?' tz-sel':'')+
+      (t.prog>=100?' tz-done':t.prog>0?' tz-prog':'');
+    row.setAttribute('role','button');row.setAttribute('tabindex','0');
+    row.innerHTML='<span class="tz-dot"></span><span>'+t.name+'<small>'+t.owner+'</small></span>';
+    row.addEventListener('click',function(){select(i);});
+    row.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();select(i);}});
+    taskCol.appendChild(row);t._el=row;
+
+    var tr=document.createElement('div');tr.className='tz-trow'+(i===st.sel?' tz-sel':'');
+    if(t.ms){
+      var ms=document.createElement('div');ms.className='tz-ms';
+      ms.style.left=(x(t._s)-10)+'px';ms.title=t.name+' — '+fmt(t.s);
+      ms.addEventListener('click',function(){select(i);});
+      tr.appendChild(ms);
+    }else{
+      var bar=document.createElement('div');bar.className='tz-bar-el';
+      bar.style.left=x(t._s)+'px';bar.style.width=Math.max(8,x(t._e)+st.ppd-x(t._s))+'px';
+      bar.title=t.name+' — '+fmt(t.s)+' → '+fmt(t.e);
+      if(st.showProg){
+        var fill=document.createElement('span');fill.className='tz-fill';
+        fill.style.width=t.prog+'%';bar.appendChild(fill);
+        var pl=document.createElement('span');pl.className='tz-pl';pl.textContent=t.prog+'%';
+        bar.appendChild(pl);
+      }
+      bar.addEventListener('click',function(){select(i);});
+      tr.appendChild(bar);
+    }
+    rows.appendChild(tr);t._row=tr;
+  });
+  drawDeps();
+  todayLine.style.left=x(TODAY)+'px';
+  todayLine.style.height=(TASKS.length*48)+'px';
+}
+function drawDeps(){
+  depsSvg.setAttribute('width',DAYS*st.ppd);
+  depsSvg.setAttribute('height',TASKS.length*48);
+  var html='<defs><marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">'+
+           '<path d="M0,0 L8,4 L0,8" fill="none" stroke="#8fb3e8" stroke-width="1.5"/></marker></defs>';
+  if(st.showDeps){
+    TASKS.forEach(function(t,i){
+      t.deps.forEach(function(depId){
+        var a=TASKS.filter(function(z){return z.id===depId;})[0];if(!a)return;
+        var ai=TASKS.indexOf(a),
+            x1=a.ms?x(a._s):x(a._e)+st.ppd, y1=ai*48+24,
+            x2=t.ms?x(t._s)-10:x(t._s), y2=i*48+24,
+            mx=Math.min(x1+14,(x1+x2)/2);
+        html+='<path d="M'+x1+','+y1+' H'+mx+' V'+y2+' H'+(x2-3)+'" fill="none" stroke="#8fb3e8" '+
+              'stroke-width="1.5" marker-end="url(#ah)"/>';
+      });
+    });
+  }
+  depsSvg.innerHTML=html;
+}
+var detail=document.getElementById('detail');
+function select(i){
+  st.sel=i;
+  TASKS.forEach(function(t,k){
+    t._el.classList.toggle('tz-sel',k===i);
+    t._row.classList.toggle('tz-sel',k===i);
+  });
+  var t=TASKS[i];
+  document.getElementById('dName').textContent=t.name+(t.ms?' ◆':'');
+  var depNames=t.deps.map(function(id){var a=TASKS.filter(function(z){return z.id===id;})[0];return a?a.name:id;});
+  document.getElementById('dMeta').innerHTML=
+    'Owner <b>'+t.owner+'</b><br>Dates <b>'+fmt(t.s)+' → '+fmt(t.e)+'</b> ('+dur(t)+'d)<br>'+
+    'Status <b>'+status(t)+'</b>'+(depNames.length?'<br>Depends on <b>'+depNames.join(', ')+'</b>':'');
+  detail.classList.add('tz-open');syncProg();
+  t._row.scrollIntoView({block:'nearest'});
+}
+function syncProg(){
+  if(st.sel<0)return;
+  var t=TASKS[st.sel];
+  document.getElementById('pFill').style.width=t.prog+'%';
+  document.getElementById('pOut').textContent=t.prog+'%';
+}
+document.getElementById('pUp').addEventListener('click',function(){
+  if(st.sel<0)return;var t=TASKS[st.sel];
+  t.prog=Math.min(100,t.prog+10);buildRows();select(st.sel);});
+document.getElementById('pDown').addEventListener('click',function(){
+  if(st.sel<0)return;var t=TASKS[st.sel];
+  t.prog=Math.max(0,t.prog-10);buildRows();select(st.sel);});
+
+document.getElementById('zWeeks').addEventListener('click',function(){
+  st.ppd=26;setZoom(this);});
+document.getElementById('zMonths').addEventListener('click',function(){
+  st.ppd=8;setZoom(this);});
+function setZoom(btn){
+  document.getElementById('zWeeks').setAttribute('aria-pressed','false');
+  document.getElementById('zMonths').setAttribute('aria-pressed','false');
+  btn.setAttribute('aria-pressed','true');buildHead();buildRows();
+  if(st.sel>=0)select(st.sel);
+}
+document.getElementById('tglDeps').addEventListener('click',function(){
+  st.showDeps=!st.showDeps;this.setAttribute('aria-pressed',String(st.showDeps));drawDeps();});
+document.getElementById('tglProg').addEventListener('click',function(){
+  st.showProg=!st.showProg;this.setAttribute('aria-pressed',String(st.showProg));buildRows();
+  if(st.sel>=0)select(st.sel);});
+document.getElementById('tglToday').addEventListener('click',function(){
+  var px=x(TODAY)-grid.clientWidth/2;
+  grid.scrollTo({left:Math.max(0,px),behavior:'smooth'});});
+
+document.addEventListener('keydown',function(e){
+  if(/INPUT|TEXTAREA/.test(document.activeElement.tagName))return;
+  if(e.key==='ArrowDown'){e.preventDefault();select(Math.min(TASKS.length-1,st.sel+1));}
+  else if(e.key==='ArrowUp'){e.preventDefault();select(Math.max(0,st.sel-1));}
+  else if(e.key==='Enter'&&st.sel>=0){select(st.sel);}
+});
+buildHead();buildRows();
+})();
+</script>
+</body>
+</html>
