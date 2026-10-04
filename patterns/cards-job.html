@@ -1,0 +1,50 @@
+<!--tz-meta {"id":"cards-job","title":"Job cards","category":"Cards","file":"patterns/cards-job.html","tags":["hiring","roles"],"description":"Strict Swiss job rows: title, mono salary, tag chips, apply link.","dnas":["swiss-rational"]} -->
+<section class="tz-jobs" aria-label="Open roles">
+  <div class="tz-head">
+    <h2>Open roles</h2>
+    <p class="tz-count">04 positions · remote-first</p>
+  </div>
+  <div class="tz-rows">
+    <article class="tz-job">
+      <div class="tz-main"><h3>Frontend developer</h3><p class="tz-tags"><span>React</span><span>TypeScript</span><span>Full-time</span></p></div>
+      <span class="tz-sal">$95–120k</span>
+      <a class="tz-apply" href="#j1">Apply →</a>
+    </article>
+    <article class="tz-job">
+      <div class="tz-main"><h3>Technical writer</h3><p class="tz-tags"><span>Docs</span><span>API</span><span>Contract</span></p></div>
+      <span class="tz-sal">$70–85/hr</span>
+      <a class="tz-apply" href="#j2">Apply →</a>
+    </article>
+    <article class="tz-job">
+      <div class="tz-main"><h3>Support engineer</h3><p class="tz-tags"><span>Zendesk</span><span>SQL</span><span>Full-time</span></p></div>
+      <span class="tz-sal">$78–95k</span>
+      <a class="tz-apply" href="#j3">Apply →</a>
+    </article>
+    <article class="tz-job">
+      <div class="tz-main"><h3>Design intern</h3><p class="tz-tags"><span>Figma</span><span>Paid</span><span>Summer</span></p></div>
+      <span class="tz-sal">$25/hr</span>
+      <a class="tz-apply" href="#j4">Apply →</a>
+    </article>
+  </div>
+</section>
+<style>
+.tz-jobs{--bg:#fff;--ink:#111;--soft:#4a4a4a;--red:#d30b18;--line:#11111126;
+  background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(56px,9vw,120px) clamp(20px,6vw,80px)}
+.tz-head{display:flex;align-items:baseline;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+.tz-head h2{margin:0;font-size:clamp(30px,4.5vw,52px);letter-spacing:-.03em}
+.tz-count{margin:0;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--soft)}
+.tz-rows{border-top:2px solid var(--ink)}
+.tz-job{display:grid;grid-template-columns:1fr auto auto;gap:24px;align-items:center;
+  border-bottom:1px solid var(--line);padding:24px 4px}
+.tz-job:hover{background:#11111108}
+.tz-main h3{margin:0 0 10px;font-size:22px;letter-spacing:-.015em}
+.tz-tags{margin:0;display:flex;gap:8px;flex-wrap:wrap}
+.tz-tags span{font-family:ui-monospace,Menlo,monospace;font-size:11px;border:1px solid var(--line);
+  padding:4px 10px;color:var(--soft)}
+.tz-sal{font-family:ui-monospace,Menlo,monospace;font-size:16px;font-weight:700;
+  color:var(--red);white-space:nowrap}
+.tz-apply{font-size:15px;font-weight:700;color:var(--ink);text-decoration:none;white-space:nowrap}
+.tz-apply:hover{color:var(--red)}
+@media (max-width:640px){.tz-job{grid-template-columns:1fr auto}.tz-apply{display:none}}
+</style>
