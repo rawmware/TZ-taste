@@ -1,5 +1,5 @@
 {
- "count": 33,
+ "count": 43,
  "updated": "2026-10-04",
  "usage": "Prose guides for humans and agents. Not code.",
  "docs": [
@@ -64,10 +64,22 @@
    "description": "True dark vs dark-luxe, surface elevation, accent behavior, OLED blacks, text warmth."
   },
   {
+   "id": "data-viz-taste",
+   "title": "Data Viz Taste",
+   "file": "docs/data-viz-taste.md",
+   "description": "Chart selection, honest axes, colorblind-safe palettes, annotation, and when a table beats a chart."
+  },
+  {
    "id": "decision-matrix",
    "title": "Brief → DNA Decision Matrix",
    "file": "docs/DECISION-MATRIX.md",
    "description": "Routing table: brief signals to style DNA, with runner-up reasoning."
+  },
+  {
+   "id": "design-debt",
+   "title": "Design Debt",
+   "file": "docs/design-debt.md",
+   "description": "The taxonomy of design debt: visual, pattern, copy, and token drift — how to measure it, budget paydown, and stop it at the source."
   },
   {
    "id": "design-tokens-explained",
@@ -94,10 +106,28 @@
    "description": "Inline errors, validation timing, retries, and tone — errors that help instead of punish."
   },
   {
+   "id": "filtering-facets",
+   "title": "Filtering & Facets",
+   "file": "docs/filtering-facets.md",
+   "description": "Facet design done right: AND vs OR clarity, count rules, clear-all placement, mobile sheets, and live result counts."
+  },
+  {
    "id": "footer-strategy",
    "title": "Footer Strategy",
    "file": "docs/FOOTER-STRATEGY.md",
    "description": "What footers actually do — trust, wayfinding, SEO, and the conversion safety net."
+  },
+  {
+   "id": "grid-breaking",
+   "title": "Grid Breaking",
+   "file": "docs/grid-breaking.md",
+   "description": "When and how to break the grid on purpose: the three legal breaks, bleed rules, and the optical-correction pass."
+  },
+  {
+   "id": "handoff-to-dev",
+   "title": "Handoff to Dev",
+   "file": "docs/handoff-to-dev.md",
+   "description": "What a buildable handoff package contains: the token contract, spec anatomy, asset rules, and the QA checklist designers run."
   },
   {
    "id": "hero-anatomy",
@@ -130,6 +160,12 @@
    "description": "Skeletons, perceived performance, and performance budgets — making waits feel short and honest."
   },
   {
+   "id": "microinteractions",
+   "title": "Microinteractions",
+   "file": "docs/microinteractions.md",
+   "description": "The anatomy of a microinteraction: trigger to feedback, honest durations, the five zones that matter, and the reduced-motion contract."
+  },
+  {
    "id": "motion-guide",
    "title": "The Motion Guide",
    "file": "docs/motion-guide.md",
@@ -142,6 +178,12 @@
    "description": "Nav architectures that orient instead of overwhelm — top bar, mega menu, rail, command palette, mobile."
   },
   {
+   "id": "onboarding-ux",
+   "title": "Onboarding UX",
+   "file": "docs/onboarding-ux.md",
+   "description": "Value before ask: the 3-screen rule, progressive disclosure, checklists that beat tours, and empty states as onboarding."
+  },
+  {
    "id": "picking-type-pairings",
    "title": "Picking Type Pairings",
    "file": "docs/picking-type-pairings.md",
@@ -152,6 +194,18 @@
    "title": "Pricing Psychology",
    "file": "docs/PRICING-PSYCHOLOGY.md",
    "description": "Anchoring, decoys, tier naming, and annual framing — how pricing pages actually persuade."
+  },
+  {
+   "id": "search-ux",
+   "title": "Search UX",
+   "file": "docs/search-ux.md",
+   "description": "Zero-results design, autocomplete behavior, typo tolerance, result honesty, and the mobile search pattern."
+  },
+  {
+   "id": "shadows-depth",
+   "title": "Shadows & Depth",
+   "file": "docs/shadows-depth.md",
+   "description": "Shadows as an elevation language: a 3-level scale, hairlines vs blur, dark-mode rules, and when to delete the shadow entirely."
   },
   {
    "id": "shipping-checklist",
@@ -194,6 +248,12 @@
    "title": "Using 3D in UI",
    "file": "docs/using-3d-in-ui.md",
    "description": "When 3D helps vs hurts, Three.js performance budgets, fallbacks, and tasteful integration patterns."
+  },
+  {
+   "id": "voice-tone",
+   "title": "Voice & Tone",
+   "file": "docs/voice-tone.md",
+   "description": "Voice is who you are, tone is how the moment feels: the attribute table, per-context sliders, and sentence-level rules."
   },
   {
    "id": "working-with-agents",
