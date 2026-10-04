@@ -1,0 +1,333 @@
+<!--tz-meta {"id":"running-club","title":"Mile Eaters — Community Run Club","category":"Template","file":"templates/running-club.html","tags":["running","sports","community"],"description":"Floodlit night-match run club: giant cropped type, scoreboard strip, the weekly schedule written as race splits.","dnas":["stadium-floodlight"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mile Eaters — show up, run, repeat</title>
+<meta name="description" content="Mile Eaters is a free community run club: three runs a week, all paces, no sign-up fees. Show up and run.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#141719;
+  --tz-surface:#1e2325;
+  --tz-ink:#f4f7f5;
+  --tz-muted:#8b9490;
+  --tz-accent:#3fae5a;
+  --tz-line:#3fae5a3d;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Archivo",sans-serif;background:var(--tz-bg);color:var(--tz-ink);
+  line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+::selection{background:var(--tz-accent);color:var(--tz-bg)}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.tz-mono{font-family:"JetBrains Mono",monospace}
+.tz-display{font-family:"Archivo Black",sans-serif}
+.skip{position:absolute;left:-999px;top:0;background:var(--tz-accent);color:var(--tz-bg);padding:8px 16px;z-index:99}
+.skip:focus{left:8px;top:8px}
+
+/* ---------- header + scoreboard ---------- */
+.tz-header{position:sticky;top:0;z-index:50;background:var(--tz-bg);border-bottom:1px solid var(--tz-line)}
+.tz-header .tz-wrap{display:flex;justify-content:space-between;align-items:center;min-height:72px;gap:20px}
+.tz-logo{font-family:"Archivo Black",sans-serif;font-size:20px;letter-spacing:.02em}
+.tz-logo .tz-dot{color:var(--tz-accent)}
+.tz-nav{display:flex;gap:30px;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+.tz-nav a{color:var(--tz-muted);transition:color .2s}
+.tz-nav a:hover{color:var(--tz-ink)}
+.tz-join{background:var(--tz-accent);color:var(--tz-bg);font-family:"JetBrains Mono",monospace;font-weight:700;font-size:13px;padding:12px 24px;border:0;cursor:pointer;letter-spacing:.06em;transition:transform .2s var(--tz-ease)}
+.tz-join:hover{transform:translateY(-2px)}
+.tz-board{background:var(--tz-surface);border-bottom:1px solid var(--tz-line);overflow:hidden}
+.tz-board .tz-wrap{display:flex;gap:0;padding-top:10px;padding-bottom:10px;font-family:"JetBrains Mono",monospace;font-size:12.5px;white-space:nowrap;overflow-x:auto}
+.tz-board span{padding:0 26px;border-right:1px solid var(--tz-line);color:var(--tz-muted);flex:none}
+.tz-board span:first-child{padding-left:0}
+.tz-board b{color:var(--tz-accent)}
+.tz-live{display:inline-block;width:8px;height:8px;background:var(--tz-accent);margin-right:10px;animation:tz-blink 1.2s steps(2) infinite}
+@keyframes tz-blink{50%{opacity:.2}}
+
+/* ---------- hero ---------- */
+.tz-hero{padding:110px 0 90px;position:relative;border-bottom:1px solid var(--tz-line);overflow:hidden}
+.tz-hero .tz-flood{position:absolute;top:0;right:8%;width:2px;height:100%;background:linear-gradient(var(--tz-accent),transparent);opacity:.5}
+.tz-hero h1{
+  font-family:"Archivo Black",sans-serif;text-transform:uppercase;
+  font-size:clamp(72px,14vw,210px);line-height:.92;letter-spacing:-.02em;
+  margin-left:-.04em;white-space:nowrap;
+}
+.tz-hero h1 .tz-green{color:var(--tz-accent)}
+.tz-hero-row{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:56px;align-items:end}
+.tz-hero .tz-lede{font-size:19px;max-width:44ch;color:var(--tz-ink)}
+.tz-hero .tz-lede strong{color:var(--tz-accent)}
+.tz-hero-facts{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--tz-muted);display:grid;gap:10px}
+.tz-hero-facts div{display:flex;justify-content:space-between;border-bottom:1px solid var(--tz-line);padding-bottom:8px}
+.tz-hero-facts b{color:var(--tz-ink)}
+.tz-cta-row{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap}
+.tz-btn{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:.06em;padding:16px 30px;cursor:pointer;border:0;transition:transform .2s var(--tz-ease)}
+.tz-btn--green{background:var(--tz-accent);color:var(--tz-bg)}
+.tz-btn--green:hover{transform:translateY(-2px)}
+.tz-btn--ghost{background:transparent;color:var(--tz-ink);border:1px solid var(--tz-line)}
+.tz-btn--ghost:hover{border-color:var(--tz-accent);color:var(--tz-accent)}
+
+/* ---------- sections ---------- */
+.tz-section{padding:104px 0;border-bottom:1px solid var(--tz-line)}
+.tz-sec-head{margin-bottom:52px}
+.tz-sec-head .tz-mono{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--tz-accent);display:block;margin-bottom:14px}
+.tz-sec-head h2{font-family:"Archivo Black",sans-serif;text-transform:uppercase;font-size:clamp(38px,5vw,68px);line-height:1;letter-spacing:-.01em}
+.tz-sec-head p{color:var(--tz-muted);font-size:17px;margin-top:14px;max-width:62ch}
+
+/* ---------- splits schedule: the one weird thing ---------- */
+.tz-splits{border:1px solid var(--tz-line);background:var(--tz-surface)}
+.tz-split{display:grid;grid-template-columns:130px 1fr 1fr auto;gap:32px;align-items:center;padding:34px 36px;border-bottom:1px solid var(--tz-line);position:relative;transition:background .2s}
+.tz-split:last-child{border-bottom:0}
+.tz-split:hover{background:#232a2c}
+.tz-split .tz-day{font-family:"Archivo Black",sans-serif;font-size:22px;text-transform:uppercase}
+.tz-split .tz-day small{display:block;font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--tz-muted);font-weight:400;letter-spacing:.14em;margin-top:4px}
+.tz-split .tz-route h3{font-size:19px;font-weight:800;text-transform:uppercase;letter-spacing:.02em}
+.tz-split .tz-route p{font-size:14.5px;color:var(--tz-muted);margin-top:4px}
+.tz-split .tz-pace{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--tz-muted);text-align:right}
+.tz-split .tz-pace b{display:block;color:var(--tz-accent);font-size:20px;margin-bottom:4px}
+.tz-split .tz-tomorrow{font-family:"JetBrains Mono",monospace;font-size:11px;background:var(--tz-accent);color:var(--tz-bg);font-weight:700;padding:8px 14px;letter-spacing:.1em;white-space:nowrap}
+.tz-split--tonight{border-left:6px solid var(--tz-accent)}
+.tz-split-note{margin-top:24px;font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--tz-muted)}
+.tz-split-note b{color:var(--tz-accent)}
+
+/* ---------- races ---------- */
+.tz-races{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.tz-race{border:1px solid var(--tz-line);background:var(--tz-surface);padding:40px 36px;display:flex;justify-content:space-between;gap:24px;align-items:flex-start}
+.tz-race .tz-mono{font-size:11px;letter-spacing:.2em;color:var(--tz-accent);display:block;margin-bottom:10px}
+.tz-race h3{font-family:"Archivo Black",sans-serif;font-size:26px;text-transform:uppercase;line-height:1.1}
+.tz-race p{font-size:15px;color:var(--tz-muted);margin-top:10px;max-width:40ch}
+.tz-race .tz-dist{font-family:"Archivo Black",sans-serif;font-size:64px;color:var(--tz-accent);line-height:1;flex:none}
+.tz-race .tz-dist small{display:block;font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--tz-muted);letter-spacing:.2em;margin-top:8px}
+
+/* ---------- dues ---------- */
+.tz-dues{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.tz-dues h2{font-family:"Archivo Black",sans-serif;font-size:clamp(60px,8vw,120px);color:var(--tz-accent);line-height:1}
+.tz-dues h2 small{display:block;font-size:18px;color:var(--tz-ink);font-family:"Archivo",sans-serif;font-weight:600;margin-top:12px;text-transform:none;letter-spacing:0}
+.tz-dues ul{list-style:none;display:grid;gap:0;border-top:1px solid var(--tz-line)}
+.tz-dues li{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--tz-line);font-size:16px;align-items:baseline}
+.tz-dues li .tz-mono{color:var(--tz-accent);font-size:13px;flex:none}
+
+/* ---------- quote ---------- */
+.tz-quote{padding:120px 0;text-align:left;border-bottom:1px solid var(--tz-line)}
+.tz-quote blockquote{font-family:"Archivo Black",sans-serif;font-size:clamp(30px,4.6vw,58px);text-transform:uppercase;line-height:1.12;max-width:20ch}
+.tz-quote blockquote .tz-green{color:var(--tz-accent)}
+.tz-quote cite{display:block;margin-top:28px;font-family:"JetBrains Mono",monospace;font-style:normal;font-size:13px;color:var(--tz-muted);letter-spacing:.1em}
+
+/* ---------- footer ---------- */
+.tz-footer{padding:80px 0 36px}
+.tz-foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:44px;margin-bottom:56px}
+.tz-foot-grid h4{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--tz-accent);margin-bottom:16px}
+.tz-foot-grid ul{list-style:none;display:grid;gap:10px;font-size:15px;color:var(--tz-muted)}
+.tz-foot-grid a:hover{color:var(--tz-ink)}
+.tz-foot-note{font-size:15px;color:var(--tz-muted);max-width:34ch;margin-top:12px}
+.tz-foot-bottom{border-top:1px solid var(--tz-line);padding-top:24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--tz-muted)}
+
+/* ---------- reveal ---------- */
+.tz-reveal{opacity:0;transform:translateY(20px);transition:opacity .6s var(--tz-ease),transform .6s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:960px){
+  .tz-hero h1{white-space:normal}
+  .tz-hero-row{grid-template-columns:1fr;gap:32px}
+  .tz-nav{display:none}
+  .tz-split{grid-template-columns:1fr 1fr;gap:16px}
+  .tz-races{grid-template-columns:1fr}
+  .tz-dues{grid-template-columns:1fr;gap:32px}
+  .tz-foot-grid{grid-template-columns:1fr 1fr}
+  .tz-section{padding:72px 0}
+}
+@media (max-width:560px){
+  .tz-split{grid-template-columns:1fr}
+  .tz-split .tz-pace{text-align:left}
+  .tz-foot-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-reveal{opacity:1;transform:none}
+  .tz-live{animation:none}
+}
+</style>
+</head>
+<!-- DNA: stadium-floodlight (night concrete, floodlight white, turf green reserved for scores/live states; Archivo Black/Archivo/JetBrains Mono). Design read: Tuesday-night speed work under floodlights — concrete, breath, and the quiet religion of showing up — for runners who log miles instead of talking about them. One distinctive choice: the weekly schedule is written as race splits — each run listed like a split marker with its target pace, the way a watch reads it back. Dials V6/M6/D7. -->
+<body>
+<a class="skip" href="#schedule">Skip to the weekly schedule</a>
+
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-logo" href="#">MILE<span class="tz-dot">·</span>EATERS</a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#schedule">Schedule</a><a href="#races">Races</a><a href="#dues">Dues</a>
+    </nav>
+    <a class="tz-join" href="#dues">JOIN — $0</a>
+  </div>
+  <div class="tz-board" aria-label="Next runs">
+    <div class="tz-wrap">
+      <span><span class="tz-live"></span>NEXT <b>TUE 18:30</b> · 8K TEMPO · LEDYARD FIELD</span>
+      <span>THU 06:15 · EASY 10K · RIVERSIDE PATH</span>
+      <span>SAT 08:00 · LONG RUN 22K · MEET AT THE BANDSTAND</span>
+      <span>THIS WEEK <b>214</b> RUNNERS LOGGED <b>3,891 KM</b></span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ============ hero ============ -->
+  <section class="tz-hero">
+    <span class="tz-flood" aria-hidden="true"></span>
+    <div class="tz-wrap">
+      <p class="tz-mono tz-reveal tz-in" style="font-size:12px;letter-spacing:.24em;color:var(--tz-accent);margin-bottom:24px">EST. 2017 · PORTSMOUTH NH · ALL PACES</p>
+      <h1 class="tz-reveal tz-in">EAT <span class="tz-green">MILES.</span><br>NOT DUST.</h1>
+      <div class="tz-hero-row">
+        <div class="tz-reveal tz-in">
+          <p class="tz-lede">Mile Eaters is a free run club. Three runs a week, rain or shine, led by volunteers who'd rather be running than organizing. <strong>No fees, no pace requirements, no speeches.</strong> Show up in shoes that work and we'll figure out the rest.</p>
+          <div class="tz-cta-row">
+            <a class="tz-btn tz-btn--green" href="#schedule">This week's runs</a>
+            <a class="tz-btn tz-btn--ghost" href="#dues">How it costs $0</a>
+          </div>
+        </div>
+        <div class="tz-hero-facts tz-reveal tz-in">
+          <div><span>FOUNDED</span><b>2017</b></div>
+          <div><span>MEMBERS</span><b>312</b></div>
+          <div><span>RUNS / WEEK</span><b>3</b></div>
+          <div><span>FASTEST MARATHON (CLUB)</span><b>2:41:08</b></div>
+          <div><span>SLOWEST ACCEPTED PACE</span><b>WHATEVER YOU'VE GOT</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ schedule as splits ============ -->
+  <section class="tz-section" id="schedule">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <span class="tz-mono">The week, lap by lap</span>
+        <h2>Every run is a split</h2>
+        <p>Your watch reads splits back to you — so do we. Each run below is listed the way a race is: distance, target pace, who's leading. Find your split and show up.</p>
+      </div>
+      <div class="tz-splits">
+        <div class="tz-split tz-split--tonight tz-reveal">
+          <div class="tz-day">Tuesday<small>18:30 · Ledyard Field</small></div>
+          <div class="tz-route"><h3>Tempo night — 8K</h3><p>Warm-up 2K, 5K at tempo, cool-down 1K. Three pace groups so nobody runs alone. Headlamps on after October.</p></div>
+          <div class="tz-pace"><b>5:10 /km</b>tempo group A · B at 5:40 · C at 6:15</div>
+          <span class="tz-tomorrow">TONIGHT</span>
+        </div>
+        <div class="tz-split tz-reveal">
+          <div class="tz-day">Thursday<small>06:15 · Riverside Path</small></div>
+          <div class="tz-route"><h3>Easy morning — 10K</h3><p>Conversational pace, coffee after at the kiosk by the bridge. The sunrise crew. Bring a layer; the river is cold at six.</p></div>
+          <div class="tz-pace"><b>6:30 /km</b>no-drop, ever · walk breaks fine</div>
+          <span class="tz-tomorrow" style="background:transparent;border:1px solid var(--tz-line);color:var(--tz-muted)">WEEKLY</span>
+        </div>
+        <div class="tz-split tz-reveal">
+          <div class="tz-day">Saturday<small>08:00 · The Bandstand</small></div>
+          <div class="tz-route"><h3>Long run — 16 to 26K</h3><p>Route posted Friday night. Aid station at 12K with water and the good gummies. Someone always runs the full loop; someone always runs half.</p></div>
+          <div class="tz-pace"><b>6:00 /km</b>groups split at 8K and 16K</div>
+          <span class="tz-tomorrow" style="background:transparent;border:1px solid var(--tz-line);color:var(--tz-muted)">WEEKLY</span>
+        </div>
+        <div class="tz-split tz-reveal">
+          <div class="tz-day">Sunday<small>09:00 · Trailhead, Blue Job</small></div>
+          <div class="tz-route"><h3>Trail social — 12K</h3><p>Monthly, first Sunday. Roots, rocks, and a pace that respects the hills. Dogs welcome; they set the pace anyway.</p></div>
+          <div class="tz-pace"><b>7:00 /km</b>effort-based · hike the climbs</div>
+          <span class="tz-tomorrow" style="background:transparent;border:1px solid var(--tz-line);color:var(--tz-muted)">MONTHLY</span>
+        </div>
+      </div>
+      <p class="tz-split-note tz-reveal"><b>FIRST TIME?</b> Come ten minutes early, find anyone in a green Mile Eaters shirt, and say "first run." That's the whole onboarding.</p>
+    </div>
+  </section>
+
+  <!-- ============ races ============ -->
+  <section class="tz-section" id="races">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <span class="tz-mono">Pin a bib with us</span>
+        <h2>Races we're entering</h2>
+        <p>We pick two races a season and show up in numbers. Club tent, shared warm-up, and someone yelling your name at mile 20.</p>
+      </div>
+      <div class="tz-races">
+        <article class="tz-race tz-reveal">
+          <div>
+            <span class="tz-mono">NOV 15 · CLUB TARGET RACE</span>
+            <h3>Seacoast Half Marathon</h3>
+            <p>Forty-three of us are in. Twelve-week plan posted in the group chat, long runs build to 24K, pasta dinner the Friday before at Rosa's.</p>
+          </div>
+          <span class="tz-dist">21.1<small>KM</small></span>
+        </article>
+        <article class="tz-race tz-reveal">
+          <div>
+            <span class="tz-mono">DEC 31 · TRADITION</span>
+            <h3>Midnight Mile</h3>
+            <p>One mile, downtown, at 11:59 PM. Headlamps, costumes, hot chocolate at the finish. Our ninth year running it — literally.</p>
+          </div>
+          <span class="tz-dist">1<small>MILE</small></span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ dues ============ -->
+  <section class="tz-section" id="dues">
+    <div class="tz-wrap tz-dues">
+      <div class="tz-reveal">
+        <h2>$0<small>per year, per person, forever</small></h2>
+      </div>
+      <div class="tz-reveal">
+        <p style="color:var(--tz-muted);font-size:17px;margin-bottom:28px;max-width:52ch">The club costs nothing because the club owns nothing. We meet in public parks, drink from public fountains, and the website runs on a volunteer's server. Here's what membership actually means:</p>
+        <ul>
+          <li><span class="tz-mono">01</span><span>Show up. That's the membership form.</span></li>
+          <li><span class="tz-mono">02</span><span>Bring water in summer and a light in winter. We have spares of both.</span></li>
+          <li><span class="tz-mono">03</span><span>Nobody gets dropped. The last runner gets the loudest cheer.</span></li>
+          <li><span class="tz-mono">04</span><span>Optional: the group chat, the race plans, the post-run breakfast crew.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ quote ============ -->
+  <section class="tz-quote">
+    <div class="tz-wrap">
+      <blockquote class="tz-reveal">"I came for the <span class="tz-green">marathon plan.</span> I stayed because someone learned <span class="tz-green">my name.</span>"</blockquote>
+      <cite class="tz-reveal">— DANA W., MEMBER SINCE 2019 · 4 MARATHONS, 0 MISSED SATURDAYS</cite>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-foot-grid">
+      <div>
+        <span class="tz-logo">MILE<span class="tz-dot">·</span>EATERS</span>
+        <p class="tz-foot-note">A free community run club in Portsmouth, NH. Run by volunteers, fueled by stubbornness.</p>
+      </div>
+      <div><h4>Runs</h4><ul><li><a href="#schedule">Weekly schedule</a></li><li><a href="#races">Target races</a></li><li><a href="#">Route library</a></li></ul></div>
+      <div><h4>Club</h4><ul><li><a href="#dues">Membership ($0)</a></li><li><a href="#">Group chat</a></li><li><a href="#">Volunteer</a></li></ul></div>
+      <div><h4>Talk</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">run@mileeaters.club</a></li></ul></div>
+    </div>
+    <div class="tz-foot-bottom">
+      <span>© 2026 MILE EATERS RUN CLUB · PORTSMOUTH NH</span>
+      <span class="tz-mono">SHOW UP · RUN · REPEAT</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){e.classList.add('tz-in')});
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en,i){
+        if(en.isIntersecting){ setTimeout(function(){en.target.classList.add('tz-in')}, i*70); io.unobserve(en.target); }
+      });
+    },{threshold:.1});
+    els.forEach(function(e){io.observe(e)});
+  }
+})();
+</script>
+</body>
+</html>
