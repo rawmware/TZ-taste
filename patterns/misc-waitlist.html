@@ -1,0 +1,107 @@
+<!--tz-meta {"id":"misc-waitlist","title":"Waitlist meter","category":"Misc","file":"patterns/misc-waitlist.html","tags":["launch","progress"],"description":"Neon tick-mark progress meter with live count and referrals.","dnas":["acid-rave"]} -->
+<section class="tz-wait">
+  <p class="tz-wait-kicker">Founding cohort · closes soon</p>
+  <h2>Get in early.</h2>
+  <p class="tz-wait-count"><b>1,204</b> of 2,000 spots claimed</p>
+  <div class="tz-wait-meter" role="progressbar" aria-valuenow="1204" aria-valuemin="0" aria-valuemax="2000" aria-label="Waitlist spots claimed">
+    <span class="tz-wait-fill" style="width:60.2%"></span><span class="tz-wait-cap" aria-hidden="true"></span>
+  </div>
+  <div class="tz-wait-row">
+    <p>Your referrals: <b>3</b> — two more unlocks a founding badge.</p>
+    <button type="button">Join the waitlist</button>
+  </div>
+</section>
+<style>
+.tz-wait{
+  background:#0b0b0b;
+  color:#f2f2ee;
+  font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(40px,6vw,88px) clamp(24px,6vw,80px);
+}
+.tz-wait-kicker{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:#c8ff1f;
+  margin:0 0 16px;
+}
+.tz-wait h2{
+  font-size:clamp(36px,6vw,64px);
+  letter-spacing:-.03em;
+  margin:0 0 12px;
+  font-weight:800;
+}
+.tz-wait-count{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:14px;
+  margin:0 0 16px;
+  font-variant-numeric:tabular-nums;
+}
+.tz-wait-count b{
+  color:#c8ff1f;
+  font-size:22px;
+}
+.tz-wait-meter{
+  position:relative;
+  height:34px;
+  background:#161616;
+  border:1px solid #2c2c2c;
+  margin-bottom:28px;
+  max-width:640px;
+  background-image:repeating-linear-gradient(90deg,transparent 0 39px,rgba(200,255,31,.25) 39px 40px);
+}
+.tz-wait-fill{
+  position:absolute;
+  inset:0 auto 0 0;
+  background:#c8ff1f;
+  box-shadow:0 0 24px rgba(200,255,31,.55);
+}
+.tz-wait-cap{
+  position:absolute;
+  top:-4px;
+  bottom:-4px;
+  width:6px;
+  background:#fff;
+  left:60.2%;
+  box-shadow:0 0 16px #fff;
+  animation:tz-cap 1.6s ease-in-out infinite;
+}
+@keyframes tz-cap{
+  50%{opacity:.4}
+}
+.tz-wait-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+  flex-wrap:wrap;
+  max-width:640px;
+}
+.tz-wait-row p{
+  font-size:14px;
+  margin:0;
+  color:#b9b9b2;
+}
+.tz-wait-row p b{
+  color:#c8ff1f;
+  font-family:ui-monospace,Menlo,monospace;
+}
+.tz-wait button{
+  background:#c8ff1f;
+  color:#0b0b0b;
+  border:none;
+  font:800 14px/1 Arial,Helvetica,sans-serif;
+  letter-spacing:.06em;
+  padding:16px 28px;
+  cursor:pointer;
+  text-transform:uppercase;
+}
+.tz-wait button:focus-visible{
+  outline:3px solid #fff;
+  outline-offset:3px;
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-wait-cap{animation:none}
+}
+</style>
