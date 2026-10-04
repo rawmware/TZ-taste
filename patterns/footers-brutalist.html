@@ -1,0 +1,45 @@
+<!--tz-meta {"id":"footers-brutalist","title":"Brutalist footer","category":"Footer","file":"patterns/footers-brutalist.html","tags":["chunky","borders","raw"],"description":"Raw concrete footer with 3px borders, hard shadows, and a rotated NO SLOP stamp.","dnas":["industrial-brutalist"]} -->
+<footer class="tz-bfoot">
+  <div class="tz-bfoot-grid">
+    <div class="tz-bfoot-brand">
+      <p class="tz-bfoot-word">CRANE&amp;CO</p>
+      <p class="tz-bfoot-tag">We build the unglamorous parts of the internet. On time.</p>
+      <span class="tz-bfoot-stamp" aria-hidden="true">No slop</span>
+    </div>
+    <div class="tz-bfoot-col">
+      <p class="tz-bfoot-label">Index</p>
+      <a href="#">Work</a><a href="#">Rates</a><a href="#">Journal</a>
+    </div>
+    <div class="tz-bfoot-col">
+      <p class="tz-bfoot-label">Elsewhere</p>
+      <a href="#">GitHub</a><a href="#">Mastodon</a><a href="#">RSS</a>
+    </div>
+    <div class="tz-bfoot-col">
+      <p class="tz-bfoot-label">Contact</p>
+      <a href="#">hello@crane.co</a><a href="#">+1 603 555 0119</a><a href="#">Portsmouth, NH</a>
+    </div>
+  </div>
+  <p class="tz-bfoot-base">© 2026 Crane &amp; Co. Built with a text editor and opinions.</p>
+</footer>
+<style>
+.tz-bfoot{--bg:#e7e4dc;--ink:#161513;--accent:#e0531f;
+  background:var(--bg);color:var(--ink);border-top:4px solid var(--ink);
+  padding:48px clamp(20px,4vw,56px) 28px;font-family:Arial,Helvetica,sans-serif}
+.tz-bfoot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px;margin-bottom:44px}
+.tz-bfoot-brand{position:relative;border:3px solid var(--ink);padding:24px;background:#fff;
+  box-shadow:7px 7px 0 var(--ink);align-self:start}
+.tz-bfoot-word{font-size:30px;font-weight:900;letter-spacing:-.02em;margin:0 0 10px}
+.tz-bfoot-tag{font-size:14px;line-height:1.55;margin:0;max-width:30ch}
+.tz-bfoot-stamp{position:absolute;top:-20px;right:18px;background:var(--accent);color:#fff;
+  border:3px solid var(--ink);padding:6px 14px;font-weight:900;font-size:13px;letter-spacing:.08em;
+  text-transform:uppercase;transform:rotate(-7deg);box-shadow:3px 3px 0 var(--ink)}
+.tz-bfoot-label{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;margin:0 0 12px;background:var(--ink);color:#fff;display:inline-block;padding:4px 10px}
+.tz-bfoot-col{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.tz-bfoot-col a{color:var(--ink);font-size:15px;font-weight:bold;text-decoration:none;border-bottom:2px solid transparent}
+.tz-bfoot-col a:hover{border-bottom-color:var(--accent)}
+.tz-bfoot-base{font-family:ui-monospace,Menlo,monospace;font-size:12px;margin:0;
+  border-top:3px solid var(--ink);padding-top:18px}
+@media (max-width:820px){.tz-bfoot-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.tz-bfoot-grid{grid-template-columns:1fr}}
+</style>
