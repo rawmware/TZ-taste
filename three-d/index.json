@@ -1,5 +1,5 @@
 {
- "count": 31,
+ "count": 41,
  "updated": "2026-10-04",
  "usage": "Each file is a standalone Three.js scene (CDN import). Copy the whole file or lift the scene code. All original, MIT.",
  "scenes": [
@@ -102,6 +102,20 @@
    ]
   },
   {
+   "id": "desert-caravan",
+   "title": "Caravan at Golden Hour",
+   "category": "3D",
+   "file": "three-d/desert-caravan.html",
+   "tags": [
+    "threejs",
+    "desert"
+   ],
+   "description": "Low-poly dunes, drifting sand, and a camel caravan crossing at golden hour.",
+   "dnas": [
+    "sahara-ochre"
+   ]
+  },
+  {
    "id": "dna-helix",
    "title": "Helix Drift",
    "category": "3D",
@@ -144,6 +158,20 @@
    ]
   },
   {
+   "id": "gearworks",
+   "title": "The Gearworks",
+   "category": "3D",
+   "file": "three-d/gearworks.html",
+   "tags": [
+    "threejs",
+    "machine"
+   ],
+   "description": "Brass gears turn at meshed ratios while steam rises through warm lamplight.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
    "id": "glass-torus-knot",
    "title": "Glass Knot Studio",
    "category": "3D",
@@ -172,6 +200,20 @@
    ]
   },
   {
+   "id": "greenhouse-rain",
+   "title": "Rain on Glass",
+   "category": "3D",
+   "file": "three-d/greenhouse-rain.html",
+   "tags": [
+    "threejs",
+    "rain"
+   ],
+   "description": "Rain streaks the panes while seedlings sway in warm interior light.",
+   "dnas": [
+    "greenhouse-glass"
+   ]
+  },
+  {
    "id": "ink-bloom",
    "title": "Ink Bloom",
    "category": "3D",
@@ -186,6 +228,20 @@
    ]
   },
   {
+   "id": "jellyfish-bloom",
+   "title": "Jellyfish Bloom",
+   "category": "3D",
+   "file": "three-d/jellyfish-bloom.html",
+   "tags": [
+    "threejs",
+    "ocean"
+   ],
+   "description": "Translucent bells pulse and rise, trailing ribbons of tentacles.",
+   "dnas": [
+    "glass-calm"
+   ]
+  },
+  {
    "id": "kaleidoscope-tunnel",
    "title": "Kaleidoscope Tunnel",
    "category": "3D",
@@ -197,6 +253,34 @@
    "description": "Endless tunnel of rotating rings over a folding kaleidoscope shader field.",
    "dnas": [
     "dark-luxe"
+   ]
+  },
+  {
+   "id": "kite-festival",
+   "title": "Kite Festival",
+   "category": "3D",
+   "file": "three-d/kite-festival.html",
+   "tags": [
+    "threejs",
+    "sky"
+   ],
+   "description": "Diamond kites dance on their strings while gusts roll across a flat blue sky.",
+   "dnas": [
+    "memphis-milano"
+   ]
+  },
+  {
+   "id": "lighthouse-storm",
+   "title": "Storm Watch",
+   "category": "3D",
+   "file": "three-d/lighthouse-storm.html",
+   "tags": [
+    "threejs",
+    "night"
+   ],
+   "description": "A lighthouse beam sweeps through rain over a choppy night sea.",
+   "dnas": [
+    "harbor-fog"
    ]
   },
   {
@@ -228,6 +312,20 @@
    ]
   },
   {
+   "id": "mushroom-grove",
+   "title": "Glowing Grove",
+   "category": "3D",
+   "file": "three-d/mushroom-grove.html",
+   "tags": [
+    "threejs",
+    "night"
+   ],
+   "description": "Bioluminescent caps light a dark forest floor; spores drift overhead.",
+   "dnas": [
+    "alpine-after-dark"
+   ]
+  },
+  {
    "id": "neon-grid-horizon",
    "title": "Neon Horizon",
    "category": "3D",
@@ -239,6 +337,20 @@
    "description": "A teal perspective grid races toward a glowing amber sun over a deep-navy horizon — tasteful synthwave, no purple-blue cliché.",
    "dnas": [
     "glass-calm"
+   ]
+  },
+  {
+   "id": "observatory-night",
+   "title": "Counting Stars",
+   "category": "3D",
+   "file": "three-d/observatory-night.html",
+   "tags": [
+    "threejs",
+    "night"
+   ],
+   "description": "An open dome slit tracks the sky while the stars wheel slowly overhead.",
+   "dnas": [
+    "observatory-star"
    ]
   },
   {
@@ -354,6 +466,20 @@
    ]
   },
   {
+   "id": "subway-tunnel",
+   "title": "Downtown Local",
+   "category": "3D",
+   "file": "three-d/subway-tunnel.html",
+   "tags": [
+    "threejs",
+    "night"
+   ],
+   "description": "Light rings rush past in an endless tunnel; the platform never moves.",
+   "dnas": [
+    "midnight-railway"
+   ]
+  },
+  {
    "id": "terrain-waves",
    "title": "Wireframe Terrain",
    "category": "3D",
@@ -372,6 +498,20 @@
    "title": "3D Scene Collection",
    "file": "three-d/README.md",
    "description": "Index and engine notes for the 30 standalone Three.js ambient scenes."
+  },
+  {
+   "id": "tide-pools",
+   "title": "Tide Pool",
+   "category": "3D",
+   "file": "three-d/tide-pools.html",
+   "tags": [
+    "threejs",
+    "water"
+   ],
+   "description": "Sunlight shimmers across a shallow tide pool ringed with dark rocks.",
+   "dnas": [
+    "arctic-field"
+   ]
   },
   {
    "id": "topo-contours",
