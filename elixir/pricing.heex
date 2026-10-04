@@ -1,0 +1,188 @@
+<!--tz-meta {"id":"ex-pricing","title":"Pricing — Lab Ledger","category":"Elixir","file":"elixir/pricing.heex","tags":["heex","phoenix","pricing","notebook","editorial"],"description":"A scientist's ledger page: three plans ruled on graph paper, the recommended one circled in red pen with handwritten marginalia.","dnas":["lab-notebook"]} -->
+<%!-- def pricing(assigns) — attr :heading, :string · attr :plans, :list — each: %{name: string, price: string, per: string, blurb: string, features: list, recommended: boolean} · attr :footnote, :string --%>
+<%!--
+Design read: A field-notebook ledger page for Latch's pricing — three plans ruled in Courier on graph paper, the middle one circled in red pen with a Caveat-scrawled "most folks land here."
+Distinctive choice: the hand-drawn wobbly SVG ellipse circling the recommended plan, drawn with a visible pen stroke that animates in.
+Dials: VARIANCE 5 / MOTION 2 / DENSITY 5. DNA: lab-notebook (Caveat / Karla / Courier Prime).
+--%>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Karla:wght@400;500;700&family=Courier+Prime:wght@400;700&display=swap");
+.tz-pricing {
+  --tz-bg: #f4f1e6;
+  --tz-ink: #2b2a26;
+  --tz-muted: #7a756a;
+  --tz-accent: #b3402e;
+  --tz-line: #2b2a2633;
+  --tz-font-hand: "Caveat", cursive;
+  --tz-font-body: "Karla", "Helvetica Neue", sans-serif;
+  --tz-font-mono: "Courier Prime", "Courier New", monospace;
+  background-color: var(--tz-bg);
+  background-image:
+    linear-gradient(var(--tz-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--tz-line) 1px, transparent 1px);
+  background-size: 28px 28px;
+  color: var(--tz-ink);
+  font-family: var(--tz-font-body);
+  padding: clamp(4rem, 9vw, 7.5rem) clamp(1.25rem, 4vw, 4rem);
+}
+.tz-pricing__inner { max-width: 1180px; margin: 0 auto; }
+.tz-pricing__page-note {
+  font-family: var(--tz-font-hand);
+  font-size: 1.35rem;
+  color: var(--tz-accent);
+  transform: rotate(-2deg);
+  display: inline-block;
+  margin: 0 0 0.75rem;
+}
+.tz-pricing__heading {
+  font-family: var(--tz-font-mono);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 4.5vw, 3rem);
+  margin: 0 0 3rem;
+  max-width: 22ch;
+  line-height: 1.2;
+}
+.tz-pricing__ledger {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 1fr;
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  align-items: stretch;
+}
+.tz-pricing__plan {
+  background: rgba(244, 241, 230, 0.88);
+  border: 1.5px solid var(--tz-ink);
+  padding: 2rem 1.75rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.tz-pricing__plan--rec { transform: rotate(0.8deg); }
+.tz-pricing__ring {
+  position: absolute;
+  inset: -18px -22px;
+  pointer-events: none;
+  overflow: visible;
+}
+.tz-pricing__ring path {
+  fill: none;
+  stroke: var(--tz-accent);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-dasharray: 1400;
+  stroke-dashoffset: 1400;
+  animation: tz-pricing-draw 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+}
+@keyframes tz-pricing-draw { to { stroke-dashoffset: 0; } }
+.tz-pricing__marginalia {
+  position: absolute;
+  top: -3.4rem;
+  right: -0.5rem;
+  font-family: var(--tz-font-hand);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--tz-accent);
+  transform: rotate(4deg);
+  white-space: nowrap;
+}
+.tz-pricing__name {
+  font-family: var(--tz-font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+  border-bottom: 1px dashed var(--tz-ink);
+  padding-bottom: 1rem;
+}
+.tz-pricing__price {
+  font-family: var(--tz-font-mono);
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 1;
+  margin: 0;
+}
+.tz-pricing__per { font-family: var(--tz-font-mono); font-size: 0.9rem; color: var(--tz-muted); margin: 0.4rem 0 1rem; }
+.tz-pricing__blurb { font-size: 1rem; line-height: 1.55; margin: 0 0 1.5rem; }
+.tz-pricing__list { list-style: none; margin: 0 0 2rem; padding: 0; display: grid; gap: 0.7rem; }
+.tz-pricing__list li {
+  font-family: var(--tz-font-mono);
+  font-size: 0.92rem;
+  padding-left: 1.6rem;
+  position: relative;
+  line-height: 1.45;
+}
+.tz-pricing__list li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 3px;
+  width: 7px;
+  height: 12px;
+  border-right: 2.5px solid var(--tz-accent);
+  border-bottom: 2.5px solid var(--tz-accent);
+  transform: rotate(42deg);
+}
+.tz-pricing__cta {
+  margin-top: auto;
+  display: block;
+  text-align: center;
+  font-family: var(--tz-font-mono);
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--tz-bg);
+  background: var(--tz-ink);
+  padding: 0.9rem 1rem;
+  border: 1.5px solid var(--tz-ink);
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.tz-pricing__cta:hover { background: var(--tz-accent); border-color: var(--tz-accent); }
+.tz-pricing__plan--rec .tz-pricing__cta { background: var(--tz-accent); border-color: var(--tz-accent); }
+.tz-pricing__plan--rec .tz-pricing__cta:hover { background: var(--tz-ink); border-color: var(--tz-ink); }
+.tz-pricing__footnote {
+  margin-top: 3rem;
+  font-family: var(--tz-font-hand);
+  font-size: 1.3rem;
+  color: var(--tz-muted);
+  transform: rotate(-1deg);
+}
+@media (max-width: 900px) {
+  .tz-pricing__ledger { grid-template-columns: 1fr; }
+  .tz-pricing__plan--rec { transform: none; }
+  .tz-pricing__marginalia { top: -2.9rem; right: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tz-pricing__ring path { animation: none; stroke-dashoffset: 0; }
+  .tz-pricing__cta { transition: none; }
+}
+</style>
+<section class="tz-pricing" aria-label="Pricing">
+  <div class="tz-pricing__inner">
+    <p class="tz-pricing__page-note">fig. 3 — what it costs (p. 47)</p>
+    <h2 class="tz-pricing__heading">{@heading}</h2>
+    <div class="tz-pricing__ledger">
+      {for plan <- @plans do}
+        <article class={"tz-pricing__plan" <> if(plan.recommended, do: " tz-pricing__plan--rec", else: "")}>
+          {if plan.recommended do}
+            <svg class="tz-pricing__ring" viewBox="0 0 400 560" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M 32 90 C 60 30, 180 12, 300 26 C 380 36, 392 120, 386 260 C 380 420, 360 520, 210 540 C 90 556, 18 480, 22 300 C 26 150, 20 110, 32 90 Z" />
+            </svg>
+            <span class="tz-pricing__marginalia">most folks land here →</span>
+          {/if}
+          <h3 class="tz-pricing__name">{plan.name}</h3>
+          <p class="tz-pricing__price">{plan.price}</p>
+          <p class="tz-pricing__per">{plan.per}</p>
+          <p class="tz-pricing__blurb">{plan.blurb}</p>
+          <ul class="tz-pricing__list">
+            {for feat <- plan.features do}
+              <li>{feat}</li>
+            {/for}
+          </ul>
+          <.link href={plan.href} class="tz-pricing__cta">
+            {if plan.recommended, do: "Start with Full Time", else: "Choose " <> plan.name}
+          </.link>
+        </article>
+      {/for}
+    </div>
+    <p class="tz-pricing__footnote">{@footnote}</p>
+  </div>
+</section>
