@@ -1,0 +1,126 @@
+<!--tz-meta {"id":"showcase-greenmarket-dawn","title":"Greenmarket Dawn showcase","category":"Showcase","file":"showcase/greenmarket-dawn.html","tags":["greenmarket-dawn"],"description":"Live demo page for the Greenmarket Dawn style DNA.","dnas":["greenmarket-dawn"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Greenmarket Dawn — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Work+Sans:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#faf6ec; --tz-surface:#f0e7cf; --tz-ink:#243015; --tz-muted:#8a8468;
+  --tz-accent:#4a7c2f; --tz-line:#24301529;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Work Sans",sans-serif;font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 4vw;border-bottom:1px solid var(--tz-line);font-family:"Courier Prime",monospace;font-size:0.72rem;letter-spacing:0.1em}
+.tz-wordmark{font-family:"DM Serif Display",serif;font-size:1.5rem}
+.tz-label{color:var(--tz-muted)}
+.tz-hero{padding:6rem 4vw 5rem;max-width:900px;margin:0 auto;position:relative;text-align:center}
+.tz-stall{position:absolute;top:2rem;right:4vw;background:var(--tz-surface);border:1px solid var(--tz-line);border-radius:6px;padding:0.9rem 1.1rem;transform:rotate(4deg);max-width:230px;box-shadow:2px 2px 0 var(--tz-line)}
+.tz-stall::before{content:"";position:absolute;top:-7px;left:50%;transform:translateX(-50%);width:12px;height:12px;border-radius:50%;background:var(--tz-accent)}
+.tz-stall p{font-family:"Courier Prime",monospace;font-size:0.72rem;letter-spacing:0.04em;color:var(--tz-muted)}
+.tz-eyebrow{font-family:"Courier Prime",monospace;font-size:0.75rem;letter-spacing:0.18em;color:var(--tz-muted);margin-bottom:1.4rem}
+.tz-hero h1{font-family:"DM Serif Display",serif;font-size:clamp(2.8rem,8vw,5.8rem);line-height:1.06}
+.tz-hero h1 .tz-green{color:var(--tz-accent)}
+.tz-sub{margin:1.6rem auto 0;font-size:1.05rem;color:var(--tz-muted);max-width:50ch}
+.tz-cta{display:inline-block;margin-top:2.4rem;background:var(--tz-accent);color:var(--tz-bg);font-weight:600;font-size:1rem;letter-spacing:0.03em;text-decoration:none;padding:1rem 2.6rem;border-radius:6px;transition:transform .15s ease}
+.tz-cta:hover{transform:translateY(-2px)}
+.tz-content{padding:4rem 4vw 0;max-width:800px;margin:0 auto}
+.tz-content h2{font-family:"DM Serif Display",serif;font-size:clamp(2rem,5vw,3rem);margin-bottom:0.4rem}
+.tz-content .tz-note{color:var(--tz-muted);margin-bottom:2.5rem;max-width:54ch}
+.tz-crates{list-style:none}
+.tz-crates li{background:var(--tz-surface);border:1px solid var(--tz-line);border-radius:6px;padding:2rem;margin-bottom:2.5rem;position:relative;animation:tz-fadeup 0.4s ease both}
+.tz-crates li:nth-child(2){animation-delay:0.12s}
+.tz-crates li:nth-child(3){animation-delay:0.24s}
+.tz-crates li:nth-child(4){animation-delay:0.36s}
+@keyframes tz-fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.tz-tag{position:absolute;top:-14px;right:1.4rem;background:var(--tz-bg);border:1px solid var(--tz-line);border-radius:6px;padding:0.35rem 0.9rem;transform:rotate(3deg);font-family:"Courier Prime",monospace;font-weight:700;font-size:0.85rem;color:var(--tz-accent)}
+.tz-tag::before{content:"";position:absolute;top:-6px;left:50%;transform:translateX(-50%);width:10px;height:10px;border-radius:50%;background:var(--tz-accent)}
+.tz-crates h3{font-family:"DM Serif Display",serif;font-size:1.9rem;margin-bottom:0.4rem}
+.tz-crates .tz-origin{font-family:"Courier Prime",monospace;font-size:0.72rem;letter-spacing:0.1em;color:var(--tz-muted);display:block;margin-bottom:0.6rem}
+.tz-crates p{color:var(--tz-muted);font-size:0.98rem;max-width:52ch}
+.tz-crates .tz-fresh{color:var(--tz-accent);font-weight:600}
+.tz-aside{margin-top:1rem;text-align:center;color:var(--tz-muted);font-size:0.95rem;font-style:italic}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:4rem}
+.tz-tokens h2{font-family:"DM Serif Display",serif;font-size:1.8rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1;border-radius:6px;overflow:hidden}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"Courier Prime",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Courier Prime",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"Courier Prime",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-stall{position:static;transform:rotate(2deg);margin:0 auto 2rem;max-width:280px}
+  .tz-hero{padding-top:4rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Dawn Market</span>
+  <span class="tz-label">SATURDAYS · 6AM — NOON</span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-stall">
+    <p>FIRST STALL PAST THE GATE.<br>FOLLOW THE SMELL OF BASIL.</p>
+  </div>
+  <p class="tz-eyebrow">PICKED YESTERDAY · CHALKED AT 5AM</p>
+  <h1>Picked yesterday.<br><span class="tz-green">Gone by noon.</span></h1>
+  <p class="tz-sub">Forty stalls, one rule: if it wasn't in the ground this week, it isn't on the table. Bring a tote. Bring a friend.</p>
+  <a class="tz-cta" href="#">Plan your Saturday</a>
+</section>
+
+<section class="tz-content">
+  <h2>This week's crates</h2>
+  <p class="tz-note">Ranked by season — what's peaking goes first. Prices are chalked and final.</p>
+  <ul class="tz-crates">
+    <li>
+      <span class="tz-tag">$4/LB</span>
+      <h3>Heirloom tomatoes</h3>
+      <span class="tz-origin">MAPLE ROW FARM · PICKED 5AM</span>
+      <p>Brandywine, Cherokee Purple, Green Zebra. <span class="tz-fresh">Last crate</span> — the season turns next week.</p>
+    </li>
+    <li>
+      <span class="tz-tag">$3/BUNCH</span>
+      <h3>Sweet corn</h3>
+      <span class="tz-origin">HILLTOP ACRES · PICKED 6AM</span>
+      <p>Picked at dawn, sweetest before noon. <span class="tz-fresh">Picked 5am</span> — shuck it tonight.</p>
+    </li>
+    <li>
+      <span class="tz-tag">$5/BAG</span>
+      <h3>Rainbow chard</h3>
+      <span class="tz-origin">MAPLE ROW FARM · CUT YESTERDAY</span>
+      <p>Stems like stained glass. Braise the leaves, pickle the stems, waste nothing.</p>
+    </li>
+    <li>
+      <span class="tz-tag">$2/EA</span>
+      <h3>Genovese basil</h3>
+      <span class="tz-origin">HILLTOP ACRES · CUT 6AM</span>
+      <p>The reason the first stall smells like it does. <span class="tz-fresh">Picked 5am</span> — pesto weather.</p>
+    </li>
+  </ul>
+  <p class="tz-aside">"Samples are free. Opinions cost extra." — every farmer here</p>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#faf6ec"></span><span class="tz-name">bg</span><span class="tz-hex">#faf6ec</span></li>
+    <li><span class="tz-chip" style="background:#f0e7cf"></span><span class="tz-name">surface</span><span class="tz-hex">#f0e7cf</span></li>
+    <li><span class="tz-chip" style="background:#243015"></span><span class="tz-name">ink</span><span class="tz-hex">#243015</span></li>
+    <li><span class="tz-chip" style="background:#8a8468"></span><span class="tz-name">muted</span><span class="tz-hex">#8a8468</span></li>
+    <li><span class="tz-chip" style="background:#4a7c2f"></span><span class="tz-name">accent</span><span class="tz-hex">#4a7c2f</span></li>
+    <li><span class="tz-chip" style="background:#24301529"></span><span class="tz-name">line</span><span class="tz-hex">#24301529</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
