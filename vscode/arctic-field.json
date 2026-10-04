@@ -1,0 +1,95 @@
+{
+ "_tzmeta": {
+  "id": "vscode-arctic-field",
+  "title": "Arctic Field VS Code theme",
+  "category": "VS Code",
+  "file": "vscode/arctic-field.json",
+  "tags": [
+   "vscode",
+   "theme",
+   "arctic-field"
+  ],
+  "description": "VS Code color theme from the Arctic Field DNA tokens.",
+  "dnas": [
+   "arctic-field"
+  ]
+ },
+ "name": "TZ Arctic Field",
+ "type": "light",
+ "colors": {
+  "editor.background": "#f5f8fa",
+  "editor.foreground": "#14202b",
+  "editorLineNumber.foreground": "#5d7484",
+  "editorCursor.foreground": "#1f6fa3",
+  "activityBar.background": "#f5f8fa",
+  "activityBar.foreground": "#14202b",
+  "sideBar.background": "#f5f8fa",
+  "statusBar.background": "#1f6fa3",
+  "statusBar.foreground": "#f5f8fa",
+  "tab.activeBackground": "#f5f8fa",
+  "tab.inactiveBackground": "#f5f8fa",
+  "editorGroupHeader.tabsBackground": "#f5f8fa",
+  "terminal.background": "#f5f8fa",
+  "terminal.foreground": "#14202b",
+  "panel.background": "#f5f8fa",
+  "editorWidget.background": "#f5f8fa",
+  "pickerGroup.foreground": "#1f6fa3",
+  "progressBar.background": "#1f6fa3",
+  "focusBorder": "#d3e0e8"
+ },
+ "tokenColors": [
+  {
+   "scope": [
+    "comment"
+   ],
+   "settings": {
+    "foreground": "#5d7484",
+    "fontStyle": "italic"
+   }
+  },
+  {
+   "scope": [
+    "keyword",
+    "storage"
+   ],
+   "settings": {
+    "foreground": "#1f6fa3"
+   }
+  },
+  {
+   "scope": [
+    "string"
+   ],
+   "settings": {
+    "foreground": "#14202b"
+   }
+  },
+  {
+   "scope": [
+    "variable",
+    "identifier"
+   ],
+   "settings": {
+    "foreground": "#14202b"
+   }
+  },
+  {
+   "scope": [
+    "entity.name.function"
+   ],
+   "settings": {
+    "foreground": "#1f6fa3",
+    "fontStyle": "bold"
+   }
+  },
+  {
+   "scope": [
+    "entity.name.type",
+    "support.type"
+   ],
+   "settings": {
+    "foreground": "#5d7484"
+   }
+  }
+ ]
+}
