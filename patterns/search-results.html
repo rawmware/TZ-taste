@@ -1,0 +1,57 @@
+<!--tz-meta {"id":"search-results","title":"Search results list","category":"Sections","file":"patterns/search-results.html","tags":["search","results","keyboard","documentation"],"description":"Ranked results with highlighted matches, type tags, and a visible keyboard hint.","dnas":["newsroom-wire"]} -->
+<section class="tz-search-results" aria-label="Search results">
+  <p class="tz-dateline">FILED OCT 3, 2026 &mdash; 14 RESULTS FOR &ldquo;RATE LIMIT&rdquo;</p>
+  <p class="tz-kb-hint"><span class="tz-kbd">&uarr;</span><span class="tz-kbd">&darr;</span> move &nbsp;&middot;&nbsp; <span class="tz-kbd">Enter</span> open &nbsp;&middot;&nbsp; <span class="tz-kbd">Esc</span> close</p>
+  <ol class="tz-list">
+    <li>
+      <a href="#">
+        <span class="tz-kind">Guide</span>
+        <h3>Understanding <mark>rate limit</mark>s and backoff</h3>
+        <p>Every key gets 1,000 requests per minute. When you hit the ceiling, the API answers 429 and this page tells you exactly how long to wait.</p>
+        <span class="tz-meta-line">Updated Sep 28 &mdash; 6 min read</span>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <span class="tz-kind">API</span>
+        <h3><mark>Rate limit</mark> headers reference</h3>
+        <p>X-RateLimit-Remaining, X-RateLimit-Reset, and Retry-After: what each header means and when to trust it.</p>
+        <span class="tz-meta-line">Reference &mdash; 2 min read</span>
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <span class="tz-kind">Changelog</span>
+        <h3>v2.4.0 raises the default <mark>rate limit</mark></h3>
+        <p>Burst headroom doubles to 2,000 requests per minute for paid plans. Free plans unchanged.</p>
+        <span class="tz-meta-line">Sep 30 &mdash; 1 min read</span>
+      </a>
+    </li>
+  </ol>
+</section>
+<style>
+.tz-search-results{--bg:#f7f4ec;--ink:#16130e;--accent:#c8102e;--muted:#6f6a5e;
+  --line:#16130e29;--surface:#efe9da;
+  background:var(--bg);color:var(--ink);font-family:'PT Serif',Georgia,serif;
+  padding:clamp(32px,6vw,88px) clamp(20px,6vw,96px);max-width:860px;margin:0 auto}
+.tz-dateline{font-family:'Courier Prime',ui-monospace,Menlo,monospace;font-size:12px;
+  letter-spacing:.08em;color:var(--muted);margin:0 0 8px}
+.tz-kb-hint{font-family:'Courier Prime',ui-monospace,Menlo,monospace;font-size:12px;
+  color:var(--muted);margin:0 0 28px}
+.tz-kbd{display:inline-block;border:1px solid var(--line);border-bottom-width:2px;
+  border-radius:4px;padding:1px 7px;background:var(--surface);color:var(--ink);
+  font-size:11px;font-weight:700}
+.tz-list{list-style:none;margin:0;padding:0;counter-reset:tz-r}
+.tz-list li{border-top:1px solid var(--line)}
+.tz-list li:last-child{border-bottom:1px solid var(--line)}
+.tz-list a{display:block;padding:22px 0 20px;text-decoration:none;color:var(--ink)}
+.tz-list a:hover .tz-kind{color:var(--accent)}
+.tz-kind{font-family:'Courier Prime',ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.tz-list h3{font-family:'Special Elite','Courier New',monospace;font-size:20px;
+  margin:8px 0 6px;letter-spacing:0}
+.tz-list mark{background:transparent;color:var(--accent);font-weight:700}
+.tz-list p{font-size:15.5px;line-height:1.6;margin:0 0 8px;max-width:62ch}
+.tz-meta-line{font-family:'Courier Prime',ui-monospace,Menlo,monospace;font-size:12px;color:var(--muted)}
+@media(max-width:640px){.tz-list h3{font-size:17px}.tz-list p{font-size:14.5px}}
+</style>
