@@ -1,0 +1,253 @@
+<!--tz-meta {"id":"arcade-bar","title":"Insert Coin — Arcade Bar & Late Kitchen","category":"Template","file":"templates/arcade-bar.html","tags":["bar","arcade","nightlife"],"description":"Pixel-arcade bar landing: coin-op cabinet index, tap list ticker, high-score board, token economy explained.","dnas":["pixel-arcade"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insert Coin — arcade bar, 87 cabinets, open late</title>
+<meta name="description" content="Insert Coin is an arcade bar with 87 cabinets, 24 taps, and a kitchen open till 1am. No cover, free play Tuesdays.">
+<!-- Design read: an attract-mode screen that grew into a website — dark cabinet black, pink/cyan neon, chunky Press Start 2P reserved for the moments that matter, Space Mono doing the honest work. DNA: pixel-arcade (Press Start 2P + Space Mono; bg #0b0b14, pink #ff2fb3 — runner-up acid-rave was too abrasive for a neighborhood bar). One distinctive choice: the high-score board is a live-looking LED ticker table, the social proof centerpiece. Dials V7/M7/D6. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#0b0b14; --tz-ink:#e8f0e8; --tz-accent:#ff2fb3; --tz-cyan:#35e0e6;
+  --tz-muted:#5c6b8c; --tz-line:#1f2a44; --tz-panel:#12121f;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Space Mono",monospace;background:var(--tz-bg);color:var(--tz-ink);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--tz-accent);color:#0b0b14}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+.tz-px{font-family:"Press Start 2P",monospace}
+
+/* scanlines */
+.tz-scan{position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.5;
+  background:repeating-linear-gradient(0deg,transparent 0 3px,#00000028 3px 4px)}
+
+/* header */
+.tz-header{border-bottom:3px solid var(--tz-accent);background:#0b0b14ee;position:sticky;top:0;z-index:50}
+.tz-header .tz-wrap{display:flex;justify-content:space-between;align-items:center;height:72px}
+.tz-logo{font-family:"Press Start 2P",monospace;font-size:15px;color:var(--tz-accent);text-shadow:2px 2px 0 #ff2fb344}
+.tz-nav{display:flex;gap:24px;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.tz-nav a{color:var(--tz-muted);transition:color .2s}
+.tz-nav a:hover{color:var(--tz-cyan)}
+.tz-tokens{background:var(--tz-accent);color:#0b0b14;font-weight:700;font-size:13px;padding:10px 20px;border:0;cursor:pointer;font-family:"Space Mono",monospace}
+.tz-tokens:hover{background:var(--tz-cyan)}
+
+/* hero: attract mode */
+.tz-hero{padding:88px 0 72px;text-align:center;position:relative;overflow:hidden}
+.tz-hero::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(60% 50% at 50% 0%,#ff2fb322,transparent 70%),radial-gradient(40% 40% at 80% 90%,#35e0e622,transparent 70%)}
+.tz-hero .tz-wrap{position:relative}
+.tz-credit{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:28px}
+.tz-credit b{color:var(--tz-cyan)}
+.tz-hero h1{font-family:"Press Start 2P",monospace;font-size:clamp(28px,6vw,72px);line-height:1.25;color:#fff;
+  text-shadow:0 0 24px #ff2fb388,4px 4px 0 #ff2fb3}
+.tz-hero h1 .tz-cyan{color:var(--tz-cyan);text-shadow:0 0 24px #35e0e688,4px 4px 0 #35e0e6}
+.tz-lede{max-width:60ch;margin:32px auto 0;color:var(--tz-muted);font-size:16px}
+.tz-hero-cta{margin-top:36px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.tz-btn{font-family:"Press Start 2P",monospace;font-size:12px;padding:18px 32px;border:3px solid;cursor:pointer;transition:transform .2s var(--tz-ease),box-shadow .2s;display:inline-block}
+.tz-btn--pink{background:var(--tz-accent);border-color:var(--tz-accent);color:#0b0b14;box-shadow:6px 6px 0 #ff2fb355}
+.tz-btn--pink:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 #ff2fb355}
+.tz-btn--ghost{border-color:var(--tz-cyan);color:var(--tz-cyan);background:transparent}
+.tz-btn--ghost:hover{background:#35e0e614}
+.tz-press{margin-top:40px;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--tz-accent);animation:tz-blink 1.4s steps(2) infinite}
+@keyframes tz-blink{50%{opacity:.25}}
+
+/* cabinet index */
+.tz-section{padding:88px 0}
+.tz-sec-head{margin-bottom:44px;max-width:660px}
+.tz-sec-head .tz-kicker{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--tz-cyan)}
+.tz-sec-head h2{font-family:"Press Start 2P",monospace;font-size:clamp(20px,3.4vw,34px);line-height:1.4;margin:18px 0 14px;color:#fff}
+.tz-sec-head p{color:var(--tz-muted);font-size:15.5px}
+.tz-cabs{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px}
+.tz-cab{background:var(--tz-panel);border:2px solid var(--tz-line);padding:22px 18px;transition:border-color .2s,transform .25s var(--tz-ease)}
+.tz-cab:hover{border-color:var(--tz-accent);transform:translateY(-4px)}
+.tz-cab .tz-genre{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--tz-cyan)}
+.tz-cab h3{font-size:16px;font-weight:700;margin:10px 0 6px;color:#fff}
+.tz-cab p{font-size:12.5px;color:var(--tz-muted)}
+.tz-cab .tz-free{display:inline-block;margin-top:12px;font-size:11px;font-weight:700;letter-spacing:.14em;color:#0b0b14;background:var(--tz-cyan);padding:4px 10px}
+.tz-cab--big{grid-column:span 2;border-color:var(--tz-accent)}
+.tz-cab--big h3{font-family:"Press Start 2P",monospace;font-size:15px;line-height:1.6}
+
+/* high scores: the one weird thing */
+.tz-scores{background:var(--tz-panel);border:3px solid var(--tz-accent);box-shadow:0 0 40px #ff2fb333}
+.tz-scores-head{display:flex;justify-content:space-between;align-items:center;padding:22px 28px;border-bottom:2px solid var(--tz-line)}
+.tz-scores-head h2{font-family:"Press Start 2P",monospace;font-size:16px;color:#fff}
+.tz-scores-head .tz-live{font-size:11px;letter-spacing:.2em;color:var(--tz-accent);display:flex;gap:8px;align-items:center}
+.tz-scores-head .tz-live i{width:8px;height:8px;background:var(--tz-accent);border-radius:50%;animation:tz-blink 1.2s steps(2) infinite}
+.tz-score-row{display:grid;grid-template-columns:64px 1fr auto;gap:18px;align-items:center;padding:18px 28px;border-bottom:1px solid var(--tz-line);font-size:14px}
+.tz-score-row:last-child{border-bottom:0}
+.tz-score-row .tz-rank{font-family:"Press Start 2P",monospace;font-size:13px;color:var(--tz-cyan)}
+.tz-score-row:nth-child(2) .tz-rank{color:var(--tz-accent)}
+.tz-score-row .tz-game{color:#fff;font-weight:700}
+.tz-score-row .tz-game small{display:block;color:var(--tz-muted);font-weight:400;font-size:12px}
+.tz-score-row .tz-pts{font-family:"Press Start 2P",monospace;font-size:13px;color:var(--tz-cyan)}
+.tz-score-row:nth-child(2) .tz-pts{color:var(--tz-accent)}
+.tz-scores-foot{padding:18px 28px;font-size:12px;color:var(--tz-muted);border-top:2px solid var(--tz-line)}
+.tz-scores-foot b{color:var(--tz-accent)}
+
+/* tokens + taps split */
+.tz-split{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--tz-line)}
+.tz-split>div{padding:48px 44px}
+.tz-split>div:first-child{border-right:2px solid var(--tz-line);background:var(--tz-panel)}
+.tz-split h3{font-family:"Press Start 2P",monospace;font-size:17px;line-height:1.6;color:#fff;margin-bottom:18px}
+.tz-split p{font-size:14.5px;color:var(--tz-muted);margin-bottom:14px}
+.tz-split ul{list-style:none;display:grid;gap:10px;font-size:14px;margin-top:18px}
+.tz-split li{display:flex;justify-content:space-between;border-bottom:1px dashed var(--tz-line);padding-bottom:10px}
+.tz-split li b{color:var(--tz-cyan)}
+.tz-taplist{font-size:13px}
+.tz-taplist li b{color:var(--tz-accent)}
+
+/* visit */
+.tz-visit{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:14px;margin-top:0}
+.tz-visit>div{background:var(--tz-panel);border:2px solid var(--tz-line);padding:32px 28px}
+.tz-visit>div:first-child{border-color:var(--tz-accent);background:#ff2fb30d}
+.tz-visit .tz-k{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--tz-accent);display:block;margin-bottom:14px}
+.tz-visit p{font-size:14.5px;line-height:2}
+.tz-visit p b{color:#fff}
+
+.tz-footer{border-top:3px solid var(--tz-accent);padding:36px 0;margin-top:88px}
+.tz-footer .tz-wrap{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--tz-muted)}
+
+@media (max-width:960px){
+  .tz-nav{display:none}
+  .tz-cabs{grid-template-columns:1fr 1fr}
+  .tz-cab--big{grid-column:span 2}
+  .tz-split{grid-template-columns:1fr}
+  .tz-split>div:first-child{border-right:0;border-bottom:2px solid var(--tz-line)}
+  .tz-visit{grid-template-columns:1fr}
+  .tz-section{padding:60px 0}
+}
+@media (max-width:560px){.tz-cabs{grid-template-columns:1fr}.tz-cab--big{grid-column:span 1}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div class="tz-scan" aria-hidden="true"></div>
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-logo" href="#">INSERT COIN</a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#cabinets">Cabinets</a><a href="#scores">High scores</a><a href="#taps">Taps</a><a href="#visit">Visit</a>
+    </nav>
+    <a class="tz-tokens" href="#visit">$20 = 80 tokens</a>
+  </div>
+</header>
+
+<main>
+  <section class="tz-hero">
+    <div class="tz-wrap">
+      <p class="tz-credit">Player one · <b>no cover</b> · 21+ after 9pm</p>
+      <h1>87 CABINETS.<br><span class="tz-cyan">24 TAPS.</span><br>OPEN TILL 2AM.</h1>
+      <p class="tz-lede">A real arcade bar — not a theme, not a pop-up. Every cabinet plays on original hardware or better, every game is a quarter or a token, and the kitchen stays open an hour past the last call you'll make.</p>
+      <div class="tz-hero-cta">
+        <a class="tz-btn tz-btn--pink" href="#cabinets">Browse the cabinets</a>
+        <a class="tz-btn tz-btn--ghost" href="#scores">High scores</a>
+      </div>
+      <p class="tz-press">▼ press start ▼</p>
+    </div>
+  </section>
+
+  <section class="tz-section" id="cabinets" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">The floor</span>
+        <h2>Pick your cabinet</h2>
+        <p>Four rooms of games, grouped by mood. Free-play Tuesdays: every cabinet on free play, all night, no tokens needed.</p>
+      </div>
+      <div class="tz-cabs">
+        <div class="tz-cab tz-cab--big">
+          <span class="tz-genre">Tournament row</span>
+          <h3>Fighting games, all of them</h3>
+          <p>Street Fighter II through Tekken 7 on a six-cabinet head-to-head row. Monthly bracket, first Saturday, $200 pot.</p>
+          <span class="tz-free">2 tokens / play</span>
+        </div>
+        <div class="tz-cab"><span class="tz-genre">Classics</span><h3>Pac-Man &amp; Ms. Pac</h3><p>Side by side, cocktail table between them.</p><span class="tz-free">1 token</span></div>
+        <div class="tz-cab"><span class="tz-genre">Classics</span><h3>Donkey Kong</h3><p>Original board. The kill screen is reachable. People have done it here.</p><span class="tz-free">1 token</span></div>
+        <div class="tz-cab"><span class="tz-genre">Shooters</span><h3>Light-gun alley</h3><p>Time Crisis, House of the Dead, Point Blank. Recoil works.</p><span class="tz-free">2 tokens</span></div>
+        <div class="tz-cab"><span class="tz-genre">Rhythm</span><h3>Dance stage</h3><p>Volume goes up after 10pm. Apologies to no one.</p><span class="tz-free">2 tokens</span></div>
+        <div class="tz-cab"><span class="tz-genre">Pinball</span><h3>Twelve machines</h3><p>From '78 Firepower to a 2024 Godzilla. Maintained weekly by our own tech.</p><span class="tz-free">3 tokens</span></div>
+        <div class="tz-cab"><span class="tz-genre">Racing</span><h3>Linked racers</h3><p>Four linked cabinets. Loser buys the round — house rule.</p><span class="tz-free">2 tokens</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="scores" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-scores">
+        <div class="tz-scores-head">
+          <h2>HIGH SCORES</h2>
+          <span class="tz-live"><i></i>BOARD UPDATED TONIGHT</span>
+        </div>
+        <div class="tz-score-row"><span class="tz-rank">1ST</span><span class="tz-game">Galaga<small>held by D. Okafor · 41 games and counting</small></span><span class="tz-pts">999,990</span></div>
+        <div class="tz-score-row"><span class="tz-rank">2ND</span><span class="tz-game">Ms. Pac-Man<small>held by R. Alvarez · set during free-play Tuesday</small></span><span class="tz-pts">511,280</span></div>
+        <div class="tz-score-row"><span class="tz-rank">3RD</span><span class="tz-game">Donkey Kong<small>held by P. Lindqvist · one life lost on 21-3</small></span><span class="tz-pts">987,400</span></div>
+        <div class="tz-score-row"><span class="tz-rank">4TH</span><span class="tz-game">Street Fighter II<small>tournament bracket · first Saturday monthly</small></span><span class="tz-pts">CHAMP: TBA</span></div>
+        <div class="tz-score-row"><span class="tz-rank">5TH</span><span class="tz-game">Pinball: Godzilla<small>held by M. Chen · multiball at 2:14am</small></span><span class="tz-pts">1,204,550</span></div>
+        <p class="tz-scores-foot">Beat a board score and your initials go up in <b>pink neon</b> — plus a free pitcher for the table. Photo ID required for the wall of fame.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="taps" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">Fuel</span>
+        <h2>Tokens, taps &amp; late food</h2>
+        <p>The bar program is as serious as the arcade: local breweries, a short cocktail list, and food built for one-handed eating.</p>
+      </div>
+      <div class="tz-split">
+        <div>
+          <h3>The token economy</h3>
+          <p>No cards to lose, no app to download. Tokens are brass, heavy, and satisfying.</p>
+          <ul>
+            <li><span>$5 — quick session</span><b>20 tokens</b></li>
+            <li><span>$20 — the regular</span><b>80 tokens</b></li>
+            <li><span>$50 — bring the crew</span><b>220 tokens</b></li>
+          </ul>
+          <p style="margin-top:18px;font-size:12.5px">Leftover tokens never expire. People have framed them. We respect it.</p>
+        </div>
+        <div>
+          <h3>On tap tonight</h3>
+          <ul class="tz-taplist">
+            <li><span>Harbor Fog IPA — Fogline Brewing</span><b>$7</b></li>
+            <li><span>Insert Coin Lager — house collab</span><b>$6</b></li>
+            <li><span>Pixel Pils — North Pier</span><b>$6.50</b></li>
+            <li><span>Continue? Sour — Cherry, rotating</span><b>$8</b></li>
+            <li><span>Kitchen: smash burger, loaded fries, soft pretzels</span><b>till 1am</b></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="visit" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">Continue?</span>
+        <h2>Get here before the rush</h2>
+      </div>
+      <div class="tz-visit">
+        <div><span class="tz-k">Find us</span><p><b>900 Neon Ave</b><br>under the pink arrow sign<br>you can't miss it</p></div>
+        <div><span class="tz-k">Hours</span><p><b>Tue–Thu</b> 5pm–12am<br><b>Fri–Sat</b> 5pm–2am<br><b>Sun</b> 3pm–10pm</p></div>
+        <div><span class="tz-k">Good to know</span><p><b>21+</b> after 9pm, all ages before<br><b>Free-play</b> every Tuesday<br><b>Tournaments</b> first Saturday</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <span>© 2026 Insert Coin Arcade Bar</span>
+    <span>game over? never. tokens never expire.</span>
+  </div>
+</footer>
+</body>
+</html>
