@@ -1,0 +1,142 @@
+<!--tz-meta {"id":"showcase-bike-repair","title":"Bike Repair showcase","category":"Showcase","file":"showcase/bike-repair.html","tags":["bike-repair"],"description":"Live demo page for the Bike Repair style DNA.","dnas":["bike-repair"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bike Repair — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Public+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#e9e6dd; --tz-surface:#d9d4c6; --tz-ink:#232323; --tz-muted:#6f6a5e;
+  --tz-accent:#d99a1f; --tz-line:#2323231f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Public Sans",sans-serif;font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 4vw;border-bottom:2px solid var(--tz-ink)}
+.tz-wordmark{font-family:"Chakra Petch",sans-serif;font-size:1.15rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase}
+.tz-wo{font-family:"JetBrains Mono",monospace;font-size:0.72rem;letter-spacing:0.14em;color:var(--tz-muted)}
+.tz-wo strong{color:var(--tz-ink);font-weight:500}
+.tz-hero{padding:5rem 4vw 3rem;display:flex;flex-wrap:wrap;gap:3rem;align-items:center}
+.tz-copy{flex:1 1 22rem;max-width:34rem}
+.tz-eyebrow{font-family:"JetBrains Mono",monospace;font-size:0.72rem;letter-spacing:0.16em;color:var(--tz-muted);margin-bottom:1.4rem}
+.tz-hero h1{font-family:"Chakra Petch",sans-serif;font-size:clamp(2.6rem,7.5vw,5rem);line-height:1;font-weight:700;letter-spacing:0.01em;text-transform:uppercase}
+.tz-sub{margin-top:1.6rem;font-size:1.05rem;color:var(--tz-muted);max-width:42ch}
+.tz-cta{display:inline-block;margin-top:2.2rem;background:var(--tz-accent);color:#232323;font-family:"Chakra Petch",sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:0.06em;text-decoration:none;text-transform:uppercase;padding:0.95rem 2.2rem;border-radius:2px;transition:opacity .15s ease}
+.tz-cta:hover{opacity:0.85}
+.tz-chainring{flex:1 1 18rem;max-width:24rem;margin:0 auto;text-align:center}
+.tz-chainring svg{width:100%;height:auto;display:block}
+.tz-bolt{cursor:pointer}
+.tz-bolt circle{fill:var(--tz-bg);stroke:var(--tz-ink);stroke-width:2;transition:fill .15s ease}
+.tz-bolt:hover circle,.tz-bolt:focus circle{fill:var(--tz-accent)}
+.tz-ring{fill:none;stroke:var(--tz-ink);stroke-width:3}
+.tz-spoke{stroke:var(--tz-line);stroke-width:2}
+.tz-readout{font-family:"JetBrains Mono",monospace;font-size:0.8rem;letter-spacing:0.06em;margin-top:1rem;min-height:2.6rem;color:var(--tz-muted)}
+.tz-readout strong{color:var(--tz-accent)}
+.tz-content{padding:2.5rem 4vw 1rem}
+.tz-content h2{font-family:"Chakra Petch",sans-serif;font-size:clamp(1.8rem,5vw,2.7rem);font-weight:700;text-transform:uppercase;letter-spacing:0.02em;margin-bottom:0.4rem}
+.tz-subhead{font-family:"JetBrains Mono",monospace;font-size:0.72rem;letter-spacing:0.14em;color:var(--tz-muted);margin-bottom:1.6rem}
+table.tz-torque{width:100%;border-collapse:collapse;max-width:720px;background:var(--tz-surface);border-radius:2px}
+.tz-torque th{font-family:"JetBrains Mono",monospace;font-size:0.66rem;font-weight:500;letter-spacing:0.14em;color:var(--tz-muted);text-align:left;padding:0.9rem 1.2rem;border-bottom:1px solid var(--tz-ink)}
+.tz-torque td{font-family:"JetBrains Mono",monospace;font-size:0.86rem;padding:0.95rem 1.2rem;border-bottom:1px solid var(--tz-line)}
+.tz-torque tr:last-child td{border-bottom:none}
+.tz-torque td.tz-part{color:var(--tz-ink)}
+.tz-bench{margin:2.6rem 0 0;border-left:3px solid var(--tz-accent);padding:0.4rem 0 0.4rem 1.4rem;max-width:580px}
+.tz-bench p{color:var(--tz-muted)}
+.tz-bench strong{color:var(--tz-ink);font-weight:700}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Chakra Petch",sans-serif;font-size:1.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1;border-radius:2px;overflow:hidden}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"JetBrains Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"JetBrains Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"JetBrains Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-hero{padding-top:3.5rem}
+  .tz-wo{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Spoke &amp; Sprocket</span>
+  <span class="tz-wo">WORK ORDER <strong>WO-118</strong></span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-copy">
+    <p class="tz-eyebrow">EST. 1998 &middot; DROP OFF BY FIVE, RIDE BY FRIDAY</p>
+    <h1>Bring it in grinding. Take it out silent.</h1>
+    <p class="tz-sub">Grease under the nails and a truing stand that never lies. Point at a bolt &mdash; that's the menu. No list, no upsell, just the chart.</p>
+    <a class="tz-cta" href="#">See the work-order board</a>
+  </div>
+  <div class="tz-chainring">
+    <svg viewBox="0 0 200 200" role="img" aria-label="Chainring bolt diagram. Hover a bolt to see the service.">
+      <circle class="tz-ring" cx="100" cy="100" r="86"/>
+      <circle class="tz-ring" cx="100" cy="100" r="58" stroke-dasharray="4 6" stroke-width="2"/>
+      <g class="tz-spoke">
+        <line x1="100" y1="100" x2="100" y2="14"/><line x1="100" y1="100" x2="182" y2="131"/>
+        <line x1="100" y1="100" x2="151" y2="171"/><line x1="100" y1="100" x2="49" y2="171"/>
+        <line x1="100" y1="100" x2="18" y2="131"/>
+      </g>
+      <g class="tz-bolt" data-svc="BASIC TUNE-UP — $65 — gears, brakes, wipe-down"><circle cx="100" cy="42" r="11"/><text x="100" y="47" text-anchor="middle" font-size="10" font-family="JetBrains Mono" fill="currentColor">1</text></g>
+      <g class="tz-bolt" data-svc="FULL OVERHAUL — $180 — everything, bearings repacked"><circle cx="154" cy="117" r="11"/><text x="154" y="122" text-anchor="middle" font-size="10" font-family="JetBrains Mono" fill="currentColor">2</text></g>
+      <g class="tz-bolt" data-svc="WHEEL TRUE — $30 — the stand never lies"><circle cx="133" cy="182" r="11"/><text x="133" y="187" text-anchor="middle" font-size="10" font-family="JetBrains Mono" fill="currentColor">3</text></g>
+      <g class="tz-bolt" data-svc="DRIVETRAIN SWAP — $90 + parts — shifts clean or it's free"><circle cx="67" cy="182" r="11"/><text x="67" y="187" text-anchor="middle" font-size="10" font-family="JetBrains Mono" fill="currentColor">4</text></g>
+      <g class="tz-bolt" data-svc="FLAT FIX — $12 — tube included, ten minutes"><circle cx="46" cy="117" r="11"/><text x="46" y="122" text-anchor="middle" font-size="10" font-family="JetBrains Mono" fill="currentColor">5</text></g>
+    </svg>
+    <p class="tz-readout" id="tz-svc">HOVER A BOLT — <strong>FIVE SERVICES, ONE DIAGRAM</strong></p>
+  </div>
+</section>
+
+<section class="tz-content">
+  <h2>Torque chart</h2>
+  <p class="tz-subhead">TAPED TO THE WALL &middot; CHECKED TWICE &middot; N&middot;M</p>
+  <table class="tz-torque">
+    <thead><tr><th>FASTENER</th><th>TORQUE</th><th>NOTE</th></tr></thead>
+    <tbody>
+      <tr><td class="tz-part">STEM BOLTS</td><td>5 N&middot;M</td><td>TIGHTEN IN A STAR</td></tr>
+      <tr><td class="tz-part">SEATPOST CLAMP</td><td>6 N&middot;M</td><td>CARBON PASTE FIRST</td></tr>
+      <tr><td class="tz-part">CHAINRING BOLTS</td><td>10 N&middot;M</td><td>THE FIVE ABOVE</td></tr>
+      <tr><td class="tz-part">PEDALS</td><td>35 N&middot;M</td><td>GREASE THE THREADS</td></tr>
+    </tbody>
+  </table>
+  <div class="tz-bench">
+    <h2 class="tz-subhead" style="margin-bottom:0.8rem">FROM THE BENCH</h2>
+    <p><strong>WO-117 came back silent.</strong> New chain, trued rear wheel, and the headset the owner swore was &ldquo;fine&rdquo;. It was not fine. It is fine now.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#e9e6dd"></span><span class="tz-name">bg</span><span class="tz-hex">#e9e6dd</span></li>
+    <li><span class="tz-chip" style="background:#d9d4c6"></span><span class="tz-name">surface</span><span class="tz-hex">#d9d4c6</span></li>
+    <li><span class="tz-chip" style="background:#232323"></span><span class="tz-name">ink</span><span class="tz-hex">#232323</span></li>
+    <li><span class="tz-chip" style="background:#6f6a5e"></span><span class="tz-name">muted</span><span class="tz-hex">#6f6a5e</span></li>
+    <li><span class="tz-chip" style="background:#d99a1f"></span><span class="tz-name">accent</span><span class="tz-hex">#d99a1f</span></li>
+    <li><span class="tz-chip" style="background:#2323231f"></span><span class="tz-name">line</span><span class="tz-hex">#2323231f</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+<script>
+(function(){
+  var out = document.getElementById('tz-svc');
+  var def = out.innerHTML;
+  document.querySelectorAll('.tz-bolt').forEach(function(b){
+    b.addEventListener('mouseenter', function(){ out.innerHTML = '<strong>' + b.getAttribute('data-svc') + '</strong>'; });
+    b.addEventListener('mouseleave', function(){ out.innerHTML = def; });
+    b.addEventListener('focus', function(){ out.innerHTML = '<strong>' + b.getAttribute('data-svc') + '</strong>'; });
+    b.setAttribute('tabindex', '0');
+  });
+})();
+</script>
+</body>
+</html>
