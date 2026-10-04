@@ -1,0 +1,58 @@
+<!--tz-meta {"id":"features-glass","title":"Glass feature cards","category":"Features","file":"patterns/features-glass.html","tags":["glass","frosted"],"description":"Frosted cards floating over a warm pastel aurora of peach, mint, and rose.","dnas":["glass-calm"]} -->
+<section class="tz-fg">
+  <div class="tz-fg-aurora" aria-hidden="true"><i class="tz-fg-b1"></i><i class="tz-fg-b2"></i><i class="tz-fg-b3"></i></div>
+  <div class="tz-fg-inner">
+    <p class="tz-fg-eyebrow">Features</p>
+    <h2 class="tz-fg-title">Light tools for<br>heavy days.</h2>
+    <div class="tz-fg-grid">
+      <article class="tz-fg-card">
+        <p class="tz-fg-kicker">Calm inbox</p>
+        <h3>Everything in one soft place</h3>
+        <p>Messages arrive gently sorted. Nothing blinks, nothing begs. You open it when you're ready.</p>
+      </article>
+      <article class="tz-fg-card tz-fg-tall">
+        <p class="tz-fg-kicker">Focus mode</p>
+        <h3>One thread at a time</h3>
+        <p>The interface dims everything except the conversation in front of you. Reply, resolve, breathe. Multitasking was never the goal.</p>
+        <p class="tz-fg-note">Pairs with do-not-disturb hours you actually keep.</p>
+      </article>
+      <article class="tz-fg-card">
+        <p class="tz-fg-kicker">Gentle automation</p>
+        <h3>Nudges, never noise</h3>
+        <p>Follow-ups queue up for your approval each morning. Nothing sends without your say-so.</p>
+      </article>
+    </div>
+  </div>
+</section>
+<style>
+.tz-fg{--ink:#23211d;--card:rgba(255,255,255,.55);
+  background:#fdf6ec;color:var(--ink);font-family:Georgia,'Times New Roman',serif;
+  position:relative;overflow:hidden;padding:clamp(72px,10vw,136px) clamp(24px,6vw,88px)}
+.tz-fg-aurora{position:absolute;inset:0;pointer-events:none}
+.tz-fg-aurora i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.75}
+.tz-fg-b1{width:44vw;height:44vw;left:-10vw;top:-12vw;background:#ffd9bd;animation:tzfg-drift 14s ease-in-out infinite alternate}
+.tz-fg-b2{width:38vw;height:38vw;right:-8vw;top:20%;background:#c8ecd9;animation:tzfg-drift 18s ease-in-out infinite alternate-reverse}
+.tz-fg-b3{width:40vw;height:40vw;left:24vw;bottom:-16vw;background:#f7cfd9;animation:tzfg-drift 16s ease-in-out infinite alternate}
+@keyframes tzfg-drift{from{transform:translate(0,0)}to{transform:translate(4vw,3vw)}}
+.tz-fg-inner{position:relative;max-width:1100px;margin:0 auto}
+.tz-fg-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;opacity:.6;margin:0 0 18px;text-align:center}
+.tz-fg-title{font-size:clamp(36px,5.4vw,68px);font-weight:400;letter-spacing:-.02em;
+  line-height:1.05;margin:0 0 clamp(44px,6vw,72px);text-align:center}
+.tz-fg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.5vw,28px);align-items:start}
+.tz-fg-card{background:var(--card);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.8);border-radius:22px;padding:32px 28px;
+  box-shadow:0 18px 44px rgba(120,90,60,.14)}
+.tz-fg-tall{margin-top:44px}
+.tz-fg-kicker{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;opacity:.6;margin:0 0 14px}
+.tz-fg-card h3{font-size:23px;font-weight:400;letter-spacing:-.01em;margin:0 0 12px;line-height:1.2}
+.tz-fg-card p{font-size:15px;line-height:1.65;opacity:.82;margin:0}
+.tz-fg-note{margin-top:16px !important;padding-top:16px;border-top:1px solid rgba(35,33,29,.14);
+  font-style:italic;font-size:13.5px !important}
+@media (max-width:820px){
+  .tz-fg-grid{grid-template-columns:1fr;max-width:440px;margin:0 auto}
+  .tz-fg-tall{margin-top:0}
+}
+@media (prefers-reduced-motion:reduce){.tz-fg-aurora i{animation:none}}
+</style>
