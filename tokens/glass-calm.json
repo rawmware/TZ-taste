@@ -1,0 +1,62 @@
+{
+ "_tzmeta": {
+  "id": "tokens-glass-calm",
+  "title": "Glass Calm design tokens",
+  "category": "Tokens",
+  "file": "tokens/glass-calm.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "glass-calm"
+  ],
+  "description": "W3C-format design tokens for the Glass Calm style DNA.",
+  "dnas": [
+   "glass-calm"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#e8ecf5",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#2b3245",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#7c8cf8",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#8b93a8",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#ffffff88",
+   "$type": "color"
+  },
+  "surface": {
+   "$value": "#ffffff8c",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Outfit",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Outfit",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "JetBrains Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "glass-calm",
+  "name": "Glass Calm",
+  "vibe": "Frosted surfaces over pastel light. Weather-app serenity as a design language."
+ }
+}
