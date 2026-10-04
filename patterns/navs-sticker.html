@@ -1,0 +1,43 @@
+<!--tz-meta {"id":"navs-sticker","title":"Sticker nav","category":"Nav","file":"patterns/navs-sticker.html","tags":["playful","stickers"],"description":"Chunky bordered nav with a rotated FRESH sticker badge overlapping the corner.","dnas":["neo-brutalist-pop"]} -->
+<nav class="tz-stick" aria-label="Primary">
+  <span class="tz-stick-badge" aria-hidden="true">Fresh!</span>
+  <a class="tz-stick-brand" href="#">PopMart</a>
+  <div class="tz-stick-links">
+    <a href="#">Shop</a>
+    <a href="#">Drops</a>
+    <a href="#">Lookbook</a>
+    <a href="#">About</a>
+  </div>
+  <a class="tz-stick-cta" href="#">Cart →</a>
+  <p class="tz-stick-note">Free sticker pack with every order this week</p>
+</nav>
+<style>
+.tz-stick{--bg:#fffdf5;--ink:#141414;--pink:#ff5c9e;--yellow:#ffd02e;
+  position:relative;background:var(--bg);border:3px solid var(--ink);border-radius:18px;
+  display:flex;align-items:center;gap:28px;padding:14px 26px;margin:32px auto;max-width:900px;
+  font-family:Arial,Helvetica,sans-serif;box-shadow:6px 6px 0 var(--ink);flex-wrap:wrap}
+.tz-stick-badge{position:absolute;top:-24px;right:36px;background:var(--yellow);border:3px solid var(--ink);
+  border-radius:999px;padding:8px 18px;font-weight:900;font-size:14px;letter-spacing:.06em;
+  text-transform:uppercase;transform:rotate(9deg);box-shadow:3px 3px 0 var(--ink)}
+.tz-stick-brand{font-size:26px;font-weight:900;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+.tz-stick-links{display:flex;gap:4px;flex:1;flex-wrap:wrap}
+.tz-stick-links a{color:var(--ink);text-decoration:none;font-weight:bold;font-size:15px;
+  padding:8px 14px;border:2px solid transparent;border-radius:10px}
+.tz-stick-links a:hover{border-color:var(--ink);background:#fff;transform:rotate(-1.5deg)}
+.tz-stick-cta{background:var(--pink);color:#fff;font-weight:900;font-size:15px;text-decoration:none;
+  border:3px solid var(--ink);border-radius:12px;padding:10px 22px;box-shadow:4px 4px 0 var(--ink)}
+.tz-stick-cta:hover{background:#ff77b1}
+.tz-stick-cta:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.tz-stick-note{flex-basis:100%;margin:2px 0 0;font-size:12.5px;font-weight:bold;letter-spacing:.04em}
+.tz-stick-note::before{content:"★ ";color:var(--pink)}
+.tz-stick-links a:focus-visible,.tz-stick-brand:focus-visible,.tz-stick-cta:focus-visible{
+  outline:3px solid var(--pink);outline-offset:3px}
+@media (max-width:640px){
+  .tz-stick{gap:14px;padding:14px 18px}
+  .tz-stick-links{order:3;flex-basis:100%}
+  .tz-stick-badge{right:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-stick-links a,.tz-stick-cta{transition:none}
+}
+</style>
