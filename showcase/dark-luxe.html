@@ -1,0 +1,110 @@
+<!--tz-meta {"id":"showcase-dark-luxe","title":"Dark Luxe showcase","category":"Showcase","file":"showcase/dark-luxe.html","tags":["dark-luxe"],"description":"Live demo page for the Dark Luxe style DNA.","dnas":["dark-luxe"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dark Luxe — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Outfit:wght@300;400;500&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#0e0d0b; --tz-surface:#161411; --tz-ink:#ece5d8; --tz-muted:#8a8177;
+  --tz-accent:#c9a96a; --tz-line:#ece5d822;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Outfit",Helvetica,sans-serif;font-weight:300;font-size:1.05rem;line-height:1.7;-webkit-font-smoothing:antialiased}
+.tz-top{display:flex;justify-content:space-between;align-items:baseline;padding:1.6rem 6vw;border-bottom:1px solid var(--tz-line)}
+.tz-wordmark{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.4rem;letter-spacing:0.02em}
+.tz-label{font-family:"Space Mono",monospace;font-size:0.66rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;padding:6rem 6vw;position:relative;background:radial-gradient(120% 90% at 50% 110%,color-mix(in srgb,var(--tz-accent) 14%,transparent),transparent 60%)}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:0.7rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:2.2rem}
+.tz-hero h1{font-family:"Cormorant Garamond",Georgia,serif;font-weight:300;font-size:clamp(3rem,8vw,6.8rem);line-height:1.04;letter-spacing:0.005em;max-width:12ch}
+.tz-hero h1 em{font-style:italic;color:var(--tz-accent)}
+.tz-sub{margin-top:2rem;max-width:46ch;color:var(--tz-muted);font-size:1.1rem}
+.tz-cta{display:inline-block;margin-top:3rem;font-family:"Space Mono",monospace;font-size:0.74rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--tz-accent);text-decoration:none;border:1px solid var(--tz-accent);padding:1.1rem 2.6rem;border-radius:2px;transition:border-color .9s ease,color .9s ease,background .9s ease}
+.tz-cta:hover{background:color-mix(in srgb,var(--tz-accent) 12%,transparent)}
+.tz-draw{height:1px;background:var(--tz-accent);margin-top:4.5rem;transform-origin:left;transform:scaleX(0);animation:tz-draw 1.6s ease-out 0.4s forwards}
+@keyframes tz-draw{to{transform:scaleX(1)}}
+.tz-content{padding:8rem 6vw;max-width:1200px;margin:0 auto}
+.tz-rooms{list-style:none;border-top:1px solid var(--tz-line)}
+.tz-rooms li{display:flex;justify-content:space-between;align-items:baseline;gap:2rem;padding:2.6rem 0;border-bottom:1px solid var(--tz-line)}
+.tz-room-name{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:300}
+.tz-room-desc{display:block;margin-top:0.4rem;font-size:0.98rem;color:var(--tz-muted);font-family:"Outfit",sans-serif}
+.tz-price{font-family:"Cormorant Garamond",Georgia,serif;font-size:1.6rem;color:var(--tz-accent);white-space:nowrap}
+.tz-price small{font-family:"Space Mono",monospace;font-size:0.68rem;letter-spacing:0.16em;color:var(--tz-muted);display:block;text-align:right}
+.tz-quote{margin:7rem auto 0;max-width:34ch;text-align:center}
+.tz-quote p{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:300;font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.4}
+.tz-quote cite{display:block;margin-top:1.6rem;font-family:"Space Mono",monospace;font-style:normal;font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-tokens{padding:5rem 6vw;border-top:1px solid var(--tz-line)}
+.tz-tokens h2{font-family:"Cormorant Garamond",Georgia,serif;font-weight:300;font-size:2rem;margin-bottom:1.8rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:1rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);border-radius:3px;overflow:hidden;background:var(--tz-surface);min-width:9rem}
+.tz-chip{display:block;height:3.4rem}
+.tz-swatches .tz-name{display:block;font-family:"Space Mono",monospace;font-size:0.64rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.7rem 0.9rem 0.15rem;color:var(--tz-muted)}
+.tz-swatches .tz-hex{display:block;font-family:"Space Mono",monospace;font-size:0.78rem;padding:0 0.9rem 0.8rem;color:var(--tz-ink)}
+.tz-foot{padding:3rem 6vw;border-top:1px solid var(--tz-line);font-family:"Space Mono",monospace;font-size:0.66rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--tz-muted);text-align:center}
+@media(max-width:700px){
+  .tz-hero{min-height:70vh;padding:4rem 7vw}
+  .tz-rooms li{flex-direction:column;gap:0.6rem}
+  .tz-price small{text-align:left}
+  .tz-content{padding:5rem 7vw}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-draw{transform:scaleX(1)}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">The Marlowe House</span>
+  <span class="tz-label">TZ-taste style DNA</span>
+</header>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow">A townhouse hotel · Est. 1927</p>
+  <h1>Eleven rooms. <em>No lobbies.</em></h1>
+  <p class="tz-sub">Check-in happens at a sideboard, over tea. The minibar is a cellar. Checkout is at noon, but no one has ever been hurried.</p>
+  <div><a class="tz-cta" href="#">Reserve a room</a></div>
+  <div class="tz-draw" aria-hidden="true"></div>
+</section>
+
+<section class="tz-content">
+  <ul class="tz-rooms">
+    <li>
+      <div><span class="tz-room-name">The Corner Suite</span><span class="tz-room-desc">Two windows, one fireplace, a bath you could row a boat in.</span></div>
+      <span class="tz-price">$420<small>per night</small></span>
+    </li>
+    <li>
+      <div><span class="tz-room-name">The Library Room</span><span class="tz-room-desc">Four hundred books, none of them decorative. Reading chair included.</span></div>
+      <span class="tz-price">$310<small>per night</small></span>
+    </li>
+    <li>
+      <div><span class="tz-room-name">Attic No. 9</span><span class="tz-room-desc">Low beams, high quiet. Best rain sounds in the house.</span></div>
+      <span class="tz-price">$260<small>per night</small></span>
+    </li>
+  </ul>
+
+  <div class="tz-quote">
+    <p>The staff remembered my name and my tea. I have never been so quietly looked after.</p>
+    <cite>A guest, March 2026</cite>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#0e0d0b"></span><span class="tz-name">bg</span><span class="tz-hex">#0e0d0b</span></li>
+    <li><span class="tz-chip" style="background:#161411"></span><span class="tz-name">surface</span><span class="tz-hex">#161411</span></li>
+    <li><span class="tz-chip" style="background:#ece5d8"></span><span class="tz-name">ink</span><span class="tz-hex">#ece5d8</span></li>
+    <li><span class="tz-chip" style="background:#8a8177"></span><span class="tz-name">muted</span><span class="tz-hex">#8a8177</span></li>
+    <li><span class="tz-chip" style="background:#c9a96a"></span><span class="tz-name">accent</span><span class="tz-hex">#c9a96a</span></li>
+    <li><span class="tz-chip" style="background:#ece5d822"></span><span class="tz-name">line</span><span class="tz-hex">#ece5d822</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
