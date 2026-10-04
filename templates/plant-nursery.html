@@ -1,0 +1,282 @@
+<!--tz-meta {"id":"plant-nursery","title":"Understory — Native Plant Nursery","category":"Template","file":"templates/plant-nursery.html","tags":["plant-nursery","garden","local","retail"],"description":"Victorian-glasshouse native nursery: plants filed as greenhouse bench labels with Latin binomials, bloom calendar.","dnas":["greenhouse-glass"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Understory — native plants for real gardens</title>
+<meta name="description" content="Understory is a native plant nursery: straight-species perennials, shrubs, and trees grown from local seed, with honest planting advice.">
+<!-- DNA: greenhouse-glass. Design read: a Victorian glasshouse rendered as a page — black iron ribs, condensation-soft greens, scholarly serif — for gardeners who ask for Latin names and mean it. One distinctive choice: the plant catalog is filed as greenhouse bench labels — bench numbers, Latin binomials, and sun/water glyphs — plus a bloom calendar strip so you can plan a garden that flowers from April to October. Dials V5/M3/D4. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#eef2ea;
+  --tz-ink:#1e2b1f;
+  --tz-accent:#2f7a4d;
+  --tz-accent-deep:color-mix(in srgb, var(--tz-accent) 70%, var(--tz-ink));
+  --tz-muted:#7d8a7a;
+  --tz-fog:color-mix(in srgb, var(--tz-fog) 55%, var(--tz-ink) 45%);
+  --tz-line:#2f7a4d4d;
+  --tz-line-strong:color-mix(in srgb, var(--tz-accent) 50%, transparent);
+  --tz-card:color-mix(in srgb, var(--tz-bg) 55%, white);
+    --tz-ink-soft:color-mix(in srgb, var(--tz-ink) 80%, var(--tz-bg));
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Source Sans 3",system-ui,sans-serif;background:var(--tz-bg);color:var(--tz-ink);font-weight:400;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--tz-accent);color:var(--tz-bg)}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+.tz-serif{font-family:"Cormorant Garamond",serif}
+.tz-mono{font-family:"Courier Prime",monospace}
+.skip{position:absolute;left:-999px;top:0;background:var(--tz-accent);color:var(--tz-bg);padding:8px 16px;z-index:99}
+.skip:focus{left:8px;top:8px}
+
+/* ---------- header ---------- */
+.tz-header{border-bottom:1px solid var(--tz-line);background:color-mix(in srgb, var(--tz-bg) 90%, transparent);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
+.tz-header .tz-wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
+.tz-logo{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:27px;display:flex;align-items:center;gap:10px}
+.tz-logo svg{width:26px;height:26px;flex:none}
+.tz-nav{display:flex;gap:28px;font-size:15px;font-weight:500}
+.tz-nav a{color:var(--tz-ink-soft)}
+.tz-nav a:hover{color:var(--tz-accent-deep)}
+.tz-visit-btn{font-weight:600;font-size:14px;background:var(--tz-accent);color:var(--tz-bg);border:0;padding:11px 22px;cursor:pointer;transition:background .2s,transform .25s var(--tz-ease)}
+.tz-visit-btn:hover{background:var(--tz-accent-deep);transform:translateY(-2px)}
+
+/* ---------- hero ---------- */
+.tz-hero{padding:0 0 72px;position:relative}
+.tz-arch{height:300px;position:relative;overflow:hidden;background:linear-gradient(180deg, color-mix(in srgb, var(--tz-accent) 22%, var(--tz-bg)), var(--tz-bg));border-bottom:1px solid var(--tz-line)}
+.tz-ribs{position:absolute;inset:0;display:flex;justify-content:space-around;align-items:flex-end;pointer-events:none}
+.tz-rib{width:10px;height:120%;background:var(--tz-ink);opacity:.16;border-radius:50% 50% 0 0;transform-origin:bottom}
+.tz-rib:nth-child(1){transform:rotate(24deg)}.tz-rib:nth-child(2){transform:rotate(12deg)}
+.tz-rib:nth-child(3){transform:none}.tz-rib:nth-child(4){transform:rotate(-12deg)}
+.tz-rib:nth-child(5){transform:rotate(-24deg)}
+.tz-hero-inner{padding-top:56px;position:relative}
+.tz-hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
+.tz-kicker{font-family:"Courier Prime",monospace;font-size:12px;letter-spacing:.26em;color:var(--tz-accent-deep);font-weight:700;margin-bottom:20px}
+.tz-hero h1{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(52px,7vw,96px);line-height:1.02;letter-spacing:-.01em}
+.tz-hero h1 em{font-style:italic;color:var(--tz-accent-deep)}
+.tz-hero .tz-lede{margin-top:20px;font-size:18.5px;color:var(--tz-ink-soft);max-width:44ch;font-weight:300}
+.tz-hero-cta{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap}
+.tz-btn{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15.5px;padding:14px 28px;cursor:pointer;transition:transform .25s var(--tz-ease),background .2s;border:1px solid var(--tz-accent)}
+.tz-btn--green{background:var(--tz-accent);color:var(--tz-bg)}
+.tz-btn--green:hover{background:var(--tz-accent-deep);transform:translateY(-2px)}
+.tz-btn--line{background:transparent;color:var(--tz-accent-deep)}
+.tz-btn--line:hover{transform:translateY(-2px);background:color-mix(in srgb, var(--tz-accent) 10%, transparent)}
+
+/* bloom calendar */
+.tz-bloom{background:var(--tz-card);border:1px solid var(--tz-line);padding:30px 28px}
+.tz-bloom .tz-mono{font-size:11.5px;letter-spacing:.22em;font-weight:700;color:var(--tz-accent-deep);display:block;margin-bottom:16px}
+.tz-months{display:grid;grid-template-columns:repeat(12,1fr);gap:4px}
+.tz-m{aspect-ratio:1;border:1px solid var(--tz-line);display:flex;align-items:center;justify-content:center;font-family:"Courier Prime",monospace;font-size:10px;color:var(--tz-fog);position:relative}
+.tz-m.tz-on{background:var(--tz-accent);border-color:var(--tz-accent);color:var(--tz-bg);font-weight:700}
+.tz-m.tz-peak{background:var(--tz-accent-deep);border-color:var(--tz-accent-deep);color:var(--tz-bg);font-weight:700}
+.tz-bloom p{margin-top:14px;font-size:14px;color:var(--tz-ink-soft)}
+.tz-bloom p strong{color:var(--tz-accent-deep)}
+
+/* ---------- sections ---------- */
+.tz-section{padding:96px 0}
+.tz-sechead{margin-bottom:48px;max-width:660px}
+.tz-sechead .tz-mono{font-size:12px;letter-spacing:.26em;color:var(--tz-accent-deep);font-weight:700;display:block;margin-bottom:16px}
+.tz-sechead h2{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(40px,5.2vw,64px);line-height:1.05}
+.tz-sechead p{margin-top:14px;font-size:17.5px;color:var(--tz-ink-soft);font-weight:300}
+
+/* bench labels: the one weird thing */
+.tz-benches{border:1px solid var(--tz-line-strong);background:var(--tz-card)}
+.tz-bench-head{display:grid;grid-template-columns:110px 1fr 200px 110px;gap:20px;padding:16px 28px;border-bottom:2px solid var(--tz-ink);font-family:"Courier Prime",monospace;font-size:11px;letter-spacing:.18em;font-weight:700;color:var(--tz-accent-deep)}
+.tz-bench{display:grid;grid-template-columns:110px 1fr 200px 110px;gap:20px;padding:24px 28px;border-bottom:1px solid var(--tz-line);align-items:center;transition:background .2s}
+.tz-bench:last-child{border-bottom:0}
+.tz-bench:hover{background:color-mix(in srgb, var(--tz-accent) 6%, var(--tz-card))}
+.tz-bench .tz-no{font-family:"Courier Prime",monospace;font-weight:700;font-size:14px;color:var(--tz-accent-deep)}
+.tz-bench h3{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:600;line-height:1.15}
+.tz-bench h3 .tz-latin{display:block;font-style:italic;font-weight:500;font-size:19px;color:var(--tz-accent-deep)}
+.tz-bench .tz-needs{font-family:"Courier Prime",monospace;font-size:12.5px;line-height:2;color:var(--tz-ink-soft)}
+.tz-bench .tz-needs .tz-g{color:var(--tz-accent-deep);font-weight:700}
+.tz-bench .tz-price{font-family:"Cormorant Garamond",serif;font-size:28px;font-weight:700;text-align:right;white-space:nowrap}
+.tz-bench .tz-price small{font-family:"Courier Prime",monospace;font-size:11px;color:var(--tz-fog);display:block;font-weight:400}
+.tz-bench-note{margin-top:18px;font-family:"Courier Prime",monospace;font-size:12.5px;color:var(--tz-fog);line-height:2}
+
+/* workshops */
+.tz-work{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--tz-line);border:1px solid var(--tz-line)}
+.tz-w{background:var(--tz-card);padding:40px 38px}
+.tz-w .tz-mono{font-size:11.5px;letter-spacing:.22em;color:var(--tz-accent-deep);font-weight:700;display:block;margin-bottom:12px}
+.tz-w h3{font-family:"Cormorant Garamond",serif;font-size:30px;font-weight:600;margin-bottom:10px}
+.tz-w p{font-size:16px;color:var(--tz-ink-soft);margin-bottom:16px}
+.tz-w .tz-meta{display:flex;justify-content:space-between;align-items:center}
+.tz-w .tz-price{font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:700}
+.tz-w a{font-weight:600;color:var(--tz-accent-deep);border-bottom:1px solid var(--tz-accent-deep)}
+.tz-w a:hover{color:var(--tz-ink);border-color:var(--tz-ink)}
+
+/* promise rows */
+.tz-rows{border-top:2px solid var(--tz-ink)}
+.tz-rowitem{display:grid;grid-template-columns:64px 1fr;gap:24px;padding:30px 4px;border-bottom:1px solid var(--tz-line);align-items:start}
+.tz-rowitem .tz-num{font-family:"Cormorant Garamond",serif;font-size:40px;font-weight:700;color:var(--tz-accent);line-height:1}
+.tz-rowitem h3{font-family:"Cormorant Garamond",serif;font-size:27px;font-weight:600;margin-bottom:8px}
+.tz-rowitem p{font-size:16.5px;color:var(--tz-ink-soft);max-width:70ch}
+
+/* ---------- footer ---------- */
+.tz-footer{border-top:2px solid var(--tz-ink);padding:64px 0 36px;background:var(--tz-card)}
+.tz-foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:44px;margin-bottom:44px}
+.tz-foot-brand{font-family:"Cormorant Garamond",serif;font-weight:700;font-size:30px;margin-bottom:10px}
+.tz-foot-grid p,.tz-foot-grid li{font-size:15px;color:var(--tz-fog);list-style:none;margin-bottom:10px}
+.tz-foot-grid h4{font-family:"Courier Prime",monospace;font-size:11.5px;letter-spacing:.22em;color:var(--tz-accent-deep);margin-bottom:16px;font-weight:700}
+.tz-foot-grid a:hover{color:var(--tz-accent-deep)}
+.tz-base{border-top:1px solid var(--tz-line);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:"Courier Prime",monospace;font-size:12px;color:var(--tz-fog)}
+
+@media (max-width:960px){
+  .tz-hero-grid{grid-template-columns:1fr}
+  .tz-work{grid-template-columns:1fr}
+  .tz-foot-grid{grid-template-columns:1fr}
+  .tz-nav{display:none}
+  .tz-bench-head{display:none}
+  .tz-bench{grid-template-columns:1fr;gap:8px}
+  .tz-bench .tz-price{text-align:left}
+  .tz-months{grid-template-columns:repeat(6,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#benches">Skip to plant benches</a>
+
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-logo" href="#" aria-label="Understory home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#2f7a4d" stroke-width="1.8" aria-hidden="true"><path d="M12 21v-8"/><path d="M12 13c0-4 3-7 8-7 0 4-3 7-8 7zM12 13c0-4-3-7-8-7 0 4 3 7 8 7z"/></svg>
+      Understory
+    </a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#benches">Plant Benches</a><a href="#workshops">Workshops</a><a href="#why">Why Native</a><a href="#visit">Visit</a>
+    </nav>
+    <a class="tz-visit-btn" href="#visit">Plan a visit</a>
+  </div>
+</header>
+
+<main>
+<section class="tz-hero">
+  <div class="tz-arch" aria-hidden="true"><div class="tz-ribs"><span class="tz-rib"></span><span class="tz-rib"></span><span class="tz-rib"></span><span class="tz-rib"></span><span class="tz-rib"></span></div></div>
+  <div class="tz-wrap tz-hero-inner">
+    <div class="tz-hero-grid">
+      <div>
+        <p class="tz-kicker">NATIVE PLANT NURSERY · GROWN FROM LOCAL SEED</p>
+        <h1>Plant what <em>belongs here.</em></h1>
+        <p class="tz-lede">Straight-species natives — no cultivars pretending to be wild — grown from seed collected within fifty miles. They feed the pollinators, survive the winters, and ask for almost nothing.</p>
+        <div class="tz-hero-cta">
+          <a class="tz-btn tz-btn--green" href="#benches">Walk the benches</a>
+          <a class="tz-btn tz-btn--line" href="#why">Why native?</a>
+        </div>
+      </div>
+      <aside class="tz-bloom" aria-label="Bloom calendar">
+        <span class="tz-mono">BLOOM CALENDAR — PLAN THE SEASON</span>
+        <div class="tz-months" aria-hidden="true">
+          <span class="tz-m">J</span><span class="tz-m">F</span><span class="tz-m">M</span><span class="tz-m tz-on">A</span><span class="tz-m tz-peak">M</span><span class="tz-m tz-peak">J</span><span class="tz-m tz-peak">J</span><span class="tz-m tz-on">A</span><span class="tz-m tz-on">S</span><span class="tz-m tz-on">O</span><span class="tz-m">N</span><span class="tz-m">D</span>
+        </div>
+        <p><strong>April → October:</strong> with the right benches, something is always in flower. Ask us for the succession plan — it's free, and it's our favorite conversation.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="tz-section" id="benches" style="padding-top:64px">
+  <div class="tz-wrap">
+    <div class="tz-sechead">
+      <span class="tz-mono">THE BENCHES — WHAT'S IN THE GLASSHOUSE</span>
+      <h2>Every plant has a bench number.</h2>
+      <p>Our labels say what the plant needs, not what we wish it needed. Sun, water, height at maturity — the honest specs.</p>
+    </div>
+    <div class="tz-benches">
+      <div class="tz-bench-head"><span>BENCH</span><span>PLANT</span><span>NEEDS</span><span style="text-align:right">POT</span></div>
+      <div class="tz-bench"><span class="tz-no">B-01</span><h3>Wild Bergamot<span class="tz-latin">Monarda fistulosa</span></h3><p class="tz-needs"><span class="tz-g">SUN</span> full · <span class="tz-g">WATER</span> medium<br><span class="tz-g">HEIGHT</span> 3–4 ft · <span class="tz-g">BLOOMS</span> Jul–Sep</p><span class="tz-price">$9<small>quart pot</small></span></div>
+      <div class="tz-bench"><span class="tz-no">B-02</span><h3>Purple Coneflower<span class="tz-latin">Echinacea purpurea</span></h3><p class="tz-needs"><span class="tz-g">SUN</span> full · <span class="tz-g">WATER</span> dry–medium<br><span class="tz-g">HEIGHT</span> 2–3 ft · <span class="tz-g">BLOOMS</span> Jun–Aug</p><span class="tz-price">$9<small>quart pot</small></span></div>
+      <div class="tz-bench"><span class="tz-no">B-03</span><h3>New England Aster<span class="tz-latin">Symphyotrichum novae-angliae</span></h3><p class="tz-needs"><span class="tz-g">SUN</span> full–part · <span class="tz-g">WATER</span> medium<br><span class="tz-g">HEIGHT</span> 3–5 ft · <span class="tz-g">BLOOMS</span> Aug–Oct</p><span class="tz-price">$10<small>quart pot</small></span></div>
+      <div class="tz-bench"><span class="tz-no">B-04</span><h3>Christmas Fern<span class="tz-latin">Polystichum acrostichoides</span></h3><p class="tz-needs"><span class="tz-g">SUN</span> shade · <span class="tz-g">WATER</span> medium<br><span class="tz-g">HEIGHT</span> 1–2 ft · <span class="tz-g">EVERGREEN</span> yes</p><span class="tz-price">$12<small>gallon pot</small></span></div>
+      <div class="tz-bench"><span class="tz-no">B-05</span><h3>Serviceberry<span class="tz-latin">Amelanchier canadensis</span></h3><p class="tz-needs"><span class="tz-g">SUN</span> full–part · <span class="tz-g">WATER</span> medium<br><span class="tz-g">HEIGHT</span> 15–25 ft · <span class="tz-g">FRUIT</span> edible Jun</p><span class="tz-price">$38<small>3-gallon</small></span></div>
+      <div class="tz-bench"><span class="tz-no">B-06</span><h3>Little Bluestem<span class="tz-latin">Schizachyrium scoparium</span></h3><p class="tz-needs"><span class="tz-g">SUN</span> full · <span class="tz-g">WATER</span> dry<br><span class="tz-g">HEIGHT</span> 2–3 ft · <span class="tz-g">FALL COLOR</span> copper</p><span class="tz-price">$9<small>quart pot</small></span></div>
+      <div class="tz-bench"><span class="tz-no">B-07</span><h3>Cardinal Flower<span class="tz-latin">Lobelia cardinalis</span></h3><p class="tz-needs"><span class="tz-g">SUN</span> part · <span class="tz-g">WATER</span> wet<br><span class="tz-g">HEIGHT</span> 2–4 ft · <span class="tz-g">HUMMINGBIRDS</span> yes</p><span class="tz-price">$10<small>quart pot</small></span></div>
+    </div>
+    <p class="tz-bench-note">STRAIGHT SPECIES ONLY — NO NEONICOTINOIDS, EVER — SEED SOURCE LISTED ON EVERY LABEL<br>BUY 10+ PERENNIALS, GET 10% OFF — THE POLLINATOR DISCOUNT, NO COUPON NEEDED</p>
+  </div>
+</section>
+
+<section class="tz-section" id="workshops" style="padding-top:0">
+  <div class="tz-wrap">
+    <div class="tz-sechead">
+      <span class="tz-mono">WORKSHOPS — IN THE POTTING SHED</span>
+      <h2>Learn it with dirt under your nails.</h2>
+    </div>
+    <div class="tz-work">
+      <div class="tz-w">
+        <span class="tz-mono">OCT 11 · SAT · 10 AM</span>
+        <h3>Meadow in a Weekend</h3>
+        <p>Design and plant a 100-square-foot native meadow: layout, plugs, and the first-year watering truth. Take home a planting map for your own yard.</p>
+        <div class="tz-meta"><span class="tz-price">$55</span><a href="#visit">Reserve a stool</a></div>
+      </div>
+      <div class="tz-w">
+        <span class="tz-mono">OCT 25 · SAT · 10 AM</span>
+        <h3>Seed Saving 101</h3>
+        <p>Collect, clean, and store native seed the way we do — envelopes, patience, and a very good sieve. Take home five packets.</p>
+        <div class="tz-meta"><span class="tz-price">$35</span><a href="#visit">Reserve a stool</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tz-section" id="why" style="padding-top:0">
+  <div class="tz-wrap">
+    <div class="tz-sechead">
+      <span class="tz-mono">THE SHORT VERSION</span>
+      <h2>Why native, in three sentences each.</h2>
+    </div>
+    <div class="tz-rows">
+      <div class="tz-rowitem"><span class="tz-num">1</span><div><h3>They feed the neighborhood</h3><p>A native oak hosts over 500 species of caterpillars; a non-native ginkgo hosts five. Birds raise their young on caterpillars. The math is not subtle.</p></div></div>
+      <div class="tz-rowitem"><span class="tz-num">2</span><div><h3>They survive your neglect</h3><p>These plants evolved for this rainfall, this soil, this winter. Once established — usually one season — most need no watering, no fertilizer, no fussing.</p></div></div>
+      <div class="tz-rowitem"><span class="tz-num">3</span><div><h3>They're honest about straight species</h3><p>We sell the wild type, not the double-flowered cultivar the pollinators can't use. If a plant can't feed anything, it doesn't earn bench space.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="tz-section" id="visit" style="padding-top:0">
+  <div class="tz-wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start">
+    <div>
+      <div class="tz-sechead" style="margin-bottom:20px"><span class="tz-mono">VISIT THE GLASSHOUSE</span><h2>Wander the benches.</h2></div>
+      <p style="font-size:18px"><strong>6 Conservatory Road<br>Hollow Creek</strong></p>
+      <p style="color:var(--tz-fog);margin-top:8px">Dogs on leash welcome. Carts provided. Staff will talk your ear off about soil — you've been warned.</p>
+    </div>
+    <div>
+      <p class="tz-mono" style="font-size:13px;line-height:2.3;color:var(--tz-fog)">APR–OCT · DAILY 9 AM–6 PM<br>NOV–MAR · FRI–SUN 10 AM–4 PM<br><br>(555) 418-9023<br>HELLO@UNDERSTORYNURSERY.COM<br><br>FREE PARKING · STEP-FREE PATHS<br>GROUP TOURS: FIRST SATURDAY MONTHLY</p>
+      <a class="tz-btn tz-btn--green" href="#benches" style="margin-top:20px">See what's on the benches</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-foot-grid">
+      <div>
+        <p class="tz-foot-brand">Understory</p>
+        <p>Native plant nursery in Hollow Creek. Straight species, local seed, honest labels.</p>
+      </div>
+      <div>
+        <h4>NURSERY</h4>
+        <ul><li><a href="#benches">Plant benches</a></li><li><a href="#workshops">Workshops</a></li><li><a href="#why">Why native</a></li></ul>
+      </div>
+      <div>
+        <h4>VISIT</h4>
+        <ul><li>6 Conservatory Road</li><li>(555) 418-9023</li><li>hello@understorynursery.com</li></ul>
+      </div>
+    </div>
+    <div class="tz-base">
+      <span>© 2026 UNDERSTORY NURSERY — GROWN FROM LOCAL SEED</span>
+      <span class="tz-mono">BENCH B-01 → B-07 · NO NEONICS, EVER</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
