@@ -1,0 +1,147 @@
+<!--tz-meta {"id":"ex-navbar","title":"Navbar — Strict Grid","category":"Elixir","file":"elixir/navbar.heex","tags":["heex","phoenix","navbar","swiss","navigation"],"description":"Information architecture as navigation: numbered links on a strict hairline grid, a mono clock, one red action — nothing decorative.","dnas":["swiss-rational"]} -->
+<%!-- def navbar(assigns) — attr :brand, :string, default: "LATCH" · attr :links, :list — each: %{n: string, label: string, href: string} · attr :cta_label, :string · attr :cta_href, :string · attr :clock, :string, default: "" --%>
+<%!--
+Design read: Information architecture as navigation — a strict Swiss grid with numbered mono links, hairline rules top and bottom, a live clock for no reason except precision, and exactly one red action.
+Distinctive choice: links carry red mono numerals (01–04) like an index, turning the nav into a table of contents.
+Dials: VARIANCE 3 / MOTION 2 / DENSITY 6. DNA: swiss-rational (Archivo / Archivo / Space Mono).
+--%>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap");
+.tz-nav {
+  --tz-bg: #fafafa;
+  --tz-surface: #f0f0f0;
+  --tz-ink: #111111;
+  --tz-muted: #6b6b6b;
+  --tz-accent: #e30613;
+  --tz-line: #111111;
+  --tz-font-sans: "Archivo", "Helvetica Neue", sans-serif;
+  --tz-font-mono: "Space Mono", "Courier New", monospace;
+  background: var(--tz-bg);
+  color: var(--tz-ink);
+  font-family: var(--tz-font-sans);
+  border-top: 1px solid var(--tz-line);
+  border-bottom: 1px solid var(--tz-line);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.tz-nav__grid {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: stretch;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.tz-nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 1.5rem;
+  border-right: 1px solid var(--tz-line);
+  text-decoration: none;
+  color: var(--tz-ink);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+}
+.tz-nav__brand-mark {
+  width: 12px;
+  height: 12px;
+  background: var(--tz-accent);
+  flex: none;
+}
+.tz-nav__links {
+  display: flex;
+  align-items: stretch;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+}
+.tz-nav__links li { display: flex; }
+.tz-nav__link {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 1rem 1.4rem;
+  text-decoration: none;
+  color: var(--tz-ink);
+  font-size: 0.92rem;
+  font-weight: 500;
+  border-right: 1px solid var(--tz-line);
+  position: relative;
+  white-space: nowrap;
+}
+.tz-nav__link .tz-nav__n {
+  font-family: var(--tz-font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--tz-accent);
+}
+.tz-nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: var(--tz-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tz-nav__link:hover::after { transform: scaleX(1); }
+.tz-nav__clock {
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  border-left: 1px solid var(--tz-line);
+  font-family: var(--tz-font-mono);
+  font-size: 0.8rem;
+  color: var(--tz-muted);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.tz-nav__cta {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.75rem;
+  background: var(--tz-accent);
+  color: var(--tz-bg);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.92rem;
+  transition: background 0.18s ease;
+  white-space: nowrap;
+}
+.tz-nav__cta:hover { background: var(--tz-ink); }
+@media (max-width: 860px) {
+  .tz-nav__grid { grid-template-columns: auto 1fr auto; }
+  .tz-nav__clock { display: none; }
+  .tz-nav__link { padding: 1rem 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tz-nav__link::after { transition: none; }
+  .tz-nav__cta { transition: none; }
+}
+</style>
+<header class="tz-nav">
+  <nav class="tz-nav__grid" aria-label="Primary">
+    <.link href="/" class="tz-nav__brand">
+      <span class="tz-nav__brand-mark" aria-hidden="true"></span>
+      {@brand}
+    </.link>
+    <ul class="tz-nav__links">
+      {for link <- @links do}
+        <li>
+          <.link href={link.href} class="tz-nav__link">
+            <span class="tz-nav__n">{link.n}</span>
+            {link.label}
+          </.link>
+        </li>
+      {/for}
+    </ul>
+    <span class="tz-nav__clock" aria-label="Local time">{@clock}</span>
+    <.link href={@cta_href} class="tz-nav__cta">{@cta_label}</.link>
+  </nav>
+</header>
