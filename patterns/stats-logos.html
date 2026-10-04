@@ -1,0 +1,68 @@
+<!--tz-meta {"id":"stats-logos","title":"Logo marquee","category":"Stats","file":"patterns/stats-logos.html","tags":["logos","marquee"],"description":"Text-wordmark marquee strip; pauses on hover, still under reduced motion.","dnas":["soft-minimal"]} -->
+<section class="tz-logos">
+  <p class="tz-logos-cap">Trusted by teams at</p>
+  <div class="tz-logos-strip">
+    <div class="tz-logos-run">
+      <span class="tz-wm tz-wm-a">Northwind</span><span class="tz-wm tz-wm-b">ACME &amp; CO.</span><span class="tz-wm tz-wm-c">helios</span><span class="tz-wm tz-wm-d">Papier Press</span><span class="tz-wm tz-wm-e">FIELDKIT</span><span class="tz-wm tz-wm-f">Osmo Labs</span>
+      <span class="tz-wm tz-wm-a" aria-hidden="true">Northwind</span><span class="tz-wm tz-wm-b" aria-hidden="true">ACME &amp; CO.</span><span class="tz-wm tz-wm-c" aria-hidden="true">helios</span><span class="tz-wm tz-wm-d" aria-hidden="true">Papier Press</span><span class="tz-wm tz-wm-e" aria-hidden="true">FIELDKIT</span><span class="tz-wm tz-wm-f" aria-hidden="true">Osmo Labs</span>
+    </div>
+  </div>
+</section>
+<style>
+.tz-logos{
+  background:#faf9f7;
+  color:#1a1a1a;
+  padding:clamp(32px,5vw,56px) 0;
+  overflow:hidden;
+  font-family:Arial,Helvetica,sans-serif;
+  border-top:1px solid #e4e1da;
+  border-bottom:1px solid #e4e1da;
+}
+.tz-logos-cap{
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  opacity:.55;
+  margin:0 0 20px;
+  text-align:center;
+}
+.tz-logos-strip{
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+}
+.tz-logos-run{
+  display:flex;
+  gap:72px;
+  width:max-content;
+  align-items:baseline;
+  padding-right:72px;
+  animation:tz-marq 26s linear infinite;
+}
+.tz-logos-strip:hover .tz-logos-run{
+  animation-play-state:paused;
+}
+.tz-wm{
+  white-space:nowrap;
+  color:#1a1a1a;
+  opacity:.75;
+}
+.tz-wm-a{font:italic 400 26px Georgia,'Times New Roman',serif}
+.tz-wm-b{font:11px ui-monospace,Menlo,monospace;letter-spacing:.3em}
+.tz-wm-c{font:800 28px Arial,Helvetica,sans-serif;letter-spacing:-.03em}
+.tz-wm-d{font:400 22px Georgia,'Times New Roman',serif;letter-spacing:.06em}
+.tz-wm-e{font:700 15px Arial,Helvetica,sans-serif;letter-spacing:.42em}
+.tz-wm-f{font:13px ui-monospace,Menlo,monospace;letter-spacing:.1em}
+@keyframes tz-marq{
+  to{transform:translateX(-50%)}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-logos-run{
+    animation:none;
+    flex-wrap:wrap;
+    width:auto;
+    justify-content:center;
+    padding:0 24px;
+  }
+}
+</style>
