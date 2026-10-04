@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-library-oak",
+  "title": "Library Oak design tokens",
+  "category": "Tokens",
+  "file": "tokens/library-oak.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "library-oak"
+  ],
+  "description": "W3C-format design tokens for the Library Oak DNA.",
+  "dnas": [
+   "library-oak"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#211810",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#ece0c8",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#c9973f",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#93805f",
+   "type": "color"
+  },
+  "line": {
+   "value": "#c9973f40",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#211810",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Cormorant Garamond",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "EB Garamond",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Roboto Mono",
+   "type": "fontFamily"
+  }
+ }
+}
