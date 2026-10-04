@@ -1,5 +1,5 @@
 {
- "count": 36,
+ "count": 48,
  "updated": "2026-10-04",
  "usage": "Copy-paste build prompts. Fill the [BRACKETS], paste into any AI builder.",
  "prompts": [
@@ -28,6 +28,18 @@
    "description": "Editorial homepage plus article template: reading-first typography, real bylines, archive discipline."
   },
   {
+   "id": "booking-flow",
+   "title": "Booking flow",
+   "file": "prompts/booking-flow.md",
+   "description": "Appointment booking: service picker, honest calendar UX, confirmation states, no-show policy."
+  },
+  {
+   "id": "brand-refresh",
+   "title": "Brand refresh",
+   "file": "prompts/brand-refresh.md",
+   "description": "Identity refresh as a guidelines page: logo rules, tokens, voice before/after, application mockups."
+  },
+  {
    "id": "careers-page",
    "title": "Careers page",
    "file": "prompts/careers-page.md",
@@ -50,6 +62,12 @@
    "title": "Community forum",
    "file": "prompts/community-forum.md",
    "description": "Forum/community homepage: index-style categories, live activity, visible rules."
+  },
+  {
+   "id": "community-onboarding",
+   "title": "Community onboarding",
+   "file": "prompts/community-onboarding.md",
+   "description": "New-member join flow: purpose, plain-language rules, channel tour, first-post prompt."
   },
   {
    "id": "contact-page",
@@ -76,16 +94,46 @@
    "description": "Dense, keyboard-friendly product UI with real interactive workflows."
   },
   {
+   "id": "dashboard-redesign",
+   "title": "Dashboard redesign",
+   "file": "prompts/dashboard-redesign.md",
+   "description": "Rebuild an existing dashboard: audit first, then redesign around one core job with honest charts."
+  },
+  {
+   "id": "design-system-audit",
+   "title": "Design system audit",
+   "file": "prompts/design-system-audit.md",
+   "description": "Audit an existing UI against the anti-slop checklist: findings, severity, migration plan."
+  },
+  {
+   "id": "developer-docs-site",
+   "title": "Developer docs site",
+   "file": "prompts/developer-docs-site.md",
+   "description": "Docs for developers: quickstart above the fold, working code samples, search-first, honest error docs."
+  },
+  {
    "id": "ecommerce-product",
    "title": "E-commerce product page",
    "file": "prompts/ecommerce-product.md",
    "description": "Product detail page: gallery, specs, reviews, sticky buy — with honest commerce copy."
   },
   {
+   "id": "email-sequence",
+   "title": "Email sequence",
+   "file": "prompts/email-sequence.md",
+   "description": "Welcome or nurture sequence: cadence, subject lines, one idea per email, plain-text fallbacks."
+  },
+  {
    "id": "event-page",
    "title": "Event page",
    "file": "prompts/event-page.md",
    "description": "Single event/conference page: lineup, schedule, one sticky ticket CTA."
+  },
+  {
+   "id": "feature-launch-page",
+   "title": "Feature launch page",
+   "file": "prompts/feature-launch-page.md",
+   "description": "Announcement page for a new feature: what's new, who's it for, before/after, try-it path."
   },
   {
    "id": "help-center",
@@ -124,6 +172,12 @@
    "description": "Creator link hub: one-tap links, latest work up top, profile header with a point of view."
   },
   {
+   "id": "mobile-app-onboarding",
+   "title": "Mobile app onboarding",
+   "file": "prompts/mobile-app-onboarding.md",
+   "description": "First-run flow: one job per screen, value before signup, permissions asked with context."
+  },
+  {
    "id": "mobile-paywall",
    "title": "Mobile app paywall",
    "file": "prompts/mobile-paywall.md",
@@ -134,6 +188,12 @@
    "title": "Mobile screens",
    "file": "prompts/mobile-screens.md",
    "description": "A framed 3–5 screen flow with platform conventions respected."
+  },
+  {
+   "id": "newsletter-landing",
+   "title": "Newsletter landing page",
+   "file": "prompts/newsletter-landing.md",
+   "description": "Subscribe page that earns the signup: readable samples, cadence promise, honest unsubscribe."
   },
   {
    "id": "nonprofit-donate",
@@ -196,10 +256,22 @@
    "description": "Service status page: honest uptime grid, dated incident history, subscribe."
   },
   {
+   "id": "testimonials-page",
+   "title": "Testimonials page",
+   "file": "prompts/testimonials-page.md",
+   "description": "Proof page: full-length customer stories with real names, filtering, video with transcripts."
+  },
+  {
    "id": "threejs-hero",
    "title": "Three.js hero section",
    "file": "prompts/threejs-hero.md",
    "description": "Interactive WebGL hero: one scene, one interaction, real fallback, perf budget enforced."
+  },
+  {
+   "id": "video-sales-landing",
+   "title": "Video sales landing page",
+   "file": "prompts/video-sales-landing.md",
+   "description": "Video-first sales page: chapters, transcript, honest offer box, plain-language guarantee."
   },
   {
    "id": "waitlist-page",
