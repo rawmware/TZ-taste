@@ -1,0 +1,52 @@
+<!--tz-meta {"id":"team-advisors","title":"Advisors roster","category":"Sections","file":"patterns/team-advisors.html","tags":["team","advisors"],"description":"Museum-placard advisors: numbered roster with one-line credentials, office-hours note, no headshots.","dnas":["museum-placard"]} -->
+<section class="tz-team-advisors">
+  <p class="tz-eyebrow">Advisors</p>
+  <h2>On call, <em>not on payroll.</em></h2>
+  <p class="tz-lede">Four people who answer the phone when it matters. Listed with what they actually do for us.</p>
+  <ol class="tz-roster">
+    <li>
+      <span class="tz-no">01</span>
+      <div><h3>Dr. Lena Marsh</h3><p class="tz-role">Clinical safety · reviews every protocol before it ships</p></div>
+      <span class="tz-hours">Office hours: Tue 2–4pm</span>
+    </li>
+    <li>
+      <span class="tz-no">02</span>
+      <div><h3>Marcus Webb</h3><p class="tz-role">Distribution · opened the three retail doors that matter</p></div>
+      <span class="tz-hours">Office hours: Thu 10–12</span>
+    </li>
+    <li>
+      <span class="tz-no">03</span>
+      <div><h3>Priya Nair</h3><p class="tz-role">Finance · keeps the burn honest and the runway visible</p></div>
+      <span class="tz-hours">Office hours: Wed 3–5pm</span>
+    </li>
+    <li>
+      <span class="tz-no">04</span>
+      <div><h3>Tomás Rivera</h3><p class="tz-role">Community · knows every neighborhood org by first name</p></div>
+      <span class="tz-hours">Office hours: Fri 9–11am</span>
+    </li>
+  </ol>
+  <p class="tz-fine">Advisors hold no board seats and no equity cliff — just a quarterly dinner and our gratitude.</p>
+</section>
+<style>
+.tz-team-advisors{--bg:#f4f1ea;--ink:#23211c;--muted:#8a8172;--accent:#7a5c2e;--line:#23211c1f;
+  background:var(--bg);color:var(--ink);padding:clamp(72px,10vw,140px) clamp(20px,5vw,64px);
+  font-family:Georgia,serif}
+.tz-team-advisors .tz-eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);
+  margin:0 0 18px;font-family:-apple-system,'Segoe UI',sans-serif;font-weight:600}
+.tz-team-advisors h2{font-weight:400;font-size:clamp(38px,5.5vw,64px);letter-spacing:-.01em;margin:0 0 14px;line-height:1.05}
+.tz-team-advisors h2 em{font-style:italic;color:var(--accent)}
+.tz-team-advisors .tz-lede{color:var(--muted);font-size:17px;max-width:56ch;margin:0 0 52px;font-style:italic}
+.tz-team-advisors .tz-roster{list-style:none;margin:0;padding:0;max-width:900px;border-top:2px solid var(--ink)}
+.tz-team-advisors li{display:grid;grid-template-columns:72px 1fr auto;gap:24px;align-items:baseline;
+  padding:30px 0;border-bottom:1px solid var(--line)}
+.tz-team-advisors .tz-no{font-size:15px;color:var(--muted);font-family:-apple-system,'Segoe UI',sans-serif}
+.tz-team-advisors h3{font-size:24px;font-weight:600;margin:0 0 6px;letter-spacing:-.01em}
+.tz-team-advisors .tz-role{margin:0;color:var(--muted);font-size:15.5px;font-style:italic}
+.tz-team-advisors .tz-hours{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--accent);
+  white-space:nowrap;border:1px solid var(--line);padding:8px 14px}
+.tz-team-advisors .tz-fine{max-width:900px;color:var(--muted);font-size:13.5px;font-style:italic;margin:36px 0 0}
+@media (max-width:640px){
+  .tz-team-advisors li{grid-template-columns:48px 1fr}
+  .tz-team-advisors .tz-hours{grid-column:2;justify-self:start}
+}
+</style>
