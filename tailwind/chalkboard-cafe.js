@@ -1,0 +1,3 @@
+//tz-meta {"id":"tailwind-chalkboard-cafe","title":"Chalkboard Cafe Tailwind preset","category":"Tailwind","file":"tailwind/chalkboard-cafe.js","tags":["tailwind","preset","chalkboard-cafe"],"description":"Tailwind theme preset for the Chalkboard Cafe DNA.","dnas":["chalkboard-cafe"]}
+// Tailwind preset for the Chalkboard Cafe DNA. Extend tailwind.config with this.
+module.exports={theme:{extend:{colors:{tzbg:"#1d1f1e",tzink:"#f2efe6",tzaccent:"#e8c15a",tzmuted:"#9aa0a0",tzline:"#f2efe633",tzsurface:"#1d1f1e"},fontFamily:{display:["Caveat","serif"],body:["Patrick Hand","sans-serif"],mono:["DM Mono","monospace"]}}}};
