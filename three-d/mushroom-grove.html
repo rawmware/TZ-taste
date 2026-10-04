@@ -1,0 +1,198 @@
+<!--tz-meta {"id":"mushroom-grove","title":"Glowing Grove","category":"3D","file":"three-d/mushroom-grove.html","tags":["threejs","night"],"description":"Bioluminescent caps light a dark forest floor; spores drift overhead.","dnas":["alpine-after-dark"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Glowing Grove — TZ-taste</title>
+<style>
+  html, body { margin:0; height:100%; overflow:hidden; background:#060a0c; }
+  #app { position:fixed; inset:0; }
+  #app canvas { display:block; }
+  .caption { position:fixed; left:18px; bottom:16px; z-index:5; color:#9fd8c2;
+    font:12px/1.6 system-ui, -apple-system, sans-serif; letter-spacing:.05em;
+    opacity:.9; pointer-events:none; }
+  .caption b { display:block; font-size:13px; letter-spacing:.22em; text-transform:uppercase; }
+  #fallback { display:none; position:fixed; inset:0; z-index:10; place-items:center;
+    color:#9fd8c2; font:14px/1.6 system-ui, sans-serif; text-align:center;
+    padding:32px; background:#060a0c; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="caption"><b>Glowing Grove</b>the forest keeps its own nightlights on<br/>drag to orbit &middot; scroll to zoom</div>
+<div id="fallback"><p>This scene needs WebGL, which your browser could not provide.<br/>Try a recent version of Chrome, Safari, Firefox or Edge.</p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (e) {
+  document.getElementById('fallback').style.display = 'grid';
+  throw e;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('app').appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x060a0c);
+scene.fog = new THREE.FogExp2(0x060a0c, 0.045);
+
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 200);
+camera.position.set(8.5, 5.5, 11.5);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.target.set(0, 1.2, 0);
+controls.maxPolarAngle = 1.5;
+controls.minDistance = 4;
+controls.maxDistance = 40;
+
+const moonlight = new THREE.DirectionalLight(0x8fa8ff, 0.5);
+moonlight.position.set(-14, 20, 7);
+scene.add(moonlight);
+scene.add(new THREE.HemisphereLight(0x1c2a33, 0x05070a, 0.55));
+
+/* ---------- forest floor ---------- */
+const floor = new THREE.Mesh(new THREE.CircleGeometry(34, 48),
+  new THREE.MeshStandardMaterial({ color: 0x0e1413, roughness: 1 }));
+floor.rotation.x = -Math.PI / 2;
+scene.add(floor);
+const pebbleMat = new THREE.MeshStandardMaterial({ color: 0x1c2422, roughness: 1, flatShading: true });
+for (let i = 0; i < 46; i++) {
+  const r = 0.08 + Math.random() * 0.2;
+  const p = new THREE.Mesh(new THREE.DodecahedronGeometry(r, 0), pebbleMat);
+  const a = Math.random() * Math.PI * 2, d = 2 + Math.random() * 15;
+  p.position.set(Math.cos(a) * d, r * 0.4, Math.sin(a) * d);
+  p.rotation.set(Math.random() * 3, Math.random() * 3, Math.random() * 3);
+  scene.add(p);
+}
+/* dark tree trunks fading into the fog */
+const trunkMat = new THREE.MeshStandardMaterial({ color: 0x0c0f0e, roughness: 1 });
+for (let i = 0; i < 12; i++) {
+  const r = 0.5 + Math.random() * 0.7;
+  const trunk = new THREE.Mesh(new THREE.CylinderGeometry(r * 0.85, r, 26, 10), trunkMat);
+  const a = (i / 12) * Math.PI * 2 + Math.random() * 0.5;
+  const d = 15 + Math.random() * 10;
+  trunk.position.set(Math.cos(a) * d, 12, Math.sin(a) * d);
+  scene.add(trunk);
+}
+
+/* ---------- mushrooms ---------- */
+const stemMat = new THREE.MeshStandardMaterial({ color: 0xd8d2c2, roughness: 0.8 });
+const gillMat = new THREE.MeshStandardMaterial({ color: 0xf5ead0, roughness: 0.9,
+  emissive: 0xfff2cf, emissiveIntensity: 0.25, side: THREE.DoubleSide });
+const CAPS = [0x2fe8b8, 0x9a6bff, 0x41c7ff, 0x2fe8b8, 0x7df2a8];
+const glowLights = [];
+function makeMushroom(x, z, s, capColor, hero) {
+  const g = new THREE.Group();
+  const stem = new THREE.Mesh(new THREE.CylinderGeometry(0.12 * s, 0.19 * s, 1.15 * s, 10), stemMat);
+  stem.position.y = 0.57 * s;
+  g.add(stem);
+  const capMat = new THREE.MeshStandardMaterial({ color: capColor, roughness: 0.4,
+    emissive: capColor, emissiveIntensity: 1.55 });
+  const cap = new THREE.Mesh(new THREE.SphereGeometry(0.78 * s, 22, 12, 0, Math.PI * 2, 0, Math.PI / 2.05), capMat);
+  cap.scale.y = 0.62;
+  cap.position.y = 1.08 * s;
+  g.add(cap);
+  const gills = new THREE.Mesh(new THREE.CircleGeometry(0.62 * s, 18), gillMat);
+  gills.rotation.x = Math.PI / 2; // faces down
+  gills.position.y = 1.06 * s;
+  g.add(gills);
+  g.position.set(x, 0, z);
+  g.rotation.y = Math.random() * Math.PI * 2;
+  scene.add(g);
+  if (hero) {
+    const pl = new THREE.PointLight(capColor, 16, 10, 1.9);
+    pl.position.set(x, 1.5 * s, z);
+    scene.add(pl);
+    glowLights.push({ light: pl, base: 16, phase: Math.random() * 6.28 });
+  }
+  return capMat;
+}
+const heroMats = [];
+heroMats.push(makeMushroom(0, 0, 2.3, CAPS[0], true));
+heroMats.push(makeMushroom(-4.6, 2.4, 1.5, CAPS[1], true));
+heroMats.push(makeMushroom(4.2, -2.8, 1.7, CAPS[2], true));
+heroMats.push(makeMushroom(3.1, 4.4, 1.1, CAPS[3], true));
+heroMats.push(makeMushroom(-3.4, -4.6, 1.2, CAPS[4], true));
+const spots = [[1.8, 1.6], [-1.7, -1.4], [5.6, 1.2], [-5.8, -1.0], [0.9, -3.4],
+               [-2.6, 3.8], [6.8, -4.2], [-6.4, 4.8], [2.8, -5.6], [-0.8, 5.8]];
+spots.forEach(([x, z], i) => makeMushroom(x, z, 0.45 + (i % 4) * 0.22, CAPS[i % CAPS.length], false));
+
+/* ---------- spores ---------- */
+const SPORE_N = 260;
+const sporePos = new Float32Array(SPORE_N * 3);
+const sporeSeed = new Float32Array(SPORE_N);
+for (let i = 0; i < SPORE_N; i++) {
+  const a = Math.random() * Math.PI * 2, d = Math.sqrt(Math.random()) * 13;
+  sporePos[i*3] = Math.cos(a) * d;
+  sporePos[i*3+1] = 0.3 + Math.random() * 6.5;
+  sporePos[i*3+2] = Math.sin(a) * d;
+  sporeSeed[i] = Math.random() * 6.28;
+}
+const sporeGeo = new THREE.BufferGeometry();
+sporeGeo.setAttribute('position', new THREE.BufferAttribute(sporePos, 3));
+scene.add(new THREE.Points(sporeGeo, new THREE.PointsMaterial({
+  color: 0xbdf5d8, size: 0.09, transparent: true, opacity: 0.85, depthWrite: false })));
+
+/* ---------- fireflies ---------- */
+const FLY_N = 10;
+const flyPos = new Float32Array(FLY_N * 3);
+const flyGeo = new THREE.BufferGeometry();
+flyGeo.setAttribute('position', new THREE.BufferAttribute(flyPos, 3));
+scene.add(new THREE.Points(flyGeo, new THREE.PointsMaterial({
+  color: 0xd8ff9e, size: 0.17, transparent: true, opacity: 0.95, depthWrite: false })));
+
+/* ---------- frame loop ---------- */
+const clock = new THREE.Clock();
+function renderFrame(t, dt) {
+  heroMats.forEach((m, i) => { m.emissiveIntensity = 1.45 + Math.sin(t * 1.4 + i * 1.9) * 0.25; });
+  for (const g of glowLights) g.light.intensity = g.base + Math.sin(t * 1.4 + g.phase) * 3;
+
+  const sp = sporeGeo.attributes.position;
+  for (let i = 0; i < SPORE_N; i++) {
+    sp.setX(i, sp.getX(i) + Math.sin(t * 0.7 + sporeSeed[i]) * dt * 0.22);
+    sp.setZ(i, sp.getZ(i) + Math.cos(t * 0.55 + sporeSeed[i]) * dt * 0.22);
+    let y = sp.getY(i) + dt * 0.22;
+    if (y > 7.2) y = 0.25;
+    sp.setY(i, y);
+  }
+  sp.needsUpdate = true;
+
+  const fp = flyGeo.attributes.position;
+  for (let i = 0; i < FLY_N; i++) {
+    fp.setXYZ(i,
+      6.5 * Math.sin(t * 0.23 + i * 2.4),
+      1.6 + Math.sin(t * 0.41 + i * 1.7) * 0.9,
+      6.5 * Math.cos(t * 0.19 + i * 1.3));
+  }
+  fp.needsUpdate = true;
+
+  controls.update();
+  renderer.render(scene, camera);
+}
+if (REDUCED) {
+  renderFrame(0, 0);
+} else {
+  renderer.setAnimationLoop(() => {
+  const dt = Math.min(clock.getDelta(), 0.05);
+  renderFrame(clock.elapsedTime, dt);
+});
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
