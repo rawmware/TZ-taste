@@ -1,0 +1,113 @@
+<!--tz-meta {"id":"showcase-night-market","title":"Night Market showcase","category":"Showcase","file":"showcase/night-market.html","tags":["night-market"],"description":"Live demo page for the Night Market style DNA.","dnas":["night-market"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Night Market — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;900&family=Mulish:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#161009; --tz-surface:#221a10; --tz-ink:#f5ead6; --tz-muted:#a8967a;
+  --tz-accent:#e8722a; --tz-line:#f5ead61f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Mulish",sans-serif;font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 4vw;border-bottom:1px solid var(--tz-line)}
+.tz-wordmark{font-family:"Fraunces",serif;font-weight:900;font-size:1.15rem;letter-spacing:0.02em}
+.tz-lane{font-family:"JetBrains Mono",monospace;font-size:0.72rem;letter-spacing:0.14em;color:var(--tz-muted)}
+.tz-lane strong{color:var(--tz-accent);font-weight:500}
+.tz-hero{padding:6rem 4vw 4rem;position:relative;overflow:hidden;background:radial-gradient(42rem 22rem at 78% 18%,#e8722a33,transparent 70%)}
+.tz-sign{display:inline-block;background:#2b1f12;border:2px solid var(--tz-accent);border-radius:10px;padding:0.9rem 1.8rem 1.1rem;margin-bottom:2.2rem;transform-origin:50% -2rem;animation:tz-swing 7s ease-in-out infinite;box-shadow:0 1.5rem 3rem #00000080}
+@keyframes tz-swing{0%,100%{transform:rotate(1.6deg)}50%{transform:rotate(-1.6deg)}}
+.tz-sign .tz-string{display:block;width:2px;height:2.6rem;background:var(--tz-muted);margin:-3.5rem auto 0.4rem;opacity:0.7}
+.tz-sign .tz-paint{font-family:"Fraunces",serif;font-weight:900;font-size:1.7rem;letter-spacing:0.03em;color:var(--tz-ink)}
+.tz-sign .tz-small{display:block;font-family:"JetBrains Mono",monospace;font-size:0.64rem;letter-spacing:0.3em;color:var(--tz-accent);margin-top:0.25rem}
+.tz-eyebrow{font-family:"JetBrains Mono",monospace;font-size:0.72rem;letter-spacing:0.16em;color:var(--tz-muted);margin-bottom:1.4rem}
+.tz-hero h1{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(3rem,10vw,7rem);line-height:1.0;letter-spacing:-0.02em;max-width:12ch}
+.tz-sub{margin-top:1.8rem;font-size:1.05rem;color:var(--tz-muted);max-width:44ch}
+.tz-sub strong{color:var(--tz-ink);font-weight:700}
+.tz-cta{display:inline-block;margin-top:2.2rem;background:var(--tz-accent);color:var(--tz-bg);font-family:"Fraunces",serif;font-weight:700;font-size:1.15rem;text-decoration:none;padding:0.95rem 2.4rem;border-radius:10px}
+.tz-cta:hover{filter:brightness(1.08)}
+.tz-lanterns{display:flex;gap:1.6rem;justify-content:center;padding:0.4rem 4vw 2.6rem;list-style:none}
+.tz-lanterns li{width:0.7rem;height:0.7rem;border-radius:50%;background:var(--tz-accent);opacity:0.85;animation:tz-sway 6s ease-in-out infinite}
+.tz-lanterns li:nth-child(2n){animation-delay:-2s}
+.tz-lanterns li:nth-child(3n){animation-delay:-4s}
+@keyframes tz-sway{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+.tz-content{padding:1rem 4vw 1rem}
+.tz-content h2{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(1.9rem,5vw,2.9rem);margin-bottom:0.4rem}
+.tz-subhead{font-family:"JetBrains Mono",monospace;font-size:0.72rem;letter-spacing:0.12em;color:var(--tz-muted);margin-bottom:1.6rem}
+.tz-strip{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:1.3rem 1.4rem;background:var(--tz-surface);border-radius:10px;border:1px solid var(--tz-line);margin-bottom:0.9rem;max-width:680px}
+.tz-strip:hover{transform:translateY(-3px);transition:transform .2s ease}
+.tz-strip .tz-dish{font-weight:700;font-size:1.02rem}
+.tz-strip .tz-desc{font-size:0.85rem;color:var(--tz-muted);margin-top:0.2rem}
+.tz-strip .tz-price{font-family:"JetBrains Mono",monospace;font-size:1.5rem;font-weight:500;color:var(--tz-accent);white-space:nowrap}
+.tz-quiet{margin:2.8rem 0 0;background:var(--tz-surface);padding:1.8rem;max-width:560px;border-radius:10px;border-left:4px solid var(--tz-accent)}
+.tz-quiet p{color:var(--tz-muted)}
+.tz-quiet strong{color:var(--tz-ink)}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Fraunces",serif;font-weight:900;font-size:1.7rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1;border-radius:10px;overflow:hidden}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"JetBrains Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"JetBrains Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"JetBrains Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-hero{padding-top:3.5rem;background:radial-gradient(24rem 14rem at 70% 12%,#e8722a33,transparent 70%)}
+  .tz-lane{display:none}
+  .tz-sign .tz-paint{font-size:1.3rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Lane 3 Night Market</span>
+  <span class="tz-lane">STALL <strong>12</strong> · OPEN TILL LATE</span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-sign" aria-hidden="true">
+    <span class="tz-string"></span>
+    <span class="tz-paint">Auntie Lin's</span>
+    <span class="tz-small">NOODLES · STALL 12</span>
+  </div>
+  <p class="tz-eyebrow">LANE 3 · THIRD LEFT PAST THE GRILL SMOKE</p>
+  <h1>Eat first, ask questions later.</h1>
+  <p class="tz-sub"><strong>Noodles $6, extra egg $1.</strong> The broth has been going since noon and it tastes like it. Sold out by 9 most nights — come early or bring your patience.</p>
+  <a class="tz-cta" href="#">Find stall 12</a>
+</section>
+
+<ul class="tz-lanterns" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+
+<section class="tz-content">
+  <h2>The board</h2>
+  <p class="tz-subhead">CHALKED AT 6PM · ERASED WHEN IT'S GONE</p>
+  <div class="tz-strip"><div><div class="tz-dish">Midnight noodles</div><div class="tz-desc">hand-pulled, chili oil, greens</div></div><span class="tz-price">$6</span></div>
+  <div class="tz-strip"><div><div class="tz-dish">Charcoal skewers, three</div><div class="tz-desc">pork belly or mushroom, scallion salt</div></div><span class="tz-price">$4</span></div>
+  <div class="tz-strip"><div><div class="tz-dish">Egg tart, warm</div><div class="tz-desc">one tray a night, that's it</div></div><span class="tz-price">$2</span></div>
+  <div class="tz-quiet">
+    <p><strong>Regulars navigate by number, not by name.</strong> If the sign's swinging and the line's past the dumpling cart, you're in the right place.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#161009"></span><span class="tz-name">bg</span><span class="tz-hex">#161009</span></li>
+    <li><span class="tz-chip" style="background:#221a10"></span><span class="tz-name">surface</span><span class="tz-hex">#221a10</span></li>
+    <li><span class="tz-chip" style="background:#f5ead6"></span><span class="tz-name">ink</span><span class="tz-hex">#f5ead6</span></li>
+    <li><span class="tz-chip" style="background:#a8967a"></span><span class="tz-name">muted</span><span class="tz-hex">#a8967a</span></li>
+    <li><span class="tz-chip" style="background:#e8722a"></span><span class="tz-name">accent</span><span class="tz-hex">#e8722a</span></li>
+    <li><span class="tz-chip" style="background:#f5ead61f"></span><span class="tz-name">line</span><span class="tz-hex">#f5ead61f</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
