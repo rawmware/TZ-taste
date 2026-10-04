@@ -1,0 +1,49 @@
+<!--tz-meta {"id":"cta-split","title":"Split CTA","category":"CTA","file":"patterns/cta-split.html","tags":["split","conversion"],"description":"Acid split CTA: huge type left, email capture right, black and neon.","dnas":["acid-rave"]} -->
+<section class="tz-csplit" aria-label="Get started">
+  <div class="tz-left">
+    <p class="tz-kick">// no pitch decks</p>
+    <h2>Stop<br>thinking<br>about it.</h2>
+    <p class="tz-sub">One email. We reply within a day with a plan and a price. That's the whole funnel.</p>
+    <ul class="tz-checks">
+      <li>Real number, not "starting at"</li>
+      <li>Real timeline, in days</li>
+      <li>Real human replying</li>
+    </ul>
+  </div>
+  <form class="tz-right" action="#" method="post">
+    <p class="tz-formhead">Get the quote</p>
+    <label class="tz-label" for="tz-mail">Your email</label>
+    <input class="tz-input" id="tz-mail" type="email" name="email" placeholder="you@yourshop.com" required>
+    <label class="tz-label" for="tz-need">What do you need?</label>
+    <input class="tz-input" id="tz-need" type="text" name="need" placeholder="a site that takes bookings">
+    <button class="tz-btn" type="submit">Send it →</button>
+    <p class="tz-fine">No newsletter. No drip sequence. One human reply.</p>
+  </form>
+</section>
+<style>
+.tz-csplit{--bg:#0a0a0a;--ink:#f4f4f4;--lime:#c8ff00;--pink:#ff2fb3;--dim:#a8a8a8;
+  background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(64px,10vw,130px) clamp(20px,6vw,80px);
+  display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(32px,6vw,80px);align-items:center}
+.tz-kick{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.2em;
+  color:var(--lime);margin:0 0 20px}
+.tz-left h2{margin:0 0 22px;font-size:clamp(56px,9vw,140px);line-height:.92;
+  letter-spacing:-.04em;font-weight:900;text-transform:uppercase}
+.tz-sub{margin:0 0 26px;font-size:17px;line-height:1.6;color:var(--dim);max-width:38ch}
+.tz-checks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.tz-checks li{font-family:ui-monospace,Menlo,monospace;font-size:13px;color:var(--ink)}
+.tz-checks li::before{content:"✓ ";color:var(--lime);font-weight:700}
+.tz-right{border:2px solid var(--lime);padding:clamp(28px,4vw,44px);background:#0a0a0a}
+.tz-formhead{margin:0 0 22px;font-size:22px;font-weight:900;text-transform:uppercase;letter-spacing:-.01em}
+.tz-label{display:block;font-family:ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--lime);margin-bottom:10px}
+.tz-input{width:100%;box-sizing:border-box;background:#0a0a0a;border:2px solid #f4f4f455;
+  color:var(--ink);font-family:ui-monospace,Menlo,monospace;font-size:15px;
+  padding:14px 16px;margin-bottom:18px}
+.tz-input:focus{outline:none;border-color:var(--lime)}
+.tz-btn{width:100%;background:var(--lime);color:#0a0a0a;border:none;font-weight:900;
+  font-size:18px;padding:16px;cursor:pointer;text-transform:uppercase}
+.tz-btn:hover{background:var(--pink);color:#fff}
+.tz-fine{margin:16px 0 0;font-size:12px;color:#8a8a8a;font-family:ui-monospace,Menlo,monospace}
+@media (max-width:760px){.tz-csplit{grid-template-columns:1fr}}
+</style>
