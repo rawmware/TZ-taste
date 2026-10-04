@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-tropical-brutalism",
+  "title": "Tropical Brutalism design tokens",
+  "category": "Tokens",
+  "file": "tokens/tropical-brutalism.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "tropical-brutalism"
+  ],
+  "description": "W3C-format design tokens for the Tropical Brutalism style DNA.",
+  "dnas": [
+   "tropical-brutalism"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#e8e2d4",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#20241e",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#2e6b34",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#7a7f6a",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#3c4036",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Anton",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Space Grotesk",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "tropical-brutalism",
+  "name": "Tropical Brutalism",
+  "vibe": "Brazilian concrete breathing: raw gray mass, lush green, hard sunlight and deep shadow."
+ }
+}
