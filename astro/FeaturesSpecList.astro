@@ -1,0 +1,139 @@
+<!--tz-meta {"id":"astro-features-speclist","title":"Spec-list features (Astro)","category":"Astro","file":"astro/FeaturesSpecList.astro","tags":["astro","features"],"description":"Laboratory-clean feature spec table: numbered test IDs, right-aligned mono values, reference notes — a calibrated instrument, not cards.","dnas":["laboratory-clean"]} -->
+---
+const {
+  eyebrow = "Feature register · Rev C",
+  title = "Measured, not marketed",
+  specs = [
+    { id: "CAL-01", name: "Cold-start render", value: "0.4 s", note: "§2.1 · p95, throttled 4G" },
+    { id: "CAL-02", name: "Time to first interaction", value: "0.9 s", note: "§2.3 · median device" },
+    { id: "CAL-03", name: "Uptime, trailing 12 mo", value: "99.98 %", note: "§4.0 · status page" },
+    { id: "CAL-04", name: "Data export formats", value: "4", note: "§5.2 · CSV, JSON, PDF, SQL" },
+    { id: "CAL-05", name: "Exit cost", value: "$0", note: "§6.1 · exports always free" },
+    { id: "CAL-06", name: "Support response", value: "< 4 h", note: "§7.0 · humans, weekdays" },
+  ],
+  foot = "Calibrated 2026-10 · Certificate № 4180 · Re-audited quarterly",
+} = Astro.props;
+---
+<section class="tz-speclist">
+  <p class="tz-speclist-eyebrow">{eyebrow}</p>
+  <h2 class="tz-speclist-title">{title}</h2>
+  <div class="tz-speclist-scroll">
+    <table class="tz-speclist-table">
+      <thead>
+        <tr>
+          <th scope="col">Test</th>
+          <th scope="col">Parameter</th>
+          <th scope="col">Value</th>
+          <th scope="col">Reference</th>
+        </tr>
+      </thead>
+      <tbody>
+        {specs.map((s) => (
+          <tr>
+            <td class="tz-speclist-id">{s.id}</td>
+            <th scope="row">{s.name}</th>
+            <td class="tz-speclist-value">{s.value}</td>
+            <td class="tz-speclist-note">{s.note}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="tz-speclist-foot">{foot}</p>
+</section>
+<style>
+  .tz-speclist {
+    background: #fbfcfd;
+    color: #0f1720;
+    font-family: "IBM Plex Sans", sans-serif;
+    padding: clamp(56px, 8vw, 110px) clamp(20px, 6vw, 96px);
+  }
+  .tz-speclist-eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #0a7d8c;
+    margin: 0 0 14px;
+  }
+  .tz-speclist-title {
+    font-size: clamp(32px, 4.6vw, 58px);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    font-weight: 600;
+    margin: 0 0 clamp(32px, 4vw, 54px);
+  }
+  .tz-speclist-scroll {
+    overflow-x: auto;
+    max-width: 1020px;
+    border-top: 2px solid #0f1720;
+    border-bottom: 2px solid #0f1720;
+  }
+  .tz-speclist-table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 620px;
+    font-size: 15px;
+  }
+  .tz-speclist-table th,
+  .tz-speclist-table td {
+    padding: 16px 20px;
+    text-align: left;
+    border-bottom: 1px solid #dfe4ea;
+    vertical-align: baseline;
+  }
+  .tz-speclist-table thead th {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #6b7684;
+  }
+  .tz-speclist-table tbody tr:last-child th,
+  .tz-speclist-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  .tz-speclist-table tbody th {
+    font-weight: 500;
+  }
+  .tz-speclist-table tbody tr {
+    transition: opacity 0.2s ease;
+  }
+  .tz-speclist-table tbody tr:hover {
+    opacity: 0.72;
+  }
+  .tz-speclist-id {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    color: #6b7684;
+    white-space: nowrap;
+  }
+  .tz-speclist-value {
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 600;
+    font-size: 16px;
+    color: #0a7d8c;
+    text-align: right;
+    white-space: nowrap;
+  }
+  .tz-speclist-note {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12.5px;
+    color: #6b7684;
+    white-space: nowrap;
+  }
+  .tz-speclist-foot {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: #6b7684;
+    margin: 22px 0 0;
+    border-top: 1px dashed #dfe4ea;
+    padding-top: 18px;
+    max-width: 1020px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tz-speclist-table tbody tr { transition: none; }
+  }
+</style>
