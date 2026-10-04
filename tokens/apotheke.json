@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-apotheke",
+  "title": "Apotheke design tokens",
+  "category": "Tokens",
+  "file": "tokens/apotheke.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "apotheke"
+  ],
+  "description": "W3C-format design tokens for the Apotheke DNA.",
+  "dnas": [
+   "apotheke"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#f3f0e6",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#26302a",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#2e7d4f",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#7a8272",
+   "type": "color"
+  },
+  "line": {
+   "value": "#26302a26",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#e6e0cd",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Cormorant Garamond",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Newsreader",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Roboto Mono",
+   "type": "fontFamily"
+  }
+ }
+}
