@@ -1,0 +1,10 @@
+<!--tz-meta {"id":"backgrounds-halftone","title":"Halftone fade","category":"Backgrounds","file":"patterns/backgrounds-halftone.html","tags":["print","dots"],"description":"Halftone dot field fading diagonally from solid to air.","dnas":["y2k-chrome"]} -->
+<!-- Usage: chrome-ink dot texture; mask fades it diagonally across a section. -->
+<div class="tz-half" aria-hidden="true"></div>
+<style>
+.tz-half{position:absolute;inset:0;pointer-events:none;background-color:#f2f4f6;
+  background-image:radial-gradient(#2c3138 2.4px,transparent 2.8px);
+  background-size:15px 15px;
+  -webkit-mask-image:linear-gradient(115deg,#000 15%,transparent 78%);
+  mask-image:linear-gradient(115deg,#000 15%,transparent 78%)}
+</style>
