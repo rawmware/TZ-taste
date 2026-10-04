@@ -1,0 +1,120 @@
+<!--tz-meta {"id":"showcase-weather-station","title":"Weather Station showcase","category":"Showcase","file":"showcase/weather-station.html","tags":["weather-station"],"description":"Live demo page for the Weather Station style DNA.","dnas":["weather-station"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Weather Station — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#e9eae4; --tz-surface:#dbddd2; --tz-ink:#23282b; --tz-muted:#6f777c;
+  --tz-accent:#c05b2e; --tz-line:#23282b26;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Barlow",sans-serif;font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 4vw;border-bottom:1px solid var(--tz-line);gap:1rem}
+.tz-wordmark{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:1.2rem;letter-spacing:0.08em;text-transform:uppercase}
+.tz-strip{background:var(--tz-ink);color:var(--tz-bg);font-family:"IBM Plex Mono",monospace;font-size:0.74rem;letter-spacing:0.1em;padding:0.55rem 1rem;border-radius:4px;white-space:nowrap}
+.tz-strip .tz-arrow{color:var(--tz-accent);font-weight:500}
+.tz-hero{padding:5.5rem 4vw 3rem;display:grid;grid-template-columns:1.4fr 1fr;gap:3rem;align-items:end}
+.tz-eyebrow{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.16em;color:var(--tz-muted);margin-bottom:1.4rem}
+.tz-hero h1{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:clamp(3.2rem,10vw,7rem);line-height:0.95;letter-spacing:0.01em;text-transform:uppercase;max-width:10ch}
+.tz-dial{background:var(--tz-surface);border:1px solid var(--tz-line);border-radius:4px;padding:1.6rem;position:relative}
+.tz-dial .tz-reading{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:3.4rem;line-height:1}
+.tz-dial .tz-unit{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.14em;color:var(--tz-muted);display:block;margin-top:0.4rem}
+.tz-dial .tz-needle{position:absolute;top:1.2rem;right:1.4rem;width:2.6rem;height:2.6rem;border:2px solid var(--tz-ink);border-radius:50%}
+.tz-dial .tz-needle::after{content:"";position:absolute;left:50%;top:8%;width:3px;height:44%;background:var(--tz-accent);transform-origin:50% 100%;transform:translateX(-50%) rotate(38deg);animation:tz-settle 1.6s cubic-bezier(0.22,1,0.36,1) .2s both}
+@keyframes tz-settle{from{transform:translateX(-50%) rotate(-52deg)}to{transform:translateX(-50%) rotate(38deg)}}
+.tz-sub{margin-top:1.8rem;font-size:1.05rem;color:var(--tz-muted);max-width:42ch;grid-column:1}
+.tz-sub strong{color:var(--tz-ink)}
+.tz-cta{display:inline-block;margin-top:2.2rem;background:var(--tz-ink);color:var(--tz-bg);font-family:"Barlow Condensed",sans-serif;font-weight:600;font-size:1.25rem;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;padding:0.9rem 2.3rem;border-radius:4px;grid-column:1;justify-self:start}
+.tz-cta:hover{background:var(--tz-accent)}
+.tz-rule{border:0;border-top:1px solid var(--tz-ink);margin:3rem 4vw 0}
+.tz-content{padding:3rem 4vw 1rem}
+.tz-content h2{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:clamp(1.9rem,5vw,2.8rem);text-transform:uppercase;margin-bottom:0.4rem}
+.tz-subhead{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.12em;color:var(--tz-muted);margin-bottom:1.6rem}
+table.tz-log{width:100%;border-collapse:collapse;max-width:760px}
+.tz-log th{font-family:"IBM Plex Mono",monospace;font-size:0.66rem;font-weight:400;letter-spacing:0.14em;color:var(--tz-muted);text-align:left;padding:0.8rem 0;border-bottom:1px solid var(--tz-ink)}
+.tz-log td{font-family:"IBM Plex Mono",monospace;font-size:0.88rem;padding:0.95rem 0;border-bottom:1px solid var(--tz-line)}
+.tz-log td.tz-steady{color:var(--tz-muted)}
+.tz-log tr.tz-now td{color:var(--tz-accent);font-weight:500}
+.tz-quiet{margin:2.8rem 0 0;background:var(--tz-surface);padding:1.8rem;max-width:560px;border-radius:4px}
+.tz-quiet p{color:var(--tz-muted)}
+.tz-quiet strong{color:var(--tz-ink)}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:1.7rem;text-transform:uppercase;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1;border-radius:4px;overflow:hidden}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"IBM Plex Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"IBM Plex Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"IBM Plex Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-hero{grid-template-columns:1fr;gap:1.5rem;padding-top:3.5rem}
+  .tz-strip{display:none}
+  .tz-sub,.tz-cta{grid-column:auto}
+  .tz-dial{max-width:22rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">KPSM Field Station</span>
+  <span class="tz-strip">KPSM · 23:10Z · 12.4°C · 1013.2 hPa <span class="tz-arrow">▲</span></span>
+</header>
+
+<section class="tz-hero">
+  <div>
+    <p class="tz-eyebrow">FIELD INSTRUMENTS · LOGGED ON THE HOUR, EVERY HOUR</p>
+    <h1>The sky, measured honestly.</h1>
+  </div>
+  <div class="tz-dial">
+    <span class="tz-needle" aria-hidden="true"></span>
+    <span class="tz-reading">1013.2</span>
+    <span class="tz-unit">HPA · BAROMETER STEADY</span>
+  </div>
+  <p class="tz-sub"><strong>Wind NW 12 kt, gusting 18.</strong> Barometer steady, cloud base lifting. Observations hourly, 0000–2300Z — whether anyone's watching or not.</p>
+  <a class="tz-cta" href="#">Read today's logbook</a>
+</section>
+
+<hr class="tz-rule" aria-hidden="true">
+
+<section class="tz-content">
+  <h2>The logbook</h2>
+  <p class="tz-subhead">OCT 3 · ALL TIMES UTC · FILLED AT THE TOP OF EACH HOUR</p>
+  <table class="tz-log">
+    <thead><tr><th>UTC</th><th>TEMP</th><th>WIND</th><th>PRESSURE</th><th>SKY</th></tr></thead>
+    <tbody>
+      <tr class="tz-now"><td>23:00Z</td><td>12.4°C</td><td>NW 12 G18</td><td>1013.2 ▲</td><td>BKN 2400</td></tr>
+      <tr><td class="tz-steady">22:00Z</td><td class="tz-steady">12.1°C</td><td class="tz-steady">NW 10</td><td class="tz-steady">1013.1 ▲</td><td class="tz-steady">BKN 2100</td></tr>
+      <tr><td class="tz-steady">21:00Z</td><td class="tz-steady">12.6°C</td><td class="tz-steady">NW 11</td><td class="tz-steady">1012.8 —</td><td class="tz-steady">OVC 1800</td></tr>
+      <tr><td class="tz-steady">20:00Z</td><td class="tz-steady">13.0°C</td><td class="tz-steady">W 9</td><td class="tz-steady">1012.8 —</td><td class="tz-steady">OVC 1800</td></tr>
+      <tr><td class="tz-steady">19:00Z</td><td class="tz-steady">13.8°C</td><td class="tz-steady">W 8</td><td class="tz-steady">1012.5 ▼</td><td class="tz-steady">SCT 2500</td></tr>
+    </tbody>
+  </table>
+  <div class="tz-quiet">
+    <p><strong>Observer's note, 23:00Z:</strong> glass steady, needles true. The 18:00 entry was corrected at 18:04 — the logbook keeps the mistake and the correction both.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#e9eae4"></span><span class="tz-name">bg</span><span class="tz-hex">#e9eae4</span></li>
+    <li><span class="tz-chip" style="background:#dbddd2"></span><span class="tz-name">surface</span><span class="tz-hex">#dbddd2</span></li>
+    <li><span class="tz-chip" style="background:#23282b"></span><span class="tz-name">ink</span><span class="tz-hex">#23282b</span></li>
+    <li><span class="tz-chip" style="background:#6f777c"></span><span class="tz-name">muted</span><span class="tz-hex">#6f777c</span></li>
+    <li><span class="tz-chip" style="background:#c05b2e"></span><span class="tz-name">accent</span><span class="tz-hex">#c05b2e</span></li>
+    <li><span class="tz-chip" style="background:#23282b26"></span><span class="tz-name">line</span><span class="tz-hex">#23282b26</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
