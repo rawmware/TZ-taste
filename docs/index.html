@@ -22,6 +22,9 @@
     <a href="#scenes">3D</a>
     <a href="#templates">Templates</a>
     <a href="#showcase">Showcase</a>
+    <a href="#generative">Generative</a>
+    <a href="#emails">Emails</a>
+    <a href="#app-ui">App UI</a>
     <a href="#prompts">Prompts</a>
     <a href="#sources">Sources</a>
   </nav>
@@ -40,7 +43,7 @@
       <button class="btn-big" data-copy="agent-brief">Copy the agent brief</button>
       <a class="btn-ghost" href="#styles">Browse the library ↓</a>
     </div>
-    <p class="hero-meta"><span><b>48</b> style DNAs</span><span><b>164</b> patterns</span><span><b>30</b> 3D scenes</span><span><b>25</b> templates</span><span><b>36</b> prompts</span><span><b>$0</b> forever</span></p>
+    <p class="hero-meta"><span><b>48</b> style DNAs</span><span><b>164</b> patterns</span><span><b>40</b> generative</span><span><b>30</b> 3D scenes</span><span><b>25</b> templates</span><span><b>36</b> prompts</span><span><b>$0</b> forever</span></p>
   </section>
 
   <!-- TRANSFORMER : the live demo -->
@@ -146,9 +149,19 @@
     <div class="pattern-grid" id="showcase-grid"><p class="loading">Loading showcases…</p></div>
   </section>
 
+  <!-- GENERATIVE -->
+  <section class="section" id="generative">
+    <p class="eyebrow">06 / Generative</p>
+    <h2>Living canvases,<br><em>hand-rolled.</em></h2>
+    <p class="section-sub">Forty interactive generative-art pieces — flow fields, boids,
+      reaction-diffusion, Penrose tilings. Vanilla canvas, zero dependencies.
+      Open one, press “new seed”, lift the technique.</p>
+    <div class="pattern-grid" id="generative-grid"><p class="loading">Loading generative pieces…</p></div>
+  </section>
+
   <!-- PROMPTS -->
   <section class="section" id="prompts">
-    <p class="eyebrow">06 / Prompts</p>
+    <p class="eyebrow">07 / Prompts</p>
     <h2>The free prompt library.</h2>
     <p class="section-sub">Ready-made build prompts with the taste protocol baked in. Paste into
       v0, Lovable, Replit, Cursor, Claude — anywhere. This is the part paid
@@ -156,9 +169,69 @@
     <div class="prompt-list" id="prompt-list"><p class="loading">Loading prompts…</p></div>
   </section>
 
+  <!-- EVERY STACK -->
+  <section class="section" id="stacks">
+    <p class="eyebrow">08 / Every stack</p>
+    <h2>Taste,<br><em>in your language.</em></h2>
+    <p class="section-sub">The same DNAs and patterns, ported to the stacks agents actually
+      build with — plus machine-readable tokens and real email templates.</p>
+    <div class="pattern-grid" id="stack-grid">
+      <article class="pattern-card"><div class="g-tile" aria-hidden="true"><span>R</span></div>
+        <div class="pattern-body"><p class="pattern-cat">React</p><h3>TSX components</h3>
+        <p class="pattern-desc">14 prop-driven ports of the best patterns. Zero extra deps.</p>
+        <div class="pattern-actions"><a class="btn-line" href="https://github.com/rawmware/TZ-taste/tree/main/react" target="_blank" rel="noopener">Browse →</a></div></div></article>
+      <article class="pattern-card"><div class="g-tile" aria-hidden="true"><span>V</span></div>
+        <div class="pattern-body"><p class="pattern-cat">Vue</p><h3>Single-file components</h3>
+        <p class="pattern-desc">8 SFCs with scoped styles. Drop into any Vue app.</p>
+        <div class="pattern-actions"><a class="btn-line" href="https://github.com/rawmware/TZ-taste/tree/main/vue" target="_blank" rel="noopener">Browse →</a></div></div></article>
+      <article class="pattern-card"><div class="g-tile" aria-hidden="true"><span>S</span></div>
+        <div class="pattern-body"><p class="pattern-cat">Svelte</p><h3>Components</h3>
+        <p class="pattern-desc">6 scoped-style components, no boilerplate.</p>
+        <div class="pattern-actions"><a class="btn-line" href="https://github.com/rawmware/TZ-taste/tree/main/svelte" target="_blank" rel="noopener">Browse →</a></div></div></article>
+      <article class="pattern-card"><div class="g-tile" aria-hidden="true"><span>P</span></div>
+        <div class="pattern-body"><p class="pattern-cat">Python</p><h3>Page builders</h3>
+        <p class="pattern-desc">Stdlib-only scripts — including a DNA-to-page static builder. Run, get HTML.</p>
+        <div class="pattern-actions"><a class="btn-line" href="https://github.com/rawmware/TZ-taste/tree/main/python" target="_blank" rel="noopener">Browse →</a></div></div></article>
+      <article class="pattern-card"><div class="g-tile" aria-hidden="true"><span>A</span></div>
+        <div class="pattern-body"><p class="pattern-cat">Astro</p><h3>Components</h3>
+        <p class="pattern-desc">4 zero-JS components for content sites that score 100.</p>
+        <div class="pattern-actions"><a class="btn-line" href="https://github.com/rawmware/TZ-taste/tree/main/astro" target="_blank" rel="noopener">Browse →</a></div></div></article>
+      <article class="pattern-card"><div class="g-tile" aria-hidden="true"><span>T</span></div>
+        <div class="pattern-body"><p class="pattern-cat">Tokens</p><h3>W3C tokens + Tailwind</h3>
+        <p class="pattern-desc">All 48 DNAs as design-token JSON and Tailwind presets. Machines welcome.</p>
+        <div class="pattern-actions"><a class="btn-line" href="https://github.com/rawmware/TZ-taste/tree/main/tokens" target="_blank" rel="noopener">Tokens →</a></div></div></article>
+      <article class="pattern-card"><div class="g-tile" aria-hidden="true"><span>@</span></div>
+        <div class="pattern-body"><p class="pattern-cat">Email</p><h3>12 email templates</h3>
+        <p class="pattern-desc">Table layouts, inline CSS, Outlook-safe. Real email engineering.</p>
+        <div class="pattern-actions"><a class="btn-line" href="https://github.com/rawmware/TZ-taste/tree/main/emails" target="_blank" rel="noopener">Browse →</a></div></div></article>
+      <article class="pattern-card"><div class="g-tile" aria-hidden="true"><span>◧</span></div>
+        <div class="pattern-body"><p class="pattern-cat">App UI</p><h3>20 interface patterns</h3>
+        <p class="pattern-desc">Kanban, data tables, command palettes, dashboards — the inside of the product.</p>
+        <div class="pattern-actions"><a class="btn-line" href="https://github.com/rawmware/TZ-taste/tree/main/app-ui" target="_blank" rel="noopener">Browse →</a></div></div></article>
+    </div>
+  </section>
+
+  <!-- EMAILS -->
+  <section class="section" id="emails">
+    <p class="eyebrow">09 / Emails</p>
+    <h2>Inboxes,<br><em>with taste.</em></h2>
+    <p class="section-sub">Twelve real email templates — table layouts, inline CSS,
+      Outlook-safe. Preview them live, copy the code.</p>
+    <div class="pattern-grid" id="emails-grid"><p class="loading">Loading email templates&hellip;</p></div>
+  </section>
+
+  <!-- APP UI -->
+  <section class="section" id="app-ui">
+    <p class="eyebrow">10 / App UI</p>
+    <h2>The inside<br><em>of the product.</em></h2>
+    <p class="section-sub">Twenty interface patterns — kanban, data tables, command
+      palettes, dashboards. Same conventions as the pattern library.</p>
+    <div class="pattern-grid" id="appui-grid"><p class="loading">Loading app-UI patterns&hellip;</p></div>
+  </section>
+
   <!-- AGENT KIT -->
   <section class="section agentkit" id="agent-kit">
-    <p class="eyebrow">07 / Agent kit</p>
+    <p class="eyebrow">11 / Agent kit</p>
     <h2>Point any AI here.</h2>
     <div class="kit-steps">
       <div class="kit-step"><span>1</span><p><b>Copy the brief</b> below and fill in your project.</p></div>
@@ -179,7 +252,7 @@
 
   <!-- SOURCES -->
   <section class="section" id="sources">
-    <p class="eyebrow">08 / Sources</p>
+    <p class="eyebrow">12 / Sources</p>
     <h2>Standing on open shoulders.</h2>
     <p class="section-sub">The best free design resources on the internet, licenses verified,
       freshness checked weekly by CI. TZ-taste curates them so you don't have to.</p>
@@ -191,7 +264,9 @@
 <footer class="footer">
   <a class="foot-word" href="./">TASTE<sup>®</sup></a>
   <div class="foot-grid">
-    <div><p class="f-h">Library</p><a href="#styles">Style DNAs</a><a href="#patterns">Patterns</a><a href="#scenes">3D scenes</a><a href="#templates">Templates</a><a href="#showcase">Showcase</a><a href="#prompts">Prompts</a></div>
+    <div><p class="f-h">Library</p><a href="#styles">Style DNAs</a><a href="#patterns">Patterns</a><a href="#scenes">3D scenes</a><a href="#templates">Templates</a><a href="#showcase">Showcase</a><a href="#generative">Generative</a><a href="#stacks">Every stack</a><a href="#emails">Emails</a>
+    <a href="#app-ui">App UI</a>
+    <a href="#emails">Emails</a><a href="#app-ui">App UI</a><a href="#prompts">Prompts</a></div>
     <div><p class="f-h">Agents</p><a href="#agent-kit">Agent kit</a><a href="https://github.com/rawmware/TZ-taste/blob/main/skill/SKILL.md">Skill</a><a href="https://github.com/rawmware/TZ-taste/blob/main/docs/ANTI-SLOP.md">Anti-slop</a></div>
     <div><p class="f-h">Project</p><a href="https://github.com/rawmware/TZ-taste">GitHub</a><a href="https://github.com/rawmware/TZ-taste/blob/main/CONTRIBUTING.md">Contribute</a><a href="https://github.com/rawmware/TZ-taste/blob/main/LICENSE">MIT License</a></div>
   </div>
