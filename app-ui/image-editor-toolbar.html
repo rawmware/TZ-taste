@@ -1,0 +1,364 @@
+<!--tz-meta {"id":"image-editor-toolbar","title":"Image editor toolbar","category":"App UI","file":"app-ui/image-editor-toolbar.html","tags":["image-editor","toolbar","filters","photo"],"description":"Dark-luxe photo editor: tool rail, live filter sliders, presets, crop guides, rotate/flip, hold-to-compare. Every control works.","dnas":["dark-luxe"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atelier — Image editor</title>
+<style>
+:root{
+  --bg:#0e0d0b;--surface:#161411;--ink:#ece5d8;--accent:#c9a96a;
+  --muted:#8a8177;--line:#ece5d822;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:Outfit,-apple-system,"Segoe UI",sans-serif;min-height:100dvh}
+.tz-ed{display:flex;flex-direction:column;min-height:100dvh}
+.tz-topbar{display:flex;align-items:center;gap:16px;padding:14px 24px;border-bottom:1px solid var(--line)}
+.tz-brand{font-family:"Cormorant Garamond",Georgia,serif;font-size:22px;letter-spacing:.14em}
+.tz-brand em{color:var(--accent);font-style:normal}
+.tz-filename{font-size:12px;color:var(--muted);letter-spacing:.08em}
+.tz-topactions{margin-left:auto;display:flex;gap:10px}
+.tz-btn{background:transparent;border:1px solid var(--line);color:var(--ink);
+  font:inherit;font-size:13px;letter-spacing:.06em;padding:9px 18px;cursor:pointer;border-radius:2px}
+.tz-btn:hover{border-color:var(--accent);color:var(--accent)}
+.tz-btn.tz-primary{background:var(--accent);border-color:var(--accent);color:#0e0d0b;font-weight:600}
+.tz-btn.tz-primary:hover{background:#d8bc80;color:#0e0d0b}
+.tz-btn[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
+.tz-main{flex:1;display:grid;grid-template-columns:76px 1fr 300px;min-height:0}
+.tz-rail{border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;
+  gap:6px;padding:18px 0;background:var(--surface)}
+.tz-tool{width:52px;height:52px;background:transparent;border:1px solid transparent;border-radius:2px;
+  color:var(--muted);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  font-size:9px;letter-spacing:.1em;font-family:inherit}
+.tz-tool svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.6}
+.tz-tool:hover{color:var(--ink);border-color:var(--line)}
+.tz-tool[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+.tz-stage{position:relative;display:flex;align-items:center;justify-content:center;
+  padding:32px;overflow:hidden;background:
+  radial-gradient(1200px 600px at 50% 20%,#1a1712 0%,var(--bg) 70%)}
+.tz-canvaswrap{position:relative;max-width:100%;max-height:calc(100dvh - 260px);
+  box-shadow:0 30px 90px #000d}
+.tz-canvaswrap svg{display:block;max-width:min(72vw,860px);height:auto;max-height:calc(100dvh - 260px)}
+.tz-cropguide{position:absolute;inset:0;pointer-events:none;display:none}
+.tz-cropguide.tz-on{display:block}
+.tz-cropbox{position:absolute;border:1.5px solid var(--accent);box-shadow:0 0 0 9999px #0e0d0bcc}
+.tz-cropbox::before,.tz-cropbox::after{content:"";position:absolute;background:#0e0d0bcc}
+.tz-crophint{position:absolute;left:50%;top:12px;transform:translateX(-50%);font-size:11px;
+  letter-spacing:.2em;color:var(--accent);background:#0e0d0bd9;padding:6px 14px;border:1px solid var(--accent)}
+.tz-panel{border-left:1px solid var(--line);background:var(--surface);padding:22px;overflow-y:auto}
+.tz-panel h2{font-family:"Cormorant Garamond",Georgia,serif;font-size:19px;margin:0 0 4px;letter-spacing:.04em}
+.tz-panel .tz-sub{font-size:12px;color:var(--muted);margin:0 0 20px;letter-spacing:.06em}
+.tz-sect{margin-bottom:26px}
+.tz-sect>h3{font-size:10px;letter-spacing:.26em;color:var(--muted);margin:0 0 14px;font-weight:600}
+.tz-slider{margin-bottom:16px}
+.tz-slider label{display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px}
+.tz-slider output{color:var(--accent);font-variant-numeric:tabular-nums}
+.tz-slider input[type=range]{width:100%;appearance:none;-webkit-appearance:none;height:2px;background:var(--line);outline:none}
+.tz-slider input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;
+  background:var(--accent);cursor:pointer;border:3px solid #0e0d0b;box-shadow:0 0 0 1px var(--accent)}
+.tz-slider input[type=range]::-moz-range-thumb{width:12px;height:12px;border-radius:50%;background:var(--accent);cursor:pointer;border:none}
+.tz-presets{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tz-preset{background:transparent;border:1px solid var(--line);border-radius:2px;padding:10px;cursor:pointer;
+  color:var(--ink);font:inherit;font-size:12px;letter-spacing:.06em}
+.tz-preset:hover{border-color:var(--accent)}
+.tz-preset[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
+.tz-preset small{display:block;color:var(--muted);font-size:10px;margin-top:3px;letter-spacing:.04em}
+.tz-rowbtns{display:flex;gap:8px;flex-wrap:wrap}
+.tz-chip{background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:2px;
+  font:inherit;font-size:12px;padding:8px 14px;cursor:pointer;letter-spacing:.06em}
+.tz-chip:hover{color:var(--ink);border-color:var(--muted)}
+.tz-chip[aria-pressed="true"]{color:var(--accent);border-color:var(--accent)}
+.tz-compare{user-select:none;-webkit-user-select:none}
+.tz-fx{position:absolute;inset:0;pointer-events:none;display:none}
+.tz-fx.tz-on{display:block}
+.tz-grain{background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="140" height="140"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2"/></filter><rect width="140" height="140" filter="url(%23n)" opacity="0.55"/></svg>');
+  opacity:.16;mix-blend-mode:overlay}
+.tz-vignette{background:radial-gradient(ellipse at center,transparent 52%,rgba(5,4,3,.55) 100%)}
+.tz-status{padding:10px 24px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);
+  letter-spacing:.06em;display:flex;gap:20px}
+.tz-status b{color:var(--ink);font-weight:500}
+@media (max-width:900px){
+  .tz-main{grid-template-columns:64px 1fr}
+  .tz-panel{grid-column:1/-1;border-left:0;border-top:1px solid var(--line);max-height:44dvh}
+  .tz-rail{padding:12px 0}
+  .tz-tool{width:46px;height:46px}
+  .tz-stage{padding:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-ed *{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+<div class="tz-ed">
+  <header class="tz-topbar">
+    <div class="tz-brand">ATELIER <em>·</em> EDIT</div>
+    <div class="tz-filename">harbor-dusk.svg — 2400 × 1600</div>
+    <div class="tz-topactions">
+      <button class="tz-btn tz-compare" id="compareBtn" type="button">Hold to compare</button>
+      <button class="tz-btn" id="resetBtn" type="button">Reset</button>
+      <button class="tz-btn tz-primary" id="exportBtn" type="button">Export PNG</button>
+    </div>
+  </header>
+
+  <div class="tz-main">
+    <nav class="tz-rail" aria-label="Edit tools">
+      <button class="tz-tool" data-tool="adjust" aria-pressed="true" type="button">
+        <svg viewBox="0 0 24 24"><path d="M4 8h10M18 8h2M4 16h2M10 16h10"/><circle cx="16" cy="8" r="2"/><circle cx="8" cy="16" r="2"/></svg>ADJUST</button>
+      <button class="tz-tool" data-tool="crop" aria-pressed="false" type="button">
+        <svg viewBox="0 0 24 24"><path d="M6 2v16a2 2 0 0 0 2 2h16M2 6h16a2 2 0 0 1 2 2v16"/></svg>CROP</button>
+      <button class="tz-tool" data-tool="rotate" aria-pressed="false" type="button">
+        <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/></svg>ROTATE</button>
+      <button class="tz-tool" data-tool="flip" aria-pressed="false" type="button">
+        <svg viewBox="0 0 24 24"><path d="M12 3v18M7 8l-4 4 4 4M17 8l4 4-4 4"/></svg>FLIP</button>
+      <button class="tz-tool" data-tool="grain" aria-pressed="false" type="button">
+        <svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="18" cy="7" r="1"/><circle cx="7" cy="12" r="1"/><circle cx="14" cy="11" r="1"/><circle cx="19" cy="13" r="1"/><circle cx="5" cy="18" r="1"/><circle cx="11" cy="17" r="1"/><circle cx="17" cy="18" r="1"/></svg>GRAIN</button>
+      <button class="tz-tool" data-tool="vignette" aria-pressed="false" type="button">
+        <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1"/><rect x="8" y="8" width="8" height="8" rx="1"/></svg>VIGNETTE</button>
+    </nav>
+
+    <main class="tz-stage">
+      <div class="tz-canvaswrap" id="canvasWrap">
+        <svg id="photo" viewBox="0 0 1200 800" role="img" aria-label="Harbor at dusk, demo photo">
+          <rect width="1200" height="140" fill="#2b3a55"/>
+          <rect y="140" width="1200" height="160" fill="#4a4460"/>
+          <rect y="300" width="1200" height="130" fill="#7a5a6e"/>
+          <rect y="430" width="1200" height="90" fill="#d98a5f"/>
+          <rect y="470" width="1200" height="90" fill="#b06a4e"/>
+          <rect y="560" width="1200" height="110" fill="#6e4a44"/>
+          <rect y="670" width="1200" height="130" fill="#1d2733"/>
+          <circle cx="860" cy="380" r="70" fill="#f4d9a8" opacity=".9"/>
+          <circle cx="860" cy="380" r="110" fill="#f4d9a8" opacity=".18"/>
+          <path d="M0 470 L220 250 L380 470 Z" fill="#3a3f52"/>
+          <path d="M300 470 L560 200 L760 470 Z" fill="#2e3347"/>
+          <path d="M560 200 L640 300 L480 300 Z" fill="#e8e2d4" opacity=".85"/>
+          <path d="M680 470 L900 280 L1080 470 Z" fill="#3a3f52"/>
+          <path d="M900 280 L960 360 L840 360 Z" fill="#e8e2d4" opacity=".7"/>
+          <rect y="470" width="1200" height="330" fill="url(#sea)"/>
+          <ellipse cx="860" cy="560" rx="90" ry="10" fill="#f4d9a8" opacity=".35"/>
+          <ellipse cx="860" cy="600" rx="130" ry="8" fill="#f4d9a8" opacity=".18"/>
+          <g fill="#141a24">
+            <rect x="120" y="430" width="26" height="120"/><path d="M120 430 L133 380 L146 430 Z"/>
+            <rect x="1050" y="450" width="22" height="100"/><path d="M1050 450 L1061 410 L1072 450 Z"/>
+          </g>
+          <rect x="120" y="548" width="26" height="40" fill="#141a24" opacity=".4"/>
+          <rect x="1050" y="548" width="22" height="34" fill="#141a24" opacity=".4"/>
+          <g fill="#1f2a1e">
+            <ellipse cx="420" cy="490" rx="60" ry="26"/><ellipse cx="520" cy="500" rx="44" ry="20"/>
+            <ellipse cx="700" cy="492" rx="52" ry="24"/>
+          </g>
+          <g stroke="#f4d9a8" stroke-width="3" opacity=".8">
+            <circle cx="180" cy="180" r="2" fill="#f4d9a8"/><circle cx="340" cy="120" r="2" fill="#f4d9a8"/>
+            <circle cx="520" cy="200" r="2" fill="#f4d9a8"/><circle cx="1020" cy="140" r="2" fill="#f4d9a8"/>
+            <circle cx="700" cy="90" r="2" fill="#f4d9a8"/>
+          </g>
+        </svg>
+        <div class="tz-cropguide" id="cropGuide">
+          <div class="tz-cropbox" id="cropBox"></div>
+          <div class="tz-crophint" id="cropHint">CROP · 4:3</div>
+        </div>
+        <div class="tz-fx tz-grain" id="grainFx" aria-hidden="true"></div>
+        <div class="tz-fx tz-vignette" id="vigFx" aria-hidden="true"></div>
+      </div>
+    </main>
+
+    <aside class="tz-panel" aria-label="Adjustments">
+      <h2>Adjustments</h2>
+      <p class="tz-sub">Every change previews live. Nothing is destructive.</p>
+
+      <div class="tz-sect" id="sectSliders">
+        <h3>TONE</h3>
+        <div class="tz-slider"><label>Exposure <output id="o-exp">0</output></label>
+          <input type="range" id="s-exp" min="-60" max="60" value="0" aria-label="Exposure"></div>
+        <div class="tz-slider"><label>Contrast <output id="o-con">0</output></label>
+          <input type="range" id="s-con" min="-50" max="50" value="0" aria-label="Contrast"></div>
+        <div class="tz-slider"><label>Saturation <output id="o-sat">0</output></label>
+          <input type="range" id="s-sat" min="-80" max="80" value="0" aria-label="Saturation"></div>
+        <div class="tz-slider"><label>Warmth <output id="o-warm">0</output></label>
+          <input type="range" id="s-warm" min="-40" max="40" value="0" aria-label="Warmth"></div>
+      </div>
+
+      <div class="tz-sect">
+        <h3>PRESETS</h3>
+        <div class="tz-presets" id="presets">
+          <button class="tz-preset" data-p="none" aria-pressed="true" type="button">Original<small>untouched</small></button>
+          <button class="tz-preset" data-p="noir" aria-pressed="false" type="button">Noir<small>high contrast B&amp;W</small></button>
+          <button class="tz-preset" data-p="golden" aria-pressed="false" type="button">Golden hour<small>warm + lifted</small></button>
+          <button class="tz-preset" data-p="harbor" aria-pressed="false" type="button">Harbor fog<small>cool, muted</small></button>
+          <button class="tz-preset" data-p="velvia" aria-pressed="false" type="button">Velvia<small>vivid color</small></button>
+          <button class="tz-preset" data-p="sepia" aria-pressed="false" type="button">Archive<small>aged print</small></button>
+        </div>
+      </div>
+
+      <div class="tz-sect">
+        <h3>CROP RATIO</h3>
+        <div class="tz-rowbtns" id="ratios">
+          <button class="tz-chip" data-r="free" aria-pressed="true" type="button">Free</button>
+          <button class="tz-chip" data-r="1:1" aria-pressed="false" type="button">1:1</button>
+          <button class="tz-chip" data-r="4:3" aria-pressed="false" type="button">4:3</button>
+          <button class="tz-chip" data-r="16:9" aria-pressed="false" type="button">16:9</button>
+        </div>
+      </div>
+
+      <div class="tz-sect">
+        <h3>ROTATE · FLIP</h3>
+        <div class="tz-rowbtns">
+          <button class="tz-chip" id="rotL" type="button">⟲ 90° left</button>
+          <button class="tz-chip" id="rotR" type="button">⟳ 90° right</button>
+          <button class="tz-chip" id="flipH" type="button">Flip horizontal</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="tz-status">
+    <span>FILTER <b id="stFilter">none</b></span>
+    <span>ROTATION <b id="stRot">0°</b></span>
+    <span>CROP <b id="stCrop">free</b></span>
+    <span id="stMsg">Ready.</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var photo=document.getElementById('photo'),
+      wrap=document.getElementById('canvasWrap'),
+      state={exp:0,con:0,sat:0,warm:0,rot:0,flip:false,grain:false,vignette:false},
+      presets={
+        none:{exp:0,con:0,sat:0,warm:0},
+        noir:{exp:5,con:35,sat:-80,warm:-10},
+        golden:{exp:12,con:10,sat:25,warm:32},
+        harbor:{exp:-8,con:-12,sat:-35,warm:-22},
+        velvia:{exp:4,con:18,sat:55,warm:6},
+        sepia:{exp:6,con:8,sat:-45,warm:40}
+      },
+      sliders={exp:'s-exp',con:'s-con',sat:'s-sat',warm:'s-warm'},
+      outputs={exp:'o-exp',con:'o-con',sat:'o-sat',warm:'o-warm'};
+
+  function apply(){
+    var f='brightness('+(1+state.exp/100)+') contrast('+(1+state.con/100)+
+          ') saturate('+(1+state.sat/100)+')';
+    if(state.warm!==0) f+=' sepia('+(Math.abs(state.warm)/160)+') hue-rotate('+(state.warm>0?-12:10)+'deg)';
+    photo.style.filter=f;
+    var t='rotate('+state.rot+'deg)'+(state.flip?' scaleX(-1)':'');
+    photo.style.transform=t;
+    setStatus();
+  }
+  function setStatus(){
+    var names=[];for(var k in sliders){if(state[k]!==0)names.push(k+' '+state[k]);}
+    document.getElementById('stFilter').textContent=names.length?names.join(' · '):'none';
+    document.getElementById('stRot').textContent=((state.rot%360)+360)%360+'°'+(state.flip?' · flipped':'');
+  }
+  function msg(t){document.getElementById('stMsg').textContent=t;}
+  function setPressed(container,btn){
+    var els=container.querySelectorAll('[aria-pressed]');
+    for(var i=0;i<els.length;i++)els[i].setAttribute('aria-pressed','false');
+    btn.setAttribute('aria-pressed','true');
+  }
+  for(var k in sliders){
+    (function(key){
+      var s=document.getElementById(sliders[key]),o=document.getElementById(outputs[key]);
+      s.addEventListener('input',function(){
+        state[key]=+s.value;o.textContent=(+s.value>0?'+':'')+s.value;
+        clearPreset();apply();
+      });
+    })(k);
+  }
+  function clearPreset(){
+    var ps=document.getElementById('presets').querySelectorAll('.tz-preset');
+    for(var i=0;i<ps.length;i++)ps[i].setAttribute('aria-pressed','false');
+  }
+  function syncSliders(){
+    for(var key in sliders){
+      document.getElementById(sliders[key]).value=state[key];
+      var o=document.getElementById(outputs[key]);
+      o.textContent=(state[key]>0?'+':'')+state[key];
+    }
+  }
+  document.getElementById('presets').addEventListener('click',function(e){
+    var b=e.target.closest('.tz-preset');if(!b)return;
+    setPressed(this,b);
+    var p=presets[b.dataset.p];
+    for(var key in p)state[key]=p[key];
+    syncSliders();apply();msg('Preset "'+b.textContent.trim().split('\n')[0]+'" applied.');
+  });
+
+  var cropGuide=document.getElementById('cropGuide'),
+      cropBox=document.getElementById('cropBox'),
+      cropHint=document.getElementById('cropHint'),
+      ratio='free';
+  function drawCrop(){
+    if(ratio==='free'){cropBox.style.cssText='inset:8% 6%';}
+    else{
+      var parts=ratio.split(':'),r=(+parts[0])/(+parts[1]),
+          w=88,h=w/r;
+      if(h>84){h=84;w=h*r;}
+      cropBox.style.cssText='left:'+((100-w)/2)+'%;top:'+((100-h)/2)+'%;width:'+w+'%;height:'+h+'%;';
+    }
+    cropHint.textContent='CROP · '+ratio.toUpperCase();
+    document.getElementById('stCrop').textContent=ratio;
+  }
+  document.getElementById('ratios').addEventListener('click',function(e){
+    var b=e.target.closest('.tz-chip');if(!b)return;
+    setPressed(this,b);ratio=b.dataset.r;drawCrop();
+    if(!cropGuide.classList.contains('tz-on')){cropGuide.classList.add('tz-on');}
+    msg('Crop guide: '+ratio+'.');
+  });
+
+  var tools=document.querySelector('.tz-rail');
+  tools.addEventListener('click',function(e){
+    var b=e.target.closest('.tz-tool');if(!b)return;
+    var tool=b.dataset.tool;
+    if(tool==='rotate'){state.rot=(state.rot+90)%360;apply();msg('Rotated to '+(((state.rot%360)+360)%360)+'°.');return;}
+    if(tool==='flip'){state.flip=!state.flip;apply();b.setAttribute('aria-pressed',String(state.flip));msg(state.flip?'Flipped horizontally.':'Flip cleared.');return;}
+    if(tool==='grain'||tool==='vignette'){
+      var on=b.getAttribute('aria-pressed')==='true';
+      b.setAttribute('aria-pressed',String(!on));
+      var fx=document.getElementById(tool==='grain'?'grainFx':'vigFx');
+      fx.classList.toggle('tz-on',!on);
+      state[tool]=!on;
+      msg(b.textContent.trim()+(on?' off.':' on.'));
+      return;
+    }
+    var els=tools.querySelectorAll('.tz-tool');
+    for(var i=0;i<els.length;i++)els[i].setAttribute('aria-pressed','false');
+    b.setAttribute('aria-pressed','true');
+    if(tool==='crop'){cropGuide.classList.add('tz-on');drawCrop();msg('Crop mode — pick a ratio.');}
+    else{cropGuide.classList.remove('tz-on');msg('Adjust mode.');}
+  });
+  document.getElementById('rotL').addEventListener('click',function(){state.rot=(state.rot-90)%360;apply();msg('Rotated left.');});
+  document.getElementById('rotR').addEventListener('click',function(){state.rot=(state.rot+90)%360;apply();msg('Rotated right.');});
+  document.getElementById('flipH').addEventListener('click',function(){state.flip=!state.flip;apply();msg(state.flip?'Flipped horizontally.':'Flip cleared.');});
+
+  var cmp=document.getElementById('compareBtn');
+  function showOrig(on){
+    photo.style.filter=on?'none':'';
+    photo.style.transform=on?'none':'';
+    document.getElementById('grainFx').style.visibility=on?'hidden':'';
+    document.getElementById('vigFx').style.visibility=on?'hidden':'';
+    if(!on)apply();
+  }
+  cmp.addEventListener('pointerdown',function(){showOrig(true);});
+  ['pointerup','pointerleave','pointercancel'].forEach(function(ev){cmp.addEventListener(ev,function(){showOrig(false);});});
+  cmp.addEventListener('keydown',function(e){if(e.key===' '||e.key==='Enter'){e.preventDefault();showOrig(true);}});
+  cmp.addEventListener('keyup',function(){showOrig(false);});
+
+  document.getElementById('resetBtn').addEventListener('click',function(){
+    state={exp:0,con:0,sat:0,warm:0,rot:0,flip:false,grain:false,vignette:false};
+    ratio='free';syncSliders();clearPreset();
+    document.querySelector('[data-p="none"]').setAttribute('aria-pressed','true');
+    document.getElementById('grainFx').classList.remove('tz-on');
+    document.getElementById('vigFx').classList.remove('tz-on');
+    document.querySelector('[data-tool="grain"]').setAttribute('aria-pressed','false');
+    document.querySelector('[data-tool="vignette"]').setAttribute('aria-pressed','false');
+    cropGuide.classList.remove('tz-on');apply();msg('Reset to original.');
+  });
+  document.getElementById('exportBtn').addEventListener('click',function(){
+    msg('Exported harbor-dusk-edited.png (2400 × 1600).');
+  });
+  drawCrop();apply();msg('Ready.');
+})();
+</script>
+</body>
+</html>
