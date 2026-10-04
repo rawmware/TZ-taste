@@ -1,0 +1,41 @@
+<!--tz-meta {"id":"backgrounds-waves","title":"Layered waves","category":"Backgrounds","file":"patterns/backgrounds-waves.html","tags":["waves","generative"],"description":"Generative wave bands: five sine layers stack on a looping time cycle.","dnas":["soft-minimal"]} -->
+<!-- lineage: inspired by OpenProcessing trending sine-rhythm sketches — original implementation -->
+<!-- Usage: generative wave strata behind content; top wave carries an ink hairline. -->
+<div class="tz-waves"><canvas aria-hidden="true"></canvas></div>
+<style>
+.tz-waves{position:absolute;inset:0;pointer-events:none;background:#faf9f7;overflow:hidden}
+.tz-waves canvas{display:block;width:100%;height:100%}
+</style>
+<script>
+(function(){
+  var box=document.querySelector('.tz-waves');if(!box)return;
+  var c=box.querySelector('canvas'),x=c.getContext('2d');
+  var reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var W=0,H=0,TAU=Math.PI*2,LOOP=1200,frame=0;
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+  var rnd=mulberry32(909),i,L=5;
+  var cols=['#ece5d5','#e0d4bc','#d3c3a3','#bfae8b','#a8977a'];
+  var P=[];for(i=0;i<L;i++)P.push({p1:rnd()*TAU,p2:rnd()*TAU});
+  function size(){var r=box.getBoundingClientRect();W=c.width=Math.max(2,r.width|0);H=c.height=Math.max(2,r.height|0);}
+  size();addEventListener('resize',size);
+  function crest(i,p){var pts=[],xx;for(xx=0;xx<=W;xx+=8){
+    pts.push([xx,H*(0.30+0.15*i)+H*0.030*Math.sin(xx*0.008+TAU*p*2+P[i].p1)+H*0.018*Math.sin(xx*0.017-TAU*p+P[i].p2)]);}
+    return pts;}
+  function step(){
+    var p=(frame%LOOP)/LOOP;
+    x.fillStyle='#faf9f7';x.fillRect(0,0,W,H);
+    for(i=L-1;i>=0;i--){var pts=crest(i,p);
+      x.fillStyle=cols[i];x.beginPath();x.moveTo(0,H);
+      for(var k=0;k<pts.length;k++)x.lineTo(pts[k][0],pts[k][1]);
+      x.lineTo(W,H);x.closePath();x.fill();
+    }
+    var top=crest(0,p);
+    x.strokeStyle='#1a1a1a';x.lineWidth=1.5;x.beginPath();
+    for(var k2=0;k2<top.length;k2++){if(k2===0)x.moveTo(top[0][0],top[0][1]);else x.lineTo(top[k2][0],top[k2][1]);}
+    x.stroke();
+    frame++;
+  }
+  if(reduced){frame=LOOP*0.3|0;step();}
+  else{(function loop(){step();requestAnimationFrame(loop);})();}
+})();
+</script>
