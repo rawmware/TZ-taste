@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-newsroom-wire",
+  "title": "Newsroom Wire design tokens",
+  "category": "Tokens",
+  "file": "tokens/newsroom-wire.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "newsroom-wire"
+  ],
+  "description": "W3C-format design tokens for the Newsroom Wire DNA.",
+  "dnas": [
+   "newsroom-wire"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#f7f4ec",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#16130e",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#c8102e",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#6f6a5e",
+   "type": "color"
+  },
+  "line": {
+   "value": "#16130e29",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#f7f4ec",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Special Elite",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "PT Serif",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Courier Prime",
+   "type": "fontFamily"
+  }
+ }
+}
