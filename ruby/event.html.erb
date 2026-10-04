@@ -1,0 +1,168 @@
+<!--tz-meta {"id":"ruby-event","title":"Static Bloom — warehouse night","category":"Ruby","file":"ruby/event.html.erb","tags":["ruby","erb","event","music"],"description":"Acid-rave event page for fictional warehouse night Static Bloom: giant Anton lineup rows and a full-width marquee ticker, lime on black.","dnas":["acid-rave"]} -->
+<% bg = "#0a0a0a" %>
+<% ink = "#f2f2f2" %>
+<% accent = "#c6ff00" %>
+<% muted = "#7a7a7a" %>
+<% line = "#f2f2f21f" %>
+<% surface = "#131313" %>
+<% display = "Anton" %>
+<% body = "Space Grotesk" %>
+<% mono = "Space Mono" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STATIC BLOOM — Nov 14 · The Foundry, Building 9</title>
+<meta name="description" content="Static Bloom: one night, two rooms, six DJs. Warehouse techno in Providence. November 14, 10pm–4am.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:<%= bg %>; --ink:<%= ink %>; --accent:<%= accent %>;
+  --muted:<%= muted %>; --line:<%= line %>; --surface:<%= surface %>;
+  --ink-2:color-mix(in srgb, var(--ink) 70%, var(--bg));
+  --display:"<%= display %>",Impact,sans-serif;
+  --body:"<%= body %>",-apple-system,sans-serif;
+  --mono:"<%= mono %>",ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);
+     font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--accent);color:var(--bg)}
+/* top strip */
+.topbar{display:flex;justify-content:space-between;align-items:center;
+        padding:16px clamp(20px,4vw,48px);border-bottom:1px solid var(--line);
+        font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+.topbar .live{color:var(--accent)}
+.topbar a{color:var(--ink);text-decoration:none;border:1px solid var(--line);
+          padding:8px 18px;border-radius:4px}
+.topbar a:hover{border-color:var(--accent);color:var(--accent)}
+/* hero: type at maximum volume, stacked, left aligned */
+.hero{padding:clamp(48px,7vw,96px) clamp(20px,4vw,48px) 0;max-width:1400px;margin:0 auto}
+.hero .when{font-family:var(--mono);font-size:13px;letter-spacing:.24em;text-transform:uppercase;
+            color:var(--accent);margin-bottom:18px}
+h1{font-family:var(--display);font-size:clamp(72px,15vw,220px);line-height:.88;
+   letter-spacing:.005em;text-transform:uppercase}
+h1 .outline{color:transparent;-webkit-text-stroke:2px var(--ink)}
+.hero-sub{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;
+          margin:34px 0 0;padding-bottom:clamp(36px,5vw,64px)}
+.hero-sub p{font-size:17px;color:var(--ink-2);max-width:44ch}
+.hero-sub .where{font-family:var(--mono);font-size:13px;color:var(--ink-2);text-align:right;line-height:2}
+/* marquee ticker — the page's one distinctive choice */
+.ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+        overflow:hidden;white-space:nowrap;padding:14px 0;background:var(--accent)}
+.ticker .track{display:inline-block;animation:tick 22s linear infinite;
+               font-family:var(--display);font-size:26px;letter-spacing:.06em;
+               text-transform:uppercase;color:var(--bg);padding-right:48px}
+@keyframes tick{to{transform:translateX(-50%)}}
+/* lineup: giant stacked rows */
+.lineup{max-width:1400px;margin:0 auto;padding:clamp(48px,7vw,96px) clamp(20px,4vw,48px)}
+.sec-label{font-family:var(--mono);font-size:12px;letter-spacing:.28em;text-transform:uppercase;
+           color:var(--ink-2);margin-bottom:8px}
+.act{display:grid;grid-template-columns:120px 1fr auto;gap:24px;align-items:baseline;
+     padding:26px 0;border-bottom:1px solid var(--line)}
+.act:first-of-type{border-top:1px solid var(--line)}
+.act .time{font-family:var(--mono);font-size:14px;color:var(--accent)}
+.act h2{font-family:var(--display);font-size:clamp(40px,7.5vw,110px);line-height:.95;
+        text-transform:uppercase;letter-spacing:.01em;font-weight:400}
+.act .room{font-family:var(--mono);font-size:12px;color:var(--ink-2);letter-spacing:.14em;
+           text-transform:uppercase;text-align:right}
+.act:hover h2{color:var(--accent)}
+/* info: asymmetric split */
+.info{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);
+      max-width:1400px;margin:0 auto;padding:0 clamp(20px,4vw,48px) clamp(56px,8vw,110px)}
+.info h3{font-family:var(--display);font-size:clamp(34px,4.5vw,60px);text-transform:uppercase;
+         line-height:1;margin-bottom:20px;font-weight:400}
+.info h3 .lime{color:var(--accent)}
+.info ul{list-style:none;font-size:16px;color:var(--ink-2)}
+.info ul li{padding:12px 0;border-bottom:1px solid var(--line);display:flex;gap:14px}
+.info ul li b{color:var(--ink);min-width:130px;font-family:var(--mono);font-size:13px;
+              letter-spacing:.1em;text-transform:uppercase;font-weight:400}
+.ticketbox{border:1px solid var(--line);background:var(--surface);padding:clamp(28px,4vw,48px);
+           margin-top:clamp(0px,4vw,64px);align-self:start}
+.ticketbox .price{font-family:var(--display);font-size:clamp(56px,6vw,88px);color:var(--accent);
+                  line-height:1}
+.ticketbox p{color:var(--ink-2);margin:16px 0 26px;font-size:15px;max-width:36ch}
+.bigbtn{display:inline-block;background:var(--accent);color:var(--bg);font-weight:700;font-size:17px;
+        padding:17px 40px;border-radius:4px;text-decoration:none;text-transform:uppercase;
+        letter-spacing:.04em}
+.bigbtn:hover{filter:brightness(1.1)}
+.fineprint{font-family:var(--mono);font-size:12px;color:var(--ink-2);margin-top:18px;line-height:2}
+/* footer */
+footer{border-top:1px solid var(--line)}
+footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+            padding:24px clamp(20px,4vw,48px) 32px;font-family:var(--mono);font-size:12px;
+            color:var(--ink-2);letter-spacing:.08em;max-width:1400px;margin:0 auto}
+footer a{color:var(--ink-2);text-decoration:none}
+footer a:hover{color:var(--accent)}
+@media (max-width:760px){
+  .act{grid-template-columns:1fr;gap:6px}
+  .act .room{text-align:left}
+  .info{grid-template-columns:1fr}
+  .hero-sub .where{text-align:left}
+}
+@media (prefers-reduced-motion:reduce){
+  .ticker .track{animation:none}
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <span><span class="live">●</span> Nov 14 · Providence RI</span>
+  <span style="color:var(--ink-2)">10PM – 4AM · 18+</span>
+  <a href="#tickets">Tickets</a>
+</div>
+
+<main>
+<div class="hero">
+  <p class="when">The Foundry · Building 9 · One night only</p>
+  <h1>Static<br><span class="outline">Bloom</span></h1>
+  <div class="hero-sub">
+    <p>Six DJs, two rooms, one very loud warehouse. No headliner worship — the lineup
+    runs back-to-back all night and the room decides what's good.</p>
+    <p class="where">The Foundry, Building 9<br>142 Allens Ave, Providence<br>Doors 10PM sharp</p>
+  </div>
+</div>
+
+<div class="ticker" aria-hidden="true">
+  <span class="track">STATIC BLOOM ✕ NOV 14 ✕ TWO ROOMS ✕ SIX DJs ✕ STATIC BLOOM ✕ NOV 14 ✕ TWO ROOMS ✕ SIX DJs ✕&nbsp;</span><span class="track">STATIC BLOOM ✕ NOV 14 ✕ TWO ROOMS ✕ SIX DJs ✕ STATIC BLOOM ✕ NOV 14 ✕ TWO ROOMS ✕ SIX DJs ✕&nbsp;</span>
+</div>
+
+<div class="lineup">
+  <p class="sec-label">Lineup — all night back-to-back</p>
+  <div class="act"><span class="time">22:00</span><h2>Glass Teeth</h2><span class="room">Room 1 · Main</span></div>
+  <div class="act"><span class="time">23:30</span><h2>Mara Voss</h2><span class="room">Room 1 · Main</span></div>
+  <div class="act"><span class="time">01:00</span><h2>Copper Field</h2><span class="room">Room 2 · Basement</span></div>
+  <div class="act"><span class="time">02:00</span><h2>DJ Pylon</h2><span class="room">Room 1 · Main</span></div>
+  <div class="act"><span class="time">02:45</span><h2>Static Bloom b2b all</h2><span class="room">Room 1 · Close</span></div>
+</div>
+
+<div class="info">
+  <div>
+    <h3>What to <span class="lime">expect</span></h3>
+    <ul>
+      <li><b>Sound</b><span>A borrowed rig with too much sub. Earplugs free at the door — take them, you'll thank us at 3 a.m.</span></li>
+      <li><b>Drinks</b><span>Two bars, cash and card. Water is free everywhere, always.</span></li>
+      <li><b>Coats</b><span>Free coat check. November in a warehouse is a commitment.</span></li>
+      <li><b>Policy</b><span>Zero tolerance for harassment. Our crew wears lime armbands — find us if you need anything.</span></li>
+    </ul>
+  </div>
+  <div class="ticketbox" id="tickets">
+    <p class="sec-label">Tickets</p>
+    <div class="price">$25</div>
+    <p>General admission, both rooms, all night. $30 at the door if any remain —
+    last year sold out by midnight.</p>
+    <a class="bigbtn" href="#tickets">Get tickets</a>
+    <p class="fineprint">18+ with ID · No re-entry after 1AM<br>All sales final · Lineup subject to the night</p>
+  </div>
+</div>
+</main>
+
+<footer><div class="row">
+  <span>© 2026 Static Bloom · Run by volunteers, for the room</span>
+  <span><a href="#">Instagram</a> · <a href="#">Resident Advisor</a> · <a href="mailto:crew@staticbloom.example">crew@staticbloom.example</a></span>
+</div></footer>
+</body>
+</html>
