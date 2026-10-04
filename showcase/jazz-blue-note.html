@@ -1,0 +1,171 @@
+<!--tz-meta {"id":"showcase-jazz-blue-note","title":"Jazz Blue Note showcase","category":"Showcase","file":"showcase/jazz-blue-note.html","tags":["jazz-blue-note"],"description":"Live demo page for the Jazz Blue Note style DNA.","dnas":["jazz-blue-note"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jazz Blue Note — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#101418; --tz-surface:#1a2229; --tz-ink:#eef2f5; --tz-muted:#7a8a96;
+  --tz-accent:#e8734a; --tz-blue:#3d6b8e; --tz-line:#243038;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:var(--tz-bg)}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"DM Sans",sans-serif;line-height:1.6;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2rem;border-bottom:1px solid var(--tz-line);font-family:"Space Mono",monospace;font-size:.75rem;letter-spacing:.12em}
+.tz-top .tz-wordmark{font-weight:700;color:var(--tz-ink)}
+.tz-top .tz-dna-label{color:var(--tz-muted)}
+.tz-hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:3rem;align-items:center;padding:4rem 2rem;max-width:1200px;margin:0 auto}
+.tz-cover{position:relative;aspect-ratio:1/1;background:var(--tz-surface);overflow:hidden}
+.tz-cover .tz-plate-art{position:absolute;inset:0;width:100%;height:100%;animation:tz-drift 26s ease-in-out infinite alternate}
+@keyframes tz-drift{from{transform:scale(1)}to{transform:scale(1.07)}}
+.tz-cover .tz-masthead{position:absolute;left:1.5rem;bottom:1.5rem;right:1.5rem}
+.tz-masthead h1{font-family:"Bebas Neue",sans-serif;font-size:clamp(3.5rem,9vw,7rem);line-height:.9;letter-spacing:.01em;color:var(--tz-ink)}
+.tz-masthead .tz-cat{font-family:"Space Mono",monospace;font-size:.8rem;color:var(--tz-accent);margin-top:.75rem;letter-spacing:.1em}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:.75rem;letter-spacing:.2em;color:var(--tz-accent);margin-bottom:1rem}
+.tz-hero-copy h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(2.5rem,5vw,4rem);line-height:1;letter-spacing:.01em}
+.tz-hero-copy p{color:var(--tz-muted);max-width:34ch;margin:1.25rem 0 2rem}
+.tz-cta{display:inline-block;font-family:"Space Mono",monospace;font-size:.85rem;letter-spacing:.1em;color:var(--tz-bg);background:var(--tz-ink);padding:.9rem 1.75rem;text-decoration:none}
+.tz-cta:hover{background:var(--tz-accent);color:var(--tz-bg)}
+.tz-content{max-width:1200px;margin:0 auto;padding:3rem 2rem 5rem}
+.tz-sides{border-top:1px solid var(--tz-line);padding-top:2rem}
+.tz-toggle-input{position:absolute;opacity:0;pointer-events:none}
+.tz-toggle{display:flex;gap:0;margin-bottom:2rem}
+.tz-toggle label{font-family:"Space Mono",monospace;font-size:.8rem;letter-spacing:.12em;padding:.7rem 1.5rem;border:1px solid var(--tz-line);color:var(--tz-muted);cursor:pointer}
+.tz-toggle label:last-child{border-left:0}
+#tz-side-a:checked ~ .tz-toggle label[for="tz-side-a"],
+#tz-side-b:checked ~ .tz-toggle label[for="tz-side-b"]{background:var(--tz-accent);border-color:var(--tz-accent);color:var(--tz-bg);font-weight:700}
+.tz-side{display:none}
+#tz-side-a:checked ~ .tz-side-a{display:block}
+#tz-side-b:checked ~ .tz-side-b{display:block}
+.tz-set{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:baseline;padding:1.25rem 0;border-bottom:1px solid var(--tz-line)}
+.tz-set h3{font-family:"Bebas Neue",sans-serif;font-size:1.75rem;letter-spacing:.02em}
+.tz-set .tz-date{font-family:"Space Mono",monospace;font-size:.8rem;color:var(--tz-accent)}
+.tz-set p{grid-column:1/-1;color:var(--tz-muted);font-size:.95rem;max-width:60ch}
+.tz-notes{margin-top:4rem;columns:2;column-gap:3rem;border-top:1px solid var(--tz-line);padding-top:2.5rem}
+.tz-notes h2{font-family:"Bebas Neue",sans-serif;font-size:2rem;margin-bottom:1.25rem;break-after:avoid}
+.tz-notes p{color:var(--tz-muted);margin-bottom:1.25rem;font-size:.95rem;text-align:justify}
+.tz-notes .tz-quote{color:var(--tz-ink);font-size:1.1rem;border-left:3px solid var(--tz-accent);padding-left:1.25rem;break-inside:avoid}
+.tz-tokens{max-width:1200px;margin:0 auto;padding:3rem 2rem;border-top:1px solid var(--tz-line)}
+.tz-tokens h2{font-family:"Bebas Neue",sans-serif;font-size:2rem;margin-bottom:1.5rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:1rem}
+.tz-chip{display:flex;align-items:center;gap:.75rem;font-family:"Space Mono",monospace;font-size:.75rem;color:var(--tz-muted)}
+.tz-chip i{display:block;width:3rem;height:3rem;border:1px solid var(--tz-line)}
+.tz-foot{border-top:1px solid var(--tz-line);padding:2rem;font-family:"Space Mono",monospace;font-size:.75rem;color:var(--tz-muted);text-align:center;letter-spacing:.08em}
+@media(max-width:700px){
+  .tz-hero{grid-template-columns:1fr;padding:2.5rem 1.25rem;gap:2rem}
+  .tz-notes{columns:1}
+  .tz-top,.tz-content,.tz-tokens{padding-left:1.25rem;padding-right:1.25rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-cover .tz-plate-art{animation:none}
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">TZ—taste</span>
+  <span class="tz-dna-label">STYLE DNA · JAZZ-BLUE-NOTE</span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-cover" aria-label="Club cover art">
+    <svg class="tz-plate-art" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <pattern id="tz-half" width="16" height="16" patternUnits="userSpaceOnUse">
+          <circle cx="8" cy="8" r="3.4" fill="#3d6b8e"/>
+        </pattern>
+      </defs>
+      <rect width="600" height="600" fill="#101418"/>
+      <circle cx="430" cy="170" r="160" fill="#3d6b8e" opacity="0.85"/>
+      <rect width="600" height="600" fill="url(#tz-half)" opacity="0.45"/>
+      <rect y="452" width="600" height="148" fill="#101418" opacity="0.88"/>
+      <g>
+        <rect x="40" y="500" width="40" height="100" fill="#eef2f5"/><rect x="88" y="500" width="40" height="100" fill="#eef2f5"/>
+        <rect x="136" y="500" width="40" height="100" fill="#eef2f5"/><rect x="184" y="500" width="40" height="100" fill="#eef2f5"/>
+        <rect x="232" y="500" width="40" height="100" fill="#eef2f5"/><rect x="280" y="500" width="40" height="100" fill="#eef2f5"/>
+        <rect x="328" y="500" width="40" height="100" fill="#eef2f5"/><rect x="376" y="500" width="40" height="100" fill="#eef2f5"/>
+        <rect x="424" y="500" width="40" height="100" fill="#eef2f5"/><rect x="472" y="500" width="40" height="100" fill="#eef2f5"/>
+        <rect x="66" y="500" width="26" height="58" fill="#101418"/><rect x="162" y="500" width="26" height="58" fill="#101418"/>
+        <rect x="210" y="500" width="26" height="58" fill="#101418"/><rect x="306" y="500" width="26" height="58" fill="#101418"/>
+        <rect x="354" y="500" width="26" height="58" fill="#101418"/><rect x="450" y="500" width="26" height="58" fill="#101418"/>
+      </g>
+      <rect y="470" width="600" height="3" fill="#e8734a"/>
+    </svg>
+    <div class="tz-masthead">
+      <h1>THE HALF<br>STEP</h1>
+      <p class="tz-cat">HSP-001 · LIVE · NIGHTLY</p>
+    </div>
+  </div>
+  <div class="tz-hero-copy">
+    <p class="tz-eyebrow">A JAZZ CLUB · PORTLAND, ME</p>
+    <h2>Six nights a week, the room goes quiet and the quartet starts talking.</h2>
+    <p>No cover before nine. The bar pours rye, the piano is tuned every Thursday, and the second set always runs longer than the first.</p>
+    <a class="tz-cta" href="#tz-sets">SEE THIS WEEK'S SETS</a>
+  </div>
+</section>
+
+<section class="tz-content">
+  <div class="tz-sides" id="tz-sets">
+    <input class="tz-toggle-input" type="radio" name="tz-side" id="tz-side-a" checked>
+    <input class="tz-toggle-input" type="radio" name="tz-side" id="tz-side-b">
+    <div class="tz-toggle" role="tablist" aria-label="Choose a side">
+      <label for="tz-side-a" role="tab">SIDE A</label>
+      <label for="tz-side-b" role="tab">SIDE B</label>
+    </div>
+    <div class="tz-side tz-side-a">
+      <div class="tz-set">
+        <h3>The Marlowe Trio</h3><span class="tz-date">OCT 05 · 8:00 / 10:30 PM</span>
+        <p>Piano, upright bass, brushes. Marlowe plays Monk the way Monk's landlord might have heard it — through the floorboards, late.</p>
+      </div>
+      <div class="tz-set">
+        <h3>Dana Whitfield, Solo Tenor</h3><span class="tz-date">OCT 07 · 9:00 PM</span>
+        <p>One horn, one spotlight, forty minutes. Whitfield's ballads have made regulars miss their last bus three weeks running.</p>
+      </div>
+      <div class="tz-set">
+        <h3>The Half Step House Band</h3><span class="tz-date">OCT 09 · 8:00 / 11:00 PM</span>
+        <p>Our own rhythm section with a rotating guest on trumpet. The guest never knows the setlist. That is the setlist.</p>
+      </div>
+    </div>
+    <div class="tz-side tz-side-b">
+      <div class="tz-set">
+        <h3>Ada Cole Quartet</h3><span class="tz-date">OCT 12 · 8:00 / 10:30 PM</span>
+        <p>Vibraphone-led, with Cole's originals from the new record. The room seats sixty; the record took four years. Do the math.</p>
+      </div>
+      <div class="tz-set">
+        <h3>Blue Hour Organ Trio</h3><span class="tz-date">OCT 14 · 9:00 PM</span>
+        <p>Hammond, guitar, drums. Loud enough to feel in the sternum, tasteful enough that nobody's date leaves early.</p>
+      </div>
+      <div class="tz-set">
+        <h3>Late Set: Open Session</h3><span class="tz-date">OCT 16 · 11:30 PM</span>
+        <p>Sign-up at the bar from ten. House rhythm section holds the floor; bring your horn and your nerve.</p>
+      </div>
+    </div>
+  </div>
+  <div class="tz-notes">
+    <h2>Liner notes</h2>
+    <p>Personnel: Elias Marlowe, piano; Ruth Okafor, bass; Sam Reyes, drums. Recorded live at The Half Step, Portland, Maine, September 2026. Engineered by June Park. The piano is a 1962 Baldwin, tuned every Thursday whether it needs it or not.</p>
+    <p class="tz-quote">"The second set is where the night actually happens. Everything before that is the band deciding whether they trust you." — Elias Marlowe</p>
+    <p>Doors at seven, kitchen until ten. Students with ID drink coffee free on Sundays. The listening room is downstairs; the bar is upstairs; the line between them dissolves around the second chorus.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <div class="tz-swatches">
+    <span class="tz-chip"><i style="background:#101418"></i>#101418 · bg</span>
+    <span class="tz-chip"><i style="background:#eef2f5"></i>#eef2f5 · ink</span>
+    <span class="tz-chip"><i style="background:#e8734a"></i>#e8734a · accent</span>
+    <span class="tz-chip"><i style="background:#7a8a96"></i>#7a8a96 · muted</span>
+    <span class="tz-chip"><i style="background:#243038"></i>#243038 · line</span>
+  </div>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
