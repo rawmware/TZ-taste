@@ -1,8 +1,23 @@
 {
- "count": 55,
+ "count": 70,
  "updated": "2026-10-04",
  "usage": "Interactive generative-art pages (vanilla canvas, zero deps). Open in a browser, lift the technique.",
  "generative": [
+  {
+   "id": "gen-flow-confetti-physics",
+   "title": "Confetti Physics",
+   "category": "Generative",
+   "file": "generative/flow-confetti-physics.html",
+   "tags": [
+    "confetti",
+    "physics",
+    "celebration"
+   ],
+   "description": "Paper confetti flutters, gusts, and piles up with real gravity, drag, and floor bounces.",
+   "dnas": [
+    "memphis-milano"
+   ]
+  },
   {
    "id": "gen-flow-curl-noise",
    "title": "Curl Noise Field",
@@ -64,6 +79,21 @@
    ]
   },
   {
+   "id": "gen-flow-lava-lamp-blobs",
+   "title": "Lava Lamp Blobs",
+   "category": "Generative",
+   "file": "generative/flow-lava-lamp-blobs.html",
+   "tags": [
+    "lava",
+    "blobs",
+    "glow"
+   ],
+   "description": "Wax blobs rise, cool, and sink inside a glass lamp — each seed shuffles blob count, buoyancy, and wobble.",
+   "dnas": [
+    "sauna-cedar"
+   ]
+  },
+  {
    "id": "gen-flow-magnetic",
    "title": "Magnetic Attraction",
    "category": "Generative",
@@ -91,6 +121,21 @@
    "description": "Nested orbital arms at seeded harmonic ratios trace blooming ember petals.",
    "dnas": [
     "vaporwave-sunset"
+   ]
+  },
+  {
+   "id": "gen-flow-particles-ink-brush",
+   "title": "Ink Brush Field",
+   "category": "Generative",
+   "file": "generative/flow-particles-ink-brush.html",
+   "tags": [
+    "brush",
+    "sumi",
+    "flow"
+   ],
+   "description": "Brush walkers paint dry-brush strokes on rice paper, steered by a slow noise field; a red seal stamps the finished corner.",
+   "dnas": [
+    "ink-wash-sumi"
    ]
   },
   {
@@ -154,6 +199,21 @@
    ]
   },
   {
+   "id": "gen-geo-brownian-bridges",
+   "title": "Brownian Bridges",
+   "category": "Generative",
+   "file": "generative/geo-brownian-bridges.html",
+   "tags": [
+    "random-walk",
+    "bridge",
+    "probability"
+   ],
+   "description": "Random walks pinned at both ends — brownian bridges — drift between glacier-blue anchors, redrawing themselves every few seconds.",
+   "dnas": [
+    "arctic-field"
+   ]
+  },
+  {
    "id": "gen-geo-circle-packing",
    "title": "Circle Packing",
    "category": "Generative",
@@ -198,6 +258,21 @@
    "description": "A chaotic double pendulum integrated with RK4 paints a fading trail — drag the bob to rewrite its future.",
    "dnas": [
     "de-stijl-grid"
+   ]
+  },
+  {
+   "id": "gen-geo-elastic-collision-box",
+   "title": "Elastic Collision Box",
+   "category": "Generative",
+   "file": "generative/geo-elastic-collision-box.html",
+   "tags": [
+    "physics",
+    "collisions",
+    "disks"
+   ],
+   "description": "Twenty-two disks ricochet around a box with true elastic collisions — momentum conserved, nobody cheats.",
+   "dnas": [
+    "pop-art-halftone"
    ]
   },
   {
@@ -309,6 +384,21 @@
    ]
   },
   {
+   "id": "gen-geo-phyllotaxis-spiral",
+   "title": "Phyllotaxis Spiral",
+   "category": "Generative",
+   "file": "generative/geo-phyllotaxis-spiral.html",
+   "tags": [
+    "phyllotaxis",
+    "golden-angle",
+    "spiral"
+   ],
+   "description": "Seeds land on the golden angle one by one, growing a sunflower head; each seed varies divergence jitter and the green ramp.",
+   "dnas": [
+    "seed-packet"
+   ]
+  },
+  {
    "id": "gen-geo-quadtree-art",
    "title": "Quadtree Field",
    "category": "Generative",
@@ -339,6 +429,21 @@
    ]
   },
   {
+   "id": "gen-geo-sierpinski-carpet",
+   "title": "Sierpinski Carpet",
+   "category": "Generative",
+   "file": "generative/geo-sierpinski-carpet.html",
+   "tags": [
+    "fractal",
+    "recursive",
+    "carpet"
+   ],
+   "description": "A Sierpinski carpet grows square by square; each seed varies removal odds, depth, and accent color.",
+   "dnas": [
+    "desert-modern"
+   ]
+  },
+  {
    "id": "gen-geo-spirograph",
    "title": "Spirograph Gears",
    "category": "Generative",
@@ -366,6 +471,21 @@
    "description": "Lorenz, Rössler, and Aizawa systems integrated live in 3D, projected to 2D with depth shading — switch systems live.",
    "dnas": [
     "retro-terminal"
+   ]
+  },
+  {
+   "id": "gen-geo-tensegrity-struts",
+   "title": "Tensegrity Struts",
+   "category": "Generative",
+   "file": "generative/geo-tensegrity-struts.html",
+   "tags": [
+    "tensegrity",
+    "structure",
+    "3d"
+   ],
+   "description": "A three-strut tensegrity prism floats in isometric projection — thick compression struts, hairline tension cables, breathing slowly.",
+   "dnas": [
+    "industrial-brutalist"
    ]
   },
   {
@@ -444,6 +564,21 @@
    "description": "Layered sine ribbons with additive glow drifting over a seeded star field.",
    "dnas": [
     "arctic-field"
+   ]
+  },
+  {
+   "id": "gen-org-biased-random-walkers",
+   "title": "Biased Random Walkers",
+   "category": "Generative",
+   "file": "generative/org-biased-random-walkers.html",
+   "tags": [
+    "random-walk",
+    "drift",
+    "probability"
+   ],
+   "description": "Sixty walkers share one hidden drift direction; their fading trails slowly expose the bias the seed dealt them.",
+   "dnas": [
+    "swiss-rational"
    ]
   },
   {
@@ -553,6 +688,21 @@
    ]
   },
   {
+   "id": "gen-org-ice-crystal-window",
+   "title": "Ice Crystal Window",
+   "category": "Generative",
+   "file": "generative/org-ice-crystal-window.html",
+   "tags": [
+    "frost",
+    "crystal",
+    "winter"
+   ],
+   "description": "Frost ferns creep across a night windowpane, each crystal freezing the moment a wandering molecule touches it.",
+   "dnas": [
+    "observatory-star"
+   ]
+  },
+  {
    "id": "gen-org-jellyfish",
    "title": "Jellyfish Drift",
    "category": "Generative",
@@ -598,6 +748,21 @@
    ]
   },
   {
+   "id": "gen-org-mycelium-network",
+   "title": "Mycelium Network",
+   "category": "Generative",
+   "file": "generative/org-mycelium-network.html",
+   "tags": [
+    "mycelium",
+    "growth",
+    "network"
+   ],
+   "description": "Hyphal tips branch and fuse into a living network, each seed dealing new spore sites and branching odds.",
+   "dnas": [
+    "botanical-lab"
+   ]
+  },
+  {
    "id": "gen-org-perlin-marble",
    "title": "Perlin Marble",
    "category": "Generative",
@@ -625,6 +790,21 @@
    "description": "Gray-Scott equations blooming into soft coral-like forms.",
    "dnas": [
     "arctic-field"
+   ]
+  },
+  {
+   "id": "gen-org-sand-dune-ripples",
+   "title": "Sand Dune Ripples",
+   "category": "Generative",
+   "file": "generative/org-sand-dune-ripples.html",
+   "tags": [
+    "dunes",
+    "wind",
+    "desert"
+   ],
+   "description": "Layered dunes with wind-driven ripple marks; the wind gusts and shifts, dragging the ripples across each ridge.",
+   "dnas": [
+    "sahara-ochre"
    ]
   },
   {
@@ -715,6 +895,36 @@
    "description": "The word ORION is rebuilt from star-nodes sampled off its letterforms, linked like a constellation.",
    "dnas": [
     "y2k-chrome"
+   ]
+  },
+  {
+   "id": "gen-typo-falling-sand-text",
+   "title": "Falling Sand Text",
+   "category": "Generative",
+   "file": "generative/typo-falling-sand-text.html",
+   "tags": [
+    "sand",
+    "typography",
+    "pixels"
+   ],
+   "description": "The word SIFT dissolves grain by grain; each pixel falls with gravity and piles into a dune of its own letters.",
+   "dnas": [
+    "museum-placard"
+   ]
+  },
+  {
+   "id": "gen-typo-glitch-slice-text",
+   "title": "Glitch Slice Text",
+   "category": "Generative",
+   "file": "generative/typo-glitch-slice-text.html",
+   "tags": [
+    "glitch",
+    "typography",
+    "rgb-split"
+   ],
+   "description": "The word STATIC is sliced into strips and torn apart with RGB splits; the interference surges and settles on its own.",
+   "dnas": [
+    "pixel-arcade"
    ]
   },
   {
@@ -835,6 +1045,21 @@
    "description": "A 16-step sequencer drawn as waveforms. Click a column to toggle its step; the playhead sweeps visually.",
    "dnas": [
     "pixel-arcade"
+   ]
+  },
+  {
+   "id": "gen-typo-wavefunction-word",
+   "title": "Wavefunction Word",
+   "category": "Generative",
+   "file": "generative/typo-wavefunction-word.html",
+   "tags": [
+    "typography",
+    "wave",
+    "particles"
+   ],
+   "description": "The word WAVE is a cloud of particles held near their letterforms by probability — each one jittering on its own orbit.",
+   "dnas": [
+    "cyberpunk-noir"
    ]
   }
  ]
