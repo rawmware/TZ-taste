@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-postage-stamp",
+  "title": "Postage Stamp design tokens",
+  "category": "Tokens",
+  "file": "tokens/postage-stamp.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "postage-stamp"
+  ],
+  "description": "W3C-format design tokens for the Postage Stamp DNA.",
+  "dnas": [
+   "postage-stamp"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#f4f1e6",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#2e2a24",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#b03a2e",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#8a7f6a",
+   "type": "color"
+  },
+  "line": {
+   "value": "#2e2a2426",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#e6dfcc",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Bodoni Moda",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Libre Franklin",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "IBM Plex Mono",
+   "type": "fontFamily"
+  }
+ }
+}
