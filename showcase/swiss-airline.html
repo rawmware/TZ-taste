@@ -1,0 +1,122 @@
+<!--tz-meta {"id":"showcase-swiss-airline","title":"Swiss Airline showcase","category":"Showcase","file":"showcase/swiss-airline.html","tags":["swiss-airline"],"description":"Live demo page for the Swiss Airline style DNA.","dnas":["swiss-airline"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Swiss Airline — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700&family=Libre+Franklin:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f7f5ef; --tz-surface:#ffffff; --tz-ink:#1a1a1a; --tz-muted:#6e6e6e;
+  --tz-accent:#d52b1e; --tz-line:#1a1a1a1f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Libre Franklin",sans-serif;font-size:1rem;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 4vw;border-bottom:1px solid var(--tz-line)}
+.tz-wordmark{font-family:"Archivo",sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:0.06em;text-transform:uppercase}
+.tz-wordmark .tz-arrowmark{color:var(--tz-accent)}
+.tz-nav{font-family:"IBM Plex Mono",monospace;font-size:0.75rem;letter-spacing:0.08em}
+.tz-nav a{color:var(--tz-ink);text-decoration:none;margin-left:1.6rem}
+.tz-nav a:hover{color:var(--tz-accent)}
+.tz-departures{border-bottom:1px solid var(--tz-line);padding:0.6rem 4vw;font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.04em;display:flex;gap:2.2rem;flex-wrap:wrap;color:var(--tz-muted);background:var(--tz-surface)}
+.tz-departures strong{color:var(--tz-ink);font-weight:500}
+.tz-departures .tz-delayed{color:var(--tz-accent);font-weight:500}
+.tz-hero{padding:4.5rem 4vw 3.5rem;max-width:1100px}
+.tz-eyebrow{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.16em;color:var(--tz-muted);margin-bottom:1.4rem}
+.tz-route{font-family:"IBM Plex Mono",monospace;font-size:clamp(2.2rem,7vw,4.6rem);font-weight:500;letter-spacing:-0.01em;line-height:1.05}
+.tz-route .tz-red{color:var(--tz-accent)}
+.tz-status{margin-top:1.2rem;font-family:"Archivo",sans-serif;font-weight:700;font-size:clamp(1.4rem,3.5vw,2.2rem);text-transform:uppercase;letter-spacing:0.02em}
+.tz-sub{margin-top:1.2rem;color:var(--tz-muted);max-width:48ch}
+.tz-cta{display:inline-flex;align-items:center;gap:0.7rem;margin-top:2rem;background:var(--tz-ink);color:var(--tz-bg);font-family:"Archivo",sans-serif;font-weight:700;font-size:0.95rem;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;padding:1rem 1.8rem}
+.tz-cta .tz-go{color:var(--tz-accent);transition:transform .15s ease}
+.tz-cta:hover .tz-go{transform:translateX(8px)}
+.tz-content{padding:1rem 4vw 0;max-width:1100px}
+.tz-content h2{font-family:"Archivo",sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.4rem}
+.tz-subhead{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;color:var(--tz-muted);letter-spacing:0.08em;margin-bottom:1.2rem}
+table.tz-table{width:100%;border-collapse:collapse;background:var(--tz-surface)}
+.tz-table th{font-family:"IBM Plex Mono",monospace;font-size:0.68rem;font-weight:400;letter-spacing:0.12em;color:var(--tz-muted);text-align:left;padding:0.9rem 1rem;border-bottom:1px solid var(--tz-ink)}
+.tz-table td{padding:1.1rem 1rem;border-bottom:1px solid var(--tz-line);font-family:"IBM Plex Mono",monospace;font-size:0.85rem}
+.tz-table td.tz-flight{font-weight:500}
+.tz-table .tz-on{color:var(--tz-ink)}
+.tz-table .tz-late{color:var(--tz-accent);font-weight:500}
+.tz-table tr:hover td{background:#1a1a1a08}
+.tz-note{margin-top:2.5rem;border:1px solid var(--tz-line);background:var(--tz-surface);padding:1.6rem;max-width:640px}
+.tz-note h2{font-family:"IBM Plex Mono",monospace;font-size:0.68rem;letter-spacing:0.14em;color:var(--tz-muted);font-weight:400;margin-bottom:0.6rem}
+.tz-note p{color:var(--tz-muted);font-size:0.95rem}
+.tz-note strong{color:var(--tz-ink);font-weight:600}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Archivo",sans-serif;font-weight:700;font-size:1.5rem;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"IBM Plex Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"IBM Plex Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"IBM Plex Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-nav{display:none}
+  .tz-departures{gap:1rem}
+  .tz-table th:nth-child(4),.tz-table td:nth-child(4){display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Alpen Air <span class="tz-arrowmark">&#8594;</span></span>
+  <nav class="tz-nav"><a href="#">Routes</a><a href="#">Timetable</a><a href="#">Baggage</a></nav>
+</header>
+
+<div class="tz-departures" aria-label="Live departures">
+  <span><strong>LX 316</strong> ZRH 08:40 &#8594; JFK 11:55 · ON TIME</span>
+  <span><strong>LX 318</strong> ZRH 09:15 &#8594; BOS 12:40 · <span class="tz-delayed">DELAYED 20 MIN</span></span>
+  <span><strong>LX 402</strong> ZRH 10:05 &#8594; LHR 10:55 · ON TIME</span>
+  <span><strong>LX 207</strong> GVA 11:20 &#8594; CDG 12:35 · BOARDING</span>
+</div>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow">TIMETABLE · WINTER SCHEDULE · EFFECTIVE OCT 26</p>
+  <p class="tz-route">ZRH 08:40 <span class="tz-red">&#8594;</span> JFK 11:55</p>
+  <p class="tz-status">On time.</p>
+  <p class="tz-sub">One flight, stated plainly. Alpen Air publishes the schedule it intends to fly — including the one it missed this morning.</p>
+  <a class="tz-cta" href="#">Book LX 316 <span class="tz-go">&#8594;</span></a>
+</section>
+
+<section class="tz-content">
+  <h2>Today's timetable</h2>
+  <p class="tz-subhead">ZURICH DEPARTURES · ALL TIMES LOCAL</p>
+  <table class="tz-table">
+    <thead><tr><th>FLIGHT</th><th>ROUTE</th><th>DEP</th><th>ARR</th><th>STATUS</th></tr></thead>
+    <tbody>
+      <tr><td class="tz-flight">LX 316</td><td>ZRH &#8594; JFK</td><td>08:40</td><td>11:55</td><td class="tz-on">ON TIME</td></tr>
+      <tr><td class="tz-flight">LX 318</td><td>ZRH &#8594; BOS</td><td>09:15</td><td>12:40</td><td class="tz-late">DELAYED 20 MIN</td></tr>
+      <tr><td class="tz-flight">LX 402</td><td>ZRH &#8594; LHR</td><td>10:05</td><td>10:55</td><td class="tz-on">ON TIME</td></tr>
+      <tr><td class="tz-flight">LX 207</td><td>GVA &#8594; CDG</td><td>11:20</td><td>12:35</td><td class="tz-on">BOARDING</td></tr>
+      <tr><td class="tz-flight">LX 512</td><td>ZRH &#8594; FCO</td><td>13:45</td><td>15:20</td><td class="tz-on">ON TIME</td></tr>
+    </tbody>
+  </table>
+  <div class="tz-note">
+    <h2>GOOD TO KNOW</h2>
+    <p><strong>Boarding closes 15 minutes before departure.</strong> The red arrow points right. It means onward — we only print it where it earns its place.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#f7f5ef"></span><span class="tz-name">bg</span><span class="tz-hex">#f7f5ef</span></li>
+    <li><span class="tz-chip" style="background:#ffffff"></span><span class="tz-name">surface</span><span class="tz-hex">#ffffff</span></li>
+    <li><span class="tz-chip" style="background:#1a1a1a"></span><span class="tz-name">ink</span><span class="tz-hex">#1a1a1a</span></li>
+    <li><span class="tz-chip" style="background:#6e6e6e"></span><span class="tz-name">muted</span><span class="tz-hex">#6e6e6e</span></li>
+    <li><span class="tz-chip" style="background:#d52b1e"></span><span class="tz-name">accent</span><span class="tz-hex">#d52b1e</span></li>
+    <li><span class="tz-chip" style="background:#1a1a1a1f"></span><span class="tz-name">line</span><span class="tz-hex">#1a1a1a1f</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
