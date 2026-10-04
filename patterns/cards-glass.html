@@ -1,0 +1,46 @@
+<!--tz-meta {"id":"cards-glass","title":"Glass cards","category":"Cards","file":"patterns/cards-glass.html","tags":["frosted","soft"],"description":"Frosted info cards floating over soft pastel blobs.","dnas":["glass-calm"]} -->
+<section class="tz-glass" aria-label="Information cards">
+  <div class="tz-blob tz-b1" aria-hidden="true"></div>
+  <div class="tz-blob tz-b2" aria-hidden="true"></div>
+  <div class="tz-blob tz-b3" aria-hidden="true"></div>
+  <div class="tz-stack">
+    <article class="tz-gcard tz-gwide">
+      <p class="tz-kicker">Beginner workshop</p>
+      <h3>AI, explained like a friend would</h3>
+      <p class="tz-desc">Ninety minutes, zero jargon. You leave knowing what AI can and can't do for your day.</p>
+      <a class="tz-link" href="#w1">Save a seat →</a>
+    </article>
+    <article class="tz-gcard">
+      <p class="tz-kicker">1:1 training</p>
+      <h3>Your questions, answered</h3>
+      <p class="tz-desc">An hour with a human, on your device, at your pace.</p>
+    </article>
+    <article class="tz-gcard">
+      <p class="tz-kicker">For teams</p>
+      <h3>Bring the workshop to you</h3>
+      <p class="tz-desc">We come to your office or library with laptops ready.</p>
+    </article>
+  </div>
+</section>
+<style>
+.tz-glass{--ink:#2e2b26;--soft:#5d594f;--peach:#f6cfa5;--mint:#bfe3cf;--sand:#f2e3c2;
+  background:#fbf8f1;color:var(--ink);font-family:Georgia,'Times New Roman',serif;
+  padding:clamp(72px,11vw,140px) clamp(20px,6vw,80px);position:relative;overflow:hidden}
+.tz-blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.75}
+.tz-b1{width:420px;height:420px;background:var(--peach);top:-120px;left:-100px}
+.tz-b2{width:380px;height:380px;background:var(--mint);bottom:-140px;right:-80px}
+.tz-b3{width:260px;height:260px;background:var(--sand);top:40%;left:55%}
+.tz-stack{position:relative;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:22px;align-items:start}
+.tz-gcard{background:#ffffff8c;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border:1px solid #ffffffcc;border-radius:20px;padding:30px 28px;margin:0;
+  box-shadow:0 12px 40px #2e2b2614}
+.tz-kicker{margin:0 0 12px;font-family:ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--soft)}
+.tz-gcard h3{margin:0 0 12px;font-size:24px;font-weight:400;letter-spacing:-.02em;line-height:1.2}
+.tz-gwide h3{font-size:clamp(28px,4vw,42px)}
+.tz-desc{margin:0 0 18px;font-size:15px;line-height:1.65;color:var(--soft)}
+.tz-link{color:var(--ink);font-size:16px;text-decoration:none;border-bottom:2px solid var(--ink);
+  padding-bottom:3px}
+@media (max-width:860px){.tz-stack{grid-template-columns:1fr 1fr}.tz-gwide{grid-column:span 2}}
+@media (max-width:560px){.tz-stack{grid-template-columns:1fr}.tz-gwide{grid-column:auto}}
+</style>
