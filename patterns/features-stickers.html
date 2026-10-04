@@ -1,0 +1,50 @@
+<!--tz-meta {"id":"features-stickers","title":"Sticker features","category":"Features","file":"patterns/features-stickers.html","tags":["playful","cards"],"description":"Scattered rotated sticker cards with thick borders and hard offset shadows.","dnas":["neo-brutalist-pop"]} -->
+<section class="tz-fst">
+  <p class="tz-fst-eyebrow">· the good stuff ·</p>
+  <h2 class="tz-fst-title">Slap these on<br>your workflow.</h2>
+  <div class="tz-fst-wall">
+    <article class="tz-fst-card tz-fst-y" style="--rot:-3deg">
+      <p class="tz-fst-tag">most loved</p>
+      <h3>Auto-replies that don't sound like robots</h3>
+      <p>Train it on your sent folder. It drafts replies in your voice; you approve with one tap.</p>
+    </article>
+    <article class="tz-fst-card tz-fst-p" style="--rot:2.2deg">
+      <p class="tz-fst-tag">new</p>
+      <h3>Collision detection for calendars</h3>
+      <p>Double-booked across three calendars? It flags the clash before your client notices.</p>
+    </article>
+    <article class="tz-fst-card tz-fst-t" style="--rot:-1.6deg">
+      <p class="tz-fst-tag">team pick</p>
+      <h3>One-click meeting notes</h3>
+      <p>Every call ends with decisions, owners, and deadlines — written up before you hang up.</p>
+    </article>
+    <article class="tz-fst-card tz-fst-r" style="--rot:2.8deg">
+      <p class="tz-fst-tag">free forever</p>
+      <h3>Guest passes for clients</h3>
+      <p>Clients see only their project. No seat, no login maze, no awkward "can you resend that?"</p>
+    </article>
+  </div>
+</section>
+<style>
+.tz-fst{--bg:#fff6e8;--ink:#141414;--y:#ffd23f;--p:#ff8fc7;--t:#5eead4;--r:#ff6b5e;
+  background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(64px,9vw,120px) clamp(24px,6vw,80px);overflow:hidden}
+.tz-fst-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.24em;
+  text-transform:uppercase;margin:0 0 18px;text-align:center}
+.tz-fst-title{font-size:clamp(38px,6vw,76px);font-weight:900;letter-spacing:-.03em;
+  line-height:.98;margin:0 0 clamp(44px,6vw,72px);text-align:center;text-transform:uppercase}
+.tz-fst-wall{display:flex;flex-wrap:wrap;gap:clamp(20px,3vw,36px);justify-content:center;
+  max-width:1100px;margin:0 auto}
+.tz-fst-card{width:min(300px,100%);border:3px solid var(--ink);padding:26px 24px 30px;
+  transform:rotate(var(--rot));box-shadow:8px 8px 0 var(--ink);
+  transition:transform .25s cubic-bezier(.22,1,.36,1)}
+.tz-fst-card:hover{transform:rotate(0deg) translateY(-6px)}
+.tz-fst-y{background:var(--y)}.tz-fst-p{background:var(--p)}
+.tz-fst-t{background:var(--t)}.tz-fst-r{background:var(--r)}
+.tz-fst-tag{display:inline-block;font-family:ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;background:var(--ink);color:#fff;
+  padding:5px 12px;margin:0 0 16px;transform:rotate(-2deg)}
+.tz-fst-card h3{font-size:21px;font-weight:900;letter-spacing:-.01em;line-height:1.15;margin:0 0 12px}
+.tz-fst-card p{font-size:14.5px;line-height:1.6;margin:0}
+@media (prefers-reduced-motion:reduce){.tz-fst-card{transition:none}}
+</style>
