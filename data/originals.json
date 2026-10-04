@@ -116,6 +116,10 @@
   "name": "Editorial Serif"
  },
  {
+  "slug": "fall-lofi",
+  "name": "Maple & Static"
+ },
+ {
   "slug": "farmers-almanac",
   "name": "Farmers Almanac"
  },
@@ -138,6 +142,10 @@
  {
   "slug": "greenmarket-dawn",
   "name": "Greenmarket Dawn"
+ },
+ {
+  "slug": "halloween",
+  "name": "Dreadhollow Manor"
  },
  {
   "slug": "harbor-fog",
@@ -178,6 +186,10 @@
  {
   "slug": "library-oak",
   "name": "Library Oak"
+ },
+ {
+  "slug": "lighthouse-keeper",
+  "name": "Greypoint Light"
  },
  {
   "slug": "locksmith-shop",
@@ -248,6 +260,10 @@
   "name": "Pixel Garden"
  },
  {
+  "slug": "pixel-retro-game",
+  "name": "Starlight Drifter"
+ },
+ {
   "slug": "pop-art-halftone",
   "name": "Pop Art Halftone"
  },
@@ -260,6 +276,10 @@
   "name": "Postcard Rack"
  },
  {
+  "slug": "ramen-ya",
+  "name": "Menya Midnight"
+ },
+ {
   "slug": "retro-terminal",
   "name": "Retro Terminal"
  },
@@ -270,6 +290,10 @@
  {
   "slug": "roadside-motel",
   "name": "Roadside Motel"
+ },
+ {
+  "slug": "roller-disco",
+  "name": "Moonlight Wheels"
  },
  {
   "slug": "sahara-ochre",
@@ -324,8 +348,16 @@
   "name": "Swiss Rational"
  },
  {
+  "slug": "tamagotchi",
+  "name": "Pocket Pal"
+ },
+ {
   "slug": "ticket-stub",
   "name": "Ticket Stub"
+ },
+ {
+  "slug": "tiki-bar",
+  "name": "The Brass Parrot"
  },
  {
   "slug": "tokyo-kissaten",
@@ -368,11 +400,27 @@
   "name": "Y2K Chrome"
  },
  {
-  "slug": "tamagotchi",
-  "name": "Pocket Pal"
+  "slug": "pulse-dashboard",
+  "name": "Pulse \u2014 Dashboard"
  },
  {
-  "slug": "pixel-retro-game",
-  "name": "Starlight Drifter"
+  "slug": "northwind-mail",
+  "name": "Northwind \u2014 Mail"
+ },
+ {
+  "slug": "taskline",
+  "name": "Taskline \u2014 Tasks"
+ },
+ {
+  "slug": "settings-desk",
+  "name": "Settings"
+ },
+ {
+  "slug": "gatekeeper-auth",
+  "name": "Gatekeeper \u2014 Sign in"
+ },
+ {
+  "slug": "ledger-billing",
+  "name": "Ledger \u2014 Billing"
  }
 ]
