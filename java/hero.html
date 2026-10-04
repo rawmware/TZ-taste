@@ -1,0 +1,223 @@
+<!--tz-meta {"id":"java-hero","title":"Constructivist Hero (Java/Thymeleaf)","category":"Java","file":"java/hero.html","tags":["java","thymeleaf","hero"],"description":"Offset split hero for a freight brokerage: giant Russo One headline over a diagonal red beam, vertical mono waybill label, single primary action.","dnas":["constructivist-red"]} -->
+<!--
+  Design read: freight-broker landing for dispatchers who distrust marketing — loud, flat, honest.
+  Distinctive choice: a diagonal red beam slices the viewport behind the headline like a stencil cut.
+  Dials: VARIANCE 7 / MOTION 3 / DENSITY 3.
+  Route: GET / -> HomeController#index (model: hero)
+-->
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title th:text="${hero.title}">Northbeam Freight — Cover your lanes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Oswald:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --tz-bg: #f2ede4;
+      --tz-ink: #141414;
+      --tz-accent: #d4201e;
+      --tz-muted: #6e675c;
+      --tz-line: #141414;
+      --tz-font-display: "Russo One", sans-serif;
+      --tz-font-body: "Oswald", sans-serif;
+      --tz-font-mono: "Space Mono", monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--tz-bg);
+      color: var(--tz-ink);
+      font-family: var(--tz-font-body);
+      overflow-x: hidden;
+      min-height: 100dvh;
+    }
+    .tz-hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      gap: clamp(24px, 4vw, 64px);
+      padding: clamp(64px, 10vw, 140px) clamp(20px, 6vw, 96px) clamp(48px, 7vw, 96px);
+      min-height: 100dvh;
+      align-items: center;
+      isolation: isolate;
+    }
+    .tz-beam {
+      position: absolute;
+      top: -12%;
+      left: -6%;
+      width: 130%;
+      height: 52%;
+      background: var(--tz-accent);
+      transform: rotate(-7deg);
+      z-index: -1;
+    }
+    .tz-waybill {
+      position: absolute;
+      right: clamp(8px, 2vw, 24px);
+      top: 50%;
+      transform: translateY(-50%) rotate(180deg);
+      writing-mode: vertical-rl;
+      font-family: var(--tz-font-mono);
+      font-size: 12px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--tz-bg);
+    }
+    .tz-kicker {
+      font-family: var(--tz-font-mono);
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--tz-bg);
+      background: var(--tz-ink);
+      display: inline-block;
+      padding: 10px 16px;
+      margin: 0 0 32px;
+    }
+    .tz-headline {
+      font-family: var(--tz-font-display);
+      font-size: clamp(56px, 9.5vw, 148px);
+      line-height: 0.92;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+    .tz-headline .tz-accent-word { color: var(--tz-accent); }
+    .tz-headline .tz-offset-line {
+      display: block;
+      margin-left: clamp(24px, 6vw, 120px);
+    }
+    .tz-sub {
+      max-width: 34ch;
+      font-size: clamp(17px, 1.6vw, 21px);
+      line-height: 1.55;
+      color: var(--tz-ink);
+      margin: 36px 0 0;
+    }
+    .tz-sub strong { color: var(--tz-accent); font-weight: 600; }
+    .tz-actions { margin-top: 40px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+    .tz-cta {
+      font-family: var(--tz-font-mono);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--tz-bg);
+      background: var(--tz-accent);
+      border: 3px solid var(--tz-ink);
+      padding: 18px 34px;
+      text-decoration: none;
+      box-shadow: 6px 6px 0 var(--tz-ink);
+      transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .tz-cta:hover { transform: translate(-2px, -2px); box-shadow: 9px 9px 0 var(--tz-ink); }
+    .tz-secondary {
+      font-family: var(--tz-font-mono);
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      color: var(--tz-ink);
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 6px;
+    }
+    .tz-panel {
+      border: 3px solid var(--tz-ink);
+      background: var(--tz-bg);
+      padding: clamp(24px, 3vw, 40px);
+      box-shadow: 10px 10px 0 var(--tz-ink);
+      align-self: end;
+    }
+    .tz-panel h2 {
+      font-family: var(--tz-font-mono);
+      font-size: 12px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      margin: 0 0 20px;
+      color: var(--tz-muted);
+    }
+    .tz-lane {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px 16px;
+      padding: 14px 0;
+      border-top: 2px solid var(--tz-line);
+      font-size: 16px;
+    }
+    .tz-lane:first-of-type { border-top: none; }
+    .tz-lane .tz-lane-price { font-family: var(--tz-font-mono); font-weight: 700; color: var(--tz-accent); }
+    .tz-lane .tz-lane-meta { grid-column: 1 / -1; font-family: var(--tz-font-mono); font-size: 12px; color: var(--tz-muted); letter-spacing: 0.08em; }
+    .tz-foot {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      border-top: 2px solid var(--tz-line);
+      padding-top: 20px;
+      font-family: var(--tz-font-mono);
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--tz-muted);
+    }
+    .tz-entrance { animation: tz-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    .tz-entrance:nth-child(2) { animation-delay: 0.08s; }
+    @keyframes tz-rise {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 900px) {
+      .tz-hero { grid-template-columns: 1fr; }
+      .tz-waybill { display: none; }
+      .tz-panel { align-self: auto; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .tz-entrance { animation: none; }
+      .tz-cta { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="tz-hero">
+    <span class="tz-beam" aria-hidden="true"></span>
+    <p class="tz-waybill" aria-hidden="true">Northbeam Freight · Waybill № 8041 · Portland ME</p>
+    <div>
+      <p class="tz-kicker tz-entrance" th:text="${hero.kicker}">Licensed brokerage · Est. 2019</p>
+      <h1 class="tz-headline tz-entrance">
+        <span th:text="${hero.line1}">Your trucks</span><br>
+        <span class="tz-offset-line"><span class="tz-accent-word" th:text="${hero.line2}">move money.</span></span>
+      </h1>
+      <p class="tz-sub tz-entrance" th:text="${hero.sub}">We fill empty return lanes for regional carriers. <strong>$2.10/mile average</strong> on dry van last quarter — paid on 21-day terms, no factoring required.</p>
+      <div class="tz-actions tz-entrance">
+        <a class="tz-cta" th:href="@{/quote}" href="/quote" th:text="${hero.cta}">Post your lane</a>
+        <a class="tz-secondary" th:href="@{/rates}" href="/rates" th:text="${hero.secondary}">See last week's rates</a>
+      </div>
+    </div>
+    <aside class="tz-panel tz-entrance" aria-label="This week's lanes">
+      <h2>This week, open</h2>
+      <div class="tz-lane" th:each="lane : ${hero.lanes}">
+        <span th:text="${lane.route}">Portland ME → Albany NY</span>
+        <span class="tz-lane-price" th:text="${lane.price}">$1,240</span>
+        <span class="tz-lane-meta" th:text="${lane.meta}">Dry van · 44,000 lb · loads Thu</span>
+      </div>
+      <div class="tz-lane" th:if="${#lists.isEmpty(hero.lanes)}">
+        <span>Boston MA → Portland ME</span>
+        <span class="tz-lane-price">$610</span>
+        <span class="tz-lane-meta">Reefer · 38,000 lb · loads Fri</span>
+      </div>
+      <div class="tz-lane" th:if="${#lists.isEmpty(hero.lanes)}">
+        <span>Portland ME → Hartford CT</span>
+        <span class="tz-lane-price">$890</span>
+        <span class="tz-lane-meta">Dry van · 42,000 lb · loads Mon</span>
+      </div>
+    </aside>
+    <footer class="tz-foot">
+      <span>MC-1048821 · DOT-3290041</span>
+      <span th:text="${hero.footNote}">Rates update every Monday, 6am ET</span>
+    </footer>
+  </main>
+</body>
+</html>
