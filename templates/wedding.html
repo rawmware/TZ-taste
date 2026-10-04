@@ -1,0 +1,400 @@
+<!--tz-meta {"id":"wedding","title":"Maison Vow — Parisian Wedding Planner","category":"Template","file":"templates/wedding.html","tags":["wedding","events","planner"],"description":"Parisian-chic wedding planner with invitation-style layout and letterpress detail.","dnas":["parisian-chic"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maison Vow — Weddings planned like love letters</title>
+<meta name="description" content="Maison Vow plans intimate Parisian-chic weddings in the city and the countryside. Full planning, design, and day-of coordination.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Outfit:wght@400;500;600&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+/* DNA: parisian-chic — cream stock, ink black, rouge accent; letterpress manners */
+:root{
+  --tz-bg:#faf7f0; --tz-surface:#f1e9d8; --tz-ink:#201b14; --tz-muted:#6e6355;
+  --tz-accent:#a83a54; --tz-line:rgba(32,27,20,.2);
+  --tz-display:'Cormorant Garamond',serif; --tz-body:'Outfit',sans-serif; --tz-mono:'Space Mono',monospace;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:var(--tz-body);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
+::selection{background:var(--tz-accent);color:#fff}
+a{color:inherit}
+.tz-wrap{max-width:1140px;margin:0 auto;padding:0 32px}
+.tz-mono{font-family:var(--tz-mono)}
+/* hairline frame around whole page */
+.tz-frame{border:1px solid var(--tz-line);margin:18px;position:relative}
+.tz-nav{display:flex;justify-content:space-between;align-items:center;padding:26px 40px;border-bottom:1px solid var(--tz-line)}
+.tz-brand{font-family:var(--tz-display);font-size:26px;font-weight:600;text-decoration:none;letter-spacing:.02em}
+.tz-brand i{font-style:italic;color:var(--tz-accent)}
+.tz-navlinks{display:flex;gap:32px;font-family:var(--tz-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.tz-navlinks a{text-decoration:none;color:var(--tz-muted)}
+.tz-navlinks a:hover{color:var(--tz-accent)}
+.tz-btn{display:inline-block;font-family:var(--tz-mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;border:1px solid var(--tz-ink);color:var(--tz-ink);padding:16px 32px;background:transparent;transition:all .3s var(--tz-ease);cursor:pointer}
+.tz-btn:hover{background:var(--tz-accent);border-color:var(--tz-accent);color:#fff;transform:translateY(-2px)}
+.tz-btn--solid{background:var(--tz-ink);color:var(--tz-bg)}
+/* hero: invitation composition */
+.tz-hero{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;border-bottom:1px solid var(--tz-line)}
+.tz-hero-copy{padding:96px 64px 96px 48px;display:flex;flex-direction:column;justify-content:center}
+.tz-kicker{font-family:var(--tz-mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--tz-accent);margin-bottom:28px;display:block}
+.tz-hero h1{font-family:var(--tz-display);font-weight:500;font-size:clamp(48px,5.6vw,84px);line-height:1.04;letter-spacing:-.01em}
+.tz-hero h1 i{font-style:italic;color:var(--tz-accent)}
+.tz-hero p{color:var(--tz-muted);font-size:18px;max-width:44ch;margin:26px 0 38px}
+.tz-hero-card{background:var(--tz-surface);border-left:1px solid var(--tz-line);padding:96px 64px;display:flex;align-items:center;justify-content:center}
+.tz-invite{background:var(--tz-bg);border:1px solid var(--tz-line);padding:56px 48px;max-width:380px;text-align:center;box-shadow:8px 8px 0 var(--tz-surface);transform:rotate(1.2deg)}
+.tz-invite .tz-script{font-family:var(--tz-display);font-style:italic;font-size:34px;margin-bottom:6px}
+.tz-invite hr{border:none;border-top:1px solid var(--tz-line);margin:22px auto;width:60px}
+.tz-invite p{font-size:14px;color:var(--tz-muted);margin-bottom:6px}
+.tz-invite .tz-names{font-family:var(--tz-display);font-size:24px;font-weight:600}
+.tz-invite .tz-rsvp{font-family:var(--tz-mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--tz-accent);margin-top:20px;display:block}
+/* sections */
+.tz-section{padding:104px 0}
+.tz-sec-head{text-align:left;margin-bottom:64px;max-width:720px}
+.tz-sec-head h2{font-family:var(--tz-display);font-weight:500;font-size:clamp(38px,4.6vw,62px);line-height:1.05;letter-spacing:-.01em}
+.tz-sec-head h2 i{font-style:italic;color:var(--tz-accent)}
+.tz-sec-head p{color:var(--tz-muted);font-size:18px;margin-top:18px}
+/* services: numbered rows */
+.tz-service{display:grid;grid-template-columns:90px 1fr auto;gap:32px;align-items:baseline;padding:36px 0;border-top:1px solid var(--tz-line);text-decoration:none;transition:padding .3s var(--tz-ease)}
+.tz-service:last-child{border-bottom:1px solid var(--tz-line)}
+.tz-service:hover{padding-left:16px}
+.tz-service .tz-n{font-family:var(--tz-display);font-style:italic;font-size:30px;color:var(--tz-accent)}
+.tz-service h3{font-family:var(--tz-display);font-size:30px;font-weight:600;margin-bottom:8px}
+.tz-service p{color:var(--tz-muted);max-width:58ch}
+.tz-service .tz-from{font-family:var(--tz-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--tz-muted);white-space:nowrap;text-align:right}
+.tz-service .tz-from b{display:block;font-size:18px;color:var(--tz-ink);margin-bottom:4px}
+/* journal: staggered editorial */
+.tz-journal{display:grid;grid-template-columns:1fr 1fr 1fr;gap:36px;align-items:start}
+.tz-jentry{text-decoration:none;display:block}
+.tz-jentry:nth-child(2){margin-top:72px}
+.tz-jentry:nth-child(3){margin-top:24px}
+.tz-jentry .tz-thumb{aspect-ratio:4/5;background:var(--tz-surface);border:1px solid var(--tz-line);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.tz-jentry .tz-thumb span{font-family:var(--tz-display);font-style:italic;font-size:88px;color:var(--tz-accent);opacity:.35}
+.tz-jentry h3{font-family:var(--tz-display);font-size:24px;font-weight:600;margin:20px 0 6px}
+.tz-jentry p{font-size:14px;color:var(--tz-muted)}
+.tz-jentry .tz-place{font-family:var(--tz-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--tz-accent);display:block;margin-top:10px}
+/* process timeline */
+.tz-steps{position:relative;margin-left:12px}
+.tz-step{display:grid;grid-template-columns:120px 1fr;gap:32px;padding:30px 0 30px 40px;border-left:1px solid var(--tz-line);position:relative}
+.tz-step::before{content:"";position:absolute;left:-6px;top:40px;width:11px;height:11px;border-radius:50%;background:var(--tz-bg);border:2px solid var(--tz-accent)}
+.tz-step .tz-when{font-family:var(--tz-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tz-accent);padding-top:6px}
+.tz-step h3{font-family:var(--tz-display);font-size:28px;font-weight:600;margin-bottom:8px}
+.tz-step p{color:var(--tz-muted);max-width:56ch}
+/* collections: ledger pricing */
+.tz-table{width:100%;border-collapse:collapse}
+.tz-table th{font-family:var(--tz-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tz-muted);text-align:left;padding:16px;border-bottom:2px solid var(--tz-ink)}
+.tz-table td{padding:26px 16px;border-bottom:1px solid var(--tz-line);vertical-align:top}
+.tz-table td.tz-col{font-family:var(--tz-display);font-size:26px;font-weight:600;white-space:nowrap}
+.tz-table td p{color:var(--tz-muted);font-size:15px;max-width:52ch}
+.tz-table td.tz-cost{font-family:var(--tz-display);font-size:30px;font-style:italic;white-space:nowrap;text-align:right}
+.tz-table td.tz-cost small{display:block;font-family:var(--tz-mono);font-style:normal;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--tz-muted);margin-top:6px}
+.tz-table tr:hover td{background:rgba(168,58,84,.04)}
+/* letters: testimonials as correspondence */
+.tz-letters{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.tz-letter{background:var(--tz-surface);border:1px solid var(--tz-line);padding:44px;position:relative}
+.tz-letter:nth-child(2){transform:rotate(-.8deg);margin-top:40px}
+.tz-letter p{font-family:var(--tz-display);font-size:21px;font-style:italic;line-height:1.5;margin-bottom:24px}
+.tz-letter footer{font-family:var(--tz-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tz-muted)}
+/* cta */
+.tz-cta{border-top:1px solid var(--tz-line);padding:104px 0;text-align:center}
+.tz-cta h2{font-family:var(--tz-display);font-weight:500;font-size:clamp(40px,5vw,70px);line-height:1.05}
+.tz-cta h2 i{font-style:italic;color:var(--tz-accent)}
+.tz-cta p{color:var(--tz-muted);font-size:18px;margin:22px auto 36px;max-width:52ch}
+.tz-footer{border-top:1px solid var(--tz-line);padding:56px 40px 32px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;font-family:var(--tz-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-footer a{text-decoration:none;color:var(--tz-muted);margin-left:24px}
+.tz-footer a:hover{color:var(--tz-accent)}
+.tz-reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--tz-ease),transform .7s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}.tz-reveal{opacity:1;transform:none;transition:none}*{transition:none !important}
+  .tz-invite{transform:none}.tz-letter:nth-child(2){transform:none}
+}
+@media(max-width:900px){
+  .tz-hero{grid-template-columns:1fr}
+  .tz-hero-copy{padding:64px 32px}
+  .tz-hero-card{border-left:none;border-top:1px solid var(--tz-line);padding:64px 32px}
+  .tz-navlinks{display:none}
+  .tz-journal{grid-template-columns:1fr}
+  .tz-jentry:nth-child(2),.tz-jentry:nth-child(3){margin-top:0}
+  .tz-letters{grid-template-columns:1fr}
+  .tz-service{grid-template-columns:56px 1fr}
+  .tz-service .tz-from{grid-column:2;text-align:left;margin-top:8px}
+  .tz-table td.tz-cost{text-align:left}
+}
+@media(max-width:600px){
+  .tz-frame{margin:8px}
+  .tz-section{padding:72px 0}
+  .tz-step{grid-template-columns:1fr;gap:8px;padding-left:28px}
+}
+</style>
+</head>
+<body>
+<!-- DNA: parisian-chic · design read: a wedding planner's page composed like a letterpress invitation suite — cream stock, rouge ink, hairline frames · dials V5/M3/D3 · one weird thing: the whole page sits inside a hairline frame and testimonials arrive as rotated correspondence -->
+<div class="tz-frame">
+<header>
+  <nav class="tz-nav" aria-label="Main">
+    <a class="tz-brand" href="#">Maison <i>Vow</i></a>
+    <div class="tz-navlinks">
+      <a href="#services">Services</a><a href="#journal">Journal</a><a href="#collections">Collections</a><a href="#letters">Letters</a>
+    </div>
+    <a class="tz-btn" href="#contact">Check availability</a>
+  </nav>
+</header>
+
+<main>
+  <section class="tz-hero">
+    <div class="tz-hero-copy">
+      <span class="tz-kicker">Paris · Provence · The Hudson Valley</span>
+      <h1>Weddings planned like <i>love letters</i> — sealed, stamped, unforgettable.</h1>
+      <p>Maison Vow plans intimate weddings of 20 to 120 guests: full planning, floral direction, and day-of orchestration with a distinctly Parisian eye. We take twelve weddings a year. Yours should feel like the thirteenth.</p>
+      <div><a class="tz-btn tz-btn--solid" href="#collections">View the collections</a></div>
+    </div>
+    <div class="tz-hero-card">
+      <div class="tz-invite">
+        <div class="tz-script">together with their families</div>
+        <div class="tz-names">Camille &amp; Théo</div>
+        <hr>
+        <p>request the honour of your presence</p>
+        <p>Saturday, the nineteenth of June</p>
+        <p>half past five o'clock · Château de Valmer</p>
+        <span class="tz-rsvp">Répondez s'il vous plaît</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="services">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">What we do</span>
+        <h2>Three ways to <i>begin</i></h2>
+        <p>Every engagement starts with a long lunch — ours or yours — and ends with a wedding that feels inevitable.</p>
+      </div>
+      <a class="tz-service tz-reveal" href="#contact">
+        <span class="tz-n">I.</span>
+        <div><h3>Full Planning</h3><p>From the first venue shortlist to the last dance: budget architecture, vendor curation, design direction, rehearsal, and a wedding day run like a Swiss train.</p></div>
+        <div class="tz-from"><b>from $14,500</b>12–18 months out</div>
+      </a>
+      <a class="tz-service tz-reveal" href="#contact">
+        <span class="tz-n">II.</span>
+        <div><h3>Design &amp; Direction</h3><p>You've booked the venue and the big vendors; we bring the eye. Palette, florals, tablescape, stationery suite, and a cohesive visual story across the whole weekend.</p></div>
+        <div class="tz-from"><b>from $7,800</b>6–9 months out</div>
+      </a>
+      <a class="tz-service tz-reveal" href="#contact">
+        <span class="tz-n">III.</span>
+        <div><h3>Month-Of Orchestration</h3><p>For couples who planned it themselves and want to actually enjoy it. We take the reins thirty days out: confirm everything, build the timeline, run the day.</p></div>
+        <div class="tz-from"><b>from $3,900</b>30 days out</div>
+      </a>
+    </div>
+  </section>
+
+  <section class="tz-section" id="journal" style="background:var(--tz-surface);border-top:1px solid var(--tz-line);border-bottom:1px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">The journal</span>
+        <h2>Recent <i>celebrations</i></h2>
+        <p>A few of the twelve we take each year.</p>
+      </div>
+      <div class="tz-journal">
+        <a class="tz-jentry tz-reveal" href="#contact">
+          <div class="tz-thumb" aria-hidden="true"><span>C&amp;T</span></div>
+          <span class="tz-place">Château de Valmer · June</span>
+          <h3>A garden ceremony in the rain that never came</h3>
+          <p>86 guests · peonies, string quartet, one very relieved forecast</p>
+        </a>
+        <a class="tz-jentry tz-reveal" href="#contact">
+          <div class="tz-thumb" aria-hidden="true"><span>M&amp;J</span></div>
+          <span class="tz-place">Hudson, NY · October</span>
+          <h3>An orchard dinner for forty, lit entirely by candlelight</h3>
+          <p>40 guests · long tables, natural wine, dancing in the barn</p>
+        </a>
+        <a class="tz-jentry tz-reveal" href="#contact">
+          <div class="tz-thumb" aria-hidden="true"><span>A&amp;S</span></div>
+          <span class="tz-place">Paris 6e · December</span>
+          <h3>Twenty people, a private salon, and a jazz trio</h3>
+          <p>20 guests · winter whites, oysters at midnight</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="process">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">How it unfolds</span>
+        <h2>From <i>oui</i> to <i>I do</i></h2>
+      </div>
+      <div class="tz-steps">
+        <div class="tz-step tz-reveal"><div class="tz-when">Month 12+</div><div><h3>The long lunch</h3><p>We meet, we talk about everything except weddings first, then weddings. If we're a fit, we sign and the venue search begins that week.</p></div></div>
+        <div class="tz-step tz-reveal"><div class="tz-when">Month 9</div><div><h3>The design story</h3><p>One document: palette, florals, light, music, menu. You approve a world, not a mood board, and every vendor works from it.</p></div></div>
+        <div class="tz-step tz-reveal"><div class="tz-when">Month 3</div><div><h3>The quiet months</h3><p>Vendors confirmed, tastings done, timeline drafted. You hear from us exactly as often as you want to — never more.</p></div></div>
+        <div class="tz-step tz-reveal"><div class="tz-when">The week</div><div><h3>The handover</h3><p>We arrive before anyone, leave after everyone, and carry the one bag with the emergency kit, the vows, and your grandmother's ring box.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="collections" style="border-top:1px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">Collections</span>
+        <h2>Honest <i>numbers</i></h2>
+        <p>Fixed collections, no hourly fog. Florals and rentals are always quoted separately because gardens have opinions.</p>
+      </div>
+      <table class="tz-table">
+        <thead><tr><th>Collection</th><th>Includes</th><th style="text-align:right">Investment</th></tr></thead>
+        <tbody>
+          <tr><td class="tz-col">L'Essentiel</td><td><p>Month-of orchestration: vendor confirmation, full timeline, rehearsal direction, and two coordinators on the day.</p></td><td class="tz-cost">$3,900<small>up to 60 guests</small></td></tr>
+          <tr><td class="tz-col">La Fête</td><td><p>Design &amp; direction plus partial planning: the full design story, vendor curation for five key categories, and day-of orchestration.</p></td><td class="tz-cost">$8,900<small>up to 120 guests</small></td></tr>
+          <tr><td class="tz-col">Le Grand</td><td><p>Full planning from engagement to send-off: unlimited guidance, budget management, all vendor curation, design, and a three-day weekend team.</p></td><td class="tz-cost">$16,500<small>multi-day events</small></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="tz-section" id="letters" style="background:var(--tz-surface);border-top:1px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">Letters</span>
+        <h2>What couples <i>write back</i></h2>
+      </div>
+      <div class="tz-letters">
+        <blockquote class="tz-letter tz-reveal">
+          <p>"Our guests are still talking about the dinner. I am still talking about the fact that I didn't worry about a single thing — not once, all day."</p>
+          <footer>Camille &amp; Théo · Château de Valmer</footer>
+        </blockquote>
+        <blockquote class="tz-letter tz-reveal">
+          <p>"Hiring Maison Vow was the only decision of the whole wedding we never second-guessed. Worth every centime, twice over."</p>
+          <footer>Maya &amp; Jordan · Hudson, New York</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+<style>
+.tz-faqw{max-width:780px;margin:0 auto}
+.tz-faqw details{border-bottom:1px solid var(--tz-line)}
+.tz-faqw summary{font-family:var(--tz-display);font-size:22px;font-weight:600;padding:26px 0;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;align-items:center}
+.tz-faqw summary::-webkit-details-marker{display:none}
+.tz-faqw summary::after{content:"+";font-family:var(--tz-mono);color:var(--tz-accent);font-size:20px}
+.tz-faqw details[open] summary::after{content:"–"}
+.tz-faqw details p{color:var(--tz-muted);padding:0 0 28px;max-width:62ch}
+.tz-vendors{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--tz-line);margin-top:56px}
+.tz-vendor{padding:36px 32px;border-right:1px solid var(--tz-line);text-decoration:none;display:block;transition:background .25s}
+.tz-vendor:last-child{border-right:none}
+.tz-vendor:hover{background:var(--tz-surface)}
+.tz-vendor .tz-cat{font-family:var(--tz-mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--tz-accent);display:block;margin-bottom:12px}
+.tz-vendor h3{font-family:var(--tz-display);font-size:22px;font-weight:600;margin-bottom:8px}
+.tz-vendor p{font-size:14px;color:var(--tz-muted)}
+@media(max-width:900px){.tz-vendors{grid-template-columns:1fr}.tz-vendor{border-right:none;border-bottom:1px solid var(--tz-line)}.tz-vendor:last-child{border-bottom:none}}
+</style>
+<style>
+.tz-count{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--tz-line);border-bottom:1px solid var(--tz-line)}
+.tz-c{padding:48px 32px;text-align:center;border-right:1px solid var(--tz-line)}
+.tz-c:last-child{border-right:none}
+.tz-c b{display:block;font-family:var(--tz-display);font-size:52px;font-weight:600;color:var(--tz-accent)}
+.tz-c span{font-family:var(--tz-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-dates{max-width:860px;margin:64px auto 0;border:1px solid var(--tz-line);background:var(--tz-surface);padding:56px}
+.tz-dates h3{font-family:var(--tz-display);font-size:30px;font-weight:600;margin-bottom:14px;text-align:center}
+.tz-dates p{color:var(--tz-muted);text-align:center;font-size:16px;max-width:56ch;margin:0 auto 28px}
+.tz-dategrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.tz-date{border:1px solid var(--tz-line);padding:18px 12px;text-align:center;font-family:var(--tz-mono);font-size:12px;background:var(--tz-bg)}
+.tz-date b{display:block;font-size:15px;margin-bottom:4px}
+.tz-date.tz-taken{opacity:.4;text-decoration:line-through}
+.tz-date.tz-open{border-color:var(--tz-accent);color:var(--tz-accent);font-weight:700}
+@media(max-width:900px){.tz-count{grid-template-columns:1fr 1fr}.tz-c:nth-child(2){border-right:none}.tz-c{border-bottom:1px solid var(--tz-line)}.tz-dategrid{grid-template-columns:1fr 1fr}}
+</style>
+  <section id="numbers" style="border-top:1px solid var(--tz-line)">
+    <div class="tz-count tz-reveal">
+      <div class="tz-c"><b>148</b><span>Weddings planned</span></div>
+      <div class="tz-c"><b>12</b><span>Per year, never more</span></div>
+      <div class="tz-c"><b>3</b><span>Countries, one standard</span></div>
+      <div class="tz-c"><b>0</b><span>Rain plans failed</span></div>
+    </div>
+    <p class="tz-mono tz-reveal" style="font-size:11px;letter-spacing:.14em;color:var(--tz-muted);text-align:center;margin-top:24px">148 WEDDINGS · 0 NO-SHOW VENDORS · 1 COUPLE MARRIED DURING A POWER CUT (CANDLES ONLY — STUNNING)</p>
+    <p class="tz-mono tz-reveal" style="font-size:11px;letter-spacing:.14em;color:var(--tz-muted);text-align:center;margin-top:10px">FEATURED IN VOGUE WEDDINGS, JUNEBUG &amp; STYLE ME PRETTY — 2019, 2021, 2023, 2025</p>
+    <div class="tz-wrap">
+      <div class="tz-dates tz-reveal">
+        <h3>2027 availability</h3>
+        <p>We take twelve weddings a year so every one gets our full attention. Struck dates are spoken for — the rest are yours to claim.</p>
+        <div class="tz-dategrid">
+          <div class="tz-date tz-taken"><b>May 22</b>booked</div>
+          <div class="tz-date tz-open"><b>Jun 19</b>available</div>
+          <div class="tz-date tz-taken"><b>Jul 10</b>booked</div>
+          <div class="tz-date tz-open"><b>Sep 18</b>available</div>
+          <div class="tz-date tz-open"><b>Oct 02</b>available</div>
+          <div class="tz-date tz-taken"><b>Oct 16</b>booked</div>
+          <div class="tz-date tz-open"><b>Nov 06</b>available</div>
+          <div class="tz-date tz-taken"><b>Dec 11</b>booked</div>
+        </div>
+        <p style="margin-top:28px"><a class="tz-btn" href="#contact">Claim a date</a></p>
+        <p class="tz-mono" style="font-size:11px;letter-spacing:.1em;color:var(--tz-muted);margin-top:20px;text-align:center">2028 DATES RELEASE EACH JANUARY · PAST COUPLES GET FIRST REFUSAL ON ANNIVERSARY SHOOTS</p>
+      </div>
+    </div>
+  </section>
+
+<style>
+.tz-seenin{border-top:1px solid var(--tz-line);border-bottom:1px solid var(--tz-line);padding:40px 0;text-align:center}
+.tz-seenin span{font-family:var(--tz-mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--tz-muted);display:block;margin-bottom:20px}
+.tz-seenin .tz-names{font-family:var(--tz-display);font-size:clamp(20px,2.6vw,30px);font-weight:600;display:flex;justify-content:center;gap:48px;flex-wrap:wrap}
+.tz-seenin .tz-names i{font-style:italic;color:var(--tz-accent)}
+.tz-vendorquote{max-width:720px;margin:64px auto 0;text-align:center}
+.tz-vendorquote p{font-family:var(--tz-display);font-size:26px;font-style:italic;line-height:1.5;margin-bottom:18px}
+.tz-vendorquote footer{font-family:var(--tz-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--tz-muted)}
+</style>
+  <section class="tz-seenin tz-reveal">
+    <div class="tz-wrap">
+      <span>As featured in</span>
+      <div class="tz-names"><span>Vogue <i>Weddings</i></span><span>Junebug</span><span><i>Château</i> Magazine</span><span>Style Me Pretty</span></div>
+      <blockquote class="tz-vendorquote">
+        <p>"The rare planner photographers fight to work with — everything is where it should be, and the light is always considered."</p>
+        <footer>Julien Moreau · Photographer, 14 weddings together</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="tz-section" id="faq" style="border-top:1px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-sec-head" style="text-align:center;margin-left:auto;margin-right:auto">
+        <span class="tz-kicker">Before you ask</span>
+        <h2>Questions, <i>answered</i></h2>
+      </div>
+      <div class="tz-faqw tz-reveal">
+        <details><summary>Do you travel for weddings?</summary><p>Constantly. Paris, Provence, Tuscany, the Hudson Valley — about half our weddings are destination. Travel is billed at cost, planned transparently, and we've never missed a flight that mattered.</p></details>
+        <details><summary>Can we keep our own vendors?</summary><p>Of course. We'll be honest about which ones we'd keep and which ones we'd gently replace, and why. No commission, no kickbacks — our vendor list is earned, not bought.</p></details>
+        <details><summary>What if it rains?</summary><p>Every outdoor wedding gets a real Plan B, designed with the same care as Plan A — not a tent apology. In twelve years we've executed eleven rain plans. Ten couples say they preferred the backup.</p></details>
+        <details><summary>How far ahead should we book?</summary><p>Full planning: 12–18 months. Design: 6–9 months. Month-of: the moment you realize you want to enjoy your own wedding — usually about 90 days out, sometimes 30.</p></details>
+      </div>
+      <div class="tz-vendors tz-reveal">
+        <a class="tz-vendor" href="#contact"><span class="tz-cat">Florals · Paris</span><h3>Atelier des Fleurs</h3><p>Our first call for anything with petals. Wild, architectural, never a tight rose dome.</p></a>
+        <a class="tz-vendor" href="#contact"><span class="tz-cat">Photography · Worldwide</span><h3>Julien Moreau</h3><p>Documentary eye, fashion training. The galleries read like films.</p></a>
+        <a class="tz-vendor" href="#contact"><span class="tz-cat">Music · Paris &amp; NY</span><h3>The Velvet Trio</h3><p>Strings for the ceremony, a DJ set for the dancing. One booking, both moods.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-cta" id="contact">
+    <div class="tz-wrap">
+      <span class="tz-kicker">2027 &amp; 2028 calendars now open</span>
+      <h2>Shall we plan <i>yours?</i></h2>
+      <p>Tell us your date, your city, and the size of the dream. We reply within two days — personally, not by automation.</p>
+      <a class="tz-btn tz-btn--solid" href="mailto:bonjour@maisonvow.com">Write to Maison Vow</a>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <span>© 2026 Maison Vow · Paris — New York</span>
+  <span><a href="#">Instagram</a><a href="#">Pinterest</a><a href="#">Press</a></span>
+</footer>
+</div>
+<script>
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els=document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('tz-in')});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(en,i){if(en.isIntersecting){setTimeout(function(){en.target.classList.add('tz-in')},(i%3)*80);io.unobserve(en.target);}})},{threshold:.1});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
