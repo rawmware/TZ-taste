@@ -1,0 +1,6 @@
+<!--tz-meta {"id":"wallpaper-aperitivo-italian","title":"Aperitivo Italian wallpaper","category":"Wallpaper","file":"wallpapers/aperitivo-italian.svg","tags":["wallpaper","svg","aperitivo-italian"],"description":"Generative SVG wallpaper in the Aperitivo Italian DNA.","dnas":["aperitivo-italian"]} -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+<rect width="1600" height="900" fill="#f7efdc"/>
+<path d="M0 120 Q 400 50 800 120 T 1600 120" fill="none" stroke="#e3d3b8" stroke-width="5" opacity="0.7"/><path d="M0 230 Q 400 160 800 230 T 1600 230" fill="none" stroke="#c93a2e" stroke-width="5" opacity="0.7"/><path d="M0 340 Q 400 270 800 340 T 1600 340" fill="none" stroke="#e3d3b8" stroke-width="5" opacity="0.7"/><path d="M0 450 Q 400 380 800 450 T 1600 450" fill="none" stroke="#c93a2e" stroke-width="5" opacity="0.7"/><path d="M0 560 Q 400 490 800 560 T 1600 560" fill="none" stroke="#e3d3b8" stroke-width="5" opacity="0.7"/><path d="M0 670 Q 400 600 800 670 T 1600 670" fill="none" stroke="#c93a2e" stroke-width="5" opacity="0.7"/><path d="M0 780 Q 400 710 800 780 T 1600 780" fill="none" stroke="#e3d3b8" stroke-width="5" opacity="0.7"/>
+<text x="80" y="820" font-family="monospace" font-size="34" fill="#a08872" opacity="0.8">TZ-taste — Aperitivo Italian</text>
+</svg>
