@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-alpine-ledger",
+  "title": "Alpine Ledger design tokens",
+  "category": "Tokens",
+  "file": "tokens/alpine-ledger.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "alpine-ledger"
+  ],
+  "description": "W3C-format design tokens for the Alpine Ledger style DNA.",
+  "dnas": [
+   "alpine-ledger"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#f0e6d2",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#2b2118",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#b33a2b",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#7a6c58",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#c9b98f",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Special Elite",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Karla",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "IBM Plex Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "alpine-ledger",
+  "name": "Alpine Ledger",
+  "vibe": "A mountaineering logbook: kraft paper, rubber stamps, rope and knot motifs, stamped entries."
+ }
+}
