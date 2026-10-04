@@ -29,8 +29,14 @@ That is the whole product. Everything in this repo exists to make that sentence 
 | `styles/` | 48 style DNAs — complete visual languages with tokens, type pairings, and rules. Machine-readable via `styles/index.json`. |
 | `patterns/` | 164 copy-paste HTML/CSS section patterns (heroes, navs, bento grids, pricing, backgrounds…). Each with a live preview on the demo site. `patterns/index.json` for machines. |
 | `three-d/` | 30 original Three.js ambient 3D environments — aurora domes, voxel cities, coral reefs. Standalone files, zero external assets. `three-d/index.json` for machines. |
+| `generative/` | 40 interactive generative-art pieces (flow fields, boids, reaction-diffusion…). Vanilla canvas, zero deps. |
 | `templates/` | 25 complete landing pages, each committed to one style DNA. `templates/index.json` for machines. |
 | `showcase/` | 48 live demo pages — one per style DNA. `showcase/index.json` for machines. |
+| `react/` `vue/` `svelte/` `astro/` | The best patterns ported to React (TSX), Vue SFCs, Svelte, and Astro. Zero extra deps. |
+| `python/` | Stdlib-only page builders, including a DNA-to-page static site generator. |
+| `tokens/` `tailwind/` | All 48 DNAs as W3C design tokens and Tailwind presets. Machines welcome. |
+| `emails/` | 12 table-based HTML email templates — inline CSS, Outlook-safe. |
+| `app-ui/` | 20 app-interface patterns: kanban, data tables, command palettes, dashboards. |
 | `prompts/` | 36 ready-made build prompts for landing pages, dashboards, portfolios, mobile screens, 3D scenes, and redesign audits. Free alternative to paid prompt libraries. |
 | `scripts/` | 15 zero-dependency CLI tools: slop-auditor, DNA picker, token exporter, contrast checker, page composer, scaffolders, and more. |
 | `sources/` | Curated index of the best free design resources on the internet — skills, component libraries, motion tools, type foundries, 3D playgrounds — with licenses verified. |
