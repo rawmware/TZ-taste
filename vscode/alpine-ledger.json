@@ -1,0 +1,95 @@
+{
+ "_tzmeta": {
+  "id": "vscode-alpine-ledger",
+  "title": "Alpine Ledger VS Code theme",
+  "category": "VS Code",
+  "file": "vscode/alpine-ledger.json",
+  "tags": [
+   "vscode",
+   "theme",
+   "alpine-ledger"
+  ],
+  "description": "VS Code color theme from the Alpine Ledger DNA tokens.",
+  "dnas": [
+   "alpine-ledger"
+  ]
+ },
+ "name": "TZ Alpine Ledger",
+ "type": "light",
+ "colors": {
+  "editor.background": "#f0e6d2",
+  "editor.foreground": "#2b2118",
+  "editorLineNumber.foreground": "#7a6c58",
+  "editorCursor.foreground": "#b33a2b",
+  "activityBar.background": "#f0e6d2",
+  "activityBar.foreground": "#2b2118",
+  "sideBar.background": "#f0e6d2",
+  "statusBar.background": "#b33a2b",
+  "statusBar.foreground": "#f0e6d2",
+  "tab.activeBackground": "#f0e6d2",
+  "tab.inactiveBackground": "#f0e6d2",
+  "editorGroupHeader.tabsBackground": "#f0e6d2",
+  "terminal.background": "#f0e6d2",
+  "terminal.foreground": "#2b2118",
+  "panel.background": "#f0e6d2",
+  "editorWidget.background": "#f0e6d2",
+  "pickerGroup.foreground": "#b33a2b",
+  "progressBar.background": "#b33a2b",
+  "focusBorder": "#c9b98f"
+ },
+ "tokenColors": [
+  {
+   "scope": [
+    "comment"
+   ],
+   "settings": {
+    "foreground": "#7a6c58",
+    "fontStyle": "italic"
+   }
+  },
+  {
+   "scope": [
+    "keyword",
+    "storage"
+   ],
+   "settings": {
+    "foreground": "#b33a2b"
+   }
+  },
+  {
+   "scope": [
+    "string"
+   ],
+   "settings": {
+    "foreground": "#2b2118"
+   }
+  },
+  {
+   "scope": [
+    "variable",
+    "identifier"
+   ],
+   "settings": {
+    "foreground": "#2b2118"
+   }
+  },
+  {
+   "scope": [
+    "entity.name.function"
+   ],
+   "settings": {
+    "foreground": "#b33a2b",
+    "fontStyle": "bold"
+   }
+  },
+  {
+   "scope": [
+    "entity.name.type",
+    "support.type"
+   ],
+   "settings": {
+    "foreground": "#7a6c58"
+   }
+  }
+ ]
+}
