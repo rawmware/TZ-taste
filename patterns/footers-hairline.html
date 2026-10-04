@@ -1,0 +1,41 @@
+<!--tz-meta {"id":"footers-hairline","title":"Hairline footer","category":"Footer","file":"patterns/footers-hairline.html","tags":["minimal","single-line"],"description":"One hairline, three quiet links, and an honest colophon note. Nothing else.","dnas":["editorial-serif"]} -->
+<footer class="tz-hairfoot">
+  <div class="tz-hairfoot-row">
+    <span class="tz-hairfoot-mark" aria-hidden="true"></span>
+    <span class="tz-hairfoot-word">Fieldnotes</span>
+    <span class="tz-hairfoot-links"><a href="#">Index</a><a href="#">About</a><a href="#">RSS</a></span>
+    <span class="tz-hairfoot-copy">© 2026</span>
+  </div>
+  <p class="tz-hairfoot-colophon">Set in Georgia. No trackers, no popups, no newsletter. Written slowly, on purpose. This page weighs less than the photo it replaced.</p>
+</footer>
+<style>
+.tz-hairfoot{--bg:#f7f3ea;--ink:#26221a;--line:#26221a2e;
+  background:var(--bg);color:var(--ink);padding:40px clamp(24px,6vw,96px) 32px;
+  font-family:Georgia,'Times New Roman',serif}
+.tz-hairfoot ::selection{background:var(--ink);color:var(--bg)}
+.tz-hairfoot-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+  border-top:1px solid var(--ink);padding-top:18px}
+.tz-hairfoot-mark{width:11px;height:11px;background:var(--ink);transform:rotate(45deg);flex:none;
+  transition:transform .5s cubic-bezier(.22,1,.36,1)}
+.tz-hairfoot:hover .tz-hairfoot-mark{transform:rotate(135deg)}
+.tz-hairfoot-word{font-size:22px;letter-spacing:-.02em;font-style:italic}
+.tz-hairfoot-links{display:flex;gap:24px;flex:1;flex-wrap:wrap}
+.tz-hairfoot-links a{color:var(--ink);text-decoration:none;font-size:15px;opacity:.7;
+  padding:4px 0}
+.tz-hairfoot-links a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px}
+.tz-hairfoot-links a:focus-visible{outline:2px solid var(--ink);outline-offset:4px;opacity:1}
+.tz-hairfoot-copy{font-size:13px;opacity:.55;font-family:ui-monospace,Menlo,monospace}
+.tz-hairfoot-colophon{font-size:13.5px;font-style:italic;opacity:.6;margin:16px 0 0;
+  max-width:56ch;line-height:1.65}
+@media (max-width:480px){
+  .tz-hairfoot-row{gap:14px}
+  .tz-hairfoot-copy{flex-basis:100%}
+}
+@media print{
+  .tz-hairfoot{padding:16px 0}
+  .tz-hairfoot-links a{text-decoration:underline}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-hairfoot-mark{transition:none}
+}
+</style>
