@@ -1,0 +1,128 @@
+<!--tz-meta {"id":"showcase-postage-stamp","title":"Postage Stamp showcase","category":"Showcase","file":"showcase/postage-stamp.html","tags":["postage-stamp"],"description":"Live demo page for the Postage Stamp style DNA.","dnas":["postage-stamp"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Postage Stamp — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700&family=Libre+Franklin:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f4f1e6; --tz-surface:#e6dfcc; --tz-ink:#2e2a24; --tz-muted:#8a7f6a;
+  --tz-accent:#b03a2e; --tz-line:#2e2a2426;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Libre Franklin",sans-serif;font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 4vw;border-bottom:1px solid var(--tz-line)}
+.tz-wordmark{font-family:"Bodoni Moda",serif;font-weight:700;font-size:1.2rem;letter-spacing:0.04em}
+.tz-posted{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.14em;color:var(--tz-muted)}
+.tz-posted strong{color:var(--tz-ink);font-weight:500}
+.tz-hero{padding:6rem 4vw 4rem;position:relative;overflow:hidden}
+.tz-postmark{position:absolute;top:1.6rem;right:3vw;width:11rem;height:11rem;pointer-events:none;animation:tz-stamp .5s cubic-bezier(0.22,1,0.36,1) .3s both;transform:rotate(-8deg)}
+@keyframes tz-stamp{from{opacity:0;transform:scale(1.15) rotate(-8deg)}to{opacity:1;transform:scale(1) rotate(-8deg)}}
+.tz-postmark .tz-ring{position:absolute;inset:0;border:3px solid var(--tz-accent);border-radius:50%;opacity:0.9}
+.tz-postmark .tz-ring-inner{position:absolute;inset:1.4rem;border:1.5px solid var(--tz-accent);border-radius:50%;opacity:0.7}
+.tz-postmark .tz-pm-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:"IBM Plex Mono",monospace;font-size:0.68rem;letter-spacing:0.1em;color:var(--tz-accent);line-height:1.5;text-align:center}
+.tz-postmark .tz-bars{position:absolute;left:2.6rem;right:0;top:50%;height:2.6rem;transform:translateY(-50%)}
+.tz-postmark .tz-bars span{display:block;height:4px;background:var(--tz-accent);opacity:0.85;margin:5px 0;border-radius:2px}
+.tz-postmark .tz-bars span:nth-child(2){opacity:0.6}
+.tz-postmark .tz-bars span:nth-child(3){opacity:0.75}
+.tz-eyebrow{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.16em;color:var(--tz-muted);margin-bottom:1.4rem}
+.tz-hero h1{font-family:"Bodoni Moda",serif;font-weight:700;font-size:clamp(3rem,10vw,7.5rem);line-height:1.02;letter-spacing:-0.01em;max-width:12ch}
+.tz-sub{margin-top:1.8rem;font-size:1.05rem;color:var(--tz-muted);max-width:46ch}
+.tz-cta{display:inline-block;margin-top:2.2rem;background:var(--tz-accent);color:var(--tz-bg);font-family:"Bodoni Moda",serif;font-weight:700;font-size:1.15rem;letter-spacing:0.04em;text-decoration:none;padding:0.9rem 2.2rem;position:relative}
+.tz-cta::after{content:"PAID. SENT. DONE.";position:absolute;top:-0.75rem;left:0;font-family:"IBM Plex Mono",monospace;font-size:0.6rem;letter-spacing:0.2em;color:var(--tz-accent)}
+.tz-cta:hover{opacity:0.88}
+.tz-denom{margin:4.5rem 0 0 4vw;background:var(--tz-surface);display:inline-block;position:relative;
+  --tz-perf:radial-gradient(circle at 6px 6px,var(--tz-bg) 5.5px,transparent 6px);
+  -webkit-mask:var(--tz-perf);-webkit-mask-size:16px 16px;mask:var(--tz-perf);mask-size:16px 16px;
+  padding:2.2rem 3rem}
+.tz-denom .tz-num{font-family:"Bodoni Moda",serif;font-weight:700;font-size:clamp(4rem,12vw,8rem);line-height:1;color:var(--tz-ink)}
+.tz-denom .tz-unit{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.18em;color:var(--tz-muted);display:block;margin-top:0.6rem}
+.tz-content{padding:3.5rem 4vw 1rem}
+.tz-content h2{font-family:"Bodoni Moda",serif;font-weight:700;font-size:clamp(1.9rem,5vw,2.9rem);margin-bottom:0.4rem}
+.tz-subhead{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.12em;color:var(--tz-muted);margin-bottom:1.6rem}
+table.tz-mailings{width:100%;border-collapse:collapse;max-width:720px}
+.tz-mailings th{font-family:"IBM Plex Mono",monospace;font-size:0.66rem;font-weight:400;letter-spacing:0.14em;color:var(--tz-muted);text-align:left;padding:0.8rem 0;border-bottom:1px solid var(--tz-ink)}
+.tz-mailings td{font-size:0.95rem;padding:1rem 0;border-bottom:1px solid var(--tz-line)}
+.tz-mailings td.tz-route{font-family:"IBM Plex Mono",monospace;font-size:0.8rem;color:var(--tz-muted)}
+.tz-mailings td.tz-date{font-family:"IBM Plex Mono",monospace;font-size:0.8rem;color:var(--tz-accent)}
+.tz-note{margin:2.8rem 0 0;background:var(--tz-surface);padding:1.8rem;max-width:560px;border-top:3px solid var(--tz-accent)}
+.tz-note p{color:var(--tz-muted)}
+.tz-note strong{color:var(--tz-ink)}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Bodoni Moda",serif;font-weight:700;font-size:1.7rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"IBM Plex Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"IBM Plex Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"IBM Plex Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-hero{padding-top:4rem}
+  .tz-postmark{width:7.5rem;height:7.5rem}
+  .tz-posted{display:none}
+  .tz-denom{margin-left:4vw;padding:1.6rem 2rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Penny Black Post</span>
+  <span class="tz-posted">POSTED FROM <strong>PORTLAND ME</strong> · OCT 3 2026</span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-postmark" aria-hidden="true">
+    <span class="tz-ring"></span>
+    <span class="tz-ring-inner"></span>
+    <span class="tz-bars"><span></span><span></span><span></span></span>
+    <span class="tz-pm-text">PORTLAND ME<br>OCT 3 2026<br>FIRST CLASS</span>
+  </div>
+  <p class="tz-eyebrow">A LETTERPRESS NEWSLETTER · TWO ISSUES A MONTH</p>
+  <h1>Mail still moves at the speed of care.</h1>
+  <p class="tz-sub">Twelve pages of engraved type, one essay worth keeping, and no unsubscribe link because nobody asks for one. Postmarked Tuesday. It'll get there.</p>
+  <a class="tz-cta" href="#">Get the next mailing</a>
+  <div class="tz-denom" aria-hidden="true">
+    <span class="tz-num">25</span>
+    <span class="tz-unit">CENTS · FIRST CLASS</span>
+  </div>
+</section>
+
+<section class="tz-content">
+  <h2>The mailing log</h2>
+  <p class="tz-subhead">EVERY ISSUE NUMBERED · EVERY ISSUE SENT</p>
+  <table class="tz-mailings">
+    <thead><tr><th>NO.</th><th>EDITION</th><th>MAILED</th><th>ROUTE</th></tr></thead>
+    <tbody>
+      <tr><td class="tz-date">061</td><td>On keeping envelopes</td><td class="tz-date">OCT 1</td><td class="tz-route">PDX → ALL SUBSCRIBERS</td></tr>
+      <tr><td class="tz-date">060</td><td>The gum on the back</td><td class="tz-date">SEP 17</td><td class="tz-route">PDX → ALL SUBSCRIBERS</td></tr>
+      <tr><td class="tz-date">059</td><td>Perforations, a defense</td><td class="tz-date">SEP 3</td><td class="tz-route">PDX → ALL SUBSCRIBERS</td></tr>
+      <tr><td class="tz-date">058</td><td>What the postmark knows</td><td class="tz-date">AUG 20</td><td class="tz-route">PDX → ALL SUBSCRIBERS</td></tr>
+    </tbody>
+  </table>
+  <div class="tz-note">
+    <p><strong>Issue 061 went out with 214 subscribers.</strong> Four came back with change-of-address cards. We wrote them all back by hand.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#f4f1e6"></span><span class="tz-name">bg</span><span class="tz-hex">#f4f1e6</span></li>
+    <li><span class="tz-chip" style="background:#e6dfcc"></span><span class="tz-name">surface</span><span class="tz-hex">#e6dfcc</span></li>
+    <li><span class="tz-chip" style="background:#2e2a24"></span><span class="tz-name">ink</span><span class="tz-hex">#2e2a24</span></li>
+    <li><span class="tz-chip" style="background:#8a7f6a"></span><span class="tz-name">muted</span><span class="tz-hex">#8a7f6a</span></li>
+    <li><span class="tz-chip" style="background:#b03a2e"></span><span class="tz-name">accent</span><span class="tz-hex">#b03a2e</span></li>
+    <li><span class="tz-chip" style="background:#2e2a2426"></span><span class="tz-name">line</span><span class="tz-hex">#2e2a2426</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
