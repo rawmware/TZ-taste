@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-museum-placard",
+  "title": "Museum Placard design tokens",
+  "category": "Tokens",
+  "file": "tokens/museum-placard.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "museum-placard"
+  ],
+  "description": "W3C-format design tokens for the Museum Placard style DNA.",
+  "dnas": [
+   "museum-placard"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#f7f4ed",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#1c1a16",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#8c2b1f",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#7a746a",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#d8d3c6",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Cormorant Garamond",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "EB Garamond",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "museum-placard",
+  "name": "Museum Placard",
+  "vibe": "Gallery walls and catalog restraint: a placard, a number, and nothing you don't need."
+ }
+}
