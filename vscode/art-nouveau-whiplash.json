@@ -1,0 +1,95 @@
+{
+ "_tzmeta": {
+  "id": "vscode-art-nouveau-whiplash",
+  "title": "Art Nouveau Whiplash VS Code theme",
+  "category": "VS Code",
+  "file": "vscode/art-nouveau-whiplash.json",
+  "tags": [
+   "vscode",
+   "theme",
+   "art-nouveau-whiplash"
+  ],
+  "description": "VS Code color theme from the Art Nouveau Whiplash DNA tokens.",
+  "dnas": [
+   "art-nouveau-whiplash"
+  ]
+ },
+ "name": "TZ Art Nouveau Whiplash",
+ "type": "dark",
+ "colors": {
+  "editor.background": "#1c1a16",
+  "editor.foreground": "#ece2cd",
+  "editorLineNumber.foreground": "#8a7a5e",
+  "editorCursor.foreground": "#c9a227",
+  "activityBar.background": "#1c1a16",
+  "activityBar.foreground": "#ece2cd",
+  "sideBar.background": "#1c1a16",
+  "statusBar.background": "#c9a227",
+  "statusBar.foreground": "#1c1a16",
+  "tab.activeBackground": "#1c1a16",
+  "tab.inactiveBackground": "#1c1a16",
+  "editorGroupHeader.tabsBackground": "#1c1a16",
+  "terminal.background": "#1c1a16",
+  "terminal.foreground": "#ece2cd",
+  "panel.background": "#1c1a16",
+  "editorWidget.background": "#1c1a16",
+  "pickerGroup.foreground": "#c9a227",
+  "progressBar.background": "#c9a227",
+  "focusBorder": "#3a342a"
+ },
+ "tokenColors": [
+  {
+   "scope": [
+    "comment"
+   ],
+   "settings": {
+    "foreground": "#8a7a5e",
+    "fontStyle": "italic"
+   }
+  },
+  {
+   "scope": [
+    "keyword",
+    "storage"
+   ],
+   "settings": {
+    "foreground": "#c9a227"
+   }
+  },
+  {
+   "scope": [
+    "string"
+   ],
+   "settings": {
+    "foreground": "#ece2cd"
+   }
+  },
+  {
+   "scope": [
+    "variable",
+    "identifier"
+   ],
+   "settings": {
+    "foreground": "#ece2cd"
+   }
+  },
+  {
+   "scope": [
+    "entity.name.function"
+   ],
+   "settings": {
+    "foreground": "#c9a227",
+    "fontStyle": "bold"
+   }
+  },
+  {
+   "scope": [
+    "entity.name.type",
+    "support.type"
+   ],
+   "settings": {
+    "foreground": "#8a7a5e"
+   }
+  }
+ ]
+}
