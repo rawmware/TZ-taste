@@ -1,0 +1,128 @@
+@*tz-meta {"id":"cs-footer","title":"Poster footer (Razor)","category":"C#","file":"csharp/Footer.cshtml","tags":["csharp","razor","footer"],"description":"Footer for Studio Bureau — a swiss-poster sign-off: the wordmark oversized as the image, link columns with hairline rules, and a red contact block. A footer with somewhere to go, not a copyright line.","dnas":["swiss-poster"]} *@
+@page
+@{
+    ViewData["Title"] = "Studio Bureau";
+    var bg = "#f2ede3";
+    var ink = "#141414";
+    var accent = "#e8401f";
+    var muted = "#7a766c";
+    var line = "#141414";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>@ViewData["Title"]</title>
+<style>
+  :root{
+    --bg:@bg; --ink:@ink; --accent:@accent; --muted:@muted; --line:@line;
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);
+    font-family:'Archivo',Helvetica,Arial,sans-serif;line-height:1.5}
+  .tz-above{max-width:1280px;margin:0 auto;
+    padding:clamp(48px,6vw,80px) clamp(20px,4vw,48px) 0}
+  .tz-above p{font-family:'Space Mono',ui-monospace,monospace;font-size:11px;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  footer{border-top:3px solid var(--line);margin-top:26px}
+  .tz-inner{max-width:1280px;margin:0 auto;
+    padding:clamp(44px,6vw,80px) clamp(20px,4vw,48px) 0}
+  .tz-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:clamp(24px,4vw,56px);margin-bottom:clamp(48px,6vw,84px)}
+  .tz-col h2{font-family:'Space Mono',ui-monospace,monospace;font-size:11px;
+    font-weight:400;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
+    margin-bottom:18px}
+  .tz-col ul{list-style:none}
+  .tz-col li{border-top:1px solid var(--line)}
+  .tz-col a{display:flex;justify-content:space-between;align-items:center;
+    color:var(--ink);text-decoration:none;font-size:16px;font-weight:600;
+    padding:12px 0;transition:color .25s var(--ease),padding-left .25s var(--ease)}
+  .tz-col a .arr{opacity:0;transform:translateX(-6px);
+    transition:opacity .25s var(--ease),transform .25s var(--ease);color:var(--accent)}
+  .tz-col a:hover{color:var(--accent);padding-left:6px}
+  .tz-col a:hover .arr{opacity:1;transform:none}
+  .tz-col p{font-size:14.5px;color:var(--muted);max-width:30ch}
+  /* The red contact block — the footer's one loud moment */
+  .tz-hire{background:var(--accent);color:var(--bg);
+    padding:clamp(28px,4vw,44px);display:flex;align-items:center;
+    justify-content:space-between;gap:24px;flex-wrap:wrap;
+    margin-bottom:clamp(48px,6vw,84px)}
+  .tz-hire h2{font-family:'Archivo Black','Archivo',sans-serif;font-weight:400;
+    font-size:clamp(24px,3.6vw,44px);letter-spacing:-.01em;line-height:1.05}
+  .tz-hire a{background:var(--bg);color:var(--ink);text-decoration:none;
+    font-weight:700;font-size:15px;padding:16px 30px;flex:none;
+    transition:transform .3s var(--ease)}
+  .tz-hire a:hover{transform:translateY(-3px) rotate(-1deg)}
+  /* The distinctive choice: the wordmark IS the image, cropped at the fold */
+  .tz-word{overflow:hidden;line-height:.78;user-select:none}
+  .tz-word span{display:block;font-family:'Archivo Black','Archivo',sans-serif;
+    font-size:clamp(88px,19.5vw,300px);letter-spacing:-.02em;white-space:nowrap;
+    transform:translateY(.12em)}
+  .tz-word .red{color:var(--accent)}
+  .tz-base{border-top:1px solid var(--line);margin-top:-2px;
+    padding:20px 0 26px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    font-family:'Space Mono',ui-monospace,monospace;font-size:11px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .tz-base a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent)}
+  @@media (max-width:820px){.tz-cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @@media (max-width:520px){.tz-cols{grid-template-columns:1fr}}
+  @@media (prefers-reduced-motion:reduce){
+    *{transition:none !important}
+  }
+</style>
+</head>
+<body>
+  <div class="tz-above"><p>Studio Bureau · Identity, web &amp; print — end of page</p></div>
+  <footer>
+    <div class="tz-inner">
+      <div class="tz-cols">
+        <div class="tz-col">
+          <h2>Work</h2>
+          <ul>
+            <li><a href="#work">Selected projects <span class="arr">→</span></a></li>
+            <li><a href="#identity">Identity <span class="arr">→</span></a></li>
+            <li><a href="#web">Websites <span class="arr">→</span></a></li>
+            <li><a href="#print">Print <span class="arr">→</span></a></li>
+          </ul>
+        </div>
+        <div class="tz-col">
+          <h2>Studio</h2>
+          <ul>
+            <li><a href="#about">About <span class="arr">→</span></a></li>
+            <li><a href="#process">Process <span class="arr">→</span></a></li>
+            <li><a href="#notes">Field notes <span class="arr">→</span></a></li>
+            <li><a href="#jobs">Jobs <span class="arr">→</span></a></li>
+          </ul>
+        </div>
+        <div class="tz-col">
+          <h2>Elsewhere</h2>
+          <ul>
+            <li><a href="#ig">Instagram <span class="arr">→</span></a></li>
+            <li><a href="#are">Are.na <span class="arr">→</span></a></li>
+            <li><a href="#gh">GitHub <span class="arr">→</span></a></li>
+          </ul>
+        </div>
+        <div class="tz-col">
+          <h2>Studio</h2>
+          <p>14 Congress Street, third floor. The door with the red square. Knock twice —
+          the dog will announce you.</p>
+        </div>
+      </div>
+
+      <div class="tz-hire">
+        <h2>Have something worth making?</h2>
+        <a href="mailto:hello@@studiobureau.example">Start a project →</a>
+      </div>
+
+      <div class="tz-word" aria-hidden="true"><span>BUREAU<span class="red">.</span></span></div>
+      <div class="tz-base">
+        <span>© 2026 Studio Bureau</span>
+        <span>Set in Archivo · No cookies, only coffee</span>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
