@@ -1,0 +1,121 @@
+<!--tz-meta {"id":"user-profile","title":"User Profile","category":"App UI","file":"app-ui/user-profile.html","tags":["profile","user","activity","social"],"description":"Crate-digger profile on a record-sharing app: header, sticker stats, activity spine.","dnas":["vinyl-crate"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>User Profile — Needle Drop</title>
+<style>
+body{margin:0;background:#e3d2ae;}
+.tz-prof{--bg:#efe3cb;--ink:#221a12;--accent:#c0392b;--muted:#7d6a52;--line:#d8c4a0;--card:#f7efdd;
+  background:var(--bg);color:var(--ink);font-family:Verdana,Geneva,'DejaVu Sans',sans-serif;
+  max-width:880px;margin:0 auto;padding:clamp(20px,4vw,48px);}
+.tz-prof-tab{display:inline-block;background:var(--ink);color:var(--bg);font-family:ui-monospace,Menlo,Consolas,monospace;
+  font-size:11px;letter-spacing:.22em;padding:8px 18px;text-transform:uppercase;margin-bottom:0;}
+.tz-prof-head{background:var(--card);border:2px solid var(--ink);padding:clamp(20px,4vw,36px);display:grid;
+  grid-template-columns:120px 1fr auto;gap:24px;align-items:start;}
+.tz-sleeve{width:120px;height:120px;background:var(--ink);position:relative;border:2px solid var(--ink);}
+.tz-sleeve::after{content:"";position:absolute;inset:34px;border-radius:50%;background:var(--accent);border:3px solid var(--bg);}
+.tz-sleeve::before{content:"";position:absolute;inset:56px;border-radius:50%;background:var(--bg);z-index:1;}
+.tz-prof-head h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(28px,5vw,44px);margin:0 0 6px;letter-spacing:-.01em;}
+.tz-prof-head .tz-loc{font-size:13px;color:var(--muted);margin:0 0 12px;}
+.tz-prof-head .tz-bio{font-size:14px;line-height:1.6;margin:0;max-width:52ch;}
+.tz-edit{align-self:start;background:var(--accent);color:#fff;border:2px solid var(--ink);padding:10px 20px;
+  font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;box-shadow:4px 4px 0 var(--ink);}
+.tz-edit:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink);}
+.tz-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0 0;list-style:none;padding:0;}
+.tz-stats li{background:var(--card);border:2px solid var(--ink);padding:16px 14px;text-align:center;position:relative;}
+.tz-stats li:nth-child(2){transform:rotate(-1.5deg);}
+.tz-stats li:nth-child(4){transform:rotate(1.2deg);}
+.tz-stats b{display:block;font-family:Georgia,'Times New Roman',serif;font-size:30px;letter-spacing:-.01em;}
+.tz-stats span{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);}
+.tz-sec{margin-top:36px;}
+.tz-sec-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:4px;}
+.tz-sec-head h2{font-family:Georgia,'Times New Roman',serif;font-size:20px;margin:0;}
+.tz-sec-head a{font-size:12px;color:var(--accent);font-weight:700;}
+.tz-act{list-style:none;margin:0;padding:0 0 0 24px;position:relative;}
+.tz-act::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--line);}
+.tz-act li{position:relative;padding:16px 0 16px 18px;border-bottom:1px dashed var(--line);}
+.tz-act li::before{content:"";position:absolute;left:-23px;top:22px;width:10px;height:10px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--accent);}
+.tz-act time{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;}
+.tz-act h3{margin:6px 0 4px;font-size:15px;}
+.tz-act p{margin:0;font-size:13px;color:var(--muted);line-height:1.55;}
+.tz-act .tz-tag{display:inline-block;border:1px solid var(--ink);font-family:ui-monospace,Menlo,Consolas,monospace;
+  font-size:10px;padding:2px 8px;margin-top:8px;letter-spacing:.08em;}
+.tz-crates{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.tz-crates li{background:var(--card);border:2px solid var(--ink);padding:14px;}
+.tz-crates li:nth-child(odd){transform:rotate(-.8deg);}
+.tz-crates li:nth-child(even){transform:rotate(.8deg);}
+.tz-crates b{display:block;font-family:Georgia,'Times New Roman',serif;font-size:15px;margin-bottom:6px;}
+.tz-crates span{display:block;font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:8px;}
+.tz-crates em{font-style:normal;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.1em;color:var(--accent);}
+.tz-terms{list-style:none;margin:14px 0 0;padding:0;}
+.tz-terms li{font-size:13.5px;padding:10px 0 10px 26px;border-bottom:1px dashed var(--line);position:relative;line-height:1.55;}
+.tz-terms li::before{content:"\2014";position:absolute;left:0;color:var(--accent);font-weight:700;}
+@media(max-width:640px){
+  .tz-prof-head{grid-template-columns:80px 1fr;}
+  .tz-sleeve{width:80px;height:80px;}
+  .tz-sleeve::after{inset:22px;}
+  .tz-sleeve::before{inset:36px;}
+  .tz-edit{grid-column:1/-1;justify-self:start;}
+  .tz-stats{grid-template-columns:repeat(2,1fr);}
+}
+@media(prefers-reduced-motion:reduce){
+  .tz-prof *{animation:none!important;transition:none!important;}
+}
+</style>
+</head>
+<body>
+<section class="tz-prof">
+  <span class="tz-prof-tab">Needle Drop &middot; Digger #0042</span>
+  <header class="tz-prof-head">
+    <div class="tz-sleeve" aria-hidden="true"></div>
+    <div>
+      <h1>Mara Ellison</h1>
+      <p class="tz-loc">Portland, Maine &middot; digging since 2019</p>
+      <p class="tz-bio">Blue Note pressings, spiritual jazz, and anything with a gatefold that smells like a basement. Happy to trade doubles — ask before you lowball.</p>
+    </div>
+    <button class="tz-edit" type="button">Edit shelf</button>
+  </header>
+  <ul class="tz-stats">
+    <li><b>214</b><span>Crates</span></li>
+    <li><b>1,902</b><span>Followers</span></li>
+    <li><b>68</b><span>Wantlist</span></li>
+    <li><b>41</b><span>Trades</span></li>
+  </ul>
+  <div class="tz-sec">
+    <div class="tz-sec-head"><h2>Recent activity</h2><a href="#">View all</a></div>
+    <ol class="tz-act">
+      <li><time>Today &middot; 9:12am</time><h3>Spun: A Love Supreme, original Impulse pressing</h3>
+        <p>Side two still gives me chills. Sleeve is VG+, vinyl is a strong VG. Finally.</p><span class="tz-tag">NOW SPINNING</span></li>
+      <li><time>Yesterday &middot; 6:40pm</time><h3>Added to wantlist: Pharoah Sanders &mdash; Karma</h3>
+        <p>Hunting the 1969 gatefold. Will trade my spare Black Saint box for the right copy.</p><span class="tz-tag">WANTLIST</span></li>
+      <li><time>Sep 30 &middot; 2:15pm</time><h3>Completed a trade with Digger #1187</h3>
+        <p>Sent: Art Blakey &mdash; Moanin&rsquo; (Blue Note, 1959). Received: Horace Silver &mdash; Song for My Father.</p><span class="tz-tag">TRADE</span></li>
+      <li><time>Sep 27 &middot; 11:03am</time><h3>Shelved 6 new arrivals from the Bangor flea market</h3>
+        <p>Best find: a clean copy of Head Hunters for four dollars. The seller had no idea.</p><span class="tz-tag">SHELVED</span></li>
+    </ol>
+  </div>
+  <div class="tz-sec">
+    <div class="tz-sec-head"><h2>On the shelf</h2><a href="#">Full collection</a></div>
+    <ul class="tz-crates">
+      <li><b>A Love Supreme</b><span>John Coltrane &middot; Impulse, 1965</span><em>VG+ / VG</em></li>
+      <li><b>Head Hunters</b><span>Herbie Hancock &middot; Columbia, 1973</span><em>VG / VG+</em></li>
+      <li><b>Song for My Father</b><span>Horace Silver &middot; Blue Note, 1965</span><em>TRADE &mdash; OCT 3</em></li>
+      <li><b>Karma</b><span>Pharoah Sanders &middot; Impulse, 1969</span><em>WANT &mdash; GATEFOLD</em></li>
+      <li><b>Black Saint box</b><span>Various &middot; Black Saint, 1984</span><em>TRADE BAIT &mdash; 6 LP</em></li>
+    </ul>
+  </div>
+  <div class="tz-sec">
+    <div class="tz-sec-head"><h2>Trade terms</h2><a href="#">Edit</a></div>
+    <ul class="tz-terms">
+      <li>Trades ship media mail, tracking shared the same day.</li>
+      <li>Sealed records never leave the shelf. Ask about anything else.</li>
+      <li>Local pickup in Portland gets first dibs on new arrivals.</li>
+    </ul>
+  </div>
+</section>
+</body>
+</html>
