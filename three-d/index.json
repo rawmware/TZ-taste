@@ -1,5 +1,5 @@
 {
- "count": 41,
+ "count": 51,
  "updated": "2026-10-04",
  "usage": "Each file is a standalone Three.js scene (CDN import). Copy the whole file or lift the scene code. All original, MIT.",
  "scenes": [
@@ -32,6 +32,21 @@
    ]
   },
   {
+   "id": "bonsai-wind",
+   "title": "Bonsai Wind",
+   "category": "3D",
+   "file": "three-d/bonsai-wind.html",
+   "tags": [
+    "threejs",
+    "bonsai",
+    "wind"
+   ],
+   "description": "A potted bonsai in a quiet room; gusts roll through and the leaves answer, one flutter at a time.",
+   "dnas": [
+    "ma-japanese"
+   ]
+  },
+  {
    "id": "chrome-blob",
    "title": "Liquid Chrome",
    "category": "3D",
@@ -57,6 +72,21 @@
    "description": "Light pulses travel procedural circuit traces across a dark amber PCB.",
    "dnas": [
     "retro-terminal"
+   ]
+  },
+  {
+   "id": "clockwork-city",
+   "title": "Clockwork City",
+   "category": "3D",
+   "file": "three-d/clockwork-city.html",
+   "tags": [
+    "threejs",
+    "gears",
+    "city"
+   ],
+   "description": "A night city where brass gears turn on every rooftop, lit windows flickering against the dark.",
+   "dnas": [
+    "midnight-railway"
    ]
   },
   {
@@ -144,6 +174,21 @@
    ]
   },
   {
+   "id": "firefly-meadow",
+   "title": "Firefly Meadow",
+   "category": "3D",
+   "file": "three-d/firefly-meadow.html",
+   "tags": [
+    "threejs",
+    "fireflies",
+    "night"
+   ],
+   "description": "A dark meadow where sixty fireflies wander and pulse, each on its own clock, over swaying grass.",
+   "dnas": [
+    "night-market"
+   ]
+  },
+  {
    "id": "floating-islands",
    "title": "Low-Poly Islands",
    "category": "3D",
@@ -214,6 +259,21 @@
    ]
   },
   {
+   "id": "hot-air-balloons",
+   "title": "Hot Air Balloons",
+   "category": "3D",
+   "file": "three-d/hot-air-balloons.html",
+   "tags": [
+    "threejs",
+    "balloons",
+    "sky"
+   ],
+   "description": "Striped hot air balloons drift over patchwork fields, burners flickering, baskets swaying gently.",
+   "dnas": [
+    "postcard-rack"
+   ]
+  },
+  {
    "id": "ink-bloom",
    "title": "Ink Bloom",
    "category": "3D",
@@ -267,6 +327,21 @@
    "description": "Diamond kites dance on their strings while gusts roll across a flat blue sky.",
    "dnas": [
     "memphis-milano"
+   ]
+  },
+  {
+   "id": "lava-lamp-room",
+   "title": "Lava Lamp Room",
+   "category": "3D",
+   "file": "three-d/lava-lamp-room.html",
+   "tags": [
+    "threejs",
+    "lava-lamp",
+    "room"
+   ],
+   "description": "A corner room at dusk with a lava lamp on the table — wax blobs rising, warm light breathing.",
+   "dnas": [
+    "vaporwave-sunset"
    ]
   },
   {
@@ -340,6 +415,22 @@
    ]
   },
   {
+   "id": "night-bus-rain",
+   "title": "Night Bus Rain",
+   "category": "3D",
+   "file": "three-d/night-bus-rain.html",
+   "tags": [
+    "threejs",
+    "bus",
+    "rain",
+    "neon"
+   ],
+   "description": "A night bus runs its route through neon rain, headlights cutting the wet street, looping past glowing signs.",
+   "dnas": [
+    "cyberpunk-noir"
+   ]
+  },
+  {
    "id": "observatory-night",
    "title": "Counting Stars",
    "category": "3D",
@@ -382,6 +473,36 @@
    ]
   },
   {
+   "id": "paper-boat-pond",
+   "title": "Paper Boat Pond",
+   "category": "3D",
+   "file": "three-d/paper-boat-pond.html",
+   "tags": [
+    "threejs",
+    "paper",
+    "pond"
+   ],
+   "description": "Folded paper sailboats drift across a still pond, trailing expanding ripples past lily pads.",
+   "dnas": [
+    "origami-fold"
+   ]
+  },
+  {
+   "id": "paper-crane-migration",
+   "title": "Paper Crane Migration",
+   "category": "3D",
+   "file": "three-d/paper-crane-migration.html",
+   "tags": [
+    "threejs",
+    "cranes",
+    "night"
+   ],
+   "description": "A flock of paper cranes crosses a starry night sky in V formation, wings beating, moon watching.",
+   "dnas": [
+    "observatory-star"
+   ]
+  },
+  {
    "id": "paper-lanterns",
    "title": "Lantern Festival",
    "category": "3D",
@@ -421,6 +542,21 @@
    "description": "Droplets trickle down glass over blurred city-light bokeh.",
    "dnas": [
     "glass-calm"
+   ]
+  },
+  {
+   "id": "record-store-vinyl",
+   "title": "Record Store Vinyl",
+   "category": "3D",
+   "file": "three-d/record-store-vinyl.html",
+   "tags": [
+    "threejs",
+    "vinyl",
+    "records"
+   ],
+   "description": "Wooden crates of vinyl, a turntable with a record spinning, and a tonearm that never quite drops.",
+   "dnas": [
+    "vinyl-crate"
    ]
   },
   {
@@ -497,7 +633,7 @@
    "id": "three-d-readme",
    "title": "3D Scene Collection",
    "file": "three-d/README.md",
-   "description": "Index and engine notes for the 30 standalone Three.js ambient scenes."
+   "description": "Index and engine notes for the 40 standalone Three.js ambient scenes."
   },
   {
    "id": "tide-pools",
@@ -525,6 +661,21 @@
    "description": "A parchment heightfield with crisp ink contour lines drawn in a custom shader.",
    "dnas": [
     "docs-solar"
+   ]
+  },
+  {
+   "id": "typewriter-keys-rain",
+   "title": "Typewriter Keys Rain",
+   "category": "3D",
+   "file": "three-d/typewriter-keys-rain.html",
+   "tags": [
+    "threejs",
+    "typewriter",
+    "rain"
+   ],
+   "description": "Typewriter keycaps rain onto a workbench, bounce once, rest a moment, and fall again.",
+   "dnas": [
+    "typewriter-repair"
    ]
   },
   {
