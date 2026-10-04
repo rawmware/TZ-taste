@@ -1,0 +1,108 @@
+<!--tz-meta {"id":"showcase-seed-packet","title":"Seed Packet showcase","category":"Showcase","file":"showcase/seed-packet.html","tags":["seed-packet"],"description":"Live demo page for the Seed Packet style DNA.","dnas":["seed-packet"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Seed Packet — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Spectral:wght@400;500;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#efe6d0; --tz-surface:#e3d4b4; --tz-ink:#2b2419; --tz-muted:#7a6c52;
+  --tz-accent:#3f7043; --tz-line:#2b24191f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Spectral",serif;font-size:1.05rem;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 4vw;border-bottom:1px solid var(--tz-ink)}
+.tz-wordmark{font-family:"Fraunces",serif;font-weight:900;font-size:1.2rem;letter-spacing:0.04em}
+.tz-lot{font-family:"Courier Prime",monospace;font-size:0.7rem;letter-spacing:0.14em;color:var(--tz-muted)}
+.tz-hero{padding:6rem 4vw 3rem;position:relative;overflow:hidden;max-width:1200px}
+.tz-stamp{position:absolute;top:4.6rem;right:5vw;border:3px solid var(--tz-accent);color:var(--tz-accent);border-radius:2px;padding:0.7rem 1.2rem;font-family:"Courier Prime",monospace;font-weight:700;font-size:0.78rem;letter-spacing:0.1em;line-height:1.6;text-align:center;transform:rotate(6deg);opacity:0.9;animation:tz-stampland 0.6s cubic-bezier(0.22,1,0.36,1) both;pointer-events:none}
+@keyframes tz-stampland{from{opacity:0;transform:rotate(6deg) scale(1.25)}to{opacity:0.9;transform:rotate(6deg) scale(1)}}
+.tz-eyebrow{font-family:"Courier Prime",monospace;font-size:0.72rem;letter-spacing:0.18em;color:var(--tz-muted);margin-bottom:1.6rem}
+.tz-hero h1{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(2.8rem,9vw,6rem);line-height:1;letter-spacing:-0.01em;max-width:12ch;font-variant-numeric:oldstyle-nums}
+.tz-hero h1 em{font-style:italic;font-weight:600;color:var(--tz-accent)}
+.tz-sub{margin-top:1.8rem;font-size:1.1rem;color:var(--tz-muted);max-width:46ch}
+.tz-cta{display:inline-block;margin-top:2.2rem;background:var(--tz-accent);color:#fff;font-family:"Fraunces",serif;font-weight:600;font-size:1.1rem;text-decoration:none;padding:0.9rem 2.2rem;border-radius:2px;transition:opacity .15s ease}
+.tz-cta:hover{opacity:0.88}
+.tz-engrave{margin-top:4rem;border-top:1px solid var(--tz-ink);padding-top:1.2rem;font-family:"Courier Prime",monospace;font-size:0.74rem;letter-spacing:0.1em;color:var(--tz-muted);line-height:2.2;max-width:60rem}
+.tz-engrave strong{color:var(--tz-ink)}
+.tz-content{padding:2.5rem 4vw 1rem;max-width:1200px}
+.tz-content h2{font-family:"Fraunces",serif;font-weight:900;font-size:clamp(2rem,5vw,3rem);margin-bottom:0.3rem;font-variant-numeric:oldstyle-nums}
+.tz-subhead{font-family:"Courier Prime",monospace;font-size:0.72rem;letter-spacing:0.14em;color:var(--tz-muted);margin-bottom:1.6rem}
+table.tz-sow{width:100%;border-collapse:collapse;background:var(--tz-surface);border-radius:2px}
+.tz-sow th{font-family:"Courier Prime",monospace;font-size:0.66rem;font-weight:700;letter-spacing:0.14em;color:var(--tz-muted);text-align:left;padding:0.9rem 1.2rem;border-bottom:1px solid var(--tz-ink)}
+.tz-sow td{font-family:"Courier Prime",monospace;font-size:0.85rem;padding:0.95rem 1.2rem;border-bottom:1px solid var(--tz-line)}
+.tz-sow tr:last-child td{border-bottom:none}
+.tz-sow td.tz-var{color:var(--tz-accent);font-weight:700}
+.tz-packetback{margin:2.6rem 0 0;max-width:640px}
+.tz-packetback p{font-size:1.05rem}
+.tz-packetback strong{font-weight:700}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem;max-width:1200px}
+.tz-tokens h2{font-family:"Fraunces",serif;font-weight:900;font-size:2rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1;border-radius:2px;overflow:hidden}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"Courier Prime",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Courier Prime",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"Courier Prime",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em;max-width:1200px}
+@media(max-width:700px){
+  .tz-hero{padding-top:4.5rem}
+  .tz-stamp{font-size:0.6rem;top:3.6rem;right:4vw;padding:0.5rem 0.8rem}
+  .tz-lot{display:none}
+  .tz-sow th:nth-child(4),.tz-sow td:nth-child(4){display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Hartwell Seed House</span>
+  <span class="tz-lot">LOT 26-B &middot; PACKED THIS SEASON</span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-stamp" aria-hidden="true">PACKED FOR 2026<br>87% GERMINATION</div>
+  <p class="tz-eyebrow">TOMATO &middot; BRANDYWINE &middot; INDETERMINATE</p>
+  <h1>Water like <em>you mean it.</em></h1>
+  <p class="tz-sub">Sow after the last frost. Thin to twelve inches. This packet holds 40 seeds, and every one of them was tested in January.</p>
+  <a class="tz-cta" href="#">Read the packet back</a>
+  <div class="tz-engrave">SOW: AFTER LAST FROST &middot; 1/4 IN DEEP &middot; <strong>GERMINATION 7&ndash;14 DAYS</strong> &middot; SPACING 24&ndash;36 IN &middot; FULL SUN &middot; DAYS TO HARVEST 80</div>
+</section>
+
+<section class="tz-content">
+  <h2>Planting table</h2>
+  <p class="tz-subhead">BACK OF THE PACKET &middot; TESTED JANUARY &middot; ZONE 5</p>
+  <table class="tz-sow">
+    <thead><tr><th>VARIETY</th><th>SOW</th><th>DEPTH</th><th>GERMINATION</th></tr></thead>
+    <tbody>
+      <tr><td class="tz-var">BRANDYWINE</td><td>AFTER LAST FROST</td><td>1/4 IN</td><td>7&ndash;14 DAYS</td></tr>
+      <tr><td class="tz-var">CHEROKEE PURPLE</td><td>AFTER LAST FROST</td><td>1/4 IN</td><td>7&ndash;14 DAYS</td></tr>
+      <tr><td class="tz-var">SAN MARZANO</td><td>AFTER LAST FROST</td><td>1/4 IN</td><td>7&ndash;10 DAYS</td></tr>
+      <tr><td class="tz-var">GREEN ZEBRA</td><td>AFTER LAST FROST</td><td>1/4 IN</td><td>10&ndash;14 DAYS</td></tr>
+    </tbody>
+  </table>
+  <div class="tz-packetback">
+    <p><strong>From the seed house:</strong> start indoors six weeks before the last frost, harden off for a week, and don't rush them into cold soil &mdash; tomatoes hold a grudge. Pinch the suckers, stake early, and taste the first ripe one standing right there in the row.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#efe6d0"></span><span class="tz-name">bg</span><span class="tz-hex">#efe6d0</span></li>
+    <li><span class="tz-chip" style="background:#e3d4b4"></span><span class="tz-name">surface</span><span class="tz-hex">#e3d4b4</span></li>
+    <li><span class="tz-chip" style="background:#2b2419"></span><span class="tz-name">ink</span><span class="tz-hex">#2b2419</span></li>
+    <li><span class="tz-chip" style="background:#7a6c52"></span><span class="tz-name">muted</span><span class="tz-hex">#7a6c52</span></li>
+    <li><span class="tz-chip" style="background:#3f7043"></span><span class="tz-name">accent</span><span class="tz-hex">#3f7043</span></li>
+    <li><span class="tz-chip" style="background:#2b24191f"></span><span class="tz-name">line</span><span class="tz-hex">#2b24191f</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
