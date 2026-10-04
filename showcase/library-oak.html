@@ -1,0 +1,114 @@
+<!--tz-meta {"id":"showcase-library-oak","title":"Library Oak showcase","category":"Showcase","file":"showcase/library-oak.html","tags":["library-oak"],"description":"Live demo page for the Library Oak style DNA.","dnas":["library-oak"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Library Oak — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=EB+Garamond:wght@400;500&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#211810; --tz-surface:#2d2318; --tz-ink:#ece0c8; --tz-muted:#93805f;
+  --tz-accent:#c9973f; --tz-line:#c9973f40;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"EB Garamond",serif;font-size:1.1rem;line-height:1.65;-webkit-font-smoothing:antialiased}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 4vw;border-bottom:1px solid var(--tz-line);font-family:"Roboto Mono",monospace;font-size:0.7rem;letter-spacing:0.12em;color:var(--tz-muted)}
+.tz-wordmark{font-family:"Cormorant Garamond",serif;font-size:1.4rem;font-weight:600;color:var(--tz-ink);letter-spacing:0.04em}
+.tz-hero{padding:5rem 4vw 4rem;max-width:760px;margin:0 auto;text-align:center}
+.tz-catalog{display:inline-block;text-align:left;background:var(--tz-surface);border:1px solid var(--tz-line);border-radius:3px;padding:1rem 1.6rem;font-family:"Roboto Mono",monospace;font-size:0.72rem;letter-spacing:0.1em;color:var(--tz-muted);margin-bottom:2.2rem}
+.tz-catalog .tz-call{color:var(--tz-accent)}
+.tz-hero h1{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(2.8rem,7.5vw,5.2rem);line-height:1.08;letter-spacing:0.01em}
+.tz-rule{width:120px;height:1px;background:var(--tz-accent);margin:1.8rem auto;transform-origin:left;animation:tz-draw 1.4s ease-out both}
+@keyframes tz-draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.tz-sub{color:var(--tz-muted);max-width:52ch;margin:0 auto}
+.tz-cta{display:inline-block;margin-top:2.4rem;border:1px solid var(--tz-accent);color:var(--tz-accent);font-family:"Roboto Mono",monospace;font-size:0.8rem;letter-spacing:0.18em;text-decoration:none;padding:1rem 2.4rem;border-radius:3px;transition:opacity .2s ease}
+.tz-cta:hover{opacity:0.75}
+.tz-content{padding:4rem 4vw 0;max-width:680px;margin:0 auto}
+.tz-content h2{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:2.2rem;margin-bottom:1rem}
+.tz-content .tz-body{color:var(--tz-muted);margin-bottom:1.6rem;animation:tz-fade 0.5s ease both}
+.tz-content .tz-body:nth-of-type(2){animation-delay:0.15s}
+@keyframes tz-fade{from{opacity:0}to{opacity:1}}
+.tz-shelf{margin:4rem 4vw 0;border-top:1px solid var(--tz-line);border-bottom:1px solid var(--tz-line);padding:1.8rem 0}
+.tz-shelf h2{font-family:"Roboto Mono",monospace;font-weight:500;font-size:0.75rem;letter-spacing:0.2em;color:var(--tz-muted);margin-bottom:1.2rem;text-align:center}
+.tz-spines{display:flex;gap:0;justify-content:center;flex-wrap:wrap;list-style:none}
+.tz-spines li{font-family:"Roboto Mono",monospace;font-size:0.72rem;letter-spacing:0.06em;color:var(--tz-ink);padding:0.4rem 1.2rem;border-left:1px solid var(--tz-line)}
+.tz-spines li:last-child{border-right:1px solid var(--tz-line)}
+.tz-spines .tz-due{display:block;font-size:0.62rem;color:var(--tz-accent);letter-spacing:0.12em;margin-top:0.2rem}
+.tz-hours{max-width:680px;margin:4rem auto 0;padding:0 4vw;text-align:center}
+.tz-hours h2{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.9rem;margin-bottom:0.8rem}
+.tz-hours p{color:var(--tz-muted);font-size:1rem}
+.tz-hours .tz-fine{display:block;margin-top:1rem;font-family:"Roboto Mono",monospace;font-size:0.72rem;letter-spacing:0.1em;color:var(--tz-muted)}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:4rem;max-width:1100px;margin-left:auto;margin-right:auto}
+.tz-tokens h2{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:1.7rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1;border-radius:3px;overflow:hidden}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"Roboto Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Roboto Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"Roboto Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em;text-align:center}
+@media(max-width:700px){
+  .tz-spines li{border:none;border-bottom:1px solid var(--tz-line);width:100%;text-align:center}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Athenaeum</span>
+  <span>READING ROOM OPEN LATE</span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-catalog">
+    SUBJECT: QUIET EVENINGS<br>
+    AUTHOR: THE READING ROOM<br>
+    CALL NO: <span class="tz-call">WHISPER · 028.7</span>
+  </div>
+  <h1>The reading room is open late.</h1>
+  <div class="tz-rule" aria-hidden="true"></div>
+  <p class="tz-sub">Oak stacks, brass lamps, and three million pages that have been waiting longer than you have. Come whisper.</p>
+  <a class="tz-cta" href="#">GET A LIBRARY CARD</a>
+</section>
+
+<section class="tz-content">
+  <h2>A room built for one purpose</h2>
+  <p class="tz-body">The Athenaeum was founded on a simple wager: that a city which reads together stays together. The stacks hold fiction A–C on the third stack to the left, poetry under the east window, and the entire reference collection within arm's reach of a green-shaded lamp.</p>
+  <p class="tz-body">No one will shush you here — the hush is built into the oak. Bring a pencil, not a pen. The marginalia in these books goes back a century, and some of it is better than the text.</p>
+</section>
+
+<div class="tz-shelf">
+  <h2>— RECENTLY RETURNED —</h2>
+  <ul class="tz-spines">
+    <li>ROW 813.54 — GARCÍA MÁRQUEZ, G.<span class="tz-due">DUE BACK TUESDAY</span></li>
+    <li>ROW 823.91 — WOOLF, V.<span class="tz-due">DUE BACK TUESDAY</span></li>
+    <li>ROW 813.52 — MORRISON, T.<span class="tz-due">DUE BACK FRIDAY</span></li>
+    <li>ROW 891.73 — DOSTOEVSKY, F.<span class="tz-due">DUE BACK FRIDAY</span></li>
+  </ul>
+</div>
+
+<div class="tz-hours">
+  <h2>Hours &amp; the fine print</h2>
+  <p>Open 9am to 10pm daily. The rare-books room closes at 6. Members may borrow twelve books at a time — choose as if it matters.</p>
+  <span class="tz-fine">DUE BACK TUESDAY. NO FINES — JUST GUILT.</span>
+</div>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#211810"></span><span class="tz-name">bg</span><span class="tz-hex">#211810</span></li>
+    <li><span class="tz-chip" style="background:#2d2318"></span><span class="tz-name">surface</span><span class="tz-hex">#2d2318</span></li>
+    <li><span class="tz-chip" style="background:#ece0c8"></span><span class="tz-name">ink</span><span class="tz-hex">#ece0c8</span></li>
+    <li><span class="tz-chip" style="background:#93805f"></span><span class="tz-name">muted</span><span class="tz-hex">#93805f</span></li>
+    <li><span class="tz-chip" style="background:#c9973f"></span><span class="tz-name">accent</span><span class="tz-hex">#c9973f</span></li>
+    <li><span class="tz-chip" style="background:#c9973f40"></span><span class="tz-name">line</span><span class="tz-hex">#c9973f40</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
