@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-seed-packet",
+  "title": "Seed Packet design tokens",
+  "category": "Tokens",
+  "file": "tokens/seed-packet.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "seed-packet"
+  ],
+  "description": "W3C-format design tokens for the Seed Packet DNA.",
+  "dnas": [
+   "seed-packet"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#efe6d0",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#2b2419",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#3f7043",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#7a6c52",
+   "type": "color"
+  },
+  "line": {
+   "value": "#2b24191f",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#e3d4b4",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Fraunces",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Spectral",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Courier Prime",
+   "type": "fontFamily"
+  }
+ }
+}
