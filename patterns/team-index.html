@@ -1,0 +1,42 @@
+<!--tz-meta {"id":"team-index","title":"Team index list","category":"Team","file":"patterns/team-index.html","tags":["team","about","people","index"],"description":"Editorial team index: giant numerals, hairline rows, invert-on-hover — no avatar grid.","dnas":["bauhaus-primary"]} -->
+<section class="tz-team-index" aria-label="Our team">
+  <div class="tz-head">
+    <p class="tz-k">The crew</p>
+    <h2>Four people.<br>No departments.</h2>
+  </div>
+  <ol class="tz-rows">
+    <li><span class="tz-n">01</span><div class="tz-who"><strong>Maya Chen</strong><span>Founder — sets the type, signs the checks</span></div><span class="tz-meta2">Portsmouth, NH</span><span class="tz-was">ex-newsroom</span></li>
+    <li><span class="tz-n">02</span><div class="tz-who"><strong>Dario Fontaine</strong><span>Engineer — systems, infra, 3 AM deploys</span></div><span class="tz-meta2">Dover, NH</span><span class="tz-was">ex-fintech</span></li>
+    <li><span class="tz-n">03</span><div class="tz-who"><strong>June Park</strong><span>Design lead — motion, prototypes, taste police</span></div><span class="tz-meta2">Portland, ME</span><span class="tz-was">ex-agency</span></li>
+    <li><span class="tz-n">04</span><div class="tz-who"><strong>Sam Okafor</strong><span>Operations — money in, boxes out</span></div><span class="tz-meta2">Newburyport, MA</span><span class="tz-was">ex-logistics</span></li>
+  </ol>
+  <p class="tz-foot">We&rsquo;re hiring a second engineer. <a href="#">Read the posting</a> — it&rsquo;s one page, no whiteboard.</p>
+</section>
+<style>
+.tz-team-index{--bg:#f4f1ea;--ink:#1a1a1a;--accent:#d8342c;--muted:#6e6a60;--line:#1a1a1a;
+  background:var(--bg);color:var(--ink);padding:clamp(36px,5vw,80px);
+  font-family:'Archivo',-apple-system,'Segoe UI',sans-serif}
+.tz-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+.tz-team-index .tz-k{font-family:'Space Mono',ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+.tz-team-index h2{font-family:'Archivo Black','Arial Black',sans-serif;font-size:clamp(34px,4.6vw,60px);
+  letter-spacing:-.02em;line-height:1.04;margin:0}
+.tz-rows{list-style:none;margin:0;padding:0;border-top:3px solid var(--line)}
+.tz-rows li{display:grid;grid-template-columns:110px 1fr auto auto;gap:24px;align-items:center;
+  padding:22px 12px;border-bottom:1px solid #1a1a1a33;transition:background .18s ease,color .18s ease}
+.tz-rows li:hover{background:var(--ink);color:var(--bg)}
+.tz-n{font-family:'Archivo Black','Arial Black',sans-serif;font-size:clamp(38px,4.4vw,58px);
+  letter-spacing:-.02em;color:var(--accent);line-height:1}
+.tz-who strong{display:block;font-size:19px;margin-bottom:3px}
+.tz-who span{font-size:13.5px;color:var(--muted)}
+.tz-rows li:hover .tz-who span{color:#b9b3a8}
+.tz-meta2{font-family:'Space Mono',ui-monospace,Menlo,monospace;font-size:12px;white-space:nowrap}
+.tz-was{font-family:'Space Mono',ui-monospace,Menlo,monospace;font-size:12px;color:var(--muted);
+  border:1px solid currentColor;padding:5px 10px;border-radius:999px;white-space:nowrap}
+.tz-foot{margin:28px 0 0;font-size:14.5px;color:var(--muted)}
+.tz-foot a{color:var(--ink);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.tz-foot a:hover{color:var(--accent)}
+@media(max-width:720px){.tz-rows li{grid-template-columns:64px 1fr;row-gap:8px}
+  .tz-meta2{grid-column:2}.tz-was{grid-column:2;justify-self:start}}
+@media(prefers-reduced-motion:reduce){.tz-rows li{transition:none}}
+</style>
