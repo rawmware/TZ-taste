@@ -1,0 +1,143 @@
+<!--tz-meta {"id":"showcase-vinyl-crate","title":"Vinyl Crate showcase","category":"Showcase","file":"showcase/vinyl-crate.html","tags":["vinyl-crate"],"description":"Live demo page for the Vinyl Crate style DNA.","dnas":["vinyl-crate"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vinyl Crate — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#efe3cb; --tz-surface:#e4d2ae; --tz-ink:#221a12; --tz-muted:#7d6a52;
+  --tz-accent:#c0392b; --tz-accent2:#1d5c4d; --tz-line:#d8c4a0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"DM Sans",Verdana,sans-serif;font-size:1rem;line-height:1.5;-webkit-font-smoothing:antialiased;padding-bottom:4.2rem}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 5vw;border-bottom:3px solid var(--tz-ink)}
+.tz-wordmark{font-family:"Alfa Slab One",serif;font-size:1.3rem;letter-spacing:0.02em}
+.tz-wordmark .tz-r{color:var(--tz-accent)}
+.tz-label{font-family:"Space Mono",monospace;font-size:0.66rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-hero{padding:4rem 5vw 3rem;display:grid;grid-template-columns:1fr 340px;gap:3rem;align-items:center;max-width:1200px}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:1.2rem}
+.tz-hero h1{font-family:"Alfa Slab One",serif;font-weight:400;font-size:clamp(2.8rem,8vw,5.6rem);line-height:1;margin-bottom:1.3rem}
+.tz-hero h1 .tz-r{color:var(--tz-accent)}
+.tz-sub{max-width:42ch;font-size:1.04rem;font-weight:500}
+.tz-cta{display:inline-block;margin-top:2rem;font-family:"Space Mono",monospace;font-weight:700;font-size:0.85rem;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;color:var(--tz-bg);background:var(--tz-ink);padding:1rem 2rem;transition:transform 0.2s ease,background 0.2s ease}
+.tz-cta:hover{transform:translateY(-3px);background:var(--tz-accent)}
+.tz-feature{position:relative;transform:rotate(-2deg);transition:transform 0.3s ease}
+.tz-feature:hover{transform:rotate(0deg) translateY(-4px)}
+.tz-sleeve-big{position:relative;aspect-ratio:1;background:var(--tz-accent);box-shadow:10px 0 0 -2px var(--tz-ink),18px 0 24px -18px var(--tz-ink);overflow:hidden}
+.tz-sleeve-big .tz-rings{position:absolute;inset:0;background:repeating-radial-gradient(circle at 50% 50%,var(--tz-bg) 0 14px,transparent 14px 30px);opacity:0.9}
+.tz-sleeve-big .tz-band{position:absolute;left:0;right:0;top:12%;background:var(--tz-ink);color:var(--tz-bg);font-family:"Alfa Slab One",serif;font-size:1.05rem;padding:0.6rem 1rem;text-align:center}
+.tz-sticker{position:absolute;top:-14px;right:14px;background:var(--tz-accent2);color:var(--tz-bg);font-family:"Space Mono",monospace;font-weight:700;font-size:0.78rem;padding:0.5rem 0.8rem;transform:rotate(8deg);box-shadow:2px 2px 0 var(--tz-ink)}
+.tz-featcap{margin-top:1rem;font-family:"Space Mono",monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-content{padding:0 0 4rem}
+.tz-crate{margin-top:3.5rem}
+.tz-divider{background:var(--tz-surface);border-top:3px solid var(--tz-ink);border-bottom:3px solid var(--tz-ink);padding:0.7rem 5vw;font-family:"Space Mono",monospace;font-weight:700;font-size:0.78rem;letter-spacing:0.22em;text-transform:uppercase;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.tz-divider .tz-n{color:var(--tz-accent)}
+.tz-bin{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem;padding:2rem 5vw}
+.tz-sleeve{position:relative;aspect-ratio:1;overflow:hidden;box-shadow:6px 0 0 -1px var(--tz-ink);transition:transform 0.25s ease;cursor:pointer}
+.tz-sleeve:hover{transform:translateY(-8px) rotate(-1.5deg)}
+.tz-sleeve .tz-art{position:absolute;inset:0}
+.tz-sleeve .tz-tag2{position:absolute;bottom:10px;left:10px;background:var(--tz-bg);font-family:"Space Mono",monospace;font-size:0.64rem;font-weight:700;letter-spacing:0.06em;padding:0.35rem 0.6rem;transform:rotate(-4deg);box-shadow:2px 2px 0 var(--tz-ink)}
+.tz-sleeve .tz-cond{position:absolute;top:10px;right:10px;font-family:"Space Mono",monospace;font-size:0.64rem;font-weight:700;padding:0.35rem 0.6rem;transform:rotate(5deg);color:var(--tz-bg);box-shadow:2px 2px 0 var(--tz-ink)}
+.tz-a1 .tz-art{background:repeating-linear-gradient(90deg,var(--tz-accent) 0 18px,var(--tz-bg) 18px 36px)}
+.tz-a2 .tz-art{background:radial-gradient(circle at 50% 42%,var(--tz-accent2) 0 34%,var(--tz-ink) 34% 36%,var(--tz-bg) 36%)}
+.tz-a3 .tz-art{background:repeating-linear-gradient(-45deg,var(--tz-ink) 0 14px,var(--tz-accent) 14px 28px)}
+.tz-a4 .tz-art{background:radial-gradient(circle at 50% 115%,var(--tz-accent) 0 62%,var(--tz-bg) 62%)}
+.tz-a5 .tz-art{background:conic-gradient(from 40deg,var(--tz-accent2),var(--tz-bg),var(--tz-accent),var(--tz-bg),var(--tz-accent2))}
+.tz-a6 .tz-art{background:repeating-radial-gradient(circle at 50% 50%,var(--tz-ink) 0 10px,var(--tz-bg) 10px 22px)}
+.tz-a7 .tz-art{background:linear-gradient(180deg,var(--tz-accent) 0 55%,var(--tz-ink) 55% 58%,var(--tz-bg) 58%)}
+.tz-a8 .tz-art{background:radial-gradient(circle at 22% 28%,var(--tz-accent2) 0 26%,transparent 27%),radial-gradient(circle at 78% 72%,var(--tz-accent) 0 26%,transparent 27%),var(--tz-bg)}
+.tz-red{background:var(--tz-accent)}.tz-green{background:var(--tz-accent2)}
+.tz-meta2{padding:0.9rem 5vw 0;font-family:"Space Mono",monospace;font-size:0.7rem;letter-spacing:0.08em;color:var(--tz-muted);text-transform:uppercase}
+.tz-tokens{padding:3.5rem 5vw;border-top:3px solid var(--tz-ink)}
+.tz-tokens h2{font-family:"Alfa Slab One",serif;font-weight:400;font-size:1.5rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;list-style:none;border:3px solid var(--tz-ink)}
+.tz-swatches li{flex:1 1 140px;border-right:3px solid var(--tz-ink);min-width:130px;background:var(--tz-surface)}
+.tz-swatches li:last-child{border-right:none}
+.tz-chip{display:block;height:3.2rem;border-bottom:3px solid var(--tz-ink)}
+.tz-swatches .tz-name{display:block;font-family:"Space Mono",monospace;font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--tz-muted);padding:0.7rem 0.9rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Space Mono",monospace;font-size:0.76rem;padding:0 0.9rem 0.8rem}
+.tz-foot{border-top:3px solid var(--tz-ink);padding:1.6rem 5vw;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-family:"Space Mono",monospace;font-size:0.66rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-nowspinning{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--tz-ink);color:var(--tz-bg);display:flex;align-items:center;gap:1rem;padding:0.7rem 5vw;font-family:"Space Mono",monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase}
+.tz-record{position:relative;width:34px;height:34px;flex:none;border-radius:50%;background:repeating-radial-gradient(circle at 50% 50%,var(--tz-ink) 0 3px,var(--tz-bg) 3px 5px);animation:tz-spinrec 3.2s linear infinite}
+.tz-record::after{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;border-radius:50%;background:var(--tz-accent);transform:translate(-50%,-50%)}
+@keyframes tz-spinrec{to{transform:rotate(360deg)}}
+.tz-nowspinning .tz-trk{color:var(--tz-accent);font-weight:700}
+@media(max-width:700px){
+  .tz-hero{grid-template-columns:1fr}
+  .tz-feature{max-width:320px}
+  .tz-bin{grid-template-columns:repeat(2,1fr);padding-left:6vw;padding-right:6vw}
+  .tz-divider{padding-left:6vw;padding-right:6vw}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">SPIN <span class="tz-r">CYCLE</span></span>
+  <span class="tz-label">TZ-taste style DNA</span>
+</header>
+
+<section class="tz-hero">
+  <div>
+    <p class="tz-eyebrow">Est. 1987 · Buy — Sell — Trade</p>
+    <h1>DIG <span class="tz-r">DEEPER.</span></h1>
+    <p class="tz-sub">Forty thousand records in the bins, priced by people who listen first. New arrivals hit the floor every Friday — the good stuff never survives the weekend.</p>
+    <a class="tz-cta" href="#">Dig the new arrivals</a>
+  </div>
+  <div class="tz-feature">
+    <div class="tz-sleeve-big"><span class="tz-rings" aria-hidden="true"></span><span class="tz-band">THE COPPERTONES</span><span class="tz-sticker">$18 NM</span></div>
+    <p class="tz-featcap">Featured — "Static Bloom" · 1974 pressing</p>
+  </div>
+</section>
+
+<section class="tz-content">
+  <div class="tz-crate">
+    <div class="tz-divider"><span>Soul / Funk</span><span class="tz-n">Bin 04</span></div>
+    <div class="tz-bin">
+      <div class="tz-sleeve tz-a1"><span class="tz-art" aria-hidden="true"></span><span class="tz-cond tz-red">NM</span><span class="tz-tag2">Mara Voss — Low Orbit · $22</span></div>
+      <div class="tz-sleeve tz-a2"><span class="tz-art" aria-hidden="true"></span><span class="tz-cond tz-green">VG+</span><span class="tz-tag2">The Fern Society · $14</span></div>
+      <div class="tz-sleeve tz-a3"><span class="tz-art" aria-hidden="true"></span><span class="tz-cond tz-red">NM</span><span class="tz-tag2">Nia Cates — Second Line · $19</span></div>
+      <div class="tz-sleeve tz-a4"><span class="tz-art" aria-hidden="true"></span><span class="tz-cond tz-green">VG</span><span class="tz-tag2">The Longshoremen · $11</span></div>
+    </div>
+    <p class="tz-meta2">Every sleeve graded by hand · Ask to hear anything</p>
+  </div>
+  <div class="tz-crate">
+    <div class="tz-divider"><span>Staff picks</span><span class="tz-n">Bin 01</span></div>
+    <div class="tz-bin">
+      <div class="tz-sleeve tz-a5"><span class="tz-art" aria-hidden="true"></span><span class="tz-cond tz-green">NM</span><span class="tz-tag2">DJ Palimpsest — Rough Mixes · $16</span></div>
+      <div class="tz-sleeve tz-a6"><span class="tz-art" aria-hidden="true"></span><span class="tz-cond tz-red">NM</span><span class="tz-tag2">Analog Hearts — Warm Static · $21</span></div>
+      <div class="tz-sleeve tz-a7"><span class="tz-art" aria-hidden="true"></span><span class="tz-cond tz-green">VG+</span><span class="tz-tag2">The Paper Moons — Ink · $13</span></div>
+      <div class="tz-sleeve tz-a8"><span class="tz-art" aria-hidden="true"></span><span class="tz-cond tz-red">NM</span><span class="tz-tag2">Coppertones — Static Bloom · $18</span></div>
+    </div>
+    <p class="tz-meta2">Picked this week by Mara · Changes every Friday</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#efe3cb"></span><span class="tz-name">bg</span><span class="tz-hex">#efe3cb</span></li>
+    <li><span class="tz-chip" style="background:#e4d2ae"></span><span class="tz-name">surface</span><span class="tz-hex">#e4d2ae</span></li>
+    <li><span class="tz-chip" style="background:#221a12"></span><span class="tz-name">ink</span><span class="tz-hex">#221a12</span></li>
+    <li><span class="tz-chip" style="background:#7d6a52"></span><span class="tz-name">muted</span><span class="tz-hex">#7d6a52</span></li>
+    <li><span class="tz-chip" style="background:#c0392b"></span><span class="tz-name">accent</span><span class="tz-hex">#c0392b</span></li>
+    <li><span class="tz-chip" style="background:#1d5c4d"></span><span class="tz-name">accent-2</span><span class="tz-hex">#1d5c4d</span></li>
+    <li><span class="tz-chip" style="background:#d8c4a0"></span><span class="tz-name">line</span><span class="tz-hex">#d8c4a0</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot"><span>A TZ-taste style DNA showcase — MIT, free forever.</span><span>We buy records daily</span></footer>
+
+<div class="tz-nowspinning" aria-label="Now spinning">
+  <span class="tz-record" aria-hidden="true"></span>
+  <span>Now spinning <span class="tz-trk">— Coppertones · "Static Bloom" · Side A</span></span>
+</div>
+</body>
+</html>
