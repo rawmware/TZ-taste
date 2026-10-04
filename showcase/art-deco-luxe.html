@@ -1,0 +1,127 @@
+<!--tz-meta {"id":"showcase-art-deco-luxe","title":"Art Deco Luxe showcase","category":"Showcase","file":"showcase/art-deco-luxe.html","tags":["art-deco-luxe"],"description":"Live demo page for the Art Deco Luxe style DNA.","dnas":["art-deco-luxe"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Art Deco Luxe — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Jost:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#0d0b08; --tz-surface:#171310; --tz-ink:#f2e7c9; --tz-muted:#8a7f63;
+  --tz-accent:#c9a227; --tz-line:#c9a2274d;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Jost",Helvetica,sans-serif;font-size:1.05rem;line-height:1.7;font-weight:300;-webkit-font-smoothing:antialiased;text-align:center}
+.tz-top{display:flex;justify-content:space-between;align-items:baseline;padding:1.5rem 5vw;border-bottom:1px solid var(--tz-line)}
+.tz-wordmark{font-family:"Cinzel",serif;font-weight:700;font-size:1rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--tz-ink)}
+.tz-label{font-family:"Space Mono",monospace;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-hero{position:relative;padding:6rem 5vw 5rem;overflow:hidden}
+.tz-card{position:relative;max-width:760px;margin:0 auto;border:1px solid var(--tz-accent);padding:4.5rem 3rem 4rem;background:var(--tz-surface)}
+.tz-card::before{content:"";position:absolute;inset:8px;border:1px solid var(--tz-line);pointer-events:none}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:1.2rem}
+.tz-fan{position:relative;width:220px;height:110px;margin:0 auto 1.8rem;overflow:hidden}
+.tz-fan span{position:absolute;left:50%;bottom:0;width:1px;background:var(--tz-accent);transform-origin:50% 100%}
+.tz-hero h1{font-family:"Cinzel",serif;font-weight:700;font-size:clamp(2.4rem,6vw,4.2rem);letter-spacing:0.22em;text-transform:uppercase;line-height:1.25}
+.tz-hero h1 .tz-gold{color:var(--tz-accent)}
+.tz-coords{font-family:"Space Mono",monospace;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--tz-muted);margin-top:1.4rem}
+.tz-sub{max-width:44ch;margin:1.6rem auto 0;color:var(--tz-muted);font-weight:300}
+.tz-cta{display:inline-block;margin-top:2.4rem;font-family:"Cinzel",serif;font-weight:700;font-size:0.85rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--tz-bg);background:var(--tz-accent);text-decoration:none;padding:1rem 2.6rem}
+.tz-cta:hover{background:var(--tz-ink)}
+.tz-rule{height:1px;background:var(--tz-accent);max-width:560px;margin:0 auto;transform:scaleX(0);animation:tz-draw 1.4s ease 0.3s forwards}
+@keyframes tz-draw{to{transform:scaleX(1)}}
+.tz-content{padding:5rem 5vw;max-width:760px;margin:0 auto}
+.tz-no{font-family:"Space Mono",monospace;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:1rem}
+.tz-content h2{font-family:"Cinzel",serif;font-weight:700;font-size:clamp(1.6rem,3.4vw,2.3rem);letter-spacing:0.22em;text-transform:uppercase;margin-bottom:0.6rem}
+.tz-menu{list-style:none;margin-top:3rem;border-top:1px solid var(--tz-line)}
+.tz-menu li{display:grid;grid-template-columns:1fr auto;gap:0.4rem 2rem;align-items:baseline;padding:1.6rem 0.5rem;border-bottom:1px solid var(--tz-line);text-align:left}
+.tz-drink{font-family:"Cinzel",serif;font-weight:400;font-size:1.05rem;letter-spacing:0.14em;text-transform:uppercase}
+.tz-price{font-family:"Space Mono",monospace;font-size:0.85rem;letter-spacing:0.1em;color:var(--tz-accent)}
+.tz-desc{grid-column:1/-1;font-size:0.95rem;color:var(--tz-muted);font-weight:300}
+.tz-hours{margin-top:3.5rem;font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--tz-muted);line-height:2.2}
+.tz-tokens{padding:4rem 5vw;border-top:1px solid var(--tz-line);max-width:760px;margin:0 auto}
+.tz-tokens h2{font-family:"Cinzel",serif;font-weight:700;font-size:1.3rem;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:1.5rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.9rem;list-style:none;justify-content:center}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;text-align:left}
+.tz-chip{display:block;height:3rem}
+.tz-swatches .tz-name{display:block;font-family:"Space Mono",monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.6rem 0.8rem 0.1rem;color:var(--tz-muted)}
+.tz-swatches .tz-hex{display:block;font-family:"Space Mono",monospace;font-size:0.76rem;padding:0 0.8rem 0.7rem;color:var(--tz-ink)}
+.tz-foot{padding:2.5rem 5vw;border-top:1px solid var(--tz-line)}
+.tz-plaque{display:inline-block;border:1px solid var(--tz-accent);padding:0.7rem 1.6rem;font-family:"Space Mono",monospace;font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:1.2rem}
+.tz-foot p{font-family:"Space Mono",monospace;font-size:0.68rem;letter-spacing:0.08em;color:var(--tz-muted)}
+.tz-fade{opacity:0;transform:translateY(24px);animation:tz-rise 1s ease forwards}
+.tz-fade.tz-d1{animation-delay:0.15s}.tz-fade.tz-d2{animation-delay:0.35s}.tz-fade.tz-d3{animation-delay:0.55s}
+@keyframes tz-rise{to{opacity:1;transform:translateY(0)}}
+@media(max-width:700px){
+  .tz-card{padding:3rem 1.4rem}
+  .tz-top{flex-direction:column;gap:0.5rem;align-items:center}
+  .tz-menu li{padding:1.3rem 0.2rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-fade{opacity:1;transform:none}
+  .tz-rule{transform:scaleX(1)}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">The Meridian Room</span>
+  <span class="tz-label">TZ-taste style DNA</span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-card tz-fade">
+    <p class="tz-eyebrow">No. 04 &middot; Est. 1926</p>
+    <div class="tz-fan" aria-hidden="true">
+      <span style="height:60px;transform:translateX(-50%) rotate(-64deg)"></span>
+      <span style="height:76px;transform:translateX(-50%) rotate(-48deg)"></span>
+      <span style="height:90px;transform:translateX(-50%) rotate(-32deg)"></span>
+      <span style="height:100px;transform:translateX(-50%) rotate(-16deg)"></span>
+      <span style="height:106px;transform:translateX(-50%) rotate(0deg)"></span>
+      <span style="height:100px;transform:translateX(-50%) rotate(16deg)"></span>
+      <span style="height:90px;transform:translateX(-50%) rotate(32deg)"></span>
+      <span style="height:76px;transform:translateX(-50%) rotate(48deg)"></span>
+      <span style="height:60px;transform:translateX(-50%) rotate(64deg)"></span>
+    </div>
+    <h1>The <span class="tz-gold">Meridian</span> Room</h1>
+    <p class="tz-coords">40.7580&deg; N, 73.9855&deg; W &mdash; New York</p>
+    <p class="tz-sub">A jazz-age cocktail bar where the ice is cut by hand, the band plays until two, and the gold leaf is real.</p>
+    <a class="tz-cta" href="#">Reserve a table</a>
+  </div>
+</section>
+
+<div class="tz-rule" aria-hidden="true"></div>
+
+<section class="tz-content">
+  <p class="tz-no">No. 04 &mdash; Continued</p>
+  <h2 class="tz-fade tz-d1">The Cocktail Card</h2>
+  <p class="tz-sub tz-fade tz-d2">Fourteen seats at the bar. No menu on the wall &mdash; the card is engraved, and it does not change often.</p>
+  <ul class="tz-menu tz-fade tz-d3">
+    <li><span class="tz-drink">Bees Knees</span><span class="tz-price">$14</span><span class="tz-desc">Bathtub gin, honey, lemon &mdash; served in a coupe, garnished with nothing.</span></li>
+    <li><span class="tz-drink">French 75</span><span class="tz-price">$16</span><span class="tz-desc">Gin, champagne, lemon. Named for the field gun; drinks like one.</span></li>
+    <li><span class="tz-drink">Corpse Reviver No. 2</span><span class="tz-price">$17</span><span class="tz-desc">Gin, Cointreau, Lillet, absinthe rinse. The house signature since 1926.</span></li>
+    <li><span class="tz-drink">Sidecar</span><span class="tz-price">$15</span><span class="tz-desc">Cognac, Cointreau, lemon, sugared rim. Paris, by way of Manhattan.</span></li>
+  </ul>
+  <p class="tz-hours">Doors 18:00 &mdash; 02:00 &middot; Quartet nightly 21:00 &middot; Dress: sharp</p>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#0d0b08"></span><span class="tz-name">bg</span><span class="tz-hex">#0d0b08</span></li>
+    <li><span class="tz-chip" style="background:#f2e7c9"></span><span class="tz-name">ink</span><span class="tz-hex">#f2e7c9</span></li>
+    <li><span class="tz-chip" style="background:#c9a227"></span><span class="tz-name">accent</span><span class="tz-hex">#c9a227</span></li>
+    <li><span class="tz-chip" style="background:#8a7f63"></span><span class="tz-name">muted</span><span class="tz-hex">#8a7f63</span></li>
+    <li><span class="tz-chip" style="background:#c9a2274d"></span><span class="tz-name">line</span><span class="tz-hex">#c9a2274d</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">
+  <span class="tz-plaque">Est. 2026 &middot; Set in Cinzel</span>
+  <p>A TZ-taste style DNA showcase &mdash; MIT, free forever.</p>
+</footer>
+</body>
+</html>
