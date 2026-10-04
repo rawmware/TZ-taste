@@ -1,0 +1,406 @@
+<!--tz-meta {"id":"nonprofit","title":"The Full Pantry — Community Food Nonprofit","category":"Template","file":"templates/nonprofit.html","tags":["nonprofit"],"description":"Warm cottage-style nonprofit page: community board, volunteer notes, honest impact numbers.","dnas":["cottage-warm"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Full Pantry — good food for every neighbor</title>
+<meta name="description" content="The Full Pantry is a community food nonprofit serving the Merrimack Valley: weekly markets, cooking classes, and a garden everyone tends.">
+<!-- DNA: cottage-warm (new DNA — tokens inferred from the name: warm cream, persimmon, sage; friendly serif + humanist sans; hand-pinned community craft). Design read: a church-hall noticeboard with a heart — warm and hand-touched — for neighbors deciding to show up, donate, or volunteer. One distinctive choice: the community board — real volunteer notes pinned at slight rotations like a real hall wall. Dials V6/M3/D4. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Karla:ital,wght@0,300..700;1,300..700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#faf5ea;
+  --tz-surface:#fffdf7;
+  --tz-ink:#35302a;
+  --tz-ink-soft:color-mix(in srgb, var(--tz-ink) 72%, var(--tz-bg));
+  --tz-accent:#c05f33;
+  --tz-accent-deep:#9c4a24;
+  --tz-sage:#6f7f52;
+  --tz-sage-deep:#55613d;
+  --tz-butter:#f2d98c;
+  --tz-line:#35302a1f;
+  --tz-line-strong:#35302a40;
+  --tz-muted:#8a8071;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Karla",system-ui,sans-serif;background:var(--tz-bg);color:var(--tz-ink);
+  line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+::selection{background:var(--tz-butter);color:var(--tz-ink)}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1140px;margin:0 auto;padding:0 26px}
+.tz-mono{font-family:"Space Mono",monospace}
+.skip{position:absolute;left:-999px;top:0;background:var(--tz-ink);color:#fff;padding:8px 16px;z-index:99}
+.skip:focus{left:8px;top:8px}
+
+/* ---------- header ---------- */
+.tz-header{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--tz-bg) 90%, transparent);backdrop-filter:blur(10px);border-bottom:2px dashed var(--tz-line-strong)}
+.tz-header .tz-wrap{display:flex;justify-content:space-between;align-items:center;height:70px}
+.tz-logo{font-family:"Fraunces",serif;font-weight:700;font-size:22px;display:flex;align-items:center;gap:10px}
+.tz-logo svg{width:26px;height:26px}
+.tz-logo em{font-style:italic;color:var(--tz-accent-deep)}
+.tz-nav{display:flex;gap:26px;font-weight:600;font-size:15.5px}
+.tz-nav a{color:var(--tz-ink-soft);transition:color .2s}
+.tz-nav a:hover{color:var(--tz-accent-deep)}
+.tz-donate{
+  font-weight:700;font-size:15px;background:var(--tz-accent);color:#fff;border:0;border-radius:12px;
+  padding:11px 24px;cursor:pointer;box-shadow:0 4px 0 var(--tz-accent-deep);
+  transition:transform .2s var(--tz-ease),box-shadow .2s var(--tz-ease);
+}
+.tz-donate:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--tz-accent-deep)}
+.tz-donate:active{transform:translateY(2px);box-shadow:0 0 0 var(--tz-accent-deep)}
+
+/* ---------- hero ---------- */
+.tz-hero{padding:88px 0 72px;position:relative;overflow:hidden}
+.tz-hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.tz-hero .tz-kicker{
+  display:inline-block;font-family:"Space Mono",monospace;font-size:12px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;background:var(--tz-butter);color:var(--tz-ink);
+  padding:8px 16px;border-radius:99px;transform:rotate(-2deg);margin-bottom:24px;
+  border:2px solid var(--tz-ink);
+}
+.tz-hero h1{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(46px,6vw,84px);line-height:1.02;letter-spacing:-0.02em}
+.tz-hero h1 em{font-style:italic;color:var(--tz-accent-deep)}
+.tz-hero .tz-lede{margin-top:22px;font-size:19px;color:var(--tz-ink-soft);max-width:46ch}
+.tz-hero-cta{display:flex;gap:16px;margin-top:32px;flex-wrap:wrap}
+.tz-btn{
+  display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:16px;border-radius:12px;
+  padding:15px 30px;cursor:pointer;transition:transform .25s var(--tz-ease),box-shadow .25s var(--tz-ease);
+  border:2px solid var(--tz-ink);
+}
+.tz-btn--primary{background:var(--tz-sage);color:#fff;box-shadow:0 4px 0 var(--tz-sage-deep)}
+.tz-btn--primary:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--tz-sage-deep)}
+.tz-btn--ghost{background:var(--tz-surface);color:var(--tz-ink);box-shadow:0 4px 0 var(--tz-line-strong)}
+.tz-btn--ghost:hover{transform:translateY(-2px)}
+.tz-hero-facts{display:flex;gap:32px;margin-top:36px;flex-wrap:wrap}
+.tz-hero-facts div .tz-n{font-family:"Fraunces",serif;font-size:34px;font-weight:700;color:var(--tz-accent-deep)}
+.tz-hero-facts div .tz-l{font-size:14px;color:var(--tz-ink-soft)}
+/* basket illustration: CSS */
+.tz-basket{position:relative;max-width:380px;margin:0 auto;transform:rotate(2deg)}
+.tz-basket .tz-bowl{
+  width:100%;aspect-ratio:1.35;background:linear-gradient(180deg,#d99a5b,#b97a3e);
+  border:3px solid var(--tz-ink);border-radius:12px 12px 120px 120px / 12px 12px 60px 60px;
+  position:relative;overflow:hidden;
+}
+.tz-basket .tz-bowl::before{
+  content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(90deg,transparent 0 26px,#8a5a2b55 26px 30px);
+}
+.tz-produce{position:absolute;top:-34px;left:8%;right:8%;display:flex;justify-content:center;gap:6px}
+.tz-produce i{width:56px;height:56px;border-radius:50%;border:3px solid var(--tz-ink);display:block}
+.tz-basket figcaption{text-align:center;margin-top:18px;font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-ink-soft)}
+.tz-basket .tz-tape{
+  position:absolute;top:-14px;left:50%;transform:translateX(-50%) rotate(-4deg);
+  background:var(--tz-butter);border:2px solid var(--tz-ink);padding:6px 18px;
+  font-family:"Space Mono",monospace;font-size:12px;font-weight:700;
+}
+
+/* ---------- marquee ---------- */
+.tz-marquee{background:var(--tz-sage);color:#fff;overflow:hidden;border-top:3px solid var(--tz-ink);border-bottom:3px solid var(--tz-ink);transform:rotate(-.6deg) scale(1.01)}
+.tz-marquee-track{display:inline-block;white-space:nowrap;padding:14px 0;animation:tz-scroll 24s linear infinite;font-family:"Fraunces",serif;font-style:italic;font-size:19px}
+.tz-marquee-track span{margin:0 28px}
+@keyframes tz-scroll{to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+.tz-section{padding:104px 0}
+.tz-sec-head{max-width:640px;margin-bottom:52px}
+.tz-sec-head .tz-mono{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--tz-accent-deep);display:block;margin-bottom:14px}
+.tz-sec-head h2{font-family:"Fraunces",serif;font-size:clamp(34px,4.4vw,56px);font-weight:600;letter-spacing:-0.02em;line-height:1.05}
+.tz-sec-head p{color:var(--tz-ink-soft);font-size:18px;margin-top:14px}
+
+/* programs: uneven rows */
+.tz-programs{display:grid;gap:24px}
+.tz-program{
+  display:grid;grid-template-columns:88px 1fr auto;gap:28px;align-items:center;
+  background:var(--tz-surface);border:2px solid var(--tz-ink);border-radius:20px;padding:32px 36px;
+  box-shadow:6px 6px 0 var(--tz-line-strong);transition:transform .25s var(--tz-ease),box-shadow .25s var(--tz-ease);
+}
+.tz-program:hover{transform:translate(-2px,-2px);box-shadow:9px 9px 0 var(--tz-line-strong)}
+.tz-program:nth-child(even){margin-left:48px}
+.tz-program:nth-child(odd){margin-right:48px}
+.tz-program .tz-ico{width:88px;height:88px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--tz-ink);flex:none}
+.tz-program .tz-ico svg{width:40px;height:40px}
+.tz-program h3{font-family:"Fraunces",serif;font-size:26px;font-weight:600;margin-bottom:6px}
+.tz-program p{color:var(--tz-ink-soft);font-size:16px;max-width:56ch}
+.tz-program .tz-when{font-family:"Space Mono",monospace;font-size:13px;font-weight:700;background:var(--tz-bg);border:2px dashed var(--tz-line-strong);border-radius:12px;padding:12px 18px;text-align:center;line-height:1.7;white-space:nowrap}
+
+/* ---------- community board: the one weird thing ---------- */
+.tz-board-section{background:var(--tz-surface);border-top:3px solid var(--tz-ink);border-bottom:3px solid var(--tz-ink);padding:104px 0;position:relative;overflow:hidden}
+.tz-board-section::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background:repeating-linear-gradient(0deg,transparent 0 46px,var(--tz-line) 46px 47px);
+}
+.tz-board{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;position:relative;margin-top:48px}
+.tz-note-card{
+  background:#fffdf4;border:2px solid var(--tz-ink);padding:28px;position:relative;
+  box-shadow:5px 7px 0 #35302a22;transition:transform .3s var(--tz-ease);
+}
+.tz-note-card:hover{transform:rotate(0deg) scale(1.02)!important;z-index:2}
+.tz-note-card:nth-child(1){transform:rotate(-1.6deg)}
+.tz-note-card:nth-child(2){transform:rotate(1.2deg);margin-top:24px}
+.tz-note-card:nth-child(3){transform:rotate(-.8deg)}
+.tz-note-card:nth-child(4){transform:rotate(1.8deg);margin-top:-8px}
+.tz-note-card:nth-child(5){transform:rotate(-1.1deg);margin-top:20px}
+.tz-note-card:nth-child(6){transform:rotate(.9deg)}
+.tz-pin{
+  position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  width:26px;height:26px;border-radius:50%;border:2px solid var(--tz-ink);
+}
+.tz-note-card blockquote{font-family:"Fraunces",serif;font-style:italic;font-size:19px;line-height:1.5}
+.tz-note-card figcaption{margin-top:16px;font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-ink-soft)}
+.tz-note-card figcaption b{color:var(--tz-accent-deep)}
+
+/* ---------- impact ---------- */
+.tz-impact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.tz-impact{
+  background:var(--tz-surface);border:2px solid var(--tz-ink);border-radius:18px;padding:32px 28px;
+  text-align:center;box-shadow:5px 5px 0 var(--tz-line-strong);
+}
+.tz-impact:nth-child(odd){transform:rotate(-1deg)}
+.tz-impact:nth-child(even){transform:rotate(1deg)}
+.tz-impact .tz-n{font-family:"Fraunces",serif;font-size:52px;font-weight:700;color:var(--tz-accent-deep);line-height:1}
+.tz-impact .tz-l{font-size:15px;color:var(--tz-ink-soft);margin-top:10px}
+.tz-impact-note{margin-top:32px;text-align:center;font-family:"Space Mono",monospace;font-size:13px;color:var(--tz-ink-soft);max-width:70ch;margin-left:auto;margin-right:auto;line-height:1.9}
+
+/* ---------- get involved ---------- */
+.tz-involve{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.tz-involve-card{
+  border:2px solid var(--tz-ink);border-radius:20px;padding:44px;position:relative;overflow:hidden;
+  transition:transform .25s var(--tz-ease);
+}
+.tz-involve-card:hover{transform:translateY(-4px)}
+.tz-involve-card--vol{background:var(--tz-sage);color:#fff}
+.tz-involve-card--don{background:var(--tz-accent);color:#fff}
+.tz-involve-card h3{font-family:"Fraunces",serif;font-size:32px;font-weight:600;margin-bottom:12px}
+.tz-involve-card p{font-size:16.5px;opacity:.92;margin-bottom:28px;max-width:40ch}
+.tz-involve-card .tz-btn{border-color:#fff;color:#fff;background:#ffffff22}
+.tz-involve-card .tz-btn:hover{background:#ffffff38}
+
+/* ---------- footer ---------- */
+.tz-footer{background:var(--tz-ink);color:var(--tz-bg);padding:72px 0 40px}
+.tz-foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:44px;margin-bottom:48px}
+.tz-footer .tz-logo{color:var(--tz-bg)}
+.tz-footer p{color:#c9bfa9;font-size:15px;max-width:34ch;margin-top:12px}
+.tz-footer h4{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tz-butter);margin-bottom:16px}
+.tz-footer ul{list-style:none;display:grid;gap:10px;font-size:15px}
+.tz-footer a{color:#e8dcc4}
+.tz-footer a:hover{color:#fff}
+.tz-foot-bottom{border-top:1px solid #ffffff22;padding-top:24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:"Space Mono",monospace;font-size:12px;color:#a99c83}
+
+/* ---------- reveal ---------- */
+.tz-reveal{opacity:0;transform:translateY(20px);transition:opacity .7s var(--tz-ease),transform .7s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:960px){
+  .tz-hero-grid{grid-template-columns:1fr}
+  .tz-nav{display:none}
+  .tz-board{grid-template-columns:1fr 1fr}
+  .tz-impact-grid{grid-template-columns:1fr 1fr}
+  .tz-involve{grid-template-columns:1fr}
+  .tz-program:nth-child(even){margin-left:0}
+  .tz-program:nth-child(odd){margin-right:0}
+  .tz-foot-grid{grid-template-columns:1fr 1fr}
+  .tz-section{padding:72px 0}
+}
+@media (max-width:600px){
+  .tz-board{grid-template-columns:1fr}
+  .tz-note-card{margin-top:0!important}
+  .tz-program{grid-template-columns:1fr;text-align:center;justify-items:center}
+  .tz-program .tz-when{white-space:normal}
+  .tz-impact-grid{grid-template-columns:1fr}
+  .tz-foot-grid{grid-template-columns:1fr}
+  .tz-hero-facts{gap:20px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#programs">Skip to programs</a>
+
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-logo" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#c05f33" stroke-width="2" aria-hidden="true"><path d="M4 10h16l-2.5 9a2 2 0 0 1-2 1.5h-7a2 2 0 0 1-2-1.5L4 10z"/><path d="M8 10c0-4 1.5-6 4-6s4 2 4 6" stroke-linecap="round"/><circle cx="12" cy="4" r="1.4" fill="#6f7f52" stroke="none"/></svg>
+      The Full <em>Pantry</em>
+    </a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#programs">Programs</a><a href="#board">Community</a><a href="#impact">Impact</a><a href="#involve">Get involved</a>
+    </nav>
+    <a class="tz-donate" href="#involve">Donate</a>
+  </div>
+</header>
+
+<main>
+  <!-- ============ hero ============ -->
+  <section class="tz-hero">
+    <div class="tz-wrap tz-hero-grid">
+      <div class="tz-reveal tz-in">
+        <span class="tz-kicker">Merrimack Valley · since 2016</span>
+        <h1>Good food for <em>every neighbor.</em></h1>
+        <p class="tz-lede">The Full Pantry runs a free weekly market, cooking classes, and a community garden — because nobody in our valley should wonder where dinner is coming from.</p>
+        <div class="tz-hero-cta">
+          <a class="tz-btn tz-btn--primary" href="#involve">Volunteer with us</a>
+          <a class="tz-btn tz-btn--ghost" href="#programs">See the programs</a>
+        </div>
+        <div class="tz-hero-facts">
+          <div><div class="tz-n">1,900</div><div class="tz-l">neighbors fed weekly</div></div>
+          <div><div class="tz-n">240</div><div class="tz-l">active volunteers</div></div>
+          <div><div class="tz-n">100%</div><div class="tz-l">donations to food</div></div>
+        </div>
+      </div>
+      <figure class="tz-basket tz-reveal tz-in" aria-label="Illustration of a harvest basket">
+        <span class="tz-tape">this week's harvest</span>
+        <div class="tz-produce" aria-hidden="true">
+          <i style="background:#c0392b"></i><i style="background:#e8a13c"></i><i style="background:#6f7f52"></i><i style="background:#c0392b"></i><i style="background:#e8a13c"></i>
+        </div>
+        <div class="tz-bowl"></div>
+        <figcaption>Saturday market · Riverside Hall · 9am–12pm</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="tz-marquee" aria-hidden="true">
+    <div class="tz-marquee-track">
+      <span>free weekly market</span><span>·</span><span>cooking classes</span><span>·</span><span>community garden</span><span>·</span><span>senior deliveries</span><span>·</span>
+      <span>free weekly market</span><span>·</span><span>cooking classes</span><span>·</span><span>community garden</span><span>·</span><span>senior deliveries</span><span>·</span>
+    </div>
+  </div>
+
+  <!-- ============ programs ============ -->
+  <section class="tz-section" id="programs">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <span class="tz-mono">What we do</span>
+        <h2>Four ways we show up</h2>
+        <p>Everything is free, no ID or paperwork required. If you're hungry, you're welcome — that's the whole policy.</p>
+      </div>
+      <div class="tz-programs">
+        <article class="tz-program tz-reveal">
+          <span class="tz-ico" style="background:var(--tz-butter)"><svg viewBox="0 0 24 24" fill="none" stroke="#35302a" stroke-width="1.8"><path d="M4 10h16l-2.5 9a2 2 0 0 1-2 1.5h-7a2 2 0 0 1-2-1.5L4 10z"/><path d="M8 10c0-4 1.5-6 4-6s4 2 4 6" stroke-linecap="round"/></svg></span>
+          <div><h3>Saturday Market</h3><p>Fresh produce, bread, dairy, and pantry staples — take what you need, leave what you can. Kids pick a free piece of fruit at the door.</p></div>
+          <span class="tz-when">Saturdays<br>9am – 12pm</span>
+        </article>
+        <article class="tz-program tz-reveal">
+          <span class="tz-ico" style="background:#dcebd4"><svg viewBox="0 0 24 24" fill="none" stroke="#35302a" stroke-width="1.8"><path d="M12 21c-5 0-8-3-8-8 0-6 5-9 8-11 3 2 8 5 8 11 0 5-3 8-8 8z"/><path d="M12 21v-8" stroke-linecap="round"/></svg></span>
+          <div><h3>Community Garden</h3><p>Two acres behind Riverside Hall, tended by 80 families. Beginners get a plot, seeds, and a patient neighbor to show them the ropes.</p></div>
+          <span class="tz-when">Open daily<br>dawn – dusk</span>
+        </article>
+        <article class="tz-program tz-reveal">
+          <span class="tz-ico" style="background:#f6dfe8"><svg viewBox="0 0 24 24" fill="none" stroke="#35302a" stroke-width="1.8"><path d="M6 13.5A5.5 5.5 0 0 1 11.5 8H18a4 4 0 0 1 0 8h-1" stroke-linecap="round"/><path d="M6 13.5h12" stroke-linecap="round"/></svg></span>
+          <div><h3>Cooking Classes</h3><p>Free Tuesday-night classes: stretching a chicken three ways, cooking for one, kids' lunchbox basics. Aprons provided, judgment absent.</p></div>
+          <span class="tz-when">Tuesdays<br>6pm – 7:30pm</span>
+        </article>
+        <article class="tz-program tz-reveal">
+          <span class="tz-ico" style="background:#dfe4f8"><svg viewBox="0 0 24 24" fill="none" stroke="#35302a" stroke-width="1.8"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z" stroke-linejoin="round"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg></span>
+          <div><h3>Senior Deliveries</h3><p>Volunteers deliver groceries to 140 homebound seniors every Thursday — and stay for a chat, which matters as much as the food.</p></div>
+          <span class="tz-when">Thursdays<br>10am – 2pm</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ community board ============ -->
+  <section class="tz-board-section" id="board">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal" style="position:relative">
+        <span class="tz-mono">From the hall wall</span>
+        <h2>Pinned up by our people</h2>
+        <p>Real notes from volunteers, neighbors, and one very honest eight-year-old.</p>
+      </div>
+      <div class="tz-board">
+        <figure class="tz-note-card tz-reveal"><span class="tz-pin" style="background:var(--tz-accent)" aria-hidden="true"></span><blockquote>"I've volunteered at the market for three years. I came for the service hours; I stayed for the people."</blockquote><figcaption><b>— Priya S.</b> · volunteer since 2023</figcaption></figure>
+        <figure class="tz-note-card tz-reveal"><span class="tz-pin" style="background:var(--tz-sage)" aria-hidden="true"></span><blockquote>"The tomatoes from the garden taste like my childhood in Puerto Rico. My kids fight over them."</blockquote><figcaption><b>— Marisol R.</b> · garden family</figcaption></figure>
+        <figure class="tz-note-card tz-reveal"><span class="tz-pin" style="background:var(--tz-butter)" aria-hidden="true"></span><blockquote>"Thursday deliveries are the best part of my week. Mrs. Abernathy tells the best stories."</blockquote><figcaption><b>— Tom W.</b> · delivery driver</figcaption></figure>
+        <figure class="tz-note-card tz-reveal"><span class="tz-pin" style="background:var(--tz-sage-deep)" aria-hidden="true"></span><blockquote>"I learned to make soup and now my mom asks ME to cook. I'm 8."</blockquote><figcaption><b>— Jayden</b> · cooking class graduate</figcaption></figure>
+        <figure class="tz-note-card tz-reveal"><span class="tz-pin" style="background:var(--tz-accent)" aria-hidden="true"></span><blockquote>"After the mill closed, this place kept us fed without ever making us feel small about it."</blockquote><figcaption><b>— The Donnelly family</b> · neighbors</figcaption></figure>
+        <figure class="tz-note-card tz-reveal"><span class="tz-pin" style="background:var(--tz-sage)" aria-hidden="true"></span><blockquote>"Retired teacher, new gardener. Plot 14B has never looked better — come see the sunflowers."</blockquote><figcaption><b>— Mr. Okafor</b> · plot 14B</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ impact ============ -->
+  <section class="tz-section" id="impact">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <span class="tz-mono">Last year, together</span>
+        <h2>What your help bought</h2>
+      </div>
+      <div class="tz-impact-grid">
+        <div class="tz-impact tz-reveal"><div class="tz-n">98k</div><div class="tz-l">meals served across all programs</div></div>
+        <div class="tz-impact tz-reveal"><div class="tz-n">12t</div><div class="tz-l">produce grown in the community garden</div></div>
+        <div class="tz-impact tz-reveal"><div class="tz-n">4,100</div><div class="tz-l">volunteer hours given</div></div>
+        <div class="tz-impact tz-reveal"><div class="tz-n">$0</div><div class="tz-l">spent on administration — all volunteer-run</div></div>
+      </div>
+      <p class="tz-impact-note tz-reveal">We're an all-volunteer 501(c)(3). Every dollar goes to food, seeds, and gas for the delivery van. Annual reports are printed on the hall wall — come read them.</p>
+    </div>
+  </section>
+
+  <!-- ============ get involved ============ -->
+  <section class="tz-section" id="involve" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <span class="tz-mono">Get involved</span>
+        <h2>Two ways to help</h2>
+      </div>
+      <div class="tz-involve">
+        <div class="tz-involve-card tz-involve-card--vol tz-reveal">
+          <h3>Give your Saturday</h3>
+          <p>No experience needed — we'll pair you with a veteran volunteer for your first shift. Most people start with the market and end up staying for lunch.</p>
+          <a class="tz-btn" href="#">See volunteer shifts</a>
+        </div>
+        <div class="tz-involve-card tz-involve-card--don tz-reveal">
+          <h3>Give what you can</h3>
+          <p>$25 stocks the market shelves for a family of four for a week. Monthly givers keep the van fueled and the garden watered.</p>
+          <a class="tz-btn" href="#">Donate today</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-foot-grid">
+      <div>
+        <span class="tz-logo">The Full <em style="color:var(--tz-butter)">Pantry</em></span>
+        <p>Good food for every neighbor in the Merrimack Valley. 501(c)(3) · EIN 04-1234567</p>
+      </div>
+      <div><h4>Visit</h4><ul><li><a href="#programs">Programs</a></li><li><a href="#board">Community</a></li><li><a href="#impact">Impact</a></li></ul></div>
+      <div><h4>Help</h4><ul><li><a href="#involve">Volunteer</a></li><li><a href="#involve">Donate</a></li><li><a href="#">Food drives</a></li></ul></div>
+      <div><h4>Find us</h4><ul><li><a href="#">Riverside Hall, 44 Mill St</a></li><li><a href="#">hello@fullpantry.org</a></li><li><a href="#">(978) 555-0119</a></li></ul></div>
+    </div>
+    <div class="tz-foot-bottom">
+      <span>© 2026 The Full Pantry · All-volunteer, all heart</span>
+      <span class="tz-mono">no one hungry in our valley</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){e.classList.add('tz-in')});
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en,i){
+        if(en.isIntersecting){ setTimeout(function(){en.target.classList.add('tz-in')}, i*70); io.unobserve(en.target); }
+      });
+    },{threshold:.1});
+    els.forEach(function(e){io.observe(e)});
+  }
+})();
+</script>
+</body>
+</html>
