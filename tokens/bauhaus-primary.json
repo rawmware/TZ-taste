@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-bauhaus-primary",
+  "title": "Bauhaus Primary design tokens",
+  "category": "Tokens",
+  "file": "tokens/bauhaus-primary.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "bauhaus-primary"
+  ],
+  "description": "W3C-format design tokens for the Bauhaus Primary style DNA.",
+  "dnas": [
+   "bauhaus-primary"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#f4f1ea",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#1a1a1a",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#d8342c",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#6e6a60",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#1a1a1a",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Archivo Black",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Archivo",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "bauhaus-primary",
+  "name": "Bauhaus Primary",
+  "vibe": "Functional geometry: red, yellow, blue on off-white. A workshop poster that refuses to decorate."
+ }
+}
