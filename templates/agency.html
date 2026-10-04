@@ -1,0 +1,405 @@
+<!--tz-meta {"id":"agency","title":"Studio Raster — Design Agency","category":"Template","file":"templates/agency.html","tags":["agency"],"description":"Strict Swiss grid agency page: black on white, one red, numbered index of work.","dnas":["swiss-rational"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Raster — Design agency, Zürich</title>
+<meta name="description" content="Studio Raster is a design agency in Zürich. Identity, digital products, and design systems for companies that value precision.">
+<!-- DNA: swiss-rational (styles/swiss-rational.md). Design read: information architecture as aesthetic — a rational grid page for clients who hire agencies on rigor, not vibes. One distinctive choice: a strict 12-column grid with a giant red square anchoring the hero and numbered everything. Dials V4/M2/D6. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#fafafa;
+  --tz-surface:#f0f0f0;
+  --tz-ink:#111111;
+  --tz-ink-soft:#3d3d3d;
+  --tz-accent:#e30613;
+  --tz-line:#111111;
+  --tz-line-soft:#11111126;
+  --tz-muted:#6b6b6b;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Archivo",Helvetica,Arial,sans-serif;background:var(--tz-bg);color:var(--tz-ink);
+  line-height:1.55;-webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--tz-accent);color:#fff}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+.tz-mono{font-family:"Space Mono",monospace}
+.tz-micro{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tz-ink-soft)}
+.skip{position:absolute;left:-999px;top:0;background:var(--tz-ink);color:#fff;padding:8px 16px;z-index:99}
+.skip:focus{left:8px;top:8px}
+
+/* ---------- header: 4 columns ---------- */
+.tz-header{border-bottom:2px solid var(--tz-line);position:sticky;top:0;background:var(--tz-bg);z-index:50}
+.tz-header .tz-grid{display:grid;grid-template-columns:repeat(4,1fr);align-items:stretch;min-height:60px}
+.tz-header .tz-cell{padding:18px 24px;border-right:1px solid var(--tz-line-soft);display:flex;align-items:center}
+.tz-header .tz-cell:last-child{border-right:0;justify-content:flex-end}
+.tz-logo{font-weight:800;font-size:19px;letter-spacing:-0.02em}
+.tz-logo i{color:var(--tz-accent);font-style:normal}
+.tz-header nav{display:flex;gap:24px}
+.tz-header nav a{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--tz-ink-soft)}
+.tz-header nav a:hover{color:var(--tz-accent)}
+.tz-cta-link{font-family:"Space Mono",monospace;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--tz-ink);color:#fff;padding:10px 18px;transition:background .2s}
+.tz-cta-link:hover{background:var(--tz-accent)}
+
+/* ---------- hero: 12-col grid + red square ---------- */
+.tz-hero{border-bottom:2px solid var(--tz-line);padding:0}
+.tz-hero-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:0}
+.tz-hero-copy{grid-column:1/9;padding:72px 48px 72px 24px;border-right:1px solid var(--tz-line-soft)}
+.tz-hero-copy .tz-micro{display:block;margin-bottom:28px}
+.tz-hero-copy h1{
+  font-size:clamp(48px,6.6vw,104px);font-weight:800;letter-spacing:-0.035em;line-height:.94;
+  text-transform:uppercase;
+}
+.tz-hero-copy h1 .tz-red{color:var(--tz-accent)}
+.tz-hero-copy p{margin-top:28px;font-size:18px;max-width:52ch;color:var(--tz-ink-soft)}
+.tz-hero-meta{grid-column:9/13;padding:72px 24px;display:flex;flex-direction:column;justify-content:space-between;gap:32px}
+.tz-red-square{width:100%;aspect-ratio:1;background:var(--tz-accent);position:relative}
+.tz-red-square::after{
+  content:"R—09";position:absolute;bottom:12px;left:14px;color:#fff;
+  font-family:"Space Mono",monospace;font-size:13px;letter-spacing:.1em;
+}
+.tz-meta-list{list-style:none;display:grid;gap:14px}
+.tz-meta-list li{display:grid;grid-template-columns:96px 1fr;gap:12px;font-size:14px;border-top:1px solid var(--tz-line-soft);padding-top:12px}
+
+/* ---------- index strip ---------- */
+.tz-strip{border-bottom:2px solid var(--tz-line);background:var(--tz-surface)}
+.tz-strip .tz-wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.tz-strip div{padding:20px 24px;border-right:1px solid var(--tz-line-soft);font-family:"Space Mono",monospace;font-size:13px}
+.tz-strip div:last-child{border-right:0}
+.tz-strip b{display:block;font-size:26px;font-weight:700;letter-spacing:-0.02em}
+
+/* ---------- work index ---------- */
+.tz-section{padding:96px 0}
+.tz-sec-head{display:grid;grid-template-columns:repeat(12,1fr);margin-bottom:48px;align-items:end}
+.tz-sec-head h2{grid-column:1/9;font-size:clamp(40px,5.4vw,84px);font-weight:800;letter-spacing:-0.035em;line-height:.95;text-transform:uppercase}
+.tz-sec-head h2 .tz-red{color:var(--tz-accent)}
+.tz-sec-head .tz-micro{grid-column:9/13;text-align:right}
+.tz-work{border-top:2px solid var(--tz-line)}
+.tz-work-item{
+  display:grid;grid-template-columns:80px 1fr 1fr auto;gap:32px;align-items:center;
+  padding:32px 0;border-bottom:2px solid var(--tz-line);
+  transition:background .2s,padding .25s var(--tz-ease);
+}
+.tz-work-item:hover{background:var(--tz-surface);padding-left:24px;padding-right:24px}
+.tz-work-item .tz-no{font-family:"Space Mono",monospace;font-size:14px;color:var(--tz-accent);font-weight:700}
+.tz-work-item h3{font-size:clamp(24px,3vw,40px);font-weight:700;letter-spacing:-0.025em;line-height:1}
+.tz-work-item .tz-tags{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--tz-ink-soft);line-height:2}
+.tz-work-item .tz-year{font-family:"Space Mono",monospace;font-size:14px}
+.tz-work-item .tz-arrow{font-size:28px;transition:transform .25s var(--tz-ease)}
+.tz-work-item:hover .tz-arrow{transform:translateX(8px);color:var(--tz-accent)}
+
+/* ---------- services: table ---------- */
+.tz-services{border-top:2px solid var(--tz-line)}
+.tz-service{display:grid;grid-template-columns:80px 1fr 1.2fr;gap:32px;padding:36px 0;border-bottom:1px solid var(--tz-line-soft);align-items:start}
+.tz-service:last-child{border-bottom:2px solid var(--tz-line)}
+.tz-service .tz-no{font-family:"Space Mono",monospace;font-size:14px;color:var(--tz-accent);font-weight:700;padding-top:6px}
+.tz-service h3{font-size:26px;font-weight:700;letter-spacing:-0.02em}
+.tz-service p{color:var(--tz-ink-soft);font-size:16px;max-width:56ch}
+.tz-service ul{list-style:none;margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+.tz-service li{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--tz-line);padding:6px 12px}
+
+/* ---------- principles: numbered list ---------- */
+.tz-principles{display:grid;grid-template-columns:repeat(3,1fr);border:2px solid var(--tz-line)}
+.tz-principle{padding:40px 32px;border-right:1px solid var(--tz-line)}
+.tz-principle:last-child{border-right:0}
+.tz-principle .tz-bignum{font-size:64px;font-weight:800;letter-spacing:-0.04em;color:var(--tz-accent);line-height:1}
+.tz-principle h3{font-size:20px;font-weight:700;margin:18px 0 10px;text-transform:uppercase;letter-spacing:-0.01em}
+.tz-principle p{color:var(--tz-ink-soft);font-size:15px}
+
+/* ---------- testimonial ---------- */
+.tz-quote{border-top:2px solid var(--tz-line);border-bottom:2px solid var(--tz-line);background:var(--tz-surface);padding:88px 0}
+.tz-quote blockquote{font-size:clamp(26px,3.6vw,44px);font-weight:700;letter-spacing:-0.025em;line-height:1.15;max-width:26ch;text-wrap:balance}
+.tz-quote blockquote .tz-red{color:var(--tz-accent)}
+.tz-quote figcaption{margin-top:28px;font-family:"Space Mono",monospace;font-size:13px;color:var(--tz-ink-soft)}
+
+/* ---------- contact ---------- */
+.tz-contact{padding:96px 0}
+.tz-contact-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:0;border:2px solid var(--tz-line)}
+.tz-contact-copy{grid-column:1/8;padding:56px 48px;border-right:1px solid var(--tz-line)}
+.tz-contact-copy h2{font-size:clamp(40px,5vw,72px);font-weight:800;letter-spacing:-0.035em;line-height:.95;text-transform:uppercase}
+.tz-contact-copy h2 .tz-red{color:var(--tz-accent)}
+.tz-contact-copy p{margin-top:20px;color:var(--tz-ink-soft);font-size:17px;max-width:44ch}
+.tz-contact-form{grid-column:8/13;padding:56px 48px;background:var(--tz-surface)}
+.tz-field{margin-bottom:20px}
+.tz-field label{display:block;font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+.tz-field input,.tz-field textarea,.tz-field select{width:100%;border:1px solid var(--tz-line);background:#fff;padding:13px 14px;font-family:inherit;font-size:15px;border-radius:0}
+.tz-field input:focus,.tz-field textarea:focus,.tz-field select:focus{outline:2px solid var(--tz-accent);outline-offset:-2px}
+.tz-submit{width:100%;background:var(--tz-accent);color:#fff;border:0;font-family:"Space Mono",monospace;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:16px;cursor:pointer;transition:background .2s}
+.tz-submit:hover{background:var(--tz-ink)}
+
+/* ---------- footer ---------- */
+.tz-footer{border-top:2px solid var(--tz-line);padding:40px 0 32px}
+.tz-foot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-bottom:40px}
+.tz-footer h4{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px;color:var(--tz-accent)}
+.tz-footer ul{list-style:none;display:grid;gap:10px;font-size:14px}
+.tz-footer a{color:var(--tz-ink-soft)}
+.tz-footer a:hover{color:var(--tz-ink)}
+.tz-foot-bottom{border-top:1px solid var(--tz-line-soft);padding-top:20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-muted)}
+
+/* ---------- journal ---------- */
+.tz-journal{display:grid;grid-template-columns:repeat(3,1fr);border:2px solid var(--tz-line)}
+.tz-journal article{padding:36px 32px;border-right:1px solid var(--tz-line);transition:background .25s}
+.tz-journal article:last-child{border-right:0}
+.tz-journal article:hover{background:var(--tz-surface)}
+.tz-journal .tz-micro{display:block;margin-bottom:16px;color:var(--tz-accent)}
+.tz-journal h3{font-size:21px;font-weight:700;letter-spacing:-0.015em;margin-bottom:10px;line-height:1.25}
+.tz-journal p{font-size:15px;color:var(--tz-ink-soft)}
+.tz-journal .tz-read{display:inline-block;margin-top:18px;font-family:"Space Mono",monospace;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-bottom:2px solid var(--tz-accent)}
+@media (max-width:960px){
+  .tz-journal{grid-template-columns:1fr}
+  .tz-journal article{border-right:0;border-bottom:1px solid var(--tz-line)}
+  .tz-journal article:last-child{border-bottom:0}
+}
+
+/* ---------- reveal ---------- */
+.tz-reveal{opacity:0;transform:translateY(16px);transition:opacity .6s var(--tz-ease),transform .6s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:960px){
+  .tz-hero-grid{grid-template-columns:1fr}
+  .tz-hero-copy{grid-column:1/-1;border-right:0;border-bottom:1px solid var(--tz-line-soft);padding:48px 24px}
+  .tz-hero-meta{grid-column:1/-1;padding:40px 24px}
+  .tz-red-square{max-width:280px}
+  .tz-sec-head h2{grid-column:1/-1}
+  .tz-sec-head .tz-micro{grid-column:1/-1;text-align:left;margin-top:12px}
+  .tz-work-item{grid-template-columns:48px 1fr auto;gap:16px}
+  .tz-work-item .tz-tags{display:none}
+  .tz-service{grid-template-columns:48px 1fr;gap:16px}
+  .tz-service p{grid-column:2}
+  .tz-principles{grid-template-columns:1fr}
+  .tz-principle{border-right:0;border-bottom:1px solid var(--tz-line)}
+  .tz-principle:last-child{border-bottom:0}
+  .tz-contact-copy,.tz-contact-form{grid-column:1/-1}
+  .tz-contact-copy{border-right:0;border-bottom:1px solid var(--tz-line)}
+  .tz-strip .tz-wrap{grid-template-columns:1fr 1fr}
+  .tz-strip div:nth-child(2){border-right:0}
+  .tz-foot-grid{grid-template-columns:1fr 1fr}
+  .tz-header nav{display:none}
+  .tz-header .tz-grid{grid-template-columns:1fr 1fr}
+  .tz-header .tz-cell:nth-child(2){display:none}
+}
+@media (max-width:560px){
+  .tz-work-item{grid-template-columns:1fr auto}
+  .tz-work-item .tz-no{display:none}
+  .tz-strip .tz-wrap{grid-template-columns:1fr}
+  .tz-strip div{border-right:0;border-bottom:1px solid var(--tz-line-soft)}
+  .tz-foot-grid{grid-template-columns:1fr}
+  .tz-contact-copy,.tz-contact-form{padding:36px 24px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#work">Skip to work</a>
+
+<header class="tz-header">
+  <div class="tz-wrap tz-grid" style="padding:0">
+    <div class="tz-cell"><span class="tz-logo">STUDIO RASTER<i>.</i></span></div>
+    <div class="tz-cell"><span class="tz-micro">Zürich · Est. 2014</span></div>
+    <div class="tz-cell">
+      <nav aria-label="Primary">
+        <a href="#work">Work</a><a href="#services">Services</a><a href="#studio">Studio</a>
+      </nav>
+    </div>
+    <div class="tz-cell"><a class="tz-cta-link" href="#contact">Start a project</a></div>
+  </div>
+</header>
+
+<main>
+  <!-- ============ hero ============ -->
+  <section class="tz-hero">
+    <div class="tz-wrap tz-hero-grid" style="padding:0">
+      <div class="tz-hero-copy tz-reveal tz-in">
+        <span class="tz-micro">Design agency · 01 / Identity — Digital — Systems</span>
+        <h1>Design is<br>decisions<span class="tz-red">,</span><br>not decoration<span class="tz-red">.</span></h1>
+        <p>Studio Raster is a fourteen-person design agency in Zürich. We build identities, digital products, and design systems for companies that would rather be precise than fashionable.</p>
+      </div>
+      <div class="tz-hero-meta tz-reveal tz-in">
+        <div class="tz-red-square" aria-hidden="true"></div>
+        <ul class="tz-meta-list">
+          <li><span class="tz-micro">Founded</span><span>2014, Zürich</span></li>
+          <li><span class="tz-micro">Team</span><span>14 designers, 0 account managers</span></li>
+          <li><span class="tz-micro">Output</span><span>212 projects shipped</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ strip ============ -->
+  <div class="tz-strip" aria-label="Studio facts">
+    <div class="tz-wrap" style="padding:0">
+      <div><b>212</b>projects shipped</div>
+      <div><b>31</b>design awards</div>
+      <div><b>14</b>people, one studio</div>
+      <div><b>0</b>pitch decks recycled</div>
+    </div>
+  </div>
+
+  <!-- ============ work ============ -->
+  <section class="tz-section" id="work">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <h2>Selected<br>work <span class="tz-red">2022–26</span></h2>
+        <span class="tz-micro">Index · 08 projects · full case studies on request</span>
+      </div>
+      <div class="tz-work">
+        <a class="tz-work-item tz-reveal" href="#contact"><span class="tz-no">01</span><h3>Helvetia Bank</h3><span class="tz-tags">Identity · Design system · 340 components</span><span class="tz-year">2026</span><span class="tz-arrow">→</span></a>
+        <a class="tz-work-item tz-reveal" href="#contact"><span class="tz-no">02</span><h3>Nordwind Rail</h3><span class="tz-tags">Wayfinding · Timetable redesign</span><span class="tz-year">2025</span><span class="tz-arrow">→</span></a>
+        <a class="tz-work-item tz-reveal" href="#contact"><span class="tz-no">03</span><h3>Klinik Balgrist</h3><span class="tz-tags">Digital product · Patient portal</span><span class="tz-year">2025</span><span class="tz-arrow">→</span></a>
+        <a class="tz-work-item tz-reveal" href="#contact"><span class="tz-no">04</span><h3>Stadtbibliothek</h3><span class="tz-tags">Identity · Signage · 14 branches</span><span class="tz-year">2024</span><span class="tz-arrow">→</span></a>
+        <a class="tz-work-item tz-reveal" href="#contact"><span class="tz-no">05</span><h3>Alpenrose Dairy</h3><span class="tz-tags">Packaging · 42 SKUs</span><span class="tz-year">2024</span><span class="tz-arrow">→</span></a>
+        <a class="tz-work-item tz-reveal" href="#contact"><span class="tz-no">06</span><h3>Meridian Insurance</h3><span class="tz-tags">Design system · Documentation</span><span class="tz-year">2023</span><span class="tz-arrow">→</span></a>
+        <a class="tz-work-item tz-reveal" href="#contact"><span class="tz-no">07</span><h3>Tonhalle Orchestra</h3><span class="tz-tags">Campaign · Season identity</span><span class="tz-year">2023</span><span class="tz-arrow">→</span></a>
+        <a class="tz-work-item tz-reveal" href="#contact"><span class="tz-no">08</span><h3>Volksblatt</h3><span class="tz-tags">Editorial · Paywall UX</span><span class="tz-year">2022</span><span class="tz-arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ services ============ -->
+  <section class="tz-section" id="services" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <h2>What we <span class="tz-red">do</span></h2>
+        <span class="tz-micro">Three disciplines · one team</span>
+      </div>
+      <div class="tz-services">
+        <div class="tz-service tz-reveal">
+          <span class="tz-no">01</span>
+          <h3>Identity</h3>
+          <div><p>Naming, visual identity, and the rules that keep it intact after we leave. We design for the worst day your brand will have, not the launch.</p>
+          <ul><li>Naming</li><li>Logo &amp; type</li><li>Guidelines</li><li>Tone of voice</li></ul></div>
+        </div>
+        <div class="tz-service tz-reveal">
+          <span class="tz-no">02</span>
+          <h3>Digital products</h3>
+          <div><p>Websites, apps, and portals designed around the task, not the sitemap. We prototype in week one and test with real users in week three.</p>
+          <ul><li>UX research</li><li>Product design</li><li>Prototyping</li><li>Design engineering</li></ul></div>
+        </div>
+        <div class="tz-service tz-reveal">
+          <span class="tz-no">03</span>
+          <h3>Design systems</h3>
+          <div><p>Component libraries with documentation people actually read. Built to survive team turnover and three rebrands.</p>
+          <ul><li>Component libraries</li><li>Tokens</li><li>Documentation</li><li>Governance</li></ul></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ principles ============ -->
+  <section class="tz-section" id="studio" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <h2>How we <span class="tz-red">work</span></h2>
+        <span class="tz-micro">Principles · non-negotiable</span>
+      </div>
+      <div class="tz-principles tz-reveal">
+        <div class="tz-principle"><div class="tz-bignum">01</div><h3>No decoration</h3><p>Every element earns its place or it goes. If we can't defend a decision in one sentence, it's not a decision.</p></div>
+        <div class="tz-principle"><div class="tz-bignum">02</div><h3>Designers, not managers</h3><p>You talk to the person doing the work. There is no telephone game between your brief and our files.</p></div>
+        <div class="tz-principle"><div class="tz-bignum">03</div><h3>Ship, then refine</h3><p>Perfect is the enemy of launched. We put version one in front of users early and let reality do the editing.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ quote ============ -->
+  <section class="tz-quote">
+    <div class="tz-wrap tz-reveal">
+      <blockquote>"They asked harder questions in the first meeting than our board had in a year. <span class="tz-red">The rebrand paid for itself in eighteen months.</span>"</blockquote>
+      <figcaption>— CLAUDIA STEINER, CMO, HELVETIA BANK</figcaption>
+    </div>
+  </section>
+
+  <!-- ============ journal ============ -->
+  <section class="tz-section" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <h2>Notes <span class="tz-red">&amp;</span> news</h2>
+        <span class="tz-micro">Journal · occasional, never promotional</span>
+      </div>
+      <div class="tz-journal tz-reveal">
+        <article>
+          <span class="tz-micro">Sep 2026 · Essay</span>
+          <h3>The grid is not the point</h3>
+          <p>Why we start every project with the content's argument, not the layout — and what happens when clients ask for "something more dynamic."</p>
+          <a class="tz-read" href="#">Read</a>
+        </article>
+        <article>
+          <span class="tz-micro">Aug 2026 · Studio</span>
+          <h3>We hired two type designers</h3>
+          <p>On bringing letterforms in-house, what changed in our process, and why the next identity will take slightly longer.</p>
+          <a class="tz-read" href="#">Read</a>
+        </article>
+        <article>
+          <span class="tz-micro">Jun 2026 · Talk</span>
+          <h3>Design systems that survive turnover</h3>
+          <p>Our lead systems designer gave this talk in Basel. The slides are dull; the Q&amp;A was not. Notes and video inside.</p>
+          <a class="tz-read" href="#">Read</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ contact ============ -->
+  <section class="tz-contact" id="contact">
+    <div class="tz-wrap">
+      <div class="tz-contact-grid tz-reveal">
+        <div class="tz-contact-copy">
+          <h2>Start a<br>project<span class="tz-red">.</span></h2>
+          <p>We take on six projects a year. Tell us what you're building, what it's worth to you, and when it needs to exist. We'll reply within five working days — with questions, not a quote.</p>
+          <p class="tz-mono" style="margin-top:28px;font-size:13px">Hardturmstrasse 161<br>8005 Zürich<br><a href="mailto:hello@studioraster.ch" style="color:var(--tz-accent);font-weight:700">hello@studioraster.ch</a></p>
+        </div>
+        <form class="tz-contact-form" action="#" method="get" onsubmit="return false">
+          <div class="tz-field"><label for="c-name">Name</label><input id="c-name" type="text" required></div>
+          <div class="tz-field"><label for="c-mail">Email</label><input id="c-mail" type="email" required></div>
+          <div class="tz-field"><label for="c-budget">Budget range</label><select id="c-budget"><option>CHF 50–100k</option><option>CHF 100–250k</option><option>CHF 250k+</option></select></div>
+          <div class="tz-field"><label for="c-msg">The project, in plain words</label><textarea id="c-msg" rows="4" required></textarea></div>
+          <button class="tz-submit" type="submit">Send inquiry</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-foot-grid">
+      <div><span class="tz-logo">STUDIO RASTER<i>.</i></span><p class="tz-micro" style="margin-top:12px">Design decisions since 2014</p></div>
+      <div><h4>Studio</h4><ul><li><a href="#work">Work</a></li><li><a href="#services">Services</a></li><li><a href="#studio">Principles</a></li><li><a href="#">Jobs</a></li></ul></div>
+      <div><h4>Elsewhere</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">Are.na</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="#">Imprint</a></li><li><a href="#">Privacy</a></li></ul></div>
+    </div>
+    <div class="tz-foot-bottom">
+      <span>© 2026 STUDIO RASTER GMBH · ZÜRICH</span>
+      <span>SET IN ARCHIVO · GRID: 12 COLUMNS</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){e.classList.add('tz-in')}); return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en,i){
+      if(en.isIntersecting){ setTimeout(function(){en.target.classList.add('tz-in')}, i*70); io.unobserve(en.target); }
+    });
+  },{threshold:.1});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
