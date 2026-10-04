@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-ink-wash-sumi",
+  "title": "Ink-Wash Sumi design tokens",
+  "category": "Tokens",
+  "file": "tokens/ink-wash-sumi.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "ink-wash-sumi"
+  ],
+  "description": "W3C-format design tokens for the Ink-Wash Sumi style DNA.",
+  "dnas": [
+   "ink-wash-sumi"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#f5f1e8",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#1a1a1a",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#a33b32",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#8a8478",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#d8d0bd",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Zen Old Mincho",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Zen Kaku Gothic New",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "ink-wash-sumi",
+  "name": "Ink-Wash Sumi",
+  "vibe": "Brush, ink, rice paper: monochrome gestures and the confidence to leave space alone."
+ }
+}
