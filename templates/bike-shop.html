@@ -1,0 +1,300 @@
+<!--tz-meta {"id":"bike-shop","title":"Spoke & Sprocket — Neighborhood Bike Shop","category":"Template","file":"templates/bike-shop.html","tags":["bike-shop","local","retail","services"],"description":"Instrument-grade bike shop page: repair spec table with service codes, repair queue tracker, dense inventory index.","dnas":["laboratory-clean"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spoke &amp; Sprocket — bike repair, measured in millimeters</title>
+<meta name="description" content="Spoke & Sprocket is a neighborhood bike shop: calibrated repair service with flat-rate codes, honest used bikes, and a live repair queue.">
+<!-- DNA: laboratory-clean. Design read: a calibrated instrument, not a landing page — sterile white, spec tables, every label measured — for riders who want their repair quoted, tracked, and done to the torque spec. One distinctive choice: the entire service menu is a laboratory spec table with service codes (S-01), tolerances, and turnaround, and the live repair queue sits beside it like a lab bench log. Dials V3/M2/D8. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#fbfcfd;
+  --tz-ink:#0f1720;
+  --tz-accent:#0a7d8c;
+  --tz-muted:#6b7684;
+  --tz-fog:color-mix(in srgb, var(--tz-fog) 55%, var(--tz-ink) 45%);
+  --tz-line:#dfe4ea;
+  --tz-line-dark:color-mix(in srgb, var(--tz-ink) 15%, transparent);
+  --tz-panel:color-mix(in srgb, var(--tz-bg) 55%, white);
+  --tz-ink-soft:color-mix(in srgb, var(--tz-ink) 76%, var(--tz-bg));
+  --tz-accent-tint:color-mix(in srgb, var(--tz-accent) 8%, var(--tz-bg));
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"IBM Plex Sans",system-ui,sans-serif;background:var(--tz-bg);color:var(--tz-ink);font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--tz-accent);color:var(--tz-bg)}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.tz-mono{font-family:"IBM Plex Mono",monospace}
+.skip{position:absolute;left:-999px;top:0;background:var(--tz-ink);color:var(--tz-bg);padding:8px 16px;z-index:99}
+.skip:focus{left:8px;top:8px}
+
+/* ---------- header ---------- */
+.tz-header{border-bottom:1px solid var(--tz-line);background:color-mix(in srgb, var(--tz-bg) 92%, transparent);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
+.tz-header .tz-wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+.tz-logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:17px;letter-spacing:-.01em}
+.tz-logo svg{width:26px;height:26px;flex:none}
+.tz-logo .tz-mono{font-size:11px;color:var(--tz-fog);font-weight:400;border:1px solid var(--tz-line);padding:3px 8px}
+.tz-nav{display:flex;gap:26px;font-size:14px;font-weight:500}
+.tz-nav a{color:var(--tz-ink-soft)}
+.tz-nav a:hover{color:var(--tz-accent)}
+.tz-cta{font-size:13.5px;font-weight:600;background:var(--tz-ink);color:var(--tz-bg);border:0;padding:10px 20px;cursor:pointer;transition:background .2s,transform .25s var(--tz-ease)}
+.tz-cta:hover{background:var(--tz-accent);transform:translateY(-1px)}
+
+/* ---------- hero ---------- */
+.tz-hero{padding:72px 0 64px;border-bottom:1px solid var(--tz-line)}
+.tz-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
+.tz-eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.22em;color:var(--tz-accent);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.tz-eyebrow::before{content:"";width:28px;height:2px;background:var(--tz-accent)}
+.tz-hero h1{font-weight:600;font-size:clamp(40px,5.4vw,68px);line-height:1.06;letter-spacing:-0.03em}
+.tz-hero h1 .tz-acc{color:var(--tz-accent)}
+.tz-hero .tz-lede{margin-top:20px;font-size:17.5px;color:var(--tz-ink-soft);max-width:46ch;font-weight:300}
+.tz-hero-cta{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
+.tz-btn{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:600;padding:13px 24px;cursor:pointer;border:1px solid var(--tz-ink);transition:transform .25s var(--tz-ease),background .2s}
+.tz-btn--solid{background:var(--tz-ink);color:var(--tz-bg)}
+.tz-btn--solid:hover{background:var(--tz-accent);border-color:var(--tz-accent);transform:translateY(-1px)}
+.tz-btn--line{background:transparent;color:var(--tz-ink)}
+.tz-btn--line:hover{border-color:var(--tz-accent);color:var(--tz-accent);transform:translateY(-1px)}
+.tz-specs{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--tz-line);border:1px solid var(--tz-line);margin-top:34px}
+.tz-spec{background:var(--tz-panel);padding:16px 18px}
+.tz-spec .tz-mono{font-size:11px;color:var(--tz-fog);letter-spacing:.08em;display:block;margin-bottom:4px}
+.tz-spec strong{font-size:21px;font-weight:600;letter-spacing:-.02em}
+
+/* queue panel */
+.tz-panel{background:var(--tz-panel);border:1px solid var(--tz-line)}
+.tz-panel-head{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid var(--tz-line)}
+.tz-panel-head .tz-mono{font-size:12px;letter-spacing:.18em;font-weight:600}
+.tz-live{display:inline-flex;align-items:center;gap:8px;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--tz-accent)}
+.tz-live i{width:8px;height:8px;border-radius:50%;background:var(--tz-accent);animation:tz-blink 1.6s infinite}
+@keyframes tz-blink{0%,100%{opacity:1}50%{opacity:.25}}
+.tz-qrow{display:grid;grid-template-columns:86px 1fr auto;gap:14px;align-items:center;padding:14px 22px;border-bottom:1px solid var(--tz-line);font-size:14px}
+.tz-qrow:last-child{border-bottom:0}
+.tz-qrow .tz-code{font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:600;color:var(--tz-accent)}
+.tz-qrow .tz-status{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--tz-fog)}
+.tz-qrow .tz-done .tz-status{color:var(--tz-accent)}
+.tz-panel-foot{padding:14px 22px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--tz-fog);border-top:1px solid var(--tz-line)}
+
+/* ---------- sections ---------- */
+.tz-section{padding:96px 0}
+.tz-sechead{margin-bottom:44px;max-width:680px}
+.tz-sechead .tz-mono{font-size:11.5px;letter-spacing:.22em;color:var(--tz-accent);display:block;margin-bottom:14px}
+.tz-sechead h2{font-weight:600;font-size:clamp(32px,4vw,50px);line-height:1.1;letter-spacing:-0.025em}
+.tz-sechead p{margin-top:12px;font-size:16.5px;color:var(--tz-ink-soft);font-weight:300}
+
+/* spec table: the one weird thing */
+.tz-tablewrap{border:1px solid var(--tz-line);background:var(--tz-panel);overflow-x:auto}
+table.tz-spec-tbl{width:100%;border-collapse:collapse;font-size:14.5px;min-width:720px}
+.tz-spec-tbl thead th{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.14em;text-align:left;padding:14px 20px;border-bottom:2px solid var(--tz-ink);color:var(--tz-ink);font-weight:600;white-space:nowrap}
+.tz-spec-tbl tbody td{padding:16px 20px;border-bottom:1px solid var(--tz-line);vertical-align:top}
+.tz-spec-tbl tbody tr:last-child td{border-bottom:0}
+.tz-spec-tbl tbody tr:hover{background:var(--tz-accent-tint)}
+.tz-spec-tbl .tz-code{font-family:"IBM Plex Mono",monospace;font-weight:600;color:var(--tz-accent);white-space:nowrap}
+.tz-spec-tbl .tz-price{font-family:"IBM Plex Mono",monospace;font-weight:600;white-space:nowrap;text-align:right}
+.tz-spec-tbl .tz-turn{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--tz-fog);white-space:nowrap}
+.tz-spec-tbl td small{display:block;color:var(--tz-fog);font-size:13px;margin-top:4px}
+.tz-tblnote{margin-top:16px;font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--tz-fog);line-height:1.9}
+
+/* inventory index */
+.tz-index{border-top:2px solid var(--tz-ink)}
+.tz-item{display:grid;grid-template-columns:120px 1fr auto auto;gap:24px;align-items:baseline;padding:20px 4px;border-bottom:1px solid var(--tz-line);transition:background .2s}
+.tz-item:hover{background:var(--tz-accent-tint)}
+.tz-item .tz-cat{font-family:"IBM Plex Mono",monospace;font-size:12.5px;font-weight:600;color:var(--tz-accent)}
+.tz-item h3{font-size:18px;font-weight:600;letter-spacing:-.01em}
+.tz-item h3 small{font-weight:300;color:var(--tz-fog);font-size:14px;display:block;margin-top:2px}
+.tz-item .tz-size{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--tz-fog)}
+.tz-item .tz-price{font-family:"IBM Plex Mono",monospace;font-size:16px;font-weight:600}
+
+/* two-col info */
+.tz-cols{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--tz-line);border:1px solid var(--tz-line)}
+.tz-col{background:var(--tz-panel);padding:40px 36px}
+.tz-col h3{font-size:21px;font-weight:600;letter-spacing:-.01em;margin-bottom:14px}
+.tz-col ul{list-style:none;font-size:15px;color:var(--tz-ink-soft)}
+.tz-col li{padding:10px 0;border-bottom:1px solid var(--tz-line);display:flex;justify-content:space-between;gap:16px}
+.tz-col li:last-child{border-bottom:0}
+.tz-col .tz-mono{font-size:13px;color:var(--tz-accent);white-space:nowrap}
+
+/* ---------- footer ---------- */
+.tz-footer{border-top:2px solid var(--tz-ink);padding:64px 0 36px;background:var(--tz-panel)}
+.tz-foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:40px;margin-bottom:44px}
+.tz-foot-brand{font-weight:600;font-size:19px;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.tz-foot-brand svg{width:24px;height:24px}
+.tz-foot-grid p{font-size:14.5px;color:var(--tz-fog);max-width:34ch}
+.tz-foot-grid h4{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.18em;margin-bottom:16px;color:var(--tz-ink)}
+.tz-foot-grid ul{list-style:none}
+.tz-foot-grid li{margin-bottom:10px;font-size:14.5px;color:var(--tz-fog)}
+.tz-foot-grid a:hover{color:var(--tz-accent)}
+.tz-base{border-top:1px solid var(--tz-line);padding-top:22px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--tz-fog)}
+
+@media (max-width:960px){
+  .tz-hero-grid{grid-template-columns:1fr}
+  .tz-cols{grid-template-columns:1fr}
+  .tz-foot-grid{grid-template-columns:1fr 1fr}
+  .tz-nav{display:none}
+  .tz-item{grid-template-columns:1fr auto;row-gap:6px}
+  .tz-item .tz-cat{grid-column:1/-1}
+}
+@media (max-width:560px){.tz-specs{grid-template-columns:1fr 1fr}.tz-foot-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#services">Skip to service specs</a>
+
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-logo" href="#" aria-label="Spoke and Sprocket home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#0a7d8c" stroke-width="1.8" aria-hidden="true"><circle cx="6" cy="17" r="4"/><circle cx="18" cy="17" r="4"/><path d="M6 17l3.5-8H14l4 8M9.5 9L12 4h3"/></svg>
+      Spoke &amp; Sprocket <span class="tz-mono">EST. 2009</span>
+    </a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#services">Services</a><a href="#bikes">Used Bikes</a><a href="#classes">Flat-Fix Class</a><a href="#visit">Visit</a>
+    </nav>
+    <a class="tz-cta" href="#visit">Book a repair</a>
+  </div>
+</header>
+
+<main>
+<section class="tz-hero">
+  <div class="tz-wrap tz-hero-grid">
+    <div>
+      <p class="tz-eyebrow">NEIGHBORHOOD BIKE SHOP — REPAIR · SALES · FITTING</p>
+      <h1>Your bike, returned <span class="tz-acc">to spec.</span></h1>
+      <p class="tz-lede">Every repair gets a service code, a flat price quoted before we touch a bolt, and a torque wrench at the end. No mystery invoices, no "while we're in there" — just the work, measured.</p>
+      <div class="tz-hero-cta">
+        <a class="tz-btn tz-btn--solid" href="#services">See the service codes</a>
+        <a class="tz-btn tz-btn--line" href="#bikes">Browse used bikes</a>
+      </div>
+      <div class="tz-specs">
+        <div class="tz-spec"><span class="tz-mono">AVG TURNAROUND</span><strong>48 hrs</strong></div>
+        <div class="tz-spec"><span class="tz-mono">REPAIRS / YEAR</span><strong>3,100+</strong></div>
+        <div class="tz-spec"><span class="tz-mono">COMEBACK RATE</span><strong>0.8%</strong></div>
+      </div>
+    </div>
+    <aside class="tz-panel" aria-label="Live repair queue">
+      <div class="tz-panel-head">
+        <span class="tz-mono">REPAIR QUEUE — BENCH LOG</span>
+        <span class="tz-live"><i></i>LIVE</span>
+      </div>
+      <div class="tz-qrow"><span class="tz-code">S-02</span><div>Full tune · Trek Checkpoint ALR</div><span class="tz-status">ready 4 PM</span></div>
+      <div class="tz-qrow"><span class="tz-code">S-07</span><div>Wheel true + spoke x2 · Surly Cross-Check</div><span class="tz-status">on bench</span></div>
+      <div class="tz-qrow"><span class="tz-code">S-04</span><div>Brake bleed, hydraulic · Santa Cruz 5010</div><span class="tz-status">queued · 2 ahead</span></div>
+      <div class="tz-qrow"><span class="tz-code">S-11</span><div>Bottom bracket replace · Bianchi Via Nirone</div><span class="tz-status">parts ordered</span></div>
+      <div class="tz-qrow tz-done"><span class="tz-code">S-01</span><div>Safety check · kids' 20&quot; Schwinn</div><span class="tz-status">picked up</span></div>
+      <div class="tz-panel-foot">DROP-OFFS BEFORE 2 PM RIDE HOME THE NEXT DAY</div>
+    </aside>
+  </div>
+</section>
+
+<section class="tz-section" id="services" style="padding-top:80px">
+  <div class="tz-wrap">
+    <div class="tz-sechead">
+      <span class="tz-mono">SERVICE MENU — REV 2026.10</span>
+      <h2>Flat-rate codes. Quoted before, honored after.</h2>
+      <p>Find your symptom, note the code, drop the bike off. If we find anything else, we call before we charge — that's the whole policy.</p>
+    </div>
+    <div class="tz-tablewrap">
+      <table class="tz-spec-tbl">
+        <thead><tr><th>Code</th><th>Procedure</th><th>Tolerance / includes</th><th>Turnaround</th><th style="text-align:right">Price</th></tr></thead>
+        <tbody>
+          <tr><td class="tz-code">S-01</td><td><strong>Safety check</strong><small>47-point inspection, bolt torque, tire &amp; brake check. Free with any other service.</small></td><td class="tz-turn">all fasteners to spec</td><td class="tz-turn">same day</td><td class="tz-price">$25</td></tr>
+          <tr><td class="tz-code">S-02</td><td><strong>Full tune-up</strong><small>Drivetrain degrease, both derailleurs indexed, wheels trued, hubs + headset adjusted, new cables if needed.</small></td><td class="tz-turn">±0.3 mm wheel true</td><td class="tz-turn">48 hrs</td><td class="tz-price">$89</td></tr>
+          <tr><td class="tz-code">S-03</td><td><strong>Drivetrain overhaul</strong><small>Chain, cassette &amp; chainrings measured for wear; replaced only if past 0.75% stretch.</small></td><td class="tz-turn">parts at cost + $40 labor</td><td class="tz-turn">3 days</td><td class="tz-price">$40 + parts</td></tr>
+          <tr><td class="tz-code">S-04</td><td><strong>Brake service</strong><small>Pad replace, rotor true, hydraulic bleed. Mechanical systems re-cabled.</small></td><td class="tz-turn">lever pull ≤ 25 mm</td><td class="tz-turn">24 hrs</td><td class="tz-price">$35 / $55 hyd.</td></tr>
+          <tr><td class="tz-code">S-05</td><td><strong>Flat repair</strong><small>Tube or tubeless plug, tire inspected for embedded glass, pressure set to rider weight.</small></td><td class="tz-turn">while you wait</td><td class="tz-turn">20 min</td><td class="tz-price">$15 + tube</td></tr>
+          <tr><td class="tz-code">S-06</td><td><strong>Pro bike fit</strong><small>60-minute session: saddle, cleats, reach, and stack, dialed to your flexibility, not a chart.</small></td><td class="tz-turn">±2 mm repeatable</td><td class="tz-turn">by appt.</td><td class="tz-price">$150</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tz-tblnote">ALL PRICES INCLUDE LABOR AND SHOP SUPPLIES — PARTS AT COST, RECEIPT IN THE BAG —<br>E-BIKE SYSTEMS: BOSCH / SHIMANO / BROSE DIAGNOSTICS, ADD $25 TO ANY CODE</p>
+  </div>
+</section>
+
+<section class="tz-section" id="bikes" style="padding-top:0">
+  <div class="tz-wrap">
+    <div class="tz-sechead">
+      <span class="tz-mono">USED INVENTORY — INSPECTED, INDEXED</span>
+      <h2>Secondhand bikes, firsthand honesty.</h2>
+      <p>Every used bike gets the full S-01 safety check and a written wear report before it hits the floor. The report stays with the bike.</p>
+    </div>
+    <div class="tz-index">
+      <a class="tz-item" href="#visit"><span class="tz-cat">GRAVEL</span><h3>Trek Checkpoint ALR 5<small>2021 · 1,900 mi · new chain, 62% brake pads</small></h3><span class="tz-size">56 cm</span><span class="tz-price">$950</span></a>
+      <a class="tz-item" href="#visit"><span class="tz-cat">ROAD</span><h3>Cannondale CAAD13 105<small>2022 · 800 mi · showroom condition</small></h3><span class="tz-size">54 cm</span><span class="tz-price">$1,400</span></a>
+      <a class="tz-item" href="#visit"><span class="tz-cat">COMMUTER</span><h3>Surly Cross-Check<small>2019 · fenders + rack included, honest patina</small></h3><span class="tz-size">52 cm</span><span class="tz-price">$675</span></a>
+      <a class="tz-item" href="#visit"><span class="tz-cat">MTB</span><h3>Specialized Rockhopper Comp<small>2020 · fork serviced Sep 2026, tubeless</small></h3><span class="tz-size">M</span><span class="tz-price">$550</span></a>
+      <a class="tz-item" href="#visit"><span class="tz-cat">KIDS</span><h3>Prevelo Alpha Three<small>Outgrown, not worn out · 20&quot; wheels</small></h3><span class="tz-size">5–8 yrs</span><span class="tz-price">$320</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="tz-section" id="classes" style="padding-top:0">
+  <div class="tz-wrap">
+    <div class="tz-sechead">
+      <span class="tz-mono">FREE, MONTHLY, 90 MINUTES</span>
+      <h2>Fix-a-Flat Night.</h2>
+      <p>First Thursday of every month, 6:30 PM. Bring your bike, leave knowing how to fix a flat, adjust a brake, and index a gear. Grease under your nails guaranteed.</p>
+    </div>
+    <div class="tz-cols">
+      <div class="tz-col">
+        <h3>What you'll actually learn</h3>
+        <ul>
+          <li>Tube swap, roadside <span class="tz-mono">15 MIN</span></li>
+          <li>Brake pad alignment <span class="tz-mono">20 MIN</span></li>
+          <li>Rear derailleur indexing <span class="tz-mono">25 MIN</span></li>
+          <li>Chain quick-link repair <span class="tz-mono">15 MIN</span></li>
+          <li>Q&amp;A with whoever's on the bench <span class="tz-mono">15 MIN</span></li>
+        </ul>
+      </div>
+      <div class="tz-col" id="visit">
+        <h3>Visit the shop</h3>
+        <ul>
+          <li>77 Foundry Ave, Millbrook <span class="tz-mono">MAP</span></li>
+          <li>Tue–Sat · 9 AM–6 PM <span class="tz-mono">HOURS</span></li>
+          <li>(555) 013-4472 <span class="tz-mono">CALL</span></li>
+          <li>bench@spokeandsprocket.shop <span class="tz-mono">EMAIL</span></li>
+          <li>Free parking behind the shop <span class="tz-mono">PARK</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-foot-grid">
+      <div>
+        <p class="tz-foot-brand">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#0a7d8c" stroke-width="1.8" aria-hidden="true"><circle cx="6" cy="17" r="4"/><circle cx="18" cy="17" r="4"/><path d="M6 17l3.5-8H14l4 8M9.5 9L12 4h3"/></svg>
+          Spoke &amp; Sprocket
+        </p>
+        <p>Independent bike shop since 2009. We fix what we sell, and we sell what we'd ride.</p>
+      </div>
+      <div>
+        <h4>SHOP</h4>
+        <ul><li><a href="#services">Service codes</a></li><li><a href="#bikes">Used bikes</a></li><li><a href="#classes">Fix-a-Flat Night</a></li></ul>
+      </div>
+      <div>
+        <h4>POLICIES</h4>
+        <ul><li>Quotes honored in writing</li><li>Parts at cost, receipt in the bag</li><li>30-day adjustment warranty</li></ul>
+      </div>
+      <div>
+        <h4>HOURS</h4>
+        <ul><li>Tue–Sat · 9 AM–6 PM</li><li>Sun–Mon · closed</li><li>Drop-offs before 2 PM</li></ul>
+      </div>
+    </div>
+    <div class="tz-base">
+      <span>© 2026 SPOKE &amp; SPROCKET LLC — 77 FOUNDRY AVE, MILLBROOK</span>
+      <span>SERVICE MANUAL REV 2026.10 — TORQUE EVERYTHING</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
