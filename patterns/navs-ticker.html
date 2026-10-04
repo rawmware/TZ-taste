@@ -1,0 +1,48 @@
+<!--tz-meta {"id":"navs-ticker","title":"Ticker nav","category":"Nav","file":"patterns/navs-ticker.html","tags":["marquee","news","bold"],"description":"Acid announcement ticker scrolling above a stark black-and-lime link row.","dnas":["acid-rave"]} -->
+<nav class="tz-tick" aria-label="Primary">
+  <div class="tz-tick-tape" aria-hidden="true">
+    <div class="tz-tick-track">
+      <span>Warehouse sale ends Sunday</span><span class="tz-tick-dot">✕</span>
+      <span>Free shipping over $75</span><span class="tz-tick-dot">✕</span>
+      <span>New drop: Friday 9AM ET</span><span class="tz-tick-dot">✕</span>
+      <span>Students get 15% off, always</span><span class="tz-tick-dot">✕</span>
+      <span>Warehouse sale ends Sunday</span><span class="tz-tick-dot">✕</span>
+      <span>Free shipping over $75</span><span class="tz-tick-dot">✕</span>
+      <span>New drop: Friday 9AM ET</span><span class="tz-tick-dot">✕</span>
+      <span>Students get 15% off, always</span><span class="tz-tick-dot">✕</span>
+    </div>
+  </div>
+  <div class="tz-tick-row">
+    <a class="tz-tick-brand" href="#">LOUDSUPPLY</a>
+    <div class="tz-tick-links">
+      <a href="#">Shop</a><a href="#">Lookbook</a><a href="#">Stores</a><a href="#">About</a>
+    </div>
+    <a class="tz-tick-cta" href="#">Cart (0)</a>
+  </div>
+</nav>
+<style>
+.tz-tick{--bg:#0d0d0b;--ink:#f2f2ec;--acid:#d9f731;
+  background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+.tz-tick-tape{background:var(--acid);color:#0d0d0b;overflow:hidden;white-space:nowrap;
+  border-bottom:2px solid #0d0d0b}
+.tz-tick-track{display:inline-flex;align-items:center;gap:28px;padding:9px 0;
+  font-size:13px;font-weight:bold;letter-spacing:.08em;text-transform:uppercase;
+  animation:tz-tick-scroll 22s linear infinite}
+.tz-tick-dot{font-size:11px}
+@keyframes tz-tick-scroll{to{transform:translateX(-50%)}}
+.tz-tick-row{display:flex;align-items:center;gap:28px;padding:18px clamp(20px,4vw,44px);flex-wrap:wrap}
+.tz-tick-brand{font-size:24px;font-weight:900;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+.tz-tick-links{display:flex;gap:24px;flex:1;flex-wrap:wrap}
+.tz-tick-links a{color:var(--ink);text-decoration:none;font-size:15px;position:relative}
+.tz-tick-links a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:100%;
+  background:var(--acid);transform:scaleX(0);transform-origin:left;
+  transition:transform .25s cubic-bezier(.22,1,.36,1)}
+.tz-tick-links a:hover::after{transform:scaleX(1)}
+.tz-tick-cta{background:var(--acid);color:#0d0d0b;font-weight:bold;font-size:14px;
+  text-decoration:none;padding:10px 20px}
+.tz-tick-cta:hover{background:#e8ff70}
+@media (prefers-reduced-motion:reduce){
+  .tz-tick-track{animation:none}
+  .tz-tick-links a::after{transition:none}
+}
+</style>
