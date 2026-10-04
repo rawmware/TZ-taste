@@ -1,13 +1,13 @@
 // scripts/build-demo-data.mjs
 // Builder B generator: reads the repo's real index JSON files and writes
-// docs/assets/data.js as a single `window.TZDATA = {...};` assignment.
+// assets/data.js as a single `window.TZDATA = {...};` assignment.
 // No dependencies. Run: node scripts/build-demo-data.mjs
 import { readFileSync, writeFileSync, existsSync, statSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const OUT = join(ROOT, "docs", "assets", "data.js");
+const OUT = join(ROOT, "assets", "data.js");
 
 const read = (p) => JSON.parse(readFileSync(join(ROOT, p), "utf8"));
 
