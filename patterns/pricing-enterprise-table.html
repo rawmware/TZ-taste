@@ -1,0 +1,59 @@
+<!--tz-meta {"id":"pricing-enterprise-table","title":"Enterprise pricing table","category":"Sections","file":"patterns/pricing-enterprise-table.html","tags":["pricing","enterprise"],"description":"Swiss-rational enterprise table: strict grid, check/dash matrix, procurement-friendly terms row, talk-to-sales as the CTA.","dnas":["swiss-rational"]} -->
+<section class="tz-pricing-enterprise-table">
+  <p class="tz-eyebrow">Enterprise</p>
+  <h2>One plan. <em>Everything included.</em></h2>
+  <p class="tz-lede">Annual contract, fixed price, no seat math. Compared against doing nothing — the most expensive option.</p>
+  <div class="tz-tablewrap">
+    <table class="tz-matrix">
+      <thead>
+        <tr><th></th><th>Team <span>$29/mo</span></th><th class="tz-you">Enterprise <span>Custom</span></th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Seats</td><td>Up to 25</td><td class="tz-you">Unlimited</td></tr>
+        <tr><td>SSO / SAML</td><td class="tz-no">—</td><td class="tz-you tz-yes">✓</td></tr>
+        <tr><td>Audit log &amp; DPA</td><td class="tz-no">—</td><td class="tz-you tz-yes">✓</td></tr>
+        <tr><td>Dedicated success manager</td><td class="tz-no">—</td><td class="tz-you tz-yes">✓</td></tr>
+        <tr><td>99.99% SLA</td><td class="tz-no">—</td><td class="tz-you tz-yes">✓</td></tr>
+        <tr><td>Data residency choice</td><td class="tz-no">—</td><td class="tz-you tz-yes">✓</td></tr>
+        <tr><td>Migration support</td><td>Self-serve</td><td class="tz-you">White-glove</td></tr>
+        <tr><td>Contract</td><td>Monthly</td><td class="tz-you">Annual · MSA</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tz-terms">
+    <div><b>Security review?</b><span>SOC 2 Type II report and pen-test summary available under NDA.</span></div>
+    <div><b>Procurement?</b><span>We work with your process — vendor forms, net-30, the works.</span></div>
+    <div><a class="tz-cta" href="#talk">Talk to sales</a></div>
+  </div>
+</section>
+<style>
+.tz-pricing-enterprise-table{--bg:#fff;--ink:#111;--muted:#6e6e6e;--accent:#d52b1e;--line:#1111111f;
+  background:var(--bg);color:var(--ink);padding:clamp(72px,10vw,140px) clamp(20px,5vw,64px);
+  font-family:-apple-system,'Segoe UI',sans-serif}
+.tz-pricing-enterprise-table .tz-eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 18px;font-weight:700;text-align:center}
+.tz-pricing-enterprise-table h2{font-size:clamp(36px,5.5vw,60px);font-weight:800;letter-spacing:-.025em;
+  margin:0 0 14px;text-align:center;line-height:1.05}
+.tz-pricing-enterprise-table h2 em{font-style:normal;color:var(--accent)}
+.tz-pricing-enterprise-table .tz-lede{text-align:center;color:var(--muted);max-width:58ch;margin:0 auto 52px;font-size:16.5px}
+.tz-pricing-enterprise-table .tz-tablewrap{max-width:880px;margin:0 auto;overflow-x:auto;border:2px solid var(--ink)}
+.tz-pricing-enterprise-table .tz-matrix{width:100%;border-collapse:collapse;min-width:560px}
+.tz-pricing-enterprise-table th,.tz-pricing-enterprise-table td{padding:18px 24px;text-align:left;font-size:15px;
+  border-bottom:1px solid var(--line)}
+.tz-pricing-enterprise-table thead th{background:var(--ink);color:#fff;font-size:16px;font-weight:700}
+.tz-pricing-enterprise-table thead th span{display:block;font-weight:400;font-size:12.5px;color:#ffffffaa;margin-top:4px}
+.tz-pricing-enterprise-table thead th.tz-you{background:var(--accent)}
+.tz-pricing-enterprise-table td.tz-you{background:#d52b1e08;font-weight:600}
+.tz-pricing-enterprise-table .tz-yes{color:var(--accent);font-weight:800}
+.tz-pricing-enterprise-table .tz-no{color:#11111144}
+.tz-pricing-enterprise-table .tz-terms{max-width:880px;margin:36px auto 0;display:grid;
+  grid-template-columns:1fr 1fr auto;gap:28px;align-items:center}
+.tz-pricing-enterprise-table .tz-terms b{display:block;font-size:15px;margin-bottom:4px}
+.tz-pricing-enterprise-table .tz-terms span{color:var(--muted);font-size:14px}
+.tz-pricing-enterprise-table .tz-cta{background:var(--ink);color:#fff;text-decoration:none;font-weight:700;
+  padding:16px 36px;font-size:15px;white-space:nowrap;transition:background .2s}
+.tz-pricing-enterprise-table .tz-cta:hover{background:var(--accent)}
+@media (max-width:720px){
+  .tz-pricing-enterprise-table .tz-terms{grid-template-columns:1fr;text-align:left}
+}
+</style>
