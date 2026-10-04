@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-vaporwave-sunset",
+  "title": "Vaporwave Sunset design tokens",
+  "category": "Tokens",
+  "file": "tokens/vaporwave-sunset.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "vaporwave-sunset"
+  ],
+  "description": "W3C-format design tokens for the Vaporwave Sunset style DNA.",
+  "dnas": [
+   "vaporwave-sunset"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#1a1216",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#f7e8d8",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#ff7e5f",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#9a7f72",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#3a2a30",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Monoton",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Space Grotesk",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "vaporwave-sunset",
+  "name": "Vaporwave Sunset",
+  "vibe": "Retro-futurist sunset grids in peach, coral, and teal. A chrome sun that never quite sets."
+ }
+}
