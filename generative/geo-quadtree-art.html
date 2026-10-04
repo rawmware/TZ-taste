@@ -1,0 +1,168 @@
+<!--tz-meta {"id":"gen-geo-quadtree-art","title":"Quadtree Field","category":"Generative","file":"generative/geo-quadtree-art.html","tags":["quadtree","noise","subdivision"],"description":"A value-noise density field decides where the quadtree splits — click to force deeper subdivision locally.","dnas":["bauhaus-primary"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quadtree Field · TZ-taste</title>
+<style>
+  .tz-page{background:#F4EFE4;color:#1A1A1A;min-height:100vh;font-family:Georgia,'Times New Roman',serif;margin:0}
+  .tz-wrap{max-width:1080px;margin:0 auto;padding:32px 20px 48px}
+  .tz-kicker{font-family:'Courier New',Courier,monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#D92B1F;margin:0 0 12px}
+  .tz-title{font-size:clamp(32px,6vw,52px);font-weight:700;margin:0 0 10px;line-height:1.05}
+  .tz-caption{font-size:16px;line-height:1.6;max-width:62ch;margin:0 0 4px;color:#4a4a4a}
+  .tz-controls{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+  .tz-btn{font-family:'Courier New',Courier,monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;background:transparent;color:#1A1A1A;border:2px solid #1A1A1A;padding:10px 18px;cursor:pointer}
+  .tz-btn:hover{background:#1A1A1A;color:#F4EFE4}
+  .tz-btn:active{transform:translateY(1px)}
+  .tz-canvas{display:block;width:100%;height:70vh;background:#F4EFE4;border:2px solid #1A1A1A;cursor:pointer}
+  .tz-foot{font-family:'Courier New',Courier,monospace;font-size:12px;color:#8a8a8a;margin:14px 0 0;line-height:1.6}
+</style>
+</head>
+<body class="tz-page">
+<div class="tz-wrap">
+  <p class="tz-kicker">TZ-taste · Generative</p>
+  <h1 class="tz-title">Quadtree Field</h1>
+  <p class="tz-caption">A value-noise density field decides where each quadtree cell splits — dense regions subdivide deep, calm regions stay broad. The field drifts slowly, so the mosaic keeps re-carving itself.</p>
+  <div class="tz-controls">
+    <button class="tz-btn" id="tz-seed" type="button">New seed</button>
+    <button class="tz-btn" id="tz-pause" type="button">Pause</button>
+    <button class="tz-btn" id="tz-clear" type="button">Clear</button>
+  </div>
+  <canvas class="tz-canvas" id="tz-canvas"></canvas>
+  <p class="tz-foot">One distinctive choice: click to poke the field — cells near your click subdivide deeper. <span id="tz-leafcount"></span> leaves · Seed <span id="tz-seednum"></span>.</p>
+</div>
+<script>
+(function(){
+  var BG='#F4EFE4', INK='#1A1A1A', RED='#D92B1F';
+  var canvas=document.getElementById('tz-canvas'), ctx=canvas.getContext('2d');
+  var seedBtn=document.getElementById('tz-seed'), pauseBtn=document.getElementById('tz-pause'),
+      clearBtn=document.getElementById('tz-clear'), seedNum=document.getElementById('tz-seednum'),
+      leafCount=document.getElementById('tz-leafcount');
+  var seed=606060, rng=mulberry32(seed);
+  var W=0,H=0, t=0, frameN=0, leaves=[], pokes=[];
+  var perm=[];
+  var running=true, raf=null;
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+
+  function buildPerm(){
+    rng=mulberry32(seed);
+    perm=[];
+    var i,j,tmp;
+    for(i=0;i<256;i++)perm[i]=i;
+    for(i=255;i>0;i--){j=Math.floor(rng()*(i+1));tmp=perm[i];perm[i]=perm[j];perm[j]=tmp;}
+    perm=perm.concat(perm);
+  }
+  function fade(u){return u*u*(3-2*u);}
+  function grad(h,x,y){return ((h&1)?-x:x)+((h&2)?-y:y);}
+  function vnoise(x,y){
+    var X=Math.floor(x)&255, Y=Math.floor(y)&255;
+    x-=Math.floor(x);y-=Math.floor(y);
+    var u=fade(x), v=fade(y);
+    var a=perm[X]+Y, b=perm[X+1]+Y;
+    return v*(u*grad(perm[a],x,y)+(1-u)*grad(perm[b],x-1,y))
+         +(1-v)*(u*grad(perm[a+1],x,y-1)+(1-u)*grad(perm[b+1],x-1,y-1));
+  }
+  function fbm(x,y){
+    var v=0,amp=0.5,f=1,i;
+    for(i=0;i<4;i++){v+=amp*vnoise(x*f,y*f);amp*=0.5;f*=2.03;}
+    return v;
+  }
+  function density(x,y,S){
+    var n=fbm(x/(S/3.4)+t,(y/(S/3.4))+t*0.7);
+    var d=n*0.75+0.5;
+    if(d<0)d=0;if(d>1)d=1;
+    return d;
+  }
+
+  function build(){
+    leaves=[];
+    var S=Math.max(W,H);
+    function pokeBoost(x,y,s){
+      for(var i=0;i<pokes.length;i++){
+        var p=pokes[i], cx=x+s/2, cy=y+s/2;
+        var dx=cx-p.x, dy=cy-p.y, rr=p.r+s*0.5;
+        if(dx*dx+dy*dy<rr*rr)return 0.32;
+      }
+      return 0;
+    }
+    function sub(x,y,s,d){
+      var c=density(x+s/2,y+s/2,S)+pokeBoost(x,y,s);
+      if(d<7&&s>12&&c>0.60-d*0.028){
+        var h=s/2;
+        sub(x,y,h,d+1);sub(x+h,y,h,d+1);sub(x,y+h,h,d+1);sub(x+h,y+h,h,d+1);
+      }else{
+        leaves.push({x:x,y:y,s:s,d:c});
+      }
+    }
+    sub(0,0,S,0);
+    leafCount.textContent=leaves.length;
+  }
+
+  function draw(){
+    ctx.fillStyle=BG;ctx.fillRect(0,0,W,H);
+    var i,l;
+    for(i=0;i<leaves.length;i++){
+      l=leaves[i];
+      var a=(l.d-0.30)*1.7;
+      if(a<0.03)a=0.03;if(a>0.88)a=0.88;
+      ctx.globalAlpha=a;
+      ctx.fillStyle=l.d>0.74?RED:INK;
+      ctx.fillRect(l.x+0.5,l.y+0.5,l.s-1,l.s-1);
+    }
+    ctx.globalAlpha=1;
+  }
+
+  function reseed(){
+    seed=(seed*9301+49297)%233280;
+    buildPerm();pokes=[];t=0;frameN=0;
+    build();draw();
+    seedNum.textContent=seed;
+  }
+
+  function frame(){
+    if(!running){raf=null;return;}
+    t+=0.0016;frameN++;
+    if(frameN%75===0){build();draw();}
+    raf=requestAnimationFrame(frame);
+  }
+
+  function resize(){
+    var dpr=Math.min(window.devicePixelRatio||1,2);
+    var r=canvas.getBoundingClientRect();
+    W=r.width;H=r.height;
+    canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    buildPerm();
+    build();draw();
+    seedNum.textContent=seed;
+  }
+
+  function canvasPos(e){
+    var r=canvas.getBoundingClientRect();
+    return {x:e.clientX-r.left,y:e.clientY-r.top};
+  }
+
+  seedBtn.addEventListener('click',reseed);
+  canvas.addEventListener('click',function(e){
+    var p=canvasPos(e);
+    pokes.push({x:p.x,y:p.y,r:95});
+    if(pokes.length>6)pokes.shift();
+    build();draw();
+  });
+  pauseBtn.addEventListener('click',function(){
+    running=!running;pauseBtn.textContent=running?'Pause':'Resume';
+    if(running&&!reduced&&!raf)raf=requestAnimationFrame(frame);
+  });
+  clearBtn.addEventListener('click',function(){pokes=[];t=0;frameN=0;build();draw();});
+
+  window.addEventListener('resize',resize);
+  resize();
+  seedNum.textContent=seed;
+  if(!reduced)raf=requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
