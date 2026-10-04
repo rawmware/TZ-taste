@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-ukiyo-e-print",
+  "title": "Ukiyo-e Print design tokens",
+  "category": "Tokens",
+  "file": "tokens/ukiyo-e-print.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "ukiyo-e-print"
+  ],
+  "description": "W3C-format design tokens for the Ukiyo-e Print DNA.",
+  "dnas": [
+   "ukiyo-e-print"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#f2ead8",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#1a2332",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#c73e2e",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#6f6a5c",
+   "type": "color"
+  },
+  "line": {
+   "value": "#1a233233",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#f2ead8",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Shippori Mincho B1",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Zen Kaku Gothic New",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Space Mono",
+   "type": "fontFamily"
+  }
+ }
+}
