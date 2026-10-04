@@ -1,3 +1,4 @@
+<!--tz-meta {"id":"taste-guide","title":"The Taste Guide","file":"docs/TASTE-GUIDE.md","description":"The short philosophy: taste is constraint, commitment, and subtraction."} -->
 # TASTE-GUIDE.md — the short philosophy
 
 ## What taste is
