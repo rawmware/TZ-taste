@@ -1,0 +1,49 @@
+<!--tz-meta {"id":"cards-article","title":"Article cards","category":"Cards","file":"patterns/cards-article.html","tags":["blog","reading"],"description":"Serif article cards led by oversized issue numerals, one feature plus two.","dnas":["editorial-serif"]} -->
+<section class="tz-arts" aria-label="Articles">
+  <p class="tz-eyebrow">From the journal</p>
+  <article class="tz-feat">
+    <span class="tz-num" aria-hidden="true">07</span>
+    <div class="tz-fbody">
+      <p class="tz-kicker">Essay · 6 min</p>
+      <h3>Why small businesses don't need a brand book</h3>
+      <p class="tz-dek">They need a phone number that works, hours that are true, and a menu people can read on a phone.</p>
+      <a class="tz-link" href="#a7">Read the essay →</a>
+    </div>
+  </article>
+  <div class="tz-pair">
+    <article class="tz-mini">
+      <span class="tz-num tz-s" aria-hidden="true">06</span>
+      <p class="tz-kicker">Notes · 3 min</p>
+      <h3>The 48-hour website, honestly explained</h3>
+      <a class="tz-link" href="#a6">Read →</a>
+    </article>
+    <article class="tz-mini">
+      <span class="tz-num tz-s" aria-hidden="true">05</span>
+      <p class="tz-kicker">Notes · 4 min</p>
+      <h3>What I tell every client about AI</h3>
+      <a class="tz-link" href="#a5">Read →</a>
+    </article>
+  </div>
+</section>
+<style>
+.tz-arts{--bg:#f5f1e8;--ink:#1c1a15;--soft:#5c584c;--accent:#b5461f;
+  background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;
+  padding:clamp(56px,9vw,120px) clamp(20px,6vw,80px)}
+.tz-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--soft);margin:0 0 40px}
+.tz-feat{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,48px);
+  align-items:start;border-top:2px solid var(--ink);padding:36px 0 44px}
+.tz-num{font-size:clamp(80px,12vw,160px);line-height:.85;letter-spacing:-.05em;color:var(--accent)}
+.tz-num.tz-s{font-size:clamp(48px,7vw,88px)}
+.tz-kicker{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--soft);margin:0 0 12px}
+.tz-feat h3{margin:0 0 14px;font-size:clamp(28px,4vw,46px);letter-spacing:-.025em;
+  font-weight:400;line-height:1.1;max-width:20ch}
+.tz-dek{margin:0 0 20px;font-size:18px;line-height:1.6;color:var(--soft);max-width:52ch}
+.tz-link{color:var(--ink);text-decoration:none;border-bottom:2px solid var(--accent);
+  padding-bottom:3px;font-size:17px}
+.tz-pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,48px);
+  border-top:1px solid #1c1a1533;padding-top:36px}
+.tz-mini h3{margin:0 0 16px;font-size:24px;font-weight:400;letter-spacing:-.015em;line-height:1.25}
+@media (max-width:640px){.tz-feat{grid-template-columns:1fr}.tz-pair{grid-template-columns:1fr}}
+</style>
