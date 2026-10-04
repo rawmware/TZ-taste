@@ -1,0 +1,54 @@
+<!--tz-meta {"id":"features-docs","title":"Docs cards","category":"Features","file":"patterns/features-docs.html","tags":["documentation","dev"],"description":"Warm documentation cards with copyable code snippets and honest capability notes.","dnas":["docs-solar"]} -->
+<section class="tz-fd">
+  <p class="tz-fd-eyebrow">Reference · Features</p>
+  <h2 class="tz-fd-title">What it does, with receipts.</h2>
+  <div class="tz-fd-grid">
+    <article class="tz-fd-card">
+      <h3>Capture webhooks</h3>
+      <p>Point any service at your endpoint. Payloads land parsed, timestamped, and searchable.</p>
+      <div class="tz-fd-code"><span class="tz-fd-copy" aria-hidden="true">copy</span><pre>curl -X POST https://api.example.com/v1/hooks \
+  -H "Authorization: Bearer $KEY" \
+  -d '{"event":"order.paid"}'</pre></div>
+      <p class="tz-fd-meta">retries for 24h · signs every payload</p>
+    </article>
+    <article class="tz-fd-card">
+      <h3>Query the log</h3>
+      <p>Every event is queryable the second it arrives. No pipeline to babysit, no warehouse bill.</p>
+      <div class="tz-fd-code"><span class="tz-fd-copy" aria-hidden="true">copy</span><pre>events.where(type = "order.paid")
+  .group(by: "region")
+  .sum("total")</pre></div>
+      <p class="tz-fd-meta">sql + a friendlier dialect · 90-day retention</p>
+    </article>
+    <article class="tz-fd-card tz-fd-wide">
+      <h3>Ship the alert</h3>
+      <p>When a query crosses your threshold, the alert goes where your team already looks — Slack, PagerDuty, or a plain webhook you own.</p>
+      <div class="tz-fd-code"><span class="tz-fd-copy" aria-hidden="true">copy</span><pre>alert "big-order" when sum(total) &gt; 5000
+  -&gt; slack("#ops") + webhook($URL)</pre></div>
+      <p class="tz-fd-meta">dedupe built in · quiet hours respected · test mode included</p>
+    </article>
+  </div>
+</section>
+<style>
+.tz-fd{--paper:#faf5ea;--card:#fffdf7;--ink:#2b251c;--amber:#b45309;--line:rgba(43,37,28,.16);
+  background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(64px,9vw,120px) clamp(24px,6vw,88px)}
+.tz-fd-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--amber);margin:0 0 16px}
+.tz-fd-title{font-size:clamp(32px,4.6vw,58px);letter-spacing:-.02em;font-weight:700;
+  margin:0 0 clamp(36px,5vw,60px);max-width:16ch;line-height:1.05}
+.tz-fd-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,32px);max-width:1100px}
+.tz-fd-card{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--amber);
+  padding:clamp(26px,3.5vw,40px)}
+.tz-fd-wide{grid-column:1/-1}
+.tz-fd-card h3{font-size:21px;margin:0 0 10px;letter-spacing:-.01em}
+.tz-fd-card > p{font-size:15px;line-height:1.65;color:rgba(43,37,28,.78);margin:0 0 18px;max-width:52ch}
+.tz-fd-code{position:relative;background:#1e1a13;color:#f3e9d2;border-radius:8px;margin:0 0 16px}
+.tz-fd-copy{position:absolute;top:10px;right:12px;font-family:ui-monospace,Menlo,monospace;
+  font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(243,233,210,.55);
+  border:1px solid rgba(243,233,210,.3);padding:4px 10px;border-radius:4px}
+.tz-fd-code pre{margin:0;padding:22px 20px;font-family:ui-monospace,Menlo,monospace;
+  font-size:13px;line-height:1.7;overflow-x:auto;white-space:pre}
+.tz-fd-meta{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.04em;
+  color:rgba(43,37,28,.6);margin:0}
+@media (max-width:760px){.tz-fd-grid{grid-template-columns:1fr}}
+</style>
