@@ -1,0 +1,262 @@
+<!--tz-meta {"id":"flower-farm","title":"Petal & Post — Cut-Flower Farm","category":"Template","file":"templates/flower-farm.html","tags":["farm","flowers","local"],"description":"Seed-packet flower farm: engraved print craft, what's-blooming-now board, CSA shares, u-pick calendar.","dnas":["seed-packet"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Petal &amp; Post — cut flowers, grown slow, cut fresh</title>
+<meta name="description" content="Petal & Post is a six-acre cut-flower farm: CSA shares, u-pick Saturdays, and market bouquets cut the same morning.">
+<!-- Design read: the back of a seed packet as a whole website — engraved lines, copperplate labels, harvest notes in Courier — for neighbors who'd rather buy flowers from a field they can visit. DNA: seed-packet (Fraunces + Spectral + Courier Prime; kraft bg #efe6d0, ink #2b2419, leaf green #3f7043 — runner-up greenmarket-dawn was right mood but wrong artifact; the packet is the artifact). One distinctive choice: the "what's blooming now" board is a ruled field-journal table with stem counts, not a gallery. Dials V4/M2/D6. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Spectral:ital,wght@0,300;0,400;1,400&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#efe6d0; --tz-surface:#e3d4b4; --tz-ink:#2b2419; --tz-accent:#3f7043;
+  --tz-muted:#7a6c52; --tz-line:#2b24191f; --tz-line-strong:#2b241945;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Spectral",serif;background:var(--tz-bg);color:var(--tz-ink);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  background-image:repeating-linear-gradient(0deg,transparent 0 34px,#2b241906 34px 35px)}
+::selection{background:var(--tz-accent);color:#fff}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+.tz-mono{font-family:"Courier Prime",monospace}
+
+/* header */
+.tz-header{border-bottom:2px solid var(--tz-ink);background:color-mix(in srgb, var(--tz-bg) 92%, transparent);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
+.tz-header .tz-wrap{display:flex;justify-content:space-between;align-items:center;height:66px}
+.tz-brand{font-family:"Fraunces",serif;font-weight:600;font-size:22px}
+.tz-brand em{color:var(--tz-accent);font-style:normal}
+.tz-nav{display:flex;gap:26px;font-family:"Courier Prime",monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase}
+.tz-nav a{color:var(--tz-muted)}
+.tz-nav a:hover{color:var(--tz-accent)}
+.tz-cta{font-family:"Courier Prime",monospace;font-weight:700;font-size:13px;background:var(--tz-ink);color:#fff;padding:10px 22px;border:0;cursor:pointer}
+.tz-cta:hover{background:var(--tz-accent)}
+
+/* hero: the packet front */
+.tz-hero{padding:80px 0 64px}
+.tz-packet{border:3px solid var(--tz-ink);background:var(--tz-bg);box-shadow:10px 10px 0 var(--tz-line-strong);padding:56px 60px;position:relative;overflow:hidden}
+.tz-packet::before{content:"";position:absolute;inset:12px;border:1px solid var(--tz-line-strong);pointer-events:none}
+.tz-packet .tz-lot{font-family:"Courier Prime",monospace;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--tz-accent);display:flex;justify-content:space-between;margin-bottom:24px}
+.tz-packet h1{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(44px,7vw,84px);line-height:1.02;letter-spacing:-.01em;max-width:12ch}
+.tz-packet h1 em{font-style:italic;color:var(--tz-accent)}
+.tz-packet .tz-lede{margin-top:22px;font-size:18px;max-width:52ch;color:var(--tz-ink)}
+.tz-packet .tz-lede b{font-weight:600}
+.tz-seedrow{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+.tz-btn{font-family:"Courier Prime",monospace;font-weight:700;font-size:13.5px;padding:14px 28px;border:2px solid var(--tz-ink);cursor:pointer;background:transparent;color:var(--tz-ink);transition:transform .25s var(--tz-ease),background .2s}
+.tz-btn--dark{background:var(--tz-ink);color:#fff}
+.tz-btn--dark:hover{background:var(--tz-accent);border-color:var(--tz-accent);transform:translateY(-2px)}
+.tz-btn:hover{transform:translateY(-2px)}
+.tz-sow{margin-top:28px;font-family:"Courier Prime",monospace;font-size:12px;color:var(--tz-muted);display:flex;gap:24px;flex-wrap:wrap}
+.tz-sow b{color:var(--tz-accent)}
+
+/* bloom board */
+.tz-section{padding:88px 0}
+.tz-sec-head{max-width:620px;margin-bottom:40px}
+.tz-sec-head .tz-k{font-family:"Courier Prime",monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--tz-accent)}
+.tz-sec-head h2{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(34px,4.6vw,56px);line-height:1.05;margin:12px 0 10px}
+.tz-sec-head p{color:var(--tz-muted);font-size:17px}
+.tz-bloom{width:100%;border-collapse:collapse;border:2px solid var(--tz-ink);background:var(--tz-bg);box-shadow:8px 8px 0 var(--tz-line-strong)}
+.tz-bloom th{font-family:"Courier Prime",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;text-align:left;padding:14px 18px;border-bottom:2px solid var(--tz-ink);color:var(--tz-muted);background:var(--tz-surface)}
+.tz-bloom td{padding:16px 18px;border-bottom:1px solid var(--tz-line-strong);vertical-align:top;font-size:15.5px}
+.tz-bloom tr:last-child td{border-bottom:0}
+.tz-bloom .tz-name{font-family:"Fraunces",serif;font-weight:600;font-size:18px}
+.tz-bloom .tz-name small{display:block;font-family:"Courier Prime",monospace;font-size:11px;color:var(--tz-muted);letter-spacing:.08em;font-weight:400}
+.tz-bloom .tz-stems{font-family:"Courier Prime",monospace;font-size:13px;color:var(--tz-accent);font-weight:700;white-space:nowrap}
+.tz-bloom .tz-bar{height:6px;background:var(--tz-line);margin-top:8px;min-width:120px}
+.tz-bloom .tz-bar i{display:block;height:100%;background:var(--tz-accent)}
+.tz-bloom-note{margin-top:18px;font-family:"Courier Prime",monospace;font-size:12px;color:var(--tz-muted)}
+
+/* CSA split */
+.tz-csa{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--tz-ink);background:var(--tz-bg);box-shadow:8px 8px 0 var(--tz-line-strong)}
+.tz-csa>div{padding:48px 44px}
+.tz-csa>div:first-child{border-right:2px solid var(--tz-ink)}
+.tz-csa h3{font-family:"Fraunces",serif;font-size:32px;font-weight:600;margin-bottom:14px}
+.tz-csa h3 em{color:var(--tz-accent);font-style:italic}
+.tz-csa p{color:var(--tz-muted);font-size:16px;margin-bottom:12px}
+.tz-csa ul{list-style:none;margin:20px 0;display:grid;gap:10px;font-size:15px}
+.tz-csa li{padding-left:28px;position:relative}
+.tz-csa li::before{content:"✳";position:absolute;left:0;color:var(--tz-accent);font-family:"Courier Prime",monospace}
+.tz-share-price{font-family:"Courier Prime",monospace;font-weight:700;font-size:15px;margin:20px 0;display:block}
+.tz-share-price b{color:var(--tz-accent);font-size:22px}
+
+/* u-pick calendar */
+.tz-pick{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tz-day{border:2px solid var(--tz-ink);background:var(--tz-bg);padding:26px 22px;transition:transform .25s var(--tz-ease)}
+.tz-day:hover{transform:translateY(-4px)}
+.tz-day.tz-today{background:var(--tz-ink);color:var(--tz-bg)}
+.tz-day.tz-today .tz-d{color:var(--tz-accent)}
+.tz-day .tz-d{font-family:"Courier Prime",monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--tz-muted);display:block;margin-bottom:10px}
+.tz-day h3{font-family:"Fraunces",serif;font-size:24px;font-weight:600;margin-bottom:8px}
+.tz-day p{font-size:14px;color:var(--tz-muted)}
+.tz-day.tz-today p{color:#d8cba8}
+
+/* visit footer block */
+.tz-visit{border:2px solid var(--tz-ink);background:var(--tz-surface);padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:40px;box-shadow:8px 8px 0 var(--tz-line-strong)}
+.tz-visit h2{font-family:"Fraunces",serif;font-size:38px;font-weight:600;line-height:1.1}
+.tz-visit h2 em{color:var(--tz-accent);font-style:italic}
+.tz-visit dl{display:grid;grid-template-columns:auto 1fr;gap:12px 24px;font-family:"Courier Prime",monospace;font-size:13.5px}
+.tz-visit dt{color:var(--tz-muted);letter-spacing:.1em;text-transform:uppercase;font-size:11px;padding-top:3px}
+.tz-visit dd{font-weight:700}
+
+.tz-footer{padding:40px 0;margin-top:88px;border-top:2px solid var(--tz-ink)}
+.tz-footer .tz-wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:"Courier Prime",monospace;font-size:11.5px;color:var(--tz-muted)}
+
+@media (max-width:900px){
+  .tz-nav{display:none}
+  .tz-packet{padding:36px 28px}
+  .tz-csa{grid-template-columns:1fr}
+  .tz-csa>div:first-child{border-right:0;border-bottom:2px solid var(--tz-ink)}
+  .tz-pick{grid-template-columns:1fr 1fr}
+  .tz-visit{grid-template-columns:1fr;padding:32px 24px}
+  .tz-section{padding:60px 0}
+  .tz-bloom .tz-bar{min-width:70px}
+}
+@media (max-width:560px){.tz-pick{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-brand" href="#">Petal <em>&amp;</em> Post</a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#bloom">Blooming now</a><a href="#csa">CSA</a><a href="#upick">U-pick</a><a href="#visit">Visit</a>
+    </nav>
+    <a class="tz-cta" href="#csa">Join the CSA</a>
+  </div>
+</header>
+
+<main>
+  <section class="tz-hero">
+    <div class="tz-wrap">
+      <div class="tz-packet">
+        <div class="tz-lot"><span>Lot No. 2026-14</span><span>Cut this morning</span></div>
+        <h1>Six acres of flowers, <em>cut at dawn.</em></h1>
+        <p class="tz-lede">We're a working flower farm, not a florist. Everything we sell was <b>standing in the field this morning</b> — sold at the farm stand, through CSA shares, or by the armful on u-pick Saturdays.</p>
+        <div class="tz-seedrow">
+          <a class="tz-btn tz-btn--dark" href="#bloom">What's blooming now</a>
+          <a class="tz-btn" href="#upick">U-pick Saturdays</a>
+        </div>
+        <div class="tz-sow"><span>Sow: <b>Apr</b></span><span>First cut: <b>Jun 12</b></span><span>Last frost plan: <b>watch the sky</b></span><span>Stems this week: <b>2,300</b></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="bloom" style="padding-top:24px">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-k">Field journal · updated Fridays</span>
+        <h2>What's blooming now</h2>
+        <p>The week's cutting list, straight from the field journal. When the stems run out, the row closes — come early.</p>
+      </div>
+      <table class="tz-bloom">
+        <thead><tr><th>Variety</th><th>Cutting</th><th>Field notes</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="tz-name">Dahlias<small>cafe au lait · thomas edison</small></td>
+            <td class="tz-stems">~400 stems<div class="tz-bar"><i style="width:85%"></i></div></td>
+            <td>Peak week. The cafe au lait row is absurd right now — dinner-plate blooms, bring a big jar.</td>
+          </tr>
+          <tr>
+            <td class="tz-name">Zinnias<small>benary's giant mix</small></td>
+            <td class="tz-stems">~900 stems<div class="tz-bar"><i style="width:100%"></i></div></td>
+            <td>Cut-and-come-again champions. The more you cut, the more they make. U-pick heaven.</td>
+          </tr>
+          <tr>
+            <td class="tz-name">Sunflowers<small>procut gold · white nite</small></td>
+            <td class="tz-stems">~300 stems<div class="tz-bar"><i style="width:60%"></i></div></td>
+            <td>Succession-planted every two weeks. The white nites sell out by noon most Saturdays.</td>
+          </tr>
+          <tr>
+            <td class="tz-name">Celosia<small>chief mix · flamingo feather</small></td>
+            <td class="tz-stems">~200 stems<div class="tz-bar"><i style="width:40%"></i></div></td>
+            <td>Dries beautifully — ask for the drying guide at the stand. Last of the season in two weeks.</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="tz-bloom-note">Market bouquets $18 · straight bunches $12 · all cut within 24 hours of sale.</p>
+    </div>
+  </section>
+
+  <section class="tz-section" id="csa" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-k">The flower CSA</span>
+        <h2>A bouquet every week, all season</h2>
+        <p>Twelve weeks of whatever is best in the field. Members get first pick of the rare stuff.</p>
+      </div>
+      <div class="tz-csa">
+        <div>
+          <h3>The <em>weekly</em> share</h3>
+          <p>Twelve weeks, late June through mid-September. A generous market bouquet, wrapped in kraft, picked up Thursdays 3–7pm.</p>
+          <ul>
+            <li>First dibs on dahlia and ranunculus weeks</li>
+            <li>Two u-pick buckets included, any Saturday</li>
+            <li>Swap weeks with a friend if you're away</li>
+          </ul>
+          <span class="tz-share-price"><b>$240</b> / season · 12 bouquets</span>
+          <a class="tz-btn tz-btn--dark" href="#visit">Reserve a share</a>
+        </div>
+        <div>
+          <h3>The <em>biweekly</em> share</h3>
+          <p>Six bouquets across the season, same pickup window. For the person who kills flowers slowly and guiltily.</p>
+          <ul>
+            <li>Every other Thursday, your choice of weeks</li>
+            <li>One u-pick bucket included</li>
+            <li>Upgrade to weekly mid-season if you're hooked</li>
+          </ul>
+          <span class="tz-share-price"><b>$135</b> / season · 6 bouquets</span>
+          <a class="tz-btn" href="#visit">Reserve a share</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="upick" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-k">U-pick Saturdays</span>
+        <h2>Bring scissors. Leave with an armful.</h2>
+        <p>$20 a bucket, clippers provided, coffee from the stand cart. Kids under 10 cut free with a paying adult.</p>
+      </div>
+      <div class="tz-pick">
+        <div class="tz-day tz-today"><span class="tz-d">Sat · today</span><h3>Dahlia days</h3><p>Peak bloom. Buckets $20, extra stems 50¢.</p></div>
+        <div class="tz-day"><span class="tz-d">Sat · Oct 11</span><h3>Zinnia party</h3><p>Cut-and-come-again rows open wide.</p></div>
+        <div class="tz-day"><span class="tz-d">Sat · Oct 18</span><h3>Drying workshop</h3><p>Cut celosia + strawflower, learn to hang-dry.</p></div>
+        <div class="tz-day"><span class="tz-d">Sat · Oct 25</span><h3>Last cut</h3><p>End-of-season clear-out. Fill a bucket for $10.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="visit" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-visit">
+        <div>
+          <h2>The stand is <em>self-serve</em> on weekdays.</h2>
+          <p style="margin-top:14px;color:var(--tz-muted)">Bouquets in the cooler, cash box on the counter, change in the jar. We trust you — the whole farm runs on it.</p>
+        </div>
+        <dl>
+          <dt>Find us</dt><dd>118 Fieldstone Rd, past the red barn</dd>
+          <dt>Stand hours</dt><dd>Daily 8am–dusk, self-serve</dd>
+          <dt>Staffed</dt><dd>Sat 9am–2pm · Thu pickup 3–7pm</dd>
+          <dt>Write</dt><dd>hello@petalandpost.farm</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <span>© 2026 Petal &amp; Post Flower Farm</span>
+    <span>grown slow · cut fresh · lot no. 2026-14</span>
+  </div>
+</footer>
+</body>
+</html>
