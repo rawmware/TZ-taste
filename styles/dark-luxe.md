@@ -1,3 +1,4 @@
+<!--tz-meta {"id":"dark-luxe","name":"Dark Luxe","vibe":"Near-black, champagne accents, whisper-thin serif. Expensive by restraint.","file":"styles/dark-luxe.md","tags":["dark","premium","serif","restrained"],"best_for":["hospitality","fashion","real estate","premium services"],"fonts":{"body":"Outfit","display":"Cormorant Garamond","mono":"Space Mono"},"tokens":{"accent":"#c9a96a","bg":"#0e0d0b","ink":"#ece5d8","line":"#ece5d822","muted":"#8a8177","surface":"#161411"},"dials":{"density":2,"motion":4,"variance":4}} -->
 # Dark Luxe
 
 > Near-black, champagne accents, whisper-thin serif. Expensive by restraint.
