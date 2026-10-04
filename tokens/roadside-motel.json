@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-roadside-motel",
+  "title": "Roadside Motel design tokens",
+  "category": "Tokens",
+  "file": "tokens/roadside-motel.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "roadside-motel"
+  ],
+  "description": "W3C-format design tokens for the Roadside Motel DNA.",
+  "dnas": [
+   "roadside-motel"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#101c2c",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#f3ead8",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#e8b53a",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#8d99a8",
+   "type": "color"
+  },
+  "line": {
+   "value": "#f3ead81f",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#1a2a40",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Yellowtail",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Karla",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "IBM Plex Mono",
+   "type": "fontFamily"
+  }
+ }
+}
