@@ -1,0 +1,169 @@
+<!--tz-meta {"id":"voxel-city","title":"Voxel City Night","category":"3D","file":"three-d/voxel-city.html","tags":["threejs","city"],"description":"Instanced voxel towers with a procedural lit-window texture drift beneath a slow aerial camera.","dnas":["dark-luxe"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voxel City Night — TZ-taste</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#070b16}
+  #c{position:fixed;inset:0;display:block}
+  .caption{position:fixed;left:18px;bottom:16px;color:#8b9bb8;font:12px/1.6 system-ui,sans-serif;
+    letter-spacing:.14em;text-transform:uppercase;pointer-events:none;opacity:.85}
+  .caption b{display:block;font-size:13px;letter-spacing:.28em;color:#ffe9c4}
+  #fallback{position:fixed;inset:0;display:none;place-items:center;color:#c8d4e3;
+    font:14px system-ui,sans-serif;background:#070b16;text-align:center;padding:2rem}
+</style>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div class="caption"><b>Voxel City Night</b>drag to orbit</div>
+<div id="fallback"><p>WebGL is unavailable in this browser, so the voxel city cannot render.</p></div>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('c'), antialias: true });
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+} catch (e) {
+  document.getElementById('fallback').style.display = 'grid';
+  throw e;
+}
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x070b16);
+scene.fog = new THREE.Fog(0x070b16, 40, 150);
+const camera = new THREE.PerspectiveCamera(55, innerWidth / innerHeight, 0.1, 400);
+camera.position.set(0, 34, 62);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.target.set(0, 6, 0);
+controls.enableDamping = true;
+controls.maxPolarAngle = Math.PI * 0.47;
+controls.minDistance = 20; controls.maxDistance = 120;
+
+scene.add(new THREE.HemisphereLight(0x33415e, 0x0a0d14, 0.85));
+const moon = new THREE.DirectionalLight(0xbcd0ff, 0.7);
+moon.position.set(-30, 50, -20);
+scene.add(moon);
+
+// ---- procedural lit-window texture drawn on canvas (albedo dark, emissive windows)
+function buildingTextures() {
+  const W = 128, H = 256;
+  const alb = document.createElement('canvas'); alb.width = W; alb.height = H;
+  const emi = document.createElement('canvas'); emi.width = W; emi.height = H;
+  const a = alb.getContext('2d'), e = emi.getContext('2d');
+  a.fillStyle = '#10141d'; a.fillRect(0, 0, W, H);
+  e.fillStyle = '#000000'; e.fillRect(0, 0, W, H);
+  const cols = 6, rows = 18, cw = W / cols, rh = H / rows;
+  for (let x = 0; x < cols; x++) for (let y = 0; y < rows; y++) {
+    const lit = Math.random();
+    const px = x * cw + cw * 0.22, py = y * rh + rh * 0.22, pw = cw * 0.56, ph = rh * 0.52;
+    a.fillStyle = '#1a2030'; a.fillRect(px, py, pw, ph);
+    if (lit < 0.42) {   // warm lit window
+      const warm = lit < 0.3;
+      e.fillStyle = warm ? '#ffb45e' : '#9fd8ff';
+      e.fillRect(px, py, pw, ph);
+    }
+  }
+  const at = new THREE.CanvasTexture(alb); at.colorSpace = THREE.SRGBColorSpace;
+  const et = new THREE.CanvasTexture(emi); et.colorSpace = THREE.SRGBColorSpace;
+  return { map: at, emissiveMap: et };
+}
+const tex = buildingTextures();
+
+// ---- instanced towers
+const GRID = 9, SPACING = 9, N = GRID * GRID;
+const towerGeo = new THREE.BoxGeometry(1, 1, 1);
+towerGeo.translate(0, 0.5, 0);   // scale.y grows upward from the ground
+const towerMat = new THREE.MeshStandardMaterial({
+  map: tex.map, emissiveMap: tex.emissiveMap, emissive: 0xffffff,
+  emissiveIntensity: 1.6, roughness: 0.85, metalness: 0.1
+});
+const towers = new THREE.InstancedMesh(towerGeo, towerMat, N);
+const m = new THREE.Matrix4(), q = new THREE.Quaternion(), sv = new THREE.Vector3(), pv = new THREE.Vector3();
+const tint = new THREE.Color();
+let k = 0;
+for (let gx = 0; gx < GRID; gx++) for (let gz = 0; gz < GRID; gz++) {
+  const edge = Math.max(Math.abs(gx - 4), Math.abs(gz - 4)) / 4;      // taller downtown
+  const h = 6 + Math.pow(1 - edge, 1.6) * 26 * (0.55 + Math.random() * 0.45);
+  const w = 3.4 + Math.random() * 1.6;
+  pv.set((gx - 4) * SPACING + (Math.random() - 0.5) * 2, 0, (gz - 4) * SPACING + (Math.random() - 0.5) * 2);
+  sv.set(w, h, w);
+  m.compose(pv, q, sv);
+  towers.setMatrixAt(k, m);
+  tint.setHSL(0.6, 0.12, 0.75 + Math.random() * 0.25);                // subtle facade variation
+  towers.setColorAt(k, tint);
+  k++;
+}
+towers.instanceMatrix.needsUpdate = true;
+scene.add(towers);
+
+// ---- ground plane + scattered street dots
+const ground = new THREE.Mesh(
+  new THREE.PlaneGeometry(400, 400),
+  new THREE.MeshStandardMaterial({ color: 0x0a0e18, roughness: 1 })
+);
+ground.rotation.x = -Math.PI / 2;
+ground.position.y = -0.05;
+scene.add(ground);
+{
+  const n = 300, pos = new Float32Array(n * 3);
+  for (let i = 0; i < n; i++) {
+    pos[i*3] = (Math.random() - 0.5) * 130;
+    pos[i*3+1] = 0.25;
+    pos[i*3+2] = (Math.random() - 0.5) * 130;
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  scene.add(new THREE.Points(g, new THREE.PointsMaterial({ color: 0xffb45e, size: 0.9, transparent: true, opacity: 0.8 })));
+}
+
+// ---- pale moon sprite
+{
+  const cv = document.createElement('canvas'); cv.width = cv.height = 128;
+  const ctx = cv.getContext('2d');
+  const g = ctx.createRadialGradient(64, 64, 8, 64, 64, 64);
+  g.addColorStop(0, 'rgba(235,242,255,1)'); g.addColorStop(0.35, 'rgba(210,225,255,0.9)');
+  g.addColorStop(0.6, 'rgba(160,190,255,0.18)'); g.addColorStop(1, 'rgba(160,190,255,0)');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, 128, 128);
+  const t = new THREE.CanvasTexture(cv); t.colorSpace = THREE.SRGBColorSpace;
+  const moonS = new THREE.Sprite(new THREE.SpriteMaterial({ map: t, transparent: true, depthWrite: false }));
+  moonS.scale.setScalar(26);
+  moonS.position.set(-70, 78, -120);
+  scene.add(moonS);
+}
+
+const clock = new THREE.Clock();
+function tick() {
+  const dt = Math.min(clock.getDelta(), 0.05);
+  const t = clock.elapsedTime;
+  if (!reduced) {
+    // slow aerial drift: camera circles the skyline like a night drone
+    const ang = t * 0.035;
+    const r = 62;
+    camera.position.x += ((Math.sin(ang) * r) - camera.position.x) * Math.min(1, dt * 0.6);
+    camera.position.z += ((Math.cos(ang) * r) - camera.position.z) * Math.min(1, dt * 0.6);
+    // windows breathe very slightly
+    towerMat.emissiveIntensity = 1.6 + Math.sin(t * 1.4) * 0.12;
+  }
+  controls.update();
+  renderer.render(scene, camera);
+  if (!reduced) requestAnimationFrame(tick);
+}
+
+function resize() {
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+}
+addEventListener('resize', resize);
+resize();
+tick();
+</script>
+</body>
+</html>
