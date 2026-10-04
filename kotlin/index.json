@@ -1,0 +1,163 @@
+{
+ "count": 10,
+ "updated": "2026-10-04",
+ "usage": "Jetpack Compose-style Kotlin components, one DNA each.",
+ "kotlin_components": [
+  {
+   "id": "kt-chat-row",
+   "title": "Chat Row — Vertical Sender Names",
+   "category": "Kotlin",
+   "file": "kotlin/ChatRow.kt",
+   "tags": [
+    "kotlin",
+    "compose",
+    "chat",
+    "messaging"
+   ],
+   "description": "Messaging rows for Kanso chat: sender names set vertically along a hairline timeline, staggered message widths, timestamps in muted mono. DNA: ma-japanese.",
+   "dnas": [
+    "ma-japanese"
+   ]
+  },
+  {
+   "id": "kt-cta-deploy",
+   "title": "CTA — Industrial Deploy Banner",
+   "category": "Kotlin",
+   "file": "kotlin/CtaDeploy.kt",
+   "tags": [
+    "kotlin",
+    "compose",
+    "cta"
+   ],
+   "description": "Brutalist deploy CTA for Dockhand pipelines: concrete slab, Anton-weight type, safety-orange action, hazard-stripe rule. DNA: industrial-brutalist.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "kt-features-bento",
+   "title": "Features — Bauhaus Bento",
+   "category": "Kotlin",
+   "file": "kotlin/FeaturesBento.kt",
+   "tags": [
+    "kotlin",
+    "compose",
+    "features",
+    "bento"
+   ],
+   "description": "Asymmetric bento grid for Gridline, a print-layout tool: one large panel, one tall panel, two small — Bauhaus circle-and-bar motifs, no three equal cards. DNA: bauhaus-primary.",
+   "dnas": [
+    "bauhaus-primary"
+   ]
+  },
+  {
+   "id": "kt-hero-editorial",
+   "title": "Hero — Editorial Off-Center",
+   "category": "Kotlin",
+   "file": "kotlin/HeroEditorial.kt",
+   "tags": [
+    "kotlin",
+    "compose",
+    "hero",
+    "editorial"
+   ],
+   "description": "Asymmetric editorial hero for Commonplace, a read-it-later app: oversized serif claim offset left, narrow meta column, rotated volume numeral. DNA: editorial-serif.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "kt-login-split",
+   "title": "Login — Midnight Railway Split",
+   "category": "Kotlin",
+   "file": "kotlin/LoginSplit.kt",
+   "tags": [
+    "kotlin",
+    "compose",
+    "login",
+    "auth"
+   ],
+   "description": "Split-screen sign-in for Nightline, a night-shift community: serif wordmark with departure-board detail on the left, honest form on the right. DNA: midnight-railway.",
+   "dnas": [
+    "midnight-railway"
+   ]
+  },
+  {
+   "id": "kt-onboarding-wizard",
+   "title": "Onboarding — Calm Three-Step Wizard",
+   "category": "Kotlin",
+   "file": "kotlin/OnboardingWizard.kt",
+   "tags": [
+    "kotlin",
+    "compose",
+    "onboarding",
+    "wizard"
+   ],
+   "description": "Quiet three-step onboarding for Heim, a home-inventory app: numbered hairline progress segments, one question per step, generous whitespace. DNA: scandi-calm.",
+   "dnas": [
+    "scandi-calm"
+   ]
+  },
+  {
+   "id": "kt-pricing-honest",
+   "title": "Pricing — Honest Poster",
+   "category": "Kotlin",
+   "file": "kotlin/PricingHonest.kt",
+   "tags": [
+    "kotlin",
+    "compose",
+    "pricing"
+   ],
+   "description": "Brutally honest two-column pricing for Tallyhouse, freelance invoicing: poster-sized price, hairline feature list, plain-language cancel note. DNA: swiss-rational.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "kt-settings-page",
+   "title": "Settings — Laboratory Specimen Sheet",
+   "category": "Kotlin",
+   "file": "kotlin/SettingsPage.kt",
+   "tags": [
+    "kotlin",
+    "compose",
+    "settings"
+   ],
+   "description": "Clinical settings sheet for Specimen, a lab sample tracker: specimen-coded sections, hairline rows, switches and checks. DNA: laboratory-clean.",
+   "dnas": [
+    "laboratory-clean"
+   ]
+  },
+  {
+   "id": "kt-stats-terminal",
+   "title": "Stats — Retro Terminal Readout",
+   "category": "Kotlin",
+   "file": "kotlin/StatsTerminal.kt",
+   "tags": [
+    "kotlin",
+    "compose",
+    "stats",
+    "terminal"
+   ],
+   "description": "Server stats rendered as a live terminal session for Uptimed monitoring: shell prompt header, mono metric rows, amber alerts, blinking block cursor. DNA: retro-terminal.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "kt-testimonial-wall",
+   "title": "Testimonials — Liner Notes Wall",
+   "category": "Kotlin",
+   "file": "kotlin/TestimonialWall.kt",
+   "tags": [
+    "kotlin",
+    "compose",
+    "testimonials"
+   ],
+   "description": "Testimonials as Blue Note liner notes for Setlist, a booking tool for jazz clubs: catalog-numbered entries, one oversized pull quote, hairline rules. DNA: jazz-blue-note.",
+   "dnas": [
+    "jazz-blue-note"
+   ]
+  }
+ ]
+}
