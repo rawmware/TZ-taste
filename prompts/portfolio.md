@@ -1,3 +1,4 @@
+<!--tz-meta {"id":"portfolio","title":"Portfolio","file":"prompts/portfolio.md","description":"Work-first portfolio with actual voice. A taste demonstration in itself."} -->
 # Prompt: Portfolio
 
 Copy everything below the line into your AI builder. Fill in the [BRACKETS] first.
