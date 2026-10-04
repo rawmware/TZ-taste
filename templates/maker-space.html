@@ -1,0 +1,403 @@
+<!--tz-meta {"id":"maker-space","title":"The Bench — Maker Space","category":"Template","file":"templates/maker-space.html","tags":["makerspace","workshop","community"],"description":"Cyanotype maker space: drafting-grid sheet, machines as a spec table with tolerances, sheet-index nav.","dnas":["blueprint-tech"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Bench — a maker space with real machines</title>
+<meta name="description" content="The Bench is a community maker space: CNC, laser, 3D printers, wood and metal shops. Membership from $65/month. Safety training included.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#17407f;
+  --tz-surface:#0f2f66;
+  --tz-ink:#f2f6fc;
+  --tz-muted:#8fb3e8;
+  --tz-accent:#ffcf3f;
+  --tz-line:#ffffff40;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"IBM Plex Mono",monospace;background:var(--tz-bg);color:var(--tz-ink);
+  line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  background-image:linear-gradient(var(--tz-line) 1px,transparent 1px),linear-gradient(90deg,var(--tz-line) 1px,transparent 1px);
+  background-size:32px 32px;
+}
+::selection{background:var(--tz-accent);color:var(--tz-bg)}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.tz-display{font-family:"Space Grotesk",sans-serif}
+.skip{position:absolute;left:-999px;top:0;background:var(--tz-accent);color:var(--tz-bg);padding:8px 16px;z-index:99}
+.skip:focus{left:8px;top:8px}
+
+/* ---------- header: sheet index ---------- */
+.tz-header{position:sticky;top:0;z-index:50;background:var(--tz-bg);border-bottom:2px solid var(--tz-ink)}
+.tz-header .tz-wrap{display:flex;justify-content:space-between;align-items:center;min-height:74px;gap:20px}
+.tz-sheet-id{font-size:12px;letter-spacing:.14em;color:var(--tz-muted)}
+.tz-sheet-id b{color:var(--tz-accent)}
+.tz-logo{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:21px;letter-spacing:.04em}
+.tz-nav{display:flex;gap:28px;font-size:13px;letter-spacing:.1em}
+.tz-nav a{color:var(--tz-muted);transition:color .2s}
+.tz-nav a:hover{color:var(--tz-accent)}
+.tz-cta{font-size:13px;font-weight:700;letter-spacing:.08em;background:var(--tz-accent);color:var(--tz-bg);padding:12px 24px;border:0;cursor:pointer;transition:transform .2s var(--tz-ease)}
+.tz-cta:hover{transform:translateY(-2px)}
+
+/* ---------- hero: FIG. 1 ---------- */
+.tz-hero{padding:96px 0 88px;border-bottom:2px solid var(--tz-ink)}
+.tz-fig-label{font-size:12px;letter-spacing:.24em;color:var(--tz-accent);display:block;margin-bottom:24px}
+.tz-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+.tz-hero h1{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(44px,5.8vw,84px);line-height:1.02;text-transform:uppercase;letter-spacing:.01em}
+.tz-hero h1 .tz-hl{color:var(--tz-accent)}
+.tz-lede{margin-top:24px;font-size:16px;color:var(--tz-muted);max-width:48ch}
+.tz-lede strong{color:var(--tz-ink);font-weight:500}
+.tz-hero-cta{display:flex;gap:16px;margin-top:32px;flex-wrap:wrap}
+.tz-btn{display:inline-block;font-size:14px;font-weight:700;letter-spacing:.06em;padding:16px 30px;cursor:pointer;border:2px solid var(--tz-ink);transition:transform .2s var(--tz-ease)}
+.tz-btn--yel{background:var(--tz-accent);color:var(--tz-bg);border-color:var(--tz-accent)}
+.tz-btn--yel:hover{transform:translateY(-2px)}
+.tz-btn--line{background:transparent;color:var(--tz-ink)}
+.tz-btn--line:hover{border-color:var(--tz-accent);color:var(--tz-accent)}
+.tz-diagram{border:2px solid var(--tz-ink);background:var(--tz-surface);padding:32px;position:relative}
+.tz-diagram .tz-corner{position:absolute;width:18px;height:18px;border:3px solid var(--tz-accent)}
+.tz-diagram .tz-c1{top:-3px;left:-3px;border-right:0;border-bottom:0}
+.tz-diagram .tz-c2{top:-3px;right:-3px;border-left:0;border-bottom:0}
+.tz-diagram .tz-c3{bottom:-3px;left:-3px;border-right:0;border-top:0}
+.tz-diagram .tz-c4{bottom:-3px;right:-3px;border-left:0;border-top:0}
+.tz-diagram svg{width:100%;height:auto;display:block}
+.tz-diagram figcaption{font-size:11px;letter-spacing:.18em;color:var(--tz-muted);margin-top:16px;display:flex;justify-content:space-between}
+.tz-diagram figcaption b{color:var(--tz-accent)}
+
+/* ---------- sections ---------- */
+.tz-section{padding:96px 0;border-bottom:2px solid var(--tz-ink)}
+.tz-sec-head{margin-bottom:48px;max-width:680px}
+.tz-sec-head .tz-fig-label{margin-bottom:12px}
+.tz-sec-head h2{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(34px,4.4vw,58px);line-height:1.04;text-transform:uppercase}
+.tz-sec-head p{color:var(--tz-muted);font-size:16px;margin-top:14px}
+
+/* ---------- machine spec table ---------- */
+.tz-spec{width:100%;border-collapse:collapse;border:2px solid var(--tz-ink);background:var(--tz-surface)}
+.tz-spec th{font-size:11px;letter-spacing:.2em;text-transform:uppercase;text-align:left;padding:16px 20px;background:var(--tz-ink);color:var(--tz-bg);font-weight:700}
+.tz-spec td{padding:20px;border-bottom:1px solid var(--tz-line);vertical-align:top;font-size:14.5px}
+.tz-spec tr:last-child td{border-bottom:0}
+.tz-spec tr:hover td{background:#143a75}
+.tz-spec .tz-machine{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:17px}
+.tz-spec .tz-machine small{display:block;font-family:"IBM Plex Mono",monospace;font-weight:400;font-size:12px;color:var(--tz-muted);margin-top:4px}
+.tz-spec .tz-tol{color:var(--tz-accent);font-weight:700;white-space:nowrap}
+.tz-spec .tz-status{font-size:11px;letter-spacing:.14em;font-weight:700}
+.tz-spec .tz-ok{color:var(--tz-accent)}
+.tz-spec .tz-train{color:var(--tz-muted)}
+
+/* ---------- membership: spec sheet rows ---------- */
+.tz-plans{display:grid;grid-template-columns:1.15fr .85fr;gap:0;border:2px solid var(--tz-ink)}
+.tz-plan{padding:48px 44px;background:var(--tz-surface)}
+.tz-plan:first-child{border-right:2px solid var(--tz-ink);background:var(--tz-bg)}
+.tz-plan .tz-mono-tag{font-size:11px;letter-spacing:.24em;color:var(--tz-accent);display:block;margin-bottom:16px}
+.tz-plan h3{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:32px;text-transform:uppercase;margin-bottom:8px}
+.tz-plan .tz-cost{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:56px;color:var(--tz-accent);line-height:1;margin:16px 0 4px}
+.tz-plan .tz-cost small{font-size:15px;color:var(--tz-muted);font-family:"IBM Plex Mono",monospace;font-weight:400}
+.tz-plan ul{list-style:none;margin-top:24px;display:grid;gap:12px;font-size:15px;color:var(--tz-muted)}
+.tz-plan ul li{padding-left:26px;position:relative}
+.tz-plan ul li::before{content:"+";position:absolute;left:0;color:var(--tz-accent);font-weight:700}
+.tz-plan ul li b{color:var(--tz-ink);font-weight:500}
+.tz-plan .tz-btn{margin-top:32px}
+.tz-plan-note{margin-top:24px;font-size:13px;color:var(--tz-muted)}
+
+/* ---------- safety ---------- */
+.tz-safety{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.tz-rule{border:2px solid var(--tz-ink);background:var(--tz-surface);padding:36px 32px;position:relative}
+.tz-rule .tz-warn{position:absolute;top:-14px;left:24px;background:var(--tz-accent);color:var(--tz-bg);font-size:11px;font-weight:700;letter-spacing:.18em;padding:6px 14px}
+.tz-rule h3{font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:21px;text-transform:uppercase;margin-bottom:10px;margin-top:6px}
+.tz-rule p{font-size:14.5px;color:var(--tz-muted)}
+.tz-rule p b{color:var(--tz-ink);font-weight:500}
+
+/* ---------- visit strip ---------- */
+.tz-visit{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border:2px solid var(--tz-ink);background:var(--tz-surface)}
+.tz-visit-cell{padding:44px 36px}
+.tz-visit-cell:nth-child(2){border-left:2px solid var(--tz-ink);border-right:2px solid var(--tz-ink)}
+.tz-visit-cell h3{font-size:11px;letter-spacing:.24em;color:var(--tz-accent);margin-bottom:16px;font-weight:700}
+.tz-visit-cell p{font-size:15px;color:var(--tz-muted);line-height:2}
+.tz-visit-cell p b{color:var(--tz-ink);font-weight:500}
+
+/* ---------- footer ---------- */
+.tz-footer{padding:72px 0 36px;border-top:2px solid var(--tz-ink)}
+.tz-foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:44px;margin-bottom:52px}
+.tz-foot-grid h4{font-size:11px;letter-spacing:.24em;color:var(--tz-accent);margin-bottom:16px;font-weight:700}
+.tz-foot-grid ul{list-style:none;display:grid;gap:10px;font-size:14.5px;color:var(--tz-muted)}
+.tz-foot-grid a:hover{color:var(--tz-accent)}
+.tz-foot-note{font-size:14px;color:var(--tz-muted);max-width:34ch;margin-top:12px}
+.tz-foot-bottom{border-top:1px solid var(--tz-line);padding-top:24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--tz-muted);letter-spacing:.06em}
+
+/* ---------- reveal ---------- */
+.tz-reveal{opacity:0;transform:translateY(18px);transition:opacity .6s var(--tz-ease),transform .6s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:960px){
+  .tz-hero-grid{grid-template-columns:1fr}
+  .tz-nav{display:none}
+  .tz-plans{grid-template-columns:1fr}
+  .tz-plan:first-child{border-right:0;border-bottom:2px solid var(--tz-ink)}
+  .tz-safety{grid-template-columns:1fr}
+  .tz-visit{grid-template-columns:1fr}
+  .tz-visit-cell:nth-child(2){border-left:0;border-right:0;border-top:2px solid var(--tz-ink);border-bottom:2px solid var(--tz-ink)}
+  .tz-foot-grid{grid-template-columns:1fr 1fr}
+  .tz-section{padding:72px 0}
+  .tz-spec th:nth-child(3),.tz-spec td:nth-child(3){display:none}
+}
+@media (max-width:560px){
+  .tz-foot-grid{grid-template-columns:1fr}
+  .tz-spec th:nth-child(4),.tz-spec td:nth-child(4){display:none}
+  .tz-plan{padding:36px 28px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<!-- DNA: blueprint-tech (cyanotype blue sheet, drafting white, highlighter yellow reserved for warnings/CTAs/key specs; Space Grotesk/IBM Plex Mono). Design read: a workshop datasheet you can walk into — precise, labeled, zero marketing fluff — for people who build things and read tolerances for fun. One distinctive choice: the nav carries a running sheet index (SHEET 01/08 — REV C), and every machine is a row in a spec table with real dimensions and tolerances. Dials V5/M3/D7. -->
+<body>
+<a class="skip" href="#machines">Skip to machine inventory</a>
+
+<header class="tz-header">
+  <div class="tz-wrap">
+    <span class="tz-sheet-id">SHEET <b>01</b>/08 — <b>REV C</b></span>
+    <a class="tz-logo" href="#">THE BENCH</a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#machines">Machines</a><a href="#plans">Membership</a><a href="#safety">Safety</a><a href="#visit">Visit</a>
+    </nav>
+    <a class="tz-cta" href="#plans">GET A KEY</a>
+  </div>
+</header>
+
+<main>
+  <!-- ============ hero: FIG. 1 ============ -->
+  <section class="tz-hero">
+    <div class="tz-wrap tz-hero-grid">
+      <div class="tz-reveal tz-in">
+        <span class="tz-fig-label">FIG. 1 — THE SHOP FLOOR, PLAN VIEW</span>
+        <h1>2,400 SQ FT OF <span class="tz-hl">MACHINES</span> YOU CAN ACTUALLY USE.</h1>
+        <p class="tz-lede">The Bench is a community maker space in Dover, NH. <strong>Four shops — wood, metal, digital fab, electronics</strong> — under one roof, open 24/7 to members. Safety training is included in every membership. Bring an idea; leave with the thing.</p>
+        <div class="tz-hero-cta">
+          <a class="tz-btn tz-btn--yel" href="#plans">See membership</a>
+          <a class="tz-btn tz-btn--line" href="#machines">Machine inventory</a>
+        </div>
+      </div>
+      <figure class="tz-diagram tz-reveal tz-in" aria-label="Technical plan-view diagram of the workshop floor">
+        <span class="tz-corner tz-c1"></span><span class="tz-corner tz-c2"></span><span class="tz-corner tz-c3"></span><span class="tz-corner tz-c4"></span>
+        <svg viewBox="0 0 400 300" fill="none" stroke="#f2f6fc" stroke-width="2" aria-hidden="true">
+          <rect x="20" y="20" width="360" height="260"/>
+          <line x1="20" y1="120" x2="380" y2="120" stroke-dasharray="6 4"/>
+          <line x1="200" y1="20" x2="200" y2="280" stroke-dasharray="6 4"/>
+          <rect x="36" y="36" width="120" height="60"/><text x="44" y="62" fill="#f2f6fc" font-size="11" font-family="IBM Plex Mono" stroke="none">WOOD</text><text x="44" y="80" fill="#8fb3e8" font-size="10" font-family="IBM Plex Mono" stroke="none">SHOP</text>
+          <rect x="224" y="36" width="140" height="60"/><text x="232" y="62" fill="#f2f6fc" font-size="11" font-family="IBM Plex Mono" stroke="none">METAL</text><text x="232" y="80" fill="#8fb3e8" font-size="10" font-family="IBM Plex Mono" stroke="none">SHOP</text>
+          <rect x="36" y="140" width="150" height="120"/><text x="44" y="166" fill="#f2f6fc" font-size="11" font-family="IBM Plex Mono" stroke="none">DIGITAL</text><text x="44" y="184" fill="#8fb3e8" font-size="10" font-family="IBM Plex Mono" stroke="none">FAB</text>
+          <rect x="214" y="140" width="150" height="120"/><text x="222" y="166" fill="#f2f6fc" font-size="11" font-family="IBM Plex Mono" stroke="none">ELECTRONICS</text>
+          <circle cx="200" cy="120" r="6" fill="#ffcf3f" stroke="none"/>
+          <line x1="20" y1="296" x2="380" y2="296" stroke="#ffcf3f"/><text x="180" y="292" fill="#ffcf3f" font-size="10" font-family="IBM Plex Mono" stroke="none">60'-0"</text>
+        </svg>
+        <figcaption><span>SCALE 1/4" = 1'-0" · DRAWN BY M. OKAfor</span><b>±0.1 FT</b></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ machines ============ -->
+  <section class="tz-section" id="machines">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <span class="tz-fig-label">FIG. 2 — MACHINE INVENTORY, REV C</span>
+        <h2>Every machine. Every tolerance.</h2>
+        <p>No mystery equipment, no "ask at the desk." This is the full inventory, with the numbers that matter. Training required on anything marked T — training is free and takes an evening.</p>
+      </div>
+      <table class="tz-spec tz-reveal">
+        <thead><tr><th scope="col">Machine</th><th scope="col">Work envelope</th><th scope="col">Tolerance</th><th scope="col">Status</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="tz-machine">ShopBot PRSalpha CNC<small>4×8 FT GANTRY ROUTER</small></span></td>
+            <td>48" × 96" × 8"</td>
+            <td class="tz-tol">±0.005"</td>
+            <td><span class="tz-status tz-ok">OPEN · TRAINING REQ'D</span></td>
+          </tr>
+          <tr>
+            <td><span class="tz-machine">Glowforge Pro Laser<small>CO2 · 45W</small></span></td>
+            <td>20" × 12" BED</td>
+            <td class="tz-tol">±0.01"</td>
+            <td><span class="tz-status tz-ok">OPEN · TRAINING REQ'D</span></td>
+          </tr>
+          <tr>
+            <td><span class="tz-machine">Prusa MK4S × 3<small>FDM PRINTERS</small></span></td>
+            <td>250 × 210 × 220 MM</td>
+            <td class="tz-tol">±0.1 MM</td>
+            <td><span class="tz-status tz-ok">OPEN · NO TRAINING</span></td>
+          </tr>
+          <tr>
+            <td><span class="tz-machine">Formlabs Form 3+<small>SLA RESIN PRINTER</small></span></td>
+            <td>145 × 145 × 185 MM</td>
+            <td class="tz-tol">±0.05 MM</td>
+            <td><span class="tz-status tz-train">TRAINING REQ'D</span></td>
+          </tr>
+          <tr>
+            <td><span class="tz-machine">Powermatic Table Saw<small>10" · 3HP</small></span></td>
+            <td>52" RIP CAPACITY</td>
+            <td class="tz-tol">±1/64"</td>
+            <td><span class="tz-status tz-ok">OPEN · TRAINING REQ'D</span></td>
+          </tr>
+          <tr>
+            <td><span class="tz-machine">Grizzly Metal Lathe<small>G0602 · 10×22</small></span></td>
+            <td>10" SWING × 22"</td>
+            <td class="tz-tol">±0.001"</td>
+            <td><span class="tz-status tz-train">TRAINING REQ'D</span></td>
+          </tr>
+          <tr>
+            <td><span class="tz-machine">Miller Multimatic 215<small>MIG/TIG/STICK</small></span></td>
+            <td>UP TO 3/8" STEEL</td>
+            <td class="tz-tol">N/A — SKILL</td>
+            <td><span class="tz-status tz-train">TRAINING REQ'D</span></td>
+          </tr>
+          <tr>
+            <td><span class="tz-machine">Full Electronics Bench<small>SCOPES · SOLDER · REWORK</small></span></td>
+            <td>4 STATIONS</td>
+            <td class="tz-tol">0402 + UP</td>
+            <td><span class="tz-status tz-ok">OPEN · NO TRAINING</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="tz-plan-note tz-reveal">CONSUMABLES (FILAMENT, PLYWOOD, END MILLS) SOLD AT COST FROM THE CAGE · SHEET GOODS RACK RESTOCKED FRIDAYS</p>
+    </div>
+  </section>
+
+  <!-- ============ membership ============ -->
+  <section class="tz-section" id="plans">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <span class="tz-fig-label">FIG. 3 — MEMBERSHIP, TWO SIZES</span>
+        <h2>Pick your access level</h2>
+        <p>Every membership includes safety training, 24/7 keycard access, and storage for one project tote. No initiation fee. Cancel anytime; your keycard just stops working.</p>
+      </div>
+      <div class="tz-plans tz-reveal">
+        <div class="tz-plan">
+          <span class="tz-mono-tag">PLAN A — MOST MEMBERS</span>
+          <h3>Full Shop</h3>
+          <div class="tz-cost">$65<small>/month</small></div>
+          <ul>
+            <li><b>24/7 access</b> to all four shops</li>
+            <li>All machine training <b>included</b></li>
+            <li><b>4 ft × 4 ft</b> project storage shelf</li>
+            <li>Guest passes: <b>2/month</b></li>
+            <li>Discounted <b>classes &amp; open nights</b></li>
+          </ul>
+          <a class="tz-btn tz-btn--yel" href="#visit">Start with a tour</a>
+        </div>
+        <div class="tz-plan">
+          <span class="tz-mono-tag">PLAN B — EVENINGS + WEEKENDS</span>
+          <h3>Nights &amp; Weekends</h3>
+          <div class="tz-cost">$40<small>/month</small></div>
+          <ul>
+            <li>Access <b>weeknights 5 PM – 11 PM</b>, weekends all day</li>
+            <li>All machine training <b>included</b></li>
+            <li>Project tote storage</li>
+            <li>Upgrade to Full Shop <b>anytime</b>, prorated</li>
+          </ul>
+          <a class="tz-btn tz-btn--line" href="#visit">Start with a tour</a>
+        </div>
+      </div>
+      <p class="tz-plan-note tz-reveal">STUDENTS &amp; UNDER-18 (WITH GUARDIAN): 50% OFF EITHER PLAN · DAY PASSES $15, SATURDAYS ONLY · FINANCIAL HARDSHIP? ASK — WE MEAN IT</p>
+    </div>
+  </section>
+
+  <!-- ============ safety ============ -->
+  <section class="tz-section" id="safety">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <span class="tz-fig-label">FIG. 4 — NON-NEGOTIABLES</span>
+        <h2>Safety is the membership</h2>
+        <p>The yellow boxes are the rules that get your keycard suspended. Everything else is a suggestion. We are friendly about all of it exactly once.</p>
+      </div>
+      <div class="tz-safety">
+        <div class="tz-rule tz-reveal">
+          <span class="tz-warn">RULE 01</span>
+          <h3>Training before touching</h3>
+          <p>Any machine marked <b>T</b> in the inventory needs its evening class first. Classes run <b>Tuesdays and Thursdays, 6 PM</b>, and take about two hours. No test, no quiz — we just need to see you run it safely once.</p>
+        </div>
+        <div class="tz-rule tz-reveal">
+          <span class="tz-warn">RULE 02</span>
+          <h3>Eyes, ears, lungs</h3>
+          <p>Safety glasses in the <b>wood and metal shops, always</b> — we have a wall of them, take a pair. Hearing protection at the table saw and router. <b>Respirator required</b> for MDF on the laser and any resin work.</p>
+        </div>
+        <div class="tz-rule tz-reveal">
+          <span class="tz-warn">RULE 03</span>
+          <h3>Clean 15 minutes</h3>
+          <p>Every session ends with <b>15 minutes of cleanup</b> — sweep your station, empty the dust collector if it's full, put tools back. The next person's project starts where yours ended.</p>
+        </div>
+        <div class="tz-rule tz-reveal">
+          <span class="tz-warn">RULE 04</span>
+          <h3>Never alone on the big three</h3>
+          <p>Table saw, CNC, and welder: <b>never run solo</b>. If the shop is empty, those machines stay off. This rule has no exceptions and no appeal process.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ visit ============ -->
+  <section class="tz-section" id="visit" style="border-bottom:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <span class="tz-fig-label">FIG. 5 — GETTING HERE</span>
+        <h2>Tour first, decide after</h2>
+        <p>Tours run Saturdays at 11 AM and take 30 minutes. You'll see every machine running, meet whoever's in the shop, and leave with sawdust on your shoes.</p>
+      </div>
+      <div class="tz-visit tz-reveal">
+        <div class="tz-visit-cell">
+          <h3>ADDRESS</h3>
+          <p><b>47 Foundry Street<br>Dover, NH 03820</b><br>The old box factory.<br>Look for the blue door.</p>
+        </div>
+        <div class="tz-visit-cell">
+          <h3>STAFFED HOURS</h3>
+          <p><b>Mon – Fri · 9 AM – 9 PM<br>Sat – Sun · 10 AM – 6 PM</b><br>Members: 24/7 by keycard.<br>Day passes: Saturdays only.</p>
+        </div>
+        <div class="tz-visit-cell">
+          <h3>OPEN NIGHT</h3>
+          <p><b>First Friday · 6 – 9 PM</b><br>Free. Tour the shop,<br>try the laser, eat pizza.<br><b>tour@thebench.shop</b></p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-foot-grid">
+      <div>
+        <span class="tz-logo">THE BENCH</span>
+        <p class="tz-foot-note">A community maker space in Dover, NH. Nonprofit, volunteer-run, sawdust-positive since 2019.</p>
+      </div>
+      <div><h4>SHOP</h4><ul><li><a href="#machines">Machine inventory</a></li><li><a href="#plans">Membership</a></li><li><a href="#safety">Safety</a></li><li><a href="#">Classes</a></li></ul></div>
+      <div><h4>COMMUNITY</h4><ul><li><a href="#">Open nights</a></li><li><a href="#">Project gallery</a></li><li><a href="#">Volunteer</a></li></ul></div>
+      <div><h4>CONTACT</h4><ul><li><a href="#">tour@thebench.shop</a></li><li><a href="#">(603) 555-0163</a></li><li><a href="#">Discord</a></li></ul></div>
+    </div>
+    <div class="tz-foot-bottom">
+      <span>© 2026 THE BENCH MAKER SPACE · SHEET 08/08 · REV C</span>
+      <span>MEASURE TWICE · CUT ONCE</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){e.classList.add('tz-in')});
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en,i){
+        if(en.isIntersecting){ setTimeout(function(){en.target.classList.add('tz-in')}, i*70); io.unobserve(en.target); }
+      });
+    },{threshold:.1});
+    els.forEach(function(e){io.observe(e)});
+  }
+})();
+</script>
+</body>
+</html>
