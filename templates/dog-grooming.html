@@ -1,0 +1,285 @@
+<!--tz-meta {"id":"dog-grooming","title":"The Dapper Mutt — Dog Grooming Studio","category":"Template","file":"templates/dog-grooming.html","tags":["pets","grooming","local"],"description":"Memphis-Milano dog grooming: squiggle-and-terrazzo joy, the spa menu as a diner ticket, breed gallery wall, booking flow.","dnas":["memphis-milano"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Dapper Mutt — grooming for good dogs (and dramatic ones)</title>
+<meta name="description" content="The Dapper Mutt dog grooming studio: baths, cuts, de-shedding. Fear-free certified, transparent pricing, online booking.">
+<!-- Design read: a 1980s Memphis design party thrown for dogs — squiggles, terrazzo, Shrikhand headlines that wag — because grooming should feel like fun, not a vet visit. DNA: memphis-milano (Shrikhand + Space Grotesk + Space Mono; cream #f7efe3, ink #1c1a22, pink #ff4d8d — runner-up kawaii-pixel was too juvenile; Memphis is playful with taste). One distinctive choice: the service menu is a DINER ORDER TICKET with checkboxes, torn-paper edge. Dials V9/M7/D4. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f7efe3; --tz-ink:#1c1a22; --tz-accent:#ff4d8d; --tz-teal:#2ec4b6;
+  --tz-yellow:#ffbf3f; --tz-blue:#4d7cff; --tz-muted:#7a7488; --tz-line:#1c1a22;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Space Grotesk",sans-serif;background:var(--tz-bg);color:var(--tz-ink);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--tz-accent);color:#fff}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1120px;margin:0 auto;padding:0 26px}
+.tz-mono{font-family:"Space Mono",monospace}
+
+/* squiggle divider */
+.tz-squig{display:block;width:100%;height:26px;margin:0}
+
+/* header */
+.tz-header{background:var(--tz-ink);color:var(--tz-bg)}
+.tz-header .tz-wrap{display:flex;justify-content:space-between;align-items:center;height:70px}
+.tz-brand{font-family:"Shrikhand",serif;font-size:24px}
+.tz-brand b{color:var(--tz-accent);font-weight:400}
+.tz-nav{display:flex;gap:24px;font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.tz-nav a{opacity:.75}
+.tz-nav a:hover{opacity:1;color:var(--tz-yellow)}
+.tz-book{font-family:"Space Mono",monospace;font-weight:700;font-size:13px;background:var(--tz-accent);color:#fff;border:2px solid #fff;padding:10px 22px;cursor:pointer;transform:rotate(-2deg);transition:transform .2s var(--tz-ease)}
+.tz-book:hover{transform:rotate(0deg) scale(1.05)}
+
+/* hero */
+.tz-hero{padding:72px 0 40px;position:relative}
+.tz-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.tz-tag{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;background:var(--tz-yellow);display:inline-block;padding:8px 16px;border:2px solid var(--tz-ink);transform:rotate(-2deg);margin-bottom:24px;box-shadow:4px 4px 0 var(--tz-ink)}
+.tz-hero h1{font-family:"Shrikhand",serif;font-weight:400;font-size:clamp(44px,6.4vw,80px);line-height:1.04}
+.tz-hero h1 .tz-pink{color:var(--tz-accent)}
+.tz-hero h1 .tz-teal{color:var(--tz-teal)}
+.tz-lede{margin-top:20px;font-size:18px;max-width:46ch}
+.tz-hero-cta{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap}
+.tz-btn{font-weight:700;font-size:15px;padding:15px 30px;border:3px solid var(--tz-ink);cursor:pointer;transition:transform .25s var(--tz-ease),box-shadow .25s;display:inline-block}
+.tz-btn--pink{background:var(--tz-accent);color:#fff;box-shadow:5px 5px 0 var(--tz-ink)}
+.tz-btn--pink:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--tz-ink)}
+.tz-btn--white{background:#fff;box-shadow:5px 5px 0 var(--tz-ink)}
+.tz-btn--white:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--tz-ink)}
+.tz-proof{margin-top:26px;font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-muted);display:flex;gap:18px;flex-wrap:wrap}
+/* CSS pup portrait */
+.tz-pup{position:relative;aspect-ratio:1;max-width:420px;margin:0 auto}
+.tz-pup-blob{position:absolute;inset:0;background:var(--tz-teal);border:3px solid var(--tz-ink);border-radius:58% 42% 55% 45%/48% 55% 45% 52%;box-shadow:8px 8px 0 var(--tz-ink);animation:tz-wobble 7s ease-in-out infinite}
+@keyframes tz-wobble{0%,100%{border-radius:58% 42% 55% 45%/48% 55% 45% 52%}50%{border-radius:45% 55% 48% 52%/55% 45% 58% 42%}}
+.tz-pup-face{position:absolute;inset:18%;background:#fff;border:3px solid var(--tz-ink);border-radius:50%}
+.tz-pup-face .tz-ear{position:absolute;top:-8%;width:30%;height:44%;background:var(--tz-ink);border-radius:50%}
+.tz-pup-face .tz-ear.l{left:-6%;transform:rotate(-18deg)}
+.tz-pup-face .tz-ear.r{right:-6%;transform:rotate(18deg)}
+.tz-pup-face .tz-eye{position:absolute;top:36%;width:11%;aspect-ratio:1;background:var(--tz-ink);border-radius:50%}
+.tz-pup-face .tz-eye.l{left:24%}.tz-pup-face .tz-eye.r{right:24%}
+.tz-pup-face .tz-nose{position:absolute;top:56%;left:50%;transform:translateX(-50%);width:16%;aspect-ratio:1.4;background:var(--tz-ink);border-radius:40%}
+.tz-pup-face .tz-tongue{position:absolute;top:68%;left:50%;transform:translateX(-50%);width:10%;height:22%;background:var(--tz-accent);border:3px solid var(--tz-ink);border-top:0;border-radius:0 0 20px 20px}
+.tz-pup-badge{position:absolute;bottom:2%;right:0;background:var(--tz-yellow);border:3px solid var(--tz-ink);font-family:"Space Mono",monospace;font-weight:700;font-size:12px;padding:10px 16px;transform:rotate(6deg);box-shadow:4px 4px 0 var(--tz-ink)}
+
+/* ticket menu: the one weird thing */
+.tz-section{padding:80px 0}
+.tz-sec-head{max-width:620px;margin-bottom:40px}
+.tz-sec-head .tz-k{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--tz-accent)}
+.tz-sec-head h2{font-family:"Shrikhand",serif;font-weight:400;font-size:clamp(34px,4.6vw,56px);line-height:1.08;margin:12px 0 10px}
+.tz-sec-head p{color:var(--tz-muted);font-size:16.5px}
+.tz-ticket{background:#fffdf7;border:3px solid var(--tz-ink);max-width:760px;margin:0 auto;position:relative;box-shadow:8px 8px 0 var(--tz-ink);transform:rotate(-.6deg)}
+.tz-ticket::after{content:"";position:absolute;left:0;right:0;bottom:-16px;height:16px;
+  background:radial-gradient(circle at 10px -3px,transparent 12px,var(--tz-ink) 13px,var(--tz-ink) 15px,#fffdf7 16px);background-size:28px 16px;background-repeat:repeat-x}
+.tz-ticket-head{background:var(--tz-ink);color:var(--tz-bg);padding:20px 32px;display:flex;justify-content:space-between;align-items:center}
+.tz-ticket-head h3{font-family:"Shrikhand",serif;font-weight:400;font-size:24px}
+.tz-ticket-head span{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.2em;color:var(--tz-yellow)}
+.tz-ticket-row{display:grid;grid-template-columns:34px 1fr auto;gap:16px;align-items:start;padding:22px 32px;border-bottom:2px dashed #1c1a2226}
+.tz-ticket-row:last-of-type{border-bottom:0}
+.tz-check{width:24px;height:24px;border:3px solid var(--tz-ink);margin-top:4px;position:relative;flex:none}
+.tz-check.tz-on{background:var(--tz-teal)}
+.tz-check.tz-on::after{content:"";position:absolute;left:6px;top:2px;width:7px;height:12px;border:solid #fff;border-width:0 3px 3px 0;transform:rotate(42deg)}
+.tz-ticket-row h4{font-weight:700;font-size:18px}
+.tz-ticket-row h4 small{font-family:"Space Mono",monospace;font-size:11px;color:var(--tz-muted);font-weight:400;display:block;letter-spacing:.06em;margin-top:4px}
+.tz-ticket-row p{font-size:14px;color:var(--tz-muted);margin-top:6px;max-width:52ch}
+.tz-ticket-row .tz-price{font-family:"Space Mono",monospace;font-weight:700;font-size:17px;white-space:nowrap}
+.tz-ticket-row .tz-price small{display:block;font-weight:400;font-size:11px;color:var(--tz-muted)}
+.tz-ticket-foot{padding:24px 32px 34px;font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.tz-ticket-foot b{color:var(--tz-accent)}
+
+/* breed wall: horizontal strip, not cards */
+.tz-breeds{border-top:3px solid var(--tz-ink);border-bottom:3px solid var(--tz-ink);background:#fff}
+.tz-breeds .tz-wrap{padding-top:56px;padding-bottom:56px}
+.tz-breed-row{display:flex;gap:0;overflow-x:auto;border:3px solid var(--tz-ink);background:var(--tz-bg)}
+.tz-breed{flex:0 0 220px;padding:28px 24px;border-right:3px solid var(--tz-ink)}
+.tz-breed:last-child{border-right:0}
+.tz-breed .tz-initial{font-family:"Shrikhand",serif;font-size:52px;line-height:1;display:block;margin-bottom:12px}
+.tz-breed:nth-child(4n+1) .tz-initial{color:var(--tz-accent)}
+.tz-breed:nth-child(4n+2) .tz-initial{color:var(--tz-teal)}
+.tz-breed:nth-child(4n+3) .tz-initial{color:var(--tz-blue)}
+.tz-breed:nth-child(4n+4) .tz-initial{color:var(--tz-yellow)}
+.tz-breed h3{font-weight:700;font-size:17px}
+.tz-breed p{font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-muted);margin-top:6px;line-height:1.7}
+.tz-breeds-note{margin-top:18px;font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-muted)}
+
+/* booking steps */
+.tz-bookflow{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:3px solid var(--tz-ink);background:#fff}
+.tz-bstep{padding:32px 26px;border-right:3px solid var(--tz-ink);position:relative}
+.tz-bstep:last-child{border-right:0}
+.tz-bstep .tz-n{font-family:"Shrikhand",serif;font-size:40px;color:var(--tz-accent)}
+.tz-bstep:nth-child(2) .tz-n{color:var(--tz-teal)}
+.tz-bstep:nth-child(3) .tz-n{color:var(--tz-blue)}
+.tz-bstep:nth-child(4) .tz-n{color:var(--tz-yellow)}
+.tz-bstep h3{font-weight:700;font-size:17px;margin:10px 0 8px}
+.tz-bstep p{font-size:14px;color:var(--tz-muted)}
+
+/* visit */
+.tz-visit{background:var(--tz-ink);color:var(--tz-bg);border:3px solid var(--tz-ink);padding:52px 48px;display:grid;grid-template-columns:1fr 1fr;gap:40px;box-shadow:8px 8px 0 var(--tz-accent)}
+.tz-visit h2{font-family:"Shrikhand",serif;font-weight:400;font-size:38px;line-height:1.15}
+.tz-visit h2 .tz-pink{color:var(--tz-accent)}
+.tz-visit address{font-style:normal;font-family:"Space Mono",monospace;font-size:13.5px;line-height:2.1}
+.tz-visit address b{color:var(--tz-yellow)}
+
+.tz-footer{padding:36px 0;margin-top:80px;border-top:3px solid var(--tz-ink)}
+.tz-footer .tz-wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:"Space Mono",monospace;font-size:11.5px;color:var(--tz-muted)}
+
+@media (max-width:900px){
+  .tz-nav{display:none}
+  .tz-hero-grid{grid-template-columns:1fr}
+  .tz-bookflow{grid-template-columns:1fr 1fr}
+  .tz-bstep{border-bottom:3px solid var(--tz-ink)}
+  .tz-bstep:nth-child(2){border-right:0}
+  .tz-visit{grid-template-columns:1fr;padding:36px 28px}
+  .tz-section{padding:56px 0}
+}
+@media (max-width:560px){.tz-bookflow{grid-template-columns:1fr}.tz-bstep{border-right:0}.tz-bstep:last-child{border-bottom:0}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-brand" href="#">The Dapper <b>Mutt</b></a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#menu">Spa menu</a><a href="#breeds">Breeds</a><a href="#booking">Booking</a><a href="#visit">Visit</a>
+    </nav>
+    <a class="tz-book" href="#booking">Book a bath</a>
+  </div>
+</header>
+
+<main>
+  <section class="tz-hero">
+    <div class="tz-wrap tz-hero-grid">
+      <div>
+        <span class="tz-tag">Fear-free certified · est. 2018</span>
+        <h1>Good dogs in.<br><span class="tz-pink">Dapper dogs</span> <span class="tz-teal">out.</span></h1>
+        <p class="tz-lede">A grooming studio built for nervous pups and dramatic poodles alike. No cages, no rushing, treats at every station — and a photo wall your dog will end up on.</p>
+        <div class="tz-hero-cta">
+          <a class="tz-btn tz-btn--pink" href="#menu">See the spa menu</a>
+          <a class="tz-btn tz-btn--white" href="#booking">Book online</a>
+        </div>
+        <div class="tz-proof"><span>★ 4.9 from 600+ reviews</span><span>Certified fear-free groomers</span><span>No-cage drying</span></div>
+      </div>
+      <div>
+        <div class="tz-pup" role="img" aria-label="Illustration of a happy dog face">
+          <div class="tz-pup-blob"></div>
+          <div class="tz-pup-face">
+            <span class="tz-ear l"></span><span class="tz-ear r"></span>
+            <span class="tz-eye l"></span><span class="tz-eye r"></span>
+            <span class="tz-nose"></span><span class="tz-tongue"></span>
+          </div>
+          <span class="tz-pup-badge">Biscuit · regular since 2021</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <svg class="tz-squig" viewBox="0 0 1200 26" preserveAspectRatio="none" aria-hidden="true"><path d="M0 13 Q 30 0 60 13 T 120 13 T 180 13 T 240 13 T 300 13 T 360 13 T 420 13 T 480 13 T 540 13 T 600 13 T 660 13 T 720 13 T 780 13 T 840 13 T 900 13 T 960 13 T 1020 13 T 1080 13 T 1140 13 T 1200 13" fill="none" stroke="#ff4d8d" stroke-width="5"/></svg>
+
+  <section class="tz-section" id="menu">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-k">The spa menu</span>
+        <h2>Order like it's diner food</h2>
+        <p>Every service is à la carte — tick what your dog needs, skip the rest. Prices by size: S (under 25lb) / M / L (over 60lb).</p>
+      </div>
+      <div class="tz-ticket">
+        <div class="tz-ticket-head"><h3>Dapper Mutt Order Ticket</h3><span>No. 1184 · walk-ins welcome</span></div>
+        <div class="tz-ticket-row">
+          <span class="tz-check tz-on" aria-hidden="true"></span>
+          <div><h4>The Full Dapper<small>bath · cut · nails · ears</small></h4><p>The works. Breed-standard cut or your Pinterest screenshot — we don't judge, we just execute.</p></div>
+          <span class="tz-price">$65+<small>S/M/L</small></span>
+        </div>
+        <div class="tz-ticket-row">
+          <span class="tz-check" aria-hidden="true"></span>
+          <div><h4>Bath &amp; Tidy<small>bath · light trim · nails</small></h4><p>For the in-between months. Face, feet, and fanny trimmed; everything else stays fluffy.</p></div>
+          <span class="tz-price">$45+<small>S/M/L</small></span>
+        </div>
+        <div class="tz-ticket-row">
+          <span class="tz-check" aria-hidden="true"></span>
+          <div><h4>De-shed Blitz<small>undercoat removal · bath</small></h4><p>Huskies, shepherds, and other professional shedders. Your couch will thank you.</p></div>
+          <span class="tz-price">$55+<small>S/M/L</small></span>
+        </div>
+        <div class="tz-ticket-row">
+          <span class="tz-check tz-on" aria-hidden="true"></span>
+          <div><h4>Puppy's First<small>intro bath · gentle handling</small></h4><p>Under 6 months. Slow, treat-heavy, zero clippers near the face unless they're zen about it.</p></div>
+          <span class="tz-price">$35<small>flat</small></span>
+        </div>
+        <div class="tz-ticket-row">
+          <span class="tz-check" aria-hidden="true"></span>
+          <div><h4>Nail Trim Express<small>walk-in · 10 minutes</small></h4><p>No appointment needed. In, trimmed, treat, out. The gateway service.</p></div>
+          <span class="tz-price">$15<small>flat</small></span>
+        </div>
+        <div class="tz-ticket-foot"><span>Add-ons: <b>teeth brushing $10</b> · <b>blueberry facial $8</b> · <b>paw balm $6</b></span><span>Doodles &amp; giant breeds: ask for a quote</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-breeds" id="breeds">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-k">The regulars</span>
+        <h2>Breeds we know by heart</h2>
+        <p>Scroll the wall — every breed here has a standing appointment and a favorite treat.</p>
+      </div>
+      <div class="tz-breed-row">
+        <div class="tz-breed"><span class="tz-initial">G</span><h3>Golden Retrievers</h3><p>De-shed regulars. 40% of our Tuesday.</p></div>
+        <div class="tz-breed"><span class="tz-initial">D</span><h3>Doodles</h3><p>Brush-outs save money. We're serious.</p></div>
+        <div class="tz-breed"><span class="tz-initial">P</span><h3>Poodles</h3><p>Continental cuts welcome, not required.</p></div>
+        <div class="tz-breed"><span class="tz-initial">S</span><h3>Shih Tzus</h3><p>Teddy-bear cut specialists on staff.</p></div>
+        <div class="tz-breed"><span class="tz-initial">H</span><h3>Huskies</h3><p>The blitz was invented for you.</p></div>
+        <div class="tz-breed"><span class="tz-initial">C</span><h3>Corgis</h3><p>Sploots documented on the wall.</p></div>
+      </div>
+      <p class="tz-breeds-note">Don't see your breed? If it has fur, we've probably groomed it. Call and ask.</p>
+    </div>
+  </section>
+
+  <section class="tz-section" id="booking">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-k">Booking</span>
+        <h2>Four steps to dapper</h2>
+        <p>Online booking takes two minutes. We'll text you a photo mid-groom — it's the best part of our day too.</p>
+      </div>
+      <div class="tz-bookflow">
+        <div class="tz-bstep"><span class="tz-n">1</span><h3>Pick a service</h3><p>Choose from the ticket above. Not sure? Book a consult — it's free.</p></div>
+        <div class="tz-bstep"><span class="tz-n">2</span><h3>Tell us about your dog</h3><p>Breed, age, quirks, fears. The nervous ones get the quiet room.</p></div>
+        <div class="tz-bstep"><span class="tz-n">3</span><h3>Drop off</h3><p>Ten-minute intake, treat bribe, and you're free for 2–3 hours.</p></div>
+        <div class="tz-bstep"><span class="tz-n">4</span><h3>Pick up a star</h3><p>Report card, photo, and a dog that smells like blueberries.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="visit" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-visit">
+        <div>
+          <h2>Come meet us <span class="tz-pink">before</span> you book.</h2>
+          <p style="margin-top:14px;color:#cfc8bb">Nervous dog? Nervous human? Tour the studio, meet your groomer, watch a bath happen. Free, no appointment.</p>
+        </div>
+        <address>
+          <b>212 Wagging Tail Lane</b><br>
+          Tue–Sat · 8am–6pm<br>
+          (555) 774-3200 · woof@dappermutt.dog<br>
+          <b>First visit? Mention this site for 15% off.</b>
+        </address>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <span>© 2026 The Dapper Mutt Grooming Studio</span>
+    <span>fear-free certified · no cages · all treats</span>
+  </div>
+</footer>
+</body>
+</html>
