@@ -1,5 +1,5 @@
 {
- "count": 40,
+ "count": 55,
  "updated": "2026-10-04",
  "usage": "Interactive generative-art pages (vanilla canvas, zero deps). Open in a browser, lift the technique.",
  "generative": [
@@ -170,6 +170,37 @@
    ]
   },
   {
+   "id": "gen-geo-differential-growth",
+   "title": "Differential Growth",
+   "category": "Generative",
+   "file": "generative/geo-differential-growth.html",
+   "tags": [
+    "growth",
+    "noise",
+    "curves"
+   ],
+   "description": "A closed curve subdivides its longest edges and pushes each midpoint outward on noise — click to seed a new curve.",
+   "dnas": [
+    "botanical-lab",
+    "ma-japanese"
+   ]
+  },
+  {
+   "id": "gen-geo-double-pendulum",
+   "title": "Double Pendulum",
+   "category": "Generative",
+   "file": "generative/geo-double-pendulum.html",
+   "tags": [
+    "chaos",
+    "pendulum",
+    "physics"
+   ],
+   "description": "A chaotic double pendulum integrated with RK4 paints a fading trail — drag the bob to rewrite its future.",
+   "dnas": [
+    "de-stijl-grid"
+   ]
+  },
+  {
    "id": "gen-geo-harmonograph",
    "title": "Harmonograph",
    "category": "Generative",
@@ -200,6 +231,22 @@
    ]
   },
   {
+   "id": "gen-geo-lsystem-trees",
+   "title": "L-System Trees",
+   "category": "Generative",
+   "file": "generative/geo-lsystem-trees.html",
+   "tags": [
+    "l-system",
+    "trees",
+    "turtle-graphics"
+   ],
+   "description": "An L-system grammar rewrites 4-5 times and a turtle draws the result as pine, fern, or bush — click to regrow.",
+   "dnas": [
+    "botanical-lab",
+    "ink-wash-sumi"
+   ]
+  },
+  {
    "id": "gen-geo-maze-growth",
    "title": "Maze Growth",
    "category": "Generative",
@@ -216,6 +263,36 @@
    ]
   },
   {
+   "id": "gen-geo-metaballs",
+   "title": "Metaballs",
+   "category": "Generative",
+   "file": "generative/geo-metaballs.html",
+   "tags": [
+    "metaballs",
+    "marching-squares",
+    "implicit-surface"
+   ],
+   "description": "Marching squares traces the iso-line of summed blob fields — drag an emitter and watch the surface merge.",
+   "dnas": [
+    "ma-japanese"
+   ]
+  },
+  {
+   "id": "gen-geo-pendulum-wave",
+   "title": "Pendulum Wave",
+   "category": "Generative",
+   "file": "generative/geo-pendulum-wave.html",
+   "tags": [
+    "pendulum",
+    "phase",
+    "resonance"
+   ],
+   "description": "Fifteen pendulums with staggered periods drift through sync, waves, chaos, and back — one cosine per bob.",
+   "dnas": [
+    "laboratory-clean"
+   ]
+  },
+  {
    "id": "gen-geo-penrose-tiling",
    "title": "Penrose-ish Tiling",
    "category": "Generative",
@@ -229,6 +306,21 @@
    "dnas": [
     "bauhaus-primary",
     "de-stijl-grid"
+   ]
+  },
+  {
+   "id": "gen-geo-quadtree-art",
+   "title": "Quadtree Field",
+   "category": "Generative",
+   "file": "generative/geo-quadtree-art.html",
+   "tags": [
+    "quadtree",
+    "noise",
+    "subdivision"
+   ],
+   "description": "A value-noise density field decides where the quadtree splits — click to force deeper subdivision locally.",
+   "dnas": [
+    "bauhaus-primary"
    ]
   },
   {
@@ -259,6 +351,21 @@
    "description": "Two hypotrochoid gears draw over each other in risograph teal and pink, revealing slowly.",
    "dnas": [
     "risograph-grain"
+   ]
+  },
+  {
+   "id": "gen-geo-strange-attractors",
+   "title": "Strange Attractors",
+   "category": "Generative",
+   "file": "generative/geo-strange-attractors.html",
+   "tags": [
+    "attractors",
+    "chaos",
+    "lorenz"
+   ],
+   "description": "Lorenz, Rössler, and Aizawa systems integrated live in 3D, projected to 2D with depth shading — switch systems live.",
+   "dnas": [
+    "retro-terminal"
    ]
   },
   {
@@ -309,6 +416,22 @@
    ]
   },
   {
+   "id": "gen-geo-wfc-tiles",
+   "title": "Wave Function Collapse",
+   "category": "Generative",
+   "file": "generative/geo-wfc-tiles.html",
+   "tags": [
+    "wfc",
+    "tiles",
+    "constraint-propagation"
+   ],
+   "description": "Circuit tiles collapse one lowest-entropy cell at a time while adjacency rules propagate — click to re-collapse.",
+   "dnas": [
+    "laboratory-clean",
+    "blueprint-tech"
+   ]
+  },
+  {
    "id": "gen-org-aurora-2d",
    "title": "Aurora Ribbons (2D)",
    "category": "Generative",
@@ -353,6 +476,22 @@
    ]
   },
   {
+   "id": "gen-org-chladni-plate",
+   "title": "Chladni Plate",
+   "category": "Generative",
+   "file": "generative/org-chladni-plate.html",
+   "tags": [
+    "cymatics",
+    "chladni",
+    "sand",
+    "nodal"
+   ],
+   "description": "Sand grains slide down the vibration gradient until they settle on the nodal lines — set the two mode numbers.",
+   "dnas": [
+    "blueprint-tech"
+   ]
+  },
+  {
    "id": "gen-org-contour-lines",
    "title": "Contour Lines",
    "category": "Generative",
@@ -383,6 +522,37 @@
    ]
   },
   {
+   "id": "gen-org-dla-crystal",
+   "title": "DLA Crystal",
+   "category": "Generative",
+   "file": "generative/org-dla-crystal.html",
+   "tags": [
+    "dla",
+    "crystal",
+    "frost",
+    "aggregation"
+   ],
+   "description": "Random walkers drift until they touch the crystal and freeze — click to release more walkers.",
+   "dnas": [
+    "ink-wash-sumi"
+   ]
+  },
+  {
+   "id": "gen-org-ferrofluid",
+   "title": "Ferrofluid Field",
+   "category": "Generative",
+   "file": "generative/org-ferrofluid.html",
+   "tags": [
+    "ferrofluid",
+    "magnet",
+    "field"
+   ],
+   "description": "Spikes align to a draggable magnet's radial field, longer where the field is stronger — grab the magnet and stir.",
+   "dnas": [
+    "ink-wash-sumi"
+   ]
+  },
+  {
    "id": "gen-org-jellyfish",
    "title": "Jellyfish Drift",
    "category": "Generative",
@@ -395,6 +565,52 @@
    "description": "Pulsing bells with phase-lagged tentacles drifting on slow currents.",
    "dnas": [
     "arctic-field"
+   ]
+  },
+  {
+   "id": "gen-org-lightning-strike",
+   "title": "Lightning Strike",
+   "category": "Generative",
+   "file": "generative/org-lightning-strike.html",
+   "tags": [
+    "lightning",
+    "midpoint-displacement",
+    "bolt"
+   ],
+   "description": "Midpoint-displacement bolts with recursive branches and phosphor glow — click the sky to call a strike.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "gen-org-midpoint-mountains",
+   "title": "Midpoint Mountains",
+   "category": "Generative",
+   "file": "generative/org-midpoint-mountains.html",
+   "tags": [
+    "terrain",
+    "diamond-square",
+    "ridgelines"
+   ],
+   "description": "Diamond-square terrain rendered as layered ink ridgelines — drag the roughness slider.",
+   "dnas": [
+    "alpine-ledger"
+   ]
+  },
+  {
+   "id": "gen-org-perlin-marble",
+   "title": "Perlin Marble",
+   "category": "Generative",
+   "file": "generative/org-perlin-marble.html",
+   "tags": [
+    "marble",
+    "noise",
+    "domain-warp",
+    "fbm"
+   ],
+   "description": "Value noise warped by itself, then banded into marble veins — click to re-cut the slab.",
+   "dnas": [
+    "laboratory-clean"
    ]
   },
   {
@@ -454,6 +670,21 @@
    "description": "Rain streaks fall and each impact ripples the elevation field, warping the topo lines.",
    "dnas": [
     "desert-modern"
+   ]
+  },
+  {
+   "id": "gen-org-tree-rings",
+   "title": "Tree Rings",
+   "category": "Generative",
+   "file": "generative/org-tree-rings.html",
+   "tags": [
+    "tree-rings",
+    "dendrochronology",
+    "climate"
+   ],
+   "description": "Concentric rings with climate-noise width variation and fire scars — scrub the years.",
+   "dnas": [
+    "alpine-ledger"
    ]
   },
   {
