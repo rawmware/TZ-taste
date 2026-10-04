@@ -1,0 +1,40 @@
+<!--tz-meta {"id":"navs-split","title":"Split brand nav","category":"Nav","file":"patterns/navs-split.html","tags":["centered","wordmark"],"description":"Links split left and right around an oversized centered serif wordmark, held together by hairlines.","dnas":["editorial-serif"]} -->
+<nav class="tz-split" aria-label="Primary">
+  <p class="tz-split-util">Complimentary shipping on orders over $200 · Atelier visits by appointment</p>
+  <div class="tz-split-side">
+    <a href="#">Collection</a>
+    <a href="#">Atelier</a>
+  </div>
+  <a class="tz-split-word" href="#">Maison&nbsp;Verre</a>
+  <div class="tz-split-side tz-split-right">
+    <a href="#">Journal</a>
+    <a href="#">Appointments</a>
+  </div>
+</nav>
+<style>
+.tz-split{--bg:#f7f3ea;--ink:#1d1a14;--line:#1d1a1422;--accent:#8c3b1c;
+  background:var(--bg);color:var(--ink);border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);padding:26px clamp(20px,4vw,56px);
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;
+  font-family:Georgia,'Times New Roman',serif}
+.tz-split-util{grid-column:1/-1;text-align:center;font-family:ui-monospace,Menlo,monospace;
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.55;margin:0 0 22px}
+.tz-split-side{display:flex;gap:clamp(16px,3vw,40px);flex-wrap:wrap}
+.tz-split-side a{color:var(--ink);text-decoration:none;font-size:15px;letter-spacing:.02em;
+  padding:6px 0;border-bottom:1px solid transparent;transition:border-color .25s ease,color .25s ease}
+.tz-split-side a:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.tz-split-side a:focus-visible,.tz-split-word:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
+.tz-split-right{justify-content:flex-end}
+.tz-split-word{font-size:clamp(40px,7vw,84px);letter-spacing:-.03em;line-height:1;
+  color:var(--ink);text-decoration:none;text-align:center;white-space:nowrap}
+.tz-split-word:hover{color:var(--accent)}
+@media (max-width:640px){
+  .tz-split{grid-template-columns:1fr;text-align:center;gap:14px}
+  .tz-split-side,.tz-split-right{justify-content:center}
+  .tz-split-word{order:-1;font-size:clamp(44px,12vw,64px)}
+  .tz-split-util{margin-bottom:14px}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-split-side a{transition:none}
+}
+</style>
