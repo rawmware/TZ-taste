@@ -1,0 +1,132 @@
+<!--tz-meta {"id":"kaleidoscope-tunnel","title":"Kaleidoscope Tunnel","category":"3D","file":"three-d/kaleidoscope-tunnel.html","tags":["threejs","hypnotic"],"description":"Endless tunnel of rotating rings over a folding kaleidoscope shader field.","dnas":["dark-luxe"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kaleidoscope Tunnel · TZ-taste</title>
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#07040d}
+#app{position:fixed;inset:0}
+.cap{position:fixed;left:18px;bottom:16px;color:#e6dcf2;font:12px/1.6 ui-sans-serif,system-ui,sans-serif;letter-spacing:.05em;pointer-events:none;user-select:none;opacity:.85;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.cap b{font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.cap span{opacity:.6}
+#nogl{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;color:#e6dcf2;font:14px system-ui;background:#07040d;text-align:center;padding:2rem}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="cap"><b>Kaleidoscope Tunnel</b><br><span>move pointer to look</span></div>
+<div id="nogl" hidden><p>This scene needs WebGL.<br>Please try a browser with WebGL enabled.</p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+
+let renderer;
+try{
+  renderer = new THREE.WebGLRenderer({antialias:true});
+  if(!renderer.getContext()) throw new Error('no ctx');
+}catch(err){
+  document.getElementById('nogl').hidden = false;
+  throw err;
+}
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.setSize(innerWidth,innerHeight);
+document.getElementById('app').appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x07040d);
+scene.fog = new THREE.FogExp2(0x07040d, 0.02);
+
+const camera = new THREE.PerspectiveCamera(62, innerWidth/innerHeight, 0.1, 400);
+camera.position.set(0, 0, 10);
+
+const kaleidoMat = new THREE.ShaderMaterial({
+  uniforms:{ uTime:{value:0} },
+  fog:false,
+  vertexShader:[
+    'varying vec2 vUv;',
+    'void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }'
+  ].join('\n'),
+  fragmentShader:[
+    'varying vec2 vUv;',
+    'uniform float uTime;',
+    'vec3 pal(float t){',
+    '  vec3 a = vec3(0.10, 0.05, 0.14);',
+    '  vec3 b = vec3(0.45, 0.30, 0.38);',
+    '  vec3 c = vec3(1.00, 0.90, 0.75);',
+    '  vec3 d = vec3(0.05, 0.25, 0.45);',
+    '  return a + b * cos(6.28318 * (c * t + d));',
+    '}',
+    'void main(){',
+    '  vec2 uv = (vUv - 0.5) * 2.0;',
+    '  uv.x *= 1.7;',
+    '  float r = length(uv);',
+    '  float a = atan(uv.y, uv.x);',
+    '  float F = 7.0;',
+    '  a = mod(a + uTime * 0.06, 6.28318 / F);',
+    '  a = abs(a - 3.14159 / F);',
+    '  vec2 k = vec2(cos(a), sin(a)) * (r + 0.22 * sin(uTime * 0.18 + r * 5.0));',
+    '  float pat = sin(k.x * 9.0 + uTime * 0.25) * sin(k.y * 9.0 - uTime * 0.20);',
+    '  float bands = smoothstep(0.15, 0.95, abs(pat));',
+    '  float shimmer = smoothstep(0.75, 1.0, sin(r * 22.0 - uTime * 0.6) * 0.5 + 0.5);',
+    '  vec3 col = pal(r * 0.7 + bands * 0.28 + uTime * 0.015);',
+    '  col += vec3(0.85, 0.65, 0.30) * pow(bands, 5.0) * 0.30;',
+    '  col += vec3(0.30, 0.75, 0.70) * shimmer * 0.10;',
+    '  col *= smoothstep(1.55, 0.30, r);',
+    '  gl_FragColor = vec4(col, 1.0);',
+    '}'
+  ].join('\n')
+});
+const kaleidoPlane = new THREE.Mesh(new THREE.PlaneGeometry(70, 42), kaleidoMat);
+scene.add(kaleidoPlane);
+
+const TUN = 130, N = 26;
+const ringCols = [0x3b2a6e, 0xc9a227, 0x14706a, 0x5b3a8c];
+const rings = [];
+for(let i=0;i<N;i++){
+  const r = 6 + Math.sin(i*0.7)*2.2 + (i%2)*0.8;
+  const m = new THREE.Mesh(
+    new THREE.TorusGeometry(r, 0.10, 10, 72),
+    new THREE.MeshBasicMaterial({color:ringCols[i%4], transparent:true, opacity:0.9})
+  );
+  m.position.z = 8 - i*(TUN/N);
+  m.userData.rs = (Math.random() < 0.5 ? -1 : 1) * (0.1 + Math.random()*0.25);
+  scene.add(m);
+  rings.push(m);
+}
+
+const mouse = {x:0, y:0};
+addEventListener('pointermove', (e)=>{
+  mouse.x = (e.clientX/innerWidth)*2 - 1;
+  mouse.y = -((e.clientY/innerHeight)*2 - 1);
+});
+
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const clock = new THREE.Clock();
+const lookAt = new THREE.Vector3();
+function tick(){
+  const dt = Math.min(clock.getDelta(), 0.05), t = clock.elapsedTime;
+  kaleidoMat.uniforms.uTime.value = t;
+  for(const m of rings){
+    m.rotation.z += m.userData.rs * dt;
+    if(m.position.z > camera.position.z + 12) m.position.z -= TUN;
+  }
+  camera.position.z -= dt * 1.8;
+  camera.position.x += (mouse.x*4 - camera.position.x) * 0.05;
+  camera.position.y += (mouse.y*3 - camera.position.y) * 0.05;
+  lookAt.set(camera.position.x*0.4, camera.position.y*0.4, camera.position.z - 24);
+  camera.lookAt(lookAt);
+  kaleidoPlane.position.set(camera.position.x, camera.position.y, camera.position.z - TUN);
+  renderer.render(scene, camera);
+}
+if(reduce){ tick(); } else { renderer.setAnimationLoop(tick); }
+
+addEventListener('resize', ()=>{
+  camera.aspect = innerWidth/innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+</script>
+</body>
+</html>
