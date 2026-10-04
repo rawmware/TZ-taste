@@ -1,0 +1,377 @@
+<!--tz-meta {"id":"cowork-kitchen","title":"Proof — Shared Commercial Kitchen","category":"Template","file":"templates/cowork-kitchen.html","tags":["kitchen","food","startup"],"description":"Swiss-poster shared kitchen: giant PROOF poster hero with crop marks, printed rate card, house rules as fine print.","dnas":["swiss-poster"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proof — a shared commercial kitchen for food startups</title>
+<meta name="description" content="Proof is a licensed shared commercial kitchen: rent by the hour, store your product, get inspected, launch your food business.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f2ede3;
+  --tz-surface:#e7e0d0;
+  --tz-ink:#141414;
+  --tz-muted:#7a766c;
+  --tz-accent:#e8401f;
+  --tz-line:#141414;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Archivo",sans-serif;background:var(--tz-bg);color:var(--tz-ink);
+  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-weight:400;
+}
+::selection{background:var(--tz-accent);color:var(--tz-bg)}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.tz-mono{font-family:"Space Mono",monospace}
+.tz-display{font-family:"Archivo Black",sans-serif}
+.skip{position:absolute;left:-999px;top:0;background:var(--tz-ink);color:var(--tz-bg);padding:8px 16px;z-index:99}
+.skip:focus{left:8px;top:8px}
+
+/* ---------- header ---------- */
+.tz-header{border-bottom:3px solid var(--tz-line)}
+.tz-header .tz-wrap{display:flex;justify-content:space-between;align-items:center;min-height:76px;gap:20px}
+.tz-logo{font-family:"Archivo Black",sans-serif;font-size:22px}
+.tz-logo .tz-dot{color:var(--tz-accent)}
+.tz-nav{display:flex;gap:30px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.tz-nav a{position:relative}
+.tz-nav a:hover{color:var(--tz-accent)}
+.tz-tour{background:var(--tz-ink);color:var(--tz-bg);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:13px 26px;border:0;cursor:pointer;transition:background .2s}
+.tz-tour:hover{background:var(--tz-accent)}
+
+/* ---------- hero: ONE poster ---------- */
+.tz-hero{border-bottom:3px solid var(--tz-line);position:relative;overflow:hidden}
+.tz-hero .tz-crop{position:absolute;font-family:"Space Mono",monospace;font-size:20px;color:var(--tz-muted);z-index:2}
+.tz-crop.tz-tl{top:14px;left:18px}.tz-crop.tz-tr{top:14px;right:18px}
+.tz-crop.tz-bl{bottom:14px;left:18px}.tz-crop.tz-br{bottom:14px;right:18px}
+.tz-hero-inner{padding:110px 0 100px;position:relative}
+.tz-hero .tz-edition{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:24px;display:block}
+.tz-hero h1{
+  font-family:"Archivo Black",sans-serif;text-transform:uppercase;
+  font-size:clamp(110px,24vw,340px);line-height:.86;letter-spacing:-.02em;margin-left:-.03em;
+}
+.tz-hero h1 .tz-red{color:var(--tz-accent)}
+.tz-hero-sub{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:56px;align-items:end}
+.tz-hero-sub .tz-lede{font-size:20px;font-weight:500;max-width:44ch}
+.tz-hero-sub .tz-lede strong{background:var(--tz-accent);color:var(--tz-bg);padding:0 8px}
+.tz-hero-facts{font-family:"Space Mono",monospace;font-size:13px;display:grid;gap:0;border-top:3px solid var(--tz-line)}
+.tz-hero-facts div{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--tz-line)}
+.tz-hero-facts b{font-weight:700}
+.tz-hero-cta{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap}
+.tz-btn{display:inline-block;font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:.06em;padding:18px 34px;cursor:pointer;border:3px solid var(--tz-line);transition:transform .2s var(--tz-ease)}
+.tz-btn--red{background:var(--tz-accent);color:#fff;border-color:var(--tz-accent)}
+.tz-btn--red:hover{transform:translate(-3px,-3px)}
+.tz-btn--blk{background:var(--tz-ink);color:var(--tz-bg)}
+.tz-btn--blk:hover{transform:translate(-3px,-3px)}
+
+/* ---------- red block divider ---------- */
+.tz-block{background:var(--tz-accent);color:#fff;padding:26px 0;border-top:3px solid var(--tz-line);border-bottom:3px solid var(--tz-line);overflow:hidden}
+.tz-block .tz-wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-family:"Archivo Black",sans-serif;font-size:clamp(18px,2.6vw,28px);text-transform:uppercase}
+
+/* ---------- sections: each its own poster ---------- */
+.tz-section{padding:110px 0;border-bottom:3px solid var(--tz-line)}
+.tz-sec-tag{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--tz-accent);display:block;margin-bottom:20px;font-weight:700}
+.tz-sec-head h2{font-family:"Archivo Black",sans-serif;text-transform:uppercase;font-size:clamp(44px,7vw,96px);line-height:.95;letter-spacing:-.01em;margin-bottom:24px}
+.tz-sec-head h2 .tz-outline{color:transparent;-webkit-text-stroke:2px var(--tz-ink)}
+.tz-sec-head p{font-size:18px;max-width:60ch;color:#141414cc}
+
+/* ---------- what's inside: two-column spec ---------- */
+.tz-gear{display:grid;grid-template-columns:1fr 1fr;gap:0;border:3px solid var(--tz-line);margin-top:56px;background:var(--tz-surface)}
+.tz-gear-col{padding:52px 48px}
+.tz-gear-col:first-child{border-right:3px solid var(--tz-line)}
+.tz-gear-col h3{font-family:"Archivo Black",sans-serif;font-size:26px;text-transform:uppercase;margin-bottom:24px}
+.tz-gear-col h3 .tz-n{color:var(--tz-accent)}
+.tz-gear-col ul{list-style:none;display:grid;gap:14px;font-size:16px;font-weight:500}
+.tz-gear-col ul li{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid #14141433;padding-bottom:12px}
+.tz-gear-col ul .tz-mono{font-size:12px;color:var(--tz-muted);text-align:right;flex:none}
+
+/* ---------- rate card: printed sheet ---------- */
+.tz-rate{border:3px solid var(--tz-line);background:var(--tz-bg);margin-top:56px;position:relative}
+.tz-rate-head{background:var(--tz-ink);color:var(--tz-bg);padding:28px 40px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.tz-rate-head h3{font-family:"Archivo Black",sans-serif;font-size:30px;text-transform:uppercase}
+.tz-rate-head .tz-mono{font-size:11px;letter-spacing:.24em;color:var(--tz-accent)}
+.tz-rate-row{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:baseline;padding:30px 40px;border-bottom:1px solid var(--tz-line)}
+.tz-rate-row:last-child{border-bottom:0}
+.tz-rate-row h4{font-family:"Archivo Black",sans-serif;font-size:22px;text-transform:uppercase}
+.tz-rate-row h4 small{display:block;font-family:"Space Mono",monospace;font-weight:400;font-size:12px;color:var(--tz-muted);margin-top:6px;letter-spacing:.04em;text-transform:none}
+.tz-rate-row p{font-size:15px;color:#141414cc;margin-top:8px;max-width:56ch}
+.tz-rate-row .tz-cost{font-family:"Archivo Black",sans-serif;font-size:44px;color:var(--tz-accent);white-space:nowrap}
+.tz-rate-row .tz-cost small{display:block;font-family:"Space Mono",monospace;font-size:11px;color:var(--tz-muted);text-align:right;font-weight:400}
+.tz-rate-foot{padding:24px 40px;font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-muted);border-top:3px solid var(--tz-line);line-height:2}
+
+/* ---------- house rules: fine print ---------- */
+.tz-rules{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;margin-top:56px}
+.tz-rule{border-top:3px solid var(--tz-line);padding-top:24px}
+.tz-rule .tz-mono{font-size:11px;letter-spacing:.22em;color:var(--tz-accent);font-weight:700}
+.tz-rule h3{font-family:"Archivo Black",sans-serif;font-size:20px;text-transform:uppercase;margin:10px 0 8px}
+.tz-rule p{font-size:15px;color:#141414cc}
+
+/* ---------- visit: big type ---------- */
+.tz-visit-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:80px;margin-top:56px;align-items:start}
+.tz-visit-grid .tz-big{font-family:"Archivo Black",sans-serif;font-size:clamp(40px,5.4vw,72px);text-transform:uppercase;line-height:1;letter-spacing:-.01em}
+.tz-visit-grid .tz-big .tz-red{color:var(--tz-accent)}
+.tz-visit-facts{border-top:3px solid var(--tz-line)}
+.tz-visit-facts div{padding:20px 0;border-bottom:1px solid var(--tz-line);display:grid;grid-template-columns:130px 1fr;gap:16px;font-size:16px}
+.tz-visit-facts .tz-mono{font-size:11px;letter-spacing:.2em;color:var(--tz-muted);padding-top:4px}
+
+/* ---------- footer ---------- */
+.tz-footer{background:var(--tz-ink);color:var(--tz-bg);padding:80px 0 36px}
+.tz-foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px}
+.tz-foot-grid h4{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.24em;color:var(--tz-accent);margin-bottom:16px;font-weight:700}
+.tz-foot-grid ul{list-style:none;display:grid;gap:10px;font-size:15px;color:#f2ede3cc}
+.tz-foot-grid a:hover{color:var(--tz-accent)}
+.tz-foot-brand{font-family:"Archivo Black",sans-serif;font-size:26px}
+.tz-foot-brand .tz-dot{color:var(--tz-accent)}
+.tz-foot-note{font-size:15px;color:#f2ede399;max-width:34ch;margin-top:12px}
+.tz-foot-bottom{border-top:1px solid #f2ede333;padding-top:24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.08em;color:var(--tz-muted)}
+
+/* ---------- reveal ---------- */
+.tz-reveal{opacity:0;transform:translateY(22px);transition:opacity .55s var(--tz-ease),transform .55s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:960px){
+  .tz-nav{display:none}
+  .tz-hero-sub{grid-template-columns:1fr;gap:32px}
+  .tz-gear{grid-template-columns:1fr}
+  .tz-gear-col:first-child{border-right:0;border-bottom:3px solid var(--tz-line)}
+  .tz-rules{grid-template-columns:1fr}
+  .tz-visit-grid{grid-template-columns:1fr;gap:40px}
+  .tz-rate-row{grid-template-columns:1fr;gap:12px}
+  .tz-rate-row .tz-cost small{text-align:left}
+  .tz-foot-grid{grid-template-columns:1fr 1fr}
+  .tz-section{padding:80px 0}
+  .tz-crop{display:none}
+}
+@media (max-width:560px){
+  .tz-foot-grid{grid-template-columns:1fr}
+  .tz-visit-facts div{grid-template-columns:1fr;gap:4px}
+  .tz-rate-head,.tz-rate-row{padding-left:24px;padding-right:24px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<!-- DNA: swiss-poster (poster paper, black rules, ONE signal-red accent; Archivo Black/Archivo/Space Mono). Design read: a wheat-pasted poster for a kitchen — type IS the image, loud from across the street — for food founders who need a licensed kitchen tonight, not a tour next month. One distinctive choice: the hero is a single giant "PROOF" poster with print-shop crop marks in the corners, and rates are set as a printed rate card sheet. Dials V8/M4/D5. -->
+<body>
+<a class="skip" href="#rates">Skip to rates</a>
+
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-logo" href="#">PROOF<span class="tz-dot">.</span></a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#kitchen">The kitchen</a><a href="#rates">Rates</a><a href="#rules">House rules</a><a href="#visit">Visit</a>
+    </nav>
+    <a class="tz-tour" href="#visit">Book a tour</a>
+  </div>
+</header>
+
+<main>
+  <!-- ============ hero: one poster ============ -->
+  <section class="tz-hero">
+    <span class="tz-crop tz-tl" aria-hidden="true">+</span><span class="tz-crop tz-tr" aria-hidden="true">+</span>
+    <span class="tz-crop tz-bl" aria-hidden="true">+</span><span class="tz-crop tz-br" aria-hidden="true">+</span>
+    <div class="tz-wrap tz-hero-inner">
+      <span class="tz-edition tz-reveal tz-in">Edition 300 · Sheet 01 · Licensed commercial kitchen</span>
+      <h1 class="tz-reveal tz-in">PROO<span class="tz-red">F.</span></h1>
+      <div class="tz-hero-sub">
+        <div class="tz-reveal tz-in">
+          <p class="tz-lede">A <strong>licensed shared kitchen</strong> for food startups. Rent by the hour, store your product on site, cook under our health permit, and launch the thing you've been making in your apartment.</p>
+          <div class="tz-hero-cta">
+            <a class="tz-btn tz-btn--red" href="#rates">See the rates</a>
+            <a class="tz-btn tz-btn--blk" href="#visit">Tour Saturdays 10 AM</a>
+          </div>
+        </div>
+        <div class="tz-hero-facts tz-reveal tz-in">
+          <div><span>LICENSED SINCE</span><b>2019</b></div>
+          <div><span>BUSINESSES LAUNCHED HERE</span><b>140+</b></div>
+          <div><span>ON SHELVES NOW</span><b>63</b></div>
+          <div><span>HEALTH INSPECTIONS PASSED</span><b>21 / 21</b></div>
+          <div><span>HOURLY RATE, FROM</span><b>$25</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ red block ============ -->
+  <div class="tz-block" aria-hidden="true">
+    <div class="tz-wrap">
+      <span>Cook legally.</span><span>Sell everywhere.</span><span>Start this week.</span>
+    </div>
+  </div>
+
+  <!-- ============ the kitchen ============ -->
+  <section class="tz-section" id="kitchen">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <span class="tz-sec-tag">Sheet 02 — The floor</span>
+        <h2>3,000 SQ FT.<br><span class="tz-outline">TWO LINES.</span><br>ZERO EXCUSES.</h2>
+        <p>Two full production lines, a baking annex, and dry/cold/frozen storage with your name on the shelf. Everything on this list is included in the hourly rate — no nickel-and-diming for the sheet pans.</p>
+      </div>
+      <div class="tz-gear tz-reveal">
+        <div class="tz-gear-col">
+          <h3><span class="tz-n">A/</span> Hot line</h3>
+          <ul>
+            <li>6-burner ranges × 4 <span class="tz-mono">GAS · CONVECTION OVENS</span></li>
+            <li>40-gal steam kettle <span class="tz-mono">TILTING</span></li>
+            <li>Double-stack convection ovens <span class="tz-mono">× 2</span></li>
+            <li>36" flat-top griddle <span class="tz-mono">GAS</span></li>
+            <li>Blast chiller <span class="tz-mono">ROLL-IN</span></li>
+            <li>20-qt + 60-qt mixers <span class="tz-mono">HOBART</span></li>
+          </ul>
+        </div>
+        <div class="tz-gear-col">
+          <h3><span class="tz-n">B/</span> Baking annex</h3>
+          <ul>
+            <li>Deck oven, 3 deck <span class="tz-mono">STONE</span></li>
+            <li>Proofing cabinet <span class="tz-mono">HUMIDITY CONTROL</span></li>
+            <li>Sheeter <span class="tz-mono">REVERSIBLE</span></li>
+            <li>Vacuum sealer × 2 <span class="tz-mono">CHAMBER</span></li>
+            <li>Label printer <span class="tz-mono">FDA-COMPLIANT LABELS</span></li>
+            <li>Dry storage cages <span class="tz-mono">LOCKABLE · YOURS</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ rates ============ -->
+  <section class="tz-section" id="rates">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <span class="tz-sec-tag">Sheet 03 — Rate card</span>
+        <h2>ONE CARD.<br>NO FINE PRINT<span style="color:var(--tz-accent)">.</span></h2>
+        <p>Every plan includes the health permit coverage, storage, and the label printer. The only thing we charge extra for is the thing you'd expect: cold storage by the pallet.</p>
+      </div>
+      <div class="tz-rate tz-reveal">
+        <div class="tz-rate-head">
+          <h3>Rate card · 2026</h3>
+          <span class="tz-mono">PROOF KITCHEN · REV 10/26</span>
+        </div>
+        <div class="tz-rate-row">
+          <div>
+            <h4>Hourly<small>BOOK BY THE HOUR · 4-HOUR MINIMUM</small></h4>
+            <p>For testing recipes, small batches, and figuring out if this is real. Includes one dry-storage cage.</p>
+          </div>
+          <span class="tz-cost">$25<small>/ HOUR</small></span>
+        </div>
+        <div class="tz-rate-row">
+          <div>
+            <h4>Dedicated shift<small>ONE FIXED 8-HOUR SHIFT / WEEK · YOUR STATION, YOUR SHELF</small></h4>
+            <p>The workhorse plan. Same shift every week, your mise en place stays put, walk in and start cooking.</p>
+          </div>
+          <span class="tz-cost">$650<small>/ MONTH</small></span>
+        </div>
+        <div class="tz-rate-row">
+          <div>
+            <h4>Full access<small>24/7 KEYCARD · UP TO 60 HOURS / MONTH</small></h4>
+            <p>For businesses in production. Overnight bakes, 5 AM prep, the whole kitchen at 2 AM if that's when the croissants need you.</p>
+          </div>
+          <span class="tz-cost">$1,100<small>/ MONTH</small></span>
+        </div>
+        <div class="tz-rate-foot">
+          ALL PLANS: NH HEALTH PERMIT COVERAGE · SERVSAFE GUIDANCE · DRY STORAGE CAGE INCLUDED · COLD STORAGE $40/PALLET/MO · NO INITIATION FEE · MONTH-TO-MONTH
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ house rules ============ -->
+  <section class="tz-section" id="rules">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <span class="tz-sec-tag">Sheet 04 — The fine print, enlarged</span>
+        <h2>RULES OF<br>THE KITCHEN<span style="color:var(--tz-accent)">.</span></h2>
+        <p>Four rules. They are the reason 140 businesses have launched here without a single failed inspection.</p>
+      </div>
+      <div class="tz-rules">
+        <div class="tz-rule tz-reveal">
+          <span class="tz-mono">RULE 01</span>
+          <h3>Label everything</h3>
+          <p>Your name, the date, what's inside. Unlabeled food gets tossed on Fridays — no appeals, no exceptions, no matter how good the jam was.</p>
+        </div>
+        <div class="tz-rule tz-reveal">
+          <span class="tz-mono">RULE 02</span>
+          <h3>Clean as you go</h3>
+          <p>The next shift starts the minute yours ends. Stations wiped, floors swept, dishes through the machine. The checklist is on the wall; it takes 20 minutes.</p>
+        </div>
+        <div class="tz-rule tz-reveal">
+          <span class="tz-mono">RULE 03</span>
+          <h3>Book it or lose it</h3>
+          <p>Stations are reserved in the app. No-shows get charged; two no-shows lose the shift. Somebody else's hot sauce empire is waiting.</p>
+        </div>
+        <div class="tz-rule tz-reveal">
+          <span class="tz-mono">RULE 04</span>
+          <h3>Ask about allergens</h3>
+          <p>This is a shared facility — nuts, dairy, gluten, and sesame all move through here. Your labels must say so, by law and by decency.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ visit ============ -->
+  <section class="tz-section" id="visit" style="border-bottom:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <span class="tz-sec-tag">Sheet 05 — Come see it</span>
+      </div>
+      <div class="tz-visit-grid">
+        <div class="tz-reveal">
+          <p class="tz-big">TOURS SATURDAYS.<br><span class="tz-red">TASTE INCLUDED.</span></p>
+          <p style="margin-top:24px;font-size:18px;max-width:44ch">Tours run every Saturday at 10 AM, about 45 minutes. You'll see both lines running, meet whoever's cooking, and yes — somebody is always giving out samples.</p>
+          <div class="tz-hero-cta">
+            <a class="tz-btn tz-btn--red" href="mailto:tour@proofkitchen.co?subject=Saturday%20tour">Book a Saturday tour</a>
+          </div>
+        </div>
+        <div class="tz-visit-facts tz-reveal">
+          <div><span class="tz-mono">ADDRESS</span><span>88 Foundry Row<br>Dover, NH 03820</span></div>
+          <div><span class="tz-mono">TOURS</span><span>Saturdays · 10 AM<br>RSVP by Friday</span></div>
+          <div><span class="tz-mono">CONTACT</span><span>tour@proofkitchen.co<br>(603) 555-0171</span></div>
+          <div><span class="tz-mono">PARKING</span><span>Loading dock out back.<br>Bring a dolly; you'll need it.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-foot-grid">
+      <div>
+        <span class="tz-foot-brand">PROOF<span class="tz-dot">.</span></span>
+        <p class="tz-foot-note">A licensed shared commercial kitchen in Dover, NH. 140+ food businesses launched since 2019.</p>
+      </div>
+      <div><h4>KITCHEN</h4><ul><li><a href="#kitchen">Equipment</a></li><li><a href="#rates">Rate card</a></li><li><a href="#rules">House rules</a></li></ul></div>
+      <div><h4>START</h4><ul><li><a href="#">Licensing guide</a></li><li><a href="#">Label help</a></li><li><a href="#">Alumni wall</a></li></ul></div>
+      <div><h4>CONTACT</h4><ul><li><a href="#">tour@proofkitchen.co</a></li><li><a href="#">(603) 555-0171</a></li><li><a href="#">Instagram</a></li></ul></div>
+    </div>
+    <div class="tz-foot-bottom">
+      <span>© 2026 PROOF SHARED KITCHEN · NH LICENSE #8834</span>
+      <span class="tz-mono">COOK LEGALLY · EDITION 300</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){e.classList.add('tz-in')});
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en,i){
+        if(en.isIntersecting){ setTimeout(function(){en.target.classList.add('tz-in')}, i*70); io.unobserve(en.target); }
+      });
+    },{threshold:.1});
+    els.forEach(function(e){io.observe(e)});
+  }
+})();
+</script>
+</body>
+</html>
