@@ -1,0 +1,112 @@
+<!--tz-meta {"id":"java-footer","title":"Swiss Airline Footer (Java/Thymeleaf)","category":"Java","file":"java/footer.html","tags":["java","thymeleaf","footer"],"description":"Swiss-airline footer as a full page: red-rule sitemap columns, departure-board mono clock, and an oversized outlined wordmark.","dnas":["swiss-airline"]} -->
+<!--
+  Design read: an airline-timetable footer for a regional carrier — everything findable, nothing decorative.
+  Distinctive choice: the wordmark is oversized outlined type you could read from the tarmac.
+  Dials: VARIANCE 4 / MOTION 2 / DENSITY 6.
+  Route: fragment rendered by FooterController via th:replace="~{java/footer :: tzFooter}" on every page
+-->
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title th:text="${footer.title}">Footer — Meridian Air</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&family=Libre+Franklin:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --tz-bg: #f7f5ef;
+      --tz-ink: #1a1a1a;
+      --tz-accent: #d52b1e;
+      --tz-line: #1a1a1a1f;
+      --tz-muted: #6e6e6e;
+      --tz-font-display: "Archivo", sans-serif;
+      --tz-font-body: "Libre Franklin", sans-serif;
+      --tz-font-mono: "IBM Plex Mono", monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { background: var(--tz-bg); color: var(--tz-ink); font-family: var(--tz-font-body); min-height: 100dvh; display: flex; flex-direction: column; }
+    .tz-demo { flex: 1; display: grid; place-items: center; padding: 60px 20px; }
+    .tz-demo p { font-family: var(--tz-font-mono); font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tz-muted); margin: 0; text-align: center; line-height: 2; }
+    footer.tz-footer { border-top: 6px solid var(--tz-accent); background: var(--tz-bg); }
+    .tz-inner { max-width: 1240px; margin: 0 auto; padding: clamp(48px, 6vw, 88px) clamp(20px, 4vw, 48px) 0; }
+    .tz-top { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: clamp(28px, 4vw, 64px); padding-bottom: clamp(40px, 5vw, 64px); }
+    .tz-brand p.tz-name { font-family: var(--tz-font-display); font-weight: 900; font-size: 24px; letter-spacing: -0.02em; margin: 0 0 14px; text-transform: uppercase; }
+    .tz-brand p.tz-name span { color: var(--tz-accent); }
+    .tz-brand p { font-size: 15px; line-height: 1.65; color: var(--tz-muted); margin: 0 0 20px; max-width: 34ch; }
+    .tz-clock { font-family: var(--tz-font-mono); font-size: 13px; color: var(--tz-ink); letter-spacing: 0.06em; }
+    .tz-clock .tz-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--tz-accent); margin-right: 10px; animation: tz-pulse 2s ease-in-out infinite; }
+    @keyframes tz-pulse { 50% { opacity: 0.25; } }
+    .tz-col h3 { font-family: var(--tz-font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--tz-muted); margin: 0 0 18px; padding-bottom: 12px; border-bottom: 2px solid var(--tz-accent); display: inline-block; }
+    .tz-col ul { list-style: none; margin: 0; padding: 0; }
+    .tz-col li { margin: 0; }
+    .tz-col a { display: inline-block; padding: 7px 0; color: var(--tz-ink); text-decoration: none; font-size: 15px; font-weight: 500; }
+    .tz-col a:hover { color: var(--tz-accent); text-decoration: underline; text-underline-offset: 4px; }
+    .tz-wordmark { overflow: hidden; padding: 8px 0 0; user-select: none; }
+    .tz-wordmark p {
+      font-family: var(--tz-font-display); font-weight: 900; text-transform: uppercase;
+      font-size: clamp(64px, 14.5vw, 220px); line-height: 0.9; letter-spacing: -0.02em;
+      margin: 0; text-align: center; white-space: nowrap;
+      color: transparent; -webkit-text-stroke: 2px var(--tz-ink);
+    }
+    .tz-legal { border-top: 1px solid var(--tz-line); margin-top: clamp(32px, 4vw, 56px); padding: 22px 0 30px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-family: var(--tz-font-mono); font-size: 12px; letter-spacing: 0.08em; color: var(--tz-muted); }
+    .tz-legal a { color: var(--tz-muted); text-decoration: none; margin-left: 20px; }
+    .tz-legal a:hover { color: var(--tz-accent); }
+    @media (max-width: 900px) { .tz-top { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .tz-top { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { .tz-clock .tz-dot { animation: none; } }
+  </style>
+</head>
+<body>
+  <div class="tz-demo" aria-hidden="true">
+    <p>Scroll — the footer below is the deliverable.<br>Rendered on every page via th:replace.</p>
+  </div>
+  <!--/* Footer fragment: <footer th:fragment="tzFooter"> … </footer> — include with th:replace="~{java/footer :: tzFooter}" */-->
+  <footer class="tz-footer" th:fragment="tzFooter">
+    <div class="tz-inner">
+      <div class="tz-top">
+        <div class="tz-brand">
+          <p class="tz-name">Meridian<span>Air</span></p>
+          <p th:text="${footer.blurb}">Twelve cities, one promise: the 6:40am out of Portland leaves at 6:40am. Regional flights without the regional excuses.</p>
+          <p class="tz-clock"><span class="tz-dot" aria-hidden="true"></span><span th:text="${footer.status}">All departures on time · Updated 22:58 ET</span></p>
+        </div>
+        <nav class="tz-col" aria-label="Fly">
+          <h3>Fly</h3>
+          <ul>
+            <li th:each="l : ${footer.fly}"><a th:href="@{${l.href}}" th:text="${l.label}" href="#">Book a flight</a></li>
+            <li th:if="${#lists.isEmpty(footer.fly)}"><a th:href="@{/routes}" href="/routes">Routes &amp; timetables</a></li>
+            <li th:if="${#lists.isEmpty(footer.fly)}"><a th:href="@{/fares}" href="/fares">Fares</a></li>
+            <li th:if="${#lists.isEmpty(footer.fly)}"><a th:href="@{/baggage}" href="/baggage">Baggage rules</a></li>
+            <li th:if="${#lists.isEmpty(footer.fly)}"><a th:href="@{/status}" href="/status">Flight status</a></li>
+          </ul>
+        </nav>
+        <nav class="tz-col" aria-label="Company">
+          <h3>Company</h3>
+          <ul>
+            <li><a th:href="@{/about}" href="/about">About us</a></li>
+            <li><a th:href="@{/careers}" href="/careers">Careers</a></li>
+            <li><a th:href="@{/press}" href="/press">Press kit</a></li>
+            <li><a th:href="@{/sustainability}" href="/sustainability">Fuel &amp; emissions</a></li>
+          </ul>
+        </nav>
+        <nav class="tz-col" aria-label="Help">
+          <h3>Help</h3>
+          <ul>
+            <li><a th:href="@{/contact}" href="/contact">Contact</a></li>
+            <li><a th:href="@{/help/refunds}" href="/help/refunds">Refunds</a></li>
+            <li><a th:href="@{/help/delays}" href="/help/delays">Delays &amp; cancellations</a></li>
+            <li><a th:href="@{/accessibility}" href="/accessibility">Accessibility</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="tz-wordmark" aria-hidden="true"><p>Meridian</p></div>
+      <div class="tz-legal">
+        <span>© 2026 Meridian Air Co. · DOT certificate MA-4471</span>
+        <span><a th:href="@{/privacy}" href="/privacy">Privacy</a><a th:href="@{/terms}" href="/terms">Terms</a><a th:href="@{/cookies}" href="/cookies">Cookies</a></span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
