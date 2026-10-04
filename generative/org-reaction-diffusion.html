@@ -1,0 +1,110 @@
+<!--tz-meta {"id":"gen-org-reaction-diffusion","title":"Reaction-Diffusion Lite","category":"Generative","file":"generative/org-reaction-diffusion.html","tags":["reaction-diffusion","simulation"],"description":"Gray-Scott equations blooming into soft coral-like forms.","dnas":["arctic-field"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reaction-Diffusion Lite — TZ-taste</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#07100e;color:#dfeee7;font-family:"Avenir Next","Segoe UI",Verdana,sans-serif;-webkit-font-smoothing:antialiased}
+.tz-wrap{max-width:760px;margin:0 auto;padding:20px 16px 32px}
+.tz-kicker{font-size:11px;letter-spacing:.22em;text-transform:uppercase;opacity:.65;margin:0 0 8px}
+.tz-title{font-family:Georgia,"Iowan Old Style",serif;font-weight:600;font-size:30px;margin:0 0 8px;letter-spacing:.01em}
+.tz-caption{font-size:14px;line-height:1.55;opacity:.78;margin:0 0 16px;max-width:58ch}
+.tz-controls{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+.tz-btn{appearance:none;border:1px solid currentColor;background:transparent;color:inherit;font:inherit;font-size:13px;padding:8px 14px;border-radius:999px;cursor:pointer;opacity:.9}
+.tz-btn:hover{opacity:1;background:rgba(223,238,231,.08)}
+.tz-btn:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.tz-canvas{display:block;width:100%;height:70vh;min-height:340px;border-radius:14px;border:1px solid rgba(223,238,231,.18);background:#07100e}
+.tz-foot{font-size:12px;opacity:.55;margin:12px 0 0;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="tz-wrap">
+<header>
+<p class="tz-kicker">TZ-taste &middot; Generative</p>
+<h1 class="tz-title">Reaction-Diffusion Lite</h1>
+<p class="tz-caption">Gray&ndash;Scott reaction-diffusion: two chemicals diffusing and reacting on a coarse grid, blooming into soft coral-like spots.</p>
+</header>
+<div class="tz-controls">
+<button class="tz-btn" type="button" id="tz-seed">New seed</button>
+<button class="tz-btn" type="button" id="tz-pause">Pause</button>
+<button class="tz-btn" type="button" id="tz-clear">Clear</button>
+</div>
+<canvas class="tz-canvas" id="tz-cv"></canvas>
+<p class="tz-foot">Real Gray&ndash;Scott equations (feed 0.0545, kill 0.062), rendered soft by upscaling a low-res simulation. Seeded with mulberry32.</p>
+</div>
+<script>
+(function(){
+"use strict";
+var cv=document.getElementById('tz-cv'),ctx=cv.getContext('2d');
+var seedB=document.getElementById('tz-seed'),pauseB=document.getElementById('tz-pause'),clearB=document.getElementById('tz-clear');
+var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var DPR=Math.min(window.devicePixelRatio||1,2),W=0,H=0;
+var GW=112,GH=64,u,v,nu,nv;
+var F=0.0545,K=0.062,Du=1.0,Dv=0.5;
+var off=document.createElement('canvas'),octx=off.getContext('2d');
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+var rng=mulberry32((Math.random()*4294967296)|0);
+function init(){
+  GH=Math.max(48,Math.round(GW*H/Math.max(1,W)));
+  off.width=GW;off.height=GH;
+  u=new Float32Array(GW*GH).fill(1);v=new Float32Array(GW*GH);
+  nu=new Float32Array(GW*GH);nv=new Float32Array(GW*GH);
+  for(var b=0;b<6;b++){
+    var cx=GW*(0.2+0.6*rng()),cy=GH*(0.2+0.6*rng()),r=3+rng()*4;
+    for(var y=0;y<GH;y++)for(var x=0;x<GW;x++){
+      var dx=x-cx,dy=y-cy;
+      if(dx*dx+dy*dy<r*r){v[y*GW+x]=0.9;u[y*GW+x]=0.25;}
+    }
+  }
+}
+function step(){
+  for(var n=0;n<4;n++){
+    for(var y=0;y<GH;y++){
+      var ym=(y-1+GH)%GH,yP=(y+1)%GH;
+      for(var x=0;x<GW;x++){
+        var xm=(x-1+GW)%GW,xP=(x+1)%GW,i=y*GW+x;
+        var cuv=u[i],cvv=v[i];
+        var lu=u[ym*GW+x]+u[yP*GW+x]+u[y*GW+xm]+u[y*GW+xP]-4*cuv;
+        var lv=v[ym*GW+x]+v[yP*GW+x]+v[y*GW+xm]+v[y*GW+xP]-4*cvv;
+        var uvv=cuv*cvv*cvv;
+        nu[i]=cuv+Du*lu-uvv+F*(1-cuv);
+        nv[i]=cvv+Dv*lv+uvv-(F+K)*cvv;
+      }
+    }
+    var t=u;u=nu;nu=t;t=v;v=nv;nv=t;
+  }
+}
+function draw(){
+  var img=octx.createImageData(GW,GH),d=img.data;
+  for(var i=0;i<GW*GH;i++){
+    var val=Math.min(1,v[i]*1.5),p=i*4;
+    d[p]=6+val*42;d[p+1]=16+val*198;d[p+2]=14+val*168;d[p+3]=255;
+  }
+  octx.putImageData(img,0,0);
+  ctx.fillStyle='#07100e';ctx.fillRect(0,0,W,H);
+  ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
+  ctx.drawImage(off,0,0,GW,GH,0,0,W,H);
+}
+var raf=0,paused=false;
+function loop(){if(paused)return;step();draw();raf=requestAnimationFrame(loop);}
+function settle(){for(var i=0;i<240;i++)step();draw();}
+function resize(){
+  var r=cv.getBoundingClientRect();
+  W=Math.max(1,Math.round(r.width));H=Math.max(1,Math.round(r.height));
+  cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR);
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  init();
+  if(reduced)settle();
+}
+seedB.addEventListener('click',function(){rng=mulberry32((Math.random()*4294967296)|0);paused=false;pauseB.textContent='Pause';cancelAnimationFrame(raf);init();if(reduced)settle();else loop();});
+pauseB.addEventListener('click',function(){if(reduced)return;paused=!paused;pauseB.textContent=paused?'Resume':'Pause';if(!paused)loop();});
+clearB.addEventListener('click',function(){v.fill(0);u.fill(1);draw();});
+window.addEventListener('resize',function(){cancelAnimationFrame(raf);resize();if(!reduced&&!paused)loop();});
+resize();if(!reduced)loop();
+})();
+</script>
+</body>
+</html>
