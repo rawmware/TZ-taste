@@ -1,0 +1,317 @@
+<!--tz-meta {"id":"surf-school","title":"Saltline Surf School — Learn to Surf","category":"Template","file":"templates/surf-school.html","tags":["surf-school","lessons","local"],"description":"Hand-painted surf school page: daily wave-report chalkboard, lesson schedule as punched wax tickets.","dnas":["surf-shack"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saltline Surf School — first wave in one lesson, guaranteed-ish</title>
+<meta name="description" content="Saltline Surf School teaches beginners to stand up and ride. Small groups, soft boards, real wave reports every morning.">
+<!-- DNA: surf-shack. Design read: sun-bleached and hand-painted — faded teal, warm sand, signage a person clearly made — for first-timers who want to know the waves are small and the instructor is patient. One distinctive choice: the lesson schedule is printed as punched wax-comb tickets, each one a physical thing you'd stick in your board bag. Dials V6/M5/D3. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f9ecd8;
+  --tz-ink:#40342a;
+  --tz-accent:#2e8f8a;
+  --tz-accent-deep:color-mix(in srgb, var(--tz-accent) 70%, var(--tz-ink));
+  --tz-muted:#a08d70;
+  --tz-fog:color-mix(in srgb, var(--tz-fog) 55%, var(--tz-ink) 45%);
+  --tz-line:#e0d0ae;
+  --tz-card:color-mix(in srgb, var(--tz-bg) 55%, white);
+  --tz-ink-soft:color-mix(in srgb, var(--tz-ink) 78%, var(--tz-bg));
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",system-ui,sans-serif;background:var(--tz-bg);color:var(--tz-ink);font-weight:400;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--tz-accent);color:var(--tz-bg)}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.tz-display{font-family:"Shrikhand",serif}
+.tz-mono{font-family:"Space Mono",monospace}
+.skip{position:absolute;left:-999px;top:0;background:var(--tz-accent);color:var(--tz-bg);padding:8px 16px;z-index:99}
+.skip:focus{left:8px;top:8px}
+
+/* ---------- header ---------- */
+.tz-header{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--tz-bg) 88%, transparent);backdrop-filter:blur(8px);border-bottom:2px solid var(--tz-ink)}
+.tz-header .tz-wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
+.tz-logo{font-family:"Shrikhand",serif;font-size:22px;color:var(--tz-accent-deep);display:flex;align-items:center;gap:10px}
+.tz-logo svg{width:28px;height:28px;flex:none}
+.tz-nav{display:flex;gap:26px;font-size:15px;font-weight:500}
+.tz-nav a{position:relative}
+.tz-nav a:hover{color:var(--tz-accent-deep)}
+.tz-book{background:var(--tz-accent-deep);color:var(--tz-bg);border:0;font-weight:700;font-size:14.5px;padding:11px 22px;cursor:pointer;transform:rotate(-1.2deg);transition:transform .25s var(--tz-ease)}
+.tz-book:hover{transform:rotate(0deg) translateY(-2px)}
+
+/* ---------- hero ---------- */
+.tz-hero{padding:80px 0 64px;position:relative}
+.tz-hero h1{font-family:"Shrikhand",serif;font-size:clamp(52px,8vw,112px);line-height:1.02;color:var(--tz-ink);max-width:14ch}
+.tz-hero h1 .tz-teal{color:var(--tz-accent-deep)}
+.tz-hero h1 .tz-tilt{display:inline-block;transform:rotate(-2deg)}
+.tz-hero .tz-sub{margin-top:8px;font-family:"Space Mono",monospace;font-size:13px;letter-spacing:.2em;color:var(--tz-fog)}
+.tz-hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;margin-top:44px;align-items:start}
+.tz-hero .tz-lede{font-size:18.5px;max-width:44ch;color:var(--tz-ink-soft);font-weight:300}
+.tz-hero-cta{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap}
+.tz-btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:15.5px;padding:15px 30px;cursor:pointer;border:2px solid var(--tz-ink);transition:transform .25s var(--tz-ease)}
+.tz-btn--teal{background:var(--tz-accent-deep);border-color:var(--tz-accent-deep);color:var(--tz-bg)}
+.tz-btn--teal:hover{transform:translateY(-3px) rotate(-1deg)}
+.tz-btn--line{background:transparent;color:var(--tz-ink)}
+.tz-btn--line:hover{transform:translateY(-3px);background:var(--tz-card)}
+.tz-wave{display:flex;align-items:flex-end;gap:6px;margin-top:36px;height:56px}
+.tz-wave i{width:10px;background:var(--tz-accent);border-radius:5px 5px 0 0;animation:tz-swell 2.6s ease-in-out infinite;opacity:.85}
+.tz-wave i:nth-child(1){height:22px}.tz-wave i:nth-child(2){height:36px;animation-delay:.2s}
+.tz-wave i:nth-child(3){height:50px;animation-delay:.4s}.tz-wave i:nth-child(4){height:32px;animation-delay:.6s}
+.tz-wave i:nth-child(5){height:44px;animation-delay:.8s}.tz-wave i:nth-child(6){height:26px;animation-delay:1s}
+@keyframes tz-swell{0%,100%{transform:scaleY(.75)}50%{transform:scaleY(1.12)}}
+
+/* wave report board */
+.tz-board{background:var(--tz-accent-deep);color:#f9ecd8;padding:36px 34px;transform:rotate(1.1deg);box-shadow:6px 8px 0 var(--tz-ink);position:relative}
+.tz-board h2{font-family:"Shrikhand",serif;font-size:26px;margin-bottom:4px}
+.tz-board .tz-date{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.18em;opacity:.75;margin-bottom:22px}
+.tz-cond{display:grid;grid-template-columns:1fr 1fr;gap:14px 20px}
+.tz-cond div{border-top:1px dashed color-mix(in srgb, var(--tz-bg) 33%, transparent);padding-top:10px}
+.tz-cond .tz-mono{font-size:11px;letter-spacing:.18em;opacity:.75;display:block;margin-bottom:4px}
+.tz-cond strong{font-size:20px;font-weight:700}
+.tz-verdict{margin-top:22px;font-family:"Space Mono",monospace;font-size:13.5px;background:#f9ecd8;color:var(--tz-accent-deep);padding:12px 16px;transform:rotate(-.8deg);font-weight:700}
+
+/* ---------- sections ---------- */
+.tz-section{padding:96px 0}
+.tz-sechead{margin-bottom:48px;max-width:640px}
+.tz-sechead .tz-mono{font-size:12px;letter-spacing:.24em;color:var(--tz-accent-deep);display:block;margin-bottom:14px;font-weight:700}
+.tz-sechead h2{font-family:"Shrikhand",serif;font-weight:400;font-size:clamp(36px,5vw,60px);line-height:1.08}
+.tz-sechead p{margin-top:14px;font-size:17.5px;color:var(--tz-ink-soft);font-weight:300}
+
+/* ticket stubs: the one weird thing */
+.tz-tickets{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.tz-ticket{background:var(--tz-card);border:2px solid var(--tz-ink);padding:30px 28px 26px;position:relative;transition:transform .3s var(--tz-ease)}
+.tz-ticket:nth-child(1){transform:rotate(-1.4deg)}
+.tz-ticket:nth-child(2){transform:rotate(.9deg);margin-top:18px}
+.tz-ticket:nth-child(3){transform:rotate(-.6deg)}
+.tz-ticket:hover{transform:rotate(0) translateY(-6px)}
+.tz-ticket::before,.tz-ticket::after{content:"";position:absolute;top:50%;width:22px;height:22px;background:var(--tz-bg);border:2px solid var(--tz-ink);border-radius:50%;transform:translateY(-50%)}
+.tz-ticket::before{left:-13px}.tz-ticket::after{right:-13px}
+.tz-ticket .tz-perf{border-top:2px dashed var(--tz-line);margin:20px -28px;padding:0 28px}
+.tz-ticket .tz-kind{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.22em;color:var(--tz-accent-deep);font-weight:700}
+.tz-ticket h3{font-family:"Shrikhand",serif;font-size:27px;margin:10px 0 8px;line-height:1.15}
+.tz-ticket p{font-size:15px;color:var(--tz-ink-soft)}
+.tz-ticket .tz-meta{display:flex;justify-content:space-between;align-items:center;margin-top:18px}
+.tz-ticket .tz-price{font-family:"Shrikhand",serif;font-size:30px;color:var(--tz-accent-deep)}
+.tz-ticket .tz-per{font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-fog)}
+.tz-ticket .tz-cta-row{margin-top:16px;display:flex;justify-content:space-between;align-items:center}
+.tz-ticket a.tz-grab{font-weight:700;font-size:14.5px;color:var(--tz-accent-deep);border-bottom:2px solid var(--tz-accent-deep)}
+.tz-ticket a.tz-grab:hover{color:var(--tz-ink);border-color:var(--tz-ink)}
+.tz-ticket .tz-seats{font-family:"Space Mono",monospace;font-size:11.5px;color:var(--tz-fog)}
+
+/* crew */
+.tz-crew{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:28px;align-items:start}
+.tz-coach{background:var(--tz-card);border:2px solid var(--tz-ink);padding:30px;transform:rotate(-.8deg)}
+.tz-coach:nth-child(2){transform:rotate(1deg);margin-top:26px}
+.tz-coach:nth-child(3){transform:rotate(-.5deg)}
+.tz-coach .tz-init{font-family:"Shrikhand",serif;font-size:44px;color:var(--tz-accent-deep);line-height:1;margin-bottom:12px}
+.tz-coach h3{font-size:20px;font-weight:700}
+.tz-coach .tz-role{font-family:"Space Mono",monospace;font-size:11.5px;letter-spacing:.16em;color:var(--tz-accent-deep);margin:6px 0 10px;font-weight:700}
+.tz-coach p{font-size:14.5px;color:var(--tz-ink-soft)}
+
+/* promise strip */
+.tz-promise{background:var(--tz-accent-deep);color:#f9ecd8;transform:rotate(-.6deg);margin:0 -12px}
+.tz-promise .tz-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;padding-top:56px;padding-bottom:56px}
+.tz-promise h3{font-family:"Shrikhand",serif;font-size:22px;margin-bottom:8px}
+.tz-promise p{font-size:15px;opacity:.9}
+
+/* ---------- footer ---------- */
+.tz-footer{padding:80px 0 36px}
+.tz-foot-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:44px;margin-bottom:48px}
+.tz-foot-grid h4{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.22em;color:var(--tz-accent-deep);margin-bottom:16px;font-weight:700}
+.tz-foot-grid p,.tz-foot-grid li{font-size:15px;color:var(--tz-ink-soft);list-style:none;margin-bottom:10px}
+.tz-foot-grid a:hover{color:var(--tz-accent-deep)}
+.tz-foot-brand{font-family:"Shrikhand",serif;font-size:28px;color:var(--tz-accent-deep);margin-bottom:10px}
+.tz-base{border-top:2px solid var(--tz-ink);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-fog)}
+
+@media (max-width:960px){
+  .tz-hero-grid{grid-template-columns:1fr}
+  .tz-tickets{grid-template-columns:1fr;max-width:440px}
+  .tz-crew{grid-template-columns:1fr}
+  .tz-promise .tz-wrap{grid-template-columns:1fr}
+  .tz-nav{display:none}
+  .tz-board{transform:rotate(0)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#lessons">Skip to lessons</a>
+
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-logo" href="#" aria-label="Saltline Surf School home">
+      <svg viewBox="0 0 24 24" fill="none" style="stroke:var(--tz-accent-deep)" stroke-width="1.8" aria-hidden="true"><path d="M2 16c3-1 4-4 4-7 4 0 7 3 8 7 2 0 4-1 8-2-2 3-5 5-9 5S4 18 2 16z"/><path d="M12 9V4M9 6l3-2 3 2"/></svg>
+      Saltline
+    </a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#report">Wave Report</a><a href="#lessons">Lessons</a><a href="#crew">Coaches</a><a href="#visit">Find Us</a>
+    </nav>
+    <a class="tz-book" href="#lessons">Book a lesson</a>
+  </div>
+</header>
+
+<main>
+<section class="tz-hero">
+  <div class="tz-wrap">
+    <p class="tz-sub">SALTLINE SURF SCHOOL · NORTH BEACH · SINCE 2014</p>
+    <h1>Standing up on <span class="tz-teal">your first wave</span><br>by <span class="tz-tilt">lunchtime.</span></h1>
+    <div class="tz-hero-grid">
+      <div>
+        <p class="tz-lede">Small groups, soft-top boards, and coaches who were beginners once too. If the surf's too big for learning, we tell you — and we don't take your money that day.</p>
+        <div class="tz-hero-cta">
+          <a class="tz-btn tz-btn--teal" href="#lessons">Pick your lesson</a>
+          <a class="tz-btn tz-btn--line" href="#report">Check today's waves</a>
+        </div>
+        <div class="tz-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+      <aside class="tz-board" id="report" aria-label="Today's wave report">
+        <h2>Wave Report</h2>
+        <p class="tz-date">SATURDAY · 7:04 AM · POSTED BY MARA</p>
+        <div class="tz-cond">
+          <div><span class="tz-mono">SURF</span><strong>2–3 ft, clean</strong></div>
+          <div><span class="tz-mono">WIND</span><strong>Offshore, 6 kt</strong></div>
+          <div><span class="tz-mono">WATER</span><strong>64°F — springsuit</strong></div>
+          <div><span class="tz-mono">TIDE</span><strong>Rising till 11:40</strong></div>
+        </div>
+        <p class="tz-verdict">VERDICT: PERFECT LEARNER DAY — BOOK THE 10 AM</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="tz-section" id="lessons" style="padding-top:64px">
+  <div class="tz-wrap">
+    <div class="tz-sechead">
+      <span class="tz-mono">LESSON TICKETS — ALL GEAR INCLUDED</span>
+      <h2>Grab a ticket. We'll handle the rest.</h2>
+      <p>Board, wetsuit, wax, and a coach who stays in the water with you. Show up in a swimsuit; we do everything else.</p>
+    </div>
+    <div class="tz-tickets">
+      <article class="tz-ticket">
+        <p class="tz-kind">GROUP · MAX 6</p>
+        <h3>First Wave</h3>
+        <p>Two hours on the sand and in the whitewater. Pop-ups, paddling, and riding your first broken wave to shore.</p>
+        <div class="tz-perf"></div>
+        <div class="tz-meta"><span class="tz-price">$75</span><span class="tz-per">2 HOURS</span></div>
+        <div class="tz-cta-row"><a class="tz-grab" href="#visit">Grab this ticket</a><span class="tz-seats">4 SEATS LEFT SAT</span></div>
+      </article>
+      <article class="tz-ticket">
+        <p class="tz-kind">GROUP · MAX 4</p>
+        <h3>Green Wave Club</h3>
+        <p>Four-week progression: catching unbroken waves, turning, and reading a lineup. For graduates of First Wave.</p>
+        <div class="tz-perf"></div>
+        <div class="tz-meta"><span class="tz-price">$240</span><span class="tz-per">4 WEEKS</span></div>
+        <div class="tz-cta-row"><a class="tz-grab" href="#visit">Grab this ticket</a><span class="tz-seats">NEXT ROUND OCT 12</span></div>
+      </article>
+      <article class="tz-ticket">
+        <p class="tz-kind">1-ON-1 · JUST YOU</p>
+        <h3>Private Session</h3>
+        <p>Ninety minutes with one coach, one camera, and video review after. The fastest way from kook to competent.</p>
+        <div class="tz-perf"></div>
+        <div class="tz-meta"><span class="tz-price">$110</span><span class="tz-per">90 MIN</span></div>
+        <div class="tz-cta-row"><a class="tz-grab" href="#visit">Grab this ticket</a><span class="tz-seats">2 SLOTS SUN</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="tz-section" id="crew" style="padding-top:0">
+  <div class="tz-wrap">
+    <div class="tz-sechead">
+      <span class="tz-mono">YOUR COACHES</span>
+      <h2>Taught by people who wipe out too.</h2>
+    </div>
+    <div class="tz-crew">
+      <div class="tz-coach">
+        <p class="tz-init">M</p>
+        <h3>Mara Delgado</h3>
+        <p class="tz-role">FOUNDER · 14 YRS TEACHING</p>
+        <p>Former lifeguard, current optimist. Has taught over 4,000 first-timers to stand. Believes everyone gets one perfect wave a day — her job is making sure it's yours.</p>
+      </div>
+      <div class="tz-coach">
+        <p class="tz-init">J</p>
+        <h3>Jonah Park</h3>
+        <p class="tz-role">KIDS' COACH · ISA CERTIFIED</p>
+        <p>Runs the Grom Club for ages 7–12. Infinite patience, waterproof everything, and a whistle he almost never needs.</p>
+      </div>
+      <div class="tz-coach">
+        <p class="tz-init">T</p>
+        <h3>Tess Aubert</h3>
+        <p class="tz-role">PRIVATE COACH · VIDEO ANALYSIS</p>
+        <p>Films your session from the beach, then shows you exactly what your feet did wrong. Kind about it, mostly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tz-promise">
+  <div class="tz-wrap">
+    <div>
+      <h3>The honesty policy</h3>
+      <p>If conditions are bad for learning, we cancel and refund in full. No "character-building" sessions in 8-foot surf.</p>
+    </div>
+    <div>
+      <h3>Gear that fits</h3>
+      <p>Boards from 7' to 9', wetsuits from toddler to 3XL. If we don't have your size, the lesson is free — that's the deal.</p>
+    </div>
+    <div>
+      <h3>Grom Club</h3>
+      <p>Saturdays at 9 AM for ages 7–12. $35 a session, siblings half price. Parents watch from the good bench.</p>
+    </div>
+  </div>
+</section>
+
+<section class="tz-section" id="visit">
+  <div class="tz-wrap">
+    <div class="tz-sechead">
+      <span class="tz-mono">FIND THE YELLOW SHACK</span>
+      <h2>Meet us at North Beach.</h2>
+      <p>We're the yellow shack with the surfboard fence, 200 yards north of the pier. Lessons meet on the sand, 15 minutes before start time.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px" class="tz-visitcols">
+      <div>
+        <p style="font-size:17px;margin-bottom:10px"><strong>2100 Ocean Front Walk<br>North Beach</strong></p>
+        <p class="tz-mono" style="font-size:13px;color:var(--tz-fog)">PARKING: $2/HR AT THE PIER LOT — FREE BEFORE 8 AM<br>TEXT (555) 882-0194 FOR SAME-DAY SPOTS</p>
+      </div>
+      <div>
+        <p class="tz-mono" style="font-size:12px;letter-spacing:.2em;color:var(--tz-accent-deep);font-weight:700;margin-bottom:12px">DAILY SCHEDULE</p>
+        <p style="font-size:16px;line-height:2.1">8:00 AM — First Wave (group)<br>10:00 AM — First Wave (group)<br>12:30 PM — Private sessions<br>3:00 PM — Grom Club (Sat only)</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-foot-grid">
+      <div>
+        <p class="tz-foot-brand">Saltline</p>
+        <p>Surf school at North Beach since 2014. Soft boards, honest wave reports, and first waves by lunchtime.</p>
+      </div>
+      <div>
+        <h4>SCHOOL</h4>
+        <ul><li><a href="#lessons">Lesson tickets</a></li><li><a href="#crew">Coaches</a></li><li><a href="#report">Wave report</a></li></ul>
+      </div>
+      <div>
+        <h4>GOOD TO KNOW</h4>
+        <ul><li>Bad surf? Full refund, no drama</li><li>All gear included, always</li><li>Ages 7 and up</li></ul>
+      </div>
+    </div>
+    <div class="tz-base">
+      <span>© 2026 SALTLINE SURF SCHOOL — 2100 OCEAN FRONT WALK</span>
+      <span class="tz-mono">WAX UP · PADDLE HARD · HAVE FUN</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
