@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-aperitivo-italian",
+  "title": "Aperitivo Italian design tokens",
+  "category": "Tokens",
+  "file": "tokens/aperitivo-italian.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "aperitivo-italian"
+  ],
+  "description": "W3C-format design tokens for the Aperitivo Italian style DNA.",
+  "dnas": [
+   "aperitivo-italian"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#f7efdc",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#2b1f14",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#c93a2e",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#a08872",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#e3d3b8",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Alfa Slab One",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "DM Sans",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "aperitivo-italian",
+  "name": "Aperitivo Italian",
+  "vibe": "Golden hour at a Milan bar, every night. Campari red, bitter orange, and typography you can taste."
+ }
+}
