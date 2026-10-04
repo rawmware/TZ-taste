@@ -1,0 +1,149 @@
+<!--tz-meta {"id":"showcase-bauhaus-primary","title":"Bauhaus Primary showcase","category":"Showcase","file":"showcase/bauhaus-primary.html","tags":["bauhaus-primary"],"description":"Live demo page for the Bauhaus Primary style DNA.","dnas":["bauhaus-primary"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bauhaus Primary — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f4f1ea; --tz-surface:#e9e4d6; --tz-ink:#1a1a1a; --tz-muted:#6e6a60;
+  --tz-accent:#d8342c; --tz-accent-2:#1f4fa3; --tz-line:#1a1a1a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Archivo",Helvetica,sans-serif;font-size:1.05rem;line-height:1.55;-webkit-font-smoothing:antialiased}
+.tz-top{display:flex;justify-content:space-between;align-items:baseline;padding:1.2rem 4vw;border-bottom:4px solid var(--tz-line)}
+.tz-wordmark{font-family:"Archivo Black",sans-serif;font-size:1.1rem;letter-spacing:0.02em}
+.tz-label{font-family:"Space Mono",monospace;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-hero{border-bottom:4px solid var(--tz-line);padding:4rem 4vw 0;position:relative;overflow:hidden}
+.tz-shapes{position:absolute;top:2rem;right:4vw;display:flex;gap:1.2rem;align-items:center}
+.tz-circle{width:72px;height:72px;border-radius:50%;background:var(--tz-accent)}
+.tz-square{width:72px;height:72px;background:var(--tz-accent-2)}
+.tz-triangle{width:0;height:0;border-left:38px solid transparent;border-right:38px solid transparent;border-bottom:66px solid var(--tz-ink)}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:1.4rem}
+.tz-hero h1{font-family:"Archivo Black",sans-serif;font-size:clamp(3rem,10vw,8.5rem);line-height:0.95;letter-spacing:-0.01em;max-width:10ch}
+.tz-hero h1 .tz-red{color:var(--tz-accent)}
+.tz-dim{display:flex;align-items:center;gap:0.6rem;margin-top:2rem;font-family:"Space Mono",monospace;font-size:0.7rem;letter-spacing:0.1em;color:var(--tz-muted)}
+.tz-dim .tz-dimline{flex:0 0 180px;height:8px;border-left:2px solid var(--tz-muted);border-right:2px solid var(--tz-muted);position:relative}
+.tz-dim .tz-dimline::after{content:"";position:absolute;left:0;right:0;top:3px;border-top:1px solid var(--tz-muted)}
+.tz-hero-foot{display:flex;flex-wrap:wrap;gap:2rem;align-items:center;justify-content:space-between;padding:2.2rem 0 3rem}
+.tz-sub{max-width:52ch;font-weight:500}
+.tz-cta{display:inline-block;font-family:"Archivo Black",sans-serif;font-size:0.95rem;letter-spacing:0.04em;color:var(--tz-bg);background:var(--tz-accent);text-decoration:none;padding:1rem 2.4rem}
+.tz-cta:hover{background:var(--tz-ink)}
+.tz-content{padding:4rem 4vw;max-width:1200px;margin:0 auto}
+.tz-content h2{font-family:"Archivo Black",sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);line-height:1;margin-bottom:0.8rem}
+.tz-content .tz-note{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:2.4rem}
+.tz-grid{display:grid;grid-template-columns:repeat(4,1fr);border:4px solid var(--tz-line)}
+.tz-cell{padding:2rem 1.6rem;border-right:4px solid var(--tz-line);background:var(--tz-bg)}
+.tz-cell:last-child{border-right:0}
+.tz-cell:nth-child(odd){background:var(--tz-surface)}
+.tz-cell .tz-tag{display:inline-block;font-family:"Space Mono",monospace;font-size:0.68rem;letter-spacing:0.1em;color:var(--tz-bg);background:var(--tz-ink);padding:0.3rem 0.7rem;margin-bottom:1.2rem}
+.tz-cell:nth-child(2) .tz-tag{background:var(--tz-accent)}
+.tz-cell:nth-child(3) .tz-tag{background:var(--tz-accent-2)}
+.tz-cell h3{font-family:"Archivo Black",sans-serif;font-size:1.35rem;margin-bottom:0.7rem;line-height:1.1}
+.tz-cell p{font-size:0.95rem;color:var(--tz-muted);margin-bottom:1.2rem}
+.tz-cell .tz-spec{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.06em;line-height:2}
+.tz-stamp{margin-top:3rem;display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
+.tz-chip-label{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.1em;border:2px solid var(--tz-line);padding:0.6rem 1rem}
+.tz-chip-label.tz-rot{background:var(--tz-accent);border-color:var(--tz-accent);color:var(--tz-bg)}
+.tz-tokens{padding:4rem 4vw;border-top:4px solid var(--tz-line)}
+.tz-tokens h2{font-family:"Archivo Black",sans-serif;font-size:1.5rem;margin-bottom:1.5rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.9rem;list-style:none}
+.tz-swatches li{border:3px solid var(--tz-line);background:var(--tz-bg);min-width:9.5rem}
+.tz-chip{display:block;height:3.2rem}
+.tz-swatches .tz-name{display:block;font-family:"Space Mono",monospace;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.6rem 0.8rem 0.1rem;color:var(--tz-muted)}
+.tz-swatches .tz-hex{display:block;font-family:"Space Mono",monospace;font-size:0.78rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:4px solid var(--tz-line);font-family:"Space Mono",monospace;font-size:0.7rem;letter-spacing:0.08em;color:var(--tz-muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.tz-wipe{animation:tz-wipe 0.5s steps(6) both}
+.tz-wipe.tz-d1{animation-delay:0.1s}.tz-wipe.tz-d2{animation-delay:0.2s}.tz-wipe.tz-d3{animation-delay:0.3s}.tz-wipe.tz-d4{animation-delay:0.4s}
+@keyframes tz-wipe{from{opacity:0;transform:translateX(-32px)}to{opacity:1;transform:translateX(0)}}
+@media(max-width:700px){
+  .tz-grid{grid-template-columns:1fr 1fr}
+  .tz-cell{border-right:0;border-bottom:4px solid var(--tz-line)}
+  .tz-cell:nth-child(odd){border-right:4px solid var(--tz-line)}
+  .tz-shapes{position:static;margin-bottom:2rem}
+  .tz-hero h1{font-size:clamp(2.6rem,14vw,4rem)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-wipe{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">WERKSTATT&nbsp;12</span>
+  <span class="tz-label">TZ-taste style DNA</span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-shapes" aria-hidden="true">
+    <div class="tz-circle"></div>
+    <div class="tz-square"></div>
+    <div class="tz-triangle"></div>
+  </div>
+  <p class="tz-eyebrow">Winter semester &middot; 2026 &middot; grid: 12</p>
+  <h1>LEARN<br>BY <span class="tz-red">MAKING.</span></h1>
+  <div class="tz-dim" aria-hidden="true"><span class="tz-dimline"></span><span>450 &times; 450 &mdash; composition study</span></div>
+  <div class="tz-hero-foot">
+    <p class="tz-sub">Four workshops. Real materials, real tools, real deadlines. Sit. Build. Learn. Repeat.</p>
+    <a class="tz-cta" href="#">ENROLL</a>
+  </div>
+</section>
+
+<section class="tz-content">
+  <h2>THE WORKSHOPS</h2>
+  <p class="tz-note">All courses run 8 weeks &middot; materials included</p>
+  <div class="tz-grid">
+    <div class="tz-cell tz-wipe tz-d1">
+      <span class="tz-tag">M&ndash;I</span>
+      <h3>Metal I</h3>
+      <p>Cut, bend, join. Steel does not forgive; that is the lesson.</p>
+      <p class="tz-spec">TUE 18:00<br>ROOM B<br>12 SEATS</p>
+    </div>
+    <div class="tz-cell tz-wipe tz-d2">
+      <span class="tz-tag">W&ndash;II</span>
+      <h3>Wood II</h3>
+      <p>Joinery without nails. Measure twice is not a suggestion.</p>
+      <p class="tz-spec">WED 18:00<br>ROOM C<br>10 SEATS</p>
+    </div>
+    <div class="tz-cell tz-wipe tz-d3">
+      <span class="tz-tag">P&ndash;III</span>
+      <h3>Print III</h3>
+      <p>Letterpress and the grid. Ink is honest; it shows every mistake.</p>
+      <p class="tz-spec">THU 18:00<br>ROOM A<br>14 SEATS</p>
+    </div>
+    <div class="tz-cell tz-wipe tz-d4">
+      <span class="tz-tag">T&ndash;IV</span>
+      <h3>Textile IV</h3>
+      <p>Weave structure from nothing. Warp, weft, patience.</p>
+      <p class="tz-spec">FRI 18:00<br>ROOM D<br>8 SEATS</p>
+    </div>
+  </div>
+  <div class="tz-stamp">
+    <span class="tz-chip-label tz-rot">ROT 01</span>
+    <span class="tz-chip-label">BLAU 02</span>
+    <span class="tz-chip-label">Built, not decorated.</span>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#f4f1ea"></span><span class="tz-name">bg</span><span class="tz-hex">#f4f1ea</span></li>
+    <li><span class="tz-chip" style="background:#1a1a1a"></span><span class="tz-name">ink</span><span class="tz-hex">#1a1a1a</span></li>
+    <li><span class="tz-chip" style="background:#d8342c"></span><span class="tz-name">accent</span><span class="tz-hex">#d8342c</span></li>
+    <li><span class="tz-chip" style="background:#6e6a60"></span><span class="tz-name">muted</span><span class="tz-hex">#6e6a60</span></li>
+    <li><span class="tz-chip" style="background:#1a1a1a"></span><span class="tz-name">line</span><span class="tz-hex">#1a1a1a</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">
+  <span>A TZ-taste style DNA showcase &mdash; MIT, free forever.</span>
+  <span>Sheet 01 of 01 &middot; printed flat</span>
+</footer>
+</body>
+</html>
