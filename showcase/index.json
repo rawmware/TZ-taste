@@ -1,0 +1,631 @@
+{
+ "count": 48,
+ "updated": "2026-10-04",
+ "usage": "One live demo page per style DNA. Open in a browser to see the DNA working. Classes are tz- prefixed.",
+ "showcases": [
+  {
+   "id": "showcase-acid-rave",
+   "title": "Acid Rave showcase",
+   "category": "Showcase",
+   "file": "showcase/acid-rave.html",
+   "tags": [
+    "acid-rave"
+   ],
+   "description": "Live demo page for the Acid Rave style DNA.",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "showcase-alpine-ledger",
+   "title": "Alpine Ledger showcase",
+   "category": "Showcase",
+   "file": "showcase/alpine-ledger.html",
+   "tags": [
+    "alpine-ledger"
+   ],
+   "description": "Live demo page for the Alpine Ledger style DNA.",
+   "dnas": [
+    "alpine-ledger"
+   ]
+  },
+  {
+   "id": "showcase-aperitivo-italian",
+   "title": "Aperitivo Italian showcase",
+   "category": "Showcase",
+   "file": "showcase/aperitivo-italian.html",
+   "tags": [
+    "aperitivo-italian"
+   ],
+   "description": "Live demo page for the Aperitivo Italian style DNA.",
+   "dnas": [
+    "aperitivo-italian"
+   ]
+  },
+  {
+   "id": "showcase-arctic-field",
+   "title": "Arctic Field showcase",
+   "category": "Showcase",
+   "file": "showcase/arctic-field.html",
+   "tags": [
+    "arctic-field"
+   ],
+   "description": "Live demo page for the Arctic Field style DNA.",
+   "dnas": [
+    "arctic-field"
+   ]
+  },
+  {
+   "id": "showcase-art-deco-luxe",
+   "title": "Art Deco Luxe showcase",
+   "category": "Showcase",
+   "file": "showcase/art-deco-luxe.html",
+   "tags": [
+    "art-deco-luxe"
+   ],
+   "description": "Live demo page for the Art Deco Luxe style DNA.",
+   "dnas": [
+    "art-deco-luxe"
+   ]
+  },
+  {
+   "id": "showcase-art-nouveau-whiplash",
+   "title": "Art Nouveau Whiplash showcase",
+   "category": "Showcase",
+   "file": "showcase/art-nouveau-whiplash.html",
+   "tags": [
+    "art-nouveau-whiplash"
+   ],
+   "description": "Live demo page for the Art Nouveau Whiplash style DNA.",
+   "dnas": [
+    "art-nouveau-whiplash"
+   ]
+  },
+  {
+   "id": "showcase-bauhaus-primary",
+   "title": "Bauhaus Primary showcase",
+   "category": "Showcase",
+   "file": "showcase/bauhaus-primary.html",
+   "tags": [
+    "bauhaus-primary"
+   ],
+   "description": "Live demo page for the Bauhaus Primary style DNA.",
+   "dnas": [
+    "bauhaus-primary"
+   ]
+  },
+  {
+   "id": "showcase-blueprint-tech",
+   "title": "Blueprint Tech showcase",
+   "category": "Showcase",
+   "file": "showcase/blueprint-tech.html",
+   "tags": [
+    "blueprint-tech"
+   ],
+   "description": "Live demo page for the Blueprint Tech style DNA.",
+   "dnas": [
+    "blueprint-tech"
+   ]
+  },
+  {
+   "id": "showcase-botanical-lab",
+   "title": "Botanical Lab showcase",
+   "category": "Showcase",
+   "file": "showcase/botanical-lab.html",
+   "tags": [
+    "botanical-lab"
+   ],
+   "description": "Live demo page for the Botanical Lab style DNA.",
+   "dnas": [
+    "botanical-lab"
+   ]
+  },
+  {
+   "id": "showcase-concrete-poem",
+   "title": "Concrete Poem showcase",
+   "category": "Showcase",
+   "file": "showcase/concrete-poem.html",
+   "tags": [
+    "concrete-poem"
+   ],
+   "description": "Live demo page for the Concrete Poem style DNA.",
+   "dnas": [
+    "concrete-poem"
+   ]
+  },
+  {
+   "id": "showcase-constructivist-red",
+   "title": "Constructivist Red showcase",
+   "category": "Showcase",
+   "file": "showcase/constructivist-red.html",
+   "tags": [
+    "constructivist-red"
+   ],
+   "description": "Live demo page for the Constructivist Red style DNA.",
+   "dnas": [
+    "constructivist-red"
+   ]
+  },
+  {
+   "id": "showcase-cottage-warm",
+   "title": "Cottage Warm showcase",
+   "category": "Showcase",
+   "file": "showcase/cottage-warm.html",
+   "tags": [
+    "cottage-warm"
+   ],
+   "description": "Live demo page for the Cottage Warm style DNA.",
+   "dnas": [
+    "cottage-warm"
+   ]
+  },
+  {
+   "id": "showcase-cyberpunk-noir",
+   "title": "Cyberpunk Noir showcase",
+   "category": "Showcase",
+   "file": "showcase/cyberpunk-noir.html",
+   "tags": [
+    "cyberpunk-noir"
+   ],
+   "description": "Live demo page for the Cyberpunk Noir style DNA.",
+   "dnas": [
+    "cyberpunk-noir"
+   ]
+  },
+  {
+   "id": "showcase-dark-luxe",
+   "title": "Dark Luxe showcase",
+   "category": "Showcase",
+   "file": "showcase/dark-luxe.html",
+   "tags": [
+    "dark-luxe"
+   ],
+   "description": "Live demo page for the Dark Luxe style DNA.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "showcase-de-stijl-grid",
+   "title": "De Stijl Grid showcase",
+   "category": "Showcase",
+   "file": "showcase/de-stijl-grid.html",
+   "tags": [
+    "de-stijl-grid"
+   ],
+   "description": "Live demo page for the De Stijl Grid style DNA.",
+   "dnas": [
+    "de-stijl-grid"
+   ]
+  },
+  {
+   "id": "showcase-desert-modern",
+   "title": "Desert Modern showcase",
+   "category": "Showcase",
+   "file": "showcase/desert-modern.html",
+   "tags": [
+    "desert-modern"
+   ],
+   "description": "Live demo page for the Desert Modern style DNA.",
+   "dnas": [
+    "desert-modern"
+   ]
+  },
+  {
+   "id": "showcase-docs-solar",
+   "title": "Docs Solar showcase",
+   "category": "Showcase",
+   "file": "showcase/docs-solar.html",
+   "tags": [
+    "docs-solar"
+   ],
+   "description": "Live demo page for the Docs Solar style DNA.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "showcase-editorial-serif",
+   "title": "Editorial Serif showcase",
+   "category": "Showcase",
+   "file": "showcase/editorial-serif.html",
+   "tags": [
+    "editorial-serif"
+   ],
+   "description": "Live demo page for the Editorial Serif style DNA.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "showcase-glass-calm",
+   "title": "Glass Calm showcase",
+   "category": "Showcase",
+   "file": "showcase/glass-calm.html",
+   "tags": [
+    "glass-calm"
+   ],
+   "description": "Live demo page for the Glass Calm style DNA.",
+   "dnas": [
+    "glass-calm"
+   ]
+  },
+  {
+   "id": "showcase-gothic-editorial",
+   "title": "Gothic Editorial showcase",
+   "category": "Showcase",
+   "file": "showcase/gothic-editorial.html",
+   "tags": [
+    "gothic-editorial"
+   ],
+   "description": "Live demo page for the Gothic Editorial style DNA.",
+   "dnas": [
+    "gothic-editorial"
+   ]
+  },
+  {
+   "id": "showcase-industrial-brutalist",
+   "title": "Industrial Brutalist showcase",
+   "category": "Showcase",
+   "file": "showcase/industrial-brutalist.html",
+   "tags": [
+    "industrial-brutalist"
+   ],
+   "description": "Live demo page for the Industrial Brutalist style DNA.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "showcase-ink-wash-sumi",
+   "title": "Ink-Wash Sumi showcase",
+   "category": "Showcase",
+   "file": "showcase/ink-wash-sumi.html",
+   "tags": [
+    "ink-wash-sumi"
+   ],
+   "description": "Live demo page for the Ink-Wash Sumi style DNA.",
+   "dnas": [
+    "ink-wash-sumi"
+   ]
+  },
+  {
+   "id": "showcase-jazz-blue-note",
+   "title": "Jazz Blue Note showcase",
+   "category": "Showcase",
+   "file": "showcase/jazz-blue-note.html",
+   "tags": [
+    "jazz-blue-note"
+   ],
+   "description": "Live demo page for the Jazz Blue Note style DNA.",
+   "dnas": [
+    "jazz-blue-note"
+   ]
+  },
+  {
+   "id": "showcase-kawaii-pixel",
+   "title": "Kawaii Pixel showcase",
+   "category": "Showcase",
+   "file": "showcase/kawaii-pixel.html",
+   "tags": [
+    "kawaii-pixel"
+   ],
+   "description": "Live demo page for the Kawaii Pixel style DNA.",
+   "dnas": [
+    "kawaii-pixel"
+   ]
+  },
+  {
+   "id": "showcase-laboratory-clean",
+   "title": "Laboratory Clean showcase",
+   "category": "Showcase",
+   "file": "showcase/laboratory-clean.html",
+   "tags": [
+    "laboratory-clean"
+   ],
+   "description": "Live demo page for the Laboratory Clean style DNA.",
+   "dnas": [
+    "laboratory-clean"
+   ]
+  },
+  {
+   "id": "showcase-ma-japanese",
+   "title": "Ma (Japanese Minimal) showcase",
+   "category": "Showcase",
+   "file": "showcase/ma-japanese.html",
+   "tags": [
+    "ma-japanese"
+   ],
+   "description": "Live demo page for the Ma (Japanese Minimal) style DNA.",
+   "dnas": [
+    "ma-japanese"
+   ]
+  },
+  {
+   "id": "showcase-memphis-milano",
+   "title": "Memphis Milano showcase",
+   "category": "Showcase",
+   "file": "showcase/memphis-milano.html",
+   "tags": [
+    "memphis-milano"
+   ],
+   "description": "Live demo page for the Memphis Milano style DNA.",
+   "dnas": [
+    "memphis-milano"
+   ]
+  },
+  {
+   "id": "showcase-midnight-railway",
+   "title": "Midnight Railway showcase",
+   "category": "Showcase",
+   "file": "showcase/midnight-railway.html",
+   "tags": [
+    "midnight-railway"
+   ],
+   "description": "Live demo page for the Midnight Railway style DNA.",
+   "dnas": [
+    "midnight-railway"
+   ]
+  },
+  {
+   "id": "showcase-museum-placard",
+   "title": "Museum Placard showcase",
+   "category": "Showcase",
+   "file": "showcase/museum-placard.html",
+   "tags": [
+    "museum-placard"
+   ],
+   "description": "Live demo page for the Museum Placard style DNA.",
+   "dnas": [
+    "museum-placard"
+   ]
+  },
+  {
+   "id": "showcase-neo-brutalist-pop",
+   "title": "Neo-Brutalist Pop showcase",
+   "category": "Showcase",
+   "file": "showcase/neo-brutalist-pop.html",
+   "tags": [
+    "neo-brutalist-pop"
+   ],
+   "description": "Live demo page for the Neo-Brutalist Pop style DNA.",
+   "dnas": [
+    "neo-brutalist-pop"
+   ]
+  },
+  {
+   "id": "showcase-nordic-noir",
+   "title": "Nordic Noir showcase",
+   "category": "Showcase",
+   "file": "showcase/nordic-noir.html",
+   "tags": [
+    "nordic-noir"
+   ],
+   "description": "Live demo page for the Nordic Noir style DNA.",
+   "dnas": [
+    "nordic-noir"
+   ]
+  },
+  {
+   "id": "showcase-parisian-chic",
+   "title": "Parisian Chic showcase",
+   "category": "Showcase",
+   "file": "showcase/parisian-chic.html",
+   "tags": [
+    "parisian-chic"
+   ],
+   "description": "Live demo page for the Parisian Chic style DNA.",
+   "dnas": [
+    "parisian-chic"
+   ]
+  },
+  {
+   "id": "showcase-pixel-arcade",
+   "title": "Pixel Arcade showcase",
+   "category": "Showcase",
+   "file": "showcase/pixel-arcade.html",
+   "tags": [
+    "pixel-arcade"
+   ],
+   "description": "Live demo page for the Pixel Arcade style DNA.",
+   "dnas": [
+    "pixel-arcade"
+   ]
+  },
+  {
+   "id": "showcase-pop-art-halftone",
+   "title": "Pop-Art Halftone showcase",
+   "category": "Showcase",
+   "file": "showcase/pop-art-halftone.html",
+   "tags": [
+    "pop-art-halftone"
+   ],
+   "description": "Live demo page for the Pop-Art Halftone style DNA.",
+   "dnas": [
+    "pop-art-halftone"
+   ]
+  },
+  {
+   "id": "showcase-retro-terminal",
+   "title": "Retro Terminal showcase",
+   "category": "Showcase",
+   "file": "showcase/retro-terminal.html",
+   "tags": [
+    "retro-terminal"
+   ],
+   "description": "Live demo page for the Retro Terminal style DNA.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "showcase-risograph-grain",
+   "title": "Risograph Grain showcase",
+   "category": "Showcase",
+   "file": "showcase/risograph-grain.html",
+   "tags": [
+    "risograph-grain"
+   ],
+   "description": "Live demo page for the Risograph Grain style DNA.",
+   "dnas": [
+    "risograph-grain"
+   ]
+  },
+  {
+   "id": "showcase-sahara-ochre",
+   "title": "Sahara Ochre showcase",
+   "category": "Showcase",
+   "file": "showcase/sahara-ochre.html",
+   "tags": [
+    "sahara-ochre"
+   ],
+   "description": "Live demo page for the Sahara Ochre style DNA.",
+   "dnas": [
+    "sahara-ochre"
+   ]
+  },
+  {
+   "id": "showcase-scandi-calm",
+   "title": "Scandi Calm showcase",
+   "category": "Showcase",
+   "file": "showcase/scandi-calm.html",
+   "tags": [
+    "scandi-calm"
+   ],
+   "description": "Live demo page for the Scandi Calm style DNA.",
+   "dnas": [
+    "scandi-calm"
+   ]
+  },
+  {
+   "id": "showcase-soft-minimal",
+   "title": "Soft Minimal showcase",
+   "category": "Showcase",
+   "file": "showcase/soft-minimal.html",
+   "tags": [
+    "soft-minimal"
+   ],
+   "description": "Live demo page for the Soft Minimal style DNA.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "showcase-surf-shack",
+   "title": "Surf Shack showcase",
+   "category": "Showcase",
+   "file": "showcase/surf-shack.html",
+   "tags": [
+    "surf-shack"
+   ],
+   "description": "Live demo page for the Surf Shack style DNA.",
+   "dnas": [
+    "surf-shack"
+   ]
+  },
+  {
+   "id": "showcase-swiss-poster",
+   "title": "Swiss Poster showcase",
+   "category": "Showcase",
+   "file": "showcase/swiss-poster.html",
+   "tags": [
+    "swiss-poster"
+   ],
+   "description": "Live demo page for the Swiss Poster style DNA.",
+   "dnas": [
+    "swiss-poster"
+   ]
+  },
+  {
+   "id": "showcase-swiss-rational",
+   "title": "Swiss Rational showcase",
+   "category": "Showcase",
+   "file": "showcase/swiss-rational.html",
+   "tags": [
+    "swiss-rational"
+   ],
+   "description": "Live demo page for the Swiss Rational style DNA.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "showcase-tokyo-neon",
+   "title": "Tokyo Neon showcase",
+   "category": "Showcase",
+   "file": "showcase/tokyo-neon.html",
+   "tags": [
+    "tokyo-neon"
+   ],
+   "description": "Live demo page for the Tokyo Neon style DNA.",
+   "dnas": [
+    "tokyo-neon"
+   ]
+  },
+  {
+   "id": "showcase-transit-swiss",
+   "title": "Transit Swiss showcase",
+   "category": "Showcase",
+   "file": "showcase/transit-swiss.html",
+   "tags": [
+    "transit-swiss"
+   ],
+   "description": "Live demo page for the Transit Swiss style DNA.",
+   "dnas": [
+    "transit-swiss"
+   ]
+  },
+  {
+   "id": "showcase-tropical-brutalism",
+   "title": "Tropical Brutalism showcase",
+   "category": "Showcase",
+   "file": "showcase/tropical-brutalism.html",
+   "tags": [
+    "tropical-brutalism"
+   ],
+   "description": "Live demo page for the Tropical Brutalism style DNA.",
+   "dnas": [
+    "tropical-brutalism"
+   ]
+  },
+  {
+   "id": "showcase-vaporwave-sunset",
+   "title": "Vaporwave Sunset showcase",
+   "category": "Showcase",
+   "file": "showcase/vaporwave-sunset.html",
+   "tags": [
+    "vaporwave-sunset"
+   ],
+   "description": "Live demo page for the Vaporwave Sunset style DNA.",
+   "dnas": [
+    "vaporwave-sunset"
+   ]
+  },
+  {
+   "id": "showcase-vinyl-crate",
+   "title": "Vinyl Crate showcase",
+   "category": "Showcase",
+   "file": "showcase/vinyl-crate.html",
+   "tags": [
+    "vinyl-crate"
+   ],
+   "description": "Live demo page for the Vinyl Crate style DNA.",
+   "dnas": [
+    "vinyl-crate"
+   ]
+  },
+  {
+   "id": "showcase-y2k-chrome",
+   "title": "Y2K Chrome showcase",
+   "category": "Showcase",
+   "file": "showcase/y2k-chrome.html",
+   "tags": [
+    "y2k-chrome"
+   ],
+   "description": "Live demo page for the Y2K Chrome style DNA.",
+   "dnas": [
+    "y2k-chrome"
+   ]
+  }
+ ]
+}
