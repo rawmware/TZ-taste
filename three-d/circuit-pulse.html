@@ -1,0 +1,174 @@
+<!--tz-meta {"id":"circuit-pulse","title":"Circuit Traces","category":"3D","file":"three-d/circuit-pulse.html","tags":["threejs","electric"],"description":"Light pulses travel procedural circuit traces across a dark amber PCB.","dnas":["retro-terminal"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Circuit Traces · TZ-taste</title>
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#080604}
+#app{position:fixed;inset:0}
+.cap{position:fixed;left:18px;bottom:16px;color:#f0d9a8;font:12px/1.6 ui-sans-serif,system-ui,sans-serif;letter-spacing:.05em;pointer-events:none;user-select:none;opacity:.85;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.cap b{font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.cap span{opacity:.6}
+#nogl{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;color:#f0d9a8;font:14px system-ui;background:#080604;text-align:center;padding:2rem}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="cap"><b>Circuit Traces</b><br><span>drag to orbit · scroll to zoom</span></div>
+<div id="nogl" hidden><p>This scene needs WebGL.<br>Please try a browser with WebGL enabled.</p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+let renderer;
+try{
+  renderer = new THREE.WebGLRenderer({antialias:true});
+  if(!renderer.getContext()) throw new Error('no ctx');
+}catch(err){
+  document.getElementById('nogl').hidden = false;
+  throw err;
+}
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.setSize(innerWidth,innerHeight);
+document.getElementById('app').appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x080604);
+scene.fog = new THREE.FogExp2(0x080604, 0.007);
+
+const camera = new THREE.PerspectiveCamera(55, innerWidth/innerHeight, 0.1, 300);
+camera.position.set(0, 32, 26);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.target.set(0, 0, 0);
+controls.enableDamping = true;
+controls.maxPolarAngle = Math.PI * 0.42;
+
+function radialTex(stops, size){
+  size = size || 128;
+  const c = document.createElement('canvas'); c.width = c.height = size;
+  const g = c.getContext('2d');
+  const gr = g.createRadialGradient(size/2,size/2,0,size/2,size/2,size/2);
+  for(const s of stops) gr.addColorStop(s[0], s[1]);
+  g.fillStyle = gr; g.fillRect(0,0,size,size);
+  return new THREE.CanvasTexture(c);
+}
+const softTex = radialTex([[0,'rgba(255,255,255,1)'],[0.35,'rgba(255,255,255,.6)'],[1,'rgba(255,255,255,0)']]);
+
+function boardTex(){
+  const c = document.createElement('canvas'); c.width = c.height = 512;
+  const g = c.getContext('2d');
+  g.fillStyle = '#0a0705'; g.fillRect(0,0,512,512);
+  g.strokeStyle = 'rgba(232,163,61,0.09)'; g.lineWidth = 1;
+  for(let i=0;i<=512;i+=32){
+    g.beginPath(); g.moveTo(i+0.5,0); g.lineTo(i+0.5,512); g.stroke();
+    g.beginPath(); g.moveTo(0,i+0.5); g.lineTo(512,i+0.5); g.stroke();
+  }
+  g.fillStyle = 'rgba(232,163,61,0.10)';
+  for(let x=0;x<=512;x+=32) for(let y=0;y<=512;y+=32){ g.beginPath(); g.arc(x,y,1.6,0,7); g.fill(); }
+  return new THREE.CanvasTexture(c);
+}
+const board = new THREE.Mesh(new THREE.PlaneGeometry(64,64), new THREE.MeshBasicMaterial({map:boardTex()}));
+board.rotation.x = -Math.PI/2;
+scene.add(board);
+
+const G = 2, LIM = 14;
+const traces = [];
+function genTrace(){
+  let x = Math.round(Math.random()*26-13), z = Math.round(Math.random()*26-13);
+  const dirs = [[1,0],[-1,0],[0,1],[0,-1]];
+  let d = dirs[(Math.random()*4)|0];
+  const pts = [new THREE.Vector3(x*G, 0.06, z*G)];
+  const steps = 3 + ((Math.random()*5)|0);
+  for(let s=0;s<steps;s++){
+    const len = 1 + ((Math.random()*3)|0);
+    x = Math.max(-LIM, Math.min(LIM, x + d[0]*len));
+    z = Math.max(-LIM, Math.min(LIM, z + d[1]*len));
+    const p = new THREE.Vector3(x*G, 0.06, z*G);
+    if(p.distanceTo(pts[pts.length-1]) > 0.01) pts.push(p);
+    const turn = Math.random() < 0.5 ? 1 : -1;
+    d = [-d[1]*turn, d[0]*turn];
+  }
+  if(pts.length < 2) return;
+  const cum = [0];
+  for(let i=1;i<pts.length;i++) cum.push(cum[i-1] + pts[i].distanceTo(pts[i-1]));
+  traces.push({pts:pts, cum:cum, len:cum[cum.length-1]});
+}
+for(let i=0;i<26;i++) genTrace();
+
+const segPos = [];
+for(const tr of traces){
+  for(let i=1;i<tr.pts.length;i++){
+    const a = tr.pts[i-1], b = tr.pts[i];
+    segPos.push(a.x,a.y,a.z, b.x,b.y,b.z);
+  }
+}
+const lineGeo = new THREE.BufferGeometry();
+lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(segPos,3));
+scene.add(new THREE.LineSegments(lineGeo, new THREE.LineBasicMaterial({color:0xe8a33d, transparent:true, opacity:0.7})));
+
+for(const tr of traces){
+  for(const p of [tr.pts[0], tr.pts[tr.pts.length-1]]){
+    const pad = new THREE.Sprite(new THREE.SpriteMaterial({map:softTex, color:0xffc46b, transparent:true, opacity:0.85, blending:THREE.AdditiveBlending, depthWrite:false}));
+    pad.position.set(p.x, 0.15, p.z);
+    pad.scale.set(1.0,1.0,1);
+    scene.add(pad);
+  }
+}
+
+for(let i=0;i<3;i++){
+  const w = 4 + Math.random()*4, h = 3 + Math.random()*3;
+  const cx = (Math.random()*2-1)*18, cz = (Math.random()*2-1)*18;
+  const chip = new THREE.Mesh(new THREE.BoxGeometry(w, 0.35, h), new THREE.MeshBasicMaterial({color:0x141009}));
+  chip.position.set(cx, 0.17, cz);
+  scene.add(chip);
+  const eg = new THREE.BufferGeometry().setFromPoints([
+    new THREE.Vector3(cx-w/2, 0.36, cz-h/2), new THREE.Vector3(cx+w/2, 0.36, cz-h/2),
+    new THREE.Vector3(cx+w/2, 0.36, cz+h/2), new THREE.Vector3(cx-w/2, 0.36, cz+h/2)
+  ]);
+  scene.add(new THREE.LineLoop(eg, new THREE.LineBasicMaterial({color:0xe8a33d, transparent:true, opacity:0.5})));
+}
+
+const pulses = [];
+for(let i=0;i<34;i++){
+  const tr = traces[(Math.random()*traces.length)|0];
+  const sp = new THREE.Sprite(new THREE.SpriteMaterial({map:softTex, color:0xffe9bb, transparent:true, opacity:0.95, blending:THREE.AdditiveBlending, depthWrite:false}));
+  sp.scale.set(1.8,1.8,1);
+  scene.add(sp);
+  pulses.push({sp:sp, tr:tr, d:Math.random()*tr.len, speed:6 + Math.random()*10});
+}
+function placePulse(p){
+  const pts = p.tr.pts, cum = p.tr.cum, len = p.tr.len;
+  const d = p.d % len;
+  let i = 1;
+  while(i < cum.length-1 && cum[i] < d) i++;
+  const segLen = (cum[i]-cum[i-1]) || 1;
+  const f = (d-cum[i-1]) / segLen;
+  p.sp.position.lerpVectors(pts[i-1], pts[i], f);
+  p.sp.position.y = 0.15;
+}
+
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const clock = new THREE.Clock();
+function tick(){
+  const dt = Math.min(clock.getDelta(), 0.05);
+  for(const p of pulses){
+    p.d += p.speed * dt;
+    placePulse(p);
+  }
+  controls.update();
+  renderer.render(scene, camera);
+}
+for(const p of pulses) placePulse(p);
+if(reduce){ tick(); } else { renderer.setAnimationLoop(tick); }
+
+addEventListener('resize', ()=>{
+  camera.aspect = innerWidth/innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+</script>
+</body>
+</html>
