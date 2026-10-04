@@ -1,0 +1,51 @@
+<!--tz-meta {"id":"stats-terminal","title":"Mono stats","category":"Stats","file":"patterns/stats-terminal.html","tags":["cli","metrics"],"description":"Terminal-style stat readout with a blinking block cursor.","dnas":["retro-terminal"]} -->
+<section class="tz-termstats">
+  <p class="tz-ts-line"><span class="tz-ts-prompt">$</span> tizi stats --since 2026-01-01</p>
+  <p class="tz-ts-line"><span class="tz-ts-k">requests</span> 1,204,881</p>
+  <p class="tz-ts-line"><span class="tz-ts-k">tokens</span> 88.4M</p>
+  <p class="tz-ts-line"><span class="tz-ts-k">p95 latency</span> 412ms</p>
+  <p class="tz-ts-line"><span class="tz-ts-k">errors</span> 0.02%</p>
+  <p class="tz-ts-line tz-ts-hi"><span class="tz-ts-k">cost</span> $41.17</p>
+  <p class="tz-ts-line"><span class="tz-ts-prompt">$</span> <span class="tz-ts-cursor" aria-hidden="true"></span></p>
+</section>
+<style>
+.tz-termstats{
+  background:#0a0f0a;
+  color:#c9e8cf;
+  font:14px/1.9 ui-monospace,Menlo,monospace;
+  padding:clamp(28px,4vw,48px) clamp(20px,4vw,44px);
+  border:1px solid #1d2b1d;
+  max-width:560px;
+}
+.tz-ts-line{
+  margin:0;
+  font-variant-numeric:tabular-nums;
+  white-space:pre-wrap;
+}
+.tz-ts-prompt{
+  color:#33ff66;
+  margin-right:8px;
+}
+.tz-ts-k{
+  display:inline-block;
+  min-width:12ch;
+  color:#7fb98f;
+}
+.tz-ts-hi{
+  color:#33ff66;
+}
+.tz-ts-cursor{
+  display:inline-block;
+  width:9px;
+  height:17px;
+  background:#33ff66;
+  vertical-align:-3px;
+  animation:tz-blink 1.1s steps(2) infinite;
+}
+@keyframes tz-blink{
+  50%{opacity:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-ts-cursor{animation:none}
+}
+</style>
