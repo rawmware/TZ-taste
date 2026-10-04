@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-ticket-stub",
+  "title": "Ticket Stub design tokens",
+  "category": "Tokens",
+  "file": "tokens/ticket-stub.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "ticket-stub"
+  ],
+  "description": "W3C-format design tokens for the Ticket Stub DNA.",
+  "dnas": [
+   "ticket-stub"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#f1ece1",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#241f18",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#b23a2e",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#8a7d66",
+   "type": "color"
+  },
+  "line": {
+   "value": "#241f182b",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#e3d9c4",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Oswald",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Public Sans",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "DM Mono",
+   "type": "fontFamily"
+  }
+ }
+}
