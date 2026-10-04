@@ -1,0 +1,125 @@
+@*tz-meta {"id":"cs-login","title":"Railway-ticket login (Razor)","category":"C#","file":"csharp/Login.cshtml","tags":["csharp","razor","login"],"description":"Login for Nightline sleeper rail — the form is a punched railway ticket with dashed perforations, a rotated ADMIT ONE stub, and brass accents. Your berth is waiting.","dnas":["midnight-railway"]} *@
+@page
+@{
+    ViewData["Title"] = "Nightline — sign in";
+    var bg = "#101a2e";
+    var ink = "#e9e2d0";
+    var accent = "#c9a227";
+    var muted = "#7d8698";
+    var line = "#2a3a5c";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>@ViewData["Title"]</title>
+<style>
+  :root{
+    --bg:@bg; --ink:@ink; --accent:@accent; --muted:@muted; --line:@line;
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);
+    font-family:'DM Sans','Segoe UI',system-ui,sans-serif;line-height:1.55;
+    min-height:100dvh;display:flex;align-items:center;justify-content:center;
+    padding:clamp(32px,6vw,64px) 20px}
+  .tz-platform{width:min(860px,100%)}
+  .tz-head{text-align:center;margin-bottom:clamp(32px,5vw,54px)}
+  .tz-head .tz-co{font-family:'Space Mono',ui-monospace,monospace;font-size:11px;
+    letter-spacing:.34em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+  h1{font-family:'DM Serif Display',Georgia,serif;font-weight:400;
+    font-size:clamp(32px,5.4vw,58px);letter-spacing:-.01em;margin-bottom:10px}
+  h1 em{font-style:italic;color:var(--accent)}
+  .tz-head p{color:var(--muted);font-size:16px}
+  /* The distinctive choice: the login form IS a punched railway ticket */
+  .tz-ticket{display:grid;grid-template-columns:minmax(0,1fr) 150px;
+    background:var(--ink);color:var(--bg);border-radius:6px;position:relative;
+    box-shadow:0 30px 80px -30px #101a2eaa}
+  .tz-main{padding:clamp(30px,5vw,50px) clamp(26px,5vw,52px)}
+  .tz-main .tz-row1{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    font-family:'Space Mono',ui-monospace,monospace;font-size:11px;
+    letter-spacing:.2em;text-transform:uppercase;color:#101a2e;margin-bottom:30px}
+  .tz-main .tz-row1 b{color:var(--accent)}
+  .tz-field{margin-bottom:22px}
+  .tz-field label{display:block;font-family:'Space Mono',ui-monospace,monospace;
+    font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#101a2e;margin-bottom:8px}
+  .tz-field input{width:100%;font:inherit;font-size:17px;color:var(--bg);
+    background:transparent;border:0;border-bottom:2px solid #101a2e55;
+    padding:10px 2px;outline:none;transition:border-color .25s var(--ease)}
+  .tz-field input:focus{border-color:var(--accent)}
+  .tz-btn{width:100%;margin-top:10px;background:var(--accent);color:var(--bg);
+    font-family:'Space Mono',ui-monospace,monospace;font-size:13px;font-weight:700;
+    letter-spacing:.22em;text-transform:uppercase;border:0;padding:19px;cursor:pointer;
+    transition:transform .3s var(--ease),background .3s var(--ease)}
+  .tz-btn:hover{transform:translateY(-2px);background:var(--bg);color:var(--accent)}
+  .tz-forgot{display:block;text-align:center;margin-top:18px;font-size:14px;
+    color:#101a2e;text-decoration:none;border-bottom:1px solid var(--accent);
+    width:max-content;margin-left:auto;margin-right:auto;padding-bottom:2px}
+  /* Perforation between ticket body and stub */
+  .tz-stub{border-left:2px dashed #101a2e66;display:flex;align-items:center;
+    justify-content:center;position:relative;overflow:hidden}
+  .tz-stub span{writing-mode:vertical-rl;font-family:'Space Mono',ui-monospace,monospace;
+    font-size:12px;letter-spacing:.4em;text-transform:uppercase;color:#101a2e;
+    transform:rotate(180deg)}
+  /* Punch holes: circles of the page bg, straddling the perforation */
+  .tz-hole{position:absolute;left:calc(100% - 150px);width:34px;height:34px;
+    background:var(--bg);border-radius:50%;transform:translateX(-50%);z-index:2}
+  .tz-hole.top{top:-17px}.tz-hole.bottom{bottom:-17px}
+  .tz-foot{margin-top:30px;text-align:center;color:var(--muted);
+    font-family:'Space Mono',ui-monospace,monospace;font-size:11px;
+    letter-spacing:.16em;text-transform:uppercase}
+  .tz-foot a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent)}
+  .tz-rise{opacity:0;transform:translateY(24px);animation:tz-rise .9s var(--ease) forwards}
+  .tz-rise.d1{animation-delay:.12s}
+  @@keyframes tz-rise{to{opacity:1;transform:none}}
+  @@media (max-width:620px){
+    .tz-ticket{grid-template-columns:1fr}
+    .tz-stub{border-left:0;border-top:2px dashed #101a2e66;padding:20px}
+    .tz-stub span{writing-mode:horizontal-tb;transform:none}
+    .tz-hole{display:none}
+  }
+  @@media (prefers-reduced-motion:reduce){
+    .tz-rise{opacity:1;transform:none;animation:none}
+    *{transition:none !important}
+  }
+</style>
+</head>
+<body>
+  <div class="tz-platform">
+    <div class="tz-head tz-rise">
+      <p class="tz-co">Nightline · Sleeper service</p>
+      <h1>Your berth is <em>waiting.</em></h1>
+      <p>Night service departs 22:40 — Platform 3. Sign in to find your car.</p>
+    </div>
+
+    <div class="tz-ticket tz-rise d1" role="form" aria-label="Sign in">
+      <div class="tz-hole top" aria-hidden="true"></div>
+      <div class="tz-hole bottom" aria-hidden="true"></div>
+      <div class="tz-main">
+        <div class="tz-row1">
+          <span>Passenger login</span>
+          <span>№ <b>NL-2261</b></span>
+        </div>
+        <form method="post" action="#signin">
+          <div class="tz-field">
+            <label for="who">Ticket number or email</label>
+            <input id="who" name="who" type="text" placeholder="ada@@example.com"
+              autocomplete="username" required />
+          </div>
+          <div class="tz-field">
+            <label for="pw">Password</label>
+            <input id="pw" name="pw" type="password" placeholder="••••••••••"
+              autocomplete="current-password" required />
+          </div>
+          <button class="tz-btn" type="submit">Board the train</button>
+          <a class="tz-forgot" href="#forgot">Forgot your ticket number?</a>
+        </form>
+      </div>
+      <div class="tz-stub" aria-hidden="true"><span>Admit one · Nightline</span></div>
+    </div>
+
+    <p class="tz-foot">New to the night service? <a href="#join">Claim a berth</a></p>
+  </div>
+</body>
+</html>
