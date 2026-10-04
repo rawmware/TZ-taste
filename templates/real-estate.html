@@ -1,0 +1,400 @@
+<!--tz-meta {"id":"real-estate","title":"Solstice & Stone — Desert Modern Brokerage","category":"Template","file":"templates/real-estate.html","tags":["real-estate","property"],"description":"Boutique desert-modern homes brokerage with editorial listings, desert-modern DNA.","dnas":["desert-modern"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solstice &amp; Stone — Desert modern homes, Palm Springs</title>
+<meta name="description" content="A boutique brokerage for desert modern homes in Palm Springs and the Coachella Valley. Twelve listings, one standard: light.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Outfit:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* DNA: desert-modern — Palm Springs mid-century: sand paper, terracotta sun, strict horizontals */
+:root{
+  --tz-bg:#f0e8d9; --tz-surface:#e7dac1; --tz-ink:#2b241b; --tz-muted:#6f6047;
+  --tz-accent:#b34a2b; --tz-line:rgba(43,36,27,.22);
+  --tz-display:'Fraunces',serif; --tz-body:'Outfit',sans-serif; --tz-mono:'Space Mono',monospace;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:var(--tz-body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+::selection{background:var(--tz-accent);color:#fff}
+a{color:inherit}
+.tz-wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+.tz-mono{font-family:var(--tz-mono)}
+.tz-nav{display:flex;justify-content:space-between;align-items:center;padding:24px 0}
+.tz-brand{font-family:var(--tz-display);font-weight:700;font-size:22px;text-decoration:none;letter-spacing:-.01em}
+.tz-brand em{font-style:normal;color:var(--tz-accent)}
+.tz-navlinks{display:flex;gap:30px;font-family:var(--tz-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.tz-navlinks a{text-decoration:none;color:var(--tz-muted);transition:color .25s}
+.tz-navlinks a:hover{color:var(--tz-ink)}
+.tz-btn{display:inline-block;font-family:var(--tz-mono);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;background:var(--tz-ink);color:var(--tz-bg);padding:16px 30px;transition:transform .25s var(--tz-ease),background .25s}
+.tz-btn:hover{transform:translateY(-2px);background:var(--tz-accent)}
+/* hero: horizon composition — type stacked left, sun disk right */
+.tz-hero{position:relative;overflow:hidden;border-top:1px solid var(--tz-line);border-bottom:1px solid var(--tz-line)}
+.tz-hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:end;padding:110px 0 90px;position:relative;z-index:2}
+.tz-kicker{font-family:var(--tz-mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--tz-accent);margin-bottom:24px;display:block}
+.tz-hero h1{font-family:var(--tz-display);font-weight:600;font-size:clamp(54px,7vw,104px);line-height:1.02;letter-spacing:-.02em}
+.tz-hero h1 i{font-style:italic;color:var(--tz-accent)}
+.tz-hero p{max-width:44ch;color:var(--tz-muted);font-size:19px;margin:28px 0 36px}
+.tz-sun{position:absolute;right:-60px;top:-40px;width:340px;height:340px;border-radius:50%;background:var(--tz-accent);opacity:.16;z-index:1}
+.tz-horizon{position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--tz-line);z-index:1}
+.tz-hero-stats{display:flex;gap:48px;margin-top:52px}
+.tz-hero-stats div b{display:block;font-family:var(--tz-display);font-size:38px;font-weight:600}
+.tz-hero-stats div span{font-family:var(--tz-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tz-muted)}
+/* featured listing panel */
+.tz-featured{background:var(--tz-ink);color:var(--tz-bg);padding:28px;margin-top:56px;display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center}
+.tz-featured small{font-family:var(--tz-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--tz-accent);display:block;margin-bottom:8px}
+.tz-featured h3{font-family:var(--tz-display);font-size:26px;font-weight:600}
+.tz-featured p{font-size:14px;color:#c9bfa9}
+.tz-featured .tz-price{font-family:var(--tz-display);font-size:34px;font-weight:700;white-space:nowrap}
+/* sections */
+.tz-section{padding:110px 0}
+.tz-section--tight{padding:80px 0}
+.tz-sec-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:60px;flex-wrap:wrap}
+.tz-sec-head h2{font-family:var(--tz-display);font-weight:600;font-size:clamp(36px,4.4vw,60px);letter-spacing:-.02em;line-height:1.05}
+.tz-sec-head p{color:var(--tz-muted);max-width:38ch;font-size:17px}
+.tz-sec-head a.tz-link{font-family:var(--tz-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border-bottom:2px solid var(--tz-accent);padding-bottom:4px;white-space:nowrap}
+/* listings: editorial, varied — one wide, two offset */
+.tz-listings{display:grid;grid-template-columns:1fr 1fr;gap:48px 40px}
+.tz-listing{text-decoration:none;display:block}
+.tz-listing--wide{grid-column:1 / -1;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;background:var(--tz-surface);padding:48px;border:1px solid var(--tz-line)}
+.tz-img{position:relative;overflow:hidden;background:#d9cba8;aspect-ratio:16/10}
+.tz-listing--wide .tz-img{aspect-ratio:4/3}
+.tz-img svg{position:absolute;inset:0;width:100%;height:100%}
+/* CSS-drawn desert houses: abstract but evocative */
+.tz-listing:nth-child(odd) .tz-img{transform:rotate(-.6deg)}
+.tz-listing:nth-child(even) .tz-img{transform:rotate(.6deg)}
+.tz-img-cap{position:absolute;left:14px;bottom:12px;font-family:var(--tz-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:rgba(43,36,27,.85);color:#f0e8d9;padding:6px 12px}
+.tz-listing h3{font-family:var(--tz-display);font-size:30px;font-weight:600;margin:22px 0 8px;letter-spacing:-.01em}
+.tz-listing--wide h3{font-size:40px}
+.tz-listing .tz-specs{font-family:var(--tz-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:10px}
+.tz-listing .tz-price-row{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--tz-line);padding-top:14px;margin-top:14px}
+.tz-listing .tz-price{font-family:var(--tz-display);font-size:26px;font-weight:700}
+.tz-listing .tz-arrow{font-family:var(--tz-mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--tz-accent)}
+/* sold ledger */
+.tz-ledger{width:100%;border-collapse:collapse}
+.tz-ledger th{font-family:var(--tz-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--tz-muted);text-align:left;padding:14px 12px;border-bottom:2px solid var(--tz-ink)}
+.tz-ledger td{padding:18px 12px;border-bottom:1px solid var(--tz-line);font-size:16px}
+.tz-ledger td.tz-addr{font-weight:700}
+.tz-ledger td.tz-num{font-family:var(--tz-mono);font-size:14px;text-align:right;white-space:nowrap}
+.tz-ledger tr:hover td{background:rgba(179,74,43,.06)}
+.tz-ledger .tz-over{color:var(--tz-accent);font-weight:700}
+/* broker */
+.tz-broker{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:center}
+.tz-portrait{aspect-ratio:4/5;background:var(--tz-surface);border:1px solid var(--tz-line);display:flex;align-items:center;justify-content:center;transform:rotate(-1.5deg)}
+.tz-portrait span{font-family:var(--tz-display);font-size:120px;color:var(--tz-accent);opacity:.5}
+.tz-broker blockquote{font-family:var(--tz-display);font-size:clamp(26px,3vw,38px);font-style:italic;line-height:1.3;margin-bottom:28px}
+.tz-broker p{color:var(--tz-muted);margin-bottom:18px;max-width:56ch}
+.tz-broker .tz-sig{font-family:var(--tz-mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--tz-ink);margin-top:8px}
+/* cta band */
+.tz-cta{background:var(--tz-accent);color:#fff;padding:96px 0;text-align:left}
+.tz-cta h2{font-family:var(--tz-display);font-size:clamp(38px,5vw,68px);font-weight:600;letter-spacing:-.02em;line-height:1.05;max-width:14ch}
+.tz-cta p{font-size:19px;max-width:52ch;margin:22px 0 34px;color:#ffe9d6}
+.tz-cta .tz-btn{background:#fff;color:var(--tz-accent)}
+.tz-cta .tz-btn:hover{background:var(--tz-ink);color:#fff}
+/* footer */
+.tz-footer{padding:72px 0 36px;border-top:1px solid var(--tz-line)}
+.tz-footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:40px;margin-bottom:56px}
+.tz-footer h4{font-family:var(--tz-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:18px}
+.tz-footer ul{list-style:none}
+.tz-footer li{margin-bottom:10px}
+.tz-footer a{text-decoration:none;font-size:15px}
+.tz-footer a:hover{color:var(--tz-accent)}
+.tz-footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-family:var(--tz-mono);font-size:11px;letter-spacing:.08em;color:var(--tz-muted);border-top:1px solid var(--tz-line);padding-top:28px;text-transform:uppercase}
+.tz-reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--tz-ease),transform .7s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}.tz-reveal{opacity:1;transform:none;transition:none}*{transition:none !important}
+}
+@media(max-width:900px){
+  .tz-hero-inner{grid-template-columns:1fr;padding:72px 0 64px}
+  .tz-sun{width:220px;height:220px}
+  .tz-featured{grid-template-columns:1fr;text-align:left}
+  .tz-listings{grid-template-columns:1fr}
+  .tz-listing--wide{grid-template-columns:1fr;padding:32px}
+  .tz-broker{grid-template-columns:1fr;gap:40px}
+  .tz-navlinks{display:none}
+  .tz-footer-grid{grid-template-columns:1fr 1fr}
+  .tz-ledger .tz-hide-m{display:none}
+}
+@media(max-width:600px){
+  .tz-section{padding:72px 0}
+  .tz-footer-grid{grid-template-columns:1fr}
+  .tz-hero-stats{gap:28px;flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+<!-- DNA: desert-modern · design read: a Palm Springs brokerage page with the calm geometry of a mid-century postcard — sand, sun, horizontals · dials V5/M3/D4 · one weird thing: CSS-drawn abstract desert-house illustrations and a giant low sun bleeding off the hero edge -->
+<header class="tz-wrap">
+  <nav class="tz-nav" aria-label="Main">
+    <a class="tz-brand" href="#">Solstice <em>&amp;</em> Stone</a>
+    <div class="tz-navlinks">
+      <a href="#listings">Listings</a><a href="#sold">Sold</a><a href="#broker">Broker</a><a href="#contact">Contact</a>
+    </div>
+    <a class="tz-btn" href="#contact">Book a tour</a>
+  </nav>
+</header>
+
+<main>
+  <section class="tz-hero">
+    <div class="tz-sun" aria-hidden="true"></div>
+    <div class="tz-horizon" aria-hidden="true"></div>
+    <div class="tz-wrap tz-hero-inner">
+      <div>
+        <span class="tz-kicker">Palm Springs · Coachella Valley · Est. 2011</span>
+        <h1>Own the light <i>before</i> everyone else does.</h1>
+        <p>A boutique brokerage for desert modern homes — post-and-beam, breeze block, and glass walls that open to the San Jacinto view. Twelve listings at a time. We know every one by heart.</p>
+        <a class="tz-btn" href="#listings">See this season's homes</a>
+        <div class="tz-hero-stats">
+          <div><b>$412M</b><span>Sold since 2011</span></div>
+          <div><b>96%</b><span>List-to-sale ratio</span></div>
+          <div><b>21</b><span>Days, median market time</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="tz-featured">
+          <div><small>Featured · New this week</small><h3>Casa Del Sol, Twin Palms</h3><p>1962 post-and-beam · original terrazzo · saltwater pool · mountain view</p></div>
+          <div class="tz-price">$2,450,000</div>
+          <a class="tz-btn" href="#listings" style="background:var(--tz-accent)">Tour it Saturday</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="listings">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <div><span class="tz-kicker">Current listings</span><h2>The season's twelve</h2></div>
+        <p>Every home below has been walked, measured, and photographed by us — no stock, no staging tricks.</p>
+        <a class="tz-link" href="#contact">Get the full book →</a>
+      </div>
+      <div class="tz-listings">
+        <a class="tz-listing tz-listing--wide tz-reveal" href="#contact">
+          <div class="tz-img" role="img" aria-label="Abstract illustration of Casa Del Sol">
+            <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><rect width="400" height="300" fill="#e7dac1"/><circle cx="320" cy="70" r="46" fill="#b34a2b" opacity=".8"/><rect x="0" y="210" width="400" height="90" fill="#d9c69c"/><rect x="60" y="150" width="280" height="70" fill="#f0e8d9" stroke="#2b241b" stroke-width="3"/><rect x="60" y="138" width="280" height="14" fill="#2b241b"/><rect x="90" y="165" width="60" height="55" fill="#9db8b5" stroke="#2b241b" stroke-width="2"/><rect x="160" y="165" width="60" height="55" fill="#9db8b5" stroke="#2b241b" stroke-width="2"/><rect x="230" y="165" width="60" height="55" fill="#9db8b5" stroke="#2b241b" stroke-width="2"/><rect x="20" y="180" width="10" height="40" fill="#3e6b2f"/><circle cx="25" cy="170" r="18" fill="#3e6b2f" opacity=".7"/></svg>
+            <span class="tz-img-cap">Twin Palms · 1962</span>
+          </div>
+          <div>
+            <div class="tz-specs">4 bd · 3 ba · 2,840 sq ft · 0.42 ac</div>
+            <h3>Casa Del Sol</h3>
+            <p style="color:var(--tz-muted)">A landmark Twin Palms post-and-beam with original terrazzo, walls of glass on both long sides, and a saltwater pool aligned to the sunset. The breeze-block courtyard is the best outdoor room in the neighborhood.</p>
+            <div class="tz-price-row"><span class="tz-price">$2,450,000</span><span class="tz-arrow">Tour →</span></div>
+          </div>
+        </a>
+        <a class="tz-listing tz-reveal" href="#contact">
+          <div class="tz-img" role="img" aria-label="Abstract illustration of The Breeze Block House">
+            <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice"><rect width="400" height="250" fill="#ded0ae"/><circle cx="70" cy="60" r="38" fill="#b34a2b" opacity=".75"/><rect x="0" y="180" width="400" height="70" fill="#cdbb92"/><rect x="110" y="110" width="180" height="80" fill="#f0e8d9" stroke="#2b241b" stroke-width="3"/><rect x="110" y="100" width="180" height="12" fill="#2b241b"/><rect x="130" y="125" width="140" height="50" fill="none" stroke="#2b241b" stroke-width="2" stroke-dasharray="8 6"/></svg>
+            <span class="tz-img-cap">Vista Las Palmas · 1968</span>
+          </div>
+          <div class="tz-specs">3 bd · 2 ba · 2,120 sq ft</div>
+          <h3>The Breeze Block House</h3>
+          <div class="tz-price-row"><span class="tz-price">$1,685,000</span><span class="tz-arrow">Tour →</span></div>
+        </a>
+        <a class="tz-listing tz-reveal" href="#contact">
+          <div class="tz-img" role="img" aria-label="Abstract illustration of Saguaro Court">
+            <svg viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice"><rect width="400" height="250" fill="#e2d5b6"/><circle cx="330" cy="55" r="42" fill="#b34a2b" opacity=".7"/><rect x="0" y="185" width="400" height="65" fill="#c9b786"/><rect x="140" y="120" width="120" height="70" fill="#2b241b"/><rect x="140" y="112" width="120" height="10" fill="#b34a2b"/><rect x="155" y="135" width="90" height="40" fill="#f0e8d9"/><rect x="40" y="140" width="12" height="55" fill="#3e6b2f"/><rect x="340" y="130" width="12" height="65" fill="#3e6b2f"/></svg>
+            <span class="tz-img-cap">Old Las Palmas · 1971</span>
+          </div>
+          <div class="tz-specs">5 bd · 4 ba · 3,600 sq ft · guest casita</div>
+          <h3>Saguaro Court</h3>
+          <div class="tz-price-row"><span class="tz-price">$3,150,000</span><span class="tz-arrow">Tour →</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+<style>
+.tz-quotes{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.tz-quote{border-top:3px solid var(--tz-accent);padding-top:28px}
+.tz-quote p{font-family:var(--tz-display);font-size:26px;font-style:italic;line-height:1.4;margin-bottom:18px}
+.tz-quote footer{font-family:var(--tz-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-areas{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:2px solid var(--tz-ink);margin-top:64px}
+.tz-area{padding:32px 28px;border-right:1px solid var(--tz-line);text-decoration:none;display:block;font-family:var(--tz-mono);font-size:13px;letter-spacing:.06em;transition:background .25s}
+.tz-area:last-child{border-right:none}
+.tz-area:hover{background:var(--tz-surface)}
+.tz-area b{display:block;font-size:16px;margin-bottom:6px;font-family:var(--tz-display)}
+.tz-area span{color:var(--tz-muted);font-size:12px}
+@media(max-width:900px){.tz-quotes{grid-template-columns:1fr}.tz-areas{grid-template-columns:1fr 1fr}.tz-area:nth-child(2){border-right:none}.tz-area{border-bottom:1px solid var(--tz-line)}}
+</style>
+<style>
+.tz-why{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+.tz-why h2{font-family:var(--tz-display);font-weight:600;font-size:clamp(36px,4.4vw,58px);line-height:1.05;letter-spacing:-.02em;margin-bottom:22px}
+.tz-why p{color:var(--tz-muted);font-size:18px;margin-bottom:16px;max-width:52ch}
+.tz-why p strong{color:var(--tz-ink)}
+.tz-whyfacts{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--tz-line);border:2px solid var(--tz-line)}
+.tz-whyfacts div{background:var(--tz-bg);padding:32px 28px}
+.tz-whyfacts b{display:block;font-family:var(--tz-display);font-size:34px;font-weight:600;color:var(--tz-accent);margin-bottom:6px}
+.tz-whyfacts span{font-family:var(--tz-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--tz-muted)}
+@media(max-width:900px){.tz-why{grid-template-columns:1fr;gap:40px}}
+</style>
+  <section class="tz-section" id="valley" style="padding-top:0">
+    <div class="tz-wrap tz-why">
+      <div class="tz-reveal">
+        <span class="tz-kicker">Why the desert</span>
+        <h2>Three hundred days of sun, zero days of compromise.</h2>
+        <p><strong>Palm Springs isn't a market — it's a pilgrimage.</strong> Buyers come from Los Angeles, San Francisco, and New York for the same reason the architects did in the 1950s: light you can't get anywhere else, and houses designed to drink it in.</p>
+        <p>Inventory is finite — they aren't making more 1960s post-and-beams. Prices have compounded at 7% annually for a decade. We know, because we've sold through all of it.</p>
+        <p>New to the valley? Start with the <strong>Modernism Week</strong> tours each February — eleven days of open houses that double as a crash course — then call us before the spring rush. The best houses never reach the portals.</p>
+        <blockquote style="font-family:var(--tz-display);font-style:italic;font-size:22px;line-height:1.45;border-left:3px solid var(--tz-accent);padding-left:24px;margin-top:28px">"We came for a long weekend in 2019. June showed us four houses; we bought the second. We've never looked back — except at the mountains, daily."</blockquote>
+        <p class="tz-mono" style="font-size:11px;letter-spacing:.14em;color:var(--tz-muted);margin-top:16px">— DAVID &amp; ELENA R., BUYERS · TWIN PALMS 2019</p>
+        <p class="tz-mono" style="font-size:11px;letter-spacing:.14em;color:var(--tz-muted);margin-top:10px">THINKING OF BUYING? OUR BUYER'S GUIDE TO DESERT MODERN IS FREE — ASK JUNE</p>
+        <p style="color:var(--tz-muted);font-size:16px;margin-top:24px;max-width:52ch">Relocating? We do video tours for out-of-area buyers every week — same golden-hour light, streamed live, with June narrating the breeze blocks.</p>
+        <div style="margin-top:28px"><a class="tz-btn" href="#contact">Talk to June</a></div>
+        <ul style="list-style:none;margin-top:32px">
+          <li style="font-family:var(--tz-mono);font-size:13px;padding:12px 0;border-bottom:1px solid var(--tz-line)"><b style="color:var(--tz-accent)">→</b> Free buyer's guide to desert modern — 24 pages, no fluff</li>
+          <li style="font-family:var(--tz-mono);font-size:13px;padding:12px 0;border-bottom:1px solid var(--tz-line)"><b style="color:var(--tz-accent)">→</b> Weekly video tours for out-of-area buyers</li>
+          <li style="font-family:var(--tz-mono);font-size:13px;padding:12px 0"><b style="color:var(--tz-accent)">→</b> Off-market list: homes before they hit the portals</li>
+          <li style="font-family:var(--tz-mono);font-size:13px;padding:12px 0"><b style="color:var(--tz-accent)">→</b> Modernism Week orientation every February — our treat</li>
+          <li style="font-family:var(--tz-mono);font-size:13px;padding:12px 0"><b style="color:var(--tz-accent)">→</b> Relocation concierge: schools, contractors, the good taco truck</li>
+          <li style="font-family:var(--tz-mono);font-size:13px;padding:12px 0"><b style="color:var(--tz-accent)">→</b> Sold-data reports by neighborhood, quarterly — free</li>
+        </ul>
+      </div>
+      <div class="tz-whyfacts tz-reveal">
+        <div><b>300+</b><span>Days of sun / year</span></div>
+        <div><b>7%</b><span>Avg. annual appreciation</span></div>
+        <div><b>2 hrs</b><span>From Los Angeles</span></div>
+        <div><b>0</b><span>New mid-century tracts, ever</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="words" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <div><span class="tz-kicker">Client words</span><h2>Bought and sold, happily</h2></div>
+      </div>
+      <div class="tz-quotes">
+        <blockquote class="tz-quote tz-reveal"><p>"June found us the house before it was a listing. We'd been outbid three times with another broker. Never again."</p><footer>— Priya &amp; Sam, buyers · Vista Las Palmas</footer></blockquote>
+        <blockquote class="tz-quote tz-reveal"><p>"She told us our asking price was too low and proved it with comps. Sold $210k over in nine days."</p><footer>— The Delacroix family, sellers · Old Las Palmas</footer></blockquote>
+      </div>
+      <div class="tz-areas tz-reveal">
+        <a class="tz-area" href="#listings"><b>Twin Palms</b><span>4 active listings</span></a>
+        <a class="tz-area" href="#listings"><b>Old Las Palmas</b><span>2 active listings</span></a>
+        <a class="tz-area" href="#listings"><b>Vista Las Palmas</b><span>3 active listings</span></a>
+        <a class="tz-area" href="#listings"><b>Deepwell</b><span>3 active listings</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section tz-section--tight" id="sold" style="border-top:1px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <div><span class="tz-kicker">The record</span><h2>Recently sold</h2></div>
+        <p>What desert modern actually trades for, straight from the ledger.</p>
+      </div>
+      <table class="tz-ledger">
+        <thead><tr><th>Address</th><th class="tz-hide-m">Style</th><th class="tz-hide-m">Sold</th><th style="text-align:right">Price</th></tr></thead>
+        <tbody>
+          <tr><td class="tz-addr">1040 Via Miraleste</td><td class="tz-hide-m">Alexander, 1961</td><td class="tz-hide-m tz-mono">Aug 2026</td><td class="tz-num">$1,920,000 <span class="tz-over">+6% over</span></td></tr>
+          <tr><td class="tz-addr">77 Rancho Vista Dr</td><td class="tz-hide-m">Post-and-beam, 1958</td><td class="tz-hide-m tz-mono">Jul 2026</td><td class="tz-num">$2,310,000</td></tr>
+          <tr><td class="tz-addr">515 Camino Norte</td><td class="tz-hide-m">Wexler steel, 1964</td><td class="tz-hide-m tz-mono">Jun 2026</td><td class="tz-num">$2,875,000 <span class="tz-over">+4% over</span></td></tr>
+          <tr><td class="tz-addr">290 S Calle El Segundo</td><td class="tz-hide-m">Ranch, 1973</td><td class="tz-hide-m tz-mono">May 2026</td><td class="tz-num">$1,240,000</td></tr>
+        </tbody>
+      </table>
+      <p class="tz-mono tz-reveal" style="font-size:12px;color:var(--tz-muted);margin-top:24px;letter-spacing:.08em">FULL LEDGER AVAILABLE ON REQUEST · 96% OF 2026 LISTINGS SOLD AT OR ABOVE ASKING</p>
+    </div>
+  </section>
+
+  <section class="tz-section" id="broker">
+    <div class="tz-wrap tz-broker">
+      <div class="tz-portrait tz-reveal" aria-hidden="true"><span>S&amp;S</span></div>
+      <div class="tz-reveal">
+        <span class="tz-kicker">Your broker</span>
+        <blockquote>"I don't sell square footage. I sell the ten minutes at 6 p.m. when the whole house turns gold."</blockquote>
+        <p><strong style="color:var(--tz-ink)">June Calloway</strong> has sold desert modern exclusively for fifteen years. She's walked every tract in the valley, knows which Alexander roofs were replaced in '09, and will talk you out of a house faster than she'll talk you into one.</p>
+        <p>Licensed CA DRE #01488213. Member, Palm Springs Preservation Foundation. Third-generation desert rat.</p>
+        <div class="tz-sig">June Calloway · Principal Broker</div>
+        <div style="margin-top:32px"><a class="tz-btn" href="#contact">Talk to June</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-cta" id="contact">
+    <div class="tz-wrap">
+      <h2>The desert waits for no one.</h2>
+      <p>Good houses here sell in weeks, not months. Tell us what you're looking for — we'll send the three homes worth your Saturday before they hit the portals.</p>
+      <a class="tz-btn" href="mailto:tours@solsticeandstone.com">Get the private list</a>
+    </div>
+  </section>
+</main>
+
+<style>
+.tz-hoods{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border:2px solid var(--tz-ink)}
+.tz-hood{padding:44px 36px;border-right:1px solid var(--tz-line);text-decoration:none;display:block;transition:background .25s}
+.tz-hood:last-child{border-right:none}
+.tz-hood:hover{background:var(--tz-surface)}
+.tz-hood .tz-n{font-family:var(--tz-mono);font-size:11px;letter-spacing:.2em;color:var(--tz-accent);text-transform:uppercase;display:block;margin-bottom:16px}
+.tz-hood h3{font-family:var(--tz-display);font-size:28px;font-weight:600;margin-bottom:12px}
+.tz-hood p{color:var(--tz-muted);font-size:15px;margin-bottom:16px}
+.tz-hood .tz-med{font-family:var(--tz-mono);font-size:13px;color:var(--tz-ink)}
+.tz-sell{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center;background:var(--tz-ink);color:var(--tz-bg);padding:88px 72px}
+.tz-sell h2{font-family:var(--tz-display);font-weight:600;font-size:clamp(36px,4.4vw,58px);line-height:1.05;margin-bottom:20px}
+.tz-sell h2 i{font-style:italic;color:var(--tz-accent)}
+.tz-sell p{color:#c9bfa9;font-size:18px;margin-bottom:16px;max-width:50ch}
+.tz-sell .tz-btn{background:var(--tz-accent);color:#fff}
+.tz-sell blockquote{font-family:var(--tz-display);font-style:italic;font-size:24px;line-height:1.4;border-left:3px solid var(--tz-accent);padding-left:28px}
+.tz-sell blockquote footer{font-family:var(--tz-mono);font-style:normal;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#a89a7e;margin-top:16px}
+@media(max-width:900px){.tz-hoods{grid-template-columns:1fr}.tz-hood{border-right:none;border-bottom:1px solid var(--tz-line)}.tz-hood:last-child{border-bottom:none}.tz-sell{grid-template-columns:1fr;padding:64px 32px;gap:40px}}
+</style>
+  <section class="tz-section" id="neighborhoods" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <div><span class="tz-kicker">Where to look</span><h2>Three neighborhoods, honestly</h2></div>
+        <p>We sell across the valley, but these three are the desert-modern heartland.</p>
+      </div>
+      <div class="tz-hoods tz-reveal">
+        <a class="tz-hood" href="#listings"><span class="tz-n">01 · The classic</span><h3>Twin Palms</h3><p>Alexander tracts with breeze-block walls and mountain views. The highest concentration of preserved post-and-beams anywhere.</p><span class="tz-med">Median: $1.9M</span></a>
+        <a class="tz-hood" href="#listings"><span class="tz-n">02 · The grand</span><h3>Old Las Palmas</h3><p>Estate-scale modernism behind gates — the valley's architectural hall of fame, from Wexler to Frey.</p><span class="tz-med">Median: $3.4M</span></a>
+        <a class="tz-hood" href="#listings"><span class="tz-n">03 · The value</span><h3>Deepwell Estates</h3><p>Quiet streets, bigger lots, and Alexanders at a discount to Twin Palms. The insider's pick for five years running.</p><span class="tz-med">Median: $1.2M</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sell tz-reveal">
+        <div>
+          <span class="tz-kicker">Selling?</span>
+          <h2>Your house deserves <i>better</i> than the portals.</h2>
+          <p>Desert modern sells on story, not square footage. We photograph at golden hour, write the architectural history into the listing, and market to the buyers who already want what you have.</p>
+          <p>Average 6% over asking on architecturally significant homes in 2026.</p>
+          <a class="tz-btn" href="#contact">Get a valuation</a>
+        </div>
+        <blockquote>"June talked us out of listing in August, staged nothing, and still got us $140k over asking. She was right about everything."<footer>— The Hartleys, sold Twin Palms 2026</footer></blockquote>
+      </div>
+    </div>
+  </section>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-footer-grid">
+      <div>
+        <h4>Solstice &amp; Stone</h4>
+        <p style="font-size:15px;color:var(--tz-muted);max-width:32ch">Boutique desert-modern brokerage. 400 S Palm Canyon Dr, Suite 12, Palm Springs, CA 92262.</p>
+      </div>
+      <div><h4>Explore</h4><ul><li><a href="#listings">Listings</a></li><li><a href="#sold">Sold</a></li><li><a href="#broker">Broker</a></li></ul></div>
+      <div><h4>Valley</h4><ul><li><a href="#">Twin Palms</a></li><li><a href="#">Old Las Palmas</a></li><li><a href="#">Vista Las Palmas</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="mailto:tours@solsticeandstone.com">tours@solsticeandstone.com</a></li><li><a href="tel:+17605550194">(760) 555-0194</a></li></ul></div>
+    </div>
+    <div class="tz-footer-bottom">
+      <span>© 2026 Solstice &amp; Stone · CA DRE #01488213</span>
+      <span>Equal Housing Opportunity</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els=document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('tz-in')});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(en,i){if(en.isIntersecting){setTimeout(function(){en.target.classList.add('tz-in')},(i%3)*80);io.unobserve(en.target);}})},{threshold:.1});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
