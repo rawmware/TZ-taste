@@ -1,0 +1,43 @@
+<!--tz-meta {"id":"forms-newsletter-card","title":"Newsletter card","category":"Forms","file":"patterns/forms-newsletter-card.html","tags":["incentive","card"],"description":"A chunky Get the drop card with a rotated sticker badge overlapping the corner.","dnas":["neo-brutalist-pop"]} -->
+<section class="tz-drop" aria-labelledby="tz-drop-h">
+  <div class="tz-drop-card">
+    <span class="tz-drop-sticker" aria-hidden="true">Free zine!</span>
+    <p class="tz-drop-eyebrow">The Drop · Issue N°48</p>
+    <h2 id="tz-drop-h">Get the drop before it sells out</h2>
+    <p class="tz-drop-sub">Weekly drops, restock alerts, and a free 24-page zine when you join. 12,400 collectors already in.</p>
+    <form class="tz-drop-form" action="#" method="post">
+      <label class="tz-drop-sr" for="tz-drop-email">Email address</label>
+      <input id="tz-drop-email" type="email" name="email" placeholder="you@example.com" required>
+      <button type="submit">I&rsquo;m in</button>
+    </form>
+    <p class="tz-drop-fine">No spam. One email a week, unsubscribe anytime.</p>
+  </div>
+</section>
+<style>
+.tz-drop{--bg:#fffdf5;--ink:#141414;--pink:#ff5c9e;--yellow:#ffd02e;
+  background:var(--bg);padding:clamp(48px,7vw,96px) clamp(20px,5vw,64px);
+  font-family:Arial,Helvetica,sans-serif}
+.tz-drop-card{position:relative;background:#fff;border:3px solid var(--ink);border-radius:20px;
+  max-width:560px;margin:0 auto;padding:clamp(32px,5vw,52px);box-shadow:8px 8px 0 var(--ink)}
+.tz-drop-sticker{position:absolute;top:-22px;right:28px;background:var(--yellow);border:3px solid var(--ink);
+  border-radius:999px;padding:9px 20px;font-weight:900;font-size:14px;letter-spacing:.06em;
+  text-transform:uppercase;transform:rotate(8deg);box-shadow:3px 3px 0 var(--ink)}
+.tz-drop-eyebrow{font-size:12px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--pink);margin:0 0 14px}
+.tz-drop-card h2{font-size:clamp(30px,5vw,44px);letter-spacing:-.025em;line-height:1.05;margin:0 0 14px}
+.tz-drop-sub{font-size:16px;line-height:1.6;margin:0 0 28px;max-width:42ch}
+.tz-drop-form{display:flex;gap:12px;flex-wrap:wrap}
+.tz-drop-form input{flex:1;min-width:200px;border:3px solid var(--ink);border-radius:12px;
+  padding:14px 18px;font-size:16px;font-family:inherit;background:var(--bg);color:var(--ink)}
+.tz-drop-form input:focus{outline:none;box-shadow:4px 4px 0 var(--pink)}
+.tz-drop-form button{background:var(--pink);color:#fff;font-weight:900;font-size:16px;
+  border:3px solid var(--ink);border-radius:12px;padding:14px 30px;cursor:pointer;
+  box-shadow:4px 4px 0 var(--ink);font-family:inherit}
+.tz-drop-form button:hover{background:#ff77b1}
+.tz-drop-form button:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.tz-drop-fine{font-size:13px;opacity:.6;margin:18px 0 0}
+.tz-drop-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (prefers-reduced-motion:reduce){
+  .tz-drop-form button,.tz-drop-form input{transition:none}
+}
+</style>
