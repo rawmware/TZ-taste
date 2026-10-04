@@ -1,0 +1,102 @@
+<!--tz-meta {"id":"gen-flow-ink-water","title":"Ink in Water","category":"Generative","file":"generative/flow-ink-water.html","tags":["diffusion","ink","soft-edges"],"description":"Sumo-ink drops bloom and diffuse through water, edges softening as they spread.","dnas":["ink-wash-sumi"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ink in Water — TZ-taste Generative</title>
+<style>
+*{box-sizing:border-box}
+.tz-gen-body{margin:0;background:#f4eee1;color:#232a35;font-family:Georgia,'Times New Roman',serif;min-height:100vh}
+.tz-gen-wrap{max-width:1120px;margin:0 auto;padding:48px 24px 64px}
+.tz-gen-head{margin:0 0 28px}
+.tz-gen-kicker{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8a6f4d;margin:0 0 14px}
+.tz-gen-head h1{font-size:clamp(30px,5vw,52px);line-height:1.05;margin:0 0 12px;font-weight:600}
+.tz-gen-caption{font-size:16px;line-height:1.6;color:#5d6357;margin:0;max-width:62ch}
+.tz-gen-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:26px 0 14px}
+.tz-gen-btn{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;background:transparent;color:#232a35;border:1px solid #c9bfa9;padding:10px 18px;border-radius:3px;cursor:pointer}
+.tz-gen-btn:hover{border-color:#232a35}
+.tz-gen-seed{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:12px;color:#8a8272;margin-left:auto}
+.tz-gen-canvas{display:block;width:100%;height:70vh;border:1px solid #ddd2b8;border-radius:3px;background:#f4eee1}
+.tz-gen-note{font-size:14px;line-height:1.65;color:#6e6858;margin:18px 0 0;max-width:70ch}
+@media(max-width:520px){.tz-gen-wrap{padding:32px 16px 48px}.tz-gen-seed{margin-left:0;width:100%}}
+</style>
+</head>
+<body class="tz-gen-body">
+<div class="tz-gen-wrap">
+  <header class="tz-gen-head">
+    <p class="tz-gen-kicker">TZ-taste · Generative</p>
+    <h1>Ink in Water</h1>
+    <p class="tz-gen-caption">Each drop releases hundreds of ink motes that drift, spread, and thin out — the way sumi ink blooms in a water bowl, sharp at first, soft at the edges.</p>
+  </header>
+  <div class="tz-gen-bar">
+    <button class="tz-gen-btn" id="tzSeed">New seed</button>
+    <button class="tz-gen-btn" id="tzPause">Pause</button>
+    <button class="tz-gen-btn" id="tzClear">Clear</button>
+    <span class="tz-gen-seed" id="tzSeedLabel">Seed 0</span>
+  </div>
+  <canvas class="tz-gen-canvas" id="tzCv" aria-label="Ink drops diffusing in water"></canvas>
+  <p class="tz-gen-note">Drops fall on their own rhythm. Clear the bowl and let a fresh seed decide where the next ones land.</p>
+</div>
+<script>
+'use strict';
+const cv=document.getElementById('tzCv'),ctx=cv.getContext('2d');
+const seedLabel=document.getElementById('tzSeedLabel');
+let W=0,H=0,seed=(Math.random()*1e9)|0,rand=null,motes=[],frame=0,running=true;
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const BG='#f4eee1';
+const sprite=document.createElement('canvas');sprite.width=sprite.height=64;
+(function(){const g=sprite.getContext('2d');const gr=g.createRadialGradient(32,32,2,32,32,30);
+gr.addColorStop(0,'rgba(28,36,48,0.85)');gr.addColorStop(0.55,'rgba(28,36,48,0.32)');gr.addColorStop(1,'rgba(28,36,48,0)');
+g.fillStyle=gr;g.fillRect(0,0,64,64);})();
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function drop(x,y,big){
+  const n=big?260:140;
+  for(let i=0;i<n;i++){
+    const a=rand()*Math.PI*2,r=Math.pow(rand(),1.6)*(big?26:12);
+    motes.push({x:x+Math.cos(a)*r,y:y+Math.sin(a)*r,vx:(rand()-0.5)*0.5,vy:(rand()-0.5)*0.5,
+      life:0,max:220+rand()*260,size:3+rand()*7,drift:rand()*Math.PI*2});
+  }
+}
+function init(){
+  rand=mulberry32(seed);motes=[];frame=0;
+  ctx.fillStyle=BG;ctx.fillRect(0,0,W,H);
+  drop(W*(0.3+rand()*0.4),H*(0.3+rand()*0.4),true);
+  seedLabel.textContent='Seed '+seed;
+}
+function step(){
+  frame++;
+  ctx.fillStyle='rgba(244,238,225,0.028)';ctx.fillRect(0,0,W,H);
+  if(frame%90===0&&motes.length<4200)drop(rand()*W,rand()*H,rand()<0.35);
+  for(let i=motes.length-1;i>=0;i--){
+    const m=motes[i];m.life++;
+    if(m.life>m.max){motes.splice(i,1);continue;}
+    m.drift+=0.02;
+    m.vx+=(Math.sin(m.drift)+ (rand()-0.5)*0.12)*0.008;
+    m.vy+=(Math.cos(m.drift*0.7)+(rand()-0.5)*0.12)*0.008;
+    m.vx*=0.995;m.vy*=0.995;m.x+=m.vx;m.y+=m.vy;
+    const k=m.life/m.max;
+    const alpha=0.5*(1-k)*(k<0.12?k/0.12:1);
+    const s=m.size*(1+k*2.2);
+    ctx.globalAlpha=Math.max(0,alpha);
+    ctx.drawImage(sprite,m.x-s/2,m.y-s/2,s,s);
+  }
+  ctx.globalAlpha=1;
+}
+function resize(){
+  const d=Math.min(window.devicePixelRatio||1,2),r=cv.getBoundingClientRect();
+  W=Math.max(2,Math.round(r.width));H=Math.max(2,Math.round(r.height));
+  cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);init();
+}
+window.addEventListener('resize',resize);
+document.getElementById('tzSeed').addEventListener('click',()=>{seed=(Math.random()*1e9)|0;init();if(!running)toggle();});
+document.getElementById('tzClear').addEventListener('click',init);
+function toggle(){running=!running;document.getElementById('tzPause').textContent=running?'Pause':'Resume';if(running&&!reduced)tick();}
+document.getElementById('tzPause').addEventListener('click',toggle);
+function tick(){if(!running)return;step();requestAnimationFrame(tick);}
+resize();
+if(reduced){for(let i=0;i<500;i++)step();}
+else tick();
+</script>
+</body>
+</html>
