@@ -1,0 +1,189 @@
+<!--tz-meta {"id":"data-table","title":"Dense data table","category":"App UI","file":"app-ui/data-table.html","tags":["table","data","invoices","pagination"],"description":"Auditable invoice ledger: mono audit numbers, hairline spec grid, one teal accent, spec-plate header.","dnas":["laboratory-clean"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Northledger — Invoices</title>
+<style>
+body{margin:0;background:#fbfcfd}
+.tz-page{--bg:#fbfcfd;--surface:#f2f5f7;--ink:#0f1720;--muted:#6b7684;--accent:#0a7d8c;--alert:#c23b3b;--line:#dfe4ea;
+  background:var(--bg);color:var(--ink);min-height:100dvh;
+  font-family:"IBM Plex Sans",-apple-system,"Segoe UI",sans-serif}
+.tz-wrap{max-width:1120px;margin:0 auto;padding:40px 28px 64px}
+.tz-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.22em;
+  color:var(--muted);margin:0 0 12px}
+.tz-page h1{font-size:clamp(30px,4vw,44px);font-weight:600;letter-spacing:-.02em;margin:0 0 8px}
+.tz-sub{color:var(--muted);font-size:15px;margin:0 0 28px;max-width:62ch}
+.tz-headrow{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.tz-actions{display:flex;gap:10px}
+.tz-btn{font:inherit;font-size:13px;font-weight:500;padding:10px 18px;border-radius:2px;cursor:pointer;
+  transition:transform .15s ease,background .15s ease}
+.tz-btn.tz-ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+.tz-btn.tz-ghost:hover{background:var(--surface)}
+.tz-btn.tz-solid{background:var(--accent);border:1px solid var(--accent);color:#fff}
+.tz-btn.tz-solid:hover{transform:translateY(-1px)}
+.tz-plate{border:1px solid var(--line);border-radius:2px;background:var(--surface);
+  display:flex;gap:24px;flex-wrap:wrap;padding:12px 18px;margin:28px 0 0;
+  font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.12em;color:var(--muted)}
+.tz-plate strong{color:var(--ink);font-weight:500}
+.tz-toolbar{display:flex;gap:10px;align-items:center;margin:18px 0 0;flex-wrap:wrap}
+.tz-search{flex:1;min-width:200px;border:1px solid var(--line);border-radius:2px;background:#fff;
+  padding:10px 14px;font:inherit;font-size:13px;color:var(--ink)}
+.tz-search::placeholder{color:var(--muted)}
+.tz-filter{font:inherit;font-size:12px;font-weight:500;padding:9px 14px;border-radius:2px;cursor:pointer;
+  border:1px solid var(--line);background:#fff;color:var(--muted)}
+.tz-filter.tz-on{background:var(--ink);border-color:var(--ink);color:#fff}
+.tz-scroll{overflow-x:auto;border:1px solid var(--line);border-top:0;border-radius:0 0 2px 2px;background:#fff}
+.tz-table{width:100%;min-width:700px;border-collapse:collapse;font-size:13.5px}
+.tz-table th{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;font-weight:500;
+  letter-spacing:.16em;color:var(--muted);text-align:left;padding:12px 16px;
+  border-bottom:1px solid var(--line);background:var(--bg);white-space:nowrap}
+.tz-table th.tz-sortable{cursor:pointer;color:var(--ink)}
+.tz-table th.tz-sortable:hover{color:var(--accent)}
+.tz-arrow{font-size:10px;color:var(--accent);margin-left:5px}
+.tz-arrow.tz-off{color:var(--muted);opacity:.5}
+.tz-table td{padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:middle;white-space:nowrap}
+.tz-table tbody tr{transition:background .12s ease}
+.tz-table tbody tr:hover{background:var(--surface)}
+.tz-table tbody tr:last-child td{border-bottom:0}
+.tz-inv{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;color:var(--accent);font-weight:500}
+.tz-client{font-weight:500}
+.tz-date{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;color:var(--muted)}
+.tz-amt{font-family:ui-monospace,Menlo,monospace;font-size:13px;font-weight:500;text-align:right}
+.tz-table td.tz-amt,.tz-table th.tz-amt{text-align:right}
+.tz-pill{display:inline-flex;align-items:center;gap:7px;font-family:ui-monospace,Menlo,monospace;
+  font-size:10.5px;letter-spacing:.12em;padding:5px 10px;border-radius:2px;border:1px solid}
+.tz-pill i{width:6px;height:6px;border-radius:50%;background:currentColor;flex:0 0 auto}
+.tz-pill.tz-paid{color:var(--accent);border-color:var(--accent)}
+.tz-pill.tz-due{color:var(--ink);border-color:var(--muted)}
+.tz-pill.tz-over{color:var(--alert);border-color:var(--alert)}
+.tz-pill.tz-draft{color:var(--muted);border-color:var(--line)}
+.tz-pager{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  padding:14px 18px;border:1px solid var(--line);border-top:0;border-radius:0 0 2px 2px;background:var(--bg)}
+.tz-count{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;letter-spacing:.1em;color:var(--muted)}
+.tz-pages{display:flex;gap:6px;align-items:center}
+.tz-pagebtn{font:inherit;font-family:ui-monospace,Menlo,monospace;font-size:12px;min-width:32px;height:32px;
+  border:1px solid var(--line);border-radius:2px;background:#fff;color:var(--ink);cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;padding:0 8px}
+.tz-pagebtn:hover{background:var(--surface)}
+.tz-pagebtn.tz-current{background:var(--ink);border-color:var(--ink);color:#fff}
+.tz-pagebtn:disabled{opacity:.35;cursor:default;background:var(--bg)}
+.tz-ellipsis{color:var(--muted);font-size:12px;padding:0 4px}
+@media (max-width:640px){
+  .tz-wrap{padding:28px 16px 48px}
+  .tz-actions{width:100%}
+  .tz-btn{flex:1}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-page *,.tz-page *::before,.tz-page *::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="tz-page">
+  <div class="tz-wrap">
+    <div class="tz-headrow">
+      <div>
+        <p class="tz-eyebrow">NORTHLEDGER · ACCOUNTS RECEIVABLE</p>
+        <h1>Invoices</h1>
+        <p class="tz-sub">Every invoice below is reconciled against bank feed BF-114 every night at 02:00. Nothing here is an estimate.</p>
+      </div>
+      <div class="tz-actions">
+        <button class="tz-btn tz-ghost" type="button">Export CSV</button>
+        <button class="tz-btn tz-solid" type="button">New invoice</button>
+      </div>
+    </div>
+    <div class="tz-plate" aria-label="Ledger specification">
+      <span>PLATE <strong>Q4-2026</strong></span>
+      <span>RECONCILED <strong>2026-10-01</strong></span>
+      <span>TOLERANCE <strong>±$0.01</strong></span>
+      <span>RECORDS <strong>312</strong></span>
+    </div>
+    <div class="tz-toolbar">
+      <input class="tz-search" type="search" placeholder="Search client or invoice no." aria-label="Search invoices">
+      <button class="tz-filter tz-on" type="button">All</button>
+      <button class="tz-filter" type="button">Paid</button>
+      <button class="tz-filter" type="button">Due</button>
+      <button class="tz-filter" type="button">Overdue</button>
+    </div>
+    <div class="tz-scroll">
+      <table class="tz-table">
+        <thead>
+          <tr>
+            <th class="tz-sortable" scope="col">INVOICE <span class="tz-arrow">↑</span></th>
+            <th scope="col">CLIENT</th>
+            <th scope="col">ISSUED</th>
+            <th scope="col">DUE</th>
+            <th class="tz-sortable tz-amt" scope="col">AMOUNT <span class="tz-arrow tz-off">↕</span></th>
+            <th scope="col">STATUS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="tz-inv">INV-260901</td><td class="tz-client">Penobscot Lobster Co.</td>
+            <td class="tz-date">2026-09-02</td><td class="tz-date">2026-10-02</td>
+            <td class="tz-amt">$4,820.00</td>
+            <td><span class="tz-pill tz-paid"><i></i>PAID</span></td>
+          </tr>
+          <tr>
+            <td class="tz-inv">INV-260914</td><td class="tz-client">Casco Marine Supply</td>
+            <td class="tz-date">2026-09-14</td><td class="tz-date">2026-10-14</td>
+            <td class="tz-amt">$1,275.50</td>
+            <td><span class="tz-pill tz-due"><i></i>DUE</span></td>
+          </tr>
+          <tr>
+            <td class="tz-inv">INV-260918</td><td class="tz-client">Downeast Paper Co.</td>
+            <td class="tz-date">2026-09-18</td><td class="tz-date">2026-09-28</td>
+            <td class="tz-amt">$8,940.00</td>
+            <td><span class="tz-pill tz-over"><i></i>OVERDUE</span></td>
+          </tr>
+          <tr>
+            <td class="tz-inv">INV-260922</td><td class="tz-client">Portside Crane Works</td>
+            <td class="tz-date">2026-09-22</td><td class="tz-date">2026-10-22</td>
+            <td class="tz-amt">$12,400.00</td>
+            <td><span class="tz-pill tz-due"><i></i>DUE</span></td>
+          </tr>
+          <tr>
+            <td class="tz-inv">INV-260925</td><td class="tz-client">Blue Hill Cannery</td>
+            <td class="tz-date">2026-09-25</td><td class="tz-date">2026-09-25</td>
+            <td class="tz-amt">$2,310.75</td>
+            <td><span class="tz-pill tz-paid"><i></i>PAID</span></td>
+          </tr>
+          <tr>
+            <td class="tz-inv">INV-260927</td><td class="tz-client">Quoddy Boat Yard</td>
+            <td class="tz-date">2026-09-27</td><td class="tz-date">2026-10-27</td>
+            <td class="tz-amt">$6,180.00</td>
+            <td><span class="tz-pill tz-draft"><i></i>DRAFT</span></td>
+          </tr>
+          <tr>
+            <td class="tz-inv">INV-260930</td><td class="tz-client">Salty Dog Chandlery</td>
+            <td class="tz-date">2026-09-30</td><td class="tz-date">2026-09-30</td>
+            <td class="tz-amt">$940.20</td>
+            <td><span class="tz-pill tz-over"><i></i>OVERDUE</span></td>
+          </tr>
+          <tr>
+            <td class="tz-inv">INV-261002</td><td class="tz-client">Maine Line Freight</td>
+            <td class="tz-date">2026-10-02</td><td class="tz-date">2026-11-01</td>
+            <td class="tz-amt">$15,600.00</td>
+            <td><span class="tz-pill tz-due"><i></i>DUE</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tz-pager">
+      <span class="tz-count">SHOWING 1–8 OF 312</span>
+      <div class="tz-pages">
+        <button class="tz-pagebtn" type="button" disabled aria-label="Previous page">←</button>
+        <button class="tz-pagebtn tz-current" type="button">1</button>
+        <button class="tz-pagebtn" type="button">2</button>
+        <button class="tz-pagebtn" type="button">3</button>
+        <span class="tz-ellipsis">…</span>
+        <button class="tz-pagebtn" type="button">39</button>
+        <button class="tz-pagebtn" type="button" aria-label="Next page">→</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
