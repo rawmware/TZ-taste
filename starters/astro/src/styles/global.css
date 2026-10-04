@@ -1,0 +1,39 @@
+/* <!--tz-meta {"id":"astro-css","title":"Midnight Railway tokens","category":"Starter","file":"starters/astro/src/styles/global.css","tags":["css","tokens"],"description":"DNA tokens as CSS vars.","dnas":["midnight-railway"]} --> */
+:root {
+  --bg: #101a2e;
+  --ink: #e9e2d0;
+  --accent: #c9a227;
+  --muted: #7d8698;
+  --line: #2a3a5c;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "DM Sans", system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--accent); color: var(--bg); }
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--ink); }
+
+img { max-width: 100%; display: block; }
+
+button { font: inherit; cursor: pointer; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
