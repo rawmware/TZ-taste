@@ -1,0 +1,104 @@
+<!--tz-meta {"id":"showcase-acid-rave","title":"Acid Rave showcase","category":"Showcase","file":"showcase/acid-rave.html","tags":["acid-rave"],"description":"Live demo page for the Acid Rave style DNA.","dnas":["acid-rave"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Acid Rave — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#0a0a0a; --tz-surface:#131313; --tz-ink:#f2f2f2; --tz-muted:#7a7a7a;
+  --tz-accent:#c6ff00; --tz-line:#f2f2f21f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Space Grotesk",sans-serif;font-size:1rem;line-height:1.45;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent 0 3px,color-mix(in srgb,var(--tz-ink) 4%,transparent) 3px 4px);z-index:50}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 4vw;border-bottom:1px solid var(--tz-line);font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.1em}
+.tz-wordmark{font-family:"Anton",sans-serif;font-size:1.2rem;letter-spacing:0.04em;color:var(--tz-accent)}
+.tz-label{color:var(--tz-muted)}
+.tz-marquee{overflow:hidden;white-space:nowrap;border-bottom:1px solid var(--tz-line);padding:0.7rem 0;background:var(--tz-accent);color:var(--tz-bg)}
+.tz-marquee span{display:inline-block;font-family:"Anton",sans-serif;font-size:1rem;letter-spacing:0.06em;padding-right:2rem;animation:tz-scroll 14s linear infinite}
+@keyframes tz-scroll{to{transform:translateX(-50%)}}
+.tz-hero{padding:5rem 4vw 4rem;position:relative}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:0.75rem;letter-spacing:0.14em;color:var(--tz-accent);margin-bottom:1.2rem}
+.tz-hero h1{font-family:"Anton",sans-serif;font-size:clamp(4rem,14vw,11rem);line-height:0.88;letter-spacing:-0.01em;text-transform:uppercase}
+.tz-hero h1 .tz-acid{background:var(--tz-accent);color:var(--tz-bg);padding:0 0.12em;display:inline-block;transform:rotate(-1.5deg)}
+.tz-sub{margin-top:1.6rem;font-size:1.05rem;color:var(--tz-muted);max-width:44ch}
+.tz-cta{display:inline-block;margin-top:2.2rem;background:var(--tz-accent);color:var(--tz-bg);font-family:"Anton",sans-serif;font-size:1.3rem;letter-spacing:0.05em;text-decoration:none;padding:1rem 2.4rem;transform:rotate(-1deg);transition:transform .15s ease}
+.tz-cta:hover{transform:rotate(1deg) scale(1.04)}
+.tz-content{padding:2rem 0 0}
+.tz-lineup{list-style:none;border-top:1px solid var(--tz-line)}
+.tz-lineup li{display:grid;grid-template-columns:7rem 1fr;gap:1rem;align-items:baseline;padding:1.6rem 4vw;border-bottom:1px solid var(--tz-line)}
+.tz-time{font-family:"Space Mono",monospace;font-size:0.85rem;color:var(--tz-accent)}
+.tz-act{font-family:"Anton",sans-serif;font-size:clamp(2rem,6.5vw,4.5rem);text-transform:uppercase;line-height:0.95;letter-spacing:0.01em}
+.tz-act.tz-rot{transform:rotate(-1deg)}
+.tz-quiet{margin:3.5rem 4vw;padding:2rem;background:var(--tz-surface);border:1px solid var(--tz-line);max-width:560px}
+.tz-quiet h2{font-family:"Space Mono",monospace;font-size:0.75rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:0.8rem;font-weight:400}
+.tz-quiet p{color:var(--tz-muted);font-size:0.95rem}
+.tz-quiet strong{color:var(--tz-ink);font-weight:500}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Anton",sans-serif;font-size:1.6rem;letter-spacing:0.03em;margin-bottom:1.4rem;text-transform:uppercase}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"Space Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Space Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"Space Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-lineup li{grid-template-columns:1fr;gap:0.3rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  body::after{display:none}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">VOLTAGE</span>
+  <span class="tz-label">TZ-taste style DNA</span>
+</header>
+
+<div class="tz-marquee" aria-hidden="true">
+  <span>VOLTAGE ACID NIGHT · OCT 31 · SECTOR 7 WAREHOUSE · 11PM–5AM · VOLTAGE ACID NIGHT · OCT 31 · SECTOR 7 WAREHOUSE · 11PM–5AM ·&nbsp;</span><span>VOLTAGE ACID NIGHT · OCT 31 · SECTOR 7 WAREHOUSE · 11PM–5AM · VOLTAGE ACID NIGHT · OCT 31 · SECTOR 7 WAREHOUSE · 11PM–5AM ·&nbsp;</span>
+</div>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow">OCT 31 · SECTOR 7 WAREHOUSE · 11PM–5AM</p>
+  <h1>Sleep is <span class="tz-acid">a rumor.</span></h1>
+  <p class="tz-sub">Six hours. Two rooms. One strobe budget. Four DJs, zero headliners — the room is the headliner.</p>
+  <a class="tz-cta" href="#">GET TICKETS — $25</a>
+</section>
+
+<section class="tz-content">
+  <ul class="tz-lineup">
+    <li><span class="tz-time">23:00</span><span class="tz-act">Glass Teeth</span></li>
+    <li><span class="tz-time">00:30</span><span class="tz-act tz-rot">Mira Volt</span></li>
+    <li><span class="tz-time">02:00</span><span class="tz-act">Fusebox</span></li>
+    <li><span class="tz-time">03:30</span><span class="tz-act tz-rot">Kilowatt Kid</span></li>
+  </ul>
+
+  <div class="tz-quiet">
+    <h2>House notes</h2>
+    <p><strong>Earplugs at the door. Water is free.</strong> Coat check is $5 and every cent goes to the crew. Look after each other — that's the whole policy.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#0a0a0a"></span><span class="tz-name">bg</span><span class="tz-hex">#0a0a0a</span></li>
+    <li><span class="tz-chip" style="background:#131313"></span><span class="tz-name">surface</span><span class="tz-hex">#131313</span></li>
+    <li><span class="tz-chip" style="background:#f2f2f2"></span><span class="tz-name">ink</span><span class="tz-hex">#f2f2f2</span></li>
+    <li><span class="tz-chip" style="background:#7a7a7a"></span><span class="tz-name">muted</span><span class="tz-hex">#7a7a7a</span></li>
+    <li><span class="tz-chip" style="background:#c6ff00"></span><span class="tz-name">accent</span><span class="tz-hex">#c6ff00</span></li>
+    <li><span class="tz-chip" style="background:#f2f2f21f"></span><span class="tz-name">line</span><span class="tz-hex">#f2f2f21f</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
