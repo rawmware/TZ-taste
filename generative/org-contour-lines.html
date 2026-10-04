@@ -1,0 +1,111 @@
+<!--tz-meta {"id":"gen-org-contour-lines","title":"Contour Lines","category":"Generative","file":"generative/org-contour-lines.html","tags":["contours","noise","generative"],"description":"Marching-squares contours traced over layered value noise, drifting like a breathing map.","dnas":["museum-placard"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contour Lines — TZ-taste</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#e9dcc3;color:#3a2f24;font-family:"Avenir Next","Segoe UI",Verdana,sans-serif;-webkit-font-smoothing:antialiased}
+.tz-wrap{max-width:760px;margin:0 auto;padding:20px 16px 32px}
+.tz-kicker{font-size:11px;letter-spacing:.22em;text-transform:uppercase;opacity:.6;margin:0 0 8px}
+.tz-title{font-family:Georgia,"Iowan Old Style",serif;font-weight:600;font-size:30px;margin:0 0 8px;letter-spacing:.01em}
+.tz-caption{font-size:14px;line-height:1.55;opacity:.78;margin:0 0 16px;max-width:58ch}
+.tz-controls{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+.tz-btn{appearance:none;border:1px solid currentColor;background:transparent;color:inherit;font:inherit;font-size:13px;padding:8px 14px;border-radius:999px;cursor:pointer;opacity:.9}
+.tz-btn:hover{opacity:1;background:rgba(58,47,36,.08)}
+.tz-btn:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.tz-canvas{display:block;width:100%;height:70vh;min-height:340px;border-radius:14px;border:1px solid rgba(58,47,36,.25);background:#e9dcc3}
+.tz-foot{font-size:12px;opacity:.55;margin:12px 0 0;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="tz-wrap">
+<header>
+<p class="tz-kicker">TZ-taste &middot; Generative</p>
+<h1 class="tz-title">Contour Lines</h1>
+<p class="tz-caption">Marching-squares iso-lines traced over layered value noise &mdash; a topographic map that breathes, slowly re-drawing itself every frame.</p>
+</header>
+<div class="tz-controls">
+<button class="tz-btn" type="button" id="tz-seed">New seed</button>
+<button class="tz-btn" type="button" id="tz-pause">Pause</button>
+<button class="tz-btn" type="button" id="tz-clear">Clear</button>
+</div>
+<canvas class="tz-canvas" id="tz-cv"></canvas>
+<p class="tz-foot">Real value-noise fBm plus a proper marching-squares pass per iso-level. Seeded with mulberry32.</p>
+</div>
+<script>
+(function(){
+"use strict";
+var cv=document.getElementById('tz-cv'),ctx=cv.getContext('2d');
+var seedB=document.getElementById('tz-seed'),pauseB=document.getElementById('tz-pause'),clearB=document.getElementById('tz-clear');
+var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var DPR=Math.min(window.devicePixelRatio||1,2),W=0,H=0;
+var lat=null,LW=22,LH=16,t=0;
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+var rng=mulberry32((Math.random()*4294967296)|0);
+function init(){lat=new Float32Array(LW*LH);for(var i=0;i<LW*LH;i++)lat[i]=rng();}
+function sm(x){return x*x*(3-2*x);}
+function noise(x,y){
+  var xi=Math.floor(x),yi=Math.floor(y),xf=x-xi,yf=y-yi;
+  var x0=xi%LW,x1=(xi+1)%LW,y0=yi%LH,y1=(yi+1)%LH;
+  var a=lat[y0*LW+x0],b=lat[y0*LW+x1],c=lat[y1*LW+x0],d=lat[y1*LW+x1];
+  var u=sm(xf),v=sm(yf);
+  return a+(b-a)*u+(c-a)*v+(a-b-c+d)*u*v;
+}
+function fbm(x,y){
+  return noise(x,y)*0.55+noise(x*2.1+5,y*2.1)*0.28+noise(x*4.3+9,y*4.3)*0.17;
+}
+var CELL=9,cols=0,rows=0,field=null;
+function computeField(){
+  cols=Math.ceil(W/CELL)+1;rows=Math.ceil(H/CELL)+1;
+  field=new Float32Array(cols*rows);
+  var s=0.045;
+  for(var y=0;y<rows;y++)for(var x=0;x<cols;x++){
+    field[y*cols+x]=fbm(x*CELL*s,y*CELL*s)+0.05*Math.sin(t*0.7+x*0.06);
+  }
+}
+function xlerp(xa,va,xb,vb,lvl){var k=(lvl-va)/(vb-va+1e-9);return xa+(xb-xa)*k;}
+function march(level){
+  ctx.beginPath();
+  for(var y=0;y<rows-1;y++)for(var x=0;x<cols-1;x++){
+    var a=field[y*cols+x],b=field[y*cols+x+1],c=field[(y+1)*cols+x+1],d=field[(y+1)*cols+x];
+    var pts=[];
+    if((a<level)!==(b<level))pts.push([xlerp(x*CELL,a,(x+1)*CELL,b,level),y*CELL]);
+    if((b<level)!==(c<level))pts.push([(x+1)*CELL,xlerp(y*CELL,b,(y+1)*CELL,c,level)]);
+    if((d<level)!==(c<level))pts.push([xlerp(x*CELL,d,(x+1)*CELL,c,level),(y+1)*CELL]);
+    if((a<level)!==(d<level))pts.push([x*CELL,xlerp(y*CELL,a,(y+1)*CELL,d,level)]);
+    if(pts.length===2){ctx.moveTo(pts[0][0],pts[0][1]);ctx.lineTo(pts[1][0],pts[1][1]);}
+    else if(pts.length===4){ctx.moveTo(pts[0][0],pts[0][1]);ctx.lineTo(pts[1][0],pts[1][1]);ctx.moveTo(pts[2][0],pts[2][1]);ctx.lineTo(pts[3][0],pts[3][1]);}
+  }
+  ctx.stroke();
+}
+function draw(){
+  ctx.fillStyle='#e9dcc3';ctx.fillRect(0,0,W,H);
+  computeField();
+  for(var i=0;i<10;i++){
+    var lvl=0.18+i*0.068;
+    if(i%4===0){ctx.strokeStyle='#a4502e';ctx.lineWidth=1.4;}
+    else{ctx.strokeStyle='rgba(164,80,46,.55)';ctx.lineWidth=0.8;}
+    march(lvl);
+  }
+}
+var raf=0,paused=false;
+function loop(){if(paused)return;t+=0.016;draw();raf=requestAnimationFrame(loop);}
+function resize(){
+  var r=cv.getBoundingClientRect();
+  W=Math.max(1,Math.round(r.width));H=Math.max(1,Math.round(r.height));
+  cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR);
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  draw();
+}
+seedB.addEventListener('click',function(){rng=mulberry32((Math.random()*4294967296)|0);init();cancelAnimationFrame(raf);paused=false;pauseB.textContent='Pause';if(reduced){t=0;draw();}else loop();});
+pauseB.addEventListener('click',function(){if(reduced)return;paused=!paused;pauseB.textContent=paused?'Resume':'Pause';if(!paused)loop();});
+clearB.addEventListener('click',function(){ctx.fillStyle='#e9dcc3';ctx.fillRect(0,0,W,H);});
+window.addEventListener('resize',function(){cancelAnimationFrame(raf);resize();if(!reduced&&!paused)loop();});
+init();resize();if(!reduced)loop();
+})();
+</script>
+</body>
+</html>
