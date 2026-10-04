@@ -1,0 +1,172 @@
+<!--tz-meta {"id":"modal-system","title":"Scandi modal system","category":"App UI","file":"app-ui/modal-system.html","tags":["modal","dialog","drawer","confirm","form"],"description":"Four working modal variants (confirm, form, drawer, alert) for the Seedling plant-care app with overlay, focus states, and an Esc hint.","dnas":["scandi-calm"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modal system — Seedling</title>
+<style>
+.tz-modalsys{--bg:#f4eee2;--card:#fbf8f1;--ink:#2c2418;--muted:#7d6f57;--tan:#a9805a;--line:#2c241822;--red:#b0412f;
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:"Avenir Next","Segoe UI",Verdana,sans-serif;-webkit-font-smoothing:antialiased}
+.tz-wrap{max-width:960px;margin:0 auto;padding:clamp(36px,6vw,64px) clamp(20px,5vw,44px) 100px}
+.tz-title{font-family:Georgia,"DM Serif Display","Times New Roman",serif;font-weight:400;
+  font-size:clamp(32px,5vw,52px);letter-spacing:-.01em;margin:0 0 10px}
+.tz-sub{color:var(--muted);font-size:15.5px;line-height:1.65;max-width:60ch;margin:0 0 44px}
+.tz-demos{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.tz-demo{background:var(--card);border:1px solid var(--line);padding:26px 24px;position:relative}
+.tz-num{font-family:Georgia,"DM Serif Display",serif;font-size:52px;line-height:1;color:var(--tan);opacity:.55;margin:0 0 14px}
+.tz-demo h2{font-size:18px;margin:0 0 8px;letter-spacing:-.01em}
+.tz-demo p{font-size:13.5px;line-height:1.6;color:var(--muted);margin:0 0 20px}
+.tz-open{background:var(--ink);color:var(--card);border:none;font:inherit;font-size:13px;font-weight:600;
+  letter-spacing:.06em;padding:12px 22px;cursor:pointer;transition:background .16s ease,transform .16s ease}
+.tz-open:hover{background:var(--tan);transform:translateY(-2px)}
+.tz-open:focus-visible{outline:2px solid var(--tan);outline-offset:3px}
+.tz-open.tz-danger{background:var(--red)}
+.tz-open.tz-danger:hover{background:#8f3325}
+.tz-foot{margin-top:44px;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:13px}
+.tz-kbd{font-family:ui-monospace,Menlo,monospace;font-size:12px;border:1px solid var(--line);
+  border-bottom-width:2px;border-radius:4px;padding:2px 8px;background:var(--card);color:var(--ink)}
+.tz-overlay{position:fixed;inset:0;background:#2c2418a6;display:none;align-items:center;justify-content:center;
+  padding:20px;z-index:50}
+.tz-overlay.tz-show{display:flex}
+.tz-dialog{background:var(--card);border:1px solid var(--line);width:100%;max-width:440px;padding:32px 30px;
+  box-shadow:0 24px 60px #2c241833;animation:tz-rise .28s cubic-bezier(.22,1,.36,1)}
+.tz-dialog h3{font-family:Georgia,"DM Serif Display",serif;font-weight:400;font-size:26px;margin:0 0 10px}
+.tz-dialog p{font-size:14px;line-height:1.65;color:var(--muted);margin:0 0 24px}
+.tz-actions{display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap}
+.tz-btn{font:inherit;font-size:13.5px;font-weight:600;padding:12px 22px;cursor:pointer;border:1px solid var(--ink);
+  background:none;color:var(--ink);transition:background .15s ease}
+.tz-btn:hover{background:#2c241814}
+.tz-btn:focus-visible{outline:2px solid var(--tan);outline-offset:2px}
+.tz-btn.tz-solid{background:var(--ink);color:var(--card);border-color:var(--ink)}
+.tz-btn.tz-solid:hover{background:var(--tan);border-color:var(--tan)}
+.tz-btn.tz-red{background:var(--red);border-color:var(--red);color:#fff}
+.tz-btn.tz-red:hover{background:#8f3325}
+.tz-field{margin-bottom:16px}
+.tz-field label{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.tz-field input,.tz-field select{width:100%;box-sizing:border-box;font:inherit;font-size:15px;color:var(--ink);
+  background:#fff;border:1px solid var(--line);padding:12px 14px;border-radius:2px}
+.tz-field input:focus,.tz-field select:focus{outline:2px solid var(--tan);outline-offset:1px;border-color:var(--tan)}
+.tz-drawer{align-items:stretch;justify-content:flex-end;padding:0}
+.tz-sheet{background:var(--card);width:min(420px,92vw);height:100%;padding:36px 30px;overflow:auto;
+  animation:tz-slide .3s cubic-bezier(.22,1,.36,1);border-left:1px solid var(--line)}
+.tz-sheet h3{font-family:Georgia,"DM Serif Display",serif;font-weight:400;font-size:30px;margin:0 0 6px}
+.tz-latin{font-style:italic;color:var(--muted);font-size:14px;margin:0 0 22px}
+.tz-spec{display:flex;justify-content:space-between;font-size:14px;padding:11px 0;border-bottom:1px solid var(--line)}
+.tz-spec dt{color:var(--muted)}.tz-spec dd{margin:0;font-weight:600}
+.tz-alertbar{border-left:5px solid var(--tan);padding-left:18px;margin-bottom:20px}
+.tz-alertbar h3{margin-top:0}
+@keyframes tz-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes tz-slide{from{transform:translateX(60px);opacity:0}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  .tz-dialog,.tz-sheet{animation:none}
+  .tz-open,.tz-btn{transition:none}.tz-open:hover{transform:none}}
+</style>
+</head>
+<body class="tz-modalsys">
+<main class="tz-wrap">
+  <h1 class="tz-title">One overlay, four manners</h1>
+  <p class="tz-sub">Seedling's modal system: the same dimmed backdrop every time, a different shape of asking. Open each one &mdash; click the backdrop, or press <span class="tz-kbd">Esc</span>, and notice where your focus lands.</p>
+  <div class="tz-demos">
+    <section class="tz-demo">
+      <p class="tz-num">01</p>
+      <h2>Confirm</h2>
+      <p>A destructive choice, stated plainly. Two buttons, the safe one on the right, nothing else to read.</p>
+      <button class="tz-open tz-danger" data-open="tzMConfirm">Open confirm</button>
+    </section>
+    <section class="tz-demo">
+      <p class="tz-num">02</p>
+      <h2>Form</h2>
+      <p>Three fields, one job: log a watering. Focus lands in the first field; <span class="tz-kbd">Enter</span> saves.</p>
+      <button class="tz-open" data-open="tzMForm">Open form</button>
+    </section>
+    <section class="tz-demo">
+      <p class="tz-num">03</p>
+      <h2>Drawer</h2>
+      <p>A detail sheet that slides in from the right and keeps the page behind it visible and dimmed.</p>
+      <button class="tz-open" data-open="tzMDrawer">Open drawer</button>
+    </section>
+    <section class="tz-demo">
+      <p class="tz-num">04</p>
+      <h2>Alert</h2>
+      <p>Something needs attention &mdash; the backup paused. One acknowledgment, no decisions to make.</p>
+      <button class="tz-open" data-open="tzMAlert">Open alert</button>
+    </section>
+  </div>
+  <p class="tz-foot">Keyboard contract for all four: <span class="tz-kbd">Esc</span> closes &middot; <span class="tz-kbd">Tab</span> stays inside the dialog &middot; focus returns to the button that opened it.</p>
+</main>
+
+<div class="tz-overlay" id="tzMConfirm" role="dialog" aria-modal="true" aria-labelledby="tzMcT">
+  <div class="tz-dialog">
+    <h3 id="tzMcT">Remove this plant?</h3>
+    <p>Monstera "Verde" will leave your shelf and its 14 logged waterings. This can't be undone, but you can add the plant back later.</p>
+    <div class="tz-actions">
+      <button class="tz-btn" data-close>Keep it</button>
+      <button class="tz-btn tz-red" data-close>Remove plant</button>
+    </div>
+  </div>
+</div>
+
+<div class="tz-overlay" id="tzMForm" role="dialog" aria-modal="true" aria-labelledby="tzMfT">
+  <div class="tz-dialog">
+    <h3 id="tzMfT">Log a watering</h3>
+    <p>For Monstera "Verde" &mdash; Seedling will remind you again in 7 days.</p>
+    <div class="tz-field"><label for="tzFDate">Date</label><input id="tzFDate" type="date" value="2026-10-03"></div>
+    <div class="tz-field"><label for="tzFAmt">Amount</label>
+      <select id="tzFAmt"><option>A light sip (250 ml)</option><option selected>A full drink (500 ml)</option><option>A deep soak (1 L)</option></select></div>
+    <div class="tz-field"><label for="tzFNote">Note (optional)</label><input id="tzFNote" type="text" placeholder="Soil was dry two knuckles down"></div>
+    <div class="tz-actions">
+      <button class="tz-btn" data-close>Cancel</button>
+      <button class="tz-btn tz-solid" data-close>Save watering</button>
+    </div>
+  </div>
+</div>
+
+<div class="tz-overlay tz-drawer" id="tzMDrawer" role="dialog" aria-modal="true" aria-labelledby="tzMdT">
+  <div class="tz-sheet">
+    <h3 id="tzMdT">Monstera "Verde"</h3>
+    <p class="tz-latin">Monstera deliciosa &middot; adopted Mar 2024</p>
+    <dl>
+      <div class="tz-spec"><dt>Light</dt><dd>Bright, indirect</dd></div>
+      <div class="tz-spec"><dt>Water</dt><dd>Every 7 days</dd></div>
+      <div class="tz-spec"><dt>Last watered</dt><dd>Sep 26</dd></div>
+      <div class="tz-spec"><dt>Health</dt><dd>Thriving</dd></div>
+      <div class="tz-spec"><dt>Pot</dt><dd>10 in, terracotta</dd></div>
+    </dl>
+    <div class="tz-actions" style="margin-top:26px;justify-content:flex-start">
+      <button class="tz-btn tz-solid" data-close>Log watering</button>
+      <button class="tz-btn" data-close>Close</button>
+    </div>
+  </div>
+</div>
+
+<div class="tz-overlay" id="tzMAlert" role="alertdialog" aria-modal="true" aria-labelledby="tzMaT">
+  <div class="tz-dialog">
+    <div class="tz-alertbar">
+      <h3 id="tzMaT">Photo backup paused</h3>
+      <p style="margin-bottom:0">Your 212 plant photos stopped syncing at 6:40 PM &mdash; the phone ran out of storage. Free up space and Seedling will pick up where it left off.</p>
+    </div>
+    <div class="tz-actions">
+      <button class="tz-btn tz-solid" data-close>Got it</button>
+    </div>
+  </div>
+</div>
+
+<script>
+var last=null;
+function openM(id){last=document.activeElement;
+  var o=document.getElementById(id);o.classList.add('tz-show');
+  var f=o.querySelector('input,select,.tz-btn');if(f)f.focus();}
+function closeM(o){o.classList.remove('tz-show');if(last)last.focus();}
+document.querySelectorAll('[data-open]').forEach(function(b){
+  b.addEventListener('click',function(){openM(b.getAttribute('data-open'));});});
+document.querySelectorAll('.tz-overlay').forEach(function(o){
+  o.addEventListener('click',function(e){if(e.target===o)closeM(o);});
+  o.querySelectorAll('[data-close]').forEach(function(b){
+    b.addEventListener('click',function(){closeM(o);});});});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){var o=document.querySelector('.tz-overlay.tz-show');if(o)closeM(o);}});
+</script>
+</body>
+</html>
