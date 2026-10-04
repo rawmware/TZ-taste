@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-swiss-poster",
+  "title": "Swiss Poster design tokens",
+  "category": "Tokens",
+  "file": "tokens/swiss-poster.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "swiss-poster"
+  ],
+  "description": "W3C-format design tokens for the Swiss Poster style DNA.",
+  "dnas": [
+   "swiss-poster"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#f2ede3",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#141414",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#e8401f",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#7a766c",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#141414",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Archivo Black",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Archivo",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "swiss-poster",
+  "name": "Swiss Poster",
+  "vibe": "Bold poster art: oversized type AS the image, flat color blocks, one accent. Shout it from the wall."
+ }
+}
