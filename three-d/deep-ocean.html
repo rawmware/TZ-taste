@@ -1,0 +1,172 @@
+<!--tz-meta {"id":"deep-ocean","title":"Deep Current","category":"3D","file":"three-d/deep-ocean.html","tags":["threejs","abyssal"],"description":"Drifting current particles, swaying god-ray shafts, and twinkling bioluminescent plankton.","dnas":["glass-calm"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deep Current — TZ-taste 3D</title>
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#020610}
+#c{position:fixed;inset:0}
+.caption{position:fixed;left:18px;bottom:16px;color:#a8d8f0;font:12px/1.6 system-ui,sans-serif;letter-spacing:.05em;opacity:.8;pointer-events:none;text-shadow:0 1px 10px rgba(0,0,0,.8)}
+.caption b{display:block;font-size:12px;letter-spacing:.22em;text-transform:uppercase}
+#fallback{display:none;position:fixed;inset:0;align-items:center;justify-content:center;background:#020610;color:#a8d8f0;font:14px/1.6 system-ui,sans-serif;text-align:center;padding:2rem}
+</style>
+</head>
+<body>
+<div id="c"></div>
+<div class="caption"><b>Deep Current</b><span>drag to orbit</span></div>
+<div id="fallback"><p></p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let renderer = null;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (err) {
+  const f = document.getElementById('fallback');
+  f.style.display = 'flex';
+  f.querySelector('p').textContent = 'WebGL is unavailable in this browser, so this 3D scene cannot be rendered.';
+}
+
+if (renderer) {
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.getElementById('c').appendChild(renderer.domElement);
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x020610);
+  scene.fog = new THREE.FogExp2(0x020610, 0.028);
+
+  const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 200);
+  camera.position.set(0, 1, 11);
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.06;
+
+  const BX = 15, BY = 8, BZ = 15;
+
+  // Slow current field built from layered sines.
+  function current(x, y, z, t, out) {
+    out.set(
+      Math.sin(y * 0.35 + t * 0.25) * 0.5 + 0.22,
+      Math.cos(z * 0.30 + t * 0.20) * 0.18,
+      Math.sin(x * 0.30 - t * 0.22) * 0.5
+    );
+    return out;
+  }
+
+  // Marine snow: particles advected by the current, wrapping in a box.
+  const COUNT = 700;
+  const dPos = new Float32Array(COUNT * 3);
+  for (let i = 0; i < COUNT; i++) {
+    dPos[i * 3] = (Math.random() * 2 - 1) * BX;
+    dPos[i * 3 + 1] = (Math.random() * 2 - 1) * BY;
+    dPos[i * 3 + 2] = (Math.random() * 2 - 1) * BZ;
+  }
+  const driftGeo = new THREE.BufferGeometry();
+  driftGeo.setAttribute('position', new THREE.BufferAttribute(dPos, 3));
+  scene.add(new THREE.Points(driftGeo, new THREE.PointsMaterial({
+    color: 0x8fc7e8, size: 0.07, transparent: true, opacity: 0.55, depthWrite: false })));
+  const _v = new THREE.Vector3();
+
+  // God-ray shafts: tall translucent planes fading downward, gently swaying.
+  const shaftMat = new THREE.ShaderMaterial({
+    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide,
+    vertexShader: `
+      varying vec2 vUv;
+      void main() {
+        vUv = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }`,
+    fragmentShader: `
+      varying vec2 vUv;
+      void main() {
+        float a = 1.0 - vUv.y;
+        a *= smoothstep(0.0, 0.30, vUv.x) * smoothstep(1.0, 0.70, vUv.x);
+        gl_FragColor = vec4(vec3(0.45, 0.75, 1.0) * a * 0.35, a * 0.35);
+      }`
+  });
+  const shafts = [];
+  for (let i = 0; i < 5; i++) {
+    const w = 1.2 + Math.random() * 1.6;
+    const m = new THREE.Mesh(new THREE.PlaneGeometry(w, 26), shaftMat);
+    m.position.set(-9 + i * 4.5 + (Math.random() - 0.5) * 2, 6, -6 - Math.random() * 5);
+    m.rotation.y = (Math.random() - 0.5) * 0.6;
+    m.userData.baseZ = (Math.random() - 0.5) * 0.12;
+    m.userData.phase = Math.random() * Math.PI * 2;
+    scene.add(m);
+    shafts.push(m);
+  }
+
+  // Bioluminescent plankton: colored points that twinkle as they bob.
+  const PCOUNT = 220;
+  const pPos = new Float32Array(PCOUNT * 3);
+  const pCol = new Float32Array(PCOUNT * 3);
+  const pBase = new Float32Array(PCOUNT * 3);
+  const pPhase = new Float32Array(PCOUNT);
+  const palette = [new THREE.Color(0x7df9d4), new THREE.Color(0x6fd6ff), new THREE.Color(0xbfff9e)];
+  for (let i = 0; i < PCOUNT; i++) {
+    const x = (Math.random() * 2 - 1) * 12;
+    const y = (Math.random() * 2 - 1) * 7;
+    const z = (Math.random() * 2 - 1) * 10;
+    pBase.set([x, y, z], i * 3);
+    pPos.set([x, y, z], i * 3);
+    const c = palette[i % 3];
+    pCol.set([c.r, c.g, c.b], i * 3);
+    pPhase[i] = Math.random() * Math.PI * 2;
+  }
+  const plankGeo = new THREE.BufferGeometry();
+  plankGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+  plankGeo.setAttribute('color', new THREE.BufferAttribute(pCol, 3));
+  const plankMat = new THREE.PointsMaterial({ size: 0.14, vertexColors: true,
+    transparent: true, opacity: 0.9, depthWrite: false, blending: THREE.AdditiveBlending });
+  scene.add(new THREE.Points(plankGeo, plankMat));
+
+  let prev = 0;
+  function tick(t) {
+    const dt = Math.min(t - prev, 0.05);
+    prev = t;
+    // Advect marine snow.
+    const a = driftGeo.attributes.position.array;
+    for (let i = 0; i < COUNT; i++) {
+      const ix = i * 3;
+      current(a[ix], a[ix + 1], a[ix + 2], t, _v);
+      a[ix] += _v.x * dt; a[ix + 1] += _v.y * dt; a[ix + 2] += _v.z * dt;
+      if (a[ix] > BX) a[ix] = -BX; else if (a[ix] < -BX) a[ix] = BX;
+      if (a[ix + 1] > BY) a[ix + 1] = -BY; else if (a[ix + 1] < -BY) a[ix + 1] = BY;
+      if (a[ix + 2] > BZ) a[ix + 2] = -BZ; else if (a[ix + 2] < -BZ) a[ix + 2] = BZ;
+    }
+    driftGeo.attributes.position.needsUpdate = true;
+    // Sway the shafts and twinkle the plankton.
+    for (const s of shafts) s.rotation.z = s.userData.baseZ + Math.sin(t * 0.3 + s.userData.phase) * 0.05;
+    const pa = plankGeo.attributes.position.array;
+    for (let i = 0; i < PCOUNT; i++) {
+      const ix = i * 3;
+      pa[ix] = pBase[ix] + Math.sin(t * 0.4 + pPhase[i]) * 0.5;
+      pa[ix + 1] = pBase[ix + 1] + Math.sin(t * 0.8 + pPhase[i]) * 0.4;
+    }
+    plankGeo.attributes.position.needsUpdate = true;
+    plankMat.opacity = 0.65 + Math.sin(t * 1.7) * 0.25;
+    camera.position.x = Math.sin(t * 0.05) * 1.5;
+    controls.update();
+  }
+
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  if (REDUCED) { tick(0); renderer.render(scene, camera); }
+  else {
+    const clock = new THREE.Clock();
+    renderer.setAnimationLoop(() => { tick(clock.getElapsedTime()); renderer.render(scene, camera); });
+  }
+}
+</script>
+</body>
+</html>
