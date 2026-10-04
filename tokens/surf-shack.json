@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-surf-shack",
+  "title": "Surf Shack design tokens",
+  "category": "Tokens",
+  "file": "tokens/surf-shack.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "surf-shack"
+  ],
+  "description": "W3C-format design tokens for the Surf Shack style DNA.",
+  "dnas": [
+   "surf-shack"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#f9ecd8",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#40342a",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#2e8f8a",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#a08d70",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#e0d0ae",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Shrikhand",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "DM Sans",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "surf-shack",
+  "name": "Surf Shack",
+  "vibe": "Sun-bleached and hand-painted: faded teal, warm sand, and signage you can tell a person made."
+ }
+}
