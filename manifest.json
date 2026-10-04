@@ -6,7 +6,12 @@
   "scenes_3d": 31,
   "templates": 25,
   "prompts": 36,
-  "showcases": 48
+  "showcases": 48,
+  "generative": 40,
+  "tokens": 48,
+  "tailwind_presets": 48,
+  "emails": 12,
+  "app_ui": 20
  },
  "demo": "https://rawmware.github.io/TZ-taste/",
  "files": {
