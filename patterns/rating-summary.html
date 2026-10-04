@@ -1,0 +1,48 @@
+<!--tz-meta {"id":"rating-summary","title":"Rating summary with distribution","category":"Stats","file":"patterns/rating-summary.html","tags":["reviews","stars","ratings","social-proof"],"description":"Oversized score numeral, star row, and animated 5-to-1 distribution bars.","dnas":["bazaar-spice"]} -->
+<section class="tz-rating-summary" aria-label="Customer ratings">
+  <div class="tz-score">
+    <p class="tz-k">Verified reviews</p>
+    <p class="tz-num">4.6</p>
+    <div class="tz-stars" role="img" aria-label="Rated 4.6 out of 5 stars">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="tz-rs-half"><stop offset="60%" stop-color="#e9a820"/><stop offset="60%" stop-color="#e9a82033"/></linearGradient></defs><path fill="url(#tz-rs-half)" d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+    </div>
+    <p class="tz-count">2,314 reviews · 92% would buy again</p>
+  </div>
+  <dl class="tz-dist">
+    <div class="tz-row"><dt>5</dt><dd><span class="tz-bar"><i style="--w:78%"></i></span><span class="tz-pct">78%</span></dd></div>
+    <div class="tz-row"><dt>4</dt><dd><span class="tz-bar"><i style="--w:12%"></i></span><span class="tz-pct">12%</span></dd></div>
+    <div class="tz-row"><dt>3</dt><dd><span class="tz-bar"><i style="--w:5%"></i></span><span class="tz-pct">5%</span></dd></div>
+    <div class="tz-row"><dt>2</dt><dd><span class="tz-bar"><i style="--w:3%"></i></span><span class="tz-pct">3%</span></dd></div>
+    <div class="tz-row"><dt>1</dt><dd><span class="tz-bar"><i style="--w:2%"></i></span><span class="tz-pct">2%</span></dd></div>
+  </dl>
+</section>
+<style>
+.tz-rating-summary{--bg:#241109;--ink:#f7e8cf;--accent:#e9a820;--muted:#b0854f;--line:#e9a82066;
+  background:var(--bg);color:var(--ink);padding:clamp(36px,5vw,80px);
+  display:grid;grid-template-columns:auto 1fr;gap:clamp(32px,6vw,96px);align-items:center;
+  font-family:'Work Sans',-apple-system,'Segoe UI',sans-serif}
+.tz-rating-summary .tz-k{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0 0 12px}
+.tz-num{font-family:'Yeseva One',Georgia,serif;font-size:clamp(72px,9vw,128px);line-height:1;
+  letter-spacing:-.02em;margin:0 0 16px;color:var(--ink)}
+.tz-stars{display:flex;gap:6px;margin-bottom:14px}
+.tz-stars svg{width:26px;height:26px;fill:var(--accent)}
+.tz-count{margin:0;font-size:14px;color:var(--muted)}
+.tz-dist{margin:0;display:flex;flex-direction:column;gap:12px;min-width:0}
+.tz-row{display:grid;grid-template-columns:16px 1fr;gap:12px;align-items:center}
+.tz-row dt{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:13px;color:var(--muted);margin:0}
+.tz-row dd{margin:0;display:flex;align-items:center;gap:12px}
+.tz-bar{flex:1;height:10px;background:#e9a82022;border-radius:6px;overflow:hidden}
+.tz-bar i{display:block;height:100%;width:var(--w);background:var(--accent);border-radius:6px;
+  transform-origin:left;animation:tz-rs-grow 1s cubic-bezier(.22,1,.36,1) both}
+.tz-row:nth-child(2) i{animation-delay:.08s}.tz-row:nth-child(3) i{animation-delay:.16s}
+.tz-row:nth-child(4) i{animation-delay:.24s}.tz-row:nth-child(5) i{animation-delay:.32s}
+@keyframes tz-rs-grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.tz-pct{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:12.5px;color:var(--muted);min-width:38px;text-align:right}
+@media(max-width:640px){.tz-rating-summary{grid-template-columns:1fr;gap:36px}}
+@media(prefers-reduced-motion:reduce){.tz-bar i{animation:none}}
+</style>
