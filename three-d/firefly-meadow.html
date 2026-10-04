@@ -1,0 +1,152 @@
+<!--tz-meta {"id":"firefly-meadow","title":"Firefly Meadow","category":"3D","file":"three-d/firefly-meadow.html","tags":["threejs","fireflies","night"],"description":"A dark meadow where sixty fireflies wander and pulse, each on its own clock, over swaying grass.","dnas":["night-market"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Firefly Meadow — TZ-taste</title>
+<style>
+  html, body { margin:0; height:100%; overflow:hidden; background:#161009; }
+  #app { position:fixed; inset:0; }
+  #app canvas { display:block; }
+  .caption { position:fixed; left:18px; bottom:16px; z-index:5; color:#c8b28a;
+    font:12px/1.6 system-ui, -apple-system, sans-serif; letter-spacing:.05em;
+    opacity:.9; pointer-events:none; }
+  .caption b { display:block; font-size:13px; letter-spacing:.22em; text-transform:uppercase; }
+  #fallback { display:none; position:fixed; inset:0; z-index:10; place-items:center;
+    color:#c8b28a; font:14px/1.6 system-ui, sans-serif; text-align:center;
+    padding:32px; background:#161009; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="caption"><b>Firefly Meadow</b>sixty lights, sixty private clocks<br/>drag to orbit &middot; scroll to zoom</div>
+<div id="fallback"><p>This scene needs WebGL, which your browser could not provide.<br/>Try a recent version of Chrome, Safari, Firefox or Edge.</p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (e) {
+  document.getElementById('fallback').style.display = 'grid';
+  throw e;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('app').appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x161009);
+scene.fog = new THREE.Fog(0x161009, 25, 80);
+
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 400);
+camera.position.set(14, 8, 18);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.target.set(0, 2, 0);
+controls.maxPolarAngle = 1.52;
+controls.minDistance = 6;
+controls.maxDistance = 60;
+
+scene.add(new THREE.HemisphereLight(0x3a3a5c, 0x0c0a06, 0.55));
+const moon = new THREE.DirectionalLight(0x8fa0cc, 0.4);
+moon.position.set(-20, 28, -14);
+scene.add(moon);
+const moonDisc = new THREE.Mesh(new THREE.CircleGeometry(3, 32),
+  new THREE.MeshBasicMaterial({ color: 0xf5ead6, fog: false }));
+moonDisc.position.set(-34, 30, -52);
+moonDisc.lookAt(camera.position);
+scene.add(moonDisc);
+
+/* ---------- ground ---------- */
+const ground = new THREE.Mesh(
+  new THREE.CircleGeometry(34, 48),
+  new THREE.MeshStandardMaterial({ color: 0x1e2a18, roughness: 1 }));
+ground.rotation.x = -Math.PI / 2;
+scene.add(ground);
+
+/* ---------- grass, instanced ---------- */
+const grassGeo = new THREE.ConeGeometry(0.06, 0.9, 5);
+const grassMat = new THREE.MeshStandardMaterial({ color: 0x2f4a26, roughness: 1 });
+const grass = new THREE.InstancedMesh(grassGeo, grassMat, 420);
+const dummy = new THREE.Object3D();
+for (let i = 0; i < 420; i++) {
+  const a = Math.random() * Math.PI * 2, r = 4 + Math.random() * 27;
+  dummy.position.set(Math.cos(a) * r, 0.4, Math.sin(a) * r);
+  dummy.rotation.set((Math.random() - 0.5) * 0.35, Math.random() * Math.PI, (Math.random() - 0.5) * 0.35);
+  const s = 0.7 + Math.random() * 0.9;
+  dummy.scale.set(s, s, s);
+  dummy.updateMatrix();
+  grass.setMatrixAt(i, dummy.matrix);
+}
+scene.add(grass);
+
+/* ---------- firefly glow sprite, generated ---------- */
+function glowTexture() {
+  const c = document.createElement('canvas');
+  c.width = c.height = 64;
+  const g = c.getContext('2d');
+  const gr = g.createRadialGradient(32, 32, 2, 32, 32, 30);
+  gr.addColorStop(0, 'rgba(255,230,170,1)');
+  gr.addColorStop(0.35, 'rgba(232,160,60,0.6)');
+  gr.addColorStop(1, 'rgba(232,160,60,0)');
+  g.fillStyle = gr; g.fillRect(0, 0, 64, 64);
+  return new THREE.CanvasTexture(c);
+}
+const glowTex = glowTexture();
+const flies = [];
+for (let i = 0; i < 60; i++) {
+  const mat = new THREE.SpriteMaterial({ map: glowTex, transparent: true, opacity: 0,
+    blending: THREE.AdditiveBlending, depthWrite: false });
+  const sp = new THREE.Sprite(mat);
+  const a = Math.random() * Math.PI * 2, r = 3 + Math.random() * 22;
+  sp.position.set(Math.cos(a) * r, 1 + Math.random() * 4.5, Math.sin(a) * r);
+  scene.add(sp);
+  flies.push({ s: sp, ph: Math.random() * 6.28, fq: 0.6 + Math.random() * 1.6,
+    hd: Math.random() * 6.28, sp: 0.5 + Math.random() * 0.8, nph: Math.random() * 100 });
+}
+
+/* ---------- frame loop ---------- */
+const clock = new THREE.Clock();
+function renderFrame(t, dt) {
+  for (const f of flies) {
+    f.nph += dt * 0.9;
+    f.hd += Math.sin(f.nph * 2.1) * 0.05 * dt * 8 + Math.sin(f.nph * 0.7) * 0.03 * dt * 8;
+    f.s.position.x += Math.cos(f.hd) * f.sp * dt * 2;
+    f.s.position.z += Math.sin(f.hd) * f.sp * dt * 2;
+    f.s.position.y = Math.max(0.6, Math.min(6.5, f.s.position.y + Math.sin(t * 0.8 + f.ph) * dt * 0.5));
+    const d = Math.hypot(f.s.position.x, f.s.position.z);
+    if (d > 30) f.hd += Math.PI;
+    let b = Math.max(0, Math.sin(t * f.fq * 2 + f.ph));
+    b = Math.pow(b, 5);
+    f.s.material.opacity = b;
+    const sc = 0.7 + b * 1.1;
+    f.s.scale.set(sc, sc, 1);
+  }
+  controls.update();
+  renderer.render(scene, camera);
+}
+if (REDUCED) {
+  renderFrame(3.0, 0);
+} else {
+  renderer.setAnimationLoop(() => {
+    const dt = Math.min(clock.getDelta(), 0.05);
+    renderFrame(clock.elapsedTime, dt);
+  });
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
