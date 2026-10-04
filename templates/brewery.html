@@ -1,0 +1,400 @@
+<!--tz-meta {"id":"brewery","title":"Salt & Foam — Craft Brewery","category":"Template","file":"templates/brewery.html","tags":["brewery","food-drink","local"],"description":"Sun-bleached surf-shack craft brewery with chalkboard tap list, surf-shack DNA.","dnas":["surf-shack"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salt &amp; Foam Brewing — beer, brewed by the break</title>
+<meta name="description" content="Salt & Foam is a beachside craft brewery in San Clemente. Sixteen taps, wood-fired pizza, and a patio that faces the sunset.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* DNA: surf-shack — bleached boards, deep sea ink, sunset orange; hand-painted energy */
+:root{
+  --tz-bg:#f5eeda; --tz-surface:#ecdfc2; --tz-ink:#16303a; --tz-muted:#57707a;
+  --tz-accent:#e0661a; --tz-line:rgba(22,48,58,.25);
+  --tz-display:'Anton',sans-serif; --tz-body:'Space Grotesk',sans-serif; --tz-mono:'Space Mono',monospace;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:var(--tz-body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;
+  background-image:repeating-linear-gradient(0deg,transparent 0 46px,rgba(22,48,58,.045) 46px 47px)}
+::selection{background:var(--tz-accent);color:#fff}
+a{color:inherit}
+.tz-wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.tz-mono{font-family:var(--tz-mono)}
+/* ticker */
+.tz-ticker{background:var(--tz-ink);color:var(--tz-bg);overflow:hidden;white-space:nowrap;padding:10px 0}
+.tz-ticker-inner{display:inline-block;animation:tz-tick 28s linear infinite;font-family:var(--tz-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+.tz-ticker-inner span{margin:0 28px}
+.tz-ticker-inner b{color:var(--tz-accent)}
+@keyframes tz-tick{to{transform:translateX(-50%)}}
+/* nav */
+.tz-nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+.tz-brand{font-family:var(--tz-display);font-size:26px;letter-spacing:.03em;text-decoration:none;text-transform:uppercase}
+.tz-brand em{font-style:normal;color:var(--tz-accent)}
+.tz-navlinks{display:flex;gap:28px;font-family:var(--tz-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.tz-navlinks a{text-decoration:none;color:var(--tz-muted)}
+.tz-navlinks a:hover{color:var(--tz-accent)}
+.tz-btn{display:inline-block;font-family:var(--tz-mono);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;background:var(--tz-accent);color:#fff;padding:15px 28px;transform:rotate(-1deg);transition:transform .25s var(--tz-ease)}
+.tz-btn:hover{transform:rotate(0deg) translateY(-2px)}
+/* hero */
+.tz-hero{padding:84px 0 72px;position:relative}
+.tz-hero .tz-over{font-family:var(--tz-mono);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--tz-accent);margin-bottom:20px;display:block}
+.tz-hero h1{font-family:var(--tz-display);font-size:clamp(64px,10vw,150px);line-height:.9;letter-spacing:.01em;text-transform:uppercase}
+.tz-hero h1 .tz-outline{color:transparent;-webkit-text-stroke:2.5px var(--tz-ink)}
+.tz-hero-row{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:40px;align-items:start}
+.tz-hero p{font-size:19px;color:var(--tz-muted);max-width:46ch}
+.tz-wave{margin:56px 0 0;color:var(--tz-accent)}
+.tz-wave svg{display:block;width:100%;height:64px}
+/* taps: chalkboard */
+.tz-section{padding:96px 0}
+.tz-sec-head{margin-bottom:52px}
+.tz-sec-head .tz-over{font-family:var(--tz-mono);font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--tz-accent);margin-bottom:16px;display:block}
+.tz-sec-head h2{font-family:var(--tz-display);font-size:clamp(40px,5vw,72px);text-transform:uppercase;line-height:.95;letter-spacing:.01em}
+.tz-board{background:#1d3a44;color:#f5eeda;border:10px solid #8a6b4a;padding:48px 44px;transform:rotate(-.4deg);box-shadow:0 24px 48px rgba(22,48,58,.25)}
+.tz-board h3{font-family:var(--tz-mono);font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:#e8a25e;text-align:center;margin-bottom:36px}
+.tz-tap{display:grid;grid-template-columns:52px 1fr auto auto;gap:20px;align-items:baseline;padding:16px 0;border-bottom:1px dashed rgba(245,238,218,.25);text-decoration:none}
+.tz-tap:last-child{border-bottom:none}
+.tz-tap:hover{background:rgba(232,162,94,.08)}
+.tz-tap .tz-n{font-family:var(--tz-mono);color:#e8a25e;font-size:13px}
+.tz-tap h4{font-family:var(--tz-display);font-size:24px;letter-spacing:.03em;text-transform:uppercase}
+.tz-tap h4 small{font-family:var(--tz-mono);font-size:11px;letter-spacing:.1em;color:#e8a25e;margin-left:10px}
+.tz-tap p{font-size:14px;color:#b9c8c4}
+.tz-tap .tz-abv{font-family:var(--tz-mono);font-size:13px;text-align:right;color:#f5eeda;white-space:nowrap}
+.tz-tap .tz-abv span{display:block;font-size:11px;color:#8fa5a8}
+.tz-board-note{text-align:center;font-family:var(--tz-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8fa5a8;margin-top:32px}
+/* story: split with stamp */
+.tz-story{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.tz-story h2{font-family:var(--tz-display);font-size:clamp(38px,4.4vw,64px);text-transform:uppercase;line-height:.95;margin-bottom:24px}
+.tz-story p{color:var(--tz-muted);margin-bottom:18px;font-size:18px}
+.tz-story p strong{color:var(--tz-ink)}
+.tz-stamp{width:220px;height:220px;border:3px solid var(--tz-accent);border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;transform:rotate(-8deg);margin:0 auto;color:var(--tz-accent);font-family:var(--tz-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;line-height:2;padding:20px}
+/* events: gig posters */
+.tz-events{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.tz-gig{border:2px solid var(--tz-ink);padding:32px;background:var(--tz-bg);text-decoration:none;transition:transform .25s var(--tz-ease),box-shadow .25s var(--tz-ease);display:block}
+.tz-gig:nth-child(1){transform:rotate(-1deg)}
+.tz-gig:nth-child(2){transform:rotate(.8deg);background:var(--tz-ink);color:var(--tz-bg);border-color:var(--tz-ink)}
+.tz-gig:nth-child(3){transform:rotate(-.6deg)}
+.tz-gig:hover{transform:rotate(0) translateY(-4px);box-shadow:8px 8px 0 var(--tz-accent)}
+.tz-gig .tz-date{font-family:var(--tz-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--tz-accent);margin-bottom:14px;display:block}
+.tz-gig h3{font-family:var(--tz-display);font-size:28px;text-transform:uppercase;line-height:1;margin-bottom:12px}
+.tz-gig p{font-size:15px;color:var(--tz-muted)}
+.tz-gig:nth-child(2) p{color:#b9c8c4}
+/* visit */
+.tz-visit{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--tz-ink)}
+.tz-visit>div{padding:56px 48px}
+.tz-visit>div:first-child{border-right:2px solid var(--tz-ink)}
+.tz-visit h3{font-family:var(--tz-display);font-size:32px;text-transform:uppercase;margin-bottom:20px}
+.tz-hours{width:100%;font-size:16px}
+.tz-hours div{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px dashed var(--tz-line)}
+.tz-hours div span:last-child{font-family:var(--tz-mono);font-size:14px}
+.tz-visit address{font-style:normal;font-size:18px;line-height:1.8}
+/* footer */
+.tz-footer{background:var(--tz-ink);color:var(--tz-bg);padding:64px 0 32px;margin-top:96px}
+.tz-footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.tz-footer h4{font-family:var(--tz-mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#e8a25e;margin-bottom:18px}
+.tz-footer ul{list-style:none}.tz-footer li{margin-bottom:10px}
+.tz-footer a{text-decoration:none;color:var(--tz-bg)}
+.tz-footer a:hover{color:var(--tz-accent)}
+.tz-footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-family:var(--tz-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8fa5a8;border-top:1px solid rgba(245,238,218,.2);padding-top:28px}
+.tz-reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--tz-ease),transform .7s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}.tz-ticker-inner{animation:none}.tz-reveal{opacity:1;transform:none;transition:none}*{transition:none !important}
+  .tz-gig,.tz-board,.tz-btn{transform:none !important}
+}
+@media(max-width:900px){
+  .tz-hero-row{grid-template-columns:1fr}
+  .tz-story{grid-template-columns:1fr;gap:40px}
+  .tz-events{grid-template-columns:1fr}
+  .tz-visit{grid-template-columns:1fr}
+  .tz-visit>div:first-child{border-right:none;border-bottom:2px solid var(--tz-ink)}
+  .tz-navlinks{display:none}
+  .tz-tap{grid-template-columns:36px 1fr auto}
+  .tz-tap p{display:none}
+}
+@media(max-width:600px){
+  .tz-section{padding:64px 0}
+  .tz-board{padding:32px 24px;border-width:6px}
+  .tz-footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<!-- DNA: surf-shack · design read: a beachside brewery page with the sun-bleached swagger of a hand-painted surf shop sign · dials V7/M5/D4 · one weird thing: a live-style surf-report ticker and a chalkboard tap list you can almost smell -->
+<div class="tz-ticker" aria-hidden="true">
+  <div class="tz-ticker-inner">
+    <span><b>Surf report — T-Street:</b> 3–4 ft, glassy till 10am</span><span><b>Now pouring:</b> Foghorn Hazy IPA, batch 214</span><span><b>Friday:</b> vinyl night + wood-fired pies till 10</span><span><b>Saturday:</b> beach cleanup, free pint for volunteers</span>
+    <span><b>Surf report — T-Street:</b> 3–4 ft, glassy till 10am</span><span><b>Now pouring:</b> Foghorn Hazy IPA, batch 214</span><span><b>Friday:</b> vinyl night + wood-fired pies till 10</span><span><b>Saturday:</b> beach cleanup, free pint for volunteers</span>
+  </div>
+</div>
+
+<header class="tz-wrap">
+  <nav class="tz-nav" aria-label="Main">
+    <a class="tz-brand" href="#">Salt <em>&amp;</em> Foam</a>
+    <div class="tz-navlinks">
+      <a href="#taps">On tap</a><a href="#story">Story</a><a href="#events">Events</a><a href="#visit">Visit</a>
+    </div>
+    <a class="tz-btn" href="#visit">Find the patio</a>
+  </nav>
+</header>
+
+<main>
+  <section class="tz-hero">
+    <div class="tz-wrap">
+      <span class="tz-over">San Clemente, California · Est. 2016</span>
+      <h1>Brewed by<br>the <span class="tz-outline">break.</span></h1>
+      <div class="tz-hero-row">
+        <p>Salt &amp; Foam is a ten-barrel beachside brewery two blocks from T-Street. We brew what we want to drink after a surf: bright, bitter, cold, and gone by sunset. Sixteen taps, a wood-fired oven, and a patio that faces due west.</p>
+        <div style="text-align:right"><a class="tz-btn" href="#taps" style="display:inline-block">See what's pouring</a></div>
+      </div>
+      <div class="tz-wave" aria-hidden="true">
+        <svg viewBox="0 0 1200 64" preserveAspectRatio="none"><path d="M0 40 Q 75 10 150 35 T 300 35 T 450 35 T 600 35 T 750 35 T 900 35 T 1050 35 T 1200 35" fill="none" stroke="currentColor" stroke-width="5"/><path d="M0 52 Q 100 30 200 48 T 400 48 T 600 48 T 800 48 T 1000 48 T 1200 48" fill="none" stroke="currentColor" stroke-width="3" opacity=".5"/></svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="taps">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-over">The chalkboard · updated daily</span>
+        <h2>On tap now</h2>
+      </div>
+      <div class="tz-board tz-reveal">
+        <h3>— Salt &amp; Foam · T-Street —</h3>
+        <a class="tz-tap" href="#visit"><span class="tz-n">01</span><div><h4>Foghorn Hazy IPA <small>flagship</small></h4><p>Citra + Mosaic. Tastes like the good part of a foggy morning.</p></div><div class="tz-abv">6.8%<span>32 IBU</span></div></a>
+        <a class="tz-tap" href="#visit"><span class="tz-n">02</span><div><h4>Pier Pils</h4><p>Crisp German-style pilsner. The lawnmower beer of the beach.</p></div><div class="tz-abv">4.9%<span>28 IBU</span></div></a>
+        <a class="tz-tap" href="#visit"><span class="tz-n">03</span><div><h4>Low Tide Session Ale</h4><p>All-day pale ale. Bring a second glass, thank us later.</p></div><div class="tz-abv">4.2%<span>25 IBU</span></div></a>
+        <a class="tz-tap" href="#visit"><span class="tz-n">04</span><div><h4>Bonfire Amber</h4><p>Toasty, caramel, a little smoke. Built for October nights.</p></div><div class="tz-abv">5.6%<span>22 IBU</span></div></a>
+        <a class="tz-tap" href="#visit"><span class="tz-n">05</span><div><h4>Blackball Stout</h4><p>Coffee, chocolate, sea salt. Dessert that pours.</p></div><div class="tz-abv">6.1%<span>30 IBU</span></div></a>
+        <a class="tz-tap" href="#visit"><span class="tz-n">06</span><div><h4>Salt Air Gose <small>rotating sour</small></h4><p>Tart, briny, lime leaf. This month's experiment; next month's legend.</p></div><div class="tz-abv">4.5%<span>8 IBU</span></div></a>
+        <div class="tz-board-note">+ 10 guest taps · crowlers to go · $2 off during golden hour (5–6pm)</div>
+      </div>
+      <div class="tz-reveal" style="margin-top:40px;border:2px solid var(--tz-ink);padding:32px 36px;display:flex;justify-content:space-between;gap:24px;align-items:center;flex-wrap:wrap;background:var(--tz-surface)">
+        <div>
+          <h3 style="font-family:var(--tz-display);font-size:24px;text-transform:uppercase;margin-bottom:6px">Golden hour special</h3>
+          <p style="color:var(--tz-muted);font-size:15px;max-width:52ch">Every day, 5–6pm: $2 off every house pour on the patio. The sun does the rest. No coupon, no app, no catch.</p>
+        </div>
+        <span class="tz-mono" style="font-size:12px;letter-spacing:.18em;color:var(--tz-accent)">DAILY · 5–6PM · PATIO ONLY</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="story" style="padding-top:0">
+    <div class="tz-wrap tz-story">
+      <div class="tz-reveal">
+        <h2>Started in a garage. Still smells like it.</h2>
+        <p><strong>2014:</strong> two surf buddies, one homebrew kit, and a garage that the neighbors complained about twice.</p>
+        <p><strong>2016:</strong> we signed the lease on the old bait shop on El Camino Real and built the brewhouse ourselves — mostly correctly.</p>
+        <p><strong>Today:</strong> ten barrels, sixteen taps, and a wood-fired oven run by our friend Rosa, whose margherita has its own fan club. We still surf before the morning mash. The beer is better for it.</p>
+      </div>
+      <div class="tz-stamp tz-reveal" aria-hidden="true">Independent<br>craft brewery<br>· est. 2016 ·<br>San Clemente</div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="events" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-over">Pinned to the corkboard</span>
+        <h2>This month</h2>
+      </div>
+      <div class="tz-events">
+        <a class="tz-gig tz-reveal" href="#visit">
+          <span class="tz-date">Every Friday · 7pm</span>
+          <h3>Vinyl night</h3>
+          <p>Bring a record, skip the line for the turntable. Rosa does a late-night pie. No requests refused before 9pm.</p>
+        </a>
+        <a class="tz-gig tz-reveal" href="#visit">
+          <span class="tz-date">Oct 17 · 6pm</span>
+          <h3>Harvest ale release</h3>
+          <p>Our wet-hop ale, brewed with Chinook picked that morning in Yakima. One keg. When it's gone, it's gone.</p>
+        </a>
+        <a class="tz-gig tz-reveal" href="#visit">
+          <span class="tz-date">Oct 24 · 9am</span>
+          <h3>Beach cleanup + free pint</h3>
+          <p>Gloves and buckets provided. One hour at T-Street earns you a pint and our eternal respect.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+<style>
+.tz-merch{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px}
+.tz-item{border:2px solid var(--tz-ink);background:var(--tz-bg);padding:0;text-decoration:none;display:block;transition:transform .25s var(--tz-ease),box-shadow .25s}
+.tz-item:hover{transform:translateY(-4px);box-shadow:8px 8px 0 var(--tz-accent)}
+.tz-item-img{height:200px;background:var(--tz-surface);display:flex;align-items:center;justify-content:center;border-bottom:2px solid var(--tz-ink);font-family:var(--tz-display);font-size:44px;color:var(--tz-accent)}
+.tz-item:nth-child(2) .tz-item-img{transform:none}
+.tz-item-body{padding:28px}
+.tz-item-body h3{font-family:var(--tz-display);font-size:24px;text-transform:uppercase;margin-bottom:6px}
+.tz-item-body p{font-size:14px;color:var(--tz-muted);margin-bottom:14px}
+.tz-item-body .tz-cost{font-family:var(--tz-mono);font-size:15px;font-weight:700}
+.tz-buyout{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--tz-ink);margin-top:0}
+.tz-buyout>div{padding:56px 48px}
+.tz-buyout>div:first-child{background:var(--tz-ink);color:var(--tz-bg)}
+.tz-buyout h3{font-family:var(--tz-display);font-size:30px;text-transform:uppercase;margin-bottom:16px}
+.tz-buyout p{font-size:16px;margin-bottom:14px}
+.tz-buyout>div:first-child p{color:#b9c8c4}
+.tz-buyout ul{list-style:none;margin:20px 0}
+.tz-buyout li{padding:8px 0;border-bottom:1px dashed var(--tz-line);font-size:15px}
+.tz-buyout>div:first-child li{border-color:rgba(245,238,218,.25)}
+.tz-faqb{max-width:780px}
+.tz-faqb details{border-bottom:1px solid var(--tz-line)}
+.tz-faqb summary{font-family:var(--tz-display);font-size:22px;padding:24px 0;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px}
+.tz-faqb summary::-webkit-details-marker{display:none}
+.tz-faqb summary::after{content:"+";font-family:var(--tz-mono);color:var(--tz-accent)}
+.tz-faqb details[open] summary::after{content:"–"}
+.tz-faqb details p{color:var(--tz-muted);padding:0 0 26px;max-width:62ch;font-size:16px}
+@media(max-width:900px){.tz-merch{grid-template-columns:1fr}.tz-buyout{grid-template-columns:1fr}}
+</style>
+  <section class="tz-section" id="merch" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-over">Take it home</span>
+        <h2>The goods</h2>
+      </div>
+      <div class="tz-merch">
+        <a class="tz-item tz-reveal" href="#visit"><div class="tz-item-img" aria-hidden="true">S&amp;F</div><div class="tz-item-body"><h3>Foghorn tee</h3><p>Heavyweight cotton, sun-faded print. The shirt half of San Clemente owns.</p><div class="tz-cost">$32</div></div></a>
+        <a class="tz-item tz-reveal" href="#visit"><div class="tz-item-img" aria-hidden="true">64oz</div><div class="tz-item-body"><h3>Growler + first fill</h3><p>Stainless 64oz growler, filled with anything on the board. Refills $14.</p><div class="tz-cost">$45</div></div></a>
+        <a class="tz-item tz-reveal" href="#visit"><div class="tz-item-img" aria-hidden="true">×4</div><div class="tz-item-body"><h3>Shack mixed 4-pack</h3><p>Two Foghorn, one Pier Pils, one rotating sour. The greatest hits.</p><div class="tz-cost">$18</div></div></a>
+      </div>
+      <p class="tz-mono tz-reveal" style="font-size:12px;color:var(--tz-muted);margin-top:24px;letter-spacing:.08em">ALL MERCH SOLD AT THE SHACK ONLY · PROCEEDS FROM THE CLEANUP TEE FUND THE MONTHLY BEACH CLEANUPS</p>
+    </div>
+  </section>
+
+  <section class="tz-section" id="private" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-over">Your party, our patio</span>
+        <h2>Buyouts &amp; big nights</h2>
+      </div>
+      <div class="tz-buyout tz-reveal">
+        <div>
+          <h3>The whole shack</h3>
+          <p>Full buyouts for 40–120 people: the patio, the back room, and a bartender who remembers names.</p>
+          <ul><li>Dedicated taps + custom keg</li><li>Rosa's wood-fired menu</li><li>Vinyl or your playlist — your call</li></ul>
+          <p class="tz-mono" style="font-size:13px;margin-top:20px">FROM $1,500 · 3-HOUR MINIMUM</p>
+        </div>
+        <div>
+          <h3>The back room</h3>
+          <p>Birthdays, team offsites, surf-club banquets — 15–40 people, semi-private, no buyout required.</p>
+          <ul><li>Reserved 3 hours, no room fee</li><li>$400 food &amp; bev minimum</li><li>Cornhole included, obviously</li></ul>
+          <p class="tz-mono" style="font-size:13px;margin-top:20px"><a href="mailto:party@saltandfoam.beer" style="color:var(--tz-accent)">party@saltandfoam.beer</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="faq" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-over">Good questions</span>
+        <h2>Before you paddle out</h2>
+      </div>
+      <div class="tz-faqb tz-reveal">
+        <details><summary>Do you fill growlers from other breweries?</summary><p>Happily. Clean it first — we'll rinse it again anyway. $14 for most fills, $18 for the stout and the rotating sour.</p></details>
+        <details><summary>Is the patio really dog-friendly?</summary><p>The patio, yes; inside, no (health code, not our rule). Water bowls are always out, and the staff keeps treats behind the bar.</p></details>
+        <details><summary>Do you distribute?</summary><p>Foghorn and Pier Pils go to about forty bars between Dana Point and Oceanside. Everything else is taproom-only — another reason to visit.</p></details>
+        <details><summary>Can I buy a keg for a party?</summary><p>Yes — sixth-barrels of anything on the board, $120–$160 with a $50 refundable deposit. Order a week ahead.</p></details>
+      </div>
+    </div>
+  </section>
+
+<style>
+.tz-tours{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--tz-ink)}
+.tz-tour{padding:56px 48px;text-decoration:none;display:block;transition:background .25s}
+.tz-tour:first-child{border-right:2px solid var(--tz-ink)}
+.tz-tour:hover{background:var(--tz-surface)}
+.tz-tour .tz-when{font-family:var(--tz-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tz-accent);display:block;margin-bottom:16px}
+.tz-tour h3{font-family:var(--tz-display);font-size:30px;text-transform:uppercase;margin-bottom:14px}
+.tz-tour p{color:var(--tz-muted);font-size:16px;margin-bottom:18px}
+.tz-tour .tz-cost{font-family:var(--tz-mono);font-size:14px;font-weight:700}
+.tz-pressb{display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;margin-top:0}
+.tz-pb{border-top:3px solid var(--tz-ink);padding-top:24px}
+.tz-pb p{font-size:19px;font-style:italic;line-height:1.5;margin-bottom:14px}
+.tz-pb footer{font-family:var(--tz-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tz-muted)}
+@media(max-width:900px){.tz-tours{grid-template-columns:1fr}.tz-tour:first-child{border-right:none;border-bottom:2px solid var(--tz-ink)}.tz-pressb{grid-template-columns:1fr}}
+</style>
+  <section class="tz-section" id="tours" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-over">Behind the bar</span>
+        <h2>Tours &amp; tastings</h2>
+      </div>
+      <div class="tz-tours tz-reveal">
+        <a class="tz-tour" href="#visit"><span class="tz-when">Saturdays · 2pm · 45 min</span><h3>The brewhouse tour</h3><p>See the ten-barrel system, smell the mash tun, and learn why our fermenters are named after surf breaks. Ends with a guided tasting of four pours.</p><span class="tz-cost">$25 · INCLUDES A PINT GLASS</span></a>
+        <a class="tz-tour" href="#visit"><span class="tz-when">First Fridays · 7pm</span><h3>Brewer's table</h3><p>A five-course beer dinner with Rosa's kitchen — each course paired, each pairing argued over. Twelve seats, announced by email first.</p><span class="tz-cost">$85 · 12 SEATS</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="press" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-over">Nice things said</span>
+        <h2>Press</h2>
+      </div>
+      <div class="tz-pressb">
+        <blockquote class="tz-pb tz-reveal"><p>"The rare brewery where the beer and the room are equally good. Foghorn is the best hazy IPA in the county."</p><footer>Coast Brewing Review</footer></blockquote>
+        <blockquote class="tz-pb tz-reveal"><p>"Salt &amp; Foam's patio at golden hour is San Clemente's finest argument for day-drinking."</p><footer>The Local Palate</footer></blockquote>
+        <blockquote class="tz-pb tz-reveal"><p>"A taproom that feels like it grew there. Because it did."</p><footer>West Coast Beer Guide, 2026</footer></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="visit" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-over">Come thirsty</span>
+        <h2>Find us</h2>
+      </div>
+      <div class="tz-visit tz-reveal">
+        <div>
+          <h3>Hours</h3>
+          <div class="tz-hours">
+            <div><span>Mon – Thu</span><span>3pm – 10pm</span></div>
+            <div><span>Friday</span><span>12pm – 11pm</span></div>
+            <div><span>Saturday</span><span>11am – 11pm</span></div>
+            <div><span>Sunday</span><span>11am – 9pm</span></div>
+          </div>
+        </div>
+        <div>
+          <h3>The shack</h3>
+          <address>618 El Camino Real<br>San Clemente, CA 92672<br><br><a href="tel:+19495550137" style="text-decoration:none">(949) 555-0137</a><br><a href="mailto:aloha@saltandfoam.beer" style="text-decoration:none">aloha@saltandfoam.beer</a></address>
+          <p style="margin-top:20px;color:var(--tz-muted);font-size:15px">Dogs welcome on the patio. Kids welcome till 8. Wetsuits: rinse outside, please.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-footer-grid">
+      <div>
+        <h4>Salt &amp; Foam Brewing</h4>
+        <p style="font-size:15px;color:#b9c8c4;max-width:34ch">Independent craft brewery in San Clemente, California. Please surf responsibly — and drink the same way.</p>
+      </div>
+      <div><h4>Visit</h4><ul><li><a href="#taps">On tap</a></li><li><a href="#events">Events</a></li><li><a href="#visit">Hours &amp; directions</a></li></ul></div>
+      <div><h4>Follow</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">Untappd</a></li><li><a href="#">Wholesale inquiries</a></li></ul></div>
+    </div>
+    <div class="tz-footer-bottom">
+      <span>© 2026 Salt &amp; Foam Brewing Co.</span>
+      <span>21+ to drink · CA license #41-623887</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els=document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('tz-in')});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(en,i){if(en.isIntersecting){setTimeout(function(){en.target.classList.add('tz-in')},(i%3)*80);io.unobserve(en.target);}})},{threshold:.1});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
