@@ -1,0 +1,180 @@
+<!--tz-meta {"id":"showcase-drift-kanban","title":"Drift — kanban board","category":"Showcase","file":"showcase/drift-kanban.html","tags":["app-ui","kanban","shadcn"],"description":"Drift kanban board: draggable columns, add cards, priority tags, search filter, dark mode.","dnas":[]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Drift — Kanban</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff; --fg:#09090b; --muted:#f4f4f5; --muted-fg:#71717a;
+  --border:#e4e4e7; --card:#ffffff; --primary:#18181b; --primary-fg:#fafafa;
+  --ring:#18181b; --blue:#2563eb; --green:#16a34a; --amber:#d97706; --red:#dc2626; --violet:#7c3aed;
+}
+html.dark{
+  --bg:#09090b; --fg:#fafafa; --muted:#18181b; --muted-fg:#a1a1aa;
+  --border:#27272a; --card:#101013; --primary:#fafafa; --primary-fg:#09090b;
+  --ring:#fafafa; --blue:#60a5fa; --green:#4ade80; --amber:#fbbf24; --red:#f87171; --violet:#a78bfa;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:Inter,-apple-system,"Segoe UI",sans-serif;font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button{font:inherit;cursor:pointer}
+.app{height:100vh;display:flex;flex-direction:column;overflow:hidden}
+/* header */
+.top{display:flex;align-items:center;gap:12px;padding:12px 20px;border-bottom:1px solid var(--border);flex-shrink:0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;letter-spacing:-.01em}
+.mark{width:26px;height:26px;border-radius:7px;background:var(--primary);color:var(--primary-fg);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700}
+.proj{display:flex;align-items:center;gap:8px;border:1px solid var(--border);border-radius:8px;padding:7px 12px;background:var(--card);font-size:13px;font-weight:500;color:var(--fg)}
+.proj:hover{background:var(--muted)}
+.search{display:flex;align-items:center;gap:8px;border:1px solid var(--border);border-radius:8px;padding:7px 10px;color:var(--muted-fg);margin-left:auto}
+.search input{border:0;outline:0;background:transparent;color:var(--fg);font:inherit;font-size:13px;width:200px}
+.btn{border:1px solid var(--border);background:var(--card);color:var(--fg);border-radius:8px;padding:7px 13px;font-size:13px;font-weight:500}
+.btn:hover{background:var(--muted)}
+.btn.primary{background:var(--primary);border-color:var(--primary);color:var(--primary-fg)}
+.iconbtn{width:32px;height:32px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--muted-fg);display:flex;align-items:center;justify-content:center;font-size:15px}
+.iconbtn:hover{background:var(--muted);color:var(--fg)}
+/* board */
+.board{flex:1;display:flex;gap:14px;padding:18px 20px;overflow-x:auto;align-items:flex-start}
+.col{width:290px;flex-shrink:0;background:var(--muted);border:1px solid var(--border);border-radius:12px;display:flex;flex-direction:column;max-height:100%}
+.colhead{display:flex;align-items:center;gap:8px;padding:12px 14px 8px;font-size:13px;font-weight:600}
+.colhead .dot{width:8px;height:8px;border-radius:50%}
+.ct{font-size:11.5px;font-weight:600;color:var(--muted-fg);background:var(--card);border:1px solid var(--border);border-radius:99px;padding:1px 8px;font-variant-numeric:tabular-nums}
+.cards{padding:4px 10px 10px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;min-height:60px;border-radius:0 0 12px 12px;transition:background .15s}
+.cards.over{background:color-mix(in srgb,var(--blue) 8%,transparent);outline:2px dashed var(--blue);outline-offset:-2px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:11px 12px;cursor:grab;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.card:active{cursor:grabbing}
+.card.drag{opacity:.45;transform:rotate(1.5deg)}
+.card.hide{display:none}
+.card h4{font-size:13.5px;font-weight:500;margin:7px 0 10px;line-height:1.45}
+.tag{display:inline-block;font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;border-radius:5px;padding:2px 7px}
+.tag.design{background:color-mix(in srgb,var(--violet) 12%,transparent);color:var(--violet)}
+.tag.eng{background:color-mix(in srgb,var(--blue) 12%,transparent);color:var(--blue)}
+.tag.growth{background:color-mix(in srgb,var(--green) 12%,transparent);color:var(--green)}
+.tag.ops{background:color-mix(in srgb,var(--amber) 12%,transparent);color:var(--amber)}
+.cfoot{display:flex;align-items:center;gap:8px}
+.avatars{display:flex}
+.av{width:22px;height:22px;border-radius:50%;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;color:#fff;margin-left:-6px;border:2px solid var(--card)}
+.av:first-child{margin-left:0}
+.pri{margin-left:auto;font-size:11px;font-weight:600;display:flex;align-items:center;gap:4px;color:var(--muted-fg)}
+.pri i{width:7px;height:7px;border-radius:50%;font-style:normal}
+.pri.p1 i{background:var(--red)} .pri.p2 i{background:var(--amber)} .pri.p3 i{background:var(--green)}
+.del{border:0;background:transparent;color:var(--muted-fg);font-size:14px;line-height:1;padding:2px 4px;border-radius:5px;opacity:0}
+.card:hover .del{opacity:1}
+.del:hover{color:var(--red);background:color-mix(in srgb,var(--red) 10%,transparent)}
+.addbtn{margin:0 10px 10px;border:1px dashed var(--border);background:transparent;color:var(--muted-fg);border-radius:8px;padding:8px;font-size:12.5px;font-weight:500}
+.addbtn:hover{color:var(--fg);border-color:var(--muted-fg)}
+.newcard{margin:0 10px 10px}
+.newcard textarea{width:100%;border:1px solid var(--ring);border-radius:8px;padding:8px 10px;font:inherit;font-size:13px;background:var(--card);color:var(--fg);outline:none;resize:none;min-height:64px}
+.newcard .row{display:flex;gap:8px;margin-top:8px}
+.empty{padding:22px 10px;text-align:center;color:var(--muted-fg);font-size:12.5px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--primary);color:var(--primary-fg);font-size:13px;font-weight:500;padding:10px 18px;border-radius:10px;opacity:0;transition:.25s;z-index:60;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand"><span class="mark">D</span>Drift</div>
+    <button class="proj" id="projBtn">Website relaunch <span style="color:var(--muted-fg)">▾</span></button>
+    <label class="search">⌕ <input id="q" placeholder="Filter cards…" autocomplete="off"></label>
+    <button class="btn" id="themeBtn">Dark mode</button>
+  </header>
+  <div class="board" id="board"></div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+(function(){
+  "use strict";
+  var $=function(id){return document.getElementById(id)};
+  var uid=100;
+  var AVC=["#2563eb","#7c3aed","#16a34a","#d97706","#dc2626","#0891b2"];
+  var COLS=[
+    {id:"backlog",name:"Backlog",color:"var(--muted-fg)"},
+    {id:"progress",name:"In progress",color:"var(--blue)"},
+    {id:"review",name:"In review",color:"var(--amber)"},
+    {id:"done",name:"Done",color:"var(--green)"}
+  ];
+  var cards=[
+    {id:++uid,col:"backlog",title:"Refactor auth middleware to sessions",tag:"eng",tagLabel:"Engineering",people:["AK","JM"],pri:2},
+    {id:++uid,col:"backlog",title:"Write onboarding email sequence (5 emails)",tag:"growth",tagLabel:"Growth",people:["RS"],pri:3},
+    {id:++uid,col:"backlog",title:"Audit color contrast across marketing pages",tag:"design",tagLabel:"Design",people:["LT"],pri:3},
+    {id:++uid,col:"progress",title:"New pricing page — annual toggle",tag:"design",tagLabel:"Design",people:["LT","AK"],pri:1},
+    {id:++uid,col:"progress",title:"Migrate billing webhooks to v2",tag:"eng",tagLabel:"Engineering",people:["JM"],pri:1},
+    {id:++uid,col:"progress",title:"Set up status page + incident template",tag:"ops",tagLabel:"Operations",people:["DW"],pri:2},
+    {id:++uid,col:"review",title:"Homepage hero copy — final pass",tag:"growth",tagLabel:"Growth",people:["RS","LT"],pri:2},
+    {id:++uid,col:"review",title:"Dark mode QA on settings screens",tag:"eng",tagLabel:"Engineering",people:["AK"],pri:3},
+    {id:++uid,col:"done",title:"Launch changelog page",tag:"growth",tagLabel:"Growth",people:["RS"],pri:2},
+    {id:++uid,col:"done",title:"Fix mobile nav overflow bug",tag:"eng",tagLabel:"Engineering",people:["JM","AK"],pri:1}
+  ];
+  var filter="";
+  function toast(m){var t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove("show")},2000)}
+  function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+  function avatars(p){return p.map(function(n,i){return '<span class="av" style="background:'+AVC[(n.charCodeAt(0)+i)%AVC.length]+'">'+n+'</span>'}).join("")}
+  function priLabel(p){return p===1?"P1 high":p===2?"P2":"P3"}
+  function cardHTML(c){
+    return '<div class="card" draggable="true" data-id="'+c.id+'">'+
+      '<div style="display:flex;align-items:center;justify-content:space-between"><span class="tag '+c.tag+'">'+c.tagLabel+'</span>'+
+      '<button class="del" data-del="'+c.id+'" title="Delete">×</button></div>'+
+      '<h4>'+esc(c.title)+'</h4>'+
+      '<div class="cfoot"><span class="avatars">'+avatars(c.people)+'</span>'+
+      '<span class="pri p'+c.pri+'"><i></i>'+priLabel(c.pri)+'</span></div></div>';
+  }
+  function render(){
+    var b=$("board");b.innerHTML="";
+    COLS.forEach(function(col){
+      var list=cards.filter(function(c){return c.col===col.id});
+      var shown=list.filter(function(c){return !filter||c.title.toLowerCase().indexOf(filter)>-1});
+      var el=document.createElement("div");el.className="col";el.dataset.col=col.id;
+      el.innerHTML='<div class="colhead"><span class="dot" style="background:'+col.color+'"></span>'+col.name+'<span class="ct num">'+list.length+'</span></div>'+
+        '<div class="cards" data-col="'+col.id+'">'+(shown.length?shown.map(cardHTML).join(""):'<div class="empty">No cards</div>')+'</div>'+
+        '<div class="newcard" style="display:none"><textarea placeholder="Card title…"></textarea><div class="row"><button class="btn primary" data-add style="flex:1">Add</button><button class="btn" data-cancel>Cancel</button></div></div>'+
+        '<button class="addbtn">+ Add card</button>';
+      b.appendChild(el);
+    });
+    bind();
+  }
+  function bind(){
+    Array.prototype.forEach.call(document.querySelectorAll(".card"),function(card){
+      card.addEventListener("dragstart",function(e){card.classList.add("drag");e.dataTransfer.setData("text/plain",card.dataset.id);e.dataTransfer.effectAllowed="move"});
+      card.addEventListener("dragend",function(){card.classList.remove("drag");clearOver()});
+    });
+    Array.prototype.forEach.call(document.querySelectorAll("[data-del]"),function(btn){
+      btn.onclick=function(e){e.stopPropagation();var id=+btn.dataset.del;cards=cards.filter(function(c){return c.id!==id});render();toast("Card deleted")};
+    });
+    Array.prototype.forEach.call(document.querySelectorAll(".cards"),function(zone){
+      zone.addEventListener("dragover",function(e){e.preventDefault();clearOver();zone.classList.add("over")});
+      zone.addEventListener("dragleave",function(){zone.classList.remove("over")});
+      zone.addEventListener("drop",function(e){
+        e.preventDefault();var id=+e.dataTransfer.getData("text/plain");
+        var c=cards.filter(function(x){return x.id===id})[0];
+        if(c&&c.col!==zone.dataset.col){c.col=zone.dataset.col;toast("Moved to "+colName(c.col))}
+        render();
+      });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll(".col"),function(col){
+      var addBtn=col.querySelector(".addbtn"),box=col.querySelector(".newcard"),ta=col.querySelector("textarea");
+      addBtn.onclick=function(){box.style.display="block";addBtn.style.display="none";ta.focus()};
+      col.querySelector("[data-cancel]").onclick=function(){box.style.display="none";addBtn.style.display="block";ta.value=""};
+      col.querySelector("[data-add]").onclick=function(){
+        var t=ta.value.trim();if(!t){ta.focus();return}
+        cards.push({id:++uid,col:col.dataset.col,title:t,tag:"eng",tagLabel:"Engineering",people:["YOU".slice(0,2)],pri:3});
+        render();toast("Card added");
+      };
+      ta.addEventListener("keydown",function(e){if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();col.querySelector("[data-add]").click()}});
+    });
+  }
+  function clearOver(){Array.prototype.forEach.call(document.querySelectorAll(".cards.over"),function(z){z.classList.remove("over")})}
+  function colName(id){var c=COLS.filter(function(x){return x.id===id})[0];return c?c.name:id}
+  $("q").addEventListener("input",function(){filter=$("q").value.trim().toLowerCase();render()});
+  $("projBtn").onclick=function(){toast("One project in this demo")};
+  function setDark(d){document.documentElement.classList.toggle("dark",d);try{localStorage.setItem("drift-dark",d?"1":"0")}catch(e){}}
+  $("themeBtn").onclick=function(){setDark(!document.documentElement.classList.contains("dark"))};
+  try{if(localStorage.getItem("drift-dark")==="1")setDark(true)}catch(e){}
+  render();
+})();
+</script>
+</body>
+</html>
