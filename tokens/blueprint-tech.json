@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-blueprint-tech",
+  "title": "Blueprint Tech design tokens",
+  "category": "Tokens",
+  "file": "tokens/blueprint-tech.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "blueprint-tech"
+  ],
+  "description": "W3C-format design tokens for the Blueprint Tech style DNA.",
+  "dnas": [
+   "blueprint-tech"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#17407f",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#f2f6fc",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#ffcf3f",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#8fb3e8",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#ffffff40",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Space Grotesk",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "IBM Plex Mono",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "IBM Plex Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "blueprint-tech",
+  "name": "Blueprint Tech",
+  "vibe": "Cyanotype schematics: deep blueprint blue, white line work, everything labeled."
+ }
+}
