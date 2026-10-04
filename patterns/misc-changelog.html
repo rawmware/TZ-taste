@@ -1,0 +1,97 @@
+<!--tz-meta {"id":"misc-changelog","title":"Changelog feed","category":"Misc","file":"patterns/misc-changelog.html","tags":["releases","log"],"description":"Version entries with solarized tag pills and honest notes.","dnas":["docs-solar"]} -->
+<section class="tz-log">
+  <p class="tz-log-kicker">Changelog</p>
+  <article>
+    <header><p class="tz-log-ver">v2.4.0</p><p class="tz-log-date">Oct 1, 2026</p><p class="tz-log-tags"><span class="tz-tag-new">new</span><span class="tz-tag-fix">fix</span></p></header>
+    <ul><li>Offline mode finally works on flaky café wifi.</li><li>Fixed the export that silently dropped the last row.</li></ul>
+  </article>
+  <article>
+    <header><p class="tz-log-ver">v2.3.1</p><p class="tz-log-date">Sep 18, 2026</p><p class="tz-log-tags"><span class="tz-tag-fix">fix</span></p></header>
+    <ul><li>Patched the midnight crash nobody could reproduce until Tuesday.</li></ul>
+  </article>
+  <article>
+    <header><p class="tz-log-ver">v2.3.0</p><p class="tz-log-date">Sep 2, 2026</p><p class="tz-log-tags"><span class="tz-tag-break">breaking</span><span class="tz-tag-new">new</span></p></header>
+    <ul><li>New API shape. The old endpoints retire Dec 1 — migration guide linked below.</li><li>Dark mode, by overwhelming popular demand.</li></ul>
+  </article>
+</section>
+<style>
+.tz-log{
+  background:#fdf6e3;
+  color:#3d3a33;
+  font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(32px,5vw,64px) clamp(20px,4vw,48px);
+  max-width:680px;
+}
+.tz-log-kicker{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#657b83;
+  margin:0 0 8px;
+}
+.tz-log article{
+  padding:24px 0;
+  border-bottom:1px solid #e8dfc9;
+}
+.tz-log article:last-child{
+  border-bottom:none;
+}
+.tz-log header{
+  display:flex;
+  align-items:baseline;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-bottom:10px;
+}
+.tz-log-ver{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:17px;
+  font-weight:700;
+  margin:0;
+}
+.tz-log-date{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:11px;
+  color:#657b83;
+  margin:0;
+  letter-spacing:.08em;
+}
+.tz-log-tags{
+  margin:0;
+  display:flex;
+  gap:8px;
+}
+.tz-log-tags span{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  padding:3px 9px;
+  border-radius:2px;
+  color:#fdf6e3;
+}
+.tz-tag-new{background:#4a7a00}
+.tz-tag-fix{background:#1a6fa0}
+.tz-tag-break{background:#dc322f}
+.tz-log ul{
+  margin:0;
+  padding:0;
+  list-style:none;
+  display:grid;
+  gap:8px;
+}
+.tz-log li{
+  font-size:14px;
+  line-height:1.6;
+  padding-left:18px;
+  position:relative;
+  max-width:56ch;
+}
+.tz-log li::before{
+  content:"–";
+  position:absolute;
+  left:0;
+  color:#b8a67e;
+}
+</style>
