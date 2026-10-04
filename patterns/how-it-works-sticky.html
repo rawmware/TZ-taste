@@ -1,0 +1,51 @@
+<!--tz-meta {"id":"how-it-works-sticky","title":"Sticky scroll steps","category":"How it works","file":"patterns/how-it-works-sticky.html","tags":["scroll","narrative"],"description":"Champagne-framed sticky visual beside scrolling dark-luxe step narratives.","dnas":["dark-luxe"]} -->
+<section class="tz-hst">
+  <div class="tz-hst-wrap">
+    <div class="tz-hst-sticky">
+      <div class="tz-hst-frame" aria-hidden="true">
+        <p class="tz-hst-frame-k">the process</p>
+        <p class="tz-hst-frame-n">04</p>
+        <p class="tz-hst-frame-s">phases, one outcome</p>
+      </div>
+    </div>
+    <div class="tz-hst-steps">
+      <p class="tz-hst-eyebrow">How it works</p>
+      <h2 class="tz-hst-title">From first call<br>to Friday reports.</h2>
+      <article><p class="tz-hst-k">Phase 01 · Week one</p><h3>We listen first</h3><p>A 45-minute call maps how work actually moves through your team — not the org chart, the real paths. We take notes; you talk.</p></article>
+      <article><p class="tz-hst-k">Phase 02 · Week two</p><h3>We wire it up</h3><p>Connections, routing rules, and your first templates. You approve a dozen drafts so the system learns your voice, not a generic one.</p></article>
+      <article><p class="tz-hst-k">Phase 03 · Week three</p><h3>You take the wheel</h3><p>Drafts keep arriving for approval while you build trust. Flip individual senders to automatic whenever you're ready — or never.</p></article>
+      <article><p class="tz-hst-k">Phase 04 · Ongoing</p><h3>It compounds</h3><p>Quarterly reviews tune the rules against your history. Most teams cut triage time in half by month three and keep improving.</p></article>
+    </div>
+  </div>
+</section>
+<style>
+.tz-hst{--bg:#101010;--ink:#ece7db;--gold:#d4af6e;--line:rgba(212,175,110,.25);
+  background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;
+  padding:clamp(72px,10vw,140px) clamp(24px,6vw,88px)}
+.tz-hst-wrap{display:grid;grid-template-columns:minmax(280px,420px) 1fr;
+  gap:clamp(40px,7vw,110px);max-width:1200px;margin:0 auto;align-items:start}
+.tz-hst-sticky{position:sticky;top:48px}
+.tz-hst-frame{border:1px solid var(--gold);padding:clamp(36px,4vw,56px);text-align:center;
+  box-shadow:inset 0 0 0 6px var(--bg),inset 0 0 0 7px var(--line)}
+.tz-hst-frame-k{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--gold);margin:0 0 20px}
+.tz-hst-frame-n{font-size:clamp(90px,10vw,150px);line-height:1;color:var(--gold);
+  font-style:italic;margin:0 0 20px}
+.tz-hst-frame-s{font-size:15px;font-style:italic;color:rgba(236,231,219,.65);margin:0}
+.tz-hst-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--gold);margin:0 0 20px}
+.tz-hst-title{font-size:clamp(36px,4.6vw,62px);font-weight:400;letter-spacing:-.02em;
+  line-height:1.06;margin:0 0 clamp(48px,6vw,80px)}
+.tz-hst-steps article{padding:clamp(36px,5vw,64px) 0;border-top:1px solid var(--line)}
+.tz-hst-steps article:last-child{border-bottom:1px solid var(--line)}
+.tz-hst-k{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--gold);margin:0 0 16px}
+.tz-hst-steps h3{font-size:clamp(26px,3.2vw,42px);font-weight:400;letter-spacing:-.01em;margin:0 0 14px}
+.tz-hst-steps article p:last-child{font-size:16.5px;line-height:1.75;color:rgba(236,231,219,.74);
+  margin:0;max-width:46ch}
+@media (max-width:860px){
+  .tz-hst-wrap{grid-template-columns:1fr}
+  .tz-hst-sticky{position:static}
+  .tz-hst-frame-n{font-size:72px}
+}
+</style>
