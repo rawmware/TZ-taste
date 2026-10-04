@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-stadium-floodlight",
+  "title": "Stadium Floodlight design tokens",
+  "category": "Tokens",
+  "file": "tokens/stadium-floodlight.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "stadium-floodlight"
+  ],
+  "description": "W3C-format design tokens for the Stadium Floodlight DNA.",
+  "dnas": [
+   "stadium-floodlight"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#141719",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#f4f7f5",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#3fae5a",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#8b9490",
+   "type": "color"
+  },
+  "line": {
+   "value": "#3fae5a3d",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#141719",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Archivo Black",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Archivo",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "JetBrains Mono",
+   "type": "fontFamily"
+  }
+ }
+}
