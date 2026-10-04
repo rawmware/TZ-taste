@@ -1,0 +1,63 @@
+<!--tz-meta {"id":"hero-countdown","title":"Hero with launch countdown","category":"Sections","file":"patterns/hero-countdown.html","tags":["hero","countdown","launch"],"description":"Drive-in-theater hero: marquee countdown flip-clock to launch, ticket CTA, showtime list.","dnas":["drive-in-theater"]} -->
+<section class="tz-hero-countdown">
+  <p class="tz-eyebrow">Coming soon · one showing only</p>
+  <h2>The night market<br><em>opens in</em></h2>
+  <div class="tz-clock" role="timer" aria-label="Countdown to opening night">
+    <div class="tz-unit"><b id="tz-cd-d">14</b><span>days</span></div>
+    <div class="tz-unit"><b id="tz-cd-h">06</b><span>hours</span></div>
+    <div class="tz-unit"><b id="tz-cd-m">22</b><span>minutes</span></div>
+    <div class="tz-unit"><b id="tz-cd-s">41</b><span>seconds</span></div>
+  </div>
+  <p class="tz-lede">Forty stalls, one night, zero repeats. When the clock hits zero the gates open — and the good stuff goes first.</p>
+  <div class="tz-row">
+    <a class="tz-primary" href="#tickets">Get early-entry tickets</a>
+    <a class="tz-secondary" href="#stalls">See the stall list</a>
+  </div>
+  <p class="tz-fine">Early entry 5pm · general 6pm · rain or shine</p>
+</section>
+<style>
+.tz-hero-countdown{--bg:#1a1030;--ink:#f4ead8;--muted:#9a8fb5;--accent:#ff5d3a;
+  background:radial-gradient(90% 120% at 50% -10%,#3a2050 0%,var(--bg) 55%),var(--bg);
+  color:var(--ink);text-align:center;padding:clamp(72px,10vw,140px) clamp(20px,5vw,64px);
+  font-family:Georgia,serif}
+.tz-hero-countdown .tz-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.28em;text-transform:uppercase;color:var(--accent);margin:0 0 26px}
+.tz-hero-countdown h2{font-weight:400;font-size:clamp(44px,7.5vw,96px);line-height:1.02;
+  margin:0 0 36px;letter-spacing:-.01em}
+.tz-hero-countdown h2 em{font-style:italic;color:var(--accent)}
+.tz-hero-countdown .tz-clock{display:flex;gap:14px;justify-content:center;margin-bottom:36px;flex-wrap:wrap}
+.tz-hero-countdown .tz-unit{background:#ffffff10;border:1px solid #ff5d3a55;min-width:104px;padding:20px 12px}
+.tz-hero-countdown .tz-unit b{font-family:ui-monospace,Menlo,monospace;font-size:clamp(30px,4vw,46px);
+  font-weight:700;display:block;color:#fff;font-variant-numeric:tabular-nums}
+.tz-hero-countdown .tz-unit span{font-family:ui-monospace,Menlo,monospace;font-size:10px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.tz-hero-countdown .tz-lede{font-family:-apple-system,'Segoe UI',sans-serif;font-weight:300;font-size:17px;
+  color:var(--muted);max-width:52ch;margin:0 auto 36px;line-height:1.7}
+.tz-hero-countdown .tz-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:26px}
+.tz-hero-countdown .tz-primary{background:var(--accent);color:#1a1030;text-decoration:none;font-weight:700;
+  font-family:-apple-system,'Segoe UI',sans-serif;padding:16px 34px;font-size:15px;
+  transition:transform .25s cubic-bezier(.22,1,.36,1)}
+.tz-hero-countdown .tz-primary:hover{transform:translateY(-3px)}
+.tz-hero-countdown .tz-secondary{color:var(--ink);text-decoration:none;font-family:-apple-system,'Segoe UI',sans-serif;
+  padding:16px 34px;font-size:15px;border:1px solid #f4ead833;transition:border-color .25s}
+.tz-hero-countdown .tz-secondary:hover{border-color:var(--accent)}
+.tz-hero-countdown .tz-fine{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);margin:0}
+@media (max-width:560px){
+  .tz-hero-countdown .tz-unit{min-width:70px;padding:14px 8px}
+  .tz-hero-countdown .tz-row{flex-direction:column;align-items:stretch}
+}
+</style>
+<script>
+(function(){
+  var target = Date.now() + (14*24*3600 + 6*3600 + 22*60 + 41)*1000;
+  function pad(n){return String(n).padStart(2,'0')}
+  function tick(){
+    var d = Math.max(0, target - Date.now())/1000;
+    var map = {'tz-cd-d':Math.floor(d/86400),'tz-cd-h':Math.floor(d%86400/3600),
+               'tz-cd-m':Math.floor(d%3600/60),'tz-cd-s':Math.floor(d%60)};
+    for(var id in map){var el=document.getElementById(id);if(el)el.textContent=pad(map[id]);}
+  }
+  tick();setInterval(tick,1000);
+})();
+</script>
