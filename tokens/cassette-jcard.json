@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-cassette-jcard",
+  "title": "Cassette J-Card design tokens",
+  "category": "Tokens",
+  "file": "tokens/cassette-jcard.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "cassette-jcard"
+  ],
+  "description": "W3C-format design tokens for the Cassette J-Card DNA.",
+  "dnas": [
+   "cassette-jcard"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#f2ede0",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#1e1c18",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#c2452d",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#75705f",
+   "type": "color"
+  },
+  "line": {
+   "value": "#1e1c1826",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#e3dac2",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Archivo Black",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Archivo",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Courier Prime",
+   "type": "fontFamily"
+  }
+ }
+}
