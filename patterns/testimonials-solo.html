@@ -1,0 +1,90 @@
+<!--tz-meta {"id":"testimonials-solo","title":"One giant quote","category":"Testimonials","file":"patterns/testimonials-solo.html","tags":["single","statement"],"description":"A single enormous quote in vast quiet space with a vertical margin note.","dnas":["ma-japanese"]} -->
+<section class="tz-solo" aria-label="Featured testimonial">
+  <p class="tz-vertical" aria-hidden="true">ひとつの声 — one voice, kept whole</p>
+  <p class="tz-eyebrow">Testimonial · N°01 of one</p>
+  <blockquote>
+    “I stopped apologizing<br>for my website.”
+  </blockquote>
+  <p class="tz-story">Ingrid's old site was five years out of date and she knew it — every estimate started with an apology. We rebuilt it in a week. Now she sends the link first.</p>
+  <div class="tz-attr">
+    <span class="tz-rule" aria-hidden="true"></span>
+    <p class="tz-name"><strong>Ingrid Halvorsen</strong></p>
+    <p class="tz-detail">Halvorsen Home Repair, Dover NH<br>Client since 2024 · third project together</p>
+  </div>
+  <p class="tz-foot">Read on only if you want to know what changed.</p>
+</section>
+<style>
+.tz-solo{
+  --bg:#f7f5f0;--ink:#22211e;--soft:#6e6a60;--red:#c73e1d;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:Georgia,'Times New Roman',serif;
+  padding:clamp(110px,18vw,220px) clamp(24px,8vw,120px);
+  position:relative;
+  text-align:center;
+}
+.tz-vertical{
+  position:absolute;
+  top:clamp(40px,6vw,80px);
+  right:clamp(16px,4vw,48px);
+  margin:0;
+  writing-mode:vertical-rl;
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:11px;
+  letter-spacing:.3em;
+  color:var(--soft);
+}
+.tz-eyebrow{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:11px;
+  letter-spacing:.24em;
+  text-transform:uppercase;
+  color:var(--soft);
+  margin:0 0 64px;
+}
+.tz-solo blockquote{
+  margin:0 auto;
+  max-width:18ch;
+  font-size:clamp(40px,7.5vw,104px);
+  line-height:1.08;
+  letter-spacing:-.03em;
+  font-weight:400;
+}
+.tz-story{
+  margin:48px auto 0;
+  max-width:52ch;
+  font-size:16px;
+  line-height:1.75;
+  color:var(--soft);
+  font-style:italic;
+}
+.tz-attr{margin-top:clamp(64px,9vw,110px)}
+.tz-rule{
+  display:block;
+  width:56px;
+  height:2px;
+  background:var(--red);
+  margin:0 auto 22px;
+}
+.tz-name{
+  margin:0 0 8px;
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:13px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.tz-detail{
+  margin:0;
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:12px;
+  letter-spacing:.08em;
+  color:var(--soft);
+  line-height:2;
+}
+.tz-foot{
+  margin:clamp(56px,8vw,96px) 0 0;
+  font-size:14px;
+  font-style:italic;
+  color:var(--soft);
+}
+</style>
