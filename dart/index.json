@@ -1,0 +1,157 @@
+{
+ "count": 10,
+ "updated": "2026-10-04",
+ "usage": "Flutter widget ports of the best patterns. Self-contained with previews.",
+ "dart_widgets": [
+  {
+   "id": "dart-chat-row",
+   "title": "Evidence-Log Chat Rows",
+   "category": "Dart",
+   "file": "dart/chat_row.dart",
+   "tags": [
+    "dart",
+    "flutter",
+    "chat"
+   ],
+   "description": "Nordic-noir incident chat rows with a timestamp evidence gutter; hard facts, no comfort bubbles.",
+   "dnas": [
+    "nordic-noir"
+   ]
+  },
+  {
+   "id": "dart-cta-deploy",
+   "title": "Brutalist Deploy CTA",
+   "category": "Dart",
+   "file": "dart/cta_deploy.dart",
+   "tags": [
+    "dart",
+    "flutter",
+    "cta"
+   ],
+   "description": "Industrial-brutalist deploy CTA for Rivet CI: giant stacked Anton headline, safety-orange install button, install one-liner.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "dart-features-bento",
+   "title": "De Stijl Bento",
+   "category": "Dart",
+   "file": "dart/features_bento.dart",
+   "tags": [
+    "dart",
+    "flutter",
+    "features"
+   ],
+   "description": "Asymmetric de-stijl bento for Signalbox: one large red block, two offset blocks. Never three equal cards.",
+   "dnas": [
+    "de-stijl-grid"
+   ]
+  },
+  {
+   "id": "dart-hero-editorial",
+   "title": "Editorial Hero",
+   "category": "Dart",
+   "file": "dart/hero_editorial.dart",
+   "tags": [
+    "dart",
+    "flutter",
+    "hero"
+   ],
+   "description": "Offset editorial hero for Ledgerline: hairline masthead, oversized Fraunces headline, rule-framed facts strip. No template hero.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "dart-login-split",
+   "title": "Night-Train Split Login",
+   "category": "Dart",
+   "file": "dart/login_split.dart",
+   "tags": [
+    "dart",
+    "flutter",
+    "login"
+   ],
+   "description": "Midnight-railway split login for Nightline: brass departures board beside the sign-in form; timetables set with confidence.",
+   "dnas": [
+    "midnight-railway"
+   ]
+  },
+  {
+   "id": "dart-onboarding-wizard",
+   "title": "Neo-Brutalist Onboarding Wizard",
+   "category": "Dart",
+   "file": "dart/onboarding_wizard.dart",
+   "tags": [
+    "dart",
+    "flutter",
+    "onboarding"
+   ],
+   "description": "Sticker-style onboarding wizard for Sprout kids' savings: thick borders, hard shadows, block progress indicator.",
+   "dnas": [
+    "neo-brutalist-pop"
+   ]
+  },
+  {
+   "id": "dart-pricing-honest",
+   "title": "Honest Pricing Table",
+   "category": "Dart",
+   "file": "dart/pricing_honest.dart",
+   "tags": [
+    "dart",
+    "flutter",
+    "pricing"
+   ],
+   "description": "Swiss-rational brutal pricing table for Paperstack: two asymmetric tiers with an honest-math footnote, no card grid.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "dart-settings-page",
+   "title": "Docs-Style Settings Page",
+   "category": "Dart",
+   "file": "dart/settings_page.dart",
+   "tags": [
+    "dart",
+    "flutter",
+    "settings"
+   ],
+   "description": "Warm documentation-style settings for Margin notes: numbered sections, hairline dividers, mono margin notes.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "dart-stats-terminal",
+   "title": "Terminal Stats Panel",
+   "category": "Dart",
+   "file": "dart/stats_terminal.dart",
+   "tags": [
+    "dart",
+    "flutter",
+    "stats"
+   ],
+   "description": "Phosphor-green terminal stats readout for Nightjar: dotted leader lines, amber warning line, block cursor.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "dart-testimonial-wall",
+   "title": "Zine Testimonial Wall",
+   "category": "Dart",
+   "file": "dart/testimonial_wall.dart",
+   "tags": [
+    "dart",
+    "flutter",
+    "testimonials"
+   ],
+   "description": "Risograph zine testimonial cards with misregistered accent shadows, catalog numbers, and staggered indents. No card grid.",
+   "dnas": [
+    "risograph-grain"
+   ]
+  }
+ ]
+}
