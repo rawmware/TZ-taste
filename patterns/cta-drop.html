@@ -1,0 +1,120 @@
+<!--tz-meta {"id":"cta-drop","title":"The drop CTA","category":"CTA","file":"patterns/cta-drop.html","tags":["streetwear","launch"],"description":"Editorial launch CTA with newspaper dateline and issue number.","dnas":["editorial-serif"]} -->
+<section class="tz-drop" aria-label="The next drop">
+  <p class="tz-dateline">Portsmouth, N.H. — Oct. 3 &nbsp;·&nbsp; Vol. II, N°07</p>
+  <h2>The next drop<br><em>opens Friday.</em></h2>
+  <p class="tz-sub">Twelve commission slots. When they're gone, the books close until winter. No waitlist games — first come, first served, like it should be.</p>
+  <div class="tz-specs">
+    <span><strong>12</strong> slots</span>
+    <span><strong>48h</strong> first draft</span>
+    <span><strong>1</strong> flat quote</span>
+  </div>
+  <a class="tz-btn" href="#drop">Claim a slot</a>
+  <p class="tz-fine">Last drop sold out in six days. This one opens Friday at 9 AM sharp.</p>
+  <div class="tz-past">
+    <p class="tz-pasthead">Previous drops</p>
+    <p class="tz-pastrow"><span>N°06 — Summer</span><span>sold out in 9 days</span></p>
+    <p class="tz-pastrow"><span>N°05 — Spring</span><span>sold out in 6 days</span></p>
+    <p class="tz-pastrow"><span>N°04 — Winter</span><span>sold out in 11 days</span></p>
+  </div>
+</section>
+<style>
+.tz-drop{
+  --bg:#f5f1e8;--ink:#1c1a15;--soft:#5c584c;--accent:#b5461f;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:Georgia,'Times New Roman',serif;
+  padding:clamp(72px,11vw,150px) clamp(20px,8vw,120px);
+  text-align:center;
+}
+.tz-dateline{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--soft);
+  margin:0 0 30px;
+  border-top:1px solid #1c1a1533;
+  border-bottom:1px solid #1c1a1533;
+  display:inline-block;
+  padding:10px 26px;
+}
+.tz-drop h2{
+  margin:0 0 22px;
+  font-size:clamp(48px,9vw,128px);
+  line-height:1;
+  letter-spacing:-.035em;
+  font-weight:400;
+}
+.tz-drop h2 em{font-style:italic;color:var(--accent)}
+.tz-sub{
+  margin:0 auto 34px;
+  max-width:52ch;
+  font-size:18px;
+  line-height:1.65;
+  color:var(--soft);
+}
+.tz-specs{
+  display:flex;
+  gap:36px;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin-bottom:40px;
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:12px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--soft);
+}
+.tz-specs strong{
+  color:var(--accent);
+  font-size:20px;
+  display:block;
+  letter-spacing:0;
+  margin-bottom:6px;
+}
+.tz-btn{
+  display:inline-block;
+  background:var(--ink);
+  color:var(--bg);
+  text-decoration:none;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:16px;
+  font-weight:700;
+  padding:17px 54px;
+  transition:background .3s cubic-bezier(.22,1,.36,1);
+}
+.tz-btn:hover{background:var(--accent)}
+.tz-fine{
+  margin:24px 0 48px;
+  font-size:13px;
+  font-style:italic;
+  color:var(--soft);
+}
+.tz-past{
+  max-width:440px;
+  margin:0 auto;
+  border-top:1px solid #1c1a1533;
+  padding-top:20px;
+  text-align:left;
+}
+.tz-pasthead{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:11px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--soft);
+  margin:0 0 12px;
+}
+.tz-pastrow{
+  display:flex;
+  justify-content:space-between;
+  margin:0;
+  padding:8px 0;
+  font-size:14px;
+  color:var(--soft);
+  border-bottom:1px dotted #1c1a1533;
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-btn{transition:none}
+}
+</style>
