@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-desert-modern",
+  "title": "Desert Modern design tokens",
+  "category": "Tokens",
+  "file": "tokens/desert-modern.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "desert-modern"
+  ],
+  "description": "W3C-format design tokens for the Desert Modern style DNA.",
+  "dnas": [
+   "desert-modern"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#f4ecdc",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#33291f",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#7fb3c4",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#a89a80",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#dccfb2",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "DM Serif Display",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "DM Sans",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "desert-modern",
+  "name": "Desert Modern",
+  "vibe": "Palm Springs at 10am: shade, breeze-block shadows, a pool doing all the talking."
+ }
+}
