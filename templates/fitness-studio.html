@@ -1,0 +1,469 @@
+<!--tz-meta {"id":"fitness-studio","title":"IRONWORKS — Strength Gym","category":"Template","file":"templates/fitness-studio.html","tags":["fitness"],"description":"Raw industrial strength-gym page: concrete, safety orange, stencil type, brutal schedule table.","dnas":["industrial-brutalist"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IRONWORKS — strength gym · lift heavy, no mirrors required</title>
+<meta name="description" content="IRONWORKS is a strength gym: barbells, platforms, and coaches who actually coach. First week free. No machines with TVs.">
+<!-- DNA: industrial-brutalist (styles/industrial-brutalist.md). Design read: a factory that ships strength — exposed structure, safety orange, condensed type — for lifters who are tired of chrome-and-fern gyms. One distinctive choice: the class schedule is a stenciled industrial timetable with hazard-stripe accents, like a shift board. Dials V8/M3/D7. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#d8d8d4;
+  --tz-surface:#c9c9c4;
+  --tz-ink:#141412;
+  --tz-ink-soft:#3f3f3b;
+  --tz-accent:#ff4d00;
+  --tz-accent-deep:#c23a00;
+  --tz-line:#141412;
+  --tz-line-soft:#14141233;
+  --tz-muted:#5c5c58;
+  --tz-hazard:repeating-linear-gradient(-45deg,var(--tz-accent) 0 18px,var(--tz-ink) 18px 36px);
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Space Grotesk",sans-serif;background:var(--tz-bg);color:var(--tz-ink);
+  line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+::selection{background:var(--tz-accent);color:#fff}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.tz-mono{font-family:"JetBrains Mono",monospace}
+.tz-anton{font-family:"Anton",sans-serif;font-weight:400}
+.skip{position:absolute;left:-999px;top:0;background:var(--tz-accent);color:#fff;padding:8px 16px;z-index:99}
+.skip:focus{left:8px;top:8px}
+
+/* ---------- header ---------- */
+.tz-header{position:sticky;top:0;z-index:50;background:var(--tz-ink);color:#f2f2ef}
+.tz-header .tz-wrap{display:flex;justify-content:space-between;align-items:center;height:62px}
+.tz-logo{font-family:"Anton",sans-serif;font-size:22px;letter-spacing:.08em}
+.tz-logo b{color:var(--tz-accent)}
+.tz-nav{display:flex;gap:28px;font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.tz-nav a{color:#b9b9b2;transition:color .2s}
+.tz-nav a:hover{color:var(--tz-accent)}
+.tz-join{
+  font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;letter-spacing:.1em;
+  background:var(--tz-accent);color:#fff;border:0;padding:11px 22px;cursor:pointer;
+  transition:transform .2s var(--tz-ease),background .2s;
+}
+.tz-join:hover{background:var(--tz-accent-deep);transform:translateY(-2px)}
+.tz-hazard-bar{height:10px;background:var(--tz-hazard)}
+
+/* ---------- hero ---------- */
+.tz-hero{background:var(--tz-ink);color:#f2f2ef;padding:88px 0 0;position:relative;overflow:hidden}
+.tz-hero::before{
+  content:"IRONWORKS";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-4deg);
+  font-family:"Anton",sans-serif;font-size:24vw;color:transparent;white-space:nowrap;
+  -webkit-text-stroke:1px #ffffff12;pointer-events:none;
+}
+.tz-hero .tz-wrap{position:relative}
+.tz-hero .tz-kicker{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--tz-accent);margin-bottom:24px;display:flex;align-items:center;gap:14px}
+.tz-hero .tz-kicker::before{content:"";width:48px;height:3px;background:var(--tz-accent)}
+.tz-hero h1{font-family:"Anton",sans-serif;font-size:clamp(64px,11vw,170px);line-height:.9;letter-spacing:.01em;text-transform:uppercase}
+.tz-hero h1 .tz-o{color:var(--tz-accent)}
+.tz-hero-sub{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;margin-top:36px;padding-bottom:72px}
+.tz-hero-sub p{font-size:18px;color:#b9b9b2;max-width:52ch}
+.tz-hero-sub p b{color:#f2f2ef}
+.tz-hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.tz-btn-big{
+  font-family:"Anton",sans-serif;font-size:17px;letter-spacing:.06em;padding:16px 34px;cursor:pointer;
+  border:3px solid var(--tz-accent);transition:all .2s var(--tz-ease);display:inline-block;text-transform:uppercase;
+}
+.tz-btn-big--solid{background:var(--tz-accent);color:#fff}
+.tz-btn-big--solid:hover{background:var(--tz-accent-deep);border-color:var(--tz-accent-deep)}
+.tz-btn-big--line{background:transparent;color:#f2f2ef}
+.tz-btn-big--line:hover{border-color:#f2f2ef;background:#ffffff10}
+
+/* ---------- stat strip ---------- */
+.tz-stats{background:var(--tz-accent);color:#fff;border-top:4px solid var(--tz-ink);border-bottom:4px solid var(--tz-ink)}
+.tz-stats .tz-wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.tz-stat{padding:28px 24px;border-right:2px solid #ffffff40}
+.tz-stat:last-child{border-right:0}
+.tz-stat .tz-n{font-family:"Anton",sans-serif;font-size:52px;line-height:1}
+.tz-stat .tz-l{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;margin-top:8px;opacity:.92}
+
+/* ---------- sections ---------- */
+.tz-section{padding:96px 0}
+.tz-sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;flex-wrap:wrap;gap:16px}
+.tz-sec-head h2{font-family:"Anton",sans-serif;font-size:clamp(44px,6vw,88px);line-height:.95;text-transform:uppercase;letter-spacing:.01em}
+.tz-sec-head h2 .tz-o{color:var(--tz-accent)}
+.tz-sec-head .tz-mono{font-size:12px;letter-spacing:.2em;color:var(--tz-ink-soft)}
+
+/* ---------- programs: offset rows ---------- */
+.tz-programs{display:grid;gap:0;border:3px solid var(--tz-line)}
+.tz-program{
+  display:grid;grid-template-columns:120px 1fr 1fr auto;gap:32px;align-items:center;
+  padding:36px 40px;background:var(--tz-bg);border-bottom:3px solid var(--tz-line);
+  transition:background .2s,padding .25s var(--tz-ease);position:relative;
+}
+.tz-program:last-child{border-bottom:0}
+.tz-program:nth-child(even){background:var(--tz-surface)}
+.tz-program:hover{background:var(--tz-ink);color:#f2f2ef;padding-left:56px}
+.tz-program:hover .tz-desc{color:#b9b9b2}
+.tz-program:hover .tz-no{color:var(--tz-accent)}
+.tz-program .tz-no{font-family:"Anton",sans-serif;font-size:44px;color:var(--tz-line-soft);line-height:1}
+.tz-program h3{font-family:"Anton",sans-serif;font-size:clamp(26px,3vw,40px);letter-spacing:.02em;text-transform:uppercase;line-height:1}
+.tz-program .tz-desc{font-size:15.5px;color:var(--tz-ink-soft);margin-top:8px;max-width:46ch}
+.tz-program .tz-meta{font-family:"JetBrains Mono",monospace;font-size:12.5px;line-height:2;text-align:right}
+.tz-program .tz-meta b{color:var(--tz-accent)}
+
+/* ---------- schedule: the one weird thing ---------- */
+.tz-sched-wrap{border:3px solid var(--tz-line);background:var(--tz-ink);color:#f2f2ef;overflow:hidden}
+.tz-sched-head{padding:20px 28px;border-bottom:3px solid var(--tz-line);display:flex;justify-content:space-between;align-items:center;background:var(--tz-surface);color:var(--tz-ink)}
+.tz-sched-head h3{font-family:"Anton",sans-serif;font-size:24px;letter-spacing:.04em}
+.tz-sched-head .tz-mono{font-size:12px;font-weight:700;letter-spacing:.1em}
+.tz-sched-head .tz-live{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--tz-accent);margin-right:8px;animation:tz-blink 1.6s infinite}
+@keyframes tz-blink{0%,100%{opacity:1}50%{opacity:.25}}
+.tz-sched{width:100%;border-collapse:collapse;min-width:760px;font-size:15px}
+.tz-sched th{
+  font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  text-align:left;padding:14px 20px;color:#8f8f88;border-bottom:2px solid #ffffff22;font-weight:500;
+}
+.tz-sched td{padding:16px 20px;border-bottom:1px solid #ffffff14;vertical-align:top}
+.tz-sched tr:last-child td{border-bottom:0}
+.tz-sched tbody tr{transition:background .2s}
+.tz-sched tbody tr:hover{background:#ffffff0a}
+.tz-sched .tz-time{font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--tz-accent);white-space:nowrap}
+.tz-sched .tz-class{font-weight:700;font-size:16px}
+.tz-sched .tz-coach{color:#8f8f88;font-size:13.5px}
+.tz-sched .tz-spots{font-family:"JetBrains Mono",monospace;font-size:12px}
+.tz-sched .tz-spots.tz-low{color:var(--tz-accent);font-weight:700}
+.tz-sched-scroll{overflow-x:auto}
+.tz-sched-note{padding:18px 28px;font-family:"JetBrains Mono",monospace;font-size:12.5px;color:#8f8f88;border-top:2px solid #ffffff22;line-height:1.9}
+
+/* ---------- coaches ---------- */
+.tz-coaches{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:3px solid var(--tz-line)}
+.tz-coach-card{background:var(--tz-bg);padding:40px 36px;border-right:3px solid var(--tz-line);transition:background .25s}
+.tz-coach-card:last-child{border-right:0}
+.tz-coach-card:hover{background:var(--tz-surface)}
+.tz-coach-card .tz-initials{
+  font-family:"Anton",sans-serif;font-size:40px;color:var(--tz-surface);background:var(--tz-ink);
+  width:88px;height:88px;display:grid;place-items:center;margin-bottom:24px;
+  -webkit-text-stroke:1px var(--tz-accent);
+}
+.tz-coach-card h3{font-family:"Anton",sans-serif;font-size:26px;letter-spacing:.03em;text-transform:uppercase}
+.tz-coach-card .tz-role{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.12em;color:var(--tz-accent-deep);font-weight:700;margin:8px 0 14px}
+.tz-coach-card p{font-size:15px;color:var(--tz-ink-soft)}
+.tz-coach-card ul{list-style:none;margin-top:16px;display:grid;gap:8px;font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--tz-ink-soft)}
+.tz-coach-card li::before{content:"▸ ";color:var(--tz-accent);font-weight:700}
+
+/* ---------- pricing ---------- */
+.tz-plans{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:0;border:3px solid var(--tz-line);align-items:stretch}
+.tz-plan{padding:44px 36px;background:var(--tz-bg);border-right:3px solid var(--tz-line);display:flex;flex-direction:column}
+.tz-plan:last-child{border-right:0}
+.tz-plan--feat{background:var(--tz-ink);color:#f2f2ef}
+.tz-plan .tz-tier{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--tz-ink-soft)}
+.tz-plan--feat .tz-tier{color:var(--tz-accent)}
+.tz-plan h3{font-family:"Anton",sans-serif;font-size:32px;letter-spacing:.03em;text-transform:uppercase;margin:12px 0 4px}
+.tz-plan .tz-price{font-family:"Anton",sans-serif;font-size:60px;line-height:1;margin:16px 0 4px}
+.tz-plan .tz-price small{font-family:"JetBrains Mono",monospace;font-size:14px;letter-spacing:0}
+.tz-plan ul{list-style:none;margin:24px 0 32px;display:grid;gap:12px;font-size:15px;flex:1}
+.tz-plan li{display:flex;gap:10px}
+.tz-plan li::before{content:"✓";color:var(--tz-accent);font-weight:700}
+.tz-plan .tz-join{width:100%;text-align:center;text-decoration:none;display:block}
+.tz-plan--feat .tz-fine{color:#8f8f88}
+.tz-fine{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--tz-ink-soft);margin-top:16px;line-height:1.8}
+
+/* ---------- rules ---------- */
+.tz-rules{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:3px solid var(--tz-line)}
+.tz-rule{padding:32px 36px;border-bottom:3px solid var(--tz-line);display:grid;grid-template-columns:56px 1fr;gap:20px;align-items:start}
+.tz-rule:nth-child(odd){border-right:3px solid var(--tz-line)}
+.tz-rule:nth-last-child(-n+2){border-bottom:0}
+.tz-rule .tz-n{font-family:"Anton",sans-serif;font-size:36px;color:var(--tz-accent);line-height:1}
+.tz-rule h3{font-size:18px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;margin-bottom:6px}
+.tz-rule p{font-size:15px;color:var(--tz-ink-soft)}
+
+/* ---------- cta ---------- */
+.tz-cta{background:var(--tz-accent);padding:96px 0;position:relative;overflow:hidden}
+.tz-cta::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent 0 34px,#00000010 34px 36px)}
+.tz-cta .tz-wrap{position:relative;text-align:center}
+.tz-cta h2{font-family:"Anton",sans-serif;font-size:clamp(48px,8vw,120px);color:#fff;line-height:.95;text-transform:uppercase}
+.tz-cta p{color:#fff;font-size:18px;margin:20px auto 36px;max-width:52ch;font-weight:500}
+.tz-cta .tz-btn-big{background:#fff;color:var(--tz-ink);border-color:#fff;font-size:20px;padding:20px 56px}
+.tz-cta .tz-btn-big:hover{background:var(--tz-ink);color:#fff;border-color:var(--tz-ink)}
+
+/* ---------- footer ---------- */
+.tz-footer{background:var(--tz-ink);color:#b9b9b2;padding:64px 0 0}
+.tz-foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:44px;margin-bottom:48px}
+.tz-footer .tz-logo{color:#f2f2ef}
+.tz-footer p{font-size:14.5px;max-width:34ch;margin-top:12px}
+.tz-footer h4{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tz-accent);margin-bottom:16px}
+.tz-footer ul{list-style:none;display:grid;gap:10px;font-size:14.5px}
+.tz-footer a{color:#b9b9b2}
+.tz-footer a:hover{color:#fff}
+.tz-foot-bottom{border-top:1px solid #ffffff1c;padding:24px 0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:"JetBrains Mono",monospace;font-size:12px;color:#6f6f68}
+.tz-footer .tz-hazard-bar{margin-top:40px}
+
+/* ---------- reveal ---------- */
+.tz-reveal{opacity:0;transform:translateY(18px);transition:opacity .6s var(--tz-ease),transform .6s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:960px){
+  .tz-hero-sub{grid-template-columns:1fr}
+  .tz-stats .tz-wrap{grid-template-columns:1fr 1fr}
+  .tz-stat:nth-child(2){border-right:0}
+  .tz-stat{border-bottom:2px solid #ffffff40}
+  .tz-stat:nth-child(3),.tz-stat:nth-child(4){border-bottom:0}
+  .tz-program{grid-template-columns:64px 1fr;gap:20px}
+  .tz-program .tz-desc{grid-column:2}
+  .tz-program .tz-meta{grid-column:2;text-align:left}
+  .tz-coaches{grid-template-columns:1fr}
+  .tz-coach-card{border-right:0;border-bottom:3px solid var(--tz-line)}
+  .tz-coach-card:last-child{border-bottom:0}
+  .tz-plans{grid-template-columns:1fr}
+  .tz-plan{border-right:0;border-bottom:3px solid var(--tz-line)}
+  .tz-plan:last-child{border-bottom:0}
+  .tz-rules{grid-template-columns:1fr}
+  .tz-rule{border-right:0!important}
+  .tz-rule:nth-last-child(2){border-bottom:3px solid var(--tz-line)}
+  .tz-nav{display:none}
+  .tz-foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+  .tz-stats .tz-wrap{grid-template-columns:1fr}
+  .tz-stat{border-right:0;border-bottom:2px solid #ffffff40}
+  .tz-stat:last-child{border-bottom:0}
+  .tz-foot-grid{grid-template-columns:1fr}
+  .tz-program{padding:28px 24px}
+  .tz-section{padding:64px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#schedule">Skip to class schedule</a>
+
+<header class="tz-header">
+  <div class="tz-wrap">
+    <span class="tz-logo">IRON<b>WORKS</b></span>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#programs">Programs</a><a href="#schedule">Schedule</a><a href="#coaches">Coaches</a><a href="#pricing">Pricing</a>
+    </nav>
+    <a class="tz-join" href="#pricing">First week free</a>
+  </div>
+  <div class="tz-hazard-bar" aria-hidden="true"></div>
+</header>
+
+<main>
+  <!-- ============ hero ============ -->
+  <section class="tz-hero">
+    <div class="tz-wrap">
+      <p class="tz-kicker">Strength gym · est. 2011 · 4,200 sq ft of iron</p>
+      <h1>LIFT HEAVY.<br><span class="tz-o">NO</span> EXCUSES.</h1>
+      <div class="tz-hero-sub">
+        <p><b>IRONWORKS is a strength gym, not a fitness spa.</b> Fourteen platforms, eight racks, chalk by the bucket — and coaches who watch your lifts instead of their phones. First week free. No joining fee, no annual contract, no machines with TVs.</p>
+        <div class="tz-hero-cta">
+          <a class="tz-btn-big tz-btn-big--solid" href="#pricing">Claim free week</a>
+          <a class="tz-btn-big tz-btn-big--line" href="#schedule">See the schedule</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ stats ============ -->
+  <div class="tz-stats" aria-label="Gym facts">
+    <div class="tz-wrap">
+      <div class="tz-stat"><div class="tz-n">14</div><div class="tz-l">Lifting platforms</div></div>
+      <div class="tz-stat"><div class="tz-n">8</div><div class="tz-l">Power racks</div></div>
+      <div class="tz-stat"><div class="tz-n">2.5T</div><div class="tz-l">Calibrated plates</div></div>
+      <div class="tz-stat"><div class="tz-n">0</div><div class="tz-l">Treadmills. Zero.</div></div>
+    </div>
+  </div>
+
+  <!-- ============ programs ============ -->
+  <section class="tz-section" id="programs">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <h2>PICK YOUR <span class="tz-o">POISON</span></h2>
+        <span class="tz-mono">04 programs · all levels</span>
+      </div>
+      <div class="tz-programs">
+        <article class="tz-program tz-reveal">
+          <span class="tz-no">01</span>
+          <div><h3>Barbell Club</h3><p class="tz-desc">Squat, bench, deadlift, press. Coached sessions, programmed cycles, PR board on the wall. The backbone of the gym.</p></div>
+          <div class="tz-meta"><b>MON / WED / FRI</b><br>6AM · 12PM · 6PM<br>All levels</div>
+        </article>
+        <article class="tz-program tz-reveal">
+          <span class="tz-no">02</span>
+          <div><h3>Strongman Saturdays</h3><p class="tz-desc">Atlas stones, yoke, farmer's carry, log press. In the yard, rain or shine. Bring work gloves the first time.</p></div>
+          <div class="tz-meta"><b>SATURDAY</b><br>10AM – 12PM<br>Intermediate+</div>
+        </article>
+        <article class="tz-program tz-reveal">
+          <span class="tz-no">03</span>
+          <div><h3>Foundations</h3><p class="tz-desc">Eight weeks from empty bar to confident lifter. Technique first, weight second, ego checked at the door.</p></div>
+          <div class="tz-meta"><b>TUE / THU</b><br>7AM · 6PM<br>Beginners</div>
+        </article>
+        <article class="tz-program tz-reveal">
+          <span class="tz-no">04</span>
+          <div><h3>Open Iron</h3><p class="tz-desc">Uncoached floor time with your own program. Coaches on the floor for spot checks and form saves.</p></div>
+          <div class="tz-meta"><b>DAILY</b><br>5AM – 10PM<br>Members</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ schedule ============ -->
+  <section class="tz-section" id="schedule" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <h2>THE SHIFT <span class="tz-o">BOARD</span></h2>
+        <span class="tz-mono">This week · updated nightly</span>
+      </div>
+      <div class="tz-sched-wrap tz-reveal">
+        <div class="tz-sched-head">
+          <h3>WEEK 41 — COACHED SESSIONS</h3>
+          <span class="tz-mono"><span class="tz-live"></span>3 SESSIONS TODAY</span>
+        </div>
+        <div class="tz-sched-scroll">
+          <table class="tz-sched">
+            <thead><tr><th>Time</th><th>Session</th><th>Coach</th><th>Spots</th></tr></thead>
+            <tbody>
+              <tr><td class="tz-time">06:00</td><td><div class="tz-class">Barbell Club — Squat focus</div><div class="tz-coach">D. Okafor · 90 min</div></td><td class="tz-coach">Main floor</td><td class="tz-spots tz-low">3 LEFT</td></tr>
+              <tr><td class="tz-time">07:00</td><td><div class="tz-class">Foundations — Week 3: Deadlift</div><div class="tz-coach">M. Reyes · 75 min</div></td><td class="tz-coach">Platform row</td><td class="tz-spots">8 LEFT</td></tr>
+              <tr><td class="tz-time">12:00</td><td><div class="tz-class">Barbell Club — Bench focus</div><div class="tz-coach">D. Okafor · 90 min</div></td><td class="tz-coach">Main floor</td><td class="tz-spots">11 LEFT</td></tr>
+              <tr><td class="tz-time">17:30</td><td><div class="tz-class">Conditioning — Sled &amp; carry</div><div class="tz-coach">J. Lindqvist · 45 min</div></td><td class="tz-coach">Yard</td><td class="tz-spots tz-low">2 LEFT</td></tr>
+              <tr><td class="tz-time">18:00</td><td><div class="tz-class">Barbell Club — Deadlift focus</div><div class="tz-coach">M. Reyes · 90 min</div></td><td class="tz-coach">Main floor</td><td class="tz-spots">6 LEFT</td></tr>
+              <tr><td class="tz-time">19:30</td><td><div class="tz-class">Foundations — Week 3: Press</div><div class="tz-coach">J. Lindqvist · 75 min</div></td><td class="tz-coach">Platform row</td><td class="tz-spots">9 LEFT</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="tz-sched-note">BOOK IN THE APP UP TO 7 DAYS AHEAD · CANCEL UP TO 4H BEFORE · NO-SHOWS BUY THE NEXT ROUND OF CHALK</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ coaches ============ -->
+  <section class="tz-section" id="coaches" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <h2>THE <span class="tz-o">COACHES</span></h2>
+        <span class="tz-mono">Certified · competing · present</span>
+      </div>
+      <div class="tz-coaches">
+        <article class="tz-coach-card tz-reveal">
+          <div class="tz-initials">DO</div>
+          <h3>Dana Okafor</h3><p class="tz-role">Head coach · Powerlifting</p>
+          <p>Competed at nationals four times. Coaches the barbell club and still trains at 6am with everyone else.</p>
+          <ul><li>Squat 212.5kg · total 565kg</li><li>10 yrs coaching</li></ul>
+        </article>
+        <article class="tz-coach-card tz-reveal">
+          <div class="tz-initials">MR</div>
+          <h3>Marco Reyes</h3><p class="tz-role">Foundations lead</p>
+          <p>Runs the beginner program. Patient to a fault, allergic to ego lifting, remembers every member's first PR.</p>
+          <ul><li>500+ beginners coached</li><li>Physio background</li></ul>
+        </article>
+        <article class="tz-coach-card tz-reveal">
+          <div class="tz-initials">JL</div>
+          <h3>June Lindqvist</h3><p class="tz-role">Strongman · Conditioning</p>
+          <p>Runs Saturday strongman and weekday conditioning. Will make you carry things you didn't know existed.</p>
+          <ul><li>Regional strongman finalist</li><li>6 yrs coaching</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ pricing ============ -->
+  <section class="tz-section" id="pricing" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <h2>PAY FOR IRON, <span class="tz-o">NOT FERN</span></h2>
+        <span class="tz-mono">No joining fee · no contract · cancel anytime</span>
+      </div>
+      <div class="tz-plans tz-reveal">
+        <div class="tz-plan">
+          <span class="tz-tier">Off-peak</span><h3>Dayshift</h3>
+          <p class="tz-price">$45<small>/mo</small></p>
+          <ul><li>Access 9am – 4pm weekdays</li><li>All open iron hours weekends</li><li>1 coached session / week</li><li>App booking</li></ul>
+          <a class="tz-join" href="#">Start free week</a>
+          <p class="tz-fine">For the 9-to-5 crowd who train at lunch.</p>
+        </div>
+        <div class="tz-plan tz-plan--feat">
+          <span class="tz-tier">Most members</span><h3>Full Iron</h3>
+          <p class="tz-price">$65<small>/mo</small></p>
+          <ul><li>24/5 access + weekends 6am–10pm</li><li>Unlimited coached sessions</li><li>Quarterly programming review</li><li>Guest pass monthly</li><li>Chalk included, obviously</li></ul>
+          <a class="tz-join" href="#">Start free week</a>
+          <p class="tz-fine tz-fine">Pause anytime for travel or injury — no forms, just ask.</p>
+        </div>
+        <div class="tz-plan">
+          <span class="tz-tier">1-on-1</span><h3>Coached</h3>
+          <p class="tz-price">$240<small>/mo</small></p>
+          <ul><li>Full Iron access</li><li>4× personal sessions / month</li><li>Custom programming</li><li>Nutrition check-ins</li></ul>
+          <a class="tz-join" href="#">Start free week</a>
+          <p class="tz-fine">Limited to 20 athletes per coach.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ rules ============ -->
+  <section class="tz-section" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <h2>HOUSE <span class="tz-o">RULES</span></h2>
+        <span class="tz-mono">Posted by the door · enforced by everyone</span>
+      </div>
+      <div class="tz-rules tz-reveal">
+        <div class="tz-rule"><span class="tz-n">01</span><div><h3>Re-rack your weights</h3><p>The next lifter shouldn't have to strip your deadlift. Plates go home.</p></div></div>
+        <div class="tz-rule"><span class="tz-n">02</span><div><h3>Chalk stays in the bucket area</h3><p>Use it freely — that's what it's for. Don't paint the floor with it.</p></div></div>
+        <div class="tz-rule"><span class="tz-n">03</span><div><h3>Ask before working in</h3><p>Most people say yes. Everyone appreciates being asked.</p></div></div>
+        <div class="tz-rule"><span class="tz-n">04</span><div><h3>No unsolicited advice</h3><p>Coaches coach. Members encourage. That's the whole hierarchy.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ cta ============ -->
+  <section class="tz-cta">
+    <div class="tz-wrap tz-reveal">
+      <h2>STOP SCROLLING.<br>START LIFTING.</h2>
+      <p>One free week. Every platform, every class, every coach. If it's not for you, you'll know by Friday — and you'll have a great story.</p>
+      <a class="tz-btn-big" href="#pricing">Claim your free week</a>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-foot-grid">
+      <div>
+        <span class="tz-logo">IRON<b>WORKS</b></span>
+        <p>A strength gym for people who'd rather lift than lounge. Est. 2011.</p>
+      </div>
+      <div><h4>Gym</h4><ul><li><a href="#programs">Programs</a></li><li><a href="#schedule">Schedule</a></li><li><a href="#coaches">Coaches</a></li><li><a href="#pricing">Pricing</a></li></ul></div>
+      <div><h4>Visit</h4><ul><li><a href="#">440 Foundry Ave</a></li><li><a href="#">5am – 10pm daily</a></li><li><a href="#">(555) 014-2288</a></li></ul></div>
+      <div><h4>More</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">PR board</a></li><li><a href="#">Jobs</a></li></ul></div>
+    </div>
+    <div class="tz-foot-bottom">
+      <span>© 2026 IRONWORKS STRENGTH CO.</span>
+      <span class="tz-mono">RE-RACK YOUR WEIGHTS</span>
+    </div>
+  </div>
+  <div class="tz-hazard-bar" aria-hidden="true"></div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){e.classList.add('tz-in')});
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en,i){
+        if(en.isIntersecting){ setTimeout(function(){en.target.classList.add('tz-in')}, i*70); io.unobserve(en.target); }
+      });
+    },{threshold:.08});
+    els.forEach(function(e){io.observe(e)});
+  }
+})();
+</script>
+</body>
+</html>
