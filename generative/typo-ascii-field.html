@@ -1,0 +1,88 @@
+<!--tz-meta {"id":"gen-typo-ascii-field","title":"ASCII Field","category":"Generative","file":"generative/typo-ascii-field.html","tags":["ascii","flow-field","text-mode"],"description":"A flowing vector field rendered entirely in ASCII characters; your cursor stirs the current.","dnas":["acid-rave"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ASCII Field — TZ-taste Generative</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#050805;color:#d6ffa8;font-family:Georgia,'Times New Roman',serif;min-height:100vh;display:flex;flex-direction:column;align-items:center}
+.tz-head{text-align:center;padding:1.6rem 1.2rem .8rem;max-width:680px}
+.tz-kicker{font-family:'Courier New',monospace;font-size:11px;letter-spacing:.3em;text-transform:uppercase;opacity:.6;margin-bottom:.6rem}
+.tz-title{font-size:clamp(1.9rem,6vw,2.9rem);font-weight:700;margin-bottom:.5rem}
+.tz-caption{font-style:italic;font-size:.98rem;line-height:1.5;opacity:.72}
+.tz-controls{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;padding:.6rem 1rem 1rem}
+.tz-btn{font-family:'Courier New',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:.7rem 1.2rem;border-radius:999px;border:1px solid #b6ff2e;background:transparent;color:#b6ff2e;cursor:pointer}
+.tz-btn:hover{background:#b6ff2e;color:#050805}
+.tz-wrap{width:100%;max-width:980px;padding:0 1rem 2.5rem}
+.tz-canvas{display:block;width:100%;height:70vh;min-height:340px;border:1px solid rgba(182,255,46,.25);border-radius:14px;touch-action:none;background:#050805}
+</style>
+</head>
+<body>
+<header class="tz-head">
+<p class="tz-kicker">TZ-taste · Generative</p>
+<h1 class="tz-title">ASCII Field</h1>
+<p class="tz-caption">A flowing vector field rendered entirely in ASCII characters. Sweep your cursor through it to stir the current.</p>
+</header>
+<div class="tz-controls">
+<button class="tz-btn" id="tz-b-seed" type="button">New seed</button>
+<button class="tz-btn" id="tz-b-pause" type="button">Pause</button>
+<button class="tz-btn" id="tz-b-clear" type="button">Clear</button>
+</div>
+<div class="tz-wrap"><canvas class="tz-canvas" id="tz-cv"></canvas></div>
+<script>
+(function(){
+"use strict";
+var cv=document.getElementById('tz-cv'),ctx=cv.getContext('2d');
+var REDUCED=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var W=0,H=0,seed=808,running=true,raf=0,t=0;
+var CELL=17,CHARS=[' ','.',':','-','=','+','*','#','%','@'];
+var off={o1:0,o2:0,o3:0,o4:0,o5:0},mouse={x:-9999,y:-9999,mx:-9999,my:-9999};
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function init(s){
+  seed=s;var rnd=mulberry32(s);
+  off={o1:rnd()*6.28,o2:rnd()*6.28,o3:rnd()*6.28,o4:rnd()*6.28,o5:rnd()*6.28};
+}
+function draw(tt){
+  ctx.fillStyle='#050805';ctx.fillRect(0,0,W,H);
+  ctx.font=(CELL-3)+'px "Courier New",monospace';
+  ctx.textAlign='center';ctx.textBaseline='middle';
+  var cols=Math.ceil(W/CELL),rows=Math.ceil(H/CELL),cx,cy,v,idx,dx,dy,dd;
+  for(cy=0;cy<rows;cy++)for(cx=0;cx<cols;cx++){
+    var x=cx*CELL+CELL/2,y=cy*CELL+CELL/2;
+    var nx=x*0.012,ny=y*0.012;
+    v=Math.sin(nx*2.1+off.o1+tt*0.7)+Math.sin(ny*2.6+off.o2-tt*0.5)+Math.sin((nx+ny)*1.4+off.o3+tt*0.3);
+    dx=x-mouse.x;dy=y-mouse.y;dd=Math.sqrt(dx*dx+dy*dy);
+    if(dd<130)v+=3.2*(1-dd/130);
+    var n=(v/3+1)/2;if(n<0)n=0;if(n>1)n=1;
+    idx=(n*(CHARS.length-1))|0;
+    ctx.fillStyle='rgba(182,255,46,'+(0.22+0.72*n).toFixed(3)+')';
+    ctx.fillText(CHARS[idx],x,y);
+  }
+  ctx.font='12px "Courier New",monospace';ctx.fillStyle='rgba(182,255,46,.55)';ctx.textAlign='left';
+  ctx.fillText('seed '+seed,14,H-14);
+}
+function loop(){t+=0.03;draw(t);if(running&&!REDUCED)raf=requestAnimationFrame(loop);}
+function resize(){
+  var DPR=Math.min(window.devicePixelRatio||1,2),r=cv.getBoundingClientRect();
+  W=r.width;H=r.height;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);
+  init(seed);t=0;
+  if(REDUCED){draw(1.1);}else{cancelAnimationFrame(raf);if(running)loop();else draw(0);}
+}
+cv.addEventListener('pointermove',function(e){var r=cv.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;});
+cv.addEventListener('pointerleave',function(){mouse.x=-9999;mouse.y=-9999;});
+document.getElementById('tz-b-seed').addEventListener('click',function(){init((Math.random()*0x7fffffff)|0);if(REDUCED)draw(1.1);});
+document.getElementById('tz-b-pause').addEventListener('click',function(){
+  running=!running;this.textContent=running?'Pause':'Resume';
+  if(running&&!REDUCED)loop();else cancelAnimationFrame(raf);
+});
+document.getElementById('tz-b-clear').addEventListener('click',function(){
+  off={o1:0,o2:0,o3:0,o4:0,o5:0};draw(0);
+});
+window.addEventListener('resize',resize);
+resize();
+})();
+</script>
+</body>
+</html>
