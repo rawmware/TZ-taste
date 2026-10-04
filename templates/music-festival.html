@@ -1,0 +1,479 @@
+<!--tz-meta {"id":"music-festival","title":"POPFIELDS — 3-Day Music Festival","category":"Template","file":"templates/music-festival.html","tags":["festival"],"description":"Lichtenstein-loud festival page: halftone dots, sticker badges, bold black borders, day-by-day lineup.","dnas":["pop-art-halftone"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>POPFIELDS — 3 days of noise in the sun · Jul 16–18</title>
+<meta name="description" content="POPFIELDS: 60+ acts across 4 stages, July 16–18. Weekend tickets from $149. The loudest weekend of the summer.">
+<!-- DNA: pop-art-halftone (new DNA — tokens inferred from the name: Lichtenstein paper, halftone dots, sticker red/blue/yellow, thick black borders, shouty type). Design read: a screen-printed poster that sells tickets — maximum color, zero restraint — for festival-goers who buy on energy. One distinctive choice: halftone dot fields behind everything and sticker-style rotated badges. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#fffbe8;
+  --tz-surface:#ffffff;
+  --tz-ink:#141414;
+  --tz-ink-soft:#4a4a44;
+  --tz-accent:#e30613;
+  --tz-blue:#1d4ed8;
+  --tz-yellow:#ffd500;
+  --tz-line:#141414;
+  --tz-dots:radial-gradient(#14141422 1.6px, transparent 1.7px);
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Space Grotesk",sans-serif;background:var(--tz-bg);color:var(--tz-ink);
+  line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--tz-yellow);color:#000}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.tz-mono{font-family:"Space Mono",monospace}
+.skip{position:absolute;left:-999px;top:0;background:var(--tz-ink);color:#fff;padding:8px 16px;z-index:99}
+.skip:focus{left:8px;top:8px}
+
+/* ---------- header ---------- */
+.tz-header{position:sticky;top:0;z-index:50;background:var(--tz-bg);border-bottom:4px solid var(--tz-line)}
+.tz-header .tz-wrap{display:flex;justify-content:space-between;align-items:center;height:66px}
+.tz-logo{font-family:"Archivo Black",sans-serif;font-size:22px;letter-spacing:.02em}
+.tz-logo b{color:var(--tz-accent)}
+.tz-nav{display:flex;gap:26px;font-weight:700;font-size:15px;text-transform:uppercase;letter-spacing:.04em}
+.tz-nav a{border-bottom:3px solid transparent;transition:border-color .2s}
+.tz-nav a:hover{border-color:var(--tz-accent)}
+.tz-buy{
+  font-family:"Archivo Black",sans-serif;font-size:14px;background:var(--tz-yellow);
+  border:3px solid var(--tz-line);padding:10px 22px;box-shadow:4px 4px 0 var(--tz-line);
+  cursor:pointer;transition:transform .2s var(--tz-ease),box-shadow .2s var(--tz-ease);
+}
+.tz-buy:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--tz-line)}
+.tz-buy:active{transform:translate(2px,2px);box-shadow:0 0 0 var(--tz-line)}
+
+/* ---------- hero: poster ---------- */
+.tz-hero{position:relative;padding:72px 0 88px;overflow:hidden;border-bottom:4px solid var(--tz-line)}
+.tz-hero::before{
+  content:"";position:absolute;inset:0;background-image:var(--tz-dots);background-size:22px 22px;pointer-events:none;
+}
+.tz-hero::after{
+  content:"";position:absolute;top:-80px;right:-80px;width:380px;height:380px;border-radius:50%;
+  background:var(--tz-yellow);border:4px solid var(--tz-line);z-index:0;
+}
+.tz-hero .tz-wrap{position:relative;z-index:1}
+.tz-hero .tz-date-chip{
+  display:inline-block;background:var(--tz-blue);color:#fff;font-family:"Space Mono",monospace;
+  font-weight:700;font-size:14px;letter-spacing:.1em;padding:10px 20px;border:3px solid var(--tz-line);
+  box-shadow:4px 4px 0 var(--tz-line);transform:rotate(-2deg);margin-bottom:28px;
+}
+.tz-hero h1{
+  font-family:"Archivo Black",sans-serif;font-size:clamp(64px,13vw,190px);line-height:.92;
+  letter-spacing:-0.01em;text-transform:uppercase;
+}
+.tz-hero h1 .tz-red{color:var(--tz-accent);-webkit-text-stroke:0}
+.tz-hero h1 .tz-hollow{color:transparent;-webkit-text-stroke:3px var(--tz-ink)}
+.tz-hero-sub{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end;margin-top:32px}
+.tz-hero-sub p{font-size:19px;font-weight:500;max-width:46ch}
+.tz-sticker{
+  font-family:"Archivo Black",sans-serif;font-size:15px;text-align:center;line-height:1.3;
+  background:var(--tz-accent);color:#fff;border:3px solid var(--tz-line);border-radius:50%;
+  width:150px;height:150px;display:grid;place-items:center;transform:rotate(10deg);
+  box-shadow:5px 5px 0 var(--tz-line);padding:16px;flex:none;
+}
+.tz-hero-cta{display:flex;gap:16px;margin-top:32px;flex-wrap:wrap}
+.tz-btn-big{
+  font-family:"Archivo Black",sans-serif;font-size:18px;padding:18px 40px;
+  border:4px solid var(--tz-line);box-shadow:6px 6px 0 var(--tz-line);cursor:pointer;
+  transition:transform .2s var(--tz-ease),box-shadow .2s var(--tz-ease);display:inline-block;
+}
+.tz-btn-big--red{background:var(--tz-accent);color:#fff}
+.tz-btn-big--white{background:#fff;color:var(--tz-ink)}
+.tz-btn-big:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--tz-line)}
+.tz-btn-big:active{transform:translate(3px,3px);box-shadow:0 0 0 var(--tz-line)}
+
+/* ---------- ticker ---------- */
+.tz-ticker{background:var(--tz-ink);color:var(--tz-yellow);overflow:hidden;white-space:nowrap;border-bottom:4px solid var(--tz-line)}
+.tz-ticker-track{display:inline-block;padding:12px 0;animation:tz-scroll 22s linear infinite;font-family:"Archivo Black",sans-serif;font-size:17px;letter-spacing:.06em}
+.tz-ticker-track span{margin:0 26px}
+@keyframes tz-scroll{to{transform:translateX(-50%)}}
+
+/* ---------- lineup by day ---------- */
+.tz-section{padding:88px 0}
+.tz-sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;flex-wrap:wrap;gap:16px}
+.tz-sec-head h2{font-family:"Archivo Black",sans-serif;font-size:clamp(40px,6vw,84px);text-transform:uppercase;line-height:1}
+.tz-sec-head h2 .tz-blue{color:var(--tz-blue)}
+.tz-day-tabs{display:flex;gap:12px;margin-bottom:32px;flex-wrap:wrap}
+.tz-day-tab{
+  font-family:"Archivo Black",sans-serif;font-size:15px;padding:12px 26px;cursor:pointer;
+  background:#fff;border:3px solid var(--tz-line);box-shadow:4px 4px 0 var(--tz-line);
+  transition:all .2s var(--tz-ease);
+}
+.tz-day-tab.tz-on{background:var(--tz-ink);color:var(--tz-yellow);transform:rotate(-2deg)}
+.tz-day-panel{display:none}
+.tz-day-panel.tz-on{display:block;animation:tz-pop .35s var(--tz-ease)}
+@keyframes tz-pop{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.tz-stage{margin-bottom:36px;border:4px solid var(--tz-line);background:#fff;box-shadow:8px 8px 0 var(--tz-line)}
+.tz-stage-head{padding:16px 24px;border-bottom:4px solid var(--tz-line);display:flex;justify-content:space-between;align-items:center;background:var(--tz-yellow)}
+.tz-stage:nth-child(2) .tz-stage-head{background:var(--tz-blue);color:#fff}
+.tz-stage:nth-child(3) .tz-stage-head{background:var(--tz-accent);color:#fff}
+.tz-stage-head h3{font-family:"Archivo Black",sans-serif;font-size:22px;letter-spacing:.02em}
+.tz-stage-head .tz-mono{font-size:12px;font-weight:700;letter-spacing:.1em}
+.tz-acts{list-style:none}
+.tz-acts li{
+  display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+  padding:16px 24px;border-bottom:2px solid var(--tz-line);
+  transition:background .2s,padding .25s var(--tz-ease);font-size:18px;font-weight:700;
+}
+.tz-acts li:last-child{border-bottom:0}
+.tz-acts li:hover{background:var(--tz-bg);padding-left:36px}
+.tz-acts .tz-time{font-family:"Space Mono",monospace;font-size:13px;font-weight:700;background:var(--tz-ink);color:#fff;padding:4px 10px;flex:none}
+.tz-acts li.tz-headliner{font-size:24px;background:var(--tz-bg)}
+.tz-acts li.tz-headliner .tz-tag{font-family:"Space Mono",monospace;font-size:11px;font-weight:700;color:#fff;background:var(--tz-accent);padding:4px 10px;margin-left:12px;vertical-align:middle}
+
+/* ---------- tickets ---------- */
+.tz-tickets{background:var(--tz-blue);border-top:4px solid var(--tz-line);border-bottom:4px solid var(--tz-line);padding:88px 0;position:relative;overflow:hidden}
+.tz-tickets::before{content:"";position:absolute;inset:0;background-image:radial-gradient(#ffffff30 1.6px, transparent 1.7px);background-size:22px 22px}
+.tz-tickets .tz-wrap{position:relative}
+.tz-tickets h2{font-family:"Archivo Black",sans-serif;font-size:clamp(40px,6vw,84px);color:#fff;text-transform:uppercase;line-height:1;margin-bottom:40px}
+.tz-tickets h2 .tz-y{color:var(--tz-yellow)}
+.tz-tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.tz-tier{
+  background:#fff;border:4px solid var(--tz-line);box-shadow:8px 8px 0 var(--tz-ink);
+  padding:32px;position:relative;transition:transform .25s var(--tz-ease);
+}
+.tz-tier:hover{transform:translateY(-6px) rotate(-.5deg)}
+.tz-tier--hot{background:var(--tz-yellow)}
+.tz-tier .tz-flag{
+  position:absolute;top:-18px;right:20px;background:var(--tz-accent);color:#fff;
+  font-family:"Space Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.1em;
+  padding:8px 14px;border:3px solid var(--tz-line);transform:rotate(4deg);
+}
+.tz-tier h3{font-family:"Archivo Black",sans-serif;font-size:24px;margin-bottom:6px}
+.tz-tier .tz-price{font-family:"Archivo Black",sans-serif;font-size:48px;margin:12px 0 4px}
+.tz-tier .tz-price small{font-size:16px;font-family:"Space Mono",monospace;font-weight:700}
+.tz-tier ul{list-style:none;margin:20px 0 28px;display:grid;gap:10px;font-size:15px;font-weight:500}
+.tz-tier li::before{content:"★ ";color:var(--tz-accent)}
+.tz-tier--hot li::before{color:var(--tz-ink)}
+.tz-tier .tz-buy{width:100%;text-align:center;display:block}
+
+/* ---------- info ---------- */
+.tz-info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.tz-info-card{border:4px solid var(--tz-line);background:#fff;padding:32px;box-shadow:6px 6px 0 var(--tz-line)}
+.tz-info-card:nth-child(1){transform:rotate(-1deg)}
+.tz-info-card:nth-child(3){transform:rotate(1deg)}
+.tz-info-card h3{font-family:"Archivo Black",sans-serif;font-size:21px;margin-bottom:12px}
+.tz-info-card h3 .tz-dotty{display:inline-block;width:18px;height:18px;border-radius:50%;margin-right:10px;border:3px solid var(--tz-line);vertical-align:-2px}
+.tz-info-card ul{list-style:none;display:grid;gap:10px;font-size:15.5px}
+.tz-info-card li::before{content:"→ ";font-weight:700}
+
+/* ---------- faq ---------- */
+.tz-faq{max-width:820px;margin:0 auto}
+.tz-faq details{border:3px solid var(--tz-line);background:#fff;margin-bottom:14px;box-shadow:5px 5px 0 var(--tz-line)}
+.tz-faq summary{list-style:none;cursor:pointer;font-family:"Archivo Black",sans-serif;font-size:17px;padding:20px 24px;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.tz-faq summary::-webkit-details-marker{display:none}
+.tz-faq summary .tz-pm{background:var(--tz-yellow);border:3px solid var(--tz-line);width:34px;height:34px;display:grid;place-items:center;flex:none;font-size:20px}
+.tz-faq details p{padding:0 24px 24px;font-size:16px;color:var(--tz-ink-soft)}
+
+/* ---------- footer ---------- */
+.tz-footer{background:var(--tz-ink);color:#fff;padding:64px 0 40px;border-top:4px solid var(--tz-line)}
+.tz-footer h2{font-family:"Archivo Black",sans-serif;font-size:clamp(48px,9vw,140px);color:var(--tz-yellow);line-height:1;text-transform:uppercase}
+.tz-foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin:48px 0}
+.tz-footer h4{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.16em;color:var(--tz-yellow);margin-bottom:14px}
+.tz-footer ul{list-style:none;display:grid;gap:10px;font-size:15px}
+.tz-footer a{color:#d8d4c2}
+.tz-footer a:hover{color:var(--tz-yellow)}
+.tz-foot-bottom{border-top:1px solid #ffffff2e;padding-top:24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:"Space Mono",monospace;font-size:12px;color:#a09a86}
+
+/* ---------- reveal ---------- */
+.tz-reveal{opacity:0;transform:translateY(18px);transition:opacity .6s var(--tz-ease),transform .6s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:960px){
+  .tz-nav{display:none}
+  .tz-tier-grid,.tz-info-grid{grid-template-columns:1fr}
+  .tz-hero-sub{grid-template-columns:1fr}
+  .tz-sticker{justify-self:start}
+  .tz-foot-grid{grid-template-columns:1fr 1fr}
+  .tz-hero::after{width:220px;height:220px}
+}
+@media (max-width:560px){
+  .tz-sec-head{flex-direction:column;align-items:flex-start}
+  .tz-acts li{font-size:15px;padding:14px 16px}
+  .tz-acts li.tz-headliner{font-size:18px}
+  .tz-foot-grid{grid-template-columns:1fr}
+  .tz-sticker{width:120px;height:120px;font-size:12px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#lineup">Skip to lineup</a>
+
+<header class="tz-header">
+  <div class="tz-wrap">
+    <span class="tz-logo">POP<b>FIELDS</b></span>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#lineup">Lineup</a><a href="#tickets">Tickets</a><a href="#info">Info</a><a href="#faq">FAQ</a>
+    </nav>
+    <a class="tz-buy" href="#tickets">BUY TICKETS</a>
+  </div>
+</header>
+
+<main>
+  <!-- ============ hero ============ -->
+  <section class="tz-hero">
+    <div class="tz-wrap">
+      <span class="tz-date-chip">JUL 16–18 · GREENFIELD PARK</span>
+      <h1>POP<br><span class="tz-red">FIELDS</span><br><span class="tz-hollow">2026</span></h1>
+      <div class="tz-hero-sub">
+        <p>Three days, four stages, sixty acts, one very loud field. Headliners at sunset, discoveries at 2pm — and the best food trucks in the county in between.</p>
+        <div class="tz-sticker">60+ ACTS<br>4 STAGES<br>3 DAYS</div>
+      </div>
+      <div class="tz-hero-cta">
+        <a class="tz-btn-big tz-btn-big--red" href="#tickets">Get weekend pass — $149</a>
+        <a class="tz-btn-big tz-btn-big--white" href="#lineup">See the lineup</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="tz-ticker" aria-hidden="true">
+    <div class="tz-ticker-track">
+      <span>★ 60+ ACTS</span><span>★ 4 STAGES</span><span>★ FREE WATER EVERYWHERE</span><span>★ CAMPING INCLUDED</span>
+      <span>★ 60+ ACTS</span><span>★ 4 STAGES</span><span>★ FREE WATER EVERYWHERE</span><span>★ CAMPING INCLUDED</span>
+    </div>
+  </div>
+
+  <!-- ============ lineup ============ -->
+  <section class="tz-section" id="lineup">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <h2>THE <span class="tz-blue">LINEUP</span></h2>
+        <span class="tz-mono" style="font-weight:700">+ 20 MORE TBA IN MAY</span>
+      </div>
+      <div class="tz-day-tabs tz-reveal" role="tablist" aria-label="Festival days">
+        <button class="tz-day-tab tz-on" role="tab" aria-selected="true" data-day="fri">FRI JUL 16</button>
+        <button class="tz-day-tab" role="tab" aria-selected="false" data-day="sat">SAT JUL 17</button>
+        <button class="tz-day-tab" role="tab" aria-selected="false" data-day="sun">SUN JUL 18</button>
+      </div>
+
+      <div class="tz-day-panel tz-on tz-reveal" id="day-fri" role="tabpanel">
+        <div class="tz-stage">
+          <div class="tz-stage-head"><h3>MAIN STAGE</h3><span class="tz-mono">GATES 12:00</span></div>
+          <ul class="tz-acts">
+            <li class="tz-headliner"><span>THE STATIC BLOOM<span class="tz-tag">HEADLINER</span></span><span class="tz-time">21:30</span></li>
+            <li><span>Velvet Antenna</span><span class="tz-time">19:00</span></li>
+            <li><span>Cassette Youth</span><span class="tz-time">17:00</span></li>
+            <li><span>Paper Tigers</span><span class="tz-time">15:00</span></li>
+            <li><span>June Bug</span><span class="tz-time">13:00</span></li>
+          </ul>
+        </div>
+        <div class="tz-stage">
+          <div class="tz-stage-head"><h3>NEON TENT</h3><span class="tz-mono">ELECTRONIC</span></div>
+          <ul class="tz-acts">
+            <li class="tz-headliner"><span>GLASSHOUSE<span class="tz-tag">HEADLINER</span></span><span class="tz-time">23:00</span></li>
+            <li><span>Modem Opera</span><span class="tz-time">21:00</span></li>
+            <li><span>DJ Palindrome</span><span class="tz-time">19:00</span></li>
+          </ul>
+        </div>
+        <div class="tz-stage">
+          <div class="tz-stage-head"><h3>ORCHARD STAGE</h3><span class="tz-mono">ACOUSTIC</span></div>
+          <ul class="tz-acts">
+            <li><span>Wren &amp; Hollow</span><span class="tz-time">18:00</span></li>
+            <li><span>The Borrowed Light</span><span class="tz-time">16:00</span></li>
+            <li><span>Maple Hour</span><span class="tz-time">14:00</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tz-day-panel" id="day-sat" role="tabpanel">
+        <div class="tz-stage">
+          <div class="tz-stage-head"><h3>MAIN STAGE</h3><span class="tz-mono">GATES 12:00</span></div>
+          <ul class="tz-acts">
+            <li class="tz-headliner"><span>BIG YELLOW TAXI CLUB<span class="tz-tag">HEADLINER</span></span><span class="tz-time">21:30</span></li>
+            <li><span>Neon Pastoral</span><span class="tz-time">19:00</span></li>
+            <li><span>The Copycats</span><span class="tz-time">17:00</span></li>
+            <li><span>Sunday Drivers</span><span class="tz-time">15:00</span></li>
+            <li><span>Lo-Fi Lola</span><span class="tz-time">13:00</span></li>
+          </ul>
+        </div>
+        <div class="tz-stage">
+          <div class="tz-stage-head"><h3>NEON TENT</h3><span class="tz-mono">ELECTRONIC</span></div>
+          <ul class="tz-acts">
+            <li class="tz-headliner"><span>KICKDRUM KID<span class="tz-tag">HEADLINER</span></span><span class="tz-time">23:00</span></li>
+            <li><span>Acid Grandma</span><span class="tz-time">21:00</span></li>
+            <li><span>Bleep Test</span><span class="tz-time">19:00</span></li>
+          </ul>
+        </div>
+        <div class="tz-stage">
+          <div class="tz-stage-head"><h3>ORCHARD STAGE</h3><span class="tz-mono">ACOUSTIC</span></div>
+          <ul class="tz-acts">
+            <li><span>Fern Gully Band</span><span class="tz-time">18:00</span></li>
+            <li><span>Quiet Arrows</span><span class="tz-time">16:00</span></li>
+            <li><span>Honeydew</span><span class="tz-time">14:00</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tz-day-panel" id="day-sun" role="tabpanel">
+        <div class="tz-stage">
+          <div class="tz-stage-head"><h3>MAIN STAGE</h3><span class="tz-mono">GATES 12:00</span></div>
+          <ul class="tz-acts">
+            <li class="tz-headliner"><span>SUNDAY BEST<span class="tz-tag">CLOSING</span></span><span class="tz-time">20:30</span></li>
+            <li><span>Golden Hour Choir</span><span class="tz-time">18:00</span></li>
+            <li><span>The Day Trippers</span><span class="tz-time">16:00</span></li>
+            <li><span>Brunch Club</span><span class="tz-time">14:00</span></li>
+            <li><span>Wake &amp; Bake Brass</span><span class="tz-time">12:30</span></li>
+          </ul>
+        </div>
+        <div class="tz-stage">
+          <div class="tz-stage-head"><h3>NEON TENT</h3><span class="tz-mono">ELECTRONIC</span></div>
+          <ul class="tz-acts">
+            <li><span>Soft Focus</span><span class="tz-time">19:00</span></li>
+            <li><span>Ambient Auntie</span><span class="tz-time">17:00</span></li>
+            <li><span>Cooldown DJ Set</span><span class="tz-time">15:00</span></li>
+          </ul>
+        </div>
+        <div class="tz-stage">
+          <div class="tz-stage-head"><h3>ORCHARD STAGE</h3><span class="tz-mono">ACOUSTIC</span></div>
+          <ul class="tz-acts">
+            <li><span>Last Song Singalong</span><span class="tz-time">17:00</span></li>
+            <li><span>Porch Sessions</span><span class="tz-time">15:00</span></li>
+            <li><span>Good Morning, Field</span><span class="tz-time">13:00</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ tickets ============ -->
+  <section class="tz-tickets" id="tickets">
+    <div class="tz-wrap">
+      <h2>GET <span class="tz-y">LOUD</span></h2>
+      <div class="tz-tier-grid">
+        <div class="tz-tier tz-reveal">
+          <h3>DAY PASS</h3>
+          <p class="tz-price">$69<small> / day</small></p>
+          <ul><li>Any single day, any stage</li><li>Free water stations</li><li>Food truck alley access</li></ul>
+          <a class="tz-buy" href="#">BUY DAY</a>
+        </div>
+        <div class="tz-tier tz-tier--hot tz-reveal">
+          <span class="tz-flag">MOST POPULAR</span>
+          <h3>WEEKEND PASS</h3>
+          <p class="tz-price">$149<small> / 3 days</small></p>
+          <ul><li>All 3 days, all 4 stages</li><li>Camping included</li><li>Early entry Friday</li><li>Poster + tote at the gate</li></ul>
+          <a class="tz-buy" href="#">BUY WEEKEND</a>
+        </div>
+        <div class="tz-tier tz-reveal">
+          <h3>VIP MEADOW</h3>
+          <p class="tz-price">$329<small> / 3 days</small></p>
+          <ul><li>Raised deck, real toilets</li><li>Shaded lounge + phone charging</li><li>2 drink tokens daily</li><li>Artist Q&amp;A sessions</li></ul>
+          <a class="tz-buy" href="#">GO VIP</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ info ============ -->
+  <section class="tz-section" id="info">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <h2>GOOD <span class="tz-blue">TO KNOW</span></h2>
+      </div>
+      <div class="tz-info-grid">
+        <div class="tz-info-card tz-reveal">
+          <h3><span class="tz-dotty" style="background:var(--tz-yellow)"></span>GETTING THERE</h3>
+          <ul><li>Free shuttle from Central Station every 15 min</li><li>Bike valet at the north gate — lit all night</li><li>Carpool lot opens 10am, $10 per car</li></ul>
+        </div>
+        <div class="tz-info-card tz-reveal">
+          <h3><span class="tz-dotty" style="background:var(--tz-blue)"></span>CAMPING</h3>
+          <ul><li>Included with every weekend pass</li><li>Quiet family field + loud late field</li><li>Showers, phone charging, coffee at dawn</li></ul>
+        </div>
+        <div class="tz-info-card tz-reveal">
+          <h3><span class="tz-dotty" style="background:var(--tz-accent)"></span>THE FINE PRINT</h3>
+          <ul><li>All ages — under 12s free with an adult</li><li>No glass, no drones, no bad attitudes</li><li>Refunds until June 1, transfers anytime</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ faq ============ -->
+  <section class="tz-section" id="faq" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal" style="justify-content:center">
+        <h2>QUICK <span class="tz-blue">ANSWERS</span></h2>
+      </div>
+      <div class="tz-faq tz-reveal">
+        <details open>
+          <summary>Can I leave and come back?<span class="tz-pm">−</span></summary>
+          <p>Yes — wristbands allow re-entry until 11pm daily. After that, you're in for the night (the Neon Tent runs till 2am, so you won't mind).</p>
+        </details>
+        <details>
+          <summary>What about rain?<span class="tz-pm">+</span></summary>
+          <p>Two stages are fully covered, the show goes on rain or shine, and ponchos are $3 at every merch stand. Mud is part of the aesthetic.</p>
+        </details>
+        <details>
+          <summary>Is there an age limit?<span class="tz-pm">+</span></summary>
+          <p>No — it's all ages. Under 12s get in free with a ticket-holding adult, and there's a family field with earlier camping quiet hours.</p>
+        </details>
+        <details>
+          <summary>Can I get a refund?<span class="tz-pm">+</span></summary>
+          <p>Full refunds until June 1, and ticket transfers are free anytime through your account. After June 1, we'll help you resell at face value.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <h2>POPFIELDS</h2>
+    <div class="tz-foot-grid">
+      <div><h4>THE FESTIVAL</h4><ul><li><a href="#lineup">Lineup</a></li><li><a href="#tickets">Tickets</a></li><li><a href="#info">Info</a></li></ul></div>
+      <div><h4>FOLLOW</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">TikTok</a></li><li><a href="#">Spotify playlists</a></li></ul></div>
+      <div><h4>CONTACT</h4><ul><li><a href="#">hello@popfields.live</a></li><li><a href="#">Press</a></li><li><a href="#">Vendors</a></li></ul></div>
+      <div><h4>LEGAL</h4><ul><li><a href="#">Terms</a></li><li><a href="#">Privacy</a></li><li><a href="#">Accessibility</a></li></ul></div>
+    </div>
+    <div class="tz-foot-bottom">
+      <span>© 2026 POPFIELDS LIVE · GREENFIELD PARK</span>
+      <span>SEE YOU IN THE FIELD ★</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){e.classList.add('tz-in')});
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en,i){
+        if(en.isIntersecting){ setTimeout(function(){en.target.classList.add('tz-in')}, i*70); io.unobserve(en.target); }
+      });
+    },{threshold:.08});
+    els.forEach(function(e){io.observe(e)});
+  }
+  // day tabs
+  var tabs = document.querySelectorAll('.tz-day-tab');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(t){ t.classList.remove('tz-on'); t.setAttribute('aria-selected','false'); });
+      document.querySelectorAll('.tz-day-panel').forEach(function(p){ p.classList.remove('tz-on'); });
+      tab.classList.add('tz-on'); tab.setAttribute('aria-selected','true');
+      document.getElementById('day-' + tab.dataset.day).classList.add('tz-on');
+    });
+  });
+  // faq +/- 
+  document.querySelectorAll('.tz-faq details').forEach(function(d){
+    d.addEventListener('toggle', function(){ d.querySelector('.tz-pm').textContent = d.open ? '−' : '+'; });
+  });
+})();
+</script>
+</body>
+</html>
