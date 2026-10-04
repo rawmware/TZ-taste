@@ -1,0 +1,376 @@
+<!--tz-meta {"id":"photo-studio","title":"Available Light — Portrait Studio","category":"Template","file":"templates/photo-studio.html","tags":["photography","studio","portrait"],"description":"Literary-magazine portrait studio: sessions as a numbered contact sheet, a bleeding section numeral, one sienna accent.","dnas":["editorial-serif"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Available Light — portraits by Elena Marsh</title>
+<meta name="description" content="Available Light is a portrait studio: unhurried sessions, north-facing windows, photographs that look like the person you actually are.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Newsreader:opsz,wght@6..72,400..500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f5f1e8;
+  --tz-surface:#efe9da;
+  --tz-ink:#1c1a15;
+  --tz-muted:#6f6a5e;
+  --tz-accent:#b5461f;
+  --tz-line:#1c1a1526;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Newsreader",serif;background:var(--tz-bg);color:var(--tz-ink);
+  font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-weight:400;
+}
+::selection{background:var(--tz-accent);color:var(--tz-bg)}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+.tz-mono{font-family:"Space Mono",monospace}
+.skip{position:absolute;left:-999px;top:0;background:var(--tz-ink);color:var(--tz-bg);padding:8px 16px;z-index:99}
+.skip:focus{left:8px;top:8px}
+
+/* ---------- header ---------- */
+.tz-header{border-bottom:1px solid var(--tz-line)}
+.tz-header .tz-wrap{display:flex;justify-content:space-between;align-items:center;min-height:88px;gap:20px}
+.tz-logo{font-family:"Fraunces",serif;font-size:24px;font-weight:600;letter-spacing:-.01em}
+.tz-logo em{font-style:italic;font-weight:300;color:var(--tz-accent)}
+.tz-nav{display:flex;gap:32px;font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.tz-nav a{color:var(--tz-muted);border-bottom:1px solid transparent;padding-bottom:2px;transition:color .25s,border-color .25s}
+.tz-nav a:hover{color:var(--tz-accent);border-color:var(--tz-accent)}
+.tz-book{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--tz-ink);padding:12px 24px;background:transparent;cursor:pointer;transition:background .25s,color .25s}
+.tz-book:hover{background:var(--tz-ink);color:var(--tz-bg)}
+
+/* ---------- hero: editorial, offset ---------- */
+.tz-hero{padding:110px 0 96px;position:relative}
+.tz-hero-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:80px;align-items:start}
+.tz-hero .tz-colophon{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tz-muted);border-left:1px solid var(--tz-line);padding-left:24px;line-height:2.4}
+.tz-hero .tz-colophon b{color:var(--tz-accent);font-weight:700}
+.tz-hero h1{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(48px,6.4vw,88px);line-height:1.04;letter-spacing:-.03em}
+.tz-hero h1 em{font-style:italic;color:var(--tz-accent)}
+.tz-hero .tz-drop::first-letter{
+  font-family:"Fraunces",serif;font-size:3.4em;float:left;line-height:.86;padding-right:12px;padding-top:6px;color:var(--tz-ink);
+}
+.tz-hero .tz-lede{margin-top:28px;font-size:19px;max-width:58ch;color:#1c1a15dd}
+.tz-hero-fig{margin-top:44px;border:1px solid var(--tz-line);background:var(--tz-surface);padding:18px}
+.tz-hero-fig .tz-frame{aspect-ratio:4/5;background:#d9d2bf;position:relative;overflow:hidden}
+.tz-hero-fig .tz-frame::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 45% at 50% 38%, #2b2620 0 18%, transparent 19%),
+             radial-gradient(ellipse 26% 60% at 50% 78%, #2b2620 0 30%, transparent 31%),
+             radial-gradient(ellipse 120% 100% at 50% 120%, #b5461f33, transparent 60%);
+}
+.tz-hero-fig figcaption{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.14em;color:var(--tz-muted);margin-top:14px;display:flex;justify-content:space-between;gap:12px}
+
+/* ---------- sections ---------- */
+.tz-section{padding:120px 0;border-top:1px solid var(--tz-line);position:relative}
+.tz-sec-head{max-width:640px;margin-bottom:56px}
+.tz-sec-head .tz-mono{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--tz-accent);display:block;margin-bottom:16px;font-weight:700}
+.tz-sec-head h2{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(36px,4.6vw,60px);line-height:1.08;letter-spacing:-.02em}
+.tz-sec-head h2 em{font-style:italic}
+.tz-sec-head p{color:var(--tz-muted);margin-top:14px;font-size:17.5px}
+
+/* giant bleeding numeral: the one weird thing */
+.tz-numeral{
+  position:absolute;top:40px;right:-30px;font-family:"Fraunces",serif;font-weight:600;
+  font-size:clamp(140px,20vw,300px);line-height:1;color:transparent;
+  -webkit-text-stroke:1px var(--tz-line);pointer-events:none;user-select:none;
+}
+
+/* ---------- contact sheet ---------- */
+.tz-sheet{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;background:var(--tz-ink);padding:14px;border:1px solid var(--tz-ink)}
+.tz-frame-card{background:var(--tz-bg);position:relative;transition:transform .3s var(--tz-ease)}
+.tz-frame-card:hover{transform:translateY(-6px)}
+.tz-frame-card .tz-neg{aspect-ratio:3/4;position:relative;overflow:hidden;background:#cfc6b2}
+.tz-frame-card .tz-neg::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse 55% 40% at 50% 36%, #2b2620 0 20%, transparent 21%),
+             radial-gradient(ellipse 24% 58% at 50% 80%, #2b2620 0 32%, transparent 33%);
+  opacity:.9;
+}
+.tz-frame-card:nth-child(2) .tz-neg::after{transform:scaleX(-1)}
+.tz-frame-card:nth-child(5) .tz-neg{filter:sepia(.35)}
+.tz-frame-card:nth-child(7) .tz-neg::after{transform:scale(1.08) translateY(-3%)}
+.tz-frame-card .tz-meta{display:flex;justify-content:space-between;align-items:baseline;padding:12px 14px;border-top:1px solid var(--tz-line)}
+.tz-frame-card .tz-meta .tz-mono{font-size:10px;letter-spacing:.16em;color:var(--tz-muted)}
+.tz-frame-card .tz-meta b{font-family:"Fraunces",serif;font-weight:600;font-size:16px}
+.tz-frame-card p{font-size:14px;color:var(--tz-muted);padding:0 14px 16px;line-height:1.55}
+.tz-sheet-note{margin-top:28px;display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-muted);letter-spacing:.06em}
+.tz-sheet-note b{color:var(--tz-accent)}
+
+/* ---------- sessions list (rows, not cards) ---------- */
+.tz-sessions{border-top:1px solid var(--tz-ink)}
+.tz-session{display:grid;grid-template-columns:80px 1fr auto;gap:36px;padding:44px 0;border-bottom:1px solid var(--tz-ink);align-items:start}
+.tz-session .tz-idx{font-family:"Fraunces",serif;font-style:italic;font-size:28px;color:var(--tz-accent)}
+.tz-session h3{font-family:"Fraunces",serif;font-weight:600;font-size:30px;letter-spacing:-.01em;margin-bottom:6px}
+.tz-session .tz-dur{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tz-muted);display:block;margin-bottom:14px}
+.tz-session p{color:var(--tz-muted);max-width:56ch;font-size:17px}
+.tz-session .tz-price{text-align:right}
+.tz-session .tz-price b{font-family:"Fraunces",serif;font-size:34px;font-weight:600;display:block}
+.tz-session .tz-price .tz-mono{font-size:11px;color:var(--tz-muted);letter-spacing:.1em}
+.tz-session .tz-price a{display:inline-block;margin-top:12px;font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.12em;color:var(--tz-accent);border-bottom:1px solid var(--tz-accent);padding-bottom:2px}
+
+/* ---------- process ---------- */
+.tz-process{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.tz-process ol{list-style:none;counter-reset:step;display:grid;gap:0}
+.tz-process li{counter-increment:step;padding:28px 0;border-bottom:1px solid var(--tz-line);display:grid;grid-template-columns:64px 1fr;gap:20px}
+.tz-process li::before{content:counter(step,decimal-leading-zero);font-family:"Fraunces",serif;font-style:italic;font-size:22px;color:var(--tz-accent)}
+.tz-process h3{font-family:"Fraunces",serif;font-size:22px;font-weight:600;margin-bottom:6px}
+.tz-process p{color:var(--tz-muted);font-size:16.5px}
+.tz-pull{font-family:"Fraunces",serif;font-style:italic;font-size:clamp(26px,3.4vw,40px);line-height:1.4;letter-spacing:-.01em}
+.tz-pull footer{margin-top:24px;font-family:"Space Mono",monospace;font-style:normal;font-size:11px;letter-spacing:.2em;color:var(--tz-muted)}
+
+/* ---------- visit ---------- */
+.tz-visit{display:grid;grid-template-columns:1.2fr .8fr;gap:80px}
+.tz-visit h2{font-family:"Fraunces",serif;font-weight:400;font-size:clamp(38px,4.8vw,62px);line-height:1.06;letter-spacing:-.02em;margin-bottom:20px}
+.tz-visit h2 em{font-style:italic;color:var(--tz-accent)}
+.tz-visit p{color:var(--tz-muted);max-width:52ch}
+.tz-visit-facts{border-top:1px solid var(--tz-ink);margin-top:8px}
+.tz-visit-facts div{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid var(--tz-line);font-size:16px}
+.tz-visit-facts .tz-mono{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--tz-muted);padding-top:5px}
+
+/* ---------- footer ---------- */
+.tz-footer{padding:88px 0 40px;border-top:1px solid var(--tz-ink);margin-top:40px}
+.tz-foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:56px}
+.tz-foot-grid h4{font-family:"Space Mono",monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:16px}
+.tz-foot-grid ul{list-style:none;display:grid;gap:10px;font-size:16px}
+.tz-foot-grid a{color:var(--tz-muted)}
+.tz-foot-grid a:hover{color:var(--tz-accent)}
+.tz-foot-brand{font-family:"Fraunces",serif;font-size:26px;font-weight:600}
+.tz-foot-brand em{font-style:italic;font-weight:300;color:var(--tz-accent)}
+.tz-foot-note{color:var(--tz-muted);font-size:16px;max-width:32ch;margin-top:12px;font-style:italic;font-family:"Fraunces",serif}
+.tz-foot-bottom{border-top:1px solid var(--tz-line);padding-top:24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.1em;color:var(--tz-muted)}
+
+/* ---------- reveal ---------- */
+.tz-reveal{opacity:0;transform:translateY(14px);transition:opacity .8s var(--tz-ease),transform .8s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:960px){
+  .tz-hero-grid{grid-template-columns:1fr;gap:48px}
+  .tz-nav{display:none}
+  .tz-sheet{grid-template-columns:repeat(2,1fr)}
+  .tz-session{grid-template-columns:1fr;gap:12px}
+  .tz-session .tz-price{text-align:left}
+  .tz-process{grid-template-columns:1fr;gap:48px}
+  .tz-visit{grid-template-columns:1fr;gap:48px}
+  .tz-foot-grid{grid-template-columns:1fr 1fr}
+  .tz-numeral{font-size:120px;right:0}
+  .tz-section{padding:88px 0}
+}
+@media (max-width:560px){
+  .tz-foot-grid{grid-template-columns:1fr}
+  .tz-visit-facts div{grid-template-columns:1fr;gap:4px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<!-- DNA: editorial-serif (warm paper, hairline rules, burnt sienna used sparingly; Fraunces/Newsreader/Space Mono). Design read: a literary magazine that happens to book portrait sessions — unhurried, exacting, a little old-fashioned — for people who want to be photographed as they are, not as a brand. One distinctive choice: sessions are presented as a numbered contact sheet of frames, and one giant outlined section numeral bleeds off the page edge. Dials V6/M3/D2. -->
+<body>
+<a class="skip" href="#sessions">Skip to sessions</a>
+
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-logo" href="#">Available <em>Light</em></a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#work">The work</a><a href="#sessions">Sessions</a><a href="#process">Process</a><a href="#visit">Studio</a>
+    </nav>
+    <a class="tz-book" href="#visit">Book a sitting</a>
+  </div>
+</header>
+
+<main>
+  <!-- ============ hero ============ -->
+  <section class="tz-hero">
+    <div class="tz-wrap tz-hero-grid">
+      <div class="tz-reveal tz-in">
+        <p class="tz-colophon">Portrait studio · Nº 04<br>North-facing windows<br><b>Est. 2015</b> · Portland, Maine</p>
+      </div>
+      <div class="tz-reveal tz-in">
+        <h1>Portraits for people who <em>hate</em> being photographed.</h1>
+        <p class="tz-lede tz-drop">My studio has one large north-facing window and no flash. Sessions run two hours because the first forty-five minutes are just you remembering how to sit still. What comes after that is the photograph.</p>
+        <figure class="tz-hero-fig">
+          <div class="tz-frame" role="img" aria-label="Contact-sheet style portrait study in warm monochrome"></div>
+          <figcaption><span>STUDY 214 — WINDOW LIGHT, 10:42 AM</span><span>F/2.8 · 1/250 · ISO 400</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ work: contact sheet ============ -->
+  <section class="tz-section" id="work">
+    <span class="tz-numeral" aria-hidden="true">01</span>
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <span class="tz-mono">Selected frames · 2024–2026</span>
+        <h2>Eight frames from <em>the contact sheet</em></h2>
+        <p>Every session ends the same way: we spread the contact sheet on the table and you circle the frames you can't stop looking at. These are some of the circles.</p>
+      </div>
+      <div class="tz-sheet tz-reveal">
+        <article class="tz-frame-card">
+          <div class="tz-neg" role="img" aria-label="Portrait study, frame 12"></div>
+          <div class="tz-meta"><span class="tz-mono">FRAME 12</span><b>The Novelist</b></div>
+          <p>Sat for a book jacket. Kept the outtakes for herself.</p>
+        </article>
+        <article class="tz-frame-card">
+          <div class="tz-neg" role="img" aria-label="Portrait study, frame 31"></div>
+          <div class="tz-meta"><span class="tz-mono">FRAME 31</span><b>The Couple, 40 Years</b></div>
+          <p>They laughed through the whole sitting. Frame 31 is the second they stopped.</p>
+        </article>
+        <article class="tz-frame-card">
+          <div class="tz-neg" role="img" aria-label="Portrait study, frame 07"></div>
+          <div class="tz-meta"><span class="tz-mono">FRAME 07</span><b>The Graduate</b></div>
+          <p>Wanted "serious." Left with this one framed for her mother.</p>
+        </article>
+        <article class="tz-frame-card">
+          <div class="tz-neg" role="img" aria-label="Portrait study, frame 44"></div>
+          <div class="tz-meta"><span class="tz-mono">FRAME 44</span><b>The Chef</b></div>
+          <p>Shot between lunch and dinner service. Seventeen minutes, one frame.</p>
+        </article>
+        <article class="tz-frame-card">
+          <div class="tz-neg" role="img" aria-label="Portrait study, frame 19"></div>
+          <div class="tz-meta"><span class="tz-mono">FRAME 19</span><b>The Twins</b></div>
+          <p>Age six. One of them is mid-blink in every frame but this one.</p>
+        </article>
+        <article class="tz-frame-card">
+          <div class="tz-neg" role="img" aria-label="Portrait study, frame 52"></div>
+          <div class="tz-meta"><span class="tz-mono">FRAME 52</span><b>The Musician</b></div>
+          <p>Brought her cello. We photographed her hands first; she relaxed after that.</p>
+        </article>
+        <article class="tz-frame-card">
+          <div class="tz-neg" role="img" aria-label="Portrait study, frame 26"></div>
+          <div class="tz-meta"><span class="tz-mono">FRAME 26</span><b>The Father</b></div>
+          <p>His daughter booked it as a surprise. He cried; the camera didn't mind.</p>
+        </article>
+        <article class="tz-frame-card">
+          <div class="tz-neg" role="img" aria-label="Portrait study, frame 60"></div>
+          <div class="tz-meta"><span class="tz-mono">FRAME 60</span><b>The Founder</b></div>
+          <p>Needed a headshot. Got a portrait instead. Uses it everywhere now.</p>
+        </article>
+      </div>
+      <div class="tz-sheet-note tz-reveal">
+        <span>ALL SESSIONS SHOT ON MEDIUM FORMAT FILM + DIGITAL BACKUP</span>
+        <span><b>214</b> SITTINGS · <b>11</b> YEARS · <b>1</b> WINDOW</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ sessions ============ -->
+  <section class="tz-section" id="sessions">
+    <span class="tz-numeral" aria-hidden="true">02</span>
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <span class="tz-mono">Sittings &amp; rates</span>
+        <h2>Three ways <em>to sit</em></h2>
+        <p>Every session includes the sitting, a proofing afternoon with tea, and ten finished prints. Digital files included, because it is 2026.</p>
+      </div>
+      <div class="tz-sessions">
+        <div class="tz-session tz-reveal">
+          <span class="tz-idx">i.</span>
+          <div>
+            <h3>The Headshot, Done Properly</h3>
+            <span class="tz-dur">45 MINUTES · STUDIO</span>
+            <p>For the reluctant professional. One backdrop, one window, twenty minutes of actual photographing and twenty-five of convincing you it will be fine. It will be.</p>
+          </div>
+          <div class="tz-price"><b>$180</b><span class="tz-mono">5 FINISHED FILES</span><br><a href="#visit">Reserve →</a></div>
+        </div>
+        <div class="tz-session tz-reveal">
+          <span class="tz-idx">ii.</span>
+          <div>
+            <h3>The Full Sitting</h3>
+            <span class="tz-dur">2 HOURS · STUDIO</span>
+            <p>The classic. Two hours, three changes of clothes if you like, film and digital. Most people book this for milestones: graduations, anniversaries, the decade birthdays.</p>
+          </div>
+          <div class="tz-price"><b>$450</b><span class="tz-mono">10 PRINTS + FILES</span><br><a href="#visit">Reserve →</a></div>
+        </div>
+        <div class="tz-session tz-reveal">
+          <span class="tz-idx">iii.</span>
+          <div>
+            <h3>The Environmental</h3>
+            <span class="tz-dur">HALF DAY · YOUR PLACE</span>
+            <p>I come to you — the workshop, the kitchen, the boat. Portraits where your life actually happens. Travel within 50 miles included.</p>
+          </div>
+          <div class="tz-price"><b>$850</b><span class="tz-mono">15 PRINTS + FILES</span><br><a href="#visit">Reserve →</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ process ============ -->
+  <section class="tz-section" id="process">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <span class="tz-mono">How a sitting goes</span>
+        <h2>Slow <em>on purpose</em></h2>
+      </div>
+      <div class="tz-process">
+        <ol>
+          <li class="tz-reveal"><div><h3>Tea first</h3><p>You arrive, we talk. I learn what the photographs are for and who they're really of. The camera stays in its bag.</p></div></li>
+          <li class="tz-reveal"><div><h3>The awkward forty-five</h3><p>Everyone is stiff at first. I photograph through it — most people relax somewhere around frame thirty.</p></div></li>
+          <li class="tz-reveal"><div><h3>The real twenty</h3><p>Then it happens: you forget the camera. That's when I stop directing and start watching.</p></div></li>
+          <li class="tz-reveal"><div><h3>The contact sheet</h3><p>A week later, we sit with the prints and you circle your frames. You always know which ones. Everyone does.</p></div></li>
+        </ol>
+        <blockquote class="tz-pull tz-reveal">
+          "She photographed my father the way I remember him, not the way he looked that Tuesday."
+          <footer>— CLIENT NOTE, PINNED ABOVE THE DARKROOM SINK</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ visit ============ -->
+  <section class="tz-section" id="visit">
+    <div class="tz-wrap tz-visit">
+      <div class="tz-reveal">
+        <h2>The studio is <em>above the bakery.</em> Follow the smell.</h2>
+        <p>Sittings Tuesday through Saturday, morning light preferred. I take four sittings a week, never more — the work needs the space between. Currently booking <strong>three weeks out</strong>.</p>
+      </div>
+      <div class="tz-visit-facts tz-reveal">
+        <div><span class="tz-mono">Address</span><span>214 Congress Street, 3rd floor<br>Portland, ME 04101</span></div>
+        <div><span class="tz-mono">Hours</span><span>Tue – Sat · 9 AM – 5 PM<br>By appointment only</span></div>
+        <div><span class="tz-mono">Contact</span><span>hello@availablelight.studio<br>(207) 555-0188</span></div>
+        <div><span class="tz-mono">Note</span><span>Stairs only, no elevator — email me and we'll find a ground-floor option.</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-foot-grid">
+      <div>
+        <span class="tz-foot-brand">Available <em>Light</em></span>
+        <p class="tz-foot-note">Portraits by Elena Marsh. One window, eleven years, no flash.</p>
+      </div>
+      <div><h4>Studio</h4><ul><li><a href="#work">Selected frames</a></li><li><a href="#sessions">Sessions</a></li><li><a href="#process">Process</a></li></ul></div>
+      <div><h4>Elsewhere</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">Print shop</a></li><li><a href="#">Gift certificates</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="#">hello@availablelight.studio</a></li><li><a href="#">(207) 555-0188</a></li></ul></div>
+    </div>
+    <div class="tz-foot-bottom">
+      <span>© 2026 ELENA MARSH · AVAILABLE LIGHT STUDIO</span>
+      <span>SHOT ON FILM · PRINTED BY HAND</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){e.classList.add('tz-in')});
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en,i){
+        if(en.isIntersecting){ setTimeout(function(){en.target.classList.add('tz-in')}, i*80); io.unobserve(en.target); }
+      });
+    },{threshold:.1});
+    els.forEach(function(e){io.observe(e)});
+  }
+})();
+</script>
+</body>
+</html>
