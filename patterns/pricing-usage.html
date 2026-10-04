@@ -1,0 +1,47 @@
+<!--tz-meta {"id":"pricing-usage","title":"Usage tiers","category":"Pricing","file":"patterns/pricing-usage.html","tags":["metered","api"],"description":"Metered pricing tiers with CSS usage meters showing where each plan lands.","dnas":["soft-minimal"]} -->
+<section class="tz-pu">
+  <p class="tz-pu-eyebrow">Metered pricing</p>
+  <h2 class="tz-pu-title">Pay for what you send.<br>Nothing else.</h2>
+  <div class="tz-pu-list">
+    <article class="tz-pu-tier">
+      <div class="tz-pu-head"><h3>Trickle</h3><p class="tz-pu-rate">$0.02 <span>/ reply</span></p></div>
+      <div class="tz-pu-meter" role="img" aria-label="Usage meter: up to 1,000 replies a month"><i style="width:18%"></i></div>
+      <p class="tz-pu-cap">Up to 1,000 replies / mo · side projects and experiments</p>
+    </article>
+    <article class="tz-pu-tier tz-pu-hi">
+      <div class="tz-pu-head"><h3>Steady <span class="tz-pu-badge">most teams</span></h3><p class="tz-pu-rate">$0.014 <span>/ reply</span></p></div>
+      <div class="tz-pu-meter" role="img" aria-label="Usage meter: up to 25,000 replies a month"><i style="width:55%"></i></div>
+      <p class="tz-pu-cap">Up to 25,000 replies / mo · volume discount kicks in automatically</p>
+    </article>
+    <article class="tz-pu-tier">
+      <div class="tz-pu-head"><h3>Flood</h3><p class="tz-pu-rate">$0.009 <span>/ reply</span></p></div>
+      <div class="tz-pu-meter" role="img" aria-label="Usage meter: unlimited replies"><i style="width:100%"></i></div>
+      <p class="tz-pu-cap">Unlimited replies · dedicated throughput, your own region</p>
+    </article>
+  </div>
+  <p class="tz-pu-foot">Meters reset on the 1st · overage never surprises you — we warn at 80%</p>
+</section>
+<style>
+.tz-pu{--bg:#f7f5f1;--ink:#1d1c19;--accent:#4f6b4a;--line:rgba(29,28,25,.16);
+  background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(64px,9vw,120px) clamp(24px,6vw,88px)}
+.tz-pu-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 16px}
+.tz-pu-title{font-size:clamp(34px,5vw,62px);font-weight:700;letter-spacing:-.025em;line-height:1.04;
+  margin:0 0 clamp(40px,6vw,72px);max-width:16ch}
+.tz-pu-list{display:flex;flex-direction:column;gap:0;max-width:820px;border-top:2px solid var(--ink)}
+.tz-pu-tier{padding:clamp(28px,4vw,44px) 0;border-bottom:2px solid var(--ink)}
+.tz-pu-hi{background:#fff;margin:0 clamp(-16px,-2vw,-32px);padding-left:clamp(16px,2vw,32px);padding-right:clamp(16px,2vw,32px)}
+.tz-pu-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.tz-pu-head h3{font-size:24px;font-weight:700;letter-spacing:-.01em;margin:0}
+.tz-pu-badge{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;background:var(--accent);color:#fff;padding:5px 12px;margin-left:10px;vertical-align:middle}
+.tz-pu-rate{font-size:30px;font-weight:700;letter-spacing:-.02em;margin:0}
+.tz-pu-rate span{font-size:14px;font-weight:400;opacity:.6}
+.tz-pu-meter{height:14px;background:rgba(29,28,25,.1);border:1px solid var(--line);margin-bottom:14px}
+.tz-pu-meter i{display:block;height:100%;background:var(--accent)}
+.tz-pu-tier:last-child .tz-pu-meter i{background:var(--ink)}
+.tz-pu-cap{font-size:14px;color:rgba(29,28,25,.68);margin:0}
+.tz-pu-foot{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.08em;
+  color:rgba(29,28,25,.6);margin:32px 0 0}
+</style>
