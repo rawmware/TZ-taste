@@ -1,0 +1,145 @@
+{
+ "count": 23,
+ "updated": "2026-10-04",
+ "usage": "Prose guides for humans and agents. Not code.",
+ "docs": [
+  {
+   "id": "accessibility-checklist",
+   "title": "The Accessibility Checklist",
+   "file": "docs/accessibility-checklist.md",
+   "description": "WCAG AA concrete checklist: contrast, focus, keyboard, reduced motion, alt text, forms."
+  },
+  {
+   "id": "anti-slop",
+   "title": "The Anti-Slop Checklist",
+   "file": "docs/ANTI-SLOP.md",
+   "description": "Concrete, checkable tells of AI-generated UI. Zero blockers to ship."
+  },
+  {
+   "id": "case-study-slop-to-taste-1",
+   "title": "Case Study: Slop to Taste #1 — SaaS Landing",
+   "file": "docs/case-study-slop-to-taste-1.md",
+   "description": "Before/after teardown of a generic SaaS landing: slop diagnosis, DNA pick, rebuild notes."
+  },
+  {
+   "id": "case-study-slop-to-taste-2",
+   "title": "Case Study: Slop to Taste #2 — Portfolio",
+   "file": "docs/case-study-slop-to-taste-2.md",
+   "description": "Before/after teardown of a generic portfolio: slop diagnosis, DNA pick, rebuild notes."
+  },
+  {
+   "id": "case-study-slop-to-taste-3",
+   "title": "Case Study: Slop → Taste, Restaurant Edition",
+   "file": "docs/case-study-slop-to-taste-3.md",
+   "description": "Before/after teardown of a generic restaurant site: diagnosis, DNA pick, rebuild notes."
+  },
+  {
+   "id": "color-theory-crash",
+   "title": "Color Theory Crash Course",
+   "file": "docs/color-theory-crash.md",
+   "description": "60-30-10, accent discipline, dark vs light logic, contrast math, and per-DNA palette logic."
+  },
+  {
+   "id": "copywriting-guide",
+   "title": "The Copywriting Guide",
+   "file": "docs/copywriting-guide.md",
+   "description": "Headlines that make claims, button copy, microcopy, killing jargon, and voice per DNA."
+  },
+  {
+   "id": "dark-mode-guide",
+   "title": "The Dark Mode Guide",
+   "file": "docs/dark-mode-guide.md",
+   "description": "True dark vs dark-luxe, surface elevation, accent behavior, OLED blacks, text warmth."
+  },
+  {
+   "id": "decision-matrix",
+   "title": "Brief → DNA Decision Matrix",
+   "file": "docs/DECISION-MATRIX.md",
+   "description": "Routing table: brief signals to style DNA, with runner-up reasoning."
+  },
+  {
+   "id": "design-tokens-explained",
+   "title": "Design Tokens, Explained",
+   "file": "docs/design-tokens-explained.md",
+   "description": "What tokens are, naming, the TZ-taste token schema, theming, Tailwind mapping."
+  },
+  {
+   "id": "designing-forms",
+   "title": "Designing Forms",
+   "file": "docs/designing-forms.md",
+   "description": "Labels, error states, input styling per DNA, multi-step flows, validation copy."
+  },
+  {
+   "id": "icon-usage",
+   "title": "Icon Usage",
+   "file": "docs/icon-usage.md",
+   "description": "Lucide/Phosphor, stroke consistency, sizing, when NOT to use icons, emoji ban rationale."
+  },
+  {
+   "id": "imagery-art-direction",
+   "title": "Imagery & Art Direction",
+   "file": "docs/imagery-art-direction.md",
+   "description": "Photography vs illustration vs none, duotone/grade recipes, picsum usage, per-DNA imagery rules."
+  },
+  {
+   "id": "layout-grids",
+   "title": "Layout and Grids",
+   "file": "docs/layout-grids.md",
+   "description": "12-column grids, asymmetric grids, bento logic, rhythm, and breaking the grid exactly once."
+  },
+  {
+   "id": "motion-guide",
+   "title": "The Motion Guide",
+   "file": "docs/motion-guide.md",
+   "description": "When and how to animate: easing, duration, stagger, scroll choreography, reduced motion, per-DNA motion notes."
+  },
+  {
+   "id": "picking-type-pairings",
+   "title": "Picking Type Pairings",
+   "file": "docs/picking-type-pairings.md",
+   "description": "The display/body/mono trio, contrast vs harmony, and 8 example pairings mapped to DNAs."
+  },
+  {
+   "id": "shipping-checklist",
+   "title": "The Shipping Checklist",
+   "file": "docs/shipping-checklist.md",
+   "description": "Pre-launch QA: viewports, performance, SEO basics, legal, analytics, the ANTI-SLOP final pass."
+  },
+  {
+   "id": "spacing-rhythm",
+   "title": "Spacing & Rhythm",
+   "file": "docs/spacing-rhythm.md",
+   "description": "The 8pt system, section padding scales, optical vs mathematical spacing, density dials."
+  },
+  {
+   "id": "taste-guide",
+   "title": "The Taste Guide",
+   "file": "docs/TASTE-GUIDE.md",
+   "description": "The short philosophy: taste is constraint, commitment, and subtraction."
+  },
+  {
+   "id": "trend-watch-2026",
+   "title": "Trend Watch 2026",
+   "file": "docs/trend-watch-2026.md",
+   "description": "What's current vs dated right now, honest trend assessment, how TZ-taste stays fresh via CI."
+  },
+  {
+   "id": "typography-guide",
+   "title": "The Typography Guide",
+   "file": "docs/typography-guide.md",
+   "description": "Pairing rules, scale construction, measure, tracking and leading, and webfont loading done right."
+  },
+  {
+   "id": "using-3d-in-ui",
+   "title": "Using 3D in UI",
+   "file": "docs/using-3d-in-ui.md",
+   "description": "When 3D helps vs hurts, Three.js performance budgets, fallbacks, and tasteful integration patterns."
+  },
+  {
+   "id": "working-with-agents",
+   "title": "Working with Agents",
+   "file": "docs/working-with-agents.md",
+   "description": "How to brief an AI well, the one-liner, iteration loops, review mode, when to take over."
+  }
+ ]
+}
