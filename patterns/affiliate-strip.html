@@ -1,0 +1,59 @@
+<!--tz-meta {"id":"affiliate-strip","title":"Affiliate partner strip","category":"Misc","file":"patterns/affiliate-strip.html","tags":["affiliate","partners","payouts","strip"],"description":"Bauhaus payout strip: partner wordmarks with commission rate and cookie window.","dnas":["bauhaus-primary"]} -->
+<section class="tz-affiliate-strip" aria-label="Partner payouts">
+  <p class="tz-k">Partner payouts <span aria-hidden="true">●</span> Paid monthly, no minimum</p>
+  <ul class="tz-row">
+    <li>
+      <span class="tz-mark tz-c1" aria-hidden="true"></span>
+      <div><strong>Northwind Supply Co.</strong><span>Outdoor gear, made in Maine</span></div>
+      <em>12% · 30-day cookie</em>
+      <a href="#">Apply</a>
+    </li>
+    <li>
+      <span class="tz-mark tz-c2" aria-hidden="true"></span>
+      <div><strong>Copperline Goods</strong><span>Small-batch kitchenware</span></div>
+      <em>15% · 45-day cookie</em>
+      <a href="#">Apply</a>
+    </li>
+    <li>
+      <span class="tz-mark tz-c3" aria-hidden="true"></span>
+      <div><strong>Ferry &amp; Pine</strong><span>Paper goods &amp; print</span></div>
+      <em>10% · 30-day cookie</em>
+      <a href="#">Apply</a>
+    </li>
+    <li>
+      <span class="tz-mark tz-c4" aria-hidden="true"></span>
+      <div><strong>Kiln House</strong><span>Handmade ceramics</span></div>
+      <em>18% · 60-day cookie</em>
+      <a href="#">Apply</a>
+    </li>
+  </ul>
+</section>
+<style>
+.tz-affiliate-strip{--bg:#f4f1ea;--ink:#1a1a1a;--accent:#d8342c;--muted:#6e6a60;--line:#1a1a1a;
+  background:var(--bg);color:var(--ink);padding:clamp(28px,4vw,56px);
+  font-family:'Archivo',-apple-system,'Segoe UI',sans-serif;border-top:3px solid var(--line);border-bottom:3px solid var(--line)}
+.tz-affiliate-strip .tz-k{font-family:'Space Mono',ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0 0 20px}
+.tz-affiliate-strip .tz-k span{color:var(--accent)}
+.tz-row{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.tz-row li{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;align-items:center;
+  padding:20px;border-left:2px solid var(--line)}
+.tz-row li:first-child{border-left:0;padding-left:0}
+.tz-mark{width:44px;height:44px;flex:none;grid-row:span 2}
+.tz-c1{background:var(--accent);border-radius:50%}
+.tz-c2{background:var(--ink)}
+.tz-c3{width:0;height:0;border-left:24px solid transparent;border-right:24px solid transparent;
+  border-bottom:42px solid var(--accent);background:none}
+.tz-c4{background:var(--ink);border-radius:50% 50% 0 0}
+.tz-row strong{display:block;font-family:'Archivo Black','Arial Black',sans-serif;font-size:15px;
+  letter-spacing:-.01em}
+.tz-row div span{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
+.tz-row em{font-family:'Space Mono',ui-monospace,Menlo,monospace;font-style:normal;font-size:12px;
+  color:var(--accent);font-weight:700;grid-column:2}
+.tz-row a{grid-column:2;font-size:13px;font-weight:700;color:var(--ink);text-decoration:underline;
+  text-underline-offset:3px}
+.tz-row a:hover{color:var(--accent)}
+@media(max-width:900px){.tz-row{grid-template-columns:1fr 1fr}.tz-row li{border-left:0;border-top:2px solid var(--line);padding-left:0}
+  .tz-row li:nth-child(-n+2){border-top:0}}
+@media(max-width:520px){.tz-row{grid-template-columns:1fr}.tz-row li:nth-child(2){border-top:2px solid var(--line)}}
+</style>
