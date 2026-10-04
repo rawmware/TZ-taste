@@ -1,0 +1,267 @@
+<!--tz-meta {"id":"ski-lodge","title":"Emberline Lodge — Ski Lodge & Night Skiing","category":"Template","file":"templates/ski-lodge.html","tags":["travel","ski","lodge"],"description":"Alpine-after-dark lodge: headlamp-amber on deep indigo, night-skiing schedule, trail ledger, fireside booking.","dnas":["alpine-after-dark"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emberline Lodge — ski by day, ski by headlamp by night</title>
+<meta name="description" content="Emberline Lodge: a ski lodge with night skiing till 10pm, 42 trails, and a fireside that never goes out. Book direct.">
+<!-- Design read: night at altitude — deep indigo snowfields, one headlamp-amber accent, Fraunces headlines — for skiers who think the mountain is better after the crowds leave. DNA: alpine-after-dark (Fraunces + Mulish + Spline Sans Mono; bg #0b1026, ink #e8e4d8, amber #f5a623 — runner-up sauna-cedar was warm but daylight; this is a night brand). One distinctive choice: the trail map is a LEDGER TABLE of runs with night-lit status lamps, not a cartoon map. Dials V7/M4/D3. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Mulish:wght@300;400;600;700&family=Spline+Sans+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#0b1026; --tz-ink:#e8e4d8; --tz-accent:#f5a623; --tz-muted:#6b7394;
+  --tz-line:#f5a62333; --tz-panel:#101736;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Mulish",sans-serif;background:var(--tz-bg);color:var(--tz-ink);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--tz-accent);color:#0b1026}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+.tz-mono{font-family:"Spline Sans Mono",monospace}
+
+/* header */
+.tz-header{border-bottom:1px solid var(--tz-line);position:sticky;top:0;z-index:50;background:#0b1026f0;backdrop-filter:blur(10px)}
+.tz-header .tz-wrap{display:flex;justify-content:space-between;align-items:center;height:68px}
+.tz-brand{font-family:"Fraunces",serif;font-weight:600;font-size:22px}
+.tz-brand em{color:var(--tz-accent);font-style:normal}
+.tz-nav{display:flex;gap:26px;font-family:"Spline Sans Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.tz-nav a{color:var(--tz-muted)}
+.tz-nav a:hover{color:var(--tz-accent)}
+.tz-book{font-family:"Spline Sans Mono",monospace;font-weight:700;font-size:13px;background:var(--tz-accent);color:#0b1026;padding:11px 24px;border:0;cursor:pointer}
+.tz-book:hover{background:#e8e4d8}
+
+/* hero */
+.tz-hero{padding:110px 0 96px;position:relative;overflow:hidden}
+.tz-hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(45% 55% at 78% 18%,#f5a62314,transparent 70%),
+  radial-gradient(60% 50% at 15% 85%,#2a3a7a33,transparent 70%)}
+.tz-stars{position:absolute;inset:0;pointer-events:none}
+.tz-stars i{position:absolute;width:2px;height:2px;background:#e8e4d8;border-radius:50%;opacity:.5;animation:tz-twinkle 3.4s ease-in-out infinite}
+@keyframes tz-twinkle{0%,100%{opacity:.2}50%{opacity:.7}}
+.tz-hero .tz-wrap{position:relative}
+.tz-kicker{font-family:"Spline Sans Mono",monospace;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--tz-accent);display:flex;align-items:center;gap:14px}
+.tz-kicker::before{content:"";width:44px;height:1px;background:var(--tz-accent)}
+.tz-hero h1{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(50px,7.4vw,100px);line-height:1.02;letter-spacing:-.01em;margin:24px 0;max-width:14ch}
+.tz-hero h1 em{font-style:italic;color:var(--tz-accent)}
+.tz-lede{font-size:18.5px;color:var(--tz-muted);max-width:52ch;font-weight:300}
+.tz-hero-cta{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
+.tz-btn{font-weight:700;font-size:15px;padding:16px 34px;cursor:pointer;transition:transform .25s var(--tz-ease),background .2s;display:inline-block;border:1px solid transparent}
+.tz-btn--amber{background:var(--tz-accent);color:#0b1026}
+.tz-btn--amber:hover{background:#e8e4d8;transform:translateY(-2px)}
+.tz-btn--ghost{border-color:var(--tz-line);color:var(--tz-ink)}
+.tz-btn--ghost:hover{border-color:var(--tz-accent);color:var(--tz-accent)}
+.tz-conditions{margin-top:48px;display:flex;gap:0;border:1px solid var(--tz-line);max-width:720px;background:#0b102680}
+.tz-conditions div{flex:1;padding:20px 24px;border-right:1px solid var(--tz-line)}
+.tz-conditions div:last-child{border-right:0}
+.tz-conditions .tz-k{font-family:"Spline Sans Mono",monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--tz-muted);display:block;margin-bottom:8px}
+.tz-conditions b{font-family:"Fraunces",serif;font-size:22px;font-weight:600}
+.tz-conditions b small{font-family:"Spline Sans Mono",monospace;font-size:11px;color:var(--tz-muted);font-weight:400}
+
+/* night skiing banner */
+.tz-night{border-top:1px solid var(--tz-line);border-bottom:1px solid var(--tz-line);background:var(--tz-panel)}
+.tz-night .tz-wrap{padding-top:72px;padding-bottom:72px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.tz-night h2{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(34px,4.4vw,54px);line-height:1.08;margin:16px 0 14px}
+.tz-night h2 em{font-style:italic;color:var(--tz-accent)}
+.tz-night p{color:var(--tz-muted);font-weight:300;font-size:16.5px}
+.tz-night-sched{margin-top:28px;border:1px solid var(--tz-line)}
+.tz-night-sched div{display:grid;grid-template-columns:1fr auto;gap:16px;padding:16px 22px;border-bottom:1px solid var(--tz-line);font-family:"Spline Sans Mono",monospace;font-size:13px}
+.tz-night-sched div:last-child{border-bottom:0}
+.tz-night-sched b{color:var(--tz-accent)}
+.tz-headlamp{position:relative;aspect-ratio:1.2;max-width:380px;margin:0 auto}
+.tz-beam{position:absolute;left:50%;top:8%;width:70%;height:80%;transform:translateX(-50%);background:linear-gradient(180deg,#f5a62355,transparent 75%);clip-path:polygon(42% 0,58% 0,100% 100%,0 100%);animation:tz-sway 6s ease-in-out infinite;transform-origin:top center}
+@keyframes tz-sway{0%,100%{transform:translateX(-50%) rotate(-4deg)}50%{transform:translateX(-50%) rotate(4deg)}}
+.tz-lampdot{position:absolute;left:50%;top:4%;width:26px;height:26px;transform:translateX(-50%);border-radius:50%;background:var(--tz-accent);box-shadow:0 0 34px 10px #f5a62366}
+.tz-slope{position:absolute;bottom:0;left:8%;right:8%;height:34%;background:linear-gradient(180deg,#1c2450,#101736);clip-path:polygon(0 100%,100% 100%,78% 18%,52% 34%,30% 8%,0 42%);border-top:2px solid #f5a62344}
+
+/* trail ledger: the one weird thing */
+.tz-section{padding:88px 0}
+.tz-sec-head{max-width:640px;margin-bottom:40px}
+.tz-sec-head h2{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(36px,5vw,60px);line-height:1.05;margin:16px 0 12px}
+.tz-sec-head p{color:var(--tz-muted);font-weight:300;font-size:17px}
+.tz-trails{border:1px solid var(--tz-line)}
+.tz-trail-head{display:grid;grid-template-columns:60px 1fr 130px 130px 110px;gap:16px;padding:14px 24px;font-family:"Spline Sans Mono",monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--tz-muted);border-bottom:1px solid var(--tz-line);background:var(--tz-panel)}
+.tz-trail{display:grid;grid-template-columns:60px 1fr 130px 130px 110px;gap:16px;padding:18px 24px;border-bottom:1px solid var(--tz-line);align-items:center;transition:background .2s;font-size:15px}
+.tz-trail:last-child{border-bottom:0}
+.tz-trail:hover{background:#10173688}
+.tz-trail .tz-diff{font-family:"Spline Sans Mono",monospace;font-size:11px;font-weight:700;text-align:center;padding:6px 0;border:1px solid}
+.tz-d-g{color:#7fd08a;border-color:#7fd08a55}
+.tz-d-b{color:#6db3f2;border-color:#6db3f255}
+.tz-d-k{color:#e8e4d8;border-color:#e8e4d855}
+.tz-trail h3{font-weight:700;font-size:16.5px}
+.tz-trail h3 small{display:block;font-weight:300;color:var(--tz-muted);font-size:12.5px}
+.tz-trail .tz-mono{font-size:12.5px;color:var(--tz-muted)}
+.tz-lamp{font-family:"Spline Sans Mono",monospace;font-size:11px;font-weight:700;display:flex;align-items:center;gap:8px}
+.tz-lamp i{width:9px;height:9px;border-radius:50%;background:var(--tz-accent);box-shadow:0 0 10px 2px #f5a62388;animation:tz-twinkle 2.6s ease-in-out infinite}
+.tz-lamp.tz-off{color:var(--tz-muted)}
+.tz-lamp.tz-off i{background:#3a4568;box-shadow:none;animation:none}
+.tz-trails-note{margin-top:16px;font-family:"Spline Sans Mono",monospace;font-size:12px;color:var(--tz-muted)}
+
+/* stay: lodge rooms asymmetric */
+.tz-stay{display:grid;grid-template-columns:1.15fr .85fr;gap:20px}
+.tz-room{background:var(--tz-panel);border:1px solid var(--tz-line);padding:44px 40px}
+.tz-room.tz-featured{border-color:var(--tz-accent);position:relative}
+.tz-room.tz-featured::before{content:"MOST BOOKED";position:absolute;top:-13px;left:32px;background:var(--tz-accent);color:#0b1026;font-family:"Spline Sans Mono",monospace;font-size:10px;font-weight:700;letter-spacing:.2em;padding:5px 14px}
+.tz-room .tz-k{font-family:"Spline Sans Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--tz-accent);display:block;margin-bottom:14px}
+.tz-room h3{font-family:"Fraunces",serif;font-weight:600;font-size:32px;margin-bottom:10px}
+.tz-room p{color:var(--tz-muted);font-weight:300;font-size:15.5px;margin-bottom:20px}
+.tz-room .tz-price{font-family:"Fraunces",serif;font-size:28px;font-weight:600}
+.tz-room .tz-price small{font-family:"Spline Sans Mono",monospace;font-size:12px;color:var(--tz-muted);font-weight:400}
+.tz-room ul{list-style:none;margin-top:20px;display:grid;gap:8px;font-size:14px;color:var(--tz-muted)}
+.tz-room li::before{content:"· ";color:var(--tz-accent);font-weight:700}
+
+/* visit */
+.tz-visit{border:1px solid var(--tz-line);background:var(--tz-panel);padding:56px;display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.tz-visit h2{font-family:"Fraunces",serif;font-weight:600;font-size:40px;line-height:1.1}
+.tz-visit h2 em{font-style:italic;color:var(--tz-accent)}
+.tz-visit dl{display:grid;grid-template-columns:auto 1fr;gap:14px 28px;font-family:"Spline Sans Mono",monospace;font-size:13px}
+.tz-visit dt{color:var(--tz-muted);letter-spacing:.14em;text-transform:uppercase;font-size:10.5px;padding-top:4px}
+.tz-visit dd{font-weight:700}
+
+.tz-footer{padding:40px 0;margin-top:88px;border-top:1px solid var(--tz-line)}
+.tz-footer .tz-wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:"Spline Sans Mono",monospace;font-size:11.5px;color:var(--tz-muted)}
+
+@media (max-width:900px){
+  .tz-nav{display:none}
+  .tz-night .tz-wrap{grid-template-columns:1fr}
+  .tz-trail-head{display:none}
+  .tz-trail{grid-template-columns:52px 1fr;row-gap:8px}
+  .tz-trail .tz-mono:nth-of-type(1){grid-column:2}
+  .tz-stay{grid-template-columns:1fr}
+  .tz-visit{grid-template-columns:1fr;padding:36px 28px}
+  .tz-conditions{flex-direction:column}
+  .tz-conditions div{border-right:0;border-bottom:1px solid var(--tz-line)}
+  .tz-section{padding:60px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-brand" href="#">Ember<em>line</em> Lodge</a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#night">Night skiing</a><a href="#trails">Trails</a><a href="#stay">Stay</a><a href="#visit">Visit</a>
+    </nav>
+    <a class="tz-book" href="#stay">Book direct</a>
+  </div>
+</header>
+
+<main>
+  <section class="tz-hero">
+    <div class="tz-stars" aria-hidden="true">
+      <i style="left:12%;top:22%"></i><i style="left:24%;top:64%;animation-delay:.8s"></i><i style="left:41%;top:14%;animation-delay:1.6s"></i><i style="left:58%;top:72%;animation-delay:.4s"></i><i style="left:71%;top:30%;animation-delay:2.1s"></i><i style="left:86%;top:58%;animation-delay:1.1s"></i><i style="left:93%;top:16%"></i><i style="left:5%;top:82%;animation-delay:2.6s"></i>
+    </div>
+    <div class="tz-wrap">
+      <span class="tz-kicker">Ski lodge · 6,400 ft · est. 1962</span>
+      <h1>The mountain is better <em>after dark.</em></h1>
+      <p class="tz-lede">42 trails, 8 lifts, and night skiing till 10pm on 14 lit runs. Ski the empty corduroy, then thaw out by a fire that hasn't gone out since 1962.</p>
+      <div class="tz-hero-cta">
+        <a class="tz-btn tz-btn--amber" href="#stay">Book the lodge</a>
+        <a class="tz-btn tz-btn--ghost" href="#trails">See tonight's trails</a>
+      </div>
+      <div class="tz-conditions">
+        <div><span class="tz-k">Base depth</span><b>58" <small>powder on top</small></b></div>
+        <div><span class="tz-k">Tonight</span><b>14° <small>clear · lit till 10pm</small></b></div>
+        <div><span class="tz-k">Lifts spinning</span><b>8 / 8 <small>no wind hold</small></b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-night" id="night">
+    <div class="tz-wrap">
+      <div>
+        <span class="tz-kicker">Night skiing</span>
+        <h2>Empty slopes, <em>one headlamp</em> optional.</h2>
+        <p>Fourteen runs stay lit till 10pm, Thursday through Sunday. The snow sets up fast after sunset — grippy, quiet, and all yours. Rentals stay open late; the bar stays open later.</p>
+        <div class="tz-night-sched">
+          <div><span>Thu – Sun · lifts 4pm – 10pm</span><b>14 lit runs</b></div>
+          <div><span>Night ticket (4pm close)</span><b>$45</b></div>
+          <div><span>Twilight upgrade (from day ticket)</span><b>$20</b></div>
+          <div><span>Headlamp tour · guided · Fridays</span><b>$65</b></div>
+        </div>
+      </div>
+      <div class="tz-headlamp" aria-hidden="true">
+        <div class="tz-beam"></div><div class="tz-lampdot"></div><div class="tz-slope"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="trails">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">Trail ledger · updated 4pm daily</span>
+        <h2>Tonight's lit runs</h2>
+        <p>The lamp column tells you what's skiable after dark. Everything else waits for morning.</p>
+      </div>
+      <div class="tz-trails">
+        <div class="tz-trail-head"><span>Diff.</span><span>Run</span><span>Length</span><span>Groomed</span><span>Night lamp</span></div>
+        <div class="tz-trail"><span class="tz-diff tz-d-g">EASY</span><div><h3>Emberline Cruiser<small>wide, gentle, lit end to end</small></h3></div><span class="tz-mono">2.1 mi</span><span class="tz-mono">4:30pm</span><span class="tz-lamp"><i></i>LIT</span></div>
+        <div class="tz-trail"><span class="tz-diff tz-d-b">MED</span><div><h3>Foxglove<small>rollers and dips, watch the third pitch</small></h3></div><span class="tz-mono">1.4 mi</span><span class="tz-mono">5:00pm</span><span class="tz-lamp"><i></i>LIT</span></div>
+        <div class="tz-trail"><span class="tz-diff tz-d-b">MED</span><div><h3>Nightjar Glades<small>spaced trees, headlamp recommended</small></h3></div><span class="tz-mono">0.9 mi</span><span class="tz-mono">natural</span><span class="tz-lamp"><i></i>LIT</span></div>
+        <div class="tz-trail"><span class="tz-diff tz-d-k">HARD</span><div><h3>Widowmaker<small>steeps, bumps, no apologies</small></h3></div><span class="tz-mono">0.7 mi</span><span class="tz-mono">—</span><span class="tz-lamp tz-off"><i></i>DAY ONLY</span></div>
+        <div class="tz-trail"><span class="tz-diff tz-d-g">EASY</span><div><h3>Porch Swing<small>beginner hill by the lodge</small></h3></div><span class="tz-mono">0.3 mi</span><span class="tz-mono">4:00pm</span><span class="tz-lamp"><i></i>LIT</span></div>
+        <div class="tz-trail"><span class="tz-diff tz-d-k">HARD</span><div><h3>Headwall<small>the one in all the photos</small></h3></div><span class="tz-mono">1.1 mi</span><span class="tz-mono">—</span><span class="tz-lamp tz-off"><i></i>DAY ONLY</span></div>
+      </div>
+      <p class="tz-trails-note">Full 42-trail report at the front desk · avalanche dogs on patrol till close</p>
+    </div>
+  </section>
+
+  <section class="tz-section" id="stay" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">The lodge</span>
+        <h2>Sleep where the fire is</h2>
+        <p>38 rooms, all with boot dryers and blackout curtains. Book direct — the third night is 20% off, always.</p>
+      </div>
+      <div class="tz-stay">
+        <div class="tz-room tz-featured">
+          <span class="tz-k">Slope-side</span>
+          <h3>The Fireside Rooms</h3>
+          <p>Gas fireplace, deep soaking tub, and a window you can watch the groomers from. Ski-in access off Emberline Cruiser.</p>
+          <div class="tz-price">$289 <small>/ night · sleeps 2</small></div>
+          <ul><li>Fireplace + soaking tub</li><li>Ski-in / ski-out</li><li>Breakfast included</li></ul>
+        </div>
+        <div class="tz-room">
+          <span class="tz-k">Lodge classic</span>
+          <h3>The Bunkhouse</h3>
+          <p>Shared great-room, private bunks, the famous 6am pancake bell. Built for crews and ski clubs.</p>
+          <div class="tz-price">$95 <small>/ night · per bunk</small></div>
+          <ul><li>Private locking bunk</li><li>Gear room + wax bench</li><li>Pancakes at 6am sharp</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="visit" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-visit">
+        <div>
+          <h2>Drive up. <em>We'll keep the light on.</em></h2>
+          <p style="color:var(--tz-muted);margin-top:14px;font-weight:300">Two hours from the city, chains rarely required, and the night-skiing lot is plowed till 11pm.</p>
+        </div>
+        <dl>
+          <dt>Find us</dt><dd>1 Summit Road, Emberline Pass</dd>
+          <dt>Front desk</dt><dd>24 hours · (555) 310-7742</dd>
+          <dt>Lifts</dt><dd>8:30am – 10pm (night skiing Thu–Sun)</dd>
+          <dt>Write</dt><dd>stay@emberlinelodge.com</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <span>© 2026 Emberline Lodge</span>
+    <span>ski by day · ski by headlamp by night</span>
+  </div>
+</footer>
+</body>
+</html>
