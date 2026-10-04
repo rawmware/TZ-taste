@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-night-market",
+  "title": "Night Market design tokens",
+  "category": "Tokens",
+  "file": "tokens/night-market.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "night-market"
+  ],
+  "description": "W3C-format design tokens for the Night Market DNA.",
+  "dnas": [
+   "night-market"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#161009",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#f5ead6",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#e8722a",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#a8967a",
+   "type": "color"
+  },
+  "line": {
+   "value": "#f5ead61f",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#221a10",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Fraunces",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Mulish",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "JetBrains Mono",
+   "type": "fontFamily"
+  }
+ }
+}
