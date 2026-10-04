@@ -1,3 +1,4 @@
+<!--tz-meta {"id":"redesign-audit","title":"Redesign audit","file":"prompts/redesign-audit.md","description":"Audit existing UI against the anti-slop checklist before rebuilding."} -->
 # Prompt: Redesign audit
 
 Copy everything below the line into your AI builder, along with your existing
