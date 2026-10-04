@@ -1,0 +1,3 @@
+//tz-meta {"id":"tailwind-swiss-airline","title":"Swiss Airline Tailwind preset","category":"Tailwind","file":"tailwind/swiss-airline.js","tags":["tailwind","preset","swiss-airline"],"description":"Tailwind theme preset for the Swiss Airline DNA.","dnas":["swiss-airline"]}
+// Tailwind preset for the Swiss Airline DNA. Extend tailwind.config with this.
+module.exports={theme:{extend:{colors:{tzbg:"#f7f5ef",tzink:"#1a1a1a",tzaccent:"#d52b1e",tzmuted:"#6e6e6e",tzline:"#1a1a1a1f",tzsurface:"#f7f5ef"},fontFamily:{display:["Archivo","serif"],body:["Libre Franklin","sans-serif"],mono:["IBM Plex Mono","monospace"]}}}};
