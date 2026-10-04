@@ -1,0 +1,679 @@
+{
+ "count": 48,
+ "updated": "2026-10-04",
+ "usage": "Tailwind theme presets, one per style DNA. Extend tailwind.config with one.",
+ "presets": [
+  {
+   "id": "tailwind-acid-rave",
+   "title": "Acid Rave Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/acid-rave.js",
+   "tags": [
+    "tailwind",
+    "acid-rave"
+   ],
+   "description": "Tailwind theme preset for the Acid Rave style DNA.",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "tailwind-alpine-ledger",
+   "title": "Alpine Ledger Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/alpine-ledger.js",
+   "tags": [
+    "tailwind",
+    "alpine-ledger"
+   ],
+   "description": "Tailwind theme preset for the Alpine Ledger style DNA.",
+   "dnas": [
+    "alpine-ledger"
+   ]
+  },
+  {
+   "id": "tailwind-aperitivo-italian",
+   "title": "Aperitivo Italian Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/aperitivo-italian.js",
+   "tags": [
+    "tailwind",
+    "aperitivo-italian"
+   ],
+   "description": "Tailwind theme preset for the Aperitivo Italian style DNA.",
+   "dnas": [
+    "aperitivo-italian"
+   ]
+  },
+  {
+   "id": "tailwind-arctic-field",
+   "title": "Arctic Field Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/arctic-field.js",
+   "tags": [
+    "tailwind",
+    "arctic-field"
+   ],
+   "description": "Tailwind theme preset for the Arctic Field style DNA.",
+   "dnas": [
+    "arctic-field"
+   ]
+  },
+  {
+   "id": "tailwind-art-deco-luxe",
+   "title": "Art Deco Luxe Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/art-deco-luxe.js",
+   "tags": [
+    "tailwind",
+    "art-deco-luxe"
+   ],
+   "description": "Tailwind theme preset for the Art Deco Luxe style DNA.",
+   "dnas": [
+    "art-deco-luxe"
+   ]
+  },
+  {
+   "id": "tailwind-art-nouveau-whiplash",
+   "title": "Art Nouveau Whiplash Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/art-nouveau-whiplash.js",
+   "tags": [
+    "tailwind",
+    "art-nouveau-whiplash"
+   ],
+   "description": "Tailwind theme preset for the Art Nouveau Whiplash style DNA.",
+   "dnas": [
+    "art-nouveau-whiplash"
+   ]
+  },
+  {
+   "id": "tailwind-bauhaus-primary",
+   "title": "Bauhaus Primary Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/bauhaus-primary.js",
+   "tags": [
+    "tailwind",
+    "bauhaus-primary"
+   ],
+   "description": "Tailwind theme preset for the Bauhaus Primary style DNA.",
+   "dnas": [
+    "bauhaus-primary"
+   ]
+  },
+  {
+   "id": "tailwind-blueprint-tech",
+   "title": "Blueprint Tech Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/blueprint-tech.js",
+   "tags": [
+    "tailwind",
+    "blueprint-tech"
+   ],
+   "description": "Tailwind theme preset for the Blueprint Tech style DNA.",
+   "dnas": [
+    "blueprint-tech"
+   ]
+  },
+  {
+   "id": "tailwind-botanical-lab",
+   "title": "Botanical Lab Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/botanical-lab.js",
+   "tags": [
+    "tailwind",
+    "botanical-lab"
+   ],
+   "description": "Tailwind theme preset for the Botanical Lab style DNA.",
+   "dnas": [
+    "botanical-lab"
+   ]
+  },
+  {
+   "id": "tailwind-concrete-poem",
+   "title": "Concrete Poem Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/concrete-poem.js",
+   "tags": [
+    "tailwind",
+    "concrete-poem"
+   ],
+   "description": "Tailwind theme preset for the Concrete Poem style DNA.",
+   "dnas": [
+    "concrete-poem"
+   ]
+  },
+  {
+   "id": "tailwind-constructivist-red",
+   "title": "Constructivist Red Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/constructivist-red.js",
+   "tags": [
+    "tailwind",
+    "constructivist-red"
+   ],
+   "description": "Tailwind theme preset for the Constructivist Red style DNA.",
+   "dnas": [
+    "constructivist-red"
+   ]
+  },
+  {
+   "id": "tailwind-cottage-warm",
+   "title": "Cottage Warm Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/cottage-warm.js",
+   "tags": [
+    "tailwind",
+    "cottage-warm"
+   ],
+   "description": "Tailwind theme preset for the Cottage Warm style DNA.",
+   "dnas": [
+    "cottage-warm"
+   ]
+  },
+  {
+   "id": "tailwind-cyberpunk-noir",
+   "title": "Cyberpunk Noir Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/cyberpunk-noir.js",
+   "tags": [
+    "tailwind",
+    "cyberpunk-noir"
+   ],
+   "description": "Tailwind theme preset for the Cyberpunk Noir style DNA.",
+   "dnas": [
+    "cyberpunk-noir"
+   ]
+  },
+  {
+   "id": "tailwind-dark-luxe",
+   "title": "Dark Luxe Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/dark-luxe.js",
+   "tags": [
+    "tailwind",
+    "dark-luxe"
+   ],
+   "description": "Tailwind theme preset for the Dark Luxe style DNA.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "tailwind-de-stijl-grid",
+   "title": "De Stijl Grid Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/de-stijl-grid.js",
+   "tags": [
+    "tailwind",
+    "de-stijl-grid"
+   ],
+   "description": "Tailwind theme preset for the De Stijl Grid style DNA.",
+   "dnas": [
+    "de-stijl-grid"
+   ]
+  },
+  {
+   "id": "tailwind-desert-modern",
+   "title": "Desert Modern Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/desert-modern.js",
+   "tags": [
+    "tailwind",
+    "desert-modern"
+   ],
+   "description": "Tailwind theme preset for the Desert Modern style DNA.",
+   "dnas": [
+    "desert-modern"
+   ]
+  },
+  {
+   "id": "tailwind-docs-solar",
+   "title": "Docs Solar Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/docs-solar.js",
+   "tags": [
+    "tailwind",
+    "docs-solar"
+   ],
+   "description": "Tailwind theme preset for the Docs Solar style DNA.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "tailwind-editorial-serif",
+   "title": "Editorial Serif Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/editorial-serif.js",
+   "tags": [
+    "tailwind",
+    "editorial-serif"
+   ],
+   "description": "Tailwind theme preset for the Editorial Serif style DNA.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "tailwind-glass-calm",
+   "title": "Glass Calm Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/glass-calm.js",
+   "tags": [
+    "tailwind",
+    "glass-calm"
+   ],
+   "description": "Tailwind theme preset for the Glass Calm style DNA.",
+   "dnas": [
+    "glass-calm"
+   ]
+  },
+  {
+   "id": "tailwind-gothic-editorial",
+   "title": "Gothic Editorial Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/gothic-editorial.js",
+   "tags": [
+    "tailwind",
+    "gothic-editorial"
+   ],
+   "description": "Tailwind theme preset for the Gothic Editorial style DNA.",
+   "dnas": [
+    "gothic-editorial"
+   ]
+  },
+  {
+   "id": "tailwind-industrial-brutalist",
+   "title": "Industrial Brutalist Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/industrial-brutalist.js",
+   "tags": [
+    "tailwind",
+    "industrial-brutalist"
+   ],
+   "description": "Tailwind theme preset for the Industrial Brutalist style DNA.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "tailwind-ink-wash-sumi",
+   "title": "Ink-Wash Sumi Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/ink-wash-sumi.js",
+   "tags": [
+    "tailwind",
+    "ink-wash-sumi"
+   ],
+   "description": "Tailwind theme preset for the Ink-Wash Sumi style DNA.",
+   "dnas": [
+    "ink-wash-sumi"
+   ]
+  },
+  {
+   "id": "tailwind-jazz-blue-note",
+   "title": "Jazz Blue Note Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/jazz-blue-note.js",
+   "tags": [
+    "tailwind",
+    "jazz-blue-note"
+   ],
+   "description": "Tailwind theme preset for the Jazz Blue Note style DNA.",
+   "dnas": [
+    "jazz-blue-note"
+   ]
+  },
+  {
+   "id": "tailwind-kawaii-pixel",
+   "title": "Kawaii Pixel Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/kawaii-pixel.js",
+   "tags": [
+    "tailwind",
+    "kawaii-pixel"
+   ],
+   "description": "Tailwind theme preset for the Kawaii Pixel style DNA.",
+   "dnas": [
+    "kawaii-pixel"
+   ]
+  },
+  {
+   "id": "tailwind-laboratory-clean",
+   "title": "Laboratory Clean Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/laboratory-clean.js",
+   "tags": [
+    "tailwind",
+    "laboratory-clean"
+   ],
+   "description": "Tailwind theme preset for the Laboratory Clean style DNA.",
+   "dnas": [
+    "laboratory-clean"
+   ]
+  },
+  {
+   "id": "tailwind-ma-japanese",
+   "title": "Ma (Japanese Minimal) Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/ma-japanese.js",
+   "tags": [
+    "tailwind",
+    "ma-japanese"
+   ],
+   "description": "Tailwind theme preset for the Ma (Japanese Minimal) style DNA.",
+   "dnas": [
+    "ma-japanese"
+   ]
+  },
+  {
+   "id": "tailwind-memphis-milano",
+   "title": "Memphis Milano Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/memphis-milano.js",
+   "tags": [
+    "tailwind",
+    "memphis-milano"
+   ],
+   "description": "Tailwind theme preset for the Memphis Milano style DNA.",
+   "dnas": [
+    "memphis-milano"
+   ]
+  },
+  {
+   "id": "tailwind-midnight-railway",
+   "title": "Midnight Railway Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/midnight-railway.js",
+   "tags": [
+    "tailwind",
+    "midnight-railway"
+   ],
+   "description": "Tailwind theme preset for the Midnight Railway style DNA.",
+   "dnas": [
+    "midnight-railway"
+   ]
+  },
+  {
+   "id": "tailwind-museum-placard",
+   "title": "Museum Placard Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/museum-placard.js",
+   "tags": [
+    "tailwind",
+    "museum-placard"
+   ],
+   "description": "Tailwind theme preset for the Museum Placard style DNA.",
+   "dnas": [
+    "museum-placard"
+   ]
+  },
+  {
+   "id": "tailwind-neo-brutalist-pop",
+   "title": "Neo-Brutalist Pop Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/neo-brutalist-pop.js",
+   "tags": [
+    "tailwind",
+    "neo-brutalist-pop"
+   ],
+   "description": "Tailwind theme preset for the Neo-Brutalist Pop style DNA.",
+   "dnas": [
+    "neo-brutalist-pop"
+   ]
+  },
+  {
+   "id": "tailwind-nordic-noir",
+   "title": "Nordic Noir Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/nordic-noir.js",
+   "tags": [
+    "tailwind",
+    "nordic-noir"
+   ],
+   "description": "Tailwind theme preset for the Nordic Noir style DNA.",
+   "dnas": [
+    "nordic-noir"
+   ]
+  },
+  {
+   "id": "tailwind-parisian-chic",
+   "title": "Parisian Chic Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/parisian-chic.js",
+   "tags": [
+    "tailwind",
+    "parisian-chic"
+   ],
+   "description": "Tailwind theme preset for the Parisian Chic style DNA.",
+   "dnas": [
+    "parisian-chic"
+   ]
+  },
+  {
+   "id": "tailwind-pixel-arcade",
+   "title": "Pixel Arcade Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/pixel-arcade.js",
+   "tags": [
+    "tailwind",
+    "pixel-arcade"
+   ],
+   "description": "Tailwind theme preset for the Pixel Arcade style DNA.",
+   "dnas": [
+    "pixel-arcade"
+   ]
+  },
+  {
+   "id": "tailwind-pop-art-halftone",
+   "title": "Pop-Art Halftone Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/pop-art-halftone.js",
+   "tags": [
+    "tailwind",
+    "pop-art-halftone"
+   ],
+   "description": "Tailwind theme preset for the Pop-Art Halftone style DNA.",
+   "dnas": [
+    "pop-art-halftone"
+   ]
+  },
+  {
+   "id": "tailwind-retro-terminal",
+   "title": "Retro Terminal Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/retro-terminal.js",
+   "tags": [
+    "tailwind",
+    "retro-terminal"
+   ],
+   "description": "Tailwind theme preset for the Retro Terminal style DNA.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "tailwind-risograph-grain",
+   "title": "Risograph Grain Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/risograph-grain.js",
+   "tags": [
+    "tailwind",
+    "risograph-grain"
+   ],
+   "description": "Tailwind theme preset for the Risograph Grain style DNA.",
+   "dnas": [
+    "risograph-grain"
+   ]
+  },
+  {
+   "id": "tailwind-sahara-ochre",
+   "title": "Sahara Ochre Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/sahara-ochre.js",
+   "tags": [
+    "tailwind",
+    "sahara-ochre"
+   ],
+   "description": "Tailwind theme preset for the Sahara Ochre style DNA.",
+   "dnas": [
+    "sahara-ochre"
+   ]
+  },
+  {
+   "id": "tailwind-scandi-calm",
+   "title": "Scandi Calm Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/scandi-calm.js",
+   "tags": [
+    "tailwind",
+    "scandi-calm"
+   ],
+   "description": "Tailwind theme preset for the Scandi Calm style DNA.",
+   "dnas": [
+    "scandi-calm"
+   ]
+  },
+  {
+   "id": "tailwind-soft-minimal",
+   "title": "Soft Minimal Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/soft-minimal.js",
+   "tags": [
+    "tailwind",
+    "soft-minimal"
+   ],
+   "description": "Tailwind theme preset for the Soft Minimal style DNA.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "tailwind-surf-shack",
+   "title": "Surf Shack Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/surf-shack.js",
+   "tags": [
+    "tailwind",
+    "surf-shack"
+   ],
+   "description": "Tailwind theme preset for the Surf Shack style DNA.",
+   "dnas": [
+    "surf-shack"
+   ]
+  },
+  {
+   "id": "tailwind-swiss-poster",
+   "title": "Swiss Poster Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/swiss-poster.js",
+   "tags": [
+    "tailwind",
+    "swiss-poster"
+   ],
+   "description": "Tailwind theme preset for the Swiss Poster style DNA.",
+   "dnas": [
+    "swiss-poster"
+   ]
+  },
+  {
+   "id": "tailwind-swiss-rational",
+   "title": "Swiss Rational Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/swiss-rational.js",
+   "tags": [
+    "tailwind",
+    "swiss-rational"
+   ],
+   "description": "Tailwind theme preset for the Swiss Rational style DNA.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "tailwind-tokyo-neon",
+   "title": "Tokyo Neon Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/tokyo-neon.js",
+   "tags": [
+    "tailwind",
+    "tokyo-neon"
+   ],
+   "description": "Tailwind theme preset for the Tokyo Neon style DNA.",
+   "dnas": [
+    "tokyo-neon"
+   ]
+  },
+  {
+   "id": "tailwind-transit-swiss",
+   "title": "Transit Swiss Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/transit-swiss.js",
+   "tags": [
+    "tailwind",
+    "transit-swiss"
+   ],
+   "description": "Tailwind theme preset for the Transit Swiss style DNA.",
+   "dnas": [
+    "transit-swiss"
+   ]
+  },
+  {
+   "id": "tailwind-tropical-brutalism",
+   "title": "Tropical Brutalism Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/tropical-brutalism.js",
+   "tags": [
+    "tailwind",
+    "tropical-brutalism"
+   ],
+   "description": "Tailwind theme preset for the Tropical Brutalism style DNA.",
+   "dnas": [
+    "tropical-brutalism"
+   ]
+  },
+  {
+   "id": "tailwind-vaporwave-sunset",
+   "title": "Vaporwave Sunset Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/vaporwave-sunset.js",
+   "tags": [
+    "tailwind",
+    "vaporwave-sunset"
+   ],
+   "description": "Tailwind theme preset for the Vaporwave Sunset style DNA.",
+   "dnas": [
+    "vaporwave-sunset"
+   ]
+  },
+  {
+   "id": "tailwind-vinyl-crate",
+   "title": "Vinyl Crate Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/vinyl-crate.js",
+   "tags": [
+    "tailwind",
+    "vinyl-crate"
+   ],
+   "description": "Tailwind theme preset for the Vinyl Crate style DNA.",
+   "dnas": [
+    "vinyl-crate"
+   ]
+  },
+  {
+   "id": "tailwind-y2k-chrome",
+   "title": "Y2K Chrome Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/y2k-chrome.js",
+   "tags": [
+    "tailwind",
+    "y2k-chrome"
+   ],
+   "description": "Tailwind theme preset for the Y2K Chrome style DNA.",
+   "dnas": [
+    "y2k-chrome"
+   ]
+  }
+ ]
+}
