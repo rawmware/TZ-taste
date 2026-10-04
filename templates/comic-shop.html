@@ -1,0 +1,442 @@
+<!--tz-meta {"id":"comic-shop","title":"Panel & Page — Indie Comics Shop","category":"Template","file":"templates/comic-shop.html","tags":["comics","retail","local"],"description":"Lichtenstein-loud indie comic shop: tilted panels, starburst prices, pull-list pitch, signing nights.","dnas":["pop-art-halftone"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel &amp; Page — new issue day is Wednesday</title>
+<meta name="description" content="Panel & Page is an independent comic shop: new issues every Wednesday, pull lists for subscribers, signings and sketch nights all month.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#fff6e8;
+  --tz-surface:#ffffff;
+  --tz-ink:#171412;
+  --tz-muted:#8f8577;
+  --tz-accent:#e83a2f;
+  --tz-burst:#ffc700;
+  --tz-line:#171412;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:"Space Grotesk",sans-serif;background:var(--tz-bg);color:var(--tz-ink);
+  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+::selection{background:var(--tz-burst);color:var(--tz-ink)}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+.tz-mono{font-family:"Space Mono",monospace}
+.tz-display{font-family:"Bungee",cursive}
+.skip{position:absolute;left:-999px;top:0;background:var(--tz-ink);color:var(--tz-bg);padding:8px 16px;z-index:99}
+.skip:focus{left:8px;top:8px}
+.halftone{background-image:radial-gradient(circle, #17141222 1.4px, transparent 1.6px);background-size:14px 14px}
+
+/* ---------- header ---------- */
+.tz-header{background:var(--tz-ink);color:var(--tz-bg);border-bottom:4px solid var(--tz-ink)}
+.tz-header .tz-wrap{display:flex;justify-content:space-between;align-items:center;min-height:76px;gap:20px;flex-wrap:wrap}
+.tz-logo{font-family:"Bungee",cursive;font-size:22px;color:var(--tz-bg);display:flex;align-items:center;gap:12px}
+.tz-logo .tz-badge{background:var(--tz-burst);color:var(--tz-ink);font-size:11px;padding:4px 10px;transform:rotate(-4deg);border:2px solid var(--tz-ink);box-shadow:3px 3px 0 #000}
+.tz-nav{display:flex;gap:26px;font-family:"Space Mono",monospace;font-size:13px;text-transform:uppercase;letter-spacing:.08em}
+.tz-nav a{color:var(--tz-bg);position:relative}
+.tz-nav a:hover{color:var(--tz-burst)}
+.tz-pull{background:var(--tz-accent);color:#fff;font-family:"Bungee",cursive;font-size:14px;border:3px solid var(--tz-bg);padding:10px 22px;cursor:pointer;box-shadow:4px 4px 0 #000;transition:transform .2s var(--tz-ease)}
+.tz-pull:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #000}
+
+/* ---------- hero ---------- */
+.tz-hero{position:relative;padding:88px 0 72px;border-bottom:4px solid var(--tz-ink)}
+.tz-hero .tz-dots{position:absolute;inset:0;pointer-events:none}
+.tz-hero-grid{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.tz-kicker{font-family:"Space Mono",monospace;font-size:13px;letter-spacing:.2em;text-transform:uppercase;background:var(--tz-ink);color:var(--tz-burst);display:inline-block;padding:8px 14px;transform:rotate(-2deg);margin-bottom:24px}
+.tz-hero h1{font-family:"Bungee",cursive;font-size:clamp(48px,6.6vw,92px);line-height:1.02;letter-spacing:.01em}
+.tz-hero h1 .tz-red{color:var(--tz-accent)}
+.tz-hero h1 .tz-yel{background:var(--tz-burst);padding:0 12px;display:inline-block;transform:rotate(-1.5deg);border:3px solid var(--tz-ink)}
+.tz-lede{margin-top:22px;font-size:18px;max-width:42ch;font-weight:500}
+.tz-hero-cta{display:flex;gap:16px;margin-top:30px;flex-wrap:wrap}
+.tz-btn{display:inline-flex;align-items:center;gap:10px;font-family:"Bungee",cursive;font-size:15px;padding:14px 26px;border:3px solid var(--tz-ink);cursor:pointer;transition:transform .2s var(--tz-ease),box-shadow .2s var(--tz-ease)}
+.tz-btn--red{background:var(--tz-accent);color:#fff;box-shadow:5px 5px 0 var(--tz-ink)}
+.tz-btn--red:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--tz-ink)}
+.tz-btn--line{background:var(--tz-surface);color:var(--tz-ink);box-shadow:5px 5px 0 var(--tz-ink)}
+.tz-btn--line:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--tz-ink)}
+.tz-covers{display:grid;grid-template-columns:1fr 1fr;gap:22px;transform:rotate(1.5deg)}
+.tz-cover{background:var(--tz-surface);border:4px solid var(--tz-ink);padding:18px 16px;box-shadow:8px 8px 0 var(--tz-ink);position:relative}
+.tz-cover:nth-child(2){transform:rotate(2.5deg) translateY(14px)}
+.tz-cover:nth-child(3){transform:rotate(-2deg)}
+.tz-cover:nth-child(4){transform:rotate(1.5deg) translateY(10px)}
+.tz-cover .tz-art{height:170px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;border:3px solid var(--tz-ink);position:relative;overflow:hidden}
+.tz-cover h3{font-family:"Bungee",cursive;font-size:17px;line-height:1.15}
+.tz-cover .tz-issue{font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-muted);margin-top:4px}
+.tz-starburst{
+  position:absolute;top:-22px;right:-14px;width:92px;height:92px;background:var(--tz-burst);
+  clip-path:polygon(50% 0%,61% 12%,75% 6%,79% 20%,94% 20%,90% 34%,100% 45%,90% 56%,94% 70%,79% 70%,75% 84%,61% 78%,50% 90%,39% 78%,25% 84%,21% 70%,6% 70%,10% 56%,0% 45%,10% 34%,6% 20%,21% 20%,25% 6%,39% 12%);
+  display:flex;align-items:center;justify-content:center;transform:rotate(10deg);
+  font-family:"Space Mono",monospace;font-weight:700;font-size:15px;border:0;
+}
+.tz-starburst small{font-size:10px;font-weight:400;display:block;line-height:1.1}
+
+/* ---------- marquee ---------- */
+.tz-marquee{background:var(--tz-burst);border-top:4px solid var(--tz-ink);border-bottom:4px solid var(--tz-ink);overflow:hidden;white-space:nowrap;padding:14px 0}
+.tz-marquee-track{display:inline-block;font-family:"Bungee",cursive;font-size:20px;animation:tz-scroll 22s linear infinite}
+.tz-marquee-track span{margin:0 28px}
+@keyframes tz-scroll{to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+.tz-section{padding:96px 0;border-bottom:4px solid var(--tz-ink)}
+.tz-sec-head{margin-bottom:48px;max-width:640px}
+.tz-sec-head .tz-mono{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--tz-accent);display:block;margin-bottom:12px;font-weight:700}
+.tz-sec-head h2{font-family:"Bungee",cursive;font-size:clamp(34px,4.4vw,56px);line-height:1.05}
+.tz-sec-head p{font-size:17px;color:#171412cc;margin-top:12px}
+
+/* ---------- new releases: tilted shelf (not 3 equal cards) ---------- */
+.tz-shelf{display:grid;grid-template-columns:repeat(12,1fr);gap:22px;align-items:stretch}
+.tz-book{background:var(--tz-surface);border:4px solid var(--tz-ink);box-shadow:7px 7px 0 var(--tz-ink);padding:20px;position:relative;transition:transform .25s var(--tz-ease)}
+.tz-book:hover{transform:translateY(-6px) rotate(0deg)!important}
+.tz-book--w{grid-column:span 4}
+.tz-book--w:nth-child(1){transform:rotate(-1.4deg)}
+.tz-book--w:nth-child(2){transform:rotate(1.1deg) translateY(8px)}
+.tz-book--w:nth-child(3){transform:rotate(-.8deg)}
+.tz-book--n{grid-column:span 3}
+.tz-book--n:nth-child(4){transform:rotate(.9deg)}
+.tz-book--n:nth-child(5){transform:rotate(-1.2deg) translateY(6px)}
+.tz-book--n:nth-child(6){transform:rotate(1.3deg)}
+.tz-book--n:nth-child(7){transform:rotate(-.6deg) translateY(10px)}
+.tz-book .tz-tag{font-family:"Space Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--tz-surface);background:var(--tz-ink);display:inline-block;padding:4px 10px;margin-bottom:12px}
+.tz-book h3{font-family:"Bungee",cursive;font-size:19px;line-height:1.2;margin-bottom:4px}
+.tz-book .tz-crew{font-size:14px;color:var(--tz-muted)}
+.tz-book p{font-size:14.5px;margin-top:10px}
+.tz-book .tz-starburst{position:static;width:76px;height:76px;margin-top:14px;font-size:13px;transform:rotate(-8deg)}
+.tz-book .tz-starburst small{font-size:9px}
+
+/* ---------- zap divider ---------- */
+.tz-zap{text-align:center;padding:56px 0;position:relative}
+.tz-zap .tz-display{font-size:clamp(72px,12vw,160px);color:var(--tz-accent);-webkit-text-stroke:3px var(--tz-ink);text-shadow:6px 6px 0 var(--tz-ink);transform:rotate(-3deg);display:inline-block;letter-spacing:.02em}
+.tz-zap p{font-family:"Space Mono",monospace;font-size:13px;letter-spacing:.2em;text-transform:uppercase;margin-top:8px;color:var(--tz-muted)}
+
+/* ---------- pull list ---------- */
+.tz-pulllist{background:var(--tz-ink);color:var(--tz-bg)}
+.tz-pulllist .tz-sec-head h2{color:var(--tz-bg)}
+.tz-pulllist .tz-sec-head .tz-mono{color:var(--tz-burst)}
+.tz-pulllist .tz-sec-head p{color:#fff6e8cc}
+.tz-steps{display:grid;gap:0;border:3px solid var(--tz-bg);margin-top:8px}
+.tz-step{display:grid;grid-template-columns:110px 1fr auto;gap:28px;align-items:center;padding:30px 32px;border-bottom:3px solid var(--tz-bg);background:var(--tz-bg);color:var(--tz-ink)}
+.tz-step:last-child{border-bottom:0}
+.tz-step:nth-child(odd){background:var(--tz-surface)}
+.tz-step .tz-num{font-family:"Bungee",cursive;font-size:44px;color:var(--tz-accent)}
+.tz-step h3{font-family:"Bungee",cursive;font-size:21px;margin-bottom:4px}
+.tz-step p{font-size:15.5px;color:#171412cc;max-width:56ch}
+.tz-step .tz-chip{font-family:"Space Mono",monospace;font-size:12px;background:var(--tz-burst);border:2px solid var(--tz-ink);padding:8px 14px;font-weight:700;white-space:nowrap;transform:rotate(2deg)}
+
+/* ---------- events table ---------- */
+.tz-events{width:100%;border-collapse:collapse;border:4px solid var(--tz-ink);background:var(--tz-surface);box-shadow:8px 8px 0 var(--tz-ink)}
+.tz-events th{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;text-align:left;padding:16px 20px;background:var(--tz-ink);color:var(--tz-burst)}
+.tz-events td{padding:20px;border-bottom:2px solid var(--tz-ink);vertical-align:top}
+.tz-events tr:last-child td{border-bottom:0}
+.tz-events .tz-date{font-family:"Bungee",cursive;font-size:16px;white-space:nowrap}
+.tz-events .tz-ev-title{font-weight:700;font-size:17px}
+.tz-events .tz-ev-title small{display:block;font-weight:400;font-size:14px;color:var(--tz-muted)}
+.tz-events .tz-cost{font-family:"Space Mono",monospace;font-weight:700;white-space:nowrap}
+.tz-events .tz-free{color:var(--tz-accent);font-family:"Bungee",cursive;font-size:14px}
+
+/* ---------- visit ---------- */
+.tz-visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:4px solid var(--tz-ink);box-shadow:8px 8px 0 var(--tz-ink)}
+.tz-visit-cell{padding:48px;background:var(--tz-surface)}
+.tz-visit-cell:first-child{border-right:4px solid var(--tz-ink)}
+.tz-visit-cell h3{font-family:"Bungee",cursive;font-size:26px;margin-bottom:16px}
+.tz-hours{display:grid;gap:10px;font-family:"Space Mono",monospace;font-size:15px}
+.tz-hours div{display:flex;justify-content:space-between;border-bottom:2px dotted #17141255;padding-bottom:8px}
+.tz-hours .tz-today{color:var(--tz-accent);font-weight:700}
+.tz-visit-cell p{font-size:16px;margin-bottom:8px}
+.tz-rules{list-style:none;margin-top:16px;display:grid;gap:10px;font-size:15px}
+.tz-rules li{padding-left:28px;position:relative}
+.tz-rules li::before{content:"★";position:absolute;left:0;color:var(--tz-accent);font-weight:700}
+
+/* ---------- footer ---------- */
+.tz-footer{background:var(--tz-ink);color:var(--tz-bg);padding:72px 0 32px}
+.tz-foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:44px;margin-bottom:48px}
+.tz-foot-grid h4{font-family:"Bungee",cursive;font-size:14px;color:var(--tz-burst);margin-bottom:16px}
+.tz-foot-grid ul{list-style:none;display:grid;gap:10px;font-size:15px}
+.tz-foot-grid a:hover{color:var(--tz-burst)}
+.tz-foot-note{font-size:15px;color:#fff6e8cc;max-width:34ch;margin-top:12px}
+.tz-foot-bottom{border-top:2px solid #fff6e833;padding-top:24px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-muted)}
+
+/* ---------- reveal ---------- */
+.tz-reveal{opacity:0;transform:translateY(16px);transition:opacity .6s var(--tz-ease),transform .6s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:960px){
+  .tz-hero-grid{grid-template-columns:1fr}
+  .tz-covers{transform:none}
+  .tz-nav{display:none}
+  .tz-book--w{grid-column:span 6}
+  .tz-book--n{grid-column:span 6}
+  .tz-step{grid-template-columns:1fr;gap:10px}
+  .tz-visit-grid{grid-template-columns:1fr}
+  .tz-visit-cell:first-child{border-right:0;border-bottom:4px solid var(--tz-ink)}
+  .tz-foot-grid{grid-template-columns:1fr 1fr}
+  .tz-section{padding:72px 0}
+}
+@media (max-width:560px){
+  .tz-book--w,.tz-book--n{grid-column:span 12}
+  .tz-covers{grid-template-columns:1fr}
+  .tz-events .tz-date{white-space:normal}
+  .tz-foot-grid{grid-template-columns:1fr}
+  .tz-step .tz-chip{justify-self:start}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-reveal{opacity:1;transform:none}
+  .tz-marquee-track{animation:none}
+}
+</style>
+</head>
+<!-- DNA: pop-art-halftone (Ben-Day dots, thick black panel borders, poster red + burst yellow; Bungee/Space Grotesk/Space Mono). Design read: new-issue Wednesday morning — loud, joyful, a little overwhelming — for kids and grown collectors hunting their next obsession. One distinctive choice: every single price on the page sits inside a jagged yellow starburst, and the page is split once by a giant "ZAP!" onomatopoeia divider. Dials V8/M6/D5. -->
+<body>
+<a class="skip" href="#new">Skip to new releases</a>
+
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-logo" href="#">Panel &amp; Page <span class="tz-badge">est. 2011</span></a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#new">New issues</a><a href="#pull">Pull list</a><a href="#events">Events</a><a href="#visit">Visit</a>
+    </nav>
+    <a class="tz-pull" href="#pull">Start a pull list</a>
+  </div>
+</header>
+
+<main>
+  <!-- ============ hero ============ -->
+  <section class="tz-hero halftone">
+    <div class="tz-dots halftone" aria-hidden="true"></div>
+    <div class="tz-wrap tz-hero-grid">
+      <div class="tz-reveal tz-in">
+        <span class="tz-kicker">Independent comics · Somerville, MA</span>
+        <h1>NEW ISSUE DAY IS <span class="tz-red">WEDNESDAY.</span><br>WE ARE <span class="tz-yel">READY.</span></h1>
+        <p class="tz-lede">Four longboxes of new releases every Wednesday, a back-issue wall that goes 1962 to last month, and a staff that will absolutely talk your ear off about Saga. In the best way.</p>
+        <div class="tz-hero-cta">
+          <a class="tz-btn tz-btn--red" href="#new">See this week's shelf</a>
+          <a class="tz-btn tz-btn--line" href="#events">Signing nights</a>
+        </div>
+      </div>
+      <div class="tz-covers tz-reveal tz-in" aria-label="This week's standout covers">
+        <div class="tz-cover">
+          <span class="tz-starburst"><span>$3.99<br><small>issue 12</small></span></span>
+          <div class="tz-art halftone" style="background:#e83a2f" aria-hidden="true"><span class="tz-display" style="font-size:44px;color:#fff6e8">POW!</span></div>
+          <h3>Midnight Diner</h3><p class="tz-issue">Issue 12 · Okafor / Reyes</p>
+        </div>
+        <div class="tz-cover">
+          <span class="tz-starburst"><span>$4.99<br><small>issue 45</small></span></span>
+          <div class="tz-art halftone" style="background:#ffc700" aria-hidden="true"><span class="tz-display" style="font-size:40px;color:#171412">WHAM!</span></div>
+          <h3>Something Wicked</h3><p class="tz-issue">Issue 45 · Tynion-style chills</p>
+        </div>
+        <div class="tz-cover">
+          <span class="tz-starburst"><span>$9.99<br><small>vol. 3</small></span></span>
+          <div class="tz-art halftone" style="background:#171412" aria-hidden="true"><span class="tz-display" style="font-size:40px;color:#ffc700">BAM!</span></div>
+          <h3>Paper Lanterns</h3><p class="tz-issue">Vol. 3 · Eisner nominee</p>
+        </div>
+        <div class="tz-cover">
+          <span class="tz-starburst"><span>$24<br><small>box set</small></span></span>
+          <div class="tz-art halftone" style="background:#fff" aria-hidden="true"><span class="tz-display" style="font-size:36px;color:#e83a2f">KRAKOOM</span></div>
+          <h3>Railtown Rats</h3><p class="tz-issue">Complete series · 6 issues</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ marquee ============ -->
+  <div class="tz-marquee" aria-hidden="true">
+    <div class="tz-marquee-track">
+      <span>NEW ISSUES EVERY WEDNESDAY</span><span>★</span><span>BACK ISSUES 1962 → TODAY</span><span>★</span><span>PULL LIST = 10% OFF, FOREVER</span><span>★</span><span>KIDS' CORNER, ALL AGES</span><span>★</span><span>NEW ISSUES EVERY WEDNESDAY</span><span>★</span><span>BACK ISSUES 1962 → TODAY</span><span>★</span><span>PULL LIST = 10% OFF, FOREVER</span><span>★</span><span>KIDS' CORNER, ALL AGES</span><span>★</span>
+    </div>
+  </div>
+
+  <!-- ============ new releases ============ -->
+  <section class="tz-section" id="new">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <span class="tz-mono">On the shelf · week of Oct 7</span>
+        <h2>What hit the racks this week</h2>
+        <p>Hand-picked by June, Marcus, and Priya — the three people who run this place. If it's on this shelf, at least one of us read it twice.</p>
+      </div>
+      <div class="tz-shelf">
+        <article class="tz-book tz-book--w tz-reveal">
+          <span class="tz-tag">Staff pick</span>
+          <h3>The Long Rain</h3><p class="tz-crew">Vásquez / Lind — Image</p>
+          <p>A generation ship, a broken greenhouse, and the slowest mutiny in comics. Issue 3 lands the whole thing.</p>
+          <span class="tz-starburst"><span>$3.99<br><small>issue 3</small></span></span>
+        </article>
+        <article class="tz-book tz-book--w tz-reveal">
+          <span class="tz-tag">New #1</span>
+          <h3>Harbor Witches</h3><p class="tz-crew">Adeyemi — Boom!</p>
+          <p>Debut issue. A fishing town, three sisters, and a tide that brings back more than fish.</p>
+          <span class="tz-starburst"><span>$4.99<br><small>issue 1</small></span></span>
+        </article>
+        <article class="tz-book tz-book--w tz-reveal">
+          <span class="tz-tag">Back in stock</span>
+          <h3>Monstress: Talk-Stories</h3><p class="tz-crew">Liu / Takeda — Image</p>
+          <p>The prologue collection everyone asked for. Takeda's art at full size, finally.</p>
+          <span class="tz-starburst"><span>$17.99<br><small>hardcover</small></span></span>
+        </article>
+        <article class="tz-book tz-book--n tz-reveal">
+          <span class="tz-tag">Manga</span>
+          <h3>Dandadan, Vol. 14</h3><p class="tz-crew">Yukinobu Tatsu — Viz</p>
+          <p>Ghosts, aliens, and the best fight choreography in manga right now.</p>
+          <span class="tz-starburst"><span>$9.99<br><small>vol. 14</small></span></span>
+        </article>
+        <article class="tz-book tz-book--n tz-reveal">
+          <span class="tz-tag">All ages</span>
+          <h3>Hilda and the Fairy Glen</h3><p class="tz-crew">Luke Pearson</p>
+          <p>The perfect first graphic novel. We have read it to our own kids. It holds up.</p>
+          <span class="tz-starburst"><span>$12.99<br><small>paperback</small></span></span>
+        </article>
+        <article class="tz-book tz-book--n tz-reveal">
+          <span class="tz-tag">Indie</span>
+          <h3>Night Car, Part Two</h3><p class="tz-crew">Self-published — ask at counter</p>
+          <p>Local cartoonist Dee Okafor's minicomic. 24 pages, riso-printed, gone by Sunday usually.</p>
+          <span class="tz-starburst"><span>$6<br><small>minicomic</small></span></span>
+        </article>
+        <article class="tz-book tz-book--n tz-reveal">
+          <span class="tz-tag">Restock</span>
+          <h3>Saga Compendium One</h3><p class="tz-crew">Vaughan / Staples — Image</p>
+          <p>Issues 1–54 in one brick. The gateway drug. We keep it by the register on purpose.</p>
+          <span class="tz-starburst"><span>$59.99<br><small>compendium</small></span></span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ZAP divider ============ -->
+  <div class="tz-zap halftone" aria-hidden="true">
+    <span class="tz-display">ZAP!</span>
+    <p>One onomatopoeia per page · this is the one</p>
+  </div>
+
+  <!-- ============ pull list ============ -->
+  <section class="tz-section tz-pulllist" id="pull">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <span class="tz-mono">The pull list</span>
+        <h2>Never miss an issue again</h2>
+        <p>Give us your series. We pull every issue the Wednesday it lands, hold it in your box, and knock 10% off everything you subscribe to. Free bags and boards, forever.</p>
+      </div>
+      <div class="tz-steps">
+        <div class="tz-step tz-reveal">
+          <span class="tz-num">01</span>
+          <div><h3>Tell us what you read</h3><p>In person, by email, or scribbled on the back of a receipt. Five titles minimum — most of our subscribers run ten to twenty.</p></div>
+          <span class="tz-chip">Takes 5 min</span>
+        </div>
+        <div class="tz-step tz-reveal">
+          <span class="tz-num">02</span>
+          <div><h3>We build your box</h3><p>Every Wednesday morning, June pulls your books before the doors open. You get a text when the box is full: "come and get it."</p></div>
+          <span class="tz-chip">Text alerts</span>
+        </div>
+        <div class="tz-step tz-reveal">
+          <span class="tz-num">03</span>
+          <div><h3>10% off, bags &amp; boards free</h3><p>Every pulled title is 10% off, always. Bags and boards on us. Skip a week, skip a series — your box, your rules.</p></div>
+          <span class="tz-chip">No fees</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ events ============ -->
+  <section class="tz-section" id="events">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <span class="tz-mono">October at the shop</span>
+        <h2>Signings, sketches &amp; 24-hour comics</h2>
+        <p>Our back room fits forty people and one very long signing table. Everything below is real, dated, and free unless marked.</p>
+      </div>
+      <table class="tz-events tz-reveal">
+        <thead><tr><th scope="col">Date</th><th scope="col">Event</th><th scope="col">Cost</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="tz-date">Sat Oct 10<br><span class="tz-mono" style="font-size:12px">2–5 PM</span></td>
+            <td><span class="tz-ev-title">Dee Okafor signs Night Car<small>Local cartoonist, sketch with every purchase of the minicomic. Line forms early — she drew 60 sketches last time.</small></span></td>
+            <td class="tz-cost"><span class="tz-free">FREE</span></td>
+          </tr>
+          <tr>
+            <td class="tz-date">Wed Oct 14<br><span class="tz-mono" style="font-size:12px">7 PM</span></td>
+            <td><span class="tz-ev-title">Horror comics drink &amp; draw<small>Bring a sketchbook, we bring the reference shelf and the cider. Prompt: "the thing in the longbox."</small></span></td>
+            <td class="tz-cost"><span class="tz-free">FREE</span></td>
+          </tr>
+          <tr>
+            <td class="tz-date">Sat Oct 24<br><span class="tz-mono" style="font-size:12px">10 AM – 10 PM</span></td>
+            <td><span class="tz-ev-title">24-Hour Comic Day<small>Twelve hours, one comic, zero sleep required. Tables, outlets, and coffee provided. Finishers get their name on the wall.</small></span></td>
+            <td class="tz-cost">$10 <span class="tz-mono" style="font-size:12px">supplies included</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ visit ============ -->
+  <section class="tz-section" id="visit" style="border-bottom:0">
+    <div class="tz-wrap">
+      <div class="tz-sec-head tz-reveal">
+        <span class="tz-mono">Find the shop</span>
+        <h2>Come dig the boxes</h2>
+      </div>
+      <div class="tz-visit-grid tz-reveal">
+        <div class="tz-visit-cell">
+          <h3>Hours &amp; address</h3>
+          <div class="tz-hours">
+            <div><span>Mon – Thu</span><span>10 AM – 8 PM</span></div>
+            <div><span>Fri</span><span>10 AM – 9 PM</span></div>
+            <div><span class="tz-today">Saturday</span><span class="tz-today">9 AM – 9 PM</span></div>
+            <div><span>Sunday</span><span>11 AM – 6 PM</span></div>
+          </div>
+          <p style="margin-top:20px"><strong>42 Panel Lane, Somerville, MA 02143</strong><br>Two blocks from the Davis Square T stop. Bike rack out front, stroller parking inside.</p>
+        </div>
+        <div class="tz-visit-cell">
+          <h3>House rules</h3>
+          <ul class="tz-rules">
+            <li>Ask before you open a sealed book — we have reader copies of almost everything.</li>
+            <li>The manga corner has beanbags. They are first-come, first-sat.</li>
+            <li>Kids' corner is genuinely all-ages. We curate it like parents.</li>
+            <li>We buy collections. Bring the longboxes; we'll make tea and an offer.</li>
+            <li>No spoilers out loud on Wednesdays. This is enforced.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-foot-grid">
+      <div>
+        <span class="tz-logo">Panel &amp; Page</span>
+        <p class="tz-foot-note">An independent comic shop in Somerville since 2011. Owned by three people who read everything they sell.</p>
+      </div>
+      <div><h4>Shop</h4><ul><li><a href="#new">New issues</a></li><li><a href="#pull">Pull list</a></li><li><a href="#">Back issues</a></li><li><a href="#">Gift cards</a></li></ul></div>
+      <div><h4>People</h4><ul><li><a href="#events">Events</a></li><li><a href="#">We buy comics</a></li><li><a href="#">Staff picks archive</a></li></ul></div>
+      <div><h4>Talk</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">hello@panelandpage.shop</a></li><li><a href="#">(617) 555-0142</a></li></ul></div>
+    </div>
+    <div class="tz-foot-bottom">
+      <span>© 2026 Panel &amp; Page · 42 Panel Lane, Somerville MA</span>
+      <span class="tz-mono">new issue day is Wednesday · no spoilers</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){e.classList.add('tz-in')});
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en,i){
+        if(en.isIntersecting){ setTimeout(function(){en.target.classList.add('tz-in')}, i*80); io.unobserve(en.target); }
+      });
+    },{threshold:.12});
+    els.forEach(function(e){io.observe(e)});
+  }
+})();
+</script>
+</body>
+</html>
