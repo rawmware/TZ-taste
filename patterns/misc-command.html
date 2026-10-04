@@ -1,0 +1,102 @@
+<!--tz-meta {"id":"misc-command","title":"Command palette","category":"Misc","file":"patterns/misc-command.html","tags":["cmd-k","power"],"description":"Command-K palette with grouped commands and kbd hints.","dnas":["retro-terminal"]} -->
+<section class="tz-cmdk">
+  <div class="tz-cmdk-box" role="dialog" aria-label="Command palette">
+    <p class="tz-cmdk-input"><span class="tz-cmdk-keys"><kbd>⌘</kbd><kbd>K</kbd></span>Type a command…<span class="tz-cmdk-caret" aria-hidden="true"></span></p>
+    <p class="tz-cmdk-group">Go to</p>
+    <ul>
+      <li><span>Dashboard</span><kbd>G D</kbd></li>
+      <li class="tz-cmdk-sel"><span>Billing</span><kbd>↵</kbd></li>
+      <li><span>Team</span><kbd>G T</kbd></li>
+    </ul>
+    <p class="tz-cmdk-group">Actions</p>
+    <ul>
+      <li><span>Invite member</span><kbd>I</kbd></li>
+      <li><span>Export data</span><kbd>E</kbd></li>
+      <li><span>Toggle theme</span><kbd>T</kbd></li>
+    </ul>
+    <p class="tz-cmdk-foot">↑↓ to move · <kbd>esc</kbd> to close</p>
+  </div>
+</section>
+<style>
+.tz-cmdk{
+  background:#0a0f0a;
+  display:flex;
+  justify-content:center;
+  padding:clamp(40px,6vw,80px) 20px;
+  font-family:ui-monospace,Menlo,monospace;
+}
+.tz-cmdk-box{
+  width:min(480px,100%);
+  background:#0d130d;
+  border:1px solid #2a3d2a;
+  box-shadow:0 24px 80px rgba(0,0,0,.6);
+  color:#c9e8cf;
+  font-size:14px;
+}
+.tz-cmdk-input{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:0;
+  padding:16px 18px;
+  border-bottom:1px solid #2a3d2a;
+  color:#7fb98f;
+}
+.tz-cmdk-keys{
+  display:flex;
+  gap:4px;
+}
+.tz-cmdk kbd{
+  border:1px solid #2a3d2a;
+  border-bottom-width:2px;
+  border-radius:4px;
+  padding:2px 7px;
+  font-size:11px;
+  color:#9dffb9;
+  background:#0a0f0a;
+  font-family:inherit;
+}
+.tz-cmdk-caret{
+  width:8px;
+  height:16px;
+  background:#33ff66;
+  animation:tz-blink 1.1s steps(2) infinite;
+}
+.tz-cmdk-group{
+  margin:0;
+  padding:12px 18px 4px;
+  font-size:10px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:#5d7a64;
+}
+.tz-cmdk ul{
+  list-style:none;
+  margin:0;
+  padding:4px 8px 8px;
+}
+.tz-cmdk li{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:9px 10px;
+  border-radius:4px;
+}
+.tz-cmdk-sel{
+  background:rgba(51,255,102,.12);
+  color:#eafff0;
+}
+.tz-cmdk-foot{
+  margin:0;
+  padding:12px 18px;
+  border-top:1px solid #2a3d2a;
+  font-size:11px;
+  color:#5d7a64;
+}
+@keyframes tz-blink{
+  50%{opacity:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-cmdk-caret{animation:none}
+}
+</style>
