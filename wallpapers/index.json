@@ -1,0 +1,187 @@
+{
+ "count": 12,
+ "updated": "2026-10-04",
+ "usage": "Generative SVG wallpapers, one per style DNA. Open in a browser, set as desktop.",
+ "wallpapers": [
+  {
+   "id": "wallpaper-acid-rave",
+   "title": "Acid Rave wallpaper",
+   "category": "Wallpaper",
+   "file": "wallpapers/acid-rave.svg",
+   "tags": [
+    "wallpaper",
+    "svg",
+    "acid-rave"
+   ],
+   "description": "Generative SVG wallpaper in the Acid Rave DNA.",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "wallpaper-alpine-ledger",
+   "title": "Alpine Ledger wallpaper",
+   "category": "Wallpaper",
+   "file": "wallpapers/alpine-ledger.svg",
+   "tags": [
+    "wallpaper",
+    "svg",
+    "alpine-ledger"
+   ],
+   "description": "Generative SVG wallpaper in the Alpine Ledger DNA.",
+   "dnas": [
+    "alpine-ledger"
+   ]
+  },
+  {
+   "id": "wallpaper-aperitivo-italian",
+   "title": "Aperitivo Italian wallpaper",
+   "category": "Wallpaper",
+   "file": "wallpapers/aperitivo-italian.svg",
+   "tags": [
+    "wallpaper",
+    "svg",
+    "aperitivo-italian"
+   ],
+   "description": "Generative SVG wallpaper in the Aperitivo Italian DNA.",
+   "dnas": [
+    "aperitivo-italian"
+   ]
+  },
+  {
+   "id": "wallpaper-arctic-field",
+   "title": "Arctic Field wallpaper",
+   "category": "Wallpaper",
+   "file": "wallpapers/arctic-field.svg",
+   "tags": [
+    "wallpaper",
+    "svg",
+    "arctic-field"
+   ],
+   "description": "Generative SVG wallpaper in the Arctic Field DNA.",
+   "dnas": [
+    "arctic-field"
+   ]
+  },
+  {
+   "id": "wallpaper-art-deco-luxe",
+   "title": "Art Deco Luxe wallpaper",
+   "category": "Wallpaper",
+   "file": "wallpapers/art-deco-luxe.svg",
+   "tags": [
+    "wallpaper",
+    "svg",
+    "art-deco-luxe"
+   ],
+   "description": "Generative SVG wallpaper in the Art Deco Luxe DNA.",
+   "dnas": [
+    "art-deco-luxe"
+   ]
+  },
+  {
+   "id": "wallpaper-art-nouveau-whiplash",
+   "title": "Art Nouveau Whiplash wallpaper",
+   "category": "Wallpaper",
+   "file": "wallpapers/art-nouveau-whiplash.svg",
+   "tags": [
+    "wallpaper",
+    "svg",
+    "art-nouveau-whiplash"
+   ],
+   "description": "Generative SVG wallpaper in the Art Nouveau Whiplash DNA.",
+   "dnas": [
+    "art-nouveau-whiplash"
+   ]
+  },
+  {
+   "id": "wallpaper-bauhaus-primary",
+   "title": "Bauhaus Primary wallpaper",
+   "category": "Wallpaper",
+   "file": "wallpapers/bauhaus-primary.svg",
+   "tags": [
+    "wallpaper",
+    "svg",
+    "bauhaus-primary"
+   ],
+   "description": "Generative SVG wallpaper in the Bauhaus Primary DNA.",
+   "dnas": [
+    "bauhaus-primary"
+   ]
+  },
+  {
+   "id": "wallpaper-blueprint-tech",
+   "title": "Blueprint Tech wallpaper",
+   "category": "Wallpaper",
+   "file": "wallpapers/blueprint-tech.svg",
+   "tags": [
+    "wallpaper",
+    "svg",
+    "blueprint-tech"
+   ],
+   "description": "Generative SVG wallpaper in the Blueprint Tech DNA.",
+   "dnas": [
+    "blueprint-tech"
+   ]
+  },
+  {
+   "id": "wallpaper-botanical-lab",
+   "title": "Botanical Lab wallpaper",
+   "category": "Wallpaper",
+   "file": "wallpapers/botanical-lab.svg",
+   "tags": [
+    "wallpaper",
+    "svg",
+    "botanical-lab"
+   ],
+   "description": "Generative SVG wallpaper in the Botanical Lab DNA.",
+   "dnas": [
+    "botanical-lab"
+   ]
+  },
+  {
+   "id": "wallpaper-concrete-poem",
+   "title": "Concrete Poem wallpaper",
+   "category": "Wallpaper",
+   "file": "wallpapers/concrete-poem.svg",
+   "tags": [
+    "wallpaper",
+    "svg",
+    "concrete-poem"
+   ],
+   "description": "Generative SVG wallpaper in the Concrete Poem DNA.",
+   "dnas": [
+    "concrete-poem"
+   ]
+  },
+  {
+   "id": "wallpaper-constructivist-red",
+   "title": "Constructivist Red wallpaper",
+   "category": "Wallpaper",
+   "file": "wallpapers/constructivist-red.svg",
+   "tags": [
+    "wallpaper",
+    "svg",
+    "constructivist-red"
+   ],
+   "description": "Generative SVG wallpaper in the Constructivist Red DNA.",
+   "dnas": [
+    "constructivist-red"
+   ]
+  },
+  {
+   "id": "wallpaper-cottage-warm",
+   "title": "Cottage Warm wallpaper",
+   "category": "Wallpaper",
+   "file": "wallpapers/cottage-warm.svg",
+   "tags": [
+    "wallpaper",
+    "svg",
+    "cottage-warm"
+   ],
+   "description": "Generative SVG wallpaper in the Cottage Warm DNA.",
+   "dnas": [
+    "cottage-warm"
+   ]
+  }
+ ]
+}
