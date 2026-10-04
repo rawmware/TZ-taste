@@ -1,0 +1,134 @@
+<!--tz-meta {"id":"showcase-chalkboard-cafe","title":"Chalkboard Cafe showcase","category":"Showcase","file":"showcase/chalkboard-cafe.html","tags":["chalkboard-cafe"],"description":"Live demo page for the Chalkboard Cafe style DNA.","dnas":["chalkboard-cafe"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Chalkboard Cafe — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Patrick+Hand&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#1d1f1e; --tz-surface:#242726; --tz-ink:#f2efe6; --tz-muted:#9aa0a0;
+  --tz-accent:#e8c15a; --tz-line:#f2efe633;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Patrick Hand",cursive;font-size:1.05rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 4vw;font-family:"DM Mono",monospace;font-size:0.72rem;letter-spacing:0.1em}
+.tz-wordmark{font-family:"Caveat",cursive;font-size:1.7rem;font-weight:700;transform:rotate(-1deg)}
+.tz-label{color:var(--tz-muted)}
+.tz-hero{padding:4rem 4vw 3rem;max-width:900px;margin:0 auto;text-align:center}
+.tz-eyebrow{font-family:"DM Mono",monospace;font-size:0.75rem;letter-spacing:0.16em;color:var(--tz-muted);margin-bottom:1.2rem}
+.tz-hero h1{font-family:"Caveat",cursive;font-weight:700;font-size:clamp(3rem,10vw,6.5rem);line-height:1;transform:rotate(-1deg)}
+.tz-hero h1 .tz-yl{color:var(--tz-accent)}
+.tz-sub{margin-top:1.4rem;font-size:1.1rem;color:var(--tz-muted);max-width:46ch;margin-left:auto;margin-right:auto}
+.tz-cta{display:inline-block;margin-top:2.2rem;border:2px solid var(--tz-ink);color:var(--tz-ink);font-family:"Caveat",cursive;font-size:1.6rem;font-weight:700;text-decoration:none;padding:0.5rem 2.2rem;border-radius:2px;transform:rotate(1deg);transition:transform .15s ease}
+.tz-cta:hover{transform:rotate(-1deg)}
+.tz-specials{max-width:560px;margin:3.5rem auto 0;background:var(--tz-surface);border:3px solid var(--tz-accent);border-radius:2px;padding:2.2rem 2rem;transform:rotate(-1.5deg);position:relative}
+.tz-specials .tz-star{position:absolute;font-family:"Caveat",cursive;color:var(--tz-accent);font-size:1.8rem}
+.tz-specials .tz-star.tz-s1{top:6px;left:12px}
+.tz-specials .tz-star.tz-s2{top:6px;right:12px}
+.tz-specials .tz-star.tz-s3{bottom:6px;left:12px}
+.tz-specials .tz-star.tz-s4{bottom:6px;right:12px}
+.tz-specials h2{font-family:"Caveat",cursive;font-size:2.4rem;font-weight:700;color:var(--tz-accent);text-align:center;margin-bottom:1rem}
+.tz-specials p{font-size:1.15rem;text-align:center}
+.tz-specials .tz-price{font-family:"DM Mono",monospace;color:var(--tz-accent)}
+.tz-doodle{display:block;margin:2.5rem auto 0;max-width:420px;width:80%}
+.tz-content{padding:3rem 4vw 0;max-width:800px;margin:0 auto}
+.tz-board{background:var(--tz-surface);border:2px solid var(--tz-line);border-radius:2px;padding:2.4rem 2rem;transform:rotate(0.5deg)}
+.tz-board h2{font-family:"Caveat",cursive;font-size:2.6rem;font-weight:700;margin-bottom:0.3rem}
+.tz-board .tz-aside{color:var(--tz-muted);font-size:0.95rem;margin-bottom:1.6rem}
+.tz-menu{list-style:none}
+.tz-menu li{display:flex;align-items:baseline;gap:0.6rem;padding:0.7rem 0;font-size:1.1rem}
+.tz-menu .tz-dots{flex:1;border-bottom:2px dotted var(--tz-muted);opacity:0.6;transform:translateY(-4px)}
+.tz-menu .tz-p{font-family:"DM Mono",monospace;font-size:0.95rem;white-space:nowrap}
+.tz-menu .tz-special{color:var(--tz-accent)}
+.tz-board2{margin-top:2.5rem;background:var(--tz-surface);border:2px solid var(--tz-line);border-radius:2px;padding:2.4rem 2rem;transform:rotate(-0.8deg)}
+.tz-board2 h2{font-family:"Caveat",cursive;font-size:2.6rem;font-weight:700;margin-bottom:1.2rem}
+.tz-board2 p{font-size:1.05rem}
+.tz-board2 .tz-hours{font-family:"DM Mono",monospace;font-size:0.85rem;color:var(--tz-muted);margin-top:1rem;display:block;letter-spacing:0.06em}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Caveat",cursive;font-size:2.2rem;font-weight:700;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"DM Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"DM Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"DM Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-specials{margin-left:4vw;margin-right:4vw}
+  .tz-board,.tz-board2{padding:1.8rem 1.2rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Maya's Corner</span>
+  <span class="tz-label">EST. 2019 · OPEN TIL 4</span>
+</header>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow">WRITTEN THIS MORNING · CHALKED BY MAYA</p>
+  <h1>Coffee first, <span class="tz-yl">everything else</span> after.</h1>
+  <p class="tz-sub">Small shop, big chalk. If it's on the board, it's real. If it's not, ask — we probably have it.</p>
+  <a class="tz-cta" href="#">see today's board</a>
+
+  <div class="tz-specials">
+    <span class="tz-star tz-s1" aria-hidden="true">✶</span>
+    <span class="tz-star tz-s2" aria-hidden="true">✶</span>
+    <span class="tz-star tz-s3" aria-hidden="true">✶</span>
+    <span class="tz-star tz-s4" aria-hidden="true">✶</span>
+    <h2>Today's Special</h2>
+    <p>Soup of the day — roasted tomato · <span class="tz-price">$7</span><br>Bread's out of the oven at 8.</p>
+  </div>
+
+  <svg class="tz-doodle" viewBox="0 0 400 60" aria-hidden="true">
+    <path d="M10 30 C 60 10, 120 50, 180 30 S 300 10, 390 30" fill="none" stroke="#f2efe6" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+    <circle cx="200" cy="32" r="9" fill="none" stroke="#e8c15a" stroke-width="2.5"/>
+  </svg>
+</section>
+
+<section class="tz-content">
+  <div class="tz-board">
+    <h2>The drinks board</h2>
+    <p class="tz-aside">oat milk +50¢ · extra shot $1 · we remember your order by friday</p>
+    <ul class="tz-menu">
+      <li><span>espresso</span><span class="tz-dots"></span><span class="tz-p">$3.50</span></li>
+      <li><span>cortado</span><span class="tz-dots"></span><span class="tz-p">$4.25</span></li>
+      <li><span>oat latte</span><span class="tz-dots"></span><span class="tz-p">$5.25</span></li>
+      <li><span class="tz-special">cardamom cold brew ★</span><span class="tz-dots"></span><span class="tz-p">$5.75</span></li>
+      <li><span>house chai</span><span class="tz-dots"></span><span class="tz-p">$4.75</span></li>
+    </ul>
+  </div>
+
+  <svg class="tz-doodle" viewBox="0 0 400 60" aria-hidden="true">
+    <path d="M20 35 Q 100 15, 200 35 T 380 30" fill="none" stroke="#f2efe6" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
+    <path d="M180 45 q 10 -18, 20 0 M220 45 q 10 -18, 20 0" fill="none" stroke="#e8c15a" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+
+  <div class="tz-board2">
+    <h2>From the oven</h2>
+    <p>Butter croissant, almond twice-baked, and the cardamom bun that sells out by 10. Come early or come sad.</p>
+    <span class="tz-hours">BAKERY CASE FILLED 7AM · 9AM · 1PM — WHEN IT'S GONE, IT'S GONE</span>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#1d1f1e"></span><span class="tz-name">bg</span><span class="tz-hex">#1d1f1e</span></li>
+    <li><span class="tz-chip" style="background:#242726"></span><span class="tz-name">surface</span><span class="tz-hex">#242726</span></li>
+    <li><span class="tz-chip" style="background:#f2efe6"></span><span class="tz-name">ink</span><span class="tz-hex">#f2efe6</span></li>
+    <li><span class="tz-chip" style="background:#9aa0a0"></span><span class="tz-name">muted</span><span class="tz-hex">#9aa0a0</span></li>
+    <li><span class="tz-chip" style="background:#e8c15a"></span><span class="tz-name">accent</span><span class="tz-hex">#e8c15a</span></li>
+    <li><span class="tz-chip" style="background:#f2efe633"></span><span class="tz-name">line</span><span class="tz-hex">#f2efe633</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
