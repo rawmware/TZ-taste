@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-chalkboard-cafe",
+  "title": "Chalkboard Cafe design tokens",
+  "category": "Tokens",
+  "file": "tokens/chalkboard-cafe.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "chalkboard-cafe"
+  ],
+  "description": "W3C-format design tokens for the Chalkboard Cafe DNA.",
+  "dnas": [
+   "chalkboard-cafe"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#1d1f1e",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#f2efe6",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#e8c15a",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#9aa0a0",
+   "type": "color"
+  },
+  "line": {
+   "value": "#f2efe633",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#1d1f1e",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Caveat",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Patrick Hand",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "DM Mono",
+   "type": "fontFamily"
+  }
+ }
+}
