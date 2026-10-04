@@ -1,0 +1,127 @@
+<!--tz-meta {"id":"chrome-blob","title":"Liquid Chrome","category":"3D","file":"three-d/chrome-blob.html","tags":["threejs","lux"],"description":"A molten chrome blob rippling under a procedural studio-light environment.","dnas":["dark-luxe"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Liquid Chrome — TZ-taste 3D</title>
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#050506}
+#c{position:fixed;inset:0}
+.caption{position:fixed;left:18px;bottom:16px;color:#e8ecf2;font:12px/1.6 system-ui,sans-serif;letter-spacing:.05em;opacity:.8;pointer-events:none;text-shadow:0 1px 10px rgba(0,0,0,.8)}
+.caption b{display:block;font-size:12px;letter-spacing:.22em;text-transform:uppercase}
+#fallback{display:none;position:fixed;inset:0;align-items:center;justify-content:center;background:#050506;color:#e8ecf2;font:14px/1.6 system-ui,sans-serif;text-align:center;padding:2rem}
+</style>
+</head>
+<body>
+<div id="c"></div>
+<div class="caption"><b>Liquid Chrome</b><span>drag to orbit</span></div>
+<div id="fallback"><p></p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let renderer = null;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (err) {
+  const f = document.getElementById('fallback');
+  f.style.display = 'flex';
+  f.querySelector('p').textContent = 'WebGL is unavailable in this browser, so this 3D scene cannot be rendered.';
+}
+
+if (renderer) {
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.1;
+  document.getElementById('c').appendChild(renderer.domElement);
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x050506);
+  scene.fog = new THREE.Fog(0x050506, 12, 30);
+
+  const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+  camera.position.set(0, 1.2, 6.4);
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.06;
+
+  // Procedural studio environment: gradient sphere baked through PMREM.
+  const envScene = new THREE.Scene();
+  const envMat = new THREE.ShaderMaterial({
+    side: THREE.BackSide,
+    vertexShader: `
+      varying vec3 vP;
+      void main() {
+        vP = position;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }`,
+    fragmentShader: `
+      varying vec3 vP;
+      void main() {
+        float h = normalize(vP).y;
+        vec3 col = vec3(0.015);
+        col += vec3(0.9, 0.95, 1.0) * smoothstep(0.55, 0.95, h) * 0.9;
+        col += vec3(1.0, 0.72, 0.42) * (1.0 - smoothstep(0.0, 0.30, abs(h - 0.10))) * 1.6;
+        col += vec3(0.25, 0.35, 0.55) * (1.0 - smoothstep(-0.10, -0.9, h)) * 0.30;
+        gl_FragColor = vec4(col, 1.0);
+      }`
+  });
+  envScene.add(new THREE.Mesh(new THREE.SphereGeometry(10, 32, 32), envMat));
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(envScene, 0.05).texture;
+  pmrem.dispose();
+
+  const key = new THREE.DirectionalLight(0xffffff, 1.6);
+  key.position.set(5, 8, 6);
+  scene.add(key);
+
+  // The blob: dense icosahedron displaced by layered sine noise each frame.
+  const geo = new THREE.IcosahedronGeometry(1.35, 5);
+  const pos = geo.attributes.position;
+  const base = pos.array.slice();
+  const blob = new THREE.Mesh(geo, new THREE.MeshStandardMaterial({
+    color: 0xf4f6f8, metalness: 1.0, roughness: 0.16, envMapIntensity: 1.25
+  }));
+  scene.add(blob);
+
+  function wobble(t) {
+    const a = pos.array;
+    for (let i = 0; i < a.length; i += 3) {
+      const x = base[i], y = base[i + 1], z = base[i + 2];
+      const n = Math.sin(x * 2.2 + t * 1.1) * Math.sin(y * 2.6 - t * 0.9)
+              + 0.5 * Math.sin(z * 3.4 + t * 1.4) * Math.sin(x * 1.7 - t * 0.6)
+              + 0.25 * Math.sin((x + y + z) * 5.0 + t * 2.0);
+      const d = 1 + n * 0.055;
+      a[i] = x * d; a[i + 1] = y * d; a[i + 2] = z * d;
+    }
+    pos.needsUpdate = true;
+    geo.computeVertexNormals();
+  }
+
+  function tick(t) {
+    wobble(t);
+    blob.rotation.y = t * 0.16;
+    blob.rotation.x = Math.sin(t * 0.21) * 0.25;
+    blob.position.y = Math.sin(t * 0.8) * 0.12;
+    controls.update();
+  }
+
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  if (REDUCED) { tick(0); renderer.render(scene, camera); }
+  else {
+    const clock = new THREE.Clock();
+    renderer.setAnimationLoop(() => { tick(clock.getElapsedTime()); renderer.render(scene, camera); });
+  }
+}
+</script>
+</body>
+</html>
