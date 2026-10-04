@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-fishing-tackle",
+  "title": "Fishing Tackle design tokens",
+  "category": "Tokens",
+  "file": "tokens/fishing-tackle.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "fishing-tackle"
+  ],
+  "description": "W3C-format design tokens for the Fishing Tackle DNA.",
+  "dnas": [
+   "fishing-tackle"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#f2efe6",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#23301f",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#d9480f",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#6d7360",
+   "type": "color"
+  },
+  "line": {
+   "value": "#23301f1f",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#e4ddc9",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Oswald",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Work Sans",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Space Mono",
+   "type": "fontFamily"
+  }
+ }
+}
