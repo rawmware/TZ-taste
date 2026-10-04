@@ -1,0 +1,180 @@
+<!--tz-meta {"id":"hot-air-balloons","title":"Hot Air Balloons","category":"3D","file":"three-d/hot-air-balloons.html","tags":["threejs","balloons","sky"],"description":"Striped hot air balloons drift over patchwork fields, burners flickering, baskets swaying gently.","dnas":["postcard-rack"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hot Air Balloons — TZ-taste</title>
+<style>
+  html, body { margin:0; height:100%; overflow:hidden; background:#f6efdd; }
+  #app { position:fixed; inset:0; }
+  #app canvas { display:block; }
+  .caption { position:fixed; left:18px; bottom:16px; z-index:5; color:#6b5b43;
+    font:12px/1.6 system-ui, -apple-system, sans-serif; letter-spacing:.05em;
+    opacity:.9; pointer-events:none; }
+  .caption b { display:block; font-size:13px; letter-spacing:.22em; text-transform:uppercase; }
+  #fallback { display:none; position:fixed; inset:0; z-index:10; place-items:center;
+    color:#6b5b43; font:14px/1.6 system-ui, sans-serif; text-align:center;
+    padding:32px; background:#f6efdd; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="caption"><b>Hot Air Balloons</b>six envelopes over the patchwork, burners on<br/>drag to orbit &middot; scroll to zoom</div>
+<div id="fallback"><p>This scene needs WebGL, which your browser could not provide.<br/>Try a recent version of Chrome, Safari, Firefox or Edge.</p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (e) {
+  document.getElementById('fallback').style.display = 'grid';
+  throw e;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('app').appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xf6efdd);
+scene.fog = new THREE.Fog(0xf6efdd, 60, 170);
+
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 500);
+camera.position.set(26, 18, 34);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.target.set(0, 12, 0);
+controls.maxPolarAngle = 1.52;
+controls.minDistance = 12;
+controls.maxDistance = 120;
+
+scene.add(new THREE.HemisphereLight(0xfff6e6, 0x9ab87a, 0.95));
+const sun = new THREE.DirectionalLight(0xfff0d0, 1.2);
+sun.position.set(30, 45, 20);
+scene.add(sun);
+
+/* ---------- patchwork ground ---------- */
+const ground = new THREE.Mesh(
+  new THREE.PlaneGeometry(300, 300),
+  new THREE.MeshStandardMaterial({ color: 0x9ab87a, roughness: 1 }));
+ground.rotation.x = -Math.PI / 2;
+scene.add(ground);
+const fieldCols = [0x8aa866, 0xa8bf7e, 0x7d9a5e, 0xb5a06a, 0x93b173];
+for (let i = 0; i < 26; i++) {
+  const s = 14 + (i * 31 % 18);
+  const f = new THREE.Mesh(new THREE.PlaneGeometry(s, s * 0.7),
+    new THREE.MeshStandardMaterial({ color: fieldCols[i % fieldCols.length], roughness: 1 }));
+  f.rotation.x = -Math.PI / 2;
+  f.rotation.z = (i * 17 % 4) * 0.05;
+  f.position.set((i * 47 % 130) - 65, 0.02, (i * 89 % 130) - 65);
+  scene.add(f);
+}
+
+/* ---------- balloon envelope texture, generated ---------- */
+function stripeTexture(cols) {
+  const c = document.createElement('canvas');
+  c.width = 128; c.height = 64;
+  const g = c.getContext('2d');
+  const w = 128 / cols.length;
+  for (let i = 0; i < cols.length; i++) {
+    g.fillStyle = cols[i];
+    g.fillRect(i * w, 0, w + 1, 64);
+  }
+  const tex = new THREE.CanvasTexture(c);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  return tex;
+}
+const palettes = [
+  ['#c9402e', '#f6efdd', '#2e8f8a', '#f6efdd'],
+  ['#e8a13c', '#3d2f22', '#f6efdd', '#c9402e'],
+  ['#2e8f8a', '#f6efdd', '#c9402e', '#f6efdd'],
+  ['#8c2b1f', '#e8a13c', '#3d2f22', '#f6efdd'],
+  ['#3d7a52', '#f6efdd', '#e8a13c', '#f6efdd'],
+  ['#b3402a', '#f6efdd', '#2e5f8f', '#f6efdd']
+];
+const ropeMat = new THREE.LineBasicMaterial({ color: 0x3d2f22 });
+const basketMat = new THREE.MeshStandardMaterial({ color: 0x6b4a2f, roughness: 0.9 });
+
+const balloons = [];
+function makeBalloon(pal, x, y, z) {
+  const g = new THREE.Group();
+  const env = new THREE.Mesh(
+    new THREE.SphereGeometry(4.2, 28, 22),
+    new THREE.MeshStandardMaterial({ map: stripeTexture(pal), roughness: 0.7 }));
+  env.scale.set(1, 1.18, 1);
+  g.add(env);
+  const basket = new THREE.Mesh(new THREE.BoxGeometry(1.9, 1.4, 1.9), basketMat);
+  basket.position.y = -7.4;
+  g.add(basket);
+  const pts = [];
+  for (const sx of [-0.9, 0.9]) for (const sz of [-0.9, 0.9]) {
+    pts.push(new THREE.Vector3(sx * 1.9, -4.4, sz * 1.9));
+    pts.push(new THREE.Vector3(sx * 0.95, -6.7, sz * 0.95));
+  }
+  const ropeGeo = new THREE.BufferGeometry().setFromPoints(pts);
+  g.add(new THREE.LineSegments(ropeGeo, ropeMat));
+  const flame = new THREE.Mesh(new THREE.ConeGeometry(0.35, 0.9, 8),
+    new THREE.MeshBasicMaterial({ color: 0xffb13c }));
+  flame.position.y = -6.1;
+  g.add(flame);
+  g.position.set(x, y, z);
+  scene.add(g);
+  return { g: g, flame: flame, base: new THREE.Vector3(x, y, z), ph: Math.random() * 6.28, orb: 3 + Math.random() * 5 };
+}
+const spots = [[-22, 20, -14], [8, 26, -24], [26, 17, 6], [-6, 23, 20], [-30, 15, 10], [16, 28, 24]];
+for (let i = 0; i < spots.length; i++) {
+  balloons.push(makeBalloon(palettes[i], spots[i][0], spots[i][1], spots[i][2]));
+}
+
+/* ---------- clouds ---------- */
+const cloudMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 1, transparent: true, opacity: 0.85 });
+for (let i = 0; i < 7; i++) {
+  const cl = new THREE.Group();
+  for (let j = 0; j < 4; j++) {
+    const puff = new THREE.Mesh(new THREE.SphereGeometry(2 + Math.random() * 2, 12, 10), cloudMat);
+    puff.position.set(j * 2.4 - 3.5, Math.random(), Math.random() * 2 - 1);
+    puff.scale.y = 0.55;
+    cl.add(puff);
+  }
+  cl.position.set((i * 53 % 120) - 60, 34 + (i * 13 % 10), (i * 71 % 120) - 60);
+  scene.add(cl);
+}
+
+/* ---------- frame loop ---------- */
+const clock = new THREE.Clock();
+function renderFrame(t, dt) {
+  for (const b of balloons) {
+    b.g.position.x = b.base.x + Math.sin(t * 0.07 + b.ph) * b.orb;
+    b.g.position.z = b.base.z + Math.cos(t * 0.06 + b.ph) * b.orb;
+    b.g.position.y = b.base.y + Math.sin(t * 0.5 + b.ph) * 0.9;
+    b.g.rotation.y = Math.sin(t * 0.1 + b.ph) * 0.2;
+    b.g.rotation.z = Math.sin(t * 0.4 + b.ph) * 0.03;
+    b.flame.scale.setScalar(0.8 + Math.abs(Math.sin(t * 9 + b.ph)) * 0.5);
+  }
+  controls.update();
+  renderer.render(scene, camera);
+}
+if (REDUCED) {
+  renderFrame(2.0, 0);
+} else {
+  renderer.setAnimationLoop(() => {
+    const dt = Math.min(clock.getDelta(), 0.05);
+    renderFrame(clock.elapsedTime, dt);
+  });
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
