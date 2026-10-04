@@ -1,0 +1,3 @@
+//tz-meta {"id":"tailwind-lab-notebook","title":"Lab Notebook Tailwind preset","category":"Tailwind","file":"tailwind/lab-notebook.js","tags":["tailwind","preset","lab-notebook"],"description":"Tailwind theme preset for the Lab Notebook DNA.","dnas":["lab-notebook"]}
+// Tailwind preset for the Lab Notebook DNA. Extend tailwind.config with this.
+module.exports={theme:{extend:{colors:{tzbg:"#f4f1e6",tzink:"#2b2a26",tzaccent:"#b3402e",tzmuted:"#7a756a",tzline:"#2b2a2633",tzsurface:"#f4f1e6"},fontFamily:{display:["Caveat","serif"],body:["Karla","sans-serif"],mono:["Courier Prime","monospace"]}}}};
