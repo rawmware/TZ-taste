@@ -1,0 +1,54 @@
+<!--tz-meta {"id":"roadmap-timeline","title":"Public roadmap timeline","category":"Sections","file":"patterns/roadmap-timeline.html","tags":["roadmap","timeline","planning","quarters"],"description":"Art-deco quarterly timeline with a gold 'now' marker and honest shipped/in-progress labels.","dnas":["art-deco-luxe"]} -->
+<section class="tz-roadmap-timeline" aria-label="Roadmap">
+  <p class="tz-eyebrow">Where this is going</p>
+  <h2 class="tz-head">The roadmap</h2>
+  <ol class="tz-line">
+    <li class="tz-now">
+      <span class="tz-q">Q4 2026 <em>now</em></span>
+      <h3>Mobile app beta</h3>
+      <p>Native iOS and Android builds with offline patterns. 400 testers in.</p>
+    </li>
+    <li>
+      <span class="tz-q">Q1 2027</span>
+      <h3>Team workspaces</h3>
+      <p>Shared DNA tokens across a team, with one source of truth.</p>
+    </li>
+    <li>
+      <span class="tz-q">Q2 2027</span>
+      <h3>Pattern API v1</h3>
+      <p>Fetch any pattern by slug. Rate limits generous enough to ignore.</p>
+    </li>
+    <li>
+      <span class="tz-q">Q3 2027</span>
+      <h3>What you vote for</h3>
+      <p>The last slot is blank on purpose. Tell us what hurts most.</p>
+    </li>
+  </ol>
+</section>
+<style>
+.tz-roadmap-timeline{--bg:#0d0b08;--ink:#f2e7c9;--accent:#c9a227;--muted:#8a7f63;
+  --line:#f2e7c922;
+  background:var(--bg);color:var(--ink);padding:clamp(64px,10vw,144px) clamp(20px,8vw,120px);
+  font-family:Georgia,'Times New Roman',serif}
+.tz-eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:0 0 14px;
+  text-align:center}
+.tz-head{font-size:clamp(32px,5vw,54px);letter-spacing:-.02em;margin:0 0 64px;text-align:center}
+.tz-roadmap-timeline .tz-line{list-style:none;margin:0 auto;padding:0;max-width:680px;position:relative}
+.tz-roadmap-timeline .tz-line::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;
+  width:1px;background:var(--line)}
+.tz-roadmap-timeline .tz-line > li{position:relative;padding:0 0 48px 44px}
+.tz-roadmap-timeline .tz-line > li:last-child{padding-bottom:0}
+.tz-roadmap-timeline .tz-line > li::before{content:"";position:absolute;left:0;top:8px;
+  width:15px;height:15px;border-radius:50%;background:var(--bg);border:2px solid var(--muted)}
+.tz-now::before{border-color:var(--accent)!important;background:var(--accent)!important;
+  box-shadow:0 0 0 6px #c9a22726}
+.tz-q{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.tz-q em{font-style:normal;color:var(--accent);border:1px solid var(--accent);
+  border-radius:3px;padding:2px 8px;margin-left:10px;letter-spacing:.14em;font-size:10.5px}
+.tz-roadmap-timeline h3{font-size:24px;letter-spacing:-.01em;margin:10px 0 8px}
+.tz-roadmap-timeline p{margin:0;color:var(--muted);font-size:15.5px;line-height:1.65;max-width:52ch}
+@media(max-width:560px){.tz-roadmap-timeline h3{font-size:20px}
+  .tz-roadmap-timeline .tz-line > li{padding-left:36px}}
+</style>
