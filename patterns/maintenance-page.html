@@ -1,0 +1,44 @@
+<!--tz-meta {"id":"maintenance-page","title":"Maintenance mode page","category":"Misc","file":"patterns/maintenance-page.html","tags":["maintenance","status","downtime"],"description":"Metro-sign style service board: what's down, when it returns, and one honest line.","dnas":["paris-metro"]} -->
+<section class="tz-maintenance" aria-label="Maintenance">
+  <div class="tz-sign">
+    <p class="tz-kicker">Service notice</p>
+    <h2>We&rsquo;re patching the tracks.</h2>
+    <p class="tz-lede">Routine maintenance is underway. Expect us back by <strong>6:00 PM ET</strong>. Nothing is lost &mdash; your work is saved exactly where you left it.</p>
+    <table class="tz-board">
+      <caption>System status</caption>
+      <tbody>
+        <tr><td>App</td><td class="tz-down">Paused</td></tr>
+        <tr><td>API</td><td class="tz-down">Paused</td></tr>
+        <tr><td>Status page</td><td class="tz-up">Live</td></tr>
+        <tr><td>Your data</td><td class="tz-up">Safe</td></tr>
+      </tbody>
+    </table>
+    <p class="tz-foot">Questions? <a href="#">status@example.com</a> is staffed through the whole window.</p>
+  </div>
+</section>
+<style>
+.tz-maintenance{--bg:#f4efe3;--ink:#14243d;--accent:#b98a2f;--muted:#7d7a6e;
+  --line:#14243d26;--red:#a33b32;--green:#2e6b46;
+  background:var(--bg);color:var(--ink);padding:clamp(56px,10vw,140px) clamp(20px,6vw,80px);
+  font-family:-apple-system,'Helvetica Neue',Arial,sans-serif}
+.tz-sign{max-width:620px;margin:0 auto;border:3px solid var(--ink);border-radius:4px;
+  padding:clamp(28px,5vw,52px);background:#fbf9f3;position:relative}
+.tz-sign::before{content:"";position:absolute;top:0;left:0;right:0;height:10px;
+  background:repeating-linear-gradient(90deg,var(--accent) 0 24px,#fbf9f3 24px 32px)}
+.tz-kicker{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:6px 0 12px}
+.tz-sign h2{font-size:clamp(30px,4.5vw,44px);letter-spacing:-.03em;margin:0 0 14px;line-height:1.05}
+.tz-lede{font-size:16.5px;line-height:1.65;margin:0 0 28px;max-width:52ch}
+.tz-lede strong{color:var(--accent)}
+.tz-board{width:100%;border-collapse:collapse;margin:0 0 24px}
+.tz-board caption{text-align:left;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+  padding-bottom:10px}
+.tz-board td{border-top:1px solid var(--line);padding:12px 4px;font-size:15px}
+.tz-board td:last-child{text-align:right;font-weight:700}
+.tz-down{color:var(--red)}
+.tz-up{color:var(--green)}
+.tz-foot{margin:0;font-size:14px;color:var(--muted)}
+.tz-foot a{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+@media(max-width:560px){.tz-sign{padding:22px 18px}.tz-lede{font-size:15px}}
+</style>
