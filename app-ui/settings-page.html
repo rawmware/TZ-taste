@@ -1,0 +1,164 @@
+<!--tz-meta {"id":"settings-page","title":"Settings page","category":"App UI","file":"app-ui/settings-page.html","tags":["settings","toggles","segmented","danger-zone"],"description":"Warm manual-style settings: chapter-numbered sections, tactile toggles, segmented home mode, boxed danger zone.","dnas":["docs-solar"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hearth — Settings</title>
+<style>
+body{margin:0;background:#fdf6e3}
+.tz-settings{--bg:#fdf6e3;--surface:#f7eeda;--ink:#3d3a2e;--muted:#8a8672;--accent:#cb4b16;--line:#3d3a2e1f;
+  background:var(--bg);color:var(--ink);min-height:100dvh;
+  font-family:"Source Serif 4",Georgia,serif}
+.tz-wrap{max-width:720px;margin:0 auto;padding:48px 24px 80px}
+.tz-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.22em;
+  color:var(--muted);margin:0 0 12px}
+.tz-settings h1{font-size:clamp(32px,5vw,46px);font-weight:600;letter-spacing:-.02em;margin:0 0 8px}
+.tz-sub{font-size:16px;color:var(--muted);margin:0 0 40px;font-style:italic}
+.tz-sec{border:1px solid var(--line);border-radius:3px;background:#fffdf8;margin-bottom:20px;overflow:hidden}
+.tz-sec-head{padding:18px 22px 0;display:flex;align-items:baseline;gap:12px}
+.tz-chapter{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--accent);
+  letter-spacing:.1em;flex:0 0 auto}
+.tz-sec h2{font-size:20px;font-weight:600;margin:0}
+.tz-sec-body{padding:6px 22px 22px}
+.tz-field{margin:14px 0}
+.tz-field label{display:block;font-family:ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.16em;color:var(--muted);margin-bottom:7px}
+.tz-field input{width:100%;box-sizing:border-box;font:inherit;font-family:inherit;font-size:15px;
+  padding:11px 13px;border:1px solid var(--line);border-radius:2px;background:#fff;color:var(--ink)}
+.tz-field input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.tz-profile-row{display:flex;gap:14px;align-items:center;margin:16px 0 4px}
+.tz-face{width:52px;height:52px;flex:0 0 auto;border-radius:50%;background:var(--accent);color:#fffdf8;
+  display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600}
+.tz-profile-row p{margin:0;font-size:15px}
+.tz-profile-row small{color:var(--muted);font-size:13px;font-style:italic}
+.tz-save{font:inherit;font-size:14px;font-weight:600;padding:11px 22px;border-radius:2px;cursor:pointer;
+  background:var(--ink);color:var(--bg);border:1px solid var(--ink);margin-top:14px;
+  transition:transform .16s cubic-bezier(.22,1,.36,1)}
+.tz-save:hover{transform:translateY(-1px)}
+.tz-seg{display:flex;border:1px solid var(--line);border-radius:3px;overflow:hidden;margin:16px 0 8px;background:var(--surface)}
+.tz-seg button{flex:1;font:inherit;font-size:14px;font-weight:600;padding:13px 8px;border:0;cursor:pointer;
+  background:transparent;color:var(--muted);transition:background .18s ease,color .18s ease}
+.tz-seg button.tz-sel{background:var(--accent);color:#fffdf8}
+.tz-note{font-size:14px;font-style:italic;color:var(--muted);margin:8px 0 0}
+.tz-toggle-row{display:flex;align-items:center;gap:14px;padding:15px 0;border-bottom:1px solid var(--line)}
+.tz-toggle-row:last-child{border-bottom:0}
+.tz-toggle-text{flex:1;min-width:0}
+.tz-toggle-text strong{display:block;font-size:15px;font-weight:600}
+.tz-toggle-text span{font-size:13.5px;color:var(--muted);font-style:italic}
+.tz-switch{position:relative;flex:0 0 auto;width:48px;height:28px;cursor:pointer}
+.tz-switch input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
+.tz-track{position:absolute;inset:0;border:1px solid var(--line);border-radius:999px;background:var(--surface);
+  transition:background .18s ease,border-color .18s ease}
+.tz-knob{position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;
+  border:1px solid var(--line);transition:transform .18s cubic-bezier(.22,1,.36,1)}
+.tz-switch input:checked + .tz-track{background:var(--accent);border-color:var(--accent)}
+.tz-switch input:checked + .tz-track .tz-knob{transform:translateX(20px);border-color:var(--accent)}
+.tz-switch input:focus-visible + .tz-track{outline:2px solid var(--accent);outline-offset:2px}
+.tz-danger{border:1px solid var(--accent);border-radius:3px;background:#fffdf8;margin-bottom:20px;overflow:hidden}
+.tz-danger .tz-sec-head{padding-top:18px}
+.tz-danger .tz-chapter{color:var(--accent)}
+.tz-danger p{font-size:14.5px;margin:10px 0 16px;max-width:52ch}
+.tz-danger p strong{color:var(--accent)}
+.tz-del{font:inherit;font-size:14px;font-weight:600;padding:11px 22px;border-radius:2px;cursor:pointer;
+  background:transparent;color:var(--accent);border:1px solid var(--accent);
+  transition:background .16s ease,color .16s ease}
+.tz-del:hover{background:var(--accent);color:#fffdf8}
+.tz-foot{text-align:center;font-family:ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.14em;color:var(--muted);margin-top:36px}
+@media (max-width:520px){
+  .tz-wrap{padding:32px 16px 64px}
+  .tz-toggle-row{align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-settings *,.tz-settings *::before,.tz-settings *::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="tz-settings">
+  <div class="tz-wrap">
+    <p class="tz-eyebrow">HEARTH · 12 WILLOW LANE</p>
+    <h1>Settings</h1>
+    <p class="tz-sub">Fourteen devices, six routines, one very patient thermostat.</p>
+
+    <section class="tz-sec" aria-label="Profile">
+      <div class="tz-sec-head"><span class="tz-chapter">§1</span><h2>Profile</h2></div>
+      <div class="tz-sec-body">
+        <div class="tz-profile-row">
+          <div class="tz-face" aria-hidden="true">EW</div>
+          <p><strong>Elena Ward</strong><br><small>Owner · added March 2024</small></p>
+        </div>
+        <div class="tz-field">
+          <label for="tz-name">DISPLAY NAME</label>
+          <input id="tz-name" type="text" value="Elena Ward">
+        </div>
+        <div class="tz-field">
+          <label for="tz-email">EMAIL FOR ALERTS</label>
+          <input id="tz-email" type="email" value="elena@willowlane.home">
+        </div>
+        <button class="tz-save" type="button">Save changes</button>
+      </div>
+    </section>
+
+    <section class="tz-sec" aria-label="Home mode">
+      <div class="tz-sec-head"><span class="tz-chapter">§2</span><h2>Home mode</h2></div>
+      <div class="tz-sec-body">
+        <div class="tz-seg" role="group" aria-label="Home mode">
+          <button type="button">Away</button>
+          <button type="button" class="tz-sel" aria-pressed="true">Home</button>
+          <button type="button">Night</button>
+        </div>
+        <p class="tz-note">Home keeps the porch light on, the thermostat at 68°, and the doorbell polite.</p>
+      </div>
+    </section>
+
+    <section class="tz-sec" aria-label="Notifications">
+      <div class="tz-sec-head"><span class="tz-chapter">§3</span><h2>Notifications</h2></div>
+      <div class="tz-sec-body">
+        <div class="tz-toggle-row">
+          <div class="tz-toggle-text"><strong>Doorbell chime</strong><span>Rings your phone when someone is at the door.</span></div>
+          <label class="tz-switch"><input type="checkbox" checked><span class="tz-track"><span class="tz-knob"></span></span></label>
+        </div>
+        <div class="tz-toggle-row">
+          <div class="tz-toggle-text"><strong>Package detected</strong><span>A short note when a box lands on the porch.</span></div>
+          <label class="tz-switch"><input type="checkbox" checked><span class="tz-track"><span class="tz-knob"></span></span></label>
+        </div>
+        <div class="tz-toggle-row">
+          <div class="tz-toggle-text"><strong>Leak sensor alerts</strong><span>Water where it shouldn't be, reported at once.</span></div>
+          <label class="tz-switch"><input type="checkbox" checked><span class="tz-track"><span class="tz-knob"></span></span></label>
+        </div>
+        <div class="tz-toggle-row">
+          <div class="tz-toggle-text"><strong>Weekly energy report</strong><span>Sunday evening, one page, no guilt.</span></div>
+          <label class="tz-switch"><input type="checkbox"><span class="tz-track"><span class="tz-knob"></span></span></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="tz-sec" aria-label="Privacy">
+      <div class="tz-sec-head"><span class="tz-chapter">§4</span><h2>Privacy</h2></div>
+      <div class="tz-sec-body">
+        <div class="tz-toggle-row">
+          <div class="tz-toggle-text"><strong>Local processing only</strong><span>Camera clips never leave the house hub.</span></div>
+          <label class="tz-switch"><input type="checkbox" checked><span class="tz-track"><span class="tz-knob"></span></span></label>
+        </div>
+        <div class="tz-toggle-row">
+          <div class="tz-toggle-text"><strong>Anonymous usage stats</strong><span>Helps Hearth improve. Off means off.</span></div>
+          <label class="tz-switch"><input type="checkbox"><span class="tz-track"><span class="tz-knob"></span></span></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="tz-danger" aria-label="Danger zone">
+      <div class="tz-sec-head"><span class="tz-chapter">§5</span><h2>Danger zone</h2></div>
+      <div class="tz-sec-body">
+        <p><strong>Delete this home</strong> removes 14 devices, 6 routines, and all history. This cannot be undone, and the thermostat will be very disappointed.</p>
+        <button class="tz-del" type="button">Delete home</button>
+      </div>
+    </section>
+
+    <p class="tz-foot">HEARTH OS 4.2 · SETTINGS REVISION 18</p>
+  </div>
+</div>
+</body>
+</html>
