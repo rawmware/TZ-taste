@@ -1,0 +1,131 @@
+<!--tz-meta {"id":"showcase-drive-in-theater","title":"Drive-In Theater showcase","category":"Showcase","file":"showcase/drive-in-theater.html","tags":["drive-in-theater"],"description":"Live demo page for the Drive-In Theater style DNA.","dnas":["drive-in-theater"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Drive-In Theater — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Limelight&family=Figtree:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#151423; --tz-surface:#211f33; --tz-ink:#f4efe4; --tz-muted:#8f8ba0;
+  --tz-accent:#f2a93b; --tz-line:#f4efe41f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Figtree",sans-serif;font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 4vw;border-bottom:1px solid var(--tz-line)}
+.tz-wordmark{font-family:"Limelight",sans-serif;font-size:1.15rem;letter-spacing:0.06em}
+.tz-inter{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.14em;color:var(--tz-muted)}
+.tz-inter strong{color:var(--tz-accent);font-weight:500}
+.tz-marquee{border-bottom:1px solid var(--tz-line);padding:0.7rem 0;overflow:hidden}
+.tz-bulbs{display:flex;justify-content:space-between;max-width:64rem;margin:0 auto;padding:0 4vw}
+.tz-bulbs i{width:0.5rem;height:0.5rem;border-radius:50%;background:var(--tz-accent);animation:tz-chase 1.6s ease-in-out infinite}
+.tz-bulbs i:nth-child(2n){animation-delay:0.2s}
+.tz-bulbs i:nth-child(3n){animation-delay:0.4s}
+.tz-bulbs i:nth-child(4n){animation-delay:0.6s}
+.tz-bulbs i:nth-child(5n){animation-delay:0.8s}
+@keyframes tz-chase{0%,100%{opacity:0.25}50%{opacity:1}}
+.tz-hero{padding:6rem 4vw 3.5rem;text-align:left}
+.tz-eyebrow{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.18em;color:var(--tz-muted);margin-bottom:1.6rem}
+.tz-hero h1{font-family:"Limelight",sans-serif;font-size:clamp(2.6rem,8.5vw,6rem);line-height:1.05;letter-spacing:0.02em;max-width:14ch;animation:tz-flicker 1.1s ease-out both}
+@keyframes tz-flicker{0%{opacity:0}8%{opacity:0.9}16%{opacity:0.2}32%{opacity:1}100%{opacity:1}}
+.tz-sub{margin-top:1.6rem;font-size:1.05rem;color:var(--tz-muted);max-width:44ch}
+.tz-cta{display:inline-block;margin-top:2.2rem;background:var(--tz-accent);color:#151423;font-family:"IBM Plex Mono",monospace;font-size:0.95rem;font-weight:500;letter-spacing:0.08em;text-decoration:none;text-transform:uppercase;padding:1rem 2.2rem;border-radius:4px;transition:opacity .15s ease}
+.tz-cta:hover{opacity:0.88}
+.tz-lot{margin-top:4rem;border:1px solid var(--tz-line);border-radius:4px;background:var(--tz-surface);padding:1.6rem 2rem;max-width:44rem}
+.tz-lot h2{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;font-weight:500;letter-spacing:0.18em;color:var(--tz-muted);margin-bottom:1rem}
+.tz-lot p{font-family:"IBM Plex Mono",monospace;font-size:0.85rem;letter-spacing:0.04em;line-height:2.1}
+.tz-lot .tz-on{color:var(--tz-accent)}
+.tz-content{padding:2.5rem 4vw 1rem}
+.tz-content h2{font-family:"Limelight",sans-serif;font-size:clamp(1.8rem,5vw,2.8rem);letter-spacing:0.02em;margin-bottom:0.4rem}
+.tz-subhead{font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.14em;color:var(--tz-muted);margin-bottom:1.6rem}
+table.tz-shows{width:100%;border-collapse:collapse;max-width:760px;background:var(--tz-surface);border-radius:4px}
+.tz-shows th{font-family:"IBM Plex Mono",monospace;font-size:0.66rem;font-weight:500;letter-spacing:0.14em;color:var(--tz-muted);text-align:left;padding:1rem 1.2rem;border-bottom:1px solid var(--tz-line)}
+.tz-shows td{font-family:"IBM Plex Mono",monospace;font-size:0.88rem;padding:1.05rem 1.2rem;border-bottom:1px solid var(--tz-line)}
+.tz-shows tr:last-child td{border-bottom:none}
+.tz-shows td.tz-feat{color:var(--tz-accent)}
+.tz-snack{margin:2.6rem 0 0;max-width:560px;color:var(--tz-muted)}
+.tz-snack strong{color:var(--tz-ink);font-weight:700}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Limelight",sans-serif;font-size:1.8rem;letter-spacing:0.03em;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1;border-radius:4px;overflow:hidden}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"IBM Plex Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"IBM Plex Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"IBM Plex Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-hero{padding-top:4rem}
+  .tz-inter{display:none}
+  .tz-shows th:nth-child(4),.tz-shows td:nth-child(4){display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Moonlite Drive-In</span>
+  <span class="tz-inter">INTERMISSION ENDS IN <strong id="tz-count">07:42</strong></span>
+</header>
+
+<div class="tz-marquee" aria-hidden="true">
+  <div class="tz-bulbs"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+</div>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow">FIELD 2 &middot; GATES 7:00 &middot; DUSK 8:40</p>
+  <h1>The second feature starts whether you're back or not.</h1>
+  <p class="tz-sub">Two features, one ticket, and the popcorn line moves faster than it looks. Tune to 88.3. Lights off, please.</p>
+  <a class="tz-cta" id="tz-snackcta" href="#">Get snacks</a>
+  <div class="tz-lot">
+    <h2>CHANGEABLE LETTERS &mdash; TONIGHT</h2>
+    <p><span class="tz-on">NOW:</span> THE LONG WAY HOME &middot; <span class="tz-on">THEN:</span> RIVER AT NIGHT &middot; GATES 7:00 &middot; DUSK 8:40 &middot; KIDS UNDER 5 FREE</p>
+  </div>
+</section>
+
+<section class="tz-content">
+  <h2>Showtimes</h2>
+  <p class="tz-subhead">FRI&ndash;SUN &middot; ALL TIMES LOCAL &middot; FM 88.3</p>
+  <table class="tz-shows">
+    <thead><tr><th>SLOT</th><th>FEATURE</th><th>START</th><th>RUNS</th></tr></thead>
+    <tbody>
+      <tr><td class="tz-feat">FEATURE ONE</td><td>THE LONG WAY HOME</td><td>8:40</td><td>1H 47M</td></tr>
+      <tr><td>INTERMISSION</td><td>SNACK BAR RUN</td><td>10:27</td><td>0H 15M</td></tr>
+      <tr><td class="tz-feat">FEATURE TWO</td><td>RIVER AT NIGHT</td><td>10:42</td><td>2H 02M</td></tr>
+    </tbody>
+  </table>
+  <p class="tz-snack"><strong>Snack bar truth:</strong> the large popcorn fits two cupholders and zero regrets. The playground closes at dusk &mdash; the movie is the babysitter now.</p>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#151423"></span><span class="tz-name">bg</span><span class="tz-hex">#151423</span></li>
+    <li><span class="tz-chip" style="background:#211f33"></span><span class="tz-name">surface</span><span class="tz-hex">#211f33</span></li>
+    <li><span class="tz-chip" style="background:#f4efe4"></span><span class="tz-name">ink</span><span class="tz-hex">#f4efe4</span></li>
+    <li><span class="tz-chip" style="background:#8f8ba0"></span><span class="tz-name">muted</span><span class="tz-hex">#8f8ba0</span></li>
+    <li><span class="tz-chip" style="background:#f2a93b"></span><span class="tz-name">accent</span><span class="tz-hex">#f2a93b</span></li>
+    <li><span class="tz-chip" style="background:#f4efe41f"></span><span class="tz-name">line</span><span class="tz-hex">#f4efe41f</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+<script>
+(function(){
+  var total = 7*60 + 42, el = document.getElementById('tz-count'), cta = document.getElementById('tz-snackcta');
+  function pad(n){ return (n<10?'0':'')+n; }
+  function tick(){
+    if (total <= 0){ el.textContent = '00:00'; cta.textContent = 'Hurry back'; return; }
+    total--;
+    el.textContent = pad(Math.floor(total/60)) + ':' + pad(total%60);
+    setTimeout(tick, 1000);
+  }
+  setTimeout(tick, 1000);
+})();
+</script>
+</body>
+</html>
