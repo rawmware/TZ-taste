@@ -1,0 +1,150 @@
+<!--tz-meta {"id":"ink-bloom","title":"Ink Bloom","category":"3D","file":"three-d/ink-bloom.html","tags":["threejs","minimal"],"description":"Monochrome ink particles bloom outward with drag and fade, like a drop of sumi ink in water.","dnas":["ma-japanese"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ink Bloom — TZ-taste</title>
+<style>
+  html,body{margin:0;height:100%;overflow:hidden;background:#f4f0e4}
+  #c{position:fixed;inset:0;display:block}
+  .caption{position:fixed;left:18px;bottom:16px;color:#9a937f;font:12px/1.6 system-ui,sans-serif;
+    letter-spacing:.14em;text-transform:uppercase;pointer-events:none;opacity:.9}
+  .caption b{display:block;font-size:13px;letter-spacing:.28em;color:#4a4436}
+  #fallback{position:fixed;inset:0;display:none;place-items:center;color:#5c574a;
+    font:14px system-ui,sans-serif;background:#f4f0e4;text-align:center;padding:2rem}
+</style>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div class="caption"><b>Ink Bloom</b>a study in stillness</div>
+<div id="fallback"><p>WebGL is unavailable in this browser, so the ink bloom cannot render.</p></div>
+<script type="module">
+import * as THREE from 'three';
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('c'), antialias: true });
+} catch (e) {
+  document.getElementById('fallback').style.display = 'grid';
+  throw e;
+}
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xf4f0e4);
+const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 10);
+camera.position.z = 2;
+
+// ---- soft ink-drop sprite from a procedural canvas
+function dropTexture() {
+  const s = 128, cv = document.createElement('canvas'); cv.width = cv.height = s;
+  const ctx = cv.getContext('2d');
+  const g = ctx.createRadialGradient(s/2, s/2, 0, s/2, s/2, s/2);
+  g.addColorStop(0, 'rgba(35,32,26,0.85)');
+  g.addColorStop(0.45, 'rgba(45,42,34,0.5)');
+  g.addColorStop(0.8, 'rgba(60,56,46,0.16)');
+  g.addColorStop(1, 'rgba(70,66,55,0)');
+  ctx.fillStyle = g; ctx.fillRect(0, 0, s, s);
+  const t = new THREE.CanvasTexture(cv);
+  return t;
+}
+
+const COUNT = 2400;
+const geo = new THREE.BufferGeometry();
+const pos = new Float32Array(COUNT * 3);
+const alpha = new Float32Array(COUNT);
+const size = new Float32Array(COUNT);
+geo.setAttribute('position', new THREE.BufferAttribute(pos, 3).setUsage(THREE.DynamicDrawUsage));
+geo.setAttribute('aAlpha', new THREE.BufferAttribute(alpha, 1).setUsage(THREE.DynamicDrawUsage));
+geo.setAttribute('aSize', new THREE.BufferAttribute(size, 1).setUsage(THREE.DynamicDrawUsage));
+
+// custom shader: per-particle size + fade, no lighting needed
+const mat = new THREE.ShaderMaterial({
+  transparent: true, depthWrite: false,
+  uniforms: { uMap: { value: dropTexture() } },
+  vertexShader: `
+    attribute float aAlpha; attribute float aSize;
+    varying float vA;
+    void main() {
+      vA = aAlpha;
+      vec4 mv = modelViewMatrix * vec4(position, 1.0);
+      gl_PointSize = aSize * (180.0 / -mv.z);
+      gl_Position = projectionMatrix * mv;
+    }`,
+  fragmentShader: `
+    uniform sampler2D uMap; varying float vA;
+    void main() {
+      vec4 tex = texture2D(uMap, gl_PointCoord);
+      gl_FragColor = vec4(tex.rgb, tex.a * vA);
+    }`
+});
+const cloud = new THREE.Points(geo, mat);
+cloud.frustumCulled = false;
+scene.add(cloud);
+
+// ---- particle state: radial velocity + strong drag, like ink diffusing in water
+const P = [];
+function spawn(i, burst) {
+  const ang = Math.random() * Math.PI * 2;
+  const rad = burst ? Math.random() * 0.05 : Math.random() * 0.7;
+  const speed = burst ? 0.10 + Math.random() * 0.22 : 0.01 + Math.random() * 0.05;
+  P[i] = {
+    x: Math.cos(ang) * rad, y: Math.sin(ang) * rad,
+    vx: Math.cos(ang) * speed, vy: Math.sin(ang) * speed,
+    life: 0, max: 6 + Math.random() * 8,
+    s: 5 + Math.random() * 14
+  };
+}
+for (let i = 0; i < COUNT; i++) { spawn(i, false); P[i].life = Math.random() * P[i].max; }
+
+let nextBurst = 2.5;
+const clock = new THREE.Clock();
+function tick() {
+  const dt = Math.min(clock.getDelta(), 0.05);
+  const t = clock.elapsedTime;
+  if (t > nextBurst) {                      // a fresh drop falls every so often
+    for (let i = 0; i < 260; i++) spawn((Math.random() * COUNT) | 0, true);
+    nextBurst = t + 9 + Math.random() * 6;
+  }
+  for (let i = 0; i < COUNT; i++) {
+    const p = P[i];
+    p.life += dt;
+    if (p.life > p.max) { spawn(i, false); continue; }
+    const drag = Math.exp(-dt * 1.1);       // strong drag: fast start, long drift
+    p.vx *= drag; p.vy *= drag;
+    // faint swirl so the bloom feels liquid, not mechanical
+    const sw = 0.05 * dt;
+    const nx = p.vx * Math.cos(sw) - p.vy * Math.sin(sw);
+    const ny = p.vx * Math.sin(sw) + p.vy * Math.cos(sw);
+    p.vx = nx; p.vy = ny;
+    p.x += p.vx * dt * 8; p.y += p.vy * dt * 8;
+    const o = i * 3;
+    pos[o] = p.x; pos[o+1] = p.y; pos[o+2] = 0;
+    const fadeIn = Math.min(1, p.life / 1.2);
+    const fadeOut = 1 - p.life / p.max;
+    alpha[i] = fadeIn * fadeOut * 0.9;
+    size[i] = p.s * (1 + p.life * 0.35);    // droplets spread as they age
+  }
+  geo.attributes.position.needsUpdate = true;
+  geo.attributes.aAlpha.needsUpdate = true;
+  geo.attributes.aSize.needsUpdate = true;
+  renderer.render(scene, camera);
+  if (!reduced) requestAnimationFrame(tick);
+}
+
+// camera frame follows aspect: bloom fills a square region
+function resize() {
+  const a = innerWidth / innerHeight;
+  camera.left = -a; camera.right = a; camera.top = 1; camera.bottom = -1;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+}
+addEventListener('resize', resize);
+resize();
+tick();
+</script>
+</body>
+</html>
