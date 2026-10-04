@@ -1,0 +1,63 @@
+<!--tz-meta {"id":"forms-demo","title":"Demo booking","category":"Forms","file":"patterns/forms-demo.html","tags":["calendar","b2b"],"description":"A bordered booking form with spec-sheet labels like DATE // REQUIRED.","dnas":["industrial-brutalist"]} -->
+<section class="tz-demo" aria-labelledby="tz-demo-h">
+  <div class="tz-demo-head">
+    <p class="tz-demo-eyebrow">Field demo · 30 min · No slides</p>
+    <h2 id="tz-demo-h">Book a walkthrough</h2>
+    <p class="tz-demo-sub">We&rsquo;ll bring your data, not a deck. Pick a slot and tell us what&rsquo;s breaking.</p>
+  </div>
+  <form class="tz-demo-form" action="#" method="post">
+    <div class="tz-demo-field">
+      <label for="tz-dm-name">Name // required</label>
+      <input id="tz-dm-name" type="text" name="name" autocomplete="name" required>
+    </div>
+    <div class="tz-demo-field">
+      <label for="tz-dm-email">Work email // required</label>
+      <input id="tz-dm-email" type="email" name="email" autocomplete="email" required>
+    </div>
+    <div class="tz-demo-2col">
+      <div class="tz-demo-field">
+        <label for="tz-dm-date">Date // required</label>
+        <input id="tz-dm-date" type="date" name="date" required>
+      </div>
+      <div class="tz-demo-field">
+        <label for="tz-dm-size">Team size // optional</label>
+        <select id="tz-dm-size" name="size">
+          <option>1–10</option><option>11–50</option><option>51–200</option><option>200+</option>
+        </select>
+      </div>
+    </div>
+    <div class="tz-demo-field">
+      <label for="tz-dm-prob">What&rsquo;s breaking? // required</label>
+      <textarea id="tz-dm-prob" name="problem" rows="3" placeholder="e.g. deploys take 40 minutes and nobody knows why" required></textarea>
+    </div>
+    <button type="submit">Request demo →</button>
+  </form>
+</section>
+<style>
+.tz-demo{--bg:#e7e4dc;--ink:#161513;--accent:#e0531f;--paper:#f4f2ec;
+  background:var(--bg);color:var(--ink);padding:clamp(56px,8vw,110px) clamp(20px,5vw,72px);
+  font-family:Arial,Helvetica,sans-serif}
+.tz-demo-head{max-width:640px;margin-bottom:40px}
+.tz-demo-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;background:var(--ink);color:#fff;display:inline-block;
+  padding:6px 12px;margin:0 0 20px}
+.tz-demo-head h2{font-size:clamp(36px,6vw,64px);letter-spacing:-.03em;margin:0 0 14px;font-weight:900}
+.tz-demo-sub{font-size:16px;line-height:1.6;margin:0;max-width:44ch}
+.tz-demo-form{background:var(--paper);border:3px solid var(--ink);box-shadow:8px 8px 0 var(--ink);
+  padding:clamp(24px,4vw,44px);max-width:640px}
+.tz-demo-2col{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.tz-demo-field{margin-bottom:22px}
+.tz-demo-field label{display:block;font-family:ui-monospace,Menlo,monospace;font-size:12px;
+  letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.tz-demo-field input,.tz-demo-field select,.tz-demo-field textarea{width:100%;box-sizing:border-box;
+  border:2px solid var(--ink);background:#fff;font-size:16px;font-family:inherit;color:var(--ink);
+  padding:13px 14px;border-radius:0}
+.tz-demo-field input:focus,.tz-demo-field select:focus,.tz-demo-field textarea:focus{
+  outline:none;box-shadow:4px 4px 0 var(--accent)}
+.tz-demo-field textarea{resize:vertical}
+.tz-demo-form button{background:var(--ink);color:#fff;border:0;font-size:16px;font-weight:900;
+  padding:16px 34px;cursor:pointer;font-family:inherit;letter-spacing:.02em;width:100%}
+.tz-demo-form button:hover{background:var(--accent)}
+@media (max-width:560px){.tz-demo-2col{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.tz-demo-form button{transition:none}}
+</style>
