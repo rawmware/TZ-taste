@@ -1,0 +1,135 @@
+<!--tz-meta {"id":"chat-interface","title":"Chat Interface","category":"App UI","file":"app-ui/chat-interface.html","tags":["chat","messaging","conversations","composer"],"description":"Two-pane crew messaging for a kayak outfitter: list, thread, bubbles, read receipts.","dnas":["surf-shack"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chat Interface — Tidewater Crew Chat</title>
+<style>
+body{margin:0;background:#e9dcc2;}
+.tz-chat{--bg:#f9ecd8;--ink:#40342a;--accent:#2e8f8a;--muted:#a08d70;--line:#e0d0ae;--bubble:#fffdf6;
+  background:var(--bg);color:var(--ink);font-family:Verdana,Geneva,'DejaVu Sans',sans-serif;
+  max-width:1080px;margin:24px auto;border:2px solid var(--ink);border-radius:18px;overflow:hidden;
+  display:grid;grid-template-columns:300px 1fr;min-height:640px;}
+.tz-conv{background:var(--bubble);border-right:2px solid var(--ink);display:flex;flex-direction:column;}
+.tz-conv-head{padding:18px;border-bottom:2px solid var(--ink);}
+.tz-conv-head h1{font-family:Georgia,'Times New Roman',serif;font-size:22px;margin:0 0 4px;letter-spacing:-.01em;}
+.tz-conv-head p{font-size:12px;color:var(--muted);margin:0;}
+.tz-conv-list{overflow:auto;flex:1;}
+.tz-conv-row{display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:center;padding:14px 18px;
+  border-bottom:1px solid var(--line);cursor:pointer;}
+.tz-conv-row.tz-active{background:var(--bg);box-shadow:inset 4px 0 0 var(--accent);}
+.tz-avatar{width:44px;height:44px;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;
+  display:flex;align-items:center;justify-content:center;font-size:14px;border:2px solid var(--ink);}
+.tz-avatar.tz-warm{background:#d98e32;}
+.tz-avatar.tz-sand{background:var(--muted);}
+.tz-conv-row h3{margin:0 0 3px;font-size:14px;}
+.tz-conv-row .tz-snip{margin:0;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:150px;}
+.tz-conv-row time{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--muted);}
+.tz-unread{width:9px;height:9px;border-radius:50%;background:var(--accent);display:block;margin:6px auto 0;}
+.tz-thread{display:flex;flex-direction:column;min-width:0;}
+.tz-thread-head{padding:16px 24px;border-bottom:2px solid var(--ink);background:var(--bubble);}
+.tz-thread-head h2{margin:0 0 2px;font-size:16px;}
+.tz-thread-head p{margin:0;font-size:12px;color:var(--muted);}
+.tz-thread-head p b{color:var(--accent);}
+.tz-wave{display:block;width:100%;height:10px;margin-top:10px;}
+.tz-msgs{flex:1;overflow:auto;padding:24px;display:flex;flex-direction:column;gap:14px;}
+.tz-msg{max-width:72%;display:flex;flex-direction:column;}
+.tz-msg.tz-in{align-self:flex-start;}
+.tz-msg.tz-out{align-self:flex-end;align-items:flex-end;}
+.tz-bub{background:var(--bubble);border:2px solid var(--ink);border-radius:16px;padding:10px 14px;font-size:14px;line-height:1.5;}
+.tz-msg.tz-out .tz-bub{background:var(--accent);border-color:var(--accent);color:#fff;}
+.tz-who{font-size:11px;color:var(--muted);margin-bottom:4px;}
+.tz-seen{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;color:var(--muted);margin-top:4px;letter-spacing:.04em;}
+.tz-seen b{color:var(--accent);}
+.tz-divider{align-self:center;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;
+  letter-spacing:.16em;color:var(--muted);text-transform:uppercase;}
+.tz-composer{display:flex;gap:10px;padding:16px 20px;border-top:2px solid var(--ink);background:var(--bubble);}
+.tz-composer input{flex:1;border:2px solid var(--ink);border-radius:12px;padding:12px 14px;font-size:14px;
+  font-family:inherit;background:var(--bg);color:var(--ink);}
+.tz-composer input::placeholder{color:var(--muted);}
+.tz-composer button{border:2px solid var(--ink);background:var(--ink);color:var(--bg);border-radius:12px;
+  padding:0 22px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;}
+.tz-composer button:hover{background:var(--accent);border-color:var(--accent);}
+@media(max-width:680px){
+  .tz-chat{grid-template-columns:1fr;margin:0;border-radius:0;border-left:none;border-right:none;min-height:100dvh;}
+  .tz-conv-list{display:flex;overflow-x:auto;border-bottom:2px solid var(--ink);}
+  .tz-conv{border-right:none;}
+  .tz-conv-row{min-width:200px;border-bottom:none;border-right:1px solid var(--line);}
+  .tz-conv-head{padding:14px 18px;}
+}
+@media(prefers-reduced-motion:reduce){
+  .tz-chat *{animation:none!important;transition:none!important;}
+}
+</style>
+</head>
+<body>
+<section class="tz-chat">
+  <div class="tz-conv">
+    <div class="tz-conv-head">
+      <h1>Tidewater</h1>
+      <p>Salty Dog Paddle Co. &middot; crew chat</p>
+    </div>
+    <div class="tz-conv-list">
+      <div class="tz-conv-row tz-active">
+        <span class="tz-avatar">MK</span>
+        <div><h3>Morning launch crew</h3><p class="tz-snip">Mara: ramp gate is open, see you at 7</p></div>
+        <div><time>6:48</time><span class="tz-unread"></span></div>
+      </div>
+      <div class="tz-conv-row">
+        <span class="tz-avatar tz-warm">DR</span>
+        <div><h3>Dana &middot; rentals</h3><p class="tz-snip">two tandem kayaks held for Saturday</p></div>
+        <div><time>Fri</time></div>
+      </div>
+      <div class="tz-conv-row">
+        <span class="tz-avatar tz-sand">TP</span>
+        <div><h3>Tom &middot; maintenance</h3><p class="tz-snip">patched hull #14, back in rotation</p></div>
+        <div><time>Thu</time></div>
+      </div>
+      <div class="tz-conv-row">
+        <span class="tz-avatar">AL</span>
+        <div><h3>Ada &middot; sunset tours</h3><p class="tz-snip">wind looks kind for Thursday</p></div>
+        <div><time>Wed</time></div>
+      </div>
+    </div>
+  </div>
+  <div class="tz-thread">
+    <div class="tz-thread-head">
+      <h2>Morning launch crew</h2>
+      <p><b>3 on the water today</b> &middot; Mara, Dana, you</p>
+      <svg class="tz-wave" viewBox="0 0 300 10" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 5 Q 15 0 30 5 T 60 5 T 90 5 T 120 5 T 150 5 T 180 5 T 210 5 T 240 5 T 270 5 T 300 5"
+          fill="none" stroke="#2e8f8a" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="tz-msgs">
+      <span class="tz-divider">Today</span>
+      <div class="tz-msg tz-in">
+        <span class="tz-who">Mara K.</span>
+        <div class="tz-bub">Ramp gate is open and the tide is already turning. See you all at 7, don't be late this time.</div>
+      </div>
+      <div class="tz-msg tz-out">
+        <div class="tz-bub">On my way with the tandem pair. Do we have life vests restocked from yesterday?</div>
+        <span class="tz-seen">Seen 6:52 &middot; <b>Mara, Dana</b></span>
+      </div>
+      <div class="tz-msg tz-in">
+        <span class="tz-who">Dana R.</span>
+        <div class="tz-bub">Vests are restocked, 12 mediums and 8 larges. Also the cooler is full of water bottles.</div>
+      </div>
+      <div class="tz-msg tz-in">
+        <span class="tz-who">Mara K.</span>
+        <div class="tz-bub">Forecast says the wind picks up after 11, so let's get the beginners out first and save the island loop for the 9:30 group.</div>
+      </div>
+      <div class="tz-msg tz-out">
+        <div class="tz-bub">Got it. I'll brief the 8 o'clock group on the shortcut back if it gets choppy.</div>
+        <span class="tz-seen">Seen 7:04 &middot; <b>Mara</b></span>
+      </div>
+    </div>
+    <form class="tz-composer" onsubmit="return false">
+      <input type="text" placeholder="Message the crew&hellip;" aria-label="Message the crew">
+      <button type="submit">Send</button>
+    </form>
+  </div>
+</section>
+</body>
+</html>
