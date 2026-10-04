@@ -1,0 +1,47 @@
+<!--tz-meta {"id":"cards-recipe","title":"Recipe cards","category":"Cards","file":"patterns/cards-recipe.html","tags":["food","steps"],"description":"Chunky neo-brutalist recipe cards with sticker time badges and hard shadows.","dnas":["neo-brutalist-pop"]} -->
+<section class="tz-recipes" aria-label="Recipes">
+  <p class="tz-eyebrow">Tonight's menu</p>
+  <div class="tz-grid">
+    <article class="tz-rc tz-wide">
+      <div class="tz-food tz-fd1" role="img" aria-label="Pan of brown butter gnocchi"><span class="tz-time">35 min</span></div>
+      <h3>Brown butter gnocchi</h3>
+      <p class="tz-steps">5 steps · one pan · feeds 4</p>
+      <p class="tz-desc">Crisped gnocchi, sage, and a squeeze of lemon. The pan sauce does all the talking.</p>
+    </article>
+    <article class="tz-rc">
+      <div class="tz-food tz-fd2" role="img" aria-label="Bowl of charred corn soup"><span class="tz-time">25 min</span></div>
+      <h3>Charred corn soup</h3>
+      <p class="tz-steps">4 steps · feeds 4</p>
+    </article>
+    <article class="tz-rc">
+      <div class="tz-food tz-fd3" role="img" aria-label="Plate of miso roast carrots"><span class="tz-time">40 min</span></div>
+      <h3>Miso roast carrots</h3>
+      <p class="tz-steps">3 steps · feeds 6</p>
+    </article>
+  </div>
+</section>
+<style>
+.tz-recipes{--bg:#fff8e7;--ink:#141310;--soft:#5a554a;--yellow:#ffd21f;--pink:#ff4d8d;--teal:#2ec4b6;
+  background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(56px,9vw,110px) clamp(20px,5vw,72px)}
+.tz-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;margin:0 0 36px;display:inline-block;background:var(--ink);
+  color:#fff;padding:8px 14px}
+.tz-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:26px;align-items:start}
+.tz-rc{border:3px solid var(--ink);background:#fff;box-shadow:7px 7px 0 var(--ink);
+  padding:16px;margin:0}
+.tz-wide{transform:rotate(-.8deg)}
+.tz-food{position:relative;aspect-ratio:16/10;margin-bottom:16px;border:3px solid var(--ink)}
+.tz-fd1{background:linear-gradient(150deg,#e0a458,#9a5f1c)}
+.tz-fd2{background:linear-gradient(150deg,#d8c25a,#8a7420)}
+.tz-fd3{background:linear-gradient(150deg,#c96f3f,#7a3416)}
+.tz-time{position:absolute;top:-14px;right:10px;background:var(--yellow);border:3px solid var(--ink);
+  font-family:ui-monospace,Menlo,monospace;font-size:11px;font-weight:700;padding:5px 10px;
+  transform:rotate(5deg)}
+.tz-rc h3{margin:0 0 8px;font-size:21px;letter-spacing:-.015em}
+.tz-steps{margin:0 0 10px;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--soft)}
+.tz-desc{margin:0;font-size:14px;line-height:1.6;color:var(--soft)}
+@media (max-width:860px){.tz-grid{grid-template-columns:1fr 1fr}.tz-wide{grid-column:span 2}}
+@media (max-width:560px){.tz-grid{grid-template-columns:1fr}.tz-wide{grid-column:auto}}
+@media (prefers-reduced-motion:reduce){.tz-wide{transform:none}}
+</style>
