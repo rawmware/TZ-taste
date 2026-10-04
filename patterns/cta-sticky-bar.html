@@ -1,0 +1,55 @@
+<!--tz-meta {"id":"cta-sticky-bar","title":"Sticky bottom CTA bar","category":"Sections","file":"patterns/cta-sticky-bar.html","tags":["cta","sticky"],"description":"Neon-diner sticky bar: slides up after scroll, order-ahead CTA with today's special, dismissible, respects reduced motion.","dnas":["neon-diner"]} -->
+<section class="tz-cta-sticky-bar" aria-label="Order ahead">
+  <div class="tz-inner">
+    <div class="tz-special">
+      <p class="tz-kicker">Today's special</p>
+      <p class="tz-dish">Blue-plate meatloaf <b>$14</b> <span>till 8pm</span></p>
+    </div>
+    <p class="tz-note">Order ahead — ready in 15 min, still hot.</p>
+    <div class="tz-actions">
+      <a class="tz-order" href="#order">Order pickup</a>
+      <button class="tz-dismiss" type="button" aria-label="Dismiss">✕</button>
+    </div>
+  </div>
+</section>
+<style>
+.tz-cta-sticky-bar{--bg:#14201c;--ink:#f3f7f5;--muted:#9db3a9;--accent:#ff5d5d;--teal:#2fd0c0;
+  position:fixed;left:0;right:0;bottom:0;z-index:80;background:var(--bg);color:var(--ink);
+  border-top:3px solid var(--accent);font-family:-apple-system,'Segoe UI',sans-serif;
+  transform:translateY(110%);transition:transform .5s cubic-bezier(.22,1,.36,1)}
+.tz-cta-sticky-bar.tz-show{transform:none}
+.tz-cta-sticky-bar .tz-inner{max-width:1200px;margin:0 auto;padding:14px clamp(16px,4vw,40px);
+  display:flex;align-items:center;gap:28px}
+.tz-cta-sticky-bar .tz-kicker{font-family:ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--teal);margin:0 0 4px}
+.tz-cta-sticky-bar .tz-dish{margin:0;font-size:16px;font-weight:600}
+.tz-cta-sticky-bar .tz-dish b{color:var(--accent)}
+.tz-cta-sticky-bar .tz-dish span{color:var(--muted);font-weight:400;font-size:13px}
+.tz-cta-sticky-bar .tz-note{margin:0 0 0 auto;color:var(--muted);font-size:13.5px}
+.tz-cta-sticky-bar .tz-actions{display:flex;align-items:center;gap:12px}
+.tz-cta-sticky-bar .tz-order{background:var(--accent);color:#fff;text-decoration:none;font-weight:700;
+  font-size:14px;padding:13px 28px;white-space:nowrap;transition:transform .25s cubic-bezier(.22,1,.36,1)}
+.tz-cta-sticky-bar .tz-order:hover{transform:translateY(-2px)}
+.tz-cta-sticky-bar .tz-dismiss{background:transparent;border:1px solid #f3f7f533;color:var(--muted);
+  width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:14px}
+.tz-cta-sticky-bar .tz-dismiss:hover{color:var(--ink);border-color:var(--ink)}
+@media (max-width:760px){
+  .tz-cta-sticky-bar .tz-note{display:none}
+  .tz-cta-sticky-bar .tz-inner{gap:16px}
+  .tz-cta-sticky-bar .tz-dish{font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-cta-sticky-bar{transition:none}
+}
+</style>
+<script>
+(function(){
+  var bar=document.querySelector('.tz-cta-sticky-bar');
+  function onScroll(){bar.classList.toggle('tz-show',window.scrollY>480);}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  bar.querySelector('.tz-dismiss').addEventListener('click',function(){
+    bar.classList.remove('tz-show');
+    window.removeEventListener('scroll',onScroll);
+  });
+})();
+</script>
