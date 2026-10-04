@@ -1,0 +1,42 @@
+<!--tz-meta {"id":"heroes-glass-orbs","title":"Glass orbs hero","category":"Hero","file":"patterns/heroes-glass-orbs.html","tags":["glass","soft","calm"],"description":"Frosted glass orbs drifting over pastel, anchored by one big friendly numeral.","dnas":["glass-calm"]} -->
+<section class="tz-orbs">
+  <div class="tz-orb tz-orb-a" aria-hidden="true"></div>
+  <div class="tz-orb tz-orb-b" aria-hidden="true"></div>
+  <div class="tz-orb tz-orb-c" aria-hidden="true"></div>
+  <div class="tz-orbs-inner">
+    <p class="tz-orbs-eyebrow">Halcyon · Customer care</p>
+    <div class="tz-orbs-num" aria-hidden="true">7</div>
+    <h1 class="tz-orbs-h">Answers in seven minutes, from a human.</h1>
+    <p class="tz-orbs-sub">Halcyon support is staffed by real people, around the clock. No phone trees, no ticket black holes, no bots pretending to care.</p>
+    <a class="tz-orbs-cta" href="#chat">Chat with us now</a>
+  </div>
+</section>
+<style>
+.tz-orbs{--ink:#2b2620;
+  background:linear-gradient(135deg,#ffe9d2 0%,#f7e2e8 48%,#dcefe0 100%);
+  color:var(--ink);position:relative;overflow:hidden;
+  padding:clamp(96px,13vw,180px) clamp(24px,7vw,100px);
+  font-family:Arial,Helvetica,sans-serif}
+.tz-orb{position:absolute;border-radius:50%;pointer-events:none;
+  background:#ffffff59;border:1px solid #ffffff80;
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+  animation:tz-drift 9s ease-in-out infinite}
+.tz-orb-a{width:min(300px,52vw);aspect-ratio:1;top:-70px;right:6%}
+.tz-orb-b{width:min(200px,38vw);aspect-ratio:1;bottom:6%;left:4%;animation-delay:-3s}
+.tz-orb-c{width:min(130px,26vw);aspect-ratio:1;top:44%;right:22%;animation-delay:-6s}
+@keyframes tz-drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-26px)}}
+.tz-orbs-inner{position:relative;max-width:640px}
+.tz-orbs-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.22em;
+  text-transform:uppercase;margin:0 0 8px;opacity:.65}
+.tz-orbs-num{font-family:Georgia,'Times New Roman',serif;font-size:clamp(120px,18vw,220px);
+  line-height:1;color:#ffffffcc;-webkit-text-stroke:2px #2b262055;margin:0 0 6px}
+.tz-orbs-h{font-size:clamp(38px,5.4vw,72px);line-height:1.08;letter-spacing:-.025em;
+  font-weight:700;margin:0 0 24px;max-width:14ch}
+.tz-orbs-sub{font-size:clamp(16px,1.6vw,19px);line-height:1.65;max-width:40ch;
+  margin:0 0 40px;opacity:.78}
+.tz-orbs-cta{display:inline-block;background:var(--ink);color:#fff8f0;text-decoration:none;
+  font-weight:700;font-size:15px;padding:18px 42px;border-radius:999px;
+  box-shadow:0 14px 34px #2b262033;transition:transform .25s cubic-bezier(.22,1,.36,1)}
+.tz-orbs-cta:hover{transform:translateY(-3px)}
+@media (prefers-reduced-motion:reduce){.tz-orb{animation:none}}
+</style>
