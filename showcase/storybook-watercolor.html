@@ -1,0 +1,126 @@
+<!--tz-meta {"id":"showcase-storybook-watercolor","title":"Storybook Watercolor showcase","category":"Showcase","file":"showcase/storybook-watercolor.html","tags":["storybook-watercolor"],"description":"Live demo page for the Storybook Watercolor style DNA.","dnas":["storybook-watercolor"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Storybook Watercolor — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Karla:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f7f0dc; --tz-surface:#fdf8ea; --tz-ink:#2e2a23; --tz-muted:#8a7f6c;
+  --tz-accent:#d95f43; --tz-line:#2e2a2326;
+  --tz-wobble:255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Karla",sans-serif;font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:0.5;z-index:60;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.18 0 0 0 0 0.16 0 0 0 0 0.14 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 4vw;border-bottom:1px solid var(--tz-line);font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.1em}
+.tz-wordmark{font-family:"Caveat",cursive;font-size:1.6rem;font-weight:700;color:var(--tz-ink)}
+.tz-label{color:var(--tz-muted)}
+.tz-hero{display:grid;grid-template-columns:1.2fr 0.8fr;gap:3rem;align-items:center;padding:4.5rem 4vw 4rem}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.14em;color:var(--tz-muted);margin-bottom:1.2rem}
+.tz-hero h1{font-family:"Caveat",cursive;font-weight:700;font-size:clamp(3rem,7.5vw,5.2rem);line-height:1.02;transform:rotate(-1deg);transform-origin:left center;animation:tz-letter 900ms ease-out both}
+@keyframes tz-letter{from{opacity:0;transform:rotate(-1deg) translateX(-14px)}to{opacity:1;transform:rotate(-1deg) translateX(0)}}
+.tz-crayon{position:relative;display:inline-block}
+.tz-crayon::after{content:"";position:absolute;left:-0.1em;right:-0.45em;bottom:0.02em;height:0.22em;background:var(--tz-accent);border-radius:var(--tz-wobble);z-index:-1;opacity:0.85}
+.tz-sub{margin-top:1.4rem;font-size:1.05rem;color:var(--tz-muted);max-width:44ch}
+.tz-cta{display:inline-block;margin-top:2rem;background:var(--tz-accent);color:var(--tz-surface);font-family:"Caveat",cursive;font-weight:700;font-size:1.35rem;text-decoration:none;padding:0.5rem 1.8rem;border-radius:var(--tz-wobble);transform:rotate(-1deg);transition:transform .2s ease}
+.tz-cta:hover{transform:rotate(1deg) scale(1.04)}
+.tz-page{font-family:"Space Mono",monospace;font-size:0.72rem;color:var(--tz-muted);margin-top:1.6rem;letter-spacing:0.1em}
+.tz-paint{background:var(--tz-accent);border:2px solid var(--tz-ink);border-radius:var(--tz-wobble);padding:2.2rem;position:relative;justify-self:end;max-width:340px;animation:tz-dry 900ms ease-out both, tz-float 7s ease-in-out 1s infinite}
+@keyframes tz-dry{from{opacity:0;transform:scale(0.94)}to{opacity:1;transform:scale(1)}}
+@keyframes tz-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.tz-paint h2{font-family:"Caveat",cursive;font-size:2rem;color:var(--tz-surface);line-height:1.1;margin-bottom:0.6rem}
+.tz-paint p{color:var(--tz-surface);font-size:0.95rem;opacity:0.92}
+.tz-paint .tz-loaf{font-family:"Caveat",cursive;font-size:3.4rem;color:var(--tz-surface);display:block;margin-top:0.6rem}
+.tz-paint .tz-tag{position:absolute;top:-0.9rem;right:1.4rem;background:var(--tz-ink);color:var(--tz-surface);font-family:"Space Mono",monospace;font-size:0.66rem;padding:0.3rem 0.7rem;letter-spacing:0.12em;transform:rotate(3deg);border-radius:var(--tz-wobble)}
+.tz-content{padding:0 4vw 1rem}
+.tz-chapter{font-family:"Caveat",cursive;font-weight:700;font-size:2.6rem;margin-bottom:0.4rem}
+.tz-chapter .tz-crayon::after{right:-0.35em}
+.tz-chapnote{font-family:"Space Mono",monospace;font-size:0.72rem;color:var(--tz-muted);letter-spacing:0.1em;margin-bottom:1.8rem}
+.tz-menu{list-style:none;max-width:620px}
+.tz-menu li{display:flex;align-items:baseline;gap:0.7rem;padding:1rem 0;border-bottom:1px solid var(--tz-line)}
+.tz-dish{font-family:"Caveat",cursive;font-size:1.5rem;font-weight:500}
+.tz-dots{flex:1;border-bottom:2px dotted var(--tz-muted);opacity:0.6}
+.tz-price{font-family:"Space Mono",monospace;font-size:0.85rem}
+.tz-hours{margin:3rem 0 0;background:var(--tz-surface);border:2px solid var(--tz-ink);border-radius:var(--tz-wobble);padding:1.8rem;max-width:560px;position:relative;transform:rotate(0.6deg)}
+.tz-hours h2{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.16em;color:var(--tz-muted);margin-bottom:0.7rem;font-weight:400}
+.tz-hours p{font-family:"Caveat",cursive;font-size:1.5rem}
+.tz-ring{position:absolute;top:-1.1rem;right:2.2rem;width:3.4rem;height:3.4rem;border:3px solid #6f4f2e;border-radius:60% 40% 55% 45% / 45% 55% 40% 60%;opacity:0.35;transform:rotate(12deg);pointer-events:none}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Caveat",cursive;font-weight:700;font-size:2.2rem;margin-bottom:1.2rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1;border-radius:var(--tz-wobble);overflow:hidden}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"Space Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Space Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"Space Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-hero{grid-template-columns:1fr;gap:2rem}
+  .tz-paint{justify-self:start;max-width:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-hero h1,.tz-paint{transform:rotate(-1deg)}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Willow &amp; Crumb</span>
+  <span class="tz-label">TZ-taste style DNA</span>
+</header>
+
+<section class="tz-hero">
+  <div>
+    <p class="tz-eyebrow">EST. 1998 · MAPLE STREET BAKERY</p>
+    <h1>The bakery opens <span class="tz-crayon">at dawn.</span></h1>
+    <p class="tz-sub">Sourdough at seven, cinnamon rolls by eight. If you smell it from the corner, follow your nose — that's the address.</p>
+    <a class="tz-cta" href="#">Read the menu</a>
+    <p class="tz-page">Page 1</p>
+  </div>
+  <div class="tz-paint">
+    <span class="tz-tag">FRESH OUT</span>
+    <h2>Today's first loaf</h2>
+    <p>Country sourdough, crackled crust, still warm at 7:05. One per customer till noon.</p>
+    <span class="tz-loaf" aria-hidden="true">~ ~ ~</span>
+  </div>
+</section>
+
+<section class="tz-content">
+  <h2 class="tz-chapter"><span class="tz-crayon">Chapter Two:</span> Flavors</h2>
+  <p class="tz-chapnote">PAGE 3 · EVERYTHING BAKED THIS MORNING</p>
+  <ul class="tz-menu">
+    <li><span class="tz-dish">Country sourdough</span><span class="tz-dots"></span><span class="tz-price">7</span></li>
+    <li><span class="tz-dish">Cinnamon morning bun</span><span class="tz-dots"></span><span class="tz-price">4.50</span></li>
+    <li><span class="tz-dish">Rye with caraway</span><span class="tz-dots"></span><span class="tz-price">6.50</span></li>
+    <li><span class="tz-dish">Honey oat sandwich loaf</span><span class="tz-dots"></span><span class="tz-price">8</span></li>
+    <li><span class="tz-dish">Apricot pocket pie</span><span class="tz-dots"></span><span class="tz-price">5</span></li>
+  </ul>
+
+  <div class="tz-hours">
+    <span class="tz-ring" aria-hidden="true"></span>
+    <h2>SATURDAY HOURS</h2>
+    <p>Open 7am to 2pm. The coffee ring is from the good mug — help yourself.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#f7f0dc"></span><span class="tz-name">bg</span><span class="tz-hex">#f7f0dc</span></li>
+    <li><span class="tz-chip" style="background:#fdf8ea"></span><span class="tz-name">surface</span><span class="tz-hex">#fdf8ea</span></li>
+    <li><span class="tz-chip" style="background:#2e2a23"></span><span class="tz-name">ink</span><span class="tz-hex">#2e2a23</span></li>
+    <li><span class="tz-chip" style="background:#8a7f6c"></span><span class="tz-name">muted</span><span class="tz-hex">#8a7f6c</span></li>
+    <li><span class="tz-chip" style="background:#d95f43"></span><span class="tz-name">accent</span><span class="tz-hex">#d95f43</span></li>
+    <li><span class="tz-chip" style="background:#2e2a2326"></span><span class="tz-name">line</span><span class="tz-hex">#2e2a2326</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
