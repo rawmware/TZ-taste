@@ -1,0 +1,123 @@
+<!--tz-meta {"id":"showcase-sauna-cedar","title":"Sauna Cedar showcase","category":"Showcase","file":"showcase/sauna-cedar.html","tags":["sauna-cedar"],"description":"Live demo page for the Sauna Cedar style DNA.","dnas":["sauna-cedar"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sauna Cedar — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,600&family=Karla:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#2b1a0e; --tz-surface:#3e2614; --tz-ink:#f3e6d0; --tz-muted:#a98d68;
+  --tz-accent:#e07b39; --tz-line:#e07b3933;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Karla",sans-serif;font-size:1.05rem;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 4vw;font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.12em;color:var(--tz-muted)}
+.tz-wordmark{font-family:"Fraunces",serif;font-size:1.4rem;font-weight:600;color:var(--tz-ink);letter-spacing:0.02em}
+.tz-hero{padding:9rem 4vw 8rem;text-align:center;position:relative;max-width:900px;margin:0 auto}
+.tz-steam{position:absolute;left:50%;bottom:18%;width:120px;height:220px;transform:translateX(-50%);opacity:0.5;pointer-events:none}
+.tz-steam span{position:absolute;bottom:0;width:46px;height:120px;border-radius:50%;background:var(--tz-ink);filter:blur(28px);opacity:0.16;animation:tz-rise 7s ease-in-out infinite}
+.tz-steam span:nth-child(2){left:34px;animation-delay:2.2s;height:150px}
+.tz-steam span:nth-child(3){left:68px;animation-delay:4.4s;height:100px}
+@keyframes tz-rise{0%{transform:translateY(40px);opacity:0}30%{opacity:0.16}100%{transform:translateY(-90px);opacity:0}}
+.tz-eyebrow{font-family:"IBM Plex Mono",monospace;font-size:0.75rem;letter-spacing:0.2em;color:var(--tz-muted);margin-bottom:2rem}
+.tz-temp{font-family:"IBM Plex Mono",monospace;font-size:clamp(5rem,18vw,12rem);font-weight:500;line-height:1;letter-spacing:-0.02em}
+.tz-ember{display:block;width:min(420px,70%);height:3px;background:var(--tz-accent);margin:1.6rem auto 0;animation:tz-glow 4s ease-in-out infinite}
+@keyframes tz-glow{0%,100%{opacity:0.55}50%{opacity:1}}
+.tz-ready{font-family:"Fraunces",serif;font-size:clamp(1.5rem,4vw,2.2rem);font-weight:300;margin-top:2rem}
+.tz-sub{margin:1.2rem auto 0;color:var(--tz-muted);max-width:44ch}
+.tz-cta{display:inline-block;margin-top:2.6rem;border:1px solid var(--tz-line);color:var(--tz-ink);font-size:1rem;font-weight:600;letter-spacing:0.04em;text-decoration:none;padding:1rem 2.6rem;border-radius:10px;transition:opacity .2s ease}
+.tz-cta:hover{opacity:0.75}
+.tz-content{padding:6rem 4vw;max-width:760px;margin:0 auto;text-align:center}
+.tz-content h2{font-family:"Fraunces",serif;font-weight:300;font-size:clamp(2rem,5vw,3rem);margin-bottom:0.6rem}
+.tz-content .tz-note{color:var(--tz-muted);margin-bottom:3.5rem}
+.tz-ritual{list-style:none;text-align:left}
+.tz-ritual li{background:var(--tz-surface);border:1px solid var(--tz-line);border-radius:10px;padding:2.2rem;margin-bottom:1.6rem;animation:tz-fade 0.6s ease both}
+.tz-ritual li:nth-child(2){animation-delay:0.15s}
+.tz-ritual li:nth-child(3){animation-delay:0.3s}
+.tz-ritual li:nth-child(4){animation-delay:0.45s}
+@keyframes tz-fade{from{opacity:0}to{opacity:1}}
+.tz-step{display:block;font-family:"IBM Plex Mono",monospace;font-size:0.72rem;letter-spacing:0.2em;color:var(--tz-accent);margin-bottom:0.8rem}
+.tz-ritual h3{font-family:"Fraunces",serif;font-weight:600;font-size:1.7rem;margin-bottom:0.5rem}
+.tz-ritual p{color:var(--tz-muted)}
+.tz-ritual .tz-time{font-family:"IBM Plex Mono",monospace;font-size:0.8rem;color:var(--tz-ink);letter-spacing:0.08em}
+.tz-quietline{margin-top:4rem;color:var(--tz-muted);font-size:0.95rem}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);max-width:1100px;margin:0 auto}
+.tz-tokens h2{font-family:"Fraunces",serif;font-weight:600;font-size:1.7rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1;border-radius:10px;overflow:hidden}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"IBM Plex Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"IBM Plex Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"IBM Plex Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em;text-align:center}
+@media(max-width:700px){
+  .tz-hero{padding:6rem 4vw 5rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-steam{display:none}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Löyly House</span>
+  <span>QUIET HOURS 7–9AM</span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-steam" aria-hidden="true"><span></span><span></span><span></span></div>
+  <p class="tz-eyebrow">THE STONES ARE LIT · WATER ON THE WAY</p>
+  <p class="tz-temp">86°C</p>
+  <span class="tz-ember" aria-hidden="true"></span>
+  <p class="tz-ready">The stones are ready. So are you.</p>
+  <p class="tz-sub">Bucket's full. Ladle at will. Nobody here is in a hurry, and that's the point.</p>
+  <a class="tz-cta" href="#">Book the private hour</a>
+</section>
+
+<section class="tz-content">
+  <h2>The ritual, in order</h2>
+  <p class="tz-note">Four steps. No shortcuts. The sauna has no deadline.</p>
+  <ol class="tz-ritual">
+    <li>
+      <span class="tz-step">STEP 01</span>
+      <h3>Warm up</h3>
+      <p>Sit. Breathe. Let the cedar do the talking. <span class="tz-time">10–15 MIN</span></p>
+    </li>
+    <li>
+      <span class="tz-step">STEP 02</span>
+      <h3>Löyly</h3>
+      <p>Water on the stones. The room goes quiet — that's the steam arriving. <span class="tz-time">86°C · AS NEEDED</span></p>
+    </li>
+    <li>
+      <span class="tz-step">STEP 03</span>
+      <h3>Cool down</h3>
+      <p>Cold plunge, cold shower, or just the night air. Don't rush this part. <span class="tz-time">5 MIN</span></p>
+    </li>
+    <li>
+      <span class="tz-step">STEP 04</span>
+      <h3>Rest</h3>
+      <p>Blanket, bench, maybe tea. Repeat the whole thing if the evening allows. <span class="tz-time">20 MIN</span></p>
+    </li>
+  </ol>
+  <p class="tz-quietline">First visit? Ask for the tour. Second visit? You already know where the ladle is.</p>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#2b1a0e"></span><span class="tz-name">bg</span><span class="tz-hex">#2b1a0e</span></li>
+    <li><span class="tz-chip" style="background:#3e2614"></span><span class="tz-name">surface</span><span class="tz-hex">#3e2614</span></li>
+    <li><span class="tz-chip" style="background:#f3e6d0"></span><span class="tz-name">ink</span><span class="tz-hex">#f3e6d0</span></li>
+    <li><span class="tz-chip" style="background:#a98d68"></span><span class="tz-name">muted</span><span class="tz-hex">#a98d68</span></li>
+    <li><span class="tz-chip" style="background:#e07b39"></span><span class="tz-name">accent</span><span class="tz-hex">#e07b39</span></li>
+    <li><span class="tz-chip" style="background:#e07b3933"></span><span class="tz-name">line</span><span class="tz-hex">#e07b3933</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
