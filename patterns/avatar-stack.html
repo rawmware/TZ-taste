@@ -1,0 +1,36 @@
+<!--tz-meta {"id":"avatar-stack","title":"Avatar stack","category":"Team","file":"patterns/avatar-stack.html","tags":["avatars","team","social-proof"],"description":"Overlapping initial-avatars with a count chip and one line of proof.","dnas":["editorial-serif"]} -->
+<section class="tz-avatar-stack" aria-label="Who is using it">
+  <div class="tz-row">
+    <div class="tz-faces" aria-hidden="true">
+      <span class="tz-face tz-f1">MK</span>
+      <span class="tz-face tz-f2">AO</span>
+      <span class="tz-face tz-f3">JR</span>
+      <span class="tz-face tz-f4">TL</span>
+      <span class="tz-face tz-f5">NP</span>
+      <span class="tz-count">+2.4k</span>
+    </div>
+    <p class="tz-proof">Joined by <strong>2,409 designers</strong> this month &mdash; <a href="#">read their reviews</a>.</p>
+  </div>
+</section>
+<style>
+.tz-avatar-stack{--bg:#f5f1e8;--ink:#1c1a15;--accent:#b5461f;--muted:#6f6a5e;
+  --surface:#efe9da;--line:#1c1a1522;
+  background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;
+  padding:clamp(40px,6vw,80px) clamp(20px,6vw,80px)}
+.tz-row{display:flex;align-items:center;gap:24px;max-width:900px;margin:0 auto}
+.tz-faces{display:flex;align-items:center}
+.tz-face{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:15px;font-weight:700;letter-spacing:.04em;
+  border:2px solid var(--bg);margin-left:-16px;color:var(--bg);flex-shrink:0;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.tz-face:first-child{margin-left:0}
+.tz-f1{background:#b5461f}.tz-f2{background:#1c1a15}.tz-f3{background:#6f6a5e}
+.tz-f4{background:#3e5c4b}.tz-f5{background:#8a6d2f}
+.tz-count{margin-left:-16px;background:var(--ink);color:var(--bg);border-radius:999px;
+  padding:8px 14px;font-size:13px;font-weight:700;border:2px solid var(--bg);
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:nowrap;flex-shrink:0}
+.tz-proof{margin:0;font-size:16.5px;line-height:1.55}
+.tz-proof a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
+@media(max-width:560px){.tz-row{flex-direction:column;align-items:flex-start;gap:18px}
+  .tz-face{width:44px;height:44px;font-size:13px}}
+</style>
