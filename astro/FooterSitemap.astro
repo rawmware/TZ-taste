@@ -1,0 +1,158 @@
+<!--tz-meta {"id":"astro-footer-sitemap","title":"Sitemap footer (Astro)","category":"Astro","file":"astro/FooterSitemap.astro","tags":["astro","footer"],"description":"Transit-style sitemap footer: station header, line-badge section labels, and a route strip of wayfinding dots.","dnas":["transit-swiss"]} -->
+---
+const {
+  brand = "Northbeam",
+  station = "Central Terminus",
+  tagline = "All lines terminate here.",
+  lines = [
+    { code: "L1", label: "Company", links: ["About", "Careers", "Press kit", "Investors"] },
+    { code: "L2", label: "Product", links: ["Features", "Pricing", "Changelog", "Roadmap"] },
+    { code: "L3", label: "Resources", links: ["Documentation", "API reference", "Status", "Journal"] },
+    { code: "L4", label: "Solutions", links: ["Startups", "Agencies", "Education", "Nonprofits"] },
+    { code: "L5", label: "Legal", links: ["Privacy", "Terms", "Security", "Cookies"] },
+  ],
+  legal = ["Accessibility", "Do not sell my info", "Sitemap"],
+  notice = "© 2026 Northbeam Systems · Service runs 24/7 · Mind the gap",
+} = Astro.props;
+---
+<footer class="tz-term">
+  <div class="tz-term-station">
+    <p class="tz-term-brand"><span class="tz-term-dot" aria-hidden="true"></span>{brand}</p>
+    <p class="tz-term-stop">{station} — {tagline}</p>
+  </div>
+  <div class="tz-term-grid">
+    {lines.map((l) => (
+      <div class="tz-term-col">
+        <p class="tz-term-label">
+          <span class="tz-term-badge">{l.code}</span>
+          {l.label}
+        </p>
+        {l.links.map((link) => <a href="#">{link}</a>)}
+      </div>
+    ))}
+  </div>
+  <div class="tz-term-route" aria-hidden="true">
+    {lines.map((l) => (
+      <span class="tz-term-route-stop" title={l.label}><span class="tz-term-route-dot"></span>{l.code}</span>
+    ))}
+  </div>
+  <div class="tz-term-base">
+    <span>{notice}</span>
+    <span class="tz-term-legal">{legal.map((g) => <a href="#">{g}</a>)}</span>
+  </div>
+</footer>
+<style>
+  .tz-term {
+    background: #ffffff;
+    color: #111417;
+    font-family: "DM Sans", sans-serif;
+    padding: clamp(48px, 6vw, 84px) clamp(24px, 5vw, 80px) 32px;
+    border-top: 4px solid #111417;
+  }
+  .tz-term-station {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 20px; flex-wrap: wrap; margin-bottom: 44px;
+  }
+  .tz-term-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: "Archivo", sans-serif;
+    font-weight: 800;
+    font-size: 30px;
+    letter-spacing: -0.02em;
+    margin: 0;
+  }
+  .tz-term-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #d0342c;
+    flex: none;
+  }
+  .tz-term-stop {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #5c6670;
+    margin: 0;
+  }
+  .tz-term-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 36px;
+    margin-bottom: 52px;
+  }
+  .tz-term-col {
+    display: flex; flex-direction: column; gap: 10px;
+    border-left: 2px solid #dfe3e6; padding-left: 22px;
+  }
+  .tz-term-label {
+    display: flex; align-items: center; gap: 10px;
+    font-family: "Archivo", sans-serif; font-weight: 700; font-size: 14px;
+    letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 10px;
+  }
+  .tz-term-badge {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    font-weight: 600;
+    background: #111417;
+    color: #ffffff;
+    padding: 4px 9px;
+    letter-spacing: 0.1em;
+  }
+  .tz-term-col a {
+    color: #111417;
+    text-decoration: none;
+    font-size: 14.5px;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .tz-term-col a:hover {
+    opacity: 0.6;
+    transform: translateX(3px);
+  }
+  .tz-term-route {
+    display: flex; align-items: center;
+    border-top: 2px solid #111417; padding: 22px 0; margin-bottom: 8px;
+    overflow-x: auto;
+  }
+  .tz-term-route-stop {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: #5c6670;
+    padding-right: 34px;
+    white-space: nowrap;
+  }
+  .tz-term-route-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #d0342c;
+    flex: none;
+  }
+  .tz-term-route-stop:not(:last-child) .tz-term-route-dot {
+    box-shadow: 24px 0 0 -2px #dfe3e6;
+  }
+  .tz-term-base {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 16px; flex-wrap: wrap; font-size: 13px; color: #5c6670;
+    border-top: 1px solid #dfe3e6; padding-top: 20px;
+  }
+  .tz-term-legal { display: flex; gap: 22px; }
+  .tz-term-legal a {
+    color: #5c6670;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+  .tz-term-legal a:hover { opacity: 0.55; }
+  @media (max-width: 900px) { .tz-term-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 560px) { .tz-term-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (prefers-reduced-motion: reduce) {
+    .tz-term-col a, .tz-term-legal a { transition: none; }
+  }
+</style>
