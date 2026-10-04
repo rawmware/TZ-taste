@@ -1,0 +1,153 @@
+<!--tz-meta {"id":"gen-geo-strange-attractors","title":"Strange Attractors","category":"Generative","file":"generative/geo-strange-attractors.html","tags":["attractors","chaos","lorenz"],"description":"Lorenz, Rössler, and Aizawa systems integrated live in 3D, projected to 2D with depth shading — switch systems live.","dnas":["retro-terminal"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strange Attractors · TZ-taste</title>
+<style>
+  .tz-page{background:#0E100D;color:#EDEBE2;min-height:100vh;font-family:Georgia,'Times New Roman',serif;margin:0}
+  .tz-wrap{max-width:1080px;margin:0 auto;padding:32px 20px 48px}
+  .tz-kicker{font-family:'Courier New',Courier,monospace;font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#9AE66E;margin:0 0 12px}
+  .tz-title{font-size:clamp(32px,6vw,52px);font-weight:700;margin:0 0 10px;line-height:1.05}
+  .tz-caption{font-size:16px;line-height:1.6;max-width:62ch;margin:0 0 4px;color:#a9ada0}
+  .tz-controls{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+  .tz-btn{font-family:'Courier New',Courier,monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;background:transparent;color:#EDEBE2;border:2px solid #EDEBE2;padding:10px 18px;cursor:pointer}
+  .tz-btn:hover{background:#EDEBE2;color:#0E100D}
+  .tz-btn:active{transform:translateY(1px)}
+  .tz-btn.on{background:#9AE66E;border-color:#9AE66E;color:#0E100D}
+  .tz-canvas{display:block;width:100%;height:70vh;background:#0E100D;border:2px solid #EDEBE2;cursor:pointer}
+  .tz-foot{font-family:'Courier New',Courier,monospace;font-size:12px;color:#6f7466;margin:14px 0 0;line-height:1.6}
+</style>
+</head>
+<body class="tz-page">
+<div class="tz-wrap">
+  <p class="tz-kicker">TZ-taste · Generative</p>
+  <h1 class="tz-title">Strange Attractors</h1>
+  <p class="tz-caption">Three chaotic ODE systems integrated live, rotated slowly in 3D and projected to 2D — each point's brightness is its depth. Bounded, deterministic, and never repeating.</p>
+  <div class="tz-controls">
+    <button class="tz-btn on" id="tz-lorenz" type="button">Lorenz</button>
+    <button class="tz-btn" id="tz-rossler" type="button">Rössler</button>
+    <button class="tz-btn" id="tz-aizawa" type="button">Aizawa</button>
+    <button class="tz-btn" id="tz-seed" type="button">New seed</button>
+    <button class="tz-btn" id="tz-pause" type="button">Pause</button>
+    <button class="tz-btn" id="tz-clear" type="button">Clear</button>
+  </div>
+  <canvas class="tz-canvas" id="tz-canvas"></canvas>
+  <p class="tz-foot">One distinctive choice: the view rotates while the system integrates, so the "butterfly" is really a 3D object. <span id="tz-sys">Lorenz</span> · Seed <span id="tz-seednum"></span>.</p>
+</div>
+<script>
+(function(){
+  var BG='#0E100D', PHOS='#9AE66E';
+  var SYSTEMS={
+    lorenz:{label:'Lorenz',par:[10,28,8/3],dt:0.006,steps:14,transient:400,span:52,zcz:24,zmin:0,zmax:50,
+      init:function(r){return [-8+r()*6,6+r()*6,22+r()*8];},
+      f:function(p,x,y,z){return [p[0]*(y-x),x*(p[1]-z)-y,x*y-p[2]*z];}},
+    rossler:{label:'Rössler',par:[0.2,0.2,5.7],dt:0.02,steps:14,transient:600,span:30,zcz:6,zmin:0,zmax:26,
+      init:function(r){return [1+r()*2,1+r()*2,0.5+r()];},
+      f:function(p,x,y,z){return [-y-z,x+p[0]*y,p[1]+z*(x-p[2])];}},
+    aizawa:{label:'Aizawa',par:[0.95,0.7,0.6,3.5,0.25,0.1],dt:0.015,steps:14,transient:500,span:3.4,zcz:0,zmin:-1.4,zmax:1.4,
+      init:function(r){return [0.1+r()*0.2,r()*0.2,r()*0.2];},
+      f:function(p,x,y,z){return [(z-p[1])*x-p[3]*y,p[3]*x+(z-p[1])*y,p[2]+p[0]*z-Math.pow(z,3)/3-(x*x+y*y)*(1+p[4]*z)+p[5]*z*x*x*x];}}
+  };
+  var canvas=document.getElementById('tz-canvas'), ctx=canvas.getContext('2d');
+  var seedBtn=document.getElementById('tz-seed'), pauseBtn=document.getElementById('tz-pause'),
+      clearBtn=document.getElementById('tz-clear'), seedNum=document.getElementById('tz-seednum'),
+      sysLabel=document.getElementById('tz-sys');
+  var sysBtns={lorenz:document.getElementById('tz-lorenz'),rossler:document.getElementById('tz-rossler'),aizawa:document.getElementById('tz-aizawa')};
+  var seed=202610, rng=mulberry32(seed), sysName='lorenz';
+  var st=[0,0,0], phi=0.6, W=0, H=0, k=1;
+  var running=true, raf=null;
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+
+  function reset(){
+    rng=mulberry32(seed);
+    var S=SYSTEMS[sysName];
+    st=S.init(rng);
+    var i;
+    for(i=0;i<S.transient;i++)step(S);
+    ctx.fillStyle=BG;ctx.fillRect(0,0,W,H);
+    seedNum.textContent=seed;
+    sysLabel.textContent=S.label;
+  }
+
+  function step(S){
+    var d=S.f(S.par,st[0],st[1],st[2]);
+    st[0]+=d[0]*S.dt;st[1]+=d[1]*S.dt;st[2]+=d[2]*S.dt;
+  }
+
+  function plot(){
+    var S=SYSTEMS[sysName];
+    var c=Math.cos(phi), s=Math.sin(phi);
+    var xr=st[0]*c-st[1]*s;
+    var X=W/2+xr*k, Y=H*0.56-(st[2]-S.zcz)*k;
+    var depth=(st[2]-S.zmin)/(S.zmax-S.zmin);
+    if(depth<0)depth=0;if(depth>1)depth=1;
+    ctx.globalAlpha=0.18+0.72*depth;
+    ctx.fillStyle=PHOS;
+    ctx.fillRect(X,Y,1.7,1.7);
+    ctx.globalAlpha=1;
+  }
+
+  function frame(){
+    if(!running){raf=null;return;}
+    var S=SYSTEMS[sysName], i;
+    ctx.fillStyle='rgba(14,16,13,0.045)';
+    ctx.fillRect(0,0,W,H);
+    for(i=0;i<S.steps;i++){step(S);plot();}
+    phi+=0.0016;
+    raf=requestAnimationFrame(frame);
+  }
+
+  function setSystem(name){
+    sysName=name;
+    k=Math.min(W,H)/SYSTEMS[sysName].span;
+    for(var key in sysBtns)sysBtns[key].classList.toggle('on',key===name);
+    reset();
+    if(reduced)renderStatic();
+  }
+
+  function reseed(){
+    seed=(seed*9301+49297)%233280;
+    reset();
+    if(reduced)renderStatic();
+  }
+
+  function renderStatic(){
+    var S=SYSTEMS[sysName], i;
+    phi=0.6;
+    for(i=0;i<9000;i++){step(S);plot();}
+  }
+
+  function resize(){
+    var dpr=Math.min(window.devicePixelRatio||1,2);
+    var r=canvas.getBoundingClientRect();
+    W=r.width;H=r.height;
+    canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    k=Math.min(W,H)/SYSTEMS[sysName].span;
+    reset();
+    if(reduced)renderStatic();
+    if(running&&!reduced&&!raf)raf=requestAnimationFrame(frame);
+  }
+
+  sysBtns.lorenz.addEventListener('click',function(){setSystem('lorenz');});
+  sysBtns.rossler.addEventListener('click',function(){setSystem('rossler');});
+  sysBtns.aizawa.addEventListener('click',function(){setSystem('aizawa');});
+  seedBtn.addEventListener('click',reseed);
+  canvas.addEventListener('click',reseed);
+  pauseBtn.addEventListener('click',function(){
+    running=!running;pauseBtn.textContent=running?'Pause':'Resume';
+    if(running&&!reduced&&!raf)raf=requestAnimationFrame(frame);
+  });
+  clearBtn.addEventListener('click',function(){ctx.fillStyle=BG;ctx.fillRect(0,0,W,H);});
+
+  window.addEventListener('resize',resize);
+  resize();
+  if(!reduced)raf=requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
