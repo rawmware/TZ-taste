@@ -1,0 +1,112 @@
+<!--tz-meta {"id":"gen-geo-tensegrity-struts","title":"Tensegrity Struts","category":"Generative","file":"generative/geo-tensegrity-struts.html","tags":["tensegrity","structure","3d"],"description":"A three-strut tensegrity prism floats in isometric projection — thick compression struts, hairline tension cables, breathing slowly.","dnas":["industrial-brutalist"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tensegrity Struts — TZ-taste Generative</title>
+<style>
+*{box-sizing:border-box}
+.tz-gen-body{margin:0;background:#d8d8d4;color:#141412;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;min-height:100vh}
+.tz-gen-wrap{max-width:1120px;margin:0 auto;padding:48px 24px 64px}
+.tz-gen-head{margin:0 0 28px}
+.tz-gen-kicker{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#ff4d00;margin:0 0 14px}
+.tz-gen-head h1{font-size:clamp(30px,5vw,52px);line-height:1.05;margin:0 0 12px;font-weight:800;letter-spacing:-0.02em}
+.tz-gen-caption{font-size:16px;line-height:1.6;color:#5c5c58;margin:0;max-width:62ch}
+.tz-gen-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:26px 0 14px}
+.tz-gen-btn{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;background:transparent;color:#141412;border:2px solid #141412;padding:9px 18px;border-radius:0;cursor:pointer}
+.tz-gen-btn:hover{border-color:#ff4d00;color:#ff4d00}
+.tz-gen-seed{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:12px;color:#5c5c58;margin-left:auto}
+.tz-gen-canvas{display:block;width:100%;height:70vh;border:2px solid #141412;border-radius:0;background:#d8d8d4}
+.tz-gen-note{font-size:14px;line-height:1.65;color:#5c5c58;margin:18px 0 0;max-width:70ch}
+@media(max-width:520px){.tz-gen-wrap{padding:32px 16px 48px}.tz-gen-seed{margin-left:0;width:100%}}
+</style>
+</head>
+<body class="tz-gen-body">
+<div class="tz-gen-wrap">
+  <header class="tz-gen-head">
+    <p class="tz-gen-kicker">TZ-taste · Generative</p>
+    <h1>Tensegrity Struts</h1>
+    <p class="tz-gen-caption">Three struts push apart while nine cables pull together — the structure holds itself up with nothing but balanced tension. Orange struts, hairline cables.</p>
+  </header>
+  <div class="tz-gen-bar">
+    <button class="tz-gen-btn" id="tzSeed">New seed</button>
+    <button class="tz-gen-btn" id="tzPause">Pause</button>
+    <button class="tz-gen-btn" id="tzClear">Clear</button>
+    <span class="tz-gen-seed" id="tzSeedLabel">Seed 0</span>
+  </div>
+  <canvas class="tz-gen-canvas" id="tzCv" aria-label="A rotating tensegrity prism structure"></canvas>
+  <p class="tz-gen-note">New seeds change the twist angle, proportions, and spin. Nothing here touches — that is the whole point of tensegrity.</p>
+</div>
+<script>
+'use strict';
+const cv=document.getElementById('tzCv'),ctx=cv.getContext('2d');
+const seedLabel=document.getElementById('tzSeedLabel');
+let W=0,H=0,seed=(Math.random()*1e9)|0,rand=null,t=0,running=true;
+let twist=2.6,R=120,HGT=190,spin=0.15;
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const BG='#d8d8d4',INK='#141412',ACC='#ff4d00';
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function init(){
+  rand=mulberry32(seed);t=0;
+  twist=2.3+rand()*0.9;
+  R=100+rand()*50;HGT=160+rand()*70;spin=0.1+rand()*0.15;
+  seedLabel.textContent='Seed '+seed;
+}
+function proj(x,y,z){
+  const ca=Math.cos(t*spin),sa=Math.sin(t*spin);
+  const x1=x*ca-z*sa,z1=x*sa+z*ca;
+  const f=520/(520+z1+220);
+  return [W/2+x1*f,H/2+y*f*0.9,z1];
+}
+function breathe(){return Math.sin(t*0.9)*14;}
+function nodePt(ring,i){
+  const a=(i/3)*Math.PI*2+(ring===1?twist:0);
+  const y=ring===0?-HGT/2:HGT/2+(ring===1?breathe():0);
+  return [Math.cos(a)*R,y,Math.sin(a)*R];
+}
+function line(a,b,width,color){
+  const pa=proj(a[0],a[1],a[2]),pb=proj(b[0],b[1],b[2]);
+  ctx.strokeStyle=color;ctx.lineWidth=width;ctx.lineCap='round';
+  ctx.beginPath();ctx.moveTo(pa[0],pa[1]);ctx.lineTo(pb[0],pb[1]);ctx.stroke();
+}
+function dot(p,color,r){
+  const q=proj(p[0],p[1],p[2]);
+  ctx.fillStyle=color;ctx.beginPath();ctx.arc(q[0],q[1],r,0,7);ctx.fill();
+}
+function step(){
+  t+=0.016;
+  ctx.fillStyle=BG;ctx.fillRect(0,0,W,H);
+  const bot=[nodePt(0,0),nodePt(0,1),nodePt(0,2)];
+  const top=[nodePt(1,0),nodePt(1,1),nodePt(1,2)];
+  for(let i=0;i<3;i++){
+    const j=(i+1)%3;
+    line(bot[i],bot[j],1,INK);
+    line(top[i],top[j],1,INK);
+    line(bot[i],top[j],1,INK);
+  }
+  const order=[[bot[0],top[0]],[bot[1],top[1]],[bot[2],top[2]]]
+    .map(s=>({s:s,z:(proj(s[0][0],s[0][1],s[0][2])[2]+proj(s[1][0],s[1][1],s[1][2])[2])/2}))
+    .sort((a,b)=>a.z-b.z);
+  for(const o of order)line(o.s[0],o.s[1],9,ACC);
+  for(let i=0;i<3;i++){dot(bot[i],INK,5);dot(top[i],INK,5);}
+  ctx.fillStyle=INK;ctx.font='11px "SF Mono",Consolas,monospace';
+  ctx.fillText('3 STRUTS / 9 CABLES / 0 TOUCHING',18,H-18);
+}
+function resize(){
+  const d=Math.min(window.devicePixelRatio||1,2),r=cv.getBoundingClientRect();
+  W=Math.max(2,Math.round(r.width));H=Math.max(2,Math.round(r.height));
+  cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);init();
+}
+window.addEventListener('resize',resize);
+document.getElementById('tzSeed').addEventListener('click',()=>{seed=(Math.random()*1e9)|0;init();if(!running)toggle();});
+document.getElementById('tzClear').addEventListener('click',()=>{t=0;});
+function toggle(){running=!running;document.getElementById('tzPause').textContent=running?'Pause':'Resume';if(running&&!reduced)tick();}
+document.getElementById('tzPause').addEventListener('click',toggle);
+function tick(){if(!running)return;step();requestAnimationFrame(tick);}
+resize();
+if(reduced){t=1.4;step();}
+else tick();
+</script>
+</body>
+</html>
