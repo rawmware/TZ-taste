@@ -1,0 +1,3 @@
+//tz-meta {"id":"tailwind-tokyo-kissaten","title":"Tokyo Kissaten Tailwind preset","category":"Tailwind","file":"tailwind/tokyo-kissaten.js","tags":["tailwind","preset","tokyo-kissaten"],"description":"Tailwind theme preset for the Tokyo Kissaten DNA.","dnas":["tokyo-kissaten"]}
+// Tailwind preset for the Tokyo Kissaten DNA. Extend tailwind.config with this.
+module.exports={theme:{extend:{colors:{tzbg:"#171009",tzink:"#f3e4c8",tzaccent:"#d9a441",tzmuted:"#9a7c5e",tzline:"#d9a44155",tzsurface:"#171009"},fontFamily:{display:["Shippori Mincho","serif"],body:["Zen Kaku Gothic New","sans-serif"],mono:["IBM Plex Mono","monospace"]}}}};
