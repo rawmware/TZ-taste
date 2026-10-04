@@ -1,0 +1,108 @@
+<!--tz-meta {"id":"showcase-fishing-tackle","title":"Fishing Tackle showcase","category":"Showcase","file":"showcase/fishing-tackle.html","tags":["fishing-tackle"],"description":"Live demo page for the Fishing Tackle style DNA.","dnas":["fishing-tackle"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fishing Tackle — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Work+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f2efe6; --tz-surface:#e4ddc9; --tz-ink:#23301f; --tz-muted:#6d7360;
+  --tz-accent:#d9480f; --tz-line:#23301f1f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Work Sans",sans-serif;font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 4vw;border-bottom:2px solid var(--tz-ink)}
+.tz-wordmark{font-family:"Oswald",sans-serif;font-size:1.2rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase}
+.tz-tip{background:var(--tz-surface);border:1px solid var(--tz-line);border-top:3px solid var(--tz-accent);padding:0.55rem 1rem;font-family:"Space Mono",monospace;font-size:0.68rem;letter-spacing:0.08em;color:var(--tz-muted);transform:rotate(-1.2deg);border-radius:3px;max-width:22rem}
+.tz-tip strong{color:var(--tz-ink)}
+.tz-hero{padding:5.5rem 4vw 3rem;position:relative}
+.tz-pegs{position:absolute;top:0;bottom:0;left:0;right:0;pointer-events:none;background-image:radial-gradient(var(--tz-line) 1.2px,transparent 1.2px);background-size:1.6rem 1.6rem;opacity:0.5}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.16em;color:var(--tz-muted);margin-bottom:1.4rem;position:relative}
+.tz-hero h1{font-family:"Oswald",sans-serif;font-size:clamp(2.8rem,9.5vw,6.5rem);line-height:0.98;font-weight:700;letter-spacing:0.01em;text-transform:uppercase;max-width:12ch;position:relative}
+.tz-sub{margin-top:1.6rem;font-size:1.05rem;color:var(--tz-muted);max-width:46ch;position:relative}
+.tz-cta{display:inline-block;margin-top:2.2rem;background:var(--tz-accent);color:#fff;font-family:"Oswald",sans-serif;font-size:1.1rem;font-weight:500;letter-spacing:0.06em;text-decoration:none;text-transform:uppercase;padding:0.95rem 2.2rem;border-radius:3px;position:relative;transition:opacity .15s ease}
+.tz-cta:hover{opacity:0.88}
+.tz-shelfband{margin:3.5rem 0 0;background:var(--tz-surface);border-top:1px solid var(--tz-line);border-bottom:1px solid var(--tz-line);padding:1.2rem 4vw;font-family:"Space Mono",monospace;font-size:0.78rem;letter-spacing:0.06em;color:var(--tz-muted)}
+.tz-shelfband strong{color:var(--tz-accent)}
+.tz-content{padding:2.5rem 4vw 1rem}
+.tz-content h2{font-family:"Oswald",sans-serif;font-size:clamp(1.8rem,5vw,2.7rem);font-weight:700;text-transform:uppercase;letter-spacing:0.02em;margin-bottom:0.4rem}
+.tz-subhead{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.14em;color:var(--tz-muted);margin-bottom:1.6rem}
+table.tz-lures{width:100%;border-collapse:collapse;max-width:760px}
+.tz-lures th{font-family:"Space Mono",monospace;font-size:0.66rem;font-weight:700;letter-spacing:0.14em;color:var(--tz-muted);text-align:left;padding:0.9rem 1.2rem;border-bottom:1px solid var(--tz-ink)}
+.tz-lures td{font-family:"Space Mono",monospace;font-size:0.86rem;padding:1rem 1.2rem;border-bottom:1px solid var(--tz-line)}
+.tz-lures td.tz-item{color:var(--tz-ink);font-weight:700}
+.tz-lures td.tz-price{color:var(--tz-accent);font-weight:700}
+.tz-tagrow{display:flex;gap:0.6rem;align-items:center;margin-bottom:0.4rem}
+.tz-pricetag{display:inline-block;background:var(--tz-accent);color:#fff;font-family:"Space Mono",monospace;font-size:0.68rem;font-weight:700;letter-spacing:0.06em;padding:0.3rem 0.6rem;border-radius:3px;transform:rotate(-2deg);transition:transform .2s ease}
+tr:hover .tz-pricetag{transform:rotate(2deg)}
+.tz-counter{margin:2.6rem 0 0;max-width:580px;color:var(--tz-muted)}
+.tz-counter strong{color:var(--tz-ink);font-weight:700}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Oswald",sans-serif;font-size:1.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1;border-radius:3px;overflow:hidden}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"Space Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Space Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"Space Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-hero{padding-top:4rem}
+  .tz-tip{display:none}
+  .tz-lures th:nth-child(3),.tz-lures td:nth-child(3){display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Ray&rsquo;s Tackle &amp; Bait</span>
+  <span class="tz-tip">TIP #12 &middot; <strong>TIE THE PALOMAR, CUT THE TAG END CLOSE</strong></span>
+</header>
+
+<section class="tz-hero">
+  <span class="tz-pegs" aria-hidden="true"></span>
+  <p class="tz-eyebrow">OPEN 5 AM &middot; LIVE BAIT FRIDGE RESTOCKED TUE &middot; ASK RAY</p>
+  <h1>The trout are biting on the green ones.</h1>
+  <p class="tz-sub">A thousand small decisions behind glass, organized by someone who takes this very seriously. Prices are on everything. They always are.</p>
+  <a class="tz-cta" href="#">Browse the lure wall</a>
+</section>
+
+<div class="tz-shelfband"><strong>MINNOWS ARE IN.</strong> THEY GO FAST ON SATURDAYS &middot; NIGHTCRAWLERS $4.99/DZ &middot; ICE $3/BAG</div>
+
+<section class="tz-content">
+  <h2>The lure wall</h2>
+  <p class="tz-subhead">PEG ROW C &middot; TROUT &middot; EVERY PRICE GUNNED ON</p>
+  <table class="tz-lures">
+    <thead><tr><th>LURE</th><th>SKU</th><th>COLOR</th><th>PRICE</th></tr></thead>
+    <tbody>
+      <tr><td class="tz-item"><span class="tz-tagrow"><span class="tz-pricetag">$6.49</span>SPINNER #3</span></td><td>SK-2210</td><td>FIRETIGER</td><td class="tz-price">$6.49</td></tr>
+      <tr><td class="tz-item"><span class="tz-tagrow"><span class="tz-pricetag">$5.99</span>SPOON 1/4 OZ</span></td><td>SK-1188</td><td>GREEN/CHART</td><td class="tz-price">$5.99</td></tr>
+      <tr><td class="tz-item"><span class="tz-tagrow"><span class="tz-pricetag">$8.29</span>CRANKBAIT SHALLOW</span></td><td>SK-3354</td><td>PERCH</td><td class="tz-price">$8.29</td></tr>
+      <tr><td class="tz-item"><span class="tz-tagrow"><span class="tz-pricetag">$4.49</span>JIG HEAD 1/8</span></td><td>SK-0901</td><td>UNPAINTED</td><td class="tz-price">$4.49</td></tr>
+      <tr><td class="tz-item"><span class="tz-tagrow"><span class="tz-pricetag">$7.19</span>SOFT CRAW 3&Prime;</span></td><td>SK-4472</td><td>PUMPKINSEED</td><td class="tz-price">$7.19</td></tr>
+    </tbody>
+  </table>
+  <p class="tz-counter"><strong>Shelf talk, overheard Tuesday:</strong> &ldquo;You lost it on the green one? Of course you did. Everyone loses it on the green one. Buy two.&rdquo; &mdash; Ray</p>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#f2efe6"></span><span class="tz-name">bg</span><span class="tz-hex">#f2efe6</span></li>
+    <li><span class="tz-chip" style="background:#e4ddc9"></span><span class="tz-name">surface</span><span class="tz-hex">#e4ddc9</span></li>
+    <li><span class="tz-chip" style="background:#23301f"></span><span class="tz-name">ink</span><span class="tz-hex">#23301f</span></li>
+    <li><span class="tz-chip" style="background:#6d7360"></span><span class="tz-name">muted</span><span class="tz-hex">#6d7360</span></li>
+    <li><span class="tz-chip" style="background:#d9480f"></span><span class="tz-name">accent</span><span class="tz-hex">#d9480f</span></li>
+    <li><span class="tz-chip" style="background:#23301f1f"></span><span class="tz-name">line</span><span class="tz-hex">#23301f1f</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
