@@ -1,5 +1,5 @@
 {
- "count": 72,
+ "count": 92,
  "updated": "2026-10-04",
  "usage": "W3C-format design tokens, one file per style DNA. Machine-readable color/type.",
  "tokens": [
@@ -64,6 +64,21 @@
    ]
   },
   {
+   "id": "tokens-apotheke",
+   "title": "Apotheke design tokens",
+   "category": "Tokens",
+   "file": "tokens/apotheke.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "apotheke"
+   ],
+   "description": "W3C-format design tokens for the Apotheke DNA.",
+   "dnas": [
+    "apotheke"
+   ]
+  },
+  {
    "id": "tokens-arctic-field",
    "title": "Arctic Field design tokens",
    "category": "Tokens",
@@ -109,6 +124,21 @@
    ]
   },
   {
+   "id": "tokens-barbershop-pole",
+   "title": "Barbershop Pole design tokens",
+   "category": "Tokens",
+   "file": "tokens/barbershop-pole.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "barbershop-pole"
+   ],
+   "description": "W3C-format design tokens for the Barbershop Pole DNA.",
+   "dnas": [
+    "barbershop-pole"
+   ]
+  },
+  {
    "id": "tokens-bauhaus-primary",
    "title": "Bauhaus Primary design tokens",
    "category": "Tokens",
@@ -139,6 +169,21 @@
    ]
   },
   {
+   "id": "tokens-bike-repair",
+   "title": "Bike Repair design tokens",
+   "category": "Tokens",
+   "file": "tokens/bike-repair.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "bike-repair"
+   ],
+   "description": "W3C-format design tokens for the Bike Repair DNA.",
+   "dnas": [
+    "bike-repair"
+   ]
+  },
+  {
    "id": "tokens-blueprint-tech",
    "title": "Blueprint Tech design tokens",
    "category": "Tokens",
@@ -166,6 +211,21 @@
    "description": "W3C-format design tokens for the Botanical Lab style DNA.",
    "dnas": [
     "botanical-lab"
+   ]
+  },
+  {
+   "id": "tokens-cassette-jcard",
+   "title": "Cassette J-Card design tokens",
+   "category": "Tokens",
+   "file": "tokens/cassette-jcard.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "cassette-jcard"
+   ],
+   "description": "W3C-format design tokens for the Cassette J-Card DNA.",
+   "dnas": [
+    "cassette-jcard"
    ]
   },
   {
@@ -226,6 +286,21 @@
    "description": "W3C-format design tokens for the Constructivist Red style DNA.",
    "dnas": [
     "constructivist-red"
+   ]
+  },
+  {
+   "id": "tokens-corner-deli",
+   "title": "Corner Deli design tokens",
+   "category": "Tokens",
+   "file": "tokens/corner-deli.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "corner-deli"
+   ],
+   "description": "W3C-format design tokens for the Corner Deli DNA.",
+   "dnas": [
+    "corner-deli"
    ]
   },
   {
@@ -334,6 +409,21 @@
    ]
   },
   {
+   "id": "tokens-drive-in-theater",
+   "title": "Drive-In Theater design tokens",
+   "category": "Tokens",
+   "file": "tokens/drive-in-theater.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "drive-in-theater"
+   ],
+   "description": "W3C-format design tokens for the Drive-In Theater DNA.",
+   "dnas": [
+    "drive-in-theater"
+   ]
+  },
+  {
    "id": "tokens-editorial-serif",
    "title": "Editorial Serif design tokens",
    "category": "Tokens",
@@ -346,6 +436,36 @@
    "description": "W3C-format design tokens for the Editorial Serif style DNA.",
    "dnas": [
     "editorial-serif"
+   ]
+  },
+  {
+   "id": "tokens-farmers-almanac",
+   "title": "Farmers Almanac design tokens",
+   "category": "Tokens",
+   "file": "tokens/farmers-almanac.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "farmers-almanac"
+   ],
+   "description": "W3C-format design tokens for the Farmers Almanac DNA.",
+   "dnas": [
+    "farmers-almanac"
+   ]
+  },
+  {
+   "id": "tokens-fishing-tackle",
+   "title": "Fishing Tackle design tokens",
+   "category": "Tokens",
+   "file": "tokens/fishing-tackle.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "fishing-tackle"
+   ],
+   "description": "W3C-format design tokens for the Fishing Tackle DNA.",
+   "dnas": [
+    "fishing-tackle"
    ]
   },
   {
@@ -559,6 +679,21 @@
    ]
   },
   {
+   "id": "tokens-locksmith-shop",
+   "title": "Locksmith Shop design tokens",
+   "category": "Tokens",
+   "file": "tokens/locksmith-shop.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "locksmith-shop"
+   ],
+   "description": "W3C-format design tokens for the Locksmith Shop DNA.",
+   "dnas": [
+    "locksmith-shop"
+   ]
+  },
+  {
    "id": "tokens-ma-japanese",
    "title": "Ma (Japanese Minimal) design tokens",
    "category": "Tokens",
@@ -571,6 +706,21 @@
    "description": "W3C-format design tokens for the Ma (Japanese Minimal) style DNA.",
    "dnas": [
     "ma-japanese"
+   ]
+  },
+  {
+   "id": "tokens-matchbook-cover",
+   "title": "Matchbook Cover design tokens",
+   "category": "Tokens",
+   "file": "tokens/matchbook-cover.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "matchbook-cover"
+   ],
+   "description": "W3C-format design tokens for the Matchbook Cover DNA.",
+   "dnas": [
+    "matchbook-cover"
    ]
   },
   {
@@ -661,6 +811,21 @@
    "description": "W3C-format design tokens for the Newsroom Wire DNA.",
    "dnas": [
     "newsroom-wire"
+   ]
+  },
+  {
+   "id": "tokens-night-market",
+   "title": "Night Market design tokens",
+   "category": "Tokens",
+   "file": "tokens/night-market.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "night-market"
+   ],
+   "description": "W3C-format design tokens for the Night Market DNA.",
+   "dnas": [
+    "night-market"
    ]
   },
   {
@@ -784,6 +949,36 @@
    ]
   },
   {
+   "id": "tokens-postage-stamp",
+   "title": "Postage Stamp design tokens",
+   "category": "Tokens",
+   "file": "tokens/postage-stamp.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "postage-stamp"
+   ],
+   "description": "W3C-format design tokens for the Postage Stamp DNA.",
+   "dnas": [
+    "postage-stamp"
+   ]
+  },
+  {
+   "id": "tokens-postcard-rack",
+   "title": "Postcard Rack design tokens",
+   "category": "Tokens",
+   "file": "tokens/postcard-rack.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "postcard-rack"
+   ],
+   "description": "W3C-format design tokens for the Postcard Rack DNA.",
+   "dnas": [
+    "postcard-rack"
+   ]
+  },
+  {
    "id": "tokens-retro-terminal",
    "title": "Retro Terminal design tokens",
    "category": "Tokens",
@@ -811,6 +1006,21 @@
    "description": "W3C-format design tokens for the Risograph Grain style DNA.",
    "dnas": [
     "risograph-grain"
+   ]
+  },
+  {
+   "id": "tokens-roadside-motel",
+   "title": "Roadside Motel design tokens",
+   "category": "Tokens",
+   "file": "tokens/roadside-motel.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "roadside-motel"
+   ],
+   "description": "W3C-format design tokens for the Roadside Motel DNA.",
+   "dnas": [
+    "roadside-motel"
    ]
   },
   {
@@ -856,6 +1066,36 @@
    "description": "W3C-format design tokens for the Scandi Calm style DNA.",
    "dnas": [
     "scandi-calm"
+   ]
+  },
+  {
+   "id": "tokens-seed-packet",
+   "title": "Seed Packet design tokens",
+   "category": "Tokens",
+   "file": "tokens/seed-packet.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "seed-packet"
+   ],
+   "description": "W3C-format design tokens for the Seed Packet DNA.",
+   "dnas": [
+    "seed-packet"
+   ]
+  },
+  {
+   "id": "tokens-sewing-pattern",
+   "title": "Sewing Pattern design tokens",
+   "category": "Tokens",
+   "file": "tokens/sewing-pattern.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "sewing-pattern"
+   ],
+   "description": "W3C-format design tokens for the Sewing Pattern DNA.",
+   "dnas": [
+    "sewing-pattern"
    ]
   },
   {
@@ -919,6 +1159,21 @@
    ]
   },
   {
+   "id": "tokens-swimming-pool",
+   "title": "Swimming Pool design tokens",
+   "category": "Tokens",
+   "file": "tokens/swimming-pool.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "swimming-pool"
+   ],
+   "description": "W3C-format design tokens for the Swimming Pool DNA.",
+   "dnas": [
+    "swimming-pool"
+   ]
+  },
+  {
    "id": "tokens-swiss-airline",
    "title": "Swiss Airline design tokens",
    "category": "Tokens",
@@ -961,6 +1216,21 @@
    "description": "W3C-format design tokens for the Swiss Rational style DNA.",
    "dnas": [
     "swiss-rational"
+   ]
+  },
+  {
+   "id": "tokens-ticket-stub",
+   "title": "Ticket Stub design tokens",
+   "category": "Tokens",
+   "file": "tokens/ticket-stub.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "ticket-stub"
+   ],
+   "description": "W3C-format design tokens for the Ticket Stub DNA.",
+   "dnas": [
+    "ticket-stub"
    ]
   },
   {
@@ -1024,6 +1294,21 @@
    ]
   },
   {
+   "id": "tokens-typewriter-repair",
+   "title": "Typewriter Repair design tokens",
+   "category": "Tokens",
+   "file": "tokens/typewriter-repair.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "typewriter-repair"
+   ],
+   "description": "W3C-format design tokens for the Typewriter Repair DNA.",
+   "dnas": [
+    "typewriter-repair"
+   ]
+  },
+  {
    "id": "tokens-ukiyo-e-print",
    "title": "Ukiyo-e Print design tokens",
    "category": "Tokens",
@@ -1066,6 +1351,21 @@
    "description": "W3C-format design tokens for the Vinyl Crate style DNA.",
    "dnas": [
     "vinyl-crate"
+   ]
+  },
+  {
+   "id": "tokens-weather-station",
+   "title": "Weather Station design tokens",
+   "category": "Tokens",
+   "file": "tokens/weather-station.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "weather-station"
+   ],
+   "description": "W3C-format design tokens for the Weather Station DNA.",
+   "dnas": [
+    "weather-station"
    ]
   },
   {
