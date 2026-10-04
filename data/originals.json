@@ -1,0 +1,378 @@
+[
+ {
+  "slug": "acid-rave",
+  "name": "Acid Rave"
+ },
+ {
+  "slug": "alpine-after-dark",
+  "name": "Alpine After Dark"
+ },
+ {
+  "slug": "alpine-ledger",
+  "name": "Alpine Ledger"
+ },
+ {
+  "slug": "aperitivo-italian",
+  "name": "Aperitivo Italian"
+ },
+ {
+  "slug": "apotheke",
+  "name": "Apotheke"
+ },
+ {
+  "slug": "arctic-field",
+  "name": "Arctic Field"
+ },
+ {
+  "slug": "art-deco-luxe",
+  "name": "Art Deco Luxe"
+ },
+ {
+  "slug": "art-nouveau-whiplash",
+  "name": "Art Nouveau Whiplash"
+ },
+ {
+  "slug": "barbershop-pole",
+  "name": "Barbershop Pole"
+ },
+ {
+  "slug": "bauhaus-primary",
+  "name": "Bauhaus Primary"
+ },
+ {
+  "slug": "bazaar-spice",
+  "name": "Bazaar Spice"
+ },
+ {
+  "slug": "bike-repair",
+  "name": "Bike Repair"
+ },
+ {
+  "slug": "blueprint-tech",
+  "name": "Blueprint Tech"
+ },
+ {
+  "slug": "botanical-lab",
+  "name": "Botanical Lab"
+ },
+ {
+  "slug": "cassette-jcard",
+  "name": "Cassette Jcard"
+ },
+ {
+  "slug": "chalkboard-cafe",
+  "name": "Chalkboard Cafe"
+ },
+ {
+  "slug": "circus-poster",
+  "name": "Circus Poster"
+ },
+ {
+  "slug": "concrete-poem",
+  "name": "Concrete Poem"
+ },
+ {
+  "slug": "constructivist-red",
+  "name": "Constructivist Red"
+ },
+ {
+  "slug": "corner-deli",
+  "name": "Corner Deli"
+ },
+ {
+  "slug": "cottage-warm",
+  "name": "Cottage Warm"
+ },
+ {
+  "slug": "cyberpunk-noir",
+  "name": "Cyberpunk Noir"
+ },
+ {
+  "slug": "dark-luxe",
+  "name": "Dark Luxe"
+ },
+ {
+  "slug": "de-stijl-grid",
+  "name": "De Stijl Grid"
+ },
+ {
+  "slug": "desert-modern",
+  "name": "Desert Modern"
+ },
+ {
+  "slug": "diary-zine",
+  "name": "Diary Zine"
+ },
+ {
+  "slug": "docs-solar",
+  "name": "Docs Solar"
+ },
+ {
+  "slug": "drive-in-theater",
+  "name": "Drive In Theater"
+ },
+ {
+  "slug": "editorial-serif",
+  "name": "Editorial Serif"
+ },
+ {
+  "slug": "farmers-almanac",
+  "name": "Farmers Almanac"
+ },
+ {
+  "slug": "fishing-tackle",
+  "name": "Fishing Tackle"
+ },
+ {
+  "slug": "glass-calm",
+  "name": "Glass Calm"
+ },
+ {
+  "slug": "gothic-editorial",
+  "name": "Gothic Editorial"
+ },
+ {
+  "slug": "greenhouse-glass",
+  "name": "Greenhouse Glass"
+ },
+ {
+  "slug": "greenmarket-dawn",
+  "name": "Greenmarket Dawn"
+ },
+ {
+  "slug": "harbor-fog",
+  "name": "Harbor Fog"
+ },
+ {
+  "slug": "industrial-brutalist",
+  "name": "Industrial Brutalist"
+ },
+ {
+  "slug": "ink-wash-sumi",
+  "name": "Ink Wash Sumi"
+ },
+ {
+  "slug": "italian-futurist",
+  "name": "Italian Futurist"
+ },
+ {
+  "slug": "jazz-blue-note",
+  "name": "Jazz Blue Note"
+ },
+ {
+  "slug": "kawaii-pixel",
+  "name": "Kawaii Pixel"
+ },
+ {
+  "slug": "lab-notebook",
+  "name": "Lab Notebook"
+ },
+ {
+  "slug": "laboratory-clean",
+  "name": "Laboratory Clean"
+ },
+ {
+  "slug": "laundromat-neon",
+  "name": "Laundromat Neon"
+ },
+ {
+  "slug": "library-oak",
+  "name": "Library Oak"
+ },
+ {
+  "slug": "locksmith-shop",
+  "name": "Locksmith Shop"
+ },
+ {
+  "slug": "ma-japanese",
+  "name": "Ma Japanese"
+ },
+ {
+  "slug": "matchbook-cover",
+  "name": "Matchbook Cover"
+ },
+ {
+  "slug": "memphis-milano",
+  "name": "Memphis Milano"
+ },
+ {
+  "slug": "midnight-railway",
+  "name": "Midnight Railway"
+ },
+ {
+  "slug": "museum-placard",
+  "name": "Museum Placard"
+ },
+ {
+  "slug": "neo-brutalist-pop",
+  "name": "Neo Brutalist Pop"
+ },
+ {
+  "slug": "neon-diner",
+  "name": "Neon Diner"
+ },
+ {
+  "slug": "newsroom-wire",
+  "name": "Newsroom Wire"
+ },
+ {
+  "slug": "night-market",
+  "name": "Night Market"
+ },
+ {
+  "slug": "nordic-noir",
+  "name": "Nordic Noir"
+ },
+ {
+  "slug": "observatory-star",
+  "name": "Observatory Star"
+ },
+ {
+  "slug": "origami-fold",
+  "name": "Origami Fold"
+ },
+ {
+  "slug": "paris-metro",
+  "name": "Paris Metro"
+ },
+ {
+  "slug": "parisian-chic",
+  "name": "Parisian Chic"
+ },
+ {
+  "slug": "pixel-arcade",
+  "name": "Pixel Arcade"
+ },
+ {
+  "slug": "pixel-garden",
+  "name": "Pixel Garden"
+ },
+ {
+  "slug": "pop-art-halftone",
+  "name": "Pop Art Halftone"
+ },
+ {
+  "slug": "postage-stamp",
+  "name": "Postage Stamp"
+ },
+ {
+  "slug": "postcard-rack",
+  "name": "Postcard Rack"
+ },
+ {
+  "slug": "retro-terminal",
+  "name": "Retro Terminal"
+ },
+ {
+  "slug": "risograph-grain",
+  "name": "Risograph Grain"
+ },
+ {
+  "slug": "roadside-motel",
+  "name": "Roadside Motel"
+ },
+ {
+  "slug": "sahara-ochre",
+  "name": "Sahara Ochre"
+ },
+ {
+  "slug": "sauna-cedar",
+  "name": "Sauna Cedar"
+ },
+ {
+  "slug": "scandi-calm",
+  "name": "Scandi Calm"
+ },
+ {
+  "slug": "seed-packet",
+  "name": "Seed Packet"
+ },
+ {
+  "slug": "sewing-pattern",
+  "name": "Sewing Pattern"
+ },
+ {
+  "slug": "soft-minimal",
+  "name": "Soft Minimal"
+ },
+ {
+  "slug": "stadium-floodlight",
+  "name": "Stadium Floodlight"
+ },
+ {
+  "slug": "storybook-watercolor",
+  "name": "Storybook Watercolor"
+ },
+ {
+  "slug": "surf-shack",
+  "name": "Surf Shack"
+ },
+ {
+  "slug": "swimming-pool",
+  "name": "Swimming Pool"
+ },
+ {
+  "slug": "swiss-airline",
+  "name": "Swiss Airline"
+ },
+ {
+  "slug": "swiss-poster",
+  "name": "Swiss Poster"
+ },
+ {
+  "slug": "swiss-rational",
+  "name": "Swiss Rational"
+ },
+ {
+  "slug": "ticket-stub",
+  "name": "Ticket Stub"
+ },
+ {
+  "slug": "tokyo-kissaten",
+  "name": "Tokyo Kissaten"
+ },
+ {
+  "slug": "tokyo-neon",
+  "name": "Tokyo Neon"
+ },
+ {
+  "slug": "transit-swiss",
+  "name": "Transit Swiss"
+ },
+ {
+  "slug": "tropical-brutalism",
+  "name": "Tropical Brutalism"
+ },
+ {
+  "slug": "typewriter-repair",
+  "name": "Typewriter Repair"
+ },
+ {
+  "slug": "ukiyo-e-print",
+  "name": "Ukiyo E Print"
+ },
+ {
+  "slug": "vaporwave-sunset",
+  "name": "Vaporwave Sunset"
+ },
+ {
+  "slug": "vinyl-crate",
+  "name": "Vinyl Crate"
+ },
+ {
+  "slug": "weather-station",
+  "name": "Weather Station"
+ },
+ {
+  "slug": "y2k-chrome",
+  "name": "Y2K Chrome"
+ },
+ {
+  "slug": "tamagotchi",
+  "name": "Pocket Pal"
+ },
+ {
+  "slug": "pixel-retro-game",
+  "name": "Starlight Drifter"
+ }
+]

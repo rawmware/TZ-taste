@@ -39,20 +39,21 @@
   .sec { margin-bottom: 30px; }
   .sec-h { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: #6b7280; margin-bottom: 12px; }
   .sec-h .n { color: #9ca3af; font-weight: 400; }
-  .newgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .newcard { display: block; border: 2px solid #111; border-radius: 12px; padding: 22px; text-decoration: none; color: #111; background: #fff; }
-  .newcard:hover { background: #111; color: #fff; }
-  .newcard:hover .tag { color: #9ca3af; }
-  .nm-big { font-size: 19px; font-weight: 800; display: block; letter-spacing: -0.01em; }
   .tag { font-size: 12px; color: #6b7280; }
-  .origrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; }
-  .orilink { display: block; border: 1px solid #e5e5e5; border-radius: 8px; padding: 10px 12px; font-size: 13px; color: #111; text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .orilink:hover { border-color: #111; }
   .pills { display: flex; gap: 8px; flex-wrap: wrap; }
   .pills a { font-size: 13px; color: #111; border: 1px solid #e5e5e5; border-radius: 999px; padding: 7px 14px; text-decoration: none; }
   .pills a:hover { border-color: #111; }
-  @media (max-width: 640px) { .newgrid { grid-template-columns: 1fr; } }
   @media (max-width: 640px) { input[type="search"] { width: 140px; } #grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); } }
+
+  .feed { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 14px; }
+  .tile { display: block; border: 1px solid #e5e5e5; border-radius: 12px; overflow: hidden; background: #fff; color: #111; text-decoration: none; }
+  .tile:hover { border-color: #111; }
+  .pv { display: block; height: 420px; overflow: hidden; position: relative; background: #f4f4f5; container-type: inline-size; }
+  .pv iframe { width: 1200px; height: 1500px; border: 0; transform-origin: 0 0; transform: scale(calc(100cqw / 1200px)); pointer-events: none; background: #fff; }
+  .tlabel { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 10px 12px; border-top: 1px solid #e5e5e5; }
+  .tlabel b { font-size: 13px; font-weight: 650; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tlabel i { font-style: normal; font-size: 11px; color: #9ca3af; text-transform: uppercase; letter-spacing: .05em; white-space: nowrap; }
+  @media (max-width: 640px) { .feed { grid-template-columns: 1fr; } .pv { height: 300px; } }
 </style>
 </head>
 <body>
@@ -69,712 +70,15 @@
 <main>
 <section class="sec">
   <h2 class="sec-h">New</h2>
-  <div class="newgrid">
-    <a class="newcard" href="showcase/pixel-retro-game.html"><span class="nm-big">Starlight Drifter</span><span class="tag">pixel platformer · new</span></a>
-    <a class="newcard" href="showcase/tamagotchi.html"><span class="nm-big">Pocket Pal</span><span class="tag">virtual pet · new</span></a>
-  </div>
+  <div class="feed" id="feed-new"></div>
 </section>
 <section class="sec">
-  <h2 class="sec-h">Originals <span class="n">92</span></h2>
-  <div class="origrid">
-    <a class="orilink" href="showcase/acid-rave.html">Acid Rave</a>
-    <a class="orilink" href="showcase/alpine-after-dark.html">Alpine After Dark</a>
-    <a class="orilink" href="showcase/alpine-ledger.html">Alpine Ledger</a>
-    <a class="orilink" href="showcase/aperitivo-italian.html">Aperitivo Italian</a>
-    <a class="orilink" href="showcase/apotheke.html">Apotheke</a>
-    <a class="orilink" href="showcase/arctic-field.html">Arctic Field</a>
-    <a class="orilink" href="showcase/art-deco-luxe.html">Art Deco Luxe</a>
-    <a class="orilink" href="showcase/art-nouveau-whiplash.html">Art Nouveau Whiplash</a>
-    <a class="orilink" href="showcase/barbershop-pole.html">Barbershop Pole</a>
-    <a class="orilink" href="showcase/bauhaus-primary.html">Bauhaus Primary</a>
-    <a class="orilink" href="showcase/bazaar-spice.html">Bazaar Spice</a>
-    <a class="orilink" href="showcase/bike-repair.html">Bike Repair</a>
-    <a class="orilink" href="showcase/blueprint-tech.html">Blueprint Tech</a>
-    <a class="orilink" href="showcase/botanical-lab.html">Botanical Lab</a>
-    <a class="orilink" href="showcase/cassette-jcard.html">Cassette Jcard</a>
-    <a class="orilink" href="showcase/chalkboard-cafe.html">Chalkboard Cafe</a>
-    <a class="orilink" href="showcase/circus-poster.html">Circus Poster</a>
-    <a class="orilink" href="showcase/concrete-poem.html">Concrete Poem</a>
-    <a class="orilink" href="showcase/constructivist-red.html">Constructivist Red</a>
-    <a class="orilink" href="showcase/corner-deli.html">Corner Deli</a>
-    <a class="orilink" href="showcase/cottage-warm.html">Cottage Warm</a>
-    <a class="orilink" href="showcase/cyberpunk-noir.html">Cyberpunk Noir</a>
-    <a class="orilink" href="showcase/dark-luxe.html">Dark Luxe</a>
-    <a class="orilink" href="showcase/de-stijl-grid.html">De Stijl Grid</a>
-    <a class="orilink" href="showcase/desert-modern.html">Desert Modern</a>
-    <a class="orilink" href="showcase/diary-zine.html">Diary Zine</a>
-    <a class="orilink" href="showcase/docs-solar.html">Docs Solar</a>
-    <a class="orilink" href="showcase/drive-in-theater.html">Drive In Theater</a>
-    <a class="orilink" href="showcase/editorial-serif.html">Editorial Serif</a>
-    <a class="orilink" href="showcase/farmers-almanac.html">Farmers Almanac</a>
-    <a class="orilink" href="showcase/fishing-tackle.html">Fishing Tackle</a>
-    <a class="orilink" href="showcase/glass-calm.html">Glass Calm</a>
-    <a class="orilink" href="showcase/gothic-editorial.html">Gothic Editorial</a>
-    <a class="orilink" href="showcase/greenhouse-glass.html">Greenhouse Glass</a>
-    <a class="orilink" href="showcase/greenmarket-dawn.html">Greenmarket Dawn</a>
-    <a class="orilink" href="showcase/harbor-fog.html">Harbor Fog</a>
-    <a class="orilink" href="showcase/industrial-brutalist.html">Industrial Brutalist</a>
-    <a class="orilink" href="showcase/ink-wash-sumi.html">Ink Wash Sumi</a>
-    <a class="orilink" href="showcase/italian-futurist.html">Italian Futurist</a>
-    <a class="orilink" href="showcase/jazz-blue-note.html">Jazz Blue Note</a>
-    <a class="orilink" href="showcase/kawaii-pixel.html">Kawaii Pixel</a>
-    <a class="orilink" href="showcase/lab-notebook.html">Lab Notebook</a>
-    <a class="orilink" href="showcase/laboratory-clean.html">Laboratory Clean</a>
-    <a class="orilink" href="showcase/laundromat-neon.html">Laundromat Neon</a>
-    <a class="orilink" href="showcase/library-oak.html">Library Oak</a>
-    <a class="orilink" href="showcase/locksmith-shop.html">Locksmith Shop</a>
-    <a class="orilink" href="showcase/ma-japanese.html">Ma Japanese</a>
-    <a class="orilink" href="showcase/matchbook-cover.html">Matchbook Cover</a>
-    <a class="orilink" href="showcase/memphis-milano.html">Memphis Milano</a>
-    <a class="orilink" href="showcase/midnight-railway.html">Midnight Railway</a>
-    <a class="orilink" href="showcase/museum-placard.html">Museum Placard</a>
-    <a class="orilink" href="showcase/neo-brutalist-pop.html">Neo Brutalist Pop</a>
-    <a class="orilink" href="showcase/neon-diner.html">Neon Diner</a>
-    <a class="orilink" href="showcase/newsroom-wire.html">Newsroom Wire</a>
-    <a class="orilink" href="showcase/night-market.html">Night Market</a>
-    <a class="orilink" href="showcase/nordic-noir.html">Nordic Noir</a>
-    <a class="orilink" href="showcase/observatory-star.html">Observatory Star</a>
-    <a class="orilink" href="showcase/origami-fold.html">Origami Fold</a>
-    <a class="orilink" href="showcase/paris-metro.html">Paris Metro</a>
-    <a class="orilink" href="showcase/parisian-chic.html">Parisian Chic</a>
-    <a class="orilink" href="showcase/pixel-arcade.html">Pixel Arcade</a>
-    <a class="orilink" href="showcase/pixel-garden.html">Pixel Garden</a>
-    <a class="orilink" href="showcase/pop-art-halftone.html">Pop Art Halftone</a>
-    <a class="orilink" href="showcase/postage-stamp.html">Postage Stamp</a>
-    <a class="orilink" href="showcase/postcard-rack.html">Postcard Rack</a>
-    <a class="orilink" href="showcase/retro-terminal.html">Retro Terminal</a>
-    <a class="orilink" href="showcase/risograph-grain.html">Risograph Grain</a>
-    <a class="orilink" href="showcase/roadside-motel.html">Roadside Motel</a>
-    <a class="orilink" href="showcase/sahara-ochre.html">Sahara Ochre</a>
-    <a class="orilink" href="showcase/sauna-cedar.html">Sauna Cedar</a>
-    <a class="orilink" href="showcase/scandi-calm.html">Scandi Calm</a>
-    <a class="orilink" href="showcase/seed-packet.html">Seed Packet</a>
-    <a class="orilink" href="showcase/sewing-pattern.html">Sewing Pattern</a>
-    <a class="orilink" href="showcase/soft-minimal.html">Soft Minimal</a>
-    <a class="orilink" href="showcase/stadium-floodlight.html">Stadium Floodlight</a>
-    <a class="orilink" href="showcase/storybook-watercolor.html">Storybook Watercolor</a>
-    <a class="orilink" href="showcase/surf-shack.html">Surf Shack</a>
-    <a class="orilink" href="showcase/swimming-pool.html">Swimming Pool</a>
-    <a class="orilink" href="showcase/swiss-airline.html">Swiss Airline</a>
-    <a class="orilink" href="showcase/swiss-poster.html">Swiss Poster</a>
-    <a class="orilink" href="showcase/swiss-rational.html">Swiss Rational</a>
-    <a class="orilink" href="showcase/ticket-stub.html">Ticket Stub</a>
-    <a class="orilink" href="showcase/tokyo-kissaten.html">Tokyo Kissaten</a>
-    <a class="orilink" href="showcase/tokyo-neon.html">Tokyo Neon</a>
-    <a class="orilink" href="showcase/transit-swiss.html">Transit Swiss</a>
-    <a class="orilink" href="showcase/tropical-brutalism.html">Tropical Brutalism</a>
-    <a class="orilink" href="showcase/typewriter-repair.html">Typewriter Repair</a>
-    <a class="orilink" href="showcase/ukiyo-e-print.html">Ukiyo E Print</a>
-    <a class="orilink" href="showcase/vaporwave-sunset.html">Vaporwave Sunset</a>
-    <a class="orilink" href="showcase/vinyl-crate.html">Vinyl Crate</a>
-    <a class="orilink" href="showcase/weather-station.html">Weather Station</a>
-    <a class="orilink" href="showcase/y2k-chrome.html">Y2K Chrome</a>
-  </div>
+  <h2 class="sec-h">Originals <span class="n">94</span></h2>
+  <div class="feed" id="feed-originals"></div>
 </section>
 <section class="sec">
-  <h2 class="sec-h">Fresh pages <span class="n">600</span></h2>
-  <div class="origrid">
-    <a class="orilink" href="pages/acid-rave-001.html">Acid Rave 001 <span style="color:#9ca3af">· Acid Rave</span></a>
-    <a class="orilink" href="pages/acid-rave-019.html">Acid Rave 019 <span style="color:#9ca3af">· Acid Rave</span></a>
-    <a class="orilink" href="pages/acid-rave-037.html">Acid Rave 037 <span style="color:#9ca3af">· Acid Rave</span></a>
-    <a class="orilink" href="pages/acid-rave-055.html">Acid Rave 055 <span style="color:#9ca3af">· Acid Rave</span></a>
-    <a class="orilink" href="pages/acid-rave-073.html">Acid Rave 073 <span style="color:#9ca3af">· Acid Rave</span></a>
-    <a class="orilink" href="pages/acid-rave-091.html">Acid Rave 091 <span style="color:#9ca3af">· Acid Rave</span></a>
-    <a class="orilink" href="pages/acid-rave-109.html">Acid Rave 109 <span style="color:#9ca3af">· Acid Rave</span></a>
-    <a class="orilink" href="pages/arctic-001.html">Arctic 001 <span style="color:#9ca3af">· Arctic</span></a>
-    <a class="orilink" href="pages/arctic-019.html">Arctic 019 <span style="color:#9ca3af">· Arctic</span></a>
-    <a class="orilink" href="pages/arctic-037.html">Arctic 037 <span style="color:#9ca3af">· Arctic</span></a>
-    <a class="orilink" href="pages/arctic-055.html">Arctic 055 <span style="color:#9ca3af">· Arctic</span></a>
-    <a class="orilink" href="pages/arctic-073.html">Arctic 073 <span style="color:#9ca3af">· Arctic</span></a>
-    <a class="orilink" href="pages/arctic-091.html">Arctic 091 <span style="color:#9ca3af">· Arctic</span></a>
-    <a class="orilink" href="pages/arctic-109.html">Arctic 109 <span style="color:#9ca3af">· Arctic</span></a>
-    <a class="orilink" href="pages/art-deco-001.html">Art Deco 001 <span style="color:#9ca3af">· Art Deco</span></a>
-    <a class="orilink" href="pages/art-deco-019.html">Art Deco 019 <span style="color:#9ca3af">· Art Deco</span></a>
-    <a class="orilink" href="pages/art-deco-037.html">Art Deco 037 <span style="color:#9ca3af">· Art Deco</span></a>
-    <a class="orilink" href="pages/art-deco-055.html">Art Deco 055 <span style="color:#9ca3af">· Art Deco</span></a>
-    <a class="orilink" href="pages/art-deco-073.html">Art Deco 073 <span style="color:#9ca3af">· Art Deco</span></a>
-    <a class="orilink" href="pages/art-deco-091.html">Art Deco 091 <span style="color:#9ca3af">· Art Deco</span></a>
-    <a class="orilink" href="pages/art-deco-109.html">Art Deco 109 <span style="color:#9ca3af">· Art Deco</span></a>
-    <a class="orilink" href="pages/art-nouveau-001.html">Art Nouveau 001 <span style="color:#9ca3af">· Art Nouveau</span></a>
-    <a class="orilink" href="pages/art-nouveau-019.html">Art Nouveau 019 <span style="color:#9ca3af">· Art Nouveau</span></a>
-    <a class="orilink" href="pages/art-nouveau-037.html">Art Nouveau 037 <span style="color:#9ca3af">· Art Nouveau</span></a>
-    <a class="orilink" href="pages/art-nouveau-055.html">Art Nouveau 055 <span style="color:#9ca3af">· Art Nouveau</span></a>
-    <a class="orilink" href="pages/art-nouveau-073.html">Art Nouveau 073 <span style="color:#9ca3af">· Art Nouveau</span></a>
-    <a class="orilink" href="pages/art-nouveau-091.html">Art Nouveau 091 <span style="color:#9ca3af">· Art Nouveau</span></a>
-    <a class="orilink" href="pages/art-nouveau-109.html">Art Nouveau 109 <span style="color:#9ca3af">· Art Nouveau</span></a>
-    <a class="orilink" href="pages/baroque-001.html">Baroque 001 <span style="color:#9ca3af">· Baroque</span></a>
-    <a class="orilink" href="pages/baroque-019.html">Baroque 019 <span style="color:#9ca3af">· Baroque</span></a>
-    <a class="orilink" href="pages/baroque-037.html">Baroque 037 <span style="color:#9ca3af">· Baroque</span></a>
-    <a class="orilink" href="pages/baroque-055.html">Baroque 055 <span style="color:#9ca3af">· Baroque</span></a>
-    <a class="orilink" href="pages/baroque-073.html">Baroque 073 <span style="color:#9ca3af">· Baroque</span></a>
-    <a class="orilink" href="pages/baroque-091.html">Baroque 091 <span style="color:#9ca3af">· Baroque</span></a>
-    <a class="orilink" href="pages/baroque-109.html">Baroque 109 <span style="color:#9ca3af">· Baroque</span></a>
-    <a class="orilink" href="pages/bauhaus-001.html">Bauhaus 001 <span style="color:#9ca3af">· Bauhaus</span></a>
-    <a class="orilink" href="pages/bauhaus-019.html">Bauhaus 019 <span style="color:#9ca3af">· Bauhaus</span></a>
-    <a class="orilink" href="pages/bauhaus-037.html">Bauhaus 037 <span style="color:#9ca3af">· Bauhaus</span></a>
-    <a class="orilink" href="pages/bauhaus-055.html">Bauhaus 055 <span style="color:#9ca3af">· Bauhaus</span></a>
-    <a class="orilink" href="pages/bauhaus-073.html">Bauhaus 073 <span style="color:#9ca3af">· Bauhaus</span></a>
-    <a class="orilink" href="pages/bauhaus-091.html">Bauhaus 091 <span style="color:#9ca3af">· Bauhaus</span></a>
-    <a class="orilink" href="pages/bauhaus-109.html">Bauhaus 109 <span style="color:#9ca3af">· Bauhaus</span></a>
-    <a class="orilink" href="pages/brutalist-001.html">Brutalist 001 <span style="color:#9ca3af">· Brutalist</span></a>
-    <a class="orilink" href="pages/brutalist-019.html">Brutalist 019 <span style="color:#9ca3af">· Brutalist</span></a>
-    <a class="orilink" href="pages/brutalist-037.html">Brutalist 037 <span style="color:#9ca3af">· Brutalist</span></a>
-    <a class="orilink" href="pages/brutalist-055.html">Brutalist 055 <span style="color:#9ca3af">· Brutalist</span></a>
-    <a class="orilink" href="pages/brutalist-073.html">Brutalist 073 <span style="color:#9ca3af">· Brutalist</span></a>
-    <a class="orilink" href="pages/brutalist-091.html">Brutalist 091 <span style="color:#9ca3af">· Brutalist</span></a>
-    <a class="orilink" href="pages/brutalist-109.html">Brutalist 109 <span style="color:#9ca3af">· Brutalist</span></a>
-    <a class="orilink" href="pages/claymorphism-001.html">Claymorphism 001 <span style="color:#9ca3af">· Claymorphism</span></a>
-    <a class="orilink" href="pages/claymorphism-019.html">Claymorphism 019 <span style="color:#9ca3af">· Claymorphism</span></a>
-    <a class="orilink" href="pages/claymorphism-037.html">Claymorphism 037 <span style="color:#9ca3af">· Claymorphism</span></a>
-    <a class="orilink" href="pages/claymorphism-055.html">Claymorphism 055 <span style="color:#9ca3af">· Claymorphism</span></a>
-    <a class="orilink" href="pages/claymorphism-073.html">Claymorphism 073 <span style="color:#9ca3af">· Claymorphism</span></a>
-    <a class="orilink" href="pages/claymorphism-091.html">Claymorphism 091 <span style="color:#9ca3af">· Claymorphism</span></a>
-    <a class="orilink" href="pages/claymorphism-109.html">Claymorphism 109 <span style="color:#9ca3af">· Claymorphism</span></a>
-    <a class="orilink" href="pages/corporate-clean-001.html">Corporate Clean 001 <span style="color:#9ca3af">· Corporate Clean</span></a>
-    <a class="orilink" href="pages/corporate-clean-019.html">Corporate Clean 019 <span style="color:#9ca3af">· Corporate Clean</span></a>
-    <a class="orilink" href="pages/corporate-clean-037.html">Corporate Clean 037 <span style="color:#9ca3af">· Corporate Clean</span></a>
-    <a class="orilink" href="pages/corporate-clean-055.html">Corporate Clean 055 <span style="color:#9ca3af">· Corporate Clean</span></a>
-    <a class="orilink" href="pages/corporate-clean-073.html">Corporate Clean 073 <span style="color:#9ca3af">· Corporate Clean</span></a>
-    <a class="orilink" href="pages/corporate-clean-091.html">Corporate Clean 091 <span style="color:#9ca3af">· Corporate Clean</span></a>
-    <a class="orilink" href="pages/corporate-clean-109.html">Corporate Clean 109 <span style="color:#9ca3af">· Corporate Clean</span></a>
-    <a class="orilink" href="pages/cosmic-001.html">Cosmic 001 <span style="color:#9ca3af">· Cosmic</span></a>
-    <a class="orilink" href="pages/cosmic-019.html">Cosmic 019 <span style="color:#9ca3af">· Cosmic</span></a>
-    <a class="orilink" href="pages/cosmic-037.html">Cosmic 037 <span style="color:#9ca3af">· Cosmic</span></a>
-    <a class="orilink" href="pages/cosmic-055.html">Cosmic 055 <span style="color:#9ca3af">· Cosmic</span></a>
-    <a class="orilink" href="pages/cosmic-073.html">Cosmic 073 <span style="color:#9ca3af">· Cosmic</span></a>
-    <a class="orilink" href="pages/cosmic-091.html">Cosmic 091 <span style="color:#9ca3af">· Cosmic</span></a>
-    <a class="orilink" href="pages/cosmic-109.html">Cosmic 109 <span style="color:#9ca3af">· Cosmic</span></a>
-    <a class="orilink" href="pages/cottagecore-001.html">Cottagecore 001 <span style="color:#9ca3af">· Cottagecore</span></a>
-    <a class="orilink" href="pages/cottagecore-019.html">Cottagecore 019 <span style="color:#9ca3af">· Cottagecore</span></a>
-    <a class="orilink" href="pages/cottagecore-037.html">Cottagecore 037 <span style="color:#9ca3af">· Cottagecore</span></a>
-    <a class="orilink" href="pages/cottagecore-055.html">Cottagecore 055 <span style="color:#9ca3af">· Cottagecore</span></a>
-    <a class="orilink" href="pages/cottagecore-073.html">Cottagecore 073 <span style="color:#9ca3af">· Cottagecore</span></a>
-    <a class="orilink" href="pages/cottagecore-091.html">Cottagecore 091 <span style="color:#9ca3af">· Cottagecore</span></a>
-    <a class="orilink" href="pages/cottagecore-109.html">Cottagecore 109 <span style="color:#9ca3af">· Cottagecore</span></a>
-    <a class="orilink" href="pages/cyberpunk-001.html">Cyberpunk 001 <span style="color:#9ca3af">· Cyberpunk</span></a>
-    <a class="orilink" href="pages/cyberpunk-019.html">Cyberpunk 019 <span style="color:#9ca3af">· Cyberpunk</span></a>
-    <a class="orilink" href="pages/cyberpunk-037.html">Cyberpunk 037 <span style="color:#9ca3af">· Cyberpunk</span></a>
-    <a class="orilink" href="pages/cyberpunk-055.html">Cyberpunk 055 <span style="color:#9ca3af">· Cyberpunk</span></a>
-    <a class="orilink" href="pages/cyberpunk-073.html">Cyberpunk 073 <span style="color:#9ca3af">· Cyberpunk</span></a>
-    <a class="orilink" href="pages/cyberpunk-091.html">Cyberpunk 091 <span style="color:#9ca3af">· Cyberpunk</span></a>
-    <a class="orilink" href="pages/cyberpunk-109.html">Cyberpunk 109 <span style="color:#9ca3af">· Cyberpunk</span></a>
-    <a class="orilink" href="pages/desert-001.html">Desert 001 <span style="color:#9ca3af">· Desert</span></a>
-    <a class="orilink" href="pages/desert-019.html">Desert 019 <span style="color:#9ca3af">· Desert</span></a>
-    <a class="orilink" href="pages/desert-037.html">Desert 037 <span style="color:#9ca3af">· Desert</span></a>
-    <a class="orilink" href="pages/desert-055.html">Desert 055 <span style="color:#9ca3af">· Desert</span></a>
-    <a class="orilink" href="pages/desert-073.html">Desert 073 <span style="color:#9ca3af">· Desert</span></a>
-    <a class="orilink" href="pages/desert-091.html">Desert 091 <span style="color:#9ca3af">· Desert</span></a>
-    <a class="orilink" href="pages/desert-109.html">Desert 109 <span style="color:#9ca3af">· Desert</span></a>
-    <a class="orilink" href="pages/dieselpunk-001.html">Dieselpunk 001 <span style="color:#9ca3af">· Dieselpunk</span></a>
-    <a class="orilink" href="pages/dieselpunk-019.html">Dieselpunk 019 <span style="color:#9ca3af">· Dieselpunk</span></a>
-    <a class="orilink" href="pages/dieselpunk-037.html">Dieselpunk 037 <span style="color:#9ca3af">· Dieselpunk</span></a>
-    <a class="orilink" href="pages/dieselpunk-055.html">Dieselpunk 055 <span style="color:#9ca3af">· Dieselpunk</span></a>
-    <a class="orilink" href="pages/dieselpunk-073.html">Dieselpunk 073 <span style="color:#9ca3af">· Dieselpunk</span></a>
-    <a class="orilink" href="pages/dieselpunk-091.html">Dieselpunk 091 <span style="color:#9ca3af">· Dieselpunk</span></a>
-    <a class="orilink" href="pages/dieselpunk-109.html">Dieselpunk 109 <span style="color:#9ca3af">· Dieselpunk</span></a>
-    <a class="orilink" href="pages/editorial-001.html">Editorial 001 <span style="color:#9ca3af">· Editorial</span></a>
-    <a class="orilink" href="pages/editorial-019.html">Editorial 019 <span style="color:#9ca3af">· Editorial</span></a>
-    <a class="orilink" href="pages/editorial-037.html">Editorial 037 <span style="color:#9ca3af">· Editorial</span></a>
-    <a class="orilink" href="pages/editorial-055.html">Editorial 055 <span style="color:#9ca3af">· Editorial</span></a>
-    <a class="orilink" href="pages/editorial-073.html">Editorial 073 <span style="color:#9ca3af">· Editorial</span></a>
-    <a class="orilink" href="pages/editorial-091.html">Editorial 091 <span style="color:#9ca3af">· Editorial</span></a>
-    <a class="orilink" href="pages/editorial-109.html">Editorial 109 <span style="color:#9ca3af">· Editorial</span></a>
-    <a class="orilink" href="pages/film-noir-001.html">Film Noir 001 <span style="color:#9ca3af">· Film Noir</span></a>
-    <a class="orilink" href="pages/film-noir-019.html">Film Noir 019 <span style="color:#9ca3af">· Film Noir</span></a>
-    <a class="orilink" href="pages/film-noir-037.html">Film Noir 037 <span style="color:#9ca3af">· Film Noir</span></a>
-    <a class="orilink" href="pages/film-noir-055.html">Film Noir 055 <span style="color:#9ca3af">· Film Noir</span></a>
-    <a class="orilink" href="pages/film-noir-073.html">Film Noir 073 <span style="color:#9ca3af">· Film Noir</span></a>
-    <a class="orilink" href="pages/film-noir-091.html">Film Noir 091 <span style="color:#9ca3af">· Film Noir</span></a>
-    <a class="orilink" href="pages/film-noir-109.html">Film Noir 109 <span style="color:#9ca3af">· Film Noir</span></a>
-    <a class="orilink" href="pages/forest-001.html">Forest 001 <span style="color:#9ca3af">· Forest</span></a>
-    <a class="orilink" href="pages/forest-019.html">Forest 019 <span style="color:#9ca3af">· Forest</span></a>
-    <a class="orilink" href="pages/forest-037.html">Forest 037 <span style="color:#9ca3af">· Forest</span></a>
-    <a class="orilink" href="pages/forest-055.html">Forest 055 <span style="color:#9ca3af">· Forest</span></a>
-    <a class="orilink" href="pages/forest-073.html">Forest 073 <span style="color:#9ca3af">· Forest</span></a>
-    <a class="orilink" href="pages/forest-091.html">Forest 091 <span style="color:#9ca3af">· Forest</span></a>
-    <a class="orilink" href="pages/forest-109.html">Forest 109 <span style="color:#9ca3af">· Forest</span></a>
-    <a class="orilink" href="pages/frutiger-aero-001.html">Frutiger Aero 001 <span style="color:#9ca3af">· Frutiger Aero</span></a>
-    <a class="orilink" href="pages/frutiger-aero-019.html">Frutiger Aero 019 <span style="color:#9ca3af">· Frutiger Aero</span></a>
-    <a class="orilink" href="pages/frutiger-aero-037.html">Frutiger Aero 037 <span style="color:#9ca3af">· Frutiger Aero</span></a>
-    <a class="orilink" href="pages/frutiger-aero-055.html">Frutiger Aero 055 <span style="color:#9ca3af">· Frutiger Aero</span></a>
-    <a class="orilink" href="pages/frutiger-aero-073.html">Frutiger Aero 073 <span style="color:#9ca3af">· Frutiger Aero</span></a>
-    <a class="orilink" href="pages/frutiger-aero-091.html">Frutiger Aero 091 <span style="color:#9ca3af">· Frutiger Aero</span></a>
-    <a class="orilink" href="pages/frutiger-aero-109.html">Frutiger Aero 109 <span style="color:#9ca3af">· Frutiger Aero</span></a>
-    <a class="orilink" href="pages/glassmorphism-001.html">Glassmorphism 001 <span style="color:#9ca3af">· Glassmorphism</span></a>
-    <a class="orilink" href="pages/glassmorphism-019.html">Glassmorphism 019 <span style="color:#9ca3af">· Glassmorphism</span></a>
-    <a class="orilink" href="pages/glassmorphism-037.html">Glassmorphism 037 <span style="color:#9ca3af">· Glassmorphism</span></a>
-    <a class="orilink" href="pages/glassmorphism-055.html">Glassmorphism 055 <span style="color:#9ca3af">· Glassmorphism</span></a>
-    <a class="orilink" href="pages/glassmorphism-073.html">Glassmorphism 073 <span style="color:#9ca3af">· Glassmorphism</span></a>
-    <a class="orilink" href="pages/glassmorphism-091.html">Glassmorphism 091 <span style="color:#9ca3af">· Glassmorphism</span></a>
-    <a class="orilink" href="pages/glassmorphism-109.html">Glassmorphism 109 <span style="color:#9ca3af">· Glassmorphism</span></a>
-    <a class="orilink" href="pages/gothic-001.html">Gothic 001 <span style="color:#9ca3af">· Gothic</span></a>
-    <a class="orilink" href="pages/gothic-019.html">Gothic 019 <span style="color:#9ca3af">· Gothic</span></a>
-    <a class="orilink" href="pages/gothic-037.html">Gothic 037 <span style="color:#9ca3af">· Gothic</span></a>
-    <a class="orilink" href="pages/gothic-055.html">Gothic 055 <span style="color:#9ca3af">· Gothic</span></a>
-    <a class="orilink" href="pages/gothic-073.html">Gothic 073 <span style="color:#9ca3af">· Gothic</span></a>
-    <a class="orilink" href="pages/gothic-091.html">Gothic 091 <span style="color:#9ca3af">· Gothic</span></a>
-    <a class="orilink" href="pages/gothic-109.html">Gothic 109 <span style="color:#9ca3af">· Gothic</span></a>
-    <a class="orilink" href="pages/grunge-001.html">Grunge 001 <span style="color:#9ca3af">· Grunge</span></a>
-    <a class="orilink" href="pages/grunge-019.html">Grunge 019 <span style="color:#9ca3af">· Grunge</span></a>
-    <a class="orilink" href="pages/grunge-037.html">Grunge 037 <span style="color:#9ca3af">· Grunge</span></a>
-    <a class="orilink" href="pages/grunge-055.html">Grunge 055 <span style="color:#9ca3af">· Grunge</span></a>
-    <a class="orilink" href="pages/grunge-073.html">Grunge 073 <span style="color:#9ca3af">· Grunge</span></a>
-    <a class="orilink" href="pages/grunge-091.html">Grunge 091 <span style="color:#9ca3af">· Grunge</span></a>
-    <a class="orilink" href="pages/grunge-109.html">Grunge 109 <span style="color:#9ca3af">· Grunge</span></a>
-    <a class="orilink" href="pages/kawaii-001.html">Kawaii 001 <span style="color:#9ca3af">· Kawaii</span></a>
-    <a class="orilink" href="pages/kawaii-019.html">Kawaii 019 <span style="color:#9ca3af">· Kawaii</span></a>
-    <a class="orilink" href="pages/kawaii-037.html">Kawaii 037 <span style="color:#9ca3af">· Kawaii</span></a>
-    <a class="orilink" href="pages/kawaii-055.html">Kawaii 055 <span style="color:#9ca3af">· Kawaii</span></a>
-    <a class="orilink" href="pages/kawaii-073.html">Kawaii 073 <span style="color:#9ca3af">· Kawaii</span></a>
-    <a class="orilink" href="pages/kawaii-091.html">Kawaii 091 <span style="color:#9ca3af">· Kawaii</span></a>
-    <a class="orilink" href="pages/kawaii-109.html">Kawaii 109 <span style="color:#9ca3af">· Kawaii</span></a>
-    <a class="orilink" href="pages/memphis-001.html">Memphis 001 <span style="color:#9ca3af">· Memphis</span></a>
-    <a class="orilink" href="pages/memphis-019.html">Memphis 019 <span style="color:#9ca3af">· Memphis</span></a>
-    <a class="orilink" href="pages/memphis-037.html">Memphis 037 <span style="color:#9ca3af">· Memphis</span></a>
-    <a class="orilink" href="pages/memphis-055.html">Memphis 055 <span style="color:#9ca3af">· Memphis</span></a>
-    <a class="orilink" href="pages/memphis-073.html">Memphis 073 <span style="color:#9ca3af">· Memphis</span></a>
-    <a class="orilink" href="pages/memphis-091.html">Memphis 091 <span style="color:#9ca3af">· Memphis</span></a>
-    <a class="orilink" href="pages/memphis-109.html">Memphis 109 <span style="color:#9ca3af">· Memphis</span></a>
-    <a class="orilink" href="pages/minimal-japanese-001.html">Minimal Japanese 001 <span style="color:#9ca3af">· Minimal Japanese</span></a>
-    <a class="orilink" href="pages/minimal-japanese-019.html">Minimal Japanese 019 <span style="color:#9ca3af">· Minimal Japanese</span></a>
-    <a class="orilink" href="pages/minimal-japanese-037.html">Minimal Japanese 037 <span style="color:#9ca3af">· Minimal Japanese</span></a>
-    <a class="orilink" href="pages/minimal-japanese-055.html">Minimal Japanese 055 <span style="color:#9ca3af">· Minimal Japanese</span></a>
-    <a class="orilink" href="pages/minimal-japanese-073.html">Minimal Japanese 073 <span style="color:#9ca3af">· Minimal Japanese</span></a>
-    <a class="orilink" href="pages/minimal-japanese-091.html">Minimal Japanese 091 <span style="color:#9ca3af">· Minimal Japanese</span></a>
-    <a class="orilink" href="pages/minimal-japanese-109.html">Minimal Japanese 109 <span style="color:#9ca3af">· Minimal Japanese</span></a>
-    <a class="orilink" href="pages/neumorphism-001.html">Neumorphism 001 <span style="color:#9ca3af">· Neumorphism</span></a>
-    <a class="orilink" href="pages/neumorphism-019.html">Neumorphism 019 <span style="color:#9ca3af">· Neumorphism</span></a>
-    <a class="orilink" href="pages/neumorphism-037.html">Neumorphism 037 <span style="color:#9ca3af">· Neumorphism</span></a>
-    <a class="orilink" href="pages/neumorphism-055.html">Neumorphism 055 <span style="color:#9ca3af">· Neumorphism</span></a>
-    <a class="orilink" href="pages/neumorphism-073.html">Neumorphism 073 <span style="color:#9ca3af">· Neumorphism</span></a>
-    <a class="orilink" href="pages/neumorphism-091.html">Neumorphism 091 <span style="color:#9ca3af">· Neumorphism</span></a>
-    <a class="orilink" href="pages/neumorphism-109.html">Neumorphism 109 <span style="color:#9ca3af">· Neumorphism</span></a>
-    <a class="orilink" href="pages/ocean-001.html">Ocean 001 <span style="color:#9ca3af">· Ocean</span></a>
-    <a class="orilink" href="pages/ocean-019.html">Ocean 019 <span style="color:#9ca3af">· Ocean</span></a>
-    <a class="orilink" href="pages/ocean-037.html">Ocean 037 <span style="color:#9ca3af">· Ocean</span></a>
-    <a class="orilink" href="pages/ocean-055.html">Ocean 055 <span style="color:#9ca3af">· Ocean</span></a>
-    <a class="orilink" href="pages/ocean-073.html">Ocean 073 <span style="color:#9ca3af">· Ocean</span></a>
-    <a class="orilink" href="pages/ocean-091.html">Ocean 091 <span style="color:#9ca3af">· Ocean</span></a>
-    <a class="orilink" href="pages/ocean-109.html">Ocean 109 <span style="color:#9ca3af">· Ocean</span></a>
-    <a class="orilink" href="pages/pixel-arcade-001.html">Pixel Arcade 001 <span style="color:#9ca3af">· Pixel Arcade</span></a>
-    <a class="orilink" href="pages/pixel-arcade-019.html">Pixel Arcade 019 <span style="color:#9ca3af">· Pixel Arcade</span></a>
-    <a class="orilink" href="pages/pixel-arcade-037.html">Pixel Arcade 037 <span style="color:#9ca3af">· Pixel Arcade</span></a>
-    <a class="orilink" href="pages/pixel-arcade-055.html">Pixel Arcade 055 <span style="color:#9ca3af">· Pixel Arcade</span></a>
-    <a class="orilink" href="pages/pixel-arcade-073.html">Pixel Arcade 073 <span style="color:#9ca3af">· Pixel Arcade</span></a>
-    <a class="orilink" href="pages/pixel-arcade-091.html">Pixel Arcade 091 <span style="color:#9ca3af">· Pixel Arcade</span></a>
-    <a class="orilink" href="pages/pixel-arcade-109.html">Pixel Arcade 109 <span style="color:#9ca3af">· Pixel Arcade</span></a>
-    <a class="orilink" href="pages/pop-art-001.html">Pop Art 001 <span style="color:#9ca3af">· Pop Art</span></a>
-    <a class="orilink" href="pages/pop-art-019.html">Pop Art 019 <span style="color:#9ca3af">· Pop Art</span></a>
-    <a class="orilink" href="pages/pop-art-037.html">Pop Art 037 <span style="color:#9ca3af">· Pop Art</span></a>
-    <a class="orilink" href="pages/pop-art-055.html">Pop Art 055 <span style="color:#9ca3af">· Pop Art</span></a>
-    <a class="orilink" href="pages/pop-art-073.html">Pop Art 073 <span style="color:#9ca3af">· Pop Art</span></a>
-    <a class="orilink" href="pages/pop-art-091.html">Pop Art 091 <span style="color:#9ca3af">· Pop Art</span></a>
-    <a class="orilink" href="pages/pop-art-109.html">Pop Art 109 <span style="color:#9ca3af">· Pop Art</span></a>
-    <a class="orilink" href="pages/retro-diner-001.html">Retro Diner 001 <span style="color:#9ca3af">· Retro Diner</span></a>
-    <a class="orilink" href="pages/retro-diner-019.html">Retro Diner 019 <span style="color:#9ca3af">· Retro Diner</span></a>
-    <a class="orilink" href="pages/retro-diner-037.html">Retro Diner 037 <span style="color:#9ca3af">· Retro Diner</span></a>
-    <a class="orilink" href="pages/retro-diner-055.html">Retro Diner 055 <span style="color:#9ca3af">· Retro Diner</span></a>
-    <a class="orilink" href="pages/retro-diner-073.html">Retro Diner 073 <span style="color:#9ca3af">· Retro Diner</span></a>
-    <a class="orilink" href="pages/retro-diner-091.html">Retro Diner 091 <span style="color:#9ca3af">· Retro Diner</span></a>
-    <a class="orilink" href="pages/retro-diner-109.html">Retro Diner 109 <span style="color:#9ca3af">· Retro Diner</span></a>
-    <a class="orilink" href="pages/solarpunk-001.html">Solarpunk 001 <span style="color:#9ca3af">· Solarpunk</span></a>
-    <a class="orilink" href="pages/solarpunk-019.html">Solarpunk 019 <span style="color:#9ca3af">· Solarpunk</span></a>
-    <a class="orilink" href="pages/solarpunk-037.html">Solarpunk 037 <span style="color:#9ca3af">· Solarpunk</span></a>
-    <a class="orilink" href="pages/solarpunk-055.html">Solarpunk 055 <span style="color:#9ca3af">· Solarpunk</span></a>
-    <a class="orilink" href="pages/solarpunk-073.html">Solarpunk 073 <span style="color:#9ca3af">· Solarpunk</span></a>
-    <a class="orilink" href="pages/solarpunk-091.html">Solarpunk 091 <span style="color:#9ca3af">· Solarpunk</span></a>
-    <a class="orilink" href="pages/solarpunk-109.html">Solarpunk 109 <span style="color:#9ca3af">· Solarpunk</span></a>
-    <a class="orilink" href="pages/steampunk-001.html">Steampunk 001 <span style="color:#9ca3af">· Steampunk</span></a>
-    <a class="orilink" href="pages/steampunk-019.html">Steampunk 019 <span style="color:#9ca3af">· Steampunk</span></a>
-    <a class="orilink" href="pages/steampunk-037.html">Steampunk 037 <span style="color:#9ca3af">· Steampunk</span></a>
-    <a class="orilink" href="pages/steampunk-055.html">Steampunk 055 <span style="color:#9ca3af">· Steampunk</span></a>
-    <a class="orilink" href="pages/steampunk-073.html">Steampunk 073 <span style="color:#9ca3af">· Steampunk</span></a>
-    <a class="orilink" href="pages/steampunk-091.html">Steampunk 091 <span style="color:#9ca3af">· Steampunk</span></a>
-    <a class="orilink" href="pages/steampunk-109.html">Steampunk 109 <span style="color:#9ca3af">· Steampunk</span></a>
-    <a class="orilink" href="pages/swiss-001.html">Swiss 001 <span style="color:#9ca3af">· Swiss</span></a>
-    <a class="orilink" href="pages/swiss-019.html">Swiss 019 <span style="color:#9ca3af">· Swiss</span></a>
-    <a class="orilink" href="pages/swiss-037.html">Swiss 037 <span style="color:#9ca3af">· Swiss</span></a>
-    <a class="orilink" href="pages/swiss-055.html">Swiss 055 <span style="color:#9ca3af">· Swiss</span></a>
-    <a class="orilink" href="pages/swiss-073.html">Swiss 073 <span style="color:#9ca3af">· Swiss</span></a>
-    <a class="orilink" href="pages/swiss-091.html">Swiss 091 <span style="color:#9ca3af">· Swiss</span></a>
-    <a class="orilink" href="pages/swiss-109.html">Swiss 109 <span style="color:#9ca3af">· Swiss</span></a>
-    <a class="orilink" href="pages/swiss-poster-001.html">Swiss Poster 001 <span style="color:#9ca3af">· Swiss Poster</span></a>
-    <a class="orilink" href="pages/swiss-poster-019.html">Swiss Poster 019 <span style="color:#9ca3af">· Swiss Poster</span></a>
-    <a class="orilink" href="pages/swiss-poster-037.html">Swiss Poster 037 <span style="color:#9ca3af">· Swiss Poster</span></a>
-    <a class="orilink" href="pages/swiss-poster-055.html">Swiss Poster 055 <span style="color:#9ca3af">· Swiss Poster</span></a>
-    <a class="orilink" href="pages/swiss-poster-073.html">Swiss Poster 073 <span style="color:#9ca3af">· Swiss Poster</span></a>
-    <a class="orilink" href="pages/swiss-poster-091.html">Swiss Poster 091 <span style="color:#9ca3af">· Swiss Poster</span></a>
-    <a class="orilink" href="pages/swiss-poster-109.html">Swiss Poster 109 <span style="color:#9ca3af">· Swiss Poster</span></a>
-    <a class="orilink" href="pages/synthwave-001.html">Synthwave 001 <span style="color:#9ca3af">· Synthwave</span></a>
-    <a class="orilink" href="pages/synthwave-019.html">Synthwave 019 <span style="color:#9ca3af">· Synthwave</span></a>
-    <a class="orilink" href="pages/synthwave-037.html">Synthwave 037 <span style="color:#9ca3af">· Synthwave</span></a>
-    <a class="orilink" href="pages/synthwave-055.html">Synthwave 055 <span style="color:#9ca3af">· Synthwave</span></a>
-    <a class="orilink" href="pages/synthwave-073.html">Synthwave 073 <span style="color:#9ca3af">· Synthwave</span></a>
-    <a class="orilink" href="pages/synthwave-091.html">Synthwave 091 <span style="color:#9ca3af">· Synthwave</span></a>
-    <a class="orilink" href="pages/synthwave-109.html">Synthwave 109 <span style="color:#9ca3af">· Synthwave</span></a>
-    <a class="orilink" href="pages/terminal-001.html">Terminal 001 <span style="color:#9ca3af">· Terminal</span></a>
-    <a class="orilink" href="pages/terminal-019.html">Terminal 019 <span style="color:#9ca3af">· Terminal</span></a>
-    <a class="orilink" href="pages/terminal-037.html">Terminal 037 <span style="color:#9ca3af">· Terminal</span></a>
-    <a class="orilink" href="pages/terminal-055.html">Terminal 055 <span style="color:#9ca3af">· Terminal</span></a>
-    <a class="orilink" href="pages/terminal-073.html">Terminal 073 <span style="color:#9ca3af">· Terminal</span></a>
-    <a class="orilink" href="pages/terminal-091.html">Terminal 091 <span style="color:#9ca3af">· Terminal</span></a>
-    <a class="orilink" href="pages/terminal-109.html">Terminal 109 <span style="color:#9ca3af">· Terminal</span></a>
-    <a class="orilink" href="pages/tropical-001.html">Tropical 001 <span style="color:#9ca3af">· Tropical</span></a>
-    <a class="orilink" href="pages/tropical-019.html">Tropical 019 <span style="color:#9ca3af">· Tropical</span></a>
-    <a class="orilink" href="pages/tropical-037.html">Tropical 037 <span style="color:#9ca3af">· Tropical</span></a>
-    <a class="orilink" href="pages/tropical-055.html">Tropical 055 <span style="color:#9ca3af">· Tropical</span></a>
-    <a class="orilink" href="pages/tropical-073.html">Tropical 073 <span style="color:#9ca3af">· Tropical</span></a>
-    <a class="orilink" href="pages/tropical-091.html">Tropical 091 <span style="color:#9ca3af">· Tropical</span></a>
-    <a class="orilink" href="pages/tropical-109.html">Tropical 109 <span style="color:#9ca3af">· Tropical</span></a>
-    <a class="orilink" href="pages/vaporwave-001.html">Vaporwave 001 <span style="color:#9ca3af">· Vaporwave</span></a>
-    <a class="orilink" href="pages/vaporwave-019.html">Vaporwave 019 <span style="color:#9ca3af">· Vaporwave</span></a>
-    <a class="orilink" href="pages/vaporwave-037.html">Vaporwave 037 <span style="color:#9ca3af">· Vaporwave</span></a>
-    <a class="orilink" href="pages/vaporwave-055.html">Vaporwave 055 <span style="color:#9ca3af">· Vaporwave</span></a>
-    <a class="orilink" href="pages/vaporwave-073.html">Vaporwave 073 <span style="color:#9ca3af">· Vaporwave</span></a>
-    <a class="orilink" href="pages/vaporwave-091.html">Vaporwave 091 <span style="color:#9ca3af">· Vaporwave</span></a>
-    <a class="orilink" href="pages/vaporwave-109.html">Vaporwave 109 <span style="color:#9ca3af">· Vaporwave</span></a>
-    <a class="orilink" href="pages/western-001.html">Western 001 <span style="color:#9ca3af">· Western</span></a>
-    <a class="orilink" href="pages/western-019.html">Western 019 <span style="color:#9ca3af">· Western</span></a>
-    <a class="orilink" href="pages/western-037.html">Western 037 <span style="color:#9ca3af">· Western</span></a>
-    <a class="orilink" href="pages/western-055.html">Western 055 <span style="color:#9ca3af">· Western</span></a>
-    <a class="orilink" href="pages/western-073.html">Western 073 <span style="color:#9ca3af">· Western</span></a>
-    <a class="orilink" href="pages/western-091.html">Western 091 <span style="color:#9ca3af">· Western</span></a>
-    <a class="orilink" href="pages/western-109.html">Western 109 <span style="color:#9ca3af">· Western</span></a>
-    <a class="orilink" href="pages/y2k-chrome-001.html">Y2K Chrome 001 <span style="color:#9ca3af">· Y2K Chrome</span></a>
-    <a class="orilink" href="pages/y2k-chrome-019.html">Y2K Chrome 019 <span style="color:#9ca3af">· Y2K Chrome</span></a>
-    <a class="orilink" href="pages/y2k-chrome-037.html">Y2K Chrome 037 <span style="color:#9ca3af">· Y2K Chrome</span></a>
-    <a class="orilink" href="pages/y2k-chrome-055.html">Y2K Chrome 055 <span style="color:#9ca3af">· Y2K Chrome</span></a>
-    <a class="orilink" href="pages/y2k-chrome-073.html">Y2K Chrome 073 <span style="color:#9ca3af">· Y2K Chrome</span></a>
-    <a class="orilink" href="pages/y2k-chrome-091.html">Y2K Chrome 091 <span style="color:#9ca3af">· Y2K Chrome</span></a>
-    <a class="orilink" href="pages/y2k-chrome-109.html">Y2K Chrome 109 <span style="color:#9ca3af">· Y2K Chrome</span></a>
-    <a class="orilink" href="pages/zen-001.html">Zen 001 <span style="color:#9ca3af">· Zen</span></a>
-    <a class="orilink" href="pages/zen-019.html">Zen 019 <span style="color:#9ca3af">· Zen</span></a>
-    <a class="orilink" href="pages/zen-037.html">Zen 037 <span style="color:#9ca3af">· Zen</span></a>
-    <a class="orilink" href="pages/zen-055.html">Zen 055 <span style="color:#9ca3af">· Zen</span></a>
-    <a class="orilink" href="pages/zen-073.html">Zen 073 <span style="color:#9ca3af">· Zen</span></a>
-    <a class="orilink" href="pages/zen-091.html">Zen 091 <span style="color:#9ca3af">· Zen</span></a>
-    <a class="orilink" href="pages/zen-109.html">Zen 109 <span style="color:#9ca3af">· Zen</span></a>
-    <a class="orilink" href="pages/acid-rave-010.html">Acid Rave 010 <span style="color:#9ca3af">· Acid Rave</span></a>
-    <a class="orilink" href="pages/arctic-010.html">Arctic 010 <span style="color:#9ca3af">· Arctic</span></a>
-    <a class="orilink" href="pages/art-deco-010.html">Art Deco 010 <span style="color:#9ca3af">· Art Deco</span></a>
-    <a class="orilink" href="pages/art-nouveau-010.html">Art Nouveau 010 <span style="color:#9ca3af">· Art Nouveau</span></a>
-    <a class="orilink" href="pages/baroque-010.html">Baroque 010 <span style="color:#9ca3af">· Baroque</span></a>
-    <a class="orilink" href="pages/bauhaus-010.html">Bauhaus 010 <span style="color:#9ca3af">· Bauhaus</span></a>
-    <a class="orilink" href="pages/brutalist-010.html">Brutalist 010 <span style="color:#9ca3af">· Brutalist</span></a>
-    <a class="orilink" href="pages/claymorphism-010.html">Claymorphism 010 <span style="color:#9ca3af">· Claymorphism</span></a>
-    <a class="orilink" href="pages/corporate-clean-010.html">Corporate Clean 010 <span style="color:#9ca3af">· Corporate Clean</span></a>
-    <a class="orilink" href="pages/cosmic-010.html">Cosmic 010 <span style="color:#9ca3af">· Cosmic</span></a>
-    <a class="orilink" href="pages/cottagecore-010.html">Cottagecore 010 <span style="color:#9ca3af">· Cottagecore</span></a>
-    <a class="orilink" href="pages/cyberpunk-010.html">Cyberpunk 010 <span style="color:#9ca3af">· Cyberpunk</span></a>
-    <a class="orilink" href="pages/desert-010.html">Desert 010 <span style="color:#9ca3af">· Desert</span></a>
-    <a class="orilink" href="pages/dieselpunk-010.html">Dieselpunk 010 <span style="color:#9ca3af">· Dieselpunk</span></a>
-    <a class="orilink" href="pages/editorial-010.html">Editorial 010 <span style="color:#9ca3af">· Editorial</span></a>
-    <a class="orilink" href="pages/film-noir-010.html">Film Noir 010 <span style="color:#9ca3af">· Film Noir</span></a>
-    <a class="orilink" href="pages/forest-010.html">Forest 010 <span style="color:#9ca3af">· Forest</span></a>
-    <a class="orilink" href="pages/frutiger-aero-010.html">Frutiger Aero 010 <span style="color:#9ca3af">· Frutiger Aero</span></a>
-    <a class="orilink" href="pages/glassmorphism-010.html">Glassmorphism 010 <span style="color:#9ca3af">· Glassmorphism</span></a>
-    <a class="orilink" href="pages/gothic-010.html">Gothic 010 <span style="color:#9ca3af">· Gothic</span></a>
-    <a class="orilink" href="pages/acid-rave-002.html">Acid Rave 002 <span style="color:#9ca3af">· Acid Rave</span></a>
-    <a class="orilink" href="pages/acid-rave-003.html">Acid Rave 003 <span style="color:#9ca3af">· Acid Rave</span></a>
-    <a class="orilink" href="pages/acid-rave-004.html">Acid Rave 004 <span style="color:#9ca3af">· Acid Rave</span></a>
-    <a class="orilink" href="pages/acid-rave-005.html">Acid Rave 005 <span style="color:#9ca3af">· Acid Rave</span></a>
-    <a class="orilink" href="pages/acid-rave-006.html">Acid Rave 006 <span style="color:#9ca3af">· Acid Rave</span></a>
-    <a class="orilink" href="pages/acid-rave-007.html">Acid Rave 007 <span style="color:#9ca3af">· Acid Rave</span></a>
-    <a class="orilink" href="pages/acid-rave-008.html">Acid Rave 008 <span style="color:#9ca3af">· Acid Rave</span></a>
-    <a class="orilink" href="pages/arctic-002.html">Arctic 002 <span style="color:#9ca3af">· Arctic</span></a>
-    <a class="orilink" href="pages/arctic-003.html">Arctic 003 <span style="color:#9ca3af">· Arctic</span></a>
-    <a class="orilink" href="pages/arctic-004.html">Arctic 004 <span style="color:#9ca3af">· Arctic</span></a>
-    <a class="orilink" href="pages/arctic-005.html">Arctic 005 <span style="color:#9ca3af">· Arctic</span></a>
-    <a class="orilink" href="pages/arctic-006.html">Arctic 006 <span style="color:#9ca3af">· Arctic</span></a>
-    <a class="orilink" href="pages/arctic-007.html">Arctic 007 <span style="color:#9ca3af">· Arctic</span></a>
-    <a class="orilink" href="pages/arctic-008.html">Arctic 008 <span style="color:#9ca3af">· Arctic</span></a>
-    <a class="orilink" href="pages/art-deco-002.html">Art Deco 002 <span style="color:#9ca3af">· Art Deco</span></a>
-    <a class="orilink" href="pages/art-deco-003.html">Art Deco 003 <span style="color:#9ca3af">· Art Deco</span></a>
-    <a class="orilink" href="pages/art-deco-004.html">Art Deco 004 <span style="color:#9ca3af">· Art Deco</span></a>
-    <a class="orilink" href="pages/art-deco-005.html">Art Deco 005 <span style="color:#9ca3af">· Art Deco</span></a>
-    <a class="orilink" href="pages/art-deco-006.html">Art Deco 006 <span style="color:#9ca3af">· Art Deco</span></a>
-    <a class="orilink" href="pages/art-deco-007.html">Art Deco 007 <span style="color:#9ca3af">· Art Deco</span></a>
-    <a class="orilink" href="pages/art-deco-008.html">Art Deco 008 <span style="color:#9ca3af">· Art Deco</span></a>
-    <a class="orilink" href="pages/art-nouveau-002.html">Art Nouveau 002 <span style="color:#9ca3af">· Art Nouveau</span></a>
-    <a class="orilink" href="pages/art-nouveau-003.html">Art Nouveau 003 <span style="color:#9ca3af">· Art Nouveau</span></a>
-    <a class="orilink" href="pages/art-nouveau-004.html">Art Nouveau 004 <span style="color:#9ca3af">· Art Nouveau</span></a>
-    <a class="orilink" href="pages/art-nouveau-005.html">Art Nouveau 005 <span style="color:#9ca3af">· Art Nouveau</span></a>
-    <a class="orilink" href="pages/art-nouveau-006.html">Art Nouveau 006 <span style="color:#9ca3af">· Art Nouveau</span></a>
-    <a class="orilink" href="pages/art-nouveau-007.html">Art Nouveau 007 <span style="color:#9ca3af">· Art Nouveau</span></a>
-    <a class="orilink" href="pages/art-nouveau-008.html">Art Nouveau 008 <span style="color:#9ca3af">· Art Nouveau</span></a>
-    <a class="orilink" href="pages/baroque-002.html">Baroque 002 <span style="color:#9ca3af">· Baroque</span></a>
-    <a class="orilink" href="pages/baroque-003.html">Baroque 003 <span style="color:#9ca3af">· Baroque</span></a>
-    <a class="orilink" href="pages/baroque-004.html">Baroque 004 <span style="color:#9ca3af">· Baroque</span></a>
-    <a class="orilink" href="pages/baroque-005.html">Baroque 005 <span style="color:#9ca3af">· Baroque</span></a>
-    <a class="orilink" href="pages/baroque-006.html">Baroque 006 <span style="color:#9ca3af">· Baroque</span></a>
-    <a class="orilink" href="pages/baroque-007.html">Baroque 007 <span style="color:#9ca3af">· Baroque</span></a>
-    <a class="orilink" href="pages/baroque-008.html">Baroque 008 <span style="color:#9ca3af">· Baroque</span></a>
-    <a class="orilink" href="pages/bauhaus-002.html">Bauhaus 002 <span style="color:#9ca3af">· Bauhaus</span></a>
-    <a class="orilink" href="pages/bauhaus-003.html">Bauhaus 003 <span style="color:#9ca3af">· Bauhaus</span></a>
-    <a class="orilink" href="pages/bauhaus-004.html">Bauhaus 004 <span style="color:#9ca3af">· Bauhaus</span></a>
-    <a class="orilink" href="pages/bauhaus-005.html">Bauhaus 005 <span style="color:#9ca3af">· Bauhaus</span></a>
-    <a class="orilink" href="pages/bauhaus-006.html">Bauhaus 006 <span style="color:#9ca3af">· Bauhaus</span></a>
-    <a class="orilink" href="pages/bauhaus-007.html">Bauhaus 007 <span style="color:#9ca3af">· Bauhaus</span></a>
-    <a class="orilink" href="pages/bauhaus-008.html">Bauhaus 008 <span style="color:#9ca3af">· Bauhaus</span></a>
-    <a class="orilink" href="pages/brutalist-002.html">Brutalist 002 <span style="color:#9ca3af">· Brutalist</span></a>
-    <a class="orilink" href="pages/brutalist-003.html">Brutalist 003 <span style="color:#9ca3af">· Brutalist</span></a>
-    <a class="orilink" href="pages/brutalist-004.html">Brutalist 004 <span style="color:#9ca3af">· Brutalist</span></a>
-    <a class="orilink" href="pages/brutalist-005.html">Brutalist 005 <span style="color:#9ca3af">· Brutalist</span></a>
-    <a class="orilink" href="pages/brutalist-006.html">Brutalist 006 <span style="color:#9ca3af">· Brutalist</span></a>
-    <a class="orilink" href="pages/brutalist-007.html">Brutalist 007 <span style="color:#9ca3af">· Brutalist</span></a>
-    <a class="orilink" href="pages/brutalist-008.html">Brutalist 008 <span style="color:#9ca3af">· Brutalist</span></a>
-    <a class="orilink" href="pages/claymorphism-002.html">Claymorphism 002 <span style="color:#9ca3af">· Claymorphism</span></a>
-    <a class="orilink" href="pages/claymorphism-003.html">Claymorphism 003 <span style="color:#9ca3af">· Claymorphism</span></a>
-    <a class="orilink" href="pages/claymorphism-004.html">Claymorphism 004 <span style="color:#9ca3af">· Claymorphism</span></a>
-    <a class="orilink" href="pages/claymorphism-005.html">Claymorphism 005 <span style="color:#9ca3af">· Claymorphism</span></a>
-    <a class="orilink" href="pages/claymorphism-006.html">Claymorphism 006 <span style="color:#9ca3af">· Claymorphism</span></a>
-    <a class="orilink" href="pages/claymorphism-007.html">Claymorphism 007 <span style="color:#9ca3af">· Claymorphism</span></a>
-    <a class="orilink" href="pages/claymorphism-008.html">Claymorphism 008 <span style="color:#9ca3af">· Claymorphism</span></a>
-    <a class="orilink" href="pages/corporate-clean-002.html">Corporate Clean 002 <span style="color:#9ca3af">· Corporate Clean</span></a>
-    <a class="orilink" href="pages/corporate-clean-003.html">Corporate Clean 003 <span style="color:#9ca3af">· Corporate Clean</span></a>
-    <a class="orilink" href="pages/corporate-clean-004.html">Corporate Clean 004 <span style="color:#9ca3af">· Corporate Clean</span></a>
-    <a class="orilink" href="pages/corporate-clean-005.html">Corporate Clean 005 <span style="color:#9ca3af">· Corporate Clean</span></a>
-    <a class="orilink" href="pages/corporate-clean-006.html">Corporate Clean 006 <span style="color:#9ca3af">· Corporate Clean</span></a>
-    <a class="orilink" href="pages/corporate-clean-007.html">Corporate Clean 007 <span style="color:#9ca3af">· Corporate Clean</span></a>
-    <a class="orilink" href="pages/corporate-clean-008.html">Corporate Clean 008 <span style="color:#9ca3af">· Corporate Clean</span></a>
-    <a class="orilink" href="pages/cosmic-002.html">Cosmic 002 <span style="color:#9ca3af">· Cosmic</span></a>
-    <a class="orilink" href="pages/cosmic-003.html">Cosmic 003 <span style="color:#9ca3af">· Cosmic</span></a>
-    <a class="orilink" href="pages/cosmic-004.html">Cosmic 004 <span style="color:#9ca3af">· Cosmic</span></a>
-    <a class="orilink" href="pages/cosmic-005.html">Cosmic 005 <span style="color:#9ca3af">· Cosmic</span></a>
-    <a class="orilink" href="pages/cosmic-006.html">Cosmic 006 <span style="color:#9ca3af">· Cosmic</span></a>
-    <a class="orilink" href="pages/cosmic-007.html">Cosmic 007 <span style="color:#9ca3af">· Cosmic</span></a>
-    <a class="orilink" href="pages/cosmic-008.html">Cosmic 008 <span style="color:#9ca3af">· Cosmic</span></a>
-    <a class="orilink" href="pages/cottagecore-002.html">Cottagecore 002 <span style="color:#9ca3af">· Cottagecore</span></a>
-    <a class="orilink" href="pages/cottagecore-003.html">Cottagecore 003 <span style="color:#9ca3af">· Cottagecore</span></a>
-    <a class="orilink" href="pages/cottagecore-004.html">Cottagecore 004 <span style="color:#9ca3af">· Cottagecore</span></a>
-    <a class="orilink" href="pages/cottagecore-005.html">Cottagecore 005 <span style="color:#9ca3af">· Cottagecore</span></a>
-    <a class="orilink" href="pages/cottagecore-006.html">Cottagecore 006 <span style="color:#9ca3af">· Cottagecore</span></a>
-    <a class="orilink" href="pages/cottagecore-007.html">Cottagecore 007 <span style="color:#9ca3af">· Cottagecore</span></a>
-    <a class="orilink" href="pages/cottagecore-008.html">Cottagecore 008 <span style="color:#9ca3af">· Cottagecore</span></a>
-    <a class="orilink" href="pages/cyberpunk-002.html">Cyberpunk 002 <span style="color:#9ca3af">· Cyberpunk</span></a>
-    <a class="orilink" href="pages/cyberpunk-003.html">Cyberpunk 003 <span style="color:#9ca3af">· Cyberpunk</span></a>
-    <a class="orilink" href="pages/cyberpunk-004.html">Cyberpunk 004 <span style="color:#9ca3af">· Cyberpunk</span></a>
-    <a class="orilink" href="pages/cyberpunk-005.html">Cyberpunk 005 <span style="color:#9ca3af">· Cyberpunk</span></a>
-    <a class="orilink" href="pages/cyberpunk-006.html">Cyberpunk 006 <span style="color:#9ca3af">· Cyberpunk</span></a>
-    <a class="orilink" href="pages/cyberpunk-007.html">Cyberpunk 007 <span style="color:#9ca3af">· Cyberpunk</span></a>
-    <a class="orilink" href="pages/cyberpunk-008.html">Cyberpunk 008 <span style="color:#9ca3af">· Cyberpunk</span></a>
-    <a class="orilink" href="pages/desert-002.html">Desert 002 <span style="color:#9ca3af">· Desert</span></a>
-    <a class="orilink" href="pages/desert-003.html">Desert 003 <span style="color:#9ca3af">· Desert</span></a>
-    <a class="orilink" href="pages/desert-004.html">Desert 004 <span style="color:#9ca3af">· Desert</span></a>
-    <a class="orilink" href="pages/desert-005.html">Desert 005 <span style="color:#9ca3af">· Desert</span></a>
-    <a class="orilink" href="pages/desert-006.html">Desert 006 <span style="color:#9ca3af">· Desert</span></a>
-    <a class="orilink" href="pages/desert-007.html">Desert 007 <span style="color:#9ca3af">· Desert</span></a>
-    <a class="orilink" href="pages/desert-008.html">Desert 008 <span style="color:#9ca3af">· Desert</span></a>
-    <a class="orilink" href="pages/dieselpunk-002.html">Dieselpunk 002 <span style="color:#9ca3af">· Dieselpunk</span></a>
-    <a class="orilink" href="pages/dieselpunk-003.html">Dieselpunk 003 <span style="color:#9ca3af">· Dieselpunk</span></a>
-    <a class="orilink" href="pages/dieselpunk-004.html">Dieselpunk 004 <span style="color:#9ca3af">· Dieselpunk</span></a>
-    <a class="orilink" href="pages/dieselpunk-005.html">Dieselpunk 005 <span style="color:#9ca3af">· Dieselpunk</span></a>
-    <a class="orilink" href="pages/dieselpunk-006.html">Dieselpunk 006 <span style="color:#9ca3af">· Dieselpunk</span></a>
-    <a class="orilink" href="pages/dieselpunk-007.html">Dieselpunk 007 <span style="color:#9ca3af">· Dieselpunk</span></a>
-    <a class="orilink" href="pages/dieselpunk-008.html">Dieselpunk 008 <span style="color:#9ca3af">· Dieselpunk</span></a>
-    <a class="orilink" href="pages/editorial-002.html">Editorial 002 <span style="color:#9ca3af">· Editorial</span></a>
-    <a class="orilink" href="pages/editorial-003.html">Editorial 003 <span style="color:#9ca3af">· Editorial</span></a>
-    <a class="orilink" href="pages/editorial-004.html">Editorial 004 <span style="color:#9ca3af">· Editorial</span></a>
-    <a class="orilink" href="pages/editorial-005.html">Editorial 005 <span style="color:#9ca3af">· Editorial</span></a>
-    <a class="orilink" href="pages/editorial-006.html">Editorial 006 <span style="color:#9ca3af">· Editorial</span></a>
-    <a class="orilink" href="pages/editorial-007.html">Editorial 007 <span style="color:#9ca3af">· Editorial</span></a>
-    <a class="orilink" href="pages/editorial-008.html">Editorial 008 <span style="color:#9ca3af">· Editorial</span></a>
-    <a class="orilink" href="pages/film-noir-002.html">Film Noir 002 <span style="color:#9ca3af">· Film Noir</span></a>
-    <a class="orilink" href="pages/film-noir-003.html">Film Noir 003 <span style="color:#9ca3af">· Film Noir</span></a>
-    <a class="orilink" href="pages/film-noir-004.html">Film Noir 004 <span style="color:#9ca3af">· Film Noir</span></a>
-    <a class="orilink" href="pages/film-noir-005.html">Film Noir 005 <span style="color:#9ca3af">· Film Noir</span></a>
-    <a class="orilink" href="pages/film-noir-006.html">Film Noir 006 <span style="color:#9ca3af">· Film Noir</span></a>
-    <a class="orilink" href="pages/film-noir-007.html">Film Noir 007 <span style="color:#9ca3af">· Film Noir</span></a>
-    <a class="orilink" href="pages/film-noir-008.html">Film Noir 008 <span style="color:#9ca3af">· Film Noir</span></a>
-    <a class="orilink" href="pages/forest-002.html">Forest 002 <span style="color:#9ca3af">· Forest</span></a>
-    <a class="orilink" href="pages/forest-003.html">Forest 003 <span style="color:#9ca3af">· Forest</span></a>
-    <a class="orilink" href="pages/forest-004.html">Forest 004 <span style="color:#9ca3af">· Forest</span></a>
-    <a class="orilink" href="pages/forest-005.html">Forest 005 <span style="color:#9ca3af">· Forest</span></a>
-    <a class="orilink" href="pages/forest-006.html">Forest 006 <span style="color:#9ca3af">· Forest</span></a>
-    <a class="orilink" href="pages/forest-007.html">Forest 007 <span style="color:#9ca3af">· Forest</span></a>
-    <a class="orilink" href="pages/forest-008.html">Forest 008 <span style="color:#9ca3af">· Forest</span></a>
-    <a class="orilink" href="pages/frutiger-aero-002.html">Frutiger Aero 002 <span style="color:#9ca3af">· Frutiger Aero</span></a>
-    <a class="orilink" href="pages/frutiger-aero-003.html">Frutiger Aero 003 <span style="color:#9ca3af">· Frutiger Aero</span></a>
-    <a class="orilink" href="pages/frutiger-aero-004.html">Frutiger Aero 004 <span style="color:#9ca3af">· Frutiger Aero</span></a>
-    <a class="orilink" href="pages/frutiger-aero-005.html">Frutiger Aero 005 <span style="color:#9ca3af">· Frutiger Aero</span></a>
-    <a class="orilink" href="pages/frutiger-aero-006.html">Frutiger Aero 006 <span style="color:#9ca3af">· Frutiger Aero</span></a>
-    <a class="orilink" href="pages/frutiger-aero-007.html">Frutiger Aero 007 <span style="color:#9ca3af">· Frutiger Aero</span></a>
-    <a class="orilink" href="pages/frutiger-aero-008.html">Frutiger Aero 008 <span style="color:#9ca3af">· Frutiger Aero</span></a>
-    <a class="orilink" href="pages/glassmorphism-002.html">Glassmorphism 002 <span style="color:#9ca3af">· Glassmorphism</span></a>
-    <a class="orilink" href="pages/glassmorphism-003.html">Glassmorphism 003 <span style="color:#9ca3af">· Glassmorphism</span></a>
-    <a class="orilink" href="pages/glassmorphism-004.html">Glassmorphism 004 <span style="color:#9ca3af">· Glassmorphism</span></a>
-    <a class="orilink" href="pages/glassmorphism-005.html">Glassmorphism 005 <span style="color:#9ca3af">· Glassmorphism</span></a>
-    <a class="orilink" href="pages/glassmorphism-006.html">Glassmorphism 006 <span style="color:#9ca3af">· Glassmorphism</span></a>
-    <a class="orilink" href="pages/glassmorphism-007.html">Glassmorphism 007 <span style="color:#9ca3af">· Glassmorphism</span></a>
-    <a class="orilink" href="pages/glassmorphism-008.html">Glassmorphism 008 <span style="color:#9ca3af">· Glassmorphism</span></a>
-    <a class="orilink" href="pages/gothic-002.html">Gothic 002 <span style="color:#9ca3af">· Gothic</span></a>
-    <a class="orilink" href="pages/gothic-003.html">Gothic 003 <span style="color:#9ca3af">· Gothic</span></a>
-    <a class="orilink" href="pages/gothic-004.html">Gothic 004 <span style="color:#9ca3af">· Gothic</span></a>
-    <a class="orilink" href="pages/gothic-005.html">Gothic 005 <span style="color:#9ca3af">· Gothic</span></a>
-    <a class="orilink" href="pages/gothic-006.html">Gothic 006 <span style="color:#9ca3af">· Gothic</span></a>
-    <a class="orilink" href="pages/gothic-007.html">Gothic 007 <span style="color:#9ca3af">· Gothic</span></a>
-    <a class="orilink" href="pages/gothic-008.html">Gothic 008 <span style="color:#9ca3af">· Gothic</span></a>
-    <a class="orilink" href="pages/grunge-002.html">Grunge 002 <span style="color:#9ca3af">· Grunge</span></a>
-    <a class="orilink" href="pages/grunge-003.html">Grunge 003 <span style="color:#9ca3af">· Grunge</span></a>
-    <a class="orilink" href="pages/grunge-004.html">Grunge 004 <span style="color:#9ca3af">· Grunge</span></a>
-    <a class="orilink" href="pages/grunge-005.html">Grunge 005 <span style="color:#9ca3af">· Grunge</span></a>
-    <a class="orilink" href="pages/grunge-006.html">Grunge 006 <span style="color:#9ca3af">· Grunge</span></a>
-    <a class="orilink" href="pages/grunge-007.html">Grunge 007 <span style="color:#9ca3af">· Grunge</span></a>
-    <a class="orilink" href="pages/grunge-008.html">Grunge 008 <span style="color:#9ca3af">· Grunge</span></a>
-    <a class="orilink" href="pages/kawaii-002.html">Kawaii 002 <span style="color:#9ca3af">· Kawaii</span></a>
-    <a class="orilink" href="pages/kawaii-003.html">Kawaii 003 <span style="color:#9ca3af">· Kawaii</span></a>
-    <a class="orilink" href="pages/kawaii-004.html">Kawaii 004 <span style="color:#9ca3af">· Kawaii</span></a>
-    <a class="orilink" href="pages/kawaii-005.html">Kawaii 005 <span style="color:#9ca3af">· Kawaii</span></a>
-    <a class="orilink" href="pages/kawaii-006.html">Kawaii 006 <span style="color:#9ca3af">· Kawaii</span></a>
-    <a class="orilink" href="pages/kawaii-007.html">Kawaii 007 <span style="color:#9ca3af">· Kawaii</span></a>
-    <a class="orilink" href="pages/kawaii-008.html">Kawaii 008 <span style="color:#9ca3af">· Kawaii</span></a>
-    <a class="orilink" href="pages/memphis-002.html">Memphis 002 <span style="color:#9ca3af">· Memphis</span></a>
-    <a class="orilink" href="pages/memphis-003.html">Memphis 003 <span style="color:#9ca3af">· Memphis</span></a>
-    <a class="orilink" href="pages/memphis-004.html">Memphis 004 <span style="color:#9ca3af">· Memphis</span></a>
-    <a class="orilink" href="pages/memphis-005.html">Memphis 005 <span style="color:#9ca3af">· Memphis</span></a>
-    <a class="orilink" href="pages/memphis-006.html">Memphis 006 <span style="color:#9ca3af">· Memphis</span></a>
-    <a class="orilink" href="pages/memphis-007.html">Memphis 007 <span style="color:#9ca3af">· Memphis</span></a>
-    <a class="orilink" href="pages/memphis-008.html">Memphis 008 <span style="color:#9ca3af">· Memphis</span></a>
-    <a class="orilink" href="pages/minimal-japanese-002.html">Minimal Japanese 002 <span style="color:#9ca3af">· Minimal Japanese</span></a>
-    <a class="orilink" href="pages/minimal-japanese-003.html">Minimal Japanese 003 <span style="color:#9ca3af">· Minimal Japanese</span></a>
-    <a class="orilink" href="pages/minimal-japanese-004.html">Minimal Japanese 004 <span style="color:#9ca3af">· Minimal Japanese</span></a>
-    <a class="orilink" href="pages/minimal-japanese-005.html">Minimal Japanese 005 <span style="color:#9ca3af">· Minimal Japanese</span></a>
-    <a class="orilink" href="pages/minimal-japanese-006.html">Minimal Japanese 006 <span style="color:#9ca3af">· Minimal Japanese</span></a>
-    <a class="orilink" href="pages/minimal-japanese-007.html">Minimal Japanese 007 <span style="color:#9ca3af">· Minimal Japanese</span></a>
-    <a class="orilink" href="pages/minimal-japanese-008.html">Minimal Japanese 008 <span style="color:#9ca3af">· Minimal Japanese</span></a>
-    <a class="orilink" href="pages/neumorphism-002.html">Neumorphism 002 <span style="color:#9ca3af">· Neumorphism</span></a>
-    <a class="orilink" href="pages/neumorphism-003.html">Neumorphism 003 <span style="color:#9ca3af">· Neumorphism</span></a>
-    <a class="orilink" href="pages/neumorphism-004.html">Neumorphism 004 <span style="color:#9ca3af">· Neumorphism</span></a>
-    <a class="orilink" href="pages/neumorphism-005.html">Neumorphism 005 <span style="color:#9ca3af">· Neumorphism</span></a>
-    <a class="orilink" href="pages/neumorphism-006.html">Neumorphism 006 <span style="color:#9ca3af">· Neumorphism</span></a>
-    <a class="orilink" href="pages/neumorphism-007.html">Neumorphism 007 <span style="color:#9ca3af">· Neumorphism</span></a>
-    <a class="orilink" href="pages/neumorphism-008.html">Neumorphism 008 <span style="color:#9ca3af">· Neumorphism</span></a>
-    <a class="orilink" href="pages/ocean-002.html">Ocean 002 <span style="color:#9ca3af">· Ocean</span></a>
-    <a class="orilink" href="pages/ocean-003.html">Ocean 003 <span style="color:#9ca3af">· Ocean</span></a>
-    <a class="orilink" href="pages/ocean-004.html">Ocean 004 <span style="color:#9ca3af">· Ocean</span></a>
-    <a class="orilink" href="pages/ocean-005.html">Ocean 005 <span style="color:#9ca3af">· Ocean</span></a>
-    <a class="orilink" href="pages/ocean-006.html">Ocean 006 <span style="color:#9ca3af">· Ocean</span></a>
-    <a class="orilink" href="pages/ocean-007.html">Ocean 007 <span style="color:#9ca3af">· Ocean</span></a>
-    <a class="orilink" href="pages/ocean-008.html">Ocean 008 <span style="color:#9ca3af">· Ocean</span></a>
-    <a class="orilink" href="pages/pixel-arcade-002.html">Pixel Arcade 002 <span style="color:#9ca3af">· Pixel Arcade</span></a>
-    <a class="orilink" href="pages/pixel-arcade-003.html">Pixel Arcade 003 <span style="color:#9ca3af">· Pixel Arcade</span></a>
-    <a class="orilink" href="pages/pixel-arcade-004.html">Pixel Arcade 004 <span style="color:#9ca3af">· Pixel Arcade</span></a>
-    <a class="orilink" href="pages/pixel-arcade-005.html">Pixel Arcade 005 <span style="color:#9ca3af">· Pixel Arcade</span></a>
-    <a class="orilink" href="pages/pixel-arcade-006.html">Pixel Arcade 006 <span style="color:#9ca3af">· Pixel Arcade</span></a>
-    <a class="orilink" href="pages/pixel-arcade-007.html">Pixel Arcade 007 <span style="color:#9ca3af">· Pixel Arcade</span></a>
-    <a class="orilink" href="pages/pixel-arcade-008.html">Pixel Arcade 008 <span style="color:#9ca3af">· Pixel Arcade</span></a>
-    <a class="orilink" href="pages/pop-art-002.html">Pop Art 002 <span style="color:#9ca3af">· Pop Art</span></a>
-    <a class="orilink" href="pages/pop-art-003.html">Pop Art 003 <span style="color:#9ca3af">· Pop Art</span></a>
-    <a class="orilink" href="pages/pop-art-004.html">Pop Art 004 <span style="color:#9ca3af">· Pop Art</span></a>
-    <a class="orilink" href="pages/pop-art-005.html">Pop Art 005 <span style="color:#9ca3af">· Pop Art</span></a>
-    <a class="orilink" href="pages/pop-art-006.html">Pop Art 006 <span style="color:#9ca3af">· Pop Art</span></a>
-    <a class="orilink" href="pages/pop-art-007.html">Pop Art 007 <span style="color:#9ca3af">· Pop Art</span></a>
-    <a class="orilink" href="pages/pop-art-008.html">Pop Art 008 <span style="color:#9ca3af">· Pop Art</span></a>
-    <a class="orilink" href="pages/retro-diner-002.html">Retro Diner 002 <span style="color:#9ca3af">· Retro Diner</span></a>
-    <a class="orilink" href="pages/retro-diner-003.html">Retro Diner 003 <span style="color:#9ca3af">· Retro Diner</span></a>
-    <a class="orilink" href="pages/retro-diner-004.html">Retro Diner 004 <span style="color:#9ca3af">· Retro Diner</span></a>
-    <a class="orilink" href="pages/retro-diner-005.html">Retro Diner 005 <span style="color:#9ca3af">· Retro Diner</span></a>
-    <a class="orilink" href="pages/retro-diner-006.html">Retro Diner 006 <span style="color:#9ca3af">· Retro Diner</span></a>
-    <a class="orilink" href="pages/retro-diner-007.html">Retro Diner 007 <span style="color:#9ca3af">· Retro Diner</span></a>
-    <a class="orilink" href="pages/retro-diner-008.html">Retro Diner 008 <span style="color:#9ca3af">· Retro Diner</span></a>
-    <a class="orilink" href="pages/solarpunk-002.html">Solarpunk 002 <span style="color:#9ca3af">· Solarpunk</span></a>
-    <a class="orilink" href="pages/solarpunk-003.html">Solarpunk 003 <span style="color:#9ca3af">· Solarpunk</span></a>
-    <a class="orilink" href="pages/solarpunk-004.html">Solarpunk 004 <span style="color:#9ca3af">· Solarpunk</span></a>
-    <a class="orilink" href="pages/solarpunk-005.html">Solarpunk 005 <span style="color:#9ca3af">· Solarpunk</span></a>
-    <a class="orilink" href="pages/solarpunk-006.html">Solarpunk 006 <span style="color:#9ca3af">· Solarpunk</span></a>
-    <a class="orilink" href="pages/solarpunk-007.html">Solarpunk 007 <span style="color:#9ca3af">· Solarpunk</span></a>
-    <a class="orilink" href="pages/solarpunk-008.html">Solarpunk 008 <span style="color:#9ca3af">· Solarpunk</span></a>
-    <a class="orilink" href="pages/steampunk-002.html">Steampunk 002 <span style="color:#9ca3af">· Steampunk</span></a>
-    <a class="orilink" href="pages/steampunk-003.html">Steampunk 003 <span style="color:#9ca3af">· Steampunk</span></a>
-    <a class="orilink" href="pages/steampunk-004.html">Steampunk 004 <span style="color:#9ca3af">· Steampunk</span></a>
-    <a class="orilink" href="pages/steampunk-005.html">Steampunk 005 <span style="color:#9ca3af">· Steampunk</span></a>
-    <a class="orilink" href="pages/steampunk-006.html">Steampunk 006 <span style="color:#9ca3af">· Steampunk</span></a>
-    <a class="orilink" href="pages/steampunk-007.html">Steampunk 007 <span style="color:#9ca3af">· Steampunk</span></a>
-    <a class="orilink" href="pages/steampunk-008.html">Steampunk 008 <span style="color:#9ca3af">· Steampunk</span></a>
-    <a class="orilink" href="pages/swiss-002.html">Swiss 002 <span style="color:#9ca3af">· Swiss</span></a>
-    <a class="orilink" href="pages/swiss-003.html">Swiss 003 <span style="color:#9ca3af">· Swiss</span></a>
-    <a class="orilink" href="pages/swiss-004.html">Swiss 004 <span style="color:#9ca3af">· Swiss</span></a>
-    <a class="orilink" href="pages/swiss-005.html">Swiss 005 <span style="color:#9ca3af">· Swiss</span></a>
-    <a class="orilink" href="pages/swiss-006.html">Swiss 006 <span style="color:#9ca3af">· Swiss</span></a>
-    <a class="orilink" href="pages/swiss-007.html">Swiss 007 <span style="color:#9ca3af">· Swiss</span></a>
-    <a class="orilink" href="pages/swiss-008.html">Swiss 008 <span style="color:#9ca3af">· Swiss</span></a>
-    <a class="orilink" href="pages/swiss-poster-002.html">Swiss Poster 002 <span style="color:#9ca3af">· Swiss Poster</span></a>
-    <a class="orilink" href="pages/swiss-poster-003.html">Swiss Poster 003 <span style="color:#9ca3af">· Swiss Poster</span></a>
-    <a class="orilink" href="pages/swiss-poster-004.html">Swiss Poster 004 <span style="color:#9ca3af">· Swiss Poster</span></a>
-    <a class="orilink" href="pages/swiss-poster-005.html">Swiss Poster 005 <span style="color:#9ca3af">· Swiss Poster</span></a>
-    <a class="orilink" href="pages/swiss-poster-006.html">Swiss Poster 006 <span style="color:#9ca3af">· Swiss Poster</span></a>
-    <a class="orilink" href="pages/swiss-poster-007.html">Swiss Poster 007 <span style="color:#9ca3af">· Swiss Poster</span></a>
-    <a class="orilink" href="pages/swiss-poster-008.html">Swiss Poster 008 <span style="color:#9ca3af">· Swiss Poster</span></a>
-    <a class="orilink" href="pages/synthwave-002.html">Synthwave 002 <span style="color:#9ca3af">· Synthwave</span></a>
-    <a class="orilink" href="pages/synthwave-003.html">Synthwave 003 <span style="color:#9ca3af">· Synthwave</span></a>
-    <a class="orilink" href="pages/synthwave-004.html">Synthwave 004 <span style="color:#9ca3af">· Synthwave</span></a>
-    <a class="orilink" href="pages/synthwave-005.html">Synthwave 005 <span style="color:#9ca3af">· Synthwave</span></a>
-    <a class="orilink" href="pages/synthwave-006.html">Synthwave 006 <span style="color:#9ca3af">· Synthwave</span></a>
-    <a class="orilink" href="pages/synthwave-007.html">Synthwave 007 <span style="color:#9ca3af">· Synthwave</span></a>
-    <a class="orilink" href="pages/synthwave-008.html">Synthwave 008 <span style="color:#9ca3af">· Synthwave</span></a>
-    <a class="orilink" href="pages/terminal-002.html">Terminal 002 <span style="color:#9ca3af">· Terminal</span></a>
-    <a class="orilink" href="pages/terminal-003.html">Terminal 003 <span style="color:#9ca3af">· Terminal</span></a>
-    <a class="orilink" href="pages/terminal-004.html">Terminal 004 <span style="color:#9ca3af">· Terminal</span></a>
-    <a class="orilink" href="pages/terminal-005.html">Terminal 005 <span style="color:#9ca3af">· Terminal</span></a>
-    <a class="orilink" href="pages/terminal-006.html">Terminal 006 <span style="color:#9ca3af">· Terminal</span></a>
-    <a class="orilink" href="pages/terminal-007.html">Terminal 007 <span style="color:#9ca3af">· Terminal</span></a>
-    <a class="orilink" href="pages/terminal-008.html">Terminal 008 <span style="color:#9ca3af">· Terminal</span></a>
-    <a class="orilink" href="pages/tropical-002.html">Tropical 002 <span style="color:#9ca3af">· Tropical</span></a>
-    <a class="orilink" href="pages/tropical-003.html">Tropical 003 <span style="color:#9ca3af">· Tropical</span></a>
-    <a class="orilink" href="pages/tropical-004.html">Tropical 004 <span style="color:#9ca3af">· Tropical</span></a>
-    <a class="orilink" href="pages/tropical-005.html">Tropical 005 <span style="color:#9ca3af">· Tropical</span></a>
-    <a class="orilink" href="pages/tropical-006.html">Tropical 006 <span style="color:#9ca3af">· Tropical</span></a>
-    <a class="orilink" href="pages/tropical-007.html">Tropical 007 <span style="color:#9ca3af">· Tropical</span></a>
-    <a class="orilink" href="pages/tropical-008.html">Tropical 008 <span style="color:#9ca3af">· Tropical</span></a>
-    <a class="orilink" href="pages/vaporwave-002.html">Vaporwave 002 <span style="color:#9ca3af">· Vaporwave</span></a>
-    <a class="orilink" href="pages/vaporwave-003.html">Vaporwave 003 <span style="color:#9ca3af">· Vaporwave</span></a>
-    <a class="orilink" href="pages/vaporwave-004.html">Vaporwave 004 <span style="color:#9ca3af">· Vaporwave</span></a>
-    <a class="orilink" href="pages/vaporwave-005.html">Vaporwave 005 <span style="color:#9ca3af">· Vaporwave</span></a>
-    <a class="orilink" href="pages/vaporwave-006.html">Vaporwave 006 <span style="color:#9ca3af">· Vaporwave</span></a>
-    <a class="orilink" href="pages/vaporwave-007.html">Vaporwave 007 <span style="color:#9ca3af">· Vaporwave</span></a>
-    <a class="orilink" href="pages/vaporwave-008.html">Vaporwave 008 <span style="color:#9ca3af">· Vaporwave</span></a>
-    <a class="orilink" href="pages/western-002.html">Western 002 <span style="color:#9ca3af">· Western</span></a>
-    <a class="orilink" href="pages/western-003.html">Western 003 <span style="color:#9ca3af">· Western</span></a>
-    <a class="orilink" href="pages/western-004.html">Western 004 <span style="color:#9ca3af">· Western</span></a>
-    <a class="orilink" href="pages/western-005.html">Western 005 <span style="color:#9ca3af">· Western</span></a>
-    <a class="orilink" href="pages/western-006.html">Western 006 <span style="color:#9ca3af">· Western</span></a>
-    <a class="orilink" href="pages/western-007.html">Western 007 <span style="color:#9ca3af">· Western</span></a>
-    <a class="orilink" href="pages/western-008.html">Western 008 <span style="color:#9ca3af">· Western</span></a>
-    <a class="orilink" href="pages/y2k-chrome-002.html">Y2K Chrome 002 <span style="color:#9ca3af">· Y2K Chrome</span></a>
-    <a class="orilink" href="pages/y2k-chrome-003.html">Y2K Chrome 003 <span style="color:#9ca3af">· Y2K Chrome</span></a>
-    <a class="orilink" href="pages/y2k-chrome-004.html">Y2K Chrome 004 <span style="color:#9ca3af">· Y2K Chrome</span></a>
-    <a class="orilink" href="pages/y2k-chrome-005.html">Y2K Chrome 005 <span style="color:#9ca3af">· Y2K Chrome</span></a>
-    <a class="orilink" href="pages/y2k-chrome-006.html">Y2K Chrome 006 <span style="color:#9ca3af">· Y2K Chrome</span></a>
-    <a class="orilink" href="pages/y2k-chrome-007.html">Y2K Chrome 007 <span style="color:#9ca3af">· Y2K Chrome</span></a>
-    <a class="orilink" href="pages/y2k-chrome-008.html">Y2K Chrome 008 <span style="color:#9ca3af">· Y2K Chrome</span></a>
-    <a class="orilink" href="pages/zen-002.html">Zen 002 <span style="color:#9ca3af">· Zen</span></a>
-    <a class="orilink" href="pages/zen-003.html">Zen 003 <span style="color:#9ca3af">· Zen</span></a>
-    <a class="orilink" href="pages/zen-004.html">Zen 004 <span style="color:#9ca3af">· Zen</span></a>
-    <a class="orilink" href="pages/zen-005.html">Zen 005 <span style="color:#9ca3af">· Zen</span></a>
-    <a class="orilink" href="pages/zen-006.html">Zen 006 <span style="color:#9ca3af">· Zen</span></a>
-    <a class="orilink" href="pages/zen-007.html">Zen 007 <span style="color:#9ca3af">· Zen</span></a>
-    <a class="orilink" href="pages/zen-008.html">Zen 008 <span style="color:#9ca3af">· Zen</span></a>
-    <a class="orilink" href="pages/acid-rave-009.html">Acid Rave 009 <span style="color:#9ca3af">· Acid Rave</span></a>
-    <a class="orilink" href="pages/arctic-009.html">Arctic 009 <span style="color:#9ca3af">· Arctic</span></a>
-    <a class="orilink" href="pages/art-deco-009.html">Art Deco 009 <span style="color:#9ca3af">· Art Deco</span></a>
-    <a class="orilink" href="pages/art-nouveau-009.html">Art Nouveau 009 <span style="color:#9ca3af">· Art Nouveau</span></a>
-    <a class="orilink" href="pages/baroque-009.html">Baroque 009 <span style="color:#9ca3af">· Baroque</span></a>
-    <a class="orilink" href="pages/bauhaus-009.html">Bauhaus 009 <span style="color:#9ca3af">· Bauhaus</span></a>
-    <a class="orilink" href="pages/brutalist-009.html">Brutalist 009 <span style="color:#9ca3af">· Brutalist</span></a>
-    <a class="orilink" href="pages/claymorphism-009.html">Claymorphism 009 <span style="color:#9ca3af">· Claymorphism</span></a>
-    <a class="orilink" href="pages/corporate-clean-009.html">Corporate Clean 009 <span style="color:#9ca3af">· Corporate Clean</span></a>
-    <a class="orilink" href="pages/cosmic-009.html">Cosmic 009 <span style="color:#9ca3af">· Cosmic</span></a>
-    <a class="orilink" href="pages/cottagecore-009.html">Cottagecore 009 <span style="color:#9ca3af">· Cottagecore</span></a>
-    <a class="orilink" href="pages/cyberpunk-009.html">Cyberpunk 009 <span style="color:#9ca3af">· Cyberpunk</span></a>
-    <a class="orilink" href="pages/desert-009.html">Desert 009 <span style="color:#9ca3af">· Desert</span></a>
-    <a class="orilink" href="pages/dieselpunk-009.html">Dieselpunk 009 <span style="color:#9ca3af">· Dieselpunk</span></a>
-    <a class="orilink" href="pages/editorial-009.html">Editorial 009 <span style="color:#9ca3af">· Editorial</span></a>
-    <a class="orilink" href="pages/film-noir-009.html">Film Noir 009 <span style="color:#9ca3af">· Film Noir</span></a>
-    <a class="orilink" href="pages/forest-009.html">Forest 009 <span style="color:#9ca3af">· Forest</span></a>
-    <a class="orilink" href="pages/frutiger-aero-009.html">Frutiger Aero 009 <span style="color:#9ca3af">· Frutiger Aero</span></a>
-    <a class="orilink" href="pages/glassmorphism-009.html">Glassmorphism 009 <span style="color:#9ca3af">· Glassmorphism</span></a>
-    <a class="orilink" href="pages/gothic-009.html">Gothic 009 <span style="color:#9ca3af">· Gothic</span></a>
-  </div>
+  <h2 class="sec-h">Fresh pages <span class="n">1200</span></h2>
+  <div class="feed" id="feed-fresh"></div>
 </section>
 <nav class="sec" aria-label="Collections">
   <h2 class="sec-h">Collections</h2>
@@ -796,6 +100,67 @@
 </section>
 </main>
 <footer><div><span>MIT · free forever</span><a href="https://github.com/rawmware/TZ-taste">rawmware/TZ-taste</a></div></footer>
+<script>
+(function () {
+  "use strict";
+  var MAX_ALIVE = 12;
+  var alive = [];
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+  function nearViewport(el, m) { var r = el.getBoundingClientRect(); return r.bottom > -m && r.top < (window.innerHeight + m); }
+  function unload(frame) { frame.removeAttribute("src"); var i = alive.indexOf(frame); if (i >= 0) alive.splice(i, 1); }
+  var ioLoad = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      var tile = en.target, frame = tile._frame;
+      if (!en.isIntersecting || !frame || frame.getAttribute("src")) return;
+      frame.setAttribute("src", frame.getAttribute("data-src"));
+      alive.push(frame);
+      if (alive.length > MAX_ALIVE) {
+        var i, f;
+        for (i = 0; i < alive.length; i++) {
+          f = alive[i];
+          if (f !== frame && !nearViewport(f, 800)) { unload(f); break; }
+        }
+        while (alive.length > MAX_ALIVE) { var o = alive.shift(); if (o !== frame) o.removeAttribute("src"); }
+      }
+    });
+  }, { rootMargin: "800px" });
+  var ioFar = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      var tile = en.target, frame = tile._frame;
+      if (!en.isIntersecting && frame && frame.getAttribute("src")) unload(frame);
+    });
+  }, { rootMargin: "1600px" });
+  function renderFeed(el, items) {
+    var html = items.map(function (it) {
+      return '<a class="tile" href="' + it.href + '"><span class="pv"><iframe loading="lazy" tabindex="-1" aria-hidden="true" title="' + esc(it.name) + '" data-src="' + it.src + '"></iframe></span><span class="tlabel"><b>' + esc(it.name) + '</b><i>' + esc(it.fam) + '</i></span></a>';
+    }).join("");
+    var tmp = document.createElement("div");
+    tmp.innerHTML = html;
+    var tiles = tmp.children, i, t;
+    for (i = 0; i < tiles.length; i++) {
+      t = tiles[i];
+      t._frame = t.querySelector("iframe");
+      el.appendChild(t);
+      ioLoad.observe(t);
+      ioFar.observe(t);
+    }
+  }
+  renderFeed(document.getElementById("feed-new"), [
+    { href: "showcase/tamagotchi.html", src: "showcase/tamagotchi.html", name: "Pocket Pal", fam: "Original" },
+    { href: "showcase/pixel-retro-game.html", src: "showcase/pixel-retro-game.html", name: "Starlight Drifter", fam: "Original" }
+  ]);
+  fetch("data/originals.json").then(function (r) { return r.json(); }).then(function (d) {
+    renderFeed(document.getElementById("feed-originals"), d.map(function (o) {
+      return { href: "showcase/" + o.slug + ".html", src: "showcase/" + o.slug + ".html", name: o.name, fam: "Original" };
+    }));
+  });
+  fetch("data/fresh-pages.json").then(function (r) { return r.json(); }).then(function (d) {
+    renderFeed(document.getElementById("feed-fresh"), d.map(function (o) {
+      return { href: "pages/" + o.slug + ".html", src: "pages/" + o.slug + ".html", name: o.name, fam: o.familyName };
+    }));
+  });
+})();
+</script>
 <script>
 (function () {
   "use strict";
