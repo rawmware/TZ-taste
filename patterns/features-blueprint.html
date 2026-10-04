@@ -1,0 +1,51 @@
+<!--tz-meta {"id":"features-blueprint","title":"Blueprint annotations","category":"Features","file":"patterns/features-blueprint.html","tags":["technical","diagram"],"description":"Blueprint sheet with numbered callouts and leader lines pointing at a CSS wireframe.","dnas":["industrial-brutalist"]} -->
+<section class="tz-fb">
+  <p class="tz-fb-eyebrow">Fig. 04 — Feature schematic</p>
+  <h2 class="tz-fb-title">Every part, labeled.</h2>
+  <div class="tz-fb-sheet">
+    <div class="tz-fb-frame" aria-hidden="true">
+      <div class="tz-fb-wire"><i class="tz-fb-w1"></i><i class="tz-fb-w2"></i><i class="tz-fb-w3"></i></div>
+    </div>
+    <ol class="tz-fb-notes">
+      <li><b>1</b><div><h3>Unified intake</h3><p>Email, chat, and forms converge here. One queue, zero forwarding.</p></div></li>
+      <li><b>2</b><div><h3>Routing engine</h3><p>Rules assign each thread in under a second, with a human override on every decision.</p></div></li>
+      <li><b>3</b><div><h3>Reply composer</h3><p>Drafts in your voice from your sent history. Approve or edit — never auto-sends.</p></div></li>
+      <li><b>4</b><div><h3>Insight layer</h3><p>Response times and load, charted live. Export the week in one click.</p></div></li>
+    </ol>
+  </div>
+  <p class="tz-fb-scale">Scale 1:1 · Sheet 04 of 09 · Rev C</p>
+</section>
+<style>
+.tz-fb{--blue:#123a6b;--blue2:#0d2c53;--ink:#f2f6fc;--dim:rgba(242,246,252,.62);--line:rgba(242,246,252,.28);
+  background:var(--blue);color:var(--ink);font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(64px,9vw,120px) clamp(24px,6vw,88px);
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:44px 44px}
+.tz-fb-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--dim);margin:0 0 16px}
+.tz-fb-title{font-size:clamp(34px,5vw,62px);font-weight:700;letter-spacing:-.02em;margin:0 0 clamp(36px,5vw,64px)}
+.tz-fb-sheet{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);
+  align-items:start;max-width:1150px}
+.tz-fb-frame{border:2px solid var(--ink);padding:clamp(24px,4vw,48px);position:relative;background:var(--blue2)}
+.tz-fb-frame::before{content:"A";position:absolute;top:-16px;left:24px;background:var(--blue);
+  border:2px solid var(--ink);width:30px;height:30px;display:flex;align-items:center;
+  justify-content:center;font-family:ui-monospace,Menlo,monospace;font-size:14px;font-weight:700}
+.tz-fb-wire{border:2px dashed var(--ink);min-height:300px;position:relative;padding:24px}
+.tz-fb-wire i{display:block;border:1px solid var(--ink);background:rgba(242,246,252,.08)}
+.tz-fb-w1{height:52px;margin-bottom:18px}
+.tz-fb-w2{height:120px;width:58%;float:left}
+.tz-fb-w3{height:120px;width:34%;float:right}
+.tz-fb-notes{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:26px}
+.tz-fb-notes li{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start}
+.tz-fb-notes b{width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-family:ui-monospace,Menlo,monospace;
+  font-size:15px;position:relative;flex:none}
+.tz-fb-notes b::after{content:"";position:absolute;left:50%;top:100%;width:2px;height:26px;background:var(--ink)}
+.tz-fb-notes li:last-child b::after{display:none}
+.tz-fb-notes h3{font-size:19px;margin:0 0 8px;letter-spacing:.01em}
+.tz-fb-notes p{font-size:14.5px;line-height:1.65;color:var(--dim);margin:0;max-width:40ch}
+.tz-fb-scale{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--dim);margin:clamp(32px,4vw,48px) 0 0;
+  border-top:1px solid var(--line);padding-top:18px}
+@media (max-width:820px){.tz-fb-sheet{grid-template-columns:1fr}}
+</style>
