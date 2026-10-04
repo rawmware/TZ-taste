@@ -1,0 +1,241 @@
+<!--tz-meta {"id":"greenhouse-rain","title":"Rain on Glass","category":"3D","file":"three-d/greenhouse-rain.html","tags":["threejs","rain"],"description":"Rain streaks the panes while seedlings sway in warm interior light.","dnas":["greenhouse-glass"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rain on Glass — TZ-taste</title>
+<style>
+  html, body { margin:0; height:100%; overflow:hidden; background:#232b28; }
+  #app { position:fixed; inset:0; }
+  #app canvas { display:block; }
+  .caption { position:fixed; left:18px; bottom:16px; z-index:5; color:#cfe0d4;
+    font:12px/1.6 system-ui, -apple-system, sans-serif; letter-spacing:.05em;
+    opacity:.9; pointer-events:none; }
+  .caption b { display:block; font-size:13px; letter-spacing:.22em; text-transform:uppercase; }
+  #fallback { display:none; position:fixed; inset:0; z-index:10; place-items:center;
+    color:#cfe0d4; font:14px/1.6 system-ui, sans-serif; text-align:center;
+    padding:32px; background:#232b28; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="caption"><b>Rain on Glass</b>outside the weather argues; inside, the seedlings don't care<br/>drag to orbit &middot; scroll to zoom</div>
+<div id="fallback"><p>This scene needs WebGL, which your browser could not provide.<br/>Try a recent version of Chrome, Safari, Firefox or Edge.</p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (e) {
+  document.getElementById('fallback').style.display = 'grid';
+  throw e;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('app').appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x232b28);
+scene.fog = new THREE.Fog(0x232b28, 30, 95);
+
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 300);
+camera.position.set(12.5, 6.5, 15.5);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.target.set(0, 2.2, 0);
+controls.maxPolarAngle = 1.52;
+controls.minDistance = 6;
+controls.maxDistance = 60;
+
+/* ---------- light: grey day outside, warm bulb inside ---------- */
+scene.add(new THREE.HemisphereLight(0x5a6f80, 0x1a1c18, 0.55));
+const day = new THREE.DirectionalLight(0x8fb0d8, 0.4);
+day.position.set(-14, 20, 8);
+scene.add(day);
+const bulb = new THREE.PointLight(0xffc98a, 30, 24, 1.8);
+bulb.position.set(0, 4.3, 0);
+scene.add(bulb);
+const bulbMesh = new THREE.Mesh(new THREE.SphereGeometry(0.16, 12, 10),
+  new THREE.MeshBasicMaterial({ color: 0xffe2ae, fog: false }));
+bulbMesh.position.copy(bulb.position);
+scene.add(bulbMesh);
+const cord = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.02, 0.9, 6),
+  new THREE.MeshStandardMaterial({ color: 0x111111 }));
+cord.position.set(0, 4.85, 0);
+scene.add(cord);
+
+/* ---------- ground ---------- */
+const ground = new THREE.Mesh(new THREE.PlaneGeometry(160, 160),
+  new THREE.MeshStandardMaterial({ color: 0x1c2420, roughness: 1 }));
+ground.rotation.x = -Math.PI / 2;
+scene.add(ground);
+
+/* ---------- greenhouse frame ---------- */
+const W = 8, D = 11, WALL_H = 3.2, PEAK = 5.3;
+const frameMat = new THREE.MeshStandardMaterial({ color: 0x33473b, roughness: 0.5, metalness: 0.6 });
+const house = new THREE.Group();
+function bar(a, b, t) {
+  const d = new THREE.Vector3().subVectors(b, a);
+  const m = new THREE.Mesh(new THREE.BoxGeometry(t, d.length(), t), frameMat);
+  m.position.copy(a).addScaledVector(d, 0.5);
+  m.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), d.normalize());
+  house.add(m);
+}
+const V = (x, y, z) => new THREE.Vector3(x, y, z);
+// corner posts
+for (const sx of [-1, 1]) for (const sz of [-1, 1])
+  bar(V(sx * W / 2, 0, sz * D / 2), V(sx * W / 2, WALL_H, sz * D / 2), 0.18);
+// eaves + ridge
+bar(V(-W/2, WALL_H, -D/2), V(W/2, WALL_H, -D/2), 0.16);
+bar(V(-W/2, WALL_H,  D/2), V(W/2, WALL_H,  D/2), 0.16);
+bar(V(-W/2, WALL_H, -D/2), V(-W/2, WALL_H, D/2), 0.16);
+bar(V( W/2, WALL_H, -D/2), V( W/2, WALL_H, D/2), 0.16);
+bar(V(0, PEAK, -D/2), V(0, PEAK, D/2), 0.16);
+// rafters + mid posts
+for (const z of [-D/2, -D/6, D/6, D/2]) {
+  bar(V(-W/2, WALL_H, z), V(0, PEAK, z), 0.13);
+  bar(V( W/2, WALL_H, z), V(0, PEAK, z), 0.13);
+  bar(V(-W/2, 0, z), V(-W/2, WALL_H, z), 0.13);
+  bar(V( W/2, 0, z), V( W/2, WALL_H, z), 0.13);
+  bar(V(0, PEAK, z), V(0, WALL_H, z), 0.1); // king post
+}
+// mid-slope purlins
+for (const sx of [-1, 1]) {
+  bar(V(sx * W/4, (WALL_H + PEAK) / 2, -D/2), V(sx * W/4, (WALL_H + PEAK) / 2, D/2), 0.1);
+}
+scene.add(house);
+
+/* glass panes */
+const glassMat = new THREE.MeshStandardMaterial({ color: 0xd8ecf2, transparent: true,
+  opacity: 0.13, roughness: 0.08, metalness: 0, side: THREE.DoubleSide, depthWrite: false });
+function pane(w, h) { return new THREE.Mesh(new THREE.PlaneGeometry(w, h), glassMat); }
+for (const sx of [-1, 1]) {
+  const slopeLen = Math.hypot(W / 2, PEAK - WALL_H);
+  const rp = new THREE.Mesh(new THREE.PlaneGeometry(D, slopeLen), glassMat);
+  // basis: local x -> world z, local y -> up-slope direction
+  const yA = new THREE.Vector3(-sx * W / 2, PEAK - WALL_H, 0).normalize();
+  const zA = new THREE.Vector3().crossVectors(new THREE.Vector3(0, 0, 1), yA).normalize();
+  const xA = new THREE.Vector3().crossVectors(yA, zA).normalize();
+  rp.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(xA, yA, zA));
+  rp.position.set(sx * W / 4, (WALL_H + PEAK) / 2, 0);
+  scene.add(rp);
+}
+for (const sx of [-1, 1]) {
+  const p = pane(D, WALL_H); p.rotation.y = Math.PI / 2;
+  p.position.set(sx * W / 2, WALL_H / 2, 0); scene.add(p);
+}
+
+/* ---------- interior: beds + procedural plants ---------- */
+const bedMat = new THREE.MeshStandardMaterial({ color: 0x3a2c20, roughness: 1 });
+for (const sx of [-1, 1]) {
+  const bed = new THREE.Mesh(new THREE.BoxGeometry(2.6, 0.55, D - 1.6), bedMat);
+  bed.position.set(sx * 1.95, 0.28, 0);
+  scene.add(bed);
+}
+const leafMats = [0x3f7d3a, 0x57a05a, 0x2f6b35].map(c =>
+  new THREE.MeshStandardMaterial({ color: c, roughness: 0.8 }));
+const stemMat = new THREE.MeshStandardMaterial({ color: 0x4a7a3f, roughness: 0.9 });
+const potMat = new THREE.MeshStandardMaterial({ color: 0xa85f3c, roughness: 0.85 });
+const sway = []; // {mesh, base, phase, amp}
+function makePlant(x, z, s) {
+  const g = new THREE.Group();
+  const pot = new THREE.Mesh(new THREE.CylinderGeometry(0.34 * s, 0.27 * s, 0.5 * s, 12), potMat);
+  pot.position.y = 0.25 * s; g.add(pot);
+  const stems = 3 + Math.floor(Math.random() * 3);
+  for (let i = 0; i < stems; i++) {
+    const h = (1.0 + Math.random() * 0.7) * s;
+    const stem = new THREE.Mesh(new THREE.CylinderGeometry(0.035 * s, 0.05 * s, h, 6), stemMat);
+    const a = Math.random() * Math.PI * 2, tilt = 0.15 + Math.random() * 0.3;
+    stem.position.set(Math.cos(a) * 0.12 * s, 0.5 * s + h / 2, Math.sin(a) * 0.12 * s);
+    stem.rotation.set(Math.sin(a) * tilt, 0, Math.cos(a) * tilt);
+    g.add(stem);
+    for (let l = 0; l < 3; l++) {
+      const leaf = new THREE.Mesh(new THREE.SphereGeometry(0.24 * s, 8, 6),
+        leafMats[Math.floor(Math.random() * leafMats.length)]);
+      leaf.scale.set(1, 0.28, 0.55);
+      const ly = 0.5 * s + h * (0.45 + l * 0.22);
+      leaf.position.set(stem.position.x + Math.cos(a + l * 2.1) * 0.22 * s, ly,
+                        stem.position.z + Math.sin(a + l * 2.1) * 0.22 * s);
+      leaf.rotation.y = -(a + l * 2.1);
+      const base = 0.25 + Math.random() * 0.2;
+      leaf.rotation.z = base;
+      g.add(leaf);
+      sway.push({ mesh: leaf, base, phase: Math.random() * 6.28, amp: 0.07 + Math.random() * 0.06 });
+    }
+  }
+  g.position.set(x, 0.55, z);
+  g.rotation.y = Math.random() * Math.PI * 2;
+  scene.add(g);
+}
+const plantSpots = [[-1.95, -3.4], [-1.95, -1.2], [-1.95, 1.1], [-1.95, 3.3],
+                    [1.95, -3.4], [1.95, -1.2], [1.95, 1.1], [1.95, 3.3],
+                    [0, -4.2], [0, 4.2]];
+plantSpots.forEach(([x, z], i) => makePlant(x, z, 0.8 + (i % 3) * 0.25));
+
+/* ---------- rain (outside the footprint only) ---------- */
+const RAIN_N = 480;
+const rainPos = new Float32Array(RAIN_N * 6);
+const rainSpd = new Float32Array(RAIN_N);
+function dropXZ() {
+  let x = (Math.random() - 0.5) * 64, z = (Math.random() - 0.5) * 64;
+  if (Math.abs(x) < W/2 + 1.6 && Math.abs(z) < D/2 + 1.6) {
+    x = Math.sign(x || 1) * (W/2 + 1.6 + Math.random() * 22);
+  }
+  return [x, z];
+}
+function resetDrop(i, randomY) {
+  const [x, z] = dropXZ();
+  const y = randomY ? Math.random() * 17 : 15 + Math.random() * 3;
+  rainPos[i*6]=x; rainPos[i*6+1]=y; rainPos[i*6+2]=z;
+  rainPos[i*6+3]=x; rainPos[i*6+4]=y-1.1; rainPos[i*6+5]=z;
+  rainSpd[i] = 13 + Math.random() * 7;
+}
+for (let i = 0; i < RAIN_N; i++) resetDrop(i, true);
+const rainGeo = new THREE.BufferGeometry();
+rainGeo.setAttribute('position', new THREE.BufferAttribute(rainPos, 3));
+scene.add(new THREE.LineSegments(rainGeo, new THREE.LineBasicMaterial({
+  color: 0x9fc0d8, transparent: true, opacity: 0.4 })));
+
+/* ---------- frame loop ---------- */
+const clock = new THREE.Clock();
+function renderFrame(t, dt) {
+  for (const s of sway) s.mesh.rotation.z = s.base + Math.sin(t * 1.3 + s.phase) * s.amp;
+  bulb.intensity = 28 + Math.sin(t * 7.3) * 1.6 + Math.sin(t * 17.7) * 1.1;
+
+  const rp = rainGeo.attributes.position;
+  for (let i = 0; i < RAIN_N; i++) {
+    const ny = rp.getY(i * 2) - rainSpd[i] * dt;
+    if (ny < 0) { resetDrop(i, false); continue; }
+    rp.setY(i * 2, ny);
+    rp.setY(i * 2 + 1, ny - 1.1);
+  }
+  rp.needsUpdate = true;
+
+  controls.update();
+  renderer.render(scene, camera);
+}
+if (REDUCED) {
+  renderFrame(0, 0);
+} else {
+  renderer.setAnimationLoop(() => {
+  const dt = Math.min(clock.getDelta(), 0.05);
+  renderFrame(clock.elapsedTime, dt);
+});
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
