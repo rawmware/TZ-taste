@@ -1,0 +1,118 @@
+@*tz-meta {"id":"cs-onboarding","title":"Calm 3-step onboarding (Razor)","category":"C#","file":"csharp/Onboarding.cshtml","tags":["csharp","razor","onboarding"],"description":"Onboarding for Halcyon, a calm shared family calendar — a frosted 3-step wizard with a hairline progress rule and one deliberate choice: a slow breathing circle behind the card. Three small steps, then quiet.","dnas":["glass-calm"]} *@
+@page
+@{
+    ViewData["Title"] = "Halcyon — set up your household";
+    var bg = "#e8ecf5";
+    var ink = "#2b3245";
+    var accent = "#7c8cf8";
+    var muted = "#8b93a8";
+    var line = "#ffffff88";
+    var surface = "#ffffff8c";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>@ViewData["Title"]</title>
+<style>
+  :root{
+    --bg:@bg; --ink:@ink; --accent:@accent; --muted:@muted; --line:@line; --surface:@surface;
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);
+    font-family:'Outfit','Segoe UI',system-ui,sans-serif;line-height:1.55;
+    min-height:100dvh;display:flex;align-items:center;justify-content:center;
+    padding:clamp(32px,6vw,72px) 20px;position:relative;overflow:hidden}
+  /* The distinctive choice: one slow breathing circle behind the card */
+  .tz-breath{position:absolute;width:min(78vmin,560px);aspect-ratio:1;border-radius:50%;
+    background:var(--surface);border:1px solid var(--line);
+    animation:tz-breathe 9s ease-in-out infinite;pointer-events:none}
+  @@keyframes tz-breathe{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.12);opacity:1}}
+  .tz-card{position:relative;width:min(560px,100%);background:var(--surface);
+    border:1px solid var(--line);border-radius:22px;
+    padding:clamp(36px,6vw,56px) clamp(28px,6vw,52px);
+    box-shadow:0 24px 60px -30px #2b324533}
+  .tz-eyebrow{font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11px;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+  h1{font-weight:600;letter-spacing:-.025em;font-size:clamp(28px,4.6vw,40px);
+    line-height:1.12;margin-bottom:12px}
+  .tz-dek{color:var(--muted);font-size:16px;margin-bottom:34px;max-width:40ch}
+  /* Hairline progress, not a chunky bar */
+  .tz-progress{height:2px;background:var(--line);border-radius:2px;margin-bottom:38px;
+    position:relative;overflow:hidden}
+  .tz-progress i{position:absolute;inset:0;width:33.4%;background:var(--accent);
+    border-radius:2px;transition:width .6s var(--ease)}
+  .tz-steps{list-style:none;margin-bottom:38px;display:grid;gap:18px}
+  .tz-step{display:flex;gap:18px;align-items:flex-start}
+  .tz-dot{flex:none;width:34px;height:34px;border-radius:50%;
+    border:1.5px solid var(--muted);color:var(--muted);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'JetBrains Mono',ui-monospace,monospace;font-size:13px}
+  .tz-step.now .tz-dot{border-color:var(--accent);color:var(--bg);background:var(--accent);
+    font-weight:700}
+  .tz-step.later{opacity:.55}
+  .tz-step h2{font-size:16.5px;font-weight:600;margin-bottom:4px}
+  .tz-step p{font-size:14.5px;color:var(--muted);max-width:38ch}
+  .tz-field{margin:26px 0 8px}
+  .tz-field label{display:block;font-size:13px;font-weight:600;margin-bottom:8px}
+  .tz-field input{width:100%;font:inherit;font-size:16px;color:var(--ink);
+    background:var(--surface);border:1px solid var(--line);border-radius:12px;
+    padding:15px 18px;outline:none;transition:border-color .25s var(--ease)}
+  .tz-field input:focus{border-color:var(--accent)}
+  .tz-hint{font-size:13px;color:var(--muted);margin-bottom:26px}
+  .tz-btn{display:block;width:100%;text-align:center;background:var(--ink);color:var(--bg);
+    font:inherit;font-weight:600;font-size:15.5px;text-decoration:none;
+    padding:17px;border-radius:14px;transition:transform .3s var(--ease),background .3s var(--ease)}
+  .tz-btn:hover{transform:translateY(-2px);background:var(--accent)}
+  .tz-skip{display:block;text-align:center;margin-top:16px;font-size:14px;
+    color:var(--muted);text-decoration:none}
+  .tz-skip:hover{color:var(--ink)}
+  .tz-rise{opacity:0;transform:translateY(18px);animation:tz-rise .8s var(--ease) forwards}
+  @@keyframes tz-rise{to{opacity:1;transform:none}}
+  @@media (prefers-reduced-motion:reduce){
+    .tz-breath{animation:none}
+    .tz-rise{opacity:1;transform:none;animation:none}
+    *{transition:none !important}
+  }
+</style>
+</head>
+<body>
+  <div class="tz-breath" aria-hidden="true"></div>
+  <main class="tz-card tz-rise">
+    <p class="tz-eyebrow">Halcyon · Setup</p>
+    <h1>Three small steps, then quiet.</h1>
+    <p class="tz-dek">A shared calendar for your household — no noise, no streaks, no red badges
+    screaming at dinner.</p>
+    <div class="tz-progress" role="progressbar" aria-valuenow="1" aria-valuemin="1"
+      aria-valuemax="3" aria-label="Step 1 of 3"><i></i></div>
+
+    <ol class="tz-steps">
+      <li class="tz-step now">
+        <span class="tz-dot">1</span>
+        <div>
+          <h2>Name your household</h2>
+          <p>What should the calendar call you all?</p>
+          <div class="tz-field">
+            <label for="house">Household name</label>
+            <input id="house" type="text" placeholder="The Riverton Crew" autocomplete="off" />
+          </div>
+          <p class="tz-hint">Anything works — “The Riverton Crew” is taken by a very nice family in Ohio.</p>
+        </div>
+      </li>
+      <li class="tz-step later">
+        <span class="tz-dot">2</span>
+        <div><h2>Invite the people</h2><p>Partners, kids, the dog walker. Everyone sees the same calm week.</p></div>
+      </li>
+      <li class="tz-step later">
+        <span class="tz-dot">3</span>
+        <div><h2>Pick quiet hours</h2><p>Halcyon holds all notifications until morning. Sleep is a feature.</p></div>
+      </li>
+    </ol>
+
+    <a class="tz-btn" href="#step2">Continue to step 2</a>
+    <a class="tz-skip" href="#later">I'll do this later</a>
+  </main>
+</body>
+</html>
