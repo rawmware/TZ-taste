@@ -1,0 +1,62 @@
+<!--tz-meta {"id":"features-luxe","title":"Luxe hairline list","category":"Features","file":"patterns/features-luxe.html","tags":["dark","gold"],"description":"Near-black hairline rows with champagne serif numerals and wide small caps.","dnas":["dark-luxe"]} -->
+<section class="tz-fl">
+  <p class="tz-fl-eyebrow">The collection</p>
+  <h2 class="tz-fl-title">Considered,<br>down to the last detail.</h2>
+  <ul class="tz-fl-list">
+    <li>
+      <span class="tz-fl-n" aria-hidden="true">I</span>
+      <div>
+        <h3>White-glove onboarding</h3>
+        <p>A dedicated specialist migrates your history, trains your team, and stays until the first Friday report lands.</p>
+      </div>
+      <span class="tz-fl-tag">Included</span>
+    </li>
+    <li>
+      <span class="tz-fl-n" aria-hidden="true">II</span>
+      <div>
+        <h3>Private infrastructure</h3>
+        <p>Single-tenant hosting in the region of your choice, with audit logs your compliance team will actually enjoy reading.</p>
+      </div>
+      <span class="tz-fl-tag">Enterprise</span>
+    </li>
+    <li>
+      <span class="tz-fl-n" aria-hidden="true">III</span>
+      <div>
+        <h3>Concierge automation</h3>
+        <p>Tell us the workflow in plain English. Our team builds the rules, tests them against your history, and hands you the keys.</p>
+      </div>
+      <span class="tz-fl-tag">Included</span>
+    </li>
+    <li>
+      <span class="tz-fl-n" aria-hidden="true">IV</span>
+      <div>
+        <h3>Quarterly reviews</h3>
+        <p>Every ninety days we walk through your numbers and tune the system. The product gets better because someone is watching.</p>
+      </div>
+      <span class="tz-fl-tag">Enterprise</span>
+    </li>
+  </ul>
+</section>
+<style>
+.tz-fl{--bg:#101010;--ink:#ece7db;--gold:#d4af6e;--line:rgba(212,175,110,.28);
+  background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;
+  padding:clamp(72px,10vw,140px) clamp(24px,8vw,120px)}
+.tz-fl-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.34em;
+  text-transform:uppercase;color:var(--gold);margin:0 0 24px;text-align:center}
+.tz-fl-title{font-size:clamp(38px,5.6vw,74px);font-weight:400;letter-spacing:-.02em;
+  line-height:1.06;margin:0 auto clamp(56px,8vw,104px);text-align:center;max-width:14ch}
+.tz-fl-list{list-style:none;margin:0 auto;padding:0;max-width:940px}
+.tz-fl-list li{display:grid;grid-template-columns:auto 1fr auto;gap:clamp(20px,4vw,48px);
+  align-items:baseline;padding:clamp(30px,4vw,44px) 0;border-top:1px solid var(--line)}
+.tz-fl-list li:last-child{border-bottom:1px solid var(--line)}
+.tz-fl-n{font-size:clamp(30px,3.6vw,48px);color:var(--gold);font-style:italic;line-height:1;min-width:1.6em}
+.tz-fl-list h3{font-size:clamp(21px,2.6vw,30px);font-weight:400;letter-spacing:.01em;margin:0 0 10px}
+.tz-fl-list p{font-size:15px;line-height:1.7;color:rgba(236,231,219,.72);margin:0;max-width:46ch}
+.tz-fl-tag{font-family:ui-monospace,Menlo,monospace;font-size:10.5px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--gold);border:1px solid var(--line);
+  padding:8px 14px;white-space:nowrap}
+@media (max-width:600px){
+  .tz-fl-list li{grid-template-columns:auto 1fr}
+  .tz-fl-tag{grid-column:2;justify-self:start;margin-top:4px}
+}
+</style>
