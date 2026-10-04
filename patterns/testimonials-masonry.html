@@ -1,0 +1,47 @@
+<!--tz-meta {"id":"testimonials-masonry","title":"Masonry quotes","category":"Testimonials","file":"patterns/testimonials-masonry.html","tags":["masonry","varied"],"description":"Varied-size serif quote blocks in a loose editorial masonry.","dnas":["editorial-serif"]} -->
+<section class="tz-mason" aria-label="Client quotes">
+  <p class="tz-eyebrow">Field notes · N°02</p>
+  <div class="tz-cols">
+    <figure class="tz-q tz-big">
+      <blockquote>“Nobody had ever asked me what I wanted the website to <em>do</em>. He asked first, then built.”</blockquote>
+      <figcaption>Rosa Jimenez — Jimenez Family Bakery</figcaption>
+    </figure>
+    <figure class="tz-q">
+      <blockquote>“Done in three days. Our menu finally reads right on a phone.”</blockquote>
+      <figcaption>Tom Okafor — Okafor's Kitchen</figcaption>
+    </figure>
+    <figure class="tz-q">
+      <blockquote>“He treats a one-page site like it matters. Because it does.”</blockquote>
+      <figcaption>Ellen Marsh — Marsh Legal Aid</figcaption>
+    </figure>
+    <figure class="tz-q">
+      <blockquote>“I sent him a napkin sketch. He sent back a store that sells while I sleep.”</blockquote>
+      <figcaption>Devon Park — Park Street Goods</figcaption>
+    </figure>
+    <figure class="tz-q tz-big">
+      <blockquote>“The rare builder who answers his own email <em>and</em> finishes on time.”</blockquote>
+      <figcaption>June Calloway — Calloway Floral</figcaption>
+    </figure>
+    <figure class="tz-q">
+      <blockquote>“Our old developer vanished. Roman inherited the mess and never complained once.”</blockquote>
+      <figcaption>Sam Whitaker — Whitaker Auto</figcaption>
+    </figure>
+  </div>
+</section>
+<style>
+.tz-mason{--bg:#f5f1e8;--ink:#1c1a15;--soft:#5c584c;--accent:#b5461f;
+  background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;
+  padding:clamp(56px,9vw,120px) clamp(20px,6vw,80px)}
+.tz-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--soft);margin:0 0 40px}
+.tz-cols{columns:3 240px;column-gap:28px}
+.tz-q{break-inside:avoid;margin:0 0 28px;padding:26px 24px 22px;border-top:2px solid var(--ink);
+  background:#f5f1e800;position:relative}
+.tz-q blockquote{margin:0 0 14px;font-size:19px;line-height:1.5}
+.tz-q.tz-big blockquote{font-size:clamp(26px,3vw,36px);line-height:1.25;letter-spacing:-.015em}
+.tz-q.tz-big blockquote::before{content:"“";display:block;font-size:64px;line-height:.6;
+  color:var(--accent);margin-bottom:14px;font-style:normal}
+.tz-q em{color:var(--accent);font-style:italic}
+.tz-q figcaption{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--soft)}
+</style>
