@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-sahara-ochre",
+  "title": "Sahara Ochre design tokens",
+  "category": "Tokens",
+  "file": "tokens/sahara-ochre.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "sahara-ochre"
+  ],
+  "description": "W3C-format design tokens for the Sahara Ochre style DNA.",
+  "dnas": [
+   "sahara-ochre"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#f4e7d3",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#3a2418",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#b4552d",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#8d7057",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#d9c3a3",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "DM Serif Display",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Karla",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "sahara-ochre",
+  "name": "Sahara Ochre",
+  "vibe": "Artisanal earth: terracotta, clay, and spice tones with handmade texture — the craft market, not the museum."
+ }
+}
