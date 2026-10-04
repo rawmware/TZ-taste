@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-lab-notebook",
+  "title": "Lab Notebook design tokens",
+  "category": "Tokens",
+  "file": "tokens/lab-notebook.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "lab-notebook"
+  ],
+  "description": "W3C-format design tokens for the Lab Notebook DNA.",
+  "dnas": [
+   "lab-notebook"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#f4f1e6",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#2b2a26",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#b3402e",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#7a756a",
+   "type": "color"
+  },
+  "line": {
+   "value": "#2b2a2633",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#f4f1e6",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Caveat",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Karla",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Courier Prime",
+   "type": "fontFamily"
+  }
+ }
+}
