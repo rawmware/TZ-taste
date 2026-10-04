@@ -1,0 +1,63 @@
+<!--tz-meta {"id":"reservation-widget","title":"Restaurant table reservation","category":"Forms","file":"patterns/reservation-widget.html","tags":["restaurant","booking","reservation","hospitality"],"description":"Date strip, party stepper, and time-slot grid with one honest sold-out slot.","dnas":["aperitivo-italian"]} -->
+<section class="tz-reservation-widget" aria-label="Reserve a table">
+  <p class="tz-k">Osteria Bruno — Portsmouth</p>
+  <h2>Book a table</h2>
+  <p class="tz-sub">Friday nights go fast. We hold tables 15 minutes past the hour — no card required.</p>
+  <div class="tz-dates" role="group" aria-label="Date">
+    <button><span>Fri</span><strong>9</strong></button>
+    <button class="tz-on" aria-pressed="true"><span>Sat</span><strong>10</strong></button>
+    <button><span>Sun</span><strong>11</strong></button>
+    <button><span>Mon</span><strong>12</strong></button>
+  </div>
+  <div class="tz-party">
+    <span>Party size</span>
+    <div class="tz-stepper">
+      <button aria-label="One fewer guest">−</button>
+      <strong>2 guests</strong>
+      <button aria-label="One more guest">+</button>
+    </div>
+  </div>
+  <div class="tz-times" role="group" aria-label="Time">
+    <button>5:30</button><button>6:00</button><button class="tz-on" aria-pressed="true">6:30</button>
+    <button>7:00</button><button>7:15</button><button disabled>8:30 <small>full</small></button>
+  </div>
+  <button class="tz-book">Request this table</button>
+  <p class="tz-fine">Sat, Oct 10 · 2 guests · 6:30 PM — we confirm by text within the hour.</p>
+</section>
+<style>
+.tz-reservation-widget{--bg:#f7efdc;--ink:#2b1f14;--accent:#c93a2e;--muted:#a08872;--line:#e3d3b8;
+  background:var(--bg);color:var(--ink);padding:clamp(32px,5vw,72px);max-width:620px;
+  font-family:'DM Sans',-apple-system,'Segoe UI',sans-serif}
+.tz-reservation-widget .tz-k{font-family:'Space Mono',ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.tz-reservation-widget h2{font-family:'Alfa Slab One',Georgia,serif;font-weight:400;
+  font-size:clamp(26px,3.4vw,40px);margin:0 0 8px}
+.tz-sub{color:var(--muted);font-size:14.5px;margin:0 0 28px;line-height:1.6;max-width:44ch}
+.tz-dates{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px}
+.tz-dates button{background:#fffdf8;border:1px solid var(--line);border-radius:10px;
+  padding:12px 4px;cursor:pointer;display:flex;flex-direction:column;gap:4px;align-items:center;color:var(--ink)}
+.tz-dates button span{font-family:'Space Mono',ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.tz-dates button strong{font-size:20px}
+.tz-dates .tz-on{border:2px solid var(--accent);padding:11px 3px}
+.tz-dates .tz-on span{color:var(--accent)}
+.tz-party{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;
+  font-size:14.5px;font-weight:600}
+.tz-stepper{display:flex;align-items:center;gap:16px}
+.tz-stepper button{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);
+  background:#fffdf8;font-size:18px;cursor:pointer;color:var(--ink);line-height:1}
+.tz-stepper button:hover{border-color:var(--accent)}
+.tz-stepper strong{min-width:76px;text-align:center}
+.tz-times{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:28px}
+.tz-times button{font-family:'Space Mono',ui-monospace,Menlo,monospace;font-size:14px;
+  padding:14px 4px;border:1px solid var(--line);border-radius:10px;background:#fffdf8;
+  cursor:pointer;color:var(--ink)}
+.tz-times button small{display:block;font-size:10.5px;color:var(--muted);letter-spacing:.08em}
+.tz-times button:disabled{opacity:.45;cursor:not-allowed;text-decoration:line-through}
+.tz-times .tz-on{background:var(--ink);color:#fffdf8;border-color:var(--ink)}
+.tz-book{width:100%;font-size:16px;font-weight:700;background:var(--accent);color:#fffdf8;
+  border:0;border-radius:12px;padding:16px;cursor:pointer;letter-spacing:.01em}
+.tz-book:hover{filter:brightness(.94)}
+.tz-fine{margin:14px 0 0;text-align:center;font-size:13px;color:var(--muted)}
+@media(max-width:480px){.tz-times{grid-template-columns:repeat(2,1fr)}}
+</style>
