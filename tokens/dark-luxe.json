@@ -1,0 +1,62 @@
+{
+ "_tzmeta": {
+  "id": "tokens-dark-luxe",
+  "title": "Dark Luxe design tokens",
+  "category": "Tokens",
+  "file": "tokens/dark-luxe.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "dark-luxe"
+  ],
+  "description": "W3C-format design tokens for the Dark Luxe style DNA.",
+  "dnas": [
+   "dark-luxe"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#0e0d0b",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#ece5d8",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#c9a96a",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#8a8177",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#ece5d822",
+   "$type": "color"
+  },
+  "surface": {
+   "$value": "#161411",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Cormorant Garamond",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Outfit",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "dark-luxe",
+  "name": "Dark Luxe",
+  "vibe": "Near-black, champagne accents, whisper-thin serif. Expensive by restraint."
+ }
+}
