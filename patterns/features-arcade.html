@@ -1,0 +1,60 @@
+<!--tz-meta {"id":"features-arcade","title":"Arcade cards","category":"Features","file":"patterns/features-arcade.html","tags":["pixel","game"],"description":"Neon arcade cards under a blinking INSERT COIN header strip with high-score microcopy.","dnas":["acid-rave"]} -->
+<section class="tz-fa">
+  <p class="tz-fa-coin" aria-hidden="true">▸ insert coin to continue ▸</p>
+  <h2 class="tz-fa-title">Power-ups,<br>unlocked.</h2>
+  <p class="tz-fa-sub">Four upgrades. Zero quarters required.</p>
+  <div class="tz-fa-row">
+    <article class="tz-fa-card tz-fa-c1">
+      <p class="tz-fa-score">hi-score 99,990</p>
+      <h3>Turbo Inbox</h3>
+      <p>Sorts a thousand messages before your coffee cools. Boss-level triage speed.</p>
+      <p class="tz-fa-lvl">lvl 01 · unlocked</p>
+    </article>
+    <article class="tz-fa-card tz-fa-c2">
+      <p class="tz-fa-score">hi-score 87,400</p>
+      <h3>Combo Replies</h3>
+      <p>Chain approved templates into full conversations. Multiplier on every follow-up.</p>
+      <p class="tz-fa-lvl">lvl 02 · unlocked</p>
+    </article>
+    <article class="tz-fa-card tz-fa-c3">
+      <p class="tz-fa-score">hi-score 120,050</p>
+      <h3>Shield Mode</h3>
+      <p>Spam, phishing, and reply-all disasters bounce off. Your inbox stays pristine.</p>
+      <p class="tz-fa-lvl">lvl 03 · unlocked</p>
+    </article>
+    <article class="tz-fa-card tz-fa-c4">
+      <p class="tz-fa-score">hi-score 64,200</p>
+      <h3>Extra Life Reports</h3>
+      <p>Weekly stats auto-generated. Continue your streak of looking prepared.</p>
+      <p class="tz-fa-lvl">lvl 04 · unlocked</p>
+    </article>
+  </div>
+</section>
+<style>
+.tz-fa{--bg:#0a0a0c;--pink:#ff2fb3;--lime:#b6ff2e;--cyan:#2ee6ff;--yel:#ffe93c;--ink:#f4f4f4;
+  background:var(--bg);color:var(--ink);font-family:ui-monospace,Menlo,monospace;
+  padding:0 0 clamp(72px,9vw,120px)}
+.tz-fa-coin{margin:0;background:var(--yel);color:#0a0a0c;text-align:center;font-weight:700;
+  font-size:13px;letter-spacing:.3em;text-transform:uppercase;padding:14px 16px;
+  animation:tzfa-blink 1.4s steps(2) infinite}
+@keyframes tzfa-blink{50%{opacity:.25}}
+.tz-fa-title{font-size:clamp(40px,7vw,88px);font-weight:700;letter-spacing:-.02em;line-height:1;
+  text-align:center;margin:clamp(48px,7vw,80px) 24px 16px;color:var(--pink);
+  text-shadow:0 0 24px rgba(255,47,179,.55)}
+.tz-fa-sub{text-align:center;color:var(--lime);font-size:14px;letter-spacing:.14em;
+  text-transform:uppercase;margin:0 24px clamp(40px,5vw,64px)}
+.tz-fa-row{display:flex;flex-wrap:wrap;gap:22px;justify-content:center;
+  padding:0 clamp(24px,5vw,72px);max-width:1200px;margin:0 auto}
+.tz-fa-card{flex:1 1 220px;max-width:280px;border:2px solid;padding:26px 22px;background:#111114}
+.tz-fa-c1{border-color:var(--pink);box-shadow:0 0 18px rgba(255,47,179,.35)}
+.tz-fa-c2{border-color:var(--lime);box-shadow:0 0 18px rgba(182,255,46,.3)}
+.tz-fa-c3{border-color:var(--cyan);box-shadow:0 0 18px rgba(46,230,255,.3)}
+.tz-fa-c4{border-color:var(--yel);box-shadow:0 0 18px rgba(255,233,60,.3)}
+.tz-fa-score{font-size:11px;letter-spacing:.18em;color:rgba(244,244,244,.55);margin:0 0 18px;text-transform:uppercase}
+.tz-fa-card h3{font-size:21px;margin:0 0 12px;letter-spacing:.02em}
+.tz-fa-c1 h3{color:var(--pink)}.tz-fa-c2 h3{color:var(--lime)}
+.tz-fa-c3 h3{color:var(--cyan)}.tz-fa-c4 h3{color:var(--yel)}
+.tz-fa-card p:not(.tz-fa-score):not(.tz-fa-lvl){font-size:13.5px;line-height:1.7;color:rgba(244,244,244,.78);margin:0 0 20px}
+.tz-fa-lvl{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);margin:0}
+@media (prefers-reduced-motion:reduce){.tz-fa-coin{animation:none}}
+</style>
