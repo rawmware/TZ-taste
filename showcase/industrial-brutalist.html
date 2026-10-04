@@ -1,0 +1,118 @@
+<!--tz-meta {"id":"showcase-industrial-brutalist","title":"Industrial Brutalist showcase","category":"Showcase","file":"showcase/industrial-brutalist.html","tags":["industrial-brutalist"],"description":"Live demo page for the Industrial Brutalist style DNA.","dnas":["industrial-brutalist"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Industrial Brutalist — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#d8d8d4; --tz-surface:#c9c9c4; --tz-ink:#141412; --tz-muted:#5c5c58;
+  --tz-accent:#ff4d00; --tz-line:#141412;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Space Grotesk",Helvetica,sans-serif;font-size:1rem;line-height:1.5;-webkit-font-smoothing:antialiased}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 4vw;border-bottom:2px solid var(--tz-line);font-family:"JetBrains Mono",monospace;font-size:0.75rem;letter-spacing:0.06em}
+.tz-wordmark{font-family:"Anton",sans-serif;font-size:1.3rem;letter-spacing:0.02em}
+.tz-label{color:var(--tz-muted)}
+.tz-hero{padding:4rem 4vw;border-bottom:2px solid var(--tz-line);position:relative;overflow:hidden}
+.tz-eyebrow{font-family:"JetBrains Mono",monospace;font-size:0.78rem;letter-spacing:0.1em;color:var(--tz-muted);margin-bottom:1.2rem}
+.tz-hero h1{font-family:"Anton",sans-serif;font-size:clamp(3rem,10vw,8.5rem);line-height:0.92;letter-spacing:0.005em;text-transform:uppercase;max-width:10ch}
+.tz-hero h1 .tz-hl{color:var(--tz-accent)}
+.tz-sub{margin-top:1.4rem;max-width:52ch;font-weight:500}
+.tz-cta{display:inline-block;margin-top:2rem;background:var(--tz-accent);color:var(--tz-ink);font-family:"JetBrains Mono",monospace;font-weight:700;font-size:0.85rem;letter-spacing:0.08em;text-decoration:none;padding:1rem 2rem;border:2px solid var(--tz-line)}
+.tz-cta:hover{background:var(--tz-ink);color:var(--tz-bg)}
+.tz-stamp{position:absolute;top:3.5rem;right:5vw;transform:rotate(-8deg);border:3px solid var(--tz-accent);color:var(--tz-accent);font-family:"JetBrains Mono",monospace;font-weight:700;font-size:clamp(0.8rem,2.4vw,1.15rem);letter-spacing:0.12em;padding:0.7rem 1.2rem;text-transform:uppercase;background:color-mix(in srgb,var(--tz-bg) 60%,transparent)}
+.tz-stripe{height:2.2rem;background:repeating-linear-gradient(-45deg,var(--tz-accent) 0 1.4rem,var(--tz-ink) 1.4rem 2.8rem);border-top:2px solid var(--tz-line);border-bottom:2px solid var(--tz-line)}
+.tz-content{padding:0 0 4rem}
+.tz-sect{padding:3rem 4vw 0;font-family:"JetBrains Mono",monospace;font-size:0.78rem;letter-spacing:0.1em;color:var(--tz-muted);margin-bottom:1rem}
+.tz-specs{border:2px solid var(--tz-line);margin:0 4vw;background:var(--tz-surface)}
+.tz-specs .tz-row{display:grid;grid-template-columns:1fr 1fr;border-bottom:2px solid var(--tz-line)}
+.tz-specs .tz-row:last-child{border-bottom:none}
+.tz-specs .tz-k{font-family:"JetBrains Mono",monospace;font-size:0.8rem;letter-spacing:0.08em;padding:1rem 1.2rem;border-right:2px solid var(--tz-line);color:var(--tz-muted)}
+.tz-specs .tz-v{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:1rem;padding:1rem 1.2rem}
+.tz-specs .tz-v .tz-u{font-weight:400;font-size:0.8rem;color:var(--tz-muted)}
+.tz-fig{margin:3rem 4vw 0;border:2px solid var(--tz-line);padding:1.5rem;background:var(--tz-bg)}
+.tz-fig .tz-cap{font-family:"JetBrains Mono",monospace;font-size:0.75rem;letter-spacing:0.1em;color:var(--tz-muted);margin-bottom:1rem}
+.tz-fig pre{font-family:"JetBrains Mono",monospace;font-size:0.85rem;line-height:1.5;overflow-x:auto}
+.tz-fig .tz-o{color:var(--tz-accent);font-weight:700}
+.tz-tokens{padding:3.5rem 4vw;border-top:2px solid var(--tz-line)}
+.tz-tokens h2{font-family:"Anton",sans-serif;font-size:1.8rem;letter-spacing:0.02em;text-transform:uppercase;margin-bottom:1.4rem}
+.tz-swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));border:2px solid var(--tz-line);list-style:none;background:var(--tz-surface)}
+.tz-swatches li{border-right:2px solid var(--tz-line)}
+.tz-swatches li:last-child{border-right:none}
+.tz-chip{display:block;height:3rem;border-bottom:2px solid var(--tz-line)}
+.tz-swatches .tz-name{display:block;font-family:"JetBrains Mono",monospace;font-size:0.66rem;letter-spacing:0.12em;padding:0.6rem 0.9rem 0.1rem;color:var(--tz-muted)}
+.tz-swatches .tz-hex{display:block;font-family:"JetBrains Mono",monospace;font-size:0.78rem;padding:0 0.9rem 0.7rem}
+.tz-foot{padding:1.4rem 4vw;border-top:2px solid var(--tz-line);font-family:"JetBrains Mono",monospace;font-size:0.72rem;letter-spacing:0.06em;color:var(--tz-muted);display:flex;justify-content:space-between}
+@media(max-width:700px){
+  .tz-stamp{position:static;display:inline-block;margin-top:1.6rem;transform:rotate(-4deg)}
+  .tz-specs .tz-row{grid-template-columns:1fr}
+  .tz-specs .tz-k{border-right:none;border-bottom:2px solid var(--tz-line)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">TORQUEWORKS</span>
+  <span class="tz-label">TZ-taste style DNA</span>
+</header>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow">SPEC SHEET · MODEL TW-9 · REV 4</p>
+  <h1>1,800 inch-pounds of <span class="tz-hl">persuasion.</span></h1>
+  <p class="tz-sub">Brushless impact driver. Steel gearbox. Zero decorative plastic. Built for people who read torque curves for fun.</p>
+  <a class="tz-cta" href="#">READ THE FULL SPEC →</a>
+  <div class="tz-stamp" aria-hidden="true">Certified no-slop</div>
+</section>
+
+<div class="tz-stripe" aria-hidden="true"></div>
+
+<section class="tz-content">
+  <p class="tz-sect">§ 02 — PERFORMANCE DATA</p>
+  <div class="tz-specs">
+    <div class="tz-row"><span class="tz-k">PEAK TORQUE</span><span class="tz-v">1,800 <span class="tz-u">in-lb</span></span></div>
+    <div class="tz-row"><span class="tz-k">NO-LOAD SPEED</span><span class="tz-v">0–3,600 <span class="tz-u">RPM</span></span></div>
+    <div class="tz-row"><span class="tz-k">CHUCK</span><span class="tz-v">1/4" <span class="tz-u">hex, quick-change</span></span></div>
+    <div class="tz-row"><span class="tz-k">BATTERY</span><span class="tz-v">20V <span class="tz-u">5.0Ah, 38 min fast charge</span></span></div>
+    <div class="tz-row"><span class="tz-k">WEIGHT</span><span class="tz-v">2.4 <span class="tz-u">lb with battery</span></span></div>
+    <div class="tz-row"><span class="tz-k">WARRANTY</span><span class="tz-v">5 <span class="tz-u">years, no fine print</span></span></div>
+  </div>
+
+  <div class="tz-fig">
+    <p class="tz-cap">FIG. 01 — DRIVE TRAIN, EXPLODED VIEW</p>
+<pre aria-hidden="true">  +------------------+
+  |   <span class="tz-o">MOTOR</span> 20V BLDC  |
+  +--------+---------+
+           |
+  +--------v---------+
+  | <span class="tz-o">GEARBOX</span> steel 3-stage|
+  +--------+---------+
+           |
+  +--------v---------+
+  |  <span class="tz-o">ANVIL</span> 1/4" hex     |
+  +------------------+</pre>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#d8d8d4"></span><span class="tz-name">bg</span><span class="tz-hex">#d8d8d4</span></li>
+    <li><span class="tz-chip" style="background:#c9c9c4"></span><span class="tz-name">surface</span><span class="tz-hex">#c9c9c4</span></li>
+    <li><span class="tz-chip" style="background:#141412"></span><span class="tz-name">ink</span><span class="tz-hex">#141412</span></li>
+    <li><span class="tz-chip" style="background:#5c5c58"></span><span class="tz-name">muted</span><span class="tz-hex">#5c5c58</span></li>
+    <li><span class="tz-chip" style="background:#ff4d00"></span><span class="tz-name">accent</span><span class="tz-hex">#ff4d00</span></li>
+    <li><span class="tz-chip" style="background:#141412"></span><span class="tz-name">line</span><span class="tz-hex">#141412</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot"><span>A TZ-taste style DNA showcase — MIT, free forever.</span><span>DOC TW9-04</span></footer>
+</body>
+</html>
