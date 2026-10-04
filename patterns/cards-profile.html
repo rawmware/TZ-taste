@@ -1,0 +1,47 @@
+<!--tz-meta {"id":"cards-profile","title":"Profile cards","category":"Cards","file":"patterns/cards-profile.html","tags":["people","social"],"description":"Dark profile cards with gold accents: one wide feature, two compact.","dnas":["dark-luxe"]} -->
+<section class="tz-dprof" aria-label="Member profiles">
+  <p class="tz-eyebrow">Members</p>
+  <div class="tz-deck">
+    <article class="tz-pc tz-wide">
+      <span class="tz-face tz-f1" aria-hidden="true">IH</span>
+      <div class="tz-id"><h3>Ingrid Halvorsen</h3><p class="tz-title">Master carpenter</p>
+        <p class="tz-bio">Twenty-three years of timber framing on the Seacoast. Teaches the Saturday workshop and still answers every beginner question like it's the first.</p>
+        <p class="tz-meta"><span>214 builds</span><span>·</span><span>Dover</span></p></div>
+    </article>
+    <article class="tz-pc">
+      <span class="tz-face tz-f2" aria-hidden="true">JO</span>
+      <div class="tz-id"><h3>Josiah Owens</h3><p class="tz-title">Metalworker</p>
+        <p class="tz-meta"><span>96 builds</span><span>·</span><span>Rochester</span></p></div>
+    </article>
+    <article class="tz-pc">
+      <span class="tz-face tz-f3" aria-hidden="true">AL</span>
+      <div class="tz-id"><h3>Alba Lindqvist</h3><p class="tz-title">Textile artist</p>
+        <p class="tz-meta"><span>141 builds</span><span>·</span><span>Portsmouth</span></p></div>
+    </article>
+  </div>
+</section>
+<style>
+.tz-dprof{--bg:#0e0d0b;--ink:#f2e9d8;--gold:#c9a24a;--soft:#b9ac93;--card:#161411;--line:#f2e9d81f;
+  background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;
+  padding:clamp(56px,9vw,120px) clamp(20px,6vw,80px)}
+.tz-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--soft);margin:0 0 40px}
+.tz-deck{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:20px;align-items:start}
+.tz-pc{background:var(--card);border:1px solid var(--line);padding:30px 26px;margin:0}
+.tz-wide{display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:start}
+.tz-face{width:72px;height:72px;border-radius:50%;flex:none;display:inline-flex;align-items:center;
+  justify-content:center;font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:20px;color:#0e0d0b}
+.tz-f1{background:linear-gradient(140deg,#e8c877,#a07c2a);width:88px;height:88px;font-size:24px}
+.tz-f2{background:linear-gradient(140deg,#c98f5f,#7a4a22)}
+.tz-f3{background:linear-gradient(140deg,#9aa37a,#5c6338)}
+.tz-id h3{margin:0 0 4px;font-size:24px;font-weight:400;letter-spacing:-.015em}
+.tz-wide .tz-id h3{font-size:30px}
+.tz-title{margin:0 0 14px;font-family:ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.tz-title::after{content:"";display:block;width:44px;height:1px;background:var(--gold);margin-top:12px}
+.tz-bio{margin:0 0 16px;font-size:16px;line-height:1.6;color:var(--soft)}
+.tz-meta{margin:0;display:flex;gap:10px;font-family:ui-monospace,Menlo,monospace;
+  font-size:12px;color:var(--soft)}
+@media (max-width:860px){.tz-deck{grid-template-columns:1fr 1fr}.tz-wide{grid-column:span 2}}
+@media (max-width:560px){.tz-deck{grid-template-columns:1fr}.tz-wide{grid-column:auto;grid-template-columns:1fr}}
+</style>
