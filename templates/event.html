@@ -1,0 +1,407 @@
+<!--tz-meta {"id":"event","title":"VOLTAGE — Warehouse Night Event Page","category":"Template","file":"templates/event.html","tags":["event"],"description":"Maximum-volume flyer page for a warehouse electronic night: giant Anton type, acid lime, marquee.","dnas":["acid-rave"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VOLTAGE — Warehouse Night · Sat Nov 14</title>
+<meta name="description" content="VOLTAGE: four rooms of techno, acid, and breaks in a converted warehouse. Sat Nov 14, doors 22:00. Tickets from €18.">
+<!-- DNA: acid-rave (styles/acid-rave.md). Design read: a flyer that screams from a lamppost — maximum volume for ravers who decide in five seconds. One distinctive choice: the hero is one giant stacked wordmark filling the whole viewport like a printed poster. Dials V9/M7/D4. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#0a0a0a;
+  --tz-surface:#131313;
+  --tz-ink:#f2f2f2;
+  --tz-ink-soft:#c9c9c9;
+  --tz-accent:#c6ff00;
+  --tz-accent-dim:#8ab300;
+  --tz-line:#f2f2f21f;
+  --tz-muted:#7a7a7a;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Space Grotesk",sans-serif;background:var(--tz-bg);color:var(--tz-ink);
+  line-height:1.5;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--tz-accent);color:#000}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.tz-mono{font-family:"Space Mono",monospace}
+.tz-anton{font-family:"Anton",sans-serif;font-weight:400}
+.skip{position:absolute;left:-999px;top:0;background:var(--tz-accent);color:#000;padding:8px 16px;z-index:99;font-family:sans-serif}
+.skip:focus{left:8px;top:8px}
+
+/* ---------- top strip ---------- */
+.tz-topbar{
+  background:var(--tz-accent);color:#000;overflow:hidden;white-space:nowrap;
+  font-family:"Space Mono",monospace;font-size:12px;font-weight:700;letter-spacing:.06em;
+}
+.tz-topbar-track{display:inline-block;padding:8px 0;animation:tz-scroll 20s linear infinite}
+.tz-topbar-track span{margin:0 28px}
+@keyframes tz-scroll{to{transform:translateX(-50%)}}
+
+/* ---------- header ---------- */
+.tz-header{position:sticky;top:0;z-index:50;background:#0a0a0af2;backdrop-filter:blur(8px);border-bottom:1px solid var(--tz-line)}
+.tz-header .tz-wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+.tz-logo{font-family:"Anton",sans-serif;font-size:22px;letter-spacing:.06em;color:var(--tz-accent)}
+.tz-nav{display:flex;gap:26px;font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.tz-nav a{color:var(--tz-ink-soft);transition:color .2s}
+.tz-nav a:hover{color:var(--tz-accent)}
+.tz-ticket-btn{
+  font-family:"Space Mono",monospace;font-size:13px;font-weight:700;letter-spacing:.06em;
+  background:var(--tz-accent);color:#000;border:0;padding:10px 20px;cursor:pointer;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%);
+  transition:transform .2s var(--tz-ease),background .2s;
+}
+.tz-ticket-btn:hover{transform:translateY(-2px) skewX(-2deg);background:#d8ff4d}
+
+/* ---------- hero: the giant stacked wordmark ---------- */
+.tz-hero{min-height:min(100dvh,1080px);display:flex;flex-direction:column;justify-content:center;position:relative;padding:64px 0 40px;overflow:hidden}
+.tz-hero::before{
+  content:"";position:absolute;inset:-10%;pointer-events:none;opacity:.5;
+  background:
+    repeating-linear-gradient(115deg,transparent 0 46px,#c6ff0008 46px 48px);
+}
+.tz-hero-word{
+  font-family:"Anton",sans-serif;font-size:clamp(90px,21vw,340px);line-height:.86;
+  letter-spacing:.01em;color:var(--tz-ink);text-transform:uppercase;
+  position:relative;
+}
+.tz-hero-word .tz-o{color:var(--tz-accent);display:inline-block;animation:tz-flicker 4s infinite}
+@keyframes tz-flicker{0%,92%,96%,100%{opacity:1}94%{opacity:.25}}
+.tz-hero-word .tz-outline{color:transparent;-webkit-text-stroke:2px var(--tz-ink)}
+.tz-hero-meta{
+  display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;
+  margin-top:36px;border-top:2px solid var(--tz-accent);padding-top:24px;position:relative;
+}
+.tz-hero-meta .tz-date{font-family:"Anton",sans-serif;font-size:clamp(28px,4vw,52px);letter-spacing:.02em}
+.tz-hero-meta .tz-date small{display:block;font-family:"Space Mono",monospace;font-size:13px;letter-spacing:.14em;color:var(--tz-accent);margin-top:6px}
+.tz-hero-meta p{max-width:38ch;color:var(--tz-ink-soft);font-size:16px}
+.tz-venue{font-family:"Space Mono",monospace;font-size:13px;color:var(--tz-ink-soft);letter-spacing:.06em;line-height:2}
+.tz-venue b{color:var(--tz-ink)}
+
+/* ---------- marquee divider ---------- */
+.tz-divider{border-top:1px solid var(--tz-line);border-bottom:1px solid var(--tz-line);overflow:hidden;background:var(--tz-surface)}
+.tz-divider-track{display:flex;gap:0;white-space:nowrap;animation:tz-scroll 30s linear infinite;width:max-content}
+.tz-divider-track span{font-family:"Anton",sans-serif;font-size:28px;letter-spacing:.08em;padding:14px 32px;border-right:1px solid var(--tz-line)}
+.tz-divider-track span:nth-child(even){color:var(--tz-accent)}
+
+/* ---------- lineup: brutal table, the anti-card ---------- */
+.tz-section{padding:96px 0}
+.tz-section-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:40px;flex-wrap:wrap;gap:12px}
+.tz-section-head h2{font-family:"Anton",sans-serif;font-size:clamp(40px,6vw,88px);letter-spacing:.02em;line-height:1}
+.tz-section-head h2 em{color:var(--tz-accent);font-style:normal}
+.tz-kicker{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--tz-accent)}
+.tz-rooms{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+.tz-room{border:1px solid var(--tz-line);background:var(--tz-surface)}
+.tz-room-head{padding:20px 24px;border-bottom:1px solid var(--tz-line);display:flex;justify-content:space-between;align-items:center}
+.tz-room-head h3{font-family:"Anton",sans-serif;font-size:26px;letter-spacing:.04em}
+.tz-room-head .tz-tag{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.14em;color:#000;background:var(--tz-accent);padding:5px 10px}
+.tz-set{list-style:none}
+.tz-set li{
+  display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+  padding:18px 24px;border-bottom:1px solid var(--tz-line);
+  transition:background .2s,padding .25s var(--tz-ease);
+}
+.tz-set li:last-child{border-bottom:0}
+.tz-set li:hover{background:#1a1a1a;padding-left:32px}
+.tz-set .tz-time{font-family:"Space Mono",monospace;font-size:13px;color:var(--tz-accent);flex:none}
+.tz-set .tz-dj{font-size:19px;font-weight:700;letter-spacing:-0.01em}
+.tz-set .tz-dj small{display:block;font-weight:400;font-size:13px;color:var(--tz-muted);letter-spacing:.04em}
+
+/* ---------- tickets: rows, not cards ---------- */
+.tz-tickets{background:var(--tz-accent);color:#000;padding:96px 0;transform:rotate(-1deg) scale(1.02);margin:40px 0}
+.tz-tickets .tz-wrap{transform:rotate(1deg)}
+.tz-tickets .tz-section-head h2{color:#000}
+.tz-tier{list-style:none;border-top:3px solid #000}
+.tz-tier li{
+  display:grid;grid-template-columns:1fr auto auto;gap:28px;align-items:center;
+  padding:28px 8px;border-bottom:3px solid #000;
+  transition:padding .25s var(--tz-ease),background .2s;
+}
+.tz-tier li:hover{background:#000;color:var(--tz-accent);padding-left:24px;padding-right:24px}
+.tz-tier li:hover .tz-price{color:var(--tz-accent)}
+.tz-tier li:hover .tz-sub{color:#c9c9c9}
+.tz-tier .tz-name{font-family:"Anton",sans-serif;font-size:clamp(24px,3.4vw,44px);letter-spacing:.02em;line-height:1}
+.tz-tier .tz-sub{font-family:"Space Mono",monospace;font-size:13px;margin-top:8px}
+.tz-tier .tz-price{font-family:"Anton",sans-serif;font-size:clamp(28px,3.6vw,52px)}
+.tz-tier .tz-soldout{font-family:"Space Mono",monospace;font-size:13px;font-weight:700;letter-spacing:.1em;border:2px solid currentColor;padding:10px 18px}
+.tz-tier-note{font-family:"Space Mono",monospace;font-size:13px;margin-top:24px;max-width:70ch;line-height:1.8}
+
+/* ---------- info grid ---------- */
+.tz-info{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--tz-line);border:1px solid var(--tz-line)}
+.tz-info>div{background:var(--tz-bg);padding:36px 32px}
+.tz-info h3{font-family:"Anton",sans-serif;font-size:22px;letter-spacing:.05em;margin-bottom:14px;color:var(--tz-accent)}
+.tz-info p,.tz-info li{color:var(--tz-ink-soft);font-size:15px;line-height:1.9}
+.tz-info ul{list-style:none}
+
+/* ---------- faq ---------- */
+.tz-faq{max-width:800px;margin:0 auto}
+.tz-faq details{border-top:1px solid var(--tz-line);padding:22px 4px}
+.tz-faq details:last-child{border-bottom:1px solid var(--tz-line)}
+.tz-faq summary{list-style:none;cursor:pointer;font-weight:700;font-size:18px;display:flex;justify-content:space-between;gap:16px}
+.tz-faq summary::-webkit-details-marker{display:none}
+.tz-faq summary span:last-child{color:var(--tz-accent);font-family:"Space Mono",monospace}
+.tz-faq p{color:var(--tz-ink-soft);margin-top:12px;max-width:60ch}
+
+/* ---------- footer ---------- */
+.tz-footer{border-top:2px solid var(--tz-accent);padding:48px 0}
+.tz-footer-word{font-family:"Anton",sans-serif;font-size:clamp(64px,12vw,180px);line-height:1;color:var(--tz-surface);-webkit-text-stroke:1px var(--tz-line);text-transform:uppercase;white-space:nowrap;overflow:hidden}
+.tz-footer-meta{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:32px;font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-muted)}
+.tz-footer-meta a{color:var(--tz-ink-soft)}
+.tz-footer-meta a:hover{color:var(--tz-accent)}
+
+/* ---------- reveal ---------- */
+.tz-reveal{opacity:0;transform:translateY(24px);transition:opacity .6s var(--tz-ease),transform .6s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .tz-rooms{grid-template-columns:1fr}
+  .tz-info{grid-template-columns:1fr}
+  .tz-nav{display:none}
+  .tz-tier li{grid-template-columns:1fr auto}
+  .tz-tier .tz-sub{grid-column:1/-1}
+}
+@media (max-width:520px){
+  .tz-hero-word{font-size:clamp(72px,24vw,120px)}
+  .tz-section{padding:64px 0}
+  .tz-set .tz-dj{font-size:16px}
+  .tz-topbar{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+  .tz-hero-word .tz-o{animation:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#lineup">Skip to lineup</a>
+
+<div class="tz-topbar" aria-hidden="true">
+  <div class="tz-topbar-track">
+    <span>VOLTAGE — SAT NOV 14</span><span>DOORS 22:00 — CLOSE 06:00</span><span>18+ · ID REQUIRED</span><span>NO PHOTOS ON THE DANCEFLOOR</span>
+    <span>VOLTAGE — SAT NOV 14</span><span>DOORS 22:00 — CLOSE 06:00</span><span>18+ · ID REQUIRED</span><span>NO PHOTOS ON THE DANCEFLOOR</span>
+  </div>
+</div>
+
+<header class="tz-header">
+  <div class="tz-wrap">
+    <span class="tz-logo">VOLTAGE</span>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#lineup">Lineup</a><a href="#tickets">Tickets</a><a href="#info">Info</a><a href="#faq">FAQ</a>
+    </nav>
+    <a class="tz-ticket-btn" href="#tickets">GET TICKETS</a>
+  </div>
+</header>
+
+<main>
+  <!-- ============ hero ============ -->
+  <section class="tz-hero">
+    <div class="tz-wrap">
+      <p class="tz-kicker" style="margin-bottom:24px">Warehouse sessions · Vol. 09</p>
+      <h1 class="tz-hero-word" aria-label="Voltage">
+        VOL<span class="tz-o">T</span>A<span class="tz-outline">GE</span>
+      </h1>
+      <div class="tz-hero-meta">
+        <div class="tz-date">SAT NOV 14<small>22:00 — 06:00</small></div>
+        <p>Four rooms of techno, acid, and breaks inside a converted freight depot. One Funktion-One rig per room. No headliner worship — the lineup is the headliner.</p>
+        <div class="tz-venue"><b>HALLE NORD</b><br>Freight depot, Dock 7<br>18+ · tickets from €18</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ divider marquee ============ -->
+  <div class="tz-divider" aria-hidden="true">
+    <div class="tz-divider-track">
+      <span>FOUR ROOMS</span><span>ONE NIGHT</span><span>ZERO SLEEP</span><span>FOUR ROOMS</span><span>ONE NIGHT</span><span>ZERO SLEEP</span>
+    </div>
+  </div>
+
+  <!-- ============ lineup ============ -->
+  <section class="tz-section" id="lineup">
+    <div class="tz-wrap">
+      <div class="tz-section-head tz-reveal">
+        <h2>LINE<em>UP</em></h2>
+        <span class="tz-kicker">A–Z · sets in local time</span>
+      </div>
+      <div class="tz-rooms">
+        <article class="tz-room tz-reveal">
+          <div class="tz-room-head"><h3>MAIN DEPOT</h3><span class="tz-tag">TECHNO</span></div>
+          <ul class="tz-set">
+            <li><span class="tz-time">02:00</span><span class="tz-dj">ANJA VOLK<small>closing set · 3 hours</small></span></li>
+            <li><span class="tz-time">00:00</span><span class="tz-dj">KASSIM RAY<small>b2b set</small></span></li>
+            <li><span class="tz-time">22:30</span><span class="tz-dj">MIRA SOL<small>warm-up · hypnotic</small></span></li>
+            <li><span class="tz-time">22:00</span><span class="tz-dj">DJ HARBOR<small>doors · ambient</small></span></li>
+          </ul>
+        </article>
+        <article class="tz-room tz-reveal">
+          <div class="tz-room-head"><h3>ACID CELLAR</h3><span class="tz-tag">ACID / 303</span></div>
+          <ul class="tz-set">
+            <li><span class="tz-time">01:30</span><span class="tz-dj">303 WIDOW<small>live hardware</small></span></li>
+            <li><span class="tz-time">00:00</span><span class="tz-dj">PETE SQUELCH<small>uk acid</small></span></li>
+            <li><span class="tz-time">22:30</span><span class="tz-dj">LIME RICK<small>warm-up</small></span></li>
+          </ul>
+        </article>
+        <article class="tz-room tz-reveal">
+          <div class="tz-room-head"><h3>BREAKS YARD</h3><span class="tz-tag">BREAKS / JUNGLE</span></div>
+          <ul class="tz-set">
+            <li><span class="tz-time">01:00</span><span class="tz-dj">RUDEBOY SELECTA<small>jungle set</small></span></li>
+            <li><span class="tz-time">23:30</span><span class="tz-dj">NIA BLAZE<small>140 / breaks</small></span></li>
+            <li><span class="tz-time">22:00</span><span class="tz-dj">TWO-STEP TOMMY<small>garage warm-up</small></span></li>
+          </ul>
+        </article>
+        <article class="tz-room tz-reveal">
+          <div class="tz-room-head"><h3>ROOF / CHILL</h3><span class="tz-tag">AMBIENT</span></div>
+          <ul class="tz-set">
+            <li><span class="tz-time">03:00</span><span class="tz-dj">FIELD RECORDINGS<small>tape loops</small></span></li>
+            <li><span class="tz-time">00:30</span><span class="tz-dj">SOFT MACHINE<small>downtempo</small></span></li>
+            <li><span class="tz-time">22:00</span><span class="tz-dj">GLASS ORCHARD<small>ambient</small></span></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ tickets ============ -->
+  <section class="tz-tickets" id="tickets">
+    <div class="tz-wrap">
+      <div class="tz-section-head tz-reveal">
+        <h2>TICKETS</h2>
+        <span class="tz-mono" style="font-size:12px;letter-spacing:.14em">NO BOOKING FEES · RESALE AT FACE VALUE ONLY</span>
+      </div>
+      <ul class="tz-tier tz-reveal">
+        <li>
+          <div><div class="tz-name">EARLY CURRENT</div><div class="tz-sub">Entry before midnight · cloakroom included</div></div>
+          <div class="tz-price">€18</div>
+          <a class="tz-ticket-btn" href="#" style="border:2px solid #000">BUY</a>
+        </li>
+        <li>
+          <div><div class="tz-name">GENERAL</div><div class="tz-sub">Entry all night · cloakroom included</div></div>
+          <div class="tz-price">€26</div>
+          <a class="tz-ticket-btn" href="#" style="border:2px solid #000">BUY</a>
+        </li>
+        <li>
+          <div><div class="tz-name">FINAL RELEASE</div><div class="tz-sub">Entry all night · free water all night</div></div>
+          <div class="tz-price">€34</div>
+          <a class="tz-ticket-btn" href="#" style="border:2px solid #000">BUY</a>
+        </li>
+        <li>
+          <div><div class="tz-name">EARLY BIRD</div><div class="tz-sub">Gone in 41 minutes. You missed it.</div></div>
+          <div class="tz-price">€12</div>
+          <span class="tz-soldout">SOLD OUT</span>
+        </li>
+      </ul>
+      <p class="tz-tier-note tz-reveal">Every ticket includes free drinking water all night and a staffed welfare room. Profits from the bar go to the venue's hearing-protection fund — free earplugs at every door, no questions asked.</p>
+    </div>
+  </section>
+
+  <!-- ============ info ============ -->
+  <section class="tz-section" id="info" style="padding-top:64px">
+    <div class="tz-wrap">
+      <div class="tz-section-head tz-reveal">
+        <h2>KNOW <em>BEFORE</em> YOU GO</h2>
+      </div>
+      <div class="tz-info tz-reveal">
+        <div>
+          <h3>GETTING THERE</h3>
+          <ul>
+            <li>Night bus N4 stops at Dock Gate, every 20 min</li>
+            <li>Bike parking inside the yard, lit and staffed</li>
+            <li>No car park — seriously, don't drive</li>
+          </ul>
+        </div>
+        <div>
+          <h3>HOUSE RULES</h3>
+          <ul>
+            <li>No photos on the dancefloor. Dance.</li>
+            <li>Consent is the only dress code</li>
+            <li>Ask the welfare team for anything — lime vests</li>
+          </ul>
+        </div>
+        <div>
+          <h3>ACCESS</h3>
+          <ul>
+            <li>Step-free entry via the south gate</li>
+            <li>Accessible toilets on the ground floor</li>
+            <li>Contact access@voltage.club before the night</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ faq ============ -->
+  <section class="tz-section" id="faq" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-section-head tz-reveal" style="justify-content:center;text-align:center">
+        <h2>QUICK <em>ANSWERS</em></h2>
+      </div>
+      <div class="tz-faq tz-reveal">
+        <details open>
+          <summary>Can I get in after 2am?<span>+</span></summary>
+          <p>Yes — general and final-release tickets are valid all night. Last entry is 04:00. Early Current tickets must arrive before midnight.</p>
+        </details>
+        <details>
+          <summary>What's the photo policy?<span>+</span></summary>
+          <p>Strict. No photos or video on the dancefloors — our stewards will ask you to stop, then ask you to leave. The chill roof is photo-friendly.</p>
+        </details>
+        <details>
+          <summary>Is there re-entry?<span>+</span></summary>
+          <p>Yes, with a wristband stamp until 03:00. The yard has heated tents, food, and water, so most people don't bother.</p>
+        </details>
+        <details>
+          <summary>What if it sells out?<span>+</span></summary>
+          <p>Join the waitlist — we release returned tickets at face value every Friday at noon. Never buy above face value; fakes get turned away at the door.</p>
+        </details>
+        <details>
+          <summary>Can I bring my own earplugs?<span>+</span></summary>
+          <p>Please do — but you won't need to. Free high-fidelity earplugs at every door, plus a quiet welfare room if the night gets loud in the wrong way.</p>
+        </details>
+        <details>
+          <summary>Is there anywhere to eat?<span>+</span></summary>
+          <p>The yard hosts six food stalls from 22:00 to 04:00 — noodles, flatbreads, and one legendary grilled-cheese truck. Free tap water everywhere, always.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-footer-word" aria-hidden="true">VOLTAGE</div>
+    <div class="tz-footer-meta">
+      <span>© 2026 VOLTAGE Kollektiv · Halle Nord, Dock 7</span>
+      <span><a href="#">Instagram</a> · <a href="#">Resident Advisor</a> · <a href="#">Contact</a></span>
+      <span class="tz-mono">IN PARTNERSHIP WITH HALLE NORD · FUNKTION-ONE HIRE CO.</span>
+      <span class="tz-mono">18+ · Challenge 25 · Drink water</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){e.classList.add('tz-in')}); return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en,i){
+      if(en.isIntersecting){ setTimeout(function(){en.target.classList.add('tz-in')}, i*70); io.unobserve(en.target); }
+    });
+  },{threshold:.08});
+  els.forEach(function(e){io.observe(e)});
+  document.querySelectorAll('.tz-faq details').forEach(function(d){
+    d.addEventListener('toggle', function(){ d.querySelector('summary span:last-child').textContent = d.open ? '−' : '+'; });
+  });
+})();
+</script>
+</body>
+</html>
