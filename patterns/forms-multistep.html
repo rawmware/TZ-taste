@@ -1,0 +1,75 @@
+<!--tz-meta {"id":"forms-multistep","title":"Multi-step signup","category":"Forms","file":"patterns/forms-multistep.html","tags":["steps","onboarding"],"description":"Three CSS-only signup steps driven by radio inputs, with a filling progress bar.","dnas":["soft-minimal"]} -->
+<section class="tz-ms" aria-labelledby="tz-ms-h">
+  <h2 id="tz-ms-h">Create your account</h2>
+  <input class="tz-ms-radio" type="radio" name="tz-ms-step" id="tz-ms-1" checked>
+  <input class="tz-ms-radio" type="radio" name="tz-ms-step" id="tz-ms-2">
+  <input class="tz-ms-radio" type="radio" name="tz-ms-step" id="tz-ms-3">
+  <ol class="tz-ms-dots" aria-hidden="true">
+    <li class="tz-ms-dot tz-ms-d1">1</li><li class="tz-ms-dot tz-ms-d2">2</li><li class="tz-ms-dot tz-ms-d3">3</li>
+  </ol>
+  <div class="tz-ms-bar"><i></i></div>
+  <form class="tz-ms-steps" action="#" method="post">
+    <fieldset class="tz-ms-step tz-ms-s1">
+      <legend>Step 1 of 3 — the basics</legend>
+      <label>Your name<input type="text" name="name" autocomplete="name" required></label>
+      <label>Email<input type="email" name="email" autocomplete="email" required></label>
+      <div class="tz-ms-nav"><span></span><label class="tz-ms-next" for="tz-ms-2" tabindex="0">Continue →</label></div>
+    </fieldset>
+    <fieldset class="tz-ms-step tz-ms-s2">
+      <legend>Step 2 of 3 — your workspace</legend>
+      <label>Workspace name<input type="text" name="workspace" placeholder="e.g. Fern &amp; Field" required></label>
+      <label>Team size
+        <select name="size"><option>Just me</option><option>2–10</option><option>11–50</option><option>50+</option></select>
+      </label>
+      <div class="tz-ms-nav"><label class="tz-ms-back" for="tz-ms-1" tabindex="0">← Back</label><label class="tz-ms-next" for="tz-ms-3" tabindex="0">Continue →</label></div>
+    </fieldset>
+    <fieldset class="tz-ms-step tz-ms-s3">
+      <legend>Step 3 of 3 — almost done</legend>
+      <label>Password<input type="password" name="password" autocomplete="new-password" minlength="12" required></label>
+      <p class="tz-ms-hint">12+ characters. We never see it, we never sell it.</p>
+      <div class="tz-ms-nav"><label class="tz-ms-back" for="tz-ms-2" tabindex="0">← Back</label><button type="submit">Create account</button></div>
+    </fieldset>
+  </form>
+</section>
+<style>
+.tz-ms{--bg:#faf9f6;--ink:#23211c;--accent:#3f6b4a;--line:#e2dccf;
+  background:var(--bg);color:var(--ink);padding:clamp(56px,8vw,110px) clamp(24px,6vw,96px);
+  font-family:Arial,Helvetica,sans-serif;max-width:640px;margin:0 auto}
+.tz-ms h2{font-family:Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:-.02em;
+  font-size:clamp(30px,5vw,44px);margin:0 0 28px}
+.tz-ms-radio{position:absolute;opacity:0;pointer-events:none}
+.tz-ms-dots{display:flex;gap:10px;list-style:none;margin:0 0 14px;padding:0}
+.tz-ms-dot{width:34px;height:34px;border-radius:50%;border:2px solid var(--line);display:flex;
+  align-items:center;justify-content:center;font-size:14px;font-weight:bold;color:#23211c88}
+.tz-ms-bar{height:6px;background:var(--line);border-radius:999px;margin-bottom:36px;overflow:hidden}
+.tz-ms-bar i{display:block;height:100%;width:33.3%;background:var(--accent);border-radius:999px;
+  transition:width .4s cubic-bezier(.22,1,.36,1)}
+#tz-ms-2:checked ~ .tz-ms-bar i{width:66.6%}
+#tz-ms-3:checked ~ .tz-ms-bar i{width:100%}
+#tz-ms-1:checked ~ .tz-ms-dots .tz-ms-d1,#tz-ms-2:checked ~ .tz-ms-dots .tz-ms-d2,
+#tz-ms-3:checked ~ .tz-ms-dots .tz-ms-d3{background:var(--accent);border-color:var(--accent);color:#fff}
+#tz-ms-2:checked ~ .tz-ms-dots .tz-ms-d1,#tz-ms-3:checked ~ .tz-ms-dots .tz-ms-d1,
+#tz-ms-3:checked ~ .tz-ms-dots .tz-ms-d2{border-color:var(--accent);color:var(--accent)}
+.tz-ms-step{display:none;border:0;padding:0;margin:0}
+#tz-ms-1:checked ~ .tz-ms-steps .tz-ms-s1{display:block}
+#tz-ms-2:checked ~ .tz-ms-steps .tz-ms-s2{display:block}
+#tz-ms-3:checked ~ .tz-ms-steps .tz-ms-s3{display:block}
+.tz-ms-step legend{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:22px;padding:0}
+.tz-ms-step label{display:block;font-size:14px;font-weight:bold;margin-bottom:18px}
+.tz-ms-step input,.tz-ms-step select{width:100%;box-sizing:border-box;margin-top:8px;border:2px solid var(--line);
+  border-radius:12px;background:#fff;font-size:16px;font-weight:normal;font-family:inherit;
+  color:var(--ink);padding:14px 16px}
+.tz-ms-step input:focus,.tz-ms-step select:focus{outline:none;border-color:var(--accent)}
+.tz-ms-hint{font-size:13px;opacity:.6;margin:-6px 0 18px}
+.tz-ms-nav{display:flex;justify-content:space-between;align-items:center;margin-top:28px}
+.tz-ms-next{background:var(--ink);color:#fff;padding:14px 28px;border-radius:12px;cursor:pointer;font-weight:bold}
+.tz-ms-next:hover{background:var(--accent)}
+.tz-ms-next:focus-visible,.tz-ms-back:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.tz-ms-back{color:var(--ink);cursor:pointer;font-weight:bold;padding:14px 8px;opacity:.7}
+.tz-ms-back:hover{opacity:1}
+.tz-ms-nav button{background:var(--accent);color:#fff;border:0;padding:14px 28px;border-radius:12px;
+  font-size:16px;font-weight:bold;cursor:pointer;font-family:inherit}
+.tz-ms-nav button:hover{background:#35603f}
+@media (prefers-reduced-motion:reduce){.tz-ms-bar i{transition:none}}
+</style>
