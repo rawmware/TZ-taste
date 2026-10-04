@@ -1,0 +1,283 @@
+<!--tz-meta {"id":"bike-tour","title":"Red Arrow Cycling — Guided Bike Tours","category":"Template","file":"templates/bike-tour.html","tags":["travel","cycling","tours"],"description":"Swiss-airline bike tour operator: timetable-grid itineraries, red-arrow route system, fleet ledger, booking flow.","dnas":["swiss-airline"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Red Arrow Cycling — guided bike tours, run like clockwork</title>
+<meta name="description" content="Red Arrow Cycling: guided bike tours with timetable precision. Half-day, full-day, and multi-day routes. E-bikes available, lunch included.">
+<!-- Design read: a mid-century airline timetable for bicycles — strict grids, one red arrow, IBM Plex Mono doing the scheduling — for riders who want the route planned and the day to just work. DNA: swiss-airline (Archivo + Libre Franklin + IBM Plex Mono; bg #f7f5ef, ink #1a1a1a, red #d52b1e — purpose-built for this brief). One distinctive choice: every tour is presented as a DEPARTURE BOARD row with times, not a product card. Dials V2/M2/D8. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Libre+Franklin:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f7f5ef; --tz-ink:#1a1a1a; --tz-accent:#d52b1e; --tz-muted:#6e6e6e;
+  --tz-line:#1a1a1a1f; --tz-line-strong:#1a1a1a40; --tz-panel:#ffffff;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Libre Franklin",sans-serif;background:var(--tz-bg);color:var(--tz-ink);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--tz-accent);color:#fff}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+.tz-mono{font-family:"IBM Plex Mono",monospace}
+
+/* header */
+.tz-header{border-bottom:3px solid var(--tz-ink);background:var(--tz-bg);position:sticky;top:0;z-index:50}
+.tz-header .tz-wrap{display:flex;justify-content:space-between;align-items:center;height:68px}
+.tz-brand{font-family:"Archivo",sans-serif;font-weight:900;font-size:20px;letter-spacing:.02em;display:flex;align-items:center;gap:10px}
+.tz-brand .tz-arrow{width:34px;height:14px;background:var(--tz-accent);clip-path:polygon(0 20%,72% 20%,72% 0,100% 50%,72% 100%,72% 80%,0 80%)}
+.tz-nav{display:flex;gap:26px;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.tz-nav a{color:var(--tz-muted)}
+.tz-nav a:hover{color:var(--tz-accent)}
+.tz-book{font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:13px;background:var(--tz-ink);color:#fff;padding:11px 24px;border:0;cursor:pointer}
+.tz-book:hover{background:var(--tz-accent)}
+
+/* hero */
+.tz-hero{padding:72px 0 60px;border-bottom:3px solid var(--tz-ink)}
+.tz-hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+.tz-dep{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--tz-accent);display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.tz-dep::before{content:"";width:40px;height:3px;background:var(--tz-accent)}
+.tz-hero h1{font-family:"Archivo",sans-serif;font-weight:900;font-size:clamp(46px,6.6vw,84px);line-height:1;letter-spacing:-.02em}
+.tz-hero h1 .tz-red{color:var(--tz-accent)}
+.tz-lede{margin-top:20px;font-size:18px;color:var(--tz-muted);max-width:50ch}
+.tz-hero-cta{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap}
+.tz-btn{font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:14px;padding:16px 32px;cursor:pointer;transition:transform .25s var(--tz-ease),background .2s;display:inline-block;border:2px solid var(--tz-ink)}
+.tz-btn--red{background:var(--tz-accent);border-color:var(--tz-accent);color:#fff}
+.tz-btn--red:hover{background:var(--tz-ink);border-color:var(--tz-ink);transform:translateY(-2px)}
+.tz-btn--ghost{background:transparent}
+.tz-btn--ghost:hover{border-color:var(--tz-accent);color:var(--tz-accent)}
+/* route diagram */
+.tz-route{background:var(--tz-panel);border:2px solid var(--tz-ink);padding:40px 36px;position:relative}
+.tz-route .tz-line{position:relative;height:120px;margin:20px 0}
+.tz-route .tz-track{position:absolute;top:50%;left:0;right:0;height:4px;background:var(--tz-ink);transform:translateY(-50%)}
+.tz-stop{position:absolute;top:50%;transform:translate(-50%,-50%);text-align:center}
+.tz-stop i{display:block;width:18px;height:18px;background:var(--tz-bg);border:4px solid var(--tz-ink);border-radius:50%;margin:0 auto 10px}
+.tz-stop.tz-end i{background:var(--tz-accent);border-color:var(--tz-accent)}
+.tz-stop span{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.06em;display:block;white-space:nowrap}
+.tz-stop b{font-family:"Archivo",sans-serif;font-weight:800;font-size:13px;display:block}
+.tz-route figcaption{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--tz-muted);text-align:center;margin-top:8px;letter-spacing:.08em}
+
+/* departures: the one weird thing */
+.tz-section{padding:84px 0}
+.tz-sec-head{max-width:640px;margin-bottom:40px}
+.tz-sec-head .tz-k{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--tz-accent)}
+.tz-sec-head h2{font-family:"Archivo",sans-serif;font-weight:900;font-size:clamp(34px,4.8vw,58px);line-height:1.02;letter-spacing:-.02em;margin:14px 0 12px}
+.tz-sec-head p{color:var(--tz-muted);font-size:16.5px}
+.tz-depboard{border:3px solid var(--tz-ink);background:var(--tz-panel)}
+.tz-dep-head{display:grid;grid-template-columns:110px 1fr 120px 110px 130px;gap:16px;padding:14px 28px;background:var(--tz-ink);color:#fff;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase}
+.tz-dep-row{display:grid;grid-template-columns:110px 1fr 120px 110px 130px;gap:16px;padding:24px 28px;border-bottom:2px solid var(--tz-line);align-items:center;transition:background .2s}
+.tz-dep-row:last-child{border-bottom:0}
+.tz-dep-row:hover{background:#f0ece2}
+.tz-dep-row .tz-time{font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:17px}
+.tz-dep-row .tz-time small{display:block;font-weight:400;font-size:10.5px;color:var(--tz-muted);letter-spacing:.08em}
+.tz-dep-row h3{font-family:"Archivo",sans-serif;font-weight:800;font-size:20px;letter-spacing:-.01em}
+.tz-dep-row h3 small{display:block;font-family:"IBM Plex Mono",monospace;font-weight:400;font-size:11.5px;color:var(--tz-muted);margin-top:4px;letter-spacing:.04em}
+.tz-dep-row .tz-dist{font-family:"IBM Plex Mono",monospace;font-size:13px}
+.tz-dep-row .tz-level{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.08em}
+.tz-dep-row .tz-level.tz-easy{color:#1e7a3c}
+.tz-dep-row .tz-level.tz-med{color:#b3541e}
+.tz-dep-row .tz-level.tz-hard{color:var(--tz-accent)}
+.tz-dep-row .tz-fare{text-align:right}
+.tz-dep-row .tz-price{font-family:"Archivo",sans-serif;font-weight:900;font-size:22px;display:block}
+.tz-dep-row .tz-seats{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--tz-muted);letter-spacing:.06em}
+.tz-dep-row .tz-seats b{color:var(--tz-accent)}
+
+/* included strip */
+.tz-included{border-top:3px solid var(--tz-ink);border-bottom:3px solid var(--tz-ink);background:var(--tz-ink);color:#f7f5ef}
+.tz-included .tz-wrap{padding-top:60px;padding-bottom:60px}
+.tz-included h2{font-family:"Archivo",sans-serif;font-weight:900;font-size:clamp(28px,4vw,44px);letter-spacing:-.02em;margin-bottom:28px}
+.tz-included h2 .tz-red{color:var(--tz-accent)}
+.tz-inc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #f7f5ef33}
+.tz-inc{padding:30px 28px;border-right:1px solid #f7f5ef33}
+.tz-inc:last-child{border-right:0}
+.tz-inc .tz-n{font-family:"IBM Plex Mono",monospace;font-weight:700;color:var(--tz-accent);font-size:13px;display:block;margin-bottom:12px}
+.tz-inc h3{font-family:"Archivo",sans-serif;font-weight:800;font-size:18px;margin-bottom:8px}
+.tz-inc p{font-size:14px;color:#b9b4a6}
+
+/* fleet ledger */
+.tz-fleet{display:grid;grid-template-columns:1fr 1fr;gap:0;border:3px solid var(--tz-ink);background:var(--tz-panel)}
+.tz-fleet>div{padding:48px 44px}
+.tz-fleet>div:first-child{border-right:3px solid var(--tz-ink)}
+.tz-fleet h3{font-family:"Archivo",sans-serif;font-weight:900;font-size:30px;letter-spacing:-.02em;margin-bottom:14px}
+.tz-fleet p{color:var(--tz-muted);font-size:15.5px;margin-bottom:20px}
+.tz-fleet ul{list-style:none;display:grid;gap:10px;font-family:"IBM Plex Mono",monospace;font-size:13px}
+.tz-fleet li{display:flex;justify-content:space-between;border-bottom:1px dashed var(--tz-line-strong);padding-bottom:10px}
+.tz-fleet li b{color:var(--tz-accent)}
+
+/* visit */
+.tz-visit{background:var(--tz-accent);color:#fff;padding:64px 0;margin-top:84px}
+.tz-visit .tz-wrap{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}
+.tz-visit h2{font-family:"Archivo",sans-serif;font-weight:900;font-size:clamp(32px,4.6vw,54px);letter-spacing:-.02em;line-height:1.05}
+.tz-visit p{margin-top:12px;font-weight:500;opacity:.92}
+.tz-visit .tz-btn{background:#fff;border-color:#fff;color:var(--tz-ink)}
+.tz-visit .tz-btn:hover{background:var(--tz-ink);color:#fff;border-color:var(--tz-ink)}
+
+.tz-footer{padding:40px 0;border-top:3px solid var(--tz-ink)}
+.tz-footer .tz-wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--tz-muted)}
+
+@media (max-width:960px){
+  .tz-nav{display:none}
+  .tz-hero-grid{grid-template-columns:1fr}
+  .tz-dep-head{display:none}
+  .tz-dep-row{grid-template-columns:90px 1fr;row-gap:10px}
+  .tz-dep-row .tz-dist,.tz-dep-row .tz-level{grid-column:2}
+  .tz-dep-row .tz-fare{grid-column:2;text-align:left}
+  .tz-inc-grid{grid-template-columns:1fr 1fr}
+  .tz-inc{border-bottom:1px solid #f7f5ef33}
+  .tz-fleet{grid-template-columns:1fr}
+  .tz-fleet>div:first-child{border-right:0;border-bottom:3px solid var(--tz-ink)}
+  .tz-visit .tz-wrap{grid-template-columns:1fr}
+  .tz-section{padding:60px 0}
+}
+@media (max-width:560px){.tz-inc-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-brand" href="#"><span class="tz-arrow" aria-hidden="true"></span>RED ARROW</a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#departures">Departures</a><a href="#included">Included</a><a href="#fleet">Fleet</a>
+    </nav>
+    <a class="tz-book" href="#departures">Book a tour</a>
+  </div>
+</header>
+
+<main>
+  <section class="tz-hero">
+    <div class="tz-wrap tz-hero-grid">
+      <div>
+        <span class="tz-dep">Guided cycling tours · daily departures</span>
+        <h1>RIDE LIKE<br>IT'S <span class="tz-red">ON TIME.</span></h1>
+        <p class="tz-lede">Guided bike tours run with timetable precision: set routes, set times, support van always behind you. You pedal — we handle everything else.</p>
+        <div class="tz-hero-cta">
+          <a class="tz-btn tz-btn--red" href="#departures">See departures</a>
+          <a class="tz-btn tz-btn--ghost" href="#fleet">Meet the fleet</a>
+        </div>
+      </div>
+      <figure class="tz-route" aria-label="Diagram of the Harbor Loop route">
+        <div class="tz-line" aria-hidden="true">
+          <div class="tz-track"></div>
+          <div class="tz-stop" style="left:6%"><i></i><b>Depot</b><span>0 mi</span></div>
+          <div class="tz-stop" style="left:32%"><i></i><b>Harbor</b><span>8 mi</span></div>
+          <div class="tz-stop" style="left:58%"><i></i><b>Lighthouse</b><span>14 mi · lunch</span></div>
+          <div class="tz-stop" style="left:82%"><i></i><b>Old Mill</b><span>21 mi</span></div>
+          <div class="tz-stop tz-end" style="left:97%"><i></i><b>Depot</b><span>26 mi</span></div>
+        </div>
+        <figcaption>ROUTE 1 · HARBOR LOOP · 26 MI · THE CLASSIC</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="tz-section" id="departures">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-k">Departures · this week</span>
+        <h2>Pick a time. We'll be there.</h2>
+        <p>Every tour leaves on the minute, with a guide and a support van. Book by 8pm the night before.</p>
+      </div>
+      <div class="tz-depboard">
+        <div class="tz-dep-head"><span>Departs</span><span>Tour</span><span>Distance</span><span>Effort</span><span style="text-align:right">Fare</span></div>
+        <div class="tz-dep-row">
+          <span class="tz-time">09:00<small>DAILY</small></span>
+          <div><h3>Harbor Loop<small>the classic · lighthouse lunch stop</small></h3></div>
+          <span class="tz-dist">26 mi</span><span class="tz-level tz-easy">EASY–MED</span>
+          <span class="tz-fare"><span class="tz-price">$89</span><span class="tz-seats"><b>4</b> seats left today</span></span>
+        </div>
+        <div class="tz-dep-row">
+          <span class="tz-time">09:00<small>SAT · SUN</small></span>
+          <div><h3>Ridge Climb<small>1,800 ft of climbing · the bragging-rights ride</small></h3></div>
+          <span class="tz-dist">34 mi</span><span class="tz-level tz-hard">HARD</span>
+          <span class="tz-fare"><span class="tz-price">$119</span><span class="tz-seats"><b>6</b> seats left Sat</span></span>
+        </div>
+        <div class="tz-dep-row">
+          <span class="tz-time">14:00<small>DAILY</small></span>
+          <div><h3>Vineyard Roll<small>flat, scenic, ends at the tasting room</small></h3></div>
+          <span class="tz-dist">18 mi</span><span class="tz-level tz-easy">EASY</span>
+          <span class="tz-fare"><span class="tz-price">$79</span><span class="tz-seats">wide open</span></span>
+        </div>
+        <div class="tz-dep-row">
+          <span class="tz-time">17:30<small>FRI</small></span>
+          <div><h3>Sunset Spin<small>golden hour along the river path</small></h3></div>
+          <span class="tz-dist">12 mi</span><span class="tz-level tz-easy">EASY</span>
+          <span class="tz-fare"><span class="tz-price">$65</span><span class="tz-seats"><b>2</b> seats left Fri</span></span>
+        </div>
+        <div class="tz-dep-row">
+          <span class="tz-time">08:00<small>1ST SAT / MO</small></span>
+          <div><h3>Three-Day Traverse<small>inn to inn · luggage moved for you</small></h3></div>
+          <span class="tz-dist">142 mi</span><span class="tz-level tz-med">MED</span>
+          <span class="tz-fare"><span class="tz-price">$890</span><span class="tz-seats">next: Oct 10</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-included" id="included">
+    <div class="tz-wrap">
+      <h2>Every fare <span class="tz-red">includes.</span></h2>
+      <div class="tz-inc-grid">
+        <div class="tz-inc"><span class="tz-n">01</span><h3>The bike</h3><p>Carbon road, gravel, or e-bike — fitted to you the night before.</p></div>
+        <div class="tz-inc"><span class="tz-n">02</span><h3>The guide</h3><p>Local, first-aid trained, and fast enough to make you feel slow.</p></div>
+        <div class="tz-inc"><span class="tz-n">03</span><h3>The van</h3><p>Support vehicle with spares, snacks, and a seat if your legs quit.</p></div>
+        <div class="tz-inc"><span class="tz-n">04</span><h3>The food</h3><p>Lunch at the route's best stop. Dietary needs handled, just tell us.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="fleet">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-k">The fleet</span>
+        <h2>Bikes worth the trip</h2>
+        <p>120 bikes, maintained in-house, replaced every two seasons. E-bikes flatten any hill on the menu.</p>
+      </div>
+      <div class="tz-fleet">
+        <div>
+          <h3>Standard fleet</h3>
+          <p>Carbon road and gravel bikes in 6 sizes, 4'10" to 6'6". Helmets, pedals (SPD or flat), and a fitting included.</p>
+          <ul>
+            <li><span>Road · carbon</span><b>included</b></li>
+            <li><span>Gravel · carbon</span><b>included</b></li>
+            <li><span>E-bike upgrade</span><b>+$30</b></li>
+            <li><span>Tandem (2 seats)</span><b>+$40</b></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Bring your own?</h3>
+          <p>Absolutely — knock $15 off any tour. Our mechanic does a free safety check before departure.</p>
+          <ul>
+            <li><span>BYO discount</span><b>−$15</b></li>
+            <li><span>Pre-tour safety check</span><b>free</b></li>
+            <li><span>Bike box storage</span><b>free</b></li>
+            <li><span>Pro assembly</span><b>$25</b></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-visit">
+    <div class="tz-wrap">
+      <div>
+        <h2>The depot opens at 8am. Tours leave on time.</h2>
+        <p>77 Rail Yard Lane · (555) 410-2290 · ride@redarrow.cycling — groups of 6+ get a private departure.</p>
+      </div>
+      <a class="tz-btn" href="#departures">Book your departure</a>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <span>© 2026 Red Arrow Cycling Co.</span>
+    <span>on time · every time · rain or shine</span>
+  </div>
+</footer>
+</body>
+</html>
