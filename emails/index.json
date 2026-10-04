@@ -1,5 +1,5 @@
 {
- "count": 12,
+ "count": 22,
  "updated": "2026-10-04",
  "usage": "Table-based HTML email templates, inline CSS, Outlook-safe. Real email engineering.",
  "emails": [
@@ -17,6 +17,38 @@
    "description": "Honest cart-reminder email for a ceramics shop: item rows, one nudge, zero dark patterns.",
    "dnas": [
     "sahara-ochre"
+   ]
+  },
+  {
+   "id": "back-in-stock",
+   "title": "Back in stock email",
+   "category": "Email",
+   "file": "emails/back-in-stock.html",
+   "tags": [
+    "back-in-stock",
+    "ecommerce",
+    "restock",
+    "notification"
+   ],
+   "description": "Night Market Tea Co.: the Smoked Oolong Reserve is back — 200 tins, notify-list first. Night-market lantern glow.",
+   "dnas": [
+    "night-market"
+   ]
+  },
+  {
+   "id": "booking-confirmation",
+   "title": "Booking confirmation email",
+   "category": "Email",
+   "file": "emails/booking-confirmation.html",
+   "tags": [
+    "booking",
+    "confirmation",
+    "reservation",
+    "hospitality"
+   ],
+   "description": "Kissaten Hana: table for two confirmed — date, time, address, what to know. Tokyo-kissaten warmth on dark walnut.",
+   "dnas": [
+    "tokyo-kissaten"
    ]
   },
   {
@@ -68,6 +100,22 @@
    ]
   },
   {
+   "id": "invoice-overdue",
+   "title": "Invoice overdue email",
+   "category": "Email",
+   "file": "emails/invoice-overdue.html",
+   "tags": [
+    "invoice",
+    "overdue",
+    "billing",
+    "freelance"
+   ],
+   "description": "Studio Meridian: invoice INV-2209 is 12 days overdue — firm, itemized, with a pay link and a reply path. Industrial-brutalist.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
    "id": "job-application-update",
    "title": "Job Application Update — Interview Invite",
    "category": "Email",
@@ -116,6 +164,22 @@
    ]
   },
   {
+   "id": "order-shipped",
+   "title": "Order shipped email",
+   "category": "Email",
+   "file": "emails/order-shipped.html",
+   "tags": [
+    "shipping",
+    "order",
+    "ecommerce",
+    "tracking"
+   ],
+   "description": "Northline Supply: your boots shipped — tracking schematic with milestones, carrier details, honest delivery window. Blueprint-tech.",
+   "dnas": [
+    "blueprint-tech"
+   ]
+  },
+  {
    "id": "password-reset",
    "title": "Password Reset Email",
    "category": "Email",
@@ -129,6 +193,22 @@
    "description": "Lumen Bank security-conscious password reset: 30-minute link, request details, and what Lumen will never ask for.",
    "dnas": [
     "laboratory-clean"
+   ]
+  },
+  {
+   "id": "plan-upgrade",
+   "title": "Plan upgrade email",
+   "category": "Email",
+   "file": "emails/plan-upgrade.html",
+   "tags": [
+    "upgrade",
+    "saas",
+    "billing",
+    "upsell"
+   ],
+   "description": "Ridgeline Accounting: you've outgrown Starter — the Ridge plan pitch with a stamped, logbook feel. Alpine-ledger.",
+   "dnas": [
+    "alpine-ledger"
    ]
   },
   {
@@ -161,6 +241,86 @@
    "description": "Vessel Coffee Roasters order receipt with tabulated line items, shipping, tax and totals.",
    "dnas": [
     "swiss-rational"
+   ]
+  },
+  {
+   "id": "reengagement-quiz",
+   "title": "Reengagement quiz email",
+   "category": "Email",
+   "file": "emails/reengagement-quiz.html",
+   "tags": [
+    "reengagement",
+    "quiz",
+    "winback",
+    "education"
+   ],
+   "description": "Lexiloop: 23 days away, 41-day streak on pause — a 5-question, 60-second quiz to restart. Pixel-arcade cabinet energy.",
+   "dnas": [
+    "pixel-arcade"
+   ]
+  },
+  {
+   "id": "referral-invite",
+   "title": "Referral invite email",
+   "category": "Email",
+   "file": "emails/referral-invite.html",
+   "tags": [
+    "referral",
+    "invite",
+    "growth",
+    "ecommerce"
+   ],
+   "description": "Fernway plant delivery: Maya sent you $10 off — give-$10-get-$10 referral with a matchbook-cover feel.",
+   "dnas": [
+    "matchbook-cover"
+   ]
+  },
+  {
+   "id": "review-request",
+   "title": "Review request email",
+   "category": "Email",
+   "file": "emails/review-request.html",
+   "tags": [
+    "review",
+    "feedback",
+    "ecommerce",
+    "post-purchase"
+   ],
+   "description": "Hearth & Hollow: how's the Cedar & Clove candle treating you? Warm one-question review ask. Cottage-warm.",
+   "dnas": [
+    "cottage-warm"
+   ]
+  },
+  {
+   "id": "trial-expiry",
+   "title": "Trial expiry email",
+   "category": "Email",
+   "file": "emails/trial-expiry.html",
+   "tags": [
+    "trial",
+    "expiry",
+    "saas",
+    "retention"
+   ],
+   "description": "Fieldnotes Pro trial ends in 3 days: usage recap, plan picker, honest day-zero terms. Swiss-rational, no fake urgency.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "webinar-reminder",
+   "title": "Webinar reminder email",
+   "category": "Email",
+   "file": "emails/webinar-reminder.html",
+   "tags": [
+    "webinar",
+    "reminder",
+    "event",
+    "education"
+   ],
+   "description": "The Freelance Ledger live session: 24 hours out — date, what to bring, add-to-calendar. Newsroom-wire urgency.",
+   "dnas": [
+    "newsroom-wire"
    ]
   },
   {
