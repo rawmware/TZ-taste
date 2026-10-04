@@ -1,0 +1,180 @@
+/* <!--tz-meta {"id":"nuxt-css","title":"Bauhaus Primary tokens","category":"Starter","file":"starters/nuxt/assets/main.css","tags":["css","tokens"],"description":"DNA tokens as CSS vars.","dnas":["bauhaus-primary"]} --> */
+
+/* ============ bauhaus-primary DNA tokens ============ */
+:root {
+  --bg: #f4f1ea;
+  --surface: #e9e4d6;
+  --ink: #1a1a1a;
+  --accent: #d8342c;
+  --accent-2: #1f4fa3;
+  --yellow: #f2c200;
+  --muted: #6e6a60;
+  --line: #1a1a1a;
+
+  --font-display: "Archivo Black", "Arial Black", sans-serif;
+  --font-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Space Mono", "Courier New", monospace;
+
+  /* mechanical snap, never float */
+  --ease-snap: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --rule-heavy: 4px solid var(--line);
+  --rule: 2px solid var(--line);
+  --rule-thin: 1px solid var(--line);
+}
+
+/* ============ base ============ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+p {
+  margin: 0;
+  max-width: 60ch;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* ============ shared primitives ============ */
+.wrap {
+  width: min(1240px, 100% - 3rem);
+  margin-inline: auto;
+}
+
+/* mono workshop label — the honesty stamp */
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.kicker .no {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* square buttons only — radius 0 everywhere */
+.btn {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1rem 1.75rem;
+  background: var(--ink);
+  color: var(--bg);
+  border: var(--rule);
+  border-radius: 0;
+  cursor: pointer;
+  transition: background-color 120ms linear, color 120ms linear;
+}
+
+.btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+
+.btn--red {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.btn--red:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.rule-heavy {
+  border: 0;
+  border-top: var(--rule-heavy);
+}
+
+/* entrance: panels snap into place like stage flats */
+@keyframes snap-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.snap {
+  animation: snap-in 500ms var(--ease-snap) both;
+}
+
+.snap-1 { animation-delay: 70ms; }
+.snap-2 { animation-delay: 140ms; }
+.snap-3 { animation-delay: 210ms; }
+.snap-4 { animation-delay: 280ms; }
+
+/* ============ responsive type floor ============ */
+h1 { font-size: clamp(3.2rem, 9vw, 8.5rem); }
+h2 { font-size: clamp(2.2rem, 5.5vw, 4.5rem); }
+
+/* ============ reduced motion ============ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .snap {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}
