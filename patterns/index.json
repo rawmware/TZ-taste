@@ -1,8 +1,55 @@
 {
- "count": 164,
+ "count": 194,
  "updated": "2026-10-04",
  "usage": "Each file is a standalone snippet: markup plus a <style> block. Copy both into your page. Classes are tz- prefixed to avoid collisions.",
  "patterns": [
+  {
+   "id": "affiliate-strip",
+   "title": "Affiliate partner strip",
+   "category": "Misc",
+   "file": "patterns/affiliate-strip.html",
+   "tags": [
+    "affiliate",
+    "partners",
+    "payouts",
+    "strip"
+   ],
+   "description": "Bauhaus payout strip: partner wordmarks with commission rate and cookie window.",
+   "dnas": [
+    "bauhaus-primary"
+   ]
+  },
+  {
+   "id": "announcement-bar",
+   "title": "Announcement bar",
+   "category": "Nav",
+   "file": "patterns/announcement-bar.html",
+   "tags": [
+    "announcement",
+    "banner",
+    "dismiss",
+    "css-only"
+   ],
+   "description": "Dismissible top bar for one urgent message; checkbox hack, no JavaScript.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "avatar-stack",
+   "title": "Avatar stack",
+   "category": "Team",
+   "file": "patterns/avatar-stack.html",
+   "tags": [
+    "avatars",
+    "team",
+    "social-proof"
+   ],
+   "description": "Overlapping initial-avatars with a count chip and one line of proof.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
   {
    "id": "background-aurora",
    "title": "Aurora canvas",
@@ -406,6 +453,53 @@
    ]
   },
   {
+   "id": "changelog-feed",
+   "title": "Changelog feed",
+   "category": "Sections",
+   "file": "patterns/changelog-feed.html",
+   "tags": [
+    "changelog",
+    "versions",
+    "release-notes"
+   ],
+   "description": "Dated release entries with version chips and labeled change rows — a logbook, not a blog.",
+   "dnas": [
+    "ink-wash-sumi"
+   ]
+  },
+  {
+   "id": "comparison-table",
+   "title": "Product comparison table",
+   "category": "Pricing",
+   "file": "patterns/comparison-table.html",
+   "tags": [
+    "comparison",
+    "table",
+    "pricing",
+    "features"
+   ],
+   "description": "Brutal lab-notebook comparison: us vs. the two incumbents, check and dash, one highlighted column.",
+   "dnas": [
+    "lab-notebook"
+   ]
+  },
+  {
+   "id": "cookie-banner",
+   "title": "Cookie consent banner",
+   "category": "Misc",
+   "file": "patterns/cookie-banner.html",
+   "tags": [
+    "cookies",
+    "consent",
+    "privacy",
+    "css-only"
+   ],
+   "description": "Plain-spoken consent banner with real choice; dismisses with the checkbox hack.",
+   "dnas": [
+    "tokyo-kissaten"
+   ]
+  },
+  {
    "id": "cta",
    "title": "CTA banner",
    "category": "Sections",
@@ -531,6 +625,38 @@
    "description": "Viewport-filling serif CTA on black with one champagne-italic word.",
    "dnas": [
     "dark-luxe"
+   ]
+  },
+  {
+   "id": "download-cta",
+   "title": "App download CTA",
+   "category": "CTA",
+   "file": "patterns/download-cta.html",
+   "tags": [
+    "download",
+    "app",
+    "mobile",
+    "badges"
+   ],
+   "description": "Arcade-dark app CTA with platform badges, real rating, and a scanline texture.",
+   "dnas": [
+    "pixel-arcade"
+   ]
+  },
+  {
+   "id": "error-404",
+   "title": "404 page with character",
+   "category": "Misc",
+   "file": "patterns/error-404.html",
+   "tags": [
+    "404",
+    "error",
+    "terminal",
+    "humor"
+   ],
+   "description": "A terminal-styled 404 that treats the missing page like a missing file — with blinking cursor and exits.",
+   "dnas": [
+    "retro-terminal"
    ]
   },
   {
@@ -1116,6 +1242,38 @@
    ]
   },
   {
+   "id": "gift-options",
+   "title": "Gift options at checkout",
+   "category": "Forms",
+   "file": "patterns/gift-options.html",
+   "tags": [
+    "gift",
+    "checkout",
+    "ecommerce",
+    "wrap"
+   ],
+   "description": "Kraft-and-twine gift block: wrap, handwritten card, priced gift receipt.",
+   "dnas": [
+    "aperitivo-italian"
+   ]
+  },
+  {
+   "id": "hackathon-schedule",
+   "title": "Hackathon schedule grid",
+   "category": "Sections",
+   "file": "patterns/hackathon-schedule.html",
+   "tags": [
+    "hackathon",
+    "schedule",
+    "event",
+    "agenda"
+   ],
+   "description": "Blueprint-dark two-day schedule with track dots and a highlighted judging block.",
+   "dnas": [
+    "blueprint-tech"
+   ]
+  },
+  {
    "id": "hero-editorial",
    "title": "Editorial hero",
    "category": "Hero",
@@ -1532,6 +1690,37 @@
    ]
   },
   {
+   "id": "logo-marquee",
+   "title": "Client logo marquee",
+   "category": "Sections",
+   "file": "patterns/logo-marquee.html",
+   "tags": [
+    "marquee",
+    "logos",
+    "social-proof",
+    "animation"
+   ],
+   "description": "CSS-only scrolling strip of client wordmarks; pauses on hover, static under reduced motion.",
+   "dnas": [
+    "swiss-airline"
+   ]
+  },
+  {
+   "id": "maintenance-page",
+   "title": "Maintenance mode page",
+   "category": "Misc",
+   "file": "patterns/maintenance-page.html",
+   "tags": [
+    "maintenance",
+    "status",
+    "downtime"
+   ],
+   "description": "Metro-sign style service board: what's down, when it returns, and one honest line.",
+   "dnas": [
+    "paris-metro"
+   ]
+  },
+  {
    "id": "marquee",
    "title": "Marquee strip",
    "category": "Backgrounds",
@@ -1868,6 +2057,38 @@
    ]
   },
   {
+   "id": "notification-toast",
+   "title": "Notification toast",
+   "category": "Misc",
+   "file": "patterns/notification-toast.html",
+   "tags": [
+    "toast",
+    "notifications",
+    "feedback",
+    "script"
+   ],
+   "description": "Slide-in toast with progress timer and one honest state each. One tiny inline script.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "press-quotes",
+   "title": "Press quotes strip",
+   "category": "Testimonials",
+   "file": "patterns/press-quotes.html",
+   "tags": [
+    "press",
+    "quotes",
+    "testimonials",
+    "logos"
+   ],
+   "description": "One pull quote flanked by mastheads; typographic, no fake logos.",
+   "dnas": [
+    "library-oak"
+   ]
+  },
+  {
    "id": "pricing",
    "title": "Pricing tiers",
    "category": "Sections",
@@ -1993,6 +2214,166 @@
    "description": "Metered pricing tiers with CSS usage meters showing where each plan lands.",
    "dnas": [
     "soft-minimal"
+   ]
+  },
+  {
+   "id": "progress-tracker",
+   "title": "Checkout progress tracker",
+   "category": "How it works",
+   "file": "patterns/progress-tracker.html",
+   "tags": [
+    "checkout",
+    "onboarding",
+    "steps",
+    "rail"
+   ],
+   "description": "Five-step checkout rail with completed, current, and upcoming states.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "rating-summary",
+   "title": "Rating summary with distribution",
+   "category": "Stats",
+   "file": "patterns/rating-summary.html",
+   "tags": [
+    "reviews",
+    "stars",
+    "ratings",
+    "social-proof"
+   ],
+   "description": "Oversized score numeral, star row, and animated 5-to-1 distribution bars.",
+   "dnas": [
+    "bazaar-spice"
+   ]
+  },
+  {
+   "id": "referral-card",
+   "title": "Refer-a-friend card",
+   "category": "Cards",
+   "file": "patterns/referral-card.html",
+   "tags": [
+    "referral",
+    "share",
+    "promo",
+    "code"
+   ],
+   "description": "Sticker-style referral card: give/get offer, dashed code box, three plain steps.",
+   "dnas": [
+    "neo-brutalist-pop"
+   ]
+  },
+  {
+   "id": "reservation-widget",
+   "title": "Restaurant table reservation",
+   "category": "Forms",
+   "file": "patterns/reservation-widget.html",
+   "tags": [
+    "restaurant",
+    "booking",
+    "reservation",
+    "hospitality"
+   ],
+   "description": "Date strip, party stepper, and time-slot grid with one honest sold-out slot.",
+   "dnas": [
+    "aperitivo-italian"
+   ]
+  },
+  {
+   "id": "roadmap-timeline",
+   "title": "Public roadmap timeline",
+   "category": "Sections",
+   "file": "patterns/roadmap-timeline.html",
+   "tags": [
+    "roadmap",
+    "timeline",
+    "planning",
+    "quarters"
+   ],
+   "description": "Art-deco quarterly timeline with a gold 'now' marker and honest shipped/in-progress labels.",
+   "dnas": [
+    "art-deco-luxe"
+   ]
+  },
+  {
+   "id": "search-results",
+   "title": "Search results list",
+   "category": "Sections",
+   "file": "patterns/search-results.html",
+   "tags": [
+    "search",
+    "results",
+    "keyboard",
+    "documentation"
+   ],
+   "description": "Ranked results with highlighted matches, type tags, and a visible keyboard hint.",
+   "dnas": [
+    "newsroom-wire"
+   ]
+  },
+  {
+   "id": "shipping-calculator",
+   "title": "Shipping estimate ticket",
+   "category": "Forms",
+   "file": "patterns/shipping-calculator.html",
+   "tags": [
+    "shipping",
+    "checkout",
+    "ecommerce",
+    "estimate"
+   ],
+   "description": "Ledger-style shipping ticket: ZIP input, three speed rows, honest arrival date.",
+   "dnas": [
+    "alpine-ledger"
+   ]
+  },
+  {
+   "id": "size-guide",
+   "title": "Apparel size guide",
+   "category": "Sections",
+   "file": "patterns/size-guide.html",
+   "tags": [
+    "sizing",
+    "table",
+    "ecommerce",
+    "apparel"
+   ],
+   "description": "Brutalist spec table with Women/Men tabs and real inch measurements.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "speaker-lineup",
+   "title": "Speaker lineup, asymmetric",
+   "category": "Team",
+   "file": "patterns/speaker-lineup.html",
+   "tags": [
+    "speakers",
+    "event",
+    "lineup",
+    "conference"
+   ],
+   "description": "One featured keynote left, numbered hairline index of talks right — no equal cards.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "sponsor-wall",
+   "title": "Tiered sponsor wall",
+   "category": "Sections",
+   "file": "patterns/sponsor-wall.html",
+   "tags": [
+    "sponsors",
+    "tiers",
+    "funding",
+    "open-source"
+   ],
+   "description": "Founding, patron, and supporter tiers sized by contribution — deliberately not equal cards.",
+   "dnas": [
+    "museum-placard"
    ]
   },
   {
@@ -2152,6 +2533,39 @@
    ]
   },
   {
+   "id": "sticky-subnav",
+   "title": "Sticky docs sub-navigation",
+   "category": "Nav",
+   "file": "patterns/sticky-subnav.html",
+   "tags": [
+    "nav",
+    "docs",
+    "sticky",
+    "active-state",
+    "css-only"
+   ],
+   "description": "Sticky docs nav whose active link follows the section via :target — no JavaScript.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "store-locator",
+   "title": "Store locator list",
+   "category": "Sections",
+   "file": "patterns/store-locator.html",
+   "tags": [
+    "stores",
+    "locator",
+    "retail",
+    "search"
+   ],
+   "description": "Searchable store list with distance badges, hours, and live open status.",
+   "dnas": [
+    "arctic-field"
+   ]
+  },
+  {
    "id": "team-bios",
    "title": "Editorial bios",
    "category": "Team",
@@ -2205,6 +2619,22 @@
    "description": "Rigorous spec-sheet avatar grid with numbered cells and mono roles.",
    "dnas": [
     "swiss-rational"
+   ]
+  },
+  {
+   "id": "team-index",
+   "title": "Team index list",
+   "category": "Team",
+   "file": "patterns/team-index.html",
+   "tags": [
+    "team",
+    "about",
+    "people",
+    "index"
+   ],
+   "description": "Editorial team index: giant numerals, hairline rows, invert-on-hover — no avatar grid.",
+   "dnas": [
+    "bauhaus-primary"
    ]
   },
   {
@@ -2360,6 +2790,54 @@
    "description": "Dark video wall of quote thumbnails with CSS play buttons and a now-playing tile.",
    "dnas": [
     "dark-luxe"
+   ]
+  },
+  {
+   "id": "ticket-tiers",
+   "title": "Event ticket tiers, asymmetric",
+   "category": "Pricing",
+   "file": "patterns/ticket-tiers.html",
+   "tags": [
+    "tickets",
+    "pricing",
+    "event",
+    "tiers"
+   ],
+   "description": "Deco pricing with one tall featured Patron tier — two modest tiers stacked beside it.",
+   "dnas": [
+    "art-deco-luxe"
+   ]
+  },
+  {
+   "id": "venue-map",
+   "title": "Venue info with schematic map",
+   "category": "Sections",
+   "file": "patterns/venue-map.html",
+   "tags": [
+    "venue",
+    "map",
+    "directions",
+    "event"
+   ],
+   "description": "Styled venue fact list beside an honest schematic grid — labeled, not a fake map image.",
+   "dnas": [
+    "arctic-field"
+   ]
+  },
+  {
+   "id": "waitlist-form",
+   "title": "Product waitlist with counter",
+   "category": "CTA",
+   "file": "patterns/waitlist-form.html",
+   "tags": [
+    "waitlist",
+    "signup",
+    "launch",
+    "counter"
+   ],
+   "description": "Deco-dark waitlist: live position counter, email row, refer-to-jump note.",
+   "dnas": [
+    "alpine-after-dark"
    ]
   }
  ]
