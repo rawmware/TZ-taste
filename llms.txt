@@ -1,6 +1,5 @@
-# TZ-taste (v1.0.0, updated 2026-10-04)
-
-> The free anti-slop design reference for AI agents and developers.
+wrote llms.txt (72 DNAs, 164 patterns, 30 3D scenes, 33 sources)
+ign reference for AI agents and developers.
 > https://github.com/rawmware/TZ-taste · Live demo: https://rawmware.github.io/TZ-taste/
 
 GENERATED FILE — do not edit by hand. Regenerate with: node scripts/llms-build.mjs
@@ -25,12 +24,12 @@ The one-line instruction a human gives you:
 > Use https://github.com/rawmware/TZ-taste as a reference to build: [brief].
 > Follow its AGENT.md protocol and pick one style DNA before writing any code.
 
-## Contents (48 DNAs, 164 patterns, 30 3D scenes, 33 sources, 36 prompts)
+## Contents (72 DNAs, 164 patterns, 30 3D scenes, 33 sources, 36 prompts)
 
 - `AGENT.md` — agent bootstrap, modes, hard rules, file map
 - `manifest.json` — machine-readable version, counts, and file map
 - `skill/SKILL.md` — portable anti-slop skill (install: `npx skills add https://github.com/rawmware/TZ-taste --skill "tz-taste"`)
-- `styles/` — 48 style DNAs with tokens, type pairings, and rules; machine index at `styles/index.json`
+- `styles/` — 72 style DNAs with tokens, type pairings, and rules; machine index at `styles/index.json`
 - `patterns/` — 164 copy-paste HTML/CSS section patterns; machine index at `patterns/index.json`
 - `prompts/` — 36 ready-made build prompts: 404-page, about-page, api-docs, blog-magazine, careers-page, changelog-page, checkout-flow, community-forum, contact-page, course-landing, dark-dashboard, dashboard, ecommerce-product, event-page, help-center, hero-section, html-email, job-board, landing-page, link-in-bio, mobile-paywall, mobile-screens, nonprofit-donate, podcast-page, portfolio, press-kit, pricing-page, real-estate-listing, recipe-site, redesign-audit, saas-onboarding, status-page, threejs-hero, waitlist-page, web-pitch-deck, wedding-site
 - `docs/ANTI-SLOP.md` — concrete checklist of AI-slop tells (blockers, warnings, taste test)
@@ -46,6 +45,9 @@ Pick exactly ONE. Load only that DNA's file.
 
 - `acid-rave` — Acid Rave. Black room, acid lime, type at maximum volume. Flyers, not landing pages.
   File: styles/acid-rave.md. Best for: music, events, streetwear, festivals. Dials: density 4/motion 7/variance 9.
+
+- `alpine-after-dark` — Alpine After Dark. Night at altitude: deep indigo snowfields, a single headlamp amber, constellations plotted over ridgelines.
+  File: styles/alpine-after-dark.md. Best for: observatories, mountain-resorts, night-tours, science-centers. Dials: density 3/motion 4/variance 7.
 
 - `alpine-ledger` — Alpine Ledger. A mountaineering logbook: kraft paper, rubber stamps, rope and knot motifs, stamped entries.
   File: styles/alpine-ledger.md. Best for: outdoor-brands, travel, journals. Dials: density 6/motion 2/variance 5.
@@ -65,11 +67,20 @@ Pick exactly ONE. Load only that DNA's file.
 - `bauhaus-primary` — Bauhaus Primary. Functional geometry: red, yellow, blue on off-white. A workshop poster that refuses to decorate.
   File: styles/bauhaus-primary.md. Best for: design-schools, furniture, workshops. Dials: density 6/motion 4/variance 6.
 
+- `bazaar-spice` — Bazaar Spice. Spice-market maximalism: turmeric dust in the air, paprika-red textiles, patterned awnings, and stalls stacked to the sky.
+  File: styles/bazaar-spice.md. Best for: food-brands, restaurants, markets, travel. Dials: density 9/motion 5/variance 9.
+
 - `blueprint-tech` — Blueprint Tech. Cyanotype schematics: deep blueprint blue, white line work, everything labeled.
   File: styles/blueprint-tech.md. Best for: engineering, hardware, dev-tools. Dials: density 7/motion 3/variance 5.
 
 - `botanical-lab` — Botanical Lab. A greenhouse full of specimens: deep green, pressed-plant delicacy, Latin on every label.
   File: styles/botanical-lab.md. Best for: skincare, tea, garden-brands. Dials: density 4/motion 3/variance 4.
+
+- `chalkboard-cafe` — Chalkboard Cafe. A cafe menu board in chalk: slate black, hand-lettered specials, doodled borders.
+  File: styles/chalkboard-cafe.md. Best for: cafes, bakeries, menus, small-shops. Dials: density 6/motion 2/variance 5.
+
+- `circus-poster` — Circus Poster. Wood type and starbursts: a 1910 big-top bill shouted in deep red and gold.
+  File: styles/circus-poster.md. Best for: events, festivals, theaters, live-music. Dials: density 7/motion 5/variance 8.
 
 - `concrete-poem` — Concrete Poem. Typographic art: words arranged as shapes on the page — ink, paper, and the architecture of language.
   File: styles/concrete-poem.md. Best for: poets, galleries, literary-events. Dials: density 3/motion 4/variance 9.
@@ -92,6 +103,9 @@ Pick exactly ONE. Load only that DNA's file.
 - `desert-modern` — Desert Modern. Palm Springs at 10am: shade, breeze-block shadows, a pool doing all the talking.
   File: styles/desert-modern.md. Best for: real-estate, hotels, interiors. Dials: density 3/motion 3/variance 5.
 
+- `diary-zine` — Diary Zine. Photocopied punk zine: cut-and-paste ransom type, staples through the gutter, marker underlines, and ink that ran in the rain.
+  File: styles/diary-zine.md. Best for: bands, diy-brands, activists, indie-publishers. Dials: density 8/motion 4/variance 10.
+
 - `docs-solar` — Docs Solar. Warm documentation, amber accents, serif readability. Docs people actually enjoy reading.
   File: styles/docs-solar.md. Best for: documentation, open source, blogs, handbooks. Dials: density 6/motion 2/variance 3.
 
@@ -104,11 +118,23 @@ Pick exactly ONE. Load only that DNA's file.
 - `gothic-editorial` — Gothic Editorial. Dark academia: candlelit paper, blackletter accents used sparingly, scholarly and brooding. A library after hours.
   File: styles/gothic-editorial.md. Best for: books, universities, museums. Dials: density 4/motion 3/variance 6.
 
+- `greenhouse-glass` — Greenhouse Glass. A Victorian glasshouse: black iron ribs arcing overhead, condensation beading on the panes, fern greens breathing in the humidity.
+  File: styles/greenhouse-glass.md. Best for: botanical-gardens, florists, garden-centers, wellness-brands. Dials: density 4/motion 3/variance 5.
+
+- `greenmarket-dawn` — Greenmarket Dawn. 6am at the farmers market: dew on greens, kraft paper, chalked price tags.
+  File: styles/greenmarket-dawn.md. Best for: farmers-markets, groceries, csa, cafes. Dials: density 6/motion 3/variance 5.
+
+- `harbor-fog` — Harbor Fog. Maritime fog: muted grays, signal red, foghorn typography. The lighthouse keeps its own hours.
+  File: styles/harbor-fog.md. Best for: ferries, seafood, coastal-inns, weather-apps. Dials: density 3/motion 4/variance 5.
+
 - `industrial-brutalist` — Industrial Brutalist. Exposed structure, safety orange, condensed type. A factory that ships software.
   File: styles/industrial-brutalist.md. Best for: dev tools, zines, hardware, labels. Dials: density 7/motion 3/variance 8.
 
 - `ink-wash-sumi` — Ink-Wash Sumi. Brush, ink, rice paper: monochrome gestures and the confidence to leave space alone.
   File: styles/ink-wash-sumi.md. Best for: tea, galleries, calligraphy. Dials: density 1/motion 3/variance 5.
+
+- `italian-futurist` — Italian Futurist. Italian futurism: speed lines, dynamism, chrome and red. A racing poster that refuses to sit still.
+  File: styles/italian-futurist.md. Best for: motorsport, espresso-brands, sneakers, exhibitions. Dials: density 5/motion 8/variance 9.
 
 - `jazz-blue-note` — Jazz Blue Note. Mid-century jazz sleeve art: duotone photography, smoky blue, bold condensed sans, liner-note typography.
   File: styles/jazz-blue-note.md. Best for: jazz-clubs, labels, bars. Dials: density 4/motion 4/variance 6.
@@ -116,8 +142,17 @@ Pick exactly ONE. Load only that DNA's file.
 - `kawaii-pixel` — Kawaii Pixel. Sticker-sheet joy: pastel pixels, chunky hearts, everything huggable at 8x scale.
   File: styles/kawaii-pixel.md. Best for: stationery, cafes, indie-games. Dials: density 4/motion 7/variance 7.
 
+- `lab-notebook` — Lab Notebook. A scientist's field notebook: graph-paper grids, photos held down with masking tape, red-pen marginalia, and a coffee ring on page 47.
+  File: styles/lab-notebook.md. Best for: research-labs, field-guides, science-blogs, citizen-science. Dials: density 7/motion 3/variance 8.
+
 - `laboratory-clean` — Laboratory Clean. A calibrated instrument, not a landing page: sterile white, spec tables, every label measured.
   File: styles/laboratory-clean.md. Best for: biotech, labs, medical. Dials: density 8/motion 2/variance 3.
+
+- `laundromat-neon` — Laundromat Neon. Open 24 hours: humming fluorescents over white tile, mint and chrome at 3am.
+  File: styles/laundromat-neon.md. Best for: laundromats, coin-ops, late-night, local-services. Dials: density 7/motion 4/variance 4.
+
+- `library-oak` — Library Oak. Leather and brass: card catalogs, reading lamps, the hush of old oak stacks.
+  File: styles/library-oak.md. Best for: bookstores, publishers, archives, universities. Dials: density 5/motion 2/variance 2.
 
 - `ma-japanese` — Ma (Japanese Minimal). Rice paper, ink black, vast emptiness used on purpose. Ma — the beauty of negative space.
   File: styles/ma-japanese.md. Best for: craft, architecture, tea/food, galleries. Dials: density 1/motion 2/variance 5.
@@ -134,14 +169,32 @@ Pick exactly ONE. Load only that DNA's file.
 - `neo-brutalist-pop` — Neo-Brutalist Pop. Thick borders, hard shadows, sticker colors. Playful but engineered.
   File: styles/neo-brutalist-pop.md. Best for: consumer startups, edtech, creator tools, food. Dials: density 5/motion 6/variance 7.
 
+- `neon-diner` — Neon Diner. 1950s American diner: chrome, cherry red, teal vinyl. The OPEN sign is always on.
+  File: styles/neon-diner.md. Best for: diners, barbershops, milkshake-brands, drive-ins. Dials: density 4/motion 6/variance 5.
+
+- `newsroom-wire` — Newsroom Wire. The copy desk at 2am: teletype clatter, urgent red wire alerts, ink on newsprint.
+  File: styles/newsroom-wire.md. Best for: news-sites, media-kits, crisis-comms, sports-scores. Dials: density 8/motion 3/variance 4.
+
 - `nordic-noir` — Nordic Noir. Overcast crime scene at noon. Desaturated slate, hard facts, no comfort.
   File: styles/nordic-noir.md. Best for: streaming, publishing, true-crime. Dials: density 6/motion 3/variance 5.
+
+- `observatory-star` — Observatory Star. A working astronomical observatory as a website: deep-space navy, brass instrument dials, hand-plotted star charts, and the hush of the dome at 2am.
+  File: styles/observatory-star.md. Best for: observatories, space-startups, planetariums, research-institutes. Dials: density 5/motion 5/variance 6.
+
+- `origami-fold` — Origami Fold. Paper-fold geometry: crisp creases, washi texture, single-sheet discipline. Nothing is added; everything is folded.
+  File: styles/origami-fold.md. Best for: stationery, tea-brands, architecture-studios, gift-shops. Dials: density 3/motion 4/variance 6.
+
+- `paris-metro` — Paris Metro. Art Nouveau metro wayfinding: Guimard curves, navy enamel, gold lettering. Mind the gap, in style.
+  File: styles/paris-metro.md. Best for: transit, museums, cafes, city-guides. Dials: density 4/motion 3/variance 4.
 
 - `parisian-chic` — Parisian Chic. Haute couture polish: black, white, and cream with a high-contrast Didot-style serif and atelier restraint.
   File: styles/parisian-chic.md. Best for: fashion, perfume, bridal. Dials: density 2/motion 3/variance 4.
 
 - `pixel-arcade` — Pixel Arcade. Insert coin. Dark cabinet, neon scoreboards, chunky pixels you can almost bite.
   File: styles/pixel-arcade.md. Best for: games, esports, streamers. Dials: density 6/motion 7/variance 7.
+
+- `pixel-garden` — Pixel Garden. A cozy 8-bit gardening sim as a website: tilled soil rows, sprout-green pixels, and a blocky sun that rises on scroll.
+  File: styles/pixel-garden.md. Best for: indie-games, garden-shops, kids-education, farm-csas. Dials: density 6/motion 7/variance 6.
 
 - `pop-art-halftone` — Pop-Art Halftone. Ben-Day dots, thick black outlines, and color turned up until it shouts.
   File: styles/pop-art-halftone.md. Best for: comics, streetwear, youth-brands. Dials: density 5/motion 6/variance 8.
@@ -155,20 +208,35 @@ Pick exactly ONE. Load only that DNA's file.
 - `sahara-ochre` — Sahara Ochre. Artisanal earth: terracotta, clay, and spice tones with handmade texture — the craft market, not the museum.
   File: styles/sahara-ochre.md. Best for: ceramics, spices, craft-markets. Dials: density 3/motion 3/variance 5.
 
+- `sauna-cedar` — Sauna Cedar. Cedar heat and steam: a Finnish loyly rendered in dark wood and glowing ember.
+  File: styles/sauna-cedar.md. Best for: spas, wellness, retreats, bathhouses. Dials: density 3/motion 3/variance 3.
+
 - `scandi-calm` — Scandi Calm. Hygge minimalism: warm whites, pale wood tones, quiet functionality. Nothing shouts; everything breathes.
   File: styles/scandi-calm.md. Best for: homeware, wellness, interiors. Dials: density 2/motion 2/variance 3.
 
 - `soft-minimal` — Soft Minimal. Off-white calm, iris accent, spring motion. The Linear/Notion register, done right.
   File: styles/soft-minimal.md. Best for: saas, productivity, developer tools, mobile apps. Dials: density 5/motion 5/variance 3.
 
+- `stadium-floodlight` — Stadium Floodlight. Concrete bowl at 9pm: floodlights on, turf glowing, everything else shadow.
+  File: styles/stadium-floodlight.md. Best for: sports-clubs, esports, live-events, fitness. Dials: density 7/motion 6/variance 6.
+
+- `storybook-watercolor` — Storybook Watercolor. A children's picture book: washed paper, ink outlines, hand-lettered display. Read me like it's bedtime.
+  File: styles/storybook-watercolor.md. Best for: childrens-books, schools, family-events. Dials: density 2/motion 5/variance 7.
+
 - `surf-shack` — Surf Shack. Sun-bleached and hand-painted: faded teal, warm sand, and signage you can tell a person made.
   File: styles/surf-shack.md. Best for: surf-shops, cafes, travel. Dials: density 3/motion 5/variance 6.
+
+- `swiss-airline` — Swiss Airline. Mid-century airline identity: timetable grids, the red arrow, Helvetica-like order. Departures on time, forever.
+  File: styles/swiss-airline.md. Best for: airlines, travel-agencies, rail-operators, logistics. Dials: density 8/motion 2/variance 2.
 
 - `swiss-poster` — Swiss Poster. Bold poster art: oversized type AS the image, flat color blocks, one accent. Shout it from the wall.
   File: styles/swiss-poster.md. Best for: festivals, exhibitions, campaigns. Dials: density 5/motion 4/variance 8.
 
 - `swiss-rational` — Swiss Rational. Strict grid, black on white, one red. Information architecture as aesthetic.
   File: styles/swiss-rational.md. Best for: agencies, archives, data products, museums. Dials: density 6/motion 2/variance 4.
+
+- `tokyo-kissaten` — Tokyo Kissaten. Showa-era Japanese coffee house: dark walnut, worn velvet booths, low brass lamps, and the slow pour of a siphon brewer.
+  File: styles/tokyo-kissaten.md. Best for: cafes, restaurants, jazz-bars, bookshops. Dials: density 3/motion 2/variance 4.
 
 - `tokyo-neon` — Tokyo Neon. Electric signage culture: hot pink and cyan on black, vertical accents, the glow of a Shinjuku side street.
   File: styles/tokyo-neon.md. Best for: arcades, ramen-shops, nightlife. Dials: density 5/motion 8/variance 8.
@@ -178,6 +246,9 @@ Pick exactly ONE. Load only that DNA's file.
 
 - `tropical-brutalism` — Tropical Brutalism. Brazilian concrete breathing: raw gray mass, lush green, hard sunlight and deep shadow.
   File: styles/tropical-brutalism.md. Best for: architecture, hotels, botanical-brands. Dials: density 4/motion 4/variance 6.
+
+- `ukiyo-e-print` — Ukiyo-e Print. Japanese woodblock print: Prussian blue, vermillion, wave compositions. The floating world, keyed and registered.
+  File: styles/ukiyo-e-print.md. Best for: tea-houses, onsen, museums, ramen-shops. Dials: density 4/motion 3/variance 6.
 
 - `vaporwave-sunset` — Vaporwave Sunset. Retro-futurist sunset grids in peach, coral, and teal. A chrome sun that never quite sets.
   File: styles/vaporwave-sunset.md. Best for: music, merch, events. Dials: density 3/motion 6/variance 7.
