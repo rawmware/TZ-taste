@@ -1,0 +1,40 @@
+<!--tz-meta {"id":"logo-marquee","title":"Client logo marquee","category":"Sections","file":"patterns/logo-marquee.html","tags":["marquee","logos","social-proof","animation"],"description":"CSS-only scrolling strip of client wordmarks; pauses on hover, static under reduced motion.","dnas":["swiss-airline"]} -->
+<section class="tz-logo-marquee" aria-label="Trusted by">
+  <p class="tz-eyebrow">In good company</p>
+  <div class="tz-track-wrap">
+    <div class="tz-track">
+      <span class="tz-logo">Kiln &amp; Co.</span><span class="tz-sep">*</span>
+      <span class="tz-logo tz-alt">Northwind Freight</span><span class="tz-sep">*</span>
+      <span class="tz-logo">Halcyon Labs</span><span class="tz-sep">*</span>
+      <span class="tz-logo tz-alt">Paperboat</span><span class="tz-sep">*</span>
+      <span class="tz-logo">Meridian Mutual</span><span class="tz-sep">*</span>
+      <span class="tz-logo tz-alt">Fjord Systems</span><span class="tz-sep">*</span>
+      <span class="tz-logo">Kiln &amp; Co.</span><span class="tz-sep">*</span>
+      <span class="tz-logo tz-alt">Northwind Freight</span><span class="tz-sep">*</span>
+      <span class="tz-logo">Halcyon Labs</span><span class="tz-sep">*</span>
+      <span class="tz-logo tz-alt">Paperboat</span><span class="tz-sep">*</span>
+      <span class="tz-logo">Meridian Mutual</span><span class="tz-sep">*</span>
+      <span class="tz-logo tz-alt">Fjord Systems</span><span class="tz-sep">*</span>
+    </div>
+  </div>
+</section>
+<style>
+.tz-logo-marquee{--bg:#f7f5ef;--ink:#1a1a1a;--accent:#d52b1e;--muted:#6e6e6e;--line:#1a1a1a22;
+  background:var(--bg);color:var(--ink);padding:clamp(32px,5vw,64px) 0;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;overflow:hidden}
+.tz-eyebrow{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+  margin:0 0 24px;text-align:center}
+.tz-track-wrap{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.tz-track{display:flex;align-items:center;gap:48px;width:max-content;
+  animation:tz-marquee 28s linear infinite}
+.tz-track-wrap:hover .tz-track{animation-play-state:paused}
+.tz-logo{font-size:22px;letter-spacing:-.02em;font-weight:600;white-space:nowrap;color:var(--ink)}
+.tz-alt{font-weight:400;font-style:italic}
+.tz-sep{color:var(--accent);font-size:18px;font-weight:700}
+@keyframes tz-marquee{to{transform:translateX(calc(-50% - 24px))}}
+@media(max-width:640px){.tz-logo{font-size:17px}.tz-track{gap:32px;animation-duration:20s}}
+@media(prefers-reduced-motion:reduce){.tz-track{animation:none;flex-wrap:wrap;width:auto;justify-content:center}}
+</style>
