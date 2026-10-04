@@ -1,0 +1,134 @@
+<!--tz-meta {"id":"showcase-scandi-calm","title":"Scandi Calm showcase","category":"Showcase","file":"showcase/scandi-calm.html","tags":["scandi-calm"],"description":"Live demo page for the Scandi Calm style DNA.","dnas":["scandi-calm"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Scandi Calm — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#faf7f1; --tz-surface:#f1ece1; --tz-ink:#2e2a25; --tz-muted:#9a917f;
+  --tz-accent:#a9805a; --tz-line:#e4dccb;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"DM Sans",Helvetica,sans-serif;font-size:1.08rem;line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased}
+.tz-top{display:flex;justify-content:space-between;align-items:baseline;padding:1.6rem 6vw;border-bottom:1px solid var(--tz-line)}
+.tz-wordmark{font-family:"DM Serif Display",Georgia,serif;font-size:1.35rem}
+.tz-label{font-family:"Space Mono",monospace;font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-hero{padding:7rem 6vw 6rem;max-width:880px;margin:0 auto;text-align:center}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:2rem}
+.tz-hero h1{font-family:"DM Serif Display",Georgia,serif;font-weight:400;font-size:clamp(2.6rem,6vw,4.6rem);line-height:1.1;letter-spacing:-0.01em;max-width:16ch;margin:0 auto}
+.tz-hero h1 em{font-style:italic;color:var(--tz-accent)}
+.tz-sub{max-width:52ch;margin:1.8rem auto 0;color:var(--tz-muted)}
+.tz-cta{display:inline-block;margin-top:2.6rem;background:var(--tz-accent);color:var(--tz-bg);text-decoration:none;font-weight:500;font-size:1rem;padding:1rem 2.6rem;border-radius:14px;transition:background-color 0.3s ease}
+.tz-cta:hover{background:var(--tz-ink)}
+.tz-ring{width:120px;height:120px;border:2px solid var(--tz-accent);border-radius:50%;opacity:0.35;margin:3.5rem auto 0.8rem}
+.tz-caption{font-size:0.9rem;color:var(--tz-muted);font-style:italic}
+.tz-content{padding:5rem 6vw 6rem;max-width:880px;margin:0 auto;border-top:1px solid var(--tz-line)}
+.tz-content h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;font-size:clamp(1.8rem,3.6vw,2.6rem);margin-bottom:0.8rem;text-align:center}
+.tz-content .tz-intro{text-align:center;color:var(--tz-muted);max-width:52ch;margin:0 auto 4rem}
+.tz-shelf{list-style:none;display:flex;flex-direction:column;gap:4.5rem}
+.tz-piece{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.tz-piece:nth-child(even) .tz-info{order:-1;text-align:right}
+.tz-visual{background:var(--tz-surface);border-radius:14px;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.tz-visual .tz-shape{width:44%;aspect-ratio:1;background:var(--tz-accent);opacity:0.28;border-radius:50%}
+.tz-piece:nth-child(2) .tz-shape{border-radius:8px;opacity:0.22}
+.tz-piece:nth-child(3) .tz-shape{width:30%;border-radius:50% 50% 0 0;opacity:0.25}
+.tz-info .tz-code{font-family:"Space Mono",monospace;font-size:0.68rem;letter-spacing:0.14em;color:var(--tz-muted);text-transform:uppercase}
+.tz-info h3{font-family:"DM Serif Display",Georgia,serif;font-weight:400;font-size:1.7rem;margin:0.6rem 0 0.8rem}
+.tz-info p{color:var(--tz-muted);max-width:38ch}
+.tz-piece:nth-child(even) .tz-info p{margin-left:auto}
+.tz-tokens{padding:4rem 6vw;border-top:1px solid var(--tz-line)}
+.tz-tokens-inner{max-width:880px;margin:0 auto}
+.tz-tokens h2{font-family:"DM Serif Display",Georgia,serif;font-weight:400;font-size:1.5rem;margin-bottom:1.5rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.9rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);border-radius:12px;overflow:hidden;background:var(--tz-surface);min-width:9.5rem}
+.tz-chip{display:block;height:3.2rem}
+.tz-swatches .tz-name{display:block;font-family:"Space Mono",monospace;font-size:0.66rem;letter-spacing:0.1em;text-transform:uppercase;padding:0.6rem 0.8rem 0.1rem;color:var(--tz-muted)}
+.tz-swatches .tz-hex{display:block;font-family:"Space Mono",monospace;font-size:0.76rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2.5rem 6vw;border-top:1px solid var(--tz-line);text-align:center}
+.tz-foot .tz-note{font-size:0.9rem;color:var(--tz-muted);font-style:italic;margin-bottom:1rem}
+.tz-foot p{font-family:"Space Mono",monospace;font-size:0.68rem;letter-spacing:0.08em;color:var(--tz-muted)}
+.tz-soft{opacity:0;animation:tz-fade 0.9s ease forwards}
+.tz-soft.tz-d1{animation-delay:0.2s}.tz-soft.tz-d2{animation-delay:0.45s}.tz-soft.tz-d3{animation-delay:0.7s}
+@keyframes tz-fade{to{opacity:1}}
+@media(max-width:700px){
+  .tz-hero{padding:4.5rem 7vw 4rem}
+  .tz-piece{grid-template-columns:1fr;gap:1.4rem}
+  .tz-piece:nth-child(even) .tz-info{order:0;text-align:left}
+  .tz-piece:nth-child(even) .tz-info p{margin-left:0}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-soft{opacity:1}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Ljus &amp; Lin</span>
+  <span class="tz-label">TZ-taste style DNA</span>
+</header>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow">Homeware &middot; Copenhagen</p>
+  <h1 class="tz-soft">Good light, <em>honest</em> wood.</h1>
+  <p class="tz-sub tz-soft tz-d1">Furniture and homeware made slowly, from materials that age well. Nothing here needs replacing in five years.</p>
+  <a class="tz-cta tz-soft tz-d2" href="#">Browse the shelf</a>
+  <div class="tz-ring tz-soft tz-d3" aria-hidden="true"></div>
+  <p class="tz-caption tz-soft tz-d3">made for slow mornings</p>
+</section>
+
+<section class="tz-content">
+  <h2>The autumn shelf</h2>
+  <p class="tz-intro">Three pieces we keep coming back to. Each one fits a small hall, a quiet corner, or a long breakfast.</p>
+  <ol class="tz-shelf">
+    <li class="tz-piece">
+      <div class="tz-visual" aria-hidden="true"><div class="tz-shape"></div></div>
+      <div class="tz-info">
+        <span class="tz-code">LJ-104</span>
+        <h3>Fjord lounge chair</h3>
+        <p>Solid oak, wool upholstery. This one fits a small hall, and it only gets more comfortable.</p>
+      </div>
+    </li>
+    <li class="tz-piece">
+      <div class="tz-visual" aria-hidden="true"><div class="tz-shape"></div></div>
+      <div class="tz-info">
+        <span class="tz-code">LJ-211</span>
+        <h3>Lin duvet set</h3>
+        <p>Stonewashed linen, garment-dyed. Machine-washable. Obviously.</p>
+      </div>
+    </li>
+    <li class="tz-piece">
+      <div class="tz-visual" aria-hidden="true"><div class="tz-shape"></div></div>
+      <div class="tz-info">
+        <span class="tz-code">LJ-330</span>
+        <h3>Stoneware mug, set of two</h3>
+        <p>Glazed inside, raw outside. Holds heat through a whole chapter.</p>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<section class="tz-tokens">
+  <div class="tz-tokens-inner">
+    <h2>Tokens</h2>
+    <ul class="tz-swatches">
+      <li><span class="tz-chip" style="background:#faf7f1"></span><span class="tz-name">bg</span><span class="tz-hex">#faf7f1</span></li>
+      <li><span class="tz-chip" style="background:#2e2a25"></span><span class="tz-name">ink</span><span class="tz-hex">#2e2a25</span></li>
+      <li><span class="tz-chip" style="background:#a9805a"></span><span class="tz-name">accent</span><span class="tz-hex">#a9805a</span></li>
+      <li><span class="tz-chip" style="background:#9a917f"></span><span class="tz-name">muted</span><span class="tz-hex">#9a917f</span></li>
+      <li><span class="tz-chip" style="background:#e4dccb"></span><span class="tz-name">line</span><span class="tz-hex">#e4dccb</span></li>
+    </ul>
+  </div>
+</section>
+
+<footer class="tz-foot">
+  <p class="tz-note">P.S. &mdash; the kettle is always on.</p>
+  <p>A TZ-taste style DNA showcase &mdash; MIT, free forever.</p>
+</footer>
+</body>
+</html>
