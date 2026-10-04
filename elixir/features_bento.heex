@@ -1,0 +1,144 @@
+<!--tz-meta {"id":"ex-features-bento","title":"Features Bento — Zine Spread","category":"Elixir","file":"elixir/features_bento.heex","tags":["heex","phoenix","features","bento","zine"],"description":"Photocopied zine spread: features as cut-and-paste cells pinned at odd angles with tape strips and marker underlines.","dnas":["diary-zine"]} -->
+<%!-- def features_bento(assigns) — attr :kicker, :string, default: "ISSUE NO. 7 — THE FEATURES" · attr :features, :list — each: %{span: integer, tilt: string, tag: string, title: string, body: string} --%>
+<%!--
+Design read: A photocopied punk-zine spread for Latch's features — cells cut out and pinned at odd angles with tape, one ransom-note headline cell shouting across the wall, marker underlines instead of icons.
+Distinctive choice: every cell sits at a slightly different tilt with a tape strip across its top corner, so the grid feels pinned up, not laid out.
+Dials: VARIANCE 9 / MOTION 3 / DENSITY 7. DNA: diary-zine (Anton / Special Elite / Space Mono).
+--%>
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Special+Elite&family=Space+Mono:wght@400;700&display=swap");
+.tz-bento {
+  --tz-bg: #e8e4d8;
+  --tz-ink: #111111;
+  --tz-muted: #55524a;
+  --tz-accent: #d81b36;
+  --tz-line: #11111133;
+  --tz-font-display: "Anton", "Arial Narrow", sans-serif;
+  --tz-font-body: "Special Elite", "Courier New", monospace;
+  --tz-font-mono: "Space Mono", "Courier New", monospace;
+  background: var(--tz-bg);
+  color: var(--tz-ink);
+  font-family: var(--tz-font-body);
+  padding: clamp(4rem, 9vw, 8rem) clamp(1.25rem, 4vw, 4rem);
+  border-top: 3px solid var(--tz-ink);
+  border-bottom: 3px solid var(--tz-ink);
+}
+.tz-bento__inner { max-width: 1240px; margin: 0 auto; }
+.tz-bento__kicker {
+  font-family: var(--tz-font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin: 0 0 2.5rem;
+  display: inline-block;
+  border: 2px solid var(--tz-ink);
+  padding: 0.5rem 1rem;
+  transform: rotate(-1deg);
+  background: var(--tz-bg);
+}
+.tz-bento__grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  align-items: start;
+}
+.tz-bento__cell {
+  background: var(--tz-bg);
+  border: 2px solid var(--tz-ink);
+  padding: 1.75rem 1.6rem 1.6rem;
+  position: relative;
+  transform: rotate(var(--tilt, 0deg));
+  box-shadow: 4px 4px 0 var(--tz-line);
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tz-bento__cell:hover { transform: rotate(0deg) translateY(-3px); }
+.tz-bento__cell::before {
+  content: "";
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  width: 92px;
+  height: 26px;
+  transform: translateX(-50%) rotate(-3deg);
+  background: rgba(216, 27, 54, 0.28);
+  border-left: 1px dashed var(--tz-ink);
+  border-right: 1px dashed var(--tz-ink);
+}
+.tz-bento__cell--shout {
+  background: var(--tz-ink);
+  color: var(--tz-bg);
+  box-shadow: 6px 6px 0 var(--tz-accent);
+}
+.tz-bento__cell--shout::before { background: rgba(232, 228, 216, 0.35); }
+.tz-bento__tag {
+  font-family: var(--tz-font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--tz-accent);
+  margin: 0 0 0.9rem;
+}
+.tz-bento__cell--shout .tz-bento__tag { color: var(--tz-accent); }
+.tz-bento__title {
+  font-family: var(--tz-font-display);
+  font-size: clamp(1.9rem, 3.4vw, 3.1rem);
+  line-height: 1;
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+}
+.tz-bento__cell:not(.tz-bento__cell--shout) .tz-bento__title { font-size: clamp(1.35rem, 2.2vw, 1.8rem); }
+.tz-bento__body {
+  font-size: 1.02rem;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 52ch;
+}
+.tz-bento__marker { position: relative; white-space: nowrap; }
+.tz-bento__marker::after {
+  content: "";
+  position: absolute;
+  left: -3px;
+  right: -3px;
+  bottom: 0.08em;
+  height: 0.38em;
+  background: var(--tz-accent);
+  opacity: 0.5;
+  transform: rotate(-1deg);
+  z-index: -1;
+}
+.tz-bento__cell--shout .tz-bento__marker { z-index: 0; }
+.tz-bento__foot {
+  margin-top: 2.5rem;
+  font-family: var(--tz-font-mono);
+  font-size: 0.8rem;
+  color: var(--tz-muted);
+  transform: rotate(0.6deg);
+  display: inline-block;
+}
+@media (max-width: 900px) {
+  .tz-bento__cell { grid-column: 1 / -1 !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tz-bento__cell { transition: none; }
+}
+</style>
+<section class="tz-bento" aria-label="Features">
+  <div class="tz-bento__inner">
+    <p class="tz-bento__kicker">{@kicker}</p>
+    <div class="tz-bento__grid">
+      {for f <- @features do}
+        <article
+          class={"tz-bento__cell" <> if(f[:shout], do: " tz-bento__cell--shout", else: "")}
+          style={"grid-column: span " <> to_string(f.span) <> "; --tilt: " <> f.tilt}
+        >
+          <p class="tz-bento__tag">{f.tag}</p>
+          <h3 class="tz-bento__title">{f.title}</h3>
+          <p class="tz-bento__body">{f.body}</p>
+        </article>
+      {/for}
+    </div>
+    <p class="tz-bento__foot">* stapled together with real invoices, paid on time, by real freelancers</p>
+  </div>
+</section>
