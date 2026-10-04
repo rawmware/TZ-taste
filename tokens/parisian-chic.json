@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-parisian-chic",
+  "title": "Parisian Chic design tokens",
+  "category": "Tokens",
+  "file": "tokens/parisian-chic.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "parisian-chic"
+  ],
+  "description": "W3C-format design tokens for the Parisian Chic style DNA.",
+  "dnas": [
+   "parisian-chic"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#faf7f2",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#141210",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#141210",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#8a8178",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#e4ddd2",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Playfair Display",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Jost",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "parisian-chic",
+  "name": "Parisian Chic",
+  "vibe": "Haute couture polish: black, white, and cream with a high-contrast Didot-style serif and atelier restraint."
+ }
+}
