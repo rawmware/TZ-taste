@@ -1,0 +1,238 @@
+<!--tz-meta {"id":"kite-festival","title":"Kite Festival","category":"3D","file":"three-d/kite-festival.html","tags":["threejs","sky"],"description":"Diamond kites dance on their strings while gusts roll across a flat blue sky.","dnas":["memphis-milano"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kite Festival — TZ-taste</title>
+<style>
+  html, body { margin:0; height:100%; overflow:hidden; background:#cfe9f6; }
+  #app { position:fixed; inset:0; }
+  #app canvas { display:block; }
+  .caption { position:fixed; left:18px; bottom:16px; z-index:5; color:#3c6076;
+    font:12px/1.6 system-ui, -apple-system, sans-serif; letter-spacing:.05em;
+    opacity:.9; pointer-events:none; }
+  .caption b { display:block; font-size:13px; letter-spacing:.22em; text-transform:uppercase; }
+  #fallback { display:none; position:fixed; inset:0; z-index:10; place-items:center;
+    color:#3c6076; font:14px/1.6 system-ui, sans-serif; text-align:center;
+    padding:32px; background:#cfe9f6; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="caption"><b>Kite Festival</b>hold the string loosely — the wind does the steering<br/>drag to orbit &middot; scroll to zoom</div>
+<div id="fallback"><p>This scene needs WebGL, which your browser could not provide.<br/>Try a recent version of Chrome, Safari, Firefox or Edge.</p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (e) {
+  document.getElementById('fallback').style.display = 'grid';
+  throw e;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.getElementById('app').appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xcfe9f6); // flat, gradient-free sky
+scene.fog = new THREE.Fog(0xcfe9f6, 70, 190);
+
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 500);
+camera.position.set(0, 9, 34);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+controls.target.set(0, 11, 0);
+controls.maxPolarAngle = 1.52;
+controls.minDistance = 8;
+controls.maxDistance = 90;
+
+const sunLight = new THREE.DirectionalLight(0xfff4e0, 1.9);
+sunLight.position.set(-45, 42, -40);
+scene.add(sunLight);
+scene.add(new THREE.HemisphereLight(0xbfe0f5, 0x8fce7e, 0.85));
+
+/* ---------- soft flat sun, no gradient ---------- */
+const sunDisc = new THREE.Mesh(new THREE.CircleGeometry(7, 40),
+  new THREE.MeshBasicMaterial({ color: 0xfff8e0, fog: false }));
+sunDisc.position.set(-52, 40, -110);
+sunDisc.lookAt(camera.position);
+scene.add(sunDisc);
+const sunHalo = new THREE.Mesh(new THREE.CircleGeometry(13, 40),
+  new THREE.MeshBasicMaterial({ color: 0xfff3cf, transparent: true, opacity: 0.22,
+    fog: false, depthWrite: false }));
+sunHalo.position.set(-52, 40, -111);
+sunHalo.lookAt(camera.position);
+scene.add(sunHalo);
+
+/* ---------- drifting clouds ---------- */
+const cloudMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 1 });
+const clouds = [];
+for (let i = 0; i < 5; i++) {
+  const g = new THREE.Group();
+  const puffs = 3 + Math.floor(Math.random() * 2);
+  for (let k = 0; k < puffs; k++) {
+    const r = 1.8 + Math.random() * 2.2;
+    const puff = new THREE.Mesh(new THREE.SphereGeometry(r, 14, 10), cloudMat);
+    puff.position.set(k * 2.6 - puffs * 1.2, Math.random() * 1.2, Math.random() * 2 - 1);
+    puff.scale.y = 0.62;
+    g.add(puff);
+  }
+  g.position.set((Math.random() - 0.5) * 130, 26 + Math.random() * 14, -45 - Math.random() * 40);
+  g.userData.speed = 0.4 + Math.random() * 0.5;
+  scene.add(g);
+  clouds.push(g);
+}
+
+/* ---------- meadow ---------- */
+const meadowGeo = new THREE.PlaneGeometry(240, 140, 56, 28);
+meadowGeo.rotateX(-Math.PI / 2);
+{
+  const p = meadowGeo.attributes.position;
+  for (let i = 0; i < p.count; i++) {
+    const x = p.getX(i), z = p.getZ(i);
+    p.setY(i, Math.sin(x * 0.05) * 1.1 + Math.cos(z * 0.07) * 0.9);
+  }
+  meadowGeo.computeVertexNormals();
+}
+const meadow = new THREE.Mesh(meadowGeo,
+  new THREE.MeshStandardMaterial({ color: 0x8fce7e, roughness: 1 }));
+scene.add(meadow);
+function groundY(x, z) {
+  return Math.sin(x * 0.05) * 1.1 + Math.cos(z * 0.07) * 0.9;
+}
+
+/* ---------- kites ---------- */
+function diamondGeo(w, h) {
+  const s = new THREE.Shape();
+  s.moveTo(0, h / 2); s.lineTo(w / 2, 0); s.lineTo(0, -h / 2); s.lineTo(-w / 2, 0);
+  s.closePath();
+  return new THREE.ShapeGeometry(s);
+}
+function bowGeo() {
+  const s = new THREE.Shape();
+  s.moveTo(0, 0.22); s.lineTo(0.2, 0); s.lineTo(0, -0.22); s.lineTo(-0.2, 0);
+  s.closePath();
+  return new THREE.ShapeGeometry(s);
+}
+const stickMat = new THREE.MeshStandardMaterial({ color: 0x6b4a2f, roughness: 0.8 });
+const stringMat = new THREE.LineBasicMaterial({ color: 0x4a5560, transparent: true, opacity: 0.65 });
+const TAIL_N = 12;
+const kites = [];
+const KITE_DEFS = [
+  { c: 0xef476f, x: -13, y: 17, z: -6, ax: -9,  az: 9 },
+  { c: 0xffd166, x: -4,  y: 21, z: -10, ax: -3, az: 11 },
+  { c: 0x06d6a0, x: 5,   y: 16, z: -4, ax: 4,   az: 8 },
+  { c: 0x118ab2, x: 13,  y: 20, z: -9, ax: 10,  az: 10 },
+  { c: 0x9a6bff, x: -1,  y: 14, z: 3,  ax: 0,   az: 6 },
+];
+for (const def of KITE_DEFS) {
+  const g = new THREE.Group();
+  const W2 = 2.6, H2 = 3.4;
+  const sail = new THREE.Mesh(diamondGeo(W2, H2),
+    new THREE.MeshStandardMaterial({ color: def.c, roughness: 0.6, side: THREE.DoubleSide,
+      emissive: def.c, emissiveIntensity: 0.18 }));
+  g.add(sail);
+  const vStick = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, H2, 6), stickMat);
+  vStick.position.z = -0.03; g.add(vStick);
+  const hStick = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, W2, 6), stickMat);
+  hStick.rotation.z = Math.PI / 2; hStick.position.z = -0.03; g.add(hStick);
+
+  // tail: waving line + bows, children of the kite so they ride along
+  const tailGeo = new THREE.BufferGeometry();
+  tailGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(TAIL_N * 3), 3));
+  g.add(new THREE.Line(tailGeo, stringMat));
+  const bows = [];
+  for (let b = 0; b < 4; b++) {
+    const bow = new THREE.Mesh(bowGeo(),
+      new THREE.MeshStandardMaterial({ color: def.c, side: THREE.DoubleSide, roughness: 0.7 }));
+    g.add(bow);
+    bows.push(bow);
+  }
+  // ground stake + string
+  const stake = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.09, 1.0, 8), stickMat);
+  stake.position.set(def.ax, groundY(def.ax, def.az) + 0.35, def.az);
+  stake.rotation.z = 0.25;
+  scene.add(stake);
+  const anchor = new THREE.Vector3(def.ax, groundY(def.ax, def.az) + 0.8, def.az);
+  const strGeo = new THREE.BufferGeometry();
+  strGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(6), 3));
+  scene.add(new THREE.Line(strGeo, stringMat));
+
+  g.position.set(def.x, def.y, def.z);
+  scene.add(g);
+  kites.push({ g, tailGeo, bows, strGeo, anchor,
+    base: new THREE.Vector3(def.x, def.y, def.z),
+    phase: Math.random() * 6.28, H: H2 });
+}
+
+/* ---------- frame loop ---------- */
+const clock = new THREE.Clock();
+function renderFrame(t, dt) {
+  for (const k of kites) {
+    // gusts: layered sines so no two kites dance alike
+    const gust = 1 + 0.45 * Math.sin(t * 0.6 + k.phase) * Math.sin(t * 0.23 + k.phase * 1.7);
+    k.g.position.set(
+      k.base.x + Math.sin(t * 0.9 + k.phase) * 2.4 * gust,
+      k.base.y + Math.sin(t * 1.3 + k.phase * 2.0) * 1.5 * gust,
+      k.base.z + Math.cos(t * 0.7 + k.phase) * 2.0 * gust);
+    k.g.rotation.z = Math.sin(t * 1.1 + k.phase) * 0.38;
+    k.g.rotation.x = 0.32 + Math.sin(t * 0.8 + k.phase) * 0.14;
+    k.g.rotation.y = Math.sin(t * 0.5 + k.phase) * 0.22;
+
+    // string: straight run from stake to kite
+    const sp = k.strGeo.attributes.position;
+    sp.setXYZ(0, k.anchor.x, k.anchor.y, k.anchor.z);
+    sp.setXYZ(1, k.g.position.x, k.g.position.y, k.g.position.z);
+    sp.needsUpdate = true;
+
+    // tail streams behind and below
+    const tp = k.tailGeo.attributes.position;
+    for (let i = 0; i < TAIL_N; i++) {
+      const f = i / (TAIL_N - 1);
+      tp.setXYZ(i,
+        Math.sin(t * 3.0 + i * 0.7 + k.phase) * 0.22 * f,
+        -k.H / 2 - f * 3.6,
+        -0.1 - f * 1.2 + Math.cos(t * 2.4 + i * 0.6 + k.phase) * 0.12 * f);
+    }
+    tp.needsUpdate = true;
+    k.bows.forEach((bow, bi) => {
+      const f = (bi + 1) / 5;
+      bow.position.set(
+        Math.sin(t * 3.0 + f * (TAIL_N - 1) * 0.7 + k.phase) * 0.22 * f,
+        -k.H / 2 - f * 3.6, -0.1 - f * 1.2);
+      bow.rotation.z = Math.sin(t * 3.4 + bi * 1.3 + k.phase) * 0.5;
+    });
+  }
+  for (const c of clouds) {
+    c.position.x += c.userData.speed * dt;
+    if (c.position.x > 80) c.position.x = -80;
+  }
+  controls.update();
+  renderer.render(scene, camera);
+}
+if (REDUCED) {
+  renderFrame(0, 0);
+} else {
+  renderer.setAnimationLoop(() => {
+  const dt = Math.min(clock.getDelta(), 0.05);
+  renderFrame(clock.elapsedTime, dt);
+});
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+</body>
+</html>
