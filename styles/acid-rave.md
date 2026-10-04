@@ -1,3 +1,4 @@
+<!--tz-meta {"id":"acid-rave","name":"Acid Rave","vibe":"Black room, acid lime, type at maximum volume. Flyers, not landing pages.","file":"styles/acid-rave.md","tags":["bold","music","streetwear","loud"],"best_for":["music","events","streetwear","festivals"],"fonts":{"body":"Space Grotesk","display":"Anton","mono":"Space Mono"},"tokens":{"accent":"#c6ff00","bg":"#0a0a0a","ink":"#f2f2f2","line":"#f2f2f21f","muted":"#7a7a7a","surface":"#131313"},"dials":{"density":4,"motion":7,"variance":9}} -->
 # Acid Rave
 
 > Black room, acid lime, type at maximum volume. Flyers, not landing pages.
