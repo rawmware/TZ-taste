@@ -1,0 +1,127 @@
+<!--tz-meta {"id":"showcase-parisian-chic","title":"Parisian Chic showcase","category":"Showcase","file":"showcase/parisian-chic.html","tags":["parisian-chic"],"description":"Live demo page for the Parisian Chic style DNA.","dnas":["parisian-chic"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Parisian Chic — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#faf7f2; --tz-surface:#ffffff; --tz-ink:#141210; --tz-muted:#8a8178;
+  --tz-accent:#141210; --tz-accent2:#a63d40; --tz-line:#e4ddd2;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Jost",Verdana,sans-serif;font-weight:300;font-size:1.06rem;line-height:1.75;-webkit-font-smoothing:antialiased;padding-top:2.6rem;animation:tz-fade 1.8s ease-out}
+@keyframes tz-fade{from{opacity:0}to{opacity:1}}
+.tz-nameplate{position:fixed;top:0;left:0;right:0;z-index:60;background:var(--tz-bg);border-bottom:1px solid var(--tz-line);padding:0.65rem 5vw;text-align:center;font-family:"Space Mono",monospace;font-size:0.64rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1.6rem 5vw}
+.tz-wordmark{font-family:"Playfair Display",serif;font-weight:600;font-size:1.3rem;letter-spacing:0.06em}
+.tz-label{font-family:"Space Mono",monospace;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-hero{max-width:720px;margin:0 auto;padding:5rem 6vw 4rem;text-align:center}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:0.66rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:2.2rem}
+.tz-hero h1{font-family:"Playfair Display",serif;font-weight:400;font-size:clamp(2.6rem,7vw,4.6rem);line-height:1.12;letter-spacing:-0.01em;margin-bottom:1.8rem}
+.tz-hero h1 em{color:var(--tz-accent2);font-weight:400}
+.tz-rule{border:none;border-top:1px solid var(--tz-line);width:64px;margin:0 auto 1.8rem}
+.tz-sub{max-width:52ch;margin:0 auto;font-size:1.08rem}
+.tz-cta{display:inline-block;margin-top:2.6rem;font-family:"Jost",sans-serif;font-weight:500;font-size:0.82rem;letter-spacing:0.24em;text-transform:uppercase;text-decoration:none;color:var(--tz-ink);padding-bottom:0.5rem;position:relative}
+.tz-cta::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--tz-ink);transform:scaleX(0.35);transform-origin:left;transition:transform 0.4s ease}
+.tz-cta:hover::after{transform:scaleX(1)}
+.tz-flacon{max-width:520px;margin:4.5rem auto 0;background:var(--tz-surface);border:1px solid var(--tz-line);padding:clamp(2rem,6vw,4rem)}
+.tz-flacon svg{display:block;width:100%;max-width:220px;height:auto;margin:0 auto}
+.tz-flacon figcaption{margin-top:2rem;text-align:center;font-family:"Playfair Display",serif;font-style:italic;font-size:1.05rem;color:var(--tz-muted)}
+.tz-content{max-width:720px;margin:0 auto;padding:5rem 6vw}
+.tz-sect-label{text-align:center;font-family:"Space Mono",monospace;font-size:0.66rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:1rem}
+.tz-fragrance{padding:4rem 0;border-top:1px solid var(--tz-line);text-align:center}
+.tz-fragrance:last-child{border-bottom:1px solid var(--tz-line)}
+.tz-fno{font-family:"Space Mono",monospace;font-size:0.66rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:1.2rem}
+.tz-fragrance h2{font-family:"Playfair Display",serif;font-weight:600;font-size:clamp(1.9rem,5vw,2.9rem);margin-bottom:1rem}
+.tz-fnotes{font-size:1.02rem;color:var(--tz-muted);max-width:44ch;margin:0 auto 1.4rem}
+.tz-fmeta{font-family:"Space Mono",monospace;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--tz-ink)}
+.tz-tokens{max-width:900px;margin:0 auto;padding:4rem 6vw;border-top:1px solid var(--tz-line)}
+.tz-tokens h2{font-family:"Playfair Display",serif;font-weight:600;font-size:1.9rem;margin-bottom:1.6rem;text-align:center}
+.tz-swatches{display:flex;flex-wrap:wrap;list-style:none;border:1px solid var(--tz-line)}
+.tz-swatches li{flex:1 1 140px;border-right:1px solid var(--tz-line);min-width:130px;background:var(--tz-surface)}
+.tz-swatches li:last-child{border-right:none}
+.tz-chip{display:block;height:3.2rem;border-bottom:1px solid var(--tz-line)}
+.tz-swatches .tz-name{display:block;font-family:"Space Mono",monospace;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--tz-muted);padding:0.7rem 0.9rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Space Mono",monospace;font-size:0.74rem;padding:0 0.9rem 0.8rem}
+.tz-foot{border-top:1px solid var(--tz-line);padding:2.2rem 6vw;text-align:center;font-family:"Space Mono",monospace;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--tz-muted);line-height:2.1}
+@media(max-width:700px){
+  .tz-hero{padding-top:3.5rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="tz-nameplate" aria-hidden="true">Maison Lueur — Collection Nº 2 — Paris</div>
+<header class="tz-top">
+  <span class="tz-wordmark">MAISON LUEUR</span>
+  <span class="tz-label">TZ-taste style DNA</span>
+</header>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow">Haute parfumerie · Depuis 2019</p>
+  <h1>One scent, worn like a <em>signature.</em></h1>
+  <hr class="tz-rule">
+  <p class="tz-sub">Three compositions, each built around a single material and blended in Grasse. We make nothing seasonal and discontinue nothing — a signature should not have an expiry date.</p>
+  <a class="tz-cta" href="#">Reserve a fitting</a>
+  <figure class="tz-flacon">
+    <svg viewBox="0 0 200 300" role="img" aria-label="Line drawing of a perfume flacon">
+      <g fill="none" stroke="#141210" stroke-width="2.5">
+        <rect x="82" y="18" width="36" height="26"/>
+        <line x1="82" y1="31" x2="118" y2="31"/>
+        <path d="M88 44 L88 70 M112 44 L112 70"/>
+        <path d="M70 70 L130 70 L146 150 L138 260 L62 260 L54 150 Z"/>
+        <line x1="54" y1="150" x2="146" y2="150"/>
+        <rect x="78" y="180" width="44" height="30"/>
+      </g>
+      <text x="100" y="203" text-anchor="middle" font-family="Space Mono, monospace" font-size="13" fill="#141210">Nº 2</text>
+    </svg>
+    <figcaption>Flacon Nº 2 — 50 ml, hand-polished glass</figcaption>
+  </figure>
+</section>
+
+<section class="tz-content">
+  <p class="tz-sect-label">Collection Nº 2</p>
+  <article class="tz-fragrance">
+    <p class="tz-fno">Nº 1</p>
+    <h2>Cendre d'Aube</h2>
+    <p class="tz-fnotes">Bergamot · white pepper · iris · vetiver. The smell of a cold morning that turns warm by noon.</p>
+    <p class="tz-fmeta">50 ml — 180</p>
+  </article>
+  <article class="tz-fragrance">
+    <p class="tz-fno">Nº 2</p>
+    <h2>Figue Sèche</h2>
+    <p class="tz-fnotes">Fig leaf · black tea · ambrette · cedar. Green, then dry, then gone — like late August.</p>
+    <p class="tz-fmeta">50 ml — 195</p>
+  </article>
+  <article class="tz-fragrance">
+    <p class="tz-fno">Nº 3</p>
+    <h2>Poivre Blanc</h2>
+    <p class="tz-fnotes">White pepper · neroli · orris · musk. Quiet at first. It is not trying to impress the room.</p>
+    <p class="tz-fmeta">50 ml — 210</p>
+  </article>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#faf7f2"></span><span class="tz-name">bg</span><span class="tz-hex">#faf7f2</span></li>
+    <li><span class="tz-chip" style="background:#ffffff"></span><span class="tz-name">surface</span><span class="tz-hex">#ffffff</span></li>
+    <li><span class="tz-chip" style="background:#141210"></span><span class="tz-name">ink</span><span class="tz-hex">#141210</span></li>
+    <li><span class="tz-chip" style="background:#8a8178"></span><span class="tz-name">muted</span><span class="tz-hex">#8a8178</span></li>
+    <li><span class="tz-chip" style="background:#a63d40"></span><span class="tz-name">rouge</span><span class="tz-hex">#a63d40</span></li>
+    <li><span class="tz-chip" style="background:#e4ddd2"></span><span class="tz-name">line</span><span class="tz-hex">#e4ddd2</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">
+  <span>A TZ-taste style DNA showcase — MIT, free forever.<br>Handle with care · Do not tumble dry · Made in Grasse</span>
+</footer>
+</body>
+</html>
