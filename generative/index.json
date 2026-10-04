@@ -1,0 +1,610 @@
+{
+ "count": 40,
+ "updated": "2026-10-04",
+ "usage": "Interactive generative-art pages (vanilla canvas, zero deps). Open in a browser, lift the technique.",
+ "generative": [
+  {
+   "id": "gen-flow-curl-noise",
+   "title": "Curl Noise Field",
+   "category": "Generative",
+   "file": "generative/flow-curl-noise.html",
+   "tags": [
+    "curl-noise",
+    "flow-field",
+    "trails"
+   ],
+   "description": "Seeded simplex curl-noise advects hundreds of particles into silk-like trails.",
+   "dnas": [
+    "nordic-noir"
+   ]
+  },
+  {
+   "id": "gen-flow-fireflies",
+   "title": "Firefly Drift",
+   "category": "Generative",
+   "file": "generative/flow-fireflies.html",
+   "tags": [
+    "wander",
+    "glow",
+    "pulse"
+   ],
+   "description": "Fireflies wander on noise-steered headings, each pulsing its copper glow on its own clock.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "gen-flow-flocking",
+   "title": "Flocking",
+   "category": "Generative",
+   "file": "generative/flow-flocking.html",
+   "tags": [
+    "boids",
+    "swarm",
+    "emergence"
+   ],
+   "description": "Ninety boids follow separation, alignment, and cohesion — a murmuration on rice paper.",
+   "dnas": [
+    "arctic-field"
+   ]
+  },
+  {
+   "id": "gen-flow-ink-water",
+   "title": "Ink in Water",
+   "category": "Generative",
+   "file": "generative/flow-ink-water.html",
+   "tags": [
+    "diffusion",
+    "ink",
+    "soft-edges"
+   ],
+   "description": "Sumo-ink drops bloom and diffuse through water, edges softening as they spread.",
+   "dnas": [
+    "ink-wash-sumi"
+   ]
+  },
+  {
+   "id": "gen-flow-magnetic",
+   "title": "Magnetic Attraction",
+   "category": "Generative",
+   "file": "generative/flow-magnetic.html",
+   "tags": [
+    "gravity",
+    "attractors",
+    "orbits"
+   ],
+   "description": "Particles orbit two attractors and flee one repeller — drag any of them around.",
+   "dnas": [
+    "midnight-railway"
+   ]
+  },
+  {
+   "id": "gen-flow-orbit-petals",
+   "title": "Orbit Petals",
+   "category": "Generative",
+   "file": "generative/flow-orbit-petals.html",
+   "tags": [
+    "harmonics",
+    "spirograph",
+    "arms"
+   ],
+   "description": "Nested orbital arms at seeded harmonic ratios trace blooming ember petals.",
+   "dnas": [
+    "vaporwave-sunset"
+   ]
+  },
+  {
+   "id": "gen-flow-rain-ripples",
+   "title": "Rain Ripples",
+   "category": "Generative",
+   "file": "generative/flow-rain-ripples.html",
+   "tags": [
+    "ripples",
+    "physics",
+    "rain"
+   ],
+   "description": "Slanted rain falls, strikes an invisible pond, and spreads fading interference rings.",
+   "dnas": [
+    "ma-japanese"
+   ]
+  },
+  {
+   "id": "gen-flow-sand-piles",
+   "title": "Sand Piles",
+   "category": "Generative",
+   "file": "generative/flow-sand-piles.html",
+   "tags": [
+    "cellular-automaton",
+    "sandpile",
+    "self-organization"
+   ],
+   "description": "A real Abelian sandpile: grains topple when slopes get steep, avalanches carve the dune.",
+   "dnas": [
+    "laboratory-clean"
+   ]
+  },
+  {
+   "id": "gen-flow-smoke-letters",
+   "title": "Smoke Letters",
+   "category": "Generative",
+   "file": "generative/flow-smoke-letters.html",
+   "tags": [
+    "typography",
+    "smoke",
+    "dissolve"
+   ],
+   "description": "A seeded word is set in type, then sampled into smoke motes that rise and dissolve.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "gen-flow-wind-trails",
+   "title": "Wind Trails",
+   "category": "Generative",
+   "file": "generative/flow-wind-trails.html",
+   "tags": [
+    "sine-wind",
+    "ribbons",
+    "particles"
+   ],
+   "description": "Three layered sine-wind fields carry particles eastward in phosphor-green bands.",
+   "dnas": [
+    "tokyo-neon"
+   ]
+  },
+  {
+   "id": "gen-geo-circle-packing",
+   "title": "Circle Packing",
+   "category": "Generative",
+   "file": "generative/geo-circle-packing.html",
+   "tags": [
+    "packing",
+    "tangent",
+    "circles"
+   ],
+   "description": "Seeded tangent circles grow one by one until they kiss, outlined in Bauhaus primaries on black.",
+   "dnas": [
+    "bauhaus-primary",
+    "memphis-milano"
+   ]
+  },
+  {
+   "id": "gen-geo-harmonograph",
+   "title": "Harmonograph",
+   "category": "Generative",
+   "file": "generative/geo-harmonograph.html",
+   "tags": [
+    "pendulum",
+    "damped",
+    "drawing"
+   ],
+   "description": "Damped double-pendulum equations trace fading rosettes in risograph blue and red.",
+   "dnas": [
+    "risograph-grain"
+   ]
+  },
+  {
+   "id": "gen-geo-lissajous",
+   "title": "Lissajous Weaves",
+   "category": "Generative",
+   "file": "generative/geo-lissajous.html",
+   "tags": [
+    "lissajous",
+    "parametric",
+    "weave"
+   ],
+   "description": "Layered Lissajous curves in Bauhaus primaries, weaving trails across off-white.",
+   "dnas": [
+    "bauhaus-primary"
+   ]
+  },
+  {
+   "id": "gen-geo-maze-growth",
+   "title": "Maze Growth",
+   "category": "Generative",
+   "file": "generative/geo-maze-growth.html",
+   "tags": [
+    "maze",
+    "backtracker",
+    "graph"
+   ],
+   "description": "A recursive-backtracker carves a perfect maze live, one cell at a time, in ink hairlines.",
+   "dnas": [
+    "laboratory-clean",
+    "swiss-poster"
+   ]
+  },
+  {
+   "id": "gen-geo-penrose-tiling",
+   "title": "Penrose-ish Tiling",
+   "category": "Generative",
+   "file": "generative/geo-penrose-tiling.html",
+   "tags": [
+    "penrose",
+    "substitution",
+    "aperiodic"
+   ],
+   "description": "Robinson-triangle substitution grows an aperiodic rhombus tiling in Bauhaus primaries, rotating slowly.",
+   "dnas": [
+    "bauhaus-primary",
+    "de-stijl-grid"
+   ]
+  },
+  {
+   "id": "gen-geo-recursive-trees",
+   "title": "Recursive Trees",
+   "category": "Generative",
+   "file": "generative/geo-recursive-trees.html",
+   "tags": [
+    "recursion",
+    "branching",
+    "botanical"
+   ],
+   "description": "Seeded recursive branching trees that sway in a procedural wind, drawn in ink hairlines.",
+   "dnas": [
+    "laboratory-clean"
+   ]
+  },
+  {
+   "id": "gen-geo-spirograph",
+   "title": "Spirograph Gears",
+   "category": "Generative",
+   "file": "generative/geo-spirograph.html",
+   "tags": [
+    "hypotrochoid",
+    "gears",
+    "drawing"
+   ],
+   "description": "Two hypotrochoid gears draw over each other in risograph teal and pink, revealing slowly.",
+   "dnas": [
+    "risograph-grain"
+   ]
+  },
+  {
+   "id": "gen-geo-truchet",
+   "title": "Truchet Tiles",
+   "category": "Generative",
+   "file": "generative/geo-truchet.html",
+   "tags": [
+    "truchet",
+    "tiles",
+    "pattern"
+   ],
+   "description": "A field of quarter-arc truchet tiles flips and reseeds live — click the field to reseed.",
+   "dnas": [
+    "risograph-grain",
+    "de-stijl-grid"
+   ]
+  },
+  {
+   "id": "gen-geo-voronoi-drift",
+   "title": "Voronoi Drift",
+   "category": "Generative",
+   "file": "generative/geo-voronoi-drift.html",
+   "tags": [
+    "voronoi",
+    "nearest-seed",
+    "cells"
+   ],
+   "description": "Drifting seed points partition the field by nearest-seed on a coarse grid, drawn as ink contour bands.",
+   "dnas": [
+    "laboratory-clean"
+   ]
+  },
+  {
+   "id": "gen-geo-wave-interference",
+   "title": "Wave Interference",
+   "category": "Generative",
+   "file": "generative/geo-wave-interference.html",
+   "tags": [
+    "waves",
+    "interference",
+    "physics"
+   ],
+   "description": "Two radial wave sources interfere live on a pixel field, rendered in Bauhaus primaries on black.",
+   "dnas": [
+    "bauhaus-primary",
+    "constructivist-red"
+   ]
+  },
+  {
+   "id": "gen-org-aurora-2d",
+   "title": "Aurora Ribbons (2D)",
+   "category": "Generative",
+   "file": "generative/org-aurora-2d.html",
+   "tags": [
+    "aurora",
+    "ribbons",
+    "generative"
+   ],
+   "description": "Layered sine ribbons with additive glow drifting over a seeded star field.",
+   "dnas": [
+    "arctic-field"
+   ]
+  },
+  {
+   "id": "gen-org-blooming-flowers",
+   "title": "Blooming Flowers",
+   "category": "Generative",
+   "file": "generative/org-blooming-flowers.html",
+   "tags": [
+    "flowers",
+    "growth",
+    "generative"
+   ],
+   "description": "Nine flowers open petal by petal on staggered timers — stems, easing, sway.",
+   "dnas": [
+    "cottage-warm"
+   ]
+  },
+  {
+   "id": "gen-org-cellular-automata",
+   "title": "Cellular Automata",
+   "category": "Generative",
+   "file": "generative/org-cellular-automata.html",
+   "tags": [
+    "cellular-automata",
+    "simulation"
+   ],
+   "description": "Elementary automata growing downward row by row — click to change the rule.",
+   "dnas": [
+    "museum-placard"
+   ]
+  },
+  {
+   "id": "gen-org-contour-lines",
+   "title": "Contour Lines",
+   "category": "Generative",
+   "file": "generative/org-contour-lines.html",
+   "tags": [
+    "contours",
+    "noise",
+    "generative"
+   ],
+   "description": "Marching-squares contours traced over layered value noise, drifting like a breathing map.",
+   "dnas": [
+    "museum-placard"
+   ]
+  },
+  {
+   "id": "gen-org-coral-growth",
+   "title": "Coral Growth",
+   "category": "Generative",
+   "file": "generative/org-coral-growth.html",
+   "tags": [
+    "coral",
+    "growth",
+    "simulation"
+   ],
+   "description": "Diffusion-limited aggregation: walkers stick on contact, growing branching coral.",
+   "dnas": [
+    "botanical-lab"
+   ]
+  },
+  {
+   "id": "gen-org-jellyfish",
+   "title": "Jellyfish Drift",
+   "category": "Generative",
+   "file": "generative/org-jellyfish.html",
+   "tags": [
+    "jellyfish",
+    "drift",
+    "generative"
+   ],
+   "description": "Pulsing bells with phase-lagged tentacles drifting on slow currents.",
+   "dnas": [
+    "arctic-field"
+   ]
+  },
+  {
+   "id": "gen-org-reaction-diffusion",
+   "title": "Reaction-Diffusion Lite",
+   "category": "Generative",
+   "file": "generative/org-reaction-diffusion.html",
+   "tags": [
+    "reaction-diffusion",
+    "simulation"
+   ],
+   "description": "Gray-Scott equations blooming into soft coral-like forms.",
+   "dnas": [
+    "arctic-field"
+   ]
+  },
+  {
+   "id": "gen-org-shape-portrait",
+   "title": "Dithered Shape Portrait",
+   "category": "Generative",
+   "file": "generative/org-shape-portrait.html",
+   "tags": [
+    "stipple",
+    "portrait",
+    "generative"
+   ],
+   "description": "A face stippled from 2,400 ink dots by pure code — no image, just a density function.",
+   "dnas": [
+    "ink-wash-sumi"
+   ]
+  },
+  {
+   "id": "gen-org-slime-mold",
+   "title": "Slime Mold Trails",
+   "category": "Generative",
+   "file": "generative/org-slime-mold.html",
+   "tags": [
+    "slime-mold",
+    "agents",
+    "simulation"
+   ],
+   "description": "Agent-based slime mold: sniff, steer, deposit, decay — trails with no leader.",
+   "dnas": [
+    "botanical-lab"
+   ]
+  },
+  {
+   "id": "gen-org-topo-rain",
+   "title": "Topographic Rain",
+   "category": "Generative",
+   "file": "generative/org-topo-rain.html",
+   "tags": [
+    "topography",
+    "rain",
+    "simulation"
+   ],
+   "description": "Rain streaks fall and each impact ripples the elevation field, warping the topo lines.",
+   "dnas": [
+    "desert-modern"
+   ]
+  },
+  {
+   "id": "gen-typo-ascii-field",
+   "title": "ASCII Field",
+   "category": "Generative",
+   "file": "generative/typo-ascii-field.html",
+   "tags": [
+    "ascii",
+    "flow-field",
+    "text-mode"
+   ],
+   "description": "A flowing vector field rendered entirely in ASCII characters; your cursor stirs the current.",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "gen-typo-constellation",
+   "title": "Constellation Text",
+   "category": "Generative",
+   "file": "generative/typo-constellation.html",
+   "tags": [
+    "constellation",
+    "typography",
+    "nodes"
+   ],
+   "description": "The word ORION is rebuilt from star-nodes sampled off its letterforms, linked like a constellation.",
+   "dnas": [
+    "y2k-chrome"
+   ]
+  },
+  {
+   "id": "gen-typo-gravity-letters",
+   "title": "Gravity Letters",
+   "category": "Generative",
+   "file": "generative/typo-gravity-letters.html",
+   "tags": [
+    "physics",
+    "typography",
+    "playful"
+   ],
+   "description": "Letters rain from above and pile up with simple gravity and collision physics; click to drop more.",
+   "dnas": [
+    "pixel-arcade"
+   ]
+  },
+  {
+   "id": "gen-typo-kaleidoscope",
+   "title": "Kaleidoscope Painter",
+   "category": "Generative",
+   "file": "generative/typo-kaleidoscope.html",
+   "tags": [
+    "kaleidoscope",
+    "painting",
+    "mirror"
+   ],
+   "description": "Your pointer paints strokes mirrored twelve ways into a slowly blooming kaleidoscope mandala.",
+   "dnas": [
+    "art-deco-luxe"
+   ]
+  },
+  {
+   "id": "gen-typo-kinetic-field",
+   "title": "Kinetic Type Field",
+   "category": "Generative",
+   "file": "generative/typo-kinetic-field.html",
+   "tags": [
+    "kinetic",
+    "typography",
+    "force-field"
+   ],
+   "description": "Words drift and spin through a swirling force field; your cursor repels them.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "gen-typo-palette-dials",
+   "title": "Dial-Controlled Palettes",
+   "category": "Generative",
+   "file": "generative/typo-palette-dials.html",
+   "tags": [
+    "color",
+    "controls",
+    "hsl"
+   ],
+   "description": "Three dials live-remix the hue, saturation, and lightness of a whole typographic scene.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "gen-typo-pixel-sort",
+   "title": "Pixel-Sorted Gradients",
+   "category": "Generative",
+   "file": "generative/typo-pixel-sort.html",
+   "tags": [
+    "pixel-sort",
+    "glitch",
+    "code-art"
+   ],
+   "description": "Amber gradient bands get pixel-sorted into glitchy streaks, rendered chunky with smoothing off.",
+   "dnas": [
+    "jazz-blue-note"
+   ]
+  },
+  {
+   "id": "gen-typo-ripple-pond",
+   "title": "Ripple Click Pond",
+   "category": "Generative",
+   "file": "generative/typo-ripple-pond.html",
+   "tags": [
+    "ripples",
+    "typography",
+    "water"
+   ],
+   "description": "Click to spawn ripples; floating words bob and tilt on the passing waves.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "gen-typo-sky-clock",
+   "title": "Time-of-Day Sky",
+   "category": "Generative",
+   "file": "generative/typo-sky-clock.html",
+   "tags": [
+    "clock",
+    "sky",
+    "time-based"
+   ],
+   "description": "The sky, sun, moon, and stars are driven by your real local time, with a bubblegum clock readout.",
+   "dnas": [
+    "kawaii-pixel"
+   ]
+  },
+  {
+   "id": "gen-typo-waveform-seq",
+   "title": "Waveform Sequencer",
+   "category": "Generative",
+   "file": "generative/typo-waveform-seq.html",
+   "tags": [
+    "sequencer",
+    "waveform",
+    "rhythm"
+   ],
+   "description": "A 16-step sequencer drawn as waveforms. Click a column to toggle its step; the playhead sweeps visually.",
+   "dnas": [
+    "pixel-arcade"
+   ]
+  }
+ ]
+}
