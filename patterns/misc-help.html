@@ -1,0 +1,100 @@
+<!--tz-meta {"id":"misc-help","title":"Help center hero","category":"Misc","file":"patterns/misc-help.html","tags":["support","search"],"description":"Frosted help hero with soft pastel wash and topic chips.","dnas":["glass-calm"]} -->
+<section class="tz-help">
+  <div class="tz-help-card">
+    <p class="tz-help-kicker">Help center</p>
+    <h2>How can we help?</h2>
+    <p class="tz-help-search"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg><input type="search" placeholder="Search guides, e.g. refunds" aria-label="Search help articles"></p>
+    <div class="tz-help-chips">
+      <a href="#start">Getting started</a><a href="#billing">Billing</a><a href="#api" class="tz-chip-hot">API keys · most asked</a><a href="#security">Security</a>
+    </div>
+  </div>
+</section>
+<style>
+.tz-help{
+  background:
+    radial-gradient(420px 300px at 15% 20%,rgba(242,184,198,.5),transparent 70%),
+    radial-gradient(480px 340px at 85% 75%,rgba(169,195,217,.55),transparent 70%),
+    #edf0f4;
+  padding:clamp(48px,8vw,110px) clamp(20px,5vw,64px);
+  font-family:Arial,Helvetica,sans-serif;
+  display:flex;
+  justify-content:center;
+}
+.tz-help-card{
+  background:rgba(255,255,255,.55);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.75);
+  box-shadow:0 20px 60px rgba(70,90,110,.14);
+  padding:clamp(32px,5vw,56px);
+  width:min(620px,100%);
+  text-align:center;
+  color:#232a31;
+}
+.tz-help-kicker{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:11px;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  opacity:.55;
+  margin:0 0 12px;
+}
+.tz-help-card h2{
+  font-family:Georgia,'Times New Roman',serif;
+  font-weight:400;
+  font-size:clamp(32px,5vw,48px);
+  letter-spacing:-.02em;
+  margin:0 0 24px;
+}
+.tz-help-search{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:rgba(255,255,255,.8);
+  border:1px solid #cfd6dd;
+  padding:14px 18px;
+  margin:0 0 20px;
+  box-shadow:inset 0 2px 8px rgba(70,90,110,.08);
+}
+.tz-help-search svg{
+  width:16px;
+  height:16px;
+  stroke:#5a6570;
+  stroke-width:1.8;
+  fill:none;
+  flex:none;
+}
+.tz-help-search input{
+  border:none;
+  background:transparent;
+  font:15px Arial,Helvetica,sans-serif;
+  color:#232a31;
+  width:100%;
+  outline:none;
+}
+.tz-help-search input::placeholder{
+  color:#8a949d;
+}
+.tz-help-search:focus-within{
+  border-color:#5a6570;
+}
+.tz-help-chips{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.tz-help-chips a{
+  font-size:13px;
+  color:#232a31;
+  text-decoration:none;
+  padding:9px 16px;
+  background:rgba(255,255,255,.6);
+  border:1px solid #cfd6dd;
+}
+.tz-chip-hot{
+  background:#232a31 !important;
+  color:#fff !important;
+  border-color:#232a31 !important;
+}
+</style>
