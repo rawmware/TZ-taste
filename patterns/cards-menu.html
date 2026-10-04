@@ -1,0 +1,51 @@
+<!--tz-meta {"id":"cards-menu","title":"Menu cards","category":"Sections","file":"patterns/cards-menu.html","tags":["cards","menu","food"],"description":"Chalkboard-cafe menu: leader-dot price rows grouped by course, chef's notes in the margin, dietary marks.","dnas":["chalkboard-cafe"]} -->
+<section class="tz-cards-menu">
+  <p class="tz-eyebrow">Tonight · kitchen till 10pm</p>
+  <h2>The menu</h2>
+  <div class="tz-courses">
+    <div class="tz-course">
+      <h3>To start</h3>
+      <div class="tz-dish"><div class="tz-row"><b>Charred sourdough</b><span class="tz-dots"></span><span class="tz-price">7</span></div><p>whipped ricotta, hot honey, thyme</p><span class="tz-diet">v</span></div>
+      <div class="tz-dish"><div class="tz-row"><b>Crispy squid</b><span class="tz-dots"></span><span class="tz-price">14</span></div><p>lemon aioli, pickled chili</p></div>
+      <div class="tz-dish"><div class="tz-row"><b>Beet &amp; walnut salad</b><span class="tz-dots"></span><span class="tz-price">12</span></div><p>goat cheese, sherry vinaigrette</p><span class="tz-diet">v · gf</span></div>
+    </div>
+    <div class="tz-course">
+      <h3>Mains</h3>
+      <div class="tz-dish"><div class="tz-row"><b>Half chicken al mattone</b><span class="tz-dots"></span><span class="tz-price">26</span></div><p>brick-pressed, rosemary jus, grilled lemon</p><span class="tz-diet">gf</span></div>
+      <div class="tz-dish"><div class="tz-row"><b>Wild mushroom risotto</b><span class="tz-dots"></span><span class="tz-price">24</span></div><p>porcini, parmesan crisp, truffle oil</p><span class="tz-diet">v · gf</span></div>
+      <div class="tz-dish"><div class="tz-row"><b>Dry-aged sirloin</b><span class="tz-dots"></span><span class="tz-price">38</span></div><p>28 days, bone-marrow butter, watercress</p></div>
+    </div>
+    <div class="tz-course">
+      <h3>To finish</h3>
+      <div class="tz-dish"><div class="tz-row"><b>Olive oil cake</b><span class="tz-dots"></span><span class="tz-price">11</span></div><p>citrus, mascarpone, sea salt</p><span class="tz-diet">v</span></div>
+      <div class="tz-dish"><div class="tz-row"><b>Chocolate budino</b><span class="tz-dots"></span><span class="tz-price">12</span></div><p>olive oil, flaky salt — the famous one</p><span class="tz-diet">v · gf</span></div>
+    </div>
+  </div>
+  <p class="tz-note">v = vegetarian · gf = gluten-free adaptable — tell us, we'll sort it</p>
+</section>
+<style>
+.tz-cards-menu{--bg:#26231f;--ink:#f0e9d8;--muted:#a89c82;--accent:#e0a83e;
+  background:var(--bg);color:var(--ink);padding:clamp(72px,10vw,130px) clamp(20px,5vw,64px);
+  font-family:Georgia,serif}
+.tz-cards-menu .tz-eyebrow{font-family:'Segoe Print','Bradley Hand',cursive;font-size:15px;color:var(--accent);
+  text-align:center;margin:0 0 10px;transform:rotate(-1.5deg)}
+.tz-cards-menu h2{font-weight:400;font-size:clamp(40px,6vw,72px);text-align:center;margin:0 0 56px;letter-spacing:.02em}
+.tz-cards-menu .tz-courses{max-width:860px;margin:0 auto;display:grid;gap:52px}
+.tz-cards-menu .tz-course h3{font-family:'Segoe Print','Bradley Hand',cursive;font-weight:400;font-size:24px;
+  color:var(--accent);margin:0 0 8px;padding-bottom:14px;border-bottom:1px solid #f0e9d822;transform:rotate(-.8deg)}
+.tz-cards-menu .tz-dish{padding:18px 0;border-bottom:1px dashed #f0e9d818;position:relative}
+.tz-cards-menu .tz-dish:last-child{border-bottom:0}
+.tz-cards-menu .tz-row{display:flex;align-items:baseline;gap:14px}
+.tz-cards-menu .tz-row b{font-size:19px;font-weight:600;letter-spacing:.01em}
+.tz-cards-menu .tz-dots{flex:1;border-bottom:2px dotted #f0e9d833;transform:translateY(-5px)}
+.tz-cards-menu .tz-price{font-family:ui-monospace,Menlo,monospace;font-size:17px;color:var(--accent)}
+.tz-cards-menu .tz-dish p{margin:6px 0 0;color:var(--muted);font-style:italic;font-size:15px;font-family:-apple-system,'Segoe UI',sans-serif}
+.tz-cards-menu .tz-diet{position:absolute;top:20px;right:0;font-family:ui-monospace,Menlo,monospace;font-size:10px;
+  letter-spacing:.1em;color:var(--muted);border:1px solid #f0e9d822;padding:3px 8px;border-radius:12px;transform:translateY(30px)}
+.tz-cards-menu .tz-note{text-align:center;color:var(--muted);font-size:13px;margin:56px 0 0;
+  font-family:ui-monospace,Menlo,monospace;letter-spacing:.06em}
+@media (max-width:560px){
+  .tz-cards-menu .tz-row b{font-size:17px}
+  .tz-cards-menu .tz-diet{position:static;display:inline-block;margin-top:8px;transform:none}
+}
+</style>
