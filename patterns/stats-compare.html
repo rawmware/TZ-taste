@@ -1,0 +1,79 @@
+<!--tz-meta {"id":"stats-compare","title":"Before/after","category":"Stats","file":"patterns/stats-compare.html","tags":["comparison","delta"],"description":"Delta table with SVG trend arrows, measured before and after launch.","dnas":["docs-solar"]} -->
+<section class="tz-delta">
+  <p class="tz-delta-kicker">Impact · 30 days after launch</p>
+  <table>
+    <thead><tr><th scope="col">Metric</th><th scope="col">Before</th><th scope="col">After</th><th scope="col">Change</th></tr></thead>
+    <tbody>
+      <tr><td>Page load</td><td>4.8s</td><td>1.2s</td><td class="tz-delta-good"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 10V2M2 6l4-4 4 4"/></svg>−75%</td></tr>
+      <tr><td>Bounce rate</td><td>68%</td><td>31%</td><td class="tz-delta-good"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 10V2M2 6l4-4 4 4"/></svg>−37 pts</td></tr>
+      <tr><td>Signups / month</td><td>120</td><td>410</td><td class="tz-delta-good"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 2v8M2 6l4 4 4-4"/></svg>+242%</td></tr>
+      <tr><td>Support tickets</td><td>210</td><td>96</td><td class="tz-delta-good"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M6 10V2M2 6l4-4 4 4"/></svg>−54%</td></tr>
+    </tbody>
+  </table>
+  <p class="tz-delta-note">Measured 30 days before and after the rebuild, same traffic mix.</p>
+</section>
+<style>
+.tz-delta{
+  background:#fdf6e3;
+  color:#3d3a33;
+  font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(32px,5vw,64px) clamp(20px,4vw,48px);
+  max-width:760px;
+}
+.tz-delta-kicker{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#657b83;
+  margin:0 0 20px;
+}
+.tz-delta table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:14px;
+}
+.tz-delta th{
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:10px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:#657b83;
+  text-align:left;
+  padding:8px 12px;
+  border-bottom:2px solid #3d3a33;
+}
+.tz-delta td{
+  padding:12px;
+  border-bottom:1px solid #e8dfc9;
+  font-variant-numeric:tabular-nums;
+}
+.tz-delta td:last-child,
+.tz-delta th:last-child{
+  text-align:right;
+  white-space:nowrap;
+}
+.tz-delta-good{
+  color:#4a7a00;
+  font-weight:700;
+  font-family:ui-monospace,Menlo,monospace;
+}
+.tz-delta-good svg{
+  width:11px;
+  height:11px;
+  stroke:currentColor;
+  stroke-width:1.6;
+  fill:none;
+  vertical-align:-1px;
+  margin-right:5px;
+}
+.tz-delta-note{
+  font-size:12px;
+  color:#657b83;
+  margin:16px 0 0;
+}
+@media (max-width:520px){
+  .tz-delta td:nth-child(2),
+  .tz-delta th:nth-child(2){display:none}
+}
+</style>
