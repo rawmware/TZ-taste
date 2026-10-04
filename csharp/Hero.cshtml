@@ -1,0 +1,113 @@
+@*tz-meta {"id":"cs-hero","title":"Editorial hero (Razor)","category":"C#","file":"csharp/Hero.cshtml","tags":["csharp","razor","hero"],"description":"Editorial hero for The Slow Margin, a print quarterly for people who still finish books. Giant Fraunces headline, mono meta row, and one deliberate choice: a colossal clipped issue numeral behind the type.","dnas":["editorial-serif"]} *@
+@page
+@{
+    ViewData["Title"] = "The Slow Margin — a quarterly for people who still finish books";
+    var bg = "#f5f1e8";
+    var ink = "#1c1a15";
+    var accent = "#b5461f";
+    var muted = "#6f6a5e";
+    var line = "#1c1a1526";
+    var surface = "#efe9da";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>@ViewData["Title"]</title>
+<style>
+  :root{
+    --bg:@bg; --ink:@ink; --accent:@accent; --muted:@muted; --line:@line; --surface:@surface;
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--bg);color:var(--ink);
+    font-family:'Newsreader',Georgia,'Times New Roman',serif;
+    line-height:1.55;overflow-x:hidden}
+  .tz-wrap{max-width:1440px;margin:0 auto;position:relative;
+    padding:clamp(48px,7vw,110px) clamp(24px,6vw,96px) clamp(64px,8vw,130px)}
+  .tz-eyebrow{font-family:'Space Mono',ui-monospace,Menlo,monospace;font-size:11px;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--muted);
+    display:flex;align-items:center;gap:14px;margin-bottom:clamp(36px,5vw,72px)}
+  .tz-eyebrow::after{content:"";height:1px;width:72px;background:var(--accent)}
+  /* The distinctive choice: a colossal clipped issue numeral living behind the headline */
+  .tz-numeral{position:absolute;top:clamp(20px,4vw,64px);right:-0.08em;z-index:0;
+    font-family:'Fraunces',Georgia,serif;font-style:italic;font-weight:300;
+    font-size:clamp(220px,38vw,560px);line-height:.8;color:var(--surface);
+    user-select:none;pointer-events:none;letter-spacing:-.05em}
+  .tz-grid{position:relative;z-index:1;display:grid;
+    grid-template-columns:minmax(0,11fr) minmax(0,1fr);gap:clamp(24px,4vw,64px)}
+  .tz-kicker{font-family:'Space Mono',ui-monospace,monospace;font-size:12px;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:22px}
+  h1{font-family:'Fraunces',Georgia,serif;font-weight:480;letter-spacing:-.03em;
+    font-size:clamp(46px,7.4vw,116px);line-height:1.02;max-width:11ch;margin-bottom:30px}
+  h1 em{font-style:italic;color:var(--accent)}
+  .tz-dek{font-size:clamp(18px,2vw,23px);line-height:1.6;max-width:44ch;color:var(--ink);
+    margin-bottom:clamp(36px,4vw,56px)}
+  .tz-dek strong{font-weight:600}
+  .tz-meta{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);margin-bottom:clamp(36px,4vw,56px)}
+  .tz-meta span{font-family:'Space Mono',ui-monospace,monospace;font-size:11px;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+    padding:13px 26px 13px 0;margin-right:26px;border-right:1px solid var(--line)}
+  .tz-meta span:last-child{border-right:0}
+  .tz-actions{display:flex;align-items:center;gap:34px;flex-wrap:wrap}
+  .tz-btn{display:inline-block;background:var(--ink);color:var(--bg);
+    font-family:'Space Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.08em;
+    text-transform:uppercase;text-decoration:none;padding:17px 30px;border:1px solid var(--ink);
+    transition:background .3s var(--ease),color .3s var(--ease)}
+  .tz-btn:hover{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+  .tz-link{font-size:19px;color:var(--ink);text-decoration:none;
+    border-bottom:2px solid var(--accent);padding-bottom:3px}
+  .tz-link .arr{display:inline-block;transition:transform .35s var(--ease)}
+  .tz-link:hover .arr{transform:translateX(7px)}
+  .tz-colophon{margin-top:clamp(56px,7vw,110px);padding-top:22px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+    font-family:'Space Mono',ui-monospace,monospace;font-size:11px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .tz-rise{opacity:0;transform:translateY(26px);animation:tz-rise .9s var(--ease) forwards}
+  .tz-rise.d1{animation-delay:.08s}.tz-rise.d2{animation-delay:.18s}
+  .tz-rise.d3{animation-delay:.3s}.tz-rise.d4{animation-delay:.42s}
+  @@keyframes tz-rise{to{opacity:1;transform:none}}
+  @@media (max-width:700px){
+    .tz-grid{grid-template-columns:1fr}
+    .tz-numeral{font-size:52vw;top:6px}
+    .tz-meta span{padding:10px 16px 10px 0;margin-right:16px}
+  }
+  @@media (prefers-reduced-motion:reduce){
+    .tz-rise{opacity:1;transform:none;animation:none}
+    *{transition:none !important}
+  }
+</style>
+</head>
+<body>
+  <div class="tz-wrap">
+    <p class="tz-eyebrow tz-rise">The Slow Margin · A quarterly of long reading</p>
+    <div class="tz-numeral" aria-hidden="true">47</div>
+    <div class="tz-grid">
+      <div>
+        <p class="tz-kicker tz-rise d1">Issue № 47 — Autumn 2026</p>
+        <h1 class="tz-rise d2">Reading is <em>not</em> content.</h1>
+        <p class="tz-dek tz-rise d3">The Slow Margin is a print quarterly for people who still
+        finish books. <strong>Four issues a year.</strong> No infinite scroll, no notifications,
+        no algorithm. Just the good pages, bound to lie flat.</p>
+        <div class="tz-meta tz-rise d3">
+          <span>96 pages, uncoated stock</span>
+          <span>Portsmouth, NH</span>
+          <span>Print only — never an app</span>
+        </div>
+        <div class="tz-actions tz-rise d4">
+          <a class="tz-btn" href="#subscribe">Read the autumn issue</a>
+          <a class="tz-link" href="#archive">Browse past issues <span class="arr">→</span></a>
+        </div>
+      </div>
+      <div></div>
+    </div>
+    <div class="tz-colophon">
+      <span>Set in Fraunces &amp; Newsreader</span>
+      <span>Edited slowly since 2014</span>
+    </div>
+  </div>
+</body>
+</html>
