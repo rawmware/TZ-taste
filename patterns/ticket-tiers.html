@@ -1,0 +1,62 @@
+<!--tz-meta {"id":"ticket-tiers","title":"Event ticket tiers, asymmetric","category":"Pricing","file":"patterns/ticket-tiers.html","tags":["tickets","pricing","event","tiers"],"description":"Deco pricing with one tall featured Patron tier — two modest tiers stacked beside it.","dnas":["art-deco-luxe"]} -->
+<section class="tz-ticket-tiers" aria-label="Ticket tiers">
+  <p class="tz-k">Type &amp; Grid Conf · Nov 14 · One day</p>
+  <h2>Pick your seat</h2>
+  <div class="tz-grid">
+    <div class="tz-side">
+      <article class="tz-tier">
+        <div><p class="tz-name">General</p><p class="tz-desc">All talks, both stages, coffee that&rsquo;s actually good.</p></div>
+        <p class="tz-price">$49</p>
+        <a href="#">Get General</a>
+      </article>
+      <article class="tz-tier">
+        <div><p class="tz-name">Student</p><p class="tz-desc">Same day, smaller wallet. Valid ID at the door.</p></div>
+        <p class="tz-price">$25</p>
+        <a href="#">Get Student</a>
+      </article>
+    </div>
+    <article class="tz-tier tz-star">
+      <p class="tz-flag">Best seats in the house</p>
+      <p class="tz-name">Patron</p>
+      <p class="tz-price">$149</p>
+      <ul>
+        <li>Front-two-rows reserved seating</li>
+        <li>Speaker dinner Friday night</li>
+        <li>Printed program, signed by the keynote</li>
+        <li>Your name on the thank-you wall</li>
+      </ul>
+      <a href="#">Become a Patron</a>
+      <p class="tz-note">Only 40 Patron seats. Last year they sold out in 9 days.</p>
+    </article>
+  </div>
+</section>
+<style>
+.tz-ticket-tiers{--bg:#0d0b08;--ink:#f2e7c9;--accent:#c9a227;--muted:#8a7f63;--line:#c9a2274d;
+  background:var(--bg);color:var(--ink);padding:clamp(40px,6vw,96px);
+  font-family:'Jost',-apple-system,'Segoe UI',sans-serif}
+.tz-ticket-tiers .tz-k{font-family:'Space Mono',ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin:0 0 14px;text-align:center}
+.tz-ticket-tiers h2{font-family:'Cinzel',Georgia,serif;font-weight:600;font-size:clamp(32px,4.4vw,54px);
+  letter-spacing:.04em;margin:0 0 44px;text-align:center}
+.tz-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:24px;max-width:960px;margin:0 auto;align-items:stretch}
+.tz-side{display:flex;flex-direction:column;gap:24px}
+.tz-tier{border:1px solid var(--line);padding:30px;display:flex;flex-direction:column;gap:8px;background:#c9a22708}
+.tz-side .tz-tier{flex:1;flex-direction:row;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.tz-name{font-family:'Cinzel',Georgia,serif;font-size:21px;letter-spacing:.06em;margin:0 0 6px}
+.tz-desc{margin:0;font-size:14px;color:var(--muted);line-height:1.6;max-width:30ch}
+.tz-price{font-family:'Cinzel',Georgia,serif;font-size:40px;color:var(--accent);margin:6px 0}
+.tz-side .tz-price{margin:0}
+.tz-tier a{display:inline-block;font-weight:600;font-size:14.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink);border:1px solid var(--accent);padding:13px 26px;text-decoration:none;text-align:center}
+.tz-tier a:hover{background:var(--accent);color:var(--bg)}
+.tz-star{border:2px solid var(--accent);position:relative;background:#c9a22712}
+.tz-flag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--accent);color:var(--bg);
+  font-family:'Space Mono',ui-monospace,Menlo,monospace;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;padding:6px 16px;margin:0;white-space:nowrap}
+.tz-star ul{list-style:none;margin:14px 0 22px;padding:0;display:flex;flex-direction:column;gap:10px;font-size:14.5px}
+.tz-star li{padding-left:22px;position:relative;line-height:1.5}
+.tz-star li::before{content:"";position:absolute;left:2px;top:8px;width:8px;height:8px;
+  background:var(--accent);transform:rotate(45deg)}
+.tz-note{margin:16px 0 0;font-size:12.5px;color:var(--muted);font-style:italic}
+@media(max-width:720px){.tz-grid{grid-template-columns:1fr}}
+</style>
