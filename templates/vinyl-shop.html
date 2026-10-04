@@ -1,0 +1,257 @@
+<!--tz-meta {"id":"vinyl-shop","title":"Needledrop Records — Used Vinyl","category":"Template","file":"templates/vinyl-shop.html","tags":["vinyl-shop","music","retail","local"],"description":"Blue-Note-sleeve record shop: new arrivals as a crate index with catalog numbers, liner-note voice.","dnas":["jazz-blue-note"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Needledrop Records — used vinyl, graded honestly</title>
+<meta name="description" content="Needledrop Records is a used vinyl shop: new arrivals every Friday, honest grading, and a listening station that never closes.">
+<!-- DNA: jazz-blue-note. Design read: a mid-century jazz sleeve come to life — smoky blue-black, burnt-orange accents, tall condensed type — for diggers who read liner notes and judge a shop by its dollar bin. One distinctive choice: new arrivals are filed as a crate index with catalog numbers (NR-001…), condition grades, and one-line liner notes, like the sleeves themselves. Dials V6/M4/D4. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#101418;
+  --tz-ink:#eef2f5;
+  --tz-accent:#e8734a;
+    --tz-muted:#7a8a96;
+  --tz-fog:color-mix(in srgb, var(--tz-fog) 42%, var(--tz-ink) 58%);
+  --tz-line:#243038;
+  --tz-line-soft:color-mix(in srgb, var(--tz-ink) 10%, transparent);
+  --tz-panel:color-mix(in srgb, var(--tz-bg) 60%, var(--tz-ink));
+  --tz-deep:color-mix(in srgb, var(--tz-bg) 70%, black);
+  --tz-ink-soft:color-mix(in srgb, var(--tz-ink) 82%, var(--tz-bg));
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",system-ui,sans-serif;background:var(--tz-bg);color:var(--tz-ink);font-weight:400;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--tz-accent);color:var(--tz-bg)}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+.tz-bebas{font-family:"Bebas Neue",sans-serif}
+.tz-mono{font-family:"Space Mono",monospace}
+.skip{position:absolute;left:-999px;top:0;background:var(--tz-accent);color:var(--tz-bg);padding:8px 16px;z-index:99;font-weight:700}
+.skip:focus{left:8px;top:8px}
+
+/* ---------- header ---------- */
+.tz-header{border-bottom:1px solid var(--tz-line);background:color-mix(in srgb, var(--tz-bg) 90%, transparent);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
+.tz-header .tz-wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
+.tz-logo{font-family:"Bebas Neue",sans-serif;font-size:30px;letter-spacing:.04em;display:flex;align-items:center;gap:12px}
+.tz-logo .tz-disc{width:30px;height:30px;border-radius:50%;background:conic-gradient(var(--tz-accent) 0 25%, var(--tz-ink) 0 50%, var(--tz-accent) 0 75%, var(--tz-ink) 0);position:relative;flex:none;animation:tz-spin 6s linear infinite}
+.tz-logo .tz-disc::after{content:"";position:absolute;inset:11px;background:var(--tz-bg);border-radius:50%}
+@keyframes tz-spin{to{transform:rotate(360deg)}}
+.tz-nav{display:flex;gap:28px;font-size:14.5px;font-weight:500;letter-spacing:.06em}
+.tz-nav a{color:var(--tz-ink-soft)}
+.tz-nav a:hover{color:var(--tz-accent)}
+.tz-sell{font-family:"Space Mono",monospace;font-size:12.5px;font-weight:700;letter-spacing:.08em;background:var(--tz-accent);color:var(--tz-bg);border:0;padding:11px 20px;cursor:pointer;transition:transform .25s var(--tz-ease),background .2s}
+.tz-sell:hover{transform:translateY(-2px);background:var(--tz-ink)}
+
+/* ---------- hero ---------- */
+.tz-hero{padding:88px 0 72px;position:relative;overflow:hidden}
+.tz-hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center;position:relative}
+.tz-hero .tz-kicker{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.3em;color:var(--tz-accent);font-weight:700;margin-bottom:20px}
+.tz-hero h1{font-family:"Bebas Neue",sans-serif;font-size:clamp(72px,10vw,150px);line-height:.92;letter-spacing:.01em}
+.tz-hero h1 .tz-or{color:var(--tz-accent)}
+.tz-hero .tz-liner{margin-top:22px;font-size:17.5px;color:var(--tz-ink-soft);max-width:44ch;font-weight:300;font-style:italic}
+.tz-hero-cta{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap}
+.tz-btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:15px;padding:14px 28px;cursor:pointer;transition:transform .25s var(--tz-ease),background .2s;border:1px solid var(--tz-accent)}
+.tz-btn--or{background:var(--tz-accent);color:var(--tz-bg)}
+.tz-btn--or:hover{background:var(--tz-ink);border-color:var(--tz-ink);color:var(--tz-bg);transform:translateY(-2px)}
+.tz-btn--ghost{background:transparent;color:var(--tz-accent)}
+.tz-btn--ghost:hover{transform:translateY(-2px);background:color-mix(in srgb, var(--tz-accent) 12%, transparent)}
+.tz-friday{margin-top:28px;font-family:"Space Mono",monospace;font-size:12.5px;color:var(--tz-fog);letter-spacing:.06em;display:flex;gap:10px;align-items:center}
+.tz-friday svg{width:18px;height:18px;flex:none}
+
+/* spinning record art */
+.tz-record{position:relative;width:min(380px,100%);aspect-ratio:1;margin:0 auto}
+.tz-vinyl{position:absolute;inset:0;border-radius:50%;background:repeating-radial-gradient(circle at 50% 50%, var(--tz-deep) 0 3px, var(--tz-panel) 3px 6px);border:1px solid var(--tz-line);animation:tz-spin 14s linear infinite}
+.tz-vinyl::after{content:"";position:absolute;inset:34%;border-radius:50%;background:var(--tz-accent);border:6px solid var(--tz-bg)}
+.tz-vinyl::before{content:"";position:absolute;inset:49%;border-radius:50%;background:var(--tz-bg);z-index:1}
+.tz-sleeve{position:absolute;inset:0;border:1px solid var(--tz-line);background:linear-gradient(135deg, var(--tz-panel) 60%, transparent 60%);pointer-events:none}
+.tz-record figcaption{position:absolute;bottom:-38px;left:0;right:0;text-align:center;font-family:"Space Mono",monospace;font-size:11.5px;letter-spacing:.14em;color:var(--tz-fog)}
+
+/* ---------- sections ---------- */
+.tz-section{padding:96px 0}
+.tz-sechead{margin-bottom:48px;max-width:660px}
+.tz-sechead .tz-mono{font-size:12px;letter-spacing:.3em;color:var(--tz-accent);font-weight:700;display:block;margin-bottom:16px}
+.tz-sechead h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(52px,6.4vw,88px);line-height:.95;letter-spacing:.015em}
+.tz-sechead p{margin-top:14px;font-size:17px;color:var(--tz-ink-soft);font-weight:300}
+
+/* crate index: the one weird thing */
+.tz-crate{border-top:3px solid var(--tz-accent)}
+.tz-row{display:grid;grid-template-columns:96px 1fr auto auto;gap:24px;align-items:center;padding:22px 8px;border-bottom:1px solid var(--tz-line);transition:background .2s}
+.tz-row:hover{background:var(--tz-panel)}
+.tz-row .tz-cat{font-family:"Space Mono",monospace;font-size:13px;font-weight:700;color:var(--tz-accent)}
+.tz-row h3{font-family:"Bebas Neue",sans-serif;font-size:30px;letter-spacing:.02em;line-height:1}
+.tz-row h3 small{font-family:"DM Sans",sans-serif;font-size:14px;font-weight:400;color:var(--tz-fog);display:block;margin-top:4px;letter-spacing:0}
+.tz-row .tz-note{font-size:14.5px;font-style:italic;color:var(--tz-ink-soft);max-width:34ch}
+.tz-row .tz-grade{font-family:"Space Mono",monospace;font-size:12px;text-align:right;line-height:1.9}
+.tz-row .tz-grade .tz-g{color:var(--tz-accent);font-weight:700}
+.tz-row .tz-price{font-family:"Bebas Neue",sans-serif;font-size:32px;color:var(--tz-ink);white-space:nowrap}
+.tz-crate-foot{margin-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.tz-crate-foot p{font-family:"Space Mono",monospace;font-size:12.5px;color:var(--tz-fog)}
+.tz-crate-foot a{font-weight:700;font-size:15px;color:var(--tz-accent);border-bottom:2px solid var(--tz-accent)}
+.tz-crate-foot a:hover{color:var(--tz-ink);border-color:var(--tz-ink)}
+
+/* sell panel + events */
+.tz-duo{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--tz-line);border:1px solid var(--tz-line)}
+.tz-cell{background:var(--tz-panel);padding:44px 40px}
+.tz-cell .tz-mono{font-size:11.5px;letter-spacing:.26em;color:var(--tz-accent);font-weight:700;display:block;margin-bottom:16px}
+.tz-cell h3{font-family:"Bebas Neue",sans-serif;font-size:44px;line-height:1;margin-bottom:14px;letter-spacing:.015em}
+.tz-cell p{font-size:16px;color:var(--tz-ink-soft);margin-bottom:14px}
+.tz-cell ul{list-style:none;font-size:15.5px}
+.tz-cell li{padding:10px 0;border-bottom:1px solid var(--tz-line);display:flex;justify-content:space-between;gap:12px}
+.tz-cell li:last-child{border-bottom:0}
+.tz-cell .tz-mono{font-size:12.5px}
+
+/* ---------- footer ---------- */
+.tz-footer{border-top:1px solid var(--tz-line);padding:64px 0 36px;background:var(--tz-deep)}
+.tz-foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:40px;margin-bottom:44px}
+.tz-foot-brand{font-family:"Bebas Neue",sans-serif;font-size:36px;letter-spacing:.03em;margin-bottom:8px}
+.tz-foot-brand span{color:var(--tz-accent)}
+.tz-foot-grid p,.tz-foot-grid li{font-size:15px;color:var(--tz-fog);list-style:none;margin-bottom:10px}
+.tz-foot-grid h4{font-family:"Space Mono",monospace;font-size:11px;letter-spacing:.24em;color:var(--tz-accent);margin-bottom:16px;font-weight:700}
+.tz-foot-grid a:hover{color:var(--tz-accent)}
+.tz-base{border-top:1px solid var(--tz-line);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-fog)}
+
+@media (max-width:960px){
+  .tz-hero-grid{grid-template-columns:1fr}
+  .tz-duo{grid-template-columns:1fr}
+  .tz-foot-grid{grid-template-columns:1fr 1fr}
+  .tz-nav{display:none}
+  .tz-row{grid-template-columns:80px 1fr;row-gap:8px}
+  .tz-row .tz-note{grid-column:1/-1}
+  .tz-row .tz-grade{text-align:left}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#crates">Skip to new arrivals</a>
+
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-logo" href="#" aria-label="Needledrop Records home"><span class="tz-disc" aria-hidden="true"></span>Needledrop <span style="color:var(--tz-accent)">Records</span></a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#crates">New Arrivals</a><a href="#sell">Sell Wax</a><a href="#events">In-Store</a><a href="#visit">Visit</a>
+    </nav>
+    <a class="tz-sell" href="#sell">Sell us records</a>
+  </div>
+</header>
+
+<main>
+<section class="tz-hero">
+  <div class="tz-wrap tz-hero-grid">
+    <div>
+      <p class="tz-kicker">USED VINYL · BOUGHT, SOLD &amp; TRADED SINCE 2008</p>
+      <h1>DROP THE<br><span class="tz-or">NEEDLE.</span></h1>
+      <p class="tz-liner">Forty thousand records, every one graded by a human with a loupe and opinions. New arrivals hit the floor every Friday at 10 AM sharp — the line forms at 9:30.</p>
+      <div class="tz-hero-cta">
+        <a class="tz-btn tz-btn--or" href="#crates">Dig this week's crates</a>
+        <a class="tz-btn tz-btn--ghost" href="#sell">What we pay</a>
+      </div>
+      <p class="tz-friday">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#e8734a" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/><path d="M12 3v2.5M12 18.5V21"/></svg>
+        LISTENING STATION 3 IS FREE — FIRST COME, FIRST SPIN
+      </p>
+    </div>
+    <figure class="tz-record" aria-label="Spinning vinyl record illustration">
+      <div class="tz-vinyl" aria-hidden="true"></div>
+      <div class="tz-sleeve" aria-hidden="true"></div>
+      <figcaption>NOW SPINNING IN-STORE: NR-001</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="tz-section" id="crates" style="padding-top:64px">
+  <div class="tz-wrap">
+    <div class="tz-sechead">
+      <span class="tz-mono">CRATE INDEX — NEW ARRIVALS, FRIDAY DROP</span>
+      <h2>Fresh wax, filed &amp; graded.</h2>
+      <p>Every record gets a catalog number, a condition grade, and one honest line. VG+ means VG+. We don't do "plays great for its age."</p>
+    </div>
+    <div class="tz-crate">
+      <div class="tz-row"><span class="tz-cat">NR-0142</span><h3>Kind of Blue<small>Miles Davis · Columbia six-eye, 1959</small></h3><p class="tz-note">"The copy every collection is measured against. This one earns it."</p><div class="tz-grade"><span class="tz-g">VG+ / VG+</span><br>clean labels</div><span class="tz-price">$85</span></div>
+      <div class="tz-row"><span class="tz-cat">NR-0143</span><h3>Blue Train<small>John Coltrane · Blue Note, 1957 reissue</small></h3><p class="tz-note">"Liberty pressing, deep groove feel, zero regrets at this price."</p><div class="tz-grade"><span class="tz-g">VG+ / VG</span><br>light ring wear</div><span class="tz-price">$42</span></div>
+      <div class="tz-row"><span class="tz-cat">NR-0144</span><h3>What's Going On<small>Marvin Gaye · Tamla, 1971</small></h3><p class="tz-note">"Original pressing with the lyric sleeve intact — that almost never happens."</p><div class="tz-grade"><span class="tz-g">VG / VG+</span><br>plays beautifully</div><span class="tz-price">$38</span></div>
+      <div class="tz-row"><span class="tz-cat">NR-0145</span><h3>Remain in Light<small>Talking Heads · Sire, 1980</small></h3><p class="tz-note">"The sleeve is a design object; the record inside is a landmark."</p><div class="tz-grade"><span class="tz-g">NM / VG+</span><br>near mint wax</div><span class="tz-price">$30</span></div>
+      <div class="tz-row"><span class="tz-cat">NR-0146</span><h3>A Love Supreme<small>John Coltrane · Impulse!, 1965</small></h3><p class="tz-note">"Orange-and-black label. If you know, you know; if you don't, ask us."</p><div class="tz-grade"><span class="tz-g">VG / VG</span><br>honest player</div><span class="tz-price">$55</span></div>
+      <div class="tz-row"><span class="tz-cat">NR-0147</span><h3>Dusty in Memphis<small>Dusty Springfield · Atlantic, 1969</small></h3><p class="tz-note">"The voice that launched a thousand samples. Sleeve has stories."</p><div class="tz-grade"><span class="tz-g">VG+ / VG</span><br>original inner</div><span class="tz-price">$24</span></div>
+    </div>
+    <div class="tz-crate-foot">
+      <p>142 RECORDS FILED THIS WEEK · HOLD POLICY: 24 HOURS, ONE PER CUSTOMER</p>
+      <a href="#visit">Get here Friday →</a>
+    </div>
+  </div>
+</section>
+
+<section class="tz-section" id="sell" style="padding-top:0">
+  <div class="tz-wrap">
+    <div class="tz-duo">
+      <div class="tz-cell">
+        <span class="tz-mono">WE BUY RECORDS — DAILY 11–6</span>
+        <h3>Bring the crates.<br>Leave with cash.</h3>
+        <p>We pay 40% of our selling price in cash, or 55% in store credit. No appointment needed — but call ahead for collections over 100 records and we'll bring the van.</p>
+        <p style="font-size:14.5px;color:var(--tz-fog)">We buy: jazz, soul, funk, punk, hip-hop, classical box sets, and anything weird. We pass on: scratched beyond play, mold, and most 80s compilations (you know the ones).</p>
+      </div>
+      <div class="tz-cell" id="events">
+        <span class="tz-mono">IN-STORE — FREE, ALWAYS</span>
+        <h3>October at the shop.</h3>
+        <ul>
+          <li>Oct 9 — Listening club: <em>Bitches Brew</em> <span class="tz-mono">7 PM</span></li>
+          <li>Oct 16 — Local press: The Ferns, live <span class="tz-mono">6 PM</span></li>
+          <li>Oct 23 — 45rpm swap meet <span class="tz-mono">ALL DAY</span></li>
+          <li>Oct 30 — Halloween horror soundtracks <span class="tz-mono">7 PM</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tz-section" id="visit" style="padding-top:0">
+  <div class="tz-wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:56px" class="tz-visit">
+    <div>
+      <div class="tz-sechead" style="margin-bottom:20px"><span class="tz-mono">VISIT</span><h2 style="font-size:clamp(44px,5vw,68px)">Follow the bass.</h2></div>
+      <p style="font-size:18px"><strong>228 Groove Street, Mill District</strong></p>
+      <p style="color:var(--tz-fog);margin-top:8px">Between the laundromat and the taco window. You'll hear us first.</p>
+    </div>
+    <div>
+      <p class="tz-mono" style="font-size:13px;line-height:2.3;color:var(--tz-fog)">MON–SAT · 10 AM–8 PM<br>SUN · 12 PM–6 PM<br>FRIDAY DROP · 10 AM SHARP<br><br>(555) 772-8841<br>DIG@NEEDLEDROPRECORDS.COM<br><br>TURNTABLE REPAIR DROP-OFF: TUESDAYS</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-foot-grid">
+      <div>
+        <p class="tz-foot-brand">Needledrop <span>Records</span></p>
+        <p>Used vinyl, graded honestly, since 2008. Forty thousand records and counting.</p>
+      </div>
+      <div>
+        <h4>SHOP</h4>
+        <ul><li><a href="#crates">New arrivals</a></li><li><a href="#sell">Sell your records</a></li><li><a href="#events">In-store events</a></li></ul>
+      </div>
+      <div>
+        <h4>GRADING</h4>
+        <ul><li>NM — basically unplayed</li><li>VG+ — light marks, plays clean</li><li>VG — honest player copy</li></ul>
+      </div>
+      <div>
+        <h4>HOURS</h4>
+        <ul><li>Mon–Sat · 10–8</li><li>Sun · 12–6</li><li>Friday drop · 10 AM</li></ul>
+      </div>
+    </div>
+    <div class="tz-base">
+      <span>© 2026 NEEDLEDROP RECORDS — 228 GROOVE ST</span>
+      <span class="tz-mono">SIDE A · 33⅓ RPM · PLAY LOUD</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
