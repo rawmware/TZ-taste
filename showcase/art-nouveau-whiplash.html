@@ -1,0 +1,151 @@
+<!--tz-meta {"id":"showcase-art-nouveau-whiplash","title":"Art Nouveau Whiplash showcase","category":"Showcase","file":"showcase/art-nouveau-whiplash.html","tags":["art-nouveau-whiplash"],"description":"Live demo page for the Art Nouveau Whiplash style DNA.","dnas":["art-nouveau-whiplash"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Art Nouveau Whiplash — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#1c1a16; --tz-panel:#262219; --tz-ink:#ece2cd; --tz-muted:#8a7a5e;
+  --tz-accent:#c9a227; --tz-teal:#4e7d6a; --tz-line:#3a342a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Cormorant Garamond",serif;font-size:1.2rem;line-height:1.75}
+.tz-top{display:flex;justify-content:space-between;padding:1.1rem 2rem;border-bottom:1px solid var(--tz-line);font-family:"Space Mono",monospace;font-size:.68rem;letter-spacing:.14em}
+.tz-top .tz-wordmark{font-weight:700;color:var(--tz-ink)}
+.tz-top .tz-dna-label{color:var(--tz-muted)}
+.tz-hero{max-width:900px;margin:0 auto;padding:5rem 2rem 4rem;text-align:left;position:relative}
+.tz-flourish{display:block;margin:0 auto 2rem;max-width:420px}
+.tz-flourish path{stroke:var(--tz-accent);stroke-width:1.5;fill:none;stroke-dasharray:600;stroke-dashoffset:600;animation:tz-draw 2.4s ease forwards}
+@keyframes tz-draw{to{stroke-dashoffset:0}}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:.7rem;letter-spacing:.3em;color:var(--tz-accent);text-align:center;margin-bottom:2rem}
+.tz-hero h1{font-family:"Cinzel Decorative",serif;font-weight:700;font-size:clamp(2.4rem,7vw,5.5rem);line-height:1.15;text-align:center;letter-spacing:.04em}
+.tz-hero h1 .tz-illum{color:var(--tz-accent)}
+.tz-rule{display:flex;align-items:center;gap:1rem;margin:2.5rem auto;max-width:560px}
+.tz-rule::before,.tz-rule::after{content:"";height:1px;background:var(--tz-accent);flex:1}
+.tz-rule span{font-family:"Space Mono",monospace;font-size:.7rem;letter-spacing:.25em;color:var(--tz-muted)}
+.tz-hero .tz-lede{font-style:italic;font-size:1.45rem;max-width:34rem;margin:0 auto;text-align:center;color:var(--tz-ink)}
+.tz-hero .tz-lede::first-letter{font-family:"Cinzel Decorative",serif;font-style:normal;font-size:3.2em;float:left;line-height:.85;padding-right:.12em;color:var(--tz-accent)}
+.tz-cta-row{text-align:center;margin-top:2.5rem}
+.tz-cta{display:inline-block;font-family:"Space Mono",monospace;font-size:.75rem;letter-spacing:.2em;color:var(--tz-bg);background:var(--tz-accent);padding:1rem 2.5rem;text-decoration:none}
+.tz-cta:hover{background:var(--tz-ink)}
+.tz-content{max-width:1000px;margin:0 auto;padding:3rem 2rem 5rem}
+.tz-season-head{font-family:"Cinzel Decorative",serif;font-size:1.9rem;text-align:center;margin-bottom:3.5rem;letter-spacing:.06em}
+.tz-play{display:grid;grid-template-columns:1fr 2fr;gap:2.5rem;padding:3rem 0;border-top:1px solid var(--tz-line);position:relative}
+.tz-play:nth-child(odd){grid-template-columns:2fr 1fr}
+.tz-play:nth-child(odd) .tz-play-side{order:2;text-align:right}
+.tz-play-side .tz-ordinal{font-family:"Cinzel Decorative",serif;font-size:3.5rem;color:var(--tz-accent);line-height:1}
+.tz-play-side .tz-dates{font-family:"Space Mono",monospace;font-size:.75rem;letter-spacing:.12em;color:var(--tz-muted);margin-top:1rem;line-height:2}
+.tz-play h3{font-family:"Cinzel Decorative",serif;font-size:1.7rem;letter-spacing:.04em;margin-bottom:1rem}
+.tz-play h3 em{color:var(--tz-teal)}
+.tz-play p{color:var(--tz-ink);opacity:.92;max-width:38rem}
+.tz-play p:first-of-type::first-letter{font-family:"Cinzel Decorative",serif;font-size:2.4em;float:left;line-height:.9;padding-right:.1em;color:var(--tz-accent)}
+.tz-etiquette{margin-top:4rem;border:1px solid var(--tz-accent);padding:2.5rem;max-width:640px;margin-left:auto;margin-right:auto;text-align:center}
+.tz-etiquette h2{font-family:"Cinzel Decorative",serif;font-size:1.3rem;letter-spacing:.08em;margin-bottom:1rem;color:var(--tz-accent)}
+.tz-etiquette p{font-style:italic;color:var(--tz-muted)}
+.tz-tokens{max-width:1000px;margin:0 auto;padding:2.5rem 2rem;border-top:1px solid var(--tz-line)}
+.tz-tokens h2{font-family:"Cinzel Decorative",serif;font-size:1.4rem;margin-bottom:1.5rem;letter-spacing:.06em}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:1rem}
+.tz-chip{display:flex;align-items:center;gap:.6rem;font-family:"Space Mono",monospace;font-size:.68rem;color:var(--tz-muted)}
+.tz-chip i{display:block;width:2.5rem;height:2.5rem;border:1px solid var(--tz-line)}
+.tz-foot{border-top:1px solid var(--tz-line);padding:2rem;font-family:"Space Mono",monospace;font-size:.68rem;color:var(--tz-muted);text-align:center;letter-spacing:.1em}
+@media(max-width:700px){
+  .tz-top,.tz-hero,.tz-content,.tz-tokens{padding-left:1.25rem;padding-right:1.25rem}
+  .tz-play,.tz-play:nth-child(odd){grid-template-columns:1fr}
+  .tz-play:nth-child(odd) .tz-play-side{order:0;text-align:left}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-flourish path{animation:none;stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">TZ—taste</span>
+  <span class="tz-dna-label">STYLE DNA · ART-NOUVEAU-WHIPLASH</span>
+</header>
+
+<section class="tz-hero">
+  <svg class="tz-flourish" viewBox="0 0 420 60" aria-hidden="true">
+    <path d="M10 40 C 90 5, 160 55, 210 30 S 330 5, 410 38"/>
+    <path d="M60 48 C 140 20, 280 55, 360 30"/>
+    <circle cx="210" cy="30" r="4" fill="#c9a227"/>
+  </svg>
+  <p class="tz-eyebrow">SEASON MCMXXVII · THE LINDEN PLAYHOUSE</p>
+  <h1>The <span class="tz-illum">Linden</span> Playhouse</h1>
+  <div class="tz-rule"><span>EST. 1911</span></div>
+  <p class="tz-lede">Four productions, one hundred and fourteen years of candlelight and curtain calls. This season we stage the orchard, the winter, the clockmaker, and the road home.</p>
+  <div class="tz-cta-row"><a class="tz-cta" href="#tz-season">READ THE SEASON</a></div>
+</section>
+
+<section class="tz-content" id="tz-season">
+  <h2 class="tz-season-head">The Season</h2>
+
+  <article class="tz-play">
+    <div class="tz-play-side">
+      <div class="tz-ordinal">I</div>
+      <p class="tz-dates">OCT 17 – NOV 09<br>THU–SUN · 19:30</p>
+    </div>
+    <div>
+      <h3>The Glass <em>Orchard</em></h3>
+      <p>A family returns to sell the orchard and discovers the trees have opinions. Our autumn opener, staged in the round, with real apples and one very patient dog.</p>
+    </div>
+  </article>
+
+  <article class="tz-play">
+    <div class="tz-play-side">
+      <div class="tz-ordinal">II</div>
+      <p class="tz-dates">DEC 05 – DEC 28<br>WED–SUN · 19:30</p>
+    </div>
+    <div>
+      <h3>A Winter in <em>Arles</em></h3>
+      <p>Two painters, one yellow house, and a winter that refuses to end. The Linden's holiday tradition — bring someone you argue beautifully with.</p>
+    </div>
+  </article>
+
+  <article class="tz-play">
+    <div class="tz-play-side">
+      <div class="tz-ordinal">III</div>
+      <p class="tz-dates">FEB 13 – MAR 08<br>THU–SUN · 19:30</p>
+    </div>
+    <div>
+      <h3>The Clockmaker's <em>Daughter</em></h3>
+      <p>She inherits the shop, the gears, and every stopped clock in the county. A fable about time, told with eleven working timepieces on stage.</p>
+    </div>
+  </article>
+
+  <article class="tz-play">
+    <div class="tz-play-side">
+      <div class="tz-ordinal">IV</div>
+      <p class="tz-dates">APR 10 – MAY 03<br>THU–SUN · 19:30</p>
+    </div>
+    <div>
+      <h3>Song of the <em>Salt Road</em></h3>
+      <p>A traveling company crosses the desert with a wagon of instruments and a map drawn from memory. Our season closer, with live music throughout.</p>
+    </div>
+  </article>
+
+  <div class="tz-etiquette">
+    <h2>The House Rules</h2>
+    <p>Seats are limited. Reserve yours. Coats are checked, phones are silenced, and the bar opens one hour before curtain.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <div class="tz-swatches">
+    <span class="tz-chip"><i style="background:#1c1a16"></i>#1c1a16 · bg</span>
+    <span class="tz-chip"><i style="background:#ece2cd"></i>#ece2cd · ink</span>
+    <span class="tz-chip"><i style="background:#c9a227"></i>#c9a227 · accent</span>
+    <span class="tz-chip"><i style="background:#8a7a5e"></i>#8a7a5e · muted</span>
+    <span class="tz-chip"><i style="background:#3a342a"></i>#3a342a · line</span>
+  </div>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
