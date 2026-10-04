@@ -1,0 +1,154 @@
+<!--tz-meta {"id":"showcase-kawaii-pixel","title":"Kawaii Pixel showcase","category":"Showcase","file":"showcase/kawaii-pixel.html","tags":["kawaii-pixel"],"description":"Live demo page for the Kawaii Pixel style DNA.","dnas":["kawaii-pixel"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kawaii Pixel — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=M+PLUS+Rounded+1c:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#fff7f9; --tz-sticker:#ffeef4; --tz-ink:#4a3340; --tz-muted:#b09aa4;
+  --tz-accent:#ff8fb3; --tz-mint:#7dd8c6; --tz-line:#f3d9e2; --tz-white:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"M PLUS Rounded 1c",sans-serif;line-height:1.7}
+.tz-top{display:flex;justify-content:space-between;padding:1rem 1.75rem;font-family:"Space Mono",monospace;font-size:.66rem;letter-spacing:.12em;color:var(--tz-muted)}
+.tz-top .tz-wordmark{font-weight:700;color:var(--tz-ink)}
+.tz-hero{max-width:1000px;margin:0 auto;padding:3.5rem 1.75rem 3rem;text-align:center}
+.tz-sticker-card{display:inline-block;background:var(--tz-white);border:6px solid var(--tz-white);border-radius:28px;padding:3rem 3.5rem;box-shadow:0 0 0 3px var(--tz-line), 10px 12px 0 var(--tz-line);transform:rotate(-2deg);max-width:36rem}
+.tz-mascot{width:120px;height:120px;margin:0 auto 1.5rem;image-rendering:pixelated;animation:tz-bob 2.4s ease-in-out infinite}
+@keyframes tz-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:.68rem;letter-spacing:.24em;color:var(--tz-accent);margin-bottom:1rem}
+.tz-hero h1{font-family:"DotGothic16",sans-serif;font-size:clamp(2rem,6vw,3.75rem);line-height:1.25;margin-bottom:1rem}
+.tz-hero p{color:var(--tz-muted);max-width:34rem;margin:0 auto 2rem}
+.tz-cta{display:inline-block;font-family:"Space Mono",monospace;font-size:.8rem;font-weight:700;letter-spacing:.1em;color:var(--tz-white);background:var(--tz-accent);border-radius:999px;padding:1.05rem 2.5rem;text-decoration:none;box-shadow:0 6px 0 rgba(74,51,64,.35);transition:transform .12s, box-shadow .12s}
+.tz-cta:hover{transform:translateY(3px);box-shadow:0 3px 0 rgba(74,51,64,.35)}
+.tz-cta:active{transform:translateY(6px);box-shadow:0 0 0 rgba(74,51,64,.35)}
+.tz-hearts{display:flex;justify-content:center;gap:1.25rem;margin-top:2.5rem;font-size:0}
+.tz-hearts svg{width:26px;height:26px}
+.tz-content{max-width:1000px;margin:0 auto;padding:2rem 1.75rem 5rem}
+.tz-sec-head{font-family:"DotGothic16",sans-serif;font-size:1.9rem;text-align:center;margin-bottom:.5rem}
+.tz-sec-sub{text-align:center;color:var(--tz-muted);margin-bottom:3rem;font-size:.95rem}
+.tz-sheet{display:flex;flex-wrap:wrap;gap:2rem;justify-content:center}
+.tz-item{background:var(--tz-white);border:4px solid var(--tz-white);border-radius:22px;box-shadow:0 0 0 3px var(--tz-line), 8px 10px 0 var(--tz-line);padding:2rem;width:15rem;text-align:center;transition:transform .15s}
+.tz-item:nth-child(1){transform:rotate(-3deg)}
+.tz-item:nth-child(2){transform:rotate(2deg)}
+.tz-item:nth-child(3){transform:rotate(-1.5deg)}
+.tz-item:nth-child(4){transform:rotate(2.5deg)}
+.tz-item:hover{transform:rotate(0) scale(1.04)}
+.tz-item .tz-icon{width:56px;height:56px;margin:0 auto 1rem;image-rendering:pixelated}
+.tz-item h3{font-family:"DotGothic16",sans-serif;font-size:1.15rem;margin-bottom:.5rem}
+.tz-item p{font-size:.85rem;color:var(--tz-muted);margin-bottom:1rem}
+.tz-price-tag{display:inline-block;font-family:"Space Mono",monospace;font-size:.75rem;font-weight:700;background:var(--tz-mint);color:var(--tz-ink);border-radius:999px;padding:.35rem 1rem;letter-spacing:.06em}
+.tz-item:nth-child(odd) .tz-price-tag{background:var(--tz-accent);color:var(--tz-white)}
+.tz-shop-note{margin-top:3.5rem;background:var(--tz-sticker);border-radius:24px;padding:2.5rem;text-align:center;border:3px dashed var(--tz-line)}
+.tz-shop-note p{font-size:1rem;max-width:36rem;margin:0 auto}
+.tz-shop-note .tz-mono{font-family:"Space Mono",monospace;font-size:.7rem;letter-spacing:.16em;color:var(--tz-muted);display:block;margin-top:1rem}
+.tz-tokens{max-width:1000px;margin:0 auto;padding:2.5rem 1.75rem;border-top:3px dashed var(--tz-line)}
+.tz-tokens h2{font-family:"DotGothic16",sans-serif;font-size:1.4rem;margin-bottom:1.25rem;text-align:center}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center}
+.tz-chip{display:flex;align-items:center;gap:.6rem;font-family:"Space Mono",monospace;font-size:.66rem;color:var(--tz-muted)}
+.tz-chip i{display:block;width:2.5rem;height:2.5rem;border:2px solid var(--tz-line);border-radius:12px}
+.tz-foot{border-top:3px dashed var(--tz-line);padding:2rem;font-family:"Space Mono",monospace;font-size:.66rem;color:var(--tz-muted);text-align:center;letter-spacing:.1em}
+.tz-foot .tz-mascot{width:48px;height:48px;margin:0 auto 1rem;animation:none}
+@media(max-width:700px){
+  .tz-top,.tz-hero,.tz-content,.tz-tokens{padding-left:1rem;padding-right:1rem}
+  .tz-sticker-card{padding:2rem 1.5rem}
+  .tz-item{width:100%;max-width:20rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-mascot{animation:none}
+  .tz-item,.tz-cta{transition:none}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">TZ—taste</span>
+  <span class="tz-dna-label">STYLE DNA · KAWAII-PIXEL</span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-sticker-card">
+    <svg class="tz-mascot" viewBox="0 0 16 14" aria-label="Mochi the pixel cat">
+      <rect x="3" y="1" width="3" height="3" fill="#4a3340"/><rect x="10" y="1" width="3" height="3" fill="#4a3340"/>
+      <rect x="4" y="2" width="1" height="1" fill="#7dd8c6"/><rect x="11" y="2" width="1" height="1" fill="#7dd8c6"/>
+      <rect x="2" y="4" width="12" height="8" fill="#ff8fb3"/>
+      <rect x="2" y="4" width="12" height="1" fill="#4a3340"/><rect x="2" y="4" width="1" height="8" fill="#4a3340"/>
+      <rect x="13" y="4" width="1" height="8" fill="#4a3340"/><rect x="2" y="11" width="12" height="1" fill="#4a3340"/>
+      <rect x="4" y="6" width="2" height="2" fill="#4a3340"/><rect x="10" y="6" width="2" height="2" fill="#4a3340"/>
+      <rect x="5" y="6" width="1" height="1" fill="#ffffff"/><rect x="11" y="6" width="1" height="1" fill="#ffffff"/>
+      <rect x="3" y="9" width="2" height="1" fill="#b09aa4"/>
+      <rect x="11" y="9" width="2" height="1" fill="#b09aa4"/>
+      <rect x="7" y="9" width="2" height="1" fill="#4a3340"/>
+    </svg>
+    <p class="tz-eyebrow">MOCHI PAPER CO. · EST. 2021</p>
+    <h1>Paper goods that wave back.</h1>
+    <p>Stationery drawn one pixel at a time, printed on thick happy paper, and packed with a doodle from Mochi herself. Made fresh this morning!</p>
+    <a class="tz-cta" href="#tz-shop">PEEK AT THE SHELF</a>
+  </div>
+  <div class="tz-hearts" aria-hidden="true">
+    <svg viewBox="0 0 10 9"><path d="M2 1h6v1h1v4H8v1H7v1H6v1H4V8H3V7H2V6H1V2h1z" fill="#ff8fb3"/></svg>
+    <svg viewBox="0 0 10 9"><path d="M2 1h6v1h1v4H8v1H7v1H6v1H4V8H3V7H2V6H1V2h1z" fill="#7dd8c6"/></svg>
+    <svg viewBox="0 0 10 9"><path d="M2 1h6v1h1v4H8v1H7v1H6v1H4V8H3V7H2V6H1V2h1z" fill="#ff8fb3"/></svg>
+    <svg viewBox="0 0 10 9"><path d="M2 1h6v1h1v4H8v1H7v1H6v1H4V8H3V7H2V6H1V2h1z" fill="#7dd8c6"/></svg>
+    <svg viewBox="0 0 10 9"><path d="M2 1h6v1h1v4H8v1H7v1H6v1H4V8H3V7H2V6H1V2h1z" fill="#ff8fb3"/></svg>
+  </div>
+</section>
+
+<section class="tz-content" id="tz-shop">
+  <h2 class="tz-sec-head">Fresh from the sticker sheet</h2>
+  <p class="tz-sec-sub">Everything is peelable, giftable, and Mochi-approved.</p>
+  <div class="tz-sheet">
+    <div class="tz-item">
+      <svg class="tz-icon" viewBox="0 0 12 12" aria-hidden="true"><rect x="1" y="4" width="10" height="4" fill="#ff8fb3"/><rect x="3" y="4" width="2" height="4" fill="#ffffff"/><rect x="7" y="4" width="2" height="4" fill="#ffffff"/></svg>
+      <h3>Washi Tape Trio</h3><p>Three rolls of cherry, mint, and dot patterns. Sticks to everything except regrets.</p>
+      <span class="tz-price-tag">$9.00</span>
+    </div>
+    <div class="tz-item">
+      <svg class="tz-icon" viewBox="0 0 12 12" aria-hidden="true"><rect x="2" y="2" width="8" height="9" fill="#7dd8c6"/><rect x="2" y="2" width="8" height="2" fill="#ffffff"/><rect x="4" y="5" width="4" height="1" fill="#4a3340"/><rect x="4" y="7" width="3" height="1" fill="#4a3340"/></svg>
+      <h3>Memo Pad</h3><p>100 sheets of the good thick stuff. Your to-do list has never looked this cute.</p>
+      <span class="tz-price-tag">$6.50</span>
+    </div>
+    <div class="tz-item">
+      <svg class="tz-icon" viewBox="0 0 12 12" aria-hidden="true"><rect x="2" y="3" width="8" height="7" fill="#ffffff" stroke="#f3d9e2"/><rect x="4" y="5" width="1" height="1" fill="#ff8fb3"/><rect x="7" y="5" width="1" height="1" fill="#ff8fb3"/><rect x="5" y="7" width="2" height="1" fill="#ff8fb3"/></svg>
+      <h3>Sticker Pack</h3><p>24 die-cut stickers including Mochi in six moods. Waterproof, dishwasher-brave.</p>
+      <span class="tz-price-tag">$5.00</span>
+    </div>
+    <div class="tz-item">
+      <svg class="tz-icon" viewBox="0 0 12 12" aria-hidden="true"><rect x="3" y="1" width="6" height="10" fill="#ff8fb3"/><rect x="3" y="1" width="6" height="3" fill="#4a3340"/><rect x="5" y="5" width="2" height="2" fill="#ffffff"/></svg>
+      <h3>Gel Pen Set</h3><p>Five pastel pens that glide like they mean it. Refillable, pocket-sized joy.</p>
+      <span class="tz-price-tag">$12.00</span>
+    </div>
+  </div>
+  <div class="tz-shop-note">
+    <p>Every order ships in a pink mailer with a hand-stamped Mochi and one mystery sticker. If your package arrives without a doodle, tell us and we will send two.</p>
+    <span class="tz-mono">SHIPS WORLDWIDE · FREE OVER $25</span>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <div class="tz-swatches">
+    <span class="tz-chip"><i style="background:#fff7f9"></i>#fff7f9 · bg</span>
+    <span class="tz-chip"><i style="background:#4a3340"></i>#4a3340 · ink</span>
+    <span class="tz-chip"><i style="background:#ff8fb3"></i>#ff8fb3 · accent</span>
+    <span class="tz-chip"><i style="background:#b09aa4"></i>#b09aa4 · muted</span>
+    <span class="tz-chip"><i style="background:#f3d9e2"></i>#f3d9e2 · line</span>
+  </div>
+</section>
+
+<footer class="tz-foot">
+  <svg class="tz-mascot" viewBox="0 0 16 14" aria-hidden="true">
+    <rect x="3" y="1" width="3" height="3" fill="#4a3340"/><rect x="10" y="1" width="3" height="3" fill="#4a3340"/>
+    <rect x="2" y="4" width="12" height="8" fill="#ff8fb3"/>
+    <rect x="4" y="6" width="2" height="2" fill="#4a3340"/><rect x="10" y="6" width="2" height="2" fill="#4a3340"/>
+    <rect x="7" y="9" width="2" height="1" fill="#4a3340"/>
+  </svg>
+  <br>A TZ-taste style DNA showcase — MIT, free forever.
+</footer>
+</body>
+</html>
