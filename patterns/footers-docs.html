@@ -1,0 +1,52 @@
+<!--tz-meta {"id":"footers-docs","title":"Docs footer","category":"Footer","file":"patterns/footers-docs.html","tags":["version","opensource"],"description":"Docs footer with a version badge, changelog link, and an edit-this-page nudge.","dnas":["docs-solar"]} -->
+<footer class="tz-dfoot">
+  <div class="tz-dfoot-top">
+    <div class="tz-dfoot-id">
+      <span class="tz-dfoot-ver">v4.2.1</span>
+      <span class="tz-dfoot-name">fieldguide docs</span>
+    </div>
+    <a class="tz-dfoot-edit" href="#">✎ Edit this page <span>— spotted a typo? Fix it, we merge fast.</span></a>
+  </div>
+  <div class="tz-dfoot-grid">
+    <div class="tz-dfoot-col">
+      <p class="tz-dfoot-label">Docs</p>
+      <a href="#">Getting started</a><a href="#">API reference</a><a href="#">Cookbook</a>
+    </div>
+    <div class="tz-dfoot-col">
+      <p class="tz-dfoot-label">Project</p>
+      <a href="#">Changelog</a><a href="#">Roadmap</a><a href="#">Contributing</a>
+    </div>
+    <div class="tz-dfoot-col">
+      <p class="tz-dfoot-label">Community</p>
+      <a href="#">Discussions</a><a href="#">Discord</a><a href="#">Stack Overflow</a>
+    </div>
+    <div class="tz-dfoot-col">
+      <p class="tz-dfoot-label">Legal</p>
+      <a href="#">MIT license</a><a href="#">Privacy</a><a href="#">Security</a>
+    </div>
+  </div>
+  <p class="tz-dfoot-base">© 2026 fieldguide · docs built from the repo, every commit</p>
+</footer>
+<style>
+.tz-dfoot{--bg:#fdf6e3;--ink:#3d4c52;--dim:#6b7d84;--accent:#1f6f9e;--line:#e8dcc0;
+  background:var(--bg);color:var(--ink);padding:44px clamp(20px,5vw,64px) 28px;
+  font-family:Arial,Helvetica,sans-serif;border-top:1px solid var(--line)}
+.tz-dfoot-top{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+  margin-bottom:36px}
+.tz-dfoot-id{display:flex;align-items:center;gap:14px}
+.tz-dfoot-ver{font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:bold;
+  background:#073642;color:#eee8d5;padding:5px 12px;border-radius:999px}
+.tz-dfoot-name{font-size:17px;font-weight:bold}
+.tz-dfoot-edit{color:var(--accent);text-decoration:none;font-size:14px;font-weight:bold}
+.tz-dfoot-edit span{color:var(--dim);font-weight:normal}
+.tz-dfoot-edit:hover{text-decoration:underline;text-underline-offset:4px}
+.tz-dfoot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-bottom:36px}
+.tz-dfoot-col{display:flex;flex-direction:column;gap:9px}
+.tz-dfoot-label{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--dim);margin:0 0 6px}
+.tz-dfoot-col a{color:var(--ink);text-decoration:none;font-size:14px}
+.tz-dfoot-col a:hover{color:var(--accent);text-decoration:underline;text-underline-offset:4px}
+.tz-dfoot-base{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--dim);margin:0;
+  border-top:1px solid var(--line);padding-top:18px}
+@media (max-width:680px){.tz-dfoot-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
