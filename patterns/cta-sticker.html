@@ -1,0 +1,91 @@
+<!--tz-meta {"id":"cta-sticker","title":"Sticker CTA","category":"CTA","file":"patterns/cta-sticker.html","tags":["playful","burst"],"description":"Sticker-burst CTA with rotated starburst badges and a chunky button.","dnas":["neo-brutalist-pop"]} -->
+<section class="tz-cstick" aria-label="Get a quote">
+  <svg class="tz-burst tz-b1" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 2l9 16 16-8 2 18 18 2-8 16 16 9-16 9 8 16-18 2-2 18-16-8-9 16-9-16-16 8-2-18-18-2 8-16-16-9 16-9-8-16 18-2 2-18 16 8z" fill="#ffd21f" stroke="#141310" stroke-width="3"/><text x="50" y="47" text-anchor="middle" font-size="13" font-weight="900" fill="#141310" font-family="Arial">FREE</text><text x="50" y="63" text-anchor="middle" font-size="13" font-weight="900" fill="#141310" font-family="Arial">QUOTE</text></svg>
+  <svg class="tz-burst tz-b2" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 2l9 16 16-8 2 18 18 2-8 16 16 9-16 9 8 16-18 2-2 18-16-8-9 16-9-16-16 8-2-18-18-2 8-16-16-9 16-9-8-16 18-2 2-18 16 8z" fill="#ff4d8d" stroke="#141310" stroke-width="3"/><text x="50" y="47" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="Arial">48HR</text><text x="50" y="63" text-anchor="middle" font-size="12" font-weight="900" fill="#fff" font-family="Arial">TURN</text></svg>
+  <svg class="tz-burst tz-b3" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 2l9 16 16-8 2 18 18 2-8 16 16 9-16 9 8 16-18 2-2 18-16-8-9 16-9-16-16 8-2-18-18-2 8-16-16-9 16-9-8-16 18-2 2-18 16 8z" fill="#2ec4b6" stroke="#141310" stroke-width="3"/><text x="50" y="47" text-anchor="middle" font-size="12" font-weight="900" fill="#141310" font-family="Arial">NO</text><text x="50" y="63" text-anchor="middle" font-size="12" font-weight="900" fill="#141310" font-family="Arial">SPAM</text></svg>
+  <p class="tz-kick">last call before the books close</p>
+  <h2>Get a price<br>in one day.</h2>
+  <p class="tz-sub">Tell us what you need in plain words. Tomorrow you get a real number, a real timeline, and zero follow-up spam. If the number's wrong for you, keep the plan — it's yours.</p>
+  <a class="tz-btn" href="#quote">Start my quote</a>
+  <ul class="tz-guarantees">
+    <li>Takes 2 minutes</li>
+    <li>Reply within 24 hours</li>
+    <li>No account needed</li>
+  </ul>
+</section>
+<style>
+.tz-cstick{
+  --bg:#fff8e7;--ink:#141310;--yellow:#ffd21f;--pink:#ff4d8d;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(72px,11vw,140px) clamp(20px,6vw,80px);
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.tz-burst{position:absolute;width:clamp(90px,12vw,140px)}
+.tz-b1{top:8%;left:6%;transform:rotate(-12deg)}
+.tz-b2{bottom:10%;right:7%;transform:rotate(10deg)}
+.tz-b3{top:12%;right:12%;transform:rotate(-7deg)}
+.tz-kick{
+  display:inline-block;
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  background:var(--ink);
+  color:#fff;
+  padding:8px 14px;
+  margin:0 0 28px;
+}
+.tz-cstick h2{
+  margin:0 0 20px;
+  font-size:clamp(48px,9vw,120px);
+  line-height:.95;
+  letter-spacing:-.04em;
+  font-weight:900;
+  text-transform:uppercase;
+}
+.tz-sub{
+  margin:0 auto 36px;
+  max-width:48ch;
+  font-size:17px;
+  line-height:1.6;
+}
+.tz-btn{
+  display:inline-block;
+  background:var(--ink);
+  color:#fff;
+  text-decoration:none;
+  font-weight:900;
+  font-size:18px;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+  padding:18px 52px;
+  border:3px solid var(--ink);
+  box-shadow:7px 7px 0 var(--pink);
+  transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s;
+}
+.tz-btn:hover{
+  transform:translate(-2px,-2px);
+  box-shadow:10px 10px 0 var(--pink);
+}
+.tz-guarantees{
+  list-style:none;
+  margin:30px 0 0;
+  padding:0;
+  display:flex;
+  gap:26px;
+  flex-wrap:wrap;
+  justify-content:center;
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:12px;
+  color:#5a554a;
+}
+@media (max-width:640px){.tz-burst{display:none}}
+@media (prefers-reduced-motion:reduce){
+  .tz-btn{transition:none}
+  .tz-btn:hover{transform:none}
+}
+</style>
