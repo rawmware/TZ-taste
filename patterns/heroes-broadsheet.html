@@ -1,0 +1,41 @@
+<!--tz-meta {"id":"heroes-broadsheet","title":"Broadsheet hero","category":"Hero","file":"patterns/heroes-broadsheet.html","tags":["newspaper","editorial","serif"],"description":"Front-page newspaper hero: masthead, dateline rules, and a two-column lede.","dnas":["editorial-serif"]} -->
+<section class="tz-sheet">
+  <div class="tz-sheet-dateline" aria-hidden="true">
+    <span>Vol. XII — N° 214</span><span>Saturday, October 3, 2026</span><span>Portsmouth, N.H. — 25¢</span>
+  </div>
+  <h1 class="tz-sheet-mast">The Seacoast Ledger</h1>
+  <div class="tz-sheet-rule" aria-hidden="true"></div>
+  <h2 class="tz-sheet-h">The tide is turning on downtown rents</h2>
+  <div class="tz-sheet-cols">
+    <p>After six years of climbing leases, three Market Street landlords have cut asking rents this quarter — the first broad retreat since 2019. Brokers point to a simple cause: the offices emptied, and the lunch crowd never fully came back.</p>
+    <p>What fills the gaps matters more than the gaps themselves. The Ledger is tracking every signed lease on the Seacoast, storefront by storefront, and publishing the numbers each morning. No paywall on the data. That part belongs to everyone.</p>
+  </div>
+  <a class="tz-sheet-cta" href="#subscribe">Get the Ledger every morning</a>
+</section>
+<style>
+.tz-sheet{--paper:#f7f3ea;--ink:#17150f;--red:#a33327;
+  background:var(--paper);color:var(--ink);
+  padding:clamp(56px,8vw,110px) clamp(24px,7vw,110px);
+  font-family:Georgia,'Times New Roman',serif}
+.tz-sheet-dateline{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  border-top:3px double var(--ink);border-bottom:1px solid var(--ink);
+  padding:10px 0;margin:0 0 30px;opacity:.8}
+.tz-sheet-mast{font-size:clamp(48px,9vw,130px);line-height:1;letter-spacing:-.02em;
+  font-weight:700;text-align:center;margin:0 0 26px}
+.tz-sheet-rule{border-top:1px solid var(--ink);border-bottom:3px double var(--ink);
+  height:6px;margin:0 0 34px}
+.tz-sheet-h{font-size:clamp(30px,4.6vw,58px);line-height:1.1;letter-spacing:-.015em;
+  font-weight:700;margin:0 0 26px;max-width:22ch}
+.tz-sheet-h::first-letter{color:var(--red)}
+.tz-sheet-cols{columns:2;column-gap:48px;column-rule:1px solid #17150f33;
+  margin:0 0 40px;max-width:1100px}
+.tz-sheet-cols p{font-size:16.5px;line-height:1.75;margin:0 0 1.2em;break-inside:avoid}
+.tz-sheet-cols p:first-child::first-letter{font-size:3.2em;float:left;line-height:.9;
+  padding-right:10px;font-weight:700}
+.tz-sheet-cta{display:inline-block;color:var(--paper);background:var(--ink);text-decoration:none;
+  font-family:Arial,Helvetica,sans-serif;font-weight:700;font-size:14px;letter-spacing:.08em;
+  text-transform:uppercase;padding:18px 38px}
+.tz-sheet-cta:hover{background:var(--red)}
+@media (max-width:640px){.tz-sheet-cols{columns:1}}
+</style>
