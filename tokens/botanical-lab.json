@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-botanical-lab",
+  "title": "Botanical Lab design tokens",
+  "category": "Tokens",
+  "file": "tokens/botanical-lab.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "botanical-lab"
+  ],
+  "description": "W3C-format design tokens for the Botanical Lab style DNA.",
+  "dnas": [
+   "botanical-lab"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#f4f6ec",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#1b3a2b",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#3e7d4e",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#6f867a",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#cdd8bd",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "DM Serif Display",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Karla",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "botanical-lab",
+  "name": "Botanical Lab",
+  "vibe": "A greenhouse full of specimens: deep green, pressed-plant delicacy, Latin on every label."
+ }
+}
