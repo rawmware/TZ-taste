@@ -1,0 +1,62 @@
+{
+ "_tzmeta": {
+  "id": "tokens-soft-minimal",
+  "title": "Soft Minimal design tokens",
+  "category": "Tokens",
+  "file": "tokens/soft-minimal.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "soft-minimal"
+  ],
+  "description": "W3C-format design tokens for the Soft Minimal style DNA.",
+  "dnas": [
+   "soft-minimal"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#f7f7f5",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#1a1a1a",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#5b5bd6",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#8a8a93",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#1a1a1414",
+   "$type": "color"
+  },
+  "surface": {
+   "$value": "#ffffff",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Instrument Sans",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Instrument Sans",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "JetBrains Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "soft-minimal",
+  "name": "Soft Minimal",
+  "vibe": "Off-white calm, iris accent, spring motion. The Linear/Notion register, done right."
+ }
+}
