@@ -1,0 +1,56 @@
+<!--tz-meta {"id":"features-numbered","title":"Numbered 01–06","category":"Features","file":"patterns/features-numbered.html","tags":["numerals","minimal"],"description":"Vast whitespace with giant hairline numerals and a vertical margin label.","dnas":["ma-japanese"]} -->
+<section class="tz-fn">
+  <p class="tz-fn-side" aria-hidden="true">機能一覧 — the complete set</p>
+  <p class="tz-fn-eyebrow">Features</p>
+  <h2 class="tz-fn-title">Six things.<br>Done properly.</h2>
+  <ol class="tz-fn-list">
+    <li>
+      <span class="tz-fn-n" aria-hidden="true">01</span>
+      <div><h3>Shared inbox</h3><p>Every channel in one queue. No message belongs to one person.</p></div>
+    </li>
+    <li>
+      <span class="tz-fn-n" aria-hidden="true">02</span>
+      <div><h3>Smart routing</h3><p>Threads land with the right teammate before anyone asks.</p></div>
+    </li>
+    <li>
+      <span class="tz-fn-n" aria-hidden="true">03</span>
+      <div><h3>Voice-matched drafts</h3><p>Replies drafted in your tone. You approve, we send.</p></div>
+    </li>
+    <li>
+      <span class="tz-fn-n" aria-hidden="true">04</span>
+      <div><h3>Follow-up rails</h3><p>Silence triggers a nudge. Nobody slips through the cracks.</p></div>
+    </li>
+    <li>
+      <span class="tz-fn-n" aria-hidden="true">05</span>
+      <div><h3>Friday reports</h3><p>Response times and revenue, charted while you sleep.</p></div>
+    </li>
+    <li>
+      <span class="tz-fn-n" aria-hidden="true">06</span>
+      <div><h3>Open exits</h3><p>Export everything, cancel in two clicks, keep your data.</p></div>
+    </li>
+  </ol>
+</section>
+<style>
+.tz-fn{--paper:#f4f1ea;--ink:#22211d;--red:#c73e1d;--line:rgba(34,33,29,.16);
+  background:var(--paper);color:var(--ink);font-family:Georgia,'Times New Roman',serif;
+  padding:clamp(96px,14vw,200px) clamp(32px,10vw,160px);position:relative}
+.tz-fn-side{position:absolute;top:clamp(96px,14vw,200px);right:clamp(16px,4vw,48px);
+  writing-mode:vertical-rl;font-family:ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.3em;text-transform:uppercase;opacity:.45;margin:0}
+.tz-fn-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--red);margin:0 0 24px}
+.tz-fn-title{font-size:clamp(40px,6vw,84px);font-weight:400;letter-spacing:-.03em;
+  line-height:1.04;margin:0 0 clamp(72px,10vw,140px);max-width:10ch}
+.tz-fn-list{list-style:none;margin:0;padding:0;max-width:900px}
+.tz-fn-list li{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,5vw,72px);
+  align-items:baseline;padding:clamp(36px,5vw,56px) 0;border-top:1px solid var(--line)}
+.tz-fn-list li:last-child{border-bottom:1px solid var(--line)}
+.tz-fn-n{font-size:clamp(72px,9vw,140px);line-height:1;font-weight:100;letter-spacing:-.05em;
+  color:transparent;-webkit-text-stroke:1px var(--ink);user-select:none}
+.tz-fn-list h3{font-size:clamp(22px,2.8vw,34px);font-weight:400;letter-spacing:-.01em;margin:0 0 10px}
+.tz-fn-list p{font-size:16px;line-height:1.65;opacity:.75;margin:0;max-width:40ch}
+@media (max-width:560px){
+  .tz-fn-side{display:none}
+  .tz-fn-list li{grid-template-columns:1fr;gap:8px}
+}
+</style>
