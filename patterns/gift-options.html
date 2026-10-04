@@ -1,0 +1,56 @@
+<!--tz-meta {"id":"gift-options","title":"Gift options at checkout","category":"Forms","file":"patterns/gift-options.html","tags":["gift","checkout","ecommerce","wrap"],"description":"Kraft-and-twine gift block: wrap, handwritten card, priced gift receipt.","dnas":["aperitivo-italian"]} -->
+<section class="tz-gift-options" aria-label="Gift options">
+  <p class="tz-k">Make it a gift</p>
+  <h2>Sending it to someone lucky?</h2>
+  <label class="tz-row tz-on">
+    <input type="checkbox" checked>
+    <span class="tz-box" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+    <span class="tz-copy"><strong>Wrap it in kraft &amp; twine</strong><small>Brown paper, red string, wax seal</small></span>
+    <span class="tz-tag">$6</span>
+  </label>
+  <label class="tz-row">
+    <input type="checkbox">
+    <span class="tz-box" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+    <span class="tz-copy"><strong>Handwritten card</strong><small>Your note below, in actual ink</small></span>
+    <span class="tz-tag">$4</span>
+  </label>
+  <label class="tz-row tz-on">
+    <input type="checkbox" checked>
+    <span class="tz-box" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>
+    <span class="tz-copy"><strong>Email a gift receipt</strong><small>Arrives with the box, no prices shown</small></span>
+    <span class="tz-tag">Free</span>
+  </label>
+  <label class="tz-note-label" for="tz-gift-note">Your note <span>0 / 200</span></label>
+  <textarea id="tz-gift-note" rows="3" maxlength="200" placeholder="Happy birthday, you old soul — dinner&rsquo;s on me next time."></textarea>
+</section>
+<style>
+.tz-gift-options{--bg:#f7efdc;--ink:#2b1f14;--accent:#c93a2e;--muted:#a08872;--line:#e3d3b8;
+  background:var(--bg);color:var(--ink);padding:clamp(32px,5vw,72px);max-width:640px;
+  font-family:'DM Sans',-apple-system,'Segoe UI',sans-serif}
+.tz-gift-options .tz-k{font-family:'Space Mono',ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+.tz-gift-options h2{font-family:'Alfa Slab One',Georgia,serif;font-weight:400;
+  font-size:clamp(24px,3vw,36px);letter-spacing:.01em;margin:0 0 28px}
+.tz-row{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;
+  border:1px solid var(--line);background:#fffdf8;padding:16px 18px;margin-bottom:12px;
+  cursor:pointer;border-radius:10px}
+.tz-row input{position:absolute;opacity:0;pointer-events:none}
+.tz-box{width:22px;height:22px;border:2px solid var(--muted);border-radius:6px;display:grid;
+  place-items:center;color:transparent}
+.tz-row.tz-on{border-color:var(--accent)}
+.tz-row.tz-on .tz-box{background:var(--accent);border-color:var(--accent);color:#fffdf8}
+.tz-copy strong{display:block;font-size:15.5px}
+.tz-copy small{color:var(--muted);font-size:13px}
+.tz-tag{font-family:'Space Mono',ui-monospace,Menlo,monospace;font-size:12px;font-weight:700;
+  background:var(--accent);color:#fffdf8;padding:5px 10px;border-radius:6px;white-space:nowrap}
+.tz-note-label{display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;
+  margin:22px 0 8px}
+.tz-note-label span{font-family:'Space Mono',ui-monospace,Menlo,monospace;font-size:12px;
+  color:var(--muted);font-weight:400}
+.tz-gift-options textarea{width:100%;box-sizing:border-box;font-family:inherit;font-size:15px;
+  color:var(--ink);background:#fffdf8;border:1px solid var(--line);border-radius:10px;
+  padding:14px 16px;resize:vertical;line-height:1.6}
+.tz-gift-options textarea:focus{outline:2px solid var(--accent);outline-offset:2px}
+.tz-gift-options textarea::placeholder{color:var(--muted)}
+@media(max-width:480px){.tz-gift-options{padding:24px}.tz-row{padding:14px}}
+</style>
