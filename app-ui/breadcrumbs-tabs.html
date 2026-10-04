@@ -1,0 +1,127 @@
+<!--tz-meta {"id":"breadcrumbs-tabs","title":"Transit-line breadcrumbs and tabs","category":"App UI","file":"app-ui/breadcrumbs-tabs.html","tags":["breadcrumbs","tabs","navigation","overflow"],"description":"Breadcrumb trail drawn as a transit route map and a scrollable tab bar with switching panels for Meridian Transit crew scheduling.","dnas":["transit-swiss"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crew scheduling — Meridian Transit</title>
+<style>
+.tz-nav{--bg:#f4f2ec;--ink:#1b1b1b;--muted:#6e6a5e;--red:#d0342c;--line:#1b1b1b26;--card:#ffffff;
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:Archivo,"Avenir Next","Segoe UI",Verdana,sans-serif;-webkit-font-smoothing:antialiased}
+.tz-topbar{background:var(--ink);color:var(--bg);padding:14px clamp(20px,5vw,48px);
+  display:flex;justify-content:space-between;align-items:center;gap:12px}
+.tz-logo{font-weight:800;letter-spacing:.06em;font-size:15px}
+.tz-logo i{font-style:normal;color:var(--red)}
+.tz-clock{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.14em}
+.tz-wrap{max-width:1020px;margin:0 auto;padding:clamp(28px,5vw,48px) clamp(20px,5vw,48px) 90px}
+.tz-crumbnav{overflow-x:auto;padding:6px 2px 18px;scrollbar-width:thin}
+.tz-crumbs{display:flex;align-items:center;gap:0;list-style:none;margin:0;padding:0;min-width:max-content}
+.tz-crumbs li{display:flex;align-items:center}
+.tz-seg{position:relative;display:flex;align-items:center;padding:0 26px 0 0;text-decoration:none;color:var(--ink)}
+.tz-seg::after{content:"";position:absolute;right:9px;top:50%;width:18px;height:3px;background:var(--red);transform:translateY(-50%)}
+.tz-crumbs li:last-child .tz-seg::after{display:none}
+.tz-dot{flex:none;width:15px;height:15px;border-radius:50%;border:3px solid var(--ink);background:var(--bg);margin-right:11px}
+.tz-crumbs li:last-child .tz-dot{background:var(--red);border-color:var(--red)}
+.tz-stop{font-size:13.5px;font-weight:600;letter-spacing:.02em;white-space:nowrap}
+.tz-crumbs a.tz-seg:hover .tz-stop{color:var(--red);text-decoration:underline;text-underline-offset:4px}
+.tz-crumbs li:last-child .tz-stop{font-weight:800}
+.tz-crumbs li:last-child .tz-seg{cursor:default}
+.tz-h1{font-size:clamp(30px,4.6vw,46px);letter-spacing:-.02em;margin:14px 0 6px;font-weight:800}
+.tz-lede{color:var(--muted);font-size:15px;margin:0 0 30px;line-height:1.6;max-width:64ch}
+.tz-tabs{border-bottom:3px solid var(--ink);display:flex;gap:4px;overflow-x:auto;scrollbar-width:thin}
+.tz-tab{flex:none;background:none;border:none;font:inherit;font-size:14px;font-weight:700;letter-spacing:.05em;
+  text-transform:uppercase;padding:14px 22px;cursor:pointer;color:var(--muted);position:relative;white-space:nowrap}
+.tz-tab:hover{color:var(--ink)}
+.tz-tab.tz-on{color:var(--ink)}
+.tz-tab.tz-on::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:6px;background:var(--red)}
+.tz-tab .tz-pill{display:inline-block;min-width:22px;text-align:center;background:var(--ink);color:var(--bg);
+  font-size:11px;border-radius:11px;padding:2px 7px;margin-left:8px;vertical-align:2px}
+.tz-tab.tz-on .tz-pill{background:var(--red)}
+.tz-panel{display:none;padding:30px 2px 0;animation:tz-fade .25s ease}
+.tz-panel.tz-on{display:block}
+@keyframes tz-fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.tz-shift{display:grid;grid-template-columns:88px 1fr auto;gap:16px;align-items:center;
+  background:var(--card);border:1px solid var(--line);padding:16px 18px;margin-bottom:12px}
+.tz-t{font-family:ui-monospace,Menlo,monospace;font-size:13px;font-weight:700}
+.tz-s{font-size:14.5px;margin:0 0 4px;font-weight:600}
+.tz-s small{display:block;font-weight:400;color:var(--muted);font-size:12.5px;margin-top:3px}
+.tz-badge{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--red);
+  border:2px solid var(--red);padding:5px 10px;white-space:nowrap}
+.tz-badge.tz-ok{color:#1e7a3c;border-color:#1e7a3c}
+.tz-roster{width:100%;border-collapse:collapse;font-size:14px}
+.tz-roster th{text-align:left;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);
+  padding:10px 12px;border-bottom:2px solid var(--ink)}
+.tz-roster td{padding:13px 12px;border-bottom:1px solid var(--line)}
+.tz-roster tr:hover td{background:var(--card)}
+.tz-note{border-left:4px solid var(--red);background:var(--card);padding:16px 18px;font-size:14px;line-height:1.6;margin-bottom:12px}
+@media (max-width:560px){
+  .tz-shift{grid-template-columns:1fr;gap:8px}
+  .tz-badge{justify-self:start}
+  .tz-roster th:nth-child(3),.tz-roster td:nth-child(3){display:none}}
+@media (prefers-reduced-motion:reduce){.tz-panel{animation:none}}
+</style>
+</head>
+<body class="tz-nav">
+<header class="tz-topbar">
+  <span class="tz-logo">MERIDIAN<i>&#9646;</i>TRANSIT</span>
+  <span class="tz-clock">SAT 20:26 &middot; DISPATCH LIVE</span>
+</header>
+<main class="tz-wrap">
+  <nav class="tz-crumbnav" aria-label="Breadcrumb">
+    <ol class="tz-crumbs">
+      <li><a class="tz-seg" href="#"><span class="tz-dot"></span><span class="tz-stop">Network</span></a></li>
+      <li><a class="tz-seg" href="#"><span class="tz-dot"></span><span class="tz-stop">Line 4 &mdash; Riverside</span></a></li>
+      <li><a class="tz-seg" href="#"><span class="tz-dot"></span><span class="tz-stop">Riverside Depot</span></a></li>
+      <li><span class="tz-seg" aria-current="page"><span class="tz-dot"></span><span class="tz-stop">Crew roster</span></span></li>
+    </ol>
+  </nav>
+  <h1 class="tz-h1">Crew roster</h1>
+  <p class="tz-lede">Who is on, who is off, and what is breaking. The trail above always shows the route you took &mdash; on narrow screens it scrolls sideways like a platform sign.</p>
+
+  <div class="tz-tabs" role="tablist" aria-label="Roster sections">
+    <button class="tz-tab tz-on" role="tab" aria-selected="true" data-p="tzPSchedule">Schedule</button>
+    <button class="tz-tab" role="tab" aria-selected="false" data-p="tzPCrew">Crew<span class="tz-pill">18</span></button>
+    <button class="tz-tab" role="tab" aria-selected="false" data-p="tzPVeh">Vehicles<span class="tz-pill">3</span></button>
+    <button class="tz-tab" role="tab" aria-selected="false" data-p="tzPAlerts">Alerts<span class="tz-pill">2</span></button>
+  </div>
+
+  <section class="tz-panel tz-on" id="tzPSchedule" role="tabpanel" aria-label="Schedule">
+    <div class="tz-shift"><span class="tz-t">05:40</span><p class="tz-s">Yard pull-out<small>6 operators &middot; 11 vehicles &middot; first departure 06:05</small></p><span class="tz-badge tz-ok">On time</span></div>
+    <div class="tz-shift"><span class="tz-t">09:15</span><p class="tz-s">Midday crew swap<small>Riverside platform B &middot; 4 operators rotate off</small></p><span class="tz-badge tz-ok">On time</span></div>
+    <div class="tz-shift"><span class="tz-t">14:30</span><p class="tz-s">Track inspection window<small>Line 4 single-tracking between Elm and 9th</small></p><span class="tz-badge">Delayed</span></div>
+  </section>
+
+  <section class="tz-panel" id="tzPCrew" role="tabpanel" aria-label="Crew">
+    <table class="tz-roster">
+      <thead><tr><th>Operator</th><th>Assignment</th><th>Shift</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td><b>Priya Nair</b></td><td>Car 412 &middot; Line 4</td><td>05:30&ndash;13:30</td><td>On duty</td></tr>
+        <tr><td><b>Marcus Bell</b></td><td>Car 418 &middot; Line 4</td><td>05:30&ndash;13:30</td><td>On duty</td></tr>
+        <tr><td><b>Sofia Reyes</b></td><td>Platform B &middot; Riverside</td><td>09:00&ndash;17:00</td><td>On duty</td></tr>
+        <tr><td><b>Jonas Feld</b></td><td>Spare &middot; on call</td><td>13:00&ndash;21:00</td><td>Standby</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="tz-panel" id="tzPVeh" role="tabpanel" aria-label="Vehicles">
+    <div class="tz-shift"><span class="tz-t">412</span><p class="tz-s">Articulated bus<small>Fuel 82% &middot; last serviced Sep 28</small></p><span class="tz-badge tz-ok">Ready</span></div>
+    <div class="tz-shift"><span class="tz-t">418</span><p class="tz-s">Articulated bus<small>Brake warning light &middot; shop booked Monday</small></p><span class="tz-badge">Hold</span></div>
+    <div class="tz-shift"><span class="tz-t">207</span><p class="tz-s">Paratransit van<small>Fuel 64% &middot; spare pool</small></p><span class="tz-badge tz-ok">Ready</span></div>
+  </section>
+
+  <section class="tz-panel" id="tzPAlerts" role="tabpanel" aria-label="Alerts">
+    <div class="tz-note"><b>2:15 PM &mdash; Single-tracking extended.</b> The Elm&ndash;9th inspection window now runs to 16:00. Expect 10-minute headways on Line 4.</div>
+    <div class="tz-note"><b>11:40 AM &mdash; Car 418 held.</b> Brake warning light confirmed by the shop. Swapped with spare 207 for the afternoon block.</div>
+  </section>
+</main>
+<script>
+var tabs=document.querySelectorAll('.tz-tab');
+tabs.forEach(function(t){t.addEventListener('click',function(){
+  tabs.forEach(function(x){x.classList.remove('tz-on');x.setAttribute('aria-selected','false');});
+  document.querySelectorAll('.tz-panel').forEach(function(p){p.classList.remove('tz-on');});
+  t.classList.add('tz-on');t.setAttribute('aria-selected','true');
+  document.getElementById(t.getAttribute('data-p')).classList.add('tz-on');});});
+</script>
+</body>
+</html>
