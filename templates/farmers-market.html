@@ -1,0 +1,402 @@
+<!--tz-meta {"id":"farmers-market","title":"Herbarium Market — Weekly Farmers Market","category":"Template","file":"templates/farmers-market.html","tags":["farmers-market","local","food"],"description":"Botanical-lab farmers market with herbarium specimen labels and Latin binomials.","dnas":["botanical-lab"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Herbarium Market — Saturdays 8am–1pm, rain or shine</title>
+<meta name="description" content="Herbarium Market is a weekly farmers market in Burlington, Vermont. 42 growers, this week's harvest list, and the seasonal calendar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* DNA: botanical-lab — herbarium paper, ink green, specimen labels in mono */
+:root{
+  --tz-bg:#f7f4ea; --tz-surface:#efe9d6; --tz-ink:#22301f; --tz-muted:#5f6a55;
+  --tz-accent:#3e6b2f; --tz-rust:#a4552a; --tz-line:rgba(34,48,31,.22);
+  --tz-display:'Fraunces',serif; --tz-body:'Newsreader',serif; --tz-mono:'Space Mono',monospace;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:var(--tz-body);font-size:18px;line-height:1.7;-webkit-font-smoothing:antialiased}
+::selection{background:var(--tz-accent);color:#fff}
+a{color:inherit}
+.tz-wrap{max-width:1160px;margin:0 auto;padding:0 32px}
+.tz-mono{font-family:var(--tz-mono)}
+.tz-nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid var(--tz-line)}
+.tz-brand{font-family:var(--tz-display);font-weight:600;font-size:22px;text-decoration:none}
+.tz-brand em{font-style:italic;color:var(--tz-accent)}
+.tz-navlinks{display:flex;gap:28px;font-family:var(--tz-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.tz-navlinks a{text-decoration:none;color:var(--tz-muted)}
+.tz-navlinks a:hover{color:var(--tz-accent)}
+.tz-btn{display:inline-block;font-family:var(--tz-mono);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;background:var(--tz-accent);color:#fff;padding:16px 30px;border-radius:2px;transition:transform .25s var(--tz-ease),background .25s}
+.tz-btn:hover{transform:translateY(-2px);background:#2f5523}
+/* hero: specimen sheet */
+.tz-hero{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding:96px 0 104px}
+.tz-kicker{font-family:var(--tz-mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--tz-accent);margin-bottom:24px;display:block}
+.tz-hero h1{font-family:var(--tz-display);font-weight:600;font-size:clamp(48px,6vw,88px);line-height:1.04;letter-spacing:-.02em}
+.tz-hero h1 i{font-style:italic;color:var(--tz-accent)}
+.tz-hero p{color:var(--tz-muted);font-size:19px;max-width:46ch;margin:26px 0 34px}
+.tz-sheet{background:#fffdf6;border:1px solid var(--tz-line);padding:20px;transform:rotate(1deg);box-shadow:0 24px 48px rgba(34,48,31,.12);position:relative}
+.tz-sheet::before{content:"";position:absolute;top:-12px;left:50%;transform:translateX(-50%) rotate(-2deg);width:120px;height:28px;background:rgba(62,107,47,.18);border:1px solid var(--tz-line)}
+.tz-press{height:320px;background:var(--tz-surface);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.tz-press svg{width:70%;height:80%}
+.tz-spec-label{border-top:1px solid var(--tz-line);margin-top:20px;padding-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;font-family:var(--tz-mono);font-size:11px;letter-spacing:.06em}
+.tz-spec-label dt{color:var(--tz-muted);text-transform:uppercase}
+.tz-spec-label dd{margin:0;text-align:right}
+.tz-spec-label .tz-latin{font-style:italic;font-family:var(--tz-display);font-size:15px}
+/* sections */
+.tz-section{padding:100px 0;border-top:1px solid var(--tz-line)}
+.tz-sec-head{margin-bottom:52px;max-width:700px}
+.tz-sec-head h2{font-family:var(--tz-display);font-weight:600;font-size:clamp(36px,4.4vw,60px);line-height:1.05;letter-spacing:-.02em}
+.tz-sec-head h2 i{font-style:italic;color:var(--tz-accent)}
+.tz-sec-head p{color:var(--tz-muted);font-size:18px;margin-top:16px}
+/* harvest: specimen table */
+.tz-harvest{border:1px solid var(--tz-line);background:#fffdf6}
+.tz-hrow{display:grid;grid-template-columns:120px 1fr 1fr auto;gap:28px;align-items:center;padding:24px 32px;border-bottom:1px solid var(--tz-line);text-decoration:none;transition:background .25s}
+.tz-hrow:last-child{border-bottom:none}
+.tz-hrow:hover{background:var(--tz-surface)}
+.tz-hrow .tz-acc{font-family:var(--tz-mono);font-size:11px;color:var(--tz-accent);letter-spacing:.08em}
+.tz-hrow h3{font-family:var(--tz-display);font-size:24px;font-weight:600}
+.tz-hrow h3 i{font-style:italic;font-weight:400;color:var(--tz-muted);font-size:18px;display:block}
+.tz-hrow .tz-grower{font-size:15px;color:var(--tz-muted)}
+.tz-hrow .tz-grower b{color:var(--tz-ink);font-weight:500}
+.tz-hrow .tz-price{font-family:var(--tz-mono);font-size:14px;text-align:right;white-space:nowrap}
+.tz-hrow .tz-price span{display:block;font-size:11px;color:var(--tz-muted)}
+.tz-fresh{display:inline-block;font-family:var(--tz-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;background:var(--tz-accent);color:#fff;padding:4px 10px;margin-left:12px;vertical-align:middle}
+/* vendors index */
+.tz-vendors{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--tz-line)}
+.tz-vendor{padding:36px;border-bottom:1px solid var(--tz-line);text-decoration:none;transition:background .25s;display:block}
+.tz-vendor:nth-child(odd){border-right:1px solid var(--tz-line)}
+.tz-vendor:nth-last-child(-n+2){border-bottom:none}
+.tz-vendor:hover{background:#fffdf6}
+.tz-vendor .tz-cat{font-family:var(--tz-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--tz-rust);margin-bottom:12px;display:block}
+.tz-vendor h3{font-family:var(--tz-display);font-size:26px;font-weight:600;margin-bottom:8px}
+.tz-vendor p{font-size:16px;color:var(--tz-muted)}
+.tz-vendor .tz-stall{font-family:var(--tz-mono);font-size:12px;color:var(--tz-muted);margin-top:14px;display:block}
+/* map: CSS plot */
+.tz-mapwrap{display:grid;grid-template-columns:1.3fr .7fr;gap:48px;align-items:start}
+.tz-map{border:2px solid var(--tz-ink);background:#fffdf6;padding:28px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.tz-plot{border:1px solid var(--tz-line);aspect-ratio:1.4;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--tz-mono);font-size:10px;letter-spacing:.06em;text-align:center;padding:8px;transition:background .25s}
+.tz-plot b{font-size:13px;margin-bottom:4px}
+.tz-plot:hover{background:var(--tz-surface)}
+.tz-plot--green{background:rgba(62,107,47,.14)}
+.tz-plot--rust{background:rgba(164,85,42,.12)}
+.tz-plot--gate{background:var(--tz-ink);color:var(--tz-bg)}
+.tz-mapkey{list-style:none;font-size:15px;color:var(--tz-muted)}
+.tz-mapkey li{padding:12px 0;border-bottom:1px dashed var(--tz-line);display:flex;gap:14px;align-items:baseline}
+.tz-mapkey b{font-family:var(--tz-mono);font-size:12px;color:var(--tz-ink);min-width:88px}
+/* seasonal calendar */
+.tz-cal{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--tz-line)}
+.tz-month{padding:32px 28px;border-right:1px solid var(--tz-line);border-bottom:1px solid var(--tz-line)}
+.tz-month:nth-child(4n){border-right:none}
+.tz-month:nth-last-child(-n+4){border-bottom:none}
+.tz-month h3{font-family:var(--tz-mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--tz-accent);margin-bottom:14px}
+.tz-month ul{list-style:none;font-size:15px;color:var(--tz-muted)}
+.tz-month li{margin-bottom:6px}
+.tz-month li i{font-style:italic;font-family:var(--tz-display)}
+/* visit band */
+.tz-visit{background:var(--tz-accent);color:#fff;padding:96px 0}
+.tz-visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.tz-visit h2{font-family:var(--tz-display);font-weight:600;font-size:clamp(36px,4.6vw,62px);line-height:1.05;margin-bottom:20px}
+.tz-visit p{font-size:19px;color:#e8f0e2;max-width:46ch;margin-bottom:28px}
+.tz-visit .tz-btn{background:#fff;color:var(--tz-accent)}
+.tz-visit .tz-btn:hover{background:var(--tz-ink);color:#fff}
+.tz-visit-facts{list-style:none}
+.tz-visit-facts li{font-family:var(--tz-mono);font-size:14px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.3);display:flex;justify-content:space-between}
+.tz-visit-facts li span:last-child{color:#e8f0e2}
+/* footer */
+.tz-footer{padding:64px 0 36px}
+.tz-footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.tz-footer h4{font-family:var(--tz-mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:18px}
+.tz-footer ul{list-style:none}.tz-footer li{margin-bottom:10px}
+.tz-footer a{text-decoration:none;font-size:15px}
+.tz-footer a:hover{color:var(--tz-accent)}
+.tz-footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-family:var(--tz-mono);font-size:11px;letter-spacing:.1em;color:var(--tz-muted);border-top:1px solid var(--tz-line);padding-top:28px;text-transform:uppercase}
+.tz-reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--tz-ease),transform .7s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}.tz-reveal{opacity:1;transform:none;transition:none}*{transition:none !important}
+  .tz-sheet{transform:none}
+}
+@media(max-width:960px){
+  .tz-hero{grid-template-columns:1fr;gap:48px;padding:64px 0 80px}
+  .tz-hrow{grid-template-columns:1fr 1fr;gap:12px}
+  .tz-hrow .tz-acc{grid-column:1/-1}
+  .tz-vendors{grid-template-columns:1fr}
+  .tz-vendor:nth-child(odd){border-right:none}
+  .tz-vendor:nth-last-child(-n+2){border-bottom:1px solid var(--tz-line)}
+  .tz-vendor:last-child{border-bottom:none}
+  .tz-mapwrap{grid-template-columns:1fr}
+  .tz-cal{grid-template-columns:1fr 1fr}
+  .tz-month:nth-child(4n){border-right:1px solid var(--tz-line)}
+  .tz-month:nth-child(2n){border-right:none}
+  .tz-month:nth-last-child(-n+4){border-bottom:1px solid var(--tz-line)}
+  .tz-month:nth-last-child(-n+2){border-bottom:none}
+  .tz-visit-grid{grid-template-columns:1fr;gap:40px}
+  .tz-navlinks{display:none}
+}
+@media(max-width:600px){
+  .tz-section{padding:72px 0}
+  .tz-cal{grid-template-columns:1fr}
+  .tz-month{border-right:none !important;border-bottom:1px solid var(--tz-line) !important}
+  .tz-month:last-child{border-bottom:none !important}
+  .tz-footer-grid{grid-template-columns:1fr}
+  .tz-map{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+<!-- DNA: botanical-lab · design read: a farmers market page filed like a herbarium — every harvest logged with Latin binomials and accession numbers on archival paper · dials V6/M3/D6 · one weird thing: produce listed as specimen records (accession no., collector, price per unit) -->
+<header class="tz-wrap">
+  <nav class="tz-nav" aria-label="Main">
+    <a class="tz-brand" href="#">Herbarium <em>Market</em></a>
+    <div class="tz-navlinks">
+      <a href="#harvest">This week</a><a href="#vendors">Growers</a><a href="#map">Map</a><a href="#season">Seasons</a>
+    </div>
+    <a class="tz-btn" href="#visit">Plan Saturday</a>
+  </nav>
+</header>
+
+<main>
+  <section class="tz-wrap tz-hero">
+    <div>
+      <span class="tz-kicker">Burlington, Vermont · Saturdays 8am–1pm · May–October</span>
+      <h1>Forty-two growers. <i>One</i> parking lot. Zero middlemen.</h1>
+      <p>Herbarium Market is Burlington's Saturday farmers market — produce picked within 24 hours, cheese cut to order, and flowers that were in the ground yesterday morning. Rain or shine, since 1998.</p>
+      <a class="tz-btn" href="#harvest">See this week's harvest</a>
+    </div>
+    <div class="tz-sheet tz-reveal" role="img" aria-label="Herbarium specimen sheet of a tomato plant">
+      <div class="tz-press">
+        <svg viewBox="0 0 200 240" aria-hidden="true">
+          <g stroke="#3e6b2f" stroke-width="2.5" fill="none">
+            <line x1="100" y1="220" x2="100" y2="60"/>
+            <line x1="100" y1="150" x2="55" y2="120"/><line x1="100" y1="120" x2="150" y2="95"/><line x1="100" y1="180" x2="145" y2="160"/>
+            <ellipse cx="48" cy="112" rx="26" ry="12" fill="#3e6b2f" opacity=".35" stroke="#3e6b2f"/>
+            <ellipse cx="158" cy="88" rx="26" ry="12" fill="#3e6b2f" opacity=".35" stroke="#3e6b2f"/>
+            <ellipse cx="152" cy="158" rx="22" ry="10" fill="#3e6b2f" opacity=".35" stroke="#3e6b2f"/>
+          </g>
+          <circle cx="100" cy="45" r="26" fill="#a4552a" opacity=".85"/>
+          <circle cx="100" cy="45" r="26" fill="none" stroke="#7c3d1e" stroke-width="2"/>
+          <path d="M100 19 q 6 -12 18 -14" stroke="#3e6b2f" stroke-width="2.5" fill="none"/>
+          <ellipse cx="122" cy="8" rx="12" ry="6" fill="#3e6b2f" opacity=".5"/>
+        </svg>
+      </div>
+      <dl class="tz-spec-label">
+        <dt>Specimen</dt><dd class="tz-latin">Solanum lycopersicum</dd>
+        <dt>Accession</dt><dd>HM-2026-1042</dd>
+        <dt>Collector</dt><dd>Intervale Farm</dd>
+        <dt>Status</dt><dd>Peak season · stall 12</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section class="tz-section" id="harvest">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">Logged Friday at 6pm · week of Oct 3</span>
+        <h2>This week's <i>harvest</i></h2>
+        <p>Picked within 24 hours of market open. When a row says "last of the season," believe it.</p>
+      </div>
+      <div class="tz-harvest tz-reveal">
+        <a class="tz-hrow" href="#vendors"><span class="tz-acc">HM-1042</span><div><h3>Heirloom tomatoes <span class="tz-fresh">Peak</span><i>Solanum lycopersicum</i></h3></div><div class="tz-grower"><b>Intervale Farm</b> · picked Friday 5am · 8 varieties</div><div class="tz-price">$4.50 / lb<span>stall 12</span></div></a>
+        <a class="tz-hrow" href="#vendors"><span class="tz-acc">HM-1043</span><div><h3>Honeycrisp apples <span class="tz-fresh">New</span><i>Malus domestica</i></h3></div><div class="tz-grower"><b>Champlain Orchards</b> · first pick of the season</div><div class="tz-price">$3.00 / lb<span>stall 4</span></div></a>
+        <a class="tz-hrow" href="#vendors"><span class="tz-acc">HM-1044</span><div><h3>Sweet corn<i>Zea mays</i></h3></div><div class="tz-grower"><b>River Bend Farm</b> · picked Friday dawn · last 3 weeks</div><div class="tz-price">$1.25 / ear<span>stall 21</span></div></a>
+        <a class="tz-hrow" href="#vendors"><span class="tz-acc">HM-1045</span><div><h3>Baby kale<i>Brassica oleracea</i></h3></div><div class="tz-grower"><b>Half Pint Farm</b> · cut to order at the stall</div><div class="tz-price">$5.00 / bag<span>stall 8</span></div></a>
+        <a class="tz-hrow" href="#vendors"><span class="tz-acc">HM-1046</span><div><h3>Raw wildflower honey<i>Apis mellifera</i></h3></div><div class="tz-grower"><b>Wells Apiary</b> · unfiltered, late-summer harvest</div><div class="tz-price">$12.00 / jar<span>stall 17</span></div></a>
+        <a class="tz-hrow" href="#vendors"><span class="tz-acc">HM-1047</span><div><h3>Aged cheddar, clothbound<i>Bos taurus → art</i></h3></div><div class="tz-grower"><b>Shelburne Creamery</b> · aged 14 months · cut to order</div><div class="tz-price">$18.00 / lb<span>stall 2</span></div></a>
+      </div>
+      <p class="tz-mono" style="font-size:12px;color:var(--tz-muted);margin-top:20px;letter-spacing:.06em">FULL LIST: 84 SPECIMENS THIS WEEK · ASK ANY GROWER FOR THE PRINTED HARVEST SHEET AT THE INFO TENT</p>
+    </div>
+  </section>
+
+  <section class="tz-section" id="vendors" style="border-top:1px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">The growers</span>
+        <h2>Know your <i>farmer</i></h2>
+        <p>42 vendors, all within 60 miles. No resellers — if they didn't grow it, they can't sell it here.</p>
+      </div>
+      <div class="tz-vendors tz-reveal">
+        <a class="tz-vendor" href="#map"><span class="tz-cat">Vegetables · since 2001</span><h3>Intervale Farm</h3><p>Twelve acres in the Intervale, 60 varieties a season. Andy will talk soil health until you make him stop.</p><span class="tz-stall">Stall 12 · center row</span></a>
+        <a class="tz-vendor" href="#map"><span class="tz-cat">Orchard · since 1998</span><h3>Champlain Orchards</h3><p>Heirloom apples, fresh cider pressed Thursday, and donuts that have caused actual traffic jams.</p><span class="tz-stall">Stall 4 · north gate</span></a>
+        <a class="tz-vendor" href="#map"><span class="tz-cat">Dairy · since 2005</span><h3>Shelburne Creamery</h3><p>Clothbound cheddar aged in the old root cellar. Tastings are generous; the 14-month is the one.</p><span class="tz-stall">Stall 2 · north gate</span></a>
+        <a class="tz-vendor" href="#map"><span class="tz-cat">Flowers · since 2012</span><h3>Petals &amp; Stems</h3><p>Field-grown bouquets cut Friday night. $12 wraps, $25 market buckets — the dahlias end in October.</p><span class="tz-stall">Stall 29 · south row</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="map" style="border-top:1px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">City Hall Park · find your favorites</span>
+        <h2>The market <i>map</i></h2>
+      </div>
+      <div class="tz-mapwrap">
+        <div class="tz-map tz-reveal" role="img" aria-label="Stylized market map">
+          <div class="tz-plot tz-plot--gate"><b>GATE</b>North</div>
+          <div class="tz-plot tz-plot--rust"><b>2</b>Creamery</div>
+          <div class="tz-plot tz-plot--green"><b>4</b>Orchards</div>
+          <div class="tz-plot"><b>6</b>Bakery</div>
+          <div class="tz-plot tz-plot--green"><b>8</b>Half Pint</div>
+          <div class="tz-plot"><b>10</b>Info tent</div>
+          <div class="tz-plot tz-plot--green"><b>12</b>Intervale</div>
+          <div class="tz-plot"><b>14</b>Coffee</div>
+          <div class="tz-plot"><b>17</b>Apiary</div>
+          <div class="tz-plot"><b>19</b>Eggs</div>
+          <div class="tz-plot tz-plot--green"><b>21</b>River Bend</div>
+          <div class="tz-plot"><b>23</b>Pasta</div>
+          <div class="tz-plot"><b>27</b>Music</div>
+          <div class="tz-plot tz-plot--rust"><b>29</b>Flowers</div>
+          <div class="tz-plot"><b>31</b>Hot food</div>
+          <div class="tz-plot tz-plot--gate"><b>GATE</b>South</div>
+        </div>
+        <ul class="tz-mapkey tz-reveal">
+          <li><b>North gate</b>Church St — closest to downtown parking</li>
+          <li><b>Info tent</b>Stall 10 — harvest sheets, lost &amp; found, EBT tokens</li>
+          <li><b>Music</b>Stall 27 — local acts, 10am–12pm</li>
+          <li><b>EBT/SNAP</b>Doubled on produce up to $20, every week</li>
+          <li><b>Dogs</b>Welcome, leashed, at the park edge</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="season" style="border-top:1px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">Eat with the calendar</span>
+        <h2>The seasonal <i>index</i></h2>
+        <p>What peaks when, so you never buy a mealy tomato in April again.</p>
+      </div>
+      <div class="tz-cal tz-reveal">
+        <div class="tz-month"><h3>May–Jun</h3><ul><li><i>Asparagus</i> — 3 weeks, don't blink</li><li><i>Spinach, arugula</i></li><li>Bedding plants &amp; seedlings</li></ul></div>
+        <div class="tz-month"><h3>Jul</h3><ul><li><i>Strawberries</i> — the real season</li><li><i>Peas, favas</i></li><li>First sweet corn (late)</li></ul></div>
+        <div class="tz-month"><h3>Aug</h3><ul><li><i>Tomatoes</i> — peak glory</li><li><i>Blueberries, peaches</i></li><li>Sweet corn by the dozen</li></ul></div>
+        <div class="tz-month"><h3>Sep</h3><ul><li><i>Apples</i> begin</li><li>Winter squash arrives</li><li>Last call: tomatoes</li></ul></div>
+        <div class="tz-month"><h3>Oct</h3><ul><li><i>Apples &amp; cider</i> — peak</li><li><i>Pumpkins</i>, obviously</li><li>Final market Oct 31</li></ul></div>
+        <div class="tz-month"><h3>Nov–Apr</h3><ul><li>Winter market, 1st Saturdays</li><li>Storage crops, cheese, meat</li><li>Seed catalogs &amp; planning</li></ul></div>
+        <div class="tz-month" style="grid-column:span 2"><h3>The rule</h3><ul><li>If it's not in season within 60 miles, <i>it isn't at this market.</i> That's the whole philosophy, and it tastes better.</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+<style>
+.tz-join{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--tz-ink)}
+.tz-join>div{padding:56px 48px}
+.tz-join>div:first-child{border-right:1px solid var(--tz-line);background:#fffdf6}
+.tz-join .tz-cat{font-family:var(--tz-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tz-accent);display:block;margin-bottom:16px}
+.tz-join h3{font-family:var(--tz-display);font-size:30px;font-weight:600;margin-bottom:14px}
+.tz-join p{color:var(--tz-muted);font-size:16px;margin-bottom:18px}
+.tz-join ul{list-style:none;margin-bottom:24px}
+.tz-join li{padding:8px 0;border-bottom:1px dashed var(--tz-line);font-size:15px;color:var(--tz-muted)}
+.tz-winter{background:var(--tz-ink);color:var(--tz-bg);padding:88px 0}
+.tz-winter h2{font-family:var(--tz-display);font-weight:600;font-size:clamp(34px,4.4vw,58px);margin-bottom:18px}
+.tz-winter h2 i{font-style:italic;color:var(--tz-accent)}
+.tz-winter p{color:#c9cdb9;font-size:18px;max-width:60ch;margin-bottom:16px}
+.tz-winter .tz-dates{font-family:var(--tz-mono);font-size:13px;letter-spacing:.1em;color:var(--tz-accent);margin-top:24px}
+.tz-faqm{max-width:780px}
+.tz-faqm details{border-bottom:1px solid var(--tz-line)}
+.tz-faqm summary{font-family:var(--tz-display);font-size:22px;font-weight:600;padding:24px 0;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px}
+.tz-faqm summary::-webkit-details-marker{display:none}
+.tz-faqm summary::after{content:"+";font-family:var(--tz-mono);color:var(--tz-accent)}
+.tz-faqm details[open] summary::after{content:"–"}
+.tz-faqm details p{color:var(--tz-muted);padding:0 0 26px;max-width:62ch}
+@media(max-width:900px){.tz-join{grid-template-columns:1fr}.tz-join>div:first-child{border-right:none;border-bottom:1px solid var(--tz-line)}}
+</style>
+  <section class="tz-section" id="join" style="border-top:1px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">Join the market</span>
+        <h2>Grow it, <i>sell it</i></h2>
+        <p>The market is run by its vendors. Here's how to join them — or help out.</p>
+      </div>
+      <div class="tz-join tz-reveal">
+        <div>
+          <span class="tz-cat">For growers &amp; makers</span>
+          <h3>Become a vendor</h3>
+          <p>Applications open each January for the May season. The jury visits every farm — no exceptions, no shortcuts.</p>
+          <ul><li>Grown or made within 60 miles</li><li>No reselling, ever</li><li>Stall fees from $35/Saturday</li></ul>
+          <a class="tz-btn" href="#visit">Apply for 2027</a>
+        </div>
+        <div>
+          <span class="tz-cat">For neighbors</span>
+          <h3>Volunteer</h3>
+          <p>Two hours a month keeps the market free to enter. Jobs: setup crew, info tent, EBT tokens, and the beloved tomato-tasting table.</p>
+          <ul><li>Free coffee + first pick of seconds</li><li>Annual volunteer harvest dinner</li><li>Meet all 42 growers by name</li></ul>
+          <a class="tz-btn" href="#visit" style="background:transparent;color:var(--tz-ink);border:2px solid var(--tz-ink)">Sign up</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-winter">
+    <div class="tz-wrap">
+      <h2>The market doesn't <i>hibernate.</i></h2>
+      <p>When the park goes quiet, we move indoors. The winter market runs first Saturdays, November through April, at the Memorial Auditorium — storage crops, frozen berries, cheese, meat, maple everything, and the seed swap in February.</p>
+      <p class="tz-dates">NOV 7 · DEC 5 · JAN 9 · FEB 6 (SEED SWAP) · MAR 6 · APR 3 — 10AM–2PM</p>
+    </div>
+  </section>
+
+  <section class="tz-section" id="faq">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-kicker">Good to know</span>
+        <h2>Questions</h2>
+      </div>
+      <div class="tz-faqm tz-reveal">
+        <details><summary>Do vendors take cards?</summary><p>Most do, but the market runs smoothest on cash — there's an ATM at the park's north corner. EBT/SNAP is doubled on produce up to $20 at the info tent.</p></details>
+        <details><summary>What happens in bad weather?</summary><p>We open rain or shine — only lightning or a state emergency closes us. Check the info line by 7am Saturday if the sky looks serious.</p></details>
+        <details><summary>Can I bring my dog?</summary><p>Leashed dogs are welcome around the park's edge, but please keep them out of the stall rows — too many delicious ankles at nose height.</p></details>
+        <details><summary>Is the produce really all local?</summary><p>Every vendor grows or makes what they sell within 60 miles, verified by annual farm visits. If you ever doubt a stall, ask at the info tent — we'll show you the paperwork.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-visit" id="visit">
+    <div class="tz-wrap tz-visit-grid">
+      <div class="tz-reveal">
+        <h2>Saturday, 8am. Bring a tote.</h2>
+        <p>The early hour gets the heirlooms; the last hour gets the deals. Either way, you leave with something that was in the ground yesterday.</p>
+        <a class="tz-btn" href="#harvest">This week's list</a>
+      </div>
+      <ul class="tz-visit-facts tz-reveal">
+        <li><span>When</span><span>Saturdays 8am–1pm, May–Oct</span></li>
+        <li><span>Where</span><span>City Hall Park, Burlington VT</span></li>
+        <li><span>Parking</span><span>Free at the garage till 9am</span></li>
+        <li><span>EBT/SNAP</span><span>Doubled to $20 on produce</span></li>
+        <li><span>Vendors</span><span>42 · all within 60 miles</span></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-footer-grid">
+      <div>
+        <h4>Herbarium Market</h4>
+        <p style="font-size:15px;color:var(--tz-muted);max-width:32ch">Burlington's Saturday farmers market since 1998. Run by the growers, for the neighborhood.</p>
+      </div>
+      <div><h4>Market</h4><ul><li><a href="#harvest">This week's harvest</a></li><li><a href="#vendors">Growers</a></li><li><a href="#season">Seasonal index</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="mailto:hello@herbariummarket.vt">hello@herbariummarket.vt</a></li><li><a href="#">Become a vendor</a></li><li><a href="#">Volunteer</a></li></ul></div>
+    </div>
+    <div class="tz-footer-bottom">
+      <span>© 2026 Herbarium Market Association</span>
+      <span class="tz-mono">Accession HM-2026 · filed under "delicious"</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els=document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('tz-in')});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(en,i){if(en.isIntersecting){setTimeout(function(){en.target.classList.add('tz-in')},(i%3)*70);io.unobserve(en.target);}})},{threshold:.1});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
