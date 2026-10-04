@@ -1,0 +1,113 @@
+<!--tz-meta {"id":"showcase-matchbook-cover","title":"Matchbook Cover showcase","category":"Showcase","file":"showcase/matchbook-cover.html","tags":["matchbook-cover"],"description":"Live demo page for the Matchbook Cover style DNA.","dnas":["matchbook-cover"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Matchbook Cover — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Limelight&family=Josefin+Sans:wght@400;500;700&family=Inconsolata:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#efe6d4; --tz-surface:#e2d4b6; --tz-ink:#262019; --tz-muted:#8d7f63;
+  --tz-accent:#b3402a; --tz-line:#2620192b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Josefin Sans",sans-serif;font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 4vw;border-bottom:1px solid var(--tz-line)}
+.tz-wordmark{font-family:"Limelight",serif;font-size:1.2rem;letter-spacing:0.03em}
+.tz-street{font-family:"Inconsolata",monospace;font-size:0.72rem;letter-spacing:0.14em;color:var(--tz-muted)}
+.tz-street strong{color:var(--tz-ink);font-weight:600}
+.tz-hero{padding:6rem 4vw 3.5rem;max-width:46rem}
+.tz-eyebrow{font-family:"Inconsolata",monospace;font-size:0.72rem;letter-spacing:0.16em;color:var(--tz-muted);margin-bottom:1.4rem}
+.tz-hero h1{font-family:"Limelight",serif;font-weight:400;font-size:clamp(2.9rem,9vw,6rem);line-height:1.04;letter-spacing:0.01em}
+.tz-sub{margin-top:1.8rem;font-size:1.05rem;color:var(--tz-muted);max-width:42ch}
+.tz-sub strong{color:var(--tz-ink)}
+.tz-match{display:inline-flex;align-items:center;gap:1rem;margin-top:2.2rem;background:var(--tz-ink);color:var(--tz-bg);text-decoration:none;padding:1rem 2rem 1rem 1.2rem;border-radius:3px;position:relative}
+.tz-stick{width:0.5rem;height:3.2rem;background:var(--tz-bg);border-radius:2px;position:relative;flex:none;transition:background .2s ease}
+.tz-stick::before{content:"";position:absolute;top:-0.55rem;left:50%;transform:translateX(-50%);width:0.85rem;height:0.85rem;border-radius:50%;background:var(--tz-accent);transition:transform .18s ease,box-shadow .18s ease}
+.tz-match:hover .tz-stick::before{transform:translateX(-50%) scale(1.5);box-shadow:0 0 1.4rem 0.3rem #b3402acc;background:var(--tz-accent)}
+.tz-match .tz-go{font-family:"Limelight",serif;font-size:1.15rem;letter-spacing:0.03em}
+.tz-match .tz-gone{display:none;font-family:"Limelight",serif;font-size:1.15rem;letter-spacing:0.03em}
+.tz-match:hover .tz-go{display:none}
+.tz-match:hover .tz-gone{display:inline}
+.tz-striker{height:2.4rem;margin:3.5rem 0 0;background:repeating-linear-gradient(90deg,#262019 0 6px,#4a3b28 6px 9px,#262019 9px 15px)}
+.tz-content{padding:3rem 4vw 1rem}
+.tz-content h2{font-family:"Limelight",serif;font-weight:400;font-size:clamp(1.9rem,5vw,2.8rem);margin-bottom:0.4rem}
+.tz-subhead{font-family:"Inconsolata",monospace;font-size:0.72rem;letter-spacing:0.12em;color:var(--tz-muted);margin-bottom:1.6rem}
+table.tz-week{width:100%;border-collapse:collapse;max-width:680px}
+.tz-week th{font-family:"Inconsolata",monospace;font-size:0.66rem;font-weight:400;letter-spacing:0.14em;color:var(--tz-muted);text-align:left;padding:0.8rem 0;border-bottom:1px solid var(--tz-ink)}
+.tz-week td{padding:1rem 0;border-bottom:1px solid var(--tz-line);font-size:0.98rem}
+.tz-week td.tz-day{font-family:"Inconsolata",monospace;font-weight:600;white-space:nowrap}
+.tz-week td.tz-time{font-family:"Inconsolata",monospace;font-size:0.85rem;color:var(--tz-muted);white-space:nowrap}
+.tz-week td.tz-hot{color:var(--tz-accent);font-weight:700}
+.tz-quiet{margin:2.8rem 0 0;background:var(--tz-surface);padding:1.8rem;max-width:560px;border-radius:3px}
+.tz-quiet p{font-family:"Inconsolata",monospace;font-size:0.85rem;color:var(--tz-muted);letter-spacing:0.04em}
+.tz-quiet strong{color:var(--tz-ink)}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Limelight",serif;font-weight:400;font-size:1.7rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1;border-radius:3px;overflow:hidden}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"Inconsolata",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Inconsolata",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;font-family:"Inconsolata",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+.tz-footstrip{height:2.4rem;background:repeating-linear-gradient(90deg,#262019 0 6px,#4a3b28 6px 9px,#262019 9px 15px);margin:0}
+@media(max-width:700px){
+  .tz-hero{padding-top:4rem}
+  .tz-street{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">The Copper Key</span>
+  <span class="tz-street">OPEN LATE · <strong>PARK OUT BACK</strong></span>
+</header>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow">A NEIGHBORHOOD BAR · TWO INCHES OF ADVERTISING</p>
+  <h1>Strike anywhere, remember everything.</h1>
+  <p class="tz-sub"><strong>Open late. Park out back.</strong> Tell them the matchbook sent you and the first one's on the house — we keep a box by the register, help yourself.</p>
+  <a class="tz-cta tz-match" href="#"><span class="tz-stick" aria-hidden="true"></span><span class="tz-go">Strike a match</span><span class="tz-gone">Struck. See you Friday.</span></a>
+</section>
+
+<div class="tz-striker" aria-hidden="true"></div>
+
+<section class="tz-content">
+  <h2>This week</h2>
+  <p class="tz-subhead">DOORS AT 7 · THE COVER'S A MATCHBOOK, KEEP IT</p>
+  <table class="tz-week">
+    <thead><tr><th>NIGHT</th><th>WHAT'S ON</th><th>FROM</th></tr></thead>
+    <tbody>
+      <tr><td class="tz-day">THU</td><td>Quiz night, pencils provided</td><td class="tz-time">8 PM</td></tr>
+      <tr><td class="tz-day">FRI</td><td class="tz-hot">The Low Notes, two sets</td><td class="tz-time">9 PM</td></tr>
+      <tr><td class="tz-day">SAT</td><td>Darts tournament, losers pour</td><td class="tz-time">7 PM</td></tr>
+      <tr><td class="tz-day">SUN</td><td>Sunday roast and the big chair</td><td class="tz-time">4 PM</td></tr>
+    </tbody>
+  </table>
+  <div class="tz-quiet">
+    <p><strong>CLOSE COVER BEFORE STRIKING.</strong> AND NO, THE PIANO ISN'T FOR SALE — ASKED EVERY WEEK SINCE 1988.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#efe6d4"></span><span class="tz-name">bg</span><span class="tz-hex">#efe6d4</span></li>
+    <li><span class="tz-chip" style="background:#e2d4b6"></span><span class="tz-name">surface</span><span class="tz-hex">#e2d4b6</span></li>
+    <li><span class="tz-chip" style="background:#262019"></span><span class="tz-name">ink</span><span class="tz-hex">#262019</span></li>
+    <li><span class="tz-chip" style="background:#8d7f63"></span><span class="tz-name">muted</span><span class="tz-hex">#8d7f63</span></li>
+    <li><span class="tz-chip" style="background:#b3402a"></span><span class="tz-name">accent</span><span class="tz-hex">#b3402a</span></li>
+    <li><span class="tz-chip" style="background:#2620192b"></span><span class="tz-name">line</span><span class="tz-hex">#2620192b</span></li>
+  </ul>
+</section>
+
+<div class="tz-footstrip" aria-hidden="true"></div>
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
