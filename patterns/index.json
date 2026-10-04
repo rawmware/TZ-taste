@@ -672,7 +672,7 @@
   },
   {
    "id": "download-cta",
-   "title": "App download CTA",
+   "title": "Arcade app download CTA",
    "category": "CTA",
    "file": "patterns/download-cta.html",
    "tags": [
@@ -1954,7 +1954,7 @@
   },
   {
    "id": "misc-changelog",
-   "title": "Changelog feed",
+   "title": "Version log",
    "category": "Misc",
    "file": "patterns/misc-changelog.html",
    "tags": [
@@ -2392,7 +2392,7 @@
   },
   {
    "id": "pricing-compare",
-   "title": "Comparison table",
+   "title": "Plan comparison matrix",
    "category": "Pricing",
    "file": "patterns/pricing-compare.html",
    "tags": [
@@ -2923,7 +2923,7 @@
   },
   {
    "id": "team-cards",
-   "title": "Profile cards",
+   "title": "Team profile cards",
    "category": "Team",
    "file": "patterns/team-cards.html",
    "tags": [
