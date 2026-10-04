@@ -1,0 +1,123 @@
+<!--tz-meta {"id":"billing-page","title":"Billing Page","category":"App UI","file":"app-ui/billing-page.html","tags":["billing","pricing","invoices","usage"],"description":"Warm documentation-style billing: plan card, usage meters, invoice table, quiet cancel note.","dnas":["docs-solar"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Billing — Fieldnotes</title>
+<style>
+body{margin:0;background:#efe4c8;}
+.tz-bill{--bg:#fdf6e3;--ink:#3d3a2e;--accent:#cb4b16;--muted:#8a8672;--line:#3d3a2e1f;--surface:#f7eeda;
+  background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;
+  max-width:860px;margin:0 auto;padding:clamp(24px,4vw,56px);}
+.tz-bill-kicker{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 10px;}
+.tz-bill h1{font-size:clamp(30px,5vw,44px);letter-spacing:-.02em;margin:0 0 8px;font-weight:700;}
+.tz-bill .tz-lede{font-size:15px;color:var(--muted);line-height:1.6;margin:0 0 32px;max-width:60ch;}
+.tz-plan{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--accent);
+  padding:28px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:start;margin-bottom:32px;}
+.tz-plan h2{margin:0 0 6px;font-size:22px;}
+.tz-plan h2 .tz-pill{display:inline-block;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;
+  letter-spacing:.14em;background:var(--accent);color:#fff;padding:4px 10px;vertical-align:middle;margin-left:10px;}
+.tz-plan p{margin:0;font-size:14px;color:var(--muted);line-height:1.6;}
+.tz-plan .tz-price{text-align:right;}
+.tz-plan .tz-price b{font-size:36px;letter-spacing:-.02em;display:block;}
+.tz-plan .tz-price span{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;color:var(--muted);}
+.tz-plan .tz-renews{grid-column:1/-1;border-top:1px solid var(--line);padding-top:14px;font-size:13px;color:var(--muted);}
+.tz-plan .tz-renews b{color:var(--ink);}
+.tz-usage{margin-bottom:32px;}
+.tz-usage h2,.tz-inv h2{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 16px;}
+.tz-meter{margin-bottom:18px;}
+.tz-meter .tz-row{display:flex;justify-content:space-between;font-size:14px;margin-bottom:8px;}
+.tz-meter .tz-row b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted);font-weight:400;}
+.tz-track{height:10px;background:var(--line);position:relative;}
+.tz-track i{position:absolute;left:0;top:0;bottom:0;background:var(--accent);}
+.tz-inv table{width:100%;border-collapse:collapse;font-size:14px;}
+.tz-inv th{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);text-align:left;padding:10px 8px;border-bottom:1px solid var(--ink);}
+.tz-inv td{padding:14px 8px;border-bottom:1px solid var(--line);}
+.tz-inv td.tz-num,.tz-inv th.tz-num{text-align:right;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;}
+.tz-inv td.tz-id{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;}
+.tz-paid{color:var(--accent);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.1em;}
+.tz-ref{color:var(--muted);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.1em;}
+.tz-method{margin-bottom:32px;border:1px solid var(--line);padding:20px 24px;}
+.tz-method h2,.tz-hist h2{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 12px;}
+.tz-method p{margin:0 0 8px;font-size:14px;}
+.tz-method p:last-child{margin-bottom:0;}
+.tz-method .tz-fine{font-size:12.5px;color:var(--muted);}
+.tz-method b{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px;}
+.tz-hist{margin-bottom:32px;}
+.tz-hist ul{list-style:none;margin:0;padding:0;}
+.tz-hist li{font-size:13.5px;padding:10px 0;border-bottom:1px solid var(--line);display:flex;gap:14px;}
+.tz-hist time{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px;color:var(--muted);flex:none;width:88px;padding-top:2px;}
+.tz-cancel{margin-top:32px;border:1px dashed var(--muted);padding:20px 24px;font-size:13px;color:var(--muted);line-height:1.65;}
+.tz-cancel b{color:var(--ink);}
+@media(max-width:560px){
+  .tz-plan{grid-template-columns:1fr;}
+  .tz-plan .tz-price{text-align:left;}
+  .tz-inv th:nth-child(2),.tz-inv td:nth-child(2){display:none;}
+}
+@media(prefers-reduced-motion:reduce){
+  .tz-bill *{animation:none!important;transition:none!important;}
+}
+</style>
+</head>
+<body>
+<section class="tz-bill">
+  <p class="tz-bill-kicker">Fieldnotes &middot; Workspace billing</p>
+  <h1>Billing</h1>
+  <p class="tz-lede">One plan, priced per seat. Everything is itemized below the way we'd want to read it ourselves.</p>
+  <div class="tz-plan">
+    <div>
+      <h2>Pro plan<span class="tz-pill">Current</span></h2>
+      <p>14 seats &middot; unlimited notebooks &middot; version history &middot; priority support. Billed annually, next charge November 1.</p>
+    </div>
+    <div class="tz-price"><b>$144</b><span>/ seat / year</span></div>
+    <p class="tz-renews">Renews <b>November 1, 2026</b> for <b>$2,016</b>. Card ending 4242. <a href="#" style="color:var(--accent);">Update payment method</a></p>
+  </div>
+  <div class="tz-usage">
+    <h2>Usage this cycle</h2>
+    <div class="tz-meter">
+      <div class="tz-row"><span>Seats</span><b>14 / 20</b></div>
+      <div class="tz-track"><i style="width:70%"></i></div>
+    </div>
+    <div class="tz-meter">
+      <div class="tz-row"><span>Storage</span><b>38 / 100 GB</b></div>
+      <div class="tz-track"><i style="width:38%"></i></div>
+    </div>
+    <div class="tz-meter">
+      <div class="tz-row"><span>AI assistant minutes</span><b>412 / 1,000</b></div>
+      <div class="tz-track"><i style="width:41%"></i></div>
+    </div>
+  </div>
+  <div class="tz-inv">
+    <h2>Invoices</h2>
+    <table>
+      <tr><th>Date</th><th>Invoice</th><th>Description</th><th class="tz-num">Amount</th><th class="tz-num">Status</th></tr>
+      <tr><td>Oct 1, 2026</td><td class="tz-id">FN-2041</td><td>Pro plan, annual renewal</td><td class="tz-num">$2,016.00</td><td class="tz-num"><span class="tz-paid">PAID</span></td></tr>
+      <tr><td>Sep 1, 2026</td><td class="tz-id">FN-1977</td><td>2 extra seats, prorated</td><td class="tz-num">$48.00</td><td class="tz-num"><span class="tz-paid">PAID</span></td></tr>
+      <tr><td>Aug 1, 2026</td><td class="tz-id">FN-1902</td><td>Pro plan, monthly</td><td class="tz-num">$168.00</td><td class="tz-num"><span class="tz-paid">PAID</span></td></tr>
+      <tr><td>Jul 15, 2026</td><td class="tz-id">FN-1860</td><td>Duplicate charge correction</td><td class="tz-num">&minus;$168.00</td><td class="tz-num"><span class="tz-ref">REFUNDED</span></td></tr>
+    </table>
+  </div>
+  <div class="tz-method">
+    <h2>Payment method</h2>
+    <p><b>VISA &middot;&middot;&middot;&middot; 4242</b> &middot; expires 08/27 &middot; Harbor Community Bank</p>
+    <p class="tz-fine">Receipts go to books@fieldnotes.example. Formal tax invoices are available on request.</p>
+  </div>
+  <div class="tz-hist">
+    <h2>Plan history</h2>
+    <ul>
+      <li><time>OCT 2026</time><span>Switched to annual billing &mdash; two months free, $168 saved.</span></li>
+      <li><time>SEP 2026</time><span>Added 2 seats for the support team, prorated to renewal.</span></li>
+      <li><time>MAR 2026</time><span>Upgraded from Starter to Pro for version history.</span></li>
+    </ul>
+  </div>
+  <div class="tz-cancel">
+    <b>Thinking of leaving?</b> Canceling takes two clicks from Settings &mdash; no calls, no retention maze. We keep your notebooks readable and exportable for 90 days after canceling, then delete them for good.
+  </div>
+</section>
+</body>
+</html>
