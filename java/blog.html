@@ -1,0 +1,121 @@
+<!--tz-meta {"id":"java-blog","title":"Newsroom Blog Index (Java/Thymeleaf)","category":"Java","file":"java/blog.html","tags":["java","thymeleaf","blog"],"description":"Newsroom-wire blog index: datelined masthead, edition bar, article rows with kickers and bylines — a front page, not a card grid.","dnas":["newsroom-wire"]} -->
+<!--
+  Design read: a small studio's journal written like a town paper — datelines, bylines, and actual opinions.
+  Distinctive choice: an edition bar (volume, date, price "free") under the masthead, like a printed front page.
+  Dials: VARIANCE 5 / MOTION 1 / DENSITY 6.
+  Route: GET /journal -> JournalController#index (model: posts)
+-->
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title th:text="${journal.title}">The Ledger — Journal of Copperline Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --tz-bg: #f7f4ec;
+      --tz-ink: #16130e;
+      --tz-accent: #c8102e;
+      --tz-line: #16130e29;
+      --tz-muted: #6f6a5e;
+      --tz-font-display: "Special Elite", monospace;
+      --tz-font-body: "PT Serif", serif;
+      --tz-font-mono: "Courier Prime", monospace;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { background: var(--tz-bg); color: var(--tz-ink); font-family: var(--tz-font-body); }
+    .tz-page { max-width: 1060px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 40px) clamp(64px, 8vw, 110px); }
+    .tz-masthead { text-align: center; padding: clamp(40px, 6vw, 72px) 0 24px; border-bottom: 4px double var(--tz-ink); }
+    .tz-masthead .tz-paper { font-family: var(--tz-font-display); font-size: clamp(44px, 8vw, 104px); margin: 0; letter-spacing: 0.02em; }
+    .tz-masthead .tz-paper .tz-red { color: var(--tz-accent); }
+    .tz-edition { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-family: var(--tz-font-mono); font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--tz-muted); padding: 14px 2px; border-bottom: 1px solid var(--tz-line); }
+    .tz-lead { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(24px, 4vw, 56px); padding: clamp(32px, 5vw, 56px) 0; border-bottom: 1px solid var(--tz-line); }
+    .tz-lead h2 { font-size: clamp(30px, 4vw, 52px); line-height: 1.12; margin: 0 0 16px; font-weight: 700; letter-spacing: -0.01em; }
+    .tz-lead h2 a, .tz-row h3 a { color: inherit; text-decoration: none; }
+    .tz-lead h2 a:hover, .tz-row h3 a:hover { color: var(--tz-accent); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
+    .tz-kicker { font-family: var(--tz-font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--tz-accent); margin: 0 0 14px; }
+    .tz-dek { font-size: 18px; line-height: 1.65; font-style: italic; color: var(--tz-muted); margin: 0 0 18px; max-width: 56ch; }
+    .tz-byline { font-family: var(--tz-font-mono); font-size: 13px; color: var(--tz-muted); margin: 0; }
+    .tz-byline strong { color: var(--tz-ink); }
+    .tz-lead-meta { border-left: 1px solid var(--tz-line); padding-left: clamp(24px, 4vw, 56px); font-size: 16px; line-height: 1.7; }
+    .tz-lead-meta p { margin: 0 0 16px; }
+    .tz-lead-meta .tz-dateline { font-family: var(--tz-font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--tz-accent); }
+    .tz-rows { list-style: none; margin: 0; padding: 0; }
+    .tz-row { display: grid; grid-template-columns: 150px 1fr auto; gap: 8px 28px; padding: 30px 4px; border-bottom: 1px solid var(--tz-line); align-items: baseline; }
+    .tz-date { font-family: var(--tz-font-mono); font-size: 13px; color: var(--tz-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    .tz-row h3 { font-size: clamp(21px, 2.6vw, 30px); margin: 0 0 8px; line-height: 1.2; font-weight: 700; }
+    .tz-row p { font-size: 16px; line-height: 1.6; color: var(--tz-muted); margin: 0; max-width: 64ch; }
+    .tz-mins { font-family: var(--tz-font-mono); font-size: 12px; color: var(--tz-muted); white-space: nowrap; }
+    .tz-more { display: inline-block; margin-top: 44px; font-family: var(--tz-font-mono); font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tz-ink); text-decoration: none; border-bottom: 3px solid var(--tz-accent); padding-bottom: 6px; }
+    @media (max-width: 760px) {
+      .tz-lead { grid-template-columns: 1fr; }
+      .tz-lead-meta { border-left: none; padding-left: 0; border-top: 1px solid var(--tz-line); padding-top: 24px; }
+      .tz-row { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <div class="tz-page">
+    <header class="tz-masthead">
+      <p class="tz-paper" th:text="${journal.name}">The <span class="tz-red">Ledger</span></p>
+    </header>
+    <div class="tz-edition">
+      <span th:text="${journal.volume}">Vol. IV · № 38</span>
+      <span th:text="${journal.date}">Saturday, October 3, 2026</span>
+      <span>Portland, Maine · Price: free</span>
+    </div>
+    <article class="tz-lead">
+      <div>
+        <p class="tz-kicker" th:text="${lead.kicker}">Lead story · Process</p>
+        <h2><a th:href="@{/journal/{s}(s=${lead.slug})}" th:text="${lead.title}" href="#">We rewrote our onboarding in a diner booth</a></h2>
+        <p class="tz-dek" th:text="${lead.dek}">Eleven pages of setup docs became three checkboxes. Here's what we cut, what we kept, and the napkin it started on.</p>
+        <p class="tz-byline"><strong th:text="${lead.author}">June Park</strong> · <span th:text="${lead.role}">founder</span> · <span th:text="${lead.readTime}">9 min read</span></p>
+      </div>
+      <div class="tz-lead-meta">
+        <p class="tz-dateline">From the editor</p>
+        <p th:text="${journal.editorNote}">This paper ships when we have something worth the ink — usually twice a month, never on a schedule we can't keep. No growth hacks, no listicles, no "10x". Just notes from the workbench.</p>
+      </div>
+    </article>
+    <ol class="tz-rows">
+      <li class="tz-row" th:each="p : ${posts}">
+        <span class="tz-date" th:text="${p.date}">Sep 19</span>
+        <div>
+          <h3><a th:href="@{/journal/{s}(s=${p.slug})}" th:text="${p.title}" href="#">Why our invoices say "thank you" twice</a></h3>
+          <p th:text="${p.dek}">A small politeness experiment that cut late payments by a third.</p>
+        </div>
+        <span class="tz-mins" th:text="${p.readTime}">4 min</span>
+      </li>
+      <li class="tz-row" th:if="${#lists.isEmpty(posts)}">
+        <span class="tz-date">Sep 05</span>
+        <div>
+          <h3><a href="#">The client who paid in firewood</a></h3>
+          <p>On barter, trust, and the winter our studio stayed warm for free.</p>
+        </div>
+        <span class="tz-mins">6 min</span>
+      </li>
+      <li class="tz-row" th:if="${#lists.isEmpty(posts)}">
+        <span class="tz-date">Aug 22</span>
+        <div>
+          <h3><a href="#">We stopped answering email after 6pm</a></h3>
+          <p>Nothing caught fire. Two clients thanked us for it.</p>
+        </div>
+        <span class="tz-mins">5 min</span>
+      </li>
+      <li class="tz-row" th:if="${#lists.isEmpty(posts)}">
+        <span class="tz-date">Aug 08</span>
+        <div>
+          <h3><a href="#">A field guide to saying no</a></h3>
+          <p>Four sentences that have saved us from four bad projects.</p>
+        </div>
+        <span class="tz-mins">7 min</span>
+      </li>
+    </ol>
+    <a class="tz-more" th:href="@{/journal/archive}" href="/journal/archive">Browse the archive →</a>
+  </div>
+</body>
+</html>
