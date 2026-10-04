@@ -1,0 +1,357 @@
+{
+ "count": 25,
+ "updated": "2026-10-04",
+ "usage": "Complete standalone landing pages. Open in a browser, view source, adapt. All original, MIT.",
+ "templates": [
+  {
+   "id": "agency",
+   "title": "Studio Raster — Design Agency",
+   "category": "Template",
+   "file": "templates/agency.html",
+   "tags": [
+    "agency"
+   ],
+   "description": "Strict Swiss grid agency page: black on white, one red, numbered index of work.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "ai-tool",
+   "title": "Neon Reel — AI Video Tool",
+   "category": "Template",
+   "file": "templates/ai-tool.html",
+   "tags": [
+    "ai",
+    "video",
+    "saas"
+   ],
+   "description": "Cyberpunk-noir AI video generator with glitch type and a live render log.",
+   "dnas": [
+    "cyberpunk-noir"
+   ]
+  },
+  {
+   "id": "app-landing",
+   "title": "Stillwater — Wellness App Landing",
+   "category": "Template",
+   "file": "templates/app-landing.html",
+   "tags": [
+    "app"
+   ],
+   "description": "Serene app landing with frosted glass phone mock, pastel light, and a breathing exercise widget.",
+   "dnas": [
+    "glass-calm"
+   ]
+  },
+  {
+   "id": "architecture",
+   "title": "Studio Prisma — Architecture Studio",
+   "category": "Template",
+   "file": "templates/architecture.html",
+   "tags": [
+    "architecture",
+    "studio",
+    "portfolio"
+   ],
+   "description": "Bauhaus-primary architecture studio with strict grid and geometric ornament.",
+   "dnas": [
+    "bauhaus-primary"
+   ]
+  },
+  {
+   "id": "bookstore",
+   "title": "Obsidian & Oak — Independent Bookstore",
+   "category": "Template",
+   "file": "templates/bookstore.html",
+   "tags": [
+    "bookstore",
+    "retail",
+    "books"
+   ],
+   "description": "Gothic-editorial independent bookstore with chaptered sections and candlelit dark tones.",
+   "dnas": [
+    "gothic-editorial"
+   ]
+  },
+  {
+   "id": "brewery",
+   "title": "Salt & Foam — Craft Brewery",
+   "category": "Template",
+   "file": "templates/brewery.html",
+   "tags": [
+    "brewery",
+    "food-drink",
+    "local"
+   ],
+   "description": "Sun-bleached surf-shack craft brewery with chalkboard tap list, surf-shack DNA.",
+   "dnas": [
+    "surf-shack"
+   ]
+  },
+  {
+   "id": "coffee-shop",
+   "title": "Fjord & Bean — Neighborhood Coffee Roastery",
+   "category": "Template",
+   "file": "templates/coffee-shop.html",
+   "tags": [
+    "coffee"
+   ],
+   "description": "Pale Scandinavian roastery page: oat-milk menu board, brewing guide timeline, quiet craft.",
+   "dnas": [
+    "scandi-calm"
+   ]
+  },
+  {
+   "id": "coworking",
+   "title": "Fjord House — Coworking Space",
+   "category": "Template",
+   "file": "templates/coworking.html",
+   "tags": [
+    "coworking",
+    "workspace",
+    "local"
+   ],
+   "description": "Nordic-noir coworking space with moody dark tones and a silence-first manifesto.",
+   "dnas": [
+    "nordic-noir"
+   ]
+  },
+  {
+   "id": "docs",
+   "title": "Lattice — Open-Source Library Docs",
+   "category": "Template",
+   "file": "templates/docs.html",
+   "tags": [
+    "docs"
+   ],
+   "description": "Warm documentation homepage for an OSS validation library: install one-liner, topic index, readable code.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "event",
+   "title": "VOLTAGE — Warehouse Night Event Page",
+   "category": "Template",
+   "file": "templates/event.html",
+   "tags": [
+    "event"
+   ],
+   "description": "Maximum-volume flyer page for a warehouse electronic night: giant Anton type, acid lime, marquee.",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "farmers-market",
+   "title": "Herbarium Market — Weekly Farmers Market",
+   "category": "Template",
+   "file": "templates/farmers-market.html",
+   "tags": [
+    "farmers-market",
+    "local",
+    "food"
+   ],
+   "description": "Botanical-lab farmers market with herbarium specimen labels and Latin binomials.",
+   "dnas": [
+    "botanical-lab"
+   ]
+  },
+  {
+   "id": "fashion",
+   "title": "Maison Vesper — Fashion Label",
+   "category": "Template",
+   "file": "templates/fashion.html",
+   "tags": [
+    "fashion"
+   ],
+   "description": "Restrained dark-luxe label page: whisper-thin serif, champagne hairlines, vast whitespace.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "fitness-studio",
+   "title": "IRONWORKS — Strength Gym",
+   "category": "Template",
+   "file": "templates/fitness-studio.html",
+   "tags": [
+    "fitness"
+   ],
+   "description": "Raw industrial strength-gym page: concrete, safety orange, stencil type, brutal schedule table.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "music-festival",
+   "title": "POPFIELDS — 3-Day Music Festival",
+   "category": "Template",
+   "file": "templates/music-festival.html",
+   "tags": [
+    "festival"
+   ],
+   "description": "Lichtenstein-loud festival page: halftone dots, sticker badges, bold black borders, day-by-day lineup.",
+   "dnas": [
+    "pop-art-halftone"
+   ]
+  },
+  {
+   "id": "newsletter-landing",
+   "title": "The Gilded Dispatch — Paid Newsletter",
+   "category": "Template",
+   "file": "templates/newsletter-landing.html",
+   "tags": [
+    "newsletter",
+    "publishing",
+    "subscription"
+   ],
+   "description": "Art-deco-luxe paid newsletter landing with library-catalog issue archive.",
+   "dnas": [
+    "art-deco-luxe"
+   ]
+  },
+  {
+   "id": "nonprofit",
+   "title": "The Full Pantry — Community Food Nonprofit",
+   "category": "Template",
+   "file": "templates/nonprofit.html",
+   "tags": [
+    "nonprofit"
+   ],
+   "description": "Warm cottage-style nonprofit page: community board, volunteer notes, honest impact numbers.",
+   "dnas": [
+    "cottage-warm"
+   ]
+  },
+  {
+   "id": "open-source-project",
+   "title": "Mason — Open-Source CLI Tool",
+   "category": "Template",
+   "file": "templates/open-source-project.html",
+   "tags": [
+    "open-source",
+    "developer-tools",
+    "cli"
+   ],
+   "description": "Retro-terminal landing for Mason, an open-source scaffolding CLI with boot-sequence hero.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "podcast",
+   "title": "Cold Trail — True-Crime Podcast",
+   "category": "Template",
+   "file": "templates/podcast.html",
+   "tags": [
+    "podcast",
+    "audio",
+    "media"
+   ],
+   "description": "True-crime podcast show page styled like a used-record-shop sleeve, vinyl-crate DNA.",
+   "dnas": [
+    "vinyl-crate"
+   ]
+  },
+  {
+   "id": "portfolio",
+   "title": "Mara Lindqvist — Brand Designer Portfolio",
+   "category": "Template",
+   "file": "templates/portfolio.html",
+   "tags": [
+    "portfolio"
+   ],
+   "description": "Literary-magazine portfolio with an oversized folio index, hairline rules, and drop-cap colophon.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "real-estate",
+   "title": "Solstice & Stone — Desert Modern Brokerage",
+   "category": "Template",
+   "file": "templates/real-estate.html",
+   "tags": [
+    "real-estate",
+    "property"
+   ],
+   "description": "Boutique desert-modern homes brokerage with editorial listings, desert-modern DNA.",
+   "dnas": [
+    "desert-modern"
+   ]
+  },
+  {
+   "id": "restaurant",
+   "title": "Osteria Alba — Italian Restaurant",
+   "category": "Template",
+   "file": "templates/restaurant.html",
+   "tags": [
+    "restaurant"
+   ],
+   "description": "Warm trattoria page with a printed-style menu, dotted leaders, and italic serif voice.",
+   "dnas": [
+    "aperitivo-italian"
+   ]
+  },
+  {
+   "id": "saas",
+   "title": "Northloop — B2B Analytics Landing",
+   "category": "Template",
+   "file": "templates/saas.html",
+   "tags": [
+    "saas"
+   ],
+   "description": "Calm analytics landing with a live-feeling dashboard widget, split hero, asymmetric proof rows.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "skincare",
+   "title": "Formula 04 — Clinical Skincare",
+   "category": "Template",
+   "file": "templates/skincare.html",
+   "tags": [
+    "skincare",
+    "beauty",
+    "ecommerce"
+   ],
+   "description": "Laboratory-clean clinical skincare brand with lab-inventory labeling and protocol pricing.",
+   "dnas": [
+    "laboratory-clean"
+   ]
+  },
+  {
+   "id": "travel-guide",
+   "title": "The Ochre Road — Morocco Travel Guide",
+   "category": "Template",
+   "file": "templates/travel-guide.html",
+   "tags": [
+    "travel",
+    "guide",
+    "book"
+   ],
+   "description": "Sahara-ochre Morocco travel guide with zellige dividers and route itineraries.",
+   "dnas": [
+    "sahara-ochre"
+   ]
+  },
+  {
+   "id": "wedding",
+   "title": "Maison Vow — Parisian Wedding Planner",
+   "category": "Template",
+   "file": "templates/wedding.html",
+   "tags": [
+    "wedding",
+    "events",
+    "planner"
+   ],
+   "description": "Parisian-chic wedding planner with invitation-style layout and letterpress detail.",
+   "dnas": [
+    "parisian-chic"
+   ]
+  }
+ ]
+}
