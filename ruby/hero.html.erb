@@ -1,0 +1,143 @@
+<!--tz-meta {"id":"ruby-hero","title":"Nightline — sleeper train hero","category":"Ruby","file":"ruby/hero.html.erb","tags":["ruby","erb","hero","travel"],"description":"Midnight-railway hero page for fictional Nightline sleeper train: a split-flap departure board as the focal point beside left-aligned editorial type.","dnas":["midnight-railway"]} -->
+<% bg = "#101a2e" %>
+<% ink = "#e9e2d0" %>
+<% accent = "#c9a227" %>
+<% muted = "#7d8698" %>
+<% line = "#2a3a5c" %>
+<% display = "DM Serif Display" %>
+<% body = "DM Sans" %>
+<% mono = "Space Mono" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nightline — fall asleep in Boston, wake up in Montreal</title>
+<meta name="description" content="Nightline is the overnight sleeper train: board at 9pm in Boston, wake up in Montreal. Private cabins from $189.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:<%= bg %>; --ink:<%= ink %>; --accent:<%= accent %>;
+  --muted:<%= muted %>; --line:<%= line %>;
+  --ink-2:color-mix(in srgb, var(--ink) 72%, var(--bg));
+  --display:"<%= display %>",Georgia,serif;
+  --body:"<%= body %>",-apple-system,sans-serif;
+  --mono:"<%= mono %>",ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);
+     font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased;min-height:100dvh;
+     display:flex;flex-direction:column}
+::selection{background:var(--accent);color:var(--bg)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,48px);width:100%}
+/* rail lines motif across the top */
+.rails{height:26px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.rails::before,.rails::after{content:"";position:absolute;left:0;right:0;height:1px;background:var(--line)}
+.rails::before{top:8px}.rails::after{top:17px}
+/* header */
+.site-head .wrap{display:flex;justify-content:space-between;align-items:center;
+                 padding-top:22px;padding-bottom:22px}
+.brand{font-family:var(--display);font-size:24px;text-decoration:none;color:var(--ink)}
+.brand b{color:var(--accent);font-weight:400}
+.site-head nav{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase}
+.site-head nav a{color:var(--ink-2);text-decoration:none;margin-left:26px}
+.site-head nav a:hover{color:var(--accent)}
+/* hero: asymmetric — editorial type left, departure board right and dropped */
+.hero{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,96px);
+      align-items:start;padding:clamp(48px,7vw,110px) 0 clamp(56px,8vw,110px)}
+.kicker{font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;
+        color:var(--accent);margin-bottom:26px}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(46px,6.4vw,92px);
+   line-height:1.04;letter-spacing:-.01em;margin-bottom:28px;text-wrap:balance}
+h1 em{font-style:italic;color:var(--accent)}
+.lede{font-size:18px;color:var(--ink-2);max-width:44ch;margin-bottom:38px}
+.cta-row{display:flex;gap:28px;align-items:center;flex-wrap:wrap;margin-bottom:22px}
+.btn{display:inline-block;background:var(--accent);color:var(--bg);font-weight:700;font-size:15.5px;
+     padding:16px 34px;border-radius:4px;text-decoration:none}
+.btn:hover{filter:brightness(1.1)}
+.ghost{color:var(--ink);font-weight:600;font-size:15px;text-decoration:none;
+       border-bottom:2px solid var(--accent);padding-bottom:2px}
+.micro{font-family:var(--mono);font-size:12.5px;color:var(--ink-2);line-height:2}
+/* departure board — the page's one distinctive choice */
+.board{margin-top:clamp(16px,4vw,64px);border:1px solid var(--line);border-radius:8px;
+       overflow:hidden;background:color-mix(in srgb, var(--bg) 82%, #000)}
+.board-head{display:flex;justify-content:space-between;align-items:center;
+            padding:14px 22px;border-bottom:1px solid var(--line);
+            font-family:var(--mono);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;
+            color:var(--ink-2)}
+.board-head .dot{color:var(--accent)}
+.flap{display:grid;grid-template-columns:76px 1fr auto;gap:18px;align-items:center;
+      padding:20px 22px;border-bottom:1px solid var(--line)}
+.flap:last-child{border-bottom:0}
+.flap .t{font-family:var(--mono);font-size:20px;font-weight:700;color:var(--ink);letter-spacing:.04em}
+.flap .dest{font-family:var(--display);font-size:24px}
+.flap .dest small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.2em;
+                 text-transform:uppercase;color:var(--ink-2);margin-top:4px}
+.flap .status{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;
+             color:var(--accent);border:1px solid var(--accent);border-radius:3px;
+             padding:6px 12px;white-space:nowrap}
+.flap .status.dim{color:var(--ink-2);border-color:var(--line)}
+/* footer */
+footer{border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+             padding-top:22px;padding-bottom:30px;font-family:var(--mono);font-size:12px;
+             color:var(--ink-2);letter-spacing:.06em}
+footer a{color:var(--ink-2);text-decoration:none}
+footer a:hover{color:var(--accent)}
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr}
+  .board{margin-top:8px}
+  .flap .dest{font-size:20px}
+}
+</style>
+</head>
+<body>
+<div class="rails" aria-hidden="true"></div>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="#">Night<b>line</b></a>
+  <nav><a href="#book">Book</a><a href="#cabins">Cabins</a><a href="#schedule">Schedule</a></nav>
+</div></header>
+
+<main class="wrap hero">
+  <div>
+    <p class="kicker">Overnight sleeper · Boston — Montreal</p>
+    <h1>Fall asleep in Boston.<br>Wake up in <em>Montreal.</em></h1>
+    <p class="lede">Board at 9 p.m., dinner in the dining car, a real bed in a private
+    cabin — and the border crossing happens while you dream. No airport, no
+    middle seat, no 5 a.m. alarm.</p>
+    <div class="cta-row">
+      <a class="btn" href="#book">Book a cabin — from $189</a>
+      <a class="ghost" href="#cabins">See the cabins ↓</a>
+    </div>
+    <p class="micro">Nightly departures, both directions<br>
+    Free cancellation up to 48 hours before · Dinner included in every cabin fare</p>
+  </div>
+
+  <div class="board" id="schedule" role="img" aria-label="Tonight's departures: 21:05 to Montreal on time, 21:40 to Portland Maine boarding, 22:15 to New York on time">
+    <div class="board-head"><span><span class="dot">●</span> Tonight's departures</span><span>South Station</span></div>
+    <div class="flap">
+      <span class="t">21:05</span>
+      <span class="dest">Montreal<small>NL 7 · Sleeper · 10h 12m</small></span>
+      <span class="status">On time</span>
+    </div>
+    <div class="flap">
+      <span class="t">21:40</span>
+      <span class="dest">Portland, ME<small>NL 12 · Coach + sleeper · 2h 05m</small></span>
+      <span class="status">Boarding</span>
+    </div>
+    <div class="flap">
+      <span class="t">22:15</span>
+      <span class="dest">New York<small>NL 3 · Sleeper · 4h 30m</small></span>
+      <span class="status dim">On time</span>
+    </div>
+  </div>
+</main>
+
+<footer><div class="wrap">
+  <span>© 2026 Nightline Rail · Not affiliated with any government railway, unfortunately</span>
+  <span id="book"><a href="#">Book</a> · <a href="#cabins">Cabins</a> · <a href="#">Gift cards</a> · <a href="mailto:hello@nightline.example">hello@nightline.example</a></span>
+</div></footer>
+</body>
+</html>
