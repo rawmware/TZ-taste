@@ -1,0 +1,62 @@
+{
+ "_tzmeta": {
+  "id": "tokens-docs-solar",
+  "title": "Docs Solar design tokens",
+  "category": "Tokens",
+  "file": "tokens/docs-solar.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "docs-solar"
+  ],
+  "description": "W3C-format design tokens for the Docs Solar style DNA.",
+  "dnas": [
+   "docs-solar"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#fdf6e3",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#3d3a2e",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#cb4b16",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#8a8672",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#3d3a2e1f",
+   "$type": "color"
+  },
+  "surface": {
+   "$value": "#f7eeda",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Source Serif 4",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Source Serif 4",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "IBM Plex Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "docs-solar",
+  "name": "Docs Solar",
+  "vibe": "Warm documentation, amber accents, serif readability. Docs people actually enjoy reading."
+ }
+}
