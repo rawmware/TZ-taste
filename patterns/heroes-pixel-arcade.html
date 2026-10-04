@@ -1,0 +1,49 @@
+<!--tz-meta {"id":"heroes-pixel-arcade","title":"Pixel arcade hero","category":"Hero","file":"patterns/heroes-pixel-arcade.html","tags":["pixel","retro","game"],"description":"CRT cabinet hero: pixel-art invader drawn in box-shadows, blinking PRESS START call to action.","dnas":["retro-terminal"]} -->
+<section class="tz-arcade">
+  <div class="tz-arcade-cab" aria-hidden="true">
+    <div class="tz-arcade-scan"></div>
+    <div class="tz-invader"></div>
+  </div>
+  <div class="tz-arcade-copy">
+    <p class="tz-arcade-score">HI-SCORE&nbsp;&nbsp;042500</p>
+    <h1 class="tz-arcade-h">Quarter up.<br>Ship out.</h1>
+    <p class="tz-arcade-sub">Retro cabinet restorations, rebuilt board by board in our Portland workshop. Thirty-day burn-in on every machine before it leaves the floor.</p>
+    <a class="tz-arcade-start" href="#cabinets">Press start<span class="tz-arcade-cursor" aria-hidden="true">_</span></a>
+  </div>
+</section>
+<style>
+.tz-arcade{--bg:#0a0a10;--green:#39ff14;--amber:#ffb000;--ink:#e8e6df;
+  background:var(--bg);color:var(--ink);display:grid;grid-template-columns:minmax(220px,340px) 1fr;
+  gap:clamp(32px,5vw,72px);align-items:center;
+  padding:clamp(64px,9vw,130px) clamp(24px,6vw,90px);
+  font-family:ui-monospace,Menlo,monospace}
+.tz-arcade-cab{position:relative;background:#050508;border:4px solid #2a2a33;border-radius:10px;
+  padding:clamp(28px,4vw,48px);display:flex;justify-content:center;overflow:hidden}
+.tz-arcade-scan{position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(to bottom,transparent 0 3px,#00000088 3px 4px)}
+.tz-invader{width:12px;height:12px;animation:tz-bob 2.4s ease-in-out infinite;
+  box-shadow:24px 0 #39ff14,96px 0 #39ff14,
+  36px 12px #39ff14,84px 12px #39ff14,
+  24px 24px #39ff14,36px 24px #39ff14,48px 24px #39ff14,60px 24px #39ff14,72px 24px #39ff14,84px 24px #39ff14,96px 24px #39ff14,
+  12px 36px #39ff14,24px 36px #39ff14,48px 36px #39ff14,60px 36px #39ff14,72px 36px #39ff14,96px 36px #39ff14,108px 36px #39ff14,
+  0 48px #39ff14,12px 48px #39ff14,24px 48px #39ff14,36px 48px #39ff14,48px 48px #39ff14,60px 48px #39ff14,72px 48px #39ff14,84px 48px #39ff14,96px 48px #39ff14,108px 48px #39ff14,120px 48px #39ff14,
+  0 60px #39ff14,24px 60px #39ff14,36px 60px #39ff14,48px 60px #39ff14,60px 60px #39ff14,72px 60px #39ff14,84px 60px #39ff14,96px 60px #39ff14,120px 60px #39ff14,
+  0 72px #39ff14,24px 72px #39ff14,96px 72px #39ff14,120px 72px #39ff14,
+  36px 84px #39ff14,48px 84px #39ff14,72px 84px #39ff14,84px 84px #39ff14}
+@keyframes tz-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.tz-arcade-score{color:var(--amber);font-size:13px;letter-spacing:.2em;margin:0 0 22px}
+.tz-arcade-h{color:var(--green);font-size:clamp(38px,6vw,84px);line-height:1.05;
+  letter-spacing:.02em;margin:0 0 24px;text-shadow:0 0 18px #39ff1466}
+.tz-arcade-sub{font-size:15px;line-height:1.75;max-width:44ch;opacity:.85;margin:0 0 36px}
+.tz-arcade-start{color:var(--ink);text-decoration:none;font-size:18px;letter-spacing:.14em;
+  text-transform:uppercase;border:2px solid var(--green);padding:16px 30px;display:inline-block}
+.tz-arcade-start:hover{background:var(--green);color:#061206}
+.tz-arcade-cursor{animation:tz-blink 1.06s steps(1) infinite;color:var(--green)}
+.tz-arcade-start:hover .tz-arcade-cursor{color:#061206}
+@keyframes tz-blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){
+  .tz-invader{animation:none}
+  .tz-arcade-cursor{animation:none}
+}
+@media (max-width:640px){.tz-arcade{grid-template-columns:1fr}}
+</style>
