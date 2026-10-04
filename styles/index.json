@@ -1,5 +1,5 @@
 {
- "count": 72,
+ "count": 92,
  "updated": "2026-10-04",
  "usage": "Agents: pick exactly ONE dna. Load only that file. Never load all.",
  "dnas": [
@@ -141,6 +141,41 @@
    }
   },
   {
+   "id": "apotheke",
+   "name": "Apotheke",
+   "vibe": "Amber bottles in a row, labels in careful Latin, the mortar never quite clean. Remedies, measured twice.",
+   "file": "styles/apotheke.md",
+   "tags": [
+    "pharmacy",
+    "botanical",
+    "heritage"
+   ],
+   "best_for": [
+    "clinics",
+    "wellness",
+    "skincare",
+    "tea-brands"
+   ],
+   "fonts": {
+    "display": "Cormorant Garamond",
+    "body": "Newsreader",
+    "mono": "Roboto Mono"
+   },
+   "tokens": {
+    "bg": "#f3f0e6",
+    "surface": "#e6e0cd",
+    "ink": "#26302a",
+    "accent": "#2e7d4f",
+    "muted": "#7a8272",
+    "line": "#26302a26"
+   },
+   "dials": {
+    "variance": 4,
+    "motion": 3,
+    "density": 5
+   }
+  },
+  {
    "id": "arctic-field",
    "name": "Arctic Field",
    "vibe": "Expedition research: ice white, glacier blue, instrument precision — data you can trust at −30°.",
@@ -241,6 +276,41 @@
    }
   },
   {
+   "id": "barbershop-pole",
+   "name": "Barbershop Pole",
+   "vibe": "Vitrolite tile, spinning stripes, the honest smell of bay rum. Walk-ins welcome, appointments kept.",
+   "file": "styles/barbershop-pole.md",
+   "tags": [
+    "barbershop",
+    "vintage",
+    "grooming"
+   ],
+   "best_for": [
+    "barbershops",
+    "groomers",
+    "tailors",
+    "local-shops"
+   ],
+   "fonts": {
+    "display": "Alfa Slab One",
+    "body": "Source Sans 3",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#f6f3ea",
+    "surface": "#eae4d3",
+    "ink": "#232323",
+    "accent": "#b3312a",
+    "muted": "#8a857a",
+    "line": "#23232326"
+   },
+   "dials": {
+    "variance": 5,
+    "motion": 3,
+    "density": 4
+   }
+  },
+  {
    "id": "bauhaus-primary",
    "name": "Bauhaus Primary",
    "vibe": "Functional geometry: red, yellow, blue on off-white. A workshop poster that refuses to decorate.",
@@ -309,6 +379,41 @@
    }
   },
   {
+   "id": "bike-repair",
+   "name": "Bike Repair",
+   "vibe": "Workbench hours: grease under the nails, a truing stand that never lies, and the quiet pride of a drivetrain that finally shifts clean.",
+   "file": "styles/bike-repair.md",
+   "tags": [
+    "cycling",
+    "workshop",
+    "trade"
+   ],
+   "best_for": [
+    "bike-shops",
+    "repair-services",
+    "cycling-clubs",
+    "makers"
+   ],
+   "fonts": {
+    "display": "Chakra Petch",
+    "body": "Public Sans",
+    "mono": "JetBrains Mono"
+   },
+   "tokens": {
+    "bg": "#e9e6dd",
+    "surface": "#d9d4c6",
+    "ink": "#232323",
+    "accent": "#d99a1f",
+    "muted": "#6f6a5e",
+    "line": "#2323231f"
+   },
+   "dials": {
+    "variance": 5,
+    "motion": 4,
+    "density": 6
+   }
+  },
+  {
    "id": "blueprint-tech",
    "name": "Blueprint Tech",
    "vibe": "Cyanotype schematics: deep blueprint blue, white line work, everything labeled.",
@@ -371,6 +476,41 @@
    "dials": {
     "variance": 4,
     "motion": 3,
+    "density": 4
+   }
+  },
+  {
+   "id": "cassette-jcard",
+   "name": "Cassette J-Card",
+   "vibe": "Photocopied liner notes, hand-labeled spines, tracklists typed with a tired ribbon. Side A still hits harder.",
+   "file": "styles/cassette-jcard.md",
+   "tags": [
+    "80s",
+    "music",
+    "liner-notes"
+   ],
+   "best_for": [
+    "bands",
+    "labels",
+    "playlists",
+    "zines"
+   ],
+   "fonts": {
+    "display": "Archivo Black",
+    "body": "Archivo",
+    "mono": "Courier Prime"
+   },
+   "tokens": {
+    "bg": "#f2ede0",
+    "surface": "#e3dac2",
+    "ink": "#1e1c18",
+    "accent": "#c2452d",
+    "muted": "#75705f",
+    "line": "#1e1c1826"
+   },
+   "dials": {
+    "variance": 7,
+    "motion": 5,
     "density": 4
    }
   },
@@ -506,6 +646,41 @@
     "variance": 8,
     "motion": 5,
     "density": 5
+   }
+  },
+  {
+   "id": "corner-deli",
+   "name": "Corner Deli",
+   "vibe": "Daytime awning: the slicer is already warm, the ticket rail is full by eleven, and everybody's order is remembered whether they want it to be or not.",
+   "file": "styles/corner-deli.md",
+   "tags": [
+    "food",
+    "neighborhood",
+    "daytime"
+   ],
+   "best_for": [
+    "delis",
+    "cafes",
+    "sandwich-shops",
+    "neighborhood-services"
+   ],
+   "fonts": {
+    "display": "Bebas Neue",
+    "body": "Karla",
+    "mono": "Special Elite"
+   },
+   "tokens": {
+    "bg": "#f7f3e8",
+    "surface": "#efe7d3",
+    "ink": "#2e2620",
+    "accent": "#c0392b",
+    "muted": "#7c6f5f",
+    "line": "#2e26201f"
+   },
+   "dials": {
+    "variance": 5,
+    "motion": 3,
+    "density": 6
    }
   },
   {
@@ -748,6 +923,41 @@
    }
   },
   {
+   "id": "drive-in-theater",
+   "name": "Drive-In Theater",
+   "vibe": "Dusk at the lot: the sky goes flat indigo, the marquee flickers on, and the second feature starts whether you are back from the snack bar or not.",
+   "file": "styles/drive-in-theater.md",
+   "tags": [
+    "retro",
+    "cinema",
+    "night"
+   ],
+   "best_for": [
+    "film-festivals",
+    "event-venues",
+    "nostalgia-brands",
+    "music"
+   ],
+   "fonts": {
+    "display": "Limelight",
+    "body": "Figtree",
+    "mono": "IBM Plex Mono"
+   },
+   "tokens": {
+    "bg": "#151423",
+    "surface": "#211f33",
+    "ink": "#f4efe4",
+    "accent": "#f2a93b",
+    "muted": "#8f8ba0",
+    "line": "#f4efe41f"
+   },
+   "dials": {
+    "variance": 6,
+    "motion": 6,
+    "density": 3
+   }
+  },
+  {
    "id": "editorial-serif",
    "name": "Editorial Serif",
    "vibe": "Warm paper, oversized serif, hairline rules. A literary magazine that happens to be a website.",
@@ -781,6 +991,76 @@
     "density": 2,
     "motion": 3,
     "variance": 6
+   }
+  },
+  {
+   "id": "farmers-almanac",
+   "name": "Farmers Almanac",
+   "vibe": "Print reference craft: aged paper, inked tables, the moon doing the scheduling. Weather wisdom set by hand, one season at a time.",
+   "file": "styles/farmers-almanac.md",
+   "tags": [
+    "almanac",
+    "print",
+    "rural"
+   ],
+   "best_for": [
+    "gardening",
+    "weather",
+    "heritage-brands",
+    "cookbooks"
+   ],
+   "fonts": {
+    "display": "Pirata One",
+    "body": "Spectral",
+    "mono": "Courier Prime"
+   },
+   "tokens": {
+    "bg": "#f1e8d2",
+    "surface": "#e7dab8",
+    "ink": "#2a2118",
+    "accent": "#a3331f",
+    "muted": "#7a6a52",
+    "line": "#2a21181f"
+   },
+   "dials": {
+    "variance": 4,
+    "motion": 2,
+    "density": 8
+   }
+  },
+  {
+   "id": "fishing-tackle",
+   "name": "Fishing Tackle",
+   "vibe": "Retail wall craft: pegboard, price guns, and a thousand small decisions behind glass. The lure wall is organized by someone who takes this very seriously.",
+   "file": "styles/fishing-tackle.md",
+   "tags": [
+    "retail",
+    "outdoors",
+    "shop"
+   ],
+   "best_for": [
+    "outdoor-retail",
+    "bait-shops",
+    "gear-guides",
+    "charters"
+   ],
+   "fonts": {
+    "display": "Oswald",
+    "body": "Work Sans",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#f2efe6",
+    "surface": "#e4ddc9",
+    "ink": "#23301f",
+    "accent": "#d9480f",
+    "muted": "#6d7360",
+    "line": "#23301f1f"
+   },
+   "dials": {
+    "variance": 5,
+    "motion": 4,
+    "density": 8
    }
   },
   {
@@ -1261,6 +1541,41 @@
    }
   },
   {
+   "id": "locksmith-shop",
+   "name": "Locksmith Shop",
+   "vibe": "Brass and steel: the key machine hums, the ticket book never lies, and every key leaves with a story the customer almost tells you.",
+   "file": "styles/locksmith-shop.md",
+   "tags": [
+    "craft",
+    "trade",
+    "storefront"
+   ],
+   "best_for": [
+    "tradespeople",
+    "repair-shops",
+    "local-services",
+    "security"
+   ],
+   "fonts": {
+    "display": "Big Shoulders Stencil Text",
+    "body": "Karla",
+    "mono": "JetBrains Mono"
+   },
+   "tokens": {
+    "bg": "#ece7db",
+    "surface": "#ded6c2",
+    "ink": "#26221a",
+    "accent": "#a67c2e",
+    "muted": "#7d7461",
+    "line": "#26221a1f"
+   },
+   "dials": {
+    "variance": 4,
+    "motion": 3,
+    "density": 6
+   }
+  },
+  {
    "id": "ma-japanese",
    "name": "Ma (Japanese Minimal)",
    "vibe": "Rice paper, ink black, vast emptiness used on purpose. Ma — the beauty of negative space.",
@@ -1294,6 +1609,41 @@
     "density": 1,
     "motion": 2,
     "variance": 5
+   }
+  },
+  {
+   "id": "matchbook-cover",
+   "name": "Matchbook Cover",
+   "vibe": "Two inches of advertising you kept in your pocket. Strike anywhere, remember everything.",
+   "file": "styles/matchbook-cover.md",
+   "tags": [
+    "ephemera",
+    "advertising",
+    "deco"
+   ],
+   "best_for": [
+    "bars",
+    "restaurants",
+    "local-services",
+    "events"
+   ],
+   "fonts": {
+    "display": "Limelight",
+    "body": "Josefin Sans",
+    "mono": "Inconsolata"
+   },
+   "tokens": {
+    "bg": "#efe6d4",
+    "surface": "#e2d4b6",
+    "ink": "#262019",
+    "accent": "#b3402a",
+    "muted": "#8d7f63",
+    "line": "#2620192b"
+   },
+   "dials": {
+    "variance": 5,
+    "motion": 4,
+    "density": 6
    }
   },
   {
@@ -1497,6 +1847,41 @@
     "variance": 4,
     "motion": 3,
     "density": 8
+   }
+  },
+  {
+   "id": "night-market",
+   "name": "Night Market",
+   "vibe": "Strings of lanterns over wet pavement, hand-painted stall signs, steam off the grill. Eat first, ask questions later.",
+   "file": "styles/night-market.md",
+   "tags": [
+    "night",
+    "street-food",
+    "lantern"
+   ],
+   "best_for": [
+    "food-trucks",
+    "festivals",
+    "restaurants",
+    "travel"
+   ],
+   "fonts": {
+    "display": "Fraunces",
+    "body": "Mulish",
+    "mono": "JetBrains Mono"
+   },
+   "tokens": {
+    "bg": "#161009",
+    "surface": "#221a10",
+    "ink": "#f5ead6",
+    "accent": "#e8722a",
+    "muted": "#a8967a",
+    "line": "#f5ead61f"
+   },
+   "dials": {
+    "variance": 6,
+    "motion": 5,
+    "density": 4
    }
   },
   {
@@ -1770,6 +2155,76 @@
    }
   },
   {
+   "id": "postage-stamp",
+   "name": "Postage Stamp",
+   "vibe": "Engraved portraits the size of a thumbnail, perforated edges, gum on the back. Mail still moves at the speed of care.",
+   "file": "styles/postage-stamp.md",
+   "tags": [
+    "philatelic",
+    "print",
+    "miniature"
+   ],
+   "best_for": [
+    "museums",
+    "newsletters",
+    "small-brands",
+    "wedding-sites"
+   ],
+   "fonts": {
+    "display": "Bodoni Moda",
+    "body": "Libre Franklin",
+    "mono": "IBM Plex Mono"
+   },
+   "tokens": {
+    "bg": "#f4f1e6",
+    "surface": "#e6dfcc",
+    "ink": "#2e2a24",
+    "accent": "#b03a2e",
+    "muted": "#8a7f6a",
+    "line": "#2e2a2426"
+   },
+   "dials": {
+    "variance": 6,
+    "motion": 3,
+    "density": 5
+   }
+  },
+  {
+   "id": "postcard-rack",
+   "name": "Postcard Rack",
+   "vibe": "Tourist ephemera: sun-faded ink, a spinning rack of somewhere-elses, and handwriting on the back that says the weather is perfect.",
+   "file": "styles/postcard-rack.md",
+   "tags": [
+    "travel",
+    "ephemera",
+    "retro"
+   ],
+   "best_for": [
+    "tourism",
+    "souvenir-shops",
+    "travel-blogs",
+    "local-history"
+   ],
+   "fonts": {
+    "display": "Bungee",
+    "body": "Karla",
+    "mono": "Courier Prime"
+   },
+   "tokens": {
+    "bg": "#f6efdd",
+    "surface": "#efe3c8",
+    "ink": "#3d2f22",
+    "accent": "#c9402e",
+    "muted": "#8a755a",
+    "line": "#3d2f221f"
+   },
+   "dials": {
+    "variance": 7,
+    "motion": 5,
+    "density": 5
+   }
+  },
+  {
    "id": "retro-terminal",
    "name": "Retro Terminal",
    "vibe": "Phosphor green on black, scanlines, amber warnings. The machine is the message.",
@@ -1836,6 +2291,41 @@
     "variance": 7,
     "motion": 3,
     "density": 4
+   }
+  },
+  {
+   "id": "roadside-motel",
+   "name": "Roadside Motel",
+   "vibe": "Highway typography: the sign is taller than the building, the pool is closed, and the vacancy light has been on since 1962 and it is still on.",
+   "file": "styles/roadside-motel.md",
+   "tags": [
+    "motel",
+    "highway",
+    "americana"
+   ],
+   "best_for": [
+    "motels",
+    "roadside-attractions",
+    "retro-brands",
+    "travel"
+   ],
+   "fonts": {
+    "display": "Yellowtail",
+    "body": "Karla",
+    "mono": "IBM Plex Mono"
+   },
+   "tokens": {
+    "bg": "#101c2c",
+    "surface": "#1a2a40",
+    "ink": "#f3ead8",
+    "accent": "#e8b53a",
+    "muted": "#8d99a8",
+    "line": "#f3ead81f"
+   },
+   "dials": {
+    "variance": 6,
+    "motion": 5,
+    "density": 3
    }
   },
   {
@@ -1936,6 +2426,76 @@
     "variance": 3,
     "motion": 2,
     "density": 2
+   }
+  },
+  {
+   "id": "seed-packet",
+   "name": "Seed Packet",
+   "vibe": "Engraved print ephemera: kraft paper, copperplate vegetables, and planting instructions set like they matter — because they do.",
+   "file": "styles/seed-packet.md",
+   "tags": [
+    "garden",
+    "print",
+    "ephemera"
+   ],
+   "best_for": [
+    "seed-companies",
+    "garden-centers",
+    "farm-stores",
+    "botanical-shops"
+   ],
+   "fonts": {
+    "display": "Fraunces",
+    "body": "Spectral",
+    "mono": "Courier Prime"
+   },
+   "tokens": {
+    "bg": "#efe6d0",
+    "surface": "#e3d4b4",
+    "ink": "#2b2419",
+    "accent": "#3f7043",
+    "muted": "#7a6c52",
+    "line": "#2b24191f"
+   },
+   "dials": {
+    "variance": 4,
+    "motion": 2,
+    "density": 6
+   }
+  },
+  {
+   "id": "sewing-pattern",
+   "name": "Sewing Pattern",
+   "vibe": "Tissue thin as breath, dashed lines that mean cut here, notches that have to match. Measure twice, sew once.",
+   "file": "styles/sewing-pattern.md",
+   "tags": [
+    "craft",
+    "diy",
+    "textile"
+   ],
+   "best_for": [
+    "makers",
+    "craft-shops",
+    "courses",
+    "pattern-sellers"
+   ],
+   "fonts": {
+    "display": "DM Serif Display",
+    "body": "Nunito Sans",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#f7f2e7",
+    "surface": "#ede2cb",
+    "ink": "#33291f",
+    "accent": "#9c3d54",
+    "muted": "#97826a",
+    "line": "#33291f26"
+   },
+   "dials": {
+    "variance": 5,
+    "motion": 3,
+    "density": 6
    }
   },
   {
@@ -2075,6 +2635,41 @@
    }
   },
   {
+   "id": "swimming-pool",
+   "name": "Swimming Pool",
+   "vibe": "Chlorinated summer: pale water, hot concrete, the lifeguard's red stand. Everything smells like sunscreen and the deep end is always colder than you remember.",
+   "file": "styles/swimming-pool.md",
+   "tags": [
+    "summer",
+    "pool",
+    "suburban"
+   ],
+   "best_for": [
+    "summer-camps",
+    "swim-schools",
+    "parks-rec",
+    "community-pools"
+   ],
+   "fonts": {
+    "display": "Archivo Black",
+    "body": "Karla",
+    "mono": "Space Mono"
+   },
+   "tokens": {
+    "bg": "#e9f4f2",
+    "surface": "#d8ebe8",
+    "ink": "#123a3f",
+    "accent": "#e03e2d",
+    "muted": "#5c7a7d",
+    "line": "#123a3f1f"
+   },
+   "dials": {
+    "variance": 5,
+    "motion": 5,
+    "density": 3
+   }
+  },
+  {
    "id": "swiss-airline",
    "name": "Swiss Airline",
    "vibe": "Mid-century airline identity: timetable grids, the red arrow, Helvetica-like order. Departures on time, forever.",
@@ -2175,6 +2770,41 @@
     "density": 6,
     "motion": 2,
     "variance": 4
+   }
+  },
+  {
+   "id": "ticket-stub",
+   "name": "Ticket Stub",
+   "vibe": "Admit one. The paper left in your pocket after the lights came up. Keep it — you'll want the date.",
+   "file": "styles/ticket-stub.md",
+   "tags": [
+    "cinema",
+    "music",
+    "ephemera"
+   ],
+   "best_for": [
+    "venues",
+    "festivals",
+    "theaters",
+    "tours"
+   ],
+   "fonts": {
+    "display": "Oswald",
+    "body": "Public Sans",
+    "mono": "DM Mono"
+   },
+   "tokens": {
+    "bg": "#f1ece1",
+    "surface": "#e3d9c4",
+    "ink": "#241f18",
+    "accent": "#b23a2e",
+    "muted": "#8a7d66",
+    "line": "#241f182b"
+   },
+   "dials": {
+    "variance": 6,
+    "motion": 4,
+    "density": 5
    }
   },
   {
@@ -2312,6 +2942,41 @@
    }
   },
   {
+   "id": "typewriter-repair",
+   "name": "Typewriter Repair",
+   "vibe": "Springs, escapements, and ribbon tins spread across the bench. Every machine leaves typing straighter than it came.",
+   "file": "styles/typewriter-repair.md",
+   "tags": [
+    "workshop",
+    "mechanical",
+    "repair"
+   ],
+   "best_for": [
+    "repair-shops",
+    "vintage-stores",
+    "craftspeople",
+    "makers"
+   ],
+   "fonts": {
+    "display": "Special Elite",
+    "body": "Courier Prime",
+    "mono": "IBM Plex Mono"
+   },
+   "tokens": {
+    "bg": "#ece7d8",
+    "surface": "#dbd0b4",
+    "ink": "#26221c",
+    "accent": "#8f3b2a",
+    "muted": "#857a64",
+    "line": "#26221c2b"
+   },
+   "dials": {
+    "variance": 4,
+    "motion": 3,
+    "density": 5
+   }
+  },
+  {
    "id": "ukiyo-e-print",
    "name": "Ukiyo-e Print",
    "vibe": "Japanese woodblock print: Prussian blue, vermillion, wave compositions. The floating world, keyed and registered.",
@@ -2409,6 +3074,41 @@
     "variance": 6,
     "motion": 4,
     "density": 5
+   }
+  },
+  {
+   "id": "weather-station",
+   "name": "Weather Station",
+   "vibe": "Brass dials, aneroid needles, the logbook filled at 0600 Zulu. The sky, measured honestly.",
+   "file": "styles/weather-station.md",
+   "tags": [
+    "instruments",
+    "data",
+    "fieldwork"
+   ],
+   "best_for": [
+    "outdoor-brands",
+    "farms",
+    "aviation",
+    "science"
+   ],
+   "fonts": {
+    "display": "Barlow Condensed",
+    "body": "Barlow",
+    "mono": "IBM Plex Mono"
+   },
+   "tokens": {
+    "bg": "#e9eae4",
+    "surface": "#dbddd2",
+    "ink": "#23282b",
+    "accent": "#c05b2e",
+    "muted": "#6f777c",
+    "line": "#23282b26"
+   },
+   "dials": {
+    "variance": 4,
+    "motion": 3,
+    "density": 7
    }
   },
   {
