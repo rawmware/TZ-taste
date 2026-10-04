@@ -1,0 +1,122 @@
+<!--tz-meta {"id":"showcase-locksmith-shop","title":"Locksmith Shop showcase","category":"Showcase","file":"showcase/locksmith-shop.html","tags":["locksmith-shop"],"description":"Live demo page for the Locksmith Shop style DNA.","dnas":["locksmith-shop"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Locksmith Shop — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text:wght@400;700&family=Karla:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#ece7db; --tz-surface:#ded6c2; --tz-ink:#26221a; --tz-muted:#7d7461;
+  --tz-accent:#a67c2e; --tz-line:#26221a1f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Karla",sans-serif;font-size:1rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 4vw;border-bottom:2px solid var(--tz-ink)}
+.tz-wordmark{font-family:"Big Shoulders Stencil Text",sans-serif;font-size:1.25rem;letter-spacing:0.06em}
+.tz-stub{background:var(--tz-surface);border:1px solid var(--tz-line);border-right:2px dashed var(--tz-accent);padding:0.5rem 1rem 0.5rem 0.8rem;font-family:"JetBrains Mono",monospace;font-size:0.68rem;letter-spacing:0.1em;color:var(--tz-muted);transform:rotate(1.5deg);border-radius:2px}
+.tz-stub strong{color:var(--tz-ink);font-weight:500}
+.tz-hero{padding:6rem 4vw 3rem}
+.tz-eyebrow{font-family:"JetBrains Mono",monospace;font-size:0.72rem;letter-spacing:0.16em;color:var(--tz-muted);margin-bottom:1.4rem}
+.tz-hero h1{font-family:"Big Shoulders Stencil Text",sans-serif;font-size:clamp(2.8rem,9vw,6rem);line-height:0.98;letter-spacing:0.02em;text-transform:uppercase;max-width:13ch;animation:tz-stamp 0.45s cubic-bezier(0.22,1,0.36,1) both}
+@keyframes tz-stamp{from{opacity:0;transform:scale(1.06)}to{opacity:1;transform:scale(1)}}
+.tz-sub{margin-top:1.6rem;font-size:1.05rem;color:var(--tz-muted);max-width:46ch}
+.tz-cta{display:inline-block;margin-top:2.2rem;background:var(--tz-accent);color:#fff;font-family:"Big Shoulders Stencil Text",sans-serif;font-size:1.15rem;letter-spacing:0.06em;text-decoration:none;text-transform:uppercase;padding:0.95rem 2.2rem;border-radius:2px;transition:opacity .15s ease}
+.tz-cta:hover{opacity:0.88}
+.tz-blanks{margin:3.5rem 0 0;border:1px solid var(--tz-line);background:var(--tz-surface);border-radius:2px;padding:1.4rem 1.6rem}
+.tz-blanks h2{font-family:"JetBrains Mono",monospace;font-size:0.7rem;font-weight:500;letter-spacing:0.18em;color:var(--tz-muted);margin-bottom:0.9rem}
+.tz-blanks p{font-family:"JetBrains Mono",monospace;font-size:0.82rem;letter-spacing:0.06em;line-height:2.2}
+.tz-blanks .tz-cut{color:var(--tz-accent);font-weight:500}
+.tz-content{padding:2.5rem 4vw 1rem}
+.tz-content h2{font-family:"Big Shoulders Stencil Text",sans-serif;font-size:clamp(1.8rem,5vw,2.7rem);text-transform:uppercase;letter-spacing:0.02em;margin-bottom:0.4rem}
+.tz-subhead{font-family:"JetBrains Mono",monospace;font-size:0.72rem;letter-spacing:0.14em;color:var(--tz-muted);margin-bottom:1.6rem}
+table.tz-prices{width:100%;border-collapse:collapse;max-width:720px}
+.tz-prices th{font-family:"JetBrains Mono",monospace;font-size:0.66rem;font-weight:500;letter-spacing:0.14em;color:var(--tz-muted);text-align:left;padding:0.9rem 0;border-bottom:1px solid var(--tz-ink)}
+.tz-prices td{font-family:"JetBrains Mono",monospace;font-size:0.88rem;padding:1rem 0;border-bottom:1px solid var(--tz-line)}
+.tz-prices td.tz-job{color:var(--tz-ink)}
+.tz-prices td.tz-cost{text-align:right;color:var(--tz-accent);font-weight:500}
+.tz-counter{margin:2.6rem 0 0;background:var(--tz-surface);border-radius:2px;padding:1.8rem;max-width:580px}
+.tz-counter h2{font-family:"JetBrains Mono",monospace;font-size:0.7rem;font-weight:500;letter-spacing:0.18em;color:var(--tz-muted);margin-bottom:0.8rem}
+.tz-counter p{color:var(--tz-muted)}
+.tz-counter strong{color:var(--tz-ink);font-weight:700}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Big Shoulders Stencil Text",sans-serif;font-size:1.7rem;text-transform:uppercase;letter-spacing:0.03em;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1;border-radius:2px;overflow:hidden}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"JetBrains Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"JetBrains Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"JetBrains Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-hero{padding-top:4rem}
+  .tz-stub{display:none}
+  .tz-blanks p{font-size:0.72rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">HARLOW &amp; SON LOCKSMITH</span>
+  <span class="tz-stub">KEEP THIS TICKET &middot; <strong id="tz-ticket">#1042</strong></span>
+</header>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow">EST. 1974 &middot; MON&ndash;SAT 8&ndash;6 &middot; THE KEY MACHINE HUMS</p>
+  <h1>We copy keys. We do not copy excuses.</h1>
+  <p class="tz-sub">Locked out? Bring the lock. Deadbolt, padlock, mailbox, the safe in the basement nobody admits to &mdash; we'll sort it.</p>
+  <a class="tz-cta" href="#">See the price board</a>
+  <div class="tz-blanks">
+    <h2>BLANKS ON THE WALL &mdash; CUT WHILE YOU WAIT</h2>
+    <p><span class="tz-cut">SC1</span> SCHLAGE 5-PIN &middot; <span class="tz-cut">KW1</span> KWIKSET 5-PIN &middot; <span class="tz-cut">WR5</span> WEISER &middot; <span class="tz-cut">Y1</span> YALE &middot; <span class="tz-cut">M1</span> MASTER PADLOCK &middot; <span class="tz-cut">CO104</span> MAILBOX</p>
+  </div>
+</section>
+
+<section class="tz-content">
+  <h2>Price board</h2>
+  <p class="tz-subhead">PRICES PUBLIC &amp; PROUD &middot; NO SURPRISES AT THE COUNTER</p>
+  <table class="tz-prices">
+    <thead><tr><th>JOB</th><th>BLANK</th><th style="text-align:right">PRICE</th></tr></thead>
+    <tbody>
+      <tr><td class="tz-job">HOUSE KEY DUPLICATE</td><td>SC1 / KW1</td><td class="tz-cost">$8</td></tr>
+      <tr><td class="tz-job">DEADBOLT REKEY</td><td>&mdash;</td><td class="tz-cost">$25</td></tr>
+      <tr><td class="tz-job">CAR KEY CUT, NO CHIP</td><td>B106</td><td class="tz-cost">$18</td></tr>
+      <tr><td class="tz-job">PADLOCK REKEY</td><td>M1</td><td class="tz-cost">$15</td></tr>
+      <tr><td class="tz-job">SAFE OPENING</td><td>&mdash;</td><td class="tz-cost">$95+</td></tr>
+    </tbody>
+  </table>
+  <div class="tz-counter">
+    <h2>FROM THE TICKET BOOK</h2>
+    <p><strong>Ticket #1041: one mailbox key, cut twice.</strong> The customer almost told us why she needed two. Almost. Every key leaves with a story &mdash; most of them stay in the shop.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#ece7db"></span><span class="tz-name">bg</span><span class="tz-hex">#ece7db</span></li>
+    <li><span class="tz-chip" style="background:#ded6c2"></span><span class="tz-name">surface</span><span class="tz-hex">#ded6c2</span></li>
+    <li><span class="tz-chip" style="background:#26221a"></span><span class="tz-name">ink</span><span class="tz-hex">#26221a</span></li>
+    <li><span class="tz-chip" style="background:#7d7461"></span><span class="tz-name">muted</span><span class="tz-hex">#7d7461</span></li>
+    <li><span class="tz-chip" style="background:#a67c2e"></span><span class="tz-name">accent</span><span class="tz-hex">#a67c2e</span></li>
+    <li><span class="tz-chip" style="background:#26221a1f"></span><span class="tz-name">line</span><span class="tz-hex">#26221a1f</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+<script>
+(function(){
+  try{
+    var n = parseInt(localStorage.getItem('tz-locksmith-ticket') || '1042', 10) + 1;
+    localStorage.setItem('tz-locksmith-ticket', String(n));
+    document.getElementById('tz-ticket').textContent = '#' + n;
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
