@@ -326,3 +326,12 @@ img,iframe{max-width:100%}
   *,*::before,*::after{animation-duration:.001s !important;transition-duration:.001s !important}
   html{scroll-behavior:auto}
 }
+
+/* ---------- galleries: 3D scenes, templates, DNA showcase ---------- */
+.g-tile{height:150px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#1b1512 0%,#2b2118 60%,#171310 100%);
+  border-bottom:1px solid var(--line);overflow:hidden;position:relative}
+.g-tile::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(120px 90px at 70% 20%,#ff4d0022,transparent 70%)}
+.g-tile span{font-family:var(--display);font-style:italic;font-size:72px;color:#ff4d00;
+  opacity:.85;line-height:1;position:relative;z-index:1}
