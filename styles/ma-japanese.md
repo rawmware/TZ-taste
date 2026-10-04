@@ -1,3 +1,4 @@
+<!--tz-meta {"id":"ma-japanese","name":"Ma (Japanese Minimal)","vibe":"Rice paper, ink black, vast emptiness used on purpose. Ma — the beauty of negative space.","file":"styles/ma-japanese.md","tags":["minimal","japanese","whitespace","craft"],"best_for":["craft","architecture","tea/food","galleries"],"fonts":{"body":"Zen Kaku Gothic New","display":"Shippori Mincho","mono":"Space Mono"},"tokens":{"accent":"#a33327","bg":"#f7f4ec","ink":"#26221c","line":"#26221c1f","muted":"#8a8478","surface":"#efe9da"},"dials":{"density":1,"motion":2,"variance":5}} -->
 # Ma (Japanese Minimal)
 
 > Rice paper, ink black, vast emptiness used on purpose. Ma — the beauty of
