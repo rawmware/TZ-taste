@@ -1,0 +1,96 @@
+<!--tz-meta {"id":"gen-flow-rain-ripples","title":"Rain Ripples","category":"Generative","file":"generative/flow-rain-ripples.html","tags":["ripples","physics","rain"],"description":"Slanted rain falls, strikes an invisible pond, and spreads fading interference rings.","dnas":["ma-japanese"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rain Ripples — TZ-taste Generative</title>
+<style>
+*{box-sizing:border-box}
+.tz-gen-body{margin:0;background:#e8ecdf;color:#2c332c;font-family:Georgia,'Times New Roman',serif;min-height:100vh}
+.tz-gen-wrap{max-width:1120px;margin:0 auto;padding:48px 24px 64px}
+.tz-gen-head{margin:0 0 28px}
+.tz-gen-kicker{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#6b7f63;margin:0 0 14px}
+.tz-gen-head h1{font-size:clamp(30px,5vw,52px);line-height:1.05;margin:0 0 12px;font-weight:600}
+.tz-gen-caption{font-size:16px;line-height:1.6;color:#5f6a5c;margin:0;max-width:62ch}
+.tz-gen-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:26px 0 14px}
+.tz-gen-btn{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;background:transparent;color:#2c332c;border:1px solid #b9c2ab;padding:10px 18px;border-radius:3px;cursor:pointer}
+.tz-gen-btn:hover{border-color:#2c332c}
+.tz-gen-seed{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:12px;color:#8a937f;margin-left:auto}
+.tz-gen-canvas{display:block;width:100%;height:70vh;border:1px solid #cfd6c0;border-radius:3px;background:#e8ecdf}
+.tz-gen-note{font-size:14px;line-height:1.65;color:#6c7565;margin:18px 0 0;max-width:70ch}
+@media(max-width:520px){.tz-gen-wrap{padding:32px 16px 48px}.tz-gen-seed{margin-left:0;width:100%}}
+</style>
+</head>
+<body class="tz-gen-body">
+<div class="tz-gen-wrap">
+  <header class="tz-gen-head">
+    <p class="tz-gen-kicker">TZ-taste · Generative</p>
+    <h1>Rain Ripples</h1>
+    <p class="tz-gen-caption">Drops fall on a slant, strike the pond at different depths, and each one spreads an expanding ring that thins as it grows.</p>
+  </header>
+  <div class="tz-gen-bar">
+    <button class="tz-gen-btn" id="tzSeed">New seed</button>
+    <button class="tz-gen-btn" id="tzPause">Pause</button>
+    <button class="tz-gen-btn" id="tzClear">Clear</button>
+    <span class="tz-gen-seed" id="tzSeedLabel">Seed 0</span>
+  </div>
+  <canvas class="tz-gen-canvas" id="tzCv" aria-label="Rain drops landing and spreading ripples"></canvas>
+  <p class="tz-gen-note">A quiet study in interference. Rings from neighboring drops cross without ever disturbing each other.</p>
+</div>
+<script>
+'use strict';
+const cv=document.getElementById('tzCv'),ctx=cv.getContext('2d');
+const seedLabel=document.getElementById('tzSeedLabel');
+let W=0,H=0,seed=(Math.random()*1e9)|0,rand=null,drops=[],rings=[],frame=0,running=true;
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const BG='#e8ecdf',INK='44,51,44';
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function init(){
+  rand=mulberry32(seed);drops=[];rings=[];frame=0;
+  ctx.fillStyle=BG;ctx.fillRect(0,0,W,H);
+  seedLabel.textContent='Seed '+seed;
+}
+function step(){
+  frame++;
+  ctx.fillStyle='rgba(232,236,223,0.06)';ctx.fillRect(0,0,W,H);
+  if(frame%4===0&&drops.length<130)drops.push({x:rand()*(W+80)-40,y:-10,gy:H*(0.25+rand()*0.7),v:5+rand()*4});
+  ctx.strokeStyle='rgba('+INK+',0.4)';ctx.lineWidth=1;ctx.beginPath();
+  for(let i=drops.length-1;i>=0;i--){
+    const d=drops[i];
+    ctx.moveTo(d.x,d.y);ctx.lineTo(d.x-2.5,d.y-d.v*2.2);
+    d.x-=0.6;d.y+=d.v;
+    if(d.y>=d.gy){
+      rings.push({x:d.x,y:d.gy,r:2,max:26+rand()*44,a:0.75,w:1.6});
+      if(rand()<0.3)rings.push({x:d.x,y:d.gy,r:1,max:14+rand()*16,a:0.6,w:1.2});
+      drops.splice(i,1);
+    }
+  }
+  ctx.stroke();
+  for(let i=rings.length-1;i>=0;i--){
+    const r=rings[i];
+    r.r+=1.35;r.a*=0.965;
+    if(r.a<0.02||r.r>r.max){rings.splice(i,1);continue;}
+    const squash=0.42;
+    ctx.strokeStyle='rgba('+INK+','+r.a.toFixed(3)+')';
+    ctx.lineWidth=r.w;
+    ctx.beginPath();ctx.ellipse(r.x,r.y,r.r,r.r*squash,0,0,7);ctx.stroke();
+  }
+}
+function resize(){
+  const d=Math.min(window.devicePixelRatio||1,2),r=cv.getBoundingClientRect();
+  W=Math.max(2,Math.round(r.width));H=Math.max(2,Math.round(r.height));
+  cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);init();
+}
+window.addEventListener('resize',resize);
+document.getElementById('tzSeed').addEventListener('click',()=>{seed=(Math.random()*1e9)|0;init();if(!running)toggle();});
+document.getElementById('tzClear').addEventListener('click',init);
+function toggle(){running=!running;document.getElementById('tzPause').textContent=running?'Pause':'Resume';if(running&&!reduced)tick();}
+document.getElementById('tzPause').addEventListener('click',toggle);
+function tick(){if(!running)return;step();requestAnimationFrame(tick);}
+resize();
+if(reduced){for(let i=0;i<420;i++)step();}
+else tick();
+</script>
+</body>
+</html>
