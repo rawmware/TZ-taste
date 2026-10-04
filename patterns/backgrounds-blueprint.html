@@ -1,0 +1,22 @@
+<!--tz-meta {"id":"backgrounds-blueprint","title":"Blueprint grid","category":"Backgrounds","file":"patterns/backgrounds-blueprint.html","tags":["grid","technical"],"description":"Blueprint overlay: fine and major grids with registration crosses.","dnas":["industrial-brutalist"]} -->
+<!-- Usage: drop .tz-blueprint behind content; absolutely positioned and click-through. -->
+<div class="tz-blueprint" aria-hidden="true">
+  <span class="tz-bp-cross" style="top:16%;left:10%"></span>
+  <span class="tz-bp-cross" style="top:16%;left:90%"></span>
+  <span class="tz-bp-cross" style="top:84%;left:10%"></span>
+  <span class="tz-bp-cross" style="top:84%;left:90%"></span>
+  <span class="tz-bp-cross" style="top:50%;left:50%"></span>
+</div>
+<style>
+.tz-blueprint{position:absolute;inset:0;pointer-events:none;background-color:#17456f;
+  background-image:
+    linear-gradient(rgba(255,255,255,.13) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.13) 1px,transparent 1px),
+    linear-gradient(rgba(255,255,255,.30) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.30) 1px,transparent 1px);
+  background-size:22px 22px,22px 22px,110px 110px,110px 110px}
+.tz-bp-cross{position:absolute;width:30px;height:30px;transform:translate(-50%,-50%)}
+.tz-bp-cross::before,.tz-bp-cross::after{content:"";position:absolute;background:rgba(255,255,255,.85)}
+.tz-bp-cross::before{left:50%;top:0;bottom:0;width:1px}
+.tz-bp-cross::after{top:50%;left:0;right:0;height:1px}
+</style>
