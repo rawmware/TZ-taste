@@ -1,0 +1,727 @@
+{
+ "count": 48,
+ "updated": "2026-10-04",
+ "usage": "W3C-format design tokens, one file per style DNA. Machine-readable color/type.",
+ "tokens": [
+  {
+   "id": "tokens-acid-rave",
+   "title": "Acid Rave design tokens",
+   "category": "Tokens",
+   "file": "tokens/acid-rave.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "acid-rave"
+   ],
+   "description": "W3C-format design tokens for the Acid Rave style DNA.",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "tokens-alpine-ledger",
+   "title": "Alpine Ledger design tokens",
+   "category": "Tokens",
+   "file": "tokens/alpine-ledger.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "alpine-ledger"
+   ],
+   "description": "W3C-format design tokens for the Alpine Ledger style DNA.",
+   "dnas": [
+    "alpine-ledger"
+   ]
+  },
+  {
+   "id": "tokens-aperitivo-italian",
+   "title": "Aperitivo Italian design tokens",
+   "category": "Tokens",
+   "file": "tokens/aperitivo-italian.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "aperitivo-italian"
+   ],
+   "description": "W3C-format design tokens for the Aperitivo Italian style DNA.",
+   "dnas": [
+    "aperitivo-italian"
+   ]
+  },
+  {
+   "id": "tokens-arctic-field",
+   "title": "Arctic Field design tokens",
+   "category": "Tokens",
+   "file": "tokens/arctic-field.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "arctic-field"
+   ],
+   "description": "W3C-format design tokens for the Arctic Field style DNA.",
+   "dnas": [
+    "arctic-field"
+   ]
+  },
+  {
+   "id": "tokens-art-deco-luxe",
+   "title": "Art Deco Luxe design tokens",
+   "category": "Tokens",
+   "file": "tokens/art-deco-luxe.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "art-deco-luxe"
+   ],
+   "description": "W3C-format design tokens for the Art Deco Luxe style DNA.",
+   "dnas": [
+    "art-deco-luxe"
+   ]
+  },
+  {
+   "id": "tokens-art-nouveau-whiplash",
+   "title": "Art Nouveau Whiplash design tokens",
+   "category": "Tokens",
+   "file": "tokens/art-nouveau-whiplash.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "art-nouveau-whiplash"
+   ],
+   "description": "W3C-format design tokens for the Art Nouveau Whiplash style DNA.",
+   "dnas": [
+    "art-nouveau-whiplash"
+   ]
+  },
+  {
+   "id": "tokens-bauhaus-primary",
+   "title": "Bauhaus Primary design tokens",
+   "category": "Tokens",
+   "file": "tokens/bauhaus-primary.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "bauhaus-primary"
+   ],
+   "description": "W3C-format design tokens for the Bauhaus Primary style DNA.",
+   "dnas": [
+    "bauhaus-primary"
+   ]
+  },
+  {
+   "id": "tokens-blueprint-tech",
+   "title": "Blueprint Tech design tokens",
+   "category": "Tokens",
+   "file": "tokens/blueprint-tech.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "blueprint-tech"
+   ],
+   "description": "W3C-format design tokens for the Blueprint Tech style DNA.",
+   "dnas": [
+    "blueprint-tech"
+   ]
+  },
+  {
+   "id": "tokens-botanical-lab",
+   "title": "Botanical Lab design tokens",
+   "category": "Tokens",
+   "file": "tokens/botanical-lab.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "botanical-lab"
+   ],
+   "description": "W3C-format design tokens for the Botanical Lab style DNA.",
+   "dnas": [
+    "botanical-lab"
+   ]
+  },
+  {
+   "id": "tokens-concrete-poem",
+   "title": "Concrete Poem design tokens",
+   "category": "Tokens",
+   "file": "tokens/concrete-poem.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "concrete-poem"
+   ],
+   "description": "W3C-format design tokens for the Concrete Poem style DNA.",
+   "dnas": [
+    "concrete-poem"
+   ]
+  },
+  {
+   "id": "tokens-constructivist-red",
+   "title": "Constructivist Red design tokens",
+   "category": "Tokens",
+   "file": "tokens/constructivist-red.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "constructivist-red"
+   ],
+   "description": "W3C-format design tokens for the Constructivist Red style DNA.",
+   "dnas": [
+    "constructivist-red"
+   ]
+  },
+  {
+   "id": "tokens-cottage-warm",
+   "title": "Cottage Warm design tokens",
+   "category": "Tokens",
+   "file": "tokens/cottage-warm.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "cottage-warm"
+   ],
+   "description": "W3C-format design tokens for the Cottage Warm style DNA.",
+   "dnas": [
+    "cottage-warm"
+   ]
+  },
+  {
+   "id": "tokens-cyberpunk-noir",
+   "title": "Cyberpunk Noir design tokens",
+   "category": "Tokens",
+   "file": "tokens/cyberpunk-noir.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "cyberpunk-noir"
+   ],
+   "description": "W3C-format design tokens for the Cyberpunk Noir style DNA.",
+   "dnas": [
+    "cyberpunk-noir"
+   ]
+  },
+  {
+   "id": "tokens-dark-luxe",
+   "title": "Dark Luxe design tokens",
+   "category": "Tokens",
+   "file": "tokens/dark-luxe.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "dark-luxe"
+   ],
+   "description": "W3C-format design tokens for the Dark Luxe style DNA.",
+   "dnas": [
+    "dark-luxe"
+   ]
+  },
+  {
+   "id": "tokens-de-stijl-grid",
+   "title": "De Stijl Grid design tokens",
+   "category": "Tokens",
+   "file": "tokens/de-stijl-grid.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "de-stijl-grid"
+   ],
+   "description": "W3C-format design tokens for the De Stijl Grid style DNA.",
+   "dnas": [
+    "de-stijl-grid"
+   ]
+  },
+  {
+   "id": "tokens-desert-modern",
+   "title": "Desert Modern design tokens",
+   "category": "Tokens",
+   "file": "tokens/desert-modern.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "desert-modern"
+   ],
+   "description": "W3C-format design tokens for the Desert Modern style DNA.",
+   "dnas": [
+    "desert-modern"
+   ]
+  },
+  {
+   "id": "tokens-docs-solar",
+   "title": "Docs Solar design tokens",
+   "category": "Tokens",
+   "file": "tokens/docs-solar.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "docs-solar"
+   ],
+   "description": "W3C-format design tokens for the Docs Solar style DNA.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "tokens-editorial-serif",
+   "title": "Editorial Serif design tokens",
+   "category": "Tokens",
+   "file": "tokens/editorial-serif.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "editorial-serif"
+   ],
+   "description": "W3C-format design tokens for the Editorial Serif style DNA.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "tokens-glass-calm",
+   "title": "Glass Calm design tokens",
+   "category": "Tokens",
+   "file": "tokens/glass-calm.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "glass-calm"
+   ],
+   "description": "W3C-format design tokens for the Glass Calm style DNA.",
+   "dnas": [
+    "glass-calm"
+   ]
+  },
+  {
+   "id": "tokens-gothic-editorial",
+   "title": "Gothic Editorial design tokens",
+   "category": "Tokens",
+   "file": "tokens/gothic-editorial.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "gothic-editorial"
+   ],
+   "description": "W3C-format design tokens for the Gothic Editorial style DNA.",
+   "dnas": [
+    "gothic-editorial"
+   ]
+  },
+  {
+   "id": "tokens-industrial-brutalist",
+   "title": "Industrial Brutalist design tokens",
+   "category": "Tokens",
+   "file": "tokens/industrial-brutalist.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "industrial-brutalist"
+   ],
+   "description": "W3C-format design tokens for the Industrial Brutalist style DNA.",
+   "dnas": [
+    "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "tokens-ink-wash-sumi",
+   "title": "Ink-Wash Sumi design tokens",
+   "category": "Tokens",
+   "file": "tokens/ink-wash-sumi.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "ink-wash-sumi"
+   ],
+   "description": "W3C-format design tokens for the Ink-Wash Sumi style DNA.",
+   "dnas": [
+    "ink-wash-sumi"
+   ]
+  },
+  {
+   "id": "tokens-jazz-blue-note",
+   "title": "Jazz Blue Note design tokens",
+   "category": "Tokens",
+   "file": "tokens/jazz-blue-note.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "jazz-blue-note"
+   ],
+   "description": "W3C-format design tokens for the Jazz Blue Note style DNA.",
+   "dnas": [
+    "jazz-blue-note"
+   ]
+  },
+  {
+   "id": "tokens-kawaii-pixel",
+   "title": "Kawaii Pixel design tokens",
+   "category": "Tokens",
+   "file": "tokens/kawaii-pixel.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "kawaii-pixel"
+   ],
+   "description": "W3C-format design tokens for the Kawaii Pixel style DNA.",
+   "dnas": [
+    "kawaii-pixel"
+   ]
+  },
+  {
+   "id": "tokens-laboratory-clean",
+   "title": "Laboratory Clean design tokens",
+   "category": "Tokens",
+   "file": "tokens/laboratory-clean.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "laboratory-clean"
+   ],
+   "description": "W3C-format design tokens for the Laboratory Clean style DNA.",
+   "dnas": [
+    "laboratory-clean"
+   ]
+  },
+  {
+   "id": "tokens-ma-japanese",
+   "title": "Ma (Japanese Minimal) design tokens",
+   "category": "Tokens",
+   "file": "tokens/ma-japanese.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "ma-japanese"
+   ],
+   "description": "W3C-format design tokens for the Ma (Japanese Minimal) style DNA.",
+   "dnas": [
+    "ma-japanese"
+   ]
+  },
+  {
+   "id": "tokens-memphis-milano",
+   "title": "Memphis Milano design tokens",
+   "category": "Tokens",
+   "file": "tokens/memphis-milano.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "memphis-milano"
+   ],
+   "description": "W3C-format design tokens for the Memphis Milano style DNA.",
+   "dnas": [
+    "memphis-milano"
+   ]
+  },
+  {
+   "id": "tokens-midnight-railway",
+   "title": "Midnight Railway design tokens",
+   "category": "Tokens",
+   "file": "tokens/midnight-railway.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "midnight-railway"
+   ],
+   "description": "W3C-format design tokens for the Midnight Railway style DNA.",
+   "dnas": [
+    "midnight-railway"
+   ]
+  },
+  {
+   "id": "tokens-museum-placard",
+   "title": "Museum Placard design tokens",
+   "category": "Tokens",
+   "file": "tokens/museum-placard.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "museum-placard"
+   ],
+   "description": "W3C-format design tokens for the Museum Placard style DNA.",
+   "dnas": [
+    "museum-placard"
+   ]
+  },
+  {
+   "id": "tokens-neo-brutalist-pop",
+   "title": "Neo-Brutalist Pop design tokens",
+   "category": "Tokens",
+   "file": "tokens/neo-brutalist-pop.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "neo-brutalist-pop"
+   ],
+   "description": "W3C-format design tokens for the Neo-Brutalist Pop style DNA.",
+   "dnas": [
+    "neo-brutalist-pop"
+   ]
+  },
+  {
+   "id": "tokens-nordic-noir",
+   "title": "Nordic Noir design tokens",
+   "category": "Tokens",
+   "file": "tokens/nordic-noir.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "nordic-noir"
+   ],
+   "description": "W3C-format design tokens for the Nordic Noir style DNA.",
+   "dnas": [
+    "nordic-noir"
+   ]
+  },
+  {
+   "id": "tokens-parisian-chic",
+   "title": "Parisian Chic design tokens",
+   "category": "Tokens",
+   "file": "tokens/parisian-chic.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "parisian-chic"
+   ],
+   "description": "W3C-format design tokens for the Parisian Chic style DNA.",
+   "dnas": [
+    "parisian-chic"
+   ]
+  },
+  {
+   "id": "tokens-pixel-arcade",
+   "title": "Pixel Arcade design tokens",
+   "category": "Tokens",
+   "file": "tokens/pixel-arcade.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "pixel-arcade"
+   ],
+   "description": "W3C-format design tokens for the Pixel Arcade style DNA.",
+   "dnas": [
+    "pixel-arcade"
+   ]
+  },
+  {
+   "id": "tokens-pop-art-halftone",
+   "title": "Pop-Art Halftone design tokens",
+   "category": "Tokens",
+   "file": "tokens/pop-art-halftone.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "pop-art-halftone"
+   ],
+   "description": "W3C-format design tokens for the Pop-Art Halftone style DNA.",
+   "dnas": [
+    "pop-art-halftone"
+   ]
+  },
+  {
+   "id": "tokens-retro-terminal",
+   "title": "Retro Terminal design tokens",
+   "category": "Tokens",
+   "file": "tokens/retro-terminal.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "retro-terminal"
+   ],
+   "description": "W3C-format design tokens for the Retro Terminal style DNA.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "tokens-risograph-grain",
+   "title": "Risograph Grain design tokens",
+   "category": "Tokens",
+   "file": "tokens/risograph-grain.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "risograph-grain"
+   ],
+   "description": "W3C-format design tokens for the Risograph Grain style DNA.",
+   "dnas": [
+    "risograph-grain"
+   ]
+  },
+  {
+   "id": "tokens-sahara-ochre",
+   "title": "Sahara Ochre design tokens",
+   "category": "Tokens",
+   "file": "tokens/sahara-ochre.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "sahara-ochre"
+   ],
+   "description": "W3C-format design tokens for the Sahara Ochre style DNA.",
+   "dnas": [
+    "sahara-ochre"
+   ]
+  },
+  {
+   "id": "tokens-scandi-calm",
+   "title": "Scandi Calm design tokens",
+   "category": "Tokens",
+   "file": "tokens/scandi-calm.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "scandi-calm"
+   ],
+   "description": "W3C-format design tokens for the Scandi Calm style DNA.",
+   "dnas": [
+    "scandi-calm"
+   ]
+  },
+  {
+   "id": "tokens-soft-minimal",
+   "title": "Soft Minimal design tokens",
+   "category": "Tokens",
+   "file": "tokens/soft-minimal.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "soft-minimal"
+   ],
+   "description": "W3C-format design tokens for the Soft Minimal style DNA.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "tokens-surf-shack",
+   "title": "Surf Shack design tokens",
+   "category": "Tokens",
+   "file": "tokens/surf-shack.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "surf-shack"
+   ],
+   "description": "W3C-format design tokens for the Surf Shack style DNA.",
+   "dnas": [
+    "surf-shack"
+   ]
+  },
+  {
+   "id": "tokens-swiss-poster",
+   "title": "Swiss Poster design tokens",
+   "category": "Tokens",
+   "file": "tokens/swiss-poster.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "swiss-poster"
+   ],
+   "description": "W3C-format design tokens for the Swiss Poster style DNA.",
+   "dnas": [
+    "swiss-poster"
+   ]
+  },
+  {
+   "id": "tokens-swiss-rational",
+   "title": "Swiss Rational design tokens",
+   "category": "Tokens",
+   "file": "tokens/swiss-rational.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "swiss-rational"
+   ],
+   "description": "W3C-format design tokens for the Swiss Rational style DNA.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "tokens-tokyo-neon",
+   "title": "Tokyo Neon design tokens",
+   "category": "Tokens",
+   "file": "tokens/tokyo-neon.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "tokyo-neon"
+   ],
+   "description": "W3C-format design tokens for the Tokyo Neon style DNA.",
+   "dnas": [
+    "tokyo-neon"
+   ]
+  },
+  {
+   "id": "tokens-transit-swiss",
+   "title": "Transit Swiss design tokens",
+   "category": "Tokens",
+   "file": "tokens/transit-swiss.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "transit-swiss"
+   ],
+   "description": "W3C-format design tokens for the Transit Swiss style DNA.",
+   "dnas": [
+    "transit-swiss"
+   ]
+  },
+  {
+   "id": "tokens-tropical-brutalism",
+   "title": "Tropical Brutalism design tokens",
+   "category": "Tokens",
+   "file": "tokens/tropical-brutalism.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "tropical-brutalism"
+   ],
+   "description": "W3C-format design tokens for the Tropical Brutalism style DNA.",
+   "dnas": [
+    "tropical-brutalism"
+   ]
+  },
+  {
+   "id": "tokens-vaporwave-sunset",
+   "title": "Vaporwave Sunset design tokens",
+   "category": "Tokens",
+   "file": "tokens/vaporwave-sunset.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "vaporwave-sunset"
+   ],
+   "description": "W3C-format design tokens for the Vaporwave Sunset style DNA.",
+   "dnas": [
+    "vaporwave-sunset"
+   ]
+  },
+  {
+   "id": "tokens-vinyl-crate",
+   "title": "Vinyl Crate design tokens",
+   "category": "Tokens",
+   "file": "tokens/vinyl-crate.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "vinyl-crate"
+   ],
+   "description": "W3C-format design tokens for the Vinyl Crate style DNA.",
+   "dnas": [
+    "vinyl-crate"
+   ]
+  },
+  {
+   "id": "tokens-y2k-chrome",
+   "title": "Y2K Chrome design tokens",
+   "category": "Tokens",
+   "file": "tokens/y2k-chrome.json",
+   "tags": [
+    "tokens",
+    "w3c",
+    "y2k-chrome"
+   ],
+   "description": "W3C-format design tokens for the Y2K Chrome style DNA.",
+   "dnas": [
+    "y2k-chrome"
+   ]
+  }
+ ]
+}
