@@ -1,0 +1,74 @@
+<!--tz-meta {"id":"misc-age-gate","title":"Age gate","category":"Sections","file":"patterns/misc-age-gate.html","tags":["age-gate","compliance"],"description":"Drive-in-theater age gate: marquee-styled 21+ check with birthdate entry, remembers via localStorage, no dark patterns.","dnas":["drive-in-theater"]} -->
+<section class="tz-misc-age-gate" aria-label="Age verification">
+  <div class="tz-gate" id="tz-age-gate">
+    <p class="tz-marquee-top" aria-hidden="true">★ ★ ★</p>
+    <p class="tz-eyebrow">Adults only</p>
+    <h2>Are you <em>21</em> or older?</h2>
+    <p class="tz-lede">This tasting room pours real drinks. We card at the door — and here, first.</p>
+    <form class="tz-form">
+      <label for="tz-dob">Date of birth</label>
+      <input id="tz-dob" type="date" required max="2005-10-04">
+      <button type="submit">Enter the tasting room</button>
+      <p class="tz-error" hidden>Sorry — you need to be 21 or older to enter.</p>
+    </form>
+    <p class="tz-fine">We store nothing. Your answer lives in this browser only.</p>
+  </div>
+  <div class="tz-inside" id="tz-age-inside" hidden>
+    <p class="tz-eyebrow">Welcome in</p>
+    <h2>The tasting room <em>is open.</em></h2>
+    <p class="tz-lede">Twelve taps, one very opinionated bartender, and a pretzel the size of your forearm.</p>
+    <button class="tz-reset" type="button">Forget my answer</button>
+  </div>
+</section>
+<style>
+.tz-misc-age-gate{--bg:#1a1030;--ink:#f4ead8;--muted:#9a8fb5;--accent:#ff5d3a;
+  background:radial-gradient(90% 120% at 50% -10%,#3a2050 0%,var(--bg) 55%),var(--bg);
+  color:var(--ink);padding:clamp(80px,11vw,150px) clamp(20px,5vw,64px);font-family:Georgia,serif;text-align:center}
+.tz-misc-age-gate .tz-marquee-top{color:var(--accent);letter-spacing:1em;margin:0 0 26px;font-size:14px}
+.tz-misc-age-gate .tz-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 18px}
+.tz-misc-age-gate h2{font-weight:400;font-size:clamp(38px,6vw,64px);margin:0 0 16px;letter-spacing:-.01em}
+.tz-misc-age-gate h2 em{font-style:italic;color:var(--accent)}
+.tz-misc-age-gate .tz-lede{color:var(--muted);font-size:16.5px;max-width:46ch;margin:0 auto 36px;
+  font-family:-apple-system,'Segoe UI',sans-serif;line-height:1.65}
+.tz-misc-age-gate .tz-form{max-width:340px;margin:0 auto;display:grid;gap:14px}
+.tz-misc-age-gate label{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--muted);text-align:left}
+.tz-misc-age-gate input[type=date]{background:#ffffff10;border:1px solid #ff5d3a55;color:var(--ink);
+  padding:15px 18px;font-family:ui-monospace,Menlo,monospace;font-size:15px;color-scheme:dark}
+.tz-misc-age-gate button[type=submit]{background:var(--accent);color:#1a1030;border:0;font-weight:700;
+  font-family:-apple-system,'Segoe UI',sans-serif;font-size:15px;padding:17px;cursor:pointer;
+  transition:transform .25s cubic-bezier(.22,1,.36,1)}
+.tz-misc-age-gate button[type=submit]:hover{transform:translateY(-2px)}
+.tz-misc-age-gate .tz-error{color:#ff8a7a;font-size:14px;margin:4px 0 0;font-family:-apple-system,'Segoe UI',sans-serif}
+.tz-misc-age-gate .tz-fine{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--muted);margin:28px 0 0}
+.tz-misc-age-gate .tz-reset{background:transparent;border:1px solid #f4ead833;color:var(--muted);
+  font-family:ui-monospace,Menlo,monospace;font-size:12px;padding:12px 24px;cursor:pointer;margin-top:8px}
+.tz-misc-age-gate .tz-reset:hover{color:var(--ink);border-color:var(--ink)}
+@media (max-width:520px){
+  .tz-misc-age-gate .tz-form{max-width:none}
+}
+</style>
+<script>
+(function(){
+  var gate=document.getElementById('tz-age-gate'),inside=document.getElementById('tz-age-inside');
+  function showInside(){gate.hidden=true;inside.hidden=false;}
+  try{if(localStorage.getItem('tz-age-ok')==='1'){showInside();}}catch(e){}
+  gate.querySelector('.tz-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    var err=gate.querySelector('.tz-error');
+    var v=document.getElementById('tz-dob').value;
+    if(!v){err.hidden=false;err.textContent='Please enter your date of birth.';return;}
+    var dob=new Date(v+'T00:00:00'),now=new Date();
+    var age=now.getFullYear()-dob.getFullYear();
+    var m=now.getMonth()-dob.getMonth();
+    if(m<0||(m===0&&now.getDate()<dob.getDate()))age--;
+    if(age>=21){try{localStorage.setItem('tz-age-ok','1')}catch(e){}showInside();}
+    else{err.hidden=false;err.textContent='Sorry — you need to be 21 or older to enter.';}
+  });
+  inside.querySelector('.tz-reset').addEventListener('click',function(){
+    try{localStorage.removeItem('tz-age-ok')}catch(e){}
+    inside.hidden=true;gate.hidden=false;
+  });
+})();
+</script>
