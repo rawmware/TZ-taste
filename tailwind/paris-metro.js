@@ -1,0 +1,3 @@
+//tz-meta {"id":"tailwind-paris-metro","title":"Paris Metro Tailwind preset","category":"Tailwind","file":"tailwind/paris-metro.js","tags":["tailwind","preset","paris-metro"],"description":"Tailwind theme preset for the Paris Metro DNA.","dnas":["paris-metro"]}
+// Tailwind preset for the Paris Metro DNA. Extend tailwind.config with this.
+module.exports={theme:{extend:{colors:{tzbg:"#f4efe3",tzink:"#14243d",tzaccent:"#b98a2f",tzmuted:"#7d7a6e",tzline:"#14243d33",tzsurface:"#f4efe3"},fontFamily:{display:["Marcellus","serif"],body:["Cormorant Garamond","sans-serif"],mono:["Space Mono","monospace"]}}}};
