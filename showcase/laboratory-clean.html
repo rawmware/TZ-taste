@@ -1,0 +1,130 @@
+<!--tz-meta {"id":"showcase-laboratory-clean","title":"Laboratory Clean showcase","category":"Showcase","file":"showcase/laboratory-clean.html","tags":["laboratory-clean"],"description":"Live demo page for the Laboratory Clean style DNA.","dnas":["laboratory-clean"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Laboratory Clean — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#fbfcfd; --tz-tray:#f2f5f7; --tz-ink:#0f1720; --tz-muted:#6b7684;
+  --tz-accent:#0a7d8c; --tz-alert:#c23b3b; --tz-line:#dfe4ea;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"IBM Plex Sans",sans-serif;font-size:.98rem;line-height:1.6}
+.tz-top{display:flex;justify-content:space-between;padding:.85rem 1.5rem;border-bottom:1px solid var(--tz-line);font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.1em}
+.tz-top .tz-wordmark{font-weight:700}
+.tz-top .tz-dna-label{color:var(--tz-muted)}
+.tz-hero{max-width:1080px;margin:0 auto;padding:3.5rem 1.5rem 2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
+.tz-eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.18em;color:var(--tz-accent);margin-bottom:1rem}
+.tz-hero h1{font-weight:600;font-size:clamp(1.75rem,4vw,3rem);line-height:1.2;letter-spacing:-.01em}
+.tz-hero p{color:var(--tz-muted);margin-top:1.25rem;max-width:38ch}
+.tz-cta{display:inline-block;margin-top:1.75rem;font-family:"IBM Plex Mono",monospace;font-size:.78rem;font-weight:700;letter-spacing:.1em;color:var(--tz-bg);background:var(--tz-accent);padding:.95rem 1.9rem;text-decoration:none}
+.tz-cta:hover{background:var(--tz-ink)}
+.tz-plate{border:1px solid var(--tz-line);background:var(--tz-tray);padding:1.25rem 1.5rem;font-family:"IBM Plex Mono",monospace;font-size:.72rem;line-height:2.1;color:var(--tz-muted)}
+.tz-plate .tz-k{color:var(--tz-ink);font-weight:700}
+.tz-plate .tz-ok{color:var(--tz-accent);font-weight:700}
+.tz-plate-head{font-size:.62rem;letter-spacing:.2em;color:var(--tz-accent);font-weight:700;margin-bottom:.5rem}
+.tz-content{max-width:1080px;margin:0 auto;padding:1.5rem 1.5rem 4rem}
+.tz-content h2{font-weight:600;font-size:1.35rem;margin:2.5rem 0 1rem}
+.tz-spec-table{width:100%;border-collapse:collapse;font-size:.9rem}
+.tz-spec-table th{font-family:"IBM Plex Mono",monospace;font-size:.65rem;letter-spacing:.16em;color:var(--tz-muted);text-align:left;padding:.7rem .75rem;border-bottom:1px solid var(--tz-line);font-weight:500}
+.tz-spec-table td{padding:.8rem .75rem;border-bottom:1px solid var(--tz-line)}
+.tz-spec-table td.tz-mono,.tz-spec-table th.tz-mono{font-family:"IBM Plex Mono",monospace}
+.tz-spec-table tr:hover td{background:var(--tz-tray)}
+.tz-tol{font-family:"IBM Plex Mono",monospace;color:var(--tz-accent)}
+.tz-runlog{margin-top:3rem}
+.tz-runlog .tz-row{display:grid;grid-template-columns:auto 1fr auto auto;gap:1.5rem;padding:.7rem 0;border-bottom:1px solid var(--tz-line);font-family:"IBM Plex Mono",monospace;font-size:.78rem}
+.tz-runlog .tz-row .tz-st{font-weight:700;color:var(--tz-accent)}
+.tz-runlog .tz-row .tz-desc{color:var(--tz-muted)}
+.tz-change{margin-top:3rem;border:1px solid var(--tz-line)}
+.tz-change-head{background:var(--tz-tray);font-family:"IBM Plex Mono",monospace;font-size:.65rem;letter-spacing:.18em;padding:.7rem 1rem;color:var(--tz-muted);border-bottom:1px solid var(--tz-line)}
+.tz-change table{width:100%;border-collapse:collapse;font-family:"IBM Plex Mono",monospace;font-size:.75rem}
+.tz-change td{padding:.65rem 1rem;border-bottom:1px solid var(--tz-line)}
+.tz-change td:first-child{color:var(--tz-muted);white-space:nowrap}
+.tz-tokens{max-width:1080px;margin:0 auto;padding:2.5rem 1.5rem;border-top:1px solid var(--tz-line)}
+.tz-tokens h2{font-weight:600;font-size:1.2rem;margin-bottom:1.25rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:1rem}
+.tz-chip{display:flex;align-items:center;gap:.6rem;font-family:"IBM Plex Mono",monospace;font-size:.68rem;color:var(--tz-muted)}
+.tz-chip i{display:block;width:2.5rem;height:2.5rem;border:1px solid var(--tz-line)}
+.tz-foot{border-top:1px solid var(--tz-line);padding:1.75rem;font-family:"IBM Plex Mono",monospace;font-size:.68rem;color:var(--tz-muted);text-align:center;letter-spacing:.08em}
+@media(max-width:700px){
+  .tz-top,.tz-hero,.tz-content,.tz-tokens{padding-left:1rem;padding-right:1rem}
+  .tz-hero{grid-template-columns:1fr}
+  .tz-runlog .tz-row{grid-template-columns:auto 1fr;row-gap:.25rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">TZ—taste</span>
+  <span class="tz-dna-label">STYLE DNA · LABORATORY-CLEAN</span>
+</header>
+
+<section class="tz-hero">
+  <div>
+    <p class="tz-eyebrow">MERIDIAN BIOSCIENCES · INSTRUMENT MB-1</p>
+    <h1>A benchtop sequencer, calibrated.</h1>
+    <p>The MB-1 reads 2 × 150 bp in under 24 hours on your bench, not in a core facility. Every number below was measured on a production unit, not a prototype.</p>
+    <a class="tz-cta" href="#tz-specs">READ THE DATASHEET</a>
+  </div>
+  <aside class="tz-plate" aria-label="Instrument spec plate">
+    <div class="tz-plate-head">SPEC PLATE · MB-1</div>
+    <span class="tz-k">MODEL</span> MB-1 · <span class="tz-k">REV</span> 2.3<br>
+    <span class="tz-k">SERIAL</span> MB1-2026-04417<br>
+    <span class="tz-k">CALIBRATED</span> 2026-09-30 · <span class="tz-k">DRIFT</span> 0.02<br>
+    <span class="tz-k">STATUS</span> <span class="tz-ok">IN SPEC</span>
+  </aside>
+</section>
+
+<section class="tz-content" id="tz-specs">
+  <h2>Performance specifications</h2>
+  <table class="tz-spec-table">
+    <thead><tr><th>PARAMETER</th><th class="tz-mono">VALUE</th><th class="tz-mono">TOLERANCE</th><th>METHOD</th></tr></thead>
+    <tbody>
+      <tr><td>Read length</td><td class="tz-mono">2 × 150 bp</td><td class="tz-tol">± 2 bp</td><td>Paired-end, 300-cycle kit</td></tr>
+      <tr><td>Output per run</td><td class="tz-mono">15 Gb</td><td class="tz-tol">± 0.5 Gb</td><td>Q30 ≥ 80% bases</td></tr>
+      <tr><td>Run time</td><td class="tz-mono">22.5 h</td><td class="tz-tol">± 0.5 h</td><td>Wall clock, 25 °C ambient</td></tr>
+      <tr><td>Sample input</td><td class="tz-mono">1 ng</td><td class="tz-tol">0.5 – 5 ng</td><td>dsDNA, fluorometric quant</td></tr>
+      <tr><td>Base accuracy</td><td class="tz-mono">Q38</td><td class="tz-tol">≥ Q35</td><td>PhiX control, per-cycle</td></tr>
+      <tr><td>Footprint</td><td class="tz-mono">52 × 48 cm</td><td class="tz-tol">—</td><td>Benchtop, 38 kg</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tz-runlog">
+    <h2>Recent runs</h2>
+    <div class="tz-row"><span>2026-10-02</span><span class="tz-desc">Exome panel, 24-plex</span><span class="tz-st">PASS</span><span>Q30 84.1%</span></div>
+    <div class="tz-row"><span>2026-10-01</span><span class="tz-desc">Microbial WGS, 96-plex</span><span class="tz-st">PASS</span><span>Q30 82.7%</span></div>
+    <div class="tz-row"><span>2026-09-29</span><span class="tz-desc">RNA-seq pilot, 8-plex</span><span class="tz-st">PASS</span><span>Q30 85.3%</span></div>
+  </div>
+
+  <div class="tz-change">
+    <div class="tz-change-head">CHANGELOG · DATASHEET REV 2.3</div>
+    <table>
+      <tr><td>2026-09-30</td><td>Recalibrated flow cell optics; drift 0.02, in spec</td></tr>
+      <tr><td>2026-08-14</td><td>Rev 2.3: run time 24.0 h → 22.5 h, firmware 4.1</td></tr>
+      <tr><td>2026-06-02</td><td>Rev 2.2: sample input floor lowered 2 ng → 1 ng</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <div class="tz-swatches">
+    <span class="tz-chip"><i style="background:#fbfcfd"></i>#fbfcfd · bg</span>
+    <span class="tz-chip"><i style="background:#0f1720"></i>#0f1720 · ink</span>
+    <span class="tz-chip"><i style="background:#0a7d8c"></i>#0a7d8c · accent</span>
+    <span class="tz-chip"><i style="background:#6b7684"></i>#6b7684 · muted</span>
+    <span class="tz-chip"><i style="background:#dfe4ea"></i>#dfe4ea · line</span>
+  </div>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
