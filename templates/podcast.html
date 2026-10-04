@@ -1,0 +1,411 @@
+<!--tz-meta {"id":"podcast","title":"Cold Trail — True-Crime Podcast","category":"Template","file":"templates/podcast.html","tags":["podcast","audio","media"],"description":"True-crime podcast show page styled like a used-record-shop sleeve, vinyl-crate DNA.","dnas":["vinyl-crate"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cold Trail — a true-crime podcast</title>
+<meta name="description" content="Cold Trail re-opens America's forgotten cold cases, one season at a time. New episodes every Tuesday.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* DNA: vinyl-crate — crate-digger record shop: warm black, paper labels, crate orange */
+:root{
+  --tz-bg:#171310; --tz-surface:#211a13; --tz-ink:#f2e8d5; --tz-muted:#b3a184;
+  --tz-accent:#e4572e; --tz-line:rgba(242,232,213,.16);
+  --tz-display:'Archivo Black',sans-serif; --tz-body:'Space Grotesk',sans-serif; --tz-mono:'Space Mono',monospace;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:var(--tz-body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+::selection{background:var(--tz-accent);color:var(--tz-bg)}
+a{color:inherit}
+.tz-wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.tz-mono{font-family:var(--tz-mono)}
+/* header */
+.tz-nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid var(--tz-line)}
+.tz-brand{font-family:var(--tz-display);font-size:20px;letter-spacing:.02em;text-decoration:none}
+.tz-brand span{color:var(--tz-accent)}
+.tz-navlinks{display:flex;gap:28px;font-family:var(--tz-mono);font-size:13px;text-transform:uppercase;letter-spacing:.08em}
+.tz-navlinks a{text-decoration:none;color:var(--tz-muted);transition:color .25s var(--tz-ease)}
+.tz-navlinks a:hover{color:var(--tz-ink)}
+.tz-btn{display:inline-block;font-family:var(--tz-mono);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;text-decoration:none;background:var(--tz-accent);color:#171310;padding:14px 26px;border:none;cursor:pointer;transition:transform .25s var(--tz-ease),background .25s}
+.tz-btn:hover{transform:translateY(-2px);background:#f2663a}
+.tz-btn--ghost{background:transparent;color:var(--tz-ink);border:1px solid var(--tz-line)}
+.tz-btn--ghost:hover{background:var(--tz-surface);transform:translateY(-2px)}
+/* hero: offset split, spinning vinyl as the focal */
+.tz-hero{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center;padding:96px 0 112px}
+.tz-kicker{font-family:var(--tz-mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--tz-accent);margin-bottom:22px;display:block}
+.tz-hero h1{font-family:var(--tz-display);font-size:clamp(56px,7.5vw,108px);line-height:.94;letter-spacing:-.01em;text-transform:uppercase}
+.tz-hero h1 em{font-style:normal;color:transparent;-webkit-text-stroke:2px var(--tz-ink)}
+.tz-hero p.tz-lede{font-size:19px;color:var(--tz-muted);max-width:46ch;margin:26px 0 34px}
+.tz-hero-cta{display:flex;gap:16px;flex-wrap:wrap}
+.tz-hero-meta{display:flex;gap:32px;margin-top:44px;font-family:var(--tz-mono);font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--tz-muted)}
+.tz-hero-meta b{display:block;font-size:22px;color:var(--tz-ink);letter-spacing:0;margin-bottom:4px}
+/* vinyl */
+.tz-vinyl-stage{display:flex;justify-content:center}
+.tz-vinyl{position:relative;width:min(340px,70vw);aspect-ratio:1}
+.tz-vinyl .tz-disc{position:absolute;inset:0;border-radius:50%;background:
+  repeating-radial-gradient(circle at 50% 50%, #0d0b09 0 2px, #1a1611 2px 4px);
+  border:1px solid var(--tz-line);animation:tz-spin 9s linear infinite;box-shadow:0 30px 60px rgba(0,0,0,.5)}
+.tz-vinyl .tz-label{position:absolute;inset:34%;border-radius:50%;background:var(--tz-accent);display:flex;align-items:center;justify-content:center;flex-direction:column;animation:tz-spin 9s linear infinite}
+.tz-vinyl .tz-label small{font-family:var(--tz-mono);font-size:9px;letter-spacing:.18em;color:#171310;text-transform:uppercase}
+.tz-vinyl .tz-hole{width:14px;height:14px;border-radius:50%;background:var(--tz-bg);margin-top:6px}
+@keyframes tz-spin{to{transform:rotate(360deg)}}
+.tz-vinyl-tag{position:absolute;bottom:-14px;right:6%;background:var(--tz-ink);color:#171310;font-family:var(--tz-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:8px 14px;transform:rotate(-4deg)}
+/* sections */
+.tz-section{padding:96px 0;border-top:1px solid var(--tz-line)}
+.tz-section h2{font-family:var(--tz-display);font-size:clamp(34px,4vw,54px);text-transform:uppercase;line-height:1;margin-bottom:18px;letter-spacing:-.01em}
+.tz-section .tz-sub{color:var(--tz-muted);max-width:60ch;margin-bottom:56px;font-size:18px}
+/* about: editorial split */
+.tz-about{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+.tz-about p{color:var(--tz-muted);margin-bottom:20px;font-size:18px}
+.tz-about p strong{color:var(--tz-ink)}
+.tz-pull{font-family:var(--tz-display);font-size:clamp(24px,2.6vw,34px);line-height:1.25;text-transform:uppercase;border-left:4px solid var(--tz-accent);padding-left:28px;color:var(--tz-ink)}
+.tz-pull cite{display:block;font-family:var(--tz-mono);font-style:normal;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--tz-muted);margin-top:16px}
+/* episodes: LP sides */
+.tz-sides{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.tz-side{background:var(--tz-surface);border:1px solid var(--tz-line);padding:36px}
+.tz-side-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--tz-line);padding-bottom:18px;margin-bottom:8px}
+.tz-side-head h3{font-family:var(--tz-display);font-size:26px;text-transform:uppercase}
+.tz-side-head span{font-family:var(--tz-mono);font-size:12px;color:var(--tz-accent);letter-spacing:.12em}
+.tz-ep{display:grid;grid-template-columns:64px 1fr auto;gap:18px;align-items:center;padding:20px 0;border-bottom:1px dashed var(--tz-line);text-decoration:none;transition:background .25s var(--tz-ease)}
+.tz-ep:last-child{border-bottom:none}
+.tz-ep:hover{background:rgba(228,87,46,.06)}
+.tz-ep-num{font-family:var(--tz-mono);font-size:13px;color:var(--tz-accent)}
+.tz-ep h4{font-size:17px;font-weight:700;margin-bottom:4px}
+.tz-ep p{font-size:14px;color:var(--tz-muted)}
+.tz-ep time{font-family:var(--tz-mono);font-size:12px;color:var(--tz-muted);white-space:nowrap}
+.tz-play{width:44px;height:44px;border:1px solid var(--tz-line);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .25s,border-color .25s}
+.tz-ep:hover .tz-play{background:var(--tz-accent);border-color:var(--tz-accent)}
+.tz-play svg{width:14px;height:14px;fill:#171310;opacity:0;transition:opacity .25s}
+.tz-ep:hover .tz-play svg{opacity:1}
+/* press: asymmetric quotes */
+.tz-press{display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;align-items:start}
+.tz-quote{border-top:2px solid var(--tz-accent);padding-top:22px}
+.tz-quote:nth-child(2){margin-top:56px}
+.tz-quote:nth-child(3){margin-top:112px}
+.tz-quote p{font-size:20px;line-height:1.5;margin-bottom:16px}
+.tz-quote footer{font-family:var(--tz-mono);font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--tz-muted)}
+/* subscribe: bento-ish but asymmetric */
+.tz-subgrid{display:grid;grid-template-columns:1.2fr .8fr;gap:32px}
+.tz-subcard{background:var(--tz-surface);border:1px solid var(--tz-line);padding:44px}
+.tz-subcard h3{font-family:var(--tz-display);font-size:30px;text-transform:uppercase;margin-bottom:14px}
+.tz-subcard p{color:var(--tz-muted);margin-bottom:26px}
+.tz-platforms{display:flex;flex-wrap:wrap;gap:12px}
+.tz-platform{font-family:var(--tz-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--tz-line);padding:12px 18px;text-decoration:none;transition:border-color .25s,background .25s}
+.tz-platform:hover{border-color:var(--tz-accent);background:rgba(228,87,46,.08)}
+.tz-stats{display:flex;flex-direction:column;justify-content:center;gap:26px;background:var(--tz-accent);color:#171310;padding:44px}
+.tz-stats div b{display:block;font-family:var(--tz-display);font-size:44px;line-height:1}
+.tz-stats div span{font-family:var(--tz-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+/* footer */
+.tz-footer{border-top:1px solid var(--tz-line);padding:64px 0 40px}
+.tz-footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.tz-footer h4{font-family:var(--tz-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:18px}
+.tz-footer ul{list-style:none}
+.tz-footer li{margin-bottom:10px}
+.tz-footer a{text-decoration:none;color:var(--tz-ink);font-size:15px}
+.tz-footer a:hover{color:var(--tz-accent)}
+.tz-footer-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:var(--tz-mono);font-size:12px;color:var(--tz-muted);border-top:1px solid var(--tz-line);padding-top:28px}
+/* reveal */
+.tz-reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--tz-ease),transform .7s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .tz-vinyl .tz-disc,.tz-vinyl .tz-label{animation:none}
+  .tz-reveal{opacity:1;transform:none;transition:none}
+  *{transition:none !important}
+}
+@media(max-width:900px){
+  .tz-hero{grid-template-columns:1fr;gap:48px;padding:64px 0 80px}
+  .tz-about{grid-template-columns:1fr;gap:32px}
+  .tz-sides{grid-template-columns:1fr}
+  .tz-press{grid-template-columns:1fr}
+  .tz-quote:nth-child(2),.tz-quote:nth-child(3){margin-top:0}
+  .tz-subgrid{grid-template-columns:1fr}
+  .tz-navlinks{display:none}
+}
+@media(max-width:600px){
+  .tz-section{padding:64px 0}
+  .tz-ep{grid-template-columns:44px 1fr}
+  .tz-ep time{display:none}
+  .tz-footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<!-- DNA: vinyl-crate · design read: a true-crime show page that reads like the back of a bootleg vinyl sleeve in a used-record shop · dials V7/M4/D4 · one weird thing: episodes filed as LP Side A / Side B with dead-wax catalog numbers -->
+<header class="tz-wrap">
+  <nav class="tz-nav" aria-label="Main">
+    <a class="tz-brand" href="#">COLD<span>TRAIL</span></a>
+    <div class="tz-navlinks">
+      <a href="#episodes">Episodes</a><a href="#about">The show</a><a href="#press">Press</a><a href="#listen">Listen</a>
+    </div>
+    <a class="tz-btn" href="#listen">Follow the show</a>
+  </nav>
+</header>
+
+<main>
+  <section class="tz-wrap tz-hero">
+    <div>
+      <span class="tz-kicker">Season 6 · The Harrow Creek Disappearance · Out now</span>
+      <h1>Some cases never close. <em>We reopen them.</em></h1>
+      <p class="tz-lede">Cold Trail is a weekly true-crime podcast that picks up where the detectives stopped — original interviews, unsealed records, and the quiet details everyone missed the first time. No theatrics. Just the file, the facts, and the people still waiting for answers.</p>
+      <div class="tz-hero-cta">
+        <a class="tz-btn" href="#episodes">Start with Season 6</a>
+        <a class="tz-btn tz-btn--ghost" href="#about">How we report</a>
+      </div>
+      <div class="tz-hero-meta">
+        <div><b>214</b>Episodes</div>
+        <div><b>6</b>Seasons</div>
+        <div><b>38M</b>Downloads</div>
+      </div>
+    </div>
+    <div class="tz-vinyl-stage" aria-hidden="true">
+      <div class="tz-vinyl">
+        <div class="tz-disc"></div>
+        <div class="tz-label"><small>Cold Trail · S6</small><div class="tz-hole"></div></div>
+        <div class="tz-vinyl-tag">New episode Tuesdays</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="about">
+    <div class="tz-wrap">
+      <span class="tz-kicker">The show</span>
+      <h2>Reported like a newsroom.<br>Told like a late-night call.</h2>
+      <p class="tz-sub">Every season, host Mara Ellison and producer Dev Okafor spend six months inside one cold case — courthouse basements, kitchen-table interviews, FOIA requests that take longer than the investigation did.</p>
+      <div class="tz-about">
+        <div>
+          <p><strong>We don't solve cases for sport.</strong> Cold Trail exists because families write to us after every other door has closed. We publish what we can verify, we say plainly what we can't, and we hand everything we find back to the people it belongs to.</p>
+          <p>Season 6 follows the 1998 disappearance of <strong>Ruth Calloway</strong>, a night-shift nurse last seen leaving Harrow Creek General at 2:40 a.m. The file was shelved in 2003. We started with the duty roster and didn't stop.</p>
+          <p>New episodes drop every <strong>Tuesday</strong>. Case files, maps, and source documents publish alongside each episode for listeners who want to read along.</p>
+        </div>
+        <blockquote class="tz-pull">
+          "The rare true-crime show that treats its subjects like people instead of plot twists."
+          <cite>— The Audio Review, 2026 Best of the Year list</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="episodes">
+    <div class="tz-wrap">
+      <span class="tz-kicker">This season on the turntable</span>
+      <h2>Season 6 · Harrow Creek</h2>
+      <p class="tz-sub">Twelve episodes, pressed across two sides. Play them in order — the details compound.</p>
+      <div class="tz-sides">
+        <div class="tz-side tz-reveal">
+          <div class="tz-side-head"><h3>Side A</h3><span>CT-061 · dead wax</span></div>
+          <a class="tz-ep" href="#listen"><span class="tz-ep-num">A1</span><div><h4>The 2:40 a.m. Shift Change</h4><p>Ruth clocks out. The parking-lot camera points at the sky.</p></div><span class="tz-play"><svg viewBox="0 0 12 12"><path d="M2 1l9 5-9 5z"/></svg></span></a>
+          <a class="tz-ep" href="#listen"><span class="tz-ep-num">A2</span><div><h4>A File, a Box, a Basement</h4><p>The 2003 shelving report — and the page somebody removed.</p></div><span class="tz-play"><svg viewBox="0 0 12 12"><path d="M2 1l9 5-9 5z"/></svg></span></a>
+          <a class="tz-ep" href="#listen"><span class="tz-ep-num">A3</span><div><h4>The Duty Roster</h4><p>Who was in the building that night, and who won't talk about it.</p></div><span class="tz-play"><svg viewBox="0 0 12 12"><path d="M2 1l9 5-9 5z"/></svg></span></a>
+          <a class="tz-ep" href="#listen"><span class="tz-ep-num">A4</span><div><h4>County Road 9</h4><p>A truck driver, a rest stop, and a timeline that doesn't fit.</p></div><span class="tz-play"><svg viewBox="0 0 12 12"><path d="M2 1l9 5-9 5z"/></svg></span></a>
+          <a class="tz-ep" href="#listen"><span class="tz-ep-num">A5</span><div><h4>The Second Call</h4><p>Ruth's sister kept a cassette of the night's phone log.</p></div><span class="tz-play"><svg viewBox="0 0 12 12"><path d="M2 1l9 5-9 5z"/></svg></span></a>
+          <a class="tz-ep" href="#listen"><span class="tz-ep-num">A6</span><div><h4>What the River Kept</h4><p>The search grid, the sonar, and what the water gave back in 2011.</p></div><span class="tz-play"><svg viewBox="0 0 12 12"><path d="M2 1l9 5-9 5z"/></svg></span></a>
+        </div>
+        <div class="tz-side tz-reveal">
+          <div class="tz-side-head"><h3>Side B</h3><span>CT-062 · dead wax</span></div>
+          <a class="tz-ep" href="#listen"><span class="tz-ep-num">B1</span><div><h4>The Man in Bay 4</h4><p>A patient who wasn't on any chart, seen by three witnesses.</p></div><span class="tz-play"><svg viewBox="0 0 12 12"><path d="M2 1l9 5-9 5z"/></svg></span></a>
+          <a class="tz-ep" href="#listen"><span class="tz-ep-num">B2</span><div><h4>Paper Trails</h4><p>Insurance forms, a lapsed policy, and a very patient accountant.</p></div><span class="tz-play"><svg viewBox="0 0 12 12"><path d="M2 1l9 5-9 5z"/></svg></span></a>
+          <a class="tz-ep" href="#listen"><span class="tz-ep-num">B3</span><div><h4>The Retired Detective</h4><p>He agreed to one interview. It lasted four hours.</p></div><span class="tz-play"><svg viewBox="0 0 12 12"><path d="M2 1l9 5-9 5z"/></svg></span></a>
+          <a class="tz-ep" href="#listen"><span class="tz-ep-num">B4</span><div><h4>Static</h4><p>The scanner recording nobody logged — and why it matters now.</p></div><span class="tz-play"><svg viewBox="0 0 12 12"><path d="M2 1l9 5-9 5z"/></svg></span></a>
+          <a class="tz-ep" href="#listen"><span class="tz-ep-num">B5</span><div><h4>The Porch Light</h4><p>Ruth's mother, in her own words, for the first time.</p></div><span class="tz-play"><svg viewBox="0 0 12 12"><path d="M2 1l9 5-9 5z"/></svg></span></a>
+          <a class="tz-ep" href="#listen"><span class="tz-ep-num">B6</span><div><h4>Where the File Goes Next</h4><p>What we sent back to Harrow County — and what happens now.</p></div><span class="tz-play"><svg viewBox="0 0 12 12"><path d="M2 1l9 5-9 5z"/></svg></span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="press">
+    <div class="tz-wrap">
+      <span class="tz-kicker">Heard about us</span>
+      <h2>Critics, in their own words</h2>
+      <p class="tz-sub">We read the mail. The good kind.</p>
+      <div class="tz-press">
+        <blockquote class="tz-quote tz-reveal"><p>"Ellison's reporting has the patience of a novelist and the rigor of a courtroom."</p><footer>Northwest Audio Weekly</footer></blockquote>
+        <blockquote class="tz-quote tz-reveal"><p>"The season that made me cancel plans. Twice."</p><footer>Podcast Listener, 4.9-star review</footer></blockquote>
+        <blockquote class="tz-quote tz-reveal"><p>"Proof that the genre can still surprise — and still serve the people in it."</p><footer>The Signal Awards jury, 2026</footer></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="listen">
+    <div class="tz-wrap">
+      <span class="tz-kicker">Never miss a Tuesday</span>
+      <h2>Put the needle down</h2>
+      <p class="tz-sub">Free everywhere you already listen. Members get ad-free episodes, full case files, and the monthly mailbag show.</p>
+      <div class="tz-subgrid">
+        <div class="tz-subcard tz-reveal">
+          <h3>Listen free</h3>
+          <p>Every episode, every season, on every major platform — with two short ad breaks that keep the lights on.</p>
+          <div class="tz-platforms">
+            <a class="tz-platform" href="#">Apple Podcasts</a>
+            <a class="tz-platform" href="#">Spotify</a>
+            <a class="tz-platform" href="#">Overcast</a>
+            <a class="tz-platform" href="#">Pocket Casts</a>
+            <a class="tz-platform" href="#">RSS feed</a>
+          </div>
+        </div>
+        <div class="tz-stats tz-reveal">
+          <div><b>$5/mo</b><span>Cold Trail Member — ad-free + case files</span></div>
+          <div><b>Tue</b><span>New episodes, 5 a.m. Eastern</span></div>
+          <div><b>214</b><span>Episodes in the back catalog</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<style>
+.tz-team{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.tz-member{border:1px solid var(--tz-line);background:var(--tz-surface);padding:44px;text-decoration:none;display:block;transition:transform .3s var(--tz-ease)}
+.tz-member:hover{transform:translateY(-4px)}
+.tz-member .tz-role{font-family:var(--tz-mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--tz-accent);margin-bottom:16px;display:block}
+.tz-member h3{font-family:var(--tz-display);font-size:30px;text-transform:uppercase;margin-bottom:14px}
+.tz-member p{color:var(--tz-muted);font-size:16px;margin-bottom:14px}
+.tz-member .tz-cred{font-family:var(--tz-mono);font-size:12px;color:var(--tz-muted)}
+.tz-casefile{background:var(--tz-accent);color:#171310;padding:88px 0}
+.tz-casefile h2{font-family:var(--tz-display);font-size:clamp(36px,4.6vw,62px);text-transform:uppercase;line-height:1;margin-bottom:18px}
+.tz-casefile p{font-size:18px;max-width:56ch;margin-bottom:30px;color:#3a2418}
+.tz-casefile .tz-field{display:flex;max-width:520px;border:2px solid #171310}
+.tz-casefile .tz-field input{flex:1;background:transparent;border:none;padding:16px 18px;font-family:var(--tz-body);font-size:16px;color:#171310;outline:none;min-width:0}
+.tz-casefile .tz-field input::placeholder{color:#6e4a2e}
+.tz-casefile .tz-field button{background:#171310;color:#f2e8d5;border:none;font-family:var(--tz-mono);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:0 28px;cursor:pointer}
+.tz-casefile .tz-fine{font-family:var(--tz-mono);font-size:11px;margin-top:16px;color:#5a3a22;letter-spacing:.06em}
+@media(max-width:900px){.tz-team{grid-template-columns:1fr}}
+</style>
+<style>
+.tz-awards{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--tz-line);margin-bottom:0}
+.tz-award{padding:36px 30px;border-right:1px solid var(--tz-line)}
+.tz-award:last-child{border-right:none}
+.tz-award b{display:block;font-family:var(--tz-display);font-size:26px;text-transform:uppercase;margin-bottom:8px;color:var(--tz-accent)}
+.tz-award span{font-family:var(--tz-mono);font-size:12px;color:var(--tz-muted);letter-spacing:.06em}
+.tz-tip{border:1px solid var(--tz-line);background:var(--tz-surface);padding:72px 64px;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;margin-top:64px}
+.tz-tip h2{font-family:var(--tz-display);font-size:clamp(30px,3.6vw,48px);text-transform:uppercase;margin-bottom:16px}
+.tz-tip p{color:var(--tz-muted);font-size:17px;max-width:52ch}
+.tz-tip .tz-fine{font-family:var(--tz-mono);font-size:11px;color:var(--tz-muted);margin-top:18px;letter-spacing:.08em}
+@media(max-width:900px){.tz-awards{grid-template-columns:1fr 1fr}.tz-award:nth-child(2){border-right:none}.tz-award{border-bottom:1px solid var(--tz-line)}.tz-tip{grid-template-columns:1fr;padding:48px 32px}}
+</style>
+<style>
+.tz-seasons{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--tz-line)}
+.tz-season{padding:36px 32px;border-right:1px solid var(--tz-line);border-bottom:1px solid var(--tz-line);text-decoration:none;display:block;transition:background .25s}
+.tz-season:nth-child(3n){border-right:none}
+.tz-season:nth-last-child(-n+3){border-bottom:none}
+.tz-season:hover{background:var(--tz-surface)}
+.tz-season .tz-sn{font-family:var(--tz-mono);font-size:11px;letter-spacing:.2em;color:var(--tz-accent);text-transform:uppercase;display:block;margin-bottom:12px}
+.tz-season h3{font-family:var(--tz-display);font-size:22px;text-transform:uppercase;margin-bottom:8px}
+.tz-season p{font-size:14px;color:var(--tz-muted)}
+@media(max-width:900px){.tz-seasons{grid-template-columns:1fr}.tz-season{border-right:none !important}.tz-season:nth-last-child(-n+3){border-bottom:1px solid var(--tz-line)}.tz-season:last-child{border-bottom:none}}
+</style>
+  <section class="tz-section" id="archive" style="padding-bottom:0">
+    <div class="tz-wrap">
+      <span class="tz-kicker">The back catalog</span>
+      <h2 style="font-family:var(--tz-display);font-size:clamp(34px,4vw,54px);text-transform:uppercase;margin-bottom:48px">Every season, on the shelf</h2>
+      <div class="tz-seasons tz-reveal">
+        <a class="tz-season" href="#episodes"><span class="tz-sn">Season 1 · 2019</span><h3>The Lighthouse Keeper</h3><p>12 episodes · a disappearance on the Maine coast</p></a>
+        <a class="tz-season" href="#episodes"><span class="tz-sn">Season 2 · 2020</span><h3>Paper Streets</h3><p>14 episodes · the arson files of Millinocket</p></a>
+        <a class="tz-season" href="#episodes"><span class="tz-sn">Season 3 · 2022</span><h3>The Orchard</h3><p>10 episodes · what the harvest crew saw</p></a>
+        <a class="tz-season" href="#episodes"><span class="tz-sn">Season 4 · 2023</span><h3>Static Line</h3><p>12 episodes · the missing hiker's radio</p></a>
+        <a class="tz-season" href="#episodes"><span class="tz-sn">Season 5 · 2024</span><h3>Ledger &amp; Ash</h3><p>14 episodes · the bank fire of '87</p></a>
+        <a class="tz-season" href="#episodes"><span class="tz-sn">Season 6 · 2026</span><h3>Harrow Creek</h3><p>12 episodes · playing now</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="awards" style="padding-bottom:0">
+    <div class="tz-wrap">
+      <span class="tz-kicker">On the shelf</span>
+      <h2 style="font-family:var(--tz-display);font-size:clamp(34px,4vw,54px);text-transform:uppercase;margin-bottom:48px">Recognition</h2>
+      <div class="tz-awards tz-reveal">
+        <div class="tz-award"><b>Signal Award</b><span>Best True Crime · 2026</span></div>
+        <div class="tz-award"><b>Ambie</b><span>Best Reporting · 2025</span></div>
+        <div class="tz-award"><b>Webby Honoree</b><span>Podcasts · 2024, 2025</span></div>
+        <div class="tz-award"><b>4.9 ★</b><span>41,000 listener ratings</span></div>
+      </div>
+      <div class="tz-tip tz-reveal">
+        <div>
+          <h2>Know something about a cold case?</h2>
+          <p>Our tip line is staffed by a producer, not a bot. Everything is confidential until you say otherwise — and "off the record" means off the record.</p>
+          <p class="tz-fine">TIPS ARE NEVER SHARED WITH LAW ENFORCEMENT WITHOUT YOUR WRITTEN PERMISSION</p>
+        </div>
+        <div><a class="tz-btn" href="#casefile">Send a tip</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="team">
+    <div class="tz-wrap">
+      <span class="tz-kicker">The reporters</span>
+      <h2>Two people, one file cabinet</h2>
+      <p class="tz-sub">No panel shows, no rotating guests. The same two reporters on every case, start to finish.</p>
+      <div class="tz-team">
+        <div class="tz-member tz-reveal">
+          <span class="tz-role">Host &amp; lead reporter</span>
+          <h3>Mara Ellison</h3>
+          <p>Fourteen years covering courts and crime for the Portland Press Herald before trading the newsroom for a microphone. Mara does the interviews nobody else gets — because she shows up twice, and brings the file both times.</p>
+          <p class="tz-cred">Signal Award winner, 2024 · 214 episodes reported</p>
+        </div>
+        <div class="tz-member tz-reveal">
+          <span class="tz-role">Producer &amp; records hound</span>
+          <h3>Dev Okafor</h3>
+          <p>Dev files the FOIAs, builds the timelines, and finds the box in the basement. A former archivist who treats a mislabeled folder like a personal insult. Every map and document on the site is his work.</p>
+          <p class="tz-cred">300+ records requests filed · 0 lost to bureaucracy</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-casefile" id="casefile">
+    <div class="tz-wrap">
+      <h2>The Case File</h2>
+      <p>A monthly letter for the obsessed: source documents we couldn't fit in the episode, maps, and the occasional correction — because getting it right matters more than sounding right.</p>
+      <form class="tz-field" onsubmit="return false" aria-label="Subscribe to the Case File">
+        <input type="email" placeholder="you@example.com" aria-label="Email address" required>
+        <button type="submit">Get the file</button>
+      </form>
+      <p class="tz-fine">12,000 SUBSCRIBERS · UNSUBSCRIBE ANYTIME · WE NEVER SHARE ADDRESSES</p>
+    </div>
+  </section>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-footer-grid">
+      <div>
+        <h4>Cold Trail</h4>
+        <p style="color:var(--tz-muted);font-size:15px;max-width:34ch">A true-crime podcast reported by Mara Ellison and Dev Okafor. Produced in Portland, Maine. Cases are real; names of private individuals are changed where noted.</p>
+      </div>
+      <div>
+        <h4>Show</h4>
+        <ul><li><a href="#episodes">Episodes</a></li><li><a href="#about">About</a></li><li><a href="#press">Press kit</a></li><li><a href="#">Tip line</a></li></ul>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <ul><li><a href="#">Instagram</a></li><li><a href="#">Threads</a></li><li><a href="#">Newsletter</a></li><li><a href="#">Contact</a></li></ul>
+      </div>
+    </div>
+    <div class="tz-footer-bottom">
+      <span>© 2026 Cold Trail Audio · All stories reported with consent</span>
+      <span class="tz-mono">CT-062 · cut at 33⅓ rpm</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce) return;
+  var els = document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('tz-in')}); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en,i){
+      if(en.isIntersecting){ setTimeout(function(){en.target.classList.add('tz-in')}, (i%3)*80); io.unobserve(en.target); }
+    });
+  },{threshold:.12});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
