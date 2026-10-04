@@ -1,0 +1,129 @@
+{
+ "count": 8,
+ "updated": "2026-10-04",
+ "usage": "Python page builders (stdlib only). Run: python3 python/<page>.py > out.html",
+ "python_pages": [
+  {
+   "id": "py-changelog-page",
+   "title": "Northbeam Maps — expedition changelog",
+   "category": "Python",
+   "file": "python/changelog_page.py",
+   "tags": [
+    "python",
+    "changelog",
+    "release-notes"
+   ],
+   "description": "Changelog page in the alpine-ledger DNA: each release a stamped logbook entry with rotated rubber-stamp tags on kraft paper.",
+   "dnas": [
+    "alpine-ledger"
+   ]
+  },
+  {
+   "id": "py-docs-page",
+   "title": "Tendril docs — warm documentation landing",
+   "category": "Python",
+   "file": "python/docs_page.py",
+   "tags": [
+    "python",
+    "docs",
+    "open-source"
+   ],
+   "description": "Documentation landing page in the docs-solar DNA: sticky index, warm prose, amber margin notes, quickstart for a fictional task queue.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "py-event-page",
+   "title": "STATIC BLOOM — warehouse night flyer",
+   "category": "Python",
+   "file": "python/event_page.py",
+   "tags": [
+    "python",
+    "event",
+    "music",
+    "flyer"
+   ],
+   "description": "Music event page in the acid-rave DNA: black room, acid lime, Anton at maximum volume, a lime ticker and a raw lineup table.",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "py-nonprofit-page",
+   "title": "The Glasshouse Project — nonprofit page",
+   "category": "Python",
+   "file": "python/nonprofit_page.py",
+   "tags": [
+    "python",
+    "nonprofit",
+    "community"
+   ],
+   "description": "Nonprofit page in the botanical-lab DNA: each program presented as a pressed specimen plate with a Latin label, greenhouse calm.",
+   "dnas": [
+    "botanical-lab"
+   ]
+  },
+  {
+   "id": "py-portfolio-page",
+   "title": "Mori Aiko — work-first portfolio",
+   "category": "Python",
+   "file": "python/portfolio_page.py",
+   "tags": [
+    "python",
+    "portfolio",
+    "work-first"
+   ],
+   "description": "Work-first portfolio in the ma-japanese DNA: exhibition index, vast emptiness, a red hanko seal as the only loud object.",
+   "dnas": [
+    "ma-japanese"
+   ]
+  },
+  {
+   "id": "py-restaurant-page",
+   "title": "Bar Ombra — aperitivo bar page",
+   "category": "Python",
+   "file": "python/restaurant_page.py",
+   "tags": [
+    "python",
+    "restaurant",
+    "menu"
+   ],
+   "description": "Restaurant page in the aperitivo-italian DNA: chalkboard menu in two asymmetric columns, golden-hour hours note, Campari red on cream.",
+   "dnas": [
+    "aperitivo-italian"
+   ]
+  },
+  {
+   "id": "py-saas-page",
+   "title": "Stillwater — calm analytics landing page",
+   "category": "Python",
+   "file": "python/saas_page.py",
+   "tags": [
+    "python",
+    "landing-page",
+    "saas"
+   ],
+   "description": "Complete calm analytics landing page in the soft-minimal DNA: one giant honest number, hairline rows, no dashboard noise.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  },
+  {
+   "id": "py-tz-build",
+   "title": "tz_build — stdlib static site builder",
+   "category": "Python",
+   "file": "python/tz_build.py",
+   "tags": [
+    "python",
+    "ssg",
+    "static-site",
+    "cli"
+   ],
+   "description": "Tiny stdlib-only static site builder. Pick a TZ-taste DNA, get a complete standalone HTML page with real tokens.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  }
+ ]
+}
