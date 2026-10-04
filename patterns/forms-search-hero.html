@@ -1,0 +1,43 @@
+<!--tz-meta {"id":"forms-search-hero","title":"Search hero","category":"Forms","file":"patterns/forms-search-hero.html","tags":["search","help","large"],"description":"A giant solarized search field with a ⌘K hint and popular-search shortcuts below.","dnas":["docs-solar"]} -->
+<section class="tz-shero" aria-labelledby="tz-shero-h">
+  <p class="tz-shero-eyebrow">fieldguide · 212 pages</p>
+  <h2 id="tz-shero-h">What are you trying to build?</h2>
+  <form class="tz-shero-form" action="#" method="get" role="search">
+    <label class="tz-shero-sr" for="tz-shero-q">Search the docs</label>
+    <svg class="tz-shero-icon" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.8-3.8"/></svg>
+    <input id="tz-shero-q" type="search" name="q" placeholder="Search guides, API, cookbook…" autocomplete="off">
+    <kbd>⌘K</kbd>
+  </form>
+  <div class="tz-shero-pop">
+    <span>Popular:</span>
+    <a href="#">authentication</a><a href="#">webhooks</a><a href="#">rate limits</a><a href="#">migrating from v3</a><a href="#">error codes</a>
+  </div>
+  <p class="tz-shero-tip">Tip: press <kbd>⌘K</kbd> anywhere to search — it follows you.</p>
+</section>
+<style>
+.tz-shero{--bg:#fdf6e3;--ink:#3d4c52;--dim:#6b7d84;--accent:#1f6f9e;--line:#e0d3ae;
+  background:var(--bg);color:var(--ink);padding:clamp(64px,9vw,130px) clamp(24px,6vw,96px);
+  font-family:Arial,Helvetica,sans-serif;text-align:center}
+.tz-shero-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--dim);margin:0 0 20px}
+.tz-shero h2{font-size:clamp(36px,6vw,68px);letter-spacing:-.03em;margin:0 0 36px;font-weight:800}
+.tz-shero-form{display:flex;align-items:center;gap:14px;max-width:720px;margin:0 auto;
+  background:#fff;border:2px solid var(--ink);border-radius:16px;padding:6px 8px 6px 22px;
+  box-shadow:6px 6px 0 var(--line);text-align:left}
+.tz-shero-form:focus-within{border-color:var(--accent);box-shadow:6px 6px 0 var(--accent)}
+.tz-shero-icon{color:var(--dim);flex:none}
+.tz-shero-form input{flex:1;border:0;background:transparent;font-size:20px;font-family:inherit;
+  color:var(--ink);padding:16px 0;min-width:0}
+.tz-shero-form input:focus{outline:none}
+.tz-shero-form kbd{font-family:ui-monospace,Menlo,monospace;font-size:13px;color:var(--dim);
+  border:1px solid var(--line);border-bottom-width:3px;border-radius:8px;padding:8px 12px;flex:none}
+.tz-shero-pop{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;
+  margin-top:26px;font-size:14px;color:var(--dim)}
+.tz-shero-pop a{color:var(--accent);text-decoration:none;border:1px solid var(--line);
+  border-radius:999px;padding:7px 16px;background:#fff}
+.tz-shero-pop a:hover{border-color:var(--accent)}
+.tz-shero-tip{font-family:ui-monospace,Menlo,monospace;font-size:12.5px;color:var(--dim);margin:22px 0 0}
+.tz-shero-tip kbd{font-family:inherit;border:1px solid var(--line);border-bottom-width:2px;
+  border-radius:5px;padding:2px 8px;background:#fff}
+.tz-shero-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
