@@ -1,0 +1,113 @@
+<!--tz-meta {"id":"gen-org-sand-dune-ripples","title":"Sand Dune Ripples","category":"Generative","file":"generative/org-sand-dune-ripples.html","tags":["dunes","wind","desert"],"description":"Layered dunes with wind-driven ripple marks; the wind gusts and shifts, dragging the ripples across each ridge.","dnas":["sahara-ochre"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sand Dune Ripples — TZ-taste Generative</title>
+<style>
+*{box-sizing:border-box}
+.tz-gen-body{margin:0;background:#f4e7d3;color:#3a2418;font-family:Georgia,'Times New Roman',serif;min-height:100vh}
+.tz-gen-wrap{max-width:1120px;margin:0 auto;padding:48px 24px 64px}
+.tz-gen-head{margin:0 0 28px}
+.tz-gen-kicker{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#b4552d;margin:0 0 14px}
+.tz-gen-head h1{font-size:clamp(30px,5vw,52px);line-height:1.05;margin:0 0 12px;font-weight:600}
+.tz-gen-caption{font-size:16px;line-height:1.6;color:#8d7057;margin:0;max-width:62ch}
+.tz-gen-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:26px 0 14px}
+.tz-gen-btn{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;background:transparent;color:#3a2418;border:1px solid #d9c3a3;padding:10px 18px;border-radius:3px;cursor:pointer}
+.tz-gen-btn:hover{border-color:#b4552d;color:#b4552d}
+.tz-gen-seed{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:12px;color:#8d7057;margin-left:auto}
+.tz-gen-canvas{display:block;width:100%;height:70vh;border:1px solid #d9c3a3;border-radius:3px;background:#f4e7d3}
+.tz-gen-note{font-size:14px;line-height:1.65;color:#8d7057;margin:18px 0 0;max-width:70ch}
+@media(max-width:520px){.tz-gen-wrap{padding:32px 16px 48px}.tz-gen-seed{margin-left:0;width:100%}}
+</style>
+</head>
+<body class="tz-gen-body">
+<div class="tz-gen-wrap">
+  <header class="tz-gen-head">
+    <p class="tz-gen-kicker">TZ-taste · Generative</p>
+    <h1>Sand Dune Ripples</h1>
+    <p class="tz-gen-caption">Four dune ridges stacked to the horizon. The ripple marks crawl with the wind — slow, steady, and never in quite the same place twice.</p>
+  </header>
+  <div class="tz-gen-bar">
+    <button class="tz-gen-btn" id="tzSeed">New seed</button>
+    <button class="tz-gen-btn" id="tzPause">Pause</button>
+    <button class="tz-gen-btn" id="tzClear">Clear</button>
+    <span class="tz-gen-seed" id="tzSeedLabel">Seed 0</span>
+  </div>
+  <canvas class="tz-gen-canvas" id="tzCv" aria-label="Sand dunes with wind-driven ripple marks"></canvas>
+  <p class="tz-gen-note">New seeds re-sculpt the ridge lines and reset the wind's mood.</p>
+</div>
+<script>
+'use strict';
+const cv=document.getElementById('tzCv'),ctx=cv.getContext('2d');
+const seedLabel=document.getElementById('tzSeedLabel');
+let W=0,H=0,seed=(Math.random()*1e9)|0,rand=null,dunes=[],t=0,running=true;
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const BG='#f4e7d3',ACC='#b4552d';
+const DSHADES=['#e8d2ab','#dfc096','#d4af80','#c79e70'];
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function ridgeY(d,x){
+  return d.base+d.a1*Math.sin(x*d.f1+d.p1)+d.a2*Math.sin(x*d.f2+d.p2);
+}
+function init(){
+  rand=mulberry32(seed);dunes=[];t=0;
+  for(let k=0;k<4;k++){
+    dunes.push({
+      base:H*0.32+k*H*0.2,
+      a1:18+rand()*26,a2:8+rand()*14,
+      f1:0.004+rand()*0.004,f2:0.011+rand()*0.008,
+      p1:rand()*6.28,p2:rand()*6.28,
+      rip:20+Math.floor(rand()*20)
+    });
+  }
+  seedLabel.textContent='Seed '+seed;
+}
+function step(){
+  if(!reduced)t+=0.016;else t=2.0;
+  const wind=0.6+0.4*Math.sin(t*0.23)+0.15*Math.sin(t*0.71);
+  ctx.fillStyle=BG;ctx.fillRect(0,0,W,H);
+  ctx.fillStyle='#f9efdd';ctx.fillRect(0,0,W,H*0.22);
+  for(let k=0;k<dunes.length;k++){
+    const d=dunes[k];
+    ctx.fillStyle=DSHADES[k];
+    ctx.beginPath();ctx.moveTo(0,H);
+    for(let x=0;x<=W;x+=6)ctx.lineTo(x,ridgeY(d,x));
+    ctx.lineTo(W,H);ctx.closePath();ctx.fill();
+    ctx.strokeStyle=ACC;ctx.globalAlpha=0.34;ctx.lineWidth=1.2;
+    const rows=d.rip;
+    for(let rI=0;rI<rows;rI++){
+      const yy=d.base+8+rI*((H-d.base)/rows);
+      ctx.beginPath();
+      for(let x=0;x<=W;x+=8){
+        const ry=ridgeY(d,x);
+        if(yy<ry-4)continue;
+        const xx=x+Math.sin(yy*0.11+t*1.4*wind+x*0.01)*7;
+        if(x===0)ctx.moveTo(xx,yy);else ctx.lineTo(xx,yy);
+      }
+      ctx.stroke();
+    }
+    ctx.globalAlpha=1;
+    ctx.strokeStyle='rgba(180,85,45,0.5)';ctx.lineWidth=1.5;
+    ctx.beginPath();
+    for(let x=0;x<=W;x+=6){const y=ridgeY(d,x);if(x===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);}
+    ctx.stroke();
+  }
+}
+function resize(){
+  const d=Math.min(window.devicePixelRatio||1,2),r=cv.getBoundingClientRect();
+  W=Math.max(2,Math.round(r.width));H=Math.max(2,Math.round(r.height));
+  cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);init();
+}
+window.addEventListener('resize',resize);
+document.getElementById('tzSeed').addEventListener('click',()=>{seed=(Math.random()*1e9)|0;init();if(!running)toggle();});
+document.getElementById('tzClear').addEventListener('click',init);
+function toggle(){running=!running;document.getElementById('tzPause').textContent=running?'Pause':'Resume';if(running&&!reduced)tick();}
+document.getElementById('tzPause').addEventListener('click',toggle);
+function tick(){if(!running)return;step();requestAnimationFrame(tick);}
+resize();
+if(reduced){step();}
+else tick();
+</script>
+</body>
+</html>
