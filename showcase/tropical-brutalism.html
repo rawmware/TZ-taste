@@ -1,0 +1,135 @@
+<!--tz-meta {"id":"showcase-tropical-brutalism","title":"Tropical Brutalism showcase","category":"Showcase","file":"showcase/tropical-brutalism.html","tags":["tropical-brutalism"],"description":"Live demo page for the Tropical Brutalism style DNA.","dnas":["tropical-brutalism"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tropical Brutalism — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#e8e2d4; --tz-concrete:#cfc8b4; --tz-ink:#20241e; --tz-muted:#7a7f6a;
+  --tz-accent:#2e6b34; --tz-ochre:#d97b29; --tz-line:#3c4036;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Space Grotesk",sans-serif;line-height:1.6}
+.tz-top{display:flex;justify-content:space-between;padding:1.1rem 2rem;border-bottom:3px solid var(--tz-line);font-family:"Space Mono",monospace;font-size:.68rem;letter-spacing:.14em}
+.tz-top .tz-wordmark{font-weight:700}
+.tz-top .tz-dna-label{color:var(--tz-muted)}
+.tz-hero{max-width:1200px;margin:0 auto;padding:5rem 2rem 6rem;position:relative}
+.tz-sun-strip{position:absolute;left:0;top:0;bottom:0;width:10px;background:var(--tz-ochre)}
+.tz-eyebrow{font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.22em;color:var(--tz-accent);margin-bottom:1.25rem;font-weight:700}
+.tz-hero h1{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:clamp(3rem,10vw,8.5rem);line-height:.95;letter-spacing:.01em;max-width:9ch}
+.tz-hero h1 .tz-green{color:var(--tz-accent)}
+.tz-slab{margin-top:3rem;background:var(--tz-concrete);border:3px solid var(--tz-line);box-shadow:16px 16px 0 rgba(32,36,30,.25);padding:2.5rem;max-width:44rem;display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.tz-slab p{font-size:1.05rem}
+.tz-slab .tz-mono{font-family:"Space Mono",monospace;font-size:.72rem;letter-spacing:.1em;color:var(--tz-muted);line-height:2}
+.tz-cta{display:inline-block;margin-top:2.5rem;background:var(--tz-accent);color:var(--tz-bg);font-family:"Space Mono",monospace;font-size:.82rem;font-weight:700;letter-spacing:.14em;padding:1.1rem 2.5rem;text-decoration:none;border:3px solid var(--tz-line);box-shadow:8px 8px 0 rgba(32,36,30,.25)}
+.tz-cta:hover{box-shadow:12px 12px 0 rgba(32,36,30,.25);transform:translate(-2px,-2px)}
+.tz-content{max-width:1200px;margin:0 auto;padding:2rem 2rem 6rem}
+.tz-sec-head{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:clamp(2rem,5vw,3.5rem);margin-bottom:5rem}
+.tz-project{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;margin-bottom:7rem;align-items:start}
+.tz-project:nth-child(odd){grid-template-columns:1fr 1.2fr}
+.tz-project:nth-child(odd) .tz-proj-block{order:2}
+.tz-proj-block{background:var(--tz-concrete);border:3px solid var(--tz-line);box-shadow:16px 16px 0 rgba(32,36,30,.25);min-height:22rem;position:relative;overflow:hidden}
+.tz-proj-block .tz-leaf{position:absolute;inset:0;background:var(--tz-accent);opacity:.9}
+.tz-proj-block .tz-ochre-band{position:absolute;left:0;top:0;bottom:0;width:26%;background:var(--tz-ochre);opacity:.85}
+.tz-proj-block .tz-sun-label{position:absolute;bottom:1rem;left:1.25rem;font-family:"Space Mono",monospace;font-size:.68rem;letter-spacing:.14em;color:var(--tz-bg);font-weight:700}
+.tz-project h3{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:2.2rem;line-height:1;margin-bottom:1rem}
+.tz-project .tz-spec{font-family:"Space Mono",monospace;font-size:.75rem;letter-spacing:.06em;color:var(--tz-muted);line-height:2.1;margin:1.25rem 0}
+.tz-project p{max-width:34rem}
+.tz-project .tz-sun-note{border-left:6px solid var(--tz-ochre);padding-left:1rem;margin-top:1.5rem;font-size:.95rem;color:var(--tz-muted)}
+.tz-tokens{max-width:1200px;margin:0 auto;padding:2.5rem 2rem;border-top:3px solid var(--tz-line)}
+.tz-tokens h2{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:1.6rem;margin-bottom:1.5rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:1rem}
+.tz-chip{display:flex;align-items:center;gap:.6rem;font-family:"Space Mono",monospace;font-size:.68rem;color:var(--tz-muted)}
+.tz-chip i{display:block;width:2.5rem;height:2.5rem;border:2px solid var(--tz-line)}
+.tz-foot{border-top:3px solid var(--tz-line);padding:2rem;font-family:"Space Mono",monospace;font-size:.68rem;color:var(--tz-muted);text-align:center;letter-spacing:.1em}
+@media(max-width:700px){
+  .tz-top,.tz-hero,.tz-content,.tz-tokens{padding-left:1.25rem;padding-right:1.25rem}
+  .tz-slab{grid-template-columns:1fr}
+  .tz-project,.tz-project:nth-child(odd){grid-template-columns:1fr}
+  .tz-project:nth-child(odd) .tz-proj-block{order:0}
+  .tz-project{margin-bottom:4rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">TZ—taste</span>
+  <span class="tz-dna-label">STYLE DNA · TROPICAL-BRUTALISM</span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-sun-strip" aria-hidden="true"></div>
+  <p class="tz-eyebrow">MASSA VERDE · ATELIER DE ARQUITETURA · SÃO PAULO</p>
+  <h1>Concrete that <span class="tz-green">breathes.</span></h1>
+  <div class="tz-slab">
+    <p>We pour buildings the way the forest grows — heavy, shaded, and patient. Raw concrete for mass, planting for mercy, and one sun that never moves.</p>
+    <p class="tz-mono">FOUNDED 2011<br>23 BUILT WORKS<br>4 COUNTRIES<br>LIGHT: WEST, ALWAYS</p>
+  </div>
+  <a class="tz-cta" href="#tz-works">SEE THE WORKS</a>
+</section>
+
+<section class="tz-content" id="tz-works">
+  <h2 class="tz-sec-head">Selected works</h2>
+
+  <article class="tz-project">
+    <div class="tz-proj-block" aria-label="Casa Foliage massing study">
+      <div class="tz-leaf"></div><div class="tz-ochre-band"></div>
+      <span class="tz-sun-label">WEST LIGHT · 16:40</span>
+    </div>
+    <div>
+      <h3>Casa Foliage</h3>
+      <p>A family house wrapped around a courtyard tree the clients refused to cut. The concrete was poured around the roots; the roots won the argument and the house is better for it.</p>
+      <p class="tz-spec">SÃO PAULO · −23.55, −46.63<br>BOARD-FORMED CONCRETE · IPÊ · 340 M²<br>COMPLETED 2023</p>
+      <p class="tz-sun-note">Sun study: the west brise-soleil throws 4-meter shadows across the courtyard by 16:00. The planting bed stays in shade all afternoon.</p>
+    </div>
+  </article>
+
+  <article class="tz-project">
+    <div class="tz-proj-block" aria-label="Pavilion Sombra massing study">
+      <div class="tz-leaf" style="background:#cfc8b4"></div><div class="tz-ochre-band"></div>
+      <span class="tz-sun-label">WEST LIGHT · 17:10</span>
+    </div>
+    <div>
+      <h3>Pavilion Sombra</h3>
+      <p>A public shade structure on the riverfront — one roof, nine columns, no walls. At noon the shadow is the building; at dusk the building is the shadow.</p>
+      <p class="tz-spec">RECIFE · −8.05, −34.90<br>PRECAST CONCRETE · 1,100 M²<br>COMPLETED 2025</p>
+      <p class="tz-sun-note">Sun study: the roof plane is calibrated to the equinox. Twice a year the shadow edge lands exactly on the ochre threshold line.</p>
+    </div>
+  </article>
+
+  <article class="tz-project">
+    <div class="tz-proj-block" aria-label="Edificio Mata massing study">
+      <div class="tz-leaf" style="background:#20241e"></div><div class="tz-ochre-band"></div>
+      <span class="tz-sun-label">WEST LIGHT · 15:55</span>
+    </div>
+    <div>
+      <h3>Edifício Mata</h3>
+      <p>Twelve apartments stacked like planters, each with a deep balcony the forest is slowly claiming. Maintenance prunes twice a year; the building photographs itself.</p>
+      <p class="tz-spec">MANAUS · −3.11, −60.02<br>IN-SITU CONCRETE · 2,800 M²<br>COMPLETED 2024</p>
+      <p class="tz-sun-note">Sun study: west-facing fins cut glare to 12% of facade exposure. Interior daylight holds steady at 300 lux without blinds.</p>
+    </div>
+  </article>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <div class="tz-swatches">
+    <span class="tz-chip"><i style="background:#e8e2d4"></i>#e8e2d4 · bg</span>
+    <span class="tz-chip"><i style="background:#20241e"></i>#20241e · ink</span>
+    <span class="tz-chip"><i style="background:#2e6b34"></i>#2e6b34 · accent</span>
+    <span class="tz-chip"><i style="background:#7a7f6a"></i>#7a7f6a · muted</span>
+    <span class="tz-chip"><i style="background:#3c4036"></i>#3c4036 · line</span>
+  </div>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
