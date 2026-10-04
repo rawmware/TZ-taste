@@ -1,0 +1,151 @@
+<!--tz-meta {"id":"particle-constellation","title":"Constellation Morph","category":"3D","file":"three-d/particle-constellation.html","tags":["threejs","ethereal"],"description":"1500 additive particles drift and crossfade between sphere, torus and scattered field in deep indigo space.","dnas":["dark-luxe"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Constellation Morph — TZ-taste</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #0b0e2a; }
+  canvas { display: block; }
+  .caption {
+    position: fixed; left: 18px; bottom: 16px; color: #cdd3ff; pointer-events: none;
+    font: 12px/1.6 system-ui, -apple-system, sans-serif; letter-spacing: .14em;
+    text-transform: uppercase; opacity: .85;
+  }
+  .caption small { display: block; letter-spacing: .05em; text-transform: none; opacity: .55; }
+  .fallback {
+    position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+    color: #e6e9ff; font: 14px system-ui, sans-serif; padding: 2rem; text-align: center;
+  }
+</style>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+</head>
+<body>
+<div class="caption">Constellation Morph<small>drag to orbit &middot; morphs every few seconds</small></div>
+<div class="fallback" id="fallback" hidden>WebGL is unavailable in this browser, so this scene cannot render.</div>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const fallback = document.getElementById('fallback');
+let renderer;
+try {
+  renderer = new THREE.WebGLRenderer({ antialias: true });
+} catch (err) {
+  fallback.hidden = false;
+  throw err;
+}
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0b0e2a);
+scene.fog = new THREE.FogExp2(0x0b0e2a, 0.04);
+
+const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 200);
+camera.position.set(0, 2.5, 14);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.06;
+
+const N = 1500;
+function buildSphere() {
+  const a = new Float32Array(N * 3);
+  for (let i = 0; i < N; i++) {
+    const u = Math.random() * Math.PI * 2, v = Math.acos(2 * Math.random() - 1);
+    const r = 4.2 + Math.random() * 0.6;
+    a[i*3] = r * Math.sin(v) * Math.cos(u);
+    a[i*3+1] = r * Math.cos(v);
+    a[i*3+2] = r * Math.sin(v) * Math.sin(u);
+  }
+  return a;
+}
+function buildTorus() {
+  const a = new Float32Array(N * 3);
+  const R = 4.4, rr = 1.6;
+  for (let i = 0; i < N; i++) {
+    const u = Math.random() * Math.PI * 2, v = Math.random() * Math.PI * 2;
+    const k = R + rr * Math.cos(v);
+    a[i*3] = k * Math.cos(u);
+    a[i*3+1] = rr * Math.sin(v);
+    a[i*3+2] = k * Math.sin(u);
+  }
+  return a;
+}
+function buildScatter() {
+  const a = new Float32Array(N * 3);
+  for (let i = 0; i < N; i++) {
+    a[i*3] = (Math.random() - 0.5) * 24;
+    a[i*3+1] = (Math.random() - 0.5) * 15;
+    a[i*3+2] = (Math.random() - 0.5) * 24;
+  }
+  return a;
+}
+const shapes = [buildSphere(), buildTorus(), buildScatter()];
+
+const pos = new Float32Array(shapes[0]);
+const col = new Float32Array(N * 3);
+const palette = [new THREE.Color(0x7dd3fc), new THREE.Color(0xc084fc), new THREE.Color(0x818cf8)];
+for (let i = 0; i < N; i++) {
+  const c = palette[Math.floor(Math.random() * palette.length)];
+  col[i*3] = c.r; col[i*3+1] = c.g; col[i*3+2] = c.b;
+}
+const geo = new THREE.BufferGeometry();
+geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+const mat = new THREE.PointsMaterial({
+  size: 0.09, vertexColors: true, transparent: true, opacity: 0.9,
+  blending: THREE.AdditiveBlending, depthWrite: false
+});
+scene.add(new THREE.Points(geo, mat));
+
+let shapeIdx = 0, blend = 0;
+const from = new Float32Array(N * 3), to = new Float32Array(N * 3);
+from.set(shapes[0]); to.set(shapes[1]);
+window.setInterval(() => {
+  from.set(pos);
+  shapeIdx = (shapeIdx + 1) % shapes.length;
+  to.set(shapes[shapeIdx]);
+  blend = 0;
+}, 6000);
+
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const clock = new THREE.Clock();
+const ease = t => t * t * (3 - 2 * t);
+
+function tick() {
+  const dt = Math.min(clock.getDelta(), 0.05);
+  const t = clock.elapsedTime;
+  if (blend < 1) blend = Math.min(1, blend + dt / 2.4);
+  const e = ease(blend);
+  const p = geo.attributes.position.array;
+  for (let i = 0; i < N; i++) {
+    const j = i * 3;
+    const wx = Math.sin(t * 0.8 + i * 0.37) * 0.07;
+    const wy = Math.cos(t * 0.6 + i * 0.53) * 0.07;
+    p[j]   = from[j] * (1 - e) + to[j] * e + wx;
+    p[j+1] = from[j+1] * (1 - e) + to[j+1] * e + wy;
+    p[j+2] = from[j+2] * (1 - e) + to[j+2] * e + wx * 0.5;
+  }
+  geo.attributes.position.needsUpdate = true;
+  if (!reduced) controls.update();
+  renderer.render(scene, camera);
+}
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+if (reduced) {
+  tick();
+  renderer.render(scene, camera);
+} else {
+  renderer.setAnimationLoop(tick);
+}
+</script>
+</body>
+</html>
