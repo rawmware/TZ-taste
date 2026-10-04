@@ -1,0 +1,59 @@
+<!--tz-meta {"id":"faq-search","title":"Searchable FAQ","category":"FAQ","file":"patterns/faq-search.html","tags":["search","categories"],"description":"Search field with CSS-only category chips that actually filter the question list.","dnas":["soft-minimal"]} -->
+<section class="tz-fqs">
+  <p class="tz-fqs-eyebrow">Help center</p>
+  <h2 class="tz-fqs-title">Find your answer.</h2>
+
+  <input class="tz-fqs-r" type="radio" name="tzfqs" id="tzfqs-all" checked>
+  <input class="tz-fqs-r" type="radio" name="tzfqs" id="tzfqs-billing">
+  <input class="tz-fqs-r" type="radio" name="tzfqs" id="tzfqs-setup">
+  <input class="tz-fqs-r" type="radio" name="tzfqs" id="tzfqs-privacy">
+
+  <div class="tz-fqs-search">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+    <input type="search" placeholder="Search 24 answers… (try the topics below)" aria-label="Search answers">
+  </div>
+
+  <div class="tz-fqs-chips" role="group" aria-label="Filter by topic">
+    <label for="tzfqs-all">All</label>
+    <label for="tzfqs-billing">Billing</label>
+    <label for="tzfqs-setup">Setup</label>
+    <label for="tzfqs-privacy">Privacy</label>
+  </div>
+
+  <ul class="tz-fqs-list">
+    <li class="tz-fqs-billing"><b>Can I switch plans mid-month?</b><p>Yes — upgrades apply instantly, downgrades at the next cycle. We pro-rate everything to the day.</p></li>
+    <li class="tz-fqs-setup"><b>How long does setup take?</b><p>Most teams are live in under 30 minutes: connect, approve twelve drafts, run a supervised week.</p></li>
+    <li class="tz-fqs-privacy"><b>Where is my data stored?</b><p>Your choice of US or EU region at signup. It never moves without your written approval.</p></li>
+    <li class="tz-fqs-billing"><b>Do you offer refunds?</b><p>First 30 days, no questions. After that, pro-rated to the day you cancel.</p></li>
+    <li class="tz-fqs-setup"><b>Does it work with Gmail and Outlook?</b><p>Both, plus any IMAP inbox. Calendar sync covers Google and Microsoft 365.</p></li>
+    <li class="tz-fqs-privacy"><b>Do you train models on my messages?</b><p>Never. Your messages improve only your own voice profile. Audited annually.</p></li>
+  </ul>
+</section>
+<style>
+.tz-fqs{--bg:#f7f5f1;--ink:#1d1c19;--accent:#4f6b4a;--line:rgba(29,28,25,.16);
+  background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(64px,9vw,120px) clamp(24px,8vw,120px)}
+.tz-fqs-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 16px}
+.tz-fqs-title{font-size:clamp(34px,5vw,60px);font-weight:700;letter-spacing:-.025em;margin:0 0 36px}
+.tz-fqs-r{position:absolute;opacity:0;pointer-events:none}
+.tz-fqs-search{display:flex;align-items:center;gap:14px;background:#fff;border:2px solid var(--ink);
+  padding:16px 20px;max-width:640px;margin-bottom:20px;cursor:text}
+.tz-fqs-search svg{width:22px;height:22px;flex:none;color:var(--accent)}
+.tz-fqs-search input{border:none;outline:none;background:none;font-size:16px;width:100%;color:var(--ink);font-family:inherit}
+.tz-fqs-chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px}
+.tz-fqs-chips label{border:2px solid var(--ink);padding:10px 20px;font-size:13px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;cursor:pointer;background:#fff}
+#tzfqs-all:checked ~ .tz-fqs-chips label[for="tzfqs-all"],
+#tzfqs-billing:checked ~ .tz-fqs-chips label[for="tzfqs-billing"],
+#tzfqs-setup:checked ~ .tz-fqs-chips label[for="tzfqs-setup"],
+#tzfqs-privacy:checked ~ .tz-fqs-chips label[for="tzfqs-privacy"]{background:var(--ink);color:#fff}
+.tz-fqs-list{list-style:none;margin:0;padding:0;max-width:720px;display:flex;flex-direction:column}
+.tz-fqs-list li{border-top:1px solid var(--line);padding:24px 4px}
+.tz-fqs-list li:last-child{border-bottom:1px solid var(--line)}
+.tz-fqs-list b{font-size:17px;letter-spacing:-.01em;display:block;margin-bottom:8px}
+.tz-fqs-list p{font-size:15px;line-height:1.65;color:rgba(29,28,25,.72);margin:0;max-width:58ch}
+#tzfqs-billing:checked ~ .tz-fqs-list li:not(.tz-fqs-billing),
+#tzfqs-setup:checked ~ .tz-fqs-list li:not(.tz-fqs-setup),
+#tzfqs-privacy:checked ~ .tz-fqs-list li:not(.tz-fqs-privacy){display:none}
+</style>
