@@ -1,5 +1,5 @@
 {
- "count": 48,
+ "count": 58,
  "updated": "2026-10-04",
  "usage": "Copy-paste build prompts. Fill the [BRACKETS], paste into any AI builder.",
  "prompts": [
@@ -14,6 +14,12 @@
    "title": "About page",
    "file": "prompts/about-page.md",
    "description": "Company story page: one portrait, real facts, no stock-team hero."
+  },
+  {
+   "id": "ai-chat-widget",
+   "title": "AI chat widget",
+   "file": "prompts/ai-chat-widget.md",
+   "description": "Embeddable AI chat widget UI: launcher, panel, streaming, suggested prompts, human handoff."
   },
   {
    "id": "api-docs",
@@ -52,10 +58,22 @@
    "description": "Release-notes page: reverse-chron entries, semantic labels, anchorable versions, subscribe hook."
   },
   {
+   "id": "changelog-video",
+   "title": "Video changelog page",
+   "file": "prompts/changelog-video.md",
+   "description": "Release notes as short videos: latest episode hero, episode archive, transcripts, subscribe."
+  },
+  {
    "id": "checkout-flow",
    "title": "Checkout flow",
    "file": "prompts/checkout-flow.md",
    "description": "Three-step ecommerce checkout: guest-first, sticky summary, error states that actually help."
+  },
+  {
+   "id": "cohort-course",
+   "title": "Cohort-based course page",
+   "file": "prompts/cohort-course.md",
+   "description": "Live cohort course landing: schedule, curriculum weeks, cohort cap, application — built for a real start date."
   },
   {
    "id": "community-forum",
@@ -80,6 +98,12 @@
    "title": "Course landing",
    "file": "prompts/course-landing.md",
    "description": "Online course sales page with visible curriculum and honest pricing."
+  },
+  {
+   "id": "creator-media-kit",
+   "title": "Creator media kit page",
+   "file": "prompts/creator-media-kit.md",
+   "description": "Creator media kit: audience stats, rates, past brand work, contact — built to close sponsorships."
   },
   {
    "id": "dark-dashboard",
@@ -110,6 +134,12 @@
    "title": "Developer docs site",
    "file": "prompts/developer-docs-site.md",
    "description": "Docs for developers: quickstart above the fold, working code samples, search-first, honest error docs."
+  },
+  {
+   "id": "digital-download-store",
+   "title": "Digital download store",
+   "file": "prompts/digital-download-store.md",
+   "description": "Storefront for digital products: previews, licensing, instant delivery, checkout."
   },
   {
    "id": "ecommerce-product",
@@ -172,6 +202,12 @@
    "description": "Creator link hub: one-tap links, latest work up top, profile header with a point of view."
   },
   {
+   "id": "membership-site",
+   "title": "Membership site page",
+   "file": "prompts/membership-site.md",
+   "description": "Membership join page: what's inside, member proof, events, tier picker, join flow."
+  },
+  {
    "id": "mobile-app-onboarding",
    "title": "Mobile app onboarding",
    "file": "prompts/mobile-app-onboarding.md",
@@ -200,6 +236,12 @@
    "title": "Nonprofit donate",
    "file": "prompts/nonprofit-donate.md",
    "description": "Donation page: concrete impact amounts, honest financials, zero guilt trips."
+  },
+  {
+   "id": "podcast-guest-page",
+   "title": "Podcast guest page",
+   "file": "prompts/podcast-guest-page.md",
+   "description": "Pitch guests on your show: past guests, topics, real reach stats, application form."
   },
   {
    "id": "podcast-page",
@@ -244,10 +286,28 @@
    "description": "Audit existing UI against the anti-slop checklist before rebuilding."
   },
   {
+   "id": "restaurant-online-ordering",
+   "title": "Restaurant online ordering page",
+   "file": "prompts/restaurant-online-ordering.md",
+   "description": "Restaurant ordering page: menu, modifiers, pickup/delivery, live order tracking."
+  },
+  {
    "id": "saas-onboarding",
    "title": "SaaS onboarding flow",
    "file": "prompts/saas-onboarding.md",
    "description": "Multi-step first-run flow: one job per screen, honest progress, skip without shame."
+  },
+  {
+   "id": "saas-trial-expiry",
+   "title": "SaaS trial expiry page",
+   "file": "prompts/saas-trial-expiry.md",
+   "description": "Trial-ending page with honest urgency: countdown, usage recap, plan picker, zero dark patterns."
+  },
+  {
+   "id": "service-marketplace",
+   "title": "Service marketplace page",
+   "file": "prompts/service-marketplace.md",
+   "description": "Marketplace for booking services: search, provider cards, reviews, booking flow."
   },
   {
    "id": "status-page",
