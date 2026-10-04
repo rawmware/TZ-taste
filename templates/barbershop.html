@@ -1,0 +1,350 @@
+<!--tz-meta {"id":"barbershop","title":"The Hot Lather — Classic Barbershop","category":"Template","file":"templates/barbershop.html","tags":["barbershop","local","services"],"description":"Jazz-age barbershop: sunburst type, perforated ticket ledger price list, walk-in queue board.","dnas":["art-deco-luxe"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hot Lather — classic cuts &amp; hot lather shaves, Est. 1952</title>
+<meta name="description" content="The Hot Lather is a classic barbershop: hot lather shaves, scissor cuts, and a queue board that never lies. Walk-ins welcome.">
+<!-- DNA: art-deco-luxe. Design read: a 1920s jazz-age ballroom rendered as a neighborhood barbershop page — black lacquer, gold leaf, theatrical sunburst type — for customers who want a proper cut and can read the queue before they arrive. One distinctive choice: the service menu is a perforated ticket ledger, each row a numbered stub torn from the counter book. Dials V4/M3/D2. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Jost:ital,wght@0;300;0;400;0;500;0;600;1;400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#0d0b08;
+  --tz-ink:#f2e7c9;
+  --tz-accent:#c9a227;
+  --tz-muted:#8a7f63;
+  --tz-fog:color-mix(in srgb, var(--tz-fog) 42%, var(--tz-ink) 58%);
+  --tz-line:#c9a2274d;
+  --tz-line-soft:color-mix(in srgb, var(--tz-ink) 14%, transparent);
+  --tz-deep:color-mix(in srgb, var(--tz-bg) 78%, black);
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Jost",system-ui,sans-serif;background:var(--tz-bg);color:var(--tz-ink);font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--tz-accent);color:var(--tz-bg)}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.tz-serif{font-family:"Cinzel",serif}
+.tz-mono{font-family:"Space Mono",monospace}
+.skip{position:absolute;left:-999px;top:0;background:var(--tz-accent);color:var(--tz-bg);padding:8px 16px;z-index:99}
+.skip:focus{left:8px;top:8px}
+
+/* ---------- header ---------- */
+.tz-header{border-bottom:1px solid var(--tz-line);background:color-mix(in srgb, var(--tz-bg) 90%, transparent);position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
+.tz-header .tz-wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.tz-logo{font-family:"Cinzel",serif;font-weight:700;font-size:20px;letter-spacing:.04em;display:flex;align-items:center;gap:12px}
+.tz-logo svg{width:26px;height:26px;flex:none}
+.tz-nav{display:flex;gap:30px;font-size:14.5px;letter-spacing:.14em;text-transform:uppercase}
+.tz-nav a{color:var(--tz-fog);transition:color .2s}
+.tz-nav a:hover{color:var(--tz-accent)}
+.tz-book{font-family:"Space Mono",monospace;font-size:13px;letter-spacing:.08em;border:1px solid var(--tz-accent);color:var(--tz-accent);background:transparent;padding:10px 20px;cursor:pointer;transition:background .2s,color .2s}
+.tz-book:hover{background:var(--tz-accent);color:var(--tz-bg)}
+
+/* ---------- hero: sunburst, offset ---------- */
+.tz-hero{padding:88px 0 72px;position:relative;overflow:hidden}
+.tz-sunburst{position:absolute;top:-140px;right:-120px;width:520px;height:520px;opacity:.14;pointer-events:none;animation:tz-spin 90s linear infinite}
+@keyframes tz-spin{to{transform:rotate(360deg)}}
+.tz-hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:start;position:relative}
+.tz-kicker{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.28em;color:var(--tz-accent);margin-bottom:22px}
+.tz-hero h1{font-family:"Cinzel",serif;font-weight:700;font-size:clamp(46px,6.4vw,88px);line-height:1.04;letter-spacing:.01em}
+.tz-hero h1 .tz-gold{color:var(--tz-accent)}
+.tz-hero .tz-lede{margin-top:22px;font-size:18px;max-width:44ch;color:var(--tz-ink)}
+.tz-hero-cta{margin-top:32px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.tz-btn{display:inline-flex;align-items:center;gap:10px;font-family:"Space Mono",monospace;font-size:13.5px;letter-spacing:.06em;padding:15px 28px;cursor:pointer;transition:transform .25s var(--tz-ease),background .2s,color .2s;border:1px solid var(--tz-accent)}
+.tz-btn--gold{background:var(--tz-accent);color:var(--tz-bg)}
+.tz-btn--gold:hover{transform:translateY(-2px);background:var(--tz-ink);border-color:var(--tz-ink)}
+.tz-btn--ghost{background:transparent;color:var(--tz-accent)}
+.tz-btn--ghost:hover{transform:translateY(-2px);background:color-mix(in srgb, var(--tz-accent) 14%, transparent)}
+.tz-note{font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-fog);margin-top:20px;letter-spacing:.06em}
+
+/* queue board */
+.tz-queue{background:var(--tz-deep);border:1px solid var(--tz-line);padding:34px 32px;position:relative}
+.tz-queue::before{content:"";position:absolute;inset:8px;border:1px solid var(--tz-line-soft);pointer-events:none}
+.tz-queue h2{font-family:"Cinzel",serif;font-size:22px;font-weight:600;letter-spacing:.06em;text-align:center;margin-bottom:6px}
+.tz-queue .tz-sub{text-align:center;font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-fog);letter-spacing:.1em;margin-bottom:24px}
+.tz-now{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--tz-line-soft);padding-bottom:14px;margin-bottom:14px}
+.tz-now .tz-label{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.2em;color:var(--tz-fog)}
+.tz-now .tz-num{font-family:"Cinzel",serif;font-size:44px;font-weight:700;color:var(--tz-accent);line-height:1}
+.tz-qlist{list-style:none}
+.tz-qlist li{display:flex;justify-content:space-between;font-family:"Space Mono",monospace;font-size:13px;padding:9px 0;border-bottom:1px dashed var(--tz-line-soft)}
+.tz-qlist li span:last-child{color:var(--tz-fog)}
+.tz-wait{margin-top:18px;font-family:"Space Mono",monospace;font-size:12.5px;color:var(--tz-accent);letter-spacing:.06em}
+
+/* ---------- ledger: the one weird thing ---------- */
+.tz-section{padding:104px 0}
+.tz-sechead{margin-bottom:52px;max-width:640px}
+.tz-sechead .tz-mono{font-size:12px;letter-spacing:.28em;color:var(--tz-accent);display:block;margin-bottom:16px}
+.tz-sechead h2{font-family:"Cinzel",serif;font-weight:600;font-size:clamp(34px,4.4vw,56px);line-height:1.1}
+.tz-sechead p{margin-top:14px;font-size:17px;color:var(--tz-ink)}
+.tz-ledger{border:1px solid var(--tz-line);background:var(--tz-deep)}
+.tz-stub{display:grid;grid-template-columns:64px 1fr auto;gap:20px;align-items:center;padding:26px 30px;border-bottom:1px dashed var(--tz-line-soft);position:relative;transition:background .25s}
+.tz-stub:last-child{border-bottom:0}
+.tz-stub:hover{background:color-mix(in srgb, var(--tz-accent) 7%, transparent)}
+.tz-stub .tz-no{font-family:"Cinzel",serif;font-size:26px;font-weight:700;color:var(--tz-accent);border:1px solid var(--tz-line);width:56px;height:56px;display:flex;align-items:center;justify-content:center}
+.tz-stub h3{font-family:"Cinzel",serif;font-size:21px;font-weight:600;letter-spacing:.02em}
+.tz-stub p{font-size:15px;color:var(--tz-fog);margin-top:4px;max-width:52ch}
+.tz-stub .tz-price{font-family:"Space Mono",monospace;font-size:19px;font-weight:700;color:var(--tz-accent);white-space:nowrap}
+.tz-stub .tz-perf{position:absolute;left:94px;top:10px;bottom:10px;width:0;border-left:2px dotted var(--tz-line-soft)}
+.tz-fine{margin-top:22px;font-family:"Space Mono",monospace;font-size:12.5px;color:var(--tz-fog);letter-spacing:.04em}
+
+/* ---------- barbers ---------- */
+.tz-barbers{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--tz-line-soft);border:1px solid var(--tz-line-soft)}
+.tz-barber{background:var(--tz-bg);padding:44px 40px;display:grid;grid-template-columns:96px 1fr;gap:26px;align-items:center}
+.tz-barber:first-child{grid-column:1/-1;grid-template-columns:150px 1fr}
+.tz-face{width:96px;height:96px;border:1px solid var(--tz-accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:"Cinzel",serif;font-size:30px;font-weight:700;color:var(--tz-accent);background:var(--tz-deep)}
+.tz-barber:first-child .tz-face{width:150px;height:150px;font-size:52px}
+.tz-barber h3{font-family:"Cinzel",serif;font-size:24px;font-weight:600}
+.tz-barber:first-child h3{font-size:32px}
+.tz-barber .tz-role{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.2em;color:var(--tz-accent);margin:8px 0 10px}
+.tz-barber p{font-size:15.5px;color:var(--tz-ink)}
+.tz-barber .tz-days{margin-top:12px;font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-fog)}
+
+/* ---------- house rules ---------- */
+.tz-rules{background:var(--tz-deep);border-top:1px solid var(--tz-line);border-bottom:1px solid var(--tz-line)}
+.tz-rules ol{list-style:none;counter-reset:rule;display:grid;grid-template-columns:repeat(4,1fr);gap:32px;padding:0}
+.tz-rules li{counter-increment:rule;border-top:2px solid var(--tz-accent);padding-top:18px;font-size:15.5px}
+.tz-rules li::before{content:"0" counter(rule);display:block;font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.2em;color:var(--tz-accent);margin-bottom:10px}
+
+/* ---------- visit ---------- */
+.tz-visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.tz-hours{width:100%;border-collapse:collapse;font-size:16px}
+.tz-hours th{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.2em;color:var(--tz-accent);text-align:left;padding:0 0 14px;border-bottom:1px solid var(--tz-line)}
+.tz-hours td{padding:14px 0;border-bottom:1px solid var(--tz-line-soft)}
+.tz-hours td:last-child{text-align:right;font-family:"Space Mono",monospace;font-size:14.5px}
+.tz-addr h3{font-family:"Cinzel",serif;font-size:26px;font-weight:600;margin-bottom:14px}
+.tz-addr p{font-size:16.5px;color:var(--tz-ink);margin-bottom:8px}
+.tz-addr .tz-mono{font-size:13px;color:var(--tz-fog);letter-spacing:.05em}
+.tz-mapline{margin-top:26px;border:1px solid var(--tz-line);padding:22px;font-family:"Space Mono",monospace;font-size:13px;color:var(--tz-fog);line-height:2}
+
+/* ---------- footer ---------- */
+.tz-footer{border-top:1px solid var(--tz-line);padding:64px 0 40px;background:var(--tz-deep)}
+.tz-foot-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.tz-foot-grid h4{font-family:"Space Mono",monospace;font-size:12px;letter-spacing:.24em;color:var(--tz-accent);margin-bottom:18px}
+.tz-foot-grid p,.tz-foot-grid li{font-size:15px;color:var(--tz-fog);list-style:none;margin-bottom:10px}
+.tz-foot-grid a:hover{color:var(--tz-accent)}
+.tz-foot-brand{font-family:"Cinzel",serif;font-size:26px;font-weight:700;margin-bottom:12px;color:var(--tz-ink)}
+.tz-base{border-top:1px solid var(--tz-line-soft);padding-top:24px;display:flex;justify-content:space-between;font-family:"Space Mono",monospace;font-size:12px;color:var(--tz-fog);flex-wrap:wrap;gap:12px}
+
+@media (max-width:900px){
+  .tz-hero-grid,.tz-visit-grid{grid-template-columns:1fr}
+  .tz-rules ol{grid-template-columns:1fr 1fr}
+  .tz-foot-grid{grid-template-columns:1fr 1fr}
+  .tz-nav{display:none}
+  .tz-barber{grid-template-columns:1fr;padding:32px 24px}
+  .tz-barber:first-child{grid-template-columns:1fr}
+  .tz-stub{grid-template-columns:48px 1fr; }
+  .tz-stub .tz-price{grid-column:2}
+  .tz-stub .tz-perf{left:70px}
+}
+@media (max-width:560px){.tz-rules ol{grid-template-columns:1fr}.tz-foot-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#ledger">Skip to price list</a>
+
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-logo" href="#" aria-label="The Hot Lather home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#c9a227" stroke-width="1.6" aria-hidden="true"><path d="M7 3h10v18l-5-3.5L7 21V3z"/><path d="M12 8v6M9.5 10.5h5"/></svg>
+      The Hot Lather
+    </a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#ledger">Prices</a><a href="#barbers">Barbers</a><a href="#rules">House Rules</a><a href="#visit">Visit</a>
+    </nav>
+    <a class="tz-book" href="#visit">Take a number</a>
+  </div>
+</header>
+
+<main>
+<section class="tz-hero">
+  <svg class="tz-sunburst" viewBox="0 0 200 200" aria-hidden="true">
+    <g stroke="#c9a227" stroke-width="1">
+      <circle cx="100" cy="100" r="96" fill="none"/><circle cx="100" cy="100" r="70" fill="none"/>
+      <g id="tz-rays"></g>
+    </g>
+  </svg>
+  <div class="tz-wrap tz-hero-grid">
+    <div>
+      <p class="tz-kicker">Est. 1952 — Third-generation shop</p>
+      <h1>Sit down.<br><span class="tz-gold">Leave sharper</span><br>than you came in.</h1>
+      <p class="tz-lede">Hot towels, straight razors, and barbers who remember your last cut. No appointments, no apps, no small talk you didn't ask for — just the chair, the lather, and forty-five honest minutes.</p>
+      <div class="tz-hero-cta">
+        <a class="tz-btn tz-btn--gold" href="#ledger">Read the price ledger</a>
+        <a class="tz-btn tz-btn--ghost" href="#visit">Hours &amp; directions</a>
+      </div>
+      <p class="tz-note">WALK-INS ONLY — the queue board is always live</p>
+    </div>
+    <aside class="tz-queue" aria-label="Live queue board">
+      <h2>Queue Board</h2>
+      <p class="tz-sub">SATURDAY — UPDATED MINUTES AGO</p>
+      <div class="tz-now">
+        <span class="tz-label">Now cutting</span>
+        <span class="tz-num">14</span>
+      </div>
+      <ul class="tz-qlist">
+        <li><span>№ 15 — classic cut</span><span>next</span></li>
+        <li><span>№ 16 — hot lather shave</span><span>~15 min</span></li>
+        <li><span>№ 17 — cut + beard</span><span>~35 min</span></li>
+        <li><span>№ 18 — kid's first cut</span><span>~55 min</span></li>
+      </ul>
+      <p class="tz-wait">Take a number at the counter. Coffee's on us while you wait.</p>
+    </aside>
+  </div>
+</section>
+
+<section class="tz-section" id="ledger" style="padding-top:72px">
+  <div class="tz-wrap">
+    <div class="tz-sechead">
+      <span class="tz-mono">The price ledger</span>
+      <h2>Every service, torn from the same book since 1952.</h2>
+      <p>Prices are written in the counter ledger and they do not move. What you see is what the chair costs.</p>
+    </div>
+    <div class="tz-ledger">
+      <div class="tz-stub"><span class="tz-perf" aria-hidden="true"></span><span class="tz-no">01</span><div><h3>The Classic Cut</h3><p>Scissor work, clipper finish, hot-towel neckline, styled the way you actually wear it.</p></div><span class="tz-price">$34</span></div>
+      <div class="tz-stub"><span class="tz-perf" aria-hidden="true"></span><span class="tz-no">02</span><div><h3>Hot Lather Shave</h3><p>Three passes with a straight razor, steamed towels, bay rum finish. The full ritual.</p></div><span class="tz-price">$28</span></div>
+      <div class="tz-stub"><span class="tz-perf" aria-hidden="true"></span><span class="tz-no">03</span><div><h3>Cut &amp; Shave</h3><p>The works: classic cut plus the full hot lather shave. Book an hour, leave a new man.</p></div><span class="tz-price">$58</span></div>
+      <div class="tz-stub"><span class="tz-perf" aria-hidden="true"></span><span class="tz-no">04</span><div><h3>Beard Sculpt</h3><p>Shape, line-up, and conditioning. Includes the lecture about combing it downward.</p></div><span class="tz-price">$22</span></div>
+      <div class="tz-stub"><span class="tz-perf" aria-hidden="true"></span><span class="tz-no">05</span><div><h3>The Chairman</h3><p>Cut, shave, beard, brow trim, and a shoulder massage. For weddings, interviews, and Tuesdays.</p></div><span class="tz-price">$65</span></div>
+      <div class="tz-stub"><span class="tz-perf" aria-hidden="true"></span><span class="tz-no">06</span><div><h3>Kid's First Cut</h3><p>Under twelve. Slow pace, big mirror, and the hair goes home in an envelope.</p></div><span class="tz-price">$24</span></div>
+    </div>
+    <p class="tz-fine">CASH OR CARD — TIP YOUR BARBER, NOT THE HOUSE — RETIRED VETERANS HALF PRICE ON THURSDAYS</p>
+  </div>
+</section>
+
+<section class="tz-section" id="barbers" style="padding-top:0">
+  <div class="tz-wrap">
+    <div class="tz-sechead">
+      <span class="tz-mono">The chairs</span>
+      <h2>Three barbers. Seventy-one combined years behind the chair.</h2>
+    </div>
+    <div class="tz-barbers">
+      <div class="tz-barber">
+        <div class="tz-face" aria-hidden="true">M</div>
+        <div>
+          <h3>Marco Bellini</h3>
+          <p class="tz-role">Master barber — Chair one since 1978</p>
+          <p>Cut hair through three recessions and one pandemic. Does a straight-razor shave you can set a watch by. Ask him about the shop's original 1952 clippers — they're framed above the sink.</p>
+          <p class="tz-days">Tue–Sat · 9:00–6:00</p>
+        </div>
+      </div>
+      <div class="tz-barber">
+        <div class="tz-face" aria-hidden="true">D</div>
+        <div>
+          <h3>Delia Okafor</h3>
+          <p class="tz-role">Barber — Fades &amp; beard work</p>
+          <p>The sharpest fade in the county, and she'll tell you if your beard idea is a mistake before she cuts it.</p>
+          <p class="tz-days">Wed–Sat · 10:00–7:00</p>
+        </div>
+      </div>
+      <div class="tz-barber">
+        <div class="tz-face" aria-hidden="true">T</div>
+        <div>
+          <h3>Tommy Wu</h3>
+          <p class="tz-role">Junior barber — Classic cuts</p>
+          <p>Marco's apprentice of four years, now fully licensed. The most patient first-cut chair in town.</p>
+          <p class="tz-days">Tue–Fri · 9:00–5:00</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tz-rules tz-section" id="rules">
+  <div class="tz-wrap">
+    <div class="tz-sechead">
+      <span class="tz-mono">Posted by the mirror</span>
+      <h2>House rules.</h2>
+    </div>
+    <ol>
+      <li>The queue board is law. First come, first served — no call-aheads, no exceptions.</li>
+      <li>If you're more than ten minutes late for your own number, your number belongs to someone else.</li>
+      <li>Photos of what you want are welcome. Photos of what someone else has are a conversation.</li>
+      <li>We close when the last head is finished, not when the clock says so.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="tz-section" id="visit">
+  <div class="tz-wrap tz-visit-grid">
+    <div>
+      <div class="tz-sechead" style="margin-bottom:32px">
+        <span class="tz-mono">Find the pole</span>
+        <h2>Visit the shop.</h2>
+      </div>
+      <table class="tz-hours">
+        <thead><tr><th>Day</th><th style="text-align:right">Hours</th></tr></thead>
+        <tbody>
+          <tr><td>Tuesday – Friday</td><td>9:00 AM – 6:00 PM</td></tr>
+          <tr><td>Saturday</td><td>8:00 AM – 4:00 PM</td></tr>
+          <tr><td>Sunday &amp; Monday</td><td>Closed — chairs rest</td></tr>
+        </tbody>
+      </table>
+      <p class="tz-fine" style="margin-top:18px">SATURDAYS FILL BY 10 AM — COME EARLY OR TAKE A NUMBER AND GET COFFEE</p>
+    </div>
+    <div class="tz-addr">
+      <h3>418 Mercer Street<br>Riverbend, OH 44077</h3>
+      <p>Two doors down from Kowalski's Bakery. Follow the smell of bay rum.</p>
+      <p class="tz-mono">(440) 555-0184 · chairs@thehotlather.com</p>
+      <div class="tz-mapline">
+        PARKING: free lot behind the shop, enter off Walnut<br>
+        BUS: lines 4 and 9 stop at Mercer &amp; 5th<br>
+        WHEELCHAIR: step-free entry via the Walnut door — call ahead and we'll clear the ramp
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-foot-grid">
+      <div>
+        <p class="tz-foot-brand">The Hot Lather</p>
+        <p>Cutting hair the slow way since 1952. Third generation, same chairs, same lather.</p>
+      </div>
+      <div>
+        <h4>Good to know</h4>
+        <ul>
+          <li>Walk-ins only — no bookings, no exceptions</li>
+          <li>Last chair leaves when the last customer does</li>
+          <li>Gift certificates available at the counter</li>
+        </ul>
+      </div>
+      <div>
+        <h4>The shop</h4>
+        <ul>
+          <li><a href="#ledger">Price ledger</a></li>
+          <li><a href="#barbers">The barbers</a></li>
+          <li><a href="#visit">Hours &amp; directions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="tz-base">
+      <span>© 2026 The Hot Lather Barbershop — 418 Mercer St, Riverbend OH</span>
+      <span class="tz-mono">LEDGER № 2026-10 · PRICES HONEST SINCE 1952</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var g=document.getElementById('tz-rays'),ns='http://www.w3.org/2000/svg';
+  for(var i=0;i<36;i++){
+    var l=document.createElementNS(ns,'line');
+    var a=i*Math.PI/18;
+    l.setAttribute('x1',100+72*Math.cos(a));l.setAttribute('y1',100+72*Math.sin(a));
+    l.setAttribute('x2',100+96*Math.cos(a));l.setAttribute('y2',100+96*Math.sin(a));
+    g.appendChild(l);
+  }
+})();
+</script>
+</body>
+</html>
