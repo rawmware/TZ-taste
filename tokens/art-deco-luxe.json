@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-art-deco-luxe",
+  "title": "Art Deco Luxe design tokens",
+  "category": "Tokens",
+  "file": "tokens/art-deco-luxe.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "art-deco-luxe"
+  ],
+  "description": "W3C-format design tokens for the Art Deco Luxe style DNA.",
+  "dnas": [
+   "art-deco-luxe"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#0d0b08",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#f2e7c9",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#c9a227",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#8a7f63",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#c9a2274d",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "Cinzel",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "Jost",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "art-deco-luxe",
+  "name": "Art Deco Luxe",
+  "vibe": "1920s geometric glamour: black lacquer, gold leaf, sunburst symmetry. A jazz-age ballroom rendered as a website."
+ }
+}
