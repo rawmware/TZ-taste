@@ -1,0 +1,3 @@
+//tz-meta {"id":"tailwind-laundromat-neon","title":"Laundromat Neon Tailwind preset","category":"Tailwind","file":"tailwind/laundromat-neon.js","tags":["tailwind","preset","laundromat-neon"],"description":"Tailwind theme preset for the Laundromat Neon DNA.","dnas":["laundromat-neon"]}
+// Tailwind preset for the Laundromat Neon DNA. Extend tailwind.config with this.
+module.exports={theme:{extend:{colors:{tzbg:"#f3f7f5",tzink:"#14201c",tzaccent:"#2fd08a",tzmuted:"#6b7f76",tzline:"#14201c21",tzsurface:"#f3f7f5"},fontFamily:{display:["Bungee","serif"],body:["DM Sans","sans-serif"],mono:["Fira Code","monospace"]}}}};
