@@ -1,0 +1,50 @@
+<!--tz-meta {"id":"footers-marquee","title":"Marquee footer","category":"Footer","file":"patterns/footers-marquee.html","tags":["scrolling","wordmark"],"description":"A giant scrolling acid wordmark riding above two compact link rows.","dnas":["acid-rave"]} -->
+<footer class="tz-mqfoot">
+  <div class="tz-mqfoot-tape" aria-hidden="true">
+    <div class="tz-mqfoot-track">
+      <span>LOUDSUPPLY</span><span class="tz-mqfoot-x">✕</span><span>LOUDSUPPLY</span><span class="tz-mqfoot-x">✕</span>
+      <span>LOUDSUPPLY</span><span class="tz-mqfoot-x">✕</span><span>LOUDSUPPLY</span><span class="tz-mqfoot-x">✕</span>
+    </div>
+  </div>
+  <div class="tz-mqfoot-rows">
+    <div class="tz-mqfoot-col">
+      <p class="tz-mqfoot-label">Shop</p>
+      <a href="#">New arrivals</a><a href="#">Best sellers</a><a href="#">Sale</a><a href="#">Gift cards</a>
+    </div>
+    <div class="tz-mqfoot-col">
+      <p class="tz-mqfoot-label">Company</p>
+      <a href="#">About</a><a href="#">Stores</a><a href="#">Jobs</a><a href="#">Press</a>
+    </div>
+    <div class="tz-mqfoot-col">
+      <p class="tz-mqfoot-label">Help</p>
+      <a href="#">Shipping</a><a href="#">Returns</a><a href="#">Size guide</a><a href="#">Contact</a>
+    </div>
+    <div class="tz-mqfoot-col">
+      <p class="tz-mqfoot-label">Social</p>
+      <a href="#">Instagram</a><a href="#">TikTok</a><a href="#">YouTube</a><a href="#">Discord</a>
+    </div>
+  </div>
+  <p class="tz-mqfoot-base">© 2026 Loudsupply · Turn it up</p>
+</footer>
+<style>
+.tz-mqfoot{--bg:#0d0d0b;--ink:#f2f2ec;--acid:#d9f731;--dim:#8f8f85;
+  background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;overflow:hidden}
+.tz-mqfoot-tape{border-bottom:2px solid var(--acid);overflow:hidden;white-space:nowrap;padding:18px 0}
+.tz-mqfoot-track{display:inline-flex;align-items:center;gap:36px;
+  font-size:clamp(56px,10vw,120px);font-weight:900;letter-spacing:-.03em;line-height:1;
+  animation:tz-mqfoot-scroll 26s linear infinite}
+.tz-mqfoot-track span{color:transparent;-webkit-text-stroke:2px var(--acid)}
+.tz-mqfoot-x{color:var(--acid);-webkit-text-stroke:0;font-size:.5em}
+@keyframes tz-mqfoot-scroll{to{transform:translateX(-50%)}}
+.tz-mqfoot-rows{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;
+  padding:48px clamp(20px,5vw,64px)}
+.tz-mqfoot-col{display:flex;flex-direction:column;gap:10px}
+.tz-mqfoot-label{font-size:11px;font-weight:bold;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--acid);margin:0 0 8px}
+.tz-mqfoot-col a{color:var(--ink);text-decoration:none;font-size:15px}
+.tz-mqfoot-col a:hover{color:var(--acid)}
+.tz-mqfoot-base{font-size:12px;color:var(--dim);margin:0;padding:0 clamp(20px,5vw,64px) 28px;
+  font-family:ui-monospace,Menlo,monospace}
+@media (max-width:720px){.tz-mqfoot-rows{grid-template-columns:repeat(2,1fr)}}
+@media (prefers-reduced-motion:reduce){.tz-mqfoot-track{animation:none}}
+</style>
