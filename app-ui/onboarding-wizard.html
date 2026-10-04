@@ -1,0 +1,123 @@
+<!--tz-meta {"id":"onboarding-wizard","title":"Onboarding wizard","category":"App UI","file":"app-ui/onboarding-wizard.html","tags":["onboarding","wizard","steps","forms"],"description":"Garden-stake step indicator and one honest question per screen for the Plot garden planner.","dnas":["cottage-warm"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plot — Let's set up your garden</title>
+<style>
+body{margin:0;background:#fbf5ea}
+.tz-wiz{--bg:#fbf5ea;--ink:#3d3229;--accent:#b5533c;--muted:#8d7f6e;--line:#e7dcc6;--card:#fffdf7;
+  background:var(--bg);color:var(--ink);min-height:100dvh;display:flex;align-items:center;justify-content:center;
+  padding:40px 20px;box-sizing:border-box;
+  font-family:Karla,-apple-system,"Segoe UI",sans-serif}
+.tz-card{width:100%;max-width:560px;background:var(--card);border:1px solid var(--line);
+  border-radius:6px;padding:40px 40px 32px;box-shadow:0 1px 0 var(--line)}
+.tz-stepcount{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.24em;
+  color:var(--muted);margin:0 0 20px;text-align:center}
+.tz-stakes{display:flex;align-items:flex-start;justify-content:center;margin:0 0 36px}
+.tz-stake{display:flex;flex-direction:column;align-items:center;gap:8px;flex:0 0 auto}
+.tz-peg{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--bg);
+  display:flex;align-items:center;justify-content:center;font-family:ui-monospace,Menlo,monospace;
+  font-size:13px;color:var(--muted)}
+.tz-stake.tz-done .tz-peg{border-color:var(--accent);color:var(--accent)}
+.tz-stake.tz-now .tz-peg{background:var(--accent);border-color:var(--accent);color:#fffdf7;font-weight:700}
+.tz-stake-label{font-family:ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:.18em;color:var(--muted)}
+.tz-stake.tz-now .tz-stake-label{color:var(--accent);font-weight:700}
+.tz-rail{flex:1;max-width:90px;height:1px;background:var(--line);margin-top:17px}
+.tz-rail.tz-done{background:var(--accent)}
+.tz-card h1{font-family:"DM Serif Display",Georgia,serif;font-size:clamp(26px,5vw,34px);
+  font-weight:400;margin:0 0 10px;text-align:center;letter-spacing:-.01em}
+.tz-lede{text-align:center;color:var(--muted);font-size:15px;margin:0 0 28px;font-style:italic}
+.tz-opts{display:flex;flex-direction:column;gap:12px;margin:0 0 8px}
+.tz-opt{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--line);border-radius:4px;
+  padding:16px 18px;cursor:pointer;background:#fff;
+  transition:border-color .18s ease,transform .18s cubic-bezier(.22,1,.36,1)}
+.tz-opt:hover{border-color:var(--accent);transform:translateY(-1px)}
+.tz-opt input{position:absolute;opacity:0;pointer-events:none}
+.tz-radio{width:18px;height:18px;flex:0 0 auto;border:1.5px solid var(--muted);border-radius:50%;
+  margin-top:2px;position:relative;transition:border-color .18s ease}
+.tz-opt input:checked + .tz-radio{border-color:var(--accent)}
+.tz-opt input:checked + .tz-radio::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--accent)}
+.tz-opt input:checked ~ .tz-opt-text strong{color:var(--accent)}
+.tz-opt input:focus-visible ~ .tz-radio{outline:2px solid var(--accent);outline-offset:2px}
+.tz-opt-text strong{display:block;font-size:16px;margin-bottom:3px}
+.tz-opt-text span{font-size:14px;color:var(--muted)}
+.tz-opt:has(input:checked){border-color:var(--accent);background:#fdf3ec}
+.tz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:28px;gap:12px}
+.tz-back{font:inherit;font-size:14px;font-weight:700;color:var(--muted);background:none;border:0;cursor:pointer;padding:12px 4px}
+.tz-back:hover{color:var(--ink)}
+.tz-next{font:inherit;font-size:14px;font-weight:700;color:#fffdf7;background:var(--accent);
+  border:1px solid var(--accent);border-radius:4px;padding:13px 30px;cursor:pointer;
+  transition:transform .18s cubic-bezier(.22,1,.36,1)}
+.tz-next:hover{transform:translateY(-2px)}
+.tz-fineprint{text-align:center;font-size:13px;color:var(--muted);font-style:italic;margin:22px 0 0}
+.tz-coming{margin-top:26px;border-top:1px solid var(--line);padding-top:20px}
+.tz-coming-title{font-family:ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:.24em;
+  color:var(--muted);margin:0 0 12px}
+.tz-coming-row{display:flex;gap:12px;align-items:flex-start;margin:10px 0}
+.tz-coming-num{flex:0 0 auto;width:24px;height:24px;border-radius:50%;border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--muted)}
+.tz-coming-row p{margin:2px 0 0;font-size:14px;color:var(--muted)}
+.tz-coming-row strong{color:var(--ink)}
+@media (max-width:520px){
+  .tz-wiz{padding:24px 12px;align-items:flex-start}
+  .tz-card{padding:28px 22px 24px}
+  .tz-rail{max-width:44px}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-wiz *,.tz-wiz *::before,.tz-wiz *::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="tz-wiz">
+  <div class="tz-card">
+    <p class="tz-stepcount">STEP 1 OF 3</p>
+    <div class="tz-stakes" aria-label="Progress: step 1 of 3">
+      <div class="tz-stake tz-now"><span class="tz-peg">1</span><span class="tz-stake-label">SUN</span></div>
+      <div class="tz-rail" aria-hidden="true"></div>
+      <div class="tz-stake"><span class="tz-peg">2</span><span class="tz-stake-label">CROPS</span></div>
+      <div class="tz-rail" aria-hidden="true"></div>
+      <div class="tz-stake"><span class="tz-peg">3</span><span class="tz-stake-label">WATER</span></div>
+    </div>
+    <h1>How much sun does your plot get?</h1>
+    <p class="tz-lede">Be honest — the tomatoes will know.</p>
+    <div class="tz-opts" role="radiogroup" aria-label="Sunlight">
+      <label class="tz-opt">
+        <input type="radio" name="sun" value="full">
+        <span class="tz-radio" aria-hidden="true"></span>
+        <span class="tz-opt-text"><strong>Full sun</strong><span>6 or more hours of direct light. Tomatoes, peppers, and squash thrive here.</span></span>
+      </label>
+      <label class="tz-opt">
+        <input type="radio" name="sun" value="part" checked>
+        <span class="tz-radio" aria-hidden="true"></span>
+        <span class="tz-opt-text"><strong>Part shade</strong><span>3–6 hours of sun. Greens, herbs, and root vegetables do their best work here.</span></span>
+      </label>
+      <label class="tz-opt">
+        <input type="radio" name="sun" value="shade">
+        <span class="tz-radio" aria-hidden="true"></span>
+        <span class="tz-opt-text"><strong>Full shade</strong><span>Under 3 hours. Stick to lettuce, mint, and patience.</span></span>
+      </label>
+    </div>
+    <div class="tz-nav">
+      <button class="tz-back" type="button">← Back</button>
+      <button class="tz-next" type="button">Continue →</button>
+    </div>
+    <div class="tz-coming">
+      <p class="tz-coming-title">COMING UP</p>
+      <div class="tz-coming-row">
+        <span class="tz-coming-num">2</span>
+        <p><strong>Crops.</strong> Tell us what you're planting — we'll lay out the spacing and companions.</p>
+      </div>
+      <div class="tz-coming-row">
+        <span class="tz-coming-num">3</span>
+        <p><strong>Water.</strong> Pick a watering rhythm that fits your mornings, not ours.</p>
+      </div>
+    </div>
+    <p class="tz-fineprint">Answer for your main bed — you can add more plots later.</p>
+  </div>
+</div>
+</body>
+</html>
