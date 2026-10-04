@@ -1,5 +1,5 @@
 {
- "count": 72,
+ "count": 92,
  "updated": "2026-10-04",
  "usage": "Tailwind theme presets, one per style DNA. Extend tailwind.config with one.",
  "presets": [
@@ -61,6 +61,20 @@
    ]
   },
   {
+   "id": "tailwind-apotheke",
+   "title": "Apotheke Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/apotheke.js",
+   "tags": [
+    "tailwind",
+    "apotheke"
+   ],
+   "description": "Tailwind theme preset for the Apotheke style DNA.",
+   "dnas": [
+    "apotheke"
+   ]
+  },
+  {
    "id": "tailwind-arctic-field",
    "title": "Arctic Field Tailwind preset",
    "category": "Tailwind",
@@ -103,6 +117,20 @@
    ]
   },
   {
+   "id": "tailwind-barbershop-pole",
+   "title": "Barbershop Pole Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/barbershop-pole.js",
+   "tags": [
+    "tailwind",
+    "barbershop-pole"
+   ],
+   "description": "Tailwind theme preset for the Barbershop Pole style DNA.",
+   "dnas": [
+    "barbershop-pole"
+   ]
+  },
+  {
    "id": "tailwind-bauhaus-primary",
    "title": "Bauhaus Primary Tailwind preset",
    "category": "Tailwind",
@@ -132,6 +160,20 @@
    ]
   },
   {
+   "id": "tailwind-bike-repair",
+   "title": "Bike Repair Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/bike-repair.js",
+   "tags": [
+    "tailwind",
+    "bike-repair"
+   ],
+   "description": "Tailwind theme preset for the Bike Repair style DNA.",
+   "dnas": [
+    "bike-repair"
+   ]
+  },
+  {
    "id": "tailwind-blueprint-tech",
    "title": "Blueprint Tech Tailwind preset",
    "category": "Tailwind",
@@ -157,6 +199,20 @@
    "description": "Tailwind theme preset for the Botanical Lab style DNA.",
    "dnas": [
     "botanical-lab"
+   ]
+  },
+  {
+   "id": "tailwind-cassette-jcard",
+   "title": "Cassette J-Card Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/cassette-jcard.js",
+   "tags": [
+    "tailwind",
+    "cassette-jcard"
+   ],
+   "description": "Tailwind theme preset for the Cassette J-Card style DNA.",
+   "dnas": [
+    "cassette-jcard"
    ]
   },
   {
@@ -215,6 +271,20 @@
    "description": "Tailwind theme preset for the Constructivist Red style DNA.",
    "dnas": [
     "constructivist-red"
+   ]
+  },
+  {
+   "id": "tailwind-corner-deli",
+   "title": "Corner Deli Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/corner-deli.js",
+   "tags": [
+    "tailwind",
+    "corner-deli"
+   ],
+   "description": "Tailwind theme preset for the Corner Deli style DNA.",
+   "dnas": [
+    "corner-deli"
    ]
   },
   {
@@ -317,6 +387,20 @@
    ]
   },
   {
+   "id": "tailwind-drive-in-theater",
+   "title": "Drive-In Theater Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/drive-in-theater.js",
+   "tags": [
+    "tailwind",
+    "drive-in-theater"
+   ],
+   "description": "Tailwind theme preset for the Drive-In Theater style DNA.",
+   "dnas": [
+    "drive-in-theater"
+   ]
+  },
+  {
    "id": "tailwind-editorial-serif",
    "title": "Editorial Serif Tailwind preset",
    "category": "Tailwind",
@@ -328,6 +412,34 @@
    "description": "Tailwind theme preset for the Editorial Serif style DNA.",
    "dnas": [
     "editorial-serif"
+   ]
+  },
+  {
+   "id": "tailwind-farmers-almanac",
+   "title": "Farmers Almanac Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/farmers-almanac.js",
+   "tags": [
+    "tailwind",
+    "farmers-almanac"
+   ],
+   "description": "Tailwind theme preset for the Farmers Almanac style DNA.",
+   "dnas": [
+    "farmers-almanac"
+   ]
+  },
+  {
+   "id": "tailwind-fishing-tackle",
+   "title": "Fishing Tackle Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/fishing-tackle.js",
+   "tags": [
+    "tailwind",
+    "fishing-tackle"
+   ],
+   "description": "Tailwind theme preset for the Fishing Tackle style DNA.",
+   "dnas": [
+    "fishing-tackle"
    ]
   },
   {
@@ -534,6 +646,20 @@
    ]
   },
   {
+   "id": "tailwind-locksmith-shop",
+   "title": "Locksmith Shop Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/locksmith-shop.js",
+   "tags": [
+    "tailwind",
+    "locksmith-shop"
+   ],
+   "description": "Tailwind theme preset for the Locksmith Shop style DNA.",
+   "dnas": [
+    "locksmith-shop"
+   ]
+  },
+  {
    "id": "tailwind-ma-japanese",
    "title": "Ma (Japanese Minimal) Tailwind preset",
    "category": "Tailwind",
@@ -545,6 +671,20 @@
    "description": "Tailwind theme preset for the Ma (Japanese Minimal) style DNA.",
    "dnas": [
     "ma-japanese"
+   ]
+  },
+  {
+   "id": "tailwind-matchbook-cover",
+   "title": "Matchbook Cover Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/matchbook-cover.js",
+   "tags": [
+    "tailwind",
+    "matchbook-cover"
+   ],
+   "description": "Tailwind theme preset for the Matchbook Cover style DNA.",
+   "dnas": [
+    "matchbook-cover"
    ]
   },
   {
@@ -631,6 +771,20 @@
    "description": "Tailwind theme preset for the Newsroom Wire DNA.",
    "dnas": [
     "newsroom-wire"
+   ]
+  },
+  {
+   "id": "tailwind-night-market",
+   "title": "Night Market Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/night-market.js",
+   "tags": [
+    "tailwind",
+    "night-market"
+   ],
+   "description": "Tailwind theme preset for the Night Market style DNA.",
+   "dnas": [
+    "night-market"
    ]
   },
   {
@@ -750,6 +904,34 @@
    ]
   },
   {
+   "id": "tailwind-postage-stamp",
+   "title": "Postage Stamp Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/postage-stamp.js",
+   "tags": [
+    "tailwind",
+    "postage-stamp"
+   ],
+   "description": "Tailwind theme preset for the Postage Stamp style DNA.",
+   "dnas": [
+    "postage-stamp"
+   ]
+  },
+  {
+   "id": "tailwind-postcard-rack",
+   "title": "Postcard Rack Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/postcard-rack.js",
+   "tags": [
+    "tailwind",
+    "postcard-rack"
+   ],
+   "description": "Tailwind theme preset for the Postcard Rack style DNA.",
+   "dnas": [
+    "postcard-rack"
+   ]
+  },
+  {
    "id": "tailwind-retro-terminal",
    "title": "Retro Terminal Tailwind preset",
    "category": "Tailwind",
@@ -775,6 +957,20 @@
    "description": "Tailwind theme preset for the Risograph Grain style DNA.",
    "dnas": [
     "risograph-grain"
+   ]
+  },
+  {
+   "id": "tailwind-roadside-motel",
+   "title": "Roadside Motel Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/roadside-motel.js",
+   "tags": [
+    "tailwind",
+    "roadside-motel"
+   ],
+   "description": "Tailwind theme preset for the Roadside Motel style DNA.",
+   "dnas": [
+    "roadside-motel"
    ]
   },
   {
@@ -818,6 +1014,34 @@
    "description": "Tailwind theme preset for the Scandi Calm style DNA.",
    "dnas": [
     "scandi-calm"
+   ]
+  },
+  {
+   "id": "tailwind-seed-packet",
+   "title": "Seed Packet Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/seed-packet.js",
+   "tags": [
+    "tailwind",
+    "seed-packet"
+   ],
+   "description": "Tailwind theme preset for the Seed Packet style DNA.",
+   "dnas": [
+    "seed-packet"
+   ]
+  },
+  {
+   "id": "tailwind-sewing-pattern",
+   "title": "Sewing Pattern Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/sewing-pattern.js",
+   "tags": [
+    "tailwind",
+    "sewing-pattern"
+   ],
+   "description": "Tailwind theme preset for the Sewing Pattern style DNA.",
+   "dnas": [
+    "sewing-pattern"
    ]
   },
   {
@@ -879,6 +1103,20 @@
    ]
   },
   {
+   "id": "tailwind-swimming-pool",
+   "title": "Swimming Pool Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/swimming-pool.js",
+   "tags": [
+    "tailwind",
+    "swimming-pool"
+   ],
+   "description": "Tailwind theme preset for the Swimming Pool style DNA.",
+   "dnas": [
+    "swimming-pool"
+   ]
+  },
+  {
    "id": "tailwind-swiss-airline",
    "title": "Swiss Airline Tailwind preset",
    "category": "Tailwind",
@@ -919,6 +1157,20 @@
    "description": "Tailwind theme preset for the Swiss Rational style DNA.",
    "dnas": [
     "swiss-rational"
+   ]
+  },
+  {
+   "id": "tailwind-ticket-stub",
+   "title": "Ticket Stub Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/ticket-stub.js",
+   "tags": [
+    "tailwind",
+    "ticket-stub"
+   ],
+   "description": "Tailwind theme preset for the Ticket Stub style DNA.",
+   "dnas": [
+    "ticket-stub"
    ]
   },
   {
@@ -979,6 +1231,20 @@
    ]
   },
   {
+   "id": "tailwind-typewriter-repair",
+   "title": "Typewriter Repair Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/typewriter-repair.js",
+   "tags": [
+    "tailwind",
+    "typewriter-repair"
+   ],
+   "description": "Tailwind theme preset for the Typewriter Repair style DNA.",
+   "dnas": [
+    "typewriter-repair"
+   ]
+  },
+  {
    "id": "tailwind-ukiyo-e-print",
    "title": "Ukiyo-e Print Tailwind preset",
    "category": "Tailwind",
@@ -1019,6 +1285,20 @@
    "description": "Tailwind theme preset for the Vinyl Crate style DNA.",
    "dnas": [
     "vinyl-crate"
+   ]
+  },
+  {
+   "id": "tailwind-weather-station",
+   "title": "Weather Station Tailwind preset",
+   "category": "Tailwind",
+   "file": "tailwind/weather-station.js",
+   "tags": [
+    "tailwind",
+    "weather-station"
+   ],
+   "description": "Tailwind theme preset for the Weather Station style DNA.",
+   "dnas": [
+    "weather-station"
    ]
   },
   {
