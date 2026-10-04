@@ -1,0 +1,83 @@
+<!--tz-meta {"id":"testimonials-wall-live","title":"Live testimonial wall","category":"Sections","file":"patterns/testimonials-wall-live.html","tags":["testimonials","social-proof"],"description":"Night-market testimonial wall: lantern-lit review cards stream in, filterable by dish, newest-first with timestamps.","dnas":["night-market"]} -->
+<section class="tz-testimonials-wall-live">
+  <p class="tz-eyebrow">Fresh off the pass</p>
+  <h2>What tonight's <em>tables</em> say.</h2>
+  <div class="tz-filters" role="group" aria-label="Filter reviews">
+    <button type="button" class="tz-on" data-f="all">All</button>
+    <button type="button" data-f="noodles">Noodles</button>
+    <button type="button" data-f="skewers">Skewers</button>
+    <button type="button" data-f="dessert">Dessert</button>
+  </div>
+  <div class="tz-wall" id="tz-wall">
+    <figure class="tz-card" data-cat="noodles">
+      <p class="tz-text">"The dan dan noodles rearranged my priorities. I dream about the chili crisp now."</p>
+      <figcaption><b>Maya R.</b><span>table 12 · 24 min ago · ★★★★★</span></figcaption>
+    </figure>
+    <figure class="tz-card" data-cat="skewers">
+      <p class="tz-text">"Lamb skewers, extra cumin, eaten standing up because we couldn't wait for a table."</p>
+      <figcaption><b>Devon K.</b><span>takeaway · 41 min ago · ★★★★★</span></figcaption>
+    </figure>
+    <figure class="tz-card" data-cat="dessert">
+      <p class="tz-text">"Black sesame tang yuan. My grandmother would approve and she'd never approve."</p>
+      <figcaption><b>Lin Z.</b><span>table 4 · 1 hr ago · ★★★★★</span></figcaption>
+    </figure>
+    <figure class="tz-card" data-cat="noodles">
+      <p class="tz-text">"Biang biang, hand-pulled to order. You can watch them slap the dough. Loud. Worth it."</p>
+      <figcaption><b>Sam T.</b><span>table 9 · 2 hrs ago · ★★★★☆</span></figcaption>
+    </figure>
+    <figure class="tz-card" data-cat="skewers">
+      <p class="tz-text">"The queue moves fast and the skewer guy remembers regulars. I'm a regular now."</p>
+      <figcaption><b>Priya N.</b><span>takeaway · 3 hrs ago · ★★★★★</span></figcaption>
+    </figure>
+    <figure class="tz-card" data-cat="dessert">
+      <p class="tz-text">"Mango pomelo sago tasted like summer in a bowl. In October. Sorcery."</p>
+      <figcaption><b>Alex W.</b><span>table 7 · 4 hrs ago · ★★★★★</span></figcaption>
+    </figure>
+  </div>
+  <p class="tz-fine"><span class="tz-dot"></span>Live · pulled from tonight's receipts · unedited</p>
+</section>
+<style>
+.tz-testimonials-wall-live{--bg:#171019;--ink:#f5e8d5;--muted:#a08ba0;--accent:#ffb03a;--red:#e04536;
+  background:radial-gradient(70% 50% at 50% 0%,#2a1530 0%,var(--bg) 70%),var(--bg);
+  color:var(--ink);padding:clamp(72px,10vw,130px) clamp(20px,5vw,64px);font-family:Georgia,serif;text-align:center}
+.tz-testimonials-wall-live .tz-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 18px}
+.tz-testimonials-wall-live h2{font-weight:400;font-size:clamp(38px,6vw,66px);margin:0 0 32px;letter-spacing:-.01em}
+.tz-testimonials-wall-live h2 em{font-style:italic;color:var(--accent)}
+.tz-testimonials-wall-live .tz-filters{display:flex;gap:10px;justify-content:center;margin-bottom:40px;flex-wrap:wrap}
+.tz-testimonials-wall-live .tz-filters button{background:transparent;border:1px solid #f5e8d533;color:var(--muted);
+  font-family:ui-monospace,Menlo,monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+  padding:10px 22px;border-radius:999px;cursor:pointer;transition:all .2s}
+.tz-testimonials-wall-live .tz-filters button.tz-on{background:var(--accent);border-color:var(--accent);color:#171019;font-weight:700}
+.tz-testimonials-wall-live .tz-wall{max-width:1080px;margin:0 auto;columns:3 280px;column-gap:18px;text-align:left}
+.tz-testimonials-wall-live .tz-card{break-inside:avoid;background:#f5e8d5;color:#2b1a12;border-radius:6px;
+  padding:26px 24px;margin:0 0 18px;box-shadow:0 8px 24px #00000055;transform:rotate(-.4deg)}
+.tz-testimonials-wall-live .tz-card:nth-child(2n){transform:rotate(.5deg)}
+.tz-testimonials-wall-live .tz-card.tz-hide{display:none}
+.tz-testimonials-wall-live .tz-text{font-size:16.5px;line-height:1.6;margin:0 0 16px;font-style:italic}
+.tz-testimonials-wall-live figcaption b{display:block;font-family:-apple-system,'Segoe UI',sans-serif;font-size:14px}
+.tz-testimonials-wall-live figcaption span{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;color:#7a5f45}
+.tz-testimonials-wall-live .tz-fine{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);margin:40px 0 0}
+.tz-testimonials-wall-live .tz-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);
+  margin-right:8px;animation:tz-blink 1.8s infinite}
+@keyframes tz-blink{50%{opacity:.3}}
+@media (prefers-reduced-motion:reduce){
+  .tz-testimonials-wall-live .tz-dot{animation:none}
+}
+</style>
+<script>
+(function(){
+  var root=document.querySelector('.tz-testimonials-wall-live');
+  var btns=root.querySelectorAll('.tz-filters button');
+  var cards=root.querySelectorAll('.tz-card');
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      btns.forEach(function(x){x.classList.remove('tz-on')});
+      b.classList.add('tz-on');
+      var f=b.dataset.f;
+      cards.forEach(function(c){c.classList.toggle('tz-hide',f!=='all'&&c.dataset.cat!==f)});
+    });
+  });
+})();
+</script>
