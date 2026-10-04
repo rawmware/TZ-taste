@@ -1,0 +1,95 @@
+{
+ "_tzmeta": {
+  "id": "vscode-cottage-warm",
+  "title": "Cottage Warm VS Code theme",
+  "category": "VS Code",
+  "file": "vscode/cottage-warm.json",
+  "tags": [
+   "vscode",
+   "theme",
+   "cottage-warm"
+  ],
+  "description": "VS Code color theme from the Cottage Warm DNA tokens.",
+  "dnas": [
+   "cottage-warm"
+  ]
+ },
+ "name": "TZ Cottage Warm",
+ "type": "light",
+ "colors": {
+  "editor.background": "#fbf5ea",
+  "editor.foreground": "#3d3229",
+  "editorLineNumber.foreground": "#8d7f6e",
+  "editorCursor.foreground": "#b5533c",
+  "activityBar.background": "#fbf5ea",
+  "activityBar.foreground": "#3d3229",
+  "sideBar.background": "#fbf5ea",
+  "statusBar.background": "#b5533c",
+  "statusBar.foreground": "#fbf5ea",
+  "tab.activeBackground": "#fbf5ea",
+  "tab.inactiveBackground": "#fbf5ea",
+  "editorGroupHeader.tabsBackground": "#fbf5ea",
+  "terminal.background": "#fbf5ea",
+  "terminal.foreground": "#3d3229",
+  "panel.background": "#fbf5ea",
+  "editorWidget.background": "#fbf5ea",
+  "pickerGroup.foreground": "#b5533c",
+  "progressBar.background": "#b5533c",
+  "focusBorder": "#e7dcc6"
+ },
+ "tokenColors": [
+  {
+   "scope": [
+    "comment"
+   ],
+   "settings": {
+    "foreground": "#8d7f6e",
+    "fontStyle": "italic"
+   }
+  },
+  {
+   "scope": [
+    "keyword",
+    "storage"
+   ],
+   "settings": {
+    "foreground": "#b5533c"
+   }
+  },
+  {
+   "scope": [
+    "string"
+   ],
+   "settings": {
+    "foreground": "#3d3229"
+   }
+  },
+  {
+   "scope": [
+    "variable",
+    "identifier"
+   ],
+   "settings": {
+    "foreground": "#3d3229"
+   }
+  },
+  {
+   "scope": [
+    "entity.name.function"
+   ],
+   "settings": {
+    "foreground": "#b5533c",
+    "fontStyle": "bold"
+   }
+  },
+  {
+   "scope": [
+    "entity.name.type",
+    "support.type"
+   ],
+   "settings": {
+    "foreground": "#8d7f6e"
+   }
+  }
+ ]
+}
