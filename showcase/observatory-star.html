@@ -1,0 +1,187 @@
+<!--tz-meta {"id":"showcase-observatory-star","title":"Observatory Star showcase","category":"Showcase","file":"showcase/observatory-star.html","tags":["observatory-star"],"description":"Live demo page for the Observatory Star style DNA.","dnas":["observatory-star"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Observatory Star — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Spectral:wght@300;400;500&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#060a18; --tz-surface:#0d1328; --tz-ink:#dfe6f5; --tz-muted:#5f6b8a;
+  --tz-accent:#c9a24b; --tz-line:#c9a24b44;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Spectral",serif;font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 4vw;border-bottom:1px solid var(--tz-line);font-family:"Spline Sans Mono",monospace;font-size:0.7rem;letter-spacing:0.14em}
+.tz-wordmark{font-family:"Marcellus",serif;font-size:1.25rem;letter-spacing:0.22em;color:var(--tz-ink)}
+.tz-label{color:var(--tz-muted)}
+.tz-hero{padding:4.5rem 4vw 3rem;max-width:1200px;margin:0 auto}
+.tz-eyebrow{font-family:"Spline Sans Mono",monospace;font-size:0.75rem;letter-spacing:0.18em;color:var(--tz-accent);margin-bottom:1.4rem}
+.tz-hero h1{font-family:"Marcellus",serif;font-size:clamp(2.6rem,7vw,5.5rem);line-height:1.08;letter-spacing:0.04em;font-weight:400;max-width:20ch}
+.tz-sub{margin-top:1.6rem;font-size:1.05rem;font-weight:300;color:var(--tz-muted);max-width:52ch}
+.tz-cta{display:inline-block;margin-top:2.2rem;border:1px solid var(--tz-accent);color:var(--tz-accent);font-family:"Spline Sans Mono",monospace;font-size:0.85rem;letter-spacing:0.2em;text-decoration:none;padding:1rem 2.4rem;transition:opacity .2s ease}
+.tz-cta:hover{opacity:0.75}
+.tz-chart{margin:3.5rem auto 0;max-width:1200px;padding:0 4vw}
+.tz-chart .tz-frame{border:1px solid var(--tz-line);background:var(--tz-surface);padding:2rem}
+.tz-chart figcaption{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:1.2rem;font-family:"Spline Sans Mono",monospace;font-size:0.72rem;letter-spacing:0.12em;color:var(--tz-muted)}
+.tz-chart figcaption .tz-brass{color:var(--tz-accent)}
+.tz-plate{max-width:1200px;margin:0 auto;padding:3.5rem 4vw 0}
+.tz-plate h2{font-family:"Marcellus",serif;font-size:1.1rem;letter-spacing:0.24em;color:var(--tz-accent);margin-bottom:0.6rem}
+.tz-plate .tz-log{font-family:"Spline Sans Mono",monospace;font-size:0.78rem;letter-spacing:0.06em;color:var(--tz-muted);margin-bottom:2rem}
+.tz-obs{list-style:none;border-top:1px solid var(--tz-line)}
+.tz-obs li{display:grid;grid-template-columns:10rem 1fr auto;gap:1.5rem;align-items:baseline;padding:1.6rem 0;border-bottom:1px solid var(--tz-line)}
+.tz-obj{font-family:"Marcellus",serif;font-size:1.9rem;letter-spacing:0.03em}
+.tz-desc{color:var(--tz-muted);font-size:0.95rem}
+.tz-desc .tz-coord{font-family:"Spline Sans Mono",monospace;font-size:0.78rem;color:var(--tz-ink);display:block;margin-top:0.3rem;letter-spacing:0.04em}
+.tz-mag{font-family:"Spline Sans Mono",monospace;font-size:0.8rem;color:var(--tz-accent);letter-spacing:0.1em;white-space:nowrap}
+.tz-dial{display:flex;align-items:center;gap:1.2rem;margin-top:3rem;max-width:1200px;margin-left:auto;margin-right:auto;padding:0 4vw}
+.tz-ring{width:64px;height:64px;border:1px solid var(--tz-accent);border-radius:50%;position:relative;flex:none;animation:tz-turn 40s linear infinite}
+.tz-ring::before{content:"";position:absolute;top:4px;left:50%;width:5px;height:5px;background:var(--tz-accent);border-radius:50%;transform:translateX(-50%)}
+.tz-ring::after{content:"";position:absolute;inset:12px;border:1px solid var(--tz-line);border-radius:50%}
+@keyframes tz-turn{to{transform:rotate(360deg)}}
+.tz-dial p{font-family:"Spline Sans Mono",monospace;font-size:0.75rem;letter-spacing:0.1em;color:var(--tz-muted);max-width:52ch}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem;max-width:1200px;margin-left:auto;margin-right:auto}
+.tz-tokens h2{font-family:"Marcellus",serif;font-size:1.5rem;letter-spacing:0.1em;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"Spline Sans Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Spline Sans Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"Spline Sans Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.1em;max-width:1200px;margin:0 auto}
+@media(max-width:700px){
+  .tz-obs li{grid-template-columns:1fr;gap:0.4rem}
+  .tz-chart .tz-frame{padding:1rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">MERIDIAN HILL</span>
+  <span class="tz-label">MERIDIAN CIRCLE · 1897</span>
+</header>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow" id="tz-tonight">TONIGHT'S SKY · —</p>
+  <h1>The dome opens when the light leaves.</h1>
+  <p class="tz-sub">Dome opened 20:40. Seeing: fair. Wind: NW 12 kt. Orion rises over the east pines — the first target of the night is already waiting.</p>
+  <a class="tz-cta" href="#">REQUEST A VISIT</a>
+</section>
+
+<figure class="tz-chart">
+  <div class="tz-frame">
+    <svg viewBox="0 0 640 400" width="100%" role="img" aria-label="Hand-plotted chart of Orion with M42">
+      <g stroke="#c9a24b" stroke-width="1" opacity="0.9">
+        <circle cx="120" cy="90" r="1.5" fill="#dfe6f5" stroke="none"/>
+        <circle cx="235" cy="60" r="1" fill="#dfe6f5" stroke="none"/>
+        <circle cx="350" cy="110" r="1" fill="#dfe6f5" stroke="none"/>
+        <circle cx="480" cy="70" r="1.5" fill="#dfe6f5" stroke="none"/>
+        <circle cx="560" cy="150" r="1" fill="#dfe6f5" stroke="none"/>
+        <circle cx="80" cy="260" r="1" fill="#dfe6f5" stroke="none"/>
+        <circle cx="590" cy="300" r="1.5" fill="#dfe6f5" stroke="none"/>
+        <circle cx="420" cy="330" r="1" fill="#dfe6f5" stroke="none"/>
+        <circle cx="200" cy="345" r="1" fill="#dfe6f5" stroke="none"/>
+      </g>
+      <g stroke="#c9a24b" stroke-width="1.25" fill="none">
+        <line x1="200" y1="110" x2="320" y2="165"/>
+        <line x1="320" y1="165" x2="440" y2="110"/>
+        <line x1="200" y1="110" x2="150" y2="250"/>
+        <line x1="440" y1="110" x2="490" y2="250"/>
+        <line x1="150" y1="250" x2="490" y2="250"/>
+        <line x1="290" y1="185" x2="350" y2="185"/>
+        <line x1="320" y1="175" x2="320" y2="195"/>
+        <line x1="320" y1="185" x2="320" y2="265"/>
+      </g>
+      <g>
+        <circle cx="200" cy="110" r="5" fill="#c9a24b"/>
+        <circle cx="440" cy="110" r="4.5" fill="#c9a24b"/>
+        <circle cx="290" cy="185" r="2.5" fill="#dfe6f5"/>
+        <circle cx="320" cy="185" r="3" fill="#dfe6f5"/>
+        <circle cx="350" cy="185" r="2.5" fill="#dfe6f5"/>
+        <circle cx="150" cy="250" r="6" fill="#c9a24b"/>
+        <circle cx="490" cy="250" r="4" fill="#dfe6f5"/>
+        <circle cx="320" cy="265" r="4" fill="none" stroke="#c9a24b" stroke-width="1.5"/>
+      </g>
+      <g fill="#dfe6f5" font-family="Spline Sans Mono, monospace" font-size="11" letter-spacing="2">
+        <text x="212" y="104">BETELGEUSE</text>
+        <text x="448" y="104">BELLATRIX</text>
+        <text x="162" y="244">RIGEL</text>
+        <text x="332" y="270">M42</text>
+        <text x="360" y="182">THE BELT</text>
+      </g>
+      <g stroke="#c9a24b44" stroke-width="1">
+        <circle cx="320" cy="200" r="150" fill="none"/>
+        <circle cx="320" cy="200" r="190" fill="none"/>
+        <line x1="320" y1="10" x2="320" y2="390"/>
+        <line x1="130" y1="200" x2="510" y2="200"/>
+      </g>
+    </svg>
+  </div>
+  <figcaption>
+    <span><span class="tz-brass">PLATE VII —</span> ORION, PLOTTED FROM THE MERIDIAN CIRCLE</span>
+    <span>SCALE 2° PER RING · EPOCH J2000</span>
+  </figcaption>
+</figure>
+
+<section class="tz-plate">
+  <h2>TONIGHT'S PROGRAM</h2>
+  <p class="tz-log">LOG ENTRY 214 · DOME OPENED 20:40 · OBSERVER: E. WHITAKER</p>
+  <ul class="tz-obs">
+    <li>
+      <span class="tz-obj">M42</span>
+      <div class="tz-desc">Orion Nebula — the sword hangs clear of the pines by 21:14.
+        <span class="tz-coord">RA 05H 35M · DEC −05° 23′</span>
+      </div>
+      <span class="tz-mag">MAG 4.0</span>
+    </li>
+    <li>
+      <span class="tz-obj">M45</span>
+      <div class="tz-desc">The Pleiades — best in the finder scope, low power, both eyes open.
+        <span class="tz-coord">RA 03H 47M · DEC +24° 07′</span>
+      </div>
+      <span class="tz-mag">MAG 1.6</span>
+    </li>
+    <li>
+      <span class="tz-obj">Saturn</span>
+      <div class="tz-desc">Rings nearly edge-on this season; Titan trailing to the east.
+        <span class="tz-coord">RA 23H 56M · DEC −02° 41′</span>
+      </div>
+      <span class="tz-mag">MAG 0.6</span>
+    </li>
+  </ul>
+</section>
+
+<div class="tz-dial" aria-hidden="true">
+  <span class="tz-ring"></span>
+  <p>SETTING CIRCLE — THE BRASS RING TRACKS THE NIGHT. DOME CLOSES AT FIRST LIGHT.</p>
+</div>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#060a18"></span><span class="tz-name">bg</span><span class="tz-hex">#060a18</span></li>
+    <li><span class="tz-chip" style="background:#0d1328"></span><span class="tz-name">surface</span><span class="tz-hex">#0d1328</span></li>
+    <li><span class="tz-chip" style="background:#dfe6f5"></span><span class="tz-name">ink</span><span class="tz-hex">#dfe6f5</span></li>
+    <li><span class="tz-chip" style="background:#5f6b8a"></span><span class="tz-name">muted</span><span class="tz-hex">#5f6b8a</span></li>
+    <li><span class="tz-chip" style="background:#c9a24b"></span><span class="tz-name">accent</span><span class="tz-hex">#c9a24b</span></li>
+    <li><span class="tz-chip" style="background:#c9a24b44"></span><span class="tz-name">line</span><span class="tz-hex">#c9a24b44</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+<script>
+(function(){
+  var el=document.getElementById('tz-tonight');
+  var d=new Date();
+  var days=['SUNDAY','MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY'];
+  var months=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+  el.textContent="TONIGHT'S SKY · "+days[d.getDay()]+" "+months[d.getMonth()]+" "+d.getDate()+", "+d.getFullYear();
+})();
+</script>
+</body>
+</html>
