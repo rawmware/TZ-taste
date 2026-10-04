@@ -1,0 +1,132 @@
+{
+ "count": 8,
+ "updated": "2026-10-04",
+ "usage": "Rust page renderers (zero deps). Compile: rustc rust/<page>.rs && ./<page> > out.html",
+ "rust_pages": [
+  {
+   "id": "rust-blog",
+   "title": "The Misprint — print-culture zine blog",
+   "category": "Rust",
+   "file": "rust/blog.rs",
+   "tags": [
+    "rust",
+    "blog",
+    "zine",
+    "publishing"
+   ],
+   "description": "Risograph-grain blog for fictional print zine The Misprint: misregistered headline, issue-numbered article list, newsletter CTA, colophon footer.",
+   "dnas": [
+    "risograph-grain"
+   ]
+  },
+  {
+   "id": "rust-changelog",
+   "title": "Lattice — changelog as terminal session",
+   "category": "Rust",
+   "file": "rust/changelog.rs",
+   "tags": [
+    "rust",
+    "changelog",
+    "dev-tools",
+    "terminal"
+   ],
+   "description": "Retro-terminal changelog for fictional deploy tool Lattice: the whole page is a terminal session with amber version tags, ASCII rules, scanlines, blinking cursor.",
+   "dnas": [
+    "retro-terminal"
+   ]
+  },
+  {
+   "id": "rust-docs",
+   "title": "Ferrous — backup CLI documentation",
+   "category": "Rust",
+   "file": "rust/docs.rs",
+   "tags": [
+    "rust",
+    "docs",
+    "documentation",
+    "cli"
+   ],
+   "description": "Docs-solar documentation page for Ferrous, a plain-file backup CLI: sidebar nav, margin numerals, command bar, code blocks, callouts, config table.",
+   "dnas": [
+    "docs-solar"
+   ]
+  },
+  {
+   "id": "rust-event",
+   "title": "Static Bloom — warehouse night event page",
+   "category": "Rust",
+   "file": "rust/event.rs",
+   "tags": [
+    "rust",
+    "event",
+    "music",
+    "nightlife"
+   ],
+   "description": "Acid-rave event page for fictional all-night STATIC BLOOM: giant Anton hero, lineup marquee, two-room set-time grid, ticket rows.",
+   "dnas": [
+    "acid-rave"
+   ]
+  },
+  {
+   "id": "rust-portfolio",
+   "title": "June Calloway — editorial illustrator portfolio",
+   "category": "Rust",
+   "file": "rust/portfolio.rs",
+   "tags": [
+    "rust",
+    "portfolio",
+    "illustration"
+   ],
+   "description": "Editorial-serif portfolio for fictional illustrator June Calloway: offset hero, project index as a book's table of contents with dotted leaders, services ledger, colophon footer.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "rust-pricing",
+   "title": "Northpost — address verification API pricing",
+   "category": "Rust",
+   "file": "rust/pricing.rs",
+   "tags": [
+    "rust",
+    "pricing",
+    "api",
+    "saas"
+   ],
+   "description": "Swiss-rational pricing page for fictional Northpost address API: strict grid, one red accent, full spec-table comparison instead of cards, usage math strip.",
+   "dnas": [
+    "swiss-rational"
+   ]
+  },
+  {
+   "id": "rust-restaurant",
+   "title": "Bar Vespero — aperitivo bar site",
+   "category": "Rust",
+   "file": "rust/restaurant.rs",
+   "tags": [
+    "rust",
+    "restaurant",
+    "bar"
+   ],
+   "description": "Aperitivo-italian site for fictional Bar Vespero: offset golden-hour hero, drinks ledger menu with dotted leaders, back-room hire CTA, visit block.",
+   "dnas": [
+    "aperitivo-italian"
+   ]
+  },
+  {
+   "id": "rust-saas",
+   "title": "Tallywise — bookkeeping SaaS landing page",
+   "category": "Rust",
+   "file": "rust/saas.rs",
+   "tags": [
+    "rust",
+    "saas",
+    "landing-page"
+   ],
+   "description": "Soft-minimal landing page for Tallywise, a bookkeeping-autopilot SaaS: offset hero, close-board panel, numbered close timeline, proof band, hairline FAQ.",
+   "dnas": [
+    "soft-minimal"
+   ]
+  }
+ ]
+}
