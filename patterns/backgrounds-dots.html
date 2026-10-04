@@ -1,0 +1,16 @@
+<!--tz-meta {"id":"backgrounds-dots","title":"Dot matrix","category":"Backgrounds","file":"patterns/backgrounds-dots.html","tags":["dots","texture"],"description":"Swiss dot-matrix texture with a single flagged red dot.","dnas":["swiss-rational"]} -->
+<!-- Usage: .tz-dots sits behind content; the red dot marks one coordinate. -->
+<div class="tz-dots" aria-hidden="true">
+  <span class="tz-dots-one"></span>
+  <span class="tz-dots-tag">SEC·07 — FLAGGED</span>
+</div>
+<style>
+.tz-dots{position:absolute;inset:0;pointer-events:none;background:#f7f7f5;
+  background-image:radial-gradient(#161616 1.1px,transparent 1.2px);
+  background-size:22px 22px}
+.tz-dots-one{position:absolute;top:36%;left:62%;width:12px;height:12px;margin:-6px;
+  background:#e30613;border-radius:50%}
+.tz-dots-tag{position:absolute;top:calc(36% + 14px);left:calc(62% + 10px);
+  font:10px/1 ui-monospace,Menlo,monospace;letter-spacing:.14em;color:#161616;
+  background:#f7f7f5;padding:3px 7px;border:1px solid #161616;white-space:nowrap}
+</style>
