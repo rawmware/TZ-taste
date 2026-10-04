@@ -26,13 +26,40 @@ const INDEXES = [
     usage: "One live demo page per style DNA. Open in a browser to see the DNA working. Classes are tz- prefixed." },
   { dir: "docs", key: "docs", index: "docs/index.json",
     usage: "Prose guides for humans and agents. Not code." },
+  { dir: "generative", key: "generative", index: "generative/index.json",
+    usage: "Interactive generative-art pages (vanilla canvas, zero deps). Open in a browser, lift the technique." },
+  { dir: "tokens", key: "tokens", index: "tokens/index.json",
+    usage: "W3C-format design tokens, one file per style DNA. Machine-readable color/type." },
+  { dir: "tailwind", key: "presets", index: "tailwind/index.json",
+    usage: "Tailwind theme presets, one per style DNA. Extend tailwind.config with one." },
+  { dir: "react", key: "react_components", index: "react/index.json",
+    usage: "React (TSX) component ports of the best patterns. Props-driven, zero extra deps." },
+  { dir: "vue", key: "vue_components", index: "vue/index.json",
+    usage: "Vue SFC ports of the best patterns. Scoped styles, zero extra deps." },
+  { dir: "svelte", key: "svelte_components", index: "svelte/index.json",
+    usage: "Svelte component ports of the best patterns. Scoped styles, zero extra deps." },
+  { dir: "python", key: "python_pages", index: "python/index.json",
+    usage: "Python page builders (stdlib only). Run: python3 python/<page>.py > out.html" },
+  { dir: "astro", key: "astro_components", index: "astro/index.json",
+    usage: "Astro component ports of the best patterns. Scoped styles, zero extra deps." },
+  { dir: "emails", key: "emails", index: "emails/index.json",
+    usage: "Table-based HTML email templates, inline CSS, Outlook-safe. Real email engineering." },
+  { dir: "app-ui", key: "app_ui", index: "app-ui/index.json",
+    usage: "App-interface patterns (dashboards, kanban, tables). Same conventions as patterns/." },
 ];
 
 function metaOf(file) {
   const text = readFileSync(file, "utf8");
-  const m = text.match(/<!--tz-meta\s+(\{.*?\})\s*-->/s);
-  if (!m) return null;
-  try { return JSON.parse(m[1]); } catch { return null; }
+  let m = text.match(/<!--tz-meta\s+(\{.*?\})\s*-->/s)
+       || text.match(/^\/\/tz-meta\s+(\{.*?\})/m);
+  if (m) { try { return JSON.parse(m[1]); } catch { return null; } }
+  if (file.endsWith(".json")) {
+    try {
+      const j = JSON.parse(text);
+      return j._tzmeta || null;
+    } catch { return null; }
+  }
+  return null;
 }
 
 const counts = {};
@@ -68,6 +95,11 @@ if (existsSync(mPath)) {
     templates: counts.templates ?? 0,
     prompts: counts.prompts ?? 0,
     showcases: counts.showcases ?? 0,
+    generative: counts.generative ?? 0,
+    tokens: counts.tokens ?? 0,
+    tailwind_presets: counts.presets ?? 0,
+    emails: counts.emails ?? 0,
+    app_ui: counts.app_ui ?? 0,
   };
   m.updated = today;
   writeFileSync(mPath, JSON.stringify(m, null, 1) + "\n");
