@@ -1,0 +1,413 @@
+<!--tz-meta {"id":"ai-tool","title":"Neon Reel — AI Video Tool","category":"Template","file":"templates/ai-tool.html","tags":["ai","video","saas"],"description":"Cyberpunk-noir AI video generator with glitch type and a live render log.","dnas":["cyberpunk-noir"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neon Reel — type it, watch it</title>
+<meta name="description" content="Neon Reel turns text prompts into cinematic video clips. 4K, 24fps, director-grade lighting. Free tier, no card required.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* DNA: cyberpunk-noir — black chrome, neon magenta, cyan static */
+:root{
+  --tz-bg:#0a0a0f; --tz-surface:#111118; --tz-ink:#eef0f6; --tz-muted:#a9adc0;
+  --tz-accent:#ff2d78; --tz-cyan:#22d3ee; --tz-line:rgba(255,255,255,.12);
+  --tz-display:'Unbounded',sans-serif; --tz-body:'Space Grotesk',sans-serif; --tz-mono:'Space Mono',monospace;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:var(--tz-body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--tz-accent);color:#0a0a0f}
+a{color:inherit}
+.tz-wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+.tz-mono{font-family:var(--tz-mono)}
+/* scanline grain */
+.tz-grain{position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.5;
+  background:repeating-linear-gradient(0deg,transparent 0 2px,rgba(0,0,0,.22) 2px 3px)}
+.tz-nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0;position:relative;z-index:5}
+.tz-brand{font-family:var(--tz-display);font-weight:800;font-size:18px;letter-spacing:.04em;text-decoration:none}
+.tz-brand em{font-style:normal;color:var(--tz-accent)}
+.tz-navlinks{display:flex;gap:28px;font-family:var(--tz-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.tz-navlinks a{text-decoration:none;color:var(--tz-muted)}
+.tz-navlinks a:hover{color:var(--tz-accent)}
+.tz-btn{display:inline-block;font-family:var(--tz-mono);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;background:var(--tz-accent);color:#0a0a0f;padding:15px 30px;transition:transform .25s var(--tz-ease),box-shadow .25s}
+.tz-btn:hover{transform:translateY(-2px);box-shadow:0 0 28px rgba(255,45,120,.55)}
+.tz-btn--ghost{background:transparent;color:var(--tz-ink);border:1px solid var(--tz-line);box-shadow:none}
+/* hero: glitch stack */
+.tz-hero{position:relative;padding:110px 0 100px;overflow:hidden}
+.tz-hero-bg{position:absolute;inset:0;background:
+  radial-gradient(700px 380px at 78% 12%,rgba(255,45,120,.16),transparent 65%),
+  radial-gradient(560px 340px at 8% 88%,rgba(34,211,238,.1),transparent 65%);pointer-events:none}
+.tz-kicker{font-family:var(--tz-mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--tz-accent);margin-bottom:24px;display:block;position:relative}
+.tz-glitch{font-family:var(--tz-display);font-weight:800;font-size:clamp(48px,7.4vw,108px);line-height:1.02;letter-spacing:-.01em;position:relative;text-transform:uppercase}
+.tz-glitch .tz-g1{position:relative;display:inline-block}
+.tz-glitch .tz-g1::before,.tz-glitch .tz-g1::after{content:attr(data-t);position:absolute;left:0;top:0;width:100%;overflow:hidden}
+.tz-glitch .tz-g1::before{color:var(--tz-cyan);z-index:-1;animation:tz-gl1 3.4s infinite steps(2)}
+.tz-glitch .tz-g1::after{color:var(--tz-accent);z-index:-2;animation:tz-gl2 2.7s infinite steps(2)}
+@keyframes tz-gl1{0%,92%,100%{transform:none;opacity:0}93%{transform:translate(-4px,2px);opacity:.8}96%{transform:translate(3px,-2px);opacity:.8}}
+@keyframes tz-gl2{0%,88%,100%{transform:none;opacity:0}89%{transform:translate(4px,-2px);opacity:.7}94%{transform:translate(-3px,2px);opacity:.7}}
+.tz-hero-sub{font-size:20px;color:var(--tz-muted);max-width:52ch;margin:28px 0 36px;position:relative}
+.tz-hero-cta{display:flex;gap:16px;flex-wrap:wrap;position:relative}
+/* prompt demo console */
+.tz-console{margin-top:64px;border:1px solid var(--tz-line);background:var(--tz-surface);position:relative}
+.tz-console-bar{display:flex;justify-content:space-between;padding:14px 22px;border-bottom:1px solid var(--tz-line);font-family:var(--tz-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-console-bar .tz-live{color:var(--tz-accent)}
+.tz-console-grid{display:grid;grid-template-columns:1fr 1fr;min-height:300px}
+.tz-prompt-pane{padding:36px;border-right:1px solid var(--tz-line)}
+.tz-prompt-pane label{font-family:var(--tz-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--tz-muted);display:block;margin-bottom:16px}
+.tz-prompt-text{font-size:19px;line-height:1.7}
+.tz-prompt-text .tz-hl{color:var(--tz-accent)}
+.tz-render-pane{padding:36px;position:relative;overflow:hidden;background:linear-gradient(140deg,#16161f,#0d0d14)}
+.tz-frame{position:absolute;inset:36px;border:1px solid var(--tz-line);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.tz-frame svg{width:100%;height:100%}
+.tz-render-log{position:absolute;left:52px;bottom:52px;right:52px;font-family:var(--tz-mono);font-size:12px;color:var(--tz-cyan);background:rgba(10,10,15,.75);padding:12px 16px;border:1px solid var(--tz-line)}
+/* sections */
+.tz-section{padding:104px 0;border-top:1px solid var(--tz-line);position:relative}
+.tz-sec-head{margin-bottom:56px;max-width:720px}
+.tz-sec-head h2{font-family:var(--tz-display);font-weight:600;font-size:clamp(32px,4.4vw,58px);line-height:1.1;letter-spacing:-.01em;text-transform:uppercase}
+.tz-sec-head h2 em{font-style:normal;color:var(--tz-accent)}
+.tz-sec-head p{color:var(--tz-muted);font-size:18px;margin-top:16px}
+/* gallery: asymmetric stills */
+.tz-gallery{display:grid;grid-template-columns:1.2fr .8fr;gap:28px}
+.tz-still{border:1px solid var(--tz-line);background:var(--tz-surface);text-decoration:none;display:block;transition:transform .3s var(--tz-ease),border-color .3s;overflow:hidden}
+.tz-still:hover{transform:translateY(-4px);border-color:var(--tz-accent)}
+.tz-still-img{height:300px;position:relative;overflow:hidden}
+.tz-still--tall .tz-still-img{height:420px}
+.tz-still-body{padding:26px 28px}
+.tz-still-body .tz-tag{font-family:var(--tz-mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--tz-cyan);display:block;margin-bottom:10px}
+.tz-still-body h3{font-family:var(--tz-display);font-size:20px;font-weight:600;margin-bottom:8px}
+.tz-still-body p{font-family:var(--tz-mono);font-size:13px;color:var(--tz-muted)}
+.tz-gallery-2{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;margin-top:28px}
+/* process: horizontal strip, varied */
+.tz-process{display:grid;grid-template-columns:1fr 1fr 1fr;border:1px solid var(--tz-line)}
+.tz-phase{padding:44px 36px;border-right:1px solid var(--tz-line);position:relative}
+.tz-phase:last-child{border-right:none}
+.tz-phase .tz-n{font-family:var(--tz-display);font-size:64px;font-weight:800;color:transparent;-webkit-text-stroke:1.5px var(--tz-accent);display:block;margin-bottom:18px}
+.tz-phase h3{font-family:var(--tz-display);font-size:20px;font-weight:600;margin-bottom:12px}
+.tz-phase p{color:var(--tz-muted);font-size:15px}
+.tz-phase:nth-child(2){background:rgba(255,45,120,.05)}
+/* specs */
+.tz-specs{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--tz-line)}
+.tz-spec{padding:36px 30px;border-right:1px solid var(--tz-line)}
+.tz-spec:last-child{border-right:none}
+.tz-spec b{display:block;font-family:var(--tz-display);font-size:34px;font-weight:600;color:var(--tz-accent);margin-bottom:8px}
+.tz-spec span{font-family:var(--tz-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tz-muted)}
+/* pricing */
+.tz-plans{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:28px;align-items:stretch}
+.tz-plan{border:1px solid var(--tz-line);padding:44px 36px;background:var(--tz-surface);text-decoration:none;display:flex;flex-direction:column;transition:transform .3s var(--tz-ease),border-color .3s}
+.tz-plan:hover{transform:translateY(-4px)}
+.tz-plan--hot{border-color:var(--tz-accent);box-shadow:0 0 40px rgba(255,45,120,.18);position:relative}
+.tz-plan--hot::before{content:"MOST RENDERED";position:absolute;top:-13px;left:32px;background:var(--tz-accent);color:#0a0a0f;font-family:var(--tz-mono);font-size:10px;font-weight:700;letter-spacing:.2em;padding:5px 14px}
+.tz-plan .tz-tier{font-family:var(--tz-mono);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:16px}
+.tz-plan--hot .tz-tier{color:var(--tz-accent)}
+.tz-plan h3{font-family:var(--tz-display);font-size:24px;font-weight:600;margin-bottom:10px}
+.tz-plan p{color:var(--tz-muted);font-size:15px;margin-bottom:22px;flex:1}
+.tz-plan ul{list-style:none;margin-bottom:28px}
+.tz-plan li{font-size:14px;padding:8px 0;border-bottom:1px dashed var(--tz-line);color:var(--tz-muted)}
+.tz-plan li b{color:var(--tz-ink);font-weight:500}
+.tz-plan .tz-cost{font-family:var(--tz-display);font-size:40px;font-weight:800}
+.tz-plan .tz-cost small{font-family:var(--tz-mono);font-size:11px;color:var(--tz-muted);font-weight:400;letter-spacing:.1em}
+/* faq */
+.tz-faq{max-width:780px}
+.tz-qa{border-bottom:1px solid var(--tz-line)}
+.tz-qa button{width:100%;background:none;border:none;text-align:left;font-family:var(--tz-display);font-size:19px;font-weight:600;padding:24px 0;cursor:pointer;display:flex;justify-content:space-between;gap:20px;color:var(--tz-ink)}
+.tz-qa button span:last-child{font-family:var(--tz-mono);color:var(--tz-accent)}
+.tz-qa .tz-a{max-height:0;overflow:hidden;transition:max-height .4s var(--tz-ease)}
+.tz-qa .tz-a p{color:var(--tz-muted);padding:0 0 26px;max-width:62ch}
+.tz-qa.tz-open .tz-a{max-height:320px}
+/* final */
+.tz-final{border:1px solid var(--tz-accent);background:linear-gradient(160deg,rgba(255,45,120,.1),transparent 60%);padding:88px 64px;text-align:left;position:relative;overflow:hidden}
+.tz-final h2{font-family:var(--tz-display);font-weight:800;font-size:clamp(36px,5vw,68px);line-height:1.05;text-transform:uppercase;margin-bottom:20px}
+.tz-final h2 em{font-style:normal;color:var(--tz-accent)}
+.tz-final p{color:var(--tz-muted);font-size:19px;max-width:54ch;margin-bottom:36px}
+/* footer */
+.tz-footer{border-top:1px solid var(--tz-line);padding:64px 0 36px;margin-top:104px}
+.tz-footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.tz-footer h4{font-family:var(--tz-mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:18px}
+.tz-footer ul{list-style:none}.tz-footer li{margin-bottom:10px}
+.tz-footer a{text-decoration:none;font-size:15px}
+.tz-footer a:hover{color:var(--tz-accent)}
+.tz-footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-family:var(--tz-mono);font-size:11px;letter-spacing:.1em;color:var(--tz-muted);border-top:1px solid var(--tz-line);padding-top:28px;text-transform:uppercase}
+.tz-reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--tz-ease),transform .7s var(--tz-ease)}
+.tz-reveal.tz-in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .tz-glitch .tz-g1::before,.tz-glitch .tz-g1::after{animation:none;display:none}
+  .tz-reveal{opacity:1;transform:none;transition:none}*{transition:none !important}
+  .tz-qa .tz-a{transition:none}
+}
+@media(max-width:960px){
+  .tz-console-grid{grid-template-columns:1fr}
+  .tz-prompt-pane{border-right:none;border-bottom:1px solid var(--tz-line)}
+  .tz-gallery,.tz-gallery-2{grid-template-columns:1fr}
+  .tz-still--tall .tz-still-img{height:300px}
+  .tz-process{grid-template-columns:1fr}
+  .tz-phase{border-right:none;border-bottom:1px solid var(--tz-line)}
+  .tz-phase:last-child{border-bottom:none}
+  .tz-specs{grid-template-columns:1fr 1fr}
+  .tz-spec:nth-child(2){border-right:none}
+  .tz-spec{border-bottom:1px solid var(--tz-line)}
+  .tz-plans{grid-template-columns:1fr}
+  .tz-navlinks{display:none}
+}
+@media(max-width:600px){
+  .tz-section{padding:72px 0}
+  .tz-specs{grid-template-columns:1fr}
+  .tz-spec{border-right:none}
+  .tz-final{padding:56px 32px}
+  .tz-footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<!-- DNA: cyberpunk-noir · design read: an AI video tool page with the voltage of a midnight arcade — black chrome, neon magenta, glitch on purpose · dials V8/M6/D4 · one weird thing: a fake render console that "generates" a clip from a prompt with a live cyan render log -->
+<div class="tz-grain" aria-hidden="true"></div>
+
+<header class="tz-wrap">
+  <nav class="tz-nav" aria-label="Main">
+    <a class="tz-brand" href="#">NEON<em>REEL</em></a>
+    <div class="tz-navlinks">
+      <a href="#gallery">Gallery</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
+    </div>
+    <a class="tz-btn" href="#pricing">Start free</a>
+  </nav>
+</header>
+
+<main>
+  <section class="tz-hero">
+    <div class="tz-hero-bg" aria-hidden="true"></div>
+    <div class="tz-wrap">
+      <span class="tz-kicker">// text-to-video · 4K · no card required</span>
+      <h1 class="tz-glitch"><span class="tz-g1" data-t="TYPE IT.">TYPE IT.</span><br><span style="color:var(--tz-accent)">WATCH IT.</span></h1>
+      <p class="tz-hero-sub">Neon Reel turns a sentence into a cinematic clip — director-grade lighting, real camera language, 24 frames a second. Describe the shot. Get the shot.</p>
+      <div class="tz-hero-cta">
+        <a class="tz-btn" href="#pricing">Render your first clip free</a>
+        <a class="tz-btn tz-btn--ghost" href="#gallery">See what it made</a>
+      </div>
+      <div class="tz-console tz-reveal">
+        <div class="tz-console-bar"><span>Render console · v2.4</span><span class="tz-live">● live demo</span></div>
+        <div class="tz-console-grid">
+          <div class="tz-prompt-pane">
+            <label>Prompt</label>
+            <p class="tz-prompt-text">"A rain-soaked <span class="tz-hl">Tokyo alley</span> at 2 a.m., neon signs reflecting in puddles, <span class="tz-hl">slow dolly forward</span>, a lone figure with a transparent umbrella, <span class="tz-hl">anamorphic</span>, 35mm grain"</p>
+            <p class="tz-mono" style="font-size:12px;color:var(--tz-muted);margin-top:24px">— 12s · 4K · 24fps · seed 8841</p>
+          </div>
+          <div class="tz-render-pane">
+            <div class="tz-frame" aria-hidden="true">
+              <svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice">
+                <defs><linearGradient id="tz-neon" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff2d78"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>
+                <rect width="400" height="225" fill="#0d0d14"/>
+                <rect x="0" y="170" width="400" height="55" fill="#111118"/>
+                <ellipse cx="200" cy="196" rx="120" ry="14" fill="#ff2d78" opacity=".25"/>
+                <rect x="40" y="40" width="60" height="130" fill="#16161f" stroke="#ff2d78" stroke-width="2"/>
+                <rect x="300" y="55" width="60" height="115" fill="#16161f" stroke="#22d3ee" stroke-width="2"/>
+                <text x="70" y="105" fill="#ff2d78" font-family="monospace" font-size="14" text-anchor="middle">酒吧</text>
+                <text x="330" y="115" fill="#22d3ee" font-family="monospace" font-size="12" text-anchor="middle">OPEN</text>
+                <rect x="185" y="120" width="30" height="60" fill="#1c1c26"/>
+                <circle cx="200" cy="112" r="10" fill="#1c1c26"/>
+                <path d="M170 105 Q200 88 230 105" stroke="#eef0f6" stroke-width="2" fill="none" opacity=".7"/>
+                <g stroke="#22d3ee" stroke-width="1" opacity=".5"><line x1="0" y1="30" x2="400" y2="26"/><line x1="0" y1="60" x2="400" y2="58"/><line x1="0" y1="95" x2="400" y2="96"/></g>
+              </svg>
+            </div>
+            <div class="tz-render-log" id="tz-log">▸ parsing prompt…</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="gallery">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <h2>Made from <em>sentences</em></h2>
+        <p>Every clip below started as one paragraph of text. Hover for the prompt that made it.</p>
+      </div>
+      <div class="tz-gallery">
+        <a class="tz-still tz-reveal" href="#pricing">
+          <div class="tz-still-img" role="img" aria-label="Still: desert chase at golden hour"><svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="600" height="300" fill="#141019"/><circle cx="450" cy="90" r="60" fill="#ff2d78" opacity=".8"/><rect x="0" y="220" width="600" height="80" fill="#1e1626"/><rect x="120" y="180" width="180" height="50" rx="8" fill="#0a0a0f" stroke="#ff2d78" stroke-width="2"/><circle cx="170" cy="235" r="18" fill="#0a0a0f" stroke="#eef0f6" stroke-width="3"/><circle cx="260" cy="235" r="18" fill="#0a0a0f" stroke="#eef0f6" stroke-width="3"/><path d="M0 220 L600 210" stroke="#ff2d78" stroke-width="2" opacity=".4"/></svg></div>
+          <div class="tz-still-body"><span class="tz-tag">Action · 8s</span><h3>Desert run</h3><p>"muscle car kicking dust across salt flats, golden hour, drone chase cam"</p></div>
+        </a>
+        <a class="tz-still tz-still--tall tz-reveal" href="#pricing">
+          <div class="tz-still-img" role="img" aria-label="Still: bioluminescent forest"><svg viewBox="0 0 400 420" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="400" height="420" fill="#0b1016"/><g stroke="#22d3ee" stroke-width="3" opacity=".8"><line x1="80" y1="420" x2="90" y2="120"/><line x1="200" y1="420" x2="195" y2="80"/><line x1="320" y1="420" x2="315" y2="140"/></g><g fill="#22d3ee" opacity=".7"><circle cx="90" cy="150" r="5"/><circle cx="195" cy="110" r="6"/><circle cx="315" cy="170" r="5"/><circle cx="140" cy="230" r="4"/><circle cx="260" cy="260" r="5"/></g><ellipse cx="200" cy="390" rx="150" ry="20" fill="#22d3ee" opacity=".12"/></svg></div>
+          <div class="tz-still-body"><span class="tz-tag">Fantasy · 12s</span><h3>Glowwood</h3><p>"bioluminescent forest, fireflies the size of lanterns, slow crane up"</p></div>
+        </a>
+      </div>
+      <div class="tz-gallery-2">
+        <a class="tz-still tz-reveal" href="#pricing">
+          <div class="tz-still-img" role="img" aria-label="Still: noodle bar portrait" style="height:260px"><svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="400" height="260" fill="#100d12"/><rect x="60" y="60" width="280" height="140" fill="#17131a" stroke="#ff2d78" stroke-width="2"/><circle cx="200" cy="130" r="40" fill="#ff2d78" opacity=".3"/><circle cx="200" cy="120" r="22" fill="#e8a25e" opacity=".85"/><rect x="150" y="170" width="100" height="30" fill="#0a0a0f"/></svg></div>
+          <div class="tz-still-body"><span class="tz-tag">Portrait · 6s</span><h3>Night market</h3><p>"elderly noodle vendor, steam, neon bokeh, 85mm, shallow focus"</p></div>
+        </a>
+        <a class="tz-still tz-reveal" href="#pricing">
+          <div class="tz-still-img" role="img" aria-label="Still: orbital station" style="height:260px"><svg viewBox="0 0 600 260" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"><rect width="600" height="260" fill="#080810"/><circle cx="480" cy="70" r="46" fill="#22d3ee" opacity=".5"/><rect x="180" y="110" width="240" height="40" fill="#14141c" stroke="#eef0f6" stroke-width="1.5"/><rect x="120" y="122" width="60" height="16" fill="#ff2d78" opacity=".7"/><rect x="420" y="122" width="60" height="16" fill="#22d3ee" opacity=".7"/><g fill="#eef0f6" opacity=".8"><circle cx="60" cy="50" r="2"/><circle cx="140" cy="200" r="2"/><circle cx="540" cy="190" r="2"/><circle cx="340" cy="40" r="2"/></g></svg></div>
+          <div class="tz-still-body"><span class="tz-tag">Sci-fi · 10s</span><h3>Docking</h3><p>"orbital station at dawn, slow push-in, lens flare, IMAX scale"</p></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="how" style="border-top:1px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <h2>Prompt to <em>premiere</em> in three moves</h2>
+      </div>
+      <div class="tz-process tz-reveal">
+        <div class="tz-phase"><span class="tz-n">01</span><h3>Direct it</h3><p>Write the shot like a director: subject, light, lens, movement. The model reads camera language — "dolly," "anamorphic," "golden hour" all land.</p></div>
+        <div class="tz-phase"><span class="tz-n">02</span><h3>Render it</h3><p>Pick 6, 12, or 30 seconds. Renders land in under two minutes, with four variations per prompt so you can pick the take.</p></div>
+        <div class="tz-phase"><span class="tz-n">03</span><h3>Ship it</h3><p>Export 4K ProRes or vertical 9:16. Commercial license included on every paid plan — your clip, your rights.</p></div>
+      </div>
+      <div class="tz-specs tz-reveal" style="margin-top:48px">
+        <div class="tz-spec"><b>4K</b><span>Max resolution</span></div>
+        <div class="tz-spec"><b>24fps</b><span>Cinematic frame rate</span></div>
+        <div class="tz-spec"><b>&lt;2min</b><span>Avg. render time</span></div>
+        <div class="tz-spec"><b>100%</b><span>Commercial rights</span></div>
+      </div>
+    </div>
+  </section>
+
+<style>
+.tz-creators{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.tz-creator{border:1px solid var(--tz-line);background:var(--tz-surface);padding:40px 36px;text-decoration:none;display:block;transition:transform .3s var(--tz-ease),border-color .3s}
+.tz-creator:hover{transform:translateY(-4px);border-color:var(--tz-accent)}
+.tz-creator .tz-who{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px}
+.tz-creator .tz-who b{font-family:var(--tz-display);font-size:18px}
+.tz-creator .tz-who span{font-family:var(--tz-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--tz-cyan)}
+.tz-creator p{font-size:17px;font-style:italic;color:var(--tz-muted);margin-bottom:16px}
+.tz-creator .tz-stat{font-family:var(--tz-mono);font-size:12px;color:var(--tz-accent)}
+.tz-api{border:1px solid var(--tz-line);background:var(--tz-surface);display:grid;grid-template-columns:1.1fr .9fr;overflow:hidden}
+.tz-api-body{padding:64px 56px}
+.tz-api-body h2{font-family:var(--tz-display);font-weight:600;font-size:clamp(30px,3.6vw,48px);text-transform:uppercase;line-height:1.1;margin-bottom:18px}
+.tz-api-body h2 em{font-style:normal;color:var(--tz-accent)}
+.tz-api-body p{color:var(--tz-muted);font-size:17px;margin-bottom:28px;max-width:48ch}
+.tz-api-code{background:#08080d;padding:40px;font-family:var(--tz-mono);font-size:13px;line-height:2;overflow-x:auto;border-left:1px solid var(--tz-line)}
+.tz-api-code .tz-k{color:var(--tz-accent)}
+.tz-api-code .tz-s{color:var(--tz-cyan)}
+.tz-api-code .tz-c{color:#555a6e}
+@media(max-width:960px){.tz-creators{grid-template-columns:1fr}.tz-api{grid-template-columns:1fr}.tz-api-code{border-left:none;border-top:1px solid var(--tz-line)}}
+</style>
+  <section class="tz-section" id="creators" style="border-top:1px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <h2>Shipping with <em>neon reel</em></h2>
+        <p>1.2 million clips rendered last month. A few of the people behind them:</p>
+      </div>
+      <div class="tz-creators">
+        <div class="tz-creator tz-reveal"><div class="tz-who"><b>Maya Chen</b><span>Music videos · 890k subs</span></div><p>"I storyboarded a video for six weeks. Then I rendered the whole thing in a weekend and the label thought I'd hired a crew."</p><div class="tz-stat">▸ 40 clips · 3 videos shipped</div></div>
+        <div class="tz-creator tz-reveal"><div class="tz-who"><b>Studio Kessler</b><span>Commercial director</span></div><p>"We previz every spot in Neon Reel now. Clients approve the AI cut, then we shoot to match it. Bids got 30% more accurate."</p><div class="tz-stat">▸ 212 clips · 11 spots delivered</div></div>
+        <div class="tz-creator tz-reveal"><div class="tz-who"><b>Devon Park</b><span>Indie game dev</span></div><p>"All our cutscenes. Our 'animation department' is me, a prompt, and a render queue running while I sleep."</p><div class="tz-stat">▸ 96 clips · 1 game shipped</div></div>
+        <div class="tz-creator tz-reveal"><div class="tz-who"><b>Amara Diallo</b><span>Documentary filmmaker</span></div><p>"For historical reenactments we could never afford to shoot. The ethicists approved the disclosure card; audiences never questioned a frame."</p><div class="tz-stat">▸ 58 clips · 1 festival premiere</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="api" style="border-top:1px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-api tz-reveal">
+        <div class="tz-api-body">
+          <h2>Render from <em>your stack</em></h2>
+          <p>The full engine behind an API: queue a render, poll the webhook, get 4K back. Five lines to your first clip.</p>
+          <a class="tz-btn" href="#pricing">Get an API key</a>
+          <p class="tz-mono" style="font-size:12px;color:var(--tz-muted);margin-top:20px;letter-spacing:.06em">CHROME PLAN AND UP · 99.9% UPTIME SLA</p>
+        </div>
+        <div class="tz-api-code" aria-hidden="true"><span class="tz-c"># your first render</span><br><span class="tz-k">POST</span> /v2/renders<br>{<br>&nbsp;&nbsp;<span class="tz-s">"prompt"</span>: <span class="tz-s">"rain-soaked tokyo alley, 2am"</span>,<br>&nbsp;&nbsp;<span class="tz-s">"duration"</span>: <span class="tz-k">12</span>,<br>&nbsp;&nbsp;<span class="tz-s">"resolution"</span>: <span class="tz-s">"4k"</span><br>}<br><span class="tz-c">// → { "id": "rnd_8841", "eta": "107s" }</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="pricing" style="border-top:1px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <h2>Priced like <em>film stock</em></h2>
+        <p>Pay for renders, not seats. Unused credits roll over for 90 days.</p>
+      </div>
+      <div class="tz-plans">
+        <a class="tz-plan tz-reveal" href="#pricing">
+          <span class="tz-tier">Test reel</span><h3>Static</h3><p>For the curious. Real renders, watermarked, on us.</p>
+          <ul><li><b>10</b> free renders / month</li><li>720p with watermark</li><li>Community gallery</li></ul>
+          <div class="tz-cost">$0 <small>/ forever</small></div>
+        </a>
+        <a class="tz-plan tz-plan--hot tz-reveal" href="#pricing">
+          <span class="tz-tier">Most rendered</span><h3>Neon</h3><p>For creators shipping weekly. The workhorse plan.</p>
+          <ul><li><b>120</b> renders / month · 4K</li><li>No watermark, commercial license</li><li>Priority render queue</li><li>Character consistency toolkit</li></ul>
+          <div class="tz-cost">$29 <small>/ month</small></div>
+        </a>
+        <a class="tz-plan tz-reveal" href="#pricing">
+          <span class="tz-tier">Studio</span><h3>Chrome</h3><p>For teams and productions. API included.</p>
+          <ul><li><b>600</b> renders / month · 4K ProRes</li><li>API + team seats (5)</li><li>Private model fine-tuning</li><li>Dedicated render lane</li></ul>
+          <div class="tz-cost">$99 <small>/ month</small></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="faq" style="border-top:1px solid var(--tz-line)">
+    <div class="tz-wrap">
+      <div class="tz-sec-head"><h2>Signal <em>check</em></h2></div>
+      <div class="tz-faq">
+        <div class="tz-qa tz-reveal"><button>Who owns the videos I make?<span>+</span></button><div class="tz-a"><p>You do — fully, on every paid plan, including commercial use in ads and client work. The free tier grants you ownership too; the watermark is the only catch.</p></div></div>
+        <div class="tz-qa tz-reveal"><button>How long does a render take?<span>+</span></button><div class="tz-a"><p>A 12-second 4K clip averages under two minutes. The queue is shortest between 2 and 6 a.m. Pacific — night owls render fastest.</p></div></div>
+        <div class="tz-qa tz-reveal"><button>Can it keep a character consistent across clips?<span>+</span></button><div class="tz-a"><p>Yes — the Neon plan and up include a character toolkit: upload 3–5 reference frames and the model holds face, wardrobe, and proportions across every render in the project.</p></div></div>
+        <div class="tz-qa tz-reveal"><button>What's off-limits?<span>+</span></button><div class="tz-a"><p>Real people's likenesses without consent, and anything illegal. Everything else — including the weird stuff — is between you and your imagination.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-wrap">
+    <div class="tz-final tz-reveal">
+      <h2>Your first clip is <em>on the house.</em></h2>
+      <p>Ten free renders, no card, no watermark lecture. If the first one doesn't make you grin, we'll be genuinely surprised.</p>
+      <a class="tz-btn" href="#pricing">Start rendering free</a>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-footer-grid">
+      <div>
+        <h4>Neon Reel</h4>
+        <p style="font-size:15px;color:var(--tz-muted);max-width:32ch">Text-to-video for people with more ideas than budget. Built in Los Angeles and Berlin.</p>
+      </div>
+      <div><h4>Product</h4><ul><li><a href="#gallery">Gallery</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#">API docs</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Press kit</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="#">Terms</a></li><li><a href="#">Privacy</a></li><li><a href="#">Content policy</a></li></ul></div>
+    </div>
+    <div class="tz-footer-bottom">
+      <span>© 2026 Neon Reel Inc.</span>
+      <span class="tz-mono">Rendered, not filmed</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var log=document.getElementById('tz-log');
+  var steps=['▸ parsing prompt… 14 camera cues detected','▸ storyboarding… 6 shots composed','▸ rendering frames… 288/288 @ 24fps','▸ grading… anamorphic halation applied','▸ done in 1m 47s — 4 variations ready'];
+  if(reduce){log.textContent='▸ done — 4 variations ready';}
+  else{
+    var i=0;
+    var iv=setInterval(function(){
+      i++;
+      if(i>=steps.length){clearInterval(iv);return;}
+      log.textContent=steps[i];
+    },1400);
+  }
+  document.querySelectorAll('.tz-qa button').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var qa=btn.parentElement, was=qa.classList.contains('tz-open');
+      document.querySelectorAll('.tz-qa').forEach(function(q){q.classList.remove('tz-open');q.querySelector('button span:last-child').textContent='+';});
+      if(!was){qa.classList.add('tz-open');btn.querySelector('span:last-child').textContent='–';}
+    });
+  });
+  if(reduce) return;
+  var els=document.querySelectorAll('.tz-reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('tz-in')});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(en,i){if(en.isIntersecting){setTimeout(function(){en.target.classList.add('tz-in')},(i%3)*70);io.unobserve(en.target);}})},{threshold:.1});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
