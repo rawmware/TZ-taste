@@ -1,0 +1,131 @@
+<!--tz-meta {"id":"showcase-alpine-after-dark","title":"Alpine After Dark showcase","category":"Showcase","file":"showcase/alpine-after-dark.html","tags":["alpine-after-dark"],"description":"Live demo page for the Alpine After Dark style DNA.","dnas":["alpine-after-dark"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Alpine After Dark — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Mulish:wght@400;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#0b1026; --tz-surface:#131a38; --tz-ink:#e8e4d8; --tz-muted:#6b7394;
+  --tz-accent:#f5a623; --tz-line:#f5a62333;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Mulish",sans-serif;font-size:1rem;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 4vw;border-bottom:1px solid var(--tz-line);font-family:"Spline Sans Mono",monospace;font-size:0.7rem;letter-spacing:0.12em;color:var(--tz-muted);text-transform:uppercase}
+.tz-wordmark{font-family:"Fraunces",serif;font-weight:700;font-size:1.05rem;color:var(--tz-ink);text-transform:none;letter-spacing:0}
+.tz-hero{display:grid;grid-template-columns:1fr 1fr;gap:2rem;padding:5rem 4vw 4rem;position:relative}
+.tz-elev{position:absolute;left:1.2rem;top:5rem;bottom:4rem;display:flex;flex-direction:column;justify-content:space-between;font-family:"Spline Sans Mono",monospace;font-size:0.62rem;letter-spacing:0.1em;color:var(--tz-muted)}
+.tz-elev span{display:flex;align-items:center;gap:0.5rem}
+.tz-elev span::before{content:"";width:1.2rem;height:1px;background:var(--tz-line)}
+.tz-eyebrow{font-family:"Spline Sans Mono",monospace;font-size:0.7rem;letter-spacing:0.14em;color:var(--tz-accent);margin-bottom:1.4rem;text-transform:uppercase}
+.tz-hero h1{font-family:"Fraunces",serif;font-weight:700;font-size:clamp(2.8rem,7.5vw,5.4rem);line-height:1.02;letter-spacing:-0.01em;animation:tz-dark 900ms ease-out both}
+@keyframes tz-dark{from{opacity:0}to{opacity:1}}
+.tz-hero h1 .tz-amber{color:var(--tz-accent)}
+.tz-sub{margin-top:1.6rem;color:var(--tz-muted);max-width:42ch}
+.tz-meta{margin-top:1.4rem;font-family:"Spline Sans Mono",monospace;font-size:0.72rem;letter-spacing:0.1em;color:var(--tz-muted);text-transform:uppercase}
+.tz-cta{display:inline-block;margin-top:2.2rem;background:var(--tz-accent);color:var(--tz-bg);font-family:"Spline Sans Mono",monospace;font-weight:500;font-size:0.85rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;padding:1rem 2.2rem;border-radius:2px;transition:opacity .2s ease}
+.tz-cta:hover{opacity:0.88}
+.tz-sky{align-self:center;justify-self:end;width:100%;max-width:420px;animation:tz-dark 1200ms ease-out 200ms both}
+.tz-sky figcaption{font-family:"Spline Sans Mono",monospace;font-size:0.66rem;letter-spacing:0.12em;color:var(--tz-muted);text-transform:uppercase;margin-top:0.8rem;text-align:right}
+.tz-content{padding:3rem 4vw 1rem}
+.tz-content h2{font-family:"Fraunces",serif;font-weight:700;font-size:clamp(1.9rem,4.5vw,2.8rem);margin-bottom:0.4rem}
+.tz-subhead{font-family:"Spline Sans Mono",monospace;font-size:0.7rem;letter-spacing:0.12em;color:var(--tz-muted);text-transform:uppercase;margin-bottom:1.8rem}
+.tz-program{list-style:none;max-width:640px;border-left:1px solid var(--tz-line);padding-left:2rem}
+.tz-program li{position:relative;padding:1.4rem 0;border-bottom:1px solid var(--tz-line)}
+.tz-program li::before{content:"";position:absolute;left:calc(-2rem - 4px);top:2rem;width:7px;height:7px;border-radius:50%;background:var(--tz-bg);border:1px solid var(--tz-muted)}
+.tz-program li.tz-now::before{background:var(--tz-accent);border-color:var(--tz-accent)}
+.tz-time{font-family:"Spline Sans Mono",monospace;font-size:0.75rem;letter-spacing:0.1em;color:var(--tz-accent);text-transform:uppercase}
+.tz-event{font-family:"Fraunces",serif;font-size:1.4rem;font-weight:500;margin:0.3rem 0}
+.tz-detail{color:var(--tz-muted);font-size:0.95rem}
+.tz-quiet{margin:3rem 0 0;background:var(--tz-surface);border:1px solid var(--tz-line);border-radius:2px;padding:1.8rem;max-width:600px}
+.tz-quiet h2{font-family:"Spline Sans Mono",monospace;font-size:0.7rem;letter-spacing:0.14em;color:var(--tz-muted);text-transform:uppercase;font-weight:400;margin-bottom:0.7rem}
+.tz-quiet p{color:var(--tz-muted)}
+.tz-quiet strong{color:var(--tz-ink);font-weight:600}
+.tz-tokens{padding:3.5rem 4vw;border-top:1px solid var(--tz-line);margin-top:3.5rem}
+.tz-tokens h2{font-family:"Fraunces",serif;font-weight:700;font-size:1.7rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;gap:0.8rem;list-style:none}
+.tz-swatches li{border:1px solid var(--tz-line);background:var(--tz-surface);min-width:9rem;flex:1;border-radius:2px;overflow:hidden}
+.tz-chip{display:block;height:2.8rem}
+.tz-swatches .tz-name{display:block;font-family:"Spline Sans Mono",monospace;font-size:0.64rem;letter-spacing:0.12em;color:var(--tz-muted);padding:0.6rem 0.8rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Spline Sans Mono",monospace;font-size:0.74rem;padding:0 0.8rem 0.7rem}
+.tz-foot{padding:2rem 4vw;border-top:1px solid var(--tz-line);font-family:"Spline Sans Mono",monospace;font-size:0.7rem;color:var(--tz-muted);letter-spacing:0.08em}
+@media(max-width:700px){
+  .tz-hero{grid-template-columns:1fr;padding-top:4rem}
+  .tz-sky{justify-self:start;max-width:320px}
+  .tz-elev{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark">Ridgeline Night Tours</span>
+  <span>TZ-taste style DNA</span>
+</header>
+
+<section class="tz-hero">
+  <div class="tz-elev" aria-hidden="true">
+    <span>2600 M</span><span>2400 M</span><span>2200 M</span><span>2000 M</span><span>1800 M</span>
+  </div>
+  <div>
+    <p class="tz-eyebrow">Waxing gibbous · 78% · 48.7758° N</p>
+    <h1>The mountain after <span class="tz-amber">dark.</span></h1>
+    <p class="tz-sub">Guided night walks above the treeline. Small groups, real star charts, and one headlamp per person — the dark does the rest.</p>
+    <p class="tz-meta">Trailhead 2.4 mi · Headlamp required after 17:40 · −14°C wind chill</p>
+    <a class="tz-cta" href="#">Book tonight's walk</a>
+  </div>
+  <figure class="tz-sky">
+    <svg viewBox="0 0 400 300" role="img" aria-label="Star chart of Cassiopeia">
+      <g fill="#e8e4d8">
+        <circle cx="60" cy="180" r="3"/><circle cx="110" cy="130" r="4"/><circle cx="175" cy="160" r="3"/>
+        <circle cx="235" cy="120" r="4"/><circle cx="300" cy="165" r="3"/><circle cx="350" cy="110" r="2"/>
+        <circle cx="40" cy="60" r="1.5" opacity="0.5"/><circle cx="150" cy="50" r="1.5" opacity="0.5"/>
+        <circle cx="260" cy="45" r="1.5" opacity="0.5"/><circle cx="330" cy="240" r="1.5" opacity="0.5"/>
+        <circle cx="200" cy="250" r="1.5" opacity="0.5"/><circle cx="90" cy="250" r="1.5" opacity="0.5"/>
+      </g>
+      <g stroke="#f5a623" stroke-width="1.5" opacity="0.9">
+        <line x1="60" y1="180" x2="110" y2="130"/><line x1="110" y1="130" x2="175" y2="160"/>
+        <line x1="175" y1="160" x2="235" y2="120"/><line x1="235" y1="120" x2="300" y2="165"/>
+      </g>
+      <text x="12" y="282" font-family="Spline Sans Mono, monospace" font-size="11" fill="#6b7394" letter-spacing="2">CASSIOPEIA · VISIBLE TONIGHT 19:00–04:00</text>
+    </svg>
+    <figcaption>Cassiopeia · plotted live, tonight</figcaption>
+  </figure>
+</section>
+
+<section class="tz-content">
+  <h2>Tonight's program</h2>
+  <p class="tz-subhead">OCT 3 · RIDGELINE HUT · 6 SPOTS LEFT</p>
+  <ul class="tz-program">
+    <li><span class="tz-time">18:30</span><p class="tz-event">Meet at the trailhead</p><p class="tz-detail">Cocoa, headlamp check, and the route drawn on the hut map.</p></li>
+    <li class="tz-now"><span class="tz-time">19:15</span><p class="tz-event">Above the treeline</p><p class="tz-detail">Lights out. Eyes adjust in twenty minutes — the sky does the talking.</p></li>
+    <li><span class="tz-time">21:00</span><p class="tz-event">Cassiopeia and the circumpolar sky</p><p class="tz-detail">Find north without a compass. Plot three constellations by hand.</p></li>
+    <li><span class="tz-time">22:30</span><p class="tz-event">Walk down by starlight</p><p class="tz-detail">Headlamps off for the descent. Sleeping bag rated to −20° if you stay.</p></li>
+  </ul>
+  <div class="tz-quiet">
+    <h2>FIELD NOTES</h2>
+    <p><strong>Cloud cover cancels, not cold.</strong> If the sky is shut, we reschedule — the stars keep, and so do we.</p>
+  </div>
+</section>
+
+<section class="tz-tokens">
+  <h2>Tokens</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#0b1026"></span><span class="tz-name">bg</span><span class="tz-hex">#0b1026</span></li>
+    <li><span class="tz-chip" style="background:#131a38"></span><span class="tz-name">surface</span><span class="tz-hex">#131a38</span></li>
+    <li><span class="tz-chip" style="background:#e8e4d8"></span><span class="tz-name">ink</span><span class="tz-hex">#e8e4d8</span></li>
+    <li><span class="tz-chip" style="background:#6b7394"></span><span class="tz-name">muted</span><span class="tz-hex">#6b7394</span></li>
+    <li><span class="tz-chip" style="background:#f5a623"></span><span class="tz-name">accent</span><span class="tz-hex">#f5a623</span></li>
+    <li><span class="tz-chip" style="background:#f5a62333"></span><span class="tz-name">line</span><span class="tz-hex">#f5a62333</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot">A TZ-taste style DNA showcase — MIT, free forever.</footer>
+</body>
+</html>
