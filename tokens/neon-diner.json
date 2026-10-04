@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-neon-diner",
+  "title": "Neon Diner design tokens",
+  "category": "Tokens",
+  "file": "tokens/neon-diner.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "neon-diner"
+  ],
+  "description": "W3C-format design tokens for the Neon Diner DNA.",
+  "dnas": [
+   "neon-diner"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#101b17",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#fdf6ea",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#e23b3b",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#93a89b",
+   "type": "color"
+  },
+  "line": {
+   "value": "#e23b3b59",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#101b17",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Pacifico",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "Oswald",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Space Mono",
+   "type": "fontFamily"
+  }
+ }
+}
