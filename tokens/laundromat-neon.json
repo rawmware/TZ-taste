@@ -1,0 +1,57 @@
+{
+ "_tzmeta": {
+  "id": "tokens-laundromat-neon",
+  "title": "Laundromat Neon design tokens",
+  "category": "Tokens",
+  "file": "tokens/laundromat-neon.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "laundromat-neon"
+  ],
+  "description": "W3C-format design tokens for the Laundromat Neon DNA.",
+  "dnas": [
+   "laundromat-neon"
+  ]
+ },
+ "color": {
+  "bg": {
+   "value": "#f3f7f5",
+   "type": "color"
+  },
+  "ink": {
+   "value": "#14201c",
+   "type": "color"
+  },
+  "accent": {
+   "value": "#2fd08a",
+   "type": "color"
+  },
+  "muted": {
+   "value": "#6b7f76",
+   "type": "color"
+  },
+  "line": {
+   "value": "#14201c21",
+   "type": "color"
+  },
+  "surface": {
+   "value": "#f3f7f5",
+   "type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "value": "Bungee",
+   "type": "fontFamily"
+  },
+  "body": {
+   "value": "DM Sans",
+   "type": "fontFamily"
+  },
+  "mono": {
+   "value": "Fira Code",
+   "type": "fontFamily"
+  }
+ }
+}
