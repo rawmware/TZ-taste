@@ -1,0 +1,181 @@
+<!--tz-meta {"id":"rain-glass","title":"Rain on Glass","category":"3D","file":"three-d/rain-glass.html","tags":["threejs","moody"],"description":"Droplets trickle down glass over blurred city-light bokeh.","dnas":["glass-calm"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Rain on Glass · TZ-taste</title>
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#070b14}
+#app{position:fixed;inset:0}
+.cap{position:fixed;left:18px;bottom:16px;color:#d7e3f5;font:12px/1.6 ui-sans-serif,system-ui,sans-serif;letter-spacing:.05em;pointer-events:none;user-select:none;opacity:.85;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.cap b{font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.cap span{opacity:.6}
+#nogl{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;color:#d7e3f5;font:14px system-ui;background:#070b14;text-align:center;padding:2rem}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="cap"><b>Rain on Glass</b><br><span>move pointer to look</span></div>
+<div id="nogl" hidden><p>This scene needs WebGL.<br>Please try a browser with WebGL enabled.</p></div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
+<script type="module">
+import * as THREE from 'three';
+
+let renderer;
+try{
+  renderer = new THREE.WebGLRenderer({antialias:true});
+  if(!renderer.getContext()) throw new Error('no ctx');
+}catch(err){
+  document.getElementById('nogl').hidden = false;
+  throw err;
+}
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.setSize(innerWidth,innerHeight);
+document.getElementById('app').appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x070b14);
+
+const camera = new THREE.PerspectiveCamera(55, innerWidth/innerHeight, 0.1, 300);
+camera.position.set(0, 0, 18);
+
+function radialTex(stops, size){
+  size = size || 128;
+  const c = document.createElement('canvas'); c.width = c.height = size;
+  const g = c.getContext('2d');
+  const gr = g.createRadialGradient(size/2,size/2,0,size/2,size/2,size/2);
+  for(const s of stops) gr.addColorStop(s[0], s[1]);
+  g.fillStyle = gr; g.fillRect(0,0,size,size);
+  return new THREE.CanvasTexture(c);
+}
+const softTex = radialTex([[0,'rgba(255,255,255,1)'],[0.4,'rgba(255,255,255,.5)'],[1,'rgba(255,255,255,0)']]);
+
+function bgTex(){
+  const c = document.createElement('canvas'); c.width = 16; c.height = 256;
+  const g = c.getContext('2d');
+  const gr = g.createLinearGradient(0,0,0,256);
+  gr.addColorStop(0, '#16233d');
+  gr.addColorStop(0.55, '#0b1224');
+  gr.addColorStop(1, '#05080f');
+  g.fillStyle = gr; g.fillRect(0,0,16,256);
+  return new THREE.CanvasTexture(c);
+}
+const bgPlane = new THREE.Mesh(new THREE.PlaneGeometry(90,50), new THREE.MeshBasicMaterial({map:bgTex()}));
+bgPlane.position.z = -75;
+scene.add(bgPlane);
+
+const bokehCols = [0xffb347, 0x7fd4ff, 0xff6b6b, 0xfff2cc, 0x9fd4ff];
+const bokeh = [];
+for(let i=0;i<48;i++){
+  const sp = new THREE.Sprite(new THREE.SpriteMaterial({
+    map:softTex, color:bokehCols[(Math.random()*bokehCols.length)|0],
+    transparent:true, opacity:0.10 + Math.random()*0.25,
+    blending:THREE.AdditiveBlending, depthWrite:false
+  }));
+  const s = 2 + Math.random()*7;
+  sp.scale.set(s, s, 1);
+  sp.position.set((Math.random()*2-1)*30, (Math.random()*2-1)*14, -25 - Math.random()*30);
+  scene.add(sp);
+  bokeh.push({sp:sp, vx:(Math.random()-0.5)*0.6, vy:(Math.random()-0.5)*0.3});
+}
+
+function dropTex(){
+  const s = 128, c = document.createElement('canvas'); c.width = c.height = s;
+  const g = c.getContext('2d');
+  const gr = g.createRadialGradient(58,56,4, 64,64,60);
+  gr.addColorStop(0, 'rgba(210,228,255,0.95)');
+  gr.addColorStop(0.55, 'rgba(170,195,235,0.45)');
+  gr.addColorStop(0.85, 'rgba(140,165,215,0.18)');
+  gr.addColorStop(1, 'rgba(140,165,215,0)');
+  g.fillStyle = gr;
+  g.beginPath(); g.arc(64,64,60,0,7); g.fill();
+  g.fillStyle = 'rgba(255,255,255,0.9)';
+  g.beginPath(); g.ellipse(48,44,10,14,-0.5,0,7); g.fill();
+  g.strokeStyle = 'rgba(30,45,75,0.55)'; g.lineWidth = 5;
+  g.beginPath(); g.arc(64,64,52,0.5,Math.PI-0.5); g.stroke();
+  return new THREE.CanvasTexture(c);
+}
+const dTex = dropTex();
+
+let limX = camera.aspect * 9.5;
+const limY = 9.5;
+const drops = [];
+function addDrop(rivulet){
+  const sp = new THREE.Sprite(new THREE.SpriteMaterial({map:dTex, transparent:true, opacity:0.9, depthWrite:false}));
+  const size = rivulet ? 0.45 : 0.5 + Math.random()*0.9;
+  if(rivulet) sp.scale.set(size, size*(2.2 + Math.random()), 1);
+  else sp.scale.set(size, size, 1);
+  const x = (Math.random()*2-1)*limX, y = (Math.random()*2-1)*limY;
+  sp.position.set(x, y, 0);
+  scene.add(sp);
+  drops.push({
+    sp:sp, x:x, y:y,
+    speed:(rivulet ? 4 + Math.random()*3 : 1.2 + Math.random()*2.2) * (0.6 + size),
+    wob:0.6 + Math.random()*1.4, ph:Math.random()*6.283,
+    fade:Math.random()
+  });
+}
+for(let i=0;i<85;i++) addDrop(false);
+for(let i=0;i<9;i++) addDrop(true);
+
+function sheenTex(){
+  const c = document.createElement('canvas'); c.width = c.height = 256;
+  const g = c.getContext('2d');
+  const gr = g.createLinearGradient(0,0,256,256);
+  gr.addColorStop(0, 'rgba(255,255,255,0)');
+  gr.addColorStop(0.42, 'rgba(255,255,255,0)');
+  gr.addColorStop(0.5, 'rgba(200,220,255,0.10)');
+  gr.addColorStop(0.58, 'rgba(255,255,255,0)');
+  gr.addColorStop(1, 'rgba(255,255,255,0)');
+  g.fillStyle = gr; g.fillRect(0,0,256,256);
+  return new THREE.CanvasTexture(c);
+}
+const sheen = new THREE.Mesh(new THREE.PlaneGeometry(44,24), new THREE.MeshBasicMaterial({map:sheenTex(), transparent:true, blending:THREE.AdditiveBlending, depthWrite:false}));
+sheen.position.z = 0.6;
+sheen.rotation.z = -0.25;
+scene.add(sheen);
+
+const mouse = {x:0, y:0};
+addEventListener('pointermove', (e)=>{
+  mouse.x = (e.clientX/innerWidth)*2 - 1;
+  mouse.y = -((e.clientY/innerHeight)*2 - 1);
+});
+
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const clock = new THREE.Clock();
+function tick(){
+  const dt = Math.min(clock.getDelta(), 0.05), t = clock.elapsedTime;
+  for(const b of bokeh){
+    b.sp.position.x += b.vx * dt;
+    b.sp.position.y += b.vy * dt;
+    if(b.sp.position.x > 34) b.sp.position.x = -34;
+    if(b.sp.position.x < -34) b.sp.position.x = 34;
+  }
+  for(const d of drops){
+    d.y -= d.speed * dt;
+    if(d.y < -limY - 1){
+      d.y = limY + Math.random()*2;
+      d.x = (Math.random()*2-1)*limX;
+      d.fade = 0;
+    }
+    if(d.fade < 1){ d.fade = Math.min(1, d.fade + dt*1.5); d.sp.material.opacity = 0.9 * d.fade; }
+    d.sp.position.y = d.y;
+    d.sp.position.x = d.x + Math.sin(t*d.wob + d.ph) * 0.15;
+  }
+  camera.position.x += (mouse.x*2.2 - camera.position.x) * 0.04;
+  camera.position.y += (mouse.y*1.4 - camera.position.y) * 0.04;
+  camera.lookAt(0, 0, 0);
+  renderer.render(scene, camera);
+}
+if(reduce){ tick(); } else { renderer.setAnimationLoop(tick); }
+
+addEventListener('resize', ()=>{
+  camera.aspect = innerWidth/innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+  limX = camera.aspect * 9.5;
+});
+</script>
+</body>
+</html>
