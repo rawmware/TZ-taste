@@ -1,0 +1,118 @@
+<!--tz-meta {"id":"gen-typo-falling-sand-text","title":"Falling Sand Text","category":"Generative","file":"generative/typo-falling-sand-text.html","tags":["sand","typography","pixels"],"description":"The word SIFT dissolves grain by grain; each pixel falls with gravity and piles into a dune of its own letters.","dnas":["museum-placard"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Falling Sand Text — TZ-taste Generative</title>
+<style>
+*{box-sizing:border-box}
+.tz-gen-body{margin:0;background:#f7f4ed;color:#1c1a16;font-family:Georgia,'Times New Roman',serif;min-height:100vh}
+.tz-gen-wrap{max-width:1120px;margin:0 auto;padding:48px 24px 64px}
+.tz-gen-head{margin:0 0 28px}
+.tz-gen-kicker{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8c2b1f;margin:0 0 14px}
+.tz-gen-head h1{font-size:clamp(30px,5vw,52px);line-height:1.05;margin:0 0 12px;font-weight:600}
+.tz-gen-caption{font-size:16px;line-height:1.6;color:#7a746a;margin:0;max-width:62ch}
+.tz-gen-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:26px 0 14px}
+.tz-gen-btn{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;background:transparent;color:#1c1a16;border:1px solid #d8d3c6;padding:10px 18px;border-radius:3px;cursor:pointer}
+.tz-gen-btn:hover{border-color:#8c2b1f;color:#8c2b1f}
+.tz-gen-seed{font-family:'SF Mono',Consolas,Menlo,monospace;font-size:12px;color:#7a746a;margin-left:auto}
+.tz-gen-canvas{display:block;width:100%;height:70vh;border:1px solid #d8d3c6;border-radius:3px;background:#f7f4ed}
+.tz-gen-note{font-size:14px;line-height:1.65;color:#7a746a;margin:18px 0 0;max-width:70ch}
+@media(max-width:520px){.tz-gen-wrap{padding:32px 16px 48px}.tz-gen-seed{margin-left:0;width:100%}}
+</style>
+</head>
+<body class="tz-gen-body">
+<div class="tz-gen-wrap">
+  <header class="tz-gen-head">
+    <p class="tz-gen-kicker">TZ-taste · Generative</p>
+    <h1>Falling Sand Text</h1>
+    <p class="tz-gen-caption">The word is printed, then released grain by grain. Every pixel falls with real gravity and piles where it lands — the letters rebuild themselves as a dune.</p>
+  </header>
+  <div class="tz-gen-bar">
+    <button class="tz-gen-btn" id="tzSeed">New seed</button>
+    <button class="tz-gen-btn" id="tzPause">Pause</button>
+    <button class="tz-gen-btn" id="tzClear">Clear</button>
+    <span class="tz-gen-seed" id="tzSeedLabel">Seed 0</span>
+  </div>
+  <canvas class="tz-gen-canvas" id="tzCv" aria-label="The word SIFT dissolving into falling sand grains"></canvas>
+  <p class="tz-gen-note">Clear reprints the word and drops it again. Each seed shuffles which grains fall first and which land in oxblood red.</p>
+</div>
+<script>
+'use strict';
+const cv=document.getElementById('tzCv'),ctx=cv.getContext('2d');
+const seedLabel=document.getElementById('tzSeedLabel');
+let W=0,H=0,seed=(Math.random()*1e9)|0,rand=null,grains=[],piles=[],t=0,running=true;
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const BG='#f7f4ed',INK='#1c1a16',RED='#8c2b1f';
+const CELL=3,WORD='SIFT';
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function init(){
+  rand=mulberry32(seed);grains=[];t=0;
+  const ncols=Math.ceil(W/CELL);
+  piles=new Array(ncols).fill(0);
+  ctx.fillStyle=BG;ctx.fillRect(0,0,W,H);
+  const off=document.createElement('canvas');
+  off.width=W;off.height=H;
+  const g=off.getContext('2d');
+  g.fillStyle=BG;g.fillRect(0,0,W,H);
+  g.fillStyle=INK;
+  g.font='700 '+Math.min(200,Math.floor(W/4))+'px Georgia,serif';
+  g.textAlign='center';g.textBaseline='middle';
+  g.fillText(WORD,W/2,H*0.3);
+  const data=g.getImageData(0,0,W,H).data;
+  const order=[];
+  for(let y=0;y<H;y+=CELL)for(let x=0;x<W;x+=CELL){
+    const a=data[(y*W+x)*4+3];
+    if(a>128)order.push([x,y]);
+  }
+  for(let i=order.length-1;i>0;i--){
+    const j=Math.floor(rand()*(i+1));
+    const tmp=order[i];order[i]=order[j];order[j]=tmp;
+  }
+  for(const pt of order){
+    grains.push({x:pt[0],y:pt[1],vy:0,delay:rand()*260,
+      red:rand()<0.06,landed:false});
+  }
+  seedLabel.textContent='Seed '+seed+' · '+grains.length+' grains';
+}
+function step(){
+  t+=0.016;
+  ctx.fillStyle=BG;ctx.fillRect(0,0,W,H);
+  let moving=false;
+  for(const gr of grains){
+    if(gr.landed){
+      ctx.fillStyle=gr.red?RED:INK;
+      ctx.fillRect(gr.x,gr.y,CELL,CELL);
+      continue;
+    }
+    if(gr.delay>0){gr.delay-=1;moving=true;continue;}
+    gr.vy+=0.28;gr.vy=Math.min(gr.vy,7);
+    gr.y+=gr.vy;
+    const col=Math.min(piles.length-1,Math.max(0,Math.floor(gr.x/CELL)));
+    const floor=H-4-piles[col]*CELL;
+    if(gr.y>=floor){
+      gr.y=floor;gr.landed=true;piles[col]++;
+    }else moving=true;
+    ctx.fillStyle=gr.red?RED:INK;
+    ctx.fillRect(gr.x,gr.y,CELL,CELL);
+  }
+  return moving;
+}
+function resize(){
+  const d=Math.min(window.devicePixelRatio||1,2),r=cv.getBoundingClientRect();
+  W=Math.max(2,Math.round(r.width));H=Math.max(2,Math.round(r.height));
+  cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);init();
+}
+window.addEventListener('resize',resize);
+document.getElementById('tzSeed').addEventListener('click',()=>{seed=(Math.random()*1e9)|0;init();if(!running)toggle();});
+document.getElementById('tzClear').addEventListener('click',init);
+function toggle(){running=!running;document.getElementById('tzPause').textContent=running?'Pause':'Resume';if(running&&!reduced)tick();}
+document.getElementById('tzPause').addEventListener('click',toggle);
+function tick(){if(!running)return;step();requestAnimationFrame(tick);}
+resize();
+if(reduced){let guard=0;while(step()&&guard<4000)guard++;}
+else tick();
+</script>
+</body>
+</html>
