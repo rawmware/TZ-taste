@@ -1,0 +1,3 @@
+//tz-meta {"id":"tailwind-greenhouse-glass","title":"Greenhouse Glass Tailwind preset","category":"Tailwind","file":"tailwind/greenhouse-glass.js","tags":["tailwind","preset","greenhouse-glass"],"description":"Tailwind theme preset for the Greenhouse Glass DNA.","dnas":["greenhouse-glass"]}
+// Tailwind preset for the Greenhouse Glass DNA. Extend tailwind.config with this.
+module.exports={theme:{extend:{colors:{tzbg:"#eef2ea",tzink:"#1e2b1f",tzaccent:"#2f7a4d",tzmuted:"#7d8a7a",tzline:"#2f7a4d4d",tzsurface:"#eef2ea"},fontFamily:{display:["Cormorant Garamond","serif"],body:["Source Sans 3","sans-serif"],mono:["Courier Prime","monospace"]}}}};
