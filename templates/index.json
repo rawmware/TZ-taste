@@ -1,5 +1,5 @@
 {
- "count": 25,
+ "count": 40,
  "updated": "2026-10-04",
  "usage": "Complete standalone landing pages. Open in a browser, view source, adapt. All original, MIT.",
  "templates": [
@@ -45,6 +45,21 @@
    ]
   },
   {
+   "id": "aquarium",
+   "title": "Kelp Forest Aquarium — Small Aquarium",
+   "category": "Template",
+   "file": "templates/aquarium.html",
+   "tags": [
+    "aquarium",
+    "museum",
+    "family"
+   ],
+   "description": "Night-navy small aquarium: daily feedings as a live departure board, stamped ticket headers, brass rules.",
+   "dnas": [
+    "midnight-railway"
+   ]
+  },
+  {
    "id": "architecture",
    "title": "Studio Prisma — Architecture Studio",
    "category": "Template",
@@ -57,6 +72,37 @@
    "description": "Bauhaus-primary architecture studio with strict grid and geometric ornament.",
    "dnas": [
     "bauhaus-primary"
+   ]
+  },
+  {
+   "id": "barbershop",
+   "title": "The Hot Lather — Classic Barbershop",
+   "category": "Template",
+   "file": "templates/barbershop.html",
+   "tags": [
+    "barbershop",
+    "local",
+    "services"
+   ],
+   "description": "Jazz-age barbershop: sunburst type, perforated ticket ledger price list, walk-in queue board.",
+   "dnas": [
+    "art-deco-luxe"
+   ]
+  },
+  {
+   "id": "bike-shop",
+   "title": "Spoke & Sprocket — Neighborhood Bike Shop",
+   "category": "Template",
+   "file": "templates/bike-shop.html",
+   "tags": [
+    "bike-shop",
+    "local",
+    "retail",
+    "services"
+   ],
+   "description": "Instrument-grade bike shop page: repair spec table with service codes, repair queue tracker, dense inventory index.",
+   "dnas": [
+    "laboratory-clean"
    ]
   },
   {
@@ -103,6 +149,36 @@
    ]
   },
   {
+   "id": "comic-shop",
+   "title": "Panel & Page — Indie Comics Shop",
+   "category": "Template",
+   "file": "templates/comic-shop.html",
+   "tags": [
+    "comics",
+    "retail",
+    "local"
+   ],
+   "description": "Lichtenstein-loud indie comic shop: tilted panels, starburst prices, pull-list pitch, signing nights.",
+   "dnas": [
+    "pop-art-halftone"
+   ]
+  },
+  {
+   "id": "cowork-kitchen",
+   "title": "Proof — Shared Commercial Kitchen",
+   "category": "Template",
+   "file": "templates/cowork-kitchen.html",
+   "tags": [
+    "kitchen",
+    "food",
+    "startup"
+   ],
+   "description": "Swiss-poster shared kitchen: giant PROOF poster hero with crop marks, printed rate card, house rules as fine print.",
+   "dnas": [
+    "swiss-poster"
+   ]
+  },
+  {
    "id": "coworking",
    "title": "Fjord House — Coworking Space",
    "category": "Template",
@@ -128,6 +204,21 @@
    "description": "Warm documentation homepage for an OSS validation library: install one-liner, topic index, readable code.",
    "dnas": [
     "docs-solar"
+   ]
+  },
+  {
+   "id": "escape-room",
+   "title": "The Locked Study — Mystery Escape Rooms",
+   "category": "Template",
+   "file": "templates/escape-room.html",
+   "tags": [
+    "escape-room",
+    "entertainment",
+    "local"
+   ],
+   "description": "Gothic-editorial escape rooms: each room presented as a stamped case dossier, booking as an evidence log.",
+   "dnas": [
+    "gothic-editorial"
    ]
   },
   {
@@ -182,6 +273,36 @@
    "description": "Raw industrial strength-gym page: concrete, safety orange, stencil type, brutal schedule table.",
    "dnas": [
     "industrial-brutalist"
+   ]
+  },
+  {
+   "id": "food-truck",
+   "title": "Masa Mobile — Birria Truck",
+   "category": "Template",
+   "file": "templates/food-truck.html",
+   "tags": [
+    "food-truck",
+    "food-drink",
+    "local"
+   ],
+   "description": "Postmodern birria truck page: menu as a loud price-list poster, weekly route as a ticker strip.",
+   "dnas": [
+    "memphis-milano"
+   ]
+  },
+  {
+   "id": "maker-space",
+   "title": "The Bench — Maker Space",
+   "category": "Template",
+   "file": "templates/maker-space.html",
+   "tags": [
+    "makerspace",
+    "workshop",
+    "community"
+   ],
+   "description": "Cyanotype maker space: drafting-grid sheet, machines as a spec table with tolerances, sheet-index nav.",
+   "dnas": [
+    "blueprint-tech"
    ]
   },
   {
@@ -241,6 +362,37 @@
    ]
   },
   {
+   "id": "photo-studio",
+   "title": "Available Light — Portrait Studio",
+   "category": "Template",
+   "file": "templates/photo-studio.html",
+   "tags": [
+    "photography",
+    "studio",
+    "portrait"
+   ],
+   "description": "Literary-magazine portrait studio: sessions as a numbered contact sheet, a bleeding section numeral, one sienna accent.",
+   "dnas": [
+    "editorial-serif"
+   ]
+  },
+  {
+   "id": "plant-nursery",
+   "title": "Understory — Native Plant Nursery",
+   "category": "Template",
+   "file": "templates/plant-nursery.html",
+   "tags": [
+    "plant-nursery",
+    "garden",
+    "local",
+    "retail"
+   ],
+   "description": "Victorian-glasshouse native nursery: plants filed as greenhouse bench labels with Latin binomials, bloom calendar.",
+   "dnas": [
+    "greenhouse-glass"
+   ]
+  },
+  {
    "id": "podcast",
    "title": "Cold Trail — True-Crime Podcast",
    "category": "Template",
@@ -269,6 +421,22 @@
    ]
   },
   {
+   "id": "pottery-studio",
+   "title": "Second Fire — Community Pottery Studio",
+   "category": "Template",
+   "file": "templates/pottery-studio.html",
+   "tags": [
+    "pottery-studio",
+    "classes",
+    "community",
+    "local"
+   ],
+   "description": "Warm community pottery studio: class schedule as kiln firing-log entries, shelf-and-cone details.",
+   "dnas": [
+    "cottage-warm"
+   ]
+  },
+  {
    "id": "real-estate",
    "title": "Solstice & Stone — Desert Modern Brokerage",
    "category": "Template",
@@ -293,6 +461,21 @@
    "description": "Warm trattoria page with a printed-style menu, dotted leaders, and italic serif voice.",
    "dnas": [
     "aperitivo-italian"
+   ]
+  },
+  {
+   "id": "running-club",
+   "title": "Mile Eaters — Community Run Club",
+   "category": "Template",
+   "file": "templates/running-club.html",
+   "tags": [
+    "running",
+    "sports",
+    "community"
+   ],
+   "description": "Floodlit night-match run club: giant cropped type, scoreboard strip, the weekly schedule written as race splits.",
+   "dnas": [
+    "stadium-floodlight"
    ]
   },
   {
@@ -324,6 +507,36 @@
    ]
   },
   {
+   "id": "surf-school",
+   "title": "Saltline Surf School — Learn to Surf",
+   "category": "Template",
+   "file": "templates/surf-school.html",
+   "tags": [
+    "surf-school",
+    "lessons",
+    "local"
+   ],
+   "description": "Hand-painted surf school page: daily wave-report chalkboard, lesson schedule as punched wax tickets.",
+   "dnas": [
+    "surf-shack"
+   ]
+  },
+  {
+   "id": "tea-house",
+   "title": "Stillwater — Quiet Tea Room",
+   "category": "Template",
+   "file": "templates/tea-house.html",
+   "tags": [
+    "tea",
+    "local",
+    "cafe"
+   ],
+   "description": "Rice-paper quiet tea room: vast negative space, hanko stamp, the menu served as a four-course tasting flight.",
+   "dnas": [
+    "ma-japanese"
+   ]
+  },
+  {
    "id": "travel-guide",
    "title": "The Ochre Road — Morocco Travel Guide",
    "category": "Template",
@@ -336,6 +549,22 @@
    "description": "Sahara-ochre Morocco travel guide with zellige dividers and route itineraries.",
    "dnas": [
     "sahara-ochre"
+   ]
+  },
+  {
+   "id": "vinyl-shop",
+   "title": "Needledrop Records — Used Vinyl",
+   "category": "Template",
+   "file": "templates/vinyl-shop.html",
+   "tags": [
+    "vinyl-shop",
+    "music",
+    "retail",
+    "local"
+   ],
+   "description": "Blue-Note-sleeve record shop: new arrivals as a crate index with catalog numbers, liner-note voice.",
+   "dnas": [
+    "jazz-blue-note"
    ]
   },
   {
