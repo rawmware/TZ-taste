@@ -1,0 +1,140 @@
+@*tz-meta {"id":"cs-pricing","title":"Deco menu-board pricing (Razor)","category":"C#","file":"csharp/Pricing.cshtml","tags":["csharp","razor","pricing"],"description":"Pricing for Velvet Pour, a natural wine club — set as a black-lacquer deco menu board with gold dotted price leaders, a sunburst divider, and one framed house-favorite tier. A menu, not cards.","dnas":["art-deco-luxe"]} *@
+@page
+@{
+    ViewData["Title"] = "Velvet Pour — pricing";
+    var bg = "#0d0b08";
+    var ink = "#f2e7c9";
+    var accent = "#c9a227";
+    var muted = "#8a7f63";
+    var line = "#c9a2274d";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>@ViewData["Title"]</title>
+<style>
+  :root{
+    --bg:@bg; --ink:@ink; --accent:@accent; --muted:@muted; --line:@line;
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);
+    font-family:'Jost',Futura,'Century Gothic',sans-serif;line-height:1.55}
+  .tz-frame{max-width:860px;margin:clamp(24px,4vw,56px) auto;
+    border:1px solid var(--accent);padding:clamp(40px,6vw,84px) clamp(24px,6vw,80px);
+    position:relative}
+  .tz-frame::before{content:"";position:absolute;inset:8px;
+    border:1px solid var(--line);pointer-events:none}
+  .tz-eyebrow{font-family:'Space Mono',ui-monospace,monospace;font-size:11px;
+    letter-spacing:.3em;text-transform:uppercase;color:var(--muted);
+    text-align:center;margin-bottom:24px}
+  .tz-brand{font-family:'Cinzel',Didot,'Bodoni MT',serif;font-weight:700;
+    font-size:clamp(30px,5vw,52px);letter-spacing:.14em;text-align:center;
+    margin-bottom:10px}
+  h1{font-family:'Cinzel',Didot,'Bodoni MT',serif;font-weight:400;
+    font-size:clamp(20px,2.6vw,30px);letter-spacing:.06em;text-align:center;
+    color:var(--accent);margin-bottom:8px}
+  .tz-sub{text-align:center;color:var(--muted);font-size:16px;max-width:44ch;
+    margin:0 auto clamp(36px,5vw,60px);font-style:italic}
+  /* The distinctive choice: a gold sunburst divider, drawn with pure CSS */
+  .tz-sunburst{display:flex;align-items:center;gap:18px;margin:0 auto clamp(36px,5vw,60px);
+    max-width:420px}
+  .tz-sunburst::before,.tz-sunburst::after{content:"";height:1px;flex:1;
+    background:var(--accent)}
+  .tz-sun{width:14px;height:14px;background:var(--accent);transform:rotate(45deg);
+    position:relative;flex:none}
+  .tz-sun::before,.tz-sun::after{content:"";position:absolute;inset:3px;
+    border:1px solid var(--bg)}
+  .tz-menu{list-style:none}
+  .tz-tier{padding:30px 0;border-bottom:1px solid var(--line)}
+  .tz-tier:first-child{border-top:1px solid var(--line)}
+  .tz-line{display:flex;align-items:baseline;gap:14px;margin-bottom:10px}
+  .tz-name{font-family:'Cinzel',Didot,serif;font-size:clamp(19px,2.4vw,25px);
+    letter-spacing:.08em;white-space:nowrap}
+  /* Dotted price leaders — the menu-board signature */
+  .tz-dots{flex:1;border-bottom:2px dotted var(--accent);transform:translateY(-6px);
+    min-width:24px;opacity:.7}
+  .tz-price{font-family:'Space Mono',ui-monospace,monospace;font-size:clamp(17px,2vw,21px);
+    color:var(--accent);white-space:nowrap}
+  .tz-price small{font-size:.62em;color:var(--muted);letter-spacing:.06em}
+  .tz-desc{color:var(--muted);font-size:15.5px;max-width:56ch}
+  .tz-desc strong{color:var(--ink);font-weight:500}
+  /* The house favorite gets the gold frame — the only tier with one */
+  .tz-tier.fav{border:1px solid var(--accent);padding:30px clamp(20px,4vw,36px);
+    margin:26px 0;position:relative;background:#c9a2270d}
+  .tz-tier.fav .tz-flag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+    background:var(--accent);color:var(--bg);font-family:'Space Mono',ui-monospace,monospace;
+    font-size:10px;letter-spacing:.24em;text-transform:uppercase;padding:5px 16px 5px 20px}
+  .tz-cta{text-align:center;margin-top:clamp(40px,6vw,68px)}
+  .tz-btn{display:inline-block;border:1px solid var(--accent);color:var(--accent);
+    font-family:'Space Mono',ui-monospace,monospace;font-size:13px;letter-spacing:.22em;
+    text-transform:uppercase;text-decoration:none;padding:18px 44px;
+    transition:background .3s var(--ease),color .3s var(--ease)}
+  .tz-btn:hover{background:var(--accent);color:var(--bg)}
+  .tz-fine{margin-top:26px;text-align:center;color:var(--muted);
+    font-family:'Space Mono',ui-monospace,monospace;font-size:11px;
+    letter-spacing:.14em;text-transform:uppercase}
+  .tz-rise{opacity:0;transform:translateY(20px);animation:tz-rise .85s var(--ease) forwards}
+  .tz-rise.d1{animation-delay:.1s}.tz-rise.d2{animation-delay:.22s}
+  @@keyframes tz-rise{to{opacity:1;transform:none}}
+  @@media (max-width:560px){
+    .tz-name{white-space:normal}
+    .tz-line{flex-wrap:wrap}
+    .tz-dots{display:none}
+  }
+  @@media (prefers-reduced-motion:reduce){
+    .tz-rise{opacity:1;transform:none;animation:none}
+    *{transition:none !important}
+  }
+</style>
+</head>
+<body>
+  <div class="tz-frame">
+    <p class="tz-eyebrow tz-rise">Est. 2026 · Natural wine, monthly</p>
+    <p class="tz-brand tz-rise d1">VELVET POUR</p>
+    <h1 class="tz-rise d1">Wine worth dressing for.</h1>
+    <p class="tz-sub tz-rise d1">Three pours, one table. Every bottle low-intervention, every
+    winemaker known to us by first name. Pause or leave whenever you like — no lock-in, no fine print.</p>
+    <div class="tz-sunburst" aria-hidden="true"><span class="tz-sun"></span></div>
+
+    <ul class="tz-menu tz-rise d2">
+      <li class="tz-tier">
+        <div class="tz-line">
+          <span class="tz-name">The Aperitif</span>
+          <span class="tz-dots" aria-hidden="true"></span>
+          <span class="tz-price">$39 <small>/ month</small></span>
+        </div>
+        <p class="tz-desc">Two bottles of bright, gluggable natural wine — <strong>pét-nat, chillable
+        reds, skin-contact whites.</strong> Tasting notes written like a person, not a press release.</p>
+      </li>
+      <li class="tz-tier fav">
+        <span class="tz-flag">House favorite</span>
+        <div class="tz-line">
+          <span class="tz-name">The Cellar</span>
+          <span class="tz-dots" aria-hidden="true"></span>
+          <span class="tz-price">$79 <small>/ month</small></span>
+        </div>
+        <p class="tz-desc">Four bottles with <strong>one aged surprise</strong> — a cellar pull from
+        five to fifteen years back. Plus first refusal on the allocation list and a standing invite
+        to the spring tasting.</p>
+      </li>
+      <li class="tz-tier">
+        <div class="tz-line">
+          <span class="tz-name">The Reserve</span>
+          <span class="tz-dots" aria-hidden="true"></span>
+          <span class="tz-price">$140 <small>/ month</small></span>
+        </div>
+        <p class="tz-desc">Six bottles including <strong>one rare allocation</strong> — Jura oxidative,
+        old-vine Etna, the bottles that never reach shelves. A handwritten note from the pourer each month.</p>
+      </li>
+    </ul>
+
+    <div class="tz-cta tz-rise d2">
+      <a class="tz-btn" href="#join">Take your seat at the table</a>
+      <p class="tz-fine">Ships the first Tuesday · skip a month anytime</p>
+    </div>
+  </div>
+</body>
+</html>
