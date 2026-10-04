@@ -1,0 +1,299 @@
+<!--tz-meta {"id":"food-truck","title":"Masa Mobile — Birria Truck","category":"Template","file":"templates/food-truck.html","tags":["food-truck","food-drink","local"],"description":"Postmodern birria truck page: menu as a loud price-list poster, weekly route as a ticker strip.","dnas":["memphis-milano"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Masa Mobile — birria worth chasing the truck for</title>
+<meta name="description" content="Masa Mobile is a birria truck: quesabirria, consomé, and elotes, parked somewhere new every day. Follow the route.">
+<!-- DNA: memphis-milano. Design read: 80s postmodern play — squiggles, loud shapes, deliberate kitsch — for hungry people who chase trucks on Instagram and want the menu readable at arm's length. One distinctive choice: the menu is a single loud price-list poster, and the week's route runs as a ticker strip above it, like the truck's own location banner. Dials V9/M7/D4. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#f7efe3;
+  --tz-ink:#1c1a22;
+  --tz-accent:#ff4d8d;
+  --tz-accent-deep:color-mix(in srgb, var(--tz-accent) 70%, var(--tz-ink));
+  --tz-clash:color-mix(in srgb, var(--tz-accent) 28%, var(--tz-bg));
+  --tz-muted:#7a7488;
+  --tz-fog:color-mix(in srgb, var(--tz-fog) 55%, var(--tz-ink) 45%);
+  --tz-line:#1c1a22;
+  --tz-card:color-mix(in srgb, var(--tz-bg) 55%, white);
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Space Grotesk",system-ui,sans-serif;background:var(--tz-bg);color:var(--tz-ink);font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--tz-accent);color:var(--tz-bg)}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+.tz-display{font-family:"Shrikhand",serif}
+.tz-mono{font-family:"Space Mono",monospace}
+.skip{position:absolute;left:-999px;top:0;background:var(--tz-ink);color:var(--tz-bg);padding:8px 16px;z-index:99}
+.skip:focus{left:8px;top:8px}
+
+/* ---------- ticker: the route strip ---------- */
+.tz-ticker{background:var(--tz-ink);color:var(--tz-bg);overflow:hidden;white-space:nowrap;border-bottom:3px solid var(--tz-accent);position:relative;z-index:60}
+.tz-ticker-track{display:inline-block;padding:12px 0;animation:tz-tick 28s linear infinite}
+.tz-ticker span{font-family:"Space Mono",monospace;font-size:13px;letter-spacing:.06em;margin:0 28px}
+.tz-ticker .tz-today{color:var(--tz-accent);font-weight:700}
+@keyframes tz-tick{to{transform:translateX(-50%)}}
+
+/* ---------- header ---------- */
+.tz-header{position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--tz-bg) 90%, transparent);backdrop-filter:blur(8px);border-bottom:3px solid var(--tz-ink)}
+.tz-header .tz-wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.tz-logo{font-family:"Shrikhand",serif;font-size:24px;display:flex;align-items:center;gap:10px;transform:rotate(-1.5deg)}
+.tz-logo .tz-dot{width:16px;height:16px;background:var(--tz-accent);border-radius:50%;border:2px solid var(--tz-ink)}
+.tz-nav{display:flex;gap:26px;font-weight:600;font-size:15px}
+.tz-nav a:hover{color:var(--tz-accent-deep)}
+.tz-order{background:var(--tz-clash);border:3px solid var(--tz-ink);font-weight:700;font-size:14.5px;padding:10px 22px;cursor:pointer;box-shadow:4px 4px 0 var(--tz-ink);transition:transform .2s var(--tz-ease),box-shadow .2s}
+.tz-order:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--tz-ink)}
+
+/* ---------- hero ---------- */
+.tz-hero{padding:72px 0 64px;position:relative}
+.tz-shape{position:absolute;pointer-events:none;z-index:0}
+.tz-squig{top:60px;right:6%}
+.tz-zig{bottom:40px;left:4%}
+.tz-hero .tz-wrap{position:relative;z-index:1}
+.tz-hero h1{font-family:"Shrikhand",serif;font-size:clamp(54px,9vw,124px);line-height:1;letter-spacing:.01em}
+.tz-hero h1 .tz-o1{color:var(--tz-accent-deep)}
+.tz-hero h1 .tz-o2{display:inline-block;transform:rotate(-2.5deg);background:var(--tz-clash);border:3px solid var(--tz-ink);padding:0 22px;box-shadow:6px 6px 0 var(--tz-ink)}
+.tz-hero h1 .tz-o3{display:inline-block;transform:rotate(1.5deg);color:var(--tz-accent);-webkit-text-stroke:2px var(--tz-ink);paint-order:stroke fill}
+.tz-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:44px;align-items:end}
+.tz-hero .tz-lede{font-size:18.5px;font-weight:500;max-width:42ch}
+.tz-hero-cta{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap}
+.tz-btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:15.5px;padding:15px 30px;cursor:pointer;border:3px solid var(--tz-ink);transition:transform .2s var(--tz-ease),box-shadow .2s;box-shadow:4px 4px 0 var(--tz-ink)}
+.tz-btn--pink{background:var(--tz-accent);color:var(--tz-bg)}
+.tz-btn--pink:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--tz-ink)}
+.tz-btn--plain{background:var(--tz-card);color:var(--tz-ink)}
+.tz-btn--plain:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--tz-ink)}
+.tz-truckcard{background:var(--tz-card);border:3px solid var(--tz-ink);box-shadow:8px 8px 0 var(--tz-accent);padding:30px;transform:rotate(1.2deg)}
+.tz-truckcard .tz-mono{font-size:11.5px;letter-spacing:.2em;font-weight:700;color:var(--tz-accent-deep);margin-bottom:10px;display:block}
+.tz-truckcard h2{font-family:"Shrikhand",serif;font-size:30px;margin-bottom:8px}
+.tz-truckcard p{font-size:15.5px}
+.tz-truckcard .tz-addr{margin-top:14px;font-family:"Space Mono",monospace;font-size:13px;background:var(--tz-clash);border:2px solid var(--tz-ink);padding:10px 14px;display:inline-block;transform:rotate(-1deg)}
+
+/* ---------- sections ---------- */
+.tz-section{padding:96px 0}
+.tz-sechead{margin-bottom:48px;max-width:660px}
+.tz-sechead .tz-mono{font-size:12px;letter-spacing:.24em;color:var(--tz-accent-deep);font-weight:700;display:block;margin-bottom:14px}
+.tz-sechead h2{font-family:"Shrikhand",serif;font-weight:400;font-size:clamp(38px,5.4vw,64px);line-height:1.06}
+.tz-sechead p{margin-top:14px;font-size:17.5px;font-weight:500}
+
+/* menu poster: the one weird thing */
+.tz-poster{background:var(--tz-ink);color:var(--tz-bg);border:3px solid var(--tz-ink);box-shadow:10px 10px 0 var(--tz-accent);padding:56px 52px;transform:rotate(-.5deg)}
+.tz-poster-head{text-align:center;margin-bottom:36px}
+.tz-poster-head .tz-mono{font-size:12px;letter-spacing:.3em;color:var(--tz-bg);font-weight:700}
+.tz-poster-head h3{font-family:"Shrikhand",serif;font-size:clamp(40px,6vw,72px);color:var(--tz-bg);margin:10px 0}
+.tz-poster-head h3 .tz-p{color:var(--tz-accent)}
+.tz-poster-head p{font-family:"Space Mono",monospace;font-size:13px;color:var(--tz-bg);opacity:.75}
+.tz-menu-cat{margin-top:34px}
+.tz-menu-cat>h4{font-family:"Shrikhand",serif;font-size:24px;color:var(--tz-accent);margin-bottom:14px;display:flex;align-items:center;gap:14px}
+.tz-menu-cat>h4::after{content:"";flex:1;border-top:2px dashed var(--tz-accent);opacity:.6}
+.tz-dish{display:grid;grid-template-columns:1fr auto;gap:8px 20px;padding:14px 0;border-bottom:1px solid color-mix(in srgb, var(--tz-ink) 13%, transparent);align-items:baseline}
+.tz-dish h5{font-size:18.5px;font-weight:700}
+.tz-dish h5 .tz-tag{font-family:"Space Mono",monospace;font-size:10.5px;background:var(--tz-accent);color:var(--tz-bg);padding:3px 8px;margin-left:10px;vertical-align:middle;letter-spacing:.08em}
+.tz-dish p{grid-column:1;font-size:14.5px;color:var(--tz-bg);opacity:.72}
+.tz-dish .tz-price{font-family:"Shrikhand",serif;font-size:26px;color:var(--tz-accent)}
+.tz-poster-foot{margin-top:36px;text-align:center;font-family:"Space Mono",monospace;font-size:12.5px;color:var(--tz-bg);opacity:.8;line-height:2}
+
+/* route week */
+.tz-week{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+.tz-day{border:3px solid var(--tz-ink);background:var(--tz-card);padding:18px 14px;min-height:170px;transition:transform .25s var(--tz-ease)}
+.tz-day:nth-child(odd){transform:rotate(-1deg)}
+.tz-day:nth-child(even){transform:rotate(1deg)}
+.tz-day:hover{transform:rotate(0) translateY(-4px)}
+.tz-day.tz-today{box-shadow:6px 6px 0 var(--tz-accent);background:var(--tz-clash)}
+.tz-day .tz-mono{font-size:11px;letter-spacing:.14em;font-weight:700}
+.tz-day h4{font-family:"Shrikhand",serif;font-size:18px;margin:8px 0 6px;line-height:1.2}
+.tz-day p{font-size:13px;font-weight:500}
+.tz-day .tz-time{font-family:"Space Mono",monospace;font-size:11.5px;color:var(--tz-accent-deep);margin-top:8px;display:block;font-weight:700}
+
+/* about */
+.tz-about{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.tz-about h2{font-family:"Shrikhand",serif;font-size:clamp(36px,4.6vw,58px);line-height:1.1;margin-bottom:18px}
+.tz-about p{font-size:17px;margin-bottom:16px}
+.tz-about p strong{background:var(--tz-clash);padding:0 6px;border:2px solid var(--tz-ink)}
+.tz-facts{border:3px solid var(--tz-ink);background:var(--tz-card);box-shadow:8px 8px 0 var(--tz-accent);padding:34px;transform:rotate(-1deg)}
+.tz-facts .tz-mono{font-size:11.5px;letter-spacing:.2em;font-weight:700;color:var(--tz-accent-deep);display:block;margin-bottom:16px}
+.tz-facts li{list-style:none;font-size:16px;font-weight:500;padding:12px 0 12px 18px;border-bottom:2px dashed var(--tz-line);border-left:6px solid var(--tz-accent)}
+
+/* ---------- footer ---------- */
+.tz-footer{background:var(--tz-ink);color:var(--tz-bg);padding:72px 0 36px;margin-top:40px}
+.tz-foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:44px;margin-bottom:44px}
+.tz-foot-brand{font-family:"Shrikhand",serif;font-size:32px;color:var(--tz-accent);margin-bottom:10px;transform:rotate(-1deg);display:inline-block}
+.tz-foot-grid p,.tz-foot-grid li{font-size:15px;opacity:.8;list-style:none;margin-bottom:10px}
+.tz-foot-grid h4{font-family:"Space Mono",monospace;font-size:11.5px;letter-spacing:.22em;color:var(--tz-accent);margin-bottom:16px;font-weight:700}
+.tz-foot-grid a:hover{color:var(--tz-yellow)}
+.tz-base{border-top:1px solid color-mix(in srgb, var(--tz-ink) 18%, transparent);padding-top:22px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-family:"Space Mono",monospace;font-size:12px;opacity:.7}
+
+@media (max-width:960px){
+  .tz-hero-grid,.tz-about{grid-template-columns:1fr}
+  .tz-week{grid-template-columns:repeat(2,1fr)}
+  .tz-foot-grid{grid-template-columns:1fr}
+  .tz-nav{display:none}
+  .tz-poster{padding:36px 26px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#menu">Skip to menu</a>
+
+<div class="tz-ticker" aria-label="This week's truck route">
+  <div class="tz-ticker-track" id="tz-tick">
+    <span class="tz-today">● TODAY: RIVERSIDE PARK · 11–8</span><span>SUN: BREWERY ROW · 12–9</span><span>MON: DARK (PREP DAY)</span><span>TUE: UNIVERSITY QUAD · 11–7</span><span>WED: FARMERS MARKET · 9–2</span><span>THU: DOWNTOWN PLAZA · 11–8</span><span>FRI: NIGHT MARKET · 5–11</span>
+  </div>
+</div>
+
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-logo" href="#" aria-label="Masa Mobile home"><span class="tz-dot" aria-hidden="true"></span>Masa Mobile</a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#menu">Menu</a><a href="#route">Route</a><a href="#about">Our Story</a><a href="#catering">Catering</a>
+    </nav>
+    <a class="tz-order" href="#menu">Order pickup</a>
+  </div>
+</header>
+
+<main>
+<section class="tz-hero">
+  <svg class="tz-shape tz-squig" width="220" height="60" viewBox="0 0 220 60" aria-hidden="true"><path d="M4 30 Q 30 4, 56 30 T 108 30 T 160 30 T 212 30" fill="none" stroke="#ff4d8d" stroke-width="6" stroke-linecap="round"/></svg>
+  <svg class="tz-shape tz-zig" width="180" height="50" viewBox="0 0 180 50" aria-hidden="true"><path d="M4 44 L40 6 L76 44 L112 6 L148 44 L176 10" fill="none" style="stroke:var(--tz-accent)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <div class="tz-wrap">
+    <h1><span class="tz-o1">BIRRIA</span><br><span class="tz-o2">WORTH</span> <span class="tz-o3">CHASING.</span></h1>
+    <div class="tz-hero-grid">
+      <div>
+        <p class="tz-lede">Slow-braised beef birria, crispy-edged quesabirria, and consomé you'll want to drink straight. The truck moves every day — the flavor doesn't.</p>
+        <div class="tz-hero-cta">
+          <a class="tz-btn tz-btn--pink" href="#menu">Read the menu</a>
+          <a class="tz-btn tz-btn--plain" href="#route">Where's the truck?</a>
+        </div>
+      </div>
+      <aside class="tz-truckcard" aria-label="Today's location">
+        <span class="tz-mono">TODAY · SATURDAY</span>
+        <h2>Riverside Park, north lot</h2>
+        <p>Look for the pink truck with the giant taco on top. Hard to miss. Easy to smell from two blocks away.</p>
+        <span class="tz-addr">11 AM – 8 PM · 400 RIVERSIDE DR</span>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="tz-section" id="menu" style="padding-top:56px">
+  <div class="tz-wrap">
+    <div class="tz-sechead">
+      <span class="tz-mono">THE MENU — READABLE FROM THE SIDEWALK</span>
+      <h2>One poster. Zero decisions you'll regret.</h2>
+    </div>
+    <div class="tz-poster">
+      <div class="tz-poster-head">
+        <p class="tz-mono">MASA MOBILE · BIRRIA TRUCK</p>
+        <h3>EAT <span class="tz-p">LOUD.</span></h3>
+        <p>EVERYTHING MADE THIS MORNING · CASH + CARD · EXTRA CONSOMÉ $2</p>
+      </div>
+      <div class="tz-menu-cat">
+        <h4>The Birria Hits</h4>
+        <div class="tz-dish"><h5>Quesabirria <span class="tz-tag">FAMOUS</span></h5><span class="tz-price">$7</span><p>Crispy cheese-crusted tortilla, slow-braised beef, onion, cilantro, consomé for dunking.</p></div>
+        <div class="tz-dish"><h5>Birria Tacos (3)</h5><span class="tz-price">$9</span><p>Street-style trio on fresh corn tortillas. Lime is not optional, it's structural.</p></div>
+        <div class="tz-dish"><h5>Birria Ramen</h5><span class="tz-price">$12</span><p>Yes, really. Noodles swimming in consomé with birria beef and a jammy egg.</p></div>
+        <div class="tz-dish"><h5>Consomé Cup <span class="tz-tag">DRINK IT</span></h5><span class="tz-price">$5</span><p>The legendary broth, straight up. Cures bad moods and most hangovers.</p></div>
+      </div>
+      <div class="tz-menu-cat">
+        <h4>Sides &amp; Sweets</h4>
+        <div class="tz-dish"><h5>Elotes Callejeros</h5><span class="tz-price">$6</span><p>Charred corn, cotija, crema, tajín, lime. Eaten with a fork, argued about forever.</p></div>
+        <div class="tz-dish"><h5>Churro Bites</h5><span class="tz-price">$5</span><p>Cinnamon sugar, cajeta dipping sauce. The correct ending.</p></div>
+        <div class="tz-dish"><h5>Jamaica Fresca</h5><span class="tz-price">$4</span><p>Hibiscus agua fresca, not too sweet. Pairs with everything on this poster.</p></div>
+      </div>
+      <p class="tz-poster-foot">ASK ABOUT THE SECRET MENU — IT CHANGES WHEN ROSA FEELS LIKE IT<br>VEGGIE BIRRIA (MUSHROOM) AVAILABLE EVERY DAY · JUST ASK</p>
+    </div>
+  </div>
+</section>
+
+<section class="tz-section" id="route" style="padding-top:0">
+  <div class="tz-wrap">
+    <div class="tz-sechead">
+      <span class="tz-mono">THE WEEKLY ROUTE</span>
+      <h2>Find the pink truck.</h2>
+      <p>Same truck, seven stages. Rain or shine — the awning is enormous.</p>
+    </div>
+    <div class="tz-week">
+      <div class="tz-day"><span class="tz-mono">MON</span><h4>Prep day</h4><p>Truck's dark. Birria's braising.</p><span class="tz-time">SEE YOU TUESDAY</span></div>
+      <div class="tz-day"><span class="tz-mono">TUE</span><h4>University Quad</h4><p>By the library steps.</p><span class="tz-time">11–7</span></div>
+      <div class="tz-day"><span class="tz-mono">WED</span><h4>Farmers Market</h4><p>North gate entrance.</p><span class="tz-time">9–2</span></div>
+      <div class="tz-day"><span class="tz-mono">THU</span><h4>Downtown Plaza</h4><p>Next to the fountain.</p><span class="tz-time">11–8</span></div>
+      <div class="tz-day"><span class="tz-mono">FRI</span><h4>Night Market</h4><p>Row C, under the lights.</p><span class="tz-time">5–11</span></div>
+      <div class="tz-day tz-today"><span class="tz-mono">SAT</span><h4>Riverside Park</h4><p>North lot, by the playground.</p><span class="tz-time">11–8 · TODAY</span></div>
+      <div class="tz-day"><span class="tz-mono">SUN</span><h4>Brewery Row</h4><p>Outside Copper Kettle.</p><span class="tz-time">12–9</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="tz-section" id="about" style="padding-top:0">
+  <div class="tz-wrap tz-about">
+    <div>
+      <h2>Started with a <strong>family recipe</strong> and a borrowed truck.</h2>
+      <p>Rosa started Masa Mobile in 2019 with her grandmother's birria recipe, a truck with 200,000 miles on it, and a folding table. The truck now has 260,000 miles. The recipe hasn't changed.</p>
+      <p>Everything is prepped each morning at the commissary on 5th Street — the beef braises for six hours before the truck even rolls.</p>
+      <a class="tz-btn tz-btn--plain" href="#catering" style="margin-top:8px">Book us for your party</a>
+    </div>
+    <div class="tz-facts">
+      <span class="tz-mono">TRUCK FACTS</span>
+      <ul>
+        <li>Pounds of beef braised weekly: 400</li>
+        <li>Consomé cups served to date: 61,000+</li>
+        <li>Average line at lunch: 12 minutes (worth it)</li>
+        <li>Truck's name: La Reina (she's earned it)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="tz-section" id="catering" style="padding-top:0">
+  <div class="tz-wrap" style="max-width:760px">
+    <div class="tz-truckcard" style="transform:rotate(-1deg)">
+      <span class="tz-mono">CATERING &amp; EVENTS</span>
+      <h2>Bring the truck to you.</h2>
+      <p>Weddings, office lunches, block parties — La Reina rolls up and feeds 50 to 500. Packages start at $14 a head with a two-hour service window.</p>
+      <p class="tz-mono" style="font-size:13px;margin-top:14px">EMAIL FIESTAS@MASAMOBILE.COM · BOOK 3+ WEEKS OUT</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div class="tz-foot-grid">
+      <div>
+        <p class="tz-foot-brand">Masa Mobile</p>
+        <p>Birria truck rolling since 2019. Follow the route, find the flavor.</p>
+      </div>
+      <div>
+        <h4>TRUCK</h4>
+        <ul><li><a href="#menu">Menu</a></li><li><a href="#route">Weekly route</a></li><li><a href="#catering">Catering</a></li></ul>
+      </div>
+      <div>
+        <h4>FOLLOW THE SMELL</h4>
+        <ul><li>@masamobile (daily location posts)</li><li>fiestas@masamobile.com</li><li>(555) 309-2214</li></ul>
+      </div>
+    </div>
+    <div class="tz-base">
+      <span>© 2026 MASA MOBILE — LA REINA ROLLS ON</span>
+      <span class="tz-mono">EXTRA CONSOMÉ: ALWAYS $2, ALWAYS WORTH IT</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var t=document.getElementById('tz-tick');
+  t.innerHTML+=t.innerHTML;
+})();
+</script>
+</body>
+</html>
