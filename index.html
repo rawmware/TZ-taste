@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TZ-taste — Give your AI agent taste</title>
+<meta name="description" content="The free anti-slop design reference for AI agents and developers. 92 style DNAs, 219 copy-paste patterns, 70 generative canvases, 50 3D scenes, 55 page templates, 58 build prompts. MIT licensed, free forever.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/site.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23101a2e'/%3E%3Crect x='6' y='13' width='20' height='3' fill='%23c9a227'/%3E%3Ctext x='16' y='26' font-family='Georgia' font-size='14' fill='%23e9e2d0' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E">
+</head>
+<body id="top">
+
+<header class="topbar">
+  <a class="wordmark" href="#top" aria-label="TZ-taste — back to top">TZ&#8209;TASTE</a>
+  <nav aria-label="Sections">
+    <a href="#dna">DNA</a>
+    <a href="#templates">Templates</a>
+    <a href="#generative">Generative</a>
+    <a href="#scenes">3D</a>
+    <a href="#patterns">Patterns</a>
+    <a href="#tools">Tools</a>
+    <a href="#sources">Sources</a>
+  </nav>
+  <button class="btn-copy" type="button" data-copy="agent-brief">Copy agent brief</button>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-h">
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-inner">
+      <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Free anti-slop reference for AI agents&nbsp;&nbsp;·&nbsp;&nbsp;MIT&nbsp;&nbsp;·&nbsp;&nbsp;Updated weekly</p>
+      <h1 id="hero-h">Give your AI agent <em>taste.</em></h1>
+      <p class="lede">TZ-taste is a free, ever-growing library of 92 style DNAs, 219 copy-paste
+        patterns, 70 hand-rolled generative canvases, 50 3D scenes, 55 page templates, and 58
+        build prompts. Point any agent at this repo and the slop ends at the platform:
+        one DNA, one voice, zero template-hero.</p>
+      <div class="hero-cta">
+        <a class="btn-solid" href="#dna">Browse the index</a>
+        <a class="btn-outline" href="#tools">Take the style quiz</a>
+      </div>
+      <div class="hero-stats" id="hero-stats" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- 01 · STYLE DNA WALL -->
+  <section class="section" id="dna" aria-labelledby="dna-h">
+    <header class="ticket-head">
+      <p class="platform"><span class="p-no">Platform 01</span><span class="p-rule" aria-hidden="true"></span><span class="p-note">92 departures · style DNAs</span></p>
+      <h2 id="dna-h">Ninety-two visual languages.<br><em>One per project.</em></h2>
+      <p class="section-sub">Every DNA is a finished design system — tokens, type pairings, house
+        rules, and the one deliberate choice that makes it unmistakable. An agent loads exactly
+        one. You can walk the whole wall. Search, filter by mood, click any plaque for a live preview.</p>
+    </header>
+    <div class="controls">
+      <label class="visually-hidden" for="dna-search">Search style DNAs</label>
+      <input id="dna-search" type="search" placeholder="Search 92 style DNAs…" autocomplete="off">
+      <div id="tag-filters" role="group" aria-label="Filter DNAs by tag"></div>
+    </div>
+    <div class="dna-grid" id="dna-grid" aria-live="polite"></div>
+  </section>
+
+  <!-- 02 · TEMPLATES -->
+  <section class="section" id="templates" aria-labelledby="templates-h">
+    <header class="ticket-head">
+      <p class="platform"><span class="p-no">Platform 02</span><span class="p-rule" aria-hidden="true"></span><span class="p-note">55 arrivals · page templates</span></p>
+      <h2 id="templates-h">Whole pages,<br><em>ready to board.</em></h2>
+      <p class="section-sub">Forty complete landing pages, each committed to a single style DNA —
+        no half-measures, no mixed metaphors. Preview the composition, lift the code, make it yours.</p>
+    </header>
+    <div class="templates-grid" id="templates-grid" aria-live="polite"></div>
+  </section>
+
+  <!-- 03 · GENERATIVE -->
+  <section class="section" id="generative" aria-labelledby="generative-h">
+    <header class="ticket-head">
+      <p class="platform"><span class="p-no">Platform 03</span><span class="p-rule" aria-hidden="true"></span><span class="p-note">70 in motion · generative art</span></p>
+      <h2 id="generative-h">Canvases<br><em>that move.</em></h2>
+      <p class="section-sub">Fifty-five hand-rolled generative pieces — flow fields, flocks, tilings,
+        ink blooms. Vanilla canvas, zero dependencies, every technique named so you can steal it properly.</p>
+    </header>
+    <div class="generative-grid" id="generative-grid" aria-live="polite"></div>
+  </section>
+
+  <!-- 04 · 3D SCENES -->
+  <section class="section" id="scenes" aria-labelledby="scenes-h">
+    <header class="ticket-head">
+      <p class="platform"><span class="p-no">Platform 04</span><span class="p-rule" aria-hidden="true"></span><span class="p-note">50 environments · 3D scenes</span></p>
+      <h2 id="scenes-h">Atmosphere,<br><em>on rails.</em></h2>
+      <p class="section-sub">Forty original Three.js environments — fog domes, voxel harbors, night
+        reefs. Standalone files, no external assets. Launch one live, lift the technique.</p>
+    </header>
+    <div class="scenes-grid" id="scenes-grid" aria-live="polite"></div>
+  </section>
+
+  <!-- 05 · PATTERNS -->
+  <section class="section" id="patterns" aria-labelledby="patterns-h">
+    <header class="ticket-head">
+      <p class="platform"><span class="p-no">Platform 05</span><span class="p-rule" aria-hidden="true"></span><span class="p-note">219 entries · pattern index</span></p>
+      <h2 id="patterns-h">One hundred ninety-four<br><em>sections that behave.</em></h2>
+      <p class="section-sub">Standalone HTML + CSS snippets: navs, heroes, pricing, footers. No
+        dependencies, no build step. Search the index, preview, paste.</p>
+    </header>
+    <div class="controls">
+      <label class="visually-hidden" for="pattern-search">Search patterns</label>
+      <input id="pattern-search" type="search" placeholder="Search 219 patterns…" autocomplete="off">
+      <label class="visually-hidden" for="pattern-cat">Filter by category</label>
+      <select id="pattern-cat">
+        <option value="">All categories</option>
+      </select>
+    </div>
+    <div class="pattern-list" id="pattern-grid" aria-live="polite"></div>
+  </section>
+
+  <!-- 06 · TOOLS -->
+  <section class="section" id="tools" aria-labelledby="tools-h">
+    <header class="ticket-head">
+      <p class="platform"><span class="p-no">Platform 06</span><span class="p-rule" aria-hidden="true"></span><span class="p-note">3 instruments · the conductor's desk</span></p>
+      <h2 id="tools-h">The conductor's<br><em>desk.</em></h2>
+      <p class="section-sub">Three instruments for choosing and using the library: a quiz that
+        matches a DNA to your project, a token exporter that speaks CSS, Tailwind, and JSON, and
+        a brief builder that writes the agent prompt for you.</p>
+    </header>
+
+    <div class="tool-panels">
+      <!-- Style quiz -->
+      <article class="tool-panel" aria-labelledby="quiz-h">
+        <p class="tool-no">Instrument 01</p>
+        <h3 id="quiz-h">The style quiz</h3>
+        <p class="tool-sub">Three questions. Three DNAs worth your evening.</p>
+        <form id="quiz-form">
+          <div class="field">
+            <label for="quiz-q1">What are you building?</label>
+            <select id="quiz-q1" name="quiz-q1">
+              <option value="landing">Landing page</option>
+              <option value="portfolio">Portfolio</option>
+              <option value="saas">SaaS product</option>
+              <option value="docs">Docs site</option>
+              <option value="mobile">Mobile app</option>
+              <option value="ecommerce">E-commerce</option>
+              <option value="event">Event/festival</option>
+              <option value="blog">Publication/blog</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="quiz-q2">What mood?</label>
+            <select id="quiz-q2" name="quiz-q2">
+              <option value="quiet">Quiet luxury</option>
+              <option value="loud">Loud &amp; brash</option>
+              <option value="playful">Playful</option>
+              <option value="clinical">Clinical/minimal</option>
+              <option value="warm">Warm/handmade</option>
+              <option value="dark">Dark/mysterious</option>
+              <option value="retro">Retro</option>
+              <option value="future">Futuristic</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="quiz-q3">How bold? <output id="quiz-q3-val" for="quiz-q3">6</output> / 10</label>
+            <input type="range" id="quiz-q3" name="quiz-q3" min="1" max="10" value="6">
+          </div>
+          <button class="btn-solid" type="submit">Recommend DNAs</button>
+        </form>
+        <div id="quiz-result" aria-live="polite"></div>
+      </article>
+
+      <!-- Token exporter -->
+      <article class="tool-panel" aria-labelledby="export-h">
+        <p class="tool-no">Instrument 02</p>
+        <h3 id="export-h">The token exporter</h3>
+        <p class="tool-sub">Pick a DNA. Take its tokens in the format your stack speaks.</p>
+        <div class="field">
+          <label for="export-dna">Style DNA</label>
+          <select id="export-dna">
+            <option value="">Choose a DNA…</option>
+          </select>
+        </div>
+        <div class="export-panels">
+          <div class="export-panel">
+            <div class="export-head"><h4>CSS variables</h4><button class="btn-mini" type="button" data-copy-target="export-css">Copy</button></div>
+            <pre id="export-css" tabindex="0"><code>Select a DNA to export its tokens.</code></pre>
+          </div>
+          <div class="export-panel">
+            <div class="export-head"><h4>Tailwind theme</h4><button class="btn-mini" type="button" data-copy-target="export-tw">Copy</button></div>
+            <pre id="export-tw" tabindex="0"><code>Select a DNA to export its tokens.</code></pre>
+          </div>
+          <div class="export-panel">
+            <div class="export-head"><h4>W3C tokens JSON</h4><button class="btn-mini" type="button" data-copy-target="export-json">Copy</button></div>
+            <pre id="export-json" tabindex="0"><code>Select a DNA to export its tokens.</code></pre>
+          </div>
+        </div>
+      </article>
+
+      <!-- Prompt builder -->
+      <article class="tool-panel" aria-labelledby="pb-h">
+        <p class="tool-no">Instrument 03</p>
+        <h3 id="pb-h">The brief builder</h3>
+        <p class="tool-sub">Assemble the one-liner your agent actually needs. Copy, paste, build.</p>
+        <div class="pb-row">
+          <div class="field">
+            <label for="pb-type">Page type</label>
+            <select id="pb-type">
+              <option>Landing page</option>
+              <option>Portfolio</option>
+              <option>Pricing page</option>
+              <option>Docs site</option>
+              <option>Dashboard</option>
+              <option>Mobile onboarding</option>
+              <option>Blog</option>
+              <option>Waitlist page</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="pb-dna">Style DNA</label>
+            <select id="pb-dna">
+              <option value="">Choose a DNA…</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="pb-tone">Tone</label>
+            <select id="pb-tone">
+              <option>Direct</option>
+              <option>Playful</option>
+              <option>Luxurious</option>
+              <option>Technical</option>
+              <option>Warm</option>
+            </select>
+          </div>
+        </div>
+        <pre id="pb-output" tabindex="0"><code>Pick a page type and a DNA — your brief assembles here.</code></pre>
+        <button class="btn-solid" type="button" id="pb-copy">Copy brief</button>
+      </article>
+    </div>
+  </section>
+
+  <!-- AGENT KIT -->
+  <section class="agentkit" aria-labelledby="agentkit-h">
+    <div class="agentkit-inner">
+      <p class="platform"><span class="p-no">Agent kit</span><span class="p-rule" aria-hidden="true"></span><span class="p-note">one line · any agent</span></p>
+      <h2 id="agentkit-h">One line. <em>Any agent.</em></h2>
+      <div class="brief-box">
+        <code id="agent-brief-text">Use https://github.com/rawmware/TZ-taste as a reference to build: [your brief]. Follow its AGENT.md protocol and pick one style DNA before writing any code.</code>
+        <button class="btn-solid" type="button" data-copy="agent-brief">Copy brief</button>
+      </div>
+      <div class="kit-links">
+        <a href="https://github.com/rawmware/TZ-taste/blob/main/AGENT.md" target="_blank" rel="noopener">AGENT.md&nbsp;→</a>
+        <a href="https://github.com/rawmware/TZ-taste/blob/main/skill/SKILL.md" target="_blank" rel="noopener">skill/SKILL.md&nbsp;→</a>
+        <a href="https://github.com/rawmware/TZ-taste/blob/main/docs/ANTI-SLOP.md" target="_blank" rel="noopener">ANTI-SLOP.md&nbsp;→</a>
+        <code class="install">npx skills add https://github.com/rawmware/TZ-taste --skill "tz-taste"</code>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 · SOURCES -->
+  <section class="section" id="sources" aria-labelledby="sources-h">
+    <header class="ticket-head">
+      <p class="platform"><span class="p-no">Platform 07</span><span class="p-rule" aria-hidden="true"></span><span class="p-note">33 verified · curated sources</span></p>
+      <h2 id="sources-h">Standing on<br><em>open shoulders.</em></h2>
+      <p class="section-sub">Thirty-three of the best free design resources anywhere — licenses
+        verified, freshness checked weekly by CI, so you never build on a dead link.</p>
+    </header>
+    <div class="source-table" id="source-table" aria-live="polite"></div>
+    <p class="freshness-note" id="freshness-note"></p>
+  </section>
+</main>
+
+<footer class="footer">
+  <a class="foot-word" href="#top">TZ&#8209;TASTE</a>
+  <div class="foot-grid">
+    <nav aria-label="Library">
+      <p class="f-h">Library</p>
+      <a href="#dna">Style DNAs</a>
+      <a href="#templates">Templates</a>
+      <a href="#generative">Generative</a>
+      <a href="#scenes">3D scenes</a>
+      <a href="#patterns">Patterns</a>
+    </nav>
+    <nav aria-label="Agents">
+      <p class="f-h">Agents</p>
+      <a href="#tools">Tools</a>
+      <a href="#agent-kit">Agent kit</a>
+      <a href="https://github.com/rawmware/TZ-taste/blob/main/skill/SKILL.md" target="_blank" rel="noopener">Skill</a>
+      <a href="https://github.com/rawmware/TZ-taste/blob/main/docs/ANTI-SLOP.md" target="_blank" rel="noopener">Anti-slop</a>
+    </nav>
+    <nav aria-label="Project">
+      <p class="f-h">Project</p>
+      <a href="https://github.com/rawmware/TZ-taste" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/rawmware/TZ-taste/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contribute</a>
+      <a href="https://github.com/rawmware/TZ-taste/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a>
+    </nav>
+  </div>
+  <div class="foot-base">
+    <span>© 2026 Roman's Proposal — free forever.</span>
+    <span><a href="https://github.com/rawmware/TZ-taste" target="_blank" rel="noopener">GitHub</a>&nbsp;&nbsp;·&nbsp;&nbsp;MIT licensed</span>
+  </div>
+</footer>
+
+<!-- Shared preview modal -->
+<div id="tz-modal" class="tz-modal" role="dialog" aria-modal="true" aria-labelledby="tz-modal-title" hidden>
+  <div class="tz-modal-box">
+    <header>
+      <h3 id="tz-modal-title">Preview</h3>
+      <button id="tz-modal-close" type="button" aria-label="Close">×</button>
+    </header>
+    <div id="tz-modal-loading" role="status">Warming up the preview…</div>
+    <iframe id="tz-modal-frame" title="Live preview"></iframe>
+    <div id="tz-modal-meta"></div>
+    <div id="tz-modal-actions"></div>
+  </div>
+</div>
+
+<div id="toast" role="status"></div>
+
+<script src="./assets/data.js"></script>
+<script src="./assets/site.js"></script>
+</body>
+</html>
