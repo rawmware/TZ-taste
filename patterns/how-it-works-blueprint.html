@@ -1,0 +1,51 @@
+<!--tz-meta {"id":"how-it-works-blueprint","title":"Blueprint steps","category":"How it works","file":"patterns/how-it-works-blueprint.html","tags":["technical","grid"],"description":"Engineering-drawing steps on a measurement grid with dimension callouts.","dnas":["swiss-rational"]} -->
+<section class="tz-hb">
+  <p class="tz-hb-eyebrow">Assembly instructions · read before building</p>
+  <h2 class="tz-hb-title">Four steps.<br>Zero guesswork.</h2>
+  <ol class="tz-hb-list">
+    <li>
+      <div class="tz-hb-head"><span class="tz-hb-step">STEP 01</span><span class="tz-hb-dim" aria-hidden="true">← 4 min →</span></div>
+      <h3>Connect your tools</h3>
+      <p>Authorize your inbox and calendar over OAuth. We index your history locally first, then sync — nothing readable leaves your machine until you say so.</p>
+    </li>
+    <li>
+      <div class="tz-hb-head"><span class="tz-hb-step">STEP 02</span><span class="tz-hb-dim" aria-hidden="true">← 20 min →</span></div>
+      <h3>Approve the drafts</h3>
+      <p>Twelve sample replies land in your queue. Correct them the way you'd correct an intern — the system builds your voice profile from every edit.</p>
+    </li>
+    <li>
+      <div class="tz-hb-head"><span class="tz-hb-step">STEP 03</span><span class="tz-hb-dim" aria-hidden="true">← 7 days →</span></div>
+      <h3>Run supervised</h3>
+      <p>A full week in dry-run mode: drafts queue up, nothing sends. Review the queue each morning until the approval rate tells you it's ready.</p>
+    </li>
+    <li>
+      <div class="tz-hb-head"><span class="tz-hb-step">STEP 04</span><span class="tz-hb-dim" aria-hidden="true">← 1 click →</span></div>
+      <h3>Release selectively</h3>
+      <p>Flip senders to automatic one by one. Keep the VIPs on manual approval forever if you like — most teams do.</p>
+    </li>
+  </ol>
+  <p class="tz-hb-foot">Tolerances: ±0 surprises · All measurements in honest minutes</p>
+</section>
+<style>
+.tz-hb{--bg:#ffffff;--ink:#111111;--red:#d8231a;--grid:rgba(17,17,17,.07);
+  background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif;
+  padding:clamp(64px,9vw,120px) clamp(24px,6vw,88px);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:32px 32px}
+.tz-hb-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--red);margin:0 0 16px}
+.tz-hb-title{font-size:clamp(36px,5.4vw,72px);font-weight:700;letter-spacing:-.03em;
+  line-height:1.02;margin:0 0 clamp(44px,6vw,80px)}
+.tz-hb-list{list-style:none;margin:0;padding:0;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:2px;
+  background:var(--ink);border:2px solid var(--ink);max-width:1200px}
+.tz-hb-list li{background:var(--bg);padding:clamp(26px,3vw,40px);position:relative}
+.tz-hb-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:22px}
+.tz-hb-step{font-family:ui-monospace,Menlo,monospace;font-size:12px;font-weight:700;
+  letter-spacing:.16em;background:var(--ink);color:#fff;padding:7px 12px}
+.tz-hb-dim{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.1em;color:var(--red);white-space:nowrap}
+.tz-hb-list h3{font-size:22px;font-weight:700;letter-spacing:-.01em;margin:0 0 12px}
+.tz-hb-list p{font-size:14.5px;line-height:1.7;color:rgba(17,17,17,.72);margin:0}
+.tz-hb-foot{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(17,17,17,.55);margin:32px 0 0}
+</style>
