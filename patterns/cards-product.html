@@ -1,0 +1,55 @@
+<!--tz-meta {"id":"cards-product","title":"Product cards","category":"Cards","file":"patterns/cards-product.html","tags":["ecommerce","shop"],"description":"Clean product cards in an asymmetric layout: one wide feature, two compact.","dnas":["soft-minimal"]} -->
+<section class="tz-shop" aria-label="Products">
+  <p class="tz-eyebrow">The shelf</p>
+  <div class="tz-shelf">
+    <article class="tz-prod tz-wide">
+      <div class="tz-shot tz-g1" role="img" aria-label="Harbor desk lamp product photo"><span>HL-01</span></div>
+      <div class="tz-info">
+        <div class="tz-titlerow"><h3>Harbor Desk Lamp</h3><span class="tz-price">$148</span></div>
+        <p class="tz-tags"><span class="tz-tag">Bestseller</span><span class="tz-tag tz-quiet">Brass</span></p>
+        <p class="tz-desc">A weighted brass lamp that stays where you point it. Warm 2700K bulb included.</p>
+      </div>
+    </article>
+    <article class="tz-prod">
+      <div class="tz-shot tz-g2" role="img" aria-label="Tide wall clock product photo"><span>TW-02</span></div>
+      <div class="tz-info">
+        <div class="tz-titlerow"><h3>Tide Wall Clock</h3><span class="tz-price">$86</span></div>
+        <p class="tz-tags"><span class="tz-tag tz-quiet">Oak</span></p>
+      </div>
+    </article>
+    <article class="tz-prod">
+      <div class="tz-shot tz-g3" role="img" aria-label="Drift throw blanket product photo"><span>DB-03</span></div>
+      <div class="tz-info">
+        <div class="tz-titlerow"><h3>Drift Throw</h3><span class="tz-price">$64</span></div>
+        <p class="tz-tags"><span class="tz-tag">New</span><span class="tz-tag tz-quiet">Wool</span></p>
+      </div>
+    </article>
+  </div>
+</section>
+<style>
+.tz-shop{--bg:#faf8f4;--ink:#2b2a26;--soft:#5f5b53;--rust:#a34a24;--card:#fff;
+  background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;
+  padding:clamp(56px,9vw,120px) clamp(20px,6vw,80px)}
+.tz-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--soft);margin:0 0 40px}
+.tz-shelf{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:22px;align-items:start}
+.tz-prod{background:var(--card);border:1px solid #2b2a2618;margin:0}
+.tz-wide{grid-row:span 1}
+.tz-shot{aspect-ratio:4/3;display:flex;align-items:flex-end;justify-content:flex-start;
+  padding:14px;font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.1em;color:#ffffffdd}
+.tz-wide .tz-shot{aspect-ratio:16/8.5}
+.tz-g1{background:linear-gradient(150deg,#d9a441,#8a5a1a)}
+.tz-g2{background:linear-gradient(150deg,#8a9a5b,#4d5c2a)}
+.tz-g3{background:linear-gradient(150deg,#6b7f8a,#33424b)}
+.tz-info{padding:18px 20px 22px}
+.tz-titlerow{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:10px}
+.tz-titlerow h3{margin:0;font-size:19px;font-weight:400;letter-spacing:-.01em}
+.tz-price{font-family:ui-monospace,Menlo,monospace;font-size:15px;color:var(--ink)}
+.tz-tags{margin:0 0 10px;display:flex;gap:8px;flex-wrap:wrap}
+.tz-tag{font-family:ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;background:var(--rust);color:#fff;padding:4px 9px}
+.tz-tag.tz-quiet{background:transparent;color:var(--soft);border:1px solid #2b2a2633}
+.tz-desc{margin:0;font-size:14px;line-height:1.6;color:var(--soft)}
+@media (max-width:860px){.tz-shelf{grid-template-columns:1fr 1fr}.tz-wide{grid-column:span 2}}
+@media (max-width:560px){.tz-shelf{grid-template-columns:1fr}.tz-wide{grid-column:auto}}
+</style>
