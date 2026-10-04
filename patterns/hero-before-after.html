@@ -1,0 +1,84 @@
+<!--tz-meta {"id":"hero-before-after","title":"Hero with before/after slider","category":"Sections","file":"patterns/hero-before-after.html","tags":["hero","comparison","slider"],"description":"Aperitivo-italian before/after: draggable divider over a room transformation, golden-hour copy, book-the-look CTA.","dnas":["aperitivo-italian"]} -->
+<section class="tz-hero-before-after">
+  <p class="tz-eyebrow">Drag the line</p>
+  <h2>Twelve weeks.<br><em>One room.</em></h2>
+  <div class="tz-compare" id="tz-compare">
+    <div class="tz-after" aria-hidden="true">
+      <div class="tz-scene tz-scene-after"><span>AFTER</span></div>
+    </div>
+    <div class="tz-before" aria-hidden="true">
+      <div class="tz-scene tz-scene-before"><span>BEFORE</span></div>
+    </div>
+    <div class="tz-handle" role="slider" aria-label="Before and after comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+      <span class="tz-knob">⟨ ⟩</span>
+    </div>
+  </div>
+  <div class="tz-row">
+    <div><p class="tz-lede">The Moretti living room: same footprint, same windows — new light, new flow, new evenings.</p></div>
+    <a class="tz-cta" href="#book">Book your transformation</a>
+  </div>
+</section>
+<style>
+.tz-hero-before-after{--bg:#f6ead8;--ink:#2b1c10;--muted:#8a6f4d;--accent:#b3402e;
+  background:var(--bg);color:var(--ink);padding:clamp(72px,10vw,130px) clamp(20px,5vw,64px);
+  font-family:Georgia,serif;text-align:center}
+.tz-hero-before-after .tz-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 18px}
+.tz-hero-before-after h2{font-weight:400;font-size:clamp(44px,7vw,88px);line-height:1.02;margin:0 0 40px;letter-spacing:-.01em}
+.tz-hero-before-after h2 em{font-style:italic;color:var(--accent)}
+.tz-hero-before-after .tz-compare{position:relative;max-width:980px;margin:0 auto;aspect-ratio:16/9;
+  overflow:hidden;border:1px solid #2b1c1022;user-select:none;touch-action:pan-y}
+.tz-hero-before-after .tz-scene{position:absolute;inset:0;display:grid;place-items:center}
+.tz-hero-before-after .tz-scene span{font-family:ui-monospace,Menlo,monospace;font-size:13px;letter-spacing:.4em;
+  padding:10px 20px 10px 24px;background:#00000055;color:#fff}
+.tz-hero-before-after .tz-scene-after{background:
+  linear-gradient(115deg,#e8b04b 0%,#d98a3a 30%,#8a5a2e 60%,#4a3220 100%)}
+.tz-hero-before-after .tz-scene-before{background:
+  linear-gradient(115deg,#6b6259 0%,#54504a 40%,#3a3733 70%,#2b2926 100%)}
+.tz-hero-before-after .tz-before{position:absolute;inset:0;width:50%;overflow:hidden}
+.tz-hero-before-after .tz-before .tz-scene{width:100vw;max-width:980px}
+.tz-hero-before-after .tz-after{position:absolute;inset:0}
+.tz-hero-before-after .tz-handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:#fff;
+  cursor:ew-resize;box-shadow:0 0 20px #00000066}
+.tz-hero-before-after .tz-knob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:56px;height:56px;border-radius:50%;background:#fff;color:var(--ink);display:grid;place-items:center;
+  font-size:18px;box-shadow:0 4px 16px #00000044}
+.tz-hero-before-after .tz-row{max-width:980px;margin:36px auto 0;display:flex;justify-content:space-between;
+  align-items:center;gap:24px;text-align:left;flex-wrap:wrap}
+.tz-hero-before-after .tz-lede{margin:0;font-family:-apple-system,'Segoe UI',sans-serif;font-size:16.5px;
+  color:var(--muted);max-width:52ch}
+.tz-hero-before-after .tz-cta{background:var(--accent);color:#fff;text-decoration:none;font-weight:700;
+  font-family:-apple-system,'Segoe UI',sans-serif;padding:16px 34px;font-size:15px;white-space:nowrap}
+@media (max-width:640px){
+  .tz-hero-before-after .tz-row{flex-direction:column;align-items:stretch;text-align:center}
+}
+@media (prefers-reduced-motion:reduce){
+  .tz-hero-before-after .tz-compare{aspect-ratio:16/10}
+}
+</style>
+<script>
+(function(){
+  var box=document.getElementById('tz-compare');
+  var before=box.querySelector('.tz-before'),handle=box.querySelector('.tz-handle');
+  function set(p){
+    p=Math.max(2,Math.min(98,p));
+    before.style.width=p+'%';handle.style.left=p+'%';
+    handle.setAttribute('aria-valuenow',Math.round(p));
+  }
+  function fromEvent(e){
+    var r=box.getBoundingClientRect();
+    var x=(e.touches?e.touches[0].clientX:e.clientX);
+    set((x-r.left)/r.width*100);
+  }
+  var drag=false;
+  handle.addEventListener('pointerdown',function(e){drag=true;handle.setPointerCapture(e.pointerId)});
+  window.addEventListener('pointerup',function(){drag=false});
+  box.addEventListener('pointermove',function(e){if(drag)fromEvent(e)});
+  box.addEventListener('click',fromEvent);
+  handle.addEventListener('keydown',function(e){
+    var v=+handle.getAttribute('aria-valuenow');
+    if(e.key==='ArrowLeft'){set(v-5);e.preventDefault()}
+    if(e.key==='ArrowRight'){set(v+5);e.preventDefault()}
+  });
+})();
+</script>
