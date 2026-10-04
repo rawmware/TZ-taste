@@ -1,0 +1,82 @@
+<!--tz-meta {"id":"features-comparison-slider","title":"Feature comparison slider","category":"Sections","file":"patterns/features-comparison-slider.html","tags":["features","comparison"],"description":"Lab-notebook comparison slider: drag between us and the old way, handwritten annotations, honest deltas.","dnas":["lab-notebook"]} -->
+<section class="tz-features-comparison-slider">
+  <p class="tz-eyebrow">Exhibit A</p>
+  <h2>Us vs. the <em>old way.</em></h2>
+  <p class="tz-lede">Drag the divider. Every claim on the right is something a customer actually said — names on file.</p>
+  <div class="tz-compare" id="tz-feat-compare">
+    <div class="tz-side tz-new">
+      <h3>With Fieldkit</h3>
+      <ul>
+        <li><b>4 min</b> — average setup, guided</li>
+        <li><b>$0</b> — start free, no card</li>
+        <li><b>1 click</b> — deploy to the edge</li>
+        <li><b>Live</b> — support answers in minutes</li>
+      </ul>
+      <p class="tz-note">"We migrated on a Friday afternoon." — D. Osei</p>
+    </div>
+    <div class="tz-side tz-old">
+      <div class="tz-old-inner">
+        <h3>The old way</h3>
+        <ul>
+          <li><b>3 days</b> — average setup, undocumented</li>
+          <li><b>$400</b> — before you deploy anything</li>
+          <li><b>47 steps</b> — deploy checklist, good luck</li>
+          <li><b>Tickets</b> — support answers in days</li>
+        </ul>
+        <p class="tz-note">"We had a runbook. It was 90 pages." — anonymous</p>
+      </div>
+    </div>
+    <div class="tz-handle" role="slider" aria-label="Comparison divider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0"><span>⟨ ⟩</span></div>
+  </div>
+</section>
+<style>
+.tz-features-comparison-slider{--bg:#f7f4ea;--ink:#232620;--muted:#7a7d6e;--accent:#2e7d4f;--old:#a33b2e;
+  background:var(--bg);color:var(--ink);padding:clamp(72px,10vw,130px) clamp(20px,5vw,64px);
+  font-family:-apple-system,'Segoe UI',sans-serif;
+  background-image:linear-gradient(#23262008 1px,transparent 1px),linear-gradient(90deg,#23262008 1px,transparent 1px);
+  background-size:28px 28px}
+.tz-features-comparison-slider .tz-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--accent);margin:0 0 18px;text-align:center}
+.tz-features-comparison-slider h2{font-size:clamp(36px,5.5vw,60px);font-weight:750;letter-spacing:-.02em;
+  margin:0 0 14px;text-align:center}
+.tz-features-comparison-slider h2 em{font-style:normal;color:var(--accent)}
+.tz-features-comparison-slider .tz-lede{text-align:center;color:var(--muted);max-width:56ch;margin:0 auto 44px;font-size:16px}
+.tz-features-comparison-slider .tz-compare{position:relative;max-width:960px;margin:0 auto;border:2px solid var(--ink);
+  background:#fff;overflow:hidden;user-select:none;touch-action:pan-y;min-height:380px}
+.tz-features-comparison-slider .tz-side{padding:clamp(28px,4vw,52px)}
+.tz-features-comparison-slider .tz-new h3{color:var(--accent);font-size:15px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 22px}
+.tz-features-comparison-slider .tz-old{position:absolute;inset:0;width:50%;overflow:hidden;background:#f0ece0;border-right:3px solid var(--ink)}
+.tz-features-comparison-slider .tz-old-inner{width:960px;max-width:90vw;padding:clamp(28px,4vw,52px)}
+.tz-features-comparison-slider .tz-old h3{color:var(--old);font-size:15px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 22px}
+.tz-features-comparison-slider ul{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+.tz-features-comparison-slider li{font-size:17px;border-bottom:1px dashed #23262022;padding-bottom:16px}
+.tz-features-comparison-slider li b{font-variant-numeric:tabular-nums}
+.tz-features-comparison-slider .tz-new li b{color:var(--accent)}
+.tz-features-comparison-slider .tz-old li b{color:var(--old)}
+.tz-features-comparison-slider .tz-note{font-family:'Segoe Print','Bradley Hand',cursive;font-size:15px;
+  color:var(--muted);margin:24px 0 0;transform:rotate(-1deg)}
+.tz-features-comparison-slider .tz-handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--ink);cursor:ew-resize}
+.tz-features-comparison-slider .tz-handle span{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:54px;height:54px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:17px}
+@media (max-width:640px){
+  .tz-features-comparison-slider .tz-old-inner{width:100vw}
+}
+</style>
+<script>
+(function(){
+  var box=document.getElementById('tz-feat-compare');
+  var old=box.querySelector('.tz-old'),handle=box.querySelector('.tz-handle');
+  function set(p){p=Math.max(4,Math.min(96,p));old.style.width=p+'%';handle.style.left=p+'%';handle.setAttribute('aria-valuenow',Math.round(p));}
+  var drag=false;
+  handle.addEventListener('pointerdown',function(e){drag=true;handle.setPointerCapture(e.pointerId)});
+  window.addEventListener('pointerup',function(){drag=false});
+  box.addEventListener('pointermove',function(e){
+    if(!drag)return;var r=box.getBoundingClientRect();set((e.clientX-r.left)/r.width*100);
+  });
+  handle.addEventListener('keydown',function(e){
+    var v=+handle.getAttribute('aria-valuenow');
+    if(e.key==='ArrowLeft'){set(v-5);e.preventDefault()}
+    if(e.key==='ArrowRight'){set(v+5);e.preventDefault()}
+  });
+})();
+</script>
