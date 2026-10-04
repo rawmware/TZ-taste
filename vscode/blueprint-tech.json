@@ -1,0 +1,95 @@
+{
+ "_tzmeta": {
+  "id": "vscode-blueprint-tech",
+  "title": "Blueprint Tech VS Code theme",
+  "category": "VS Code",
+  "file": "vscode/blueprint-tech.json",
+  "tags": [
+   "vscode",
+   "theme",
+   "blueprint-tech"
+  ],
+  "description": "VS Code color theme from the Blueprint Tech DNA tokens.",
+  "dnas": [
+   "blueprint-tech"
+  ]
+ },
+ "name": "TZ Blueprint Tech",
+ "type": "dark",
+ "colors": {
+  "editor.background": "#17407f",
+  "editor.foreground": "#f2f6fc",
+  "editorLineNumber.foreground": "#8fb3e8",
+  "editorCursor.foreground": "#ffcf3f",
+  "activityBar.background": "#17407f",
+  "activityBar.foreground": "#f2f6fc",
+  "sideBar.background": "#17407f",
+  "statusBar.background": "#ffcf3f",
+  "statusBar.foreground": "#17407f",
+  "tab.activeBackground": "#17407f",
+  "tab.inactiveBackground": "#17407f",
+  "editorGroupHeader.tabsBackground": "#17407f",
+  "terminal.background": "#17407f",
+  "terminal.foreground": "#f2f6fc",
+  "panel.background": "#17407f",
+  "editorWidget.background": "#17407f",
+  "pickerGroup.foreground": "#ffcf3f",
+  "progressBar.background": "#ffcf3f",
+  "focusBorder": "#ffffff40"
+ },
+ "tokenColors": [
+  {
+   "scope": [
+    "comment"
+   ],
+   "settings": {
+    "foreground": "#8fb3e8",
+    "fontStyle": "italic"
+   }
+  },
+  {
+   "scope": [
+    "keyword",
+    "storage"
+   ],
+   "settings": {
+    "foreground": "#ffcf3f"
+   }
+  },
+  {
+   "scope": [
+    "string"
+   ],
+   "settings": {
+    "foreground": "#f2f6fc"
+   }
+  },
+  {
+   "scope": [
+    "variable",
+    "identifier"
+   ],
+   "settings": {
+    "foreground": "#f2f6fc"
+   }
+  },
+  {
+   "scope": [
+    "entity.name.function"
+   ],
+   "settings": {
+    "foreground": "#ffcf3f",
+    "fontStyle": "bold"
+   }
+  },
+  {
+   "scope": [
+    "entity.name.type",
+    "support.type"
+   ],
+   "settings": {
+    "foreground": "#8fb3e8"
+   }
+  }
+ ]
+}
