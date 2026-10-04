@@ -1,0 +1,147 @@
+<!--tz-meta {"id":"showcase-pop-art-halftone","title":"Pop-Art Halftone showcase","category":"Showcase","file":"showcase/pop-art-halftone.html","tags":["pop-art-halftone"],"description":"Live demo page for the Pop-Art Halftone style DNA.","dnas":["pop-art-halftone"]} -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pop-Art Halftone — TZ-taste showcase</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#fff6e8; --tz-surface:#ffffff; --tz-ink:#171412; --tz-muted:#8f8577;
+  --tz-accent:#e83a2f; --tz-accent2:#ffc700; --tz-line:#171412;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tz-bg);color:var(--tz-ink);font-family:"Space Grotesk",Verdana,sans-serif;font-size:1rem;line-height:1.45;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.tz-top{display:flex;justify-content:space-between;align-items:center;padding:1rem 5vw;border-bottom:4px solid var(--tz-line);background:var(--tz-bg);position:relative;z-index:5}
+.tz-wordmark{font-family:"Bungee",cursive;font-size:1.35rem;letter-spacing:0.02em}
+.tz-wordmark .tz-pow{color:var(--tz-accent)}
+.tz-label{font-family:"Space Mono",monospace;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-hero{position:relative;padding:4.5rem 5vw 4rem;border-bottom:4px solid var(--tz-line);overflow:hidden}
+.tz-hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(var(--tz-ink) 1.4px,transparent 1.5px);background-size:15px 15px;opacity:0.10;pointer-events:none}
+.tz-eyebrow{position:relative;font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--tz-muted);margin-bottom:1.4rem;display:inline-block;background:var(--tz-bg);border:3px solid var(--tz-line);padding:0.4rem 0.8rem;transform:rotate(-1deg)}
+.tz-hero h1{position:relative;font-family:"Bungee",cursive;font-size:clamp(2.6rem,8.5vw,6.2rem);line-height:0.98;max-width:11ch;margin-bottom:1.2rem}
+.tz-hero h1 .tz-red{color:var(--tz-accent)}
+.tz-bubble{position:relative;display:inline-block;background:var(--tz-surface);border:4px solid var(--tz-line);padding:1.1rem 1.4rem;max-width:46ch;transform:rotate(1deg);box-shadow:8px 8px 0 var(--tz-line)}
+.tz-bubble::after{content:"";position:absolute;left:2.2rem;bottom:-18px;width:26px;height:26px;background:var(--tz-surface);border-right:4px solid var(--tz-line);border-bottom:4px solid var(--tz-line);transform:rotate(45deg) skew(12deg,12deg)}
+.tz-bubble p{font-weight:500}
+.tz-bubble p strong{color:var(--tz-accent)}
+.tz-cta-row{position:relative;margin-top:2.6rem}
+.tz-cta{display:inline-block;font-family:"Space Mono",monospace;font-weight:700;font-size:0.9rem;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;background:var(--tz-accent);color:var(--tz-surface);border:4px solid var(--tz-line);padding:0.95rem 1.9rem;box-shadow:6px 6px 0 var(--tz-line);transform:rotate(-1deg);transition:transform 0.15s ease,box-shadow 0.15s ease}
+.tz-cta:hover{transform:rotate(-1deg) translate(-2px,-2px);box-shadow:9px 9px 0 var(--tz-line)}
+.tz-cta:active{transform:rotate(-1deg) translate(4px,4px);box-shadow:1px 1px 0 var(--tz-line)}
+.tz-panel{position:relative;margin-top:3rem;max-width:520px;background:var(--tz-surface);border:4px solid var(--tz-line);transform:rotate(-2deg);box-shadow:10px 10px 0 var(--tz-line);cursor:pointer;overflow:hidden}
+.tz-panel-art{position:relative;height:240px;background-image:radial-gradient(var(--tz-ink) 1.6px,transparent 1.7px);background-size:13px 13px;background-color:var(--tz-accent2);display:flex;align-items:center;justify-content:center;border-bottom:4px solid var(--tz-line)}
+.tz-panel-art .tz-issue{font-family:"Bungee",cursive;font-size:clamp(2.4rem,6vw,4rem);color:var(--tz-surface);-webkit-text-stroke:3px var(--tz-ink);paint-order:stroke fill;transform:rotate(2deg)}
+.tz-panel-cap{display:flex;justify-content:space-between;align-items:center;padding:0.9rem 1.1rem;font-family:"Space Mono",monospace;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.08em}
+.tz-bam{position:absolute;left:50%;top:38%;transform:translate(-50%,-50%) scale(0) rotate(-8deg);font-family:"Bungee",cursive;font-size:4.5rem;color:var(--tz-accent);-webkit-text-stroke:2px var(--tz-ink);paint-order:stroke fill;pointer-events:none;z-index:3}
+.tz-bam.tz-fired{animation:tz-bam 0.7s ease-out forwards}
+@keyframes tz-bam{0%{transform:translate(-50%,-50%) scale(0) rotate(-8deg);opacity:0}25%{transform:translate(-50%,-50%) scale(1.25) rotate(4deg);opacity:1}55%{transform:translate(-50%,-50%) scale(0.95) rotate(-3deg);opacity:1}100%{transform:translate(-50%,-50%) scale(1) rotate(-8deg);opacity:1}}
+.tz-hint{position:relative;margin-top:1rem;font-family:"Space Mono",monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-content{padding:0 0 4rem}
+.tz-sect-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;padding:3rem 5vw 1.4rem;flex-wrap:wrap}
+.tz-sect-head h2{font-family:"Bungee",cursive;font-size:clamp(1.5rem,4vw,2.4rem)}
+.tz-sect-head .tz-when{font-family:"Space Mono",monospace;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--tz-muted)}
+.tz-pull{border-top:4px solid var(--tz-line)}
+.tz-row{display:grid;grid-template-columns:110px 1fr auto;gap:1.2rem;align-items:center;padding:1.2rem 5vw;border-bottom:4px solid var(--tz-line);background:var(--tz-bg);opacity:0;transform:translateY(26px) rotate(0.4deg);transition:opacity 0.35s ease,transform 0.35s ease}
+.tz-row:nth-child(even){transform:translateY(26px) rotate(-0.4deg);background:var(--tz-surface)}
+.tz-row.tz-in{opacity:1;transform:translateY(0) rotate(0)}
+.tz-row:nth-child(even).tz-in{transform:translateY(0) rotate(0)}
+.tz-row:hover{background:var(--tz-accent2)}
+.tz-no{font-family:"Space Mono",monospace;font-weight:700;font-size:0.8rem;letter-spacing:0.08em}
+.tz-title{font-weight:700;font-size:1.05rem}
+.tz-title small{display:block;font-weight:400;font-size:0.82rem;color:var(--tz-muted);margin-top:0.2rem}
+.tz-burst{position:relative;width:92px;height:92px;display:flex;align-items:center;justify-content:center;flex:none}
+.tz-burst::before{content:"";position:absolute;inset:0;background:var(--tz-accent2);clip-path:polygon(50%,0%,57%,20%,76%,12%,71%,32%,91%,29%,80%,46%,100%,50%,80%,54%,91%,71%,71%,68%,76%,88%,57%,80%,50%,100%,43%,80%,24%,88%,29%,68%,9%,71%,20%,54%,0%,50%,20%,46%,9%,29%,29%,32%,24%,12%,43%,20%);animation:tz-spin 26s linear infinite}
+.tz-burst span{position:relative;font-family:"Space Mono",monospace;font-weight:700;font-size:0.85rem}
+@keyframes tz-spin{to{transform:rotate(360deg)}}
+.tz-note{padding:1.6rem 5vw 0;font-family:"Space Mono",monospace;font-size:0.78rem;color:var(--tz-muted);letter-spacing:0.04em}
+.tz-tokens{padding:3.5rem 5vw;border-top:4px solid var(--tz-line)}
+.tz-tokens h2{font-family:"Bungee",cursive;font-size:1.5rem;margin-bottom:1.4rem}
+.tz-swatches{display:flex;flex-wrap:wrap;list-style:none;border:4px solid var(--tz-line)}
+.tz-swatches li{flex:1 1 140px;border-right:4px solid var(--tz-line);min-width:130px;background:var(--tz-surface)}
+.tz-swatches li:last-child{border-right:none}
+.tz-chip{display:block;height:3.2rem;border-bottom:4px solid var(--tz-line)}
+.tz-swatches .tz-name{display:block;font-family:"Space Mono",monospace;font-size:0.64rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--tz-muted);padding:0.7rem 0.9rem 0.1rem}
+.tz-swatches .tz-hex{display:block;font-family:"Space Mono",monospace;font-size:0.78rem;padding:0 0.9rem 0.8rem}
+.tz-foot{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:1.5rem 5vw;border-top:4px solid var(--tz-line);font-family:"Space Mono",monospace;font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--tz-muted)}
+@media(max-width:700px){
+  .tz-row{grid-template-columns:1fr auto;grid-template-areas:"title burst" "no burst";row-gap:0.4rem}
+  .tz-no{grid-area:no}.tz-title{grid-area:title}.tz-burst{grid-area:burst;width:76px;height:76px}
+  .tz-sect-head{padding-left:6vw;padding-right:6vw}
+  .tz-row{padding-left:6vw;padding-right:6vw}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tz-row{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<header class="tz-top">
+  <span class="tz-wordmark"><span class="tz-pow">POW!</span> COMICS</span>
+  <span class="tz-label">TZ-taste style DNA</span>
+</header>
+
+<section class="tz-hero">
+  <p class="tz-eyebrow">Est. 1998 · New issues every Wednesday</p>
+  <h1>NEVER MISS <span class="tz-red">ISSUE #1</span> AGAIN.</h1>
+  <div class="tz-bubble"><p>New comics hit the wall every <strong>Wednesday at 11 AM</strong> sharp. Start a pull list and your books are bagged, boarded, and waiting — 10% off, every single week.</p></div>
+  <div class="tz-cta-row"><a class="tz-cta" href="#">Start a pull list</a></div>
+  <div class="tz-panel" id="tzPanel" role="button" tabindex="0" aria-label="Featured issue panel. Activate for a sound effect.">
+    <div class="tz-panel-art"><span class="tz-issue">ISSUE #07</span><span class="tz-bam" id="tzBam" aria-hidden="true">BAM!</span></div>
+    <div class="tz-panel-cap"><span>Midnight Diner · On sale Wed</span><span>$4.99</span></div>
+  </div>
+  <p class="tz-hint">Psst — tap the panel.</p>
+</section>
+
+<section class="tz-content">
+  <div class="tz-sect-head">
+    <h2>THIS WEEK'S PULLS</h2>
+    <span class="tz-when">Week of Oct 05 · 2026</span>
+  </div>
+  <div class="tz-pull">
+    <div class="tz-row"><span class="tz-no">#007</span><span class="tz-title">Midnight Diner<small>Okafor / Reyes · Ongoing</small></span><span class="tz-burst"><span>$4.99</span></span></div>
+    <div class="tz-row"><span class="tz-no">#003</span><span class="tz-title">Rust &amp; Starlight<small>Petrov · Sci-fi western</small></span><span class="tz-burst"><span>$3.99</span></span></div>
+    <div class="tz-row"><span class="tz-no">#012</span><span class="tz-title">The Paper Detective<small>Lindqvist · Noir mystery</small></span><span class="tz-burst"><span>$4.99</span></span></div>
+    <div class="tz-row"><span class="tz-no">#001</span><span class="tz-title">Golem of Pier 9<small>Debut issue · Cohen / Marsh</small></span><span class="tz-burst"><span>$5.99</span></span></div>
+    <div class="tz-row"><span class="tz-no">#005</span><span class="tz-title">Static Bloom<small>Adeyemi · Indie hit</small></span><span class="tz-burst"><span>$3.99</span></span></div>
+  </div>
+  <p class="tz-note">PULL-LIST RULE Nº 1 — If it's on your list, it's in your box. No exceptions, no "we sold out."</p>
+</section>
+
+<section class="tz-tokens">
+  <h2>TOKENS</h2>
+  <ul class="tz-swatches">
+    <li><span class="tz-chip" style="background:#fff6e8"></span><span class="tz-name">bg</span><span class="tz-hex">#fff6e8</span></li>
+    <li><span class="tz-chip" style="background:#ffffff"></span><span class="tz-name">surface</span><span class="tz-hex">#ffffff</span></li>
+    <li><span class="tz-chip" style="background:#171412"></span><span class="tz-name">ink</span><span class="tz-hex">#171412</span></li>
+    <li><span class="tz-chip" style="background:#8f8577"></span><span class="tz-name">muted</span><span class="tz-hex">#8f8577</span></li>
+    <li><span class="tz-chip" style="background:#e83a2f"></span><span class="tz-name">accent</span><span class="tz-hex">#e83a2f</span></li>
+    <li><span class="tz-chip" style="background:#ffc700"></span><span class="tz-name">accent-2</span><span class="tz-hex">#ffc700</span></li>
+    <li><span class="tz-chip" style="background:#171412"></span><span class="tz-name">line</span><span class="tz-hex">#171412</span></li>
+  </ul>
+</section>
+
+<footer class="tz-foot"><span>A TZ-taste style DNA showcase — MIT, free forever.</span><span>Printed in 2 colors · No refunds on sound effects</span></footer>
+
+<script>
+(function(){
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var rows = document.querySelectorAll(".tz-row");
+  if("IntersectionObserver" in window && !reduced){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("tz-in"); io.unobserve(e.target); } });
+    },{threshold:0.15});
+    rows.forEach(function(r){ io.observe(r); });
+  } else { rows.forEach(function(r){ r.classList.add("tz-in"); }); }
+  var panel = document.getElementById("tzPanel"), bam = document.getElementById("tzBam"), fired = false;
+  function fire(){ if(fired || reduced) return; fired = true; bam.classList.add("tz-fired"); }
+  panel.addEventListener("click", fire);
+  panel.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); fire(); } });
+})();
+</script>
+</body>
+</html>
