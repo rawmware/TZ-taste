@@ -1,0 +1,3 @@
+//tz-meta {"id":"tailwind-ukiyo-e-print","title":"Ukiyo-e Print Tailwind preset","category":"Tailwind","file":"tailwind/ukiyo-e-print.js","tags":["tailwind","preset","ukiyo-e-print"],"description":"Tailwind theme preset for the Ukiyo-e Print DNA.","dnas":["ukiyo-e-print"]}
+// Tailwind preset for the Ukiyo-e Print DNA. Extend tailwind.config with this.
+module.exports={theme:{extend:{colors:{tzbg:"#f2ead8",tzink:"#1a2332",tzaccent:"#c73e2e",tzmuted:"#6f6a5c",tzline:"#1a233233",tzsurface:"#f2ead8"},fontFamily:{display:["Shippori Mincho B1","serif"],body:["Zen Kaku Gothic New","sans-serif"],mono:["Space Mono","monospace"]}}}};
