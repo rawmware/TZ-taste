@@ -1,0 +1,54 @@
+<!--tz-meta {"id":"team-roster","title":"Mono roster","category":"Team","file":"patterns/team-roster.html","tags":["terminal","roster"],"description":"Team roster rendered as a $ team --list terminal output.","dnas":["retro-terminal"]} -->
+<section class="tz-roster" aria-label="Team roster">
+  <p class="tz-line"><span class="tz-p">$</span> team --list --all</p>
+  <p class="tz-line tz-dim">fetching humans… <span class="tz-ok">ok</span></p>
+  <p class="tz-line tz-dim">NAME              ROLE                 STATUS      FOCUS</p>
+  <p class="tz-line tz-dim">────────────────────────────────────────────────────────</p>
+  <p class="tz-line">roman.cottonham   founder/build        <span class="tz-ok">[ONLINE]</span>  ships</p>
+  <p class="tz-line">mara.jensen       design/type          <span class="tz-ok">[ONLINE]</span>  kerns</p>
+  <p class="tz-line">theo.okafor       backend/data         <span class="tz-ok">[ONLINE]</span>  indexes</p>
+  <p class="tz-line">ana.lindqvist     content/words        <span class="tz-warn">[AWAY]</span>    drafts</p>
+  <p class="tz-line">devon.park        frontend/motion      <span class="tz-ok">[ONLINE]</span>  eases</p>
+  <p class="tz-line">sana.kapoor       support/humans       <span class="tz-ok">[ONLINE]</span>  listens</p>
+  <p class="tz-line">elias.brandt      video/photo          <span class="tz-warn">[AWAY]</span>    frames</p>
+  <p class="tz-line">nia.washington    ops/schedule         <span class="tz-ok">[ONLINE]</span>  herds</p>
+  <p class="tz-line tz-dim">────────────────────────────────────────────────────────</p>
+  <p class="tz-line">8 members · 0 managers · 1 group chat</p>
+  <p class="tz-line"><span class="tz-p">$</span> team --away</p>
+  <p class="tz-line tz-dim">  ana.lindqvist → back monday · elias.brandt → on shoot</p>
+  <p class="tz-line"><span class="tz-p">$</span> <span class="tz-cursor" aria-hidden="true">▊</span></p>
+</section>
+<style>
+.tz-roster{
+  --bg:#0c0c0c;--green:#33dd66;--amber:#ffb000;--dim:#7c8a7c;--bright:#e8f5e9;
+  background:var(--bg);
+  color:var(--green);
+  font-family:ui-monospace,Menlo,monospace;
+  font-size:clamp(11px,1.9vw,15px);
+  line-height:2.05;
+  padding:clamp(40px,6vw,72px) clamp(20px,5vw,64px);
+  overflow-x:auto;
+}
+.tz-line{margin:0;white-space:pre}
+.tz-p{color:var(--amber)}
+.tz-dim{color:var(--dim)}
+.tz-ok{
+  color:var(--bg);
+  background:var(--green);
+  padding:0 6px;
+}
+.tz-warn{
+  color:var(--bg);
+  background:var(--amber);
+  padding:0 6px;
+}
+.tz-cursor{
+  display:inline-block;
+  animation:tz-blink 1.1s steps(1) infinite;
+  color:var(--bright);
+}
+@keyframes tz-blink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){
+  .tz-cursor{animation:none}
+}
+</style>
