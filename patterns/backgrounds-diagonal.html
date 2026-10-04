@@ -1,0 +1,12 @@
+<!--tz-meta {"id":"backgrounds-diagonal","title":"Caution stripes","category":"Backgrounds","file":"patterns/backgrounds-diagonal.html","tags":["stripes","caution"],"description":"Caution-stripe band tilted two degrees with a stenciled keep-clear chip.","dnas":["industrial-brutalist"]} -->
+<!-- Usage: place .tz-caution as a band across a section; click-through. -->
+<div class="tz-caution" aria-hidden="true"><span class="tz-caution-chip">Keep clear</span></div>
+<style>
+.tz-caution{position:absolute;left:-4%;right:-4%;top:62%;height:76px;pointer-events:none;
+  background:repeating-linear-gradient(-45deg,#f5c518 0 28px,#14120e 0 56px);
+  transform:rotate(-2deg);display:flex;align-items:center;justify-content:center;
+  border-top:3px solid #14120e;border-bottom:3px solid #14120e}
+.tz-caution-chip{background:#14120e;color:#f5c518;
+  font:700 13px/1 Arial,Helvetica,sans-serif;letter-spacing:.32em;text-transform:uppercase;
+  padding:12px 22px 12px 26px;white-space:nowrap}
+</style>
