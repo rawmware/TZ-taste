@@ -1,0 +1,58 @@
+{
+ "_tzmeta": {
+  "id": "tokens-midnight-railway",
+  "title": "Midnight Railway design tokens",
+  "category": "Tokens",
+  "file": "tokens/midnight-railway.json",
+  "tags": [
+   "tokens",
+   "w3c",
+   "midnight-railway"
+  ],
+  "description": "W3C-format design tokens for the Midnight Railway style DNA.",
+  "dnas": [
+   "midnight-railway"
+  ]
+ },
+ "color": {
+  "bg": {
+   "$value": "#101a2e",
+   "$type": "color"
+  },
+  "ink": {
+   "$value": "#e9e2d0",
+   "$type": "color"
+  },
+  "accent": {
+   "$value": "#c9a227",
+   "$type": "color"
+  },
+  "muted": {
+   "$value": "#7d8698",
+   "$type": "color"
+  },
+  "line": {
+   "$value": "#2a3a5c",
+   "$type": "color"
+  }
+ },
+ "font": {
+  "display": {
+   "$value": "DM Serif Display",
+   "$type": "fontFamily"
+  },
+  "body": {
+   "$value": "DM Sans",
+   "$type": "fontFamily"
+  },
+  "mono": {
+   "$value": "Space Mono",
+   "$type": "fontFamily"
+  }
+ },
+ "tz": {
+  "dna": "midnight-railway",
+  "name": "Midnight Railway",
+  "vibe": "The night train platform: deep navy, brass fittings, timetables set with total confidence."
+ }
+}
