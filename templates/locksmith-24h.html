@@ -1,0 +1,245 @@
+<!--tz-meta {"id":"locksmith-24h","title":"Iron & Key — 24-Hour Locksmith","category":"Template","file":"templates/locksmith-24h.html","tags":["locksmith","local","emergency"],"description":"Locksmith-shop emergency page: brass-and-steel ticket-book aesthetic, big call panel, service ledger, honest pricing.","dnas":["locksmith-shop"]} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iron &amp; Key Locksmith — locked out? we'll get you in. 24/7</title>
+<meta name="description" content="Iron & Key: 24-hour locksmith. Emergency lockouts, rekeys, broken keys. Upfront pricing, 20-minute average response, licensed and insured.">
+<!-- Design read: the service ticket book of a locksmith who answers at 3am — brass stencil type, steel ledger lines, one enormous phone number, no marketing fluff for a panicked reader. DNA: locksmith-shop (Big Shoulders Stencil + Karla + JetBrains Mono; bone bg #ece7db, ink #26221a, brass #a67c2e — purpose-built for this brief). One distinctive choice: the whole hero is a filled-out SERVICE TICKET with the phone number as the ticket number. Dials V4/M3/D6. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text:wght@500;700;900&family=Karla:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --tz-bg:#ece7db; --tz-surface:#ded6c2; --tz-ink:#26221a; --tz-accent:#a67c2e;
+  --tz-muted:#7d7461; --tz-line:#26221a1f; --tz-line-strong:#26221a45;
+  --tz-ease:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Karla",sans-serif;background:var(--tz-bg);color:var(--tz-ink);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--tz-accent);color:#fff}
+a{color:inherit;text-decoration:none}
+.tz-wrap{max-width:1100px;margin:0 auto;padding:0 26px}
+.tz-mono{font-family:"JetBrains Mono",monospace}
+.tz-stencil{font-family:"Big Shoulders Stencil Text",sans-serif}
+
+/* emergency bar */
+.tz-emergency{background:var(--tz-ink);color:#ece7db;text-align:center;padding:10px 16px;font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.14em}
+.tz-emergency b{color:var(--tz-accent)}
+.tz-emergency a{color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+
+/* header */
+.tz-header{border-bottom:3px solid var(--tz-ink)}
+.tz-header .tz-wrap{display:flex;justify-content:space-between;align-items:center;height:68px}
+.tz-brand{font-family:"Big Shoulders Stencil Text",sans-serif;font-weight:900;font-size:24px;letter-spacing:.04em}
+.tz-brand b{color:var(--tz-accent)}
+.tz-nav{display:flex;gap:26px;font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase}
+.tz-nav a{color:var(--tz-muted)}
+.tz-nav a:hover{color:var(--tz-accent)}
+
+/* hero: the service ticket */
+.tz-hero{padding:64px 0 56px}
+.tz-ticket{background:#f4f0e4;border:3px solid var(--tz-ink);box-shadow:10px 10px 0 var(--tz-line-strong);position:relative}
+.tz-ticket::before{content:"";position:absolute;left:0;top:0;bottom:0;width:34px;
+  background:repeating-linear-gradient(0deg,var(--tz-accent) 0 18px,#f4f0e4 18px 36px);border-right:3px solid var(--tz-ink)}
+.tz-ticket-inner{padding:48px 56px 48px 88px}
+.tz-ticket .tz-no{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--tz-muted);display:flex;justify-content:space-between;margin-bottom:20px}
+.tz-ticket h1{font-family:"Big Shoulders Stencil Text",sans-serif;font-weight:900;font-size:clamp(44px,7vw,88px);line-height:1;letter-spacing:.01em}
+.tz-ticket h1 .tz-brass{color:var(--tz-accent)}
+.tz-ticket .tz-lede{margin-top:18px;font-size:17.5px;max-width:56ch;color:var(--tz-ink)}
+.tz-ticket .tz-lede b{font-weight:700}
+.tz-call{margin-top:32px;display:flex;gap:20px;align-items:center;flex-wrap:wrap;border-top:2px dashed var(--tz-line-strong);padding-top:28px}
+.tz-phone{font-family:"Big Shoulders Stencil Text",sans-serif;font-weight:900;font-size:clamp(34px,5vw,56px);color:var(--tz-ink);letter-spacing:.02em}
+.tz-phone:hover{color:var(--tz-accent)}
+.tz-call small{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--tz-muted);line-height:1.9;display:block}
+.tz-call small b{color:var(--tz-accent)}
+.tz-btn-call{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:15px;background:var(--tz-accent);color:#fff;border:0;padding:18px 36px;cursor:pointer;box-shadow:5px 5px 0 var(--tz-ink);transition:transform .2s var(--tz-ease),box-shadow .2s}
+.tz-btn-call:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--tz-ink)}
+
+/* services ledger */
+.tz-section{padding:84px 0}
+.tz-sec-head{max-width:640px;margin-bottom:40px}
+.tz-sec-head .tz-k{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--tz-accent)}
+.tz-sec-head h2{font-family:"Big Shoulders Stencil Text",sans-serif;font-weight:900;font-size:clamp(34px,4.6vw,56px);line-height:1.05;margin:12px 0 10px;letter-spacing:.01em}
+.tz-sec-head p{color:var(--tz-muted);font-size:16.5px}
+.tz-ledger{border:3px solid var(--tz-ink);background:#f4f0e4}
+.tz-job{display:grid;grid-template-columns:120px 1fr auto;gap:24px;padding:26px 32px;border-bottom:2px solid var(--tz-line-strong);align-items:center;transition:background .2s}
+.tz-job:last-child{border-bottom:0}
+.tz-job:hover{background:#efe9d6}
+.tz-job .tz-code{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.1em;color:#fff;background:var(--tz-ink);padding:8px 10px;text-align:center}
+.tz-job.tz-em .tz-code{background:var(--tz-accent)}
+.tz-job h3{font-family:"Big Shoulders Stencil Text",sans-serif;font-weight:700;font-size:22px;letter-spacing:.02em;margin-bottom:4px}
+.tz-job p{font-size:14.5px;color:var(--tz-muted)}
+.tz-job .tz-price{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:15px;text-align:right;white-space:nowrap}
+.tz-job .tz-price small{display:block;font-weight:400;color:var(--tz-muted);font-size:11px}
+
+/* why-us strip: asymmetric bento, not 3 cards */
+.tz-why{display:grid;grid-template-columns:1.3fr 1fr;gap:18px}
+.tz-why-big{background:var(--tz-ink);color:#ece7db;padding:48px 44px;border:3px solid var(--tz-ink)}
+.tz-why-big h3{font-family:"Big Shoulders Stencil Text",sans-serif;font-weight:900;font-size:34px;margin-bottom:14px}
+.tz-why-big h3 .tz-brass{color:var(--tz-accent)}
+.tz-why-big p{color:#b9b09a;font-size:16px}
+.tz-why-big .tz-stat{font-family:"Big Shoulders Stencil Text",sans-serif;font-weight:900;font-size:64px;color:var(--tz-accent);margin-top:24px;line-height:1}
+.tz-why-big .tz-stat small{display:block;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.2em;color:#b9b09a;font-weight:400;margin-top:8px}
+.tz-why-col{display:grid;gap:18px}
+.tz-why-item{background:#f4f0e4;border:3px solid var(--tz-ink);padding:30px 28px}
+.tz-why-item h4{font-family:"Big Shoulders Stencil Text",sans-serif;font-weight:700;font-size:20px;margin-bottom:8px}
+.tz-why-item p{font-size:14.5px;color:var(--tz-muted)}
+
+/* coverage + footer */
+.tz-cover{display:grid;grid-template-columns:1fr 1fr;gap:0;border:3px solid var(--tz-ink);background:#f4f0e4}
+.tz-cover>div{padding:44px 40px}
+.tz-cover>div:first-child{border-right:3px solid var(--tz-ink)}
+.tz-cover h3{font-family:"Big Shoulders Stencil Text",sans-serif;font-weight:900;font-size:30px;margin-bottom:16px}
+.tz-cover ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;font-family:"JetBrains Mono",monospace;font-size:13px}
+.tz-cover li::before{content:"▪ ";color:var(--tz-accent)}
+.tz-cover p{font-size:15px;color:var(--tz-muted);margin-bottom:8px}
+.tz-cover .tz-lic{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--tz-muted);margin-top:18px;display:block;line-height:1.9}
+
+.tz-footer{background:var(--tz-ink);color:#ece7db;padding:44px 0;margin-top:84px}
+.tz-footer .tz-wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+.tz-footer .tz-fphone{font-family:"Big Shoulders Stencil Text",sans-serif;font-weight:900;font-size:28px;color:var(--tz-accent)}
+.tz-footer small{font-family:"JetBrains Mono",monospace;font-size:11px;color:#b9b09a;display:block}
+
+@media (max-width:900px){
+  .tz-nav{display:none}
+  .tz-ticket-inner{padding:32px 24px 32px 64px}
+  .tz-job{grid-template-columns:1fr;gap:10px}
+  .tz-job .tz-code{justify-self:start}
+  .tz-job .tz-price{text-align:left}
+  .tz-why{grid-template-columns:1fr}
+  .tz-cover{grid-template-columns:1fr}
+  .tz-cover>div:first-child{border-right:0;border-bottom:3px solid var(--tz-ink)}
+  .tz-section{padding:60px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<div class="tz-emergency">Locked out right now? <b>Average arrival: 20 minutes.</b> <a href="tel:+15550194287">Call (555) 019-4287</a> — a human answers, day or night.</div>
+<header class="tz-header">
+  <div class="tz-wrap">
+    <a class="tz-brand" href="#">IRON <b>&amp;</b> KEY</a>
+    <nav class="tz-nav" aria-label="Primary">
+      <a href="#services">Services</a><a href="#why">Why us</a><a href="#coverage">Coverage</a>
+    </nav>
+    <a class="tz-btn-call" href="tel:+15550194287" style="padding:12px 24px;font-size:13px">Call now</a>
+  </div>
+</header>
+
+<main>
+  <section class="tz-hero">
+    <div class="tz-wrap">
+      <div class="tz-ticket">
+        <div class="tz-ticket-inner">
+          <div class="tz-no"><span>Service ticket · 24-hour dispatch</span><span>No. 004821</span></div>
+          <h1>LOCKED OUT?<br><span class="tz-brass">WE'LL GET YOU IN.</span></h1>
+          <p class="tz-lede">Home, car, or office — <b>one call, upfront price, no drilling unless we have to.</b> Licensed, insured, and local since 2009. The price we quote on the phone is the price at your door.</p>
+          <div class="tz-call">
+            <a class="tz-phone" href="tel:+15550194287">(555) 019-4287</a>
+            <small><b>OPEN NOW</b> · 24 hours, 365 days<br>dispatch answers in under a minute</small>
+            <a class="tz-btn-call" href="tel:+15550194287">Tap to call</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="services" style="padding-top:28px">
+    <div class="tz-wrap">
+      <div class="tz-sec-head">
+        <span class="tz-k">The service ledger</span>
+        <h2>What we do, what it costs</h2>
+        <p>Flat, published prices. If a job needs more, we tell you before we start — never after.</p>
+      </div>
+      <div class="tz-ledger">
+        <div class="tz-job tz-em">
+          <span class="tz-code">EM-01</span>
+          <div><h3>Emergency lockout — home</h3><p>Non-destructive entry first, always. Most doors opened in under 5 minutes.</p></div>
+          <span class="tz-price">$85 flat<small>+ $25 after midnight</small></span>
+        </div>
+        <div class="tz-job tz-em">
+          <span class="tz-code">EM-02</span>
+          <div><h3>Emergency lockout — car</h3><p>All makes, including keyless and push-start. We don't scratch paint. Ever.</p></div>
+          <span class="tz-price">$95 flat<small>+ $25 after midnight</small></span>
+        </div>
+        <div class="tz-job">
+          <span class="tz-code">SV-03</span>
+          <div><h3>Rekey — per lock</h3><p>New keys, old locks. The standard move after moving in or losing a set.</p></div>
+          <span class="tz-price">$25 / lock<small>4+ locks: $20 each</small></span>
+        </div>
+        <div class="tz-job">
+          <span class="tz-code">SV-04</span>
+          <div><h3>Broken key extraction</h3><p>Key snapped in the lock? We extract it without replacing the cylinder, most cases.</p></div>
+          <span class="tz-price">$65 flat<small>includes 2 new keys</small></span>
+        </div>
+        <div class="tz-job">
+          <span class="tz-code">SV-05</span>
+          <div><h3>Lock replacement &amp; upgrades</h3><p>Deadbolts, smart locks, commercial-grade hardware — supplied and fitted.</p></div>
+          <span class="tz-price">from $120<small>hardware included</small></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="why" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-why">
+        <div class="tz-why-big">
+          <h3>The 3am <span class="tz-brass">promise</span></h3>
+          <p>Anyone can cut a key at noon. We built this shop for the calls nobody else answers: the snapped key at midnight, the toddler locked in the car, the office before the morning shift. One van is always fueled, always staffed.</p>
+          <div class="tz-stat">20<span style="font-size:32px">min</span><small>average emergency arrival</small></div>
+        </div>
+        <div class="tz-why-col">
+          <div class="tz-why-item">
+            <h4>No-drill-first policy</h4>
+            <p>Drilling is the last resort, not the first tool. 9 out of 10 lockouts open without damage.</p>
+          </div>
+          <div class="tz-why-item">
+            <h4>Price on the phone</h4>
+            <p>We quote before we dispatch. The number doesn't change at your door — that's the whole business model.</p>
+          </div>
+          <div class="tz-why-item">
+            <h4>Real local shop</h4>
+            <p>One storefront, three vans, the same dispatcher for 12 years. Not a call center in another state.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tz-section" id="coverage" style="padding-top:0">
+    <div class="tz-wrap">
+      <div class="tz-cover">
+        <div>
+          <h3>Where we roll</h3>
+          <p>Three vans covering the metro, 24/7. Outside the zone? Call anyway — we'll tell you straight.</p>
+          <ul>
+            <li>Riverside</li><li>Old Town</li><li>Northgate</li><li>Harbor District</li><li>Elm Park</li><li>University Hill</li><li>Fairview</li><li>Airport area</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Licensed &amp; legit</h3>
+          <p>Ask for ID — we'll show it before we touch your lock. Every tech is background-checked and factory-trained.</p>
+          <span class="tz-lic">License #LK-2009-04417 · Insured to $2M<br>Better Business Bureau A+ since 2011<br>We verify you live/drive there before opening — bring ID.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="tz-footer">
+  <div class="tz-wrap">
+    <div>
+      <a class="tz-fphone" href="tel:+15550194287">(555) 019-4287</a>
+      <small>Iron &amp; Key Locksmith · 77 Anvil St · open 24 hours, every day</small>
+    </div>
+    <small>© 2026 Iron &amp; Key · License #LK-2009-04417</small>
+  </div>
+</footer>
+</body>
+</html>
