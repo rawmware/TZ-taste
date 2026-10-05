@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-04",
+  "checked_at": "2026-10-05",
   "sources": [
     {
       "id": "taste-skill",
@@ -7,7 +7,7 @@
       "url": "https://github.com/Leonxlnx/taste-skill",
       "license": "MIT",
       "last_commit": "2026-09-26",
-      "stars": 92323,
+      "stars": 92785,
       "status": "ok"
     },
     {
@@ -16,7 +16,7 @@
       "url": "https://github.com/MengTo/threeui",
       "license": "MIT",
       "last_commit": "2026-09-01",
-      "stars": 6410,
+      "stars": 6449,
       "status": "ok"
     },
     {
@@ -25,7 +25,7 @@
       "url": "https://reactbits.dev",
       "license": "MIT + Commons Clause",
       "last_commit": "2026-10-03",
-      "stars": 48458,
+      "stars": 48536,
       "status": "ok"
     },
     {
@@ -33,8 +33,8 @@
       "name": "shadcn/ui",
       "url": "https://ui.shadcn.com",
       "license": "MIT",
-      "last_commit": "2026-10-02",
-      "stars": 125059,
+      "last_commit": "2026-10-05",
+      "stars": 125148,
       "status": "ok"
     },
     {
@@ -43,7 +43,7 @@
       "url": "https://tailwindcss.com",
       "license": "MIT",
       "last_commit": "2026-09-25",
-      "stars": 97757,
+      "stars": 97775,
       "status": "ok"
     },
     {
@@ -52,7 +52,7 @@
       "url": "https://gsap.com",
       "license": "Free (proprietary)",
       "last_commit": "2026-04-13",
-      "stars": 28780,
+      "stars": 28824,
       "status": "ok"
     },
     {
@@ -61,7 +61,7 @@
       "url": "https://lenis.darkroom.engineering",
       "license": "MIT",
       "last_commit": "2026-10-01",
-      "stars": 16141,
+      "stars": 16171,
       "status": "ok"
     },
     {
@@ -70,7 +70,7 @@
       "url": "https://lucide.dev",
       "license": "ISC",
       "last_commit": "2026-10-03",
-      "stars": 24836,
+      "stars": 24864,
       "status": "ok"
     },
     {
@@ -79,7 +79,7 @@
       "url": "https://phosphoricons.com",
       "license": "MIT",
       "last_commit": "2026-01-06",
-      "stars": 384,
+      "stars": 385,
       "status": "ok"
     },
     {
@@ -102,7 +102,7 @@
       "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill",
       "license": "MIT",
       "last_commit": "2026-10-03",
-      "stars": 132809,
+      "stars": 133252,
       "status": "ok"
     },
     {
@@ -135,8 +135,8 @@
       "name": "Tabler Icons",
       "url": "https://tabler.io",
       "license": "MIT",
-      "last_commit": "2026-09-28",
-      "stars": 21890,
+      "last_commit": "2026-10-05",
+      "stars": 21907,
       "status": "ok"
     },
     {
@@ -145,7 +145,7 @@
       "url": "https://heroicons.com",
       "license": "MIT",
       "last_commit": "2026-05-12",
-      "stars": 23847,
+      "stars": 23852,
       "status": "ok"
     },
     {
@@ -153,8 +153,8 @@
       "name": "Simple Icons",
       "url": "https://simpleicons.org",
       "license": "CC0",
-      "last_commit": "2026-09-30",
-      "stars": 25958,
+      "last_commit": "2026-10-04",
+      "stars": 25967,
       "status": "ok"
     },
     {
@@ -242,8 +242,31 @@
       "url": "https://squoosh.app",
       "license": "Apache-2.0",
       "last_commit": "2024-08-19",
-      "stars": 25984,
+      "stars": 25988,
       "status": "ok"
+    },
+    {
+      "id": "babylonjs",
+      "name": "Babylon.js",
+      "url": "https://www.babylonjs.com",
+      "license": "Apache-2.0",
+      "last_commit": "2026-10-05",
+      "stars": 26127,
+      "status": "ok"
+    },
+    {
+      "id": "babylon-playground",
+      "name": "Babylon.js Playground",
+      "url": "https://doc.babylonjs.com/playground",
+      "license": "Apache-2.0 (engine)",
+      "status": "manual — no repo to poll"
+    },
+    {
+      "id": "openprocessing",
+      "name": "OpenProcessing",
+      "url": "https://openprocessing.org/discover/#/trending",
+      "license": "Varies (per-sketch)",
+      "status": "manual — no repo to poll"
     }
   ]
 }
